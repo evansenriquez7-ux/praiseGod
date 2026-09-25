@@ -16409,3 +16409,88 @@ count would have meant the reviews found nothing.
    defects. They clear by re-dispatch under the strengthened template, not by a validator change.
 5. **A blind reviewer cannot adjudicate INTENT.** Theming, persona and decoration findings must be
    checked against `data/interest_bank.json` by the dispatcher before being queued as bugs.
+
+## 2026-09-25 — GPT-6 Luna §5 review of `mat_g1_na_q3_0` (`codex-h06-s5-gpt6luna-20260925`)
+
+The requested `gpt-5.6-luna` model was unavailable on this host. A separate blind agent actually
+running **`gpt-6-luna` at medium reasoning** reviewed one dispatch-time packet, and its
+`reviewed_by` identity names that model. Its only review input was the generated prompt file;
+the reviewer reported three prompt reads, one failed bare-`python` write, one successful
+`python3` write, then a verdict read, update and verification read. The exact prompt and raw
+response were preserved in `validation_reports/judgment/mat_g1_na_q3/.responses/` under
+`gpt6luna-s5-w10-20260925`. The review was filed from its dispatch-time skeleton.
+
+The first response was **rejected before filing**: 132 reasoning fields contained only 26
+distinct strings, including one ambiguity explanation repeated on 29 samples. The same blind
+reviewer revised its response. The mechanical audit then found 30/30 sample assessments, 5/5
+clause assessments, 132 reasoning fields with 130 distinct strings, minimum length 117,
+zero unmatched quoted spans, and matching sample/clause IDs. The three remaining identical
+mathematical-validity explanations refer to samples with the same subtraction. `file_reviews`
+accepted the revised response: `overall=FAIL`, with 12 FAIL / 15 CONCERN / 7 PASS across the now
+34 schema-v2 reviews (25 `gpt-5.6-luna` medium, 8 `haiku45`, 1 `gpt-6-luna` medium).
+
+**Named content queue from the filed review:**
+
+* `mat_g1_na_q3_0`, competency clause “Illustrate subtraction involving numbers up to 20 using a
+  variety of concrete and pictorial models, and describes subtraction as 'taking away'.” The
+  reviewer ruled `concrete_pictorial=FAIL`, `illustrate_subtraction=CONCERN`, and
+  `describe_subtraction=CONCERN`: the packet gives verbal take-away questions and emoji arrays,
+  but no concrete model or task asking a pupil to describe subtraction. This is the reviewer's
+  judgment, preserved for a content fix; no generator source was changed in this campaign.
+* `mat_g1_na_q3_0`, seed **701**: the rendered stem says “✝️ Daniel has a math challenge about
+  stones. There are 20 stickers. Taking away 15 stickers leaves how many stickers?” The answer
+  is `5`; the themed wrapper names stones while the task counts stickers. `requested.student_interest`
+  is `bible`, and `data/interest_bank.json` deliberately includes Daniel and stones. The mismatch
+  between the wrapper and the task is the defect, not the faith theme or cross.
+* The reviewer marked 15/30 samples with learner-facing clarity concerns, mostly because hints
+  explain column borrowing while the competency calls for concrete and pictorial take-away
+  models. Seed **44** demonstrates the difference: the stem asks whether taking 2 from 10
+  marbles leaves 8, while the hints direct the pupil to borrow a ten and subtract digit columns.
+  Treat the grade appropriateness of that method as a review finding pending curriculum-grounded
+  content work, not as an independently proven vocabulary violation.
+
+**Executed evidence:**
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : 208a52406226e6d0
+
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py
+legacy_review_queue: 118 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 118
+
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1538 problems
+mat_g1_na_q3_0 : 12 problems
+
+$ PYTHONPATH=. .venv/bin/python -m tests.file_reviews --nodes ... --verdicts ...
+  filed mat_g1_na_q3_0 -> validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_0.json
+1 review(s) filed under 'blind-reviewer-gpt-6-luna-medium-w10-mat_g1_na_q3_0-20260925'
+
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: 117 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 117
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+$ PYTHONPATH=. .venv/bin/python -c '...validate_judgment_reviews()...'
+judgment_reviews module: 1553 problems
+mat_g1_na_q3_0 : 27 problems
+```
+
+The **module entry point** rose by 15 findings, all on the reviewed node: its 12 legacy/freshness
+findings became 27 curriculum findings. `run_all` was then remeasured separately:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+RUN_ALL EXIT CODE: 1
+  PASS unit_tests (826 passed, 1 skipped, 2 deselected, 4 warnings in 736.58s (0:12:16))
+  FAIL judgment_reviews (1554 problem(s) — non-PASS verdicts or incomplete reviews)
+  FAIL capability_contract (Phase 2, 173 problem(s): 173 CONTRADICTED, 0 UNATTESTED, 0 STALE (§6F), 0 UNADJUDICABLE (no recorded options))
+  FAIL assertion_coverage_8 (3 in 1 family)
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+```
+
+The `run_all` stage adds one aggregate finding to the module's 1553, as documented in the
+handoff. The other two red stages and all existing digest-bound proofs were untouched.
+No generation seed failed mechanically; the content findings above are tied to seeds 701 and 44.

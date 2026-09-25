@@ -1,96 +1,33 @@
 {
   "schema_version": 1,
   "kind": "legacy_review_queue",
-  "generated_at": "2026-09-24T13:43:21.558405+00:00",
+  "generated_at": "2026-09-25T03:18:59.882937+00:00",
   "adjudicable": false,
   "why_not_adjudicable": "These are v1 reviews. The current schema (v2) requires per-sample contextual-validity verdicts, exact clause coverage and dispatch-bound provenance, which a v1 reviewer was never asked for and which therefore cannot be recovered from a v1 record without inventing them. Every node listed here still owes a fresh blind re-review. This file exists so that the previous programme's findings remain visible as a QUEUE while none of them counts as evidence.",
-  "required_work": "118 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
+  "required_work": "117 node(s) need a fresh blind review filed at schema_version 2. Rebuild a packet with: python -m backend.app.practice_gen.validation.judgment_packets --node <node_id>",
   "source_review_dir": "validation_reports/judgment",
-  "source_corpus_sha256": "f36fc9650aecb441715e3841143a1d9a8b8f661375c3a187aae2cac5fe69e987",
+  "source_corpus_sha256": "b94b56f607f5639e10dc6fe078863a907dc94a1624f64e8e85e3b51149d6d8c3",
   "counts": {
-    "legacy_nodes": 118,
-    "already_current_and_excluded": 33,
+    "legacy_nodes": 117,
+    "already_current_and_excluded": 34,
     "by_overall_verdict": {
-      "CONCERN": 74,
+      "CONCERN": 73,
       "FAIL": 34,
       "PASS": 10
     },
-    "nodes_with_a_non_pass_facet": 108,
+    "nodes_with_a_non_pass_facet": 107,
     "non_pass_by_facet": {
-      "cognitive_capacity": 30,
+      "cognitive_capacity": 29,
       "competency_alignment": 55,
-      "competency_fulfillment": 59,
-      "comprehensive_coverage": 50,
-      "scale_appropriateness": 22,
-      "variant_comprehensiveness": 71
+      "competency_fulfillment": 58,
+      "comprehensive_coverage": 49,
+      "scale_appropriateness": 21,
+      "variant_comprehensiveness": 70
     },
     "records_missing_a_v1_facet": 0,
     "orphan_reviews_for_undeclared_nodes": 0
   },
   "nodes": [
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_0.json",
-      "source_sha256": "0dfffe3e37c33f6803e8f782e660de391779daf0ddd63a5f3a951f5a8cebe210",
-      "declared_schema_version": null,
-      "reviewed_by": "reviewer-media-slate-tamarind-8817",
-      "review_date": "2026-09-11",
-      "blind": true,
-      "sample_seeds": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        48,
-        500,
-        501,
-        502,
-        600,
-        601,
-        602,
-        603,
-        604,
-        605
-      ],
-      "overall_verdict": "CONCERN",
-      "node_still_declared": true,
-      "facets": {
-        "competency_fulfillment": {
-          "verdict": "CONCERN",
-          "rationale": "The describing clause is well served, since taking away wording carries every stem including seeds 44 and 601. The illustrating clause is thinner: only seeds 48, 502, 602 and 604 attach any picture at all, and the remaining eleven samples are numeric sentences with no model behind them."
-        },
-        "comprehensive_coverage": {
-          "verdict": "CONCERN",
-          "rationale": "A variety of models is named in the competency, yet the text exposes exactly one pictorial family, a row of identical emoji, at seeds 48, 502, 602 and 604. No number line, ten frame or crossing out appears in any stem text. I cannot see the images themselves, so their internal detail is unjudgeable, but their described structure is uniform."
-        },
-        "cognitive_capacity": {
-          "verdict": "CONCERN",
-          "rationale": "Seed 500 prints leaves 1 blocks, a plural agreement error placed in front of a beginning reader. Seeds 43 and 501 also wrap a quoted exercise inside a judgement about what another child answered, which is two levels of indirection this early in Grade 1."
-        },
-        "variant_comprehensiveness": {
-          "verdict": "CONCERN",
-          "rationale": "Answer formats differ but the stem frame barely does: a starting count, a removal, then a request for what remains, repeated at seeds 42, 44, 45, 46, 601, 603 and 605. No missing subtrahend orientation appears and no named character ever performs the removal, unlike the story framing used in other nodes."
-        },
-        "competency_alignment": {
-          "verdict": "PASS",
-          "rationale": "Progression moves through subtrahend size and whether the answer bridges back across ten, visible in seed 45 with 20 less 12 and seed 502 with 16 less 8, alongside the take everything cases at seeds 42 and 601. That is the subtraction idea widening, not an unrelated axis."
-        },
-        "scale_appropriateness": {
-          "verdict": "CONCERN",
-          "rationale": "Every one of the fifteen starting amounts is 10 or greater, and the values 10, 15 and 20 account for almost all of them. Nothing in the lower half of the interval up to 20 is exercised, so a single digit removal never occurs anywhere in the sample."
-        }
-      },
-      "facets_missing_from_the_v1_record": [],
-      "non_pass_facets": [
-        "competency_fulfillment",
-        "comprehensive_coverage",
-        "cognitive_capacity",
-        "variant_comprehensiveness",
-        "scale_appropriateness"
-      ],
-      "adjudicable": false
-    },
     {
       "node_id": "mat_g1_na_q3_1",
       "source_path": "validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_1.json",

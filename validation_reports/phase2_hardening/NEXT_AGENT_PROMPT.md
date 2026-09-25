@@ -32,7 +32,8 @@ owner's instruction of 2026-09-24 and it supersedes ruling 10's `GPT-5.6-Terra` 
    changing the standard changes the answer; changing the reasoning budget plausibly does too.
 
 **The v2 corpus is already mixed-family and that is recorded, not hidden:** 25 `gpt-5.6-luna` medium,
-8 `haiku45`. Measured agreement on 18 clauses with the standard fixed — cross-family (Haiku vs
+8 `haiku45`, and 1 `gpt-6-luna` medium, truthfully labelled because this host could not dispatch
+`gpt-5.6-luna`. Measured agreement on 18 clauses with the standard fixed — cross-family (Haiku vs
 GPT-5.6-Terra) **11/18 = 61.1%**, within-family (Haiku vs Haiku) **37/42 = 88.1%**. Luna-vs-Haiku
 agreement is **still unmeasured**; if you can cheaply measure it on a node both families have judged,
 record the number. Do NOT re-review or discard existing records to force uniformity — ruling 2
@@ -68,63 +69,54 @@ tests run too.
 
 ## 2. State, executed 2026-09-25
 
+The live input digest before this review-only campaign was `208a52406226e6d0` and
+`tests/tree_state.py` reported `CERTIFIED`. The campaign changed review evidence and handoff
+artifacts, not generator or harness source. The campaign intent is complete; the final
+post-commit certification check is recorded with the release commit. `H-06` is currently
+claimed by `codex-h06-s5-gpt6luna-20260925`; release it in a follow-up commit.
+Disk at campaign start: **17 GiB free** of 112 GiB. If a command disagrees with this file,
+believe the command.
+
 ```
-$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
-PASS tree_state: CERTIFIED
-  live input digest : 208a52406226e6d0
-  worktree          : clean
-  mutation_proofs         fresh  163 file(s)
-  release_shards          fresh  6 file(s)
-  obligation_benchmark    fresh  1 file(s)
-  frontend_static_render  fresh  1 file(s)
+$ PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py
+legacy_review_queue: 117 legacy review(s), NOT adjudicable evidence
+  re-reviews owed         : 117
 
 $ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
-```
 
-HEAD is at or after `b286ef09`; `H-06`'s owner line reads `released @ 5410816a` and is **unclaimed**.
-Disk: **17 GiB free** of 112 GiB. **If a command disagrees with this file, believe the command** and
-say so before continuing.
-
-```
 $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
-  RUN_ALL EXIT CODE: 1
+RUN_ALL EXIT CODE: 1
+  PASS unit_tests (826 passed, 1 skipped, 2 deselected, 4 warnings in 736.58s (0:12:16))
+  FAIL judgment_reviews (1554 problem(s) — non-PASS verdicts or incomplete reviews)
+  FAIL capability_contract (Phase 2, 173 problem(s): 173 CONTRADICTED, 0 UNATTESTED, 0 STALE (§6F), 0 UNADJUDICABLE (no recorded options))
+  FAIL assertion_coverage_8 (3 in 1 family)
   scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-  FAIL       assertion_coverage_8           phase 1     1.1s
-  FAIL       judgment_reviews_5             phase 2   191.2s
-  FAIL       capability_phase2              phase 2    24.0s
-  FAIL judgment_reviews      1539 problem(s)
-  FAIL capability_contract   173 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE
-  FAIL assertion_coverage_8  3 in 1 family;  mutation_proof_integrity_8  9 in 3 families
-  PASS census: mutations=163 (floor 105)
 ```
 
 | stage | count | nature |
 |---|---|---|
-| `judgment_reviews_5` | **1539** at `run_all` / **1538** at the module | **118 nodes** still schema v1 — your queue |
-| `capability_phase2` | **173** CONTRADICTED across 82 of 151 nodes | content debt; source work, costs the chain |
-| `assertion_coverage_8` | 3 in 1 family (+ `mutation_proof_integrity_8` 9 in 3 families — the SAME three records) | the §6F cluster; **only `capability_phase2` reaching 0 clears it** |
+| `judgment_reviews_5` | **1554** at `run_all` / **1553** at the module | **117 nodes** still schema v1 |
+| `capability_phase2` | **173** CONTRADICTED across 82 of 151 nodes | content debt; source work costs the re-proof chain |
+| `assertion_coverage_8` | 3 in 1 family (+ `mutation_proof_integrity_8` 9 in 3 families — the SAME three records) | §6F cluster; baseline `capability_phase2` is red |
 
-Mutation corpus **160/163**. Six shards `failures=0`, worst 1,592s of the 1,800s budget.
-Benchmark `failures=0`. Frontend 41/41.
+Mutation corpus **160/163**. Six release shards `failures=0`, worst 1,592s of the 1,800s budget.
+Benchmark `failures=0`. Frontend 41/41. These are digest-bound artifacts at
+`208a52406226e6d0`, carried forward because no input source changed.
 
-Review corpus: **33 schema-v2 reviews** (25 Luna, 8 Haiku), verdicts **11 FAIL / 15 CONCERN / 7 PASS**.
-`legacy_review_queue.json` agrees independently: **118 owed + 33 excluded = 151**.
+Review corpus: **34 schema-v2 reviews**: 25 `gpt-5.6-luna` medium, 8 `haiku45`,
+1 `gpt-6-luna` medium. Verdicts **12 FAIL / 15 CONCERN / 7 PASS**.
+`legacy_review_queue.json` agrees independently: **117 owed + 34 excluded = 151**.
+The new `mat_g1_na_q3_0` review is FAIL; §5 rose **1538 → 1553 at the module**,
+all 15 added findings on that node (12 → 27). The `run_all` stage adds one aggregate
+rollup, so cite the entry point with either count. A rise from a fresh review is
+newly exposed content debt, not a generator regression. Seed 701's stones/stickers
+wrapper mismatch and the missing concrete-model clause are queued in
+`HARDENING_EVIDENCE.md`.
 
-> **Only 7 of 33 reviews PASS. This queue is defect discovery, not bookkeeping — and §5 RISES as you
-> work.** It went 1462 → 1538 over the last two waves because a fresh blind review replaces an
-> unadjudicable v1 stub with a verdict that names real defects; `mat_g1_na_q2_0` alone contributes 80.
-> **A falling §5 count would mean your reviewers found nothing.** Do not report a rise as a regression.
-
-> **Always name the ENTRY POINT with a §5 figure.** `run_all`'s stage appends one aggregate rollup the
-> module CLI never emits, so the two differ by exactly one. Both are correct. Settled; do not re-open.
->
-> The module CLI prints only the first 10 findings. For all of them (~190s):
-> ```python
-> from backend.app.practice_gen.validation.validate_judgment import validate_judgment_reviews
-> problems = validate_judgment_reviews()   # list[str]
-> ```
-> **`wc -l` on that output undercounts by one** — joined with `\n`, no trailing newline. Count in Python.
+> For the complete module finding list (~190s), call `validate_judgment_reviews()`
+> and count the returned list in Python. Its CLI prints only the first 10; `wc -l`
+> undercounts output joined without a trailing newline.
 
 ---
 
@@ -202,7 +194,7 @@ it, then commit it unchanged, and author nothing.
 
 ---
 
-## 5. PRIORITY 1 — the §5 blind re-reviews. 118 nodes. No re-proof owed.
+## 5. PRIORITY 1 — the §5 blind re-reviews. 117 nodes. No re-proof owed.
 
 `validation_reports/judgment/` is outside `INPUT_ROOTS`, so **this campaign moves no digest and the
 tree stays CERTIFIED** as long as you touch no source. Verify rather than assume:
@@ -231,7 +223,7 @@ print(len(owed), owed[:10])"
 **`tests.judgment_batches --plan` is a STATIC partition of all 151 registered nodes** — sorted,
 fixed-size, NOT a live owed-list. Its batch 7 is `mat_g3_na_q4_7`, which is already filed and fresh;
 dispatching it would overwrite a genuine verified review. Derive your work list from the command above.
-Next owed nodes in order as of 2026-09-25: `mat_g1_na_q3_0` … `mat_g1_na_q3_7`, then `mat_g1_na_q4_*`.
+Next owed nodes in order as of 2026-09-25: `mat_g1_na_q3_1` … `mat_g1_na_q3_7`, then `mat_g1_na_q4_*`.
 
 ### The tooling
 
@@ -568,7 +560,7 @@ rather than fixing it.** A batch that grows is a batch that does not close.
 
 ## 13. What success looks like
 
-You will **not** reach `run_all` exiting 0 — 118 nodes owe reviews and 82 carry content debt. A good
+You will **not** reach `run_all` exiting 0 — 117 nodes owe reviews and 82 carry content debt. A good
 session:
 
 1. **Dispatches every blind reviewer on `gpt-5.6-luna` at medium thinking**, names it truthfully in

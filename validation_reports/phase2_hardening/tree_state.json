@@ -3,12 +3,12 @@
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": null,
   "last_completed": {
-    "kind": "chain",
-    "began_at": "2026-09-24T22:07:27+08:00",
-    "session": "claude-h06-s5-haiku-campaign-2026-09-24",
-    "note": "Re-proof chain for a46bc7f7.",
-    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-09-25T02:05:27+08:00",
-    "completion_note": "Chain re-proved at a46bc7f7 (corpus 160/163, six shards failures=0, verify-release complete). run_all EXIT 1: judgment_reviews_5 1539, capability_phase2 173, assertion_coverage_8 3. Waves 8-9 filed; legacy queue 118."
+    "kind": "campaign",
+    "began_at": "2026-09-25T11:13:34+08:00",
+    "session": "codex-h06-s5-gpt6luna-20260925",
+    "note": "One schema-v2 blind review on the next owed node; no source edits",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
+    "completed_at": "2026-09-25T11:51:11+08:00",
+    "completion_note": "Filed one blind GPT-6 Luna medium schema-v2 review for mat_g1_na_q3_0; 117 owed; run_all exit 1 with known red stages and 1554 judgment findings; no source edits"
   }
 }
