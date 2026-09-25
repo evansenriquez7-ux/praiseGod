@@ -71,9 +71,9 @@ tests run too.
 
 The live input digest before this review-only campaign was `208a52406226e6d0` and
 `tests/tree_state.py` reported `CERTIFIED`. The campaign changed review evidence and handoff
-artifacts, not generator or harness source. The campaign intent is complete; the final
-post-commit certification check is recorded with the release commit. `H-06` is currently
-claimed by `codex-h06-s5-gpt6luna-20260925`; release it in a follow-up commit.
+artifacts, not generator or harness source. The campaign intent is complete. After commit `3298d810`, `tests/tree_state.py` reported
+`CERTIFIED`, the same digest, and a clean worktree. `H-06` is released at `3298d810`
+and remains open for the outstanding review and capability queues.
 Disk at campaign start: **17 GiB free** of 112 GiB. If a command disagrees with this file,
 believe the command.
 
