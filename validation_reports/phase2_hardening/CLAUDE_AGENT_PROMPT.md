@@ -1,7 +1,7 @@
-# Task prompt — Phase 2 hardening, PHASE B: re-review what the hint contract staled (fresh Claude Code session)
+# Task prompt — Phase 2 hardening, PHASE C: resume the review queue (fresh Claude Code session)
 
-**Rewritten 2026-09-25 after Phase A landed. This REPLACES every previous version of this file and its
-banners.** Every figure below was executed on 2026-09-25 at digest `35171c2cf3c5c288` (HEAD `72d0891b` or
+**Rewritten 2026-09-25 after Phases A and B landed. This REPLACES every previous version of this file and
+its banners.** Figures below were executed on 2026-09-25 at digest `35171c2cf3c5c288` (HEAD `b8960171` or
 later). If you refresh this file, **rewrite the state section rather than stacking a banner** — a sibling
 prompt reached eight banners contradicting its own body before it was rewritten.
 
@@ -77,22 +77,16 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all      # 2026-09-25, 72d0891b
-  RUN_ALL EXIT CODE: 1
-  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-  FAIL judgment_reviews_5   (§5)  — 2050 at the module / 2051 at run_all   (was 2016 / 2017)
-  FAIL capability_phase2    (§6F) — 180: 173 CONTRADICTED (unchanged) + 7 STALE attestations
-  FAIL assertion_coverage_8       — 3 in 1 family; mutation_proof_integrity_8 9 in 3 families
+run_all (2026-09-25, before Phase B filings)   EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
+§5 (module)          2016 (start of day) -> 2050 (Phase A staled 27 reviews) -> 1553 (after Phase B)
+§6F                  180: 173 CONTRADICTED + 7 STALE attestations
+v2 corpus            60 reviews: 20 PASS / 21 CONCERN / 19 FAIL -- 29 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
+owed (Phase C)       91 nodes with no schema-v2 review
 ```
 
-Chain re-proved at `72d0891b`: fast suite 983 passed; corpus 181/184 (only the §6F cluster); six shards
-rc=0, verify-release complete; benchmark failures=0; frontend 41/41; validate_matrix 151/151. **If a command
-disagrees with this file, believe the command.** Run `tests/tree_state.py` and `tests/hardening_status.py`
-first; the last session left the tree CERTIFIED with H-06 released — confirm both by execution.
-
-**§5 rose 2016 → 2050 because the fix worked:** 27 v2 reviews went STALE by packet digest (their hints
-changed). Their old sample findings keep counting until they are re-reviewed. Legacy queue: 91 v1 nodes
-owed. v2 corpus: 60 reviews (25 gpt-5.6-luna, 19 gpt-6-luna, 16 haiku45), 27 of them now stale.
+The tree was left CERTIFIED at digest `35171c2cf3c5c288` with H-06 released. **Confirm both by execution**
+(`tests/tree_state.py`, `tests/hardening_status.py`). If a command disagrees with this file, believe the
+command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 
@@ -111,29 +105,28 @@ clocks render "AM" (payload `hours` 1–12 with no period; `VisualSkeletons.jsx:
 invariant + mutation + payload/renderer fix — a source batch, so it costs a chain; batch it with Phase D
 content work rather than paying for it alone.
 
-## 4. PHASE B — START HERE: re-review the 27 staled nodes, and MEASURE Luna-vs-Haiku agreement
+## 4. PHASE B — DONE (2026-09-25)
 
-No source change, no re-proof owed (`validation_reports/judgment/` is outside `INPUT_ROOTS`). Re-derive the
-list by execution before dispatching — `validate_judgment --all`, lines containing "packet digest changed":
+All 27 staled nodes re-reviewed blind on Haiku and filed (`2d01e392`, `b8960171`); full account in the
+evidence log, "PHASE B". **Reuse its tooling**, which is scratch and so must be recreated from that entry's
+description if `local_only/scratch/phaseB/` is gone: a build script that appends the four-part ADDENDUM
+before `== BLIND PACKET ==`, an audit that files each reply into a throwaway dir through the REAL
+`file_reviews.file_one` and calls `validate_judgment._validate_quote_provenance` / `_validate_one`, and a
+structural diff proving a revision changed wording only. **Filing REPLACES the node's review file in place**
+— the previous record survives only in git — so snapshot any record you intend to compare against before
+you file over it.
 
-```
-gpt-6-luna   (5)  mat_g1_na_q3_1 mat_g1_na_q3_2 mat_g1_na_q3_6 mat_g1_na_q3_7 mat_g1_na_q4_2
-gpt-5.6-luna (8)  mat_g1_mg_q2_1 mat_g1_mg_q2_2 mat_g1_mg_q4_1 mat_g1_mg_q4_4 mat_g1_na_q1_0 mat_g1_na_q1_4
-                  mat_g1_na_q1_8 mat_g1_na_q1_9
-haiku45      (14) mat_g1_na_q2_0 mat_g1_na_q2_2 mat_g1_na_q2_3 mat_g1_na_q2_4 mat_g1_na_q2_5 mat_g1_na_q2_6
-                  mat_g2_mg_q2_0 mat_g2_mg_q2_1 mat_g2_mg_q2_2 mat_g2_mg_q2_3 mat_g2_mg_q4_0 mat_g2_mg_q4_1
-                  mat_g2_mg_q4_2 mat_g3_na_q4_7
-```
+Agreement measured (same clause ids): gpt-5.6-luna -> haiku45 86.4%, gpt-6-luna -> haiku45 84.6%,
+haiku45 -> haiku45 control 72.2%, all across a content change. It is NOT a same-packet reliability figure.
 
-Re-review them on Haiku with the four-part template (§5). **The 13 Luna nodes are the agreement sample
-Decision 2 asks for:** compare the new Haiku clause verdicts against the stale Luna record's verdicts on the
-SAME clause ids, report agreement per family (gpt-5.6-luna, gpt-6-luna) as k/n, and write it in the evidence
-log. Do NOT delete or rename the stale Luna records — a new filing supersedes; the old one is the other half
-of the measurement. The filer now REFUSES an `overall` that contradicts the reply's own verdicts, and the
-dispatch prompt now tells absence-clause reviewers to cite the samples they examined — expect fewer
-unfileable replies, and do not relax either rule to file one.
+**Owed to the NEXT SOURCE BATCH** (each costs a chain, so batch them with Phase D content work):
+(1) `time_reading.generate_params` builds string distractors from SETS (lines 148/160/386), so option order
+and the §5 packet digest flap across processes — `sorted()` + a cross-process determinism test;
+(2) §1G has no ClockSet invariant — read-mode p.m. clocks render "AM";
+(3) calendar month items draw a different month than the stem states, and `VOCAB_ELAPSED`'s fallback garbles
+a hint ("The how much time has passed is ...").
 
-## 5. PHASE C — resume the queue. 91 nodes. No re-proof owed.
+## 5. PHASE C — START HERE: resume the queue. 91 nodes. No re-proof owed.
 
 Only after Phase A, so reviews are not invalidated on arrival. `validation_reports/judgment/` is outside
 `INPUT_ROOTS`, so the campaign moves no digest and the tree stays CERTIFIED while you touch no source.

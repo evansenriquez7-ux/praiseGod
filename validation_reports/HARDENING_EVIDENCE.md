@@ -17230,3 +17230,95 @@ The gate sees canonical packet seeds; other seeds are covered only by serving-pa
 * `mass_capacity` emits unit `mg` at Grade 3; whether the competency names milligrams is unchecked.
 * `patterns` identify_valid_pattern and the letter-pattern rule wording were only made consistent, not
   reviewed for aptness — §5's business.
+
+## 2026-09-25 — PHASE B: the 27 nodes Phase A staled, re-reviewed on Haiku; Luna-vs-Haiku agreement MEASURED (`claude-h06-phaseB-rereview-2026-09-25`)
+
+No source change; campaign intent only. Commits `3c36c338` (lock + intent), `2d01e392`, `b8960171` (filings).
+**Model that judged: Claude Haiku 4.5** (Claude Code Agent tool, `model: "haiku"`, `subagent_type:
+general-purpose`, default thinking), per owner Decision 2. Identities
+`blind-reviewer-haiku45-pb<wave>-<node>-20260925`, dispatch ids `s5-phaseB-w<wave>-haiku45-20260925`,
+six waves. No non-Haiku identity was renamed; the 27 stale records were snapshotted before filing and
+remain in git at `3c36c338`.
+
+### Method
+
+Packets built with `tests.judgment_batches --node` (dispatch-time skeleton + exact prompt per node), plus
+a binding ADDENDUM inserted before the blind packet carrying the four-part template: a 60-character floor,
+the exact-verbatim quoting rule, neutral interest-bank context, and an explicit instruction to check every
+hint against its own item; plus citations-for-absence and the `overall` rule. After wave 1 the quoting rule
+was tightened (the commonest failure was the reviewer's own comma inside the quotes) and waves 2-6 were
+REBUILT before dispatch, so each reviewer's prompt file is exactly what was recorded as its dispatch prompt.
+
+Every reply was audited BEFORE filing by `local_only/scratch/phaseB/audit.py`, which files the reply into a
+throwaway directory through the REAL `file_reviews.file_one` and then calls the validator's OWN
+`_validate_quote_provenance` and `_validate_one` (no re-implemented regex), plus: 60-character floor,
+repeated sample reasoning, cross-node verbatim reuse, and — after any revision — a structural diff against
+the preserved first reply (every verdict, sample id, clause citation and `overall` must be identical; only
+wording may change). **The full audit was re-run after every revision; no reviewer self-report was trusted.**
+
+### Results
+
+```
+27 nodes     before (stale): 14 FAIL / 7 CONCERN / 6 PASS     after: 3 FAIL / 6 CONCERN / 18 PASS
+13 filed on the first reply; 14 after one or two reviewer-authored revisions
+v2 corpus    60 reviews: 20 PASS / 21 CONCERN / 19 FAIL (was 8 PASS)
+             by family: 29 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
+§5 (module)  2050 -> 1553; STALE-by-digest 27 -> 1 (see determinism defect below)
+```
+
+After filing, `pytest tests/unit/test_legacy_review_queue.py tests/unit/test_file_reviews.py -q` -> 20 passed (no fixture rot).
+
+### Luna-vs-Haiku agreement — the number Decision 2 asked for
+
+Same node, same clause ids and finding keys; old verdict (stale record) vs new Haiku verdict:
+
+```
+gpt-5.6-luna -> haiku45 (8 nodes)    clauses 38/44 = 86.4%   findings 35/48 = 72.9%   overall 3/8
+gpt-6-luna   -> haiku45 (5 nodes)    clauses 11/13 = 84.6%   findings 15/30 = 50.0%   overall 0/5
+haiku45      -> haiku45 (14 nodes)   clauses 52/72 = 72.2%   findings 56/84 = 66.7%   overall 6/14   <- CONTROL
+```
+
+**Read this with its confound, which is the whole point of the control row.** Every pair compares a review
+of the OLD hints with a review of the FIXED hints, so disagreement mixes rater difference with a real
+content change — and most overall disagreements are FAIL -> PASS, the direction a fix should move them. The
+Haiku-vs-Haiku control on the same content change is the baseline: on CLAUSE verdicts (which concern what
+capability is served, least affected by hint text) Haiku agrees with Luna at least as often as with its own
+earlier verdicts. **At this n, no Luna-specific disagreement is detectable above the content-change
+noise.** This is NOT an inter-rater reliability figure on identical content; that still needs a same-packet
+double dispatch, and the corpus should say so wherever it quotes these numbers.
+
+### Reviewer conduct, measured
+
+* Transcript scan of all 27 reviewers: **no tool call touched any path outside that reviewer's own node
+  directory** (prompt.txt, verdicts.json). 26 used only Read/Write/Edit on their own files.
+  `mat_g2_mg_q4_1` also ran 7 Bash calls (python JSON checks and grep) on its own reply, contrary to the
+  Read/Write-only instruction — recorded verbatim in its `tool_uses_by_reviewer`; blindness held in
+  substance.
+* **Self-reports were wrong three times**: q4_1 and q1_0 each reported quotes removed that were still
+  there; confirmed only by re-running the audit.
+* **Two disclosed non-wording revisions**, both reviewer-authored: `mat_g1_na_q1_8` was refused for
+  `overall: PASS` beside three CONCERN checks (the new filer rule's first live catch) and the reviewer
+  reconciled by changing those three to PASS — the original CONCERN (digit-column hints on zero-identity
+  items) is preserved in `verdicts.v1.json` and below; `mat_g1_na_q2_3` was refused twice for clauses with
+  no `sample_ids` and added citations, every verdict unchanged.
+
+### Content defects surfaced — confirmed by execution against the dispatched packets
+
+* **`mat_g1_mg_q4_4` calendar month items draw the WRONG month**: seeds 44/613/614 state "This month is
+  March / September / February" while `visual_payload.month` is 9 / 3 / 4 (2025). Their second hint reads
+  "The how much time has passed is the number of days or weeks that have passed." — `VOCAB_ELAPSED`'s
+  fallback garbles the sentence. Neither is visible to the hint contract (a calendar IS present; no
+  statement is false). Owes a content fix and a §1G calendar invariant.
+* **`mat_g2_mg_q4_1`** — the blind reviewer independently found the a.m./p.m. clock defect this session
+  established by execution before dispatch (§1G has no ClockSet invariant). Two sources, one defect.
+* **`mat_g1_na_q1_8`** — zero-identity items (`0 + n`) are hinted by digit-column decomposition rather
+  than the identity property. An aptness defect, §5's business, not a contract violation.
+* **DETERMINISM DEFECT (Protocol 6), found by the one review that went STALE on filing**:
+  `mat_g2_mg_q4_2` was filed from its dispatch-time skeleton and §5 immediately called it STALE. Diffed
+  sample by sample: only `options` order differed, on 7 seeds. Within one process renders are identical;
+  across processes they are not, because `time_reading.generate_params` builds string distractors from a
+  SET (`[s for s in {...} if s != end_str]`, lines 148, 160, 386) and string set order follows the
+  per-process hash seed. The packet digest — and §5 freshness — therefore flaps for this node. `git grep`
+  finds no other unordered string-set iteration in `dna/` or `formatters/`. Fix: `sorted(...)` at the three
+  sites plus a cross-process determinism test. A SOURCE change, so it is NAMED here and owed to the next
+  source batch (with the §1G clock work), not paid for with its own ~5h chain.
