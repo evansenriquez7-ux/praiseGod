@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Identify and measure the perimeter of a plane figure using appropriate tools.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "identify",
+      "clause": "Identify"
+    },
+    {
+      "kind": "task",
+      "id": "measure",
+      "clause": "measure"
+    },
+    {
+      "kind": "property",
+      "id": "perimeter",
+      "clause": "perimeter"
+    },
+    {
+      "kind": "object",
+      "id": "plane_figure",
+      "clause": "plane figure"
+    },
+    {
+      "kind": "representation",
+      "id": "tools",
+      "clause": "tools"
+    }
+  ],
+  "packet_digest": "7276329aac65489f0c621a1e05703c741357c95e2a3f28c3764b5769b4f3a1fe",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +53,65 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "4bb257107705885b4d4b",
+    "73fc49297f7df6b6919a",
+    "5d1aef692a16643240c2",
+    "36d59ffbd948fafed40f",
+    "4c83fa15fa62050514ea",
+    "a74fd4a420d765ecd83a",
+    "1ab555f8b52adabc13b1",
+    "bd0c49b548953e4888e0",
+    "df8a7607d9a741338124",
+    "484579d4f787db176485",
+    "8fdbfe4454c0971b9b95",
+    "bb2279288991895ab589",
+    "339d34501db03d473ed9",
+    "1588d40a73a529245229",
+    "fd380a72f2d0e5b1c1e7",
+    "d7e7c8b2121c941d2afc",
+    "77805baf3bbec69a0a8a",
+    "dbf0f1bac2922cd1c6bc",
+    "36d9077e9b17d534ecc1",
+    "bc84aa87c9b6fff3bf17",
+    "084c3c432a280c09f89f",
+    "130aabf6a84ab4f1f304",
+    "177b528afb60fa1c6588",
+    "8dace48691c5f4f10290"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -50,13 +137,35 @@
           "text": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 2 + 1 + 2 = 5."
+      ],
+      "sample_id": "4bb257107705885b4d4b",
+      "replay_digest": "c7071aa9ea1981c135571cfbc570fae85dd764e2e2f5de93f7ce376b6d0098e5"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A rectangle has sides 6 cm and 2 cm. What is its perimeter?",
       "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +187,36 @@
           "value": 16,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 6 and two sides of width 2.",
+        "Perimeter = 2 × (6 + 2) = 2 × 8 = 16."
+      ],
+      "sample_id": "73fc49297f7df6b6919a",
+      "replay_digest": "e2c28589f618ecc1d3f696ecf80526b52face7bef650895f44cc50e11249fc21"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "A square has a side of 9 cm. What is its perimeter?",
       "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -110,13 +242,36 @@
           "text": "35",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 9 units long.",
+        "Perimeter = 4 × 9 = 36."
+      ],
+      "sample_id": "5d1aef692a16643240c2",
+      "replay_digest": "d5e0a14ba4d27118a428e771ca20043e14cdc2418cf85e6482e3cefe60e3b572"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A square has a side of 7 cm. What is its perimeter?",
       "correct_answer": 28,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,13 +293,36 @@
           "value": 27,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 28,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 7 units long.",
+        "Perimeter = 4 × 7 = 28."
+      ],
+      "sample_id": "36d59ffbd948fafed40f",
+      "replay_digest": "d0b278ac191b9ce0d43698a55968c78387f18fdb322d3e6cdd00c37659cb27bc"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A rectangle has sides 8 cm and 1 cm. What is its perimeter?",
       "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,13 +344,38 @@
           "value": 20,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 8 and two sides of width 1.",
+        "Perimeter = 2 × (8 + 1) = 2 × 9 = 18."
+      ],
+      "sample_id": "4c83fa15fa62050514ea",
+      "replay_digest": "995400ad675aac2262f0b8077e9e1521177552ed08713de5356b59c8343a8d18"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "A square has a side of 17 cm. What is its perimeter?",
       "correct_answer": 68,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,13 +397,38 @@
           "value": 70,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 68,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 17 units long.",
+        "Perimeter = 4 × 17 = 68."
+      ],
+      "sample_id": "a74fd4a420d765ecd83a",
+      "replay_digest": "dbb0f459163572047abe67d38898d696d2667c67e67a4d15d56d0e5cba4575b9"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?",
       "correct_answer": 48,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -222,13 +450,37 @@
           "value": 48,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 48,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 10 + 21 + 17 = 48."
+      ],
+      "sample_id": "1ab555f8b52adabc13b1",
+      "replay_digest": "cd5195caffee3c2300f5c2d2eee0fb4af088e49d94d863a7e723e45fd45b222e"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?",
       "correct_answer": 35,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -254,13 +506,37 @@
           "text": "34",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 12 + 6 + 17 = 35."
+      ],
+      "sample_id": "bd0c49b548953e4888e0",
+      "replay_digest": "4ea1a3fb93fa3d68e95b38feef4bc47557923ca75136d5041b2664a41870cbf2"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A square has a side of 6 cm. What is its perimeter?",
       "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -282,13 +558,38 @@
           "value": 24,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 6 units long.",
+        "Perimeter = 4 × 6 = 24."
+      ],
+      "sample_id": "df8a7607d9a741338124",
+      "replay_digest": "fdfaabcc4f4e5841647639874b93ed46d47b8d12f1086a2fd04f0280c915dc67"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "A rectangular garden is 12 m long and 10 m wide. How much fencing is needed to go all the way around it?",
       "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -314,13 +615,38 @@
           "text": "46",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 12 and two sides of width 10.",
+        "Perimeter = 2 × (12 + 10) = 2 × 22 = 44."
+      ],
+      "sample_id": "484579d4f787db176485",
+      "replay_digest": "3d955f9f1be9c46282ed5ae81eddc84464dbad65df0532c7f90b8534f3120eb7"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "A rectangle has sides 8 cm and 2 cm. What is its perimeter?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "rectangle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -346,13 +672,38 @@
           "text": "19",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 8 and two sides of width 2.",
+        "Perimeter = 2 × (8 + 2) = 2 × 10 = 20."
+      ],
+      "sample_id": "8fdbfe4454c0971b9b95",
+      "replay_digest": "3d8c45ca92082245df9813b8a8a196bd99e61751a97856310c796325dc12b150"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "A square has a side of 3 cm. What is its perimeter?",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "square"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -374,13 +725,38 @@
           "value": 14,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 3 units long.",
+        "Perimeter = 4 × 3 = 12."
+      ],
+      "sample_id": "bb2279288991895ab589",
+      "replay_digest": "d545f572d64aa966b1bd43328239b39fb5327d0a9c699ce29ce62410352fda11"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "triangle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -406,61 +782,1403 @@
           "text": "9",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 2 + 4 + 4 = 10."
+      ],
+      "sample_id": "339d34501db03d473ed9",
+      "replay_digest": "1b4c6ca3bd3ad7cba3f46fc385914115103b10580c78e45d789891f3aef8f09c"
     },
     {
+      "node_id": "mat_g2_mg_q4_4",
       "seed": 605,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 8 cm and 5 cm. What is its perimeter?",
-      "correct_answer": 26,
+      "question_text": "A rectangle has sides 11 cm and 7 cm. What is its perimeter?",
+      "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "identify_and_measure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 36,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 27,
+          "value": 37,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 28,
+          "value": 38,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 11 and two sides of width 7.",
+        "Perimeter = 2 × (11 + 7) = 2 × 18 = 36."
+      ],
+      "sample_id": "1588d40a73a529245229",
+      "replay_digest": "33c85af4bbf26b60f8e8b92880decfa12be3e7e97f3600fd69916d9cd288ef59"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "A triangle has sides 1 cm, 6 cm, and 6 cm. What is its perimeter?",
+      "correct_answer": 13,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "measure_tools"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 1 + 6 + 6 = 13."
+      ],
+      "sample_id": "fd380a72f2d0e5b1c1e7",
+      "replay_digest": "2bdebe79c4c7bceabdc2f9a478dec5f176d831f3b5af3af344c1601627d23386"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "A rectangle has sides 5 cm and 4 cm. What is its perimeter?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 5 and two sides of width 4.",
+        "Perimeter = 2 × (5 + 4) = 2 × 9 = 18."
+      ],
+      "sample_id": "d7e7c8b2121c941d2afc",
+      "replay_digest": "dbee879d726f9b549ff408fca5378e9384bb61908c24f728ed7a150ab9ca9024"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A triangle has sides 5 cm, 8 cm, and 5 cm. What is its perimeter?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 5 + 8 + 5 = 18."
+      ],
+      "sample_id": "77805baf3bbec69a0a8a",
+      "replay_digest": "cd5ec4faaa5d3d1ffacf01275fffaceac9820f58c2bdfdf2dff2c6af2177a88b"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "✝️ Moses has a math challenge about olives. A rectangle has sides 4 cm and 1 cm. What is its perimeter?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 4 and two sides of width 1.",
+        "Perimeter = 2 × (4 + 1) = 2 × 5 = 10."
+      ],
+      "sample_id": "dbf0f1bac2922cd1c6bc",
+      "replay_digest": "510dae6280db88f8bd29afebb72515e06ab8f0717592a79466441e4b5a8d14c7"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "A triangle has sides 16 cm, 19 cm, and 5 cm. What is its perimeter?",
+      "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 41,
+          "text": "41",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 16 + 19 + 5 = 40."
+      ],
+      "sample_id": "36d9077e9b17d534ecc1",
+      "replay_digest": "399c9b8a4f5b57887ce1b7705f08e7c45d1b8d379fbfe39b0d58dff8c288891e"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "A triangle has sides 1 cm, 2 cm, and 2 cm. What is its perimeter?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 1 + 2 + 2 = 5."
+      ],
+      "sample_id": "bc84aa87c9b6fff3bf17",
+      "replay_digest": "1e5759fcaa12a98026d09a08d029b4fc25db18454b7770f6a5b84ac957c2eea5"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A square has a side of 2 cm. What is its perimeter?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 2 units long.",
+        "Perimeter = 4 × 2 = 8."
+      ],
+      "sample_id": "084c3c432a280c09f89f",
+      "replay_digest": "6fd8846214609c51205fd2069f50b14585cf7c3fe5540b5a14059b132b10b62f"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "A square has a side of 11 cm. What is its perimeter?",
+      "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "text": "44",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "text": "43",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "The perimeter is the total distance around the square.",
+        "A square has 4 equal sides, each 11 units long.",
+        "Perimeter = 4 × 11 = 44."
+      ],
+      "sample_id": "130aabf6a84ab4f1f304",
+      "replay_digest": "3b35d441646ab3b6b28025afc6626dacfc94c58bc7e20b529283ea88e05f2a65"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "A rectangle has sides 5 cm and 1 cm. What is its perimeter?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "The perimeter is the total distance around the rectangle.",
+        "A rectangle has two sides of length 5 and two sides of width 1.",
+        "Perimeter = 2 × (5 + 1) = 2 × 6 = 12."
+      ],
+      "sample_id": "177b528afb60fa1c6588",
+      "replay_digest": "bcb6215afa0d4faf0382d547bed18c6d5c80e931b40a9e1cbe6ed23da023fe29"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_4",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "A triangle has sides 10 cm, 7 cm, and 7 cm. What is its perimeter?",
+      "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "The perimeter is the total distance around the triangle.",
+        "Add all three sides: 10 + 7 + 7 = 24."
+      ],
+      "sample_id": "8dace48691c5f4f10290",
+      "replay_digest": "5a9e4c97408f21cdad7b4d2f0037c9df5d0a43b8f931a8c9306a2ea6050cac54"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "4bb257107705885b4d4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the total distance around a named shape. The stem specifies three side lengths with clear units and asks what the perimeter is. The task is clear: add the given measurements to find the total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides measuring 2 cm, 1 cm, and 2 cm is a valid geometric object. The perimeter concept applies correctly. The mathematical relationship between the three sides and the required sum is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is direct and uses familiar vocabulary. The stem and answer structure are accessible to learners. Hints clearly explain that perimeter is the total distance around and show the arithmetic step by step with correct addition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic is correct: two plus one plus two equals five. Options span a reasonable range and the correct answer is present. All calculations in the hints match the work shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "73fc49297f7df6b6919a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format clearly presents one correct answer among distractors. The stem identifies a rectangle with two labeled dimensions and asks for perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with side lengths 6 cm and 2 cm is geometrically valid. The perimeter formula for rectangles applies correctly and the hints accurately decompose it as two times the sum of length and width."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem language is straightforward and the hints are progressively informative. The first hint names the concept. The second distinguishes rectangle structure with paired equal sides. The third shows the formula and calculation explicitly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times the sum of six and two yields sixteen. The arithmetic in all hints is accurate. Options include close distractors and the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "5d1aef692a16643240c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a square with a side length and asks for the perimeter. The question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 9 cm sides is valid. The property that all four sides are equal is correctly invoked. The perimeter equals four times the side length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is age-appropriate and the stem is concise. Hints progressively build understanding from the concept definition through the structural property to the calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times nine equals thirty-six. All calculations shown in the hints are correct and options include appropriate distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "36d59ffbd948fafed40f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is clear: given a square with a named side length, find its perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with a 7 cm side is geometrically sound. The four equal sides property and perimeter calculation follow correctly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is direct and unambiguous. The hints provide conceptual grounding, structural understanding, and computational steps in logical sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times seven equals twenty-eight. All arithmetic in the hints is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "4c83fa15fa62050514ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously presents a rectangle and asks for perimeter. The two labeled dimensions are sufficient to determine the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with 8 cm and 1 cm sides is valid. The perimeter formula for rectangles applies. The relationship between the two measurements and the four sides is correctly described in the hints."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is clear and accessible. The hints identify the geometric type and its properties before performing the calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times eight plus one equals eighteen. All computation shown in the hints is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "a74fd4a420d765ecd83a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a square with one side measurement and asks for perimeter without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 17 cm sides is a valid figure. The perimeter calculation is correct. While the numeric scale is larger than some samples, it remains geometrically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem language is clear but the computational demand is higher due to the 17 cm side length. Grade 2 learners may find the multiplication four times seventeen cognitively taxing, though hints support the procedure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times seventeen equals sixty-eight. All arithmetic is accurate and options surround the correct answer appropriately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "1ab555f8b52adabc13b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a triangle with three named side lengths and asks for perimeter. The question is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 10 cm, 21 cm, and 17 cm is geometrically valid. Perimeter is correctly defined as the sum of the three sides."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the language is straightforward, adding three two-digit numbers is a procedural challenge for Grade 2 learners in most curricula. The hints provide support but the cognitive load is substantial."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten plus twenty-one plus seventeen equals forty-eight. The arithmetic in both the question and hints is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "bd0c49b548953e4888e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the perimeter of a triangle with three specified side lengths. The intent is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with 12 cm, 6 cm, and 17 cm sides is a valid shape. The perimeter is the correct sum of the three measurements."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Adding 12 plus 6 plus 17 requires handling two-digit numbers and multiple addends, which stretches typical Grade 2 fluency. The hints scaffold the process but the task difficulty is elevated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum twelve plus six plus seventeen is thirty-five. All hints and calculations are mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "df8a7607d9a741338124",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is unambiguous: a square with a 6 cm side, and the question asks for perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 6 cm sides is valid. The four equal sides and perimeter calculation are correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct. The hints provide conceptual grounding and step-by-step calculation appropriate for the learner level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times six equals twenty-four. All arithmetic is correct and options are well-spaced around the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "484579d4f787db176485",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual stem makes clear that the student must find the perimeter (fencing needed) for a rectangular garden with named dimensions."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A garden measuring 12 m by 10 m is a realistic scenario. The application of perimeter to find fencing needed is logically sound and appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The real-world context makes the problem relatable and the language is accessible. The question clearly connects perimeter to a practical purpose."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times the sum of twelve and ten equals forty-four. The arithmetic is accurate and hints correctly show the calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "8fdbfe4454c0971b9b95",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states the dimensions of a rectangle and asks for perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with 8 cm and 2 cm sides is valid. The perimeter calculation is correctly set up."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward and the hints progressively build understanding from concept definition through the rectangular property to computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times eight plus two equals twenty. All calculations are correct and options span appropriately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "bb2279288991895ab589",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the perimeter of a square with a 3 cm side."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 3 cm sides is geometrically valid. The perimeter formula is correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is direct and simple. The hints provide adequate scaffolding for Grade 2 learners with small numbers and basic multiplication."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times three centimeters equals twelve. All arithmetic calculations are accurate and options are appropriately distributed around the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "339d34501db03d473ed9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a triangle with three side measurements and asks for perimeter without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 2 cm, 4 cm, and 4 cm is valid. Perimeter is correctly defined as the sum of the three sides."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and accessible. The hints explain the concept and show the addition step by step using small numbers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two plus four plus four equals ten. The arithmetic is correct and options are appropriately distributed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "1588d40a73a529245229",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a rectangle with two dimensions and asks for perimeter in a clear multiple-choice format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with 11 cm and 7 cm sides is valid. The perimeter is correctly calculated from these dimensions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The arithmetic requires adding eleven and seven then doubling the result, demanding two-digit number fluency that some Grade 2 learners may not yet possess. Hints support the process but the cognitive demand is elevated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times the sum of eleven and seven is thirty-six. All calculations in hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "fd380a72f2d0e5b1c1e7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the perimeter of a triangle given three side lengths."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 1 cm, 6 cm, and 6 cm is geometrically valid. Perimeter is correctly the sum of the three sides."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is simple and direct. The hints clearly explain the concept and show the addition procedure with appropriate scaffolding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One plus six plus six equals thirteen. All arithmetic is accurate and options are well-chosen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "d7e7c8b2121c941d2afc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a rectangle with five and four centimeter sides and requests the perimeter calculation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with 5 cm and 4 cm sides is valid. The perimeter calculation is correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is accessible and the hints provide conceptual grounding and step-by-step calculation appropriate for Grade 2."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times five plus four equals eighteen. All calculations are correct and options span appropriately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "77805baf3bbec69a0a8a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a character and thematic reference but the mathematical question is clear: find the perimeter of a triangle with three specified sides."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic wrapper does not interfere with the mathematical content. A triangle with sides 5 cm, 8 cm, and 5 cm is valid. The perimeter calculation is correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic framing with Sir Rez and dance shoes, the mathematical task remains clear and the hints isolate the calculation from the theme."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five plus eight plus five equals eighteen. All arithmetic is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "dbf0f1bac2922cd1c6bc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a character and cultural reference but clearly presents a rectangle with two dimensions and asks for perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framework with Moses and olives does not disrupt the geometric validity of the problem. A rectangle with 4 cm and 1 cm sides is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cultural theming is incorporated without confusing the mathematical question. The hints remain focused on the perimeter calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times four plus one equals ten. All arithmetic is correct and options are appropriately positioned."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "36d9077e9b17d534ecc1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the perimeter of a triangle with three named sides. The question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 16 cm, 19 cm, and 5 cm is a valid geometric object. The perimeter is the correct sum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Adding sixteen plus nineteen plus five requires facility with two-digit addition across three addends, a computational demand that typically exceeds Grade 2 core expectations. The hints scaffold but the difficulty is pronounced."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen plus nineteen plus five equals forty. All arithmetic shown in the hints is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "bc84aa87c9b6fff3bf17",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks for the perimeter of a triangle given three side lengths."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 1 cm, 2 cm, and 2 cm is geometrically valid. The perimeter is correctly computed as the sum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct. The small numbers make this item accessible to Grade 2 learners and hints support understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One plus two plus two equals five. All calculations are accurate and options are well-distributed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "084c3c432a280c09f89f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear: find the perimeter of a square with a 2 cm side."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 2 cm sides is valid. The perimeter formula is correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and the small numbers are accessible. The hints provide conceptual and procedural support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times two centimeters equals eight. All arithmetic computations are mathematically valid and multiple choice options surround the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "130aabf6a84ab4f1f304",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the perimeter of a square with an 11 cm side without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square with 11 cm sides is geometrically valid. The perimeter is correctly derived from the side length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Computing four times eleven demands procedural fluency with larger numbers and multiplication that may challenge some Grade 2 learners. The hint_gated experience attribute suggests this item is intended to be shown only after scaffolding support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times eleven equals forty-four. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "177b528afb60fa1c6588",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a rectangle with five centimeter length and one centimeter width and asks for perimeter."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle with 5 cm and 1 cm sides is valid. The perimeter is correctly calculated."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward and appropriate. The mastery_drill experience attribute indicates this is a focused practice item. The hints provide adequate support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times five plus one equals twelve. All arithmetic is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "sample_id": "8dace48691c5f4f10290",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the perimeter of a triangle with three specified side lengths."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle with sides 10 cm, 7 cm, and 7 cm is geometrically valid. The perimeter is correctly the sum of the three sides."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and the numbers are within manageable range. The scaffolded experience attribute suggests this item is designed with intentional support structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten plus seven plus seven equals twenty-four. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "identify",
+      "clause": "Identify",
+      "verdict": "FAIL",
+      "reasoning": "No sample requires students to identify perimeter as a property of geometric figures. All samples provide perimeter definitions in text form and ask students to calculate using given side lengths. Students are not asked to locate, recognize, or name the perimeter of a visual figure or to distinguish perimeter from other geometric properties. The identify dimension is entirely absent.",
+      "sample_ids": [
+        "4bb257107705885b4d4b",
+        "73fc49297f7df6b6919a",
+        "5d1aef692a16643240c2",
+        "36d59ffbd948fafed40f",
+        "4c83fa15fa62050514ea",
+        "a74fd4a420d765ecd83a",
+        "1ab555f8b52adabc13b1",
+        "bd0c49b548953e4888e0",
+        "df8a7607d9a741338124",
+        "484579d4f787db176485",
+        "8fdbfe4454c0971b9b95",
+        "bb2279288991895ab589",
+        "339d34501db03d473ed9",
+        "1588d40a73a529245229",
+        "fd380a72f2d0e5b1c1e7",
+        "d7e7c8b2121c941d2afc",
+        "77805baf3bbec69a0a8a",
+        "dbf0f1bac2922cd1c6bc",
+        "36d9077e9b17d534ecc1",
+        "bc84aa87c9b6fff3bf17",
+        "084c3c432a280c09f89f",
+        "130aabf6a84ab4f1f304",
+        "177b528afb60fa1c6588",
+        "8dace48691c5f4f10290"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "requirement_id": "measure",
+      "clause": "measure",
+      "verdict": "FAIL",
+      "reasoning": "No sample asks students to measure plane figures using any instrument or technique. All samples provide side lengths as given numerical values. Students perform calculations based on provided measurements rather than engaging in measurement activity themselves. The competency requires students to measure perimeter but zero samples incorporate or assess measurement skills or tool use.",
+      "sample_ids": [
+        "4bb257107705885b4d4b",
+        "73fc49297f7df6b6919a",
+        "5d1aef692a16643240c2",
+        "36d59ffbd948fafed40f",
+        "4c83fa15fa62050514ea",
+        "a74fd4a420d765ecd83a",
+        "1ab555f8b52adabc13b1",
+        "bd0c49b548953e4888e0",
+        "df8a7607d9a741338124",
+        "484579d4f787db176485",
+        "8fdbfe4454c0971b9b95",
+        "bb2279288991895ab589",
+        "339d34501db03d473ed9",
+        "1588d40a73a529245229",
+        "fd380a72f2d0e5b1c1e7",
+        "d7e7c8b2121c941d2afc",
+        "77805baf3bbec69a0a8a",
+        "dbf0f1bac2922cd1c6bc",
+        "36d9077e9b17d534ecc1",
+        "bc84aa87c9b6fff3bf17",
+        "084c3c432a280c09f89f",
+        "130aabf6a84ab4f1f304",
+        "177b528afb60fa1c6588",
+        "8dace48691c5f4f10290"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "requirement_id": "perimeter",
+      "clause": "perimeter",
+      "verdict": "PASS",
+      "reasoning": "Every sample addresses perimeter directly. The concept is defined in every hint as the total distance around a figure. All samples require students to calculate perimeter by summing side lengths for the assigned plane figure. The mathematical content of perimeter is consistently present and mathematically accurate across all twenty-four samples.",
+      "sample_ids": [
+        "4bb257107705885b4d4b",
+        "73fc49297f7df6b6919a",
+        "5d1aef692a16643240c2",
+        "36d59ffbd948fafed40f",
+        "4c83fa15fa62050514ea",
+        "a74fd4a420d765ecd83a",
+        "1ab555f8b52adabc13b1",
+        "bd0c49b548953e4888e0",
+        "df8a7607d9a741338124",
+        "484579d4f787db176485",
+        "8fdbfe4454c0971b9b95",
+        "bb2279288991895ab589",
+        "339d34501db03d473ed9",
+        "1588d40a73a529245229",
+        "fd380a72f2d0e5b1c1e7",
+        "d7e7c8b2121c941d2afc",
+        "77805baf3bbec69a0a8a",
+        "dbf0f1bac2922cd1c6bc",
+        "36d9077e9b17d534ecc1",
+        "bc84aa87c9b6fff3bf17",
+        "084c3c432a280c09f89f",
+        "130aabf6a84ab4f1f304",
+        "177b528afb60fa1c6588",
+        "8dace48691c5f4f10290"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "requirement_id": "plane_figure",
+      "clause": "plane figure",
+      "verdict": "PASS",
+      "reasoning": "Samples include three distinct types of plane figures: triangles, squares, and rectangles. Multiple instances of each shape appear across the packet demonstrating consistent application of perimeter to different plane figures. The variety shows that perimeter is applied to multiple shape categories as required by the competency.",
+      "sample_ids": [
+        "4bb257107705885b4d4b",
+        "73fc49297f7df6b6919a",
+        "5d1aef692a16643240c2",
+        "36d59ffbd948fafed40f",
+        "4c83fa15fa62050514ea",
+        "a74fd4a420d765ecd83a",
+        "1ab555f8b52adabc13b1",
+        "bd0c49b548953e4888e0",
+        "df8a7607d9a741338124",
+        "484579d4f787db176485",
+        "8fdbfe4454c0971b9b95",
+        "bb2279288991895ab589",
+        "339d34501db03d473ed9",
+        "1588d40a73a529245229",
+        "fd380a72f2d0e5b1c1e7",
+        "d7e7c8b2121c941d2afc",
+        "77805baf3bbec69a0a8a",
+        "dbf0f1bac2922cd1c6bc",
+        "36d9077e9b17d534ecc1",
+        "bc84aa87c9b6fff3bf17",
+        "084c3c432a280c09f89f",
+        "130aabf6a84ab4f1f304",
+        "177b528afb60fa1c6588",
+        "8dace48691c5f4f10290"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    },
+    {
+      "requirement_id": "tools",
+      "clause": "tools",
+      "verdict": "FAIL",
+      "reasoning": "The competency explicitly requires students to use appropriate tools to measure perimeter. No sample includes any measurement instrument, tool use instruction, or tool-related vocabulary. All samples provide side lengths as abstract numerical givens without any element of physical or practical measurement. This is the most critical omission: the competency names tools as a binding requirement and zero samples address this dimension.",
+      "sample_ids": [
+        "4bb257107705885b4d4b",
+        "73fc49297f7df6b6919a",
+        "5d1aef692a16643240c2",
+        "36d59ffbd948fafed40f",
+        "4c83fa15fa62050514ea",
+        "a74fd4a420d765ecd83a",
+        "1ab555f8b52adabc13b1",
+        "bd0c49b548953e4888e0",
+        "df8a7607d9a741338124",
+        "484579d4f787db176485",
+        "8fdbfe4454c0971b9b95",
+        "bb2279288991895ab589",
+        "339d34501db03d473ed9",
+        "1588d40a73a529245229",
+        "fd380a72f2d0e5b1c1e7",
+        "d7e7c8b2121c941d2afc",
+        "77805baf3bbec69a0a8a",
+        "dbf0f1bac2922cd1c6bc",
+        "36d9077e9b17d534ecc1",
+        "bc84aa87c9b6fff3bf17",
+        "084c3c432a280c09f89f",
+        "130aabf6a84ab4f1f304",
+        "177b528afb60fa1c6588",
+        "8dace48691c5f4f10290"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "7276329aac65489f0c621a1e05703c741357c95e2a3f28c3764b5769b4f3a1fe",
+      "clause_ids": [
+        "identify",
+        "measure",
+        "perimeter",
+        "plane_figure",
+        "tools"
+      ],
+      "response_ref": ".responses/s5-phaseC-w1-haiku45-20260925.json",
+      "response_digest": "8dda378d2a46a7ce174312145f3983bd3adc3c032f77094d1eedb616789b15fd",
+      "prompt_ref": ".responses/s5-phaseC-w1-haiku45-20260925.prompt.txt",
+      "prompt_digest": "7a7ebf6634f4791c4749fb23afa3ec80ac12034912a0304cdbb30a795e0bba7f",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_mg_q4_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_mg_q4_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 4 Edit, 4 Read, 1 Write; paths outside this node's own prompt/reply: none. Wording-only revision requested by the dispatcher (2 strings under 60 chars, 1 repeated reasoning); the first revision was cut off by an API session limit part-way and was finished on resume. Substantive FAIL claim harvested before revision (competency names measure/identify/tools; samples only calculate). Verdicts, sample ids, clause citations and overall byte-compared unchanged."
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency turns on measuring a figure with appropriate tools, and not one sample involves a tool or an unmeasured figure. Every item states the side lengths in the sentence and asks for the perimeter, which is arithmetic on given numbers rather than measurement."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The wording says plane figure in general, but only triangles, squares and rectangles are generated, and no item requires the pupil to obtain a dimension that was not already printed."
+      "rationale": "The competency explicitly requires students to use appropriate tools to measure perimeter, but zero samples ask students to employ measurement tools such as rulers, measuring tapes, or other instruments. All samples provide side lengths as abstract numbers without any measurement activity or tool use. This is a critical omission that undermines half the competency's core meaning.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The decomposition lists tools as a standalone requirement component, but this requirement is not addressed in any rendered sample. The identify and measure dimensions are also only partially satisfied: items ask for calculation given provided measurements rather than asking students to identify perimeter in geometric figures or to perform actual measurement of physical plane figures using tools.",
+        "requirement_ids": [
+          "identify",
+          "measure",
+          "perimeter",
+          "plane_figure",
+          "tools"
+        ]
+      },
+      "clause_ids": [
+        "identify",
+        "measure",
+        "perimeter",
+        "plane_figure",
+        "tools"
+      ]
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Adding three sides or doubling a length and a width, with side values no larger than twenty-one, is arithmetic a Grade 2 pupil in the fourth quarter can carry out."
-    },
-    "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Thirteen of the fourteen samples are the bare what is its perimeter frame, and the sample set duplicates the neighbouring find-the-perimeter node almost seed for seed, which means this node contributes no presentation of its own."
+      "rationale": "Most samples use appropriately scaled numbers for Grade 2 learners with single and low double-digit side lengths that support addition and basic multiplication. However, a subset of samples introduces larger operands (21 cm, 19 cm, 17 cm sides) and resulting two-digit perimeters (up to 68) that press toward Grade 3 computational demands. The conceptual content is within reach for Quarter 4 Grade 2 if scaffolded, but the number ceiling in advanced samples suggests some cognitive stretch."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Difficulty grows only by enlarging side lengths, moving a square's side from three up to seventeen. No seed increases any measuring demand, because there is no measuring demand to increase."
+      "rationale": "Items address perimeter calculation competently, but the competency requires identification, measurement, and tool use. The samples present calculations from given measurements rather than asking students to identify perimeter as a geometric property in visual contexts or to measure distances on figures themselves. The three components identify and measure and tools are substantially underdeveloped compared to what the competency statement demands."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet demonstrates varied plane figure types including triangles, squares, and rectangles with multiple seeds per type. Both fill-in-the-blank and multiple-choice formats are represented. Contextual application appears through a garden fencing scenario. Theming variations include character-anchored scenarios with cultural and religious references. The range of numerical examples and problem structures shows reasonable breadth across the calculation dimension.",
+      "clause_ids": [
+        "identify",
+        "measure",
+        "perimeter",
+        "plane_figure",
+        "tools"
+      ]
     },
     "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The majority of samples use numbers comfortably within Grade 2 operational scope. However, some samples require learners to add three two-digit numbers or compute products of mid-sized values such as four times seventeen, which demands procedural fluency and working memory typical of higher grades. The hint structure supports scaffolding, but the span between simplest items and most complex items is wider than typical Grade 2 practice."
+    },
+    "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Side lengths run from one to twenty-one and perimeters top out below seventy, which keeps the addition inside a sensible range for this grade."
+      "rationale": "Twenty-four samples demonstrate meaningful variation across shape types (three distinct plane figures), answer formats (cloze versus multiple-choice), contextual framing (abstract geometric statements versus applied scenarios), numeric difficulty (single-digit to larger double-digit calculations), and thematic embedding (generic, cultural, and religious character contexts). Each variant appears to render distinctly without evidence of formulaic repetition."
     }
   },
   "overall": "FAIL"

@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc1-mat_g2_mg_q4_5-20260925
+  blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g2_mg_q4_5/verdicts.json
+  local_only/scratch/phaseC/mat_g2_mg_q4_4/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_5-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_4-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,155 +99,161 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g2_mg_q4_5
-PACKET DIGEST: d43ccd284f4902021d866ad8fc0796b648fad91f62bdfeab2ab4e01c3814f3c1
+NODE: mat_g2_mg_q4_4
+PACKET DIGEST: 7276329aac65489f0c621a1e05703c741357c95e2a3f28c3764b5769b4f3a1fe
 COMPETENCY (Grade 2, Quarter 4, None):
-Find the perimeter of triangles, squares, and rectangles.
+Identify and measure the perimeter of a plane figure using appropriate tools.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  find: Find
+  identify: Identify
+  measure: measure
   perimeter: perimeter
-  triangles: triangles
-  squares: squares
-  rectangles: rectangles
+  plane_figure: plane figure
+  tools: tools
 
 SAMPLES (every one of these is real rendered output):
-  sample 999256693c02304ae08c  seed 42  [cloze]
+  sample 4bb257107705885b4d4b  seed 42  [cloze]
       stem:    A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?
       answer:  5
-      options: 4 / 5 / 6 / 7
+      options: 7 / 6 / 5 / 4
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 2 + 1 + 2 = 5."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 98cb2d2b556c71efa3e6  seed 43  [mcq]
+  sample 73fc49297f7df6b6919a  seed 43  [mcq]
       stem:    A rectangle has sides 6 cm and 2 cm. What is its perimeter?
       answer:  16
-      options: 15 / 17 / 18 / 16
+      options: 17 / 18 / 15 / 16
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 6 and two sides of width 2.", "Perimeter = 2 × (6 + 2) = 2 × 8 = 16."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 2334ba8faa4b334a08fe  seed 44  [cloze]
+  sample 5d1aef692a16643240c2  seed 44  [cloze]
       stem:    A square has a side of 9 cm. What is its perimeter?
       answer:  36
-      options: 35 / 38 / 37 / 36
+      options: 38 / 36 / 37 / 35
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 9 units long.", "Perimeter = 4 × 9 = 36."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 738b70cd4faa889c4ff6  seed 45  [mcq]
+  sample 36d59ffbd948fafed40f  seed 45  [mcq]
       stem:    A square has a side of 7 cm. What is its perimeter?
       answer:  28
-      options: 28 / 29 / 30 / 27
+      options: 28 / 30 / 29 / 27
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 7 units long.", "Perimeter = 4 × 7 = 28."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 190873c02dddb72e0038  seed 46  [mcq]
+  sample 4c83fa15fa62050514ea  seed 46  [mcq]
       stem:    A rectangle has sides 8 cm and 1 cm. What is its perimeter?
       answer:  18
-      options: 20 / 18 / 17 / 19
+      options: 18 / 19 / 17 / 20
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 8 and two sides of width 1.", "Perimeter = 2 × (8 + 1) = 2 × 9 = 18."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 629aaa2b27d3390891b9  seed 500  [mcq]
+  sample a74fd4a420d765ecd83a  seed 500  [mcq]
       stem:    A square has a side of 17 cm. What is its perimeter?
       answer:  68
-      options: 68 / 69 / 67 / 70
+      options: 68 / 67 / 69 / 70
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 17 units long.", "Perimeter = 4 × 17 = 68."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 92582a1402d24ad007bd  seed 501  [mcq]
+  sample 1ab555f8b52adabc13b1  seed 501  [mcq]
       stem:    A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?
       answer:  48
-      options: 49 / 48 / 50 / 47
+      options: 49 / 50 / 47 / 48
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 21 + 17 = 48."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 279be2b28eb004822bc3  seed 502  [cloze]
+  sample bd0c49b548953e4888e0  seed 502  [cloze]
       stem:    A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?
       answer:  35
       options: 37 / 36 / 35 / 34
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 12 + 6 + 17 = 35."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample e312a032c182d02b5486  seed 600  [mcq]
+  sample df8a7607d9a741338124  seed 600  [mcq]
       stem:    A square has a side of 6 cm. What is its perimeter?
       answer:  24
-      options: 25 / 24 / 26 / 23
+      options: 26 / 23 / 25 / 24
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 6 units long.", "Perimeter = 4 × 6 = 24."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample fd9b06a5d05b1f256856  seed 601  [cloze]
+  sample 484579d4f787db176485  seed 601  [cloze]
       stem:    A rectangular garden is 12 m long and 10 m wide. How much fencing is needed to go all the way around it?
       answer:  44
-      options: 43 / 45 / 44 / 46
+      options: 43 / 44 / 45 / 46
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 12 and two sides of width 10.", "Perimeter = 2 × (12 + 10) = 2 × 22 = 44."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 8bc2a33c9bb8629b76f7  seed 602  [cloze]
+  sample 8fdbfe4454c0971b9b95  seed 602  [cloze]
       stem:    A rectangle has sides 8 cm and 2 cm. What is its perimeter?
       answer:  20
       options: 21 / 20 / 22 / 19
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 8 and two sides of width 2.", "Perimeter = 2 × (8 + 2) = 2 × 10 = 20."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample d72c13fabb68209ef734  seed 603  [mcq]
+  sample bb2279288991895ab589  seed 603  [mcq]
       stem:    A square has a side of 3 cm. What is its perimeter?
       answer:  12
       options: 13 / 12 / 11 / 14
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 3 units long.", "Perimeter = 4 × 3 = 12."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 2e3b2b4ba049031c3e44  seed 604  [cloze]
+  sample 339d34501db03d473ed9  seed 604  [cloze]
       stem:    A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?
       answer:  10
-      options: 12 / 9 / 11 / 10
+      options: 10 / 11 / 12 / 9
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 2 + 4 + 4 = 10."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample b84e4000bf6fe706de4b  seed 605  [mcq]
+  sample 1588d40a73a529245229  seed 605  [mcq]
       stem:    A rectangle has sides 11 cm and 7 cm. What is its perimeter?
       answer:  36
-      options: 35 / 37 / 38 / 36
+      options: 35 / 36 / 37 / 38
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 11 and two sides of width 7.", "Perimeter = 2 × (11 + 7) = 2 × 18 = 36."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample af65249d3e082ac88a4e  seed 700  [cloze]
+  sample fd380a72f2d0e5b1c1e7  seed 606  [mcq]
+      stem:    A triangle has sides 1 cm, 6 cm, and 6 cm. What is its perimeter?
+      answer:  13
+      options: 15 / 12 / 14 / 13
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 1 + 6 + 6 = 13."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d7e7c8b2121c941d2afc  seed 700  [cloze]
       stem:    A rectangle has sides 5 cm and 4 cm. What is its perimeter?
       answer:  18
-      options: 18 / 20 / 17 / 19
+      options: 18 / 19 / 20 / 17
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 4.", "Perimeter = 2 × (5 + 4) = 2 × 9 = 18."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 347f37d1c0c28f18d85c  seed 701  [mcq]
-      stem:    🏐 Romel has a math challenge about whistles. A triangle has sides 5 cm, 8 cm, and 5 cm. What is its perimeter?
+  sample 77805baf3bbec69a0a8a  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. A triangle has sides 5 cm, 8 cm, and 5 cm. What is its perimeter?
       answer:  18
-      options: 20 / 18 / 19 / 17
+      options: 19 / 18 / 20 / 17
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 5 + 8 + 5 = 18."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample c6fd65d177d1e6e0f72e  seed 702  [cloze]
-      stem:    🚴 Kuya Chad has a math challenge about wristbands. A rectangle has sides 4 cm and 1 cm. What is its perimeter?
+  sample dbf0f1bac2922cd1c6bc  seed 702  [cloze]
+      stem:    ✝️ Moses has a math challenge about olives. A rectangle has sides 4 cm and 1 cm. What is its perimeter?
       answer:  10
-      options: 11 / 10 / 12 / 9
+      options: 12 / 11 / 9 / 10
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 4 and two sides of width 1.", "Perimeter = 2 × (4 + 1) = 2 × 5 = 10."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample b6cbee5c8595a090f859  seed 800  [cloze]
+  sample 36d9077e9b17d534ecc1  seed 800  [cloze]
       stem:    A triangle has sides 16 cm, 19 cm, and 5 cm. What is its perimeter?
       answer:  40
-      options: 42 / 41 / 39 / 40
+      options: 40 / 39 / 42 / 41
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 16 + 19 + 5 = 40."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 891b5bbc0a428e2ad5c1  seed 900  [mcq]
+  sample bc84aa87c9b6fff3bf17  seed 900  [mcq]
       stem:    A triangle has sides 1 cm, 2 cm, and 2 cm. What is its perimeter?
       answer:  5
-      options: 4 / 6 / 5 / 7
+      options: 4 / 5 / 6 / 7
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 1 + 2 + 2 = 5."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 4e82e446f0454cc1689b  seed 901  [mcq]
+  sample 084c3c432a280c09f89f  seed 901  [mcq]
       stem:    A square has a side of 2 cm. What is its perimeter?
       answer:  8
-      options: 8 / 9 / 10 / 7
+      options: 7 / 8 / 10 / 9
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 2 units long.", "Perimeter = 4 × 2 = 8."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 96b95e8be9fa3b713ddf  seed 1000  [cloze]
+  sample 130aabf6a84ab4f1f304  seed 1000  [cloze]
       stem:    A square has a side of 11 cm. What is its perimeter?
       answer:  44
-      options: 45 / 46 / 44 / 43
+      options: 44 / 43 / 46 / 45
       hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 11 units long.", "Perimeter = 4 × 11 = 44."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
-  sample e8804a053d6e698b9828  seed 1001  [cloze]
+  sample 177b528afb60fa1c6588  seed 1001  [cloze]
       stem:    A rectangle has sides 5 cm and 1 cm. What is its perimeter?
       answer:  12
-      options: 14 / 13 / 12 / 11
+      options: 14 / 13 / 11 / 12
       hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 1.", "Perimeter = 2 × (5 + 1) = 2 × 6 = 12."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
-  sample 2b0d84c00855fa046a03  seed 1002  [cloze]
+  sample 8dace48691c5f4f10290  seed 1002  [cloze]
       stem:    A triangle has sides 10 cm, 7 cm, and 7 cm. What is its perimeter?
       answer:  24
-      options: 26 / 24 / 25 / 23
+      options: 23 / 25 / 26 / 24
       hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 7 + 7 = 24."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

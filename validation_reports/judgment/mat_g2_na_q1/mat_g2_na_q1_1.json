@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q1_1",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Read and write numerals up to 1000.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "read_and_write",
+      "clause": "Read and write"
+    },
+    {
+      "kind": "object",
+      "id": "numerals",
+      "clause": "numerals"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_1000",
+      "clause": "up to 1000"
+    }
+  ],
+  "packet_digest": "ab69f398a57ce64a30337a2287f69f1b2b0247710fe54c0350939077de19af8d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,20 +37,86 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "152e3cbe2437b1d62bf6",
+    "0cd18ee6a99fd43a5646",
+    "5c18b048d69db2e1b8f0",
+    "96b68cd97e353a65735b",
+    "090fd32cfa71357bf442",
+    "4d61522d86fc3182a02b",
+    "fd34ae39bff58e577edb",
+    "b6ad0a4066fdaedccadd",
+    "182db05a3441a34a2fee",
+    "29cac5bc1824e783cddf",
+    "b612d281bf26c02378e4",
+    "63e2fe41ef2dbf623d12",
+    "550fd5e88cc6d3639fde",
+    "e4050152957523171161",
+    "6cec72da23174d479744",
+    "22a9bd76d2507869b06b",
+    "3a32ff82c6a7280185c8"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "The number 203 is written in words as 'three hundred two'. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Read the number 203 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 2 → 'two hundred'.",
+        "The full word form is: 'two hundred three'."
+      ],
+      "sample_id": "152e3cbe2437b1d62bf6",
+      "replay_digest": "1c7138d43984414e9746905c00b0ac529f771c5a76c8618fcd76eeff650e5800"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write 470 in words.",
       "correct_answer": "four hundred seventy",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +138,36 @@
           "value": "four hundred seventy-one",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "four hundred seventy",
+      "hints": [
+        "Read the number 470 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 4 → 'four hundred'.",
+        "The full word form is: 'four hundred seventy'."
+      ],
+      "sample_id": "0cd18ee6a99fd43a5646",
+      "replay_digest": "af7ea087c3489691eda30b76d41e62b67229872bc10a152ec99e2055b2a290bb"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Write the number: seven hundred ten.",
       "correct_answer": 710,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +193,36 @@
           "text": "700",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 710,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 700 + 10.",
+        "Add the parts together to get 710."
+      ],
+      "sample_id": "5c18b048d69db2e1b8f0",
+      "replay_digest": "518bf0abfca03e1af9657885e00a769ecbc3cbc8135697540b0f5c128c1493d8"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Write the number: six hundred five.",
       "correct_answer": 605,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +244,36 @@
           "value": 595,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 605,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 600 + 5.",
+        "Add the parts together to get 605."
+      ],
+      "sample_id": "96b68cd97e353a65735b",
+      "replay_digest": "38afb4d1ceb2a68ff353f566628f2259bef703bf931433f4d7d2ac8e0b281820"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Write 587 in words.",
       "correct_answer": "five hundred eighty-seven",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,25 +299,100 @@
           "text": "five hundred eighty-seven",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "five hundred eighty-seven",
+      "hints": [
+        "Read the number 587 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 5 → 'five hundred'.",
+        "The full word form is: 'five hundred eighty-seven'."
+      ],
+      "sample_id": "090fd32cfa71357bf442",
+      "replay_digest": "e38191182c23c8bfdde36e28f9bb1ac46cd827cd8301eb7bbab83e3c98267a52"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "The number written as 'seven hundred seventeen' is 718. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 700 + 10 + 7.",
+        "Add the parts together to get 717."
+      ],
+      "sample_id": "4d61522d86fc3182a02b",
+      "replay_digest": "d7e78ed49b9197c0e249962c44b50424cbbbf3e7524a38d499ebb2de89c7ce3e"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "The number written as 'eight hundred twenty-one' is 128. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 800 + 20 + 1.",
+        "Add the parts together to get 821."
+      ],
+      "sample_id": "fd34ae39bff58e577edb",
+      "replay_digest": "db11063a4a9e6de9ff5de6dd112698e1322e68f5a25fd09c04150612b6eef2ca"
     },
     {
+      "node_id": "mat_g2_na_q1_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Write the number: three hundred fifty.",
       "correct_answer": 350,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -182,34 +418,993 @@
           "text": "351",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 350,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 300 + 50.",
+        "Add the parts together to get 350."
+      ],
+      "sample_id": "b6ad0a4066fdaedccadd",
+      "replay_digest": "332d18106b3447c1fd91ae21fe383130de822e3b92a7299ea0a4b6992654b742"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Write 374 in words.",
+      "correct_answer": "three hundred seventy-four",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "three hundred sixty-four",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "three hundred seventy-five",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "four hundred seventy-three",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "three hundred seventy-four",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "three hundred seventy-four",
+      "hints": [
+        "Read the number 374 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 3 → 'three hundred'.",
+        "The full word form is: 'three hundred seventy-four'."
+      ],
+      "sample_id": "182db05a3441a34a2fee",
+      "replay_digest": "22b93f3973f54efc167dc3976954db1ffce6a1df6bd7defa6ac2c42fdd423530"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🏀 Gab has a math challenge about water bottles. Write the number: six hundred eighty-nine.",
+      "correct_answer": 689,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "basketball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 690,
+          "text": "690",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 986,
+          "text": "986",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 689,
+          "text": "689",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 679,
+          "text": "679",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 689,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 600 + 80 + 9.",
+        "Add the parts together to get 689."
+      ],
+      "sample_id": "29cac5bc1824e783cddf",
+      "replay_digest": "36533b26c984e66cbb8e933cdad16e2dd48fe48ea36b16889021dfe1a53de93b"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Write 317 in words.",
+      "correct_answer": "three hundred seventeen",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "kpop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "three hundred eighteen",
+          "text": "three hundred eighteen",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "seven hundred thirteen",
+          "text": "seven hundred thirteen",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three hundred seventeen",
+          "text": "three hundred seventeen",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "three hundred seven",
+          "text": "three hundred seven",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "three hundred seventeen",
+      "hints": [
+        "Read the number 317 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 3 → 'three hundred'.",
+        "The full word form is: 'three hundred seventeen'."
+      ],
+      "sample_id": "b612d281bf26c02378e4",
+      "replay_digest": "c37f4003a17dcbb917f1e31f8a038b51c62a1b1e542f3acb2f1b93ce80569d64"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "The number written as 'seven hundred eighty-three' is 783. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 700 + 80 + 3.",
+        "Add the parts together to get 783."
+      ],
+      "sample_id": "63e2fe41ef2dbf623d12",
+      "replay_digest": "9b02e6d19bb6fa1e0c567364767144d95eb000364abf5af6ff3cd1b53bd1c5d4"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Write 16 in words.",
+      "correct_answer": "sixteen",
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "sixteen",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "one hundred sixty",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "six",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "sixty-one",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "sixteen",
+      "hints": [
+        "Read the number 16 one place at a time, starting from the largest place.",
+        "The full word form is: 'sixteen'."
+      ],
+      "sample_id": "550fd5e88cc6d3639fde",
+      "replay_digest": "5098091e0314390312515932d7a14ffa45b84fe3b007def265b1236ca4647623"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "The number written as 'fourteen' is 41. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 10 + 4.",
+        "Add the parts together to get 14."
+      ],
+      "sample_id": "e4050152957523171161",
+      "replay_digest": "1a22bb78dd295c9e2327b7aaf80d0217d79220ded76c58e7a769318003629c26"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Write the number: eight hundred sixty-three.",
+      "correct_answer": 863,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 864,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 863,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 853,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 368,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 863,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 800 + 60 + 3.",
+        "Add the parts together to get 863."
+      ],
+      "sample_id": "6cec72da23174d479744",
+      "replay_digest": "906f1869a1a1b5ada857f6786ac960a1efa7fa08a7521934085270cb68d64c15"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Write 956 in words.",
+      "correct_answer": "nine hundred fifty-six",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "nine hundred fifty-six",
+          "text": "nine hundred fifty-six",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "nine hundred fifty-seven",
+          "text": "nine hundred fifty-seven",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "nine hundred forty-six",
+          "text": "nine hundred forty-six",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "six hundred fifty-nine",
+          "text": "six hundred fifty-nine",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "nine hundred fifty-six",
+      "hints": [
+        "Read the number 956 one place at a time, starting from the largest place.",
+        "The 3rd part from the right: 9 → 'nine hundred'.",
+        "The full word form is: 'nine hundred fifty-six'."
+      ],
+      "sample_id": "22a9bd76d2507869b06b",
+      "replay_digest": "00951e4b09d291f353d1bc40317dba68b775be8eb01a5daca13d15d0da03486b"
+    },
+    {
+      "node_id": "mat_g2_na_q1_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Write the number: four hundred four.",
+      "correct_answer": 404,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 404,
+          "text": "404",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 405,
+          "text": "405",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 394,
+          "text": "394",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 403,
+          "text": "403",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 404,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 400 + 4.",
+        "Add the parts together to get 404."
+      ],
+      "sample_id": "3a32ff82c6a7280185c8",
+      "replay_digest": "bede355dcfb1be670f1a01a6234b0aef988adf5e742d24a30de17b34fb401329"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "152e3cbe2437b1d62bf6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is unambiguous: students must evaluate whether 203 translates to the stated word form. The incorrect option (three hundred two instead of two hundred three) is clearly wrong, making the correct answer obvious upon verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false question asking students to verify a numeral-to-words conversion is a standard and logically sound assessment format for this competency. The task directly tests reading and numeral knowledge without introducing irrelevant context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple, direct language appropriate for Grade 2. The phrasing clearly instructs students to evaluate a word form for a given numeral. No extraneous details or confusing phrasing interfere with task comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 203 correctly translates to two hundred three, not three hundred two. The hint sequence accurately breaks down place values and confirms this. The answer key properly marks the statement as false."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "0cd18ee6a99fd43a5646",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must write 470 in words. The correct answer four hundred seventy appears among four distinct options. No ambiguity exists in what the task requests or which option is mathematically correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A multiple-choice task asking students to identify the correct word form of a numeral is a sound assessment method for reading numerals. The format and context support the competency without introducing false complexity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directly asks students to convert 470 to words. Options are presented as word forms only, making the task transparent. No ambiguous language or misleading presentation obscures what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 470 translates correctly to four hundred seventy. The three distractors (seventy-four, four hundred sixty, four hundred seventy-one) represent plausible but incorrect conversions, appropriate for assessing place-value understanding. Hints confirm the correct decomposition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "5c18b048d69db2e1b8f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly instructs students to write the numeral for the words seven hundred ten. Only one option (710) correctly matches this value, while alternatives represent common errors or similar values, leaving no ambiguity about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-blank task asking students to convert a word form to its numeral equivalent is a logically coherent way to assess writing numerals. The context directly addresses the competency without unnecessary elaboration."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing asks students to write a number given in words. Options are presented as numerals, making the expected format clear. No confusing language or presentation prevents understanding of the task requirements."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The word form seven hundred ten correctly converts to 710. The decomposition hint (700 plus 10) accurately reflects the place values, and the sum correctly yields 710. Distractors offer nearby or related numerals."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "96b68cd97e353a65735b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert six hundred five to numeral form. The correct answer 605 stands apart from distractors that represent common place-value errors, eliminating ambiguity about which response is mathematically correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A multiple-choice numeral conversion task with a clear instructional purpose is contextually sound for assessing Grade 2 numeral competency. No irrelevant elements distract from the core mathematical task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple phrasing to request numeral formation from words. Options appear as numerals, matching the expected output format. The task is transparent and unambiguous to Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six hundred five correctly equals 605. The expanded form (600 plus 5) properly decomposes the place values and sums to the correct answer. Distractors represent plausible errors, such as confusing digits or place values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "090fd32cfa71357bf442",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the word form of 587 using fill-in-blank format. The correct answer five hundred eighty-seven is clearly distinguished from alternatives like five hundred eighty-eight or seven hundred eighty-five, preventing confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A cloze-style task converting a numeral to words is a standard and valid approach for assessing reading numerals. The instructional purpose is clear and directly supports the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task simply asks students to write 587 in words. Options are all word forms, clarifying the expected answer type. No extraneous language or confusing presentation interferes with understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 587 translates to five hundred eighty-seven. The hint sequence correctly identifies each place value and confirms the proper word form. Distractors represent nearby values or digit-reversal errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "4d61522d86fc3182a02b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must evaluate whether seven hundred seventeen equals 718. The statement is factually false (the correct numeral is 717), and no ambiguity exists about the correct answer or the evaluation method."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false question testing numeral conversion is a valid assessment method. The specific error in the statement (using 718 instead of 717) provides meaningful discrimination for assessing place-value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a statement about numeral-to-words conversion and asks students to verify its truth. The phrasing is straightforward and appropriate for Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven hundred seventeen correctly equals 717, not 718. The false statement introduces an error in the ones place. Hints properly decompose the place values (700 plus 10 plus 7) and confirm the correct sum of 717."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "fd34ae39bff58e577edb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false item asks whether eight hundred twenty-one equals 128. This is unambiguously false; the correct numeral is 821. The error in the false statement (swapping magnitude and place values) is clear and provides solid discrimination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing whether students can verify correct numeral-to-word relationships via true/false format is a sound and efficient assessment method for this competency. The task remains focused without extraneous context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is presented in simple language, asking students to evaluate a numeral conversion claim. The format is transparent for Grade 2 learners familiar with true/false item types."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight hundred twenty-one converts to 821, not 128. The false statement represents a significant and instructive error. Hints accurately show the expanded form (800 plus 20 plus 1) and confirm the sum is 821."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "b6ad0a4066fdaedccadd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert three hundred fifty to numeral form. The correct answer 350 is distinct from distractors that include off-by-one errors and an unrelated two-digit numeral, leaving no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-blank numeral conversion task is a standard assessment format. The task directly measures the ability to write numerals from word descriptions without introducing irrelevant elements."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses straightforward language to request conversion of a word form to numeral. Options clearly show numerals, matching the expected response format. No confusion arises about what the task requires."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three hundred fifty correctly equals 350. The expanded form shown in hints (300 plus 50) accurately represents the place values and sums to the correct answer. Distractors present nearby or related numerals."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "182db05a3441a34a2fee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must identify the word form of 374. The correct answer three hundred seventy-four is clearly distinguishable from three similar-sounding options, eliminating ambiguity about the correct response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A multiple-choice task asking students to express a numeral in word form is a logically sound assessment method. The task is contextually appropriate for measuring reading numerals without extraneous distractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to write a numeral in words is clear and direct. Options all appear as word forms, making the expected answer type obvious. No misleading phrasing or confusing presentation obscures the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 374 translates to three hundred seventy-four. Hints confirm this by identifying the place values and their word equivalents. Distractors are plausible but incorrect, representing digit transpositions or nearby values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "29cac5bc1824e783cddf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert six hundred eighty-nine to numeral form. Despite the thematic basketball reference, the mathematical task is clear and unambiguous. The correct answer 689 is distinct from distractors that include reversed digits or nearby values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical task asks for standard numeral conversion. Although the stem includes a basketball theme and a name, these elements do not create logical inconsistency or undermine the validity of the core assessment task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic framing mentioning basketball and water bottles, the mathematical request remains clear: convert six hundred eighty-nine to numeral form. Options are presented as numerals, making expectations transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six hundred eighty-nine correctly equals 689. The expanded form (600 plus 80 plus 9) accurately reflects place values and sums to the correct answer. Distractors include digit reversals and off-by-one variations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "b612d281bf26c02378e4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task asks students to convert 317 to word form within a cloze format. The basketball theme does not create ambiguity about the mathematical task. The correct answer three hundred seventeen stands apart from distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The core task is a standard numeral-to-words conversion. Although a basketball theme appears in the stem, the mathematical premise remains logically sound and directly addresses the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a thematic setup mentioning a student named Isko and basketballs, then asks for the word form of 317. The mathematical request is unambiguous despite the contextual elements. Options are word forms, clarifying the expected response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 317 translates to three hundred seventeen. Hints confirm this by decomposing place values and their word representations. Distractors represent plausible errors like three hundred eighteen or seven hundred thirteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "63e2fe41ef2dbf623d12",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement asks whether seven hundred eighty-three equals 783. This is unambiguously true, providing no confusion about the correct answer or the evaluation task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false question verifying a correct numeral-to-words conversion is a sound and efficient assessment format. The true statement serves to confirm student understanding without introducing irrelevant context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem simply presents a statement about a numeral and asks for truth evaluation. The phrasing is straightforward and appropriate for Grade 2, with no extraneous language creating confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven hundred eighty-three correctly equals 783. The hints show the correct expanded form (700 plus 80 plus 3) and confirm the sum is 783. The answer is accurately marked as true."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "550fd5e88cc6d3639fde",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert 16 to word form. The correct answer sixteen is clearly different from the three distractors, which include misinterpretations like one hundred sixty or sixty-one, eliminating ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting a two-digit numeral to words tests reading numerals within the competency range. The multiple-choice format is a valid and appropriate assessment method for this skill."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks students to write 16 in words. Options present word forms, making the expected response format clear. The task is transparent and unambiguous for Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 16 correctly translates to sixteen. Hints confirm this reading. Distractors represent common misreadings such as confusing place values or adding extra digits."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "e4050152957523171161",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false question asks whether fourteen equals 41. This statement is clearly false; the correct numeral is 14. No ambiguity exists about the correct answer or the evaluation method."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false question testing numeral conversion is a logically sound assessment method. The false statement provides meaningful discrimination by introducing a plausible but incorrect numeral."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a clear statement about a two-digit numeral and requests truth evaluation. The language is straightforward for Grade 2, with no confusing phrasing or extraneous details."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fourteen correctly equals 14, not 41. The false statement swaps the digits and places them in reverse order. Hints properly show the decomposition (10 plus 4) confirming the correct numeral is 14."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "6cec72da23174d479744",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert eight hundred sixty-three to numeral form. The correct answer 863 is clearly distinct from alternatives like 864, 853, and 368, leaving no ambiguity about the correct response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A multiple-choice numeral conversion task with hint-gated experience is a valid assessment method for measuring writing numerals. The task remains focused on the core competency without irrelevant elements."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests conversion of eight hundred sixty-three to numeral form. Options appear as numerals, making the expected response format transparent. The task is unambiguous for Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight hundred sixty-three correctly equals 863. The expanded form (800 plus 60 plus 3) shown in hints accurately reflects place values and sums to the correct answer. Distractors include digit transpositions and nearby values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "22a9bd76d2507869b06b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert 956 to word form using cloze format. The correct answer nine hundred fifty-six is unambiguous, standing apart from distractors like nine hundred fifty-seven or nine hundred forty-six."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-blank task converting a large three-digit numeral to words is a sound assessment method for the competency. The mastery-drill experience appropriately challenges learners near the upper end of the range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task asks for the word form of 956. Options present word forms, matching the expected answer type. The instruction is clear and unambiguous, appropriate for Grade 2 learners working on larger numerals."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 956 translates to nine hundred fifty-six. Hints confirm this by decomposing place values and their word representations. Distractors represent nearby values or single-digit variations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "sample_id": "3a32ff82c6a7280185c8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Students must convert four hundred four to numeral form. The correct answer 404 is clearly distinguished from alternatives that represent off-by-one errors or similar numerals, eliminating ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A cloze-style task converting a word form with repeated digits to numeral is a valid assessment format. The scaffolded experience provides appropriate support for learners mastering numeral conversion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests conversion of four hundred four to numeral form. Options present numerals, clarifying the expected response format. The task is transparent and unambiguous for Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four hundred four correctly equals 404. The expanded form (400 plus 4) shown in hints accurately represents place values and sums to the correct answer. Distractors include off-by-one variations or digit transpositions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "read_and_write",
+      "clause": "Read and write",
+      "verdict": "PASS",
+      "reasoning": "The packet includes extensive coverage of both reading numerals (converting numerals to word forms) and writing numerals (converting word forms to numerals). Reading appears in samples where students express numerals as words. Writing appears in samples where students create numerals from word descriptions. Both directions are adequately represented across the 17 samples.",
+      "sample_ids": [
+        "152e3cbe2437b1d62bf6",
+        "0cd18ee6a99fd43a5646",
+        "5c18b048d69db2e1b8f0",
+        "96b68cd97e353a65735b",
+        "090fd32cfa71357bf442",
+        "4d61522d86fc3182a02b",
+        "fd34ae39bff58e577edb",
+        "b6ad0a4066fdaedccadd",
+        "182db05a3441a34a2fee",
+        "29cac5bc1824e783cddf",
+        "b612d281bf26c02378e4",
+        "63e2fe41ef2dbf623d12",
+        "550fd5e88cc6d3639fde",
+        "e4050152957523171161",
+        "6cec72da23174d479744",
+        "22a9bd76d2507869b06b",
+        "3a32ff82c6a7280185c8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "requirement_id": "numerals",
+      "clause": "numerals",
+      "verdict": "PASS",
+      "reasoning": "Every sample in the packet uses numerals as the core element of the assessment task. Students engage with numeral forms ranging from two-digit values like 16 and 14 to three-digit values like 956, ensuring exposure to the full breadth of numeral representation within the competency's scope.",
+      "sample_ids": [
+        "152e3cbe2437b1d62bf6",
+        "0cd18ee6a99fd43a5646",
+        "5c18b048d69db2e1b8f0",
+        "96b68cd97e353a65735b",
+        "090fd32cfa71357bf442",
+        "4d61522d86fc3182a02b",
+        "fd34ae39bff58e577edb",
+        "b6ad0a4066fdaedccadd",
+        "182db05a3441a34a2fee",
+        "29cac5bc1824e783cddf",
+        "b612d281bf26c02378e4",
+        "63e2fe41ef2dbf623d12",
+        "550fd5e88cc6d3639fde",
+        "e4050152957523171161",
+        "6cec72da23174d479744",
+        "22a9bd76d2507869b06b",
+        "3a32ff82c6a7280185c8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    },
+    {
+      "requirement_id": "up_to_1000",
+      "clause": "up to 1000",
+      "verdict": "PASS",
+      "reasoning": "All numerals in the packet fall within the specified range. The largest numeral encountered is 956, which is well below the 1000 ceiling. No numerals at or exceeding 1000 appear in any sample, ensuring full compliance with the range restriction.",
+      "sample_ids": [
+        "152e3cbe2437b1d62bf6",
+        "0cd18ee6a99fd43a5646",
+        "5c18b048d69db2e1b8f0",
+        "96b68cd97e353a65735b",
+        "090fd32cfa71357bf442",
+        "4d61522d86fc3182a02b",
+        "fd34ae39bff58e577edb",
+        "b6ad0a4066fdaedccadd",
+        "182db05a3441a34a2fee",
+        "29cac5bc1824e783cddf",
+        "b612d281bf26c02378e4",
+        "63e2fe41ef2dbf623d12",
+        "550fd5e88cc6d3639fde",
+        "e4050152957523171161",
+        "6cec72da23174d479744",
+        "22a9bd76d2507869b06b",
+        "3a32ff82c6a7280185c8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "ab69f398a57ce64a30337a2287f69f1b2b0247710fe54c0350939077de19af8d",
+      "clause_ids": [
+        "read_and_write",
+        "numerals",
+        "up_to_1000"
+      ],
+      "response_ref": ".responses/s5-phaseC-w2-haiku45-20260925.json",
+      "response_digest": "b9de650025b2bbaa64d455b777f69401cf24fb3b7ffd88d85cba9e4e96884493",
+      "prompt_ref": ".responses/s5-phaseC-w2-haiku45-20260925.prompt.txt",
+      "prompt_digest": "3ef17f755090035b29a059cb32af51603e6804210c5a9fbfdb637c7511eea83d",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q1_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 1 Edit, 2 Read, 1 Write; paths outside this node's own prompt/reply: none. The filer REFUSED the first reply (3 clauses with empty sample_ids); the reviewer added the samples it examined, every verdict unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both directions the wording implies are generated: numerals turned into words, as with 470 and 587, and words turned back into numerals, as with seven hundred ten and three hundred fifty."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Numbers with an internal zero, such as 605 and 710, are included, which is good, but the whole set lives between 203 and 821. Nothing in the nine hundreds is generated and the thousand itself, the stated endpoint, never appears in either direction."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Three-digit number words with hyphenated tens such as eighty-seven are the correct load for Quarter 1 here, and no stem requires more than one number to be handled at a time."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three formatters are used, but all three true-or-false instances are keyed False. A pupil who simply answers False every time scores full marks on that presentation, which makes it a degenerate variant rather than a third way of testing the skill."
+      "rationale": "The items consistently require simple numeral-to-word or word-to-numeral conversion tasks appropriate for Grade 2 Quarter 1 learners. Cognitive demands are manageable, with clear formats (true/false, multiple choice, fill-in-blank) that do not overwhelm students at this developmental stage."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The distractors are built from real confusions this competency must clear, such as offering seventy-four against 470 and 53 against three hundred fifty, so the harder options probe place-value reading rather than an unrelated axis."
+      "rationale": "All samples directly address the competency of reading and writing numerals up to 1000. The packet includes sufficient coverage of both reading (interpreting numerals as words) and writing (creating numerals from word forms) across the specified range."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples comprehensively address each decomposed requirement. Reading and writing are both demonstrated across multiple formats. Numerals appear in every sample without exception. All numerals stay well within the up-to-1000 ceiling, with the largest value at 956.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three requirements (read and write, numerals, up to 1000) form a lossless decomposition of the core competency. No aspect of numeral literacy up to 1000 is left uncovered by this decomposition, and all samples fall squarely within these bounds.",
+        "requirement_ids": [
+          "read_and_write",
+          "numerals",
+          "up_to_1000"
+        ]
+      },
+      "clause_ids": [
+        "read_and_write",
+        "numerals",
+        "up_to_1000"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet demonstrates strong variety in task formats (four true/false, five multiple-choice, eight fill-in-blank), number ranges (two-digit numbers like 16 and 14, up to three-digit numbers like 956), and the direction of conversion tasks (both numeral-to-words and words-to-numeral requests appear repeatedly).",
+      "clause_ids": [
+        "read_and_write",
+        "numerals",
+        "up_to_1000"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every value handled is a three-digit numeral, which sits inside the range this competency sets even though the very top of that range goes untested."
+      "rationale": "The difficulty and presentation are suitable for Grade 2 Quarter 1. Students encounter straightforward place-value concepts with explicit decomposition hints (like 700 plus 80 plus 3 equals 783). The language and task structure match learner expectations at this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples span multiple task types (true/false questions, multiple-choice selections, fill-in-blank cloze), include both reading and writing directions, feature numbers across a substantial range with varying digit patterns, and incorporate different instructional experiences (standard, hint-gated, mastery-drill, scaffolded modes)."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

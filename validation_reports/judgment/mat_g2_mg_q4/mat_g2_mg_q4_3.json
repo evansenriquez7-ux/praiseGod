@@ -1,7 +1,58 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_mg_q4_3",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Identify and explain the difference between straight and curved lines, and flat and curved surfaces of 3-dimensional objects.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "identify",
+      "clause": "Identify"
+    },
+    {
+      "kind": "task",
+      "id": "explain",
+      "clause": "explain"
+    },
+    {
+      "kind": "property",
+      "id": "difference_between",
+      "clause": "difference between"
+    },
+    {
+      "kind": "object",
+      "id": "straight_lines",
+      "clause": "straight"
+    },
+    {
+      "kind": "object",
+      "id": "curved_lines",
+      "clause": "curved lines"
+    },
+    {
+      "kind": "object",
+      "id": "flat_surfaces",
+      "clause": "flat"
+    },
+    {
+      "kind": "object",
+      "id": "curved_surfaces",
+      "clause": "curved surfaces"
+    },
+    {
+      "kind": "object",
+      "id": "3_dimensional_objects",
+      "clause": "3-dimensional objects"
+    }
+  ],
+  "packet_digest": "f154d4dd5206c6eeb7b210deb8fbf19c807d3b2bbbddb7fbe7ef23511450c7ce",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +63,58 @@
     500,
     501,
     502,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "1c4577b289627121fff7",
+    "149217ad52f4ed035f68",
+    "a5e3ddf2cc495b19d5fa",
+    "41f01a352f2e5e37dfdc",
+    "3b73873777054189871b",
+    "63cfff24032679104bd0",
+    "67d774d8ea1362145361",
+    "d0bc80b4fd36b6b36442",
+    "35541313763df769f5e9",
+    "c41d29e6a3f8ee6f3af9",
+    "c083de7b20b761c8e0b1",
+    "8429bd34503fed40cf53",
+    "809887bd40a844127ec9",
+    "f6a893469eadac849183",
+    "550c99432a8a97fc998c",
+    "8071b3487a15526ac29c",
+    "097438fa28f55c11b45a",
+    "40d42f4f9984c99bb061"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "How is a straight line different from a curved line?",
       "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +136,37 @@
           "value": "A straight line never bends, but a curved line bends smoothly.",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "1c4577b289627121fff7",
+      "replay_digest": "7b9383eb792ccb7203d60c67fa45a2aed01bb798aeeea4d98205985e1a002e0a"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
       "correct_answer": "flat surface",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +188,37 @@
           "value": "flat surface",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "flat surface",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "149217ad52f4ed035f68",
+      "replay_digest": "5e8010c6d2ec23bde3268c6c1c47fd7f877d86aa4b9be1168d9f4c3558e6ba9f"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "How is a flat surface different from a curved surface?",
       "correct_answer": "A flat surface has no bumps or curves, but a curved surface bends.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -97,13 +240,37 @@
           "value": "Both of them bend in the same way.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "A flat surface has no bumps or curves, but a curved surface bends.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "a5e3ddf2cc495b19d5fa",
+      "replay_digest": "59063809bbd49a28b15e0b8de0bb51590f923329e7652cbebf9aa1226107a5e3"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "The path of a winding river bends smoothly and changes direction. Which best describes it?",
       "correct_answer": "curved line",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +292,37 @@
           "value": "straight line",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "curved line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "41f01a352f2e5e37dfdc",
+      "replay_digest": "4ba06256ea43de361453f4112b579722e0d1b0c49a480115b79d5b382c99229b"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Why is the edge of a ruler called a straight line?",
       "correct_answer": "Because it never bends or changes direction.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,13 +344,39 @@
           "value": "Because it is very long.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Because it never bends or changes direction.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "3b73873777054189871b",
+      "replay_digest": "ccda3dc3a110aa9f57f162f1ae8a0a63108f00f089a05101a9c97bbeaf1883bf"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The edge of a ruler never bends. Which best describes it?",
       "correct_answer": "straight line",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -181,13 +398,39 @@
           "value": "straight line",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "straight line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "63cfff24032679104bd0",
+      "replay_digest": "2ec732cf4e4ab11ed368bbe4fc51dc1ba184640c928e5bad11ff7ee10fce665c"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "The rim of a circle bends all the way around. Which best describes it?",
       "correct_answer": "curved line",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -209,13 +452,39 @@
           "value": "flat surface",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "curved line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "67d774d8ea1362145361",
+      "replay_digest": "28e8ef862b1d61e498bd006a02661d9074067d6e62db94a4175520854b183cf0"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
       "correct_answer": "curved surface",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -237,13 +506,39 @@
           "value": "curved line",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "curved surface",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "d0bc80b4fd36b6b36442",
+      "replay_digest": "90c74ccfba8bc7219168e26bf7262dad035459766a234d4838b37eb769779b0c"
     },
     {
+      "node_id": "mat_g2_mg_q4_3",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "Why is the rim of a plate called a curved line?",
       "correct_answer": "Because it bends smoothly and changes direction.",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "explain_difference"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,33 +560,1120 @@
           "value": "Because it bends smoothly and changes direction.",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Because it bends smoothly and changes direction.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "35541313763df769f5e9",
+      "replay_digest": "c8f85a07a1c4e9369018e2d0b6c397d08691a86506ecef3f0dfb10e8c1fe72ef"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "The edge of a desk never bends or changes direction. Which best describes it?",
+      "correct_answer": "straight line",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "flat surface",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "curved line",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "curved surface",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "straight line",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "straight line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "c41d29e6a3f8ee6f3af9",
+      "replay_digest": "a7d4d506cde798238ff37ae9f0da54584064f534d62f089669861d2cee2ac341"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "✝️ Daniel has a math challenge about baskets. A ball rolls smoothly but a box does not roll. Why?",
+      "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A ball has flat surfaces, but a box has a curved surface.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Both of them have only flat surfaces.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A ball is always heavier than a box.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A ball has a curved surface, but a box has flat surfaces.",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "A ball has a curved surface, but a box has flat surfaces.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "c083de7b20b761c8e0b1",
+      "replay_digest": "787f217485ddfdddf69b1cc32cd60ae73531cf2b6956c86691695d856836bd7f"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. How is a straight line different from a curved line?",
+      "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A straight line bends, but a curved line never bends.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "A straight line is always longer than a curved line.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A straight line never bends, but a curved line bends smoothly.",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Both of them bend in the same way.",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "8429bd34503fed40cf53",
+      "replay_digest": "56280518241be4f85401540aa3738842825c39e4982bb6d5bebc6a031b571bc6"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "The edge of a ruler never bends. Which best describes it?",
+      "correct_answer": "straight line",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "straight line",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "curved surface",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "flat surface",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "curved line",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "straight line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "809887bd40a844127ec9",
+      "replay_digest": "75a8d1c07993412928648e9dcc472509b0a10f7807401335a02d7451afaa626c"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "The path of a winding river bends smoothly and changes direction. Which best describes it?",
+      "correct_answer": "curved line",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "flat surface",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "curved surface",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "straight line",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "curved line",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "curved line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "f6a893469eadac849183",
+      "replay_digest": "c46ef060b14b9a1354d18db470296215281f0718a74b69b206c34d4d25462dfd"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Why is the edge of a ruler called a straight line?",
+      "correct_answer": "Because it never bends or changes direction.",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Because it is flat and wide.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Because it never bends or changes direction.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Because it is very long.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Because it bends all the way around.",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Because it never bends or changes direction.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "550c99432a8a97fc998c",
+      "replay_digest": "b105ff5a9fa8bb42dc43a5e52432a2630bcac2c3c9942bc0e95e33b0ca3e9ddd"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "The edge of a desk never bends or changes direction. Which best describes it?",
+      "correct_answer": "straight line",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "straight line",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "curved line",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "curved surface",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "flat surface",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "straight line",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "8071b3487a15526ac29c",
+      "replay_digest": "e3bc00d6240ad23ba145819f29e052022b9c201507eda47ca838144be00f6d7e"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "A ball rolls smoothly but a box does not roll. Why?",
+      "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A ball has a curved surface, but a box has flat surfaces.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Both of them have only flat surfaces.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A ball has flat surfaces, but a box has a curved surface.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A ball is always heavier than a box.",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A ball has a curved surface, but a box has flat surfaces.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "097438fa28f55c11b45a",
+      "replay_digest": "4b0b4bfcb42877f611a877973bde77782eaf21291df70beacc059d49df2be54f"
+    },
+    {
+      "node_id": "mat_g2_mg_q4_3",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "How is a straight line different from a curved line?",
+      "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Both of them bend in the same way.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "A straight line is always longer than a curved line.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A straight line bends, but a curved line never bends.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A straight line never bends, but a curved line bends smoothly.",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "A straight line never bends, but a curved line bends smoothly.",
+      "hints": [
+        "A straight line never bends.",
+        "A curved line bends smoothly.",
+        "A flat surface has no bumps or curves, like a tabletop.",
+        "A curved surface bends, like the outside of a ball or a can."
+      ],
+      "sample_id": "40d42f4f9984c99bb061",
+      "replay_digest": "7b7b5518d1c95c0dd8df6b8f67eee8f0b7ee2a81fdfbda8f9b47fc49bd7d1608"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "1c4577b289627121fff7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks students to identify and articulate how straight and curved lines differ, with distinct options representing common misconceptions and the correct understanding of these geometric concepts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The premise that straight lines do not bend while curved lines bend smoothly is mathematically and logically sound for Grade 2 geometry instruction and matches students' real-world observations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is accessible to second graders with simple terms like bends and smoothly. The question structure is direct and options are clearly distinguishable from one another."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer accurately represents the defining characteristic of straight versus curved lines at a Grade 2 level of understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "149217ad52f4ed035f68",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem establishes a clear context about a box with six flat faces and asks for identification of the surface type, with options representing different geometric elements appropriately."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A box with six flat faces is a valid real-world example that accurately supports the concept of flat surfaces in three-dimensional objects and relates to student experience."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Second graders can understand the concrete example of a box and its faces. The question is straightforward and options provide clear alternatives for selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies that each face of a box is a flat surface, which is accurate geometric terminology appropriate for this grade level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "a5e3ddf2cc495b19d5fa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question explicitly asks how flat and curved surfaces differ, requesting comparison of two distinct geometric concepts with options that include both correct and incorrect comparative statements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of flat surfaces to curved surfaces is logically valid and represents a core distinction in Grade 2 geometry learning objectives."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language uses simple descriptors such as bumps, curves, and bends that are within the vocabulary of typical second grade students and support conceptual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer accurately contrasts the two surface types, describing flat surfaces as having no bumps or curves and curved surfaces as bending."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "41f01a352f2e5e37dfdc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario about a winding river with described properties is clear, and the question asks which term best describes the path, providing distinct options without confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A river that bends and changes direction is a familiar natural phenomenon and logically exemplifies the properties of a curved line that students observe in their environment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context of a river is meaningful to second graders and the description of smooth bending and direction changes uses grade-appropriate language for spatial understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies that a path that bends smoothly and changes direction exemplifies a curved line in mathematical terms."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "3b73873777054189871b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks why a ruler edge is termed a straight line, and provides multiple explanations from which students select the accurate one based on the defining property of non-bending."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ruler is a familiar object with a straight edge that does not bend or change direction, making this a valid and concrete example for understanding straight lines in daily life."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The why and because format provides an explanatory structure that is developmentally appropriate for second grade literacy combined with geometric reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly explains the defining characteristic of a straight line by reference to lack of bending or direction change, which is accurate for this grade level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "63cfff24032679104bd0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement establishes that a ruler edge never bends and asks for identification of what this describes, with four distinct geometric terms as options for selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The property that an edge never bends logically corresponds to the definition of a straight line in elementary geometry and students' tactile experiences."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct, using the straightforward property of non-bending to guide students toward the correct identification without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer straight line is mathematically correct for an object that never bends or changes direction in space."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "67d774d8ea1362145361",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a circular rim that bends all the way around and asks for identification of the appropriate term, with different geometric concepts as options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A circular rim that bends all the way around is a reasonable description of a curved shape, and the example aligns with observable properties of curved objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The description uses simple language and the image of a circle or circular rim is accessible to second graders in their classroom environment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies curved line for an object that bends throughout, consistent with Grade 2 geometry concepts and terminology."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "d0bc80b4fd36b6b36442",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question describes a three-dimensional object and asks students to identify the type of surface it has, with options representing different surface and line types."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ball with a surface that bends smoothly in every direction is a valid and accurate description of a curved surface on a real three-dimensional object students can handle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The example of a ball is concrete and familiar to second graders. Language like bends smoothly is accessible and helps students visualize the concept."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies that a ball exemplifies a curved surface, which is the defining characteristic of a spherical three-dimensional form."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "35541313763df769f5e9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The question asks why the rim of a plate is a curved line, but the rim of a plate is technically a circle or the boundary of a two-dimensional surface rather than a three-dimensional element."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "While the plate rim may not be precisely a curved line in formal geometry, the example uses a familiar object and demonstrates a curved path students can observe."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The example of a plate rim is concrete and accessible to second graders, and the description of smooth bending and direction change is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A plate rim is better described as a circular curve or boundary rather than a line in strict geometric sense, which may introduce imprecision for students developing foundational understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "c41d29e6a3f8ee6f3af9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly states that a desk edge never bends or changes direction and asks for the appropriate geometric description, with distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A desk edge that does not bend is a valid real-world example of a straight line or edge in the student's immediate classroom environment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The straight edge of a desk is a concrete, familiar object to second graders and the non-bending property is clearly articulated without complex language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer straight line is mathematically correct for an edge that does not bend or change direction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "c083de7b20b761c8e0b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a scenario comparing rolling behavior of a ball versus a box and asks students to explain why, with options providing different explanations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The observation that a ball rolls while a box does not is logically connected to differences between curved surfaces and flat surfaces on three-dimensional objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball theme and rolling scenario are engaging and understandable for second graders, and the explanation uses simple surface descriptions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly relates rolling behavior to curved surfaces on balls and flat surfaces on boxes, showing understanding of surface properties affecting object behavior."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "8429bd34503fed40cf53",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks how a straight line differs from a curved line within a basketball theme context, providing multiple answer options that represent different misunderstandings."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball theme is age-appropriate and the properties of straight versus curved lines remain logically sound regardless of the contextual wrapper."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball mention provides an engaging context without obscuring the core geometric question, and language remains accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly articulates the difference between straight lines that do not bend and curved lines that bend smoothly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "809887bd40a844127ec9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question restates the property that a ruler edge never bends and asks for the correct geometric term, with four distinct options presented."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ruler edge that does not bend is a logically sound example of a straight line in elementary geometry."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple statement and direct question are clear to second graders, using familiar vocabulary about bending and a commonly seen object."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies straight line as the term for an object that never bends, consistent with Grade 2 geometry."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "f6a893469eadac849183",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question describes a winding river path with smooth bending and asks for identification of the best descriptive term, with options representing different geometric elements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A river that winds and bends smoothly is a familiar natural occurrence and logically exemplifies the properties of a curved line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The river example is accessible and the description of bending and changing direction uses language appropriate for developing second graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly identifies curved line for a path that bends smoothly and changes direction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "550c99432a8a97fc998c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks why a ruler edge is called a straight line and provides multiple reason options from which students select the accurate explanation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The connection between a ruler edge that does not bend and the geometric property of a straight line is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The why and because format supports explanatory reasoning, and all options are phrased in language accessible to second grade students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer provides an accurate explanation of why an edge that never bends or changes direction is called a straight line."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "8071b3487a15526ac29c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question states that a desk edge never bends or changes direction and asks which term best describes it, with four distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The property of a desk edge that does not bend logically corresponds to the definition of a straight line in elementary geometry."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct language and familiar context of a desk make this question clear and accessible to second graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer straight line is mathematically correct for an object with the property of never bending or changing direction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "097438fa28f55c11b45a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question explains why a ball rolls smoothly while a box does not, asking students to select the correct explanation for this difference in behavior."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The different rolling behaviors of spheres and boxes are logically explained by the properties of their surfaces, making this a valid scientific comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The concrete rolling scenario is familiar to second graders and the explanation uses simple surface descriptions appropriate for their developmental level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly explains that ball rolling behavior relates to curved surfaces while box non-rolling relates to flat surfaces."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "sample_id": "40d42f4f9984c99bb061",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks how straight and curved lines differ, providing multiple options that represent common misconceptions and correct understanding of these geometric concepts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of straight lines that do not bend with curved lines that bend smoothly is logically sound for elementary geometry."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct comparison question uses simple language with clear distinctions between bending and non-bending that second graders can understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer accurately describes the fundamental difference between straight lines that never bend and curved lines that bend smoothly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "identify",
+      "clause": "Identify",
+      "verdict": "PASS",
+      "reasoning": "Samples consistently present items where students must identify and select the correct geometric term or property, including identification of straight lines, curved lines, flat surfaces, and curved surfaces across multiple contexts and representations.",
+      "sample_ids": [
+        "1c4577b289627121fff7",
+        "149217ad52f4ed035f68",
+        "a5e3ddf2cc495b19d5fa",
+        "41f01a352f2e5e37dfdc",
+        "63cfff24032679104bd0",
+        "67d774d8ea1362145361",
+        "d0bc80b4fd36b6b36442",
+        "809887bd40a844127ec9",
+        "f6a893469eadac849183",
+        "8071b3487a15526ac29c",
+        "40d42f4f9984c99bb061"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "explain",
+      "clause": "explain",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples require students to explain or provide reasoning for geometric properties, such as explaining why ruler edges are straight lines, why balls roll differently from boxes, and why certain objects have curved versus flat characteristics.",
+      "sample_ids": [
+        "3b73873777054189871b",
+        "35541313763df769f5e9",
+        "550c99432a8a97fc998c",
+        "c083de7b20b761c8e0b1",
+        "097438fa28f55c11b45a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "difference_between",
+      "clause": "difference between",
+      "verdict": "PASS",
+      "reasoning": "Samples explicitly ask students to identify and articulate differences between straight and curved lines, and between flat and curved surfaces, requiring comparative analysis of geometric properties.",
+      "sample_ids": [
+        "1c4577b289627121fff7",
+        "a5e3ddf2cc495b19d5fa",
+        "8429bd34503fed40cf53",
+        "40d42f4f9984c99bb061"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "straight_lines",
+      "clause": "straight",
+      "verdict": "PASS",
+      "reasoning": "Numerous samples focus on straight lines, using ruler edges, desk edges, and direct comparisons to illustrate the concept of lines that do not bend or change direction.",
+      "sample_ids": [
+        "1c4577b289627121fff7",
+        "3b73873777054189871b",
+        "63cfff24032679104bd0",
+        "809887bd40a844127ec9",
+        "550c99432a8a97fc998c",
+        "8071b3487a15526ac29c",
+        "40d42f4f9984c99bb061"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "curved_lines",
+      "clause": "curved lines",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples present curved lines through examples such as winding rivers, circular rims, and direct comparisons, demonstrating lines that bend smoothly and change direction.",
+      "sample_ids": [
+        "1c4577b289627121fff7",
+        "a5e3ddf2cc495b19d5fa",
+        "41f01a352f2e5e37dfdc",
+        "67d774d8ea1362145361",
+        "35541313763df769f5e9",
+        "f6a893469eadac849183",
+        "8429bd34503fed40cf53",
+        "40d42f4f9984c99bb061"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "flat_surfaces",
+      "clause": "flat",
+      "verdict": "PASS",
+      "reasoning": "Samples include flat surfaces through explicit examples such as box faces, desk surfaces, and scenarios comparing rolling behavior, illustrating surfaces without bumps or curves.",
+      "sample_ids": [
+        "149217ad52f4ed035f68",
+        "a5e3ddf2cc495b19d5fa",
+        "c083de7b20b761c8e0b1",
+        "097438fa28f55c11b45a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "curved_surfaces",
+      "clause": "curved surfaces",
+      "verdict": "PASS",
+      "reasoning": "Samples demonstrate curved surfaces through examples such as balls, spheres, and objects that bend, requiring students to recognize and distinguish curved surfaces from flat ones.",
+      "sample_ids": [
+        "a5e3ddf2cc495b19d5fa",
+        "d0bc80b4fd36b6b36442",
+        "c083de7b20b761c8e0b1",
+        "097438fa28f55c11b45a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    },
+    {
+      "requirement_id": "3_dimensional_objects",
+      "clause": "3-dimensional objects",
+      "verdict": "CONCERN",
+      "reasoning": "Only four samples explicitly present three-dimensional objects as the focus, with most samples treating geometric properties in abstract or two-dimensional diagram form rather than grounding them within three-dimensional object contexts as the competency requires.",
+      "sample_ids": [
+        "149217ad52f4ed035f68",
+        "d0bc80b4fd36b6b36442",
+        "c083de7b20b761c8e0b1",
+        "097438fa28f55c11b45a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_mg_q4_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "f154d4dd5206c6eeb7b210deb8fbf19c807d3b2bbbddb7fbe7ef23511450c7ce",
+      "clause_ids": [
+        "identify",
+        "explain",
+        "difference_between",
+        "straight_lines",
+        "curved_lines",
+        "flat_surfaces",
+        "curved_surfaces",
+        "3_dimensional_objects"
+      ],
+      "response_ref": ".responses/s5-phaseC-w1-haiku45-20260925.json",
+      "response_digest": "15049ec015f462fbaa03076f8a56a0f9a61a41f8f8787b3c99096eea24b7c6c3",
+      "prompt_ref": ".responses/s5-phaseC-w1-haiku45-20260925.prompt.txt",
+      "prompt_digest": "b49fdcc2b2294fa586123ffad6f7cd8e259c803923ca37447ded214e00709337",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_mg_q4_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_mg_q4_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
+    "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both the identifying and the explaining verbs are present. Some items ask which description best fits a rim or an edge, while others ask directly how a straight line differs from a curved one and why a given edge carries its name."
+      "rationale": "The problems use concepts and vocabulary appropriate for Grade 2 students, involving simple geometric properties like bending and flatness with familiar contexts such as rulers, desks, balls, and boxes that match developmental expectations."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "While samples address identification and explanation of straight versus curved properties, most items test lines or surfaces in isolation rather than explicitly as properties of three-dimensional objects as the competency requires."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Most samples focus on identifying or explaining properties, but do not consistently test both identification and explanation for the same concept. The three-dimensional object context appears limited across the sample set.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "While identify and explain are both represented across samples, the three-dimensional object requirement is significantly underdeveloped. Only four samples explicitly present properties within a three-dimensional object context such as balls or boxes. Most samples treat geometric properties in abstract form rather than grounding them in three-dimensional object surfaces as the competency specifies.",
+        "requirement_ids": [
+          "identify",
+          "explain",
+          "difference_between",
+          "straight_lines",
+          "curved_lines",
+          "flat_surfaces",
+          "curved_surfaces",
+          "3_dimensional_objects"
+        ]
+      },
+      "clause_ids": [
+        "identify",
+        "explain",
+        "difference_between",
+        "straight_lines",
+        "curved_lines",
+        "flat_surfaces",
+        "curved_surfaces",
+        "3_dimensional_objects"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The three-dimensional half of the wording rests on a box and a ball only. No object is used that carries flat and curved surfaces at the same time, which is the case where a pupil must actually separate the two ideas rather than match one label."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Explanations are offered as complete short sentences about bending and not bending, which is the right level; the pupil recognises a correct explanation rather than composing one."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every one of the nine samples is a multiple-choice item, and several close with the same request for the best description. There is no sorting task, no true-or-false, and no item that asks a pupil to find an example of their own."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The variation across seeds moves between lines and surfaces and between naming and justifying, both of which are written into this competency rather than borrowed from a neighbouring one."
+      "rationale": "Straight lines, curved lines, flat surfaces, and curved surfaces are all represented across samples. However, the emphasis on properties of three-dimensional objects is limited, with most samples treating concepts abstractly rather than within three-dimensional forms.",
+      "clause_ids": [
+        "identify",
+        "explain",
+        "difference_between",
+        "straight_lines",
+        "curved_lines",
+        "flat_surfaces",
+        "curved_surfaces",
+        "3_dimensional_objects"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency names no quantity or ceiling and the samples introduce none; the items remain entirely qualitative, which is correct for it."
+      "rationale": "The difficulty level is consistent and appropriately calibrated for Grade 2, Quarter 4. All samples use clear, accessible language and manageable conceptual complexity suitable for this developmental stage."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Contextual variety is limited, with ruler edges appearing in multiple items and similar question structures repeated frequently. Most items ask students to identify or explain one property in isolation rather than comparing properties simultaneously."
     }
   },
   "overall": "CONCERN"
