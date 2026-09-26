@@ -1,7 +1,58 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q1_3",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Count by 2s, 5s, 10s, 20s, 50s, and 100s (not beyond 1000).",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "count_multiples",
+      "clause": "Count by"
+    },
+    {
+      "kind": "range",
+      "id": "twos",
+      "clause": "2s"
+    },
+    {
+      "kind": "range",
+      "id": "fives",
+      "clause": "5s"
+    },
+    {
+      "kind": "range",
+      "id": "tens",
+      "clause": "10s"
+    },
+    {
+      "kind": "range",
+      "id": "twenties",
+      "clause": "20s"
+    },
+    {
+      "kind": "range",
+      "id": "fifties",
+      "clause": "50s"
+    },
+    {
+      "kind": "range",
+      "id": "hundreds",
+      "clause": "100s"
+    },
+    {
+      "kind": "range",
+      "id": "not_beyond_1000",
+      "clause": "not beyond 1000"
+    }
+  ],
+  "packet_digest": "394f523fa374715f88f6e24382972e84e704f460904f8636457092527c3ee85d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,14 +64,59 @@
     501,
     502,
     601,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "38823f0dab6f9d365fa1",
+    "e7cc6057ed96ed31f786",
+    "a14a255cf1cfe21e018b",
+    "f18ff5a68180bcbc4155",
+    "216551fc8ad9f85f139f",
+    "b1cc0e6b948671404d24",
+    "c1075fa2c469be11a5bb",
+    "5b74c6f14b2417d9fa18",
+    "11f30e1c4657a3032e47",
+    "46843ef9e7a17e212f63",
+    "ec6cb330717d96661525",
+    "efb9f697a88bd7b657ea",
+    "97d2829a2f4ad16b8b75",
+    "54ae26b09f67887ab953",
+    "b8124e3b4f4e73bdf65a",
+    "6b1587c6a2743f873e86",
+    "0e40a53c40f2b7f4d530",
+    "dffa2cef17e8cd693037",
+    "ed4eafc7334586e2622c"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -42,13 +138,103 @@
           "value": 401,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "Look at the list of numbers: 0, 100, 200, 300, ___",
+        "Find the rule by comparing neighbours: 100 − 0 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 300: 300 + 100 = 400."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 400,
+        "start": 390,
+        "end": 410,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 400,
+        "dot_value": 400,
+        "content_type": "whole_number",
+        "labels": [
+          "390",
+          "410"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 400.0,
+        "target": 400.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "39de561bfc533a6d9db04e79d70e07c0279547497015a39782af95a68017df9c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "390",
+            "391",
+            "392",
+            "393",
+            "394",
+            "395",
+            "396",
+            "397",
+            "398",
+            "399",
+            "400",
+            "401",
+            "402",
+            "403",
+            "404",
+            "405",
+            "406",
+            "407",
+            "408",
+            "409",
+            "410"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "38823f0dab6f9d365fa1",
+      "replay_digest": "d1e56ccf4a9f8d145905ddce2952a345664274ccd07968ce85d9a33670c059d1"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 292, 294, 296, 298, ___?",
       "correct_answer": 300,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -70,13 +256,37 @@
           "value": 300,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 300,
+      "hints": [
+        "Look at the list of numbers: 292, 294, 296, 298, ___",
+        "Find the rule by comparing neighbours: 294 − 292 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 298: 298 + 2 = 300."
+      ],
+      "sample_id": "e7cc6057ed96ed31f786",
+      "replay_digest": "939f13ba8bfa99f75aae5fbc1d576e94aa0eacaedd959773eea6e0e9f8f738ee"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Find the missing number: 660, 680, 700, 720, ___",
       "correct_answer": 740,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -102,13 +312,37 @@
           "text": "721",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 740,
+      "hints": [
+        "Look at the list of numbers: 660, 680, 700, 720, ___",
+        "Find the rule by comparing neighbours: 680 − 660 = 20.",
+        "This list of numbers shows jumping by 20s (add 20 each time).",
+        "Add 20 to 720: 720 + 20 = 740."
+      ],
+      "sample_id": "a14a255cf1cfe21e018b",
+      "replay_digest": "aa78c875b3a910c4e42ee194f829370558c74d344cb1bf79bd4dd7b04829a06a"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 530, 540, 550, 560, ___?",
       "correct_answer": 570,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -130,13 +364,37 @@
           "value": 540,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 570,
+      "hints": [
+        "Look at the list of numbers: 530, 540, 550, 560, ___",
+        "Find the rule by comparing neighbours: 540 − 530 = 10.",
+        "This list of numbers shows jumping by 10s (add 10 each time).",
+        "Add 10 to 560: 560 + 10 = 570."
+      ],
+      "sample_id": "f18ff5a68180bcbc4155",
+      "replay_digest": "f39b1b8fdcf2c1870b00824370fc9835256c919435e5233c42491c482b2ee0f6"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Find the missing number: 522, 524, 526, 528, ___",
       "correct_answer": 530,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -162,13 +420,39 @@
           "text": "529",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 530,
+      "hints": [
+        "Look at the list of numbers: 522, 524, 526, 528, ___",
+        "Find the rule by comparing neighbours: 524 − 522 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 528: 528 + 2 = 530."
+      ],
+      "sample_id": "216551fc8ad9f85f139f",
+      "replay_digest": "0409db97289f19aafbf25776fd53bce0e2a392fe4238d9dbd11d62d88072da3c"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,13 +474,105 @@
           "value": 741,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 740,
+      "hints": [
+        "Look at the list of numbers: 660, 680, 700, 720, ___",
+        "Find the rule by comparing neighbours: 680 − 660 = 20.",
+        "This list of numbers shows jumping by 20s (add 20 each time).",
+        "Add 20 to 720: 720 + 20 = 740."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 740,
+        "start": 730,
+        "end": 750,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 740,
+        "dot_value": 740,
+        "content_type": "whole_number",
+        "labels": [
+          "730",
+          "750"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 740.0,
+        "target": 740.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "33e1b6bdfd900e70874b17e5b243f9903c08a3f2d5b034b21b88d55625f44c1b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "730",
+            "731",
+            "732",
+            "733",
+            "734",
+            "735",
+            "736",
+            "737",
+            "738",
+            "739",
+            "740",
+            "741",
+            "742",
+            "743",
+            "744",
+            "745",
+            "746",
+            "747",
+            "748",
+            "749",
+            "750"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b1cc0e6b948671404d24",
+      "replay_digest": "d5c7ece4e9ce7aca33be46275ef83e097d88ec4fdb9355b95f187bdeb40e43b5"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -218,13 +594,105 @@
           "value": 600,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 600,
+      "hints": [
+        "Look at the list of numbers: 200, 300, 400, 500, ___",
+        "Find the rule by comparing neighbours: 300 − 200 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 500: 500 + 100 = 600."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 600,
+        "start": 590,
+        "end": 610,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 600,
+        "dot_value": 600,
+        "content_type": "whole_number",
+        "labels": [
+          "590",
+          "610"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 600.0,
+        "target": 600.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "055972924d2f3bb4df31cd4f76b3a564f72d700c52b8a1fb854b4d852b388907",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "590",
+            "591",
+            "592",
+            "593",
+            "594",
+            "595",
+            "596",
+            "597",
+            "598",
+            "599",
+            "600",
+            "601",
+            "602",
+            "603",
+            "604",
+            "605",
+            "606",
+            "607",
+            "608",
+            "609",
+            "610"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c1075fa2c469be11a5bb",
+      "replay_digest": "22ec4189f2aeff9a160074966ea0af41fe5b2d196b03b02ac1dbd0c2538a83c0"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Find the missing number: 550, 600, 650, 700, ___",
       "correct_answer": 750,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -250,13 +718,39 @@
           "text": "701",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 750,
+      "hints": [
+        "Look at the list of numbers: 550, 600, 650, 700, ___",
+        "Find the rule by comparing neighbours: 600 − 550 = 50.",
+        "This list of numbers shows jumping by 50s (add 50 each time).",
+        "Add 50 to 700: 700 + 50 = 750."
+      ],
+      "sample_id": "5b74c6f14b2417d9fa18",
+      "replay_digest": "00b9db32753130033a3aa3a0fbfdebcce2c734fec3cfa91c3b6e8dfffb868613"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses is counting forward by 5 starting from 875. The count is: 875, 880, 885, 890. What is the next number Moses should say?",
       "correct_answer": 895,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -282,13 +776,39 @@
           "text": "895",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 895,
+      "hints": [
+        "Look at the list of numbers: 875, 880, 885, 890, ___",
+        "Find the rule by comparing neighbours: 880 − 875 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 890: 890 + 5 = 895."
+      ],
+      "sample_id": "11f30e1c4657a3032e47",
+      "replay_digest": "989beded286a07c7032454cd3250ec625710f2b534d2701c9604ef25884ea9b7"
     },
     {
+      "node_id": "mat_g2_na_q1_3",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 705, 710, 715, 720, ___?",
       "correct_answer": 725,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "forward"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -310,34 +830,1302 @@
           "value": 710,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 725,
+      "hints": [
+        "Look at the list of numbers: 705, 710, 715, 720, ___",
+        "Find the rule by comparing neighbours: 710 − 705 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 720: 720 + 5 = 725."
+      ],
+      "sample_id": "46843ef9e7a17e212f63",
+      "replay_digest": "03416598276deb1628b52ee566b81bbd00b3833f5e97170fea071bc1d4bb70a9"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 245, 250, 255, 260, ___?",
+      "correct_answer": 265,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 261,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 265,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 255,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 250,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 265,
+      "hints": [
+        "Look at the list of numbers: 245, 250, 255, 260, ___",
+        "Find the rule by comparing neighbours: 250 − 245 = 5.",
+        "This list of numbers shows jumping by 5s (add 5 each time).",
+        "Add 5 to 260: 260 + 5 = 265."
+      ],
+      "sample_id": "ec6cb330717d96661525",
+      "replay_digest": "539597ef5481adb3a3868a72f1dcbcbc66ee66cae9c9c7bfb2ef11580f3b13ef"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Find the missing number: 200, 300, 400, 500, ___",
+      "correct_answer": 600,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "business_money",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 501,
+          "text": "501",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 600,
+          "text": "600",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 300,
+          "text": "300",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 600,
+      "hints": [
+        "Look at the list of numbers: 200, 300, 400, 500, ___",
+        "Find the rule by comparing neighbours: 300 − 200 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 500: 500 + 100 = 600."
+      ],
+      "sample_id": "efb9f697a88bd7b657ea",
+      "replay_digest": "36c620285040408082d0c35437ccd0dab6969deb6141aa7e62a4b69ad4a3a3e5"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Find the missing number: 210, 212, 214, 216, ___",
+      "correct_answer": 218,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "music_performance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 218,
+          "text": "218",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 212,
+          "text": "212",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 214,
+          "text": "214",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 217,
+          "text": "217",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 218,
+      "hints": [
+        "Look at the list of numbers: 210, 212, 214, 216, ___",
+        "Find the rule by comparing neighbours: 212 − 210 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 216: 216 + 2 = 218."
+      ],
+      "sample_id": "97d2829a2f4ad16b8b75",
+      "replay_digest": "eeb89f93845b447ff715f9f4f04e6e8724517cd0b5a4a44401be4b3f45f0981f"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 702,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 699,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 701,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 700,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 700,
+      "hints": [
+        "Look at the list of numbers: 300, 400, 500, 600, ___",
+        "Find the rule by comparing neighbours: 400 − 300 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 600: 600 + 100 = 700."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 700,
+        "start": 690,
+        "end": 710,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 700,
+        "dot_value": 700,
+        "content_type": "whole_number",
+        "labels": [
+          "690",
+          "710"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 700.0,
+        "target": 700.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "1a7d96c2d0da945c58363a00ee3dbb735baba246cea3e5681ad4102971cb473c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "690",
+            "691",
+            "692",
+            "693",
+            "694",
+            "695",
+            "696",
+            "697",
+            "698",
+            "699",
+            "700",
+            "701",
+            "702",
+            "703",
+            "704",
+            "705",
+            "706",
+            "707",
+            "708",
+            "709",
+            "710"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "54ae26b09f67887ab953",
+      "replay_digest": "2357bd5e78cf929b98fa277637bef801077f6cdb56ad26de60ddda33aff23880"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 0, 50, 100, 150, ___?",
+      "correct_answer": 200,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 151,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 200,
+      "hints": [
+        "Look at the list of numbers: 0, 50, 100, 150, ___",
+        "Find the rule by comparing neighbours: 50 − 0 = 50.",
+        "This list of numbers shows jumping by 50s (add 50 each time).",
+        "Add 50 to 150: 150 + 50 = 200."
+      ],
+      "sample_id": "b8124e3b4f4e73bdf65a",
+      "replay_digest": "b7bf4a9837d397ee3cdda5c2dfa2a535dede5f337919f8967000ac4be1bec666"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 79,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 82,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "Look at the list of numbers: 0, 20, 40, 60, ___",
+        "Find the rule by comparing neighbours: 20 − 0 = 20.",
+        "This list of numbers shows jumping by 20s (add 20 each time).",
+        "Add 20 to 60: 60 + 20 = 80."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 80,
+        "start": 70,
+        "end": 90,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 80,
+        "dot_value": 80,
+        "content_type": "whole_number",
+        "labels": [
+          "70",
+          "90"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 80.0,
+        "target": 80.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "2ada4cc2dc6105ae7d10d669d1d477e393538223ad49e9b72a125a83d788c00c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6b1587c6a2743f873e86",
+      "replay_digest": "99356ad08510b4cf7096f27e5aa894b7ee06ed82f68e9f9122ee14ebcf771093"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 860, 880, 900, 920, ___?",
+      "correct_answer": 940,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 900,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 880,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 940,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 921,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 940,
+      "hints": [
+        "Look at the list of numbers: 860, 880, 900, 920, ___",
+        "Find the rule by comparing neighbours: 880 − 860 = 20.",
+        "This list of numbers shows jumping by 20s (add 20 each time).",
+        "Add 20 to 920: 920 + 20 = 940."
+      ],
+      "sample_id": "0e40a53c40f2b7f4d530",
+      "replay_digest": "a8c7c1e971c63832fa7b7000f227ec99ad83842fd190ea2f30730ba929aacc6d"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 860, 862, 864, 866, ___",
+      "correct_answer": 868,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 864,
+          "text": "864",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 868,
+          "text": "868",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 862,
+          "text": "862",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 867,
+          "text": "867",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 868,
+      "hints": [
+        "Look at the list of numbers: 860, 862, 864, 866, ___",
+        "Find the rule by comparing neighbours: 862 − 860 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 866: 866 + 2 = 868."
+      ],
+      "sample_id": "dffa2cef17e8cd693037",
+      "replay_digest": "141e1098d674aff982ae37841d0905ac914ed039f564717341cc0d7f3a0c7a7a"
+    },
+    {
+      "node_id": "mat_g2_na_q1_3",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 650, 700, 750, 800, ___",
+      "correct_answer": 850,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 750,
+          "text": "750",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 850,
+          "text": "850",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 700,
+          "text": "700",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 801,
+          "text": "801",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 850,
+      "hints": [
+        "Look at the list of numbers: 650, 700, 750, 800, ___",
+        "Find the rule by comparing neighbours: 700 − 650 = 50.",
+        "This list of numbers shows jumping by 50s (add 50 each time).",
+        "Add 50 to 800: 800 + 50 = 850."
+      ],
+      "sample_id": "ed4eafc7334586e2622c",
+      "replay_digest": "30fac13d7a9573e406fb52224bfc288bbbae085554f55d85a0b880eb7d5cddd0"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "38823f0dab6f9d365fa1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task unambiguously asks learners to identify a marked point on a linear scale. The number line spans 390-410, clearly marking 400 in context. No alternative interpretations of the mark or scale are plausible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly establish that the underlying sequence (0, 100, 200, 300, 400) represents increments of 100. The mathematics is sound: 300 plus 100 equals 400, and all intermediate reasoning steps are logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 learner can plainly see a number line, understand the ask to locate a marked position, and work through the hints. The language avoids ambiguity and technical jargon unsuitable for the grade level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic operations in the hints are executed correctly: 100 minus 0 equals 100; 300 plus 100 equals 400. The final answer of 400 is the mathematically correct continuation of the skip-counting pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "e7cc6057ed96ed31f786",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly prompts for the next number in an explicitly stated sequence. The sequence 292, 294, 296, 298 leaves no doubt about which value should follow. The blank is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pattern of adding 2 each step is established consistently across all four given terms. The hint correctly identifies 294 minus 292 as 2, confirming the interval. Extending by 2 from 298 produces the valid next term."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation is straightforward: a sequence followed by a blank and four choices. A Grade 2 learner who has counted by 2s can compare differences and apply the pattern without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All differences in the shown sequence are 2: 294 to 292 is 2, 296 to 294 is 2, 298 to 296 is 2. Adding 2 to 298 produces 300, which is the marked answer and the arithmetically correct continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "a14a255cf1cfe21e018b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A cloze prompt with a single blank in an ordered sequence. The position of the blank and the four offered options make it clear what the learner must do. No structural ambiguity exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 660, 680, 700, 720 exhibits a consistent interval of 20. The hints identify this interval correctly and apply it to find the missing number. The logical flow from observation to calculation to answer is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct. A Grade 2 learner understands the task: find the missing number by recognizing the pattern and completing it. No unnecessary complexity is introduced."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step increases by 20: 660 to 680 is 20, 680 to 700 is 20, 700 to 720 is 20. Adding 20 to 720 yields 740, which is the correct answer and represents accurate skip-counting by 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "f18ff5a68180bcbc4155",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the next number in a clearly presented sequence with a single blank. The sequence is complete up to the blank, and the four options provide distinct choices without overlap or confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pattern of adding 10 is consistent throughout: 530 to 540 is 10, 540 to 550 is 10, 550 to 560 is 10. The hints accurately identify the interval and apply it to calculate the next value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A direct and unambiguous prompt appropriate for Grade 2. The language is accessible; the task requires only that learners recognize a pattern and extend it by one term."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All differences are 10. The calculation shown in the hints (560 plus 10 equals 570) is arithmetically correct and represents the true next term in the skip-counting by 10s sequence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "216551fc8ad9f85f139f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item presents a sequence with a single blank, asking learners to complete it. The structure is unambiguous and the four options are distinct numerical values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence demonstrates consistent skip-counting by 2: 522 to 524 is 2, 524 to 526 is 2, 526 to 528 is 2. The hints correctly identify this pattern and calculate the missing term."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item is clear and age-appropriate. A Grade 2 learner familiar with counting by 2s can identify the interval and apply it to fill the blank."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each consecutive pair differs by exactly 2. Adding 2 to 528 produces 530, which is the correct answer and properly extends the skip-counting by 2s sequence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "b1cc0e6b948671404d24",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A read_mcq format with a number line visual displaying 730-750. The stem asks to identify a marked position. The mark and scale are clear; learners must identify which number is indicated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints establish that the underlying sequence uses 20-unit increments (680 minus 660 equals 20). The visual scale and the marked position are consistent with this pattern and the stated answer of 740."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual number line is a familiar tool for Grade 2 learners. The task is transparent: locate the marked point and select its value. No ambiguous language interferes with understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 660, 680, 700, 720 has intervals of 20. The next term is 740. The number line correctly positions 740 and marks it as the answer, reflecting accurate skip-counting by 20."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "c1075fa2c469be11a5bb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq visual format is unambiguous. A specific position is marked on a number line spanning 590-610, and learners must identify its value from the four options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence in the hints (200, 300, 400, 500) shows 100-unit increments, which are correctly identified and applied to find the next term. The visual placement and answer are logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item employs a standard number line representation with clear tick marks and a marked position. Grade 2 learners can readily understand and respond to this format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step in the base sequence increases by 100. Adding 100 to 500 yields 600, which is the marked position on the visual and the correct answer for skip-counting by 100s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "5b74c6f14b2417d9fa18",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format is transparent: a sequence with one missing number and four distinct options. The learner must identify which option completes the sequence correctly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 550, 600, 650, 700 shows a consistent pattern of adding 50 each step. The hints correctly identify this interval and apply it to calculate the missing number as 750."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is direct and accessible. A Grade 2 learner recognizes the pattern and applies it. The language is simple and free of unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All intervals are 50: 550 to 600 is 50, 600 to 650 is 50, 650 to 700 is 50. Adding 50 to 700 gives 750, the correct term and valid skip-counting by 50s continuation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "11f30e1c4657a3032e47",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem introduces a character (Moses) counting by 5 and provides the sequence 875, 880, 885, 890, asking for the next number. The task is unambiguous despite the narrative context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative context is thematic and does not alter the mathematical task. The sequence genuinely represents counting by 5s starting from 875. The hints confirm the interval and calculate the next term correctly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The introduction of a character provides engagement without obscuring the mathematical task. Grade 2 learners understand both the context and the counting requirement. The question is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence increases by 5 each step: 875 to 880 is 5, 880 to 885 is 5, 885 to 890 is 5. Adding 5 to 890 produces 895, which is the mathematically correct answer for skip-counting by 5s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "46843ef9e7a17e212f63",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format presents a sequence ending with a blank and asks for the next number. The four options are distinct, and the task requires learners to identify which completes the pattern correctly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 705, 710, 715, 720 shows intervals of 5. The hints identify this interval correctly and apply it to find the next term. The logical progression from pattern recognition to calculation is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is straightforward: identify the next number in a sequence by recognizing the pattern. Grade 2 learners with skip-counting experience can handle this without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step increases by 5: 705 to 710 is 5, 710 to 715 is 5, 715 to 720 is 5. Adding 5 to 720 yields 725, the correct continuation of skip-counting by 5s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "ec6cb330717d96661525",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a sequence with a blank and asks what number comes next. The four options provide distinct alternatives. The task is unambiguous in its intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 245, 250, 255, 260 demonstrates a pattern of adding 5 each time. The hints correctly identify this interval and calculate the next number by applying the same increment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation is clear and appropriate for Grade 2. Learners recognize the counting pattern and select the correct next number from the provided choices without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All differences are 5: 250 to 245 is 5, 255 to 250 is 5, 260 to 255 is 5. Adding 5 to 260 produces 265, the correct answer for skip-counting by 5s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "efb9f697a88bd7b657ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic introduction about dance shoes, the mathematical task remains clear: complete a sequence of numbers. The thematic element provides context but does not interfere with understanding what is being asked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 200, 300, 400, 500 exhibits a consistent 100-unit increment. The mathematical validity is unaffected by the narrative theme. The hints correctly identify and apply the pattern."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic wrapper about dance shoes and a character named Sir Rez adds engagement without creating confusion. The core mathematical task is accessible to Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step increases by 100: 200 to 300 is 100, 300 to 400 is 100, 400 to 500 is 100. Adding 100 to 500 gives 600, the correct answer for skip-counting by 100s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "97d2829a2f4ad16b8b75",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item about basketballs and a character named Isko presents a mathematical sequence with one blank. The task is to complete the sequence. The theme does not obscure the mathematical intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 210, 212, 214, 216 contains consistent increments of 2. The narrative context is purely thematic and does not contradict or confuse the mathematical pattern."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item combines a thematic element with a clear mathematical task. Grade 2 learners understand the counting task and can apply the pattern despite the engaging context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All intervals are 2: 210 to 212 is 2, 212 to 214 is 2, 214 to 216 is 2. Adding 2 to 216 produces 218, the correct term for skip-counting by 2s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "54ae26b09f67887ab953",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq format displays a number line from 690-710 with a marked position. The stem asks which number is marked. The visual and task are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence provided in the hints (300, 400, 500, 600) shows 100-unit increments. The next term is 700, which is marked on the number line and matches the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line visual is a standard and familiar representation for Grade 2. Learners can identify the marked point and read its value directly from the scale."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The base sequence increases by 100 each step. Adding 100 to 600 yields 700, which is correctly marked and identified as the answer for skip-counting by 100s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "b8124e3b4f4e73bdf65a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format presents a sequence starting from 0 and asks for the next number after 150. The four options are distinct numerical values, and the task is transparent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 0, 50, 100, 150 demonstrates consistent increments of 50. The hints correctly identify this interval and apply it to determine the next term."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is direct and accessible to Grade 2 learners. Recognizing a pattern of adding 50 and applying it to find the next number is an appropriate task for this level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step increases by 50: 0 to 50 is 50, 50 to 100 is 50, 100 to 150 is 50. Adding 50 to 150 produces 200, which is the correct continuation of skip-counting by 50s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "6b1587c6a2743f873e86",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq item with a number line visual spanning 70-90 asks learners to identify a marked point. The task is unambiguous; learners must read the value at the marked location."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints establish a sequence (0, 20, 40, 60) with 20-unit increments. The next term is 80, which is marked and displayed on the number line visual."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line format is familiar to Grade 2 learners. The mark is clearly visible, and the scale allows direct reading of the value. The task is straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence increases by 20 each step: 0 to 20 is 20, 20 to 40 is 20, 40 to 60 is 20. Adding 20 to 60 yields 80, the correct answer for skip-counting by 20s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "0e40a53c40f2b7f4d530",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice item presents a sequence and asks for the next number. The four options are distinct, and the task unambiguously requires completing the pattern."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 860, 880, 900, 920 shows intervals of 20. The hints correctly identify this pattern and apply it to calculate the next number accurately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is clear and appropriate for Grade 2. The sequence is presented plainly, and learners are asked to identify the next number by recognizing the pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each consecutive pair differs by 20: 860 to 880 is 20, 880 to 900 is 20, 900 to 920 is 20. Adding 20 to 920 produces 940, the correct answer for skip-counting by 20s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "dffa2cef17e8cd693037",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with a single blank and four options is unambiguous. Learners must identify which option correctly completes the sequence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 860, 862, 864, 866 demonstrates a pattern of adding 2. The hints identify this interval and apply it correctly to find the missing number."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item is presented clearly with straightforward language. Grade 2 learners familiar with counting by 2s can recognize and extend the pattern without difficulty."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All intervals are 2: 860 to 862 is 2, 862 to 864 is 2, 864 to 866 is 2. Adding 2 to 866 produces 868, the correct term for skip-counting by 2s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "sample_id": "ed4eafc7334586e2622c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item presents a sequence with one missing number and asks learners to complete it by selecting from four options. The task structure is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 650, 700, 750, 800 contains consistent increments of 50. The hints correctly identify this interval and apply it to calculate the missing number as 850."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is straightforward and accessible to Grade 2 learners. Recognizing a skip-counting by 50s pattern and applying it to fill the blank is an appropriate cognitive demand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Each step increases by 50: 650 to 700 is 50, 700 to 750 is 50, 750 to 800 is 50. Adding 50 to 800 yields 850, the correct continuation of skip-counting by 50s."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "count_multiples",
+      "clause": "Count by",
+      "verdict": "PASS",
+      "reasoning": "The core concept of counting by specified intervals underlies every sample. Learners are consistently asked to recognize and extend skip-counting patterns, directly addressing the foundational requirement that they can count by multiple values and understand the repetitive structure of such counting.",
+      "sample_ids": [
+        "38823f0dab6f9d365fa1",
+        "e7cc6057ed96ed31f786",
+        "a14a255cf1cfe21e018b",
+        "f18ff5a68180bcbc4155",
+        "216551fc8ad9f85f139f",
+        "b1cc0e6b948671404d24",
+        "c1075fa2c469be11a5bb",
+        "5b74c6f14b2417d9fa18",
+        "11f30e1c4657a3032e47",
+        "46843ef9e7a17e212f63",
+        "ec6cb330717d96661525",
+        "efb9f697a88bd7b657ea",
+        "97d2829a2f4ad16b8b75",
+        "54ae26b09f67887ab953",
+        "b8124e3b4f4e73bdf65a",
+        "6b1587c6a2743f873e86",
+        "0e40a53c40f2b7f4d530",
+        "dffa2cef17e8cd693037",
+        "ed4eafc7334586e2622c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "twos",
+      "clause": "2s",
+      "verdict": "PASS",
+      "reasoning": "Counting by 2s is explicitly tested in four separate samples that require learners to identify patterns with step sizes of 2, extending sequences by this interval. The samples use both visual number lines and symbolic representations, ensuring learners encounter this requirement across multiple presentation formats.",
+      "sample_ids": [
+        "e7cc6057ed96ed31f786",
+        "216551fc8ad9f85f139f",
+        "97d2829a2f4ad16b8b75",
+        "dffa2cef17e8cd693037"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "fives",
+      "clause": "5s",
+      "verdict": "PASS",
+      "reasoning": "Counting by 5s appears across three distinct samples where learners must recognize 5-unit increments and apply them to complete sequences. These samples ensure learners practice skip-counting by 5s at different number ranges and in both text and contextual settings.",
+      "sample_ids": [
+        "11f30e1c4657a3032e47",
+        "46843ef9e7a17e212f63",
+        "ec6cb330717d96661525"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "tens",
+      "clause": "10s",
+      "verdict": "PASS",
+      "reasoning": "Skip-counting by 10s is demonstrated in one sample that requires learners to identify the constant increment of 10 and extend the sequence correctly. While representation is single, the sample fully tests the competency for this interval.",
+      "sample_ids": [
+        "f18ff5a68180bcbc4155"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "twenties",
+      "clause": "20s",
+      "verdict": "PASS",
+      "reasoning": "Counting by 20s is tested in four samples using varied presentations including number line visuals and text-based sequences. Learners encounter this interval at multiple number ranges (0-80, 660-740, 860-940) demonstrating flexible application of the 20s counting pattern.",
+      "sample_ids": [
+        "a14a255cf1cfe21e018b",
+        "b1cc0e6b948671404d24",
+        "6b1587c6a2743f873e86",
+        "0e40a53c40f2b7f4d530"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "fifties",
+      "clause": "50s",
+      "verdict": "PASS",
+      "reasoning": "Counting by 50s is addressed in three samples where learners identify and apply 50-unit increments. The samples span different numeric ranges (0-200, 550-750, 650-850) and presentation formats, providing comprehensive practice with this interval.",
+      "sample_ids": [
+        "5b74c6f14b2417d9fa18",
+        "b8124e3b4f4e73bdf65a",
+        "ed4eafc7334586e2622c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "hundreds",
+      "clause": "100s",
+      "verdict": "PASS",
+      "reasoning": "Skip-counting by 100s is demonstrated across four samples where learners recognize and apply 100-unit increments. Visual number lines and text-based formats are both represented, and the samples span ranges from 0-600 to 200-600, testing flexible application of this interval.",
+      "sample_ids": [
+        "38823f0dab6f9d365fa1",
+        "c1075fa2c469be11a5bb",
+        "efb9f697a88bd7b657ea",
+        "54ae26b09f67887ab953"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    },
+    {
+      "requirement_id": "not_beyond_1000",
+      "clause": "not beyond 1000",
+      "verdict": "PASS",
+      "reasoning": "All 19 samples maintain numerical values strictly within the 1000 boundary. The highest answer value across all items is 940, and all starting sequences and intermediate values remain well within bounds. This constraint is consistently honored throughout the entire packet.",
+      "sample_ids": [
+        "38823f0dab6f9d365fa1",
+        "e7cc6057ed96ed31f786",
+        "a14a255cf1cfe21e018b",
+        "f18ff5a68180bcbc4155",
+        "216551fc8ad9f85f139f",
+        "b1cc0e6b948671404d24",
+        "c1075fa2c469be11a5bb",
+        "5b74c6f14b2417d9fa18",
+        "11f30e1c4657a3032e47",
+        "46843ef9e7a17e212f63",
+        "ec6cb330717d96661525",
+        "efb9f697a88bd7b657ea",
+        "97d2829a2f4ad16b8b75",
+        "54ae26b09f67887ab953",
+        "b8124e3b4f4e73bdf65a",
+        "6b1587c6a2743f873e86",
+        "0e40a53c40f2b7f4d530",
+        "dffa2cef17e8cd693037",
+        "ed4eafc7334586e2622c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w2-haiku45-20260925:mat_g2_na_q1_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "394f523fa374715f88f6e24382972e84e704f460904f8636457092527c3ee85d",
+      "clause_ids": [
+        "count_multiples",
+        "twos",
+        "fives",
+        "tens",
+        "twenties",
+        "fifties",
+        "hundreds",
+        "not_beyond_1000"
+      ],
+      "response_ref": ".responses/s5-phaseC-w2-haiku45-20260925.json",
+      "response_digest": "8a9561e00f764500554fdbfca7d944b959d5c74a7b0f74cb344bd8c8ec6b1ed9",
+      "prompt_ref": ".responses/s5-phaseC-w2-haiku45-20260925.prompt.txt",
+      "prompt_digest": "a13ba800804a6ab2ac965786e4a812301bbffb55622b381ae8c9798f43a6313e",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q1_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q1_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples do what skip counting requires, completing a four-term run at a constant step, and the runs are placed so that some cross a hundred boundary, as with the sequence ending 298 and continuing to 300."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency names six step sizes and only five are generated. Twos, fives, tens, twenties and fifties all appear, but not a single sample counts by 100s. Ironically the hundreds runs surface in the neighbouring count-to-1000 node instead, so this sub-case is not merely rare here, it is absent."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "A four-term run with one blank is the right structure for Quarter 1, and the narrated version about someone counting forward by five from 875 adds a context without lengthening the reasoning."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three presentations recur: a marked number line, a sequence with a trailing blank, and a short story about a child counting aloud, spread across cloze, multiple-choice and read-based formats."
+      "rationale": "All samples present pattern-recognition tasks appropriate for Grade 2 learners who have foundational skip-counting experience. The sequences build understanding of numerical relationships through visual and symbolic representation without requiring operations beyond addition within the specified bounds."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty varies by step size and by where the run sits relative to a hundred boundary, both of which are the genuine sources of difficulty in skip counting."
+      "rationale": "Every printed sample directly maps to the competency of counting by the specified intervals. Samples systematically exercise counting by 2s, 5s, 10s, 20s, 50s, and 100s within established boundaries, addressing the complete curriculum requirement without deviation or gap."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The printed REQUIREMENTS decompose the competency into six distinct counting intervals plus a boundary constraint, capturing the full scope of what students must demonstrate without redundancy or omission of any skill element.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "Each REQUIREMENT directly corresponds to one facet: count_multiples establishes the foundational concept, the six interval types (twos through hundreds) enumerate the exact patterns students must recognize and extend, and not_beyond_1000 enforces the mathematical ceiling. This structure is lossless and accounts for every phrase in the original competency statement.",
+        "requirement_ids": [
+          "count_multiples",
+          "twos",
+          "fives",
+          "tens",
+          "twenties",
+          "fifties",
+          "hundreds",
+          "not_beyond_1000"
+        ]
+      },
+      "clause_ids": [
+        "count_multiples",
+        "twos",
+        "fives",
+        "tens",
+        "twenties",
+        "fifties",
+        "hundreds",
+        "not_beyond_1000"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The 19 samples collectively address all six counting intervals with varied presentation formats. Number lines appear alongside text-based sequences; multiple choice and cloze structures test different cognitive approaches; themed and unthemed contexts are represented; starting points and ranges vary systematically across intervals.",
+      "clause_ids": [
+        "count_multiples",
+        "twos",
+        "fives",
+        "tens",
+        "twenties",
+        "fifties",
+        "hundreds",
+        "not_beyond_1000"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency bars going beyond a thousand and nothing does; the highest sequence ends at 895 and the fifties run stops at 750."
+      "rationale": "All numeric values remain well within 1000, with the largest answer being 940. Sequences employ realistic Grade 2 number ranges (starting from 0 to 875, with step sizes clearly aligned to the competency). No sample presents unreasonable magnitude jumps or scaffolding beyond the learner profile."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples span three distinct interaction modalities (read_mcq on number lines, standard mcq text sequences, and fill-in-the-blank cloze). Each counting interval appears across multiple seeds and formats. Thematic variants introduce curated context (dance shoes, basketballs) without altering mathematical demand, and experience levels vary from standard to scaffolded and mastery modes."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }
