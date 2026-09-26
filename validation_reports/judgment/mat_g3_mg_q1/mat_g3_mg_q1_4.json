@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_4",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Recognize, using models, and draws a point, line, line segment, and ray.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "recognize_geometric_object",
+      "clause": "Recognize"
+    },
+    {
+      "kind": "representation",
+      "id": "concrete_model_depiction",
+      "clause": "using models"
+    },
+    {
+      "kind": "task",
+      "id": "draw_geometric_object",
+      "clause": "draws"
+    },
+    {
+      "kind": "object",
+      "id": "point",
+      "clause": "a point"
+    },
+    {
+      "kind": "object",
+      "id": "line",
+      "clause": "line"
+    },
+    {
+      "kind": "object",
+      "id": "line_segment",
+      "clause": "line segment"
+    },
+    {
+      "kind": "object",
+      "id": "ray",
+      "clause": "ray"
+    }
+  ],
+  "packet_digest": "ec259ae0d5fc88dd41fdd95b2687f272a5103a6010ad696bfe8f695166f3ff59",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +63,63 @@
     602,
     603,
     604,
-    605
+    605,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ac645f04890d10ec6ad2",
+    "6ad756c06d16a782b9c3",
+    "356c3ec81cd4f1d86e78",
+    "82c801dbf73274004c64",
+    "f4ced6a1701ad62d46ca",
+    "4ec9c74b495d204338e1",
+    "0497f50182062c0bf1aa",
+    "9771a578f442a62bf916",
+    "1be19c5b725ff8cffcee",
+    "f48d36073f36ba343944",
+    "13368ecdbbf597c19538",
+    "509850a743ddaf797026",
+    "decdda7c684a1e57ecc4",
+    "aabc3814d7eea2fca5a4",
+    "65262c176de34fc232bf",
+    "a8455a398b7f1aef262c",
+    "440e5b0e69a243e877ea",
+    "24d67215586e9214d03a",
+    "d831d5d51eba63f3c008",
+    "6d99f473a5f0275e2637",
+    "8672e2521185e7abc5cb",
+    "413a8ed70e897040c07c",
+    "580a7637bc7d33f403f4"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
       "correct_answer": "arrowheads",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +141,37 @@
           "value": "dots",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "arrowheads",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "ac645f04890d10ec6ad2",
+      "replay_digest": "3b89fdd3f7826fdde17c6eee1972950a39bb5e82b7b6af36a3fc4766177fe3cd"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "How many endpoints does a line segment have?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +193,37 @@
           "value": "0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "6ad756c06d16a782b9c3",
+      "replay_digest": "b1b2c0d384708317aa0486c5c20dd749df51dba393486ae4f9075892746e8317"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
-      "correct_answer": "ray",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -102,13 +245,71 @@
           "value": "ray",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "ray",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "ray",
+        "labels": [
+          "A",
+          "B"
+        ],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 11,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "A",
+            "B"
+          ],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 1,
+            "endpoint": 2,
+            "label": 2,
+            "arrowhead": 1
+          }
+        }
+      },
+      "sample_id": "356c3ec81cd4f1d86e78",
+      "replay_digest": "93ffc581aaea61c82977abc5760c8477e5d97c47001058daa9e8b3d84c35b412"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What do we call an exact location in space with no length or width?",
       "correct_answer": "point",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -130,13 +331,37 @@
           "value": "line segment",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "point",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "82c801dbf73274004c64",
+      "replay_digest": "3363010bd536c10e6aeabae35e2a77da82bbbb5460a13bf49a2c6b44870671de"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
       "correct_answer": "4 cm",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -158,13 +383,39 @@
           "value": "4 cm",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "4 cm",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "f4ced6a1701ad62d46ca",
+      "replay_digest": "8abac4dcdaf5ce27aeab8c2939e7c920ee19d17fbc9562a76f898db16808eaa6"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 500,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
-      "correct_answer": "ray",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -186,13 +437,73 @@
           "value": "line segment",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "ray",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "ray",
+        "labels": [
+          "A",
+          "B"
+        ],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 11,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "A",
+            "B"
+          ],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 1,
+            "endpoint": 2,
+            "label": 2,
+            "arrowhead": 1
+          }
+        }
+      },
+      "sample_id": "4ec9c74b495d204338e1",
+      "replay_digest": "ce274ea89354db1d67d42b817d2aa8a81a4e4e27f8c99800f5adbc67c51ea9b3"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What do we call an exact location in space with no length or width?",
       "correct_answer": "point",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -214,13 +525,39 @@
           "value": "line",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "point",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "0497f50182062c0bf1aa",
+      "replay_digest": "e6f3002a101a022bb514685a63c2086aefd12a4d39d94914a27cbde96a1bbc8c"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
       "correct_answer": "4 cm",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -242,13 +579,39 @@
           "value": "4 cm",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "4 cm",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "9771a578f442a62bf916",
+      "replay_digest": "6159aded8af668a25d479e7e516c702ad80a413ec474fc02b858cfcad07aa81b"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "How many endpoints does a ray have?",
       "correct_answer": "1",
+      "requested": {
+        "difficulty_profile": {
+          "concept_type": "point_line_segment_ray"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -270,13 +633,39 @@
           "value": "0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "1be19c5b725ff8cffcee",
+      "replay_digest": "0756c43c4c799c87fce2b5e1adde30fa1f3063ff380f3e253c5504e860c775c1"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?",
       "correct_answer": "arrowhead",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "draw_construct"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -298,13 +687,39 @@
           "value": "square",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "arrowhead",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "f48d36073f36ba343944",
+      "replay_digest": "4f5e3b51076460a4550512dc3246aad9630429987ee7d528841573998b8870cb"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "To draw a straight line segment between two points on paper, which tool should you use?",
       "correct_answer": "ruler",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "explain_difference"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -326,13 +741,39 @@
           "value": "ruler",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "ruler",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "13368ecdbbf597c19538",
+      "replay_digest": "1d2d26cb2d13c4de1c9ab46113fdec072fefee6bd0e933338f85e8652795922c"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What figure has no endpoints and extends forever in both directions?",
       "correct_answer": "line",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "identify_name"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -354,13 +795,39 @@
           "value": "line",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "line",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "509850a743ddaf797026",
+      "replay_digest": "8cc70b9656c0f2073f21a6bdfc9fcaaaf37e69d8b8f0458f6b0188c5c04132ec"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "How many endpoints does a line have?",
       "correct_answer": "0",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "identify_property"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -382,13 +849,39 @@
           "value": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "decdda7c684a1e57ecc4",
+      "replay_digest": "df826030578c202d920e6b1368517c3fa670ae16a975aed36989b33fb4a0cfdb"
     },
     {
+      "node_id": "mat_g3_mg_q1_4",
       "seed": 605,
-      "formatter": "mcq",
-      "question_text": "Look at the model: • A--------B---> (starts at endpoint A and extends past B with an arrowhead). Which geometric figure is represented?",
-      "correct_answer": "ray",
+      "formatter": "read_mcq",
+      "question_text": "Look at the model. Which geometric figure is represented?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "recognize_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -410,34 +903,1319 @@
           "value": "line",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "ray",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "ray",
+        "labels": [
+          "A",
+          "B"
+        ],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 11,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "A",
+            "B"
+          ],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 1,
+            "endpoint": 2,
+            "label": 2,
+            "arrowhead": 1
+          }
+        }
+      },
+      "sample_id": "aabc3814d7eea2fca5a4",
+      "replay_digest": "c010f4196efd79ea21a5728c5c9940b60fdd4db76928945e7712c96c7e8f6666"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Look at the model. Which geometric figure is represented?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ray",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "line segment",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "point",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ray",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "ray",
+        "labels": [
+          "A",
+          "B"
+        ],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 11,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "A",
+            "B"
+          ],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 1,
+            "endpoint": 2,
+            "label": 2,
+            "arrowhead": 1
+          }
+        }
+      },
+      "sample_id": "65262c176de34fc232bf",
+      "replay_digest": "bd9f13a4ce26d6e88edbb6a34c95d7f57a78f3155d5c19129b5964e906fd77c0"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What figure has one endpoint and extends forever in one direction?",
+      "correct_answer": "ray",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_manga",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ray",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "line segment",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "point",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ray",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "a8455a398b7f1aef262c",
+      "replay_digest": "1ded37480cc647b03c7ac8a0de2a433e5e4b3ebb6eb829f07c8e9b164fbf1def"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Which figure can be measured because it has a definite length?",
+      "correct_answer": "line segment",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "graphic_design",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ray",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "point",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "line segment",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "line segment",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "440e5b0e69a243e877ea",
+      "replay_digest": "18b1e3fc3801366622a82f26628c3efab9fd55519a87aadfee5ea61a2912c643"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "How many endpoints does a line have?",
+      "correct_answer": "0",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "infinite",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "0",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "24d67215586e9214d03a",
+      "replay_digest": "e8190a4c05fa3e5ca2a2273ec9e9ce6c71028ef967fc1080986eb2ebe6d74887"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What do we call an exact location in space with no length or width?",
+      "correct_answer": "point",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "point",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "line segment",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "ray",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "point",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "d831d5d51eba63f3c008",
+      "replay_digest": "0b9d5245a0a3d0cba122e534858cbbd1dd239f3c12e2b8d37f6fa12ceb83f950"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
+      "correct_answer": "4 cm",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "10 cm",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4 cm",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "0 cm",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "4 cm",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "6d99f473a5f0275e2637",
+      "replay_digest": "1cf023c64804140e4b7ab9043696521774dfc06504ea41bc31f76cda3ee85b20"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Look at the model. Which geometric figure is represented?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "point",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "ray",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "line segment",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "point",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "point",
+        "labels": [
+          "P"
+        ],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "a53dcf8460795dd612453943da8a947633eb075f48c6dd5b6a3a71ae3fc6a2d3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 6,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "P"
+          ],
+          "distinct_colours": [],
+          "role_counts": {
+            "endpoint": 1,
+            "label": 1
+          }
+        }
+      },
+      "sample_id": "8672e2521185e7abc5cb",
+      "replay_digest": "2f803ea7afb9b6b453f9d503f871cbbc3574a1c2f745044de53873a863d301d8"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "To draw a straight line segment between two points on paper, which tool should you use?",
+      "correct_answer": "ruler",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ruler",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "clock",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "set square only",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "thermometer",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ruler",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "413a8ed70e897040c07c",
+      "replay_digest": "a85af776bc8b9e1897301bba32267d366f6ddf13588b170ac6ccc8f8a352556f"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_4",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "What figure has no endpoints and extends forever in both directions?",
+      "correct_answer": "line",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "line segment",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "line",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "ray",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "point",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "line",
+      "hints": [
+        "A point is a dot — no length, no width.",
+        "A line segment has two endpoints and a measurable length.",
+        "A ray has one endpoint and goes on forever in one direction.",
+        "A line has no endpoints — it goes on forever in both directions."
+      ],
+      "sample_id": "580a7637bc7d33f403f4",
+      "replay_digest": "c751520bb7b36d29880fd821dbe5a6a8ee4c90d64e7633687694aca92a0a36e6"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ac645f04890d10ec6ad2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks clearly what symbols show a line extends in both directions, with four distinct options including the correct arrowheads response. The stem unambiguously targets understanding of line representation conventions without confusing phrasing or overlapping option meanings."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of drawing and labeling a line with symbols is a legitimate mathematical activity for Grade 3. The connection between visual representation and the infinite nature of lines is pedagogically sound for this grade level and directly supports the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary is grade-appropriate with simple nouns like symbols, ends, and directions. The question structure follows a natural sequence that Grade 3 students encounter in geometry instruction. The option words are all single nouns or simple noun phrases within typical Grade 3 reading level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arrowheads are the standard geometric convention for indicating rays and lines that extend infinitely. The other options (endpoints, numbers, dots) represent plausible but incorrect notational elements, making this a valid assessment of whether students understand proper geometric drawing conventions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "6ad756c06d16a782b9c3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks for a count of endpoints on a line segment with numeric options 3, 1, 2, and 0. No ambiguity exists about what is being asked; the stem, answer choices, and correct answer form a coherent mathematical question."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting endpoints is a concrete, observable property of line segments that Grade 3 students can verify through drawing or examining diagrams. This property directly relates to the definition and recognition of line segments, making it a valid assessment approach."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses minimal vocabulary with only the terms endpoints and line segment, both central to the competency. The phrasing follows a simple question structure that is standard in Grade 3 mathematics assessments. Numeric options require only counting and basic number recognition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line segment has exactly two endpoints by definition. The response of two is mathematically correct. The other options represent common misconceptions or adjacent geometric objects, making this a valid discrimination item for assessing understanding of this property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "356c3ec81cd4f1d86e78",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a clear real-world scenario about a beam of light and asks students to identify the corresponding geometric figure. The four options are distinct geometric objects with no overlapping definitions, making the question unambiguous despite its application context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A beam of light from a flashlight traveling in one direction is a well-established real-world model for a ray that appears in Grade 3 geometry curricula. The model validly represents a ray because it has a starting point and extends indefinitely in one direction. The GeometryFigure visual supports this model."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context of a flashlight beam is concrete and familiar to Grade 3 students. The use of the fill-in-the-blank format with distinct option words creates clarity about what is being asked. The vocabulary includes model, beam, flashlight, and traveling, all within typical Grade 3 experience or classroom introduction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ray has one starting point and extends infinitely in one direction, making a flashlight beam an accurate mathematical model. The GeometryFigure visual represents this with an endpoint, a line, and an arrowhead. Ray is the correct answer, with point, line, and line segment as plausible but incorrect alternatives."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "82c801dbf73274004c64",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a direct definition question asking what to call an exact location in space with no length or width. The four options name distinct geometric objects, and the stem language leaves no uncertainty about what property is being described."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This assessment targets foundational geometric understanding by asking students to recognize the defining properties of a point. The approach of property-to-name identification is pedagogically sound for assessing whether students grasp the abstract concept of a dimensionless location."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses abstract but grade-level-appropriate language with terms like exact location, space, length, and width that have been introduced in Grade 3 geometry. The four option words are the primary geometric objects students should distinguish at this grade level, with no extraneous complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A point is defined as an exact location with no length, width, or depth. The stem correctly captures this definition. The other options represent extended geometric objects that do have measurable properties, making them mathematically valid distractors for assessing genuine understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "f4ced6a1701ad62d46ca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question specifies a concrete measurement task with a line segment of 4 cm, starting at the 0 cm mark on a ruler, and asks which mark to draw until. The options are specific ruler measurements with no overlapping interpretations, making the question unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing a line segment with a specified length using a ruler is an authentic mathematical activity that Grade 3 students perform. This task directly assesses the draws component of the competency by requiring practical understanding of how to create a line segment with measurable length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is concrete with familiar materials: paper, ruler, and marks in centimeters. The instructional language about starting and drawing until is simple and procedural. The answer options are just ruler marks with numbers that Grade 3 students can read and understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "To draw a 4 cm line segment starting at 0 cm, a student must draw to the 4 cm mark. This is mathematically correct and directly applies the definition of line segment length. The other options represent common errors in reading or understanding ruler measurement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "4ec9c74b495d204338e1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem parallels sample 356c3ec with the identical flashlight beam scenario and asks to identify the geometric figure. The four distinct geometric options are presented clearly, and the format leaves no ambiguity about what property the student must recognize."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The real-world model of a flashlight beam representing a ray is pedagogically valid for Grade 3. The GeometryFigure visual consistently depicts the geometric object being identified. This model-based assessment approach directly aligns with the using models requirement of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context and language are identical to a repeated assessment, using familiar vocabulary about flashlights and beams. The visual support with labeled endpoints and arrowhead reinforces the geometric properties being assessed. All elements remain within Grade 3 comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric figure shown is a ray with one endpoint and one arrow extending indefinitely. The mathematics is correct, with ray as the accurate answer. The repeated presentation with different option orderings assesses whether recognition is stable or dependent on option position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "0497f50182062c0bf1aa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem repeats the point definition question with identical language: asking what to call an exact location in space with no length or width. The four option words are distinct, and the question format is unambiguous despite the repeated assessment approach."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Repeated assessment of point recognition through definition questions is pedagogically appropriate for ensuring mastery of this foundational concept. The validity remains the same as in sample 82c801: this assesses whether students grasp the abstract dimensionless nature of points."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and structure are identical to sample 82c801, using the same vocabulary at Grade 3 level with four standard geometric object names as options. Repetition with different option orderings supports assessment reliability without introducing comprehension barriers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The point definition remains mathematically correct: an exact location with no length, width, or height. The distractors correctly name other geometric objects, making this a valid repeated item for assessing point recognition. Option ordering differs from sample 82c801, providing a format variant."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "9771a578f442a62bf916",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question repeats the task of drawing a 4 cm line segment with a ruler, specifying the starting mark of 0 cm and asking which mark to draw until. The four numeric options are distinct measurements, maintaining unambiguous question structure despite repetition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated ruler measurement task is pedagogically valid for assessing whether students can consistently apply measurement knowledge to drawing line segments. This repeated assessment reinforces the practical draws component of the competency with identical scenario structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario, vocabulary, and measurement context remain Grade 3 appropriate and identical to sample f4ced6. The ruler marks are simple numeric values that Grade 3 students read daily. Option ordering differs from sample f4ced6 but comprehension barriers remain absent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing from the 0 cm mark to the 4 cm mark creates a line segment measuring exactly 4 cm, maintaining mathematical correctness. The repeated presentation with different option orderings tests whether measurement understanding is stable across presentation formats."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "1be19c5b725ff8cffcee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directly asks how many endpoints a ray has with four numeric options: 1, 3, 2, and 0. The question is unambiguous about the property being assessed, with a single correct answer and distinct options representing different geometric interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying the number of endpoints on a ray is a concrete property-counting exercise that helps students distinguish rays from other geometric objects. This approach is pedagogically valid for assessing whether students understand a defining characteristic of rays at Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses minimal vocabulary with only the terms endpoints and ray, both central to the competency. The numeric options require only counting knowledge. The simple question structure is standard for Grade 3 geometric property assessment without distracting complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ray has exactly one endpoint by definition, with the answer of one being mathematically correct. The other options represent properties of other shapes: three is incorrect, two applies to line segments, and zero applies to lines, providing mathematically valid distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "f48d36073f36ba343944",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what symbol is placed at one end of a ray to show it extends forever. The four options are distinct symbols or objects with no overlapping meanings: arrowhead, endpoint dot, circle, and square each represent different drawing conventions or shapes."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Understanding the symbolic notation used in geometric drawing directly supports the draws component of the competency. Grade 3 students should recognize that arrowheads indicate infinite extension, making this a valid assessment of geometric drawing conventions at this level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary is concrete and familiar: symbols, one end, extends, and direction are terms Grade 3 students encounter in geometry. The four option choices are all simple noun phrases referring to common symbols or objects that students can visualize and distinguish."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The standard geometric convention is that an arrowhead at the end of a line or ray indicates infinite extension in that direction. This is mathematically correct. The other options represent plausible but incorrect notational elements that Grade 3 students might confuse."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "13368ecdbbf597c19538",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks which tool should be used to draw a straight line segment between two points on paper. The four options are distinct tools: thermometer, clock, set square only, and ruler. The question clearly targets tool selection knowledge without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying the appropriate tool for drawing line segments is a practical skill that supports the draws component of the competency. Grade 3 students use rulers in mathematical activities, making this an authentic assessment of whether they recognize ruler functionality."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario describes a concrete, familiar task: drawing on paper between two points. The tool names are all words Grade 3 students encounter in school. The phrasing clearly indicates that selection of a single tool is expected, with the purpose being to draw a straight line."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ruler is the standard tool for drawing straight line segments with measurable length. This is mathematically and practically correct for Grade 3. The other options represent tools students use for different purposes, providing valid distractors based on familiarity rather than function."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "509850a743ddaf797026",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what figure has no endpoints and extends forever in both directions. The four options are distinct geometric objects with no overlapping properties, making the question unambiguous despite asking for a derived conclusion based on properties."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This assessment asks students to identify a shape based on its defining properties, specifically the absence of endpoints and bidirectional extension. This property-based reasoning is pedagogically sound for assessing whether students understand the distinction between lines and other geometric objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary includes endpoints, extends, and directions, all terms Grade 3 students encounter in geometry instruction. The question structure asks for recognition of properties combined into a definition, which is a standard assessment approach at this grade level without introducing unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line extends infinitely in both directions with no endpoints, making line the mathematically correct answer. The other options represent objects with endpoints or limited extension, providing mathematically valid distractors that target common misunderstandings about geometric figures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "decdda7c684a1e57ecc4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks directly how many endpoints a line has with four numeric options: 0, 2, infinite, and 1. The question unambiguously targets endpoint counting for a specific geometric object, with each option representing a distinct possible answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying the number of endpoints on a line directly distinguishes it from other geometric objects like line segments and rays. This property-based assessment is pedagogically valid for confirming that students understand the defining characteristic of a line at Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses only two terms: endpoints and line, both central to the competency. The numeric options include whole numbers and the word infinite, representing the range of possible responses. The simple counting format is standard for Grade 3 geometric property assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line has zero endpoints because it extends infinitely in both directions without starting or ending points, making zero the mathematically correct response. The other options represent properties of line segments or rays, serving as mathematically valid distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "aabc3814d7eea2fca5a4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to look at the model and identify which geometric figure is represented. The four geometric object names provide distinct choices, and the question structure clearly asks for identification based on visual model observation without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a GeometryFigure model to assess geometric shape identification directly aligns with the using models component of the competency. This model-based approach is pedagogically sound for helping students connect visual representations to abstract geometric object names."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to look at the model is direct and concrete. The four option words are the primary geometric objects in the competency. No complex vocabulary or multi-step reasoning is required beyond examining the visual and matching it to the closest geometric object name."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The GeometryFigure visual shows a ray with one endpoint labeled and an arrowhead extending away from it. Ray is the mathematically correct answer. The other options represent related geometric objects, making this a valid visual identification task for assessing shape recognition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "65262c176de34fc232bf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses identical language to sample aabc381, asking to look at the model and identify the geometric figure. The four option words are distinct geometric objects with no overlapping names or properties, maintaining unambiguous question structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated model-based identification task maintains pedagogical validity for assessing whether students can consistently recognize geometric objects from visual representation. This repeated presentation reinforces the using models component of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and structure are identical to sample aabc381, with the same four geometric object names presented as options. Option ordering differs from sample aabc381 but comprehension barriers remain absent. The task remains concrete and Grade 3 appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The GeometryFigure model depicts a ray with one endpoint and an arrowhead, making ray the mathematically correct answer. The repeated presentation with different option ordering tests whether visual recognition of rays is stable across format variations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "a8455a398b7f1aef262c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a themed scenario with a dance-related emoji context, then asks what figure has one endpoint and extends forever in one direction. The four geometric object options are distinct and unambiguous despite the thematic wrapper around the question."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji theme about dance shoes and Sir Rez provides personalization without interfering with the mathematics. The question itself asks about a fundamental property of rays, maintaining mathematical validity while using thematic engagement appropriate for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and name are recognizable elements for Grade 3 students. The mathematical question about figure properties follows the thematic opener using vocabulary that matches the core competency. The four geometric object names remain the only technical terms requiring understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ray has one endpoint and extends forever in one direction, making ray the mathematically correct and clear answer. The thematic wrapper about dance shoes does not alter the geometric definition or create confusion about the mathematical content being assessed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "440e5b0e69a243e877ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a themed scenario about basketballs with an emoji, then asks which figure can be measured because it has definite length. The four geometric options are distinct, and the question structure clearly targets the measurable property of one specific object."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question connects a physical property of geometric objects to the real-world observation that only certain shapes have measurable length. This reasoning approach is pedagogically appropriate for Grade 3 and supports understanding of line segment properties."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and character name provide familiar context without obscuring the mathematical question. The vocabulary about measurement and definite length uses terms Grade 3 students encounter in mathematics. The four geometric object names are standard terms in the competency."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line segment has definite, measurable length because it has two fixed endpoints, making it the mathematically correct answer. The thematic context about basketballs does not alter this property. The other options correctly represent geometric objects that either cannot be measured or have infinite extension."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "24d67215586e9214d03a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks how many endpoints a line has with four numeric options: 0, infinite, 1, and 2. The question directly targets endpoint counting for a line with unambiguous format and options representing distinct possible interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This assessment repeats the line endpoint property question to reinforce understanding. The repeated approach is pedagogically sound for confirming mastery of the defining characteristic that distinguishes lines from line segments and rays."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary consists only of the terms endpoints and line, both central to the competency. The options include numeric answers and the word infinite, providing clear choices that reflect different geometric understandings. Grade 3 students can understand and distinguish these options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line has zero endpoints, making zero the mathematically correct response. The inclusion of the word infinite as a distractor tests whether students might confuse the infinite extension property with the endpoint count. The other numeric options represent properties of line segments or rays."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "d831d5d51eba63f3c008",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem repeats the point definition question: asking what to call an exact location in space with no length or width. The four geometric object options are distinct and unambiguous, maintaining the same clear question structure despite repeated assessment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Repeated assessment of point definition through identical questioning reinforces this foundational geometric concept. The validity remains consistent: this assesses whether students grasp the abstract dimensionless nature of points that distinguishes them from other objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and structure replicate samples 82c801 and 0497f50, using Grade 3 appropriate vocabulary with four standard geometric object names as options. Repetition across multiple instances with varying option orders supports assessment reliability and mastery confirmation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The point definition remains mathematically correct: an exact location with no length, width, or depth. The distractors represent other geometric objects with distinct properties, maintaining mathematical validity across this repeated assessment instance."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "6d99f473a5f0275e2637",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem repeats the ruler-based line segment drawing task with a 4 cm measurement from the 0 cm mark. The four numeric options representing different ruler marks are distinct and unambiguous, maintaining clear question structure despite repetition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated ruler measurement task continues to assess the practical draws component of the competency. Grade 3 students regularly perform this type of measurement and construction, making it a pedagogically sound repeated assessment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario, vocabulary, and measurement context remain Grade 3 appropriate and identical to previous presentations. The ruler marks are simple numeric values familiar to students. Option ordering differs from other instances but maintains comprehension accessibility."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing from the 0 cm mark to the 4 cm mark creates a line segment measuring 4 cm, maintaining mathematical correctness. The repeated presentation with multiple option orderings across different seeds tests whether measurement understanding is stable and reliable."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "8672e2521185e7abc5cb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to look at the model and identify the geometric figure. The four geometric object options are distinct, and the question structure clearly requests visual model identification without ambiguity, despite using a different visual representation than previous model-based items."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This model-based assessment uses a GeometryFigure showing a point and directly assesses the point component of the competency. The model-based approach is pedagogically valid for helping students connect visual dot representations to the abstract name and concept of a point."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is direct and concrete: look at the model. The GeometryFigure structure with element count 6 is simpler than ray models, showing only a single endpoint labeled as P. The four option words are standard geometric objects. No complex vocabulary beyond the objects themselves is required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The GeometryFigure model shows a single point representation labeled with P, making point the mathematically correct answer. This model appropriately represents the dimensionless concept of a point. The other options represent extended geometric objects, providing valid mathematical distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "413a8ed70e897040c07c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem repeats the tool selection question: asking which tool to use for drawing a straight line segment between two points. The four tool options are distinct and represent different classroom tools, maintaining unambiguous question structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The repeated tool selection task continues to assess practical understanding of drawing implements and their functions. This assessment remains pedagogically valid for confirming that students understand ruler functionality for creating straight, measurable line segments."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario and vocabulary are identical to sample 13368ec, describing a concrete task on paper between two points. Tool names are all familiar to Grade 3 students. The repeated presentation with different option orderings maintains Grade 3 accessibility."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ruler is the correct tool for drawing straight line segments with measurable length, maintaining mathematical and practical correctness. The repeated presentation tests whether tool selection knowledge is reliable across format variations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "sample_id": "580a7637bc7d33f403f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what figure has no endpoints and extends forever in both directions. The four geometric object options are distinct and unambiguous, maintaining identical question structure to sample 509850a despite using an alternate experience level."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This repeated property-based identification task continues to assess line recognition through defining characteristics. The approach remains pedagogically sound for confirming understanding of the distinction between lines and other geometric objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary includes endpoints, extends, and directions, identical to previous presentations of this question. The four geometric object names remain standard terms. The repeated structure across multiple seeds tests whether understanding is stable and reliable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A line extends infinitely in both directions with no endpoints, maintaining mathematical correctness. The repeated presentation with different option orderings tests stability of understanding. The other options represent valid mathematical distractors based on related geometric objects."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "recognize_geometric_object",
+      "clause": "Recognize",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly assess the ability to identify and name geometric objects. Samples 82c801, 0497f50, d831d5d, and 9771a57 ask students to recognize a point from its defining property description. Samples 1be19c5 and decdda7c test ray and line recognition through endpoint counting. Samples 509850a, aabc381, 65262c1, and 8672e25 ask direct identification through visual models or property descriptions.",
+      "sample_ids": [
+        "82c801dbf73274004c64",
+        "0497f50182062c0bf1aa",
+        "d831d5d51eba63f3c008",
+        "1be19c5b725ff8cffcee",
+        "decdda7c684a1e57ecc4",
+        "509850a743ddaf797026",
+        "aabc3814d7eea2fca5a4",
+        "65262c176de34fc232bf",
+        "8672e2521185e7abc5cb"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "concrete_model_depiction",
+      "clause": "using models",
+      "verdict": "PASS",
+      "reasoning": "Five samples utilize GeometryFigure visual models to support geometric object recognition. Samples 356c3ec and 4ec9c74 use a real-world flashlight beam model combined with geometric figure visualization to represent rays. Samples aabc381 and 65262c1 present geometric figure models for ray identification. Sample 8672e25 shows a point model representation. These model-based samples provide concrete visual supports for understanding abstract geometric concepts.",
+      "sample_ids": [
+        "356c3ec81cd4f1d86e78",
+        "4ec9c74b495d204338e1",
+        "aabc3814d7eea2fca5a4",
+        "65262c176de34fc232bf",
+        "8672e2521185e7abc5cb"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "draw_geometric_object",
+      "clause": "draws",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples assess the ability to draw geometric objects or understand drawing practices. Samples ac645f04 and f48d360 test understanding of drawing notation and symbols used to represent infinite extension in rays and lines. Samples f4ced6, 9771a57, and 6d99f47 assess practical drawing ability through measurement and ruler usage tasks. Samples 13368ec and 413a8ed test knowledge of drawing tools and their appropriate applications.",
+      "sample_ids": [
+        "ac645f04890d10ec6ad2",
+        "f48d36073f36ba343944",
+        "f4ced6a1701ad62d46ca",
+        "9771a578f442a62bf916",
+        "6d99f473a5f0275e2637",
+        "13368ecdbbf597c19538",
+        "413a8ed70e897040c07c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "point",
+      "clause": "a point",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly assess understanding of points. Samples 82c801, 0497f50, d831d5d, and 900 present point definition questions asking students to identify a location with no length or width. Sample 356c3ec includes point as a distractor in the flashlight context, confirming point is a distinct geometric object students must discriminate. Sample 8672e25 shows a point model visually. All samples include hints defining a point as a dot with no length or width.",
+      "sample_ids": [
+        "82c801dbf73274004c64",
+        "0497f50182062c0bf1aa",
+        "d831d5d51eba63f3c008",
+        "356c3ec81cd4f1d86e78",
+        "8672e2521185e7abc5cb"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "line",
+      "clause": "line",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples assess understanding of lines. Samples ac645f04 and 509850a test line definition by asking for the figure with no endpoints extending forever in both directions. Sample decdda7c directly asks how many endpoints a line has, expecting zero as the answer. Sample 24d6721 repeats endpoint counting for line identification. Samples 580a763 and 1be19c5 present lines in comparative contexts with other geometric objects.",
+      "sample_ids": [
+        "ac645f04890d10ec6ad2",
+        "509850a743ddaf797026",
+        "decdda7c684a1e57ecc4",
+        "24d67215586e9214d03a",
+        "580a7637bc7d33f403f4",
+        "1be19c5b725ff8cffcee"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "line_segment",
+      "clause": "line segment",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples focus on line segment understanding. Samples 6ad756, f4ced6, 9771a57, and 6d99f47 directly assess line segment properties and measurement. Sample 6ad756 asks for endpoint count, expecting 2. Samples f4ced6, 9771a57, 6d99f47 test practical drawing of line segments using rulers with specific measurements. Sample 440e5b0 identifies line segment as the measurable figure. Sample 2 emphasizes the two endpoints property.",
+      "sample_ids": [
+        "6ad756c06d16a782b9c3",
+        "f4ced6a1701ad62d46ca",
+        "9771a578f442a62bf916",
+        "6d99f473a5f0275e2637",
+        "440e5b0e69a243e877ea",
+        "13368ecdbbf597c19538",
+        "413a8ed70e897040c07c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    },
+    {
+      "requirement_id": "ray",
+      "clause": "ray",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples comprehensively assess ray understanding across different contexts. Samples 356c3ec and 4ec9c74 use flashlight beam models to represent rays, combining concrete and abstract representations. Samples aabc381, 65262c1, and 65262c test ray identification from visual geometric models. Samples 1be19c5 and f48d360 assess ray properties through endpoint count and symbolic notation. Sample a8455a3 includes ray in a thematic context. Samples 9, 14, 15, 16 all directly feature ray recognition and identification tasks.",
+      "sample_ids": [
+        "356c3ec81cd4f1d86e78",
+        "4ec9c74b495d204338e1",
+        "aabc3814d7eea2fca5a4",
+        "65262c176de34fc232bf",
+        "1be19c5b725ff8cffcee",
+        "f48d36073f36ba343944",
+        "a8455a398b7f1aef262c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "ec259ae0d5fc88dd41fdd95b2687f272a5103a6010ad696bfe8f695166f3ff59",
+      "clause_ids": [
+        "recognize_geometric_object",
+        "concrete_model_depiction",
+        "draw_geometric_object",
+        "point",
+        "line",
+        "line_segment",
+        "ray"
+      ],
+      "response_ref": ".responses/s5-phaseC-w11-haiku45-20260925.json",
+      "response_digest": "34cd066eba873f94b9bd8d9dd54dddbdf17dd3e65c09a0287afaa6f672ee820f",
+      "prompt_ref": ".responses/s5-phaseC-w11-haiku45-20260925.prompt.txt",
+      "prompt_digest": "0d82c3a0c3989a13841172e55e00de7b5b5e71a6b5bca17d62a1b6d5b09f279d",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency pairs recognition using models with drawing, and the sample set is dominated by verbal definition recall such as asking what we call an exact location in space with no length or width. Only one item actually shows a model, the A-to-B diagram with an arrowhead, and drawing is only ever approached indirectly through questions about which tool or which symbol to use."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four figures the competency lists are covered and each is probed more than once: point by the location item, line segment by the endpoint count and the ruler item, ray by the flashlight model and the one-endpoint item, and line by the no-endpoints item."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The language is concrete and grade-suitable, and the flashlight beam gives a physical anchor for the abstract idea of extending in one direction. The only mildly advanced notion, extending forever, is phrased in everyday words rather than as infinity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample is mcq, and three stems are emitted twice with only the option order changed: the flashlight beam item, the exact-location item and the 4 cm ruler item each appear at two different seeds. Six of the fourteen rendered items are therefore duplicates, which is a thin pool for four distinct figures."
+      "rationale": "The items present straightforward recognition and definition tasks appropriate for Grade 3, Quarter 1. Vocabulary remains accessible with direct questions about identifying shapes, counting endpoints, and naming drawing tools. No complex spatial reasoning or multi-step procedures are required beyond identifying geometric objects and their defining characteristics."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What varies across seeds is which of the four figures is targeted and whether the probe is by property, by model or by construction, all of which serve this same competency. No item drifts into angles, polygons or other geometry outside its scope."
+      "rationale": "The competency requires students to recognize and draw point, line, line segment, and ray using models. Samples systematically address recognition through direct definition items, model-based read_mcq formats using GeometryFigure visuals, and practical drawing knowledge via tool identification questions. The breadth and distribution of sample types directly mirrors the competency's three action verbs."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The rendered requirements capture all essential components of the written competency: recognize addresses identification tasks, using models is reflected in the read_mcq samples with geometric figure visuals, and draws is tested through questions about drawing tools and symbolic notation. The seven-part decomposition covers point, line, line segment, and ray individually.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The requirement set losslessly decomposes the competency. Each of the five geometric objects (point, line, line segment, ray, and the abstract action of recognition itself) appears as a distinct requirement_id. The model-depiction requirement explicitly captures the using models clause. The draw requirement covers the draws action. No essential competency component is omitted, and no spurious requirements are added beyond the text provided.",
+        "requirement_ids": [
+          "recognize_geometric_object",
+          "concrete_model_depiction",
+          "draw_geometric_object",
+          "point",
+          "line",
+          "line_segment",
+          "ray"
+        ]
+      },
+      "clause_ids": [
+        "recognize_geometric_object",
+        "concrete_model_depiction",
+        "draw_geometric_object",
+        "point",
+        "line",
+        "line_segment",
+        "ray"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet includes multiple assessment approaches: definition recognition, endpoint identification, symbol naming, real-world modeling, visual identification from GeometryFigure models, and practical drawing tool selection. Each geometric object appears in multiple contexts across both standard and model-based formats, providing varied evidence of student understanding at this grade level.",
+      "clause_ids": [
+        "recognize_geometric_object",
+        "concrete_model_depiction",
+        "draw_geometric_object",
+        "point",
+        "line",
+        "line_segment",
+        "ray"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency sets no numeric ceiling; the only quantities used are endpoint counts of 0, 1 and 2 and ruler marks up to 10 cm, both of which are correct magnitudes for figure properties and for a Grade 3 ruler."
+      "rationale": "The problem set contains no vocabulary or procedural complexity beyond Grade 3, Quarter 1 scope. Measurements are limited to simple whole centimeter marks on rulers. Definitions use everyday language and comparisons accessible to early elementary students. The geometric objects themselves are foundational concepts at this grade level, requiring only recognition and basic property identification."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples demonstrate meaningful variation across multiple dimensions: format (multiple choice versus read multiple choice with visual), presentation (text-only versus GeometryFigure models), contextual wrapping (standard questions versus emoji-themed scenarios with Sir Rez or Isko), and specific content focus (definition, endpoint counting, drawing tools, real-world modeling). Different seeds produce distinct option orderings and question phrasings while maintaining assessment validity."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

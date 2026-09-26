@@ -1,688 +1,591 @@
 {
-  "reviewer": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
-  "mat_g3_mg_q1_0": {
+  "reviewer": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_2-20260925",
+  "mat_g3_mg_q1_2": {
     "findings": {
       "cognitive_capacity": {
         "verdict": "PASS",
-        "rationale": "All samples employ multiplication within Grade 3 expectations, with dimensions from 2×2 to 10×10. The cognitive demand is proportional to operand size, growing gradually from simple 2×2 squares through 10×10 squares and rectangular variations, suitable for early third-grade quantitative reasoning."
+        "rationale": "All samples present single-step multiplication problems with small integers appropriate for Grade 3 Quarter 1 students. Dimension ranges from 2-8 units per side, well within early-grade computational fluency expectations."
       },
       "competency_alignment": {
         "verdict": "PASS",
-        "rationale": "Samples demonstrate the core competency by asking students to work with squares and rectangles covered by unit square tiles. Estimation and counting are invoked across multiple contexts, with both visual and non-visual presentations representing area through tile arrangements or direct calculation, aligning with the specified wording."
+        "rationale": "Every sample directly addresses the stated competency by requiring students to find the area of either squares or rectangles using one of the two specified units: square centimeters or square meters."
       },
       "competency_fulfillment": {
         "verdict": "PASS",
-        "rationale": "All seven decomposed requirements appear across the sample set. Squares and rectangles are both present; area is consistently the target; tile units are named or shown in every sample; the notion of covering shapes with tiles underpins every problem. No requirement is absent or under-represented.",
+        "rationale": "The REQUIREMENTS list comprehensively captures all essential components needed to fulfill the competency: the action of finding, the attribute being measured, both shapes covered, both unit systems included, and unit notation.",
         "decomposition": {
           "verdict": "PASS",
-          "reasoning": "The seven listed requirements comprehensively partition the competency statement. Each addresses a distinct conceptual or linguistic component: the action (illustrate, estimate), the property (area), the shape types (square, rectangle), and the measurement unit (square tile units). No aspect of the original competency remains uncovered."
+          "reasoning": "The decomposition covers all obligatory elements: computing (the calculation action), identifying area as the target attribute, addressing both squares and rectangles separately, specifying centimeter-based units, specifying meter-based units, and using abbreviated notation throughout all samples."
         }
       },
       "comprehensive_coverage": {
         "verdict": "PASS",
-        "rationale": "The sample pool spans five distinct square configurations (2×2, 3×3, 4×4, 5×5, 10×10) and seven rectangle configurations (2×3, 2×5, 2×7, 3×5, 4×7, 5×6, 8×3), with variation across presentation formats (cloze, mcq, read_mcq), visual accessibility (static text only versus interactive grid display), and pedagogical framing (standard, hint_gated, mastery_drill, scaffolded)."
+        "rationale": "The node samples demonstrate systematic coverage of dimension combinations. Squares span 2m to 5m in meters and 3cm to 5cm in centimeters. Rectangles include diverse length-width pairs in both units. Cloze and multiple-choice formats both appear, with 11 cloze and 13 multiple-choice samples representing balanced format distribution."
       },
       "scale_appropriateness": {
         "verdict": "PASS",
-        "rationale": "The maximum product across all samples is 10×10=100 square units. This magnitude is consistent with Grade 3 computational expectations and sits comfortably within multiplication facts typically mastered by quarter one of third grade, avoiding premature introduction to three-digit computation."
+        "rationale": "Number magnitudes are consistent with Grade 3 multiplication facts. Products range from 4 to 40 square units, fitting within the scope of early third-grade computational skill development. Both centimeter and meter measurements appear in realistic contexts."
       },
       "variant_comprehensiveness": {
         "verdict": "PASS",
-        "rationale": "The generator exercises both visual and textual problem formats, addresses both regular and rectangular shapes across multiple dimension pairings, and offers multiple hint and experience levels. Some mathematical combinations recur across different seeds and formats, providing stability testing while broadening the presentation landscape beyond repetition of single problem types."
+        "rationale": "The sample set explores different seeding patterns, spans both interaction modes, includes contextual themes in some items without interference with mathematical content, and repeats key dimension combinations across different formats to ensure robustness of generation logic."
       }
     },
     "sample_assessments": [
       {
-        "sample_id": "881e6842a17b88dbb720",
+        "sample_id": "bab37b94fb2a9e10a3cb",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem explicitly specifies edge-to-edge tile arrangement with 2 rows and 7 columns, yielding a total to estimate. The task is unambiguous: count or calculate the total number of unit tiles in a rectangular configuration."
+            "reasoning": "The stem clearly states rectangle dimensions as 4 cm and 3 cm, explicitly asks for area in sq cm, and provides four distinct numerical options with no overlapping interpretations."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The arrangement (2 rows and 7 columns) correctly yields 14 unit tiles via multiplication. The hint equations are arithmetically sound: 2×7=14. The answer and all distractors are plausible products derived from permutations of the dimensions or nearby integers."
+            "reasoning": "A rectangle with specified side lengths is a standard geometric problem with no logical inconsistencies. The area formula (length times width) correctly applies, and the answer of 12 matches the computation."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The language is simple and concrete for a Grade 3 student: a rectangle is described as covered with tiles, dimensions are stated clearly, and the question directly asks how many tiles cover the shape in total, making the expected response transparent."
+            "reasoning": "Wording is direct and uses familiar vocabulary appropriate for Grade 3. Dimensions are stated clearly as 4 cm and 3 cm, and the unit request is explicit and unambiguous."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Multiplication is correctly applied: a 2-row, 7-column arrangement of unit tiles produces exactly 14 square units of area. The formula in the hint, length × width = 2 × 7 = 14, is mathematically and pedagogically sound for the target grade and competency."
+            "reasoning": "The calculation 4 times 3 equals 12 is mathematically correct, the answer appears among the options, and the hint correctly explains the formula and demonstrates the computation step-by-step."
           }
         }
       },
       {
-        "sample_id": "46da5b99d3026925c7c2",
+        "sample_id": "81a5b3b9433fb18ff913",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem refers to a 7×4 array and asks directly how many squares are shaded in total. The visual displays a grid, removing ambiguity about what is meant by the array shape. The question is direct and unambiguous."
+            "reasoning": "Two distinct dimensions are specified as 3 m and 5 m, area unit is clearly requested as sq m, and the five multiple-choice options are all different numerical values with no potential confusion."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 7×4 grid contains 28 shaded cells when fully covered. The hint correctly states this product and provides the formula. All distractors are nearby integers that might result from miscount or misapplication of multiplication."
+            "reasoning": "A rectangle measured in meters represents a realistic scenario. The geometric relationship is standard and the computation 3 times 5 equals 15 is correct."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Students are asked to observe a visual array and count or calculate the shaded squares. The language is concise and the grid visualization makes the array count explicit, reducing cognitive load for decoding the problem structure."
+            "reasoning": "Statement uses straightforward phrasing with sides introduced as 3 m and 5 m, making the problem setup transparent and the required calculation obvious."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 7×4 array corresponds to 28 square units of area. The grid shown has 28 grid-cell elements, and the mathematical statement in the hint, 7 × 4 = 28, is correct and consistent with the visual representation."
+            "reasoning": "Multiplication of 3 and 5 yielding 15 is accurate, the answer is present in the option set, and the hint provides correct formula and step-by-step calculation demonstrating area as length times width."
           }
         }
       },
       {
-        "sample_id": "b330830a6e9094721c45",
+        "sample_id": "6bf9c734e5eb738bd8b2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem is explicit: a square covered edge-to-edge with unit tiles, arranged in 2 rows and 2 columns. The request to estimate total tiles is clear and unambiguous."
+            "reasoning": "The stem specifies a single dimension of 3 cm for a square, unambiguously requests area in sq cm, and provides four numerically distinct options without overlap or interpretation issues."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Two rows and two columns form a 2×2 square with area 4. The hint formula is correct: side × side = 2 × 2 = 4. Distractors are plausible products derived from variations of the dimensions or incorrect operation."
+            "reasoning": "A square with 3 cm sides has well-defined area of 9 square centimeters. The scenario is geometrically sound and mathematically consistent."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem describes a square tile covering in plain language with explicit row and column counts. The task (estimate total tiles) is directly stated and age-appropriate for Grade 3 students."
+            "reasoning": "Language is simple and accessible, stating the side length as 3 cm and requesting area in sq cm using vocabulary and phrasing appropriate for third graders."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×2 square arrangement yields 4 unit tiles. The hint correctly applies the formula area = side × side = 2 × 2 = 4, and the answer is mathematically valid."
+            "reasoning": "Squaring 3 (3 times 3) produces 9, the correct answer appears in the options, and the hint accurately presents the square area formula and computation."
           }
         }
       },
       {
-        "sample_id": "7772a6ad81fc710bf2f1",
+        "sample_id": "641a9255818b843e4e63",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem refers to a 5×5 array with a visual grid. The question asks how many squares are shaded in total. This is unambiguous; students count or calculate the grid area."
+            "reasoning": "The stem directly specifies 5 m on each side for the square, requests area in sq m, and provides four different numerical options with no potential for misinterpretation."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×5 grid contains 25 shaded cells. The hint provides the correct formula: side × side = 5 × 5 = 25. Options include nearby integers that might arise from miscount."
+            "reasoning": "A square measuring 5 m on each side is a valid geometric figure. The area calculation of 5 times 5 equals 25 is mathematically sound."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Students observe a square grid and count the shaded area. The language is straightforward, and the visual array makes the task concrete and accessible for Grade 3 learners."
+            "reasoning": "Phrasing using each side and requesting area is clear, unit specification as sq m is explicit, and sentence construction matches Grade 3 reading level."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 5×5 grid has area 25 square units, which is correct. The grid contains 25 grid-cell elements matching this area. The hint formula is arithmetically sound."
+            "reasoning": "Computation of 5 times 5 yielding 25 is correct, the correct answer is present among the four options, and the hint demonstrates the square area formula with accurate calculation."
           }
         }
       },
       {
-        "sample_id": "5476ed311c69b1972809",
+        "sample_id": "692f8ce938cc678b3999",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a 2×5 array visually and asks how many squares are shaded in total. No ambiguity exists about the array configuration or the task."
+            "reasoning": "Dimensions are clearly identified as length 6 m and width 2 m, the unit request is explicit as sq m, and the multiple-choice options are all distinct numerical values."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×5 rectangular grid has area 10. The hint correctly states this via multiplication: 2 × 5 = 10. Distractors are plausible miscounts or arithmetic errors."
+            "reasoning": "A rectangle with length and width specified in meters represents a realistic measurement scenario. The calculation 6 times 2 equals 12 is mathematically valid."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The grid visual representation and straightforward question make this task clear for a Grade 3 student. The request to count or calculate the total shaded squares is direct and unambiguous."
+            "reasoning": "The stem uses length and width terminology with specific dimensions 6 m and 2 m, then requests area in sq m using language that Grade 3 students can comprehend."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 2×5 grid contains 10 squares. The hint formula is correct: length × width = 2 × 5 = 10, and the grid rendering shows 10 grid-cell elements."
+            "reasoning": "Multiplying 6 by 2 correctly yields 12 square meters, the answer is present in the option set, and the hint accurately shows the rectangle area formula and computation."
           }
         }
       },
       {
-        "sample_id": "2d7ac0f66b8cd8d89c2e",
+        "sample_id": "d0ee6bc09765a0dcd87b",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes a 10×10 square covered with unit tiles and asks students to estimate the total count. The dimensions and task are stated clearly without ambiguity."
+            "reasoning": "The problem states a square with 4 m side length, explicitly requests sq m as the unit, and presents four different numerical options without redundancy or confusion."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 10×10 square arrangement yields 100 unit tiles. The hint provides the correct formula: side × side = 10 × 10 = 100. Distractors include multiples and factors that might appeal to students making systematic errors."
+            "reasoning": "A square with 4 m sides has a well-defined area of 16 square meters. The geometric relationship is standard and the calculation is logically consistent."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Although the square is larger, Grade 3 students can estimate or calculate 10×10. The problem language is clear: explicitly naming dimensions and asking for a total count."
+            "reasoning": "The statement clearly identifies the square shape, specifies the side as 4 m, and asks for area using language and concepts familiar to early Grade 3 students."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 10×10=100 is mathematically correct. The hint formula is sound for a square shape, and the answer is valid."
+            "reasoning": "The computation 4 times 4 equals 16 is accurate, the correct answer appears in the multiple-choice set, and the hint provides the correct square area formula with step-by-step calculation."
           }
         }
       },
       {
-        "sample_id": "a2f1123275d8429421cd",
+        "sample_id": "a1d6584c7e1c42256e22",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem clearly specifies a 4×4 square covered with unit tiles and asks to estimate total tiles. There is no ambiguity in the dimensions or the task."
+            "reasoning": "The stem specifies 3 m on each side for the square, explicitly requests area in sq m, and offers four options that are all different numerical values."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Four rows and four columns form a 4×4 square with area 16. The hint correctly applies the formula: side × side = 4 × 4 = 16. Distractors are plausible products derived from variations of the dimension."
+            "reasoning": "A square with 3 m dimensions has a valid area of 9 square meters. The mathematical relationship holds and the scenario is geometrically sound."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem is stated simply with explicit row and column numbers. The task of estimating total tiles is age-appropriate and clearly worded for Grade 3 students."
+            "reasoning": "Language is straightforward, stating the side measurement as 3 m and requesting area in sq m using Grade 3-appropriate vocabulary and sentence structure."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 4×4 square has area 16 square units. The hint equation is correct: 4 × 4 = 16, and the answer is mathematically valid."
+            "reasoning": "Computing 3 times 3 yields 9, the correct answer is among the options, and the hint accurately demonstrates the square area formula with proper calculation."
           }
         }
       },
       {
-        "sample_id": "6dcf05dbf86b28666c7e",
+        "sample_id": "3336d98312863030c0e0",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes laying tiles over a square with 3 rows and 3 columns and asks for the total count. The action and dimensions are unambiguous."
+            "reasoning": "The stem identifies sides of 4 cm for a square, requests area in sq cm, and provides four distinct numerical options without ambiguity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Three rows and three columns yield a 3×3 square with area 9. The hint correctly states: side × side = 3 × 3 = 9. All options are plausible products a student might compute with an error."
+            "reasoning": "A square with 4 cm sides represents a valid geometric measurement. The area calculation of 4 times 4 equals 16 is mathematically correct."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The context of laying tiles is concrete and relatable for Grade 3 students. The question directly asks about the total, and dimensions are clearly stated."
+            "reasoning": "Phrasing using calculate and specifying sides of 4 cm with unit sq cm is clear and accessible to Grade 3 learners."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 3×3 square arrangement contains 9 unit tiles, and the hint formula is arithmetically correct: 3 × 3 = 9."
+            "reasoning": "The computation 4 times 4 equals 16 is accurate, the answer appears in the options, and the hint correctly presents the square area formula and calculation."
           }
         }
       },
       {
-        "sample_id": "9f6ce4a3fa7c361f7962",
+        "sample_id": "0520b22594155b865a6a",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a 4×4 array visually and asks how many squares are shaded. The visual makes the array unambiguous, and the question is direct."
+            "reasoning": "Square dimensions are given as 5 m per side, area unit is stated as sq m, and four different numerical options are presented without overlap."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 4×4 grid has area 16. The hint provides the correct formula: side × side = 4 × 4 = 16. Options are nearby integers that might result from miscounting."
+            "reasoning": "A square measuring 5 m on each side has an area of 25 square meters, representing a geometrically valid and logically consistent problem."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The visual grid makes the array structure immediately apparent to the learner. The question to count shaded squares is straightforward and unambiguous."
+            "reasoning": "The problem uses clear phrasing with the side measurement 5 m and requests area in sq m using vocabulary appropriate for Grade 3."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 4×4 grid has 16 square units, and the grid rendering shows 16 grid-cell elements. The hint equation is correct."
+            "reasoning": "Multiplying 5 by 5 correctly produces 25 square meters, the answer is present in the option set, and the hint demonstrates the square area formula accurately."
           }
         }
       },
       {
-        "sample_id": "afd6b9d5ac962f7d7f16",
+        "sample_id": "c1a4bfa9490af42bb5db",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem introduces a real-world context of a rectangular garden and asks how many tiles are needed to cover it. Dimensions and tile size are specified, leaving no ambiguity."
+            "reasoning": "The stem provides context about a chalkboard with dimensions 2 m long and 3 m wide, requests area in sq m, and lists four distinct numerical options."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A garden that is 2 meters long and 3 meters wide, covered with 1-meter square tiles, requires 2×3=6 tiles. The hint correctly applies this: length × width = 2 × 3 = 6 square meters. Distractors are plausible miscalculations."
+            "reasoning": "A rectangular chalkboard with dimensions 2 m and 3 m is a realistic object. The area calculation 2 times 3 equals 6 is mathematically sound."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The real-world context of covering a garden with tiles is concrete and meaningful for Grade 3 students. The dimensions and unit size are clearly stated."
+            "reasoning": "The problem uses a familiar school object (chalkboard) with clear dimensions and unambiguous unit specification (sq m) appropriate for Grade 3 comprehension."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2-meter by 3-meter rectangle, with 1-meter square tiles, requires 6 tiles. The formula and calculation are mathematically valid."
+            "reasoning": "Computing 2 times 3 yields 6 square meters correctly, the answer is in the option set, and the hint provides accurate formula and step-by-step calculation."
           }
         }
       },
       {
-        "sample_id": "878015457d2e626cfb08",
+        "sample_id": "d0f01096e2a48ec95a02",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes laying tiles in a rectangular arrangement with 5 rows and 3 columns and asks for the total count. The dimensions and task are clear."
+            "reasoning": "The stem clearly specifies rectangle dimensions as 4 m long and 3 m wide, requests area in sq m, and provides four different numerical options."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Five rows and three columns form a 5×3 rectangle with area 15. The hint correctly states: length × width = 5 × 3 = 15. Options include plausible products from dimension variations or arithmetic errors."
+            "reasoning": "A rectangle with 4 m length and 3 m width has a well-defined area of 12 square meters. The scenario is geometrically and logically valid."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem uses a concrete tile-laying context with explicit row and column counts. The question directly asks for the total, appropriate for Grade 3."
+            "reasoning": "Wording using long and wide with measurements 4 m and 3 m, followed by unit request in sq m, is clear and suitable for Grade 3 students."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×3 rectangle has area 15 square units. The hint equation is correct: 5 × 3 = 15."
+            "reasoning": "The computation 4 times 3 equals 12 is accurate, the correct answer is among the options, and the hint demonstrates the rectangle area formula with correct calculation."
           }
         }
       },
       {
-        "sample_id": "02b1878c052415e20eaa",
+        "sample_id": "54754d3310ac1337e394",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes a rectangle covered with unit tiles, arranged in 5 rows and 6 columns. The request to estimate total tiles is unambiguous."
+            "reasoning": "The stem identifies a square with 4 cm side, explicitly requests area in sq cm, and offers four distinct numerical options without interpretation issues."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Five rows and six columns yield a 5×6 rectangle with area 30. The hint correctly applies: length × width = 5 × 6 = 30. Distractors are plausible miscounts or related products."
+            "reasoning": "A square with 4 cm sides represents a standard geometric figure with area of 16 square centimeters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem clearly states the row and column arrangement and asks to estimate the total. The language and structure are appropriate for Grade 3 comprehension."
+            "reasoning": "Language is direct and uses Grade 3 vocabulary, specifying the 4 cm side and requesting area in sq cm."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×6 rectangular arrangement contains 30 unit tiles. The hint formula is arithmetically sound: 5 × 6 = 30."
+            "reasoning": "Squaring 4 yields 16, the correct answer appears in the options, and the hint accurately shows the square area formula and computation."
           }
         }
       },
       {
-        "sample_id": "865479fb24fd5277490b",
+        "sample_id": "c0943b2dcb1d14917c10",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem refers to a 4×7 array visually and asks how many squares are shaded. The visual grid and direct question remove any ambiguity."
+            "reasoning": "Rectangle dimensions are given as 8 cm long and 5 cm wide, area unit is specified as sq cm, and four different numerical options are presented."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 4×7 grid contains 28 shaded cells. The hint correctly states: length × width = 4 × 7 = 28 square meters. The calculation is valid, though the unit designation as square meters is a real-world choice rather than a generic square unit."
+            "reasoning": "A rectangle measuring 8 cm by 5 cm has a valid area of 40 square centimeters. The calculation is logically consistent."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The visual array makes the dimensions concrete. The question to count shaded squares is direct and unambiguous for Grade 3 learners."
+            "reasoning": "The problem clearly states dimensions using long and wide terminology with specific measurements and requests area using appropriate Grade 3 language."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 4×7 grid has 28 square units of area. The grid rendering shows 28 grid-cell elements. The hint formula is correct: 4 × 7 = 28."
+            "reasoning": "Computing 8 times 5 correctly yields 40 square centimeters, the answer is in the option set, and the hint provides the correct formula and calculation."
           }
         }
       },
       {
-        "sample_id": "d083d0b659324f8cce62",
+        "sample_id": "84b0cebbadb378fb5777",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes laying tiles over a rectangle with 5 rows and 3 columns and asks for the approximate total. The configuration is clear and the task is direct."
+            "reasoning": "The stem specifies rectangle sides as 5 cm and 6 cm, requests area in sq cm, and provides four numerically distinct options."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×3 rectangular tile arrangement yields 15 square units. The hint correctly provides: length × width = 5 × 3 = 15. Distractors are plausible arithmetic variations."
+            "reasoning": "A rectangle with sides 5 cm and 6 cm has an area of 30 square centimeters, representing a valid geometric scenario."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The tile-laying context is concrete and relatable. Dimensions are explicitly stated, and the question about total tiles is straightforward for Grade 3 students."
+            "reasoning": "Phrasing is straightforward, identifying sides as 5 cm and 6 cm with explicit unit request as sq cm, matching Grade 3 comprehension level."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×3 arrangement contains 15 square units. The hint formula is correct: 5 × 3 = 15."
+            "reasoning": "Multiplying 5 by 6 yields 30 square centimeters correctly, the answer is present in the options, and the hint accurately demonstrates the formula and calculation."
           }
         }
       },
       {
-        "sample_id": "bf496819dd65b7ee2031",
+        "sample_id": "2e39ffef63164ddcba4f",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Despite the dance-shoe theme introduction, the stem clearly refers to a 5×5 array and asks how many squares are shaded. The core mathematical task is unambiguous."
+            "reasoning": "Rectangle dimensions are clearly stated as 4 m long and 7 m wide, area unit is explicit as sq m, and four different options are given."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×5 square grid has area 25. The hint correctly states: side × side = 5 × 5 = 25. The theme does not interfere with the mathematical validity."
+            "reasoning": "A rectangle with 4 m length and 7 m width has a well-defined area of 28 square meters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The visual grid makes the square array explicit. Although thematic language about dance shoes appears, the core question about counting squares is clear and direct."
+            "reasoning": "The stem uses long and wide descriptors with measurements 4 m and 7 m, requesting area in sq m with Grade 3-appropriate language."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 5×5 grid contains 25 square units. The grid rendering shows 25 grid-cell elements, and the hint formula is correct."
+            "reasoning": "The computation 4 times 7 equals 28 is accurate, the correct answer is in the option set, and the hint provides the correct formula and step-by-step calculation."
           }
         }
       },
       {
-        "sample_id": "37f5583277a6b71cd40d",
+        "sample_id": "3916cfbbbff9fdf725ae",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Although the stem includes a basketball theme, it clearly describes a 2×3 rectangular tile arrangement and asks to estimate the total. The mathematical task is unambiguous."
+            "reasoning": "Rectangle dimensions are specified as 5 cm long and 7 cm wide, area unit is requested as sq cm, and four distinct options are provided."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Two rows and three columns yield a 2×3 rectangle with area 6. The hint correctly states: length × width = 2 × 3 = 6. The theme does not disrupt the mathematical logic."
+            "reasoning": "A rectangle with 5 cm and 7 cm dimensions has a valid area of 35 square centimeters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The core question about estimating tiles is straightforward. Although a theme is introduced, the problem statement remains clear and appropriately worded for Grade 3."
+            "reasoning": "Wording using long and wide with specific measurements 5 cm and 7 cm, plus unit request, is accessible to Grade 3 learners."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×3 rectangular tile arrangement has area 6 square units. The hint formula is arithmetically sound: 2 × 3 = 6."
+            "reasoning": "Computing 5 times 7 correctly produces 35 square centimeters, the answer is among the options, and the hint demonstrates the rectangle area formula accurately."
           }
         }
       },
       {
-        "sample_id": "fe218ab312a82631c008",
+        "sample_id": "67499d401f53485c9875",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes a 10×10 square covered with unit tiles and asks to estimate total tiles. The dimensions and task are explicitly stated without ambiguity."
+            "reasoning": "Despite the thematic wrapper about dance shoes, the mathematical problem is clear: square with 2 m side, area requested in sq m, four options provided."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 10×10 square arrangement yields 100 unit tiles. The hint correctly applies: side × side = 10 × 10 = 100. Distractors are plausible products derived from variations."
+            "reasoning": "A square with 2 m side represents a valid geometric figure with area 4 square meters. Theme does not interfere with mathematical meaning."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Grade 3 students can estimate or calculate the area of a 10×10 square. The problem language is straightforward and the question is direct."
+            "reasoning": "The mathematical core is clear despite thematic wrapper. Dimensions and unit are explicit and appropriate for Grade 3."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 10×10 square has area 100 square units. The hint equation is mathematically correct."
+            "reasoning": "Computing 2 times 2 yields 4 square meters correctly, the answer is in the option set, and the hint provides accurate formula and calculation."
           }
         }
       },
       {
-        "sample_id": "34c4f9c6892d9ece3519",
+        "sample_id": "61e5c1439b9a16cb006e",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a 2×3 array visually and asks how many squares are shaded. The visual grid and direct question are unambiguous."
+            "reasoning": "The thematic context about basketballs precedes a clear mathematical problem: rectangle with 8 cm length and 2 cm width, area in sq cm, four options given."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×3 grid has area 6. The hint correctly states: length × width = 2 × 3 = 6. Distractors are plausible miscounts nearby the correct answer."
+            "reasoning": "A rectangle measuring 8 cm by 2 cm has area 16 square centimeters. Theme does not affect mathematical validity."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The visual array presentation makes the rectangular structure clear. The question to count or calculate the total shaded area is direct and appropriate for Grade 3."
+            "reasoning": "Dimensions are stated clearly as 8 cm long and 2 cm wide with area requested in sq cm, despite thematic wrapper."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The 2×3 grid contains 6 squares. The grid rendering shows 6 grid-cell elements, and the hint formula is correct."
+            "reasoning": "Multiplying 8 by 2 yields 16 square centimeters correctly, the answer is among the options, and the hint shows the correct formula and calculation."
           }
         }
       },
       {
-        "sample_id": "64a8eca1e772989696b4",
+        "sample_id": "ca45d0fcd49c1c41c980",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem specifies a 4×4 square covered with unit tiles and asks to estimate total tiles. The dimensions and task are stated clearly."
+            "reasoning": "The stem specifies a square measuring 5 cm on each side, requests area in sq cm, and provides four different numerical options."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 4×4 square arrangement yields 16 square units. The hint correctly provides: side × side = 4 × 4 = 16. Distractors are plausible products or miscalculations."
+            "reasoning": "A square with 5 cm sides has a well-defined area of 25 square centimeters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem clearly states the square dimensions and asks for the total tile count. The language is appropriate for Grade 3 comprehension."
+            "reasoning": "Language is clear, specifying the 5 cm measurement on each side and requesting area in sq cm using Grade 3-appropriate wording."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 4×4 square has 16 square units of area. The hint formula is correct: 4 × 4 = 16."
+            "reasoning": "Squaring 5 produces 25 square centimeters correctly, the answer is in the option set, and the hint accurately presents the square area formula with calculation."
           }
         }
       },
       {
-        "sample_id": "f7a5bb4ad18958071180",
+        "sample_id": "a50484eb7a7e8be048f5",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes a 2×2 square covered with tiles and asks to estimate total tiles. The dimensions and task are unambiguous despite the hint_gated experience level."
+            "reasoning": "Rectangle dimensions are stated as 3 m long and 2 m wide, area unit is explicit as sq m, and four distinct options are offered."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×2 square arrangement yields 4 square units. The hint correctly states: side × side = 2 × 2 = 4. The distractors are plausible products derived from different calculations."
+            "reasoning": "A rectangle with 3 m length and 2 m width has a valid area of 6 square meters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem is stated simply with explicit row and column numbers. Although marked as hint_gated, the core question remains clear and appropriate for Grade 3."
+            "reasoning": "The problem uses clear descriptors (long and wide) with measurements 3 m and 2 m, requesting area in sq m with Grade 3 vocabulary."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 2×2 square has 4 square units of area. The hint equation is arithmetically sound and mathematically valid."
+            "reasoning": "Computing 3 times 2 yields 6 square meters correctly, the answer is among the options, and the hint demonstrates the rectangle area formula accurately."
           }
         }
       },
       {
-        "sample_id": "dc8986fffc633714376c",
+        "sample_id": "7b975766735bef4b5097",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes a rectangle covered with tiles in 8 rows and 3 columns and asks to estimate total tiles. The configuration is explicit and unambiguous."
+            "reasoning": "The stem identifies a square with 2 m sides, requests area in sq m, and provides four numerically distinct options without confusion."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Eight rows and three columns form an 8×3 rectangle with area 24. The hint correctly applies: length × width = 8 × 3 = 24. Distractors include products derived from variations or related calculations."
+            "reasoning": "A square measuring 2 m on each side has a well-defined area of 4 square meters."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The problem describes the tile arrangement with explicit dimensions and directly asks for the total count. The language is appropriate for Grade 3, even though the mastery_drill experience level indicates increased difficulty."
+            "reasoning": "Wording using calculate and specifying sides of 2 m with unit sq m is clear and accessible to Grade 3 students."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "An 8×3 rectangular arrangement contains 24 square units. The hint formula is arithmetically correct: 8 × 3 = 24."
+            "reasoning": "Computing 2 times 2 yields 4 square meters correctly, the answer is in the option set, and the hint provides the correct formula and calculation."
           }
         }
       },
       {
-        "sample_id": "b4d21c7c610f1adf8ab4",
+        "sample_id": "2ba81d1bd8dec8a1036f",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem describes laying tiles over a 3×3 square and asks for the approximate total. The dimensions and task are clearly stated without ambiguity."
+            "reasoning": "The stem specifies a square with 5 cm side length, requests area in sq cm, and offers four different numerical options. Hint-gated experience does not affect mathematical clarity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 3×3 square arrangement yields 9 square units. The hint correctly provides: side × side = 3 × 3 = 9. Distractors are plausible arithmetic variations."
+            "reasoning": "A square with 5 cm sides has an area of 25 square centimeters. The mathematical relationship is valid and consistent."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The tile-laying context is concrete and relatable. Dimensions are explicitly stated, and the question about total tiles is straightforward, appropriate for the scaffolded experience level."
+            "reasoning": "The problem is stated clearly with side length 5 cm and unit request in sq cm using Grade 3-appropriate language."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "A 3×3 square has 9 square units of area. The hint formula is correct: 3 × 3 = 9."
+            "reasoning": "Squaring 5 produces 25 square centimeters correctly, the answer is among the options, and the hint accurately shows the square area formula and computation."
+          }
+        }
+      },
+      {
+        "sample_id": "afa1212a7618f2be4c2c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Rectangle dimensions are clearly stated as 6 cm length and 2 cm width, area unit is specified as sq cm, and four different options are provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A rectangle with 6 cm length and 2 cm width has a valid area of 12 square centimeters. The mastery-drill format does not affect validity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Dimensions are specified clearly and unit request is explicit, making the problem accessible to Grade 3 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing 6 times 2 yields 12 square centimeters correctly, the answer is in the option set, and the hint demonstrates the formula and calculation."
+          }
+        }
+      },
+      {
+        "sample_id": "297bc5ba9a118d95143c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a square with 3 cm side length, requests area in sq cm, and provides four distinct numerical options without ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A square with 3 cm sides has a well-defined area of 9 square centimeters. The scaffolded format does not affect mathematical validity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Wording clearly states side length 3 cm and requests area in sq cm using Grade 3-appropriate vocabulary and phrasing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing 3 times 3 yields 9 square centimeters correctly, the answer is among the options, and the hint provides the correct formula and calculation."
           }
         }
       }
     ],
     "clause_evidence": [
       {
-        "requirement_id": "illustrate_area_with_tiles",
-        "clause": "Illustrate",
+        "requirement_id": "compute_area",
+        "clause": "Find",
         "verdict": "PASS",
-        "reasoning": "Samples employing the read_mcq format with GridArea visual presentation demonstrate area through explicit grid rendering: samples 46da5b99d3026925c7c2, 7772a6ad81fc710bf2f1, 5476ed311c69b1972809, 9f6ce4a3fa7c361f7962, 865479fb24fd5277490b, bf496819dd65b7ee2031, and 34c4f9c6892d9ece3519 all show interactive grid arrays that learners observe. Additionally, non-visual samples in cloze and multiple-choice formats ask learners to construct mental models of tile arrangements from text descriptions, which fulfills the illustration requirement through guided visualization.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "5476ed311c69b1972809",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "bf496819dd65b7ee2031",
-          "37f5583277a6b71cd40d",
-          "fe218ab312a82631c008",
-          "34c4f9c6892d9ece3519",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "dc8986fffc633714376c",
-          "b4d21c7c610f1adf8ab4"
-        ]
-      },
-      {
-        "requirement_id": "estimate_area",
-        "clause": "estimate the area",
-        "verdict": "PASS",
-        "reasoning": "Every sample in the pool asks learners to either estimate or calculate the area of a figure by counting unit tiles or applying multiplication. Stems consistently use language such as how many tiles cover the figure, estimate the total, or calculate the area. This requirement is comprehensively and consistently addressed across all sample types and presentation formats.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "5476ed311c69b1972809",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "bf496819dd65b7ee2031",
-          "37f5583277a6b71cd40d",
-          "fe218ab312a82631c008",
-          "34c4f9c6892d9ece3519",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "dc8986fffc633714376c",
-          "b4d21c7c610f1adf8ab4"
-        ]
+        "reasoning": "Every sample in the node requires students to find or calculate the area of a geometric figure, directly addressing the core action specified in this requirement component.",
+        "sample_ids": ["bab37b94fb2a9e10a3cb", "81a5b3b9433fb18ff913", "6bf9c734e5eb738bd8b2", "641a9255818b843e4e63", "692f8ce938cc678b3999", "d0ee6bc09765a0dcd87b", "a1d6584c7e1c42256e22", "3336d98312863030c0e0", "0520b22594155b865a6a", "c1a4bfa9490af42bb5db", "d0f01096e2a48ec95a02", "54754d3310ac1337e394", "c0943b2dcb1d14917c10", "84b0cebbadb378fb5777", "2e39ffef63164ddcba4f", "3916cfbbbff9fdf725ae", "67499d401f53485c9875", "61e5c1439b9a16cb006e", "ca45d0fcd49c1c41c980", "a50484eb7a7e8be048f5", "7b975766735bef4b5097", "2ba81d1bd8dec8a1036f", "afa1212a7618f2be4c2c", "297bc5ba9a118d95143c"]
       },
       {
         "requirement_id": "area_attribute",
-        "clause": "the area",
+        "clause": "the areas",
         "verdict": "PASS",
-        "reasoning": "The concept of area is central to every sample. Hints explicitly reference area in phrases such as the area tells us how many unit squares cover the shape, and answers represent area measurements in square units. This foundational attribute is consistently invoked throughout the sample pool.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "5476ed311c69b1972809",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "bf496819dd65b7ee2031",
-          "37f5583277a6b71cd40d",
-          "fe218ab312a82631c008",
-          "34c4f9c6892d9ece3519",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "dc8986fffc633714376c",
-          "b4d21c7c610f1adf8ab4"
-        ]
+        "reasoning": "All samples use the term area when asking what quantity should be found, directly fulfilling this requirement component that specifies the target attribute.",
+        "sample_ids": ["bab37b94fb2a9e10a3cb", "81a5b3b9433fb18ff913", "6bf9c734e5eb738bd8b2", "641a9255818b843e4e63", "692f8ce938cc678b3999", "d0ee6bc09765a0dcd87b", "a1d6584c7e1c42256e22", "3336d98312863030c0e0", "0520b22594155b865a6a", "c1a4bfa9490af42bb5db", "d0f01096e2a48ec95a02", "54754d3310ac1337e394", "c0943b2dcb1d14917c10", "84b0cebbadb378fb5777", "2e39ffef63164ddcba4f", "3916cfbbbff9fdf725ae", "67499d401f53485c9875", "61e5c1439b9a16cb006e", "ca45d0fcd49c1c41c980", "a50484eb7a7e8be048f5", "7b975766735bef4b5097", "2ba81d1bd8dec8a1036f", "afa1212a7618f2be4c2c", "297bc5ba9a118d95143c"]
       },
       {
         "requirement_id": "square_figure",
-        "clause": "a square",
+        "clause": "squares",
         "verdict": "PASS",
-        "reasoning": "Eleven samples explicitly feature square figures: samples with 2×2, 3×3, 4×4, 5×5, and 10×10 configurations. These samples present squares in both textual description and visual grid formats, demonstrating the square shape across varied dimensions appropriate for Grade 3.",
-        "sample_ids": [
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "bf496819dd65b7ee2031",
-          "fe218ab312a82631c008",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "b4d21c7c610f1adf8ab4"
-        ]
+        "reasoning": "Multiple samples present square figures as problems requiring area calculation. These samples span different dimensions and both unit systems, demonstrating comprehensive coverage of the square shape requirement.",
+        "sample_ids": ["6bf9c734e5eb738bd8b2", "641a9255818b843e4e63", "d0ee6bc09765a0dcd87b", "a1d6584c7e1c42256e22", "3336d98312863030c0e0", "0520b22594155b865a6a", "54754d3310ac1337e394", "67499d401f53485c9875", "ca45d0fcd49c1c41c980", "7b975766735bef4b5097", "2ba81d1bd8dec8a1036f", "297bc5ba9a118d95143c"]
       },
       {
         "requirement_id": "rectangle_figure",
-        "clause": "rectangle",
+        "clause": "rectangles",
         "verdict": "PASS",
-        "reasoning": "Eleven samples explicitly feature rectangular figures with varying dimensions such as 2×3, 2×5, 2×7, 3×5, 4×7, 5×6, and 8×3. These samples present rectangles through text descriptions and visual grids, ensuring learners encounter rectangles as distinct from squares across a range of aspect ratios.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "5476ed311c69b1972809",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "37f5583277a6b71cd40d",
-          "34c4f9c6892d9ece3519",
-          "dc8986fffc633714376c"
-        ]
+        "reasoning": "Multiple samples present rectangle figures with varying dimension combinations in both centimeter and meter units, thoroughly addressing this requirement component.",
+        "sample_ids": ["bab37b94fb2a9e10a3cb", "81a5b3b9433fb18ff913", "692f8ce938cc678b3999", "c1a4bfa9490af42bb5db", "d0f01096e2a48ec95a02", "c0943b2dcb1d14917c10", "84b0cebbadb378fb5777", "2e39ffef63164ddcba4f", "3916cfbbbff9fdf725ae", "61e5c1439b9a16cb006e", "a50484eb7a7e8be048f5", "afa1212a7618f2be4c2c"]
       },
       {
-        "requirement_id": "square_tile_covering",
-        "clause": "square tile units",
+        "requirement_id": "square_centimeter",
+        "clause": "sq. cm",
         "verdict": "PASS",
-        "reasoning": "All samples reference unit square tiles or mention covering shapes with tiles. Phrases such as unit square tiles, square tiles, and tile units appear consistently in stems and hints. The concept of tiling a figure with unit squares is the organizing principle for every problem in the pool.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "5476ed311c69b1972809",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "bf496819dd65b7ee2031",
-          "37f5583277a6b71cd40d",
-          "fe218ab312a82631c008",
-          "34c4f9c6892d9ece3519",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "dc8986fffc633714376c",
-          "b4d21c7c610f1adf8ab4"
-        ]
+        "reasoning": "Multiple samples request area in square centimeters, fulfilling this requirement component that specifies centimeter-based unit measurement.",
+        "sample_ids": ["bab37b94fb2a9e10a3cb", "6bf9c734e5eb738bd8b2", "3336d98312863030c0e0", "54754d3310ac1337e394", "c0943b2dcb1d14917c10", "84b0cebbadb378fb5777", "3916cfbbbff9fdf725ae", "61e5c1439b9a16cb006e", "ca45d0fcd49c1c41c980", "2ba81d1bd8dec8a1036f", "afa1212a7618f2be4c2c", "297bc5ba9a118d95143c"]
       },
       {
-        "requirement_id": "square_tile_unit",
-        "clause": "tile units",
+        "requirement_id": "square_meter",
+        "clause": "sq. m",
         "verdict": "PASS",
-        "reasoning": "Every sample invokes the concept of tile units either by naming them explicitly in the stem or by anchoring answers in square units. Hints consistently reference unit squares or square units as the measurement basis for area, establishing tile units as the foundational measure throughout the problem pool.",
-        "sample_ids": [
-          "881e6842a17b88dbb720",
-          "46da5b99d3026925c7c2",
-          "b330830a6e9094721c45",
-          "7772a6ad81fc710bf2f1",
-          "5476ed311c69b1972809",
-          "2d7ac0f66b8cd8d89c2e",
-          "a2f1123275d8429421cd",
-          "6dcf05dbf86b28666c7e",
-          "9f6ce4a3fa7c361f7962",
-          "afd6b9d5ac962f7d7f16",
-          "878015457d2e626cfb08",
-          "02b1878c052415e20eaa",
-          "865479fb24fd5277490b",
-          "d083d0b659324f8cce62",
-          "bf496819dd65b7ee2031",
-          "37f5583277a6b71cd40d",
-          "fe218ab312a82631c008",
-          "34c4f9c6892d9ece3519",
-          "64a8eca1e772989696b4",
-          "f7a5bb4ad18958071180",
-          "dc8986fffc633714376c",
-          "b4d21c7c610f1adf8ab4"
-        ]
+        "reasoning": "Multiple samples request area in square meters, comprehensively demonstrating this requirement component that specifies meter-based unit measurement.",
+        "sample_ids": ["81a5b3b9433fb18ff913", "641a9255818b843e4e63", "692f8ce938cc678b3999", "d0ee6bc09765a0dcd87b", "a1d6584c7e1c42256e22", "0520b22594155b865a6a", "c1a4bfa9490af42bb5db", "d0f01096e2a48ec95a02", "2e39ffef63164ddcba4f", "67499d401f53485c9875", "a50484eb7a7e8be048f5", "7b975766735bef4b5097"]
+      },
+      {
+        "requirement_id": "square_unit_abbreviation",
+        "clause": "sq",
+        "verdict": "PASS",
+        "reasoning": "All samples consistently use the abbreviated notation sq when expressing units, appearing in every sample as either sq cm or sq m, directly fulfilling this requirement.",
+        "sample_ids": ["bab37b94fb2a9e10a3cb", "81a5b3b9433fb18ff913", "6bf9c734e5eb738bd8b2", "641a9255818b843e4e63", "692f8ce938cc678b3999", "d0ee6bc09765a0dcd87b", "a1d6584c7e1c42256e22", "3336d98312863030c0e0", "0520b22594155b865a6a", "c1a4bfa9490af42bb5db", "d0f01096e2a48ec95a02", "54754d3310ac1337e394", "c0943b2dcb1d14917c10", "84b0cebbadb378fb5777", "2e39ffef63164ddcba4f", "3916cfbbbff9fdf725ae", "67499d401f53485c9875", "61e5c1439b9a16cb006e", "ca45d0fcd49c1c41c980", "a50484eb7a7e8be048f5", "7b975766735bef4b5097", "2ba81d1bd8dec8a1036f", "afa1212a7618f2be4c2c", "297bc5ba9a118d95143c"]
       }
     ],
     "overall": "PASS"
