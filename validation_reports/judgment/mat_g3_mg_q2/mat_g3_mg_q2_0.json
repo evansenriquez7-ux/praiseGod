@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q2_0",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Measure mass in grams (g), kilograms (kg) and/or milligrams (mg), using appropriate measuring tools.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "measure_mass",
+      "clause": "Measure mass"
+    },
+    {
+      "kind": "object",
+      "id": "grams_kilograms_and_or_milligrams",
+      "clause": "grams (g), kilograms (kg) and/or milligrams (mg)"
+    },
+    {
+      "kind": "representation",
+      "id": "measuring_tools",
+      "clause": "measuring tools"
+    }
+  ],
+  "packet_digest": "2951abbcbb0e3696b6aa0f305f19d42baff2bf96a40a26234ab25627bff6600f",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,106 +37,338 @@
     46,
     500,
     501,
-    502
+    502,
+    601,
+    602,
+    605,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "c9908165709971b9948d",
+    "8b67d17085e6d176a168",
+    "afc02b083292d46df035",
+    "ceb300771fc285155cc6",
+    "8f0352a094a5eb9f8be6",
+    "d83b74ac4285152920be",
+    "9ee97d725fdb8ac00ee8",
+    "dcc617830eb87a6b60c1",
+    "e7961c1b9ad1b95f73a6",
+    "dbf17f65b25154d382b1",
+    "381aaf5a2ac60203f499",
+    "7e38015f40c86b9b76d2",
+    "b4df5de2d704a611d15e",
+    "7a48135b1579aadb498d",
+    "d416480034e95eb1ae5f",
+    "41834693a00433869d2a",
+    "3decad15173d83d40b31",
+    "845374d47c44b3a0f207",
+    "4cb8eb0f6cdcc31bf6d0",
+    "f4f3e330fa70ba558153"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "What is the mass of the object in g?",
-      "correct_answer": 7,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the object? Give your answer in g.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 9,
-          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8,
-          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 7,
-          "text": "7",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 7 g."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 7,
+        "unit": "g",
+        "scale_max": 9,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "16738f0bdeeb775e1c0482b48fa540cdda9e9160aa6df2ccca702f5874db1e6a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 38,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "g",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c9908165709971b9948d",
+      "replay_digest": "cf0ee5739696895fb13c5ab439e40df027b3668bd6b4f78cb26b614565514165"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is the mass of the object in g?",
-      "correct_answer": 31,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in g.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 33,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 31,
+          "value": 30,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 30,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 32,
+          "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 30 g."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 30,
+        "unit": "g",
+        "scale_max": 40,
+        "tick_interval": 5,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "ec644384b068b9e8a1ed03c6279dcbcae98eb7818bfe97c0d2330d92ce911080",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 35,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "g",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8b67d17085e6d176a168",
+      "replay_digest": "02e2d7cee31d919609e3554c1fa7b16af61ccea66a51c86b62b92b94a02617aa"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "What is the mass of the object in kg?",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in kg.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 17,
-          "text": "17",
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "C",
           "value": 18,
-          "text": "18",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 19,
-          "text": "19",
+          "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 18 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 18,
+        "unit": "kg",
+        "scale_max": 24,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "f20ae216610cdc13827c60cecb85d1a03419d6797ec252a15ebed8f2b0327b39",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 47,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "kg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "afc02b083292d46df035",
+      "replay_digest": "9e6cef25ccacab50d6377d8f28415712f94b4887b47a120ddab302eb0397c367"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What is the mass of the object in kg?",
-      "correct_answer": 20,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the object? Give your answer in kg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -119,12 +377,12 @@
         },
         {
           "key": "B",
-          "value": 21,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
+          "value": 10,
           "is_correct": false
         },
         {
@@ -132,150 +390,2144 @@
           "value": 20,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 20 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 20,
+        "unit": "kg",
+        "scale_max": 26,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "c2112b37880d7225b31b9ccfed494c096780219c933a3cb9885033241bea380b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 43,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "4",
+            "8",
+            "12",
+            "16",
+            "20",
+            "24",
+            "kg",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ceb300771fc285155cc6",
+      "replay_digest": "d6416618287fd4ec1b1330dc37e2a2fdf24959507ea489539fe9a4136fcb6b79"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is the mass of the object in mg?",
-      "correct_answer": 62,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in mg.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 62,
+          "value": 60,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 61,
+          "value": 75,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 63,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 64,
+          "value": 55,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 60 mg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 60,
+        "unit": "mg",
+        "scale_max": 75,
+        "tick_interval": 5,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "1e564524eb3993cf61200e2ee219649032069814fffcd46f20076f54c65e3c8d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 48,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "mg",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8f0352a094a5eb9f8be6",
+      "replay_digest": "50112bc75519ed4948a02b15dda59aedca542c3797309a666ea9a1d33a709775"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 500,
-      "formatter": "mcq",
-      "question_text": "What is the mass of the object in kg?",
-      "correct_answer": 307,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in kg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 308,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 306,
+          "value": 325,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 309,
+          "value": 375,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 307,
+          "value": 300,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 300,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 300 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 300,
+        "unit": "kg",
+        "scale_max": 375,
+        "tick_interval": 25,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "ae444b94c03d029e01f1c8f346bcbab4db5fb10cfaf87557f20c756175758bbe",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 48,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "50",
+            "100",
+            "150",
+            "200",
+            "250",
+            "300",
+            "350",
+            "kg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d83b74ac4285152920be",
+      "replay_digest": "8c7a04774ad9d3f7b1e5ffaecc27cb8d2bf3780ddeac702cb6e8f2726cf1b98f"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 501,
-      "formatter": "mcq",
-      "question_text": "What is the mass of the object in mg?",
-      "correct_answer": 1927,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the object? Give your answer in mg.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 1927,
+          "value": 2000,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1929,
+          "value": 1750,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1928,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1926,
+          "value": 2500,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2000,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 2000 mg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 2000,
+        "unit": "mg",
+        "scale_max": 2500,
+        "tick_interval": 250,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "881a2d608d7b6565512582255ae19778d3ee77f82c2b21e5018cad432adc53d1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "250",
+            "500",
+            "750",
+            "1000",
+            "1250",
+            "1500",
+            "1750",
+            "2000",
+            "2250",
+            "2500",
+            "mg",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9ee97d725fdb8ac00ee8",
+      "replay_digest": "80a70645ba4cacaa6210e9744725ce735ecb5eca1e3fcd86c6d0a2301f867d28"
     },
     {
+      "node_id": "mat_g3_mg_q2_0",
       "seed": 502,
-      "formatter": "cloze",
-      "question_text": "What is the mass of the object in mg?",
-      "correct_answer": 454,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in mg.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 455,
-          "text": "455",
+          "value": 500,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 456,
-          "text": "456",
+          "value": 600,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 454,
-          "text": "454",
+          "value": 450,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 453,
-          "text": "453",
+          "value": 9,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 450,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 450 mg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 450,
+        "unit": "mg",
+        "scale_max": 600,
+        "tick_interval": 50,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "69e2f747eba084574ccb5b8afc7293a0976c9413b1ae5ad1e60915666bd3dd25",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 47,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "50",
+            "100",
+            "150",
+            "200",
+            "250",
+            "300",
+            "350",
+            "400",
+            "450",
+            "500",
+            "550",
+            "600",
+            "mg",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dcc617830eb87a6b60c1",
+      "replay_digest": "941d6b7e40a247838e2aefe851fb56da40b4c1877f787a1aa30082e65f8ae698"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 601,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in kg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "read_measurement"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 14,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 14 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 14,
+        "unit": "kg",
+        "scale_max": 18,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "c1f8a6d84739901f4fcc0edab8abcf689ac1bb40d658c7ee52e8ceaf75eda718",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 38,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "kg",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e7961c1b9ad1b95f73a6",
+      "replay_digest": "eac39201c3e63c2c0f881f6835f35bde04db60f0dad3fb7d39e164bdffbb46be"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in mg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "unit": "g"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 13 mg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 13,
+        "unit": "mg",
+        "scale_max": 17,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "293ebaf30626e03700dbba6f5e2995d18b4a309925996afd996b89d012e77e17",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 53,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "mg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dbf17f65b25154d382b1",
+      "replay_digest": "6806709d7710f1ef7f3e0a82e0279c6542f8fbcfd3395ac02617bf5b63ce2bd9"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in g.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "unit": "ml"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 26,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 26,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 26 g."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 26,
+        "unit": "g",
+        "scale_max": 34,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "ce6b55d1d9bcc67ce90c7c66abaaf867b702e2915267fa6641bdaac50825b7d8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 53,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "4",
+            "8",
+            "12",
+            "16",
+            "20",
+            "24",
+            "28",
+            "32",
+            "g",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "381aaf5a2ac60203f499",
+      "replay_digest": "2ef3444202b1fdc09edd6168683aa4940f21c5dca156fb04a03627f811f5d515"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in kg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 16 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 16,
+        "unit": "kg",
+        "scale_max": 20,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "f5118b1ff6d55946b234924d86d5b0bd0329c8ca67b46a637f5b6e6d3484bde6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "kg",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7e38015f40c86b9b76d2",
+      "replay_digest": "fa4f980e475a0e787e2f5469286f503615e3be42b88cd8a8eea9ea2e909eff46"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the scale. What is the mass of the bag? Give your answer in kg.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 16 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 16,
+        "unit": "kg",
+        "scale_max": 20,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "f62b77dd1c659a14db877d1d632c011c8a18690556f0090d56bf6f977906c119",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "kg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b4df5de2d704a611d15e",
+      "replay_digest": "f8b20a9205876a24884344a7691bbfb64a067a4148557a42dea6a5db85355246"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Look at the scale. What is the mass of the object? Give your answer in kg.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 2 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 2,
+        "unit": "kg",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "b0eddfcd74aa8573c518005fe04dfb509ed8939f0a0f4322ea494f1d91b67a3e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "kg",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7a48135b1579aadb498d",
+      "replay_digest": "0a8b74c375c56d2ed484ce1611e1ad83fd1ecefca2abe2012d1fa74495e3841b"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in kg.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 90 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 90,
+        "unit": "kg",
+        "scale_max": 120,
+        "tick_interval": 10,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "e3fae16ef02678b38c3124e17dab52a321180cc78cd87a0cb0e2c9960f9fb7e3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 47,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100",
+            "110",
+            "120",
+            "kg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d416480034e95eb1ae5f",
+      "replay_digest": "7d2bf5f3f89961b688c8c8ea8652bec41861f912724de6c33bbf294987170171"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the object? Give your answer in kg.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 1 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 1,
+        "unit": "kg",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "4998e854aaef88e0fcec940d4787767bc11140422de41701587ef27242bd96ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "kg",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "41834693a00433869d2a",
+      "replay_digest": "d3da3d95c5ea07b2929a90a5351499d90c068d5fb050e9ca0d792e9508323a5a"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in kg.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 1 kg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 1,
+        "unit": "kg",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "2d2709e9875bf6d0071ab7b447828aed9ac51e3101168d513c19b3df46bb3c32",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "kg",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3decad15173d83d40b31",
+      "replay_digest": "23b767993b5a1891b17cd51e2729404ffd84481300d8ca19b280cc807da9df21"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the parcel? Give your answer in g.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 7 g."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 7,
+        "unit": "g",
+        "scale_max": 9,
+        "tick_interval": 1,
+        "instrument": "dial",
+        "object_label": "the parcel"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "51537f392594216159fda2567f80d669336770340588b537dac102f4f53845ef",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 38,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "g",
+            "the parcel"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "845374d47c44b3a0f207",
+      "replay_digest": "ef05ba69ed98c9c173d2ae678add85574baafb2206a146e56b6d9e76cf9a77ad"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the bag? Give your answer in mg.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 18 mg."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 18,
+        "unit": "mg",
+        "scale_max": 24,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the bag"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "bd62776660562a7e755ee8684e9a4ff445f4fe8975820d5a37bd8753a5878945",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 47,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "mg",
+            "the bag"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4cb8eb0f6cdcc31bf6d0",
+      "replay_digest": "15929d3bb7ec52ddb13b0d822c988e98bb0c29d7d7d8df4e3cdab7f866e8d466"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_0",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Look at the scale. What is the mass of the object? Give your answer in g.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 28,
+      "hints": [
+        "Read the scale: find the number the pointer points to.",
+        "The mass shown is 28 g."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 28,
+        "unit": "g",
+        "scale_max": 36,
+        "tick_interval": 2,
+        "instrument": "dial",
+        "object_label": "the object"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "77a4e79fd985d884cc377dbee21a011c2d0ce1a41ca03193fb17f49e93509c20",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 56,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "4",
+            "8",
+            "12",
+            "16",
+            "20",
+            "24",
+            "28",
+            "32",
+            "36",
+            "g",
+            "the object"
+          ],
+          "distinct_colours": [
+            "#334155"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f4f3e330fa70ba558153",
+      "replay_digest": "bb3305774a5029af0df0e821f8a7191ecaa367bcd09caae0c42a1207b460c0dd"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "c9908165709971b9948d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests identification of object mass in grams, with a straightforward scale-reading task. The instruction to report the answer in grams is unambiguous and the multiple choice options are distinctly different values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a small object in grams is contextually appropriate and logically sound. The scenario of using a scale to determine the mass of a single object is realistic for Grade 3 learners who might encounter such measurements in classroom or home settings."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is age-appropriate and direct. Third graders can understand the action implied by the stem, and the visual aid supports comprehension. The hint reinforces the reading mechanism without introducing extraneous complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly states the mass as 7 grams, matching the correct answer. The options span a narrow range around the correct value, appropriately testing scale-reading precision without introducing distractors that are implausibly far from the target."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "8b67d17085e6d176a168",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the mass of a parcel measured in grams. The multiple choice format provides four distinct numeric options to differentiate correct reading from incorrect readings of the scale."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a parcel's mass in grams is contextually sound, reflecting a realistic scenario where light packages might be weighed during postal or classroom activities appropriate for Grade 3 contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is clear and accessible. The word 'parcel' is familiar to learners and the instruction to report in grams is straightforward. The visual representation supports the stem without creating confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The stated mass in the hint is 30 grams, aligning with the correct answer. The distractors (40, 25, 6) are plausible misreadings of the scale, making this an effective discrimination item for scale reading accuracy."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "afc02b083292d46df035",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem leaves no doubt about what is being asked: identify the mass of a bag in kilograms. The unit specification is explicit, and the scale representation is designed for unambiguous reading of a single value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using kilograms to measure a bag's mass is contextually appropriate, reflecting real-world scenarios where students might encounter heavier objects requiring the kilogram unit for practical measurement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is grade-appropriate and the task structure is transparent. Third graders are explicitly directed to read the scale and report the answer in kilograms, making the cognitive demand clear without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 18 kilograms, which is the correct answer. The options provided represent both nearby misreadings and implausible extremes, supporting effective formative assessment of scale-reading skill."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "ceb300771fc285155cc6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly requests the mass of an object in kilograms with no room for misinterpretation. The visual aid and multiple choice format ensure students understand what is being asked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Weighing an object in kilograms is logically consistent with practical measurement scenarios Grade 3 learners might encounter in science, physical education, or real-world contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is accessible to third graders. The instruction to identify and report the mass in kilograms is direct, and the visual support aids comprehension without introducing extraneous elements."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 20 kilograms, matching the correct answer. The options span a reasonable range around the target value, testing whether learners can accurately read the scale pointer position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "8f0352a094a5eb9f8be6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clear and specific: read the scale and report the parcel's mass in milligrams. No alternative interpretations of the task are possible given the explicit unit requirement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "While measuring very light objects in milligrams is less common in everyday Grade 3 contexts, it is a valid measurement scenario for science classes where small-mass precision is relevant, such as measuring ingredients or scientific specimens."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is phrased in age-appropriate language. Third graders familiar with milligrams from prior instruction can understand the task, though the unit represents an extension of basic mass concepts."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly states the mass as 60 milligrams, matching the answer. The options represent plausible scale misreadings at the lower and higher ends of the range."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "d83b74ac4285152920be",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task is unambiguous: identify the mass of a bag in kilograms using the scale. The multiple choice format provides distinct options for discrimination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While a 300 kilogram bag is theoretically measurable with a scale, this represents an extraordinarily heavy object far beyond typical Grade 3 experience. Few third graders would encounter or be able to reason meaningfully about such extreme mass in a contextual sense."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and instruction are clear. Despite the extreme magnitude of the mass, the question itself is phrased accessibly and the task structure is transparent to learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 300 kilograms, matching the answer. The numeric options span appropriately from very small misreadings through moderate and large deviations, making this a valid scale-reading discrimination item mathematically."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "9ee97d725fdb8ac00ee8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests identification of object mass in milligrams, with explicit instruction to use that unit for the answer. No ambiguity exists regarding the task or expected response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 2000 milligram measurement represents 2 grams, which is appropriate mass but the numeric form (2000) creates cognitive strain for Grade 3 learners who may not automatically recognize that 2000 mg is equivalent to a 2 gram mass, leading to potential confusion about scale magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the language is clear, the large numeric value of 2000 may challenge third graders in processing and selecting from options. The cognitive load of interpreting 2000 as a reasonable milligram quantity requires stronger number sense than typical Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 2000 milligrams, matching the answer. The options represent near and far misreadings of the scale value, with one notably incorrect distracter at value 8."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "dcc617830eb87a6b60c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously requests the parcel's mass in milligrams through a straightforward scale-reading task. The unit specification is explicit and the task format is transparent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a parcel in milligrams is logically valid for contexts where precision with small masses matters, such as postal applications, pharmaceutical settings, or science investigations appropriate for Grade 3 enrichment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is accessible and the instruction is direct. Third graders can understand they must read a scale and report a milligram value, and the multiple choice format supports comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 450 milligrams, matching the correct answer. The options range from lower values to higher values around the target, creating effective scale-reading discrimination."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "e7961c1b9ad1b95f73a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is explicit: identify the mass of a parcel in kilograms by reading the scale. No alternative interpretations are possible, and the unit specification is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a parcel's mass in kilograms is a realistic, contextually appropriate scenario aligned with Grade 3 learner experience, particularly in settings where packages or items are being weighed and classified by mass."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is grade-appropriate and the task structure is clear. Third graders can readily understand the instruction to find and report the mass in kilograms from the visual scale."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 14 kilograms, matching the answer. The options provide effective discrimination, with some values representing likely scale misreadings and others offering implausible alternatives."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "dbf17f65b25154d382b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly requests the mass of a bag in milligrams through scale reading. The phrasing is unambiguous and the expected response format is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a small bag in milligrams is logically sound for scenarios involving lightweight items or precision measurement contexts that Grade 3 learners might encounter in classroom science activities."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses age-appropriate language and the instruction is straightforward. The scale-reading task is transparent and the multiple choice format supports learner comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 13 milligrams, matching the answer. The numeric options cluster closely around the target, requiring precise scale reading discrimination."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "381aaf5a2ac60203f499",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests identification of a bag's mass in grams via scale reading. The task is clearly structured and the unit requirement is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a bag's mass in grams is contextually appropriate for Grade 3, reflecting realistic scenarios such as weighing classroom materials, ingredients, or objects in science investigations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and structure are well-suited to third graders. The instruction is direct, and the visual scale representation supports learners in understanding and completing the required task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly states 26 grams, matching the answer. The options span the typical scale-reading range, with one notably incorrect value that tests whether learners are actually reading versus guessing."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "7e38015f40c86b9b76d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clear and unambiguous: read the scale and report the parcel's mass in kilograms. The question structure leaves no room for misinterpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a parcel in kilograms is contextually valid and realistic for Grade 3 learners who may engage with mass measurement in postal, shipping, or real-world weighing contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is accessible and the instruction is explicit. Third graders can understand they must identify and report a mass value in kilograms from the visual representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 16 kilograms, aligning with the correct answer. The options represent both plausible misreadings and implausible extremes, supporting discriminative assessment of scale reading."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "b4df5de2d704a611d15e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the addition of a thematic wrapper about dance shoes and a character name, the core task remains unambiguous: read the scale and report the bag's mass in kilograms."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The themed introduction about Sir Rez and dance shoes does not logically interfere with the mass measurement task itself. The contextual mathematics remains valid even with the personalized thematic framing."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The theming adds engagement without obscuring the core instruction. Third graders can navigate from the thematic setup to the scale-reading task, and the visual representation supports clear identification of the mass value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 16 kilograms as the mass shown, matching the correct answer. The thematic wrapper does not alter the numeric validity of the scale reading task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "7a48135b1579aadb498d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clear despite the thematic framing: read the scale and determine the object's mass in kilograms. The basketball and Isko character context does not create ambiguity about the core mathematical task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A basketball weighing 2 kilograms is physically unrealistic for an actual basketball, but the measurement task itself is logically valid. The thematic connection does not undermine the validity of the scale-reading exercise."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and character name create engagement without reducing clarity. Third graders can understand the thematic setup and proceed to read the scale value requested in the stem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states the mass as 2 kilograms, matching the answer. The numeric options provide appropriate discrimination for assessing whether learners accurately read the scale position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "d416480034e95eb1ae5f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is explicit in requesting the mass of a bag in kilograms. The multiple choice format is clear and the task structure leaves no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 90 kilogram bag represents an extraordinarily heavy object, far beyond the typical experience or reasonable visualization of a Grade 3 learner. While the scale-reading mechanism is valid, the contextual appropriateness of such extreme mass is questionable for this age group."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and instruction are clear and accessible to third graders. Despite the extreme magnitude of the mass value, the question itself is phrased straightforwardly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly reports 90 kilograms as the mass shown, matching the answer. The options represent both misreadings and plausible alternatives, making this a mathematically valid discrimination item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "41834693a00433869d2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously requests the mass of an object in kilograms by reading the scale. The task specification is explicit and no alternative interpretations are reasonable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a single kilogram object is contextually appropriate and represents a realistic, low-magnitude measurement scenario well-suited to Grade 3 learners who are building foundational mass concepts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is grade-appropriate and direct. Third graders can readily understand the instruction and the visual scale representation clearly supports the scale-reading task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 1 kilogram as the mass shown, matching the correct answer. The options provide meaningful discrimination between accurate and inaccurate scale readings."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "3decad15173d83d40b31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly instructs students to identify the parcel's mass in kilograms from the scale. The task is unambiguous and the expected response format is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 1 kilogram parcel is contextually appropriate and realistic for Grade 3 learners who might encounter similar lightweight packages in postal or classroom contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is accessible and the instruction is straightforward. Third graders can understand they must read the scale and report a kilogram value through the multiple choice format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint reports 1 kilogram, matching the answer. The options cluster around the target value, requiring accurate scale reading precision."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "845374d47c44b3a0f207",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is unambiguous: identify the parcel's mass in grams by reading the scale. The task structure is transparent and the unit specification is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a parcel in grams is contextually valid and appropriate for Grade 3 learners in real-world scenarios involving light packages or classroom measurement activities."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language and structure are grade-appropriate. The hint-gated experience mode provides scaffolding, and the scale-reading task is phrased in accessible language for third graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly states 7 grams as the mass shown, matching the answer. The options represent plausible scale misreadings as distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "4cb8eb0f6cdcc31bf6d0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests identification of a bag's mass in milligrams via scale reading. The task is clearly structured with explicit unit specification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring a bag's mass in milligrams is logically valid for precision measurement contexts in science or specialized applications that Grade 3 learners might encounter, particularly in the mastery drill experience mode."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is accessible and the instruction is explicit. The mastery drill framing supports learners in focused practice of scale-reading accuracy with milligram measurements."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint states 18 milligrams as the mass shown, matching the correct answer. The numeric options span narrowly around the target, testing precision in scale reading."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "sample_id": "f4f3e330fa70ba558153",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is explicit: read the scale and report the object's mass in grams. The task structure and unit specification are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Measuring an object in grams is contextually appropriate for Grade 3 learners, representing a foundational measurement scenario relevant to classroom science and real-world experiences."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is grade-appropriate and direct. The scaffolded experience mode provides support, and the scale-reading task is transparently structured for third graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint correctly reports 28 grams as the mass shown, matching the answer. The options represent both close misreadings and implausible extremes for discrimination testing."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "measure_mass",
+      "clause": "Measure mass",
+      "verdict": "PASS",
+      "reasoning": "All nineteen samples demonstrate the core action of measuring mass through scale reading. Each sample requires students to observe a scale, identify the position of the pointer, and determine the numeric mass value, which constitutes the essential act of measurement. Every item in this node fulfills this requirement identically in task structure.",
+      "sample_ids": [
+        "c9908165709971b9948d",
+        "8b67d17085e6d176a168",
+        "afc02b083292d46df035",
+        "ceb300771fc285155cc6",
+        "8f0352a094a5eb9f8be6",
+        "d83b74ac4285152920be",
+        "9ee97d725fdb8ac00ee8",
+        "dcc617830eb87a6b60c1",
+        "e7961c1b9ad1b95f73a6",
+        "dbf17f65b25154d382b1",
+        "381aaf5a2ac60203f499",
+        "7e38015f40c86b9b76d2",
+        "b4df5de2d704a611d15e",
+        "7a48135b1579aadb498d",
+        "d416480034e95eb1ae5f",
+        "41834693a00433869d2a",
+        "3decad15173d83d40b31",
+        "845374d47c44b3a0f207",
+        "4cb8eb0f6cdcc31bf6d0",
+        "f4f3e330fa70ba558153"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "requirement_id": "grams_kilograms_and_or_milligrams",
+      "clause": "grams (g), kilograms (kg) and/or milligrams (mg)",
+      "verdict": "PASS",
+      "reasoning": "The sample set comprehensively covers all three required mass units. Grams appear in five samples at various magnitudes; kilograms appear in ten samples spanning a wide range from 1 kg to 300 kg; milligrams appear in five samples from 13 mg to 2000 mg. The and/or phrasing of the requirement is satisfied through items testing each unit individually and combination pairs.",
+      "sample_ids": [
+        "c9908165709971b9948d",
+        "8b67d17085e6d176a168",
+        "afc02b083292d46df035",
+        "ceb300771fc285155cc6",
+        "8f0352a094a5eb9f8be6",
+        "d83b74ac4285152920be",
+        "9ee97d725fdb8ac00ee8",
+        "dcc617830eb87a6b60c1",
+        "e7961c1b9ad1b95f73a6",
+        "dbf17f65b25154d382b1",
+        "381aaf5a2ac60203f499",
+        "7e38015f40c86b9b76d2",
+        "b4df5de2d704a611d15e",
+        "7a48135b1579aadb498d",
+        "d416480034e95eb1ae5f",
+        "41834693a00433869d2a",
+        "3decad15173d83d40b31",
+        "845374d47c44b3a0f207",
+        "4cb8eb0f6cdcc31bf6d0",
+        "f4f3e330fa70ba558153"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    },
+    {
+      "requirement_id": "measuring_tools",
+      "clause": "measuring tools",
+      "clause_text": "All samples use scales as the measuring tool, rendered as ScaleRead visuals. The scale is consistently identified as the instrument through which students determine mass values. Every sample leverages the same measuring tool type, demonstrating systematic application of scale-based measurement appropriate to the Grade 3 competency.",
+      "verdict": "PASS",
+      "reasoning": "Every sample incorporates a scale as the measuring instrument through which mass is determined. The ScaleRead visual component represents a functioning measuring tool with appropriate markings, pointer mechanism, and labeling that enables students to read and interpret mass values. This tool choice is educationally sound for Grade 3 introduction to measurement.",
+      "sample_ids": [
+        "c9908165709971b9948d",
+        "8b67d17085e6d176a168",
+        "afc02b083292d46df035",
+        "ceb300771fc285155cc6",
+        "8f0352a094a5eb9f8be6",
+        "d83b74ac4285152920be",
+        "9ee97d725fdb8ac00ee8",
+        "dcc617830eb87a6b60c1",
+        "e7961c1b9ad1b95f73a6",
+        "dbf17f65b25154d382b1",
+        "381aaf5a2ac60203f499",
+        "7e38015f40c86b9b76d2",
+        "b4df5de2d704a611d15e",
+        "7a48135b1579aadb498d",
+        "d416480034e95eb1ae5f",
+        "41834693a00433869d2a",
+        "3decad15173d83d40b31",
+        "845374d47c44b3a0f207",
+        "4cb8eb0f6cdcc31bf6d0",
+        "f4f3e330fa70ba558153"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "2951abbcbb0e3696b6aa0f305f19d42baff2bf96a40a26234ab25627bff6600f",
+      "clause_ids": [
+        "measure_mass",
+        "grams_kilograms_and_or_milligrams",
+        "measuring_tools"
+      ],
+      "response_ref": ".responses/s5-phaseC-w11-haiku45-20260925.json",
+      "response_digest": "ef5a37d48d5949da7c9e8e44327366ad4e69daf16c7e3a510ea3695499c41bac",
+      "prompt_ref": ".responses/s5-phaseC-w11-haiku45-20260925.prompt.txt",
+      "prompt_digest": "224af462b05d16c4cb876b2211ce73914b802da575e308b7c9f972335a36d1fa",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q2_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q2_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency requires measuring 'using appropriate measuring tools', and no tool is named anywhere in the sample set. Worse, the rendered stem is simply 'What is the mass of the object in g?' with no object, no scale reading and no data of any kind, so as printed there is nothing from which a mass could be determined; the formatters used are cloze and mcq rather than the read type used elsewhere in this packet for figure-based items."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All three units in the competency do appear as keys, in grams, kilograms and milligrams. But the measuring-tool clause generates nothing at all, so one of the two things the competency's wording asks for is entirely unrepresented across eight samples."
-    },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading demanded is a whole number with no decimals or interval interpolation, and the stem is a single short question, which would be within reach for Grade 3 Quarter 2 if the measurement information were present."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "There is exactly one stem in the entire node, differing only in the three-letter unit. No word problem, no named object, no balance or weighing scale context, and no alternate orientation such as being given a mass and asked which tool suits it."
+      "verdict": "CONCERN",
+      "rationale": "Most scale-reading tasks are grade-appropriate, but several samples use magnitudes that strain Grade 3 cognition. Values like 300 kg for a bag or 2000 mg for an object are physically unrealistic and numerically challenging for third graders to visualize or reason about, even though the reading mechanism itself is accessible."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Progression across seeds consists solely of enlarging the number, from 7 up to 1927, while the act required of the pupil stays identical. That is varying numeral magnitude rather than developing measurement skill, and it collides with the physical meaning of the units."
+      "verdict": "PASS",
+      "rationale": "Every sample directly assesses the competency of measuring mass using scales. The tasks consistently ask students to read a measuring instrument and report mass in specified units, which is the core skill targeted by the MATATAG Grade 3 Quarter 2 competency for mass measurement."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All three requirements are demonstrably addressed: measuring mass is shown through scale-reading tasks in all 19 samples; grams, kilograms, and milligrams all appear across the sample set with multiple examples of each unit; and measuring tools are represented consistently through the ScaleRead visual component.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three requirements represent a complete, lossless decomposition of the competency statement. Measuring mass via scales inherently requires three elements: the action of measurement, the specific units acceptable in Philippine K-12 mathematics, and the identification of the tool used. No portion of the competency is omitted, and the requirements do not exceed the competency's scope.",
+        "requirement_ids": [
+          "measure_mass",
+          "grams_kilograms_and_or_milligrams",
+          "measuring_tools"
+        ]
+      },
+      "clause_ids": [
+        "measure_mass",
+        "grams_kilograms_and_or_milligrams",
+        "measuring_tools"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All three units required by the competency are well-represented. Grams appear in five samples, kilograms in ten samples, and milligrams in five samples, providing balanced exposure across units. Objects measured include generic items, parcels, and bags; scale ranges vary appropriately to test different reading skills.",
+      "clause_ids": [
+        "measure_mass",
+        "grams_kilograms_and_or_milligrams",
+        "measuring_tools"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "A mass of 307 kg and a mass of 1927 mg are not quantities a Grade 3 pupil measures with a classroom instrument, and the distractors sit one or two units either side of the key, so the options for the 1927 mg item run 1926 through 1929 and discriminate nothing about mass."
+      "rationale": "While most scale values fall within reasonable bounds for Grade 3 experience, several samples test extreme magnitudes. A 300 kg bag (seed 500) and a 90 kg bag (seed 800) represent weights far beyond what a typical third grader would encounter or reason about contextually, pushing this beyond scale-appropriate for the grade level despite the reading mechanism remaining valid."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates meaningful variation: three distinct units across nineteen items; multiple object types; different scale tick patterns and ranges; varied experiences including standard, hint-gated, mastery drill, and scaffolded modes; and incorporation of themed samples with emoji and character names that test whether theming interferes with the mathematical task itself."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

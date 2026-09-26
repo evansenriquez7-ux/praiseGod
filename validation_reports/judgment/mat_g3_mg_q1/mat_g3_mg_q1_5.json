@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_5",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Recognize and draw parallel, intersecting, and perpendicular lines.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "recognize_line_relationships",
+      "clause": "Recognize"
+    },
+    {
+      "kind": "task",
+      "id": "draw_line_relationships",
+      "clause": "draw"
+    },
+    {
+      "kind": "object",
+      "id": "parallel_lines",
+      "clause": "parallel"
+    },
+    {
+      "kind": "object",
+      "id": "intersecting_lines",
+      "clause": "intersecting"
+    },
+    {
+      "kind": "object",
+      "id": "perpendicular_lines",
+      "clause": "perpendicular lines"
+    }
+  ],
+  "packet_digest": "af6b3ede33437b0256a4f2d9659c6855e0187ee33f4e19f4880209fd66c26076",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +51,61 @@
     600,
     601,
     602,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d9cf93a7814869cd076d",
+    "e85b3e4403b4eba326e3",
+    "d9d6f11415fdba19c021",
+    "a4cc9cf041b5cc6bd647",
+    "4479461ccbb4a9ff0bfb",
+    "df4b0c4b89f08ca025e5",
+    "e2b7ff58ca15a0467b8b",
+    "b82029138e1ceb055765",
+    "02b1b41f9b75518a0f7b",
+    "3873d0e5ca0b7e328112",
+    "1d8e7cd703ce6e33a4dc",
+    "022d4c987ded40e846f4",
+    "1545e68a0c8405b9323d",
+    "2f59a913f8a5e2846bd8",
+    "88ffaa1096bbe14e873b",
+    "471f68d634f4577402b7",
+    "ee80404116c2e8dad15e",
+    "7d1070c190c2c8c5de75",
+    "b1674d9ff14faf936d0b",
+    "97299610397e2c3287be",
+    "0116a4dd88561ee24e4e"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Look at the letter 'H'. The two vertical side segments are an example of ___.",
-      "correct_answer": "parallel lines",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,13 +127,61 @@
           "value": "intersecting lines",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "parallel lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "letter",
+        "labels": [],
+        "letter": "H"
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "fb5bb18c432d218b89257bc13c673f12855975cb6cca23556dbb78124047a0c8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 6,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 3
+          }
+        }
+      },
+      "sample_id": "d9cf93a7814869cd076d",
+      "replay_digest": "784346c772b712688f7d313272f8044e94f768368a46ef8af106bc0f476ef153"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
       "correct_answer": "ruler and set square",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -72,13 +203,36 @@
           "value": "ruler only",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "ruler and set square",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "e85b3e4403b4eba326e3",
+      "replay_digest": "4e5c907621be7a640eb6bffa5779498f4b5938724722e9fbcc41cdf96b65337b"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?",
-      "correct_answer": "perpendicular lines",
+      "formatter": "read_mcq",
+      "question_text": "Look at the model. What type of lines are they?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -100,13 +254,62 @@
           "value": "parallel lines",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "perpendicular",
+        "labels": [],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "20a4b1f980410b3c692ed3a97a5ed5cb080828fd511d4d6364b8e244e0a9b8de",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 6,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 2,
+            "right-angle": 1
+          }
+        }
+      },
+      "sample_id": "d9d6f11415fdba19c021",
+      "replay_digest": "03d32f607cd144d0ea3a4c844c09f0b1d7db2208c28ca729763b0ff99ac33b15"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "When you draw a vertical line meeting a horizontal line to form a square corner, what type of lines have you drawn?",
       "correct_answer": "perpendicular lines",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -128,13 +331,36 @@
           "value": "rays",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "a4cc9cf041b5cc6bd647",
+      "replay_digest": "2ba7d51be2b538259d117a5012426e7588f16528a593442fcfb50dc487aebd29"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "To draw intersecting lines that are not perpendicular, what should you draw?",
       "correct_answer": "Two straight lines that cross each other at a slanted angle.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -156,13 +382,38 @@
           "value": "Two lines that meet at a square right angle.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Two straight lines that cross each other at a slanted angle.",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "4479461ccbb4a9ff0bfb",
+      "replay_digest": "a0069e6d2eb5ff667e8398341f27609a3b2540ec3f67877f78c268fc6a52af4e"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The edges of a ruler's two long sides are an example of what type of lines?",
       "correct_answer": "parallel lines",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -184,13 +435,38 @@
           "value": "intersecting lines",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "parallel lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "df4b0c4b89f08ca025e5",
+      "replay_digest": "6251f3874b72530941d7c70e74fe83fbfc76da3e00f61b77548fdda021b94632"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
-      "correct_answer": "perpendicular lines",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -212,13 +488,63 @@
           "value": "perpendicular lines",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "letter",
+        "labels": [],
+        "letter": "T"
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "33be4bda8f38693c910b69370eef680be0d459c6ff6181091b707e85c9d17d9b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 5,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 2
+          }
+        }
+      },
+      "sample_id": "e2b7ff58ca15a0467b8b",
+      "replay_digest": "2562b547951843755ff9746bafe07cc6572f6e3066486e0975b1290dfef8adb8"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
       "correct_answer": "parallel lines",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -240,13 +566,38 @@
           "value": "rays",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "parallel lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "b82029138e1ceb055765",
+      "replay_digest": "4316ecb0da8ea03506ab2aca762a440590a47facac5af6af7b9b3a7e1bb2056e"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Two lines that cross at exactly one point are called ___.",
       "correct_answer": "intersecting lines",
+      "requested": {
+        "difficulty_profile": {
+          "concept_type": "parallel_intersecting_perpendicular"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -268,13 +619,38 @@
           "value": "intersecting lines",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "intersecting lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "02b1b41f9b75518a0f7b",
+      "replay_digest": "92230b97a4b0d19fe19fc37f874661ba0cbb7c0bd7e6b2532674326e3c8699d3"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "To draw parallel lines using a ruler and a set square, what is the correct technique?",
       "correct_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "draw_construct"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -296,13 +672,38 @@
           "value": "Draw a single point and connect it in a circle.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "3873d0e5ca0b7e328112",
+      "replay_digest": "446cef5cb970433b18b4e19e25db242b10c48d2207f0ca3842fe72ae3db11edf"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Are all perpendicular lines also intersecting lines?",
       "correct_answer": "Yes",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "explain_difference"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -324,13 +725,38 @@
           "value": "Yes",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "Yes",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "1d8e7cd703ce6e33a4dc",
+      "replay_digest": "d1e87e0961b9be00101fc639556ff217d44554b935543017c84886adee1ea805"
     },
     {
+      "node_id": "mat_g3_mg_q1_5",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Do parallel lines ever intersect?",
       "correct_answer": "No, they never intersect.",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "identify_property"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -352,34 +778,1184 @@
           "value": "Yes, they intersect at one point.",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "No, they never intersect.",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "022d4c987ded40e846f4",
+      "replay_digest": "af5dcb456c7680da269e5a5e6b858a76a700e995455bf93dcaaf6e914a76b889"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Two lines that meet at a right angle (90°) are called ___.",
+      "correct_answer": "perpendicular lines",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "parallel lines",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "perpendicular lines",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "line segments",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "curved lines",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "1545e68a0c8405b9323d",
+      "replay_digest": "31075e519db2f8abff7d19f4bd8596ed611838247e959cccc386a57c59759c5a"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🧶 Marco has a math challenge about scrapbook pages. When drawing the two straight sides of a ladder, which type of lines should you draw?",
+      "correct_answer": "parallel lines",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "intersecting lines",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "perpendicular lines",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "parallel lines",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "curved lines",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "parallel lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "2f59a913f8a5e2846bd8",
+      "replay_digest": "e6920d6edc85bc2ee6f197c1a81f0bcce2a330fbc5bf13b2dcf798428c8e8660"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🎨 Ate Liza has a math challenge about paintbrushes. To draw parallel lines using a ruler and a set square, what is the correct technique?",
+      "correct_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Draw a single point and connect it in a circle.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Draw along the corner of the set square without moving it.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Slide the set square along the straight edge of the ruler and draw along its side.",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Turn the set square over after drawing the first line.",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "88ffaa1096bbe14e873b",
+      "replay_digest": "199abd6202caa742e4a389b4910d1182e93e7bd710b12ad957f4571155e22513"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Look at the model. What type of lines are they?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "parallel lines",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "perpendicular lines",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "line segments",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "curved lines",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "perpendicular",
+        "labels": [],
+        "letter": null
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "20a4b1f980410b3c692ed3a97a5ed5cb080828fd511d4d6364b8e244e0a9b8de",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 6,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 2,
+            "right-angle": 1
+          }
+        }
+      },
+      "sample_id": "471f68d634f4577402b7",
+      "replay_digest": "2d5f96c724d67e762b58016e888cd0cbac8ed00bf50b22786af5eae1004a867e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GeometryFigure",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "curved lines",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rays",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "parallel lines",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "perpendicular lines",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "visual_type": "GeometryFigure",
+      "visual_payload": {
+        "kind": "letter",
+        "labels": [],
+        "letter": "T"
+      },
+      "visual_render": {
+        "visual_type": "GeometryFigure",
+        "renderer_input_digest": "33be4bda8f38693c910b69370eef680be0d459c6ff6181091b707e85c9d17d9b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GeometryFigure",
+          "element_count": 5,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {
+            "path": 2
+          }
+        }
+      },
+      "sample_id": "ee80404116c2e8dad15e",
+      "replay_digest": "16f79299d5bc51d0b83788ed8963b17d6f5d062985b2f4d3eb0b6a81a952e6ef"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+      "correct_answer": "parallel lines",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "parallel lines",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "perpendicular lines",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "intersecting lines",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "rays",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "parallel lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "7d1070c190c2c8c5de75",
+      "replay_digest": "7a291cf38dd3316c1170ce4469ad7c3227b6fc30b79ef117032edf113e95ac99"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "To draw two parallel lines using a ruler, you must make sure the lines ___.",
+      "correct_answer": "stay the same distance apart and never meet",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "bend toward each other",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "form a square right angle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "cross at a single point",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "stay the same distance apart and never meet",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "stay the same distance apart and never meet",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "b1674d9ff14faf936d0b",
+      "replay_digest": "e9dd07db688ba468a28c9f1c8f313f4f28c3c6d868b4b6e08d8c8b50622a3b54"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "Are all perpendicular lines also intersecting lines?",
+      "correct_answer": "Yes",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only if they are rays",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "No",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Yes",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Only sometimes",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "Yes",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "97299610397e2c3287be",
+      "replay_digest": "1bdf3b5c5e4557bcd3245d11016ba00b3ff1d1cbea8b9a028f7e8b52d2fae151"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_5",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "The corner of a square shows which type of lines meeting?",
+      "correct_answer": "perpendicular lines",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "curved lines",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "parallel lines",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "line segments",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "perpendicular lines",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "perpendicular lines",
+      "hints": [
+        "Parallel lines never meet — they stay the same distance apart.",
+        "Intersecting lines cross at one point.",
+        "Perpendicular lines intersect at exactly a right angle (90°)."
+      ],
+      "sample_id": "0116a4dd88561ee24e4e",
+      "replay_digest": "6f239b470c8f58596fedeab085ffb69ada31203951e29a9e8a315ef5e325bb57"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d9cf93a7814869cd076d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is unambiguous: students identify a specific property of the letter H by selecting from four distinct line relationship types. The visual reference to a familiar letter clearly signals which segments to analyze."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The vertical side segments of the letter H are geometrically parallel: they remain equidistant and never meet. This is a valid and mathematically accurate real-world example of parallel lines that Grade 3 students can visually verify."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses a familiar letter shape as a reference point, making the geometric context concrete and accessible to Grade 3 learners. The visual rendering supports identification of the specific segments being discussed."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical relationship is correct: the two vertical segments of the letter H do form parallel lines. The answer option accurately names the geometric property being illustrated."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "e85b3e4403b4eba326e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly specifies the goal (draw perpendicular lines forming a square right angle) and asks for a tool combination. The answer options present distinct tool pairs with no overlap or confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ruler and set square combination is the standard and correct method for drawing perpendicular lines in a Grade 3 geometry lesson. The set square's right angle notch aligns with the ruler edge to create perpendicular constructions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question grounds drawing in practical tool selection, which is developmentally appropriate and concrete for Grade 3 students who are learning to use drawing instruments in geometry lessons."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer is mathematically correct: ruler and set square are the appropriate tools for constructing perpendicular lines and forming precise right angles in elementary geometry practice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "d9d6f11415fdba19c021",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks students to identify a line type from a model they can view. The four answer options represent the four distinct geometric categories covered in the competency without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Assuming the rendered visual model displays perpendicular lines (indicated by the right-angle marker in the rendered structure), students can validly identify the geometric relationship by examining the model directly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual model provides a concrete reference for students to analyze, supporting recognition through direct observation rather than verbal description alone, which is appropriate for Grade 3 geometric reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The perpendicular relationship indicated in the response metadata confirms the mathematical validity of the answer, with the right-angle marker element in the visual confirming the geometric property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "a4cc9cf041b5cc6bd647",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question describes a concrete scenario with clear directional components and a specific outcome. Students must identify the line relationship created by the described configuration without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "When a vertical line meets a horizontal line to form a square corner, the geometric result is precisely the definition of perpendicular lines: they intersect at exactly ninety degrees."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario uses directional language familiar to Grade 3 students and references the specific outcome they are learning to recognize: the square corner as a visual indicator of a right angle."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct: a vertical line meeting a horizontal line creates perpendicular lines meeting at a right angle, which is the foundational definition of perpendicularity."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "4479461ccbb4a9ff0bfb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly specifies the constraint: intersecting lines that are NOT perpendicular. The answer option providing a slanted angle as the construction method is unambiguous in distinguishing this from perpendicular intersection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question establishes a logical contrast: while some intersecting lines meet at right angles, others meet at various angles. Drawing lines at a slanted angle is a valid method for creating non-perpendicular intersections."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario effectively contrasts perpendicular intersections with other types of intersections, helping Grade 3 students understand that not all intersecting lines are perpendicular, which is an important conceptual distinction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is sound: two straight lines can intersect at angles other than ninety degrees, and the slanted angle response correctly describes one such non-perpendicular intersection."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "df4b0c4b89f08ca025e5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question identifies a specific object and its features, asking students to classify the line relationship. The reference to the two long sides is unambiguous and concrete."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ruler's two long sides are geometrically parallel by design: they remain the same distance apart along their entire length and never meet, making this a valid real-world example of parallel lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The ruler is a familiar Grade 3 classroom object that students have likely observed and used, making this concrete example accessible and grounded in their direct experience with geometric tools."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer is mathematically correct: the edges of a ruler are indeed parallel lines, and this property is essential to the ruler's function as a geometric drawing tool."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "e2b7ff58ca15a0467b8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question specifies the letter T and identifies the exact segments being analyzed, making the reference clear and unambiguous for students to locate the geometric relationship in the visual."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The vertical and horizontal segments of the letter T do indeed meet to form a right angle at the junction point, creating a perpendicular intersection that students can directly observe."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Like the letter H in an earlier sample, the letter T is a familiar visual reference for Grade 3 students, and the stem clearly identifies the segments whose relationship is being queried."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric relationship is correct: the junction point of T's vertical and horizontal strokes creates perpendicular lines meeting at a right angle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "b82029138e1ceb055765",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a direct definition in problem form, asking students to complete a statement about lines with a specific property. The answer options are distinct geometric categories."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The definition presented is geometrically valid: lines that never meet regardless of extension are by definition parallel lines. This captures the core property distinguishing parallel from intersecting lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses accessible language describing the fundamental property of parallel lines in terms Grade 3 students can understand: two lines maintaining their non-meeting status indefinitely."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical definition is correct and complete: parallel lines never meet no matter how far they extend, which is the precise definition used in K-12 geometry curriculum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "02b1b41f9b75518a0f7b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question provides a specific geometric condition and asks for the name of lines that meet it. The definition of intersecting lines is clearly tied to crossing at one point."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The definition is geometrically valid: intersecting lines are defined by their property of crossing at exactly one point, distinguishing them from parallel lines and other configurations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides the key identifying feature of intersecting lines in simple language, helping Grade 3 students connect the geometric term to the observable property."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The definition is mathematically correct: two lines in a plane intersect at precisely one point when they cross, and intersecting is the geometric term for this relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "3873d0e5ca0b7e328112",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the correct technique for drawing parallel lines using specific tools. The answer option describing set square sliding is distinct from other incorrect approaches presented."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The technique described is the standard and correct method taught in K-12 geometry: sliding the set square along the ruler's edge while drawing maintains constant angle and distance, producing parallel lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the technique is correctly stated, the answer options are relatively lengthy for Grade 3 comprehension. The description requires reading and comparing multiple multi-clause sentences describing different tool manipulations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The technique is mathematically sound: maintaining the set square's angle while sliding it along a straight edge and drawing produces lines that remain at a constant angle and distance, ensuring parallelism."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "1d8e7cd703ce6e33a4dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks a clear yes-or-no query about a geometric relationship with a specific conditional: whether the category perpendicular is a subset of the category intersecting."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The logical relationship is valid: perpendicular lines are indeed a special case of intersecting lines, as they intersect but with the additional constraint of meeting at a right angle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The yes-or-no format is straightforward for Grade 3, and the question helps students understand the hierarchical relationship between geometric categories rather than treating them as entirely separate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical relationship is correct: all perpendicular lines are intersecting lines by definition, as intersection is the broader category that includes the special case of perpendicular intersection."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "022d4c987ded40e846f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question poses a direct yes-or-no query with four possible answers. The correct answer directly states no with a clear definition supporting the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric fact is valid: by definition, parallel lines do not intersect, so the question's premise and correct answer are logically aligned."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format allows students to confirm their understanding of the fundamental defining property of parallel lines through a straightforward yes-or-no scenario."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical content is correct: parallel lines, by definition, never intersect regardless of distance or extension."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "1545e68a0c8405b9323d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question provides a precise geometric condition involving meeting angle and asks for the line type classification. The right angle specification is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The definition is geometrically valid: lines meeting at a right angle are by definition perpendicular, and the ninety-degree measurement is the defining property of perpendicularity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem connects the geometric term perpendicular with its defining feature of right angles, reinforcing Grade 3 students' understanding of what makes perpendicular lines distinct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical definition is correct: perpendicular lines meet at exactly ninety degrees, and ninety-degree angles are the defining characteristic of perpendicularity."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "2f59a913f8a5e2846bd8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks about the two straight sides of a ladder. While thematic elements appear in the stem, the geometric query is unambiguous: identifying line types for specific ladder features."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A ladder's two long sides are geometrically parallel: they run alongside each other maintaining equal distance and never meeting, making this a valid real-world example of parallel lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The ladder is a concrete object familiar to Grade 3 students, and the scenario connects geometric learning to everyday objects, supporting comprehension through familiar context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric relationship is correct: ladder sides are parallel by construction, providing an accurate real-world example of parallel lines in functional design."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "88ffaa1096bbe14e873b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question repeats the parallel drawing technique query with a thematic context. The geometric content remains unambiguous despite narrative framing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The technique described is the correct method for drawing parallel lines, identical to the standard approach in the earlier technique sample, confirming its geometric validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The thematic introduction adds narrative context but does not alter the cognitive demand. The answer options remain lengthy multi-clause descriptions that require significant reading comprehension for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The technique is mathematically sound: sliding the set square along the ruler while drawing maintains consistent angle and distance, producing geometrically parallel lines."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "471f68d634f4577402b7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks students to identify a line type from a visual model. The four answer options represent distinct geometric categories."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The rendered structure indicates perpendicular lines with a right-angle marker element, confirming that the visual model validly represents the answer category."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual representation with geometric markings supports student recognition of perpendicular lines through direct observation, appropriate for Grade 3 visual learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The presence of right-angle markers in the rendered structure confirms the mathematical validity of perpendicular lines as the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "ee80404116c2e8dad15e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question specifies the letter T and its intersecting segments. The stem clearly identifies which segments form the geometric relationship being queried."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The letter T's vertical and horizontal segments create a perpendicular intersection at their junction point, providing a valid geometric example of perpendicularity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Repeating the letter T visual reference reinforces student recognition of perpendicular lines in familiar letter shapes through multiple exposures in different seeds."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric relationship is correct: letter T demonstrates perpendicular lines meeting at a right angle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "7d1070c190c2c8c5de75",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a definitional statement identical to an earlier sample, asking students to identify the line type that never meets."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The definition describing lines that never meet regardless of extension accurately captures the geometric property of parallel lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The straightforward definitional format supports Grade 3 understanding through repeated exposure to the core property defining parallel lines."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical definition is correct and consistent with previous uses in the packet."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "b1674d9ff14faf936d0b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks students to complete a statement about parallel lines with a compound property. The answer provides both conditions necessary and sufficient for parallel lines."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two conditions stated are both necessary properties of parallel lines: maintaining constant distance and never meeting. Together they fully characterize parallel line behavior."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "While the answer includes a compound property, the language is clear for Grade 3 students: two simple conditions joined by and explain what parallel lines must do."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both properties are mathematically correct: parallel lines maintain equal distance and never intersect, providing a complete mathematical characterization of parallelism."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "97299610397e2c3287be",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question repeats the yes-or-no query about perpendicular lines being a subset of intersecting lines, with identical content to an earlier sample but different option ordering."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The geometric relationship remains valid: perpendicular lines are intersecting lines with the additional property of right angles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Repeated exposure to this conceptual relationship through different seeds supports mastery development and reinforces the hierarchical understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical relationship is correct and consistent: perpendicular lines do meet at right angles, making them a special case of intersecting lines in this mastery drill context."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "sample_id": "0116a4dd88561ee24e4e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks about a specific location in a familiar shape and what line type is created there. The reference to square corner is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square's corner demonstrates perpendicular lines by design: the two sides meeting at each corner form right angles, making this a valid real-world example."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The square is a fundamental shape in Grade 3 geometry instruction, and identifying perpendicular lines at its corners is concrete and accessible learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical relationship is correct: squares are defined by four right angles, each of which demonstrates perpendicular lines meeting at ninety degrees."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "recognize_line_relationships",
+      "clause": "Recognize",
+      "verdict": "PASS",
+      "reasoning": "Fourteen samples directly ask students to recognize or identify line types from visual models, verbal definitions, and contextual descriptions. Students must discriminate among parallel, intersecting, and perpendicular relationships using observation, definition recall, and contextual reasoning, thoroughly demonstrating recognition across multiple modalities.",
+      "sample_ids": [
+        "d9cf93a7814869cd076d",
+        "d9d6f11415fdba19c021",
+        "a4cc9cf041b5cc6bd647",
+        "02b1b41f9b75518a0f7b",
+        "1545e68a0c8405b9323d",
+        "471f68d634f4577402b7",
+        "ee80404116c2e8dad15e",
+        "7d1070c190c2c8c5de75",
+        "b1674d9ff14faf936d0b",
+        "97299610397e2c3287be",
+        "0116a4dd88561ee24e4e",
+        "df4b0c4b89f08ca025e5",
+        "b82029138e1ceb055765",
+        "2f59a913f8a5e2846bd8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "requirement_id": "draw_line_relationships",
+      "clause": "draw",
+      "verdict": "CONCERN",
+      "reasoning": "Five samples address aspects of drawing: sample 2 asks about tools for perpendicular construction, samples 10 and 15 ask about the technique for drawing parallel lines, sample 4 describes the geometric action of meeting at a corner, and sample 5 presents drawing at a slanted angle. However, none of these assess demonstrated student drawing ability. They focus on tool selection and technique explanation in multiple-choice format rather than requiring students to actually produce drawings.",
+      "sample_ids": [
+        "e85b3e4403b4eba326e3",
+        "a4cc9cf041b5cc6bd647",
+        "4479461ccbb4a9ff0bfb",
+        "3873d0e5ca0b7e328112",
+        "88ffaa1096bbe14e873b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "requirement_id": "parallel_lines",
+      "clause": "parallel",
+      "verdict": "PASS",
+      "reasoning": "Eight samples explicitly focus on parallel lines across diverse contexts and question types. Samples include visual recognition from the letter H and ruler edges, definitional understanding about non-meeting lines, technique instruction for drawing parallel lines using tools, and real-world examples like ladder sides. This comprehensive coverage demonstrates thorough treatment of the parallel line relationship.",
+      "sample_ids": [
+        "d9cf93a7814869cd076d",
+        "df4b0c4b89f08ca025e5",
+        "b82029138e1ceb055765",
+        "3873d0e5ca0b7e328112",
+        "022d4c987ded40e846f4",
+        "2f59a913f8a5e2846bd8",
+        "88ffaa1096bbe14e873b",
+        "7d1070c190c2c8c5de75"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "requirement_id": "intersecting_lines",
+      "clause": "intersecting",
+      "verdict": "PASS",
+      "reasoning": "Five samples address intersecting lines through definitions and conceptual understanding. Samples ask students to identify lines that cross at one point, distinguish perpendicular from non-perpendicular intersections, and understand the relationship between intersecting and perpendicular categories. While fewer than other line types, intersecting lines are adequately represented.",
+      "sample_ids": [
+        "4479461ccbb4a9ff0bfb",
+        "02b1b41f9b75518a0f7b",
+        "1d8e7cd703ce6e33a4dc",
+        "022d4c987ded40e846f4",
+        "97299610397e2c3287be"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    },
+    {
+      "requirement_id": "perpendicular_lines",
+      "clause": "perpendicular lines",
+      "verdict": "PASS",
+      "reasoning": "Ten samples thoroughly address perpendicular lines using multiple approaches: visual recognition from letters T and H, models with right-angle markers, definitional understanding of right angles, tool selection for construction, understanding the relationship to intersecting lines, and real-world examples like square corners. The coverage is comprehensive and includes diverse question types and contexts.",
+      "sample_ids": [
+        "e85b3e4403b4eba326e3",
+        "d9d6f11415fdba19c021",
+        "a4cc9cf041b5cc6bd647",
+        "e2b7ff58ca15a0467b8b",
+        "1d8e7cd703ce6e33a4dc",
+        "1545e68a0c8405b9323d",
+        "471f68d634f4577402b7",
+        "ee80404116c2e8dad15e",
+        "97299610397e2c3287be",
+        "0116a4dd88561ee24e4e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "af6b3ede33437b0256a4f2d9659c6855e0187ee33f4e19f4880209fd66c26076",
+      "clause_ids": [
+        "recognize_line_relationships",
+        "draw_line_relationships",
+        "parallel_lines",
+        "intersecting_lines",
+        "perpendicular_lines"
+      ],
+      "response_ref": ".responses/s5-phaseC-w11-haiku45-20260925.json",
+      "response_digest": "9bffc31d528803ab10997ffbf0e844f9fc713fc4a4c6348509c389495bca6cfc",
+      "prompt_ref": ".responses/s5-phaseC-w11-haiku45-20260925.prompt.txt",
+      "prompt_digest": "6d69830e10130d0247e4d534871ea256bd10cd533c33ecaeb3b5f8276a1b8559",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 1 Edit, 2 Read, 1 Write; paths outside this node's own prompt/reply: none. One wording revision by the reviewer (one string under 60 chars). Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
+    "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both verbs are exercised. Recognition appears through models such as the two vertical side segments of the letter H and the segments of the letter T, and drawing is directly addressed by the technique item whose key is to slide the set square along the straight edge of the ruler and draw along its side."
+      "rationale": "The samples use familiar Grade 3 contexts such as letter shapes, common objects like rulers and squares, and everyday scenarios such as ladder sides. Tasks range from direct visual recognition to understanding tool usage and conceptual definitions, appropriate for early geometric reasoning development."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly requires both recognition AND drawing of line types. Recognition is thoroughly addressed across multiple contexts and modalities, but the drawing component is represented primarily through tool selection and technique naming rather than demonstration of actual student drawing ability."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Recognition of parallel, intersecting, and perpendicular lines is comprehensively covered. However, the drawing requirement is only partially addressed through tool identification and technique questions rather than genuine drawing assessment tasks.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The decomposition into five components is logically sound, but the draw_line_relationships requirement is inconsistently fulfilled. While samples 2, 10, and 15 address drawing tools or techniques, they do not assess whether students can actually execute drawing of these line types. Samples 4 and 5 present drawing contexts but in recognition-based MCQ format rather than drawing demonstrations.",
+        "requirement_ids": [
+          "recognize_line_relationships",
+          "draw_line_relationships",
+          "parallel_lines",
+          "intersecting_lines",
+          "perpendicular_lines"
+        ]
+      },
+      "clause_ids": [
+        "recognize_line_relationships",
+        "draw_line_relationships",
+        "parallel_lines",
+        "intersecting_lines",
+        "perpendicular_lines"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Parallel, intersecting and perpendicular each appear as keys multiple times, and the generator also produces the case that distinguishes them, an item asking what to draw for intersecting lines that are not perpendicular, whose key names two straight lines crossing at a slanted angle."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Explanations lean on objects a Grade 3 pupil handles, the two long edges of a ruler and printed capital letters, and the right-angle idea is glossed as a square right angle or square corner rather than assuming formal angle measurement."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Even within a single response widget the item shapes differ substantially: naming from a real object, naming from a symbolic model, choosing a construction technique, and two relational judgements about whether perpendicular lines intersect and whether parallel lines ever do."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The harder seeds probe the relationship between the three categories rather than adding difficulty elsewhere, which deepens exactly the classification this competency builds; the tools questions stay tied to drawing the same three line relationships."
+      "rationale": "All three line types are represented across multiple contexts including visual recognition with letters and models, verbal definitions, tool-based applications, and conceptual relationships. The packet includes both visual and non-visual samples testing different aspects of line relationship understanding.",
+      "clause_ids": [
+        "recognize_line_relationships",
+        "draw_line_relationships",
+        "parallel_lines",
+        "intersecting_lines",
+        "perpendicular_lines"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency states no numeric range and the items correctly involve no measurement at all, so nothing is over- or under-scaled; the burden stays on geometric relationship rather than on numbers."
+      "rationale": "The 21-sample packet provides adequate scale with varied seeds ranging from 42 to 1002 and multiple experience types including standard, hint_gated, mastery_drill, and scaffolded formats. This variation supports differentiated instruction and comprehensive sampling of the competency space."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet demonstrates comprehensive variation across presentation formats, contexts, and experience types. Visual samples use geometric figures alongside letter and object recognition; non-visual samples employ definitions and practical scenarios. Multiple contexts including drawing techniques, object relationships, and conceptual questions provide varied discovery paths."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

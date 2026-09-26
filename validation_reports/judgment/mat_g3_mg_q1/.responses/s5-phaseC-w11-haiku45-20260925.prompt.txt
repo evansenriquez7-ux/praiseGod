@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925
+  blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_mg_q1_4/verdicts.json
+  local_only/scratch/phaseC/mat_g3_mg_q1_6/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_4-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,172 +99,143 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_mg_q1_4
-PACKET DIGEST: ec259ae0d5fc88dd41fdd95b2687f272a5103a6010ad696bfe8f695166f3ff59
+NODE: mat_g3_mg_q1_6
+PACKET DIGEST: 5375696a823afbed33ad5308cabfcd3f5285682910283001313ee3a50e125268
 COMPETENCY (Grade 3, Quarter 1, None):
-Recognize, using models, and draws a point, line, line segment, and ray.
+Identify and draw line segments of equal length using a ruler.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  recognize_geometric_object: Recognize
-  concrete_model_depiction: using models
-  draw_geometric_object: draws
-  point: a point
-  line: line
-  line_segment: line segment
-  ray: ray
+  identify_equal_length_segments: Identify
+  draw_segment_of_given_length: draw
+  line_segment: line segments
+  equal_length: equal length
+  ruler: a ruler
 
 SAMPLES (every one of these is real rendered output):
-  sample ac645f04890d10ec6ad2  seed 42  [mcq]
-      stem:    When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?
-      answer:  arrowheads
-      options: endpoints / numbers / arrowheads / dots
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
+  sample 9281506aab8d7f1667be  seed 42  [cloze]
+      stem:    On a ruler, Segment A starts at 0 cm and ends at 2 cm. Segment B starts at 3 cm and ends at 5 cm. Are Segment A and Segment B equal in length?
+      answer:  Yes
+      options: Cannot be determined without a set square / Only if both segments start at 0 cm / Yes / No
+      hints:   ["Find how long each segment is: count the units from where it starts to where it ends.", "Segment A is 2 centimeter (cm) long. Segment B is 2 centimeter (cm) long.", "Equal length means the same number of units, not the same start and end marks.", "2 and 2 are the same, so the answer is Yes."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2f7143249f124925ef48  seed 43  [mcq]
+      stem:    On a ruler, Segment A starts at 0 cm and ends at 6 cm. Segment B starts at 2 cm and ends at 9 cm. Are Segment A and Segment B equal in length?
+      answer:  No
+      options: Cannot be determined without a set square / No / Yes / Only if both segments start at 0 cm
+      hints:   ["Find how long each segment is: count the units from where it starts to where it ends.", "Segment A is 6 centimeter (cm) long. Segment B is 7 centimeter (cm) long.", "Equal length means the same number of units, not the same start and end marks.", "6 and 7 are not the same, so the answer is No."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 6ad756c06d16a782b9c3  seed 43  [mcq]
-      stem:    How many endpoints does a line segment have?
+  sample 8347513c8a37dcc58059  seed 44  [cloze]
+      stem:    Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 2 cm and ending at 5 cm
+      options: A segment starting at 2 cm and ending at 7 cm / A segment starting at 2 cm and ending at 5 cm / A segment starting at 3 cm and ending at 7 cm / A segment starting at 2 cm and ending at 3 cm
+      hints:   ["The matching segment must be 3 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 3 centimeter (cm) long."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b191b15e62b64b72b444  seed 45  [mcq]
+      stem:    Segment A is 8 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?
+      answer:  12
+      options: 4 / 8 / 13 / 12
+      hints:   ["Segment B must be 8 centimeter (cm) long, like Segment A.", "Start at the 4 mark and count on 8: 4 + 8 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cf0625f33781881b6bc9  seed 46  [mcq]
+      stem:    On a ruler, Segment A starts at 0 cm and ends at 8 cm. Segment B starts at 1 cm and ends at 8 cm. Are Segment A and Segment B equal in length?
+      answer:  No
+      options: No / Cannot be determined without a set square / Only if both segments start at 0 cm / Yes
+      hints:   ["Find how long each segment is: count the units from where it starts to where it ends.", "Segment A is 8 centimeter (cm) long. Segment B is 7 centimeter (cm) long.", "Equal length means the same number of units, not the same start and end marks.", "8 and 7 are not the same, so the answer is No."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 17a126e5fdc1d4a5bbfc  seed 500  [mcq]
+      stem:    Segment A measures 9 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 3 cm and ending at 12 cm
+      options: A segment starting at 3 cm and ending at 12 cm / A segment starting at 3 cm and ending at 14 cm / A segment starting at 3 cm and ending at 10 cm / A segment starting at 4 cm and ending at 14 cm
+      hints:   ["The matching segment must be 9 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 9 centimeter (cm) long."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2c4668e4a26b54db864a  seed 501  [mcq]
+      stem:    Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 2 cm mark, at which centimeter mark on the ruler must Segment B end?
+      answer:  9
+      options: 2 / 7 / 9 / 10
+      hints:   ["Segment B must be 7 centimeter (cm) long, like Segment A.", "Start at the 2 mark and count on 7: 2 + 7 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 71174eeccc112a21379a  seed 502  [cloze]
+      stem:    Segment A is 4 cm long. If you use a ruler to draw Segment B equal in length starting at the 3 cm mark, at which centimeter mark on the ruler must Segment B end?
+      answer:  7
+      options: 8 / 7 / 3 / 4
+      hints:   ["Segment B must be 4 centimeter (cm) long, like Segment A.", "Start at the 3 mark and count on 4: 3 + 4 = 7."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b84257cc610e767b6639  seed 600  [mcq]
+      stem:    Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?
+      answer:  11
+      options: 11 / 12 / 4 / 7
+      hints:   ["Segment B must be 7 centimeter (cm) long, like Segment A.", "Start at the 4 mark and count on 7: 4 + 7 = 11."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 27db978e7bfb51ea2512  seed 601  [cloze]
+      stem:    Segment A has a length of 2 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?
       answer:  2
-      options: 3 / 1 / 2 / 0
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
+      options: 3 / 4 / 2 / 1
+      hints:   ["Segment B must be 2 centimeter (cm) long, like Segment A.", "Starting at the 0 mark, count 2 centimeter (cm): Segment B ends at the 2 mark."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 94482b619b6760f01315  seed 602  [cloze]
+      stem:    Segment A measures 4 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 3 cm and ending at 7 cm
+      options: A segment starting at 3 cm and ending at 7 cm / A segment starting at 4 cm and ending at 9 cm / A segment starting at 3 cm and ending at 9 cm / A segment starting at 3 cm and ending at 5 cm
+      hints:   ["The matching segment must be 4 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 4 centimeter (cm) long."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b36a57b15462da80d16d  seed 603  [mcq]
+      stem:    Segment A has a length of 7 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?
+      answer:  7
+      options: 7 / 6 / 9 / 8
+      hints:   ["Segment B must be 7 centimeter (cm) long, like Segment A.", "Starting at the 0 mark, count 7 centimeter (cm): Segment B ends at the 7 mark."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 356c3ec81cd4f1d86e78  seed 44  [read_mcq]
-      stem:    A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.
-      answer:  ray
-      options: point / line / line segment / ray
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  GeometryFigure
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 11, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["A", "B"], "distinct_colours": [], "role_counts": {"path": 1, "endpoint": 2, "label": 2, "arrowhead": 1}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 82c801dbf73274004c64  seed 45  [mcq]
-      stem:    What do we call an exact location in space with no length or width?
-      answer:  point
-      options: line / ray / point / line segment
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
+  sample 8c116d966ec10898e52c  seed 700  [cloze]
+      stem:    Segment A has a length of 5 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?
+      answer:  5
+      options: 5 / 6 / 4 / 7
+      hints:   ["Segment B must be 5 centimeter (cm) long, like Segment A.", "Starting at the 0 mark, count 5 centimeter (cm): Segment B ends at the 5 mark."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2e3b62192ab4b78fa395  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Segment A is 9 cm long. If you use a ruler to draw Segment B equal in length starting at the 1 cm mark, at which centimeter mark on the ruler must Segment B end?
+      answer:  10
+      options: 10 / 9 / 1 / 11
+      hints:   ["Segment B must be 9 centimeter (cm) long, like Segment A.", "Start at the 1 mark and count on 9: 1 + 9 = 10."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample f4ced6a1701ad62d46ca  seed 46  [mcq]
-      stem:    To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?
-      answer:  4 cm
-      options: 10 cm / 0 cm / 8 cm / 4 cm
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
+  sample de39ba171a5433c0165b  seed 702  [cloze]
+      stem:    ✝️ Moses has a math challenge about olives. On a ruler, Segment A starts at 0 cm and ends at 4 cm. Segment B starts at 1 cm and ends at 6 cm. Are Segment A and Segment B equal in length?
+      answer:  No
+      options: Cannot be determined without a set square / No / Yes / Only if both segments start at 0 cm
+      hints:   ["Find how long each segment is: count the units from where it starts to where it ends.", "Segment A is 4 centimeter (cm) long. Segment B is 5 centimeter (cm) long.", "Equal length means the same number of units, not the same start and end marks.", "4 and 5 are not the same, so the answer is No."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 62d99185fce2889f3bb9  seed 800  [cloze]
+      stem:    Segment A measures 2 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 4 cm and ending at 6 cm
+      options: A segment starting at 4 cm and ending at 6 cm / A segment starting at 4 cm and ending at 5 cm / A segment starting at 4 cm and ending at 8 cm / A segment starting at 5 cm and ending at 8 cm
+      hints:   ["The matching segment must be 2 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 2 centimeter (cm) long."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6781571d18273f4b3f53  seed 900  [mcq]
+      stem:    Segment A has a length of 7 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?
+      answer:  7
+      options: 9 / 6 / 7 / 8
+      hints:   ["Segment B must be 7 centimeter (cm) long, like Segment A.", "Starting at the 0 mark, count 7 centimeter (cm): Segment B ends at the 7 mark."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 4ec9c74b495d204338e1  seed 500  [read_mcq]
-      stem:    A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.
-      answer:  ray
-      options: point / line / ray / line segment
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  GeometryFigure
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 11, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["A", "B"], "distinct_colours": [], "role_counts": {"path": 1, "endpoint": 2, "label": 2, "arrowhead": 1}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 0497f50182062c0bf1aa  seed 501  [mcq]
-      stem:    What do we call an exact location in space with no length or width?
-      answer:  point
-      options: line segment / point / ray / line
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
+  sample adcb09008d1665961489  seed 901  [mcq]
+      stem:    Segment A measures 6 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 1 cm and ending at 7 cm
+      options: A segment starting at 1 cm and ending at 5 cm / A segment starting at 1 cm and ending at 7 cm / A segment starting at 1 cm and ending at 9 cm / A segment starting at 2 cm and ending at 9 cm
+      hints:   ["The matching segment must be 6 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 6 centimeter (cm) long."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 9771a578f442a62bf916  seed 502  [mcq]
-      stem:    To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?
-      answer:  4 cm
-      options: 0 cm / 10 cm / 8 cm / 4 cm
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 1be19c5b725ff8cffcee  seed 600  [mcq]
-      stem:    How many endpoints does a ray have?
-      answer:  1
-      options: 1 / 3 / 2 / 0
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample f48d36073f36ba343944  seed 601  [mcq]
-      stem:    When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?
-      answer:  arrowhead
-      options: arrowhead / endpoint dot / circle / square
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 13368ecdbbf597c19538  seed 602  [mcq]
-      stem:    To draw a straight line segment between two points on paper, which tool should you use?
-      answer:  ruler
-      options: thermometer / clock / set square only / ruler
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 509850a743ddaf797026  seed 603  [mcq]
-      stem:    What figure has no endpoints and extends forever in both directions?
-      answer:  line
-      options: line segment / point / ray / line
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample decdda7c684a1e57ecc4  seed 604  [mcq]
-      stem:    How many endpoints does a line have?
-      answer:  0
-      options: 0 / 2 / infinite / 1
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample aabc3814d7eea2fca5a4  seed 605  [read_mcq]
-      stem:    Look at the model. Which geometric figure is represented?
-      answer:  ray
-      options: line segment / ray / point / line
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  GeometryFigure
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 11, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["A", "B"], "distinct_colours": [], "role_counts": {"path": 1, "endpoint": 2, "label": 2, "arrowhead": 1}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 65262c176de34fc232bf  seed 700  [read_mcq]
-      stem:    Look at the model. Which geometric figure is represented?
-      answer:  ray
-      options: ray / line segment / line / point
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  GeometryFigure
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 11, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["A", "B"], "distinct_colours": [], "role_counts": {"path": 1, "endpoint": 2, "label": 2, "arrowhead": 1}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample a8455a398b7f1aef262c  seed 701  [mcq]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. What figure has one endpoint and extends forever in one direction?
-      answer:  ray
-      options: ray / line / line segment / point
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 440e5b0e69a243e877ea  seed 702  [mcq]
-      stem:    🏀 Isko has a math challenge about basketballs. Which figure can be measured because it has a definite length?
-      answer:  line segment
-      options: ray / line / point / line segment
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 24d67215586e9214d03a  seed 800  [mcq]
-      stem:    How many endpoints does a line have?
-      answer:  0
-      options: 0 / infinite / 1 / 2
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample d831d5d51eba63f3c008  seed 900  [mcq]
-      stem:    What do we call an exact location in space with no length or width?
-      answer:  point
-      options: point / line / line segment / ray
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 6d99f473a5f0275e2637  seed 901  [mcq]
-      stem:    To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?
-      answer:  4 cm
-      options: 10 cm / 4 cm / 0 cm / 8 cm
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 8672e2521185e7abc5cb  seed 1000  [read_mcq]
-      stem:    Look at the model. Which geometric figure is represented?
-      answer:  point
-      options: line / point / ray / line segment
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
-      visual:  GeometryFigure
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 6, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["P"], "distinct_colours": [], "role_counts": {"endpoint": 1, "label": 1}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 413a8ed70e897040c07c  seed 1001  [mcq]
-      stem:    To draw a straight line segment between two points on paper, which tool should you use?
-      answer:  ruler
-      options: ruler / clock / set square only / thermometer
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
-  sample 580a7637bc7d33f403f4  seed 1002  [mcq]
-      stem:    What figure has no endpoints and extends forever in both directions?
-      answer:  line
-      options: line segment / line / ray / point
-      hints:   ["A point is a dot — no length, no width.", "A line segment has two endpoints and a measurable length.", "A ray has one endpoint and goes on forever in one direction.", "A line has no endpoints — it goes on forever in both directions."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+  sample 14b0ab3a972cf01fb439  seed 1000  [cloze]
+      stem:    Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 4 cm and ending at 7 cm
+      options: A segment starting at 4 cm and ending at 7 cm / A segment starting at 4 cm and ending at 5 cm / A segment starting at 5 cm and ending at 9 cm / A segment starting at 4 cm and ending at 9 cm
+      hints:   ["The matching segment must be 3 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 3 centimeter (cm) long."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample c5e40612e592ff23a9f3  seed 1001  [cloze]
+      stem:    On a ruler, Segment A starts at 0 cm and ends at 5 cm. Segment B starts at 1 cm and ends at 8 cm. Are Segment A and Segment B equal in length?
+      answer:  No
+      options: No / Yes / Cannot be determined without a set square / Only if both segments start at 0 cm
+      hints:   ["Find how long each segment is: count the units from where it starts to where it ends.", "Segment A is 5 centimeter (cm) long. Segment B is 7 centimeter (cm) long.", "Equal length means the same number of units, not the same start and end marks.", "5 and 7 are not the same, so the answer is No."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 23511baf388e62a1470c  seed 1002  [cloze]
+      stem:    Segment A measures 5 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?
+      answer:  A segment starting at 2 cm and ending at 7 cm
+      options: A segment starting at 2 cm and ending at 5 cm / A segment starting at 3 cm and ending at 9 cm / A segment starting at 2 cm and ending at 7 cm / A segment starting at 2 cm and ending at 9 cm
+      hints:   ["The matching segment must be 5 centimeter (cm) long, like Segment A.", "For each choice, count the units from where the segment starts to where it ends.", "Choose the one that is exactly 5 centimeter (cm) long."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

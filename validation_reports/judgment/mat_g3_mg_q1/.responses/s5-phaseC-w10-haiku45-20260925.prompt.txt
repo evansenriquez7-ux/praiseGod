@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc10-mat_g3_mg_q1_2-20260925
+  blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_mg_q1_2/verdicts.json
+  local_only/scratch/phaseC/mat_g3_mg_q1_3/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_2-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,163 +99,150 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_mg_q1_2
-PACKET DIGEST: f9e5749b00c9e6ff775a4010bc74341bc94b0692f8398b8f5e109ee15b8f7b5a
+NODE: mat_g3_mg_q1_3
+PACKET DIGEST: 6d45d9e29ba93508ac67e7d144ecf1e65125c53da2fb0e83b8e54a0d5056aa32
 COMPETENCY (Grade 3, Quarter 1, None):
-Find the areas of squares and rectangles in sq. cm and sq. m.
+Solve problems involving areas of squares and rectangles.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  compute_area: Find
-  area_attribute: the areas
+  solve_area_problem: Solve
+  word_problem_context: problems
+  extract_area_relationship_from_context: involving
+  area_attribute: areas
   square_figure: squares
   rectangle_figure: rectangles
-  square_centimeter: sq. cm
-  square_meter: sq. m
-  square_unit_abbreviation: sq
 
 SAMPLES (every one of these is real rendered output):
-  sample bab37b94fb2a9e10a3cb  seed 42  [cloze]
-      stem:    A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?
+  sample ba2051ee6a8f913c20cd  seed 42  [cloze]
+      stem:    A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?
       answer:  12
-      options: 7 / 8 / 14 / 12
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 4 × 3 = 12 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 81a5b3b9433fb18ff913  seed 43  [mcq]
-      stem:    A rectangle has sides 3 m and 5 m. What is its area in sq m?
-      answer:  15
-      options: 15 / 8 / 16 / 6
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 3 × 5 = 15 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 6bf9c734e5eb738bd8b2  seed 44  [cloze]
-      stem:    A square has a side of 3 cm. What is its area in sq cm?
-      answer:  9
-      options: 6 / 12 / 10 / 9
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 3 × 3 = 9 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 641a9255818b843e4e63  seed 45  [mcq]
-      stem:    Find the area of a square measuring 5 m on each side in sq m.
-      answer:  25
-      options: 20 / 10 / 25 / 26
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 5 × 5 = 25 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 692f8ce938cc678b3999  seed 46  [mcq]
-      stem:    What is the area of a rectangle with length 6 m and width 2 m in sq m?
-      answer:  12
-      options: 12 / 16 / 24 / 8
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 6 × 2 = 12 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample d0ee6bc09765a0dcd87b  seed 500  [mcq]
-      stem:    A square has a side of 4 m. What is its area in sq m?
-      answer:  16
-      options: 8 / 17 / 15 / 16
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 4 × 4 = 16 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample a1d6584c7e1c42256e22  seed 501  [mcq]
-      stem:    Find the area of a square measuring 3 m on each side in sq m.
-      answer:  9
-      options: 12 / 9 / 10 / 6
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 3 × 3 = 9 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 3336d98312863030c0e0  seed 502  [cloze]
-      stem:    Calculate the area of a square with sides of 4 cm in sq cm.
-      answer:  16
-      options: 16 / 17 / 8 / 15
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 4 × 4 = 16 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 0520b22594155b865a6a  seed 600  [mcq]
-      stem:    A square has a side of 5 m. What is its area in sq m?
-      answer:  25
-      options: 26 / 10 / 20 / 25
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 5 × 5 = 25 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample c1a4bfa9490af42bb5db  seed 601  [cloze]
-      stem:    A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?
-      answer:  6
-      options: 6 / 10 / 5 / 7
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 2 × 3 = 6 sq m."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample d0f01096e2a48ec95a02  seed 602  [cloze]
-      stem:    Find the area of a rectangle that is 4 m long and 3 m wide in sq m.
-      answer:  12
-      options: 14 / 8 / 7 / 12
+      options: 13 / 14 / 7 / 12
       hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 4 × 3 = 12 sq m."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 54754d3310ac1337e394  seed 603  [mcq]
-      stem:    A square has a side of 4 cm. What is its area in sq cm?
-      answer:  16
-      options: 16 / 8 / 17 / 15
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 4 × 4 = 16 sq cm."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample c0943b2dcb1d14917c10  seed 604  [cloze]
-      stem:    Find the area of a rectangle that is 8 cm long and 5 cm wide in sq cm.
-      answer:  40
-      options: 13 / 26 / 40 / 16
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 8 × 5 = 40 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 84b0cebbadb378fb5777  seed 605  [mcq]
-      stem:    A rectangle has sides 5 cm and 6 cm. What is its area in sq cm?
-      answer:  30
-      options: 22 / 11 / 30 / 10
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 5 × 6 = 30 sq cm."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 2e39ffef63164ddcba4f  seed 606  [mcq]
-      stem:    Find the area of a rectangle that is 4 m long and 7 m wide in sq m.
-      answer:  28
-      options: 22 / 8 / 28 / 11
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 4 × 7 = 28 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 3916cfbbbff9fdf725ae  seed 700  [cloze]
-      stem:    Find the area of a rectangle that is 5 cm long and 7 cm wide in sq cm.
-      answer:  35
-      options: 12 / 24 / 10 / 35
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 5 × 7 = 35 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 67499d401f53485c9875  seed 701  [mcq]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. What is the area of a square with a side length of 2 m in sq m?
-      answer:  4
-      options: 3 / 8 / 5 / 4
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 2 × 2 = 4 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 61e5c1439b9a16cb006e  seed 702  [cloze]
-      stem:    🏀 Isko has a math challenge about basketballs. What is the area of a rectangle with length 8 cm and width 2 cm in sq cm?
-      answer:  16
-      options: 16 / 20 / 10 / 32
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 8 × 2 = 16 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample ca45d0fcd49c1c41c980  seed 800  [cloze]
-      stem:    Find the area of a square measuring 5 cm on each side in sq cm.
-      answer:  25
-      options: 10 / 20 / 26 / 25
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 5 × 5 = 25 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample a50484eb7a7e8be048f5  seed 900  [mcq]
-      stem:    Find the area of a rectangle that is 3 m long and 2 m wide in sq m.
-      answer:  6
-      options: 10 / 12 / 6 / 5
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 3 × 2 = 6 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 7b975766735bef4b5097  seed 901  [mcq]
-      stem:    Calculate the area of a square with sides of 2 m in sq m.
-      answer:  4
-      options: 5 / 8 / 4 / 3
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 2 × 2 = 4 sq m."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 2ba81d1bd8dec8a1036f  seed 1000  [cloze]
-      stem:    What is the area of a square with a side length of 5 cm in sq cm?
-      answer:  25
-      options: 20 / 26 / 25 / 10
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 5 × 5 = 25 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
-  sample afa1212a7618f2be4c2c  seed 1001  [cloze]
-      stem:    What is the area of a rectangle with length 6 cm and width 2 cm in sq cm?
-      answer:  12
-      options: 12 / 8 / 16 / 24
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 6 × 2 = 12 sq cm."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
-  sample 297bc5ba9a118d95143c  seed 1002  [cloze]
-      stem:    What is the area of a square with a side length of 3 cm in sq cm?
+  sample f6ea404db3a1e2cd896d  seed 43  [mcq]
+      stem:    A square table top measures 3 m on each side. What is its area in sq m?
       answer:  9
-      options: 12 / 10 / 6 / 9
-      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 3 × 3 = 9 sq cm."]
+      options: 10 / 6 / 9 / 12
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 3 × 3 = 9 sq m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8595a81cd44b16d72700  seed 44  [cloze]
+      stem:    A rectangular poster has an area of 15 sq cm and a length of 5 cm. What is its width in cm?
+      answer:  3
+      options: 16 / 4 / 8 / 3
+      hints:   ["The area = length × width.", "We know the area is 15 sq cm and one side is 5.", "Divide: 15 ÷ 5 = 3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0b48e5673062480e93b1  seed 45  [mcq]
+      stem:    A rectangular classroom floor is 4 m long and 2 m wide. What is the area of the classroom floor in sq m?
+      answer:  8
+      options: 6 / 12 / 9 / 8
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 4 × 2 = 8 sq m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0bce532c417816ed9576  seed 46  [mcq]
+      stem:    A square garden bed measures 2 m on each side. What is its area in sq m?
+      answer:  4
+      options: 8 / 3 / 5 / 4
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 2 × 2 = 4 sq m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ee95d52f80119bf16a75  seed 500  [mcq]
+      stem:    Garden Plot A is 5 m by 6 m (area = 30 sq m). Garden Plot B is 5 m by 9 m (area = 45 sq m). How many sq m larger is Plot B than Plot A?
+      answer:  15
+      options: 17 / 15 / 14 / 16
+      hints:   ["Plot A: 5 × 6 = 30 sq m.", "Plot B: 5 × 9 = 45 sq m.", "45 − 30 = 15, so Plot B is 15 sq m larger."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 25f8192b0a36547e340a  seed 501  [mcq]
+      stem:    A rectangular postcard has an area of 28 sq cm and a width of 4 cm. What is its length in cm?
+      answer:  7
+      options: 8 / 11 / 7 / 22
+      hints:   ["The area = length × width.", "We know the area is 28 sq cm and one side is 4.", "Divide: 28 ÷ 4 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e01baac32264656f496b  seed 502  [cloze]
+      stem:    A rectangular chalkboard is 8 m long and 3 m wide. What is the area of the chalkboard in sq m?
+      answer:  24
+      options: 22 / 24 / 11 / 25
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 8 × 3 = 24 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2cc228d381decdff72b9  seed 600  [mcq]
+      stem:    A rectangular floor is 6 m long and 3 m wide (area = 18 sq m). If tiling costs ₱5 per sq m, what is the total cost to cover the floor?
+      answer:  90
+      options: 90 / 89 / 91 / 92
+      hints:   ["First find the area: 6 × 3 = 18 sq m.", "Each sq m costs ₱5: 18 × 5 = 90.", "The total cost is ₱90."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d6d57909e39f1d8225b2  seed 601  [cloze]
+      stem:    A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?
+      answer:  6
+      options: 5 / 10 / 6 / 7
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 2 × 3 = 6 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 64bede5652481992000b  seed 602  [cloze]
+      stem:    A rectangular patio is 6 m long and 4 m wide (area = 24 sq m). If tiling costs ₱10 per sq m, what is the total cost to cover the patio?
+      answer:  240
+      options: 240 / 239 / 242 / 241
+      hints:   ["First find the area: 6 × 4 = 24 sq m.", "Each sq m costs ₱10: 24 × 10 = 240.", "The total cost is ₱240."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0ee5cbb2ce1f73df6679  seed 603  [mcq]
+      stem:    A square picture card measures 5 cm on each side. What is its area in sq cm?
+      answer:  25
+      options: 20 / 10 / 25 / 26
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 5 × 5 = 25 sq cm."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 93b876ec453ebd68c452  seed 604  [cloze]
+      stem:    A rectangular rug is 8 m long and 5 m wide. What is the area of the rug in sq m?
+      answer:  40
+      options: 40 / 26 / 13 / 41
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 8 × 5 = 40 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fedbd3b5d5fde29ceb19  seed 700  [cloze]
+      stem:    A rectangular rug is 5 m long and 7 m wide. What is the area of the rug in sq m?
+      answer:  35
+      options: 36 / 24 / 12 / 35
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 5 × 7 = 35 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a405f7cd4aca180c125a  seed 701  [mcq]
+      stem:    🧶 Ate Joy has a math challenge about yarn balls. A rectangular card has an area of 16 sq cm and a width of 2 cm. What is its length in cm?
+      answer:  8
+      options: 8 / 20 / 9 / 10
+      hints:   ["The area = length × width.", "We know the area is 16 sq cm and one side is 2.", "Divide: 16 ÷ 2 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3a340a30370267a76575  seed 702  [cloze]
+      stem:    🏐 Ate Alyssa has a math challenge about whistles. A rectangular garden plot is 8 m long and 2 m wide. What is the area of the garden plot in sq m?
+      answer:  16
+      options: 20 / 17 / 16 / 10
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 8 × 2 = 16 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9a766b576b258ec0732f  seed 800  [cloze]
+      stem:    A rectangular chalkboard is 10 m long and 5 m wide. What is the area of the chalkboard in sq m?
+      answer:  50
+      options: 15 / 51 / 50 / 30
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 10 × 5 = 50 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6789a79aebd56faf57d4  seed 900  [mcq]
+      stem:    A square patio measures 2 m on each side. What is its area in sq m?
+      answer:  4
+      options: 8 / 5 / 3 / 4
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a square = side × side = 2 × 2 = 4 sq m."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9a95b4df9663a401b76b  seed 901  [mcq]
+      stem:    A rectangular patio is 4 m long and 3 m wide (area = 12 sq m). If tiling costs ₱5 per sq m, what is the total cost to cover the patio?
+      answer:  60
+      options: 61 / 62 / 60 / 59
+      hints:   ["First find the area: 4 × 3 = 12 sq m.", "Each sq m costs ₱5: 12 × 5 = 60.", "The total cost is ₱60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c6fd6f99ace2fb5a91c2  seed 1000  [cloze]
+      stem:    Ana has two rectangular flower beds: Bed 1 is 4 m by 2 m and Bed 2 is 5 m by 3 m. What is the combined total area of both flower beds in sq m?
+      answer:  23
+      options: 25 / 24 / 22 / 23
+      hints:   ["Bed 1: 4 × 2 = 8 sq m.", "Bed 2: 5 × 3 = 15 sq m.", "8 + 15 = 23 sq m in all."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 52ab2cddee2c84aa584b  seed 1001  [cloze]
+      stem:    A rectangular garden plot is 6 m long and 2 m wide. What is the area of the garden plot in sq m?
+      answer:  12
+      options: 16 / 12 / 13 / 8
+      hints:   ["The area tells us how many unit squares cover the shape.", "Area of a rectangle = length × width = 6 × 2 = 12 sq m."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 065099933108c36eb056  seed 1002  [cloze]
+      stem:    Ana has two rectangular flower beds: Bed 1 is 3 m by 4 m and Bed 2 is 2 m by 5 m. What is the combined total area of both flower beds in sq m?
+      answer:  22
+      options: 23 / 22 / 24 / 21
+      hints:   ["Bed 1: 3 × 4 = 12 sq m.", "Bed 2: 2 × 5 = 10 sq m.", "12 + 10 = 22 sq m in all."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

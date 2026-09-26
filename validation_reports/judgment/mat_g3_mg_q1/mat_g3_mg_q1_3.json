@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_3",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems involving areas of squares and rectangles.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_area_problem",
+      "clause": "Solve"
+    },
+    {
+      "kind": "object",
+      "id": "word_problem_context",
+      "clause": "problems"
+    },
+    {
+      "kind": "task",
+      "id": "extract_area_relationship_from_context",
+      "clause": "involving"
+    },
+    {
+      "kind": "attribute",
+      "id": "area_attribute",
+      "clause": "areas"
+    },
+    {
+      "kind": "object",
+      "id": "square_figure",
+      "clause": "squares"
+    },
+    {
+      "kind": "object",
+      "id": "rectangle_figure",
+      "clause": "rectangles"
+    }
+  ],
+  "packet_digest": "6d45d9e29ba93508ac67e7d144ecf1e65125c53da2fb0e83b8e54a0d5056aa32",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +57,62 @@
     601,
     602,
     603,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ba2051ee6a8f913c20cd",
+    "f6ea404db3a1e2cd896d",
+    "8595a81cd44b16d72700",
+    "0b48e5673062480e93b1",
+    "0bce532c417816ed9576",
+    "ee95d52f80119bf16a75",
+    "25f8192b0a36547e340a",
+    "e01baac32264656f496b",
+    "2cc228d381decdff72b9",
+    "d6d57909e39f1d8225b2",
+    "64bede5652481992000b",
+    "0ee5cbb2ce1f73df6679",
+    "93b876ec453ebd68c452",
+    "fedbd3b5d5fde29ceb19",
+    "a405f7cd4aca180c125a",
+    "3a340a30370267a76575",
+    "9a766b576b258ec0732f",
+    "6789a79aebd56faf57d4",
+    "9a95b4df9663a401b76b",
+    "c6fd6f99ace2fb5a91c2",
+    "52ab2cddee2c84aa584b",
+    "065099933108c36eb056"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -49,13 +138,35 @@
           "text": "12",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 4 × 3 = 12 sq m."
+      ],
+      "sample_id": "ba2051ee6a8f913c20cd",
+      "replay_digest": "81b3ce27f99014498b46f1e0fae7cfb6d6ceb09987ad78fd034299a7e58a9e31"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A square table top measures 3 m on each side. What is its area in sq m?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -77,13 +188,35 @@
           "value": 12,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 3 × 3 = 9 sq m."
+      ],
+      "sample_id": "f6ea404db3a1e2cd896d",
+      "replay_digest": "78cc235cf4ee2fde628ae3460dbf1cadcfb9acaf4940592aa22bee0324242a1e"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "A rectangular poster has an area of 15 sq cm and a length of 5 cm. What is its width in cm?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,13 +242,36 @@
           "text": "3",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "The area = length × width.",
+        "We know the area is 15 sq cm and one side is 5.",
+        "Divide: 15 ÷ 5 = 3."
+      ],
+      "sample_id": "8595a81cd44b16d72700",
+      "replay_digest": "fea86cde9dda3e4444c88884df179d5ba0a6ae605165a04633a03dd3840906c1"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A rectangular classroom floor is 4 m long and 2 m wide. What is the area of the classroom floor in sq m?",
       "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -137,13 +293,35 @@
           "value": 8,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 4 × 2 = 8 sq m."
+      ],
+      "sample_id": "0b48e5673062480e93b1",
+      "replay_digest": "bd98901bdd7ced395d07d720728f94e5c2ee88cb2937a48bd3a54646753f8cc5"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A square garden bed measures 2 m on each side. What is its area in sq m?",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -165,13 +343,37 @@
           "value": 4,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 2 × 2 = 4 sq m."
+      ],
+      "sample_id": "0bce532c417816ed9576",
+      "replay_digest": "0a3586f27b3245b47c93a0a09f9ba910838197c6b2097d3cee69e7a47a460e84"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Garden Plot A is 5 m by 6 m (area = 30 sq m). Garden Plot B is 5 m by 9 m (area = 45 sq m). How many sq m larger is Plot B than Plot A?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -193,13 +395,38 @@
           "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "Plot A: 5 × 6 = 30 sq m.",
+        "Plot B: 5 × 9 = 45 sq m.",
+        "45 − 30 = 15, so Plot B is 15 sq m larger."
+      ],
+      "sample_id": "ee95d52f80119bf16a75",
+      "replay_digest": "c26dc58684d1c323c3327d58eb2d5f68d8efcd91f3d08c5519ec90e192cc772e"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A rectangular postcard has an area of 28 sq cm and a width of 4 cm. What is its length in cm?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -221,13 +448,38 @@
           "value": 22,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "The area = length × width.",
+        "We know the area is 28 sq cm and one side is 4.",
+        "Divide: 28 ÷ 4 = 7."
+      ],
+      "sample_id": "25f8192b0a36547e340a",
+      "replay_digest": "3e099e90c934a49a46fd5170080de5f865c897a002344120829ec12bd03ce3a4"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "A rectangular chalkboard is 8 m long and 3 m wide. What is the area of the chalkboard in sq m?",
       "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -253,13 +505,37 @@
           "text": "25",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 8 × 3 = 24 sq m."
+      ],
+      "sample_id": "e01baac32264656f496b",
+      "replay_digest": "6c79eefa21a96027d99739a81f2be2d5f2ab88c39a57c17f0a89ce8d50e0c0a5"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A rectangular floor is 6 m long and 3 m wide (area = 18 sq m). If tiling costs ₱5 per sq m, what is the total cost to cover the floor?",
       "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -281,13 +557,38 @@
           "value": 92,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "First find the area: 6 × 3 = 18 sq m.",
+        "Each sq m costs ₱5: 18 × 5 = 90.",
+        "The total cost is ₱90."
+      ],
+      "sample_id": "2cc228d381decdff72b9",
+      "replay_digest": "c9959280e792ac5d5d30e61df54656231de27a2ffb13193b511c4c03f94ef722"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "rectangle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -313,13 +614,37 @@
           "text": "7",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 3 = 6 sq m."
+      ],
+      "sample_id": "d6d57909e39f1d8225b2",
+      "replay_digest": "6d6ee906ba2d67b102d30bd6732bf952eaba4c35e6b87b6f9c8b1264821a14bc"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "A rectangular patio is 6 m long and 4 m wide (area = 24 sq m). If tiling costs ₱10 per sq m, what is the total cost to cover the patio?",
       "correct_answer": 240,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "square"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -345,13 +670,38 @@
           "text": "241",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 240,
+      "hints": [
+        "First find the area: 6 × 4 = 24 sq m.",
+        "Each sq m costs ₱10: 24 × 10 = 240.",
+        "The total cost is ₱240."
+      ],
+      "sample_id": "64bede5652481992000b",
+      "replay_digest": "bf710e795e8bb6df80c5cf59958ec1324be0b0396d934f7c5129f8884e4e17d6"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "A square picture card measures 5 cm on each side. What is its area in sq cm?",
       "correct_answer": 25,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_cm"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -373,13 +723,37 @@
           "value": 26,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 5 × 5 = 25 sq cm."
+      ],
+      "sample_id": "0ee5cbb2ce1f73df6679",
+      "replay_digest": "eaff50e8a0047a8d61b886dc6dad8ee03be84898da383ef6ee4f0fba951ead71"
     },
     {
+      "node_id": "mat_g3_mg_q1_3",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "A rectangular rug is 8 m long and 5 m wide. What is the area of the rug in sq m?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_m"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -405,34 +779,1256 @@
           "text": "41",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 8 × 5 = 40 sq m."
+      ],
+      "sample_id": "93b876ec453ebd68c452",
+      "replay_digest": "429d3b7ed08a4b336f0750da23405e41769ae2683481718d4729c7b7f16335a0"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "A rectangular rug is 5 m long and 7 m wide. What is the area of the rug in sq m?",
+      "correct_answer": 35,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 36,
+          "text": "36",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "text": "24",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "text": "35",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 5 × 7 = 35 sq m."
+      ],
+      "sample_id": "fedbd3b5d5fde29ceb19",
+      "replay_digest": "8cf20152c3519bda01e8b12a4107c659d5f01dc01b3ace95ef317118a50a2d0e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🧶 Ate Joy has a math challenge about yarn balls. A rectangular card has an area of 16 sq cm and a width of 2 cm. What is its length in cm?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "graphic_design",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "The area = length × width.",
+        "We know the area is 16 sq cm and one side is 2.",
+        "Divide: 16 ÷ 2 = 8."
+      ],
+      "sample_id": "a405f7cd4aca180c125a",
+      "replay_digest": "ff8fd04c04795544948fbd03b9b6b1dc96bc71767c5e83cd10fad5775a0e6296"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏐 Ate Alyssa has a math challenge about whistles. A rectangular garden plot is 8 m long and 2 m wide. What is the area of the garden plot in sq m?",
+      "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_manga",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "text": "16",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 8 × 2 = 16 sq m."
+      ],
+      "sample_id": "3a340a30370267a76575",
+      "replay_digest": "898cd26dda47c48baa68ede49dda1b79a0e873b388d7283d4e1a02a41615602c"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "A rectangular chalkboard is 10 m long and 5 m wide. What is the area of the chalkboard in sq m?",
+      "correct_answer": 50,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 10 × 5 = 50 sq m."
+      ],
+      "sample_id": "9a766b576b258ec0732f",
+      "replay_digest": "77d259f92cc3f55a5f0303f1aed9a191dc9fc471a2b57fe125e3423ee7c5cb72"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "A square patio measures 2 m on each side. What is its area in sq m?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 2 × 2 = 4 sq m."
+      ],
+      "sample_id": "6789a79aebd56faf57d4",
+      "replay_digest": "f2b732c281f838bc3214fe0aac91dc755a20b4d84de681bac053637cdc5ffc9f"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A rectangular patio is 4 m long and 3 m wide (area = 12 sq m). If tiling costs ₱5 per sq m, what is the total cost to cover the patio?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 62,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 59,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "First find the area: 4 × 3 = 12 sq m.",
+        "Each sq m costs ₱5: 12 × 5 = 60.",
+        "The total cost is ₱60."
+      ],
+      "sample_id": "9a95b4df9663a401b76b",
+      "replay_digest": "5bc17ae324f7f1440cee83b81a865cd9b7106a0cd2f4aad5719deea076191160"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Ana has two rectangular flower beds: Bed 1 is 4 m by 2 m and Bed 2 is 5 m by 3 m. What is the combined total area of both flower beds in sq m?",
+      "correct_answer": 23,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "text": "24",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "text": "23",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 23,
+      "hints": [
+        "Bed 1: 4 × 2 = 8 sq m.",
+        "Bed 2: 5 × 3 = 15 sq m.",
+        "8 + 15 = 23 sq m in all."
+      ],
+      "sample_id": "c6fd6f99ace2fb5a91c2",
+      "replay_digest": "ace2345a95d224b1363d45b56083c0146d28d3001871d607c401c555842c4d72"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "A rectangular garden plot is 6 m long and 2 m wide. What is the area of the garden plot in sq m?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 6 × 2 = 12 sq m."
+      ],
+      "sample_id": "52ab2cddee2c84aa584b",
+      "replay_digest": "3c8017a26aabf0c6e8839df792cd002cd904fb734d449e9b54a71fa13a2504ac"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_3",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Ana has two rectangular flower beds: Bed 1 is 3 m by 4 m and Bed 2 is 2 m by 5 m. What is the combined total area of both flower beds in sq m?",
+      "correct_answer": 22,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "text": "22",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "text": "24",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 22,
+      "hints": [
+        "Bed 1: 3 × 4 = 12 sq m.",
+        "Bed 2: 2 × 5 = 10 sq m.",
+        "12 + 10 = 22 sq m in all."
+      ],
+      "sample_id": "065099933108c36eb056",
+      "replay_digest": "bf9384f330e4ebfc7f3276b59862397b84c52fe3aa12f59b3b9594e4f37b8552"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ba2051ee6a8f913c20cd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a rectangular classroom floor with specified dimensions of 4 meters by 3 meters and explicitly asks for the area in square meters. The question is unambiguous regarding what calculation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A classroom floor represented as a rectangle with given dimensions is a realistic and coherent real-world context. The dimensions provided are plausible for an actual classroom space."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward and accessible for a Grade 3 student. The problem presents familiar objects and uses clear measurement terminology. The hints reinforce the concept of area as unit square coverage."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical content is accurate. The area calculation of 4 times 3 equals 12 square meters is correct. The hints properly explain that area represents the number of unit squares covering the shape and correctly show the multiplication formula application."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "f6ea404db3a1e2cd896d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously presents a square table top with 3 meter sides and requests the area calculation. The question target is completely clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square table top with uniform side measurements is a reasonable real-world object for Grade 3 context. The dimensions are plausible for a furniture item."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses simple, direct language appropriate for Grade 3. The hint sequence clearly distinguishes square area calculation from the general area concept."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical operations are correct. Multiplying 3 by 3 yields 9 square meters. The hints accurately explain that square area uses the side times side formula and correctly apply it to this specific problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "8595a81cd44b16d72700",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides the area and one dimension, clearly asking for the missing dimension. The problem structure is unambiguous about what information is given and what must be found."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular poster with specified area and length is a coherent scenario. The dimensions and area value are consistent with a plausible poster object."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem setup is clear and accessible. The hint sequence logically guides the student from the area formula through identifying known values to executing the division operation needed."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All mathematical relationships are correct. Given area of 15 square centimeters and length of 5 centimeters, dividing 15 by 5 correctly yields the width of 3 centimeters. The hints accurately represent both the area formula and the inverse operation required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "0b48e5673062480e93b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directly states rectangular floor dimensions of 4 meters by 2 meters and asks for area in square meters. The problem intent is entirely unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A classroom floor as a rectangular shape with practical metric dimensions represents a valid and realistic scenario for Grade 3 mathematics instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct. The context of a classroom floor is familiar to students. The hints clearly connect the area concept to unit square coverage and demonstrate the multiplication operation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is mathematically sound. Multiplying length 4 by width 2 produces area 8 square meters. The hints correctly state the area formula and accurately apply it to the given dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "0bce532c417816ed9576",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a square garden bed with each side measuring 2 meters and asks for the area. The problem statement leaves no doubt about what calculation is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square garden bed with uniform side measurements is a natural and realistic context for an area problem appropriate to Grade 3 students."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses age-appropriate language and context. The hint structure explains area as unit square coverage before demonstrating the specific side times side multiplication formula."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct throughout. Squaring 2 meters yields 4 square meters. The hints properly explain both the area concept and the specific formula application to this problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "ee95d52f80119bf16a75",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents two garden plots with pre-calculated areas and asks for the difference between their sizes. The question is clear about which comparison operation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two garden plots with rectangular shapes and calculated areas form a coherent scenario. The given dimensions and resulting areas are mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly identifies two distinct gardens and asks for the size difference. Though the areas are provided in the stem, students must still understand area relationships and perform subtraction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are accurate. Plot A area of 5 by 6 equals 30 square meters, Plot B area of 5 by 9 equals 45 square meters, and the difference of 45 minus 30 equals 15 square meters. The hints correctly show each intermediate calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "25f8192b0a36547e340a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem provides area and width, clearly asking for the missing length dimension. The problem statement unambiguously specifies what information is known and what must be determined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular postcard with specified area and width is a plausible scenario. The dimensions are realistic for a postcard object."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is presented in straightforward language. The hints guide the student through the area formula, identification of known values, and the division operation needed to find the missing dimension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical relationships are all correct. Given area of 28 square centimeters and width of 4 centimeters, dividing 28 by 4 correctly yields length of 7 centimeters. The hints accurately demonstrate the inverse area calculation process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "e01baac32264656f496b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a rectangular chalkboard with specified dimensions of 8 meters by 3 meters and requests the area. The problem target is entirely unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A classroom chalkboard represented as a rectangle with given metric dimensions forms a realistic and appropriate context for Grade 3 area problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and grade-appropriate. The problem references a familiar classroom object. The hints first explain area as unit square coverage, then demonstrate the formula application."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is mathematically accurate. Multiplying 8 by 3 yields 24 square meters. The hints correctly present the area formula and accurately apply it to the specified dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "2cc228d381decdff72b9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a rectangular floor with dimensions, provides the calculated area, specifies a cost per square meter, and asks for the total cost. The problem clearly requires multiplication of area by unit cost."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A flooring tiling scenario with a cost structure in Philippine pesos is a realistic application context. The dimensions and cost values are plausible for an actual construction estimate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure is accessible for Grade 3 despite the two-step nature. The hint sequence guides students first to understand the area, then to apply the per-unit cost to calculate total cost."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are mathematically correct. The area of 6 by 3 equals 18 square meters. Multiplying 18 by the cost of 5 pesos per square meter yields the total cost of 90 pesos. The hints accurately show each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "d6d57909e39f1d8225b2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a rectangular chalkboard with dimensions of 2 meters by 3 meters and directly asks for the area. The question is unambiguous in its intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A classroom chalkboard with rectangular shape and metric dimensions forms a coherent, realistic scenario appropriate for Grade 3 problem contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem language is simple and clear. The hints effectively explain the area concept as unit square coverage before demonstrating the multiplication formula application."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct. Multiplying 2 by 3 yields 6 square meters. The hints accurately explain area conceptually and demonstrate the correct formula application to these specific dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "64bede5652481992000b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a rectangular patio with dimensions, provides the pre-calculated area, specifies the cost per square meter at ten pesos, and clearly asks for the total cost. The problem structure unambiguously indicates the operation needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A patio tiling project with a cost structure represents a realistic application scenario. The dimensions and Philippine peso cost values are plausible for a home improvement estimate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is presented with accessible language. Though the two-step nature (area calculation then cost multiplication) adds complexity, the hint sequence guides students through each phase systematically."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are mathematically sound. The area calculation of 6 by 4 equals 24 square meters is correct. Multiplying 24 by the cost of 10 pesos per square meter yields 240 pesos. The hints accurately show both calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "0ee5cbb2ce1f73df6679",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a square picture card with 5 centimeter sides and asks for the area. The problem is completely unambiguous about what calculation is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square picture card with uniform side measurements is a realistic and concrete object for Grade 3 students to visualize, making the problem context coherent and plausible."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct. The problem references a familiar small object. The hints explain the area concept before demonstrating the square-specific side times side formula."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculations are mathematically accurate. Multiplying 5 by 5 yields 25 square centimeters. The hints correctly explain the area concept and accurately apply the square area formula to the given measurement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "93b876ec453ebd68c452",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a rectangular rug with dimensions of 8 meters by 5 meters and asks for the area. The problem statement is completely unambiguous in specifying what is given and what must be calculated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular rug with metric dimensions is a realistic household object appropriate for Grade 3 problem contexts. The dimensions are plausible for an actual rug."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses grade-appropriate language and references a familiar object. The hints explain area in terms of unit square coverage before demonstrating the length times width multiplication."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct throughout. Multiplying 8 by 5 yields 40 square meters. The hints accurately explain the area concept and correctly apply the rectangle area formula to these dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "fedbd3b5d5fde29ceb19",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states a rectangular rug with dimensions of 5 meters by 7 meters and directly asks for the area calculation. The problem intent is entirely unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular rug with metric dimensions provides a concrete, realistic scenario appropriate for Grade 3 mathematics. The dimensions are plausible for an actual floor covering."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem language is straightforward and accessible for Grade 3. The hints establish the area concept using unit squares before demonstrating the formula application to the specific measurements."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculations are mathematically sound. Multiplying 5 by 7 yields 35 square meters. The hints correctly present the area concept and accurately apply the rectangle area formula to these given dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "a405f7cd4aca180c125a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides area of 16 square centimeters and width of 2 centimeters, clearly asking for the missing length dimension. The problem statement is unambiguous despite the thematic element present."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular card used in a math challenge context is realistic. The thematic reference to yarn balls does not interfere with the mathematical validity or logical coherence of the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents clear mathematical information despite the thematic framing. The hints guide students through the area formula, identification of known values, and the division operation for finding the missing dimension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical content is correct. Given area of 16 square centimeters and width of 2 centimeters, dividing 16 by 2 yields the length of 8 centimeters. The hints accurately demonstrate the inverse area calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "3a340a30370267a76575",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a rectangular garden plot with dimensions of 8 meters by 2 meters and asks for the area. The problem is unambiguous despite the thematic reference included in the stem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular garden plot with metric dimensions is a realistic scenario. The thematic mention does not affect the logical coherence or mathematical validity of the area problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses clear, grade-appropriate language to present the mathematical task. The hints explain area through unit square coverage and demonstrate the formula application with the specific dimensions provided."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculations are mathematically accurate. Multiplying 8 by 2 yields 16 square meters. The hints correctly explain the area concept and accurately apply the rectangle area formula to the given dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "9a766b576b258ec0732f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly describes a rectangular chalkboard with dimensions of 10 meters by 5 meters and asks for the area. The problem statement leaves no ambiguity about what calculation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A classroom chalkboard with rectangular shape and metric dimensions forms a coherent, realistic scenario. The dimensions, while larger than typical, remain plausible for educational contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward and appropriate for Grade 3. The problem references a familiar classroom object. The hints explain the area concept before demonstrating the multiplication formula application."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct. Multiplying 10 by 5 yields 50 square meters. The hints accurately explain area as unit square coverage and correctly apply the rectangle area formula to these measurements."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "6789a79aebd56faf57d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a square patio measuring 2 meters on each side and asks for the area. The problem statement is completely unambiguous regarding what calculation is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A square patio with uniform side measurements is a realistic outdoor fixture. The dimensions are plausible for an actual residential patio."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses simple, accessible language appropriate for Grade 3. The hints explain area through unit square visualization before showing the square-specific calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculations are mathematically sound. Squaring 2 meters yields 4 square meters. The hints correctly explain the area concept and accurately apply the square area formula."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "9a95b4df9663a401b76b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides rectangular patio dimensions with pre-calculated area, specifies the cost per square meter, and clearly asks for the total cost. The problem structure unambiguously indicates what operation is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A residential patio tiling project with associated costs in Philippine pesos represents a realistic application scenario. The dimensions and cost values are plausible for an actual home improvement estimate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is presented with grade-appropriate language. The two-step nature (area calculation then cost multiplication) is guided by hints that systematically walk through each calculation phase."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are mathematically accurate. The area of 4 by 3 equals 12 square meters. Multiplying 12 by the cost of 5 pesos per square meter yields the total cost of 60 pesos. The hints correctly show each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "c6fd6f99ace2fb5a91c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents two rectangular flower beds with specified dimensions and asks for the combined total area. The problem clearly specifies that both beds must be calculated and summed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two garden flower beds with rectangular shapes and metric dimensions form a realistic scenario. The dimensions are plausible for actual garden beds, and the context is coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses clear language and references familiar objects. The hints guide students through calculating each bed's area separately before combining them, making the multi-step process transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are mathematically correct. Bed 1 area of 4 by 2 equals 8 square meters, Bed 2 area of 5 by 3 equals 15 square meters, and the combined area of 8 plus 15 equals 23 square meters. The hints accurately show each calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "52ab2cddee2c84aa584b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a rectangular garden plot with dimensions of 6 meters by 2 meters and asks for the area. The problem statement is entirely unambiguous about what calculation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangular garden plot with metric dimensions is a realistic and appropriate scenario for Grade 3 students. The dimensions are plausible for an actual garden space."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward and grade-appropriate. The problem references familiar objects. The hints explain the area concept before demonstrating the rectangle area formula application."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculations are mathematically accurate. Multiplying 6 by 2 yields 12 square meters. The hints correctly explain area and accurately apply the rectangle formula to these specific dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "sample_id": "065099933108c36eb056",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents two rectangular flower beds with specified dimensions and asks for the combined total area. The problem clearly indicates that areas must be calculated separately and then added together."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two rectangular flower beds with metric dimensions form a realistic and coherent scenario. The dimensions are plausible for garden features, and the multi-bed situation is realistic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses clear language and familiar context. The hints systematically guide students through calculating each bed's area separately before adding them, making the multi-step process transparent and manageable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are mathematically sound. Bed 1 area of 3 by 4 equals 12 square meters, Bed 2 area of 2 by 5 equals 10 square meters, and the combined total of 12 plus 10 equals 22 square meters. The hints correctly show each calculation step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_area_problem",
+      "clause": "Solve",
+      "verdict": "PASS",
+      "reasoning": "All twenty-two samples require students to solve a mathematical problem involving area relationships. The samples progress from straightforward area calculations using length and width to more complex scenarios involving inverse operations, comparisons, and real-world applications. Every item demands that students engage in active problem-solving rather than passive recognition.",
+      "sample_ids": [
+        "ba2051ee6a8f913c20cd",
+        "f6ea404db3a1e2cd896d",
+        "8595a81cd44b16d72700",
+        "0b48e5673062480e93b1",
+        "0bce532c417816ed9576",
+        "ee95d52f80119bf16a75",
+        "25f8192b0a36547e340a",
+        "e01baac32264656f496b",
+        "2cc228d381decdff72b9",
+        "d6d57909e39f1d8225b2",
+        "64bede5652481992000b",
+        "0ee5cbb2ce1f73df6679",
+        "93b876ec453ebd68c452",
+        "fedbd3b5d5fde29ceb19",
+        "a405f7cd4aca180c125a",
+        "3a340a30370267a76575",
+        "9a766b576b258ec0732f",
+        "6789a79aebd56faf57d4",
+        "9a95b4df9663a401b76b",
+        "c6fd6f99ace2fb5a91c2",
+        "52ab2cddee2c84aa584b",
+        "065099933108c36eb056"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "requirement_id": "word_problem_context",
+      "clause": "problems",
+      "verdict": "PASS",
+      "reasoning": "Every sample in the set presents the mathematical content within a word problem format rather than as bare numerical exercises. Students must read descriptive text, identify relevant information, and interpret the problem statement to extract the mathematical task. The problems employ realistic scenarios such as classroom floors, furniture, gardens, and patios.",
+      "sample_ids": [
+        "ba2051ee6a8f913c20cd",
+        "f6ea404db3a1e2cd896d",
+        "8595a81cd44b16d72700",
+        "0b48e5673062480e93b1",
+        "0bce532c417816ed9576",
+        "ee95d52f80119bf16a75",
+        "25f8192b0a36547e340a",
+        "e01baac32264656f496b",
+        "2cc228d381decdff72b9",
+        "d6d57909e39f1d8225b2",
+        "64bede5652481992000b",
+        "0ee5cbb2ce1f73df6679",
+        "93b876ec453ebd68c452",
+        "fedbd3b5d5fde29ceb19",
+        "a405f7cd4aca180c125a",
+        "3a340a30370267a76575",
+        "9a766b576b258ec0732f",
+        "6789a79aebd56faf57d4",
+        "9a95b4df9663a401b76b",
+        "c6fd6f99ace2fb5a91c2",
+        "52ab2cddee2c84aa584b",
+        "065099933108c36eb056"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "requirement_id": "extract_area_relationship_from_context",
+      "clause": "involving",
+      "verdict": "PASS",
+      "reasoning": "Each sample requires students to extract and identify the area relationship embedded within the problem context. Students must recognize that length and width measurements combine to produce area, understand that area can be calculated from dimensional information, or deduce missing dimensions from area relationships. The samples demonstrate varying degrees of relational complexity from direct observation to inverse reasoning.",
+      "sample_ids": [
+        "ba2051ee6a8f913c20cd",
+        "f6ea404db3a1e2cd896d",
+        "8595a81cd44b16d72700",
+        "0b48e5673062480e93b1",
+        "0bce532c417816ed9576",
+        "ee95d52f80119bf16a75",
+        "25f8192b0a36547e340a",
+        "e01baac32264656f496b",
+        "2cc228d381decdff72b9",
+        "d6d57909e39f1d8225b2",
+        "64bede5652481992000b",
+        "0ee5cbb2ce1f73df6679",
+        "93b876ec453ebd68c452",
+        "fedbd3b5d5fde29ceb19",
+        "a405f7cd4aca180c125a",
+        "3a340a30370267a76575",
+        "9a766b576b258ec0732f",
+        "6789a79aebd56faf57d4",
+        "9a95b4df9663a401b76b",
+        "c6fd6f99ace2fb5a91c2",
+        "52ab2cddee2c84aa584b",
+        "065099933108c36eb056"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "requirement_id": "area_attribute",
+      "clause": "areas",
+      "verdict": "PASS",
+      "reasoning": "The competency focus on areas is consistently maintained across all samples. Every item explicitly references area as the target mathematical attribute, either asking students to calculate it directly or use it as the foundation for further problem-solving. Area is never peripheral to the problems but remains the central mathematical concept throughout the item set.",
+      "sample_ids": [
+        "ba2051ee6a8f913c20cd",
+        "f6ea404db3a1e2cd896d",
+        "8595a81cd44b16d72700",
+        "0b48e5673062480e93b1",
+        "0bce532c417816ed9576",
+        "ee95d52f80119bf16a75",
+        "25f8192b0a36547e340a",
+        "e01baac32264656f496b",
+        "2cc228d381decdff72b9",
+        "d6d57909e39f1d8225b2",
+        "64bede5652481992000b",
+        "0ee5cbb2ce1f73df6679",
+        "93b876ec453ebd68c452",
+        "fedbd3b5d5fde29ceb19",
+        "a405f7cd4aca180c125a",
+        "3a340a30370267a76575",
+        "9a766b576b258ec0732f",
+        "6789a79aebd56faf57d4",
+        "9a95b4df9663a401b76b",
+        "c6fd6f99ace2fb5a91c2",
+        "52ab2cddee2c84aa584b",
+        "065099933108c36eb056"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "requirement_id": "square_figure",
+      "clause": "squares",
+      "verdict": "PASS",
+      "reasoning": "The sample set includes multiple problems featuring squares as the primary geometric figure. Square garden beds, table tops, picture cards, and patios appear throughout the item pool. These samples explicitly demonstrate that students must solve area problems involving squares and apply the side by side multiplication formula specific to square geometry.",
+      "sample_ids": [
+        "f6ea404db3a1e2cd896d",
+        "0bce532c417816ed9576",
+        "0ee5cbb2ce1f73df6679",
+        "6789a79aebd56faf57d4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    },
+    {
+      "requirement_id": "rectangle_figure",
+      "clause": "rectangles",
+      "verdict": "PASS",
+      "reasoning": "The majority of samples demonstrate area problems involving rectangles, establishing that students must solve rectangular area problems using the length by width formula. Rectangular floors, classroom spaces, posters, chalkboards, patios, rugs, and garden plots are featured throughout the item set, showing comprehensive coverage of rectangular geometry in varied real-world contexts.",
+      "sample_ids": [
+        "ba2051ee6a8f913c20cd",
+        "8595a81cd44b16d72700",
+        "0b48e5673062480e93b1",
+        "ee95d52f80119bf16a75",
+        "25f8192b0a36547e340a",
+        "e01baac32264656f496b",
+        "2cc228d381decdff72b9",
+        "d6d57909e39f1d8225b2",
+        "64bede5652481992000b",
+        "93b876ec453ebd68c452",
+        "fedbd3b5d5fde29ceb19",
+        "a405f7cd4aca180c125a",
+        "3a340a30370267a76575",
+        "9a766b576b258ec0732f",
+        "9a95b4df9663a401b76b",
+        "c6fd6f99ace2fb5a91c2",
+        "52ab2cddee2c84aa584b",
+        "065099933108c36eb056"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "6d45d9e29ba93508ac67e7d144ecf1e65125c53da2fb0e83b8e54a0d5056aa32",
+      "clause_ids": [
+        "solve_area_problem",
+        "word_problem_context",
+        "extract_area_relationship_from_context",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure"
+      ],
+      "response_ref": ".responses/s5-phaseC-w10-haiku45-20260925.json",
+      "response_digest": "7585290430d114079e0b4ac577dbc136a9d57b6a60d496d9f0bd69be95508568",
+      "prompt_ref": ".responses/s5-phaseC-w10-haiku45-20260925.prompt.txt",
+      "prompt_digest": "9a9d5ed94581b60f12a5e190e4f071b079d087eb76a859ee406a5fc60219ff03",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply) by a FRESH blind reviewer; the first reviewer's reply was set aside (it skipped samples) and not filed; no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The item set appropriately targets Grade 3 learners with single-digit multiplications, direct area calculations using length and width measurements, and reverse problems requiring division. Problem complexity ranges from straightforward direct computation to inverse operations and multi-step applications with monetary values, matching cognitive expectations for a Grade 3 Quarter 1 learner."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly addresses the stated competency to solve problems involving areas of squares and rectangles. Samples employ appropriate geometric contexts, require area computation using the standard formulas, and maintain focus on rectangular and square figures throughout the set."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Several of the harder items do the area step for the pupil. The garden plots item supplies '(area = 30 sq m)' and '(area = 45 sq m)' and then asks only how many square metres larger one plot is, and the tiling-cost items likewise state the area before asking for a product. In those problems the area work the competency is about has already been completed in the stem."
+      "verdict": "PASS",
+      "rationale": "The item set comprehensively addresses all components of the decomposed competency requirements across the full sample population. All requirements are actively demonstrated through rendered problems that students must solve.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The six decomposed components correctly break down the competency statement into essential elements: the action of solving, the problem format as word problems, the necessity to extract area relationships from context, the focus on areas as the mathematical attribute, and explicit inclusion of both square and rectangular figures. This decomposition is lossless and captures all critical aspects of the competency.",
+        "requirement_ids": [
+          "solve_area_problem",
+          "word_problem_context",
+          "extract_area_relationship_from_context",
+          "area_attribute",
+          "square_figure",
+          "rectangle_figure"
+        ]
+      },
+      "clause_ids": [
+        "solve_area_problem",
+        "word_problem_context",
+        "extract_area_relationship_from_context",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The problem types genuinely range beyond direct computation: there are inverse items recovering a missing side from a stated area and length, a comparison of two plots, and rate-based cost problems, alongside straightforward square and rectangle areas."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Contexts are all classroom-plausible for a third grader, such as a rug, a chalkboard and a picture card, and the two-step items keep the second step to a multiplication by 5 or 10 or a subtraction, so no single problem exceeds two operations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both cloze and mcq are used, and the objects vary widely enough that no two sampled situations repeat; the inverse-direction postcard and poster items provide a genuinely different orientation on the same relationship."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "In the two cost items the options cluster within a couple of units of the key, 90 against 89, 91 and 92, and 240 against 239, 241 and 242. Those distractors reward arithmetic precision on a peso total rather than discriminating between pupils who can and cannot reason about area, which is what this competency should be measuring."
+      "rationale": "The sample set demonstrates breadth across multiple problem types and solution approaches. Direct area calculation for both squares and rectangles is well-represented, inverse problems requiring the student to find a missing dimension are included, comparison and difference problems are present, and application problems extending area calculations to practical scenarios such as cost estimation appear in the set. Multi-shape combined area problems are also included.",
+      "clause_ids": [
+        "solve_area_problem",
+        "word_problem_context",
+        "extract_area_relationship_from_context",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Side lengths stay between 2 and 9 metres or centimetres, and the largest answer, a tiling cost of 240 pesos, remains well inside the Grade 3 number range while giving the multi-step items something substantial to compute."
+      "rationale": "Numeric values used throughout the samples are grade-level appropriate. Side lengths employ single-digit values (ranging from 2 to 10 meters or centimeters) and produce reasonable product areas. Currency values for application problems (₱5 and ₱10 per square meter) are realistic for Philippine contexts and remain computationally manageable for Grade 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples demonstrate multiple variants in problem structure and presentation modality. Both cloze and multiple-choice formats appear across the set, addressing both squares and rectangles as figure types, presenting straightforward calculation problems alongside inverse and comparison problems, incorporating real-world application scenarios, and including multi-shape problems requiring multiple area calculations and combination."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

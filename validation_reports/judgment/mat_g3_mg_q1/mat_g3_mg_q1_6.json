@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_6",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Identify and draw line segments of equal length using a ruler.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "identify_equal_length_segments",
+      "clause": "Identify"
+    },
+    {
+      "kind": "task",
+      "id": "draw_segment_of_given_length",
+      "clause": "draw"
+    },
+    {
+      "kind": "object",
+      "id": "line_segment",
+      "clause": "line segments"
+    },
+    {
+      "kind": "attribute",
+      "id": "equal_length",
+      "clause": "equal length"
+    },
+    {
+      "kind": "tool",
+      "id": "ruler",
+      "clause": "a ruler"
+    }
+  ],
+  "packet_digest": "5375696a823afbed33ad5308cabfcd3f5285682910283001313ee3a50e125268",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +51,61 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "9281506aab8d7f1667be",
+    "2f7143249f124925ef48",
+    "8347513c8a37dcc58059",
+    "b191b15e62b64b72b444",
+    "cf0625f33781881b6bc9",
+    "17a126e5fdc1d4a5bbfc",
+    "2c4668e4a26b54db864a",
+    "71174eeccc112a21379a",
+    "b84257cc610e767b6639",
+    "27db978e7bfb51ea2512",
+    "94482b619b6760f01315",
+    "b36a57b15462da80d16d",
+    "8c116d966ec10898e52c",
+    "2e3b62192ab4b78fa395",
+    "de39ba171a5433c0165b",
+    "62d99185fce2889f3bb9",
+    "6781571d18273f4b3f53",
+    "adcb09008d1665961489",
+    "14b0ab3a972cf01fb439",
+    "c5e40612e592ff23a9f3",
+    "23511baf388e62a1470c"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "On a ruler, Segment A starts at 0 cm and ends at 2 cm. Segment B starts at 3 cm and ends at 5 cm. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -48,13 +131,37 @@
           "text": "No",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "Yes",
+      "hints": [
+        "Find how long each segment is: count the units from where it starts to where it ends.",
+        "Segment A is 2 centimeter (cm) long. Segment B is 2 centimeter (cm) long.",
+        "Equal length means the same number of units, not the same start and end marks.",
+        "2 and 2 are the same, so the answer is Yes."
+      ],
+      "sample_id": "9281506aab8d7f1667be",
+      "replay_digest": "069580062785f073c96c17da0c40bb0b38ca5d85dff0bd577a6e406ba7be72eb"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "On a ruler, Segment A starts at 0 cm and ends at 6 cm. Segment B starts at 2 cm and ends at 9 cm. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -76,13 +183,37 @@
           "value": "Only if both segments start at 0 cm",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "No",
+      "hints": [
+        "Find how long each segment is: count the units from where it starts to where it ends.",
+        "Segment A is 6 centimeter (cm) long. Segment B is 7 centimeter (cm) long.",
+        "Equal length means the same number of units, not the same start and end marks.",
+        "6 and 7 are not the same, so the answer is No."
+      ],
+      "sample_id": "2f7143249f124925ef48",
+      "replay_digest": "ca71391f907f29d4b74238ee0081c8bdb10077ea1783e59900ee8a20b83e53e9"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
       "correct_answer": "A segment starting at 2 cm and ending at 5 cm",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -108,13 +239,36 @@
           "text": "A segment starting at 2 cm and ending at 3 cm",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "A segment starting at 2 cm and ending at 5 cm",
+      "hints": [
+        "The matching segment must be 3 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 3 centimeter (cm) long."
+      ],
+      "sample_id": "8347513c8a37dcc58059",
+      "replay_digest": "1a8e842e24fdd865e463d566876f64b0ab8e62ad02041ea5bf7403e25bd35c0b"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Segment A is 8 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -136,13 +290,35 @@
           "value": 12,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "Segment B must be 8 centimeter (cm) long, like Segment A.",
+        "Start at the 4 mark and count on 8: 4 + 8 = 12."
+      ],
+      "sample_id": "b191b15e62b64b72b444",
+      "replay_digest": "dccdce3878f45db3d8347cd1e8f63e859dd43dce707d11826f68947f2a06a22b"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "On a ruler, Segment A starts at 0 cm and ends at 8 cm. Segment B starts at 1 cm and ends at 8 cm. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -164,13 +340,39 @@
           "value": "Yes",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "No",
+      "hints": [
+        "Find how long each segment is: count the units from where it starts to where it ends.",
+        "Segment A is 8 centimeter (cm) long. Segment B is 7 centimeter (cm) long.",
+        "Equal length means the same number of units, not the same start and end marks.",
+        "8 and 7 are not the same, so the answer is No."
+      ],
+      "sample_id": "cf0625f33781881b6bc9",
+      "replay_digest": "7ac5b2081152f0f92629400823c94870e59ff57e10a5273a1591506b9f8ebd39"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Segment A measures 9 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
       "correct_answer": "A segment starting at 3 cm and ending at 12 cm",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -192,13 +394,38 @@
           "value": "A segment starting at 4 cm and ending at 14 cm",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "A segment starting at 3 cm and ending at 12 cm",
+      "hints": [
+        "The matching segment must be 9 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 9 centimeter (cm) long."
+      ],
+      "sample_id": "17a126e5fdc1d4a5bbfc",
+      "replay_digest": "b5f6667a045a8be3eaf1e1703906bc1b6246f7779a0342e61e9a9bd642af6ef3"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 2 cm mark, at which centimeter mark on the ruler must Segment B end?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -220,13 +447,37 @@
           "value": 10,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Segment B must be 7 centimeter (cm) long, like Segment A.",
+        "Start at the 2 mark and count on 7: 2 + 7 = 9."
+      ],
+      "sample_id": "2c4668e4a26b54db864a",
+      "replay_digest": "113ce03e49cb6354913e5c23cbb1765ae5d7104038ca24746989a9082de7816d"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Segment A is 4 cm long. If you use a ruler to draw Segment B equal in length starting at the 3 cm mark, at which centimeter mark on the ruler must Segment B end?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -252,13 +503,37 @@
           "text": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Segment B must be 4 centimeter (cm) long, like Segment A.",
+        "Start at the 3 mark and count on 4: 3 + 4 = 7."
+      ],
+      "sample_id": "71174eeccc112a21379a",
+      "replay_digest": "0d862591a4c82bb73c08f6e39abfbe1d91a65b377921463d270c129a21ebde4b"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?",
       "correct_answer": 11,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -280,13 +555,37 @@
           "value": 7,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "Segment B must be 7 centimeter (cm) long, like Segment A.",
+        "Start at the 4 mark and count on 7: 4 + 7 = 11."
+      ],
+      "sample_id": "b84257cc610e767b6639",
+      "replay_digest": "20fd602252ef085aaeffa16e5746e191530be006a0b76d776c6372ba3f19323a"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Segment A has a length of 2 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "equal_length"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -312,13 +611,37 @@
           "text": "1",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "Segment B must be 2 centimeter (cm) long, like Segment A.",
+        "Starting at the 0 mark, count 2 centimeter (cm): Segment B ends at the 2 mark."
+      ],
+      "sample_id": "27db978e7bfb51ea2512",
+      "replay_digest": "51d351f5a5f5aea6a7f1ca0b739d1ccd3da50984a5ce6eac2be8d3140380e9c8"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Segment A measures 4 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
       "correct_answer": "A segment starting at 3 cm and ending at 7 cm",
+      "requested": {
+        "difficulty_profile": {
+          "unit_type": "cm"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -344,13 +667,38 @@
           "text": "A segment starting at 3 cm and ending at 5 cm",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "A segment starting at 3 cm and ending at 7 cm",
+      "hints": [
+        "The matching segment must be 4 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 4 centimeter (cm) long."
+      ],
+      "sample_id": "94482b619b6760f01315",
+      "replay_digest": "f7a70407746b885e77e03cc6212d7bce47b5b203ec11f8330a2d271105a97949"
     },
     {
+      "node_id": "mat_g3_mg_q1_6",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Segment A has a length of 7 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "unit_type": "m"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -372,33 +720,1196 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Segment B must be 7 centimeter (cm) long, like Segment A.",
+        "Starting at the 0 mark, count 7 centimeter (cm): Segment B ends at the 7 mark."
+      ],
+      "sample_id": "b36a57b15462da80d16d",
+      "replay_digest": "08e7f925403194ea7102cf1e8198ef0c9cdb123aab9fb8a95471cd451afca373"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Segment A has a length of 5 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Segment B must be 5 centimeter (cm) long, like Segment A.",
+        "Starting at the 0 mark, count 5 centimeter (cm): Segment B ends at the 5 mark."
+      ],
+      "sample_id": "8c116d966ec10898e52c",
+      "replay_digest": "c1a07c78f453dcfb26056374430d1eededb97980570ba4bdb54133637892545e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Segment A is 9 cm long. If you use a ruler to draw Segment B equal in length starting at the 1 cm mark, at which centimeter mark on the ruler must Segment B end?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Segment B must be 9 centimeter (cm) long, like Segment A.",
+        "Start at the 1 mark and count on 9: 1 + 9 = 10."
+      ],
+      "sample_id": "2e3b62192ab4b78fa395",
+      "replay_digest": "fb4929994420110f5a5c00c07142e061d67d75956f6ddfee7f366a6309cdafe5"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "✝️ Moses has a math challenge about olives. On a ruler, Segment A starts at 0 cm and ends at 4 cm. Segment B starts at 1 cm and ends at 6 cm. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined without a set square",
+          "text": "Cannot be determined without a set square",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "No",
+          "text": "No",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Yes",
+          "text": "Yes",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only if both segments start at 0 cm",
+          "text": "Only if both segments start at 0 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "No",
+      "hints": [
+        "Find how long each segment is: count the units from where it starts to where it ends.",
+        "Segment A is 4 centimeter (cm) long. Segment B is 5 centimeter (cm) long.",
+        "Equal length means the same number of units, not the same start and end marks.",
+        "4 and 5 are not the same, so the answer is No."
+      ],
+      "sample_id": "de39ba171a5433c0165b",
+      "replay_digest": "fedf2ce66c11bdef9d8f8ab84d71109a095426e13dca17dfb19e3d04b47d4b6e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Segment A measures 2 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 4 cm and ending at 6 cm",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A segment starting at 4 cm and ending at 6 cm",
+          "text": "A segment starting at 4 cm and ending at 6 cm",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "A segment starting at 4 cm and ending at 5 cm",
+          "text": "A segment starting at 4 cm and ending at 5 cm",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A segment starting at 4 cm and ending at 8 cm",
+          "text": "A segment starting at 4 cm and ending at 8 cm",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A segment starting at 5 cm and ending at 8 cm",
+          "text": "A segment starting at 5 cm and ending at 8 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A segment starting at 4 cm and ending at 6 cm",
+      "hints": [
+        "The matching segment must be 2 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 2 centimeter (cm) long."
+      ],
+      "sample_id": "62d99185fce2889f3bb9",
+      "replay_digest": "cad6599609d9a18b40d21eb00c07daa17446fd518dfd31f5fafc6c55ae7886cd"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Segment A has a length of 7 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+      "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Segment B must be 7 centimeter (cm) long, like Segment A.",
+        "Starting at the 0 mark, count 7 centimeter (cm): Segment B ends at the 7 mark."
+      ],
+      "sample_id": "6781571d18273f4b3f53",
+      "replay_digest": "47d32950df8a0f9d24ea1c75b3b52a1ef8bf6ef46e6458bb4cac7ab40459e3a4"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Segment A measures 6 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 1 cm and ending at 7 cm",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A segment starting at 1 cm and ending at 5 cm",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "A segment starting at 1 cm and ending at 7 cm",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "A segment starting at 1 cm and ending at 9 cm",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A segment starting at 2 cm and ending at 9 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A segment starting at 1 cm and ending at 7 cm",
+      "hints": [
+        "The matching segment must be 6 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 6 centimeter (cm) long."
+      ],
+      "sample_id": "adcb09008d1665961489",
+      "replay_digest": "fa0e903392f2da3a6cb8a0ffa892045ebf7918fd38171b04a3b30f94b982270e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 4 cm and ending at 7 cm",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A segment starting at 4 cm and ending at 7 cm",
+          "text": "A segment starting at 4 cm and ending at 7 cm",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "A segment starting at 4 cm and ending at 5 cm",
+          "text": "A segment starting at 4 cm and ending at 5 cm",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A segment starting at 5 cm and ending at 9 cm",
+          "text": "A segment starting at 5 cm and ending at 9 cm",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "A segment starting at 4 cm and ending at 9 cm",
+          "text": "A segment starting at 4 cm and ending at 9 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A segment starting at 4 cm and ending at 7 cm",
+      "hints": [
+        "The matching segment must be 3 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 3 centimeter (cm) long."
+      ],
+      "sample_id": "14b0ab3a972cf01fb439",
+      "replay_digest": "053ac08d6d6cece95ff958c399a14b27d2d6f98d02cd47959a7550b6b39cfc4e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 5 cm. Segment B starts at 1 cm and ends at 8 cm. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "No",
+          "text": "No",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Yes",
+          "text": "Yes",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined without a set square",
+          "text": "Cannot be determined without a set square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only if both segments start at 0 cm",
+          "text": "Only if both segments start at 0 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "No",
+      "hints": [
+        "Find how long each segment is: count the units from where it starts to where it ends.",
+        "Segment A is 5 centimeter (cm) long. Segment B is 7 centimeter (cm) long.",
+        "Equal length means the same number of units, not the same start and end marks.",
+        "5 and 7 are not the same, so the answer is No."
+      ],
+      "sample_id": "c5e40612e592ff23a9f3",
+      "replay_digest": "0f794b952dc555de5c15f7f83e9fd18d2c0dd19b2e1e9a96143caa1f8ddc18f7"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_6",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Segment A measures 5 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 2 cm and ending at 7 cm",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "A segment starting at 2 cm and ending at 5 cm",
+          "text": "A segment starting at 2 cm and ending at 5 cm",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "A segment starting at 3 cm and ending at 9 cm",
+          "text": "A segment starting at 3 cm and ending at 9 cm",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "A segment starting at 2 cm and ending at 7 cm",
+          "text": "A segment starting at 2 cm and ending at 7 cm",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "A segment starting at 2 cm and ending at 9 cm",
+          "text": "A segment starting at 2 cm and ending at 9 cm",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "A segment starting at 2 cm and ending at 7 cm",
+      "hints": [
+        "The matching segment must be 5 centimeter (cm) long, like Segment A.",
+        "For each choice, count the units from where the segment starts to where it ends.",
+        "Choose the one that is exactly 5 centimeter (cm) long."
+      ],
+      "sample_id": "23511baf388e62a1470c",
+      "replay_digest": "e44c380ece5ba9d09ca846b1b43804707055d546481ff0d8b7e7d2ddd7eb1ae4"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "9281506aab8d7f1667be",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks whether two segments of explicitly stated lengths are equal. The ruler-based description using start and end marks is clear: Segment A from 0 to 2 cm is unambiguously 2 cm long, Segment B from 3 to 5 cm is unambiguously 2 cm long. The yes/no structure eliminates interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a ruler to mark and compare segments is a contextually authentic Grade 3 measurement activity. Starting segments at different positions on a ruler (0 vs 3) while maintaining equal length is a realistic scenario that addresses the pedagogical goal of separating length from position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is direct and concrete: start and end positions are given as concrete marks, the question uses simple comparative phrasing, and the four-option format with distractors is standard. A Grade 3 learner can readily identify the numerical pattern without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Calculation: Segment A spans from 0 to 2, yielding length 2-0=2 cm. Segment B spans from 3 to 5, yielding length 5-3=2 cm. Both segments are 2 cm long, making the answer Yes mathematically correct. The hint sequence confirms this calculation step-by-step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "2f7143249f124925ef48",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents two segments with explicit ruler positions: Segment A from 0 to 6 cm and Segment B from 2 to 9 cm. The equality comparison is unambiguous. The options are mutually exclusive and clearly differentiated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing two segments marked at different positions on a ruler is a standard Grade 3 measurement comparison task. The context of using ruler marks to determine segment properties is pedagogically sound and logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure parallels the preceding sample: concrete ruler positions given, simple equality question asked, and a small set of options provided. The irrelevant distractor about set squares does not obscure the core comparison being requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A: 6-0=6 cm. Segment B: 9-2=7 cm. Since 6 and 7 are not equal, the answer No is correct. The hints accurately state both lengths and confirm the inequality."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "8347513c8a37dcc58059",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem establishes that Segment A is 3 cm and asks which option describes a matching segment. Each option uses the format of start and end positions, making the comparison task transparent. The word matching clearly signals equal length."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding another segment of the same length as a reference segment, with different endpoints, is an authentic application of understanding that length is independent of position. This is a key Grade 3 learning goal in ruler-based measurement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is transparent: given a reference length, select the matching description from four options. The format is consistent with identification tasks appropriate for the grade. No confusing language or multiple interpretations present."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking each option: from 2 to 7 is 7-2=5 cm (incorrect), from 2 to 5 is 5-2=3 cm (correct match), from 3 to 7 is 7-3=4 cm (incorrect), from 2 to 3 is 3-2=1 cm (incorrect). The selected answer correctly identifies the 3 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "b191b15e62b64b72b444",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies that Segment B must be drawn equal in length to Segment A (8 cm) starting at the 4 cm mark, asking for the ending mark. The drawing instruction is unambiguous: given starting point and required length, find the endpoint."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of drawing a segment of specified length starting at a marked position is authentic ruler use in Grade 3. Students physically perform or simulate such tasks when learning to measure and construct segments."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task sequence is clear: Segment A has length 8 cm, Segment B must match that length, starting position is 4 cm mark, find the ending mark. The calculation (4+8=12) is presented as the mathematical operation required, which the hints spell out."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Length calculation: 4 cm start plus 8 cm length equals 12 cm end mark. The arithmetic is correct and the hints confirm the addition 4+8=12 as the solution path."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "cf0625f33781881b6bc9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Two segments are presented with explicit ruler boundaries, and the equality question is direct. Despite a distractor option about set squares, the core task remains unambiguous: compare lengths by subtraction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A learner scenario comparing two ruler-marked segments to determine equality is a core Grade 3 measurement activity. The setup with different starting positions (one at 0, one at 1) deliberately tests whether students conflate position with length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is consistent with prior comparison samples: positions given, equality asked, options provided. Language is direct and accessible to Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A: 8-0=8 cm. Segment B: 8-1=7 cm. Since 8 and 7 differ, No is the correct answer. The hints accurately calculate both lengths."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "17a126e5fdc1d4a5bbfc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Given Segment A is 9 cm, the stem asks which option describes a matching segment. Each option specifies start and end marks, making the matching criterion transparent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This identification task—finding which segment description matches a given length—mirrors the structure of matching tasks in the competency. Using different start/end combinations to represent the same length reinforces the conceptual separation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is straightforward: given a length, select the segment description that has that length. Options are clearly formatted as start and end marks, and no extraneous language confuses the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Option checking: 3 to 12 is 12-3=9 cm (correct), 3 to 14 is 14-3=11 cm (wrong), 3 to 10 is 10-3=7 cm (wrong), 4 to 14 is 14-4=10 cm (wrong). The answer correctly identifies the 9 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "2c4668e4a26b54db864a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem establishes Segment A as 7 cm and asks for the endpoint when drawing Segment B of equal length starting at 2 cm. The arithmetic task is unambiguous: find the sum of starting position and required length."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing a segment of specified length from a given starting point is an essential Grade 3 ruler skill. The scenario is realistic and aligns with the drawing component of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is presented clearly: length to match is 7 cm, starting point is 2 cm mark, find the ending mark. The process is communicated through straightforward language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Endpoint calculation: starting mark 2 plus length 7 equals ending mark 9. The arithmetic is correct and the hints confirm 2+7=9."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "71174eeccc112a21379a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly specified: Segment A is 4 cm long, Segment B must match that length and start at 3 cm, find the endpoint. No ambiguity in the calculation required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The construction scenario—drawing a segment of known length from a specified starting mark—is authentic Grade 3 ruler work and supports the drawing dimension of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format combined with clear specification of required length and starting position makes this accessible to Grade 3 learners. The hint structure guides the addition calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From starting mark 3, adding length 4 yields endpoint 3+4=7. The arithmetic is correct and the hints support this calculation path."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "b84257cc610e767b6639",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously asks where Segment B must end given its required length (7 cm) and starting position (4 cm mark). The multiple-choice options remove any doubt about expected response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of using a ruler to locate the endpoint of a segment of specified length is foundational Grade 3 measurement work. The context is pedagogically sound for teaching ruler skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Task presentation is clear: match Segment B to Segment A in length (7 cm), start at the 4 cm mark, find the endpoint. The response options are straightforward numerical marks."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding length 7 to starting position 4 yields 4+7=11. The answer is mathematically correct and the hints confirm the addition operation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "27db978e7bfb51ea2512",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task specifies Segment A as 2 cm, asks to draw Segment B of equal length starting at 0 cm, and requests the endpoint. The instructions are explicit and clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing from the zero mark is a common entry point for ruler measurement in Grade 3. The scenario directly applies ruler use to construct equal-length segments."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with explicit setup (length 2 cm, starting at 0 mark) makes the calculation transparent. A Grade 3 learner can identify the endpoint at the same mark as the length value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 0 and adding 2 cm length gives endpoint at 0+2=2 mark. The arithmetic is correct and the hints confirm this result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "94482b619b6760f01315",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 4 cm and the task asks which option describes a segment of equal length. The word describes and the consistent segment notation in options make the matching task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying segments of equal length is a core competency demonstration. The use of different ruler positions reinforces that equal length is position-independent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Given a target length and four options stated as start/end pairs, the learner must select the pair that equals the target length. The format is transparent and appropriate for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking options: 3 to 7 is 7-3=4 cm (correct), 4 to 9 is 9-4=5 cm (wrong), 3 to 9 is 9-3=6 cm (wrong), 3 to 5 is 5-3=2 cm (wrong). The answer correctly identifies the 4 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "b36a57b15462da80d16d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 7 cm long and the task asks where Segment B (starting at 0 cm) must end to match that length. The task is unambiguous and straightforward."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing from the zero position on a ruler is a standard Grade 3 measurement technique. The scenario directly applies ruler use to construct a segment of specified length."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Starting from zero and constructing a segment of stated length (7 cm) is a transparent task for Grade 3 learners. The endpoint equals the length value, making the conceptual connection clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 0 and adding length 7 yields endpoint 0+7=7. The arithmetic is correct and the hints confirm the calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "8c116d966ec10898e52c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 5 cm, the starting position is 0 cm, and the task asks for the endpoint. The construction task is unambiguously specified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Constructing a segment of specified length from the zero mark is a foundational Grade 3 ruler-based measurement activity and directly supports the drawing competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with a given length (5 cm) and starting position (0 mark) leads naturally to identifying the endpoint. The language is simple and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "At the zero start, a 5 cm segment ends at 0+5=5 mark. The arithmetic is correct and the hints confirm this relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "2e3b62192ab4b78fa395",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the cultural theme framing (Sir Rez and dance shoes), the core mathematical task is clear: draw Segment B of 9 cm length starting at 1 cm mark, find the endpoint. The thematic wrapper does not obscure the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing is culturally relevant but does not alter the mathematical validity of the ruler scenario. The construction task remains authentic Grade 3 measurement work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The theme provides context but the mathematical task is clearly stated: length 9 cm, starting point 1 cm, find endpoint. The calculation required is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 1 and adding 9 yields 1+9=10. The answer is correct and the hints confirm this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "de39ba171a5433c0165b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the cultural theme (Moses and olives), the stem presents two segments with explicit ruler positions and asks for an equality comparison. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison task remains logically sound despite thematic framing. The scenario of comparing two ruler-marked segments is authentic and the theme does not interfere with mathematical validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The theme adds context without obscuring the core comparison task. The question and options are clearly stated and accessible to Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A from 0 to 4 is 4-0=4 cm. Segment B from 1 to 6 is 6-1=5 cm. Since 4 and 5 differ, No is correct. The hints accurately calculate both lengths."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "62d99185fce2889f3bb9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 2 cm and the task asks which option describes a matching segment. The four options present different ruler positions, making the matching task clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying segments of equal length at different ruler positions is a key learning task for Grade 3 measurement. The scenario is pedagogically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Given a target length and four segment descriptions, the learner selects the description matching that length. The format is straightforward and appropriate for the grade."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking options: 4 to 6 is 6-4=2 cm (correct), 4 to 5 is 5-4=1 cm (wrong), 4 to 8 is 8-4=4 cm (wrong), 5 to 8 is 8-5=3 cm (wrong). The answer correctly identifies the 2 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "6781571d18273f4b3f53",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 7 cm, the starting point is 0 cm, and the task asks for the endpoint. The construction task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Drawing from the zero mark is a standard Grade 3 ruler application. The task directly supports the drawing component of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is transparent: match Segment B to 7 cm length, start at zero, find the endpoint. The multiple-choice format confirms expected response type."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "At the zero start, a 7 cm segment ends at 0+7=7 mark. The arithmetic is correct and the hints confirm the calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "adcb09008d1665961489",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 6 cm and the task asks which option describes a segment of equal length. The matching instruction and segment notations make the task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying segments of equal length is a core competency skill. Using different ruler positions to express the same length reinforces the position-independence concept."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Given a target length of 6 cm, the learner selects which segment description matches. The four options are clearly formatted as start/end pairs."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking options: 1 to 7 is 7-1=6 cm (correct), 1 to 5 is 5-1=4 cm (wrong), 1 to 9 is 9-1=8 cm (wrong), 2 to 9 is 9-2=7 cm (wrong). The answer correctly identifies the 6 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "14b0ab3a972cf01fb439",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 3 cm and the task asks which option describes a matching segment. The four options provide distinct ruler positions, making the matching criterion transparent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This identification task is a core component of the competency. The experience mode is hint_gated, indicating additional support through hints for learners who need it."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task structure is consistent with prior identification samples: target length stated, four options offered, selection required. Clarity is maintained."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking options: 4 to 7 is 7-4=3 cm (correct), 4 to 5 is 5-4=1 cm (wrong), 5 to 9 is 9-5=4 cm (wrong), 4 to 9 is 9-4=5 cm (wrong). The answer correctly identifies the 3 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "c5e40612e592ff23a9f3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Two segments with explicit ruler boundaries are presented and an equality comparison is requested. The mastery_drill experience mode indicates reinforcement of a familiar task type. No ambiguity present."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison scenario is authentic Grade 3 measurement work. Repeated practice with varied segment values in mastery_drill mode supports skill consolidation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task format is familiar by this point in the packet: given positions, compare lengths, select answer. Clarity remains high despite the drilling context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A from 0 to 5 is 5-0=5 cm. Segment B from 1 to 8 is 8-1=7 cm. Since 5 and 7 differ, No is correct. The hints accurately calculate both lengths."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "sample_id": "23511baf388e62a1470c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Segment A is stated as 5 cm and the task asks which option describes a matching segment. The scaffolded experience mode provides support structure. The matching instruction is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The identification task is foundational to the competency. The scaffolded experience mode indicates structured support for learners, reinforcing the core skill in a supportive context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly specified: given length 5 cm, select the matching segment from four options. The scaffolded support does not obscure the mathematical core."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking options: 2 to 5 is 5-2=3 cm (wrong), 3 to 9 is 9-3=6 cm (wrong), 2 to 7 is 7-2=5 cm (correct), 2 to 9 is 9-2=7 cm (wrong). The answer correctly identifies the 5 cm segment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "identify_equal_length_segments",
+      "clause": "Identify",
+      "verdict": "PASS",
+      "reasoning": "Twelve samples (9281506aab8d7f1667be, 2f7143249f124925ef48, 8347513c8a37dcc58059, cf0625f33781881b6bc9, 17a126e5fdc1d4a5bbfc, 94482b619b6760f01315, adcb09008d1665961489, 14b0ab3a972cf01fb439, c5e40612e592ff23a9f3, 23511baf388e62a1470c, de39ba171a5433c0165b, 62d99185fce2889f3bb9) explicitly require students to identify whether two segments are equal or to select which segment matches a given length. The identification capability is comprehensively demonstrated across both comparison and matching task types.",
+      "sample_ids": [
+        "9281506aab8d7f1667be",
+        "2f7143249f124925ef48",
+        "8347513c8a37dcc58059",
+        "cf0625f33781881b6bc9",
+        "17a126e5fdc1d4a5bbfc",
+        "94482b619b6760f01315",
+        "adcb09008d1665961489",
+        "14b0ab3a972cf01fb439",
+        "c5e40612e592ff23a9f3",
+        "23511baf388e62a1470c",
+        "de39ba171a5433c0165b",
+        "62d99185fce2889f3bb9"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "requirement_id": "draw_segment_of_given_length",
+      "clause": "draw",
+      "verdict": "PASS",
+      "reasoning": "Eight samples (b191b15e62b64b72b444, 2c4668e4a26b54db864a, 71174eeccc112a21379a, b84257cc610e767b6639, 27db978e7bfb51ea2512, b36a57b15462da80d16d, 8c116d966ec10898e52c, 2e3b62192ab4b78fa395, 6781571d18273f4b3f53) require students to use a ruler to draw or locate a segment of specified length by calculating where it must end given a starting position. The drawing skill is demonstrated through ruler-based endpoint calculation across multiple starting positions and segment lengths.",
+      "sample_ids": [
+        "b191b15e62b64b72b444",
+        "2c4668e4a26b54db864a",
+        "71174eeccc112a21379a",
+        "b84257cc610e767b6639",
+        "27db978e7bfb51ea2512",
+        "b36a57b15462da80d16d",
+        "8c116d966ec10898e52c",
+        "2e3b62192ab4b78fa395",
+        "6781571d18273f4b3f53"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "requirement_id": "line_segment",
+      "clause": "line segments",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples use the term line segment or segment consistently when referring to the mathematical objects being measured or compared. Every sample employs this terminology correctly and demonstrates understanding of line segments as objects with measurable length independent of their position on a ruler.",
+      "sample_ids": [
+        "9281506aab8d7f1667be",
+        "2f7143249f124925ef48",
+        "8347513c8a37dcc58059",
+        "b191b15e62b64b72b444",
+        "cf0625f33781881b6bc9",
+        "17a126e5fdc1d4a5bbfc",
+        "2c4668e4a26b54db864a",
+        "71174eeccc112a21379a",
+        "b84257cc610e767b6639",
+        "27db978e7bfb51ea2512",
+        "94482b619b6760f01315",
+        "b36a57b15462da80d16d",
+        "8c116d966ec10898e52c",
+        "2e3b62192ab4b78fa395",
+        "de39ba171a5433c0165b",
+        "62d99185fce2889f3bb9",
+        "6781571d18273f4b3f53",
+        "adcb09008d1665961489",
+        "14b0ab3a972cf01fb439",
+        "c5e40612e592ff23a9f3",
+        "23511baf388e62a1470c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "requirement_id": "equal_length",
+      "clause": "equal length",
+      "verdict": "PASS",
+      "reasoning": "The concept of equal length is central to every sample. Samples measure the length of two segments and determine equivalence (comparison tasks) or identify which segment matches a given length (matching tasks). This requirement is comprehensively integrated throughout and forms the primary mathematical objective of the entire packet.",
+      "sample_ids": [
+        "9281506aab8d7f1667be",
+        "2f7143249f124925ef48",
+        "8347513c8a37dcc58059",
+        "b191b15e62b64b72b444",
+        "cf0625f33781881b6bc9",
+        "17a126e5fdc1d4a5bbfc",
+        "2c4668e4a26b54db864a",
+        "71174eeccc112a21379a",
+        "b84257cc610e767b6639",
+        "27db978e7bfb51ea2512",
+        "94482b619b6760f01315",
+        "b36a57b15462da80d16d",
+        "8c116d966ec10898e52c",
+        "2e3b62192ab4b78fa395",
+        "de39ba171a5433c0165b",
+        "62d99185fce2889f3bb9",
+        "6781571d18273f4b3f53",
+        "adcb09008d1665961489",
+        "14b0ab3a972cf01fb439",
+        "c5e40612e592ff23a9f3",
+        "23511baf388e62a1470c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    },
+    {
+      "requirement_id": "ruler",
+      "clause": "a ruler",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples explicitly involve use of a ruler marked in centimeters. Each sample references ruler marks as starting and ending points, measures lengths in centimeter units, or asks students to calculate positions using ruler markings. The ruler is the essential tool throughout and forms an integral part of every task structure.",
+      "sample_ids": [
+        "9281506aab8d7f1667be",
+        "2f7143249f124925ef48",
+        "8347513c8a37dcc58059",
+        "b191b15e62b64b72b444",
+        "cf0625f33781881b6bc9",
+        "17a126e5fdc1d4a5bbfc",
+        "2c4668e4a26b54db864a",
+        "71174eeccc112a21379a",
+        "b84257cc610e767b6639",
+        "27db978e7bfb51ea2512",
+        "94482b619b6760f01315",
+        "b36a57b15462da80d16d",
+        "8c116d966ec10898e52c",
+        "2e3b62192ab4b78fa395",
+        "de39ba171a5433c0165b",
+        "62d99185fce2889f3bb9",
+        "6781571d18273f4b3f53",
+        "adcb09008d1665961489",
+        "14b0ab3a972cf01fb439",
+        "c5e40612e592ff23a9f3",
+        "23511baf388e62a1470c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q1_6",
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q1_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "5375696a823afbed33ad5308cabfcd3f5285682910283001313ee3a50e125268",
+      "clause_ids": [
+        "identify_equal_length_segments",
+        "draw_segment_of_given_length",
+        "line_segment",
+        "equal_length",
+        "ruler"
+      ],
+      "response_ref": ".responses/s5-phaseC-w11-haiku45-20260925.json",
+      "response_digest": "6c3f9c3823134279955b6b689dfa12454279a395dff47cf8c5f7914dab3f7279",
+      "prompt_ref": ".responses/s5-phaseC-w11-haiku45-20260925.prompt.txt",
+      "prompt_digest": "40fda72d82c838ade3aad09106972f6a50b75d865b6c75691b3f7242f36b6fbe",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_6/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Identification and drawing are both present and both anchored on a ruler: comparison items give two segments by their start and end marks and ask whether they are equal, while construction items fix a starting mark and ask at which centimetre mark Segment B must end."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both answers to the equality question occur, Yes at seed 42 and No at seeds 43 and 46, so the pupil cannot settle into one response. Segments that begin at 0 cm and segments that begin elsewhere on the ruler are both generated, which is the sub-case that actually tests reading length as a difference."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Lengths stay between 2 and 9 cm and the arithmetic is a single addition or subtraction within 14, suitable for Grade 3 Quarter 1. The distractor phrased as being undeterminable without a set square targets a plausible tool confusion rather than introducing new vocabulary."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three distinct item shapes recur: a yes/no equality judgement, a choose-the-matching-description item listing candidate segments by their endpoints, and a construct-the-endpoint item. Cloze and mcq are both used, so the presentation is not uniform."
+      "rationale": "All samples employ arithmetic appropriate for Grade 3 learners: subtraction to find segment lengths (endpoints minus start marks), addition to find endpoints (given length plus starting mark). Calculations involve numbers 0-12 with length measures 2-9 cm, well within Grade 3 operational fluency. No extraneous complexity present."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty rises by moving the starting mark off zero, which is precisely the conceptual step this competency requires, namely that length is the difference between marks rather than the number the segment ends on."
+      "rationale": "Samples directly target the stated competency. Half address identifying whether segments are equal or selecting matching segments by length regardless of position. Half ask students to use ruler marks and addition to determine where a segment of specified length must end, embodying the drawing component through ruler-based calculation and locating endpoints."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The decomposition into five requirements—identify, draw, line segments, equal length, ruler—is upheld throughout the packet. Samples systematically demonstrate identification (yes/no comparisons and matching tasks) and drawing (endpoint calculation). All requirements appear integrated into each item type rather than isolated.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "Each requirement maps losslessly to demonstrated capability across the sample set. Identification is shown in comparative tasks (samples testing segment comparison) and matching tasks. Drawing is shown through ruler-based endpoint calculation. The term line segments is consistently applied. Equal length is the central constraint. Ruler use with centimeter marks is present in every sample. No competency clause is left untested or ambiguous in coverage.",
+        "requirement_ids": [
+          "identify_equal_length_segments",
+          "draw_segment_of_given_length",
+          "line_segment",
+          "equal_length",
+          "ruler"
+        ]
+      },
+      "clause_ids": [
+        "identify_equal_length_segments",
+        "draw_segment_of_given_length",
+        "line_segment",
+        "equal_length",
+        "ruler"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples span segment lengths from 2 cm through 9 cm, starting positions from 0 cm mark to 4 cm mark, and both comparison formats (do two given segments match?) and construction formats (which endpoint matches this length?). Items appear to sample systematically across reasonable parameter ranges for Grade 3.",
+      "clause_ids": [
+        "identify_equal_length_segments",
+        "draw_segment_of_given_length",
+        "line_segment",
+        "equal_length",
+        "ruler"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All marks referenced fall between 0 and 14 cm, entirely within a standard classroom ruler, so every item can be physically carried out with the tool the competency names."
+      "rationale": "Ruler marks and segment lengths are all in whole centimeters and remain below 12 cm, matching standard Grade 3 ruler-based measurement work. Calculations use addition and subtraction within the range students are expected to fluently perform. No fractional marks, negative numbers, or advanced operations appear."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples include multiple interaction types: cloze format items requiring text input of numerical endpoints, multiple-choice identification tasks selecting segment descriptions, and yes/no comparisons. Additional variants include items with thematic framing (cultural and emoji themes in seeds 701 and 702) and different experience modes (hint_gated in seed 1000, mastery_drill in seed 1001, scaffolded in seed 1002), providing diverse presentation modalities."
     }
   },
   "overall": "PASS"
