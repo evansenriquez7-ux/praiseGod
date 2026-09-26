@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q3_3",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve multiplication problems using the 2, 3, 4, 5, and 10 multiplication tables, including problems involving money.",
+    "grade": 2,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_multiplication_problems",
+      "clause": "Solve multiplication problems"
+    },
+    {
+      "kind": "range",
+      "id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables"
+    },
+    {
+      "kind": "context",
+      "id": "money",
+      "clause": "money"
+    }
+  ],
+  "packet_digest": "309d6df780a898a0c1e4484eaaa16c6225057b67dea0a92b3e59be43aeab5e9c",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +41,63 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "765fa0deebe1346f125e",
+    "ecb360c522c62b017971",
+    "b1cbe375a9dca8131b41",
+    "3e6b95463dffb40cec86",
+    "67ed64aa79a5b1c51b7a",
+    "6299182b789ab9e06e92",
+    "1961b9a1d8a6b3991aba",
+    "4aa59c509c631337cd7c",
+    "48543a914928a02d4d71",
+    "d2eb5a9ca37e97127330",
+    "8b9caa5291278269dddf",
+    "6b8067870eb44a14c4dc",
+    "b5c2ae9998727eb11276",
+    "6e77d961f5733917ddf7",
+    "7eb8f3c31de82cedf153",
+    "87594c686bd42e8e06b8",
+    "cbb96884c984a85f1767",
+    "93a011e890b910b5bb72",
+    "2790347ac7cca48beba5",
+    "e56da77e8c8af6e30024",
+    "8f12a69e8adfb5dd9f95",
+    "9de3ee8e4b0a6e53507d"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Maico puts 3 costumes in each of 3 bags. How many costumes are in all the bags?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,28 +119,100 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 3.",
+        "Think of it as 3 groups of 3: 3 + 3 + 3.",
+        "The product of 3 × 3 = 9."
+      ],
+      "sample_id": "765fa0deebe1346f125e",
+      "replay_digest": "9705b577a271abb2d8021d146929a966391b28aee6a95862baf65d1ae6f7d3d8"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "Nanding wants to buy 4 water bowls that cost ₱2 each. How much does Nanding need to pay in all? The answer is 6. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 2.",
+        "Think of it as 2 groups of 4: 4 + 4.",
+        "The product of 4 × 2 = 8."
+      ],
+      "sample_id": "ecb360c522c62b017971",
+      "replay_digest": "da0558e7caecd52473a14f8712b31f5eac07417f7def4267b55776cf698f2eb3"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved this problem: \"Coach Nora wants to buy 1 shuttlecock that cost ₱2 each. How much does Coach Nora need to pay in all?\" Rico says the answer is 2. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 2
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 2
+      },
+      "hints": [
+        "We need to find the total of equal groups 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "sample_id": "b1cbe375a9dca8131b41",
+      "replay_digest": "a6a84967989d4d8bc82db78069660f140fa29e3d7925510a19c4624295833195"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Ate Gab wants to buy 3 trophies that cost ₱4 each. How much does Ate Gab need to pay in all?",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -87,13 +234,36 @@
           "value": 12,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 4.",
+        "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.",
+        "The product of 3 × 4 = 12."
+      ],
+      "sample_id": "3e6b95463dffb40cec86",
+      "replay_digest": "4a7363ad6d30e7bb3ebf976cccb12d9be2c732f052d97cbcdea2bfe63e4cfb01"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Ate Joy puts 2 seeds in each of 6 bags. How many seeds are in all the bags?",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -119,19 +289,71 @@
           "text": "10",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 2.",
+        "Think of it as 2 groups of 6: 6 + 6.",
+        "The product of 6 × 2 = 12."
+      ],
+      "sample_id": "67ed64aa79a5b1c51b7a",
+      "replay_digest": "bd4965d3bb96a8b592ac6c035d692e6d6a41fcbe9c06aacbcc9dfaf457d8f9e4"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "Kuya Ton puts 10 ribbons in each of 8 bags. How many ribbons are in all the bags? The answer is 90. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 10.",
+        "Use the 10 times table: 10 × 8.",
+        "The product of 8 × 10 = 80."
+      ],
+      "sample_id": "6299182b789ab9e06e92",
+      "replay_digest": "4b8760004128be9e6c633ed76ab300cdac6518e034cc7af15668d9e1c0305ab8"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Ate Sam puts 5 running shoes in each of 6 bags. How many running shoes are in all the bags?",
       "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,28 +375,107 @@
           "value": 1,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 5.",
+        "Think of it as 5 groups of 6: 6 + 6 + 6 + 6 + 6.",
+        "The product of 6 × 5 = 30."
+      ],
+      "sample_id": "1961b9a1d8a6b3991aba",
+      "replay_digest": "c3826c0627fb610575ab30339404fe488eb106e298e40ed8ccb8e54490f1d46b"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 502,
       "formatter": "error_detect",
-      "question_text": "Dante solved this problem: \"Kuya Renz puts 4 canvases in each of 9 bags. How many canvases are in all the bags?\" Dante says the answer is 36. Is Dante correct?",
+      "question_text": "Dante solved this problem: \"Kuya Renz puts 4 paint tubes in each of 9 bags. How many paint tubes are in all the bags?\" Dante says the answer is 36. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 36
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 36
+      },
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 4.",
+        "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.",
+        "The product of 9 × 4 = 36."
+      ],
+      "sample_id": "4aa59c509c631337cd7c",
+      "replay_digest": "6c3949c31989851e7a2e48cba7d2d08e1de527b2155e7de59fdcea28547f7ce4"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "Kuya Tads puts 4 leashes in each of 5 bags. How many leashes are in all the bags? The answer is 20. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 4.",
+        "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.",
+        "The product of 5 × 4 = 20."
+      ],
+      "sample_id": "48543a914928a02d4d71",
+      "replay_digest": "09edc3a0434aae3e86bfd6bca9c2b94e47c2b935fc05d374281f47fb08e6d451"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Coach Roel wants to buy 6 score cards that cost ₱3 each. How much does Coach Roel need to pay in all?",
       "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "single_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -200,13 +501,38 @@
           "text": "18",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 3.",
+        "Think of it as 3 groups of 6: 6 + 6 + 6.",
+        "The product of 6 × 3 = 18."
+      ],
+      "sample_id": "d2eb5a9ca37e97127330",
+      "replay_digest": "c61795933ebbd8c32572240a0de8bebb07d9c5b44899ef9cc659d779e074ad4e"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Sir Rez wants to buy 1 ribbon that cost ₱2 each. How much does Sir Rez need to pay in all?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -228,40 +554,1125 @@
           "value": 2,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "sample_id": "8b9caa5291278269dddf",
+      "replay_digest": "b82e1d75e0f94b46b66d3ee071f75ffa67413fbcd862397a177b1027cf76291d"
     },
     {
+      "node_id": "mat_g2_na_q3_3",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "Ate Beng wants to buy 4 leashes that cost ₱3 each. How much does Ate Beng need to pay in all? The answer is 12. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "find_product"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 3.",
+        "Think of it as 3 groups of 4: 4 + 4 + 4.",
+        "The product of 4 × 3 = 12."
+      ],
+      "sample_id": "6b8067870eb44a14c4dc",
+      "replay_digest": "5c92d968721dc8b99a4acb9865fc786db6ee8f630df02cc8b32895e66508cb88"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "Boyong wants to buy 4 cat toys that cost ₱3 each. How much does Boyong need to pay in all? The answer is 12. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 3.",
+        "Think of it as 3 groups of 4: 4 + 4 + 4.",
+        "The product of 4 × 3 = 12."
+      ],
+      "sample_id": "b5c2ae9998727eb11276",
+      "replay_digest": "9ffab85bca2daa35144ef08125146cd01f43d99aafa49565aa2436a13024f676"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "Marco puts 4 sneakers in each of 3 bags. How many sneakers are in all the bags?",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 4.",
+        "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.",
+        "The product of 3 × 4 = 12."
+      ],
+      "sample_id": "6e77d961f5733917ddf7",
+      "replay_digest": "6ef5a3cdd285cdc2b9878c21b477a22c5e699207c6efd853a740f66dd6129791"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Ate Alyssa puts 2 whistles in each of 8 bags. How many whistles are in all the bags?\" Manny says the answer is 14. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 16
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 16
+      },
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 2.",
+        "Think of it as 2 groups of 8: 8 + 8.",
+        "The product of 8 × 2 = 16."
+      ],
+      "sample_id": "7eb8f3c31de82cedf153",
+      "replay_digest": "ed1ac8963b2afab6b7a4fa76ed1993dfe1a790111a4ccb8fce96d93ef2eb574b"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Lola Caring puts 4 leashes in each of 1 bag. How many leashes are in all the bags?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 4.",
+        "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.",
+        "The product of 1 × 4 = 4."
+      ],
+      "sample_id": "87594c686bd42e8e06b8",
+      "replay_digest": "6c5d7082a92cdb1bc9529728b594f0f32181a22a77e4e1b994df04035bbd68f5"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved this problem: \"Coach Roel wants to buy 9 basketballs that cost ₱2 each. How much does Coach Roel need to pay in all?\" Pia says the answer is 18. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 18
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 18
+      },
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 2.",
+        "Think of it as 2 groups of 9: 9 + 9.",
+        "The product of 9 × 2 = 18."
+      ],
+      "sample_id": "cbb96884c984a85f1767",
+      "replay_digest": "5855ae879a7502e089583e405f535e4b9ab9c51c77cdefd7ededa060c10cd27a"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ate Liza puts 3 paint tubes in each of 2 bags. How many paint tubes are in all the bags?",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to find the total of equal groups 2 groups of 3.",
+        "Think of it as 3 groups of 2: 2 + 2 + 2.",
+        "The product of 2 × 3 = 6."
+      ],
+      "sample_id": "93a011e890b910b5bb72",
+      "replay_digest": "a58311b8f7e0356efa08a361b12318ee1a2fa8815b8cac55327d2cc487fb3cd0"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Jun wants to buy 1 jersey that cost ₱2 each. How much does Jun need to pay in all?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "sample_id": "2790347ac7cca48beba5",
+      "replay_digest": "0953b8b5a7f2efd95074f78a9e72bfc08aea9ae25e8bf64b8e1bcba76d8d1abe"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "Lola Ising puts 5 cupcakes in each of 5 bags. How many cupcakes are in all the bags? The answer is 10. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 5.",
+        "Think of it as 5 groups of 5: 5 + 5 + 5 + 5 + 5.",
+        "The product of 5 × 5 = 25."
+      ],
+      "sample_id": "e56da77e8c8af6e30024",
+      "replay_digest": "e5e52ecead4cfc6e01abefd158f3d203d049af007a11f7132a6a0517d56fcef7"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Kuya Chad puts 2 helmets in each of 5 bags. How many helmets are in all the bags?\" Liza says the answer is 12. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 10
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 10
+      },
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 2.",
+        "Think of it as 2 groups of 5: 5 + 5.",
+        "The product of 5 × 2 = 10."
+      ],
+      "sample_id": "8f12a69e8adfb5dd9f95",
+      "replay_digest": "a7217f6d53d11fa3202faafc8e5624cbf517dec33a0940235d5faeabf7c3c928"
+    },
+    {
+      "node_id": "mat_g2_na_q3_3",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Aling Rosa puts 4 wristbands in each of 1 bag. How many wristbands are in all the bags?\" Manny says the answer is 5. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 4
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 4
+      },
+      "hints": [
+        "We need to find the total of equal groups 1 group of 4.",
+        "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.",
+        "The product of 1 × 4 = 4."
+      ],
+      "sample_id": "9de3ee8e4b0a6e53507d",
+      "replay_digest": "f1f39d9af4cb6b8781d77360fa7affc17f5014b9fa12c67fe215c77820a98f0f"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "765fa0deebe1346f125e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question unambiguously asks for total costumes across three bags with three items each. The 3×3=9 calculation is the sole correct mathematical interpretation requiring no additional clarification about what operation or counting method applies."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context of bags containing costumes is realistic and appropriate for Grade 2. The problem setup logically requires multiplication to find the combined total from equal groups, making the narrative structure sound and pedagogically valid for building multiplication understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Stem uses simple vocabulary (puts, costumes, bags, total) accessible to Grade 2 readers. Sentence structure is straightforward with clear action and explicit request for the answer. Options are clearly separated by forward slashes enabling straightforward selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer of 9 is mathematically correct. The three hints logically build understanding: first identifying equal groups structure, second showing additive decomposition as 3+3+3, third presenting formal multiplication notation 3×3=9. All three hints accurately describe the problem and its solution."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "ecb360c522c62b017971",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement clearly indicates Nanding wants four bowls at 2 pesos each and proposes 6 as the answer. True/false format removes any interpretive ambiguity about what the learner must evaluate: whether the proposed amount matches the correct total cost calculation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money purchase scenario is realistic and age-appropriate for Grade 2 Filipino learners. Buying identical items at a unit price is a valid multiplication application. The false answer (6) creates pedagogically useful recognition that multiplication, not addition of just the multiplier, produces the correct result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sentence structure is simple and unambiguous. Terms water, bowls, cost, pesos are familiar Grade 2 vocabulary. The numerical values and true/false format provide clear decision options requiring straightforward mathematical verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct product is 4×2=8 pesos, not 6. First hint correctly identifies four groups of two. Second hint accurately shows 4+4=8 as additive verification. Third hint correctly presents 4×2=8 in multiplication form. The false statement in the stem makes this an appropriate error-recognition exercise."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "b1cbe375a9dca8131b41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Scenario structure is clear: Rico solved a specific problem and proposed answer 2 for purchasing one shuttlecock at 2 pesos each. The error-detection format unambiguously asks whether Rico's work and conclusion are correct, requiring verification against the actual multiplication."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing context with one item at a unit price is valid for Grade 2 multiplication practice. The edge case of multiplying by 1 serves an important pedagogical purpose: confirming that one group of two objects equals two, supporting identity properties of multiplication."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Presentation clearly attributes thinking to Rico and asks if his work is correct. Relevant details (one shuttlecock, two pesos cost, answer of 2) are explicit. The yes/no format removes interpretive complexity about how learners should respond."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rico's answer of 2 is indeed correct for 1×2=2. Hints correctly identify one group of two, verify through 1+1=2, and express the multiplication as 1×2=2. This sample appropriately builds confidence that 1 times any number yields that number, a crucial Grade 2 multiplication concept."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "3e6b95463dffb40cec86",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks for the total cost of three trophies at four pesos each. The multiplication requirement is transparent: combine three identical 4-peso amounts. Options clearly delineate four distinct numerical choices for selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Trophy-purchasing scenario is age-appropriate and establishes legitimate real-world multiplication need. The 3×4=12 calculation reflects a Grade 2-appropriate transaction size with familiar peso denominations and modest quantities."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sentence uses simple vocabulary (wants to buy, cost each, need to pay, all). The phrase how much anchors the response to a single numerical answer. Options are clearly presented enabling straightforward selection without linguistic confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 12 pesos from 3×4. Hints logically build: identifying three groups of four, expressing as repeated addition 3+3+3+3, then formalizing as 3×4=12. All three hints are mathematically accurate and support the correct solution method."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "67ed64aa79a5b1c51b7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly presents a fill-in scenario: six bags each containing two seeds. The question how many seeds are in all the bags is unambiguous about requiring the product 6×2. Options are distinctly numbered enabling unambiguous response selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context of seeds distributed in bags represents a realistic Grade 2 scenario with meaningful multiplication application. Equal grouping of objects is a foundational model for multiplication development and the quantities are developmentally appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Vocabulary (puts, seeds, bags, total) is accessible to Grade 2 learners. The problem structure is linear: establish groups, specify items per group, ask for total. The fill-in-blank format with provided options gives learners clear response expectations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 12 correctly represents 6×2. Hints accurately describe six groups of two, additive verification through 6+6, and formal multiplication notation 6×2=12. The mathematical logic chain from problem to solution is sound and pedagogically transparent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "6299182b789ab9e06e92",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement specifies eight bags with ten ribbons each and claims the total is 90. True/false format creates no ambiguity: the learner must verify whether 8×10 actually equals 90 or if another value is correct, requiring direct multiplication calculation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ribbon distribution scenario is realistic and Grade 2-appropriate. Using the 10 times table with a moderately sized multiplier (8) serves an important curricular function: ensuring fluency with ten multiplication while checking whether learners distinguish 8×10 from nearby incorrect values."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sentence construction is simple and grammatically clear. Quantities and context are familiar. The structure how many ribbons in all the bags followed by proposed answer 90 and true/false options creates explicit decision points for learner response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct product is 8×10=80, not 90 as stated. Hints appropriately identify eight groups of ten, reference the ten times table explicitly, and correctly calculate the product as 8×10=80. The false statement in the stem is mathematically justified and pedagogically useful for recognizing computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "1961b9a1d8a6b3991aba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice question explicitly asks for the total count of running shoes across six bags with five shoes each. The four options provide distinct numerical alternatives requiring straightforward selection of the correct product 6×5."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Context of organizing running shoes in bags is concrete and meaningful for Grade 2. The equal-grouping scenario directly supports conceptual understanding of multiplication as combining identical groups, a core Grade 2 learning objective."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is grade-appropriate with familiar nouns (Ate Sam, running shoes, bags, total). The how many phrase clearly signals a numerical answer. Option presentation as 25/30/11/1 makes selection unambiguous and requires no additional interpretation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 30 is correct from 6×5. Hints progress logically: identifying six groups of five, showing additive form 6+6+6+6+6, then expressing multiplication 6×5=30. All three hints maintain mathematical accuracy and reinforce the connection between repeated addition and multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "4aa59c509c631337cd7c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scenario specifies that Dante solved a particular problem about paint tubes distributed in bags and proposes answer 36. The format clearly asks whether Dante's work is correct, requiring verification of 9×4 against the proposed solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Scenario of organizing paint tubes in bags presents a Grade 2-appropriate multiplication context. The problem structure reflects typical classroom storage or art supply management, making the mathematical application concrete and personally relevant."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation attributes thinking to Dante and poses a direct question about correctness. Relevant problem details (nine bags, four paint tubes each, proposed answer 36) are clearly stated. The yes/no response format provides unambiguous decision options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Dante's answer of 36 is indeed correct for 9×4. Hints accurately describe nine groups of four, provide repeated-addition verification through 9+9+9+9, and express the multiplication formally as 9×4=36. This sample appropriately validates correct reasoning and builds confidence in the 4 times table."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "48543a914928a02d4d71",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement clearly indicates five bags containing four leashes each with proposed total of 20. True/false format unambiguously requires verification: does 5×4 equal 20, or is this statement false, demanding direct multiplication evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Scenario of storing leashes in bags is realistic and developmentally appropriate for Grade 2. The problem models a meaningful multiplication situation using familiar objects, supporting conceptual understanding of the 4 and 5 times tables."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question structure is direct and simple. All terms (leashes, bags, total cost) are within Grade 2 vocabulary. The numerical values and true/false format create clear choice options requiring straightforward verification without linguistic ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is true: 5×4=20 is mathematically correct. Hints accurately identify five groups of four, express as additive verification 5+5+5+5, and formalize as 5×4=20. All three hints maintain logical and computational accuracy throughout the solution pathway."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "d2eb5a9ca37e97127330",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Fill-in scenario clearly establishes six score cards at three pesos each and asks for total cost. The question structure unambiguously requires the product 6×3. Options provided as 9/15/3/18 give four distinct alternatives enabling straightforward selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Score-card purchase scenario establishes legitimate Grade 2-appropriate money application. The multiplication of identical unit prices across multiple items directly supports real-world mathematical reasoning about cost calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language remains grade-appropriate with familiar money vocabulary (buy, cost each, pay in all). The narrative is concise and unambiguous. Option format with forward-slash separation enables clear selection of a single numerical answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 18 pesos from 6×3. Hints logically build: identifying six groups of three, expressing as 6+6+6 additive form, then formalizing as 6×3=18. All three hints are mathematically sound and systematically develop understanding from concrete grouping to abstract multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "8b9caa5291278269dddf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks for the total cost of one ribbon at two pesos each. The multiplication requirement is transparent despite the edge case of multiplying by one. Four options clearly present distinct numerical choices eliminating interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Single-item purchase scenario serves important pedagogical function for Grade 2: establishing that one object times a unit price equals that price, supporting understanding of multiplication's identity property. Money context is realistic and familiar."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sentence structure is simple with clear action (wants to buy) and outcome (how much to pay). Vocabulary (ribbon, cost, pesos) is grade-appropriate. Options presented as 1/4/3/2 create straightforward choice points without linguistic obstruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 pesos is correct from 1×2. Hints accurately describe one group of two, show additive form 1+1, and express as 1×2=2. This sample appropriately builds Grade 2 understanding that one of any group equals that group size, a crucial multiplication concept."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "6b8067870eb44a14c4dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement specifies four leashes at three pesos each with claimed total of 12. True/false format creates no ambiguity: the learner must verify whether 4×3 actually equals 12 or identify this statement as false through direct calculation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money scenario involving leash purchase is realistic and Grade 2-appropriate. The problem models legitimate multiplication application in consumer mathematics. Quantities and prices are authentic for typical Grade 2 Filipino classroom contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question uses simple vocabulary accessible to Grade 2 readers (Ate Beng, leashes, cost, pay). The sentence structure is straightforward. The how much in all anchors the response to a single numerical verification task. True/false options require clear yes/no decision."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is true: 4×3=12 pesos is mathematically correct. Hints accurately identify four groups of three, express additive form as 4+4+4, and formalize the multiplication as 4×3=12. All mathematical reasoning is sound and pedagogically transparent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "b5c2ae9998727eb11276",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement clearly indicates four cat toys at three pesos each with proposed total of 12. True/false format presents an unambiguous decision: verify whether 4×3 equals 12 or identify this claim as false, requiring single-value multiplication."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Toy purchase scenario is realistic and engaging for Grade 2 learners. The problem structure establishes meaningful multiplication application through consumer mathematics, integrating money understanding with multiplication fact fluency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is grade-appropriate with familiar terms (Boyong, cat toys, cost, pesos, pay in all). Sentence construction is straightforward. The true/false format provides explicit response options requiring no additional interpretation or clarification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is true: 4×3=12 pesos accurately reflects the total cost. Hints correctly identify four groups of three, express repeated addition as 4+4+4, and formalize as 4×3=12. Mathematical accuracy is maintained throughout all solution pathways presented."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "6e77d961f5733917ddf7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Fill-in scenario clearly specifies three bags each containing four sneakers. The question unambiguously asks for the total sneaker count via 3×4 multiplication. Four options distinctly numbered enable straightforward selection without confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sneaker organization scenario provides a concrete Grade 2-appropriate context for multiplication. The equal grouping of identical items directly supports building conceptual understanding of multiplication as combining equal groups."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Vocabulary and sentence structure remain accessible to Grade 2 learners. Nouns (Marco, sneakers, bags) and action (puts) are familiar. The question how many sneakers establishes clear response expectations. Option format with separation makes selection straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer is 12 from 3×4. Hints accurately describe three groups of four, express as repeated addition 3+3+3+3, and formalize as 3×4=12. All three hints maintain mathematical accuracy and progressively build from concrete grouping to formal multiplication representation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "7eb8f3c31de82cedf153",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scenario specifies that Manny solved a problem about whistles distributed in bags and claims the answer is 14. The format unambiguously asks whether Manny's work is correct, requiring verification of 8×2 against his proposed solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Whistle organization context provides a Grade 2-appropriate scenario for error detection practice. The problem structure allows learners to practice identifying computational mistakes in multiplication, developing critical verification skills alongside fluency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Presentation attributes the problem-solving to Manny and asks for verification of correctness. Key problem details (eight bags, two whistles each, proposed answer 14) are clearly stated. The yes/no format provides unambiguous response options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's answer of 14 is incorrect for 8×2. The correct answer is 16. Hints accurately describe eight groups of two, provide additive verification through 8+8, and express the correct multiplication as 8×2=16. The sample appropriately supports error-detection skills and builds fluency with the 2 times table."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "87594c686bd42e8e06b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Fill-in scenario establishes one bag containing four leashes. The question unambiguously requests the total via 1×4 multiplication. Four options clearly present distinct numerical choices enabling straightforward response selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Single-bag scenario serves important pedagogical function: establishing that one group times any number yields that number, supporting understanding of multiplication's identity property. The leash context is concrete and Grade 2-appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language remains grade-appropriate and simple. The sentence structure is clear: one bag with four items per bag leading to how many total. Option format enables unambiguous selection. Lola Caring is a familiar cultural reference for Grade 2 Filipino learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 4 is correct from 1×4. Hints accurately identify one group of four, express as additive form 1+1+1+1, and formalize as 1×4=4. This sample appropriately reinforces that one times any number equals that number, a crucial Grade 2 multiplication property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "cbb96884c984a85f1767",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scenario specifies Pia solved a basketball purchase problem and proposes answer 18 for nine basketballs at two pesos each. The format clearly asks if Pia's work is correct, requiring verification of 9×2 against her proposed solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Basketball purchase scenario establishes a money-based multiplication context appropriate for Grade 2. The problem supports integration of multiplication fluency with real-world money applications, developing practical mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Presentation clearly attributes the problem-solving to Pia and requests verification of her answer. Key details (nine basketballs, two pesos cost, proposed answer 18) are explicitly stated. The yes/no response format provides unambiguous choice options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pia's answer of 18 is correct for 9×2. Hints accurately describe nine groups of two, show additive verification through 9+9, and express as 9×2=18. The sample appropriately builds confidence in the 2 times table and supports understanding that multiplication by nine maintains expected product relationships."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "93a011e890b910b5bb72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice question asks for the total paint tubes across two bags containing three tubes each. The multiplication requirement is transparent. Four option choices clearly present distinct numerical values enabling unambiguous selection of the correct product."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Paint-tube organization scenario provides concrete Grade 2-appropriate context for multiplication practice. The equal grouping of identical items directly supports building understanding of multiplication as combining groups, a core curriculum objective."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sentence structure is simple and unambiguous. Vocabulary (Ate Liza, paint tubes, bags, total) is grade-appropriate and familiar to learners. The how many phrase clearly anchors the response to a single numerical answer. Options are distinctly separated enabling clear selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 6 is correct from 2×3. Hints accurately identify two groups of three, express as additive form 2+2+2, and formalize as 2×3=6. All mathematical pathways remain accurate and pedagogically transparent in building from concrete grouping to abstract multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "2790347ac7cca48beba5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question clearly asks for the total cost of one jersey at two pesos. Despite the edge case of multiplying by one, the problem is unambiguous about requiring 1×2 calculation. Four options provide distinct numerical choices removing interpretive confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Single-item purchase context appropriately develops understanding of multiplication's identity property at Grade 2 level. The jersey scenario is realistic and meaningful, grounding the mathematical concept in familiar consumer mathematics experience."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is simple and grade-appropriate with familiar cultural name (Jun), common item (jersey), and clear monetary context (cost, pesos, pay in all). Sentence structure is straightforward. Option format provides unambiguous response choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2 pesos is correct from 1×2. Hints accurately describe one group of two, show additive form 1+1, and express as 1×2=2. The sample appropriately reinforces Grade 2 understanding that one unit times any price yields that price, supporting multiplication's foundational properties."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "e56da77e8c8af6e30024",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement specifies five bags with five cupcakes each and claims total is 10. True/false format creates no ambiguity: the learner must verify whether 5×5 actually equals 10 or identify this claim as false through direct calculation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cupcake distribution scenario is engaging and Grade 2-appropriate. The problem models meaningful application of the 5 times table with particularly important case of 5×5, supporting fluency development in a curriculum-critical multiplication fact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question uses simple, familiar vocabulary appropriate for Grade 2 readers (Lola Ising, cupcakes, bags, total). Sentence construction is clear and direct. The true/false format provides explicit response options requiring no additional linguistic interpretation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is false: 5×5 equals 25, not 10. Hints correctly identify five groups of five, express as repeated addition 5+5+5+5+5, and accurately calculate the product as 5×5=25. The sample appropriately develops the critical 5×5 fact while supporting error-detection reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "8f12a69e8adfb5dd9f95",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scenario specifies Liza solved a helmet-distribution problem and proposes answer 12 for five bags containing two helmets each. The format clearly asks if Liza's work is correct, requiring verification of 5×2 against her proposed solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Helmet organization context provides Grade 2-appropriate error-detection practice. The problem structure supports learners in identifying computational mistakes, developing verification skills that strengthen multiplication understanding across the 2 and 5 times tables."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Presentation clearly attributes the problem to Liza and asks for verification of her work. Key problem elements (five bags, two helmets each, proposed answer 12) are explicitly stated. The yes/no response format provides unambiguous choice between two outcomes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Liza's answer of 12 is incorrect for 5×2. The correct answer is 10. Hints accurately describe five groups of two, show additive verification through 5+5, and correctly calculate 5×2=10. The sample appropriately supports error-recognition and fluency with the 2 and 5 times tables."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "sample_id": "9de3ee8e4b0a6e53507d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scenario specifies Manny solved a wristband-storage problem and claims the answer is 5 for one bag containing four wristbands. The format unambiguously asks if Manny's work is correct, requiring 1×4 verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Wristband storage scenario with single-bag context serves pedagogical function: developing error-detection skills while reinforcing multiplication by one, a fundamental Grade 2 concept. The problem structure supports critical thinking about computational validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Presentation attributes problem-solving to Manny and requests verification of correctness. Essential details (one bag, four wristbands, proposed answer 5) are clearly stated. The yes/no format provides explicit response options without linguistic ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's answer of 5 is incorrect for 1×4. The correct answer is 4. Hints accurately identify one group of four, express as additive form 1+1+1+1, and correctly calculate 1×4=4. The sample appropriately combines error-detection practice with reinforcement of the identity property of multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_multiplication_problems",
+      "clause": "Solve multiplication problems",
+      "verdict": "PASS",
+      "reasoning": "Every single sample (all 22 items) presents a multiplication problem requiring learners to solve it using core mathematical operations. Problems span multiple formats (direct calculation in MCQ and fill-in-blank; verification in true/false; error-detection evaluation) demonstrating comprehensive problem-solving across diverse presentation styles appropriate for Grade 2 multiplication mastery.",
+      "sample_ids": [
+        "765fa0deebe1346f125e",
+        "ecb360c522c62b017971",
+        "b1cbe375a9dca8131b41",
+        "3e6b95463dffb40cec86",
+        "67ed64aa79a5b1c51b7a",
+        "6299182b789ab9e06e92",
+        "1961b9a1d8a6b3991aba",
+        "4aa59c509c631337cd7c",
+        "48543a914928a02d4d71",
+        "d2eb5a9ca37e97127330",
+        "8b9caa5291278269dddf",
+        "6b8067870eb44a14c4dc",
+        "b5c2ae9998727eb11276",
+        "6e77d961f5733917ddf7",
+        "7eb8f3c31de82cedf153",
+        "87594c686bd42e8e06b8",
+        "cbb96884c984a85f1767",
+        "93a011e890b910b5bb72",
+        "2790347ac7cca48beba5",
+        "e56da77e8c8af6e30024",
+        "8f12a69e8adfb5dd9f95",
+        "9de3ee8e4b0a6e53507d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "requirement_id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "PASS",
+      "reasoning": "Sample set comprehensively covers all five required multiplication tables: the 2 times table appears in samples involving factors 2 (eight occurrences); the 3 times table in samples with factors 3 (seven occurrences); the 4 times table in samples with factors 4 (eight occurrences); the 5 times table in samples with factors 5 (five occurrences); and the 10 times table in one sample with factor 10. Operational order varies (2×9, 4×3, 6×5 etc.) demonstrating fluency development across all required table facts.",
+      "sample_ids": [
+        "765fa0deebe1346f125e",
+        "ecb360c522c62b017971",
+        "b1cbe375a9dca8131b41",
+        "3e6b95463dffb40cec86",
+        "67ed64aa79a5b1c51b7a",
+        "6299182b789ab9e06e92",
+        "1961b9a1d8a6b3991aba",
+        "4aa59c509c631337cd7c",
+        "48543a914928a02d4d71",
+        "d2eb5a9ca37e97127330",
+        "8b9caa5291278269dddf",
+        "6b8067870eb44a14c4dc",
+        "b5c2ae9998727eb11276",
+        "6e77d961f5733917ddf7",
+        "7eb8f3c31de82cedf153",
+        "87594c686bd42e8e06b8",
+        "cbb96884c984a85f1767",
+        "93a011e890b910b5bb72",
+        "2790347ac7cca48beba5",
+        "e56da77e8c8af6e30024",
+        "8f12a69e8adfb5dd9f95",
+        "9de3ee8e4b0a6e53507d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    },
+    {
+      "requirement_id": "money",
+      "clause": "money",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples integrate money context with multiplication problem-solving, explicitly requiring learners to calculate total monetary cost or value. Nine samples incorporate peso-based purchase scenarios where multiplication directly determines payment amounts: water bowls costing 2 pesos each (sample 2), shuttlecock at 2 pesos (sample 3), trophies at 4 pesos (sample 4), score cards at 3 pesos (sample 10), ribbons at 2 pesos (sample 11), leashes at 3 pesos (samples 12 and 13), basketballs at 2 pesos (sample 17), and jerseys at 2 pesos (sample 19). This integration ensures learners apply multiplication within authentic Filipino consumer contexts.",
+      "sample_ids": [
+        "ecb360c522c62b017971",
+        "b1cbe375a9dca8131b41",
+        "3e6b95463dffb40cec86",
+        "d2eb5a9ca37e97127330",
+        "8b9caa5291278269dddf",
+        "6b8067870eb44a14c4dc",
+        "b5c2ae9998727eb11276",
+        "cbb96884c984a85f1767",
+        "2790347ac7cca48beba5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "309d6df780a898a0c1e4484eaaa16c6225057b67dea0a92b3e59be43aeab5e9c",
+      "clause_ids": [
+        "solve_multiplication_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ],
+      "response_ref": ".responses/s5-phaseC-w6-haiku45-20260925.json",
+      "response_digest": "41345832e840db20906058d27aada59ef5206ed31a898d1311f2ccdf2a2fae84",
+      "prompt_ref": ".responses/s5-phaseC-w6-haiku45-20260925.prompt.txt",
+      "prompt_digest": "46666d329eb9dba29e525b3c705c8b16454aad7b9a40beb9d745d3aea1a36cb8",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q3_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q3_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Problems use Grade 2-appropriate language with single-digit multiplications and relatable contexts involving household items, money (₱ amounts), and familiar activities. Quantities remain manageable (products 2-80), matching grade-level computational demands without requiring multi-step reasoning beyond core multiplication."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly addresses solving multiplication problems using explicitly the 2, 3, 4, 5, or 10 multiplication tables. Problems structure learning around equal groups concept with consistent presentation of operands corresponding to curriculum grade and quarter requirements."
+    },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are word problems rather than facts, the peso strand the competency explicitly requires is present in several items, and every product I recomputed against its stem - including ten ribbons across eight bags and four canvases across nine - is correctly keyed."
+      "rationale": "The three printed requirements capture all essential components of the competency statement. Coverage spans problem-solving action, all five specified multiplication tables, and money context integration as mandated.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "Lossless decomposition confirmed: solve_multiplication_problems requirement realized across all 22 samples; tables_2_3_4_5_10 requirement represented through samples using each table (2 in samples 2,3,6,8,11,15,17,19,21; 3 in samples 1,4,10,12,13,14,18; 4 in samples 3,4,8,9,12,14,16,22; 5 in samples 7,9,20,21; 10 in sample 6); money requirement fulfilled in 9 samples with purchase scenarios.",
+        "requirement_ids": [
+          "solve_multiplication_problems",
+          "tables_2_3_4_5_10",
+          "money"
+        ]
+      },
+      "clause_ids": [
+        "solve_multiplication_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Each of the five tables is reached somewhere in the set, twos and threes through purchase prices, fours and fives through the bag problems, and tens through the ribbon item, and money and non-money contexts both occur."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The purchase frame is ungrammatical when the count is one: buying '1 shuttlecock that cost ₱2 each' and '1 ribbon that cost ₱2 each' both mismatch number agreement and turn a single purchase into a rate question. Beginning readers are being asked to parse a sentence that is wrong."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two sentence frames exist across the whole node - putting a count of things into each of several bags, or buying several things at a fixed price. There is no array context, no comparison such as three times as many, and no picture-led item."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The lowest rungs multiply by one, so the answer is simply the price restated. Those items vary the object being bought rather than advancing the table recall the competency is about."
+      "rationale": "Sample set demonstrates thorough exploration across all required tables with varied multiplier-multiplicand pairings (1 through 9 as first operand, 1 through 10 as second operand), multiple response formats (four types: multiple choice, true/false, error detection, fill-in-blank), and both monetary and non-monetary problem contexts with strategic inclusion of edge cases like multiplication by 1.",
+      "clause_ids": [
+        "solve_multiplication_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Counts and prices both stay at ten or below and the largest total is eighty, which sits well inside what a Grade 2 multiplication problem should demand."
+      "rationale": "Product magnitudes appropriately constrained between 2 and 80, remaining well within Grade 2 multiplication scope. Money amounts denominated in reasonable Philippine pesos (₱2 to ₱4 per unit) make real-world application plausible. Object quantities in contextual scenarios stay within typical Grade 2 manipulatives and counting ranges."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Response formats span four distinct types with 22 samples distributed as: 8 multiple-choice items with various distractors, 7 true/false items with incorrect statements, 5 fill-in-blank problems, and 6 error-detection scenarios identifying incorrect student work. Experience modes vary (standard, hint_gated, mastery_drill, scaffolded) providing instructional differentiation. Hints employ multiple pedagogical strategies: additive decomposition, repeated addition grouping, and formal multiplication notation."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

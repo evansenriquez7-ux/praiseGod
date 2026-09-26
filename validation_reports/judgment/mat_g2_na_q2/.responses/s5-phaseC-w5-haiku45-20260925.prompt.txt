@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc5-mat_g2_na_q2_6-20260925
+  blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g2_na_q2_6/verdicts.json
+  local_only/scratch/phaseC/mat_g2_na_q2_7/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_6-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,220 +99,186 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g2_na_q2_6
-PACKET DIGEST: b954d2b8216a4f489ea657d2bf1fcb51d4b1e7a13251a35237142de825fe4c4d
+NODE: mat_g2_na_q2_7
+PACKET DIGEST: c59c9c1c558dd805d8c30c950e987fc0d529710974690a1d064c9c29e0ceb146
 COMPETENCY (Grade 2, Quarter 2, None):
-Subtract numbers, where both numbers are less than 1000, with and without regrouping.
+Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money), with and without regrouping.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  subtract_numbers: Subtract numbers
+  solve_problems: Solve 1- and 2-step problems
+  involving_subtraction: involving subtraction
   less_than_1000: both numbers are less than 1000
+  problems_money: problems involving money
   regrouping: with and without regrouping
 
 SAMPLES (every one of these is real rendered output):
-  sample 82a25b5c1e771c807a8b  seed 42  [cloze]
-      stem:    510 − 382 = ___
-      answer:  128
-      options: 128 / 127 / 892 / 129
-      hints:   ["We are subtracting 382 from 510.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 0 − 8 = -8. (after borrowing)", "The difference of 510 − 382 = 128."]
+  sample 3e236e20b39bf5732c7e  seed 42  [cloze]
+      stem:    Start at 630. Count back 96. What number do you land on?
+      answer:  534
+      options: 524 / 544 / 554 / 534
+      hints:   ["We are subtracting 96 from 630.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 2 − 9 = -7. (after borrowing)", "The difference of 630 − 96 = 534."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 48f30a5c41489b162d2e  seed 43  [mcq]
-      stem:    What is 11 − 0?
-      answer:  11
-      options: 12 / 10 / 11 / 13
-      hints:   ["We are subtracting 0 from 11.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 1 − 0 = 1.", "The difference of 11 − 0 = 11."]
+  sample f88918071c4108bd4f32  seed 43  [mcq]
+      stem:    Coach Nora had ₱314 in a piggy bank and used ₱300 to buy a notebook. How much money is left in the piggy bank?
+      answer:  14
+      options: 34 / 24 / 4 / 14
+      hints:   ["We are subtracting 300 from 314.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 1 − 0 = 1.", "The difference of 314 − 300 = 14."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 197e3f84f16b4e11b6f2  seed 44  [read_mcq]
-      stem:    The dot is at 244 and it moves backward 150 numbers. Starting from 244, just count back 150 numbers. Which number will the dot land on?
-      answer:  94
-      options: 93 / 94 / 95 / 394
-      hints:   ["We are subtracting 150 from 244.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 4 − 5 = -1.", "The difference of 244 − 150 = 94."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200", "300"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample d066ec2090055bd3caf6  seed 45  [read_fill_in_blank]
-      stem:    The total is 30 and one part is 29. What is the other part?
-      answer:  1
-      hints:   ["We are subtracting 29 from 30.", "The ones digit 0 is less than 9, so we need to borrow. Borrow 1 ten: 10 − 9 = 1.", "Subtract the tens: 2 − 2 = 0. (after borrowing)", "The difference of 30 − 29 = 1."]
-      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberBond
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["30", "29"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample c4bc055c16a1ea30bb79  seed 46  [read_fill_in_blank]
-      stem:    The total is 71 and one part is 60. What is the other part?
-      answer:  11
-      hints:   ["We are subtracting 60 from 71.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 7 − 6 = 1.", "The difference of 71 − 60 = 11."]
-      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberBond
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["71", "60"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample ca6de2275736182037d8  seed 48  [error_detect]
-      stem:    Noel solved: "120 − 81 = ___". Noel says the missing number is 39. Is Noel correct?
+  sample 3c2b98479c5baa207e8d  seed 44  [cloze]
+      stem:    Isko had ₱160 in a piggy bank and used ₱13 to buy a notebook. How much money is left in the piggy bank?
+      answer:  147
+      options: 157 / 137 / 147 / 167
+      hints:   ["We are subtracting 13 from 160.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 5 − 1 = 4. (after borrowing)", "The difference of 160 − 13 = 147."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fb1c17fffeee2f974501  seed 45  [true_false]
+      stem:    Ate Gab had ₱636 and bought a snack for ₱240 at the sari-sari store. How much money does Ate Gab have left? The answer is 416. True or False?
+      answer:  False
+      hints:   ["We are subtracting 240 from 636.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 3 − 4 = -1.", "The difference of 636 − 240 = 396."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f08cfc307d673f509c28  seed 46  [true_false]
+      stem:    Ate Joy has 810 seeds. A friend has 310 seeds. How many fewer seeds does the friend have? The answer is 500. True or False?
+      answer:  True
+      hints:   ["We are subtracting 310 from 810.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 810 − 310 = 500."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 687a56931081b725dc6f  seed 48  [error_detect]
+      stem:    Noel solved this problem: "Lara has 780 costumes. Lara gives away 183 costumes. How many costumes does Lara have left?" Noel says the answer is 597. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 597}
+      hints:   ["We are subtracting 183 from 780.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 7 − 8 = -1. (after borrowing)", "The difference of 780 − 183 = 597."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample da2466c1fc3f1be69418  seed 500  [true_false]
+      stem:    Nanding had 349 water bowls and gave 176 to friends at the veterinary clinic. How many water bowls does Nanding have left? The answer is 174. True or False?
+      answer:  False
+      hints:   ["We are subtracting 176 from 349.", "Subtract the ones: 9 − 6 = 3.", "Subtract the tens: 4 − 7 = -3.", "The difference of 349 − 176 = 173."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 020d02dcbd583eeb18e9  seed 501  [mcq]
+      stem:    Ate Sam has 717 running shoes. A friend has 449 running shoes. How many more running shoes does Ate Sam have than the friend?
+      answer:  268
+      options: 268 / 258 / 278 / 288
+      hints:   ["We are subtracting 449 from 717.", "The ones digit 7 is less than 9, so we need to borrow. Borrow 1 ten: 17 − 9 = 8.", "Subtract the tens: 0 − 4 = -4. (after borrowing)", "The difference of 717 − 449 = 268."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5308c4b54d15fb5d6e2d  seed 502  [error_detect]
+      stem:    Dante solved this problem: "Kuya Renz has 572 paint tubes. Kuya Renz gives away 496 paint tubes. How many paint tubes does Kuya Renz have left?" Dante says the answer is 76. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 76}
+      hints:   ["We are subtracting 496 from 572.", "The ones digit 2 is less than 6, so we need to borrow. Borrow 1 ten: 12 − 6 = 6.", "Subtract the tens: 6 − 9 = -3. (after borrowing)", "The difference of 572 − 496 = 76."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 20dcc746a0a0a05e57f5  seed 600  [mcq]
+      stem:    Kuya Tads has 346 leashes. A friend has 150 leashes. How many more leashes does Kuya Tads have than the friend?
+      answer:  196
+      options: 206 / 216 / 196 / 186
+      hints:   ["We are subtracting 150 from 346.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 4 − 5 = -1.", "The difference of 346 − 150 = 196."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b9cce0de09ca281f3825  seed 601  [cloze]
+      stem:    Moses had ₱269 in a piggy bank and used ₱30 to buy a notebook. How much money is left in the piggy bank?
+      answer:  239
+      options: 229 / 249 / 239 / 259
+      hints:   ["We are subtracting 30 from 269.", "Subtract the ones: 9 − 0 = 9.", "Subtract the tens: 6 − 3 = 3.", "The difference of 269 − 30 = 239."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0cd1b452bb4942a6c252  seed 602  [error_detect]
+      stem:    Jose solved this problem: "Sir Rez had ₱110 and bought a snack for ₱105 at the sari-sari store. How much money does Sir Rez have left?" Jose says the answer is 5. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 5}
+      hints:   ["We are subtracting 105 from 110.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 110 − 105 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 008a970f1cc7807ac650  seed 603  [mcq]
+      stem:    Sir Ben had ₱60 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?
+      answer:  10
+      options: 20 / 1 / 30 / 10
+      hints:   ["We are subtracting 50 from 60.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 6 − 5 = 1.", "The difference of 60 − 50 = 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c9b6e7aebc06466317fb  seed 604  [error_detect]
+      stem:    Carlo solved this problem: "Kuya Renz had ₱234 and bought a snack for ₱110 at the sari-sari store. How much money does Kuya Renz have left?" Carlo says the answer is 124. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 124}
+      hints:   ["We are subtracting 110 from 234.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 3 − 1 = 2.", "The difference of 234 − 110 = 124."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f8c4230b461ac85f2d6b  seed 605  [true_false]
+      stem:    Riza had ₱522 in a piggy bank and used ₱420 to buy a notebook. How much money is left in the piggy bank? The answer is 112. True or False?
+      answer:  False
+      hints:   ["We are subtracting 420 from 522.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 2 − 2 = 0.", "The difference of 522 − 420 = 102."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2ab3a5cc6d330785dcd3  seed 606  [mcq]
+      stem:    Start at 480. Count back 348. What number do you land on?
+      answer:  132
+      options: 152 / 142 / 122 / 132
+      hints:   ["We are subtracting 348 from 480.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 7 − 4 = 3. (after borrowing)", "The difference of 480 − 348 = 132."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2f8671700b68d38bb734  seed 607  [cloze]
+      stem:    Des is on step 510. Des goes down 41 steps. What step is Des on now?
+      answer:  469
+      options: 489 / 479 / 469 / 459
+      hints:   ["We are subtracting 41 from 510.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 0 − 4 = -4. (after borrowing)", "The difference of 510 − 41 = 469."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 695f327a3507ae4884db  seed 608  [error_detect]
+      stem:    Rico solved this problem: "Boyong had ₱940 and spent ₱420 on leashes at the veterinary clinic. How much money does Boyong have left?" Rico says the answer is 520. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 520}
+      hints:   ["We are subtracting 420 from 940.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 4 − 2 = 2.", "The difference of 940 − 420 = 520."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 1ccd1ae74597e2b62e2c  seed 609  [cloze]
+      stem:    A mountain has 330 coins. Ruth removes 55 coins. How many coins are left in the mountain?
+      answer:  275
+      options: 275 / 285 / 265 / 295
+      hints:   ["We are subtracting 55 from 330.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 2 − 5 = -3. (after borrowing)", "The difference of 330 − 55 = 275."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 78c169b06f2efd279153  seed 610  [true_false]
+      stem:    Bianca had ₱636 and bought a snack for ₱270 at the sari-sari store. How much money does Bianca have left? The answer is 386. True or False?
+      answer:  False
+      hints:   ["We are subtracting 270 from 636.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 3 − 7 = -4.", "The difference of 636 − 270 = 366."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ae8b040964b56ab20f44  seed 611  [error_detect]
+      stem:    Rosa solved this problem: "Romel has 114 whistles. A friend has 75 whistles. How many more whistles does Romel have than the friend?" Rosa says the answer is 39. Is Rosa correct?
       answer:  {'has_error': False, 'correct_value': 39}
-      hints:   ["We are subtracting 81 from 120.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 1 − 8 = -7. (after borrowing)", "The difference of 120 − 81 = 39."]
+      hints:   ["We are subtracting 75 from 114.", "The ones digit 4 is less than 5, so we need to borrow. Borrow 1 ten: 14 − 5 = 9.", "Subtract the tens: 0 − 7 = -7. (after borrowing)", "The difference of 114 − 75 = 39."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample cccfe9aaff67c7c5e088  seed 68  [true_false]
-      stem:    300 − 204 = 96. True or False?
+  sample 81e1e53ee6ceec34d79c  seed 612  [error_detect]
+      stem:    Noel solved this problem: "There are 975 helmets on the table. Arnel takes away 20 helmets. How many helmets are left on the table?" Noel says the answer is 965. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 955}
+      hints:   ["We are subtracting 20 from 975.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 7 − 2 = 5.", "The difference of 975 − 20 = 955."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 21b9f87adc57cc89c5cd  seed 700  [error_detect]
+      stem:    Carlo solved this problem: "Boyong had ₱575 and spent ₱360 on cat toys at the barangay. How much money does Boyong have left?" Carlo says the answer is 215. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 215}
+      hints:   ["We are subtracting 360 from 575.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 7 − 6 = 1.", "The difference of 575 − 360 = 215."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 95d23af03425f2f353c4  seed 701  [true_false]
+      stem:    Marco had 630 sneakers. Marco used 258 of them. How many sneakers are left? The answer is 372. True or False?
       answer:  True
-      hints:   ["We are subtracting 204 from 300.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: -1 − 0 = -1. (after borrowing)", "The difference of 300 − 204 = 96."]
+      hints:   ["We are subtracting 258 from 630.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 2 − 5 = -3. (after borrowing)", "The difference of 630 − 258 = 372."]
       response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 6dc93c7b7cdbd779fe1c  seed 500  [read_mcq]
-      stem:    The dot is at 591 and it moves backward 487 numbers. Starting from 591, just count back 487 numbers. Which number will the dot land on?
-      answer:  104
-      options: 103 / 1078 / 105 / 104
-      hints:   ["We are subtracting 487 from 591.", "The ones digit 1 is less than 7, so we need to borrow. Borrow 1 ten: 11 − 7 = 4.", "Subtract the tens: 8 − 8 = 0. (after borrowing)", "The difference of 591 − 487 = 104."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200", "300", "400", "500", "600"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample e1a93645c141a2502754  seed 501  [true_false]
-      stem:    921 − 838 = 1759. True or False?
-      answer:  False
-      hints:   ["We are subtracting 838 from 921.", "The ones digit 1 is less than 8, so we need to borrow. Borrow 1 ten: 11 − 8 = 3.", "Subtract the tens: 1 − 3 = -2. (after borrowing)", "The difference of 921 − 838 = 83."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample d1a8061bff2d9dcb3a5a  seed 502  [error_detect]
-      stem:    Dante solved: "823 − 659 = ___". Dante says the missing number is 164. Is Dante correct?
-      answer:  {'has_error': False, 'correct_value': 164}
-      hints:   ["We are subtracting 659 from 823.", "The ones digit 3 is less than 9, so we need to borrow. Borrow 1 ten: 13 − 9 = 4.", "Subtract the tens: 1 − 5 = -4. (after borrowing)", "The difference of 823 − 659 = 164."]
+  sample aa3179e7725287bb90c2  seed 702  [error_detect]
+      stem:    Manny solved this problem: "Ate Alyssa is on step 470. Ate Alyssa goes down 50 steps. What step is Ate Alyssa on now?" Manny says the answer is 440. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 420}
+      hints:   ["We are subtracting 50 from 470.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 7 − 5 = 2.", "The difference of 470 − 50 = 420."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample b98e56e031625aa5eda0  seed 600  [mcq]
-      stem:    What is 930 − 408?
-      answer:  522
-      options: 522 / 1338 / 521 / 523
-      hints:   ["We are subtracting 408 from 930.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 2 − 0 = 2. (after borrowing)", "The difference of 930 − 408 = 522."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 374d13fe3a26fed1bed0  seed 601  [cloze]
-      stem:    There are 765 baskets on the table. Moses takes away 110 baskets. How many baskets are left on the table?
-      answer:  655
-      options: 875 / 655 / 654 / 656
-      hints:   ["We are subtracting 110 from 765.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 6 − 1 = 5.", "The difference of 765 − 110 = 655."]
+  sample 2fbafdaef6ffffe198f4  seed 800  [cloze]
+      stem:    There were 168 baskets in a box. 99 baskets were taken out. How many baskets are still in the box?
+      answer:  69
+      options: 69 / 79 / 89 / 59
+      hints:   ["We are subtracting 99 from 168.", "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.", "Subtract the tens: 5 − 9 = -4. (after borrowing)", "The difference of 168 − 99 = 69."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample f70b15f1ff17c062e333  seed 602  [error_detect]
-      stem:    Jose solved: "270 − 247 = ___". Jose says the missing number is 23. Is Jose correct?
-      answer:  {'has_error': False, 'correct_value': 23}
-      hints:   ["We are subtracting 247 from 270.", "The ones digit 0 is less than 7, so we need to borrow. Borrow 1 ten: 10 − 7 = 3.", "Subtract the tens: 6 − 4 = 2. (after borrowing)", "The difference of 270 − 247 = 23."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 26622d9698924a324253  seed 603  [read_mcq]
-      stem:    The dot is at 1 and it moves backward 1 number. Starting from 1, just count back 1 number. Which number will the dot land on?
-      answer:  0
-      options: 2 / 0 / -1 / 1
-      hints:   ["We are subtracting 1 from 1.", "Subtract the ones: 1 − 1 = 0.", "The difference of 1 − 1 = 0."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample e0af1dc8655616c59593  seed 604  [error_detect]
-      stem:    Carlo solved: "416 − 0 = ___". Carlo says the missing number is 416. Is Carlo correct?
-      answer:  {'has_error': False, 'correct_value': 416}
-      hints:   ["We are subtracting 0 from 416.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 1 − 0 = 1.", "The difference of 416 − 0 = 416."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 1edfb65f62c5096c90d7  seed 605  [read_mcq]
-      stem:    The dot is at 28 and it moves backward 15 numbers. Starting from 28, just count back 15 numbers. Which number will the dot land on?
-      answer:  13
-      options: 43 / 14 / 13 / 12
-      hints:   ["We are subtracting 15 from 28.", "Subtract the ones: 8 − 5 = 3.", "Subtract the tens: 2 − 1 = 1.", "The difference of 28 − 15 = 13."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 647864934c056f5cb5a9  seed 606  [mcq]
-      stem:    What is 25 − 0?
-      answer:  25
-      options: 24 / 27 / 25 / 26
-      hints:   ["We are subtracting 0 from 25.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 2 − 0 = 2.", "The difference of 25 − 0 = 25."]
+  sample 6b00940c6695cb7c8b77  seed 900  [mcq]
+      stem:    There are 271 paint tubes on the table. Ate Liza takes away 195 paint tubes. How many paint tubes are left on the table?
+      answer:  76
+      options: 76 / 86 / 96 / 66
+      hints:   ["We are subtracting 195 from 271.", "The ones digit 1 is less than 5, so we need to borrow. Borrow 1 ten: 11 − 5 = 6.", "Subtract the tens: 6 − 9 = -3. (after borrowing)", "The difference of 271 − 195 = 76."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 12325444fd8a23db423b  seed 607  [cloze]
-      stem:    390 − 203 = ___
-      answer:  187
-      options: 187 / 593 / 188 / 186
-      hints:   ["We are subtracting 203 from 390.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 8 − 0 = 8. (after borrowing)", "The difference of 390 − 203 = 187."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 99d8b12fe4fb30bc1102  seed 608  [true_false]
-      stem:    930 − 54 = 876. True or False?
-      answer:  True
-      hints:   ["We are subtracting 54 from 930.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 2 − 5 = -3. (after borrowing)", "The difference of 930 − 54 = 876."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 3fc01856b6b7925da53e  seed 609  [cloze]
-      stem:    101 − 12 = ___
-      answer:  89
-      options: 89 / 88 / 90 / 113
-      hints:   ["We are subtracting 12 from 101.", "The ones digit 1 is less than 2, so we need to borrow. Borrow 1 ten: 11 − 2 = 9.", "Subtract the tens: -1 − 1 = -2. (after borrowing)", "The difference of 101 − 12 = 89."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 9e6c7b42c43a2af0e403  seed 610  [read_fill_in_blank]
-      stem:    The total is 237 and one part is 60. What is the other part?
-      answer:  177
-      hints:   ["We are subtracting 60 from 237.", "Subtract the ones: 7 − 0 = 7.", "Subtract the tens: 3 − 6 = -3.", "The difference of 237 − 60 = 177."]
-      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberBond
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["237", "60"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 4cbbe437aeaee670f514  seed 611  [true_false]
-      stem:    300 − 54 = 246. True or False?
-      answer:  True
-      hints:   ["We are subtracting 54 from 300.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: -1 − 5 = -6. (after borrowing)", "The difference of 300 − 54 = 246."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 54478697c83430039987  seed 612  [error_detect]
-      stem:    Noel solved: "20 − 10 = ___". Noel says the missing number is 30. Is Noel correct?
-      answer:  {'has_error': True, 'correct_value': 10}
-      hints:   ["We are subtracting 10 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 1 = 1.", "The difference of 20 − 10 = 10."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 171ea3d13a2ee59e9603  seed 613  [error_detect]
-      stem:    Maria solved: "___ − 234 = 636". Maria says the missing number is 637. Is Maria correct?
-      answer:  {'has_error': True, 'correct_value': 870}
-      hints:   ["We are subtracting 234 from 870.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 6 − 3 = 3. (after borrowing)", "The difference of 870 − 234 = 636."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 37dfe5a5013064689eeb  seed 700  [error_detect]
-      stem:    Carlo solved: "3 − 0 = ___". Carlo says the missing number is 3. Is Carlo correct?
-      answer:  {'has_error': False, 'correct_value': 3}
-      hints:   ["We are subtracting 0 from 3.", "Subtract the ones: 3 − 0 = 3.", "The difference of 3 − 0 = 3."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 3135fe9db01d97beb322  seed 701  [read_fill_in_blank]
-      stem:    🏀 Gab has a math challenge about water bottles. The total is 600 and one part is 421. What is the other part?
-      answer:  179
-      hints:   ["We are subtracting 421 from 600.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: -1 − 2 = -3. (after borrowing)", "The difference of 600 − 421 = 179."]
-      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberBond
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["600", "421"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 5f3cc2910c1876be36a7  seed 702  [error_detect]
-      stem:    🏀 Isko has a math challenge about basketballs. Manny solved: "990 − 380 = ___". Manny says the missing number is 609. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 610}
-      hints:   ["We are subtracting 380 from 990.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 9 − 8 = 1.", "The difference of 990 − 380 = 610."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample f62988727fe24dfd2a59  seed 800  [read_mcq]
-      stem:    The dot is at 674 and it moves backward 79 numbers. Starting from 674, just count back 79 numbers. Which number will the dot land on?
-      answer:  595
-      options: 753 / 595 / 596 / 594
-      hints:   ["We are subtracting 79 from 674.", "The ones digit 4 is less than 9, so we need to borrow. Borrow 1 ten: 14 − 9 = 5.", "Subtract the tens: 6 − 7 = -1. (after borrowing)", "The difference of 674 − 79 = 595."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 37, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["580", "590", "600", "610", "620", "630", "640", "650", "660", "670", "680"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 516317b58754a4686e3e  seed 900  [mcq]
-      stem:    What is 275 − 98?
-      answer:  177
-      options: 373 / 178 / 176 / 177
-      hints:   ["We are subtracting 98 from 275.", "The ones digit 5 is less than 8, so we need to borrow. Borrow 1 ten: 15 − 8 = 7.", "Subtract the tens: 6 − 9 = -3. (after borrowing)", "The difference of 275 − 98 = 177."]
+  sample 44bb82d01b8668c852a3  seed 901  [mcq]
+      stem:    Jun had ₱52 and bought a snack for ₱43 at the sari-sari store. How much money does Jun have left?
+      answer:  9
+      options: 1 / 9 / 19 / 29
+      hints:   ["We are subtracting 43 from 52.", "The ones digit 2 is less than 3, so we need to borrow. Borrow 1 ten: 12 − 3 = 9.", "Subtract the tens: 4 − 4 = 0. (after borrowing)", "The difference of 52 − 43 = 9."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample accbf01f681630f47eba  seed 901  [true_false]
-      stem:    75 − 57 = 132. True or False?
-      answer:  False
-      hints:   ["We are subtracting 57 from 75.", "The ones digit 5 is less than 7, so we need to borrow. Borrow 1 ten: 15 − 7 = 8.", "Subtract the tens: 6 − 5 = 1. (after borrowing)", "The difference of 75 − 57 = 18."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 4452988deed4135f4b86  seed 1000  [true_false]
-      stem:    750 − 245 = 505. True or False?
-      answer:  True
-      hints:   ["We are subtracting 245 from 750.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 4 − 4 = 0. (after borrowing)", "The difference of 750 − 245 = 505."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
-  sample e622b5b59b010129b0d2  seed 1001  [error_detect]
-      stem:    Liza solved: "1 − 1 = ___". Liza says the missing number is 1. Is Liza correct?
-      answer:  {'has_error': True, 'correct_value': 0}
-      hints:   ["We are subtracting 1 from 1.", "Subtract the ones: 1 − 1 = 0.", "The difference of 1 − 1 = 0."]
+  sample 2e5dbf48e15c5d7dfa78  seed 1000  [cloze]
+      stem:    Lola Ising is on step 90. Lola Ising goes down 36 steps. What step is Lola Ising on now?
+      answer:  54
+      options: 44 / 54 / 74 / 64
+      hints:   ["We are subtracting 36 from 90.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 8 − 3 = 5. (after borrowing)", "The difference of 90 − 36 = 54."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 74fb020fbf35f2cf2fd4  seed 1001  [error_detect]
+      stem:    Liza solved this problem: "Start at 26. Count back 15. What number do you land on?" Liza says the answer is 10. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 11}
+      hints:   ["We are subtracting 15 from 26.", "Subtract the ones: 6 − 5 = 1.", "Subtract the tens: 2 − 1 = 1.", "The difference of 26 − 15 = 11."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
-  sample 1450a05fd488e6937a2e  seed 1002  [error_detect]
-      stem:    Manny solved: "330 − 131 = ___". Manny says the missing number is 461. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 199}
-      hints:   ["We are subtracting 131 from 330.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 2 − 3 = -1. (after borrowing)", "The difference of 330 − 131 = 199."]
+  sample 32dd073d09f11855ba27  seed 1002  [error_detect]
+      stem:    Manny solved this problem: "Aling Rosa has 840 wristbands. A friend has 275 wristbands. How many fewer wristbands does the friend have?" Manny says the answer is 555. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 565}
+      hints:   ["We are subtracting 275 from 840.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 3 − 7 = -4. (after borrowing)", "The difference of 840 − 275 = 565."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
 

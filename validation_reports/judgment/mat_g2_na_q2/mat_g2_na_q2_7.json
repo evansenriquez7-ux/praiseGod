@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money), with and without regrouping.",
+    "grade": 2,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve 1- and 2-step problems"
+    },
+    {
+      "kind": "context",
+      "id": "involving_subtraction",
+      "clause": "involving subtraction"
+    },
+    {
+      "kind": "range",
+      "id": "less_than_1000",
+      "clause": "both numbers are less than 1000"
+    },
+    {
+      "kind": "context",
+      "id": "problems_money",
+      "clause": "problems involving money"
+    },
+    {
+      "kind": "property",
+      "id": "regrouping",
+      "clause": "with and without regrouping"
+    }
+  ],
+  "packet_digest": "c59c9c1c558dd805d8c30c950e987fc0d529710974690a1d064c9c29e0ceb146",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +54,78 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "3e236e20b39bf5732c7e",
+    "f88918071c4108bd4f32",
+    "3c2b98479c5baa207e8d",
+    "fb1c17fffeee2f974501",
+    "f08cfc307d673f509c28",
+    "687a56931081b725dc6f",
+    "da2466c1fc3f1be69418",
+    "020d02dcbd583eeb18e9",
+    "5308c4b54d15fb5d6e2d",
+    "20dcc746a0a0a05e57f5",
+    "b9cce0de09ca281f3825",
+    "0cd1b452bb4942a6c252",
+    "008a970f1cc7807ac650",
+    "c9b6e7aebc06466317fb",
+    "f8c4230b461ac85f2d6b",
+    "2ab3a5cc6d330785dcd3",
+    "2f8671700b68d38bb734",
+    "695f327a3507ae4884db",
+    "1ccd1ae74597e2b62e2c",
+    "78c169b06f2efd279153",
+    "ae8b040964b56ab20f44",
+    "81e1e53ee6ceec34d79c",
+    "21b9f87adc57cc89c5cd",
+    "95d23af03425f2f353c4",
+    "aa3179e7725287bb90c2",
+    "2fbafdaef6ffffe198f4",
+    "6b00940c6695cb7c8b77",
+    "44bb82d01b8668c852a3",
+    "2e5dbf48e15c5d7dfa78",
+    "74fb020fbf35f2cf2fd4",
+    "32dd073d09f11855ba27"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 42,
       "formatter": "cloze",
-      "question_text": "Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?",
+      "question_text": "Start at 630. Count back 96. What number do you land on?",
       "correct_answer": 534,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,13 +151,37 @@
           "text": "534",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 534,
+      "hints": [
+        "We are subtracting 96 from 630.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 2 − 9 = -7. (after borrowing)",
+        "The difference of 630 − 96 = 534."
+      ],
+      "sample_id": "3e236e20b39bf5732c7e",
+      "replay_digest": "f0081b523ae2ced1b027c869829eef7e1520d38cfe50f18400b5741698541f5f"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Ben had 314 loaves of bread. Ben gave 193 loaves of bread to Kuya Ton and 107 loaves of bread to Renz. How many loaves of bread does Ben have left?",
+      "question_text": "Coach Nora had ₱314 in a piggy bank and used ₱300 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": 14,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -79,13 +203,37 @@
           "value": 14,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 14,
+      "hints": [
+        "We are subtracting 300 from 314.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 314 − 300 = 14."
+      ],
+      "sample_id": "f88918071c4108bd4f32",
+      "replay_digest": "868dd0b52ae05cbb4406c3f54fd2a11b951dd535345583cdbef2ff70b935ce66"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Ben had 160 books. Ben gave 13 books to a friend. How many books does Ben have left?",
+      "question_text": "Isko had ₱160 in a piggy bank and used ₱13 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": 147,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -111,40 +259,167 @@
           "text": "167",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 147,
+      "hints": [
+        "We are subtracting 13 from 160.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 5 − 1 = 4. (after borrowing)",
+        "The difference of 160 − 13 = 147."
+      ],
+      "sample_id": "3c2b98479c5baa207e8d",
+      "replay_digest": "35a7abca88f18e13a1985e8497446917a5e71bc7b8d6bcc94f1dffdd449ee6ef"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 45,
       "formatter": "true_false",
-      "question_text": "Ate Nena had ₱636. Ate Nena bought a ballpen for ₱61 and a pad paper for ₱179. How much money does Ate Nena have left? The answer is 416. True or False?",
-      "correct_answer": false
+      "question_text": "Ate Gab had ₱636 and bought a snack for ₱240 at the sari-sari store. How much money does Ate Gab have left? The answer is 416. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 240 from 636.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 3 − 4 = -1.",
+        "The difference of 636 − 240 = 396."
+      ],
+      "sample_id": "fb1c17fffeee2f974501",
+      "replay_digest": "a1613ecbbb83acef38341fb823b9f11b9b206a866ba33719ad966a73eadff0c2"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 46,
       "formatter": "true_false",
-      "question_text": "Carlo had ₱810. Carlo bought a ballpen for ₱174 and a sandwich for ₱136. How much money does Carlo have left? The answer is 500. True or False?",
-      "correct_answer": true
+      "question_text": "Ate Joy has 810 seeds. A friend has 310 seeds. How many fewer seeds does the friend have? The answer is 500. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 310 from 810.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 810 − 310 = 500."
+      ],
+      "sample_id": "f08cfc307d673f509c28",
+      "replay_digest": "b800df7487754893d44ea12e3d42d55e444a53e3a27818a438df195135364823"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 48,
       "formatter": "error_detect",
-      "question_text": "Noel solved this problem: \"Ben had 780 tickets. Ben gave 109 tickets to Bianca and 74 tickets to Mia. How many tickets does Ben have left?\" Noel says the answer is 597. Is Noel correct?",
+      "question_text": "Noel solved this problem: \"Lara has 780 costumes. Lara gives away 183 costumes. How many costumes does Lara have left?\" Noel says the answer is 597. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 597
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 597
+      },
+      "hints": [
+        "We are subtracting 183 from 780.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 7 − 8 = -1. (after borrowing)",
+        "The difference of 780 − 183 = 597."
+      ],
+      "sample_id": "687a56931081b725dc6f",
+      "replay_digest": "ba75444740e4f3a21250ae293e5a5c0cf11ad251e7fa87a0c4a145cfd1867f3f"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 500,
       "formatter": "true_false",
-      "question_text": "Dan had ₱349. Dan bought a sandwich for ₱92 and a juice box for ₱84. How much money does Dan have left? The answer is 174. True or False?",
-      "correct_answer": false
+      "question_text": "Nanding had 349 water bowls and gave 176 to friends at the veterinary clinic. How many water bowls does Nanding have left? The answer is 174. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 176 from 349.",
+        "Subtract the ones: 9 − 6 = 3.",
+        "Subtract the tens: 4 − 7 = -3.",
+        "The difference of 349 − 176 = 173."
+      ],
+      "sample_id": "da2466c1fc3f1be69418",
+      "replay_digest": "09b1e1beec371e410369323b50a619e458af9a66297ab9385260952ab8732aaf"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Isko had 717 erasers. Isko gave 145 erasers to Ben and 304 erasers to Ate Nena. How many erasers does Isko have left?",
+      "question_text": "Ate Sam has 717 running shoes. A friend has 449 running shoes. How many more running shoes does Ate Sam have than the friend?",
       "correct_answer": 268,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,22 +441,77 @@
           "value": 288,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 268,
+      "hints": [
+        "We are subtracting 449 from 717.",
+        "The ones digit 7 is less than 9, so we need to borrow. Borrow 1 ten: 17 − 9 = 8.",
+        "Subtract the tens: 0 − 4 = -4. (after borrowing)",
+        "The difference of 717 − 449 = 268."
+      ],
+      "sample_id": "020d02dcbd583eeb18e9",
+      "replay_digest": "518f1321b286c625723cd394fc85b989f56f36f98cc0a6ddf8371222d70b21bf"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 502,
       "formatter": "error_detect",
-      "question_text": "Dante solved this problem: \"Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?\" Dante says the answer is 76. Is Dante correct?",
+      "question_text": "Dante solved this problem: \"Kuya Renz has 572 paint tubes. Kuya Renz gives away 496 paint tubes. How many paint tubes does Kuya Renz have left?\" Dante says the answer is 76. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 76
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 76
+      },
+      "hints": [
+        "We are subtracting 496 from 572.",
+        "The ones digit 2 is less than 6, so we need to borrow. Borrow 1 ten: 12 − 6 = 6.",
+        "Subtract the tens: 6 − 9 = -3. (after borrowing)",
+        "The difference of 572 − 496 = 76."
+      ],
+      "sample_id": "5308c4b54d15fb5d6e2d",
+      "replay_digest": "f6e8885fecf9995d62931b7dfb343ccc1fe2f27cc1cdb1f7826c3c2950e5e666"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Isko had 346 loaves of bread. Isko gave 62 loaves of bread to Elena and 88 loaves of bread to Kuya Ton. How many loaves of bread does Isko have left?",
+      "question_text": "Kuya Tads has 346 leashes. A friend has 150 leashes. How many more leashes does Kuya Tads have than the friend?",
       "correct_answer": 196,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -203,13 +533,39 @@
           "value": 186,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 196,
+      "hints": [
+        "We are subtracting 150 from 346.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 4 − 5 = -1.",
+        "The difference of 346 − 150 = 196."
+      ],
+      "sample_id": "20dcc746a0a0a05e57f5",
+      "replay_digest": "e15af284cf10e502f938b579a2242341aeb0778510db2e6e69cc479567899c1f"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Mia had 269 loaves of bread. Mia gave 30 loaves of bread to the library. How many loaves of bread does Mia have left?",
+      "question_text": "Moses had ₱269 in a piggy bank and used ₱30 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": 239,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -235,22 +591,77 @@
           "text": "259",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 239,
+      "hints": [
+        "We are subtracting 30 from 269.",
+        "Subtract the ones: 9 − 0 = 9.",
+        "Subtract the tens: 6 − 3 = 3.",
+        "The difference of 269 − 30 = 239."
+      ],
+      "sample_id": "b9cce0de09ca281f3825",
+      "replay_digest": "9e55eaf7ce594f707848c5b68b345a574ab327995d50f1e3781803fcfcb9ff23"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 602,
       "formatter": "error_detect",
-      "question_text": "Jose solved this problem: \"Elena had ₱110 and spent ₱105 for lunch. How much money does Elena have left?\" Jose says the answer is 5. Is Jose correct?",
+      "question_text": "Jose solved this problem: \"Sir Rez had ₱110 and bought a snack for ₱105 at the sari-sari store. How much money does Sir Rez have left?\" Jose says the answer is 5. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 5
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 5
+      },
+      "hints": [
+        "We are subtracting 105 from 110.",
+        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "The difference of 110 − 105 = 5."
+      ],
+      "sample_id": "0cd1b452bb4942a6c252",
+      "replay_digest": "1a553f6eda89f4a1d195f3366b5f62ef07959d7c6024fdf2282e8822186c674b"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Ate Nena had 60 mangoes. Ate Nena gave 26 mangoes to Kuya Ton and 24 mangoes to Renz. How many mangoes does Ate Nena have left?",
+      "question_text": "Sir Ben had ₱60 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -272,49 +683,1664 @@
           "value": 10,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "We are subtracting 50 from 60.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 6 − 5 = 1.",
+        "The difference of 60 − 50 = 10."
+      ],
+      "sample_id": "008a970f1cc7807ac650",
+      "replay_digest": "0f4b20e2d1e5c89e0ceb7e5109c062f4cde6f46b036d4c5378421e7f4db999cb"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 604,
       "formatter": "error_detect",
-      "question_text": "Carlo solved this problem: \"Renz had ₱234 and spent ₱110 at the sari-sari store. How much money does Renz have left?\" Carlo says the answer is 124. Is Carlo correct?",
+      "question_text": "Carlo solved this problem: \"Kuya Renz had ₱234 and bought a snack for ₱110 at the sari-sari store. How much money does Kuya Renz have left?\" Carlo says the answer is 124. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 124
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 124
+      },
+      "hints": [
+        "We are subtracting 110 from 234.",
+        "Subtract the ones: 4 − 0 = 4.",
+        "Subtract the tens: 3 − 1 = 2.",
+        "The difference of 234 − 110 = 124."
+      ],
+      "sample_id": "c9b6e7aebc06466317fb",
+      "replay_digest": "6363b1ef48637edabd8b2ec7a60285d4a7c809c3be712618a1a6bd0546065c81"
     },
     {
+      "node_id": "mat_g2_na_q2_7",
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "Bianca had ₱522 and spent ₱420 for a school project. How much money does Bianca have left? The answer is 112. True or False?",
-      "correct_answer": false
+      "question_text": "Riza had ₱522 in a piggy bank and used ₱420 to buy a notebook. How much money is left in the piggy bank? The answer is 112. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 420 from 522.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 2 − 2 = 0.",
+        "The difference of 522 − 420 = 102."
+      ],
+      "sample_id": "f8c4230b461ac85f2d6b",
+      "replay_digest": "c87e2d986192e20a707e9d35d79b0026463eb3745fd35a08bced5602e43ece50"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Start at 480. Count back 348. What number do you land on?",
+      "correct_answer": 132,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 152,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 142,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 122,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 132,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 132,
+      "hints": [
+        "We are subtracting 348 from 480.",
+        "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.",
+        "Subtract the tens: 7 − 4 = 3. (after borrowing)",
+        "The difference of 480 − 348 = 132."
+      ],
+      "sample_id": "2ab3a5cc6d330785dcd3",
+      "replay_digest": "bae86cf11195e9621401a4ee0c0c008013c6698a53eb35741099399e9ab70daf"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "Des is on step 510. Des goes down 41 steps. What step is Des on now?",
+      "correct_answer": 469,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 489,
+          "text": "489",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 479,
+          "text": "479",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 469,
+          "text": "469",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 459,
+          "text": "459",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 469,
+      "hints": [
+        "We are subtracting 41 from 510.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 0 − 4 = -4. (after borrowing)",
+        "The difference of 510 − 41 = 469."
+      ],
+      "sample_id": "2f8671700b68d38bb734",
+      "replay_digest": "1e7ae9d56e6016fa2fb51d1e8ff828be470ec988d599a156df1b27d129031082"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 608,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Boyong had ₱940 and spent ₱420 on leashes at the veterinary clinic. How much money does Boyong have left?\" Rico says the answer is 520. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 520
+      },
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 520
+      },
+      "hints": [
+        "We are subtracting 420 from 940.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 4 − 2 = 2.",
+        "The difference of 940 − 420 = 520."
+      ],
+      "sample_id": "695f327a3507ae4884db",
+      "replay_digest": "045eae5bf6d314a63e4dce9f5aedb16ca42aada683a5bce52d2536994e6f3730"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "A mountain has 330 coins. Ruth removes 55 coins. How many coins are left in the mountain?",
+      "correct_answer": 275,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 275,
+          "text": "275",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 285,
+          "text": "285",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 265,
+          "text": "265",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 295,
+          "text": "295",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 275,
+      "hints": [
+        "We are subtracting 55 from 330.",
+        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+        "Subtract the tens: 2 − 5 = -3. (after borrowing)",
+        "The difference of 330 − 55 = 275."
+      ],
+      "sample_id": "1ccd1ae74597e2b62e2c",
+      "replay_digest": "a1ad7c69697636e94b6d690bea7a1ca8e510893da6dcd016a61a0916449ca936"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 610,
+      "formatter": "true_false",
+      "question_text": "Bianca had ₱636 and bought a snack for ₱270 at the sari-sari store. How much money does Bianca have left? The answer is 386. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 270 from 636.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 3 − 7 = -4.",
+        "The difference of 636 − 270 = 366."
+      ],
+      "sample_id": "78c169b06f2efd279153",
+      "replay_digest": "b4bb99bddfd8dcc3094dd375cf3f17a1fb5aee94c72de0bfdb26029cc50890ba"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 611,
+      "formatter": "error_detect",
+      "question_text": "Rosa solved this problem: \"Romel has 114 whistles. A friend has 75 whistles. How many more whistles does Romel have than the friend?\" Rosa says the answer is 39. Is Rosa correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 39
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 39
+      },
+      "hints": [
+        "We are subtracting 75 from 114.",
+        "The ones digit 4 is less than 5, so we need to borrow. Borrow 1 ten: 14 − 5 = 9.",
+        "Subtract the tens: 0 − 7 = -7. (after borrowing)",
+        "The difference of 114 − 75 = 39."
+      ],
+      "sample_id": "ae8b040964b56ab20f44",
+      "replay_digest": "0c47bf3e0748bb9435cef241cf12221d95a6bab5277ec0b55ffb97d55503cc37"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 612,
+      "formatter": "error_detect",
+      "question_text": "Noel solved this problem: \"There are 975 helmets on the table. Arnel takes away 20 helmets. How many helmets are left on the table?\" Noel says the answer is 965. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 955
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 955
+      },
+      "hints": [
+        "We are subtracting 20 from 975.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 7 − 2 = 5.",
+        "The difference of 975 − 20 = 955."
+      ],
+      "sample_id": "81e1e53ee6ceec34d79c",
+      "replay_digest": "7811f75cccec82c9e17c7c457ffc2b3181dbf1eefcaf4575ede6e639751844a1"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved this problem: \"Boyong had ₱575 and spent ₱360 on cat toys at the barangay. How much money does Boyong have left?\" Carlo says the answer is 215. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 215
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 215
+      },
+      "hints": [
+        "We are subtracting 360 from 575.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 7 − 6 = 1.",
+        "The difference of 575 − 360 = 215."
+      ],
+      "sample_id": "21b9f87adc57cc89c5cd",
+      "replay_digest": "91e712a608967ec0589fa25229e558bc4791f05cca48d742bd0d74ec1868aad9"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "Marco had 630 sneakers. Marco used 258 of them. How many sneakers are left? The answer is 372. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 258 from 630.",
+        "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.",
+        "Subtract the tens: 2 − 5 = -3. (after borrowing)",
+        "The difference of 630 − 258 = 372."
+      ],
+      "sample_id": "95d23af03425f2f353c4",
+      "replay_digest": "cb2352fe2d205ac060e48d0ed6fd3a1b2555b938c16a4aecff12c86dd7a3fe71"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Ate Alyssa is on step 470. Ate Alyssa goes down 50 steps. What step is Ate Alyssa on now?\" Manny says the answer is 440. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 420
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 420
+      },
+      "hints": [
+        "We are subtracting 50 from 470.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 7 − 5 = 2.",
+        "The difference of 470 − 50 = 420."
+      ],
+      "sample_id": "aa3179e7725287bb90c2",
+      "replay_digest": "17a92607d527519011afd7b7d50623dc0524acd1967f2032f17806525fae0e80"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "There were 168 baskets in a box. 99 baskets were taken out. How many baskets are still in the box?",
+      "correct_answer": 69,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 69,
+          "text": "69",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 79,
+          "text": "79",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "text": "89",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 69,
+      "hints": [
+        "We are subtracting 99 from 168.",
+        "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.",
+        "Subtract the tens: 5 − 9 = -4. (after borrowing)",
+        "The difference of 168 − 99 = 69."
+      ],
+      "sample_id": "2fbafdaef6ffffe198f4",
+      "replay_digest": "b74d59c915f3f9cc44d16aaf9b4be6001fa17ab2fcf45328e8b5141e6699ec8d"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "There are 271 paint tubes on the table. Ate Liza takes away 195 paint tubes. How many paint tubes are left on the table?",
+      "correct_answer": 76,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 76,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 86,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 96,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 66,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 76,
+      "hints": [
+        "We are subtracting 195 from 271.",
+        "The ones digit 1 is less than 5, so we need to borrow. Borrow 1 ten: 11 − 5 = 6.",
+        "Subtract the tens: 6 − 9 = -3. (after borrowing)",
+        "The difference of 271 − 195 = 76."
+      ],
+      "sample_id": "6b00940c6695cb7c8b77",
+      "replay_digest": "f7a68f9d5e42a5aa8b738360e54d9daa6ac0e83baea90e4fe073e56473b601fe"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Jun had ₱52 and bought a snack for ₱43 at the sari-sari store. How much money does Jun have left?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We are subtracting 43 from 52.",
+        "The ones digit 2 is less than 3, so we need to borrow. Borrow 1 ten: 12 − 3 = 9.",
+        "Subtract the tens: 4 − 4 = 0. (after borrowing)",
+        "The difference of 52 − 43 = 9."
+      ],
+      "sample_id": "44bb82d01b8668c852a3",
+      "replay_digest": "991a7b22c1d5efcc8ffb05b500daa87a13f367baaa2a26dc061595466a65a969"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Lola Ising is on step 90. Lola Ising goes down 36 steps. What step is Lola Ising on now?",
+      "correct_answer": 54,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 74,
+          "text": "74",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 54,
+      "hints": [
+        "We are subtracting 36 from 90.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 8 − 3 = 5. (after borrowing)",
+        "The difference of 90 − 36 = 54."
+      ],
+      "sample_id": "2e5dbf48e15c5d7dfa78",
+      "replay_digest": "b923303e5d58cfe1d05a7d348027a4558bfcc4c597a262edd9a5b2363b415aab"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Start at 26. Count back 15. What number do you land on?\" Liza says the answer is 10. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 11
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 11
+      },
+      "hints": [
+        "We are subtracting 15 from 26.",
+        "Subtract the ones: 6 − 5 = 1.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 26 − 15 = 11."
+      ],
+      "sample_id": "74fb020fbf35f2cf2fd4",
+      "replay_digest": "f13613afbe5ca805ba78851abecb87b112aa01eb3f0aace7725406d8d796f16a"
+    },
+    {
+      "node_id": "mat_g2_na_q2_7",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Aling Rosa has 840 wristbands. A friend has 275 wristbands. How many fewer wristbands does the friend have?\" Manny says the answer is 555. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 565
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 565
+      },
+      "hints": [
+        "We are subtracting 275 from 840.",
+        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+        "Subtract the tens: 3 − 7 = -4. (after borrowing)",
+        "The difference of 840 − 275 = 565."
+      ],
+      "sample_id": "32dd073d09f11855ba27",
+      "replay_digest": "dfa6562ca69b093a7ad948ea870a5f4bcf9f081896b0426fb87adf9d630e2c9d"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "3e236e20b39bf5732c7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly directs the learner to count back from a starting position, making the operation unambiguous, with options provided in standard multiple choice format including the correct answer among distinct alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line counting context is logically coherent and developmentally appropriate, using familiar counting-back language that Grade 2 learners encounter regularly in their mathematics curriculum without requiring specialized domain knowledge."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 student can easily understand the instruction to count back and identify the landing number, with clear numerical answer options provided that do not introduce extraneous complexity or misleading language in the presentation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer five hundred thirty-four is mathematically correct for the given computation, the regrouping steps shown in hints are accurate, and the options provided represent realistic distractor errors resulting from regrouping mistakes."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "f88918071c4108bd4f32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary context clearly establishes initial holdings and amount removed, with a singular question asking for remaining money, eliminating potential interpretive confusion about what calculation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of using money to buy a notebook and determining remaining funds is a real-world context familiar to Grade 2 learners and logically valid for practicing subtraction with currency in Philippine context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses accessible language with the Philippine peso symbol, names a relatable purchase item, and poses a straightforward question about leftover money that a Grade 2 student can visualize and solve independently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation three hundred fourteen minus three hundred equals fourteen, which is correct, and the distractor options represent plausible errors from incomplete place-value understanding or procedural mistakes in subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "3c2b98479c5baa207e8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt unambiguously establishes Isko's starting monetary amount and spent amount, with a clear question about remaining money in the piggy bank, leaving no doubt about what operation is required or how to proceed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario authentically reflects a child buying something with piggy bank savings, which is relatable and developmentally appropriate for Grade 2 learners in a Philippines classroom setting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 student readily understands starting with money, spending some, and calculating what remains, with familiar language and a straightforward monetary transaction framework that requires no specialized knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer one hundred forty-seven correctly results from one hundred sixty minus thirteen, requiring regrouping in both ones and tens places, and the four options represent realistic errors from single or incomplete regrouping failures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "fb1c17fffeee2f974501",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement provides a specific numerical answer to evaluate, asking the learner to judge its correctness, with the true or false format eliminating any ambiguity about response type or what is being assessed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Buying a snack at a store and determining leftover money is a logical scenario with appropriate real-world grounding for a Grade 2 monetary problem in a Philippine cultural context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 learners understand the true or false format and can work backward from the given answer to verify it, making this format developmentally accessible for checking computational accuracy and mathematical reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to six hundred thirty-six minus two hundred forty is three hundred ninety-six, not four hundred sixteen, so the false verdict is accurate and hints properly show the subtraction steps."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "f08cfc307d673f509c28",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly compares quantities held by two people and asks for the difference, with specific numbers provided and a yes or no evaluation of a proposed answer making the task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of comparing quantities of items between two people is a logical and age-appropriate context for practicing subtraction and comparison in Grade 2 mathematical learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students readily comprehend comparing amounts and determining how many fewer one person has than another, with the true or false format simplifying the response requirement and supporting accessibility."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer five hundred is mathematically correct for eight hundred ten minus three hundred ten, involving simple place-value subtraction without regrouping, and hint steps accurately reflect this straightforward computation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "687a56931081b725dc6f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt clearly situates a solved problem and presents a claimed answer for learner verification, eliminating confusion about whether the judgment task is to verify correctness or solve independently."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative of giving away costumes and calculating remaining items is a coherent scenario suitable for practicing arithmetic in a Grade 2 classroom context with realistic student-centered problem situations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a complete solved example that Grade 2 learners can review and verify, supporting learning through evaluation of worked problems rather than requiring direct independent computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation seven hundred eighty minus one hundred eighty-three equals five hundred ninety-seven, and the given answer of five hundred ninety-seven is correct, so the response accurately indicates no error exists."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "da2466c1fc3f1be69418",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true or false prompt presents a specific claim about a subtraction result, allowing the learner to verify accuracy without any ambiguity regarding what must be judged or how to provide an answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Giving away water bowls at a veterinary clinic is a plausible scenario that provides appropriate context for a subtraction problem within Grade 2 comprehension and real-world experience."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses clear language about giving away items and calculating what remains, with the numerical claim to evaluate phrased in language a Grade 2 student can understand without specialized vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to three hundred forty-nine minus one hundred seventy-six is one hundred seventy-three, not one hundred seventy-four, so the false verdict is accurate and hints show proper regrouping."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "020d02dcbd583eeb18e9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly compares quantities of items between two people, asking how many more one person has, with multiple choice options that are distinct and unambiguous in their numerical values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing quantities of possessions between two people is a developmentally appropriate context that involves real-world mathematical thinking suitable for Grade 2 learner reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 learners understand comparative language about how many more one person has than another, and the multiple choice format with four clearly distinct options supports confident selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer two hundred sixty-eight correctly results from seven hundred seventeen minus four hundred forty-nine after regrouping in both ones and tens places, with distractors representing systematic errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "5308c4b54d15fb5d6e2d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection problem presents a complete worked solution and a claimed answer, asking clearly for verification of correctness with no ambiguity in what the evaluation task entails."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Giving away paint tubes and determining remaining quantity is a realistic scenario grounded in a comprehensible activity for Grade 2 learners in educational or art contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example and direct question about correctness allow Grade 2 students to verify arithmetic through comparison, supporting metacognitive awareness and understanding of calculation accuracy."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation five hundred seventy-two minus four hundred ninety-six correctly equals seventy-six, the given answer is accurate, and the response appropriately indicates no error with matching value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "20dcc746a0a0a05e57f5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem directly compares leash quantities between two people, asking a clear comparative question with distinct multiple choice options providing unambiguous response alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing possessions of leashes between people is a valid context, and in Philippine settings with pets this would be a logical scenario for arithmetic practice among Grade 2 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The how many more comparison language and numerical options are accessible to Grade 2 learners, with the multiple choice format reducing cognitive burden of formulating an independent numerical response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer one hundred ninety-six correctly results from three hundred forty-six minus one hundred fifty with regrouping in the tens place, and alternative options reflect plausible computation errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "b9cce0de09ca281f3825",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states an initial monetary amount, a spent amount, and asks for remaining money, with no interpretive ambiguity regarding the calculation required or the format of the expected answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Having piggy bank savings and purchasing a notebook with those savings is a realistic and culturally appropriate context for Grade 2 monetary arithmetic in Philippine educational settings."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand spending money from savings and calculating what remains, with simple language and straightforward numerical options that support confident answer selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer two hundred thirty-nine correctly results from two hundred sixty-nine minus thirty without requiring regrouping, and the options provided represent single-digit or place-value errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "0cd1b452bb4942a6c252",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt presents a complete problem with a solution and claimed answer, asking clearly whether the answer is correct, with no ambiguity in the verification task structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A student solving a monetary problem about spending at a store is a realistic scenario that Grade 2 learners would find comprehensible and educationally relevant to their daily experiences."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example format allows Grade 2 students to follow the solution structure and verify the answer through direct comparison, supporting learning from exemplars without requiring independent solving."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation one hundred ten minus one hundred five correctly equals five, the given answer is accurate, and the response properly indicates no error with the value matching correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "008a970f1cc7807ac650",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a monetary scenario with a starting amount, spent amount, and clear question about remaining money, with multiple choice options that are distinct and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing with piggy bank money and determining remaining funds is a simple and realistic scenario that fits naturally into Grade 2 monetary mathematics instruction in Philippine contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 learners readily understand this purchasing scenario and can select from provided options, which include the correct answer and plausible distractors representing common errors."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer ten correctly results from sixty minus fifty without regrouping, representing a basic subtraction fact, and the incorrect options represent typical computational or place-value errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "c9b6e7aebc06466317fb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt clearly presents a subtraction problem, provides a claimed answer, and asks for verification with no ambiguous interpretation of the task or what response is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A student evaluating a monetary calculation about snack purchases is a plausible scenario for practicing arithmetic verification in a Grade 2 context with familiar commercial transactions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format with a worked solution helps Grade 2 learners understand problem-solving while evaluating accuracy of shown work without needing to solve independently from scratch."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation two hundred thirty-four minus one hundred ten correctly equals one hundred twenty-four, the provided answer matches, and the response accurately indicates no error exists."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "f8c4230b461ac85f2d6b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true or false format presents a specific monetary claim about a subtraction result, allowing clear judgment of correctness without interpretive confusion about the task requirements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A monetary scenario of buying a notebook and determining remaining funds is a realistic and age-appropriate context for Grade 2 subtraction practice in Philippine educational contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand purchasing transactions and can verify whether a proposed remaining amount is correct, with the true or false format supporting accessible response with clear options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to five hundred twenty-two minus four hundred twenty is one hundred two, not one hundred twelve, so the false verdict is accurate with hints showing proper computation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "2ab3a5cc6d330785dcd3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses clear number line language asking for the landing number after counting back a specified amount, with distinct multiple choice options leaving no ambiguity about response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line context of counting backward is a standard mathematical representation used in Grade 2 curricula and provides logical grounding for subtraction understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 learners are familiar with number line representations and the counting back language, making this problem format cognitively accessible with clear answer choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer one hundred thirty-two correctly results from four hundred eighty minus three hundred forty-eight with regrouping in both ones and tens places, with distractors representing errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "2f8671700b68d38bb734",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly describes Des moving down steps and asks for the current step number, with multiple choice options that are distinct and unambiguous in numerical values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of moving down steps provides concrete grounding for subtraction and is developmentally appropriate and understandable for Grade 2 learners in embodied learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students can visualize moving down a sequence of steps and determine a new position after moving, with numerical options supporting straightforward answer selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer four hundred sixty-nine correctly results from five hundred ten minus forty-one with regrouping in the tens place from the ones position, with plausible distractor errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "695f327a3507ae4884db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt presents a monetary problem with a specific claimed answer, asking clearly whether the answer is correct with no ambiguity in evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Spending money on leashes at a veterinary clinic is a plausible real-world context that Grade 2 learners could encounter and understand within familiar commercial scenarios."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked solution allows Grade 2 students to verify the answer through comparison rather than independent calculation, supporting learning from exemplary problem-solving demonstrations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation nine hundred forty minus four hundred twenty correctly equals five hundred twenty without requiring regrouping, the answer is accurate, and the response indicates no error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "1ccd1ae74597e2b62e2c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly establishes an initial quantity, an amount removed, and asks for the remaining amount, with multiple choice options that are distinct and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of removing coins from a container is a concrete context that helps Grade 2 learners visualize the subtraction operation and understand its real-world application."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students readily understand removing items from a group and calculating what remains, with numerical options supporting confident answer selection from distinct choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer two hundred seventy-five correctly results from three hundred thirty minus fifty-five with regrouping in the tens place, with distractor options representing systematic errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "78c169b06f2efd279153",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true or false prompt presents a specific monetary claim about remaining funds after a purchase, allowing clear judgment of correctness without ambiguous task interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Buying a snack and determining remaining money is a realistic scenario familiar to Grade 2 learners in Philippine context with monetary transactions at stores."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand this purchasing scenario and can work through the arithmetic to verify whether the claimed remaining amount is correct using familiar reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to six hundred thirty-six minus two hundred seventy is three hundred sixty-six, not three hundred eighty-six, so the false verdict is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "ae8b040964b56ab20f44",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a comparative problem and claimed answer about how many more whistles one person has, with clear instruction to verify correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing quantities of whistles between two people through subtraction is a valid arithmetic context appropriate for Grade 2 mathematical reasoning and comparison skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example allows Grade 2 students to evaluate a peer response through guided review without requiring independent problem-solving from scratch."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation one hundred fourteen minus seventy-five correctly equals thirty-nine with regrouping in both ones and tens places, the answer is accurate, and no error is present."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "81e1e53ee6ceec34d79c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt presents Noel's solution and claimed answer for removing helmets, asking clearly whether this answer is correct with no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of removing helmets from a table is a concrete and logical context for arithmetic practice suitable for Grade 2 learners with realistic problem situations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students can follow the worked example and evaluate the proposed answer through comparison and verification with the error detection format supporting accessible learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to nine hundred seventy-five minus twenty is nine hundred fifty-five, not nine hundred sixty-five, so the error detection correctly identifies the error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "21b9f87adc57cc89c5cd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection problem presents a monetary scenario with a specific claimed answer, asking directly whether the answer is correct with no confusion about task requirements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Spending money on cat toys at the barangay is a culturally appropriate scenario that Grade 2 learners in the Philippines would find realistic and comprehensible."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked solution format allows Grade 2 students to review and verify the calculation without independent solving, supporting metacognitive development through guided evaluation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The computation five hundred seventy-five minus three hundred sixty correctly equals two hundred fifteen without regrouping, the answer is accurate, and no error exists."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "95d23af03425f2f353c4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true or false format presents a specific claim about remaining sneakers after using some, allowing clear evaluation of the proposed answer's correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using sneakers and calculating what remains is a realistic scenario that makes sense within a Grade 2 learner's experience and understanding of possession."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand using items and determining what remains, with the true or false format providing straightforward response options without cognitive burden."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer three hundred seventy-two correctly results from six hundred thirty minus two hundred fifty-eight with regrouping in both ones and tens places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "aa3179e7725287bb90c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt presents Manny's response about steps remaining after moving down, asking clearly whether his answer of four hundred forty is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of moving down steps from a starting position is a developmentally appropriate context for practicing subtraction with concrete numerical imagery."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example allows Grade 2 learners to follow the solution and verify its accuracy through comparison, with error detection format supporting learning without requiring independent solving."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to four hundred seventy minus fifty is four hundred twenty, not four hundred forty, so the error response correctly identifies this error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "2fbafdaef6ffffe198f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states an initial quantity of baskets, an amount removed, and asks for the remaining count with distinct multiple choice options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of removing baskets from a container is a concrete context that helps Grade 2 learners visualize and understand the subtraction operation in practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students readily understand removing items from a group and calculating what remains, with clear numerical options supporting straightforward answer selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer sixty-nine correctly results from one hundred sixty-eight minus ninety-nine with regrouping in both ones and tens places with plausible distractor errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "6b00940c6695cb7c8b77",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly asks how many paint tubes remain after removal, with multiple choice options that are distinct and unambiguous in numerical representation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Removing paint tubes from a table is a realistic scenario that Grade 2 learners can understand within an art or classroom supply management context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand the action of removing items and calculating what remains, with numerical options that support confident answer selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer seventy-six correctly results from two hundred seventy-one minus one hundred ninety-five with regrouping in both ones and tens places representing typical errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "44bb82d01b8668c852a3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary problem clearly establishes an initial amount, a spent amount, and asks for remaining money with distinct multiple choice options leaving no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing a snack at a sari-sari store is a culturally authentic scenario familiar to Grade 2 learners in Philippine educational and community settings."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand monetary transactions involving snack purchases and can calculate remaining funds with numerical options supporting accessible response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer nine correctly results from fifty-two minus forty-three with regrouping in the ones place, with distractor options representing systematic subtraction errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "2e5dbf48e15c5d7dfa78",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly establishes a starting step position and a downward movement distance, asking for the resulting step number with distinct numerical options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The step-counting context provides concrete grounding for subtraction and is developmentally appropriate for Grade 2 learners in embodied number line understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students readily visualize moving down steps and determining a new position, with numerical options supporting confident answer selection without cognitive overload."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer fifty-four correctly results from ninety minus thirty-six with regrouping in the tens place from the ones position, with hint steps accurately showing this."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "74fb020fbf35f2cf2fd4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection prompt presents Liza's solution to a number line problem with a specific claimed answer, asking whether her solution of ten is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line context of counting backward is a standard mathematical representation used in Grade 2 curricula and provides valid grounding for subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example allows Grade 2 learners to follow the solution and verify its accuracy through comparison with error detection supporting learning effectively."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to twenty-six minus fifteen is eleven, not ten, so the error response correctly identifies this error with accurate value provided."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "sample_id": "32dd073d09f11855ba27",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection problem presents Manny's comparative monetary solution about wristbands with a specific claimed answer, asking whether his calculation is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of comparing wristband quantities between two people is a valid comparative context for arithmetic practice appropriate for Grade 2 mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The worked example allows Grade 2 students to evaluate Manny's response through guided review, supporting learning through verification without requiring independent solving."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer to eight hundred forty minus two hundred seventy-five is five hundred sixty-five, not five hundred fifty-five, so the error is correctly identified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve 1- and 2-step problems",
+      "verdict": "CONCERN",
+      "reasoning": "The sample set demonstrates robust coverage of one-step problem solving across all thirty rendered items with varied contexts, formats and difficulty levels appropriate for learners. However, the competency explicitly requires two-step problems where two sequential arithmetic operations are performed to reach a solution, and no such problems appear in any examined sample, meaning this crucial component remains unvalidated and undemonstrated in the output.",
+      "sample_ids": [
+        "3e236e20b39bf5732c7e",
+        "f88918071c4108bd4f32",
+        "3c2b98479c5baa207e8d",
+        "2e5dbf48e15c5d7dfa78",
+        "32dd073d09f11855ba27"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "requirement_id": "involving_subtraction",
+      "clause": "involving subtraction",
+      "verdict": "PASS",
+      "reasoning": "Every examined sample instantiates a subtraction operation as the core mathematical task, with problems explicitly asking learners to find differences, calculate remaining amounts, or evaluate subtraction results through various formats including direct computation, error detection and true or false evaluation across all thirty items.",
+      "sample_ids": [
+        "3e236e20b39bf5732c7e",
+        "f88918071c4108bd4f32",
+        "3c2b98479c5baa207e8d",
+        "fb1c17fffeee2f974501",
+        "f08cfc307d673f509c28"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "requirement_id": "less_than_1000",
+      "clause": "both numbers are less than 1000",
+      "verdict": "PASS",
+      "reasoning": "Every examined sample adheres strictly to the numerical constraint with both minuend and subtrahend remaining below one thousand, ranging from two-digit operations like fifty-two minus forty-three to three-digit operations like eight hundred forty minus two hundred seventy-five, all within the specified bound.",
+      "sample_ids": [
+        "008a970f1cc7807ac650",
+        "020d02dcbd583eeb18e9",
+        "2fbafdaef6ffffe198f4",
+        "6b00940c6695cb7c8b77",
+        "32dd073d09f11855ba27"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "requirement_id": "problems_money",
+      "clause": "problems involving money",
+      "verdict": "PASS",
+      "reasoning": "Multiple examined samples incorporate Philippine peso currency with authentic purchasing scenarios including notebooks, snacks and other items, allowing learners to practice subtraction within meaningful monetary contexts that reflect real Grade 2 experiences in Philippine communities and schools.",
+      "sample_ids": [
+        "f88918071c4108bd4f32",
+        "3c2b98479c5baa207e8d",
+        "fb1c17fffeee2f974501",
+        "b9cce0de09ca281f3825",
+        "008a970f1cc7807ac650"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    },
+    {
+      "requirement_id": "regrouping",
+      "clause": "with and without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The sample set comprehensively represents both regrouping and non-regrouping scenarios, including straightforward problems like three hundred fourteen minus three hundred requiring no borrowing and complex problems like eight hundred forty minus two hundred seventy-five requiring multiple regrouping steps, providing learners experience with both subtraction types.",
+      "sample_ids": [
+        "f88918071c4108bd4f32",
+        "3e236e20b39bf5732c7e",
+        "f08cfc307d673f509c28",
+        "3c2b98479c5baa207e8d",
+        "2ab3a5cc6d330785dcd3"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_7",
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_7-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "c59c9c1c558dd805d8c30c950e987fc0d529710974690a1d064c9c29e0ceb146",
+      "clause_ids": [
+        "solve_problems",
+        "involving_subtraction",
+        "less_than_1000",
+        "problems_money",
+        "regrouping"
+      ],
+      "response_ref": ".responses/s5-phaseC-w5-haiku45-20260925.json",
+      "response_digest": "75c0d8da15a18c3afed7b9bd364237e5a85ee497f7aaac42b61da7bdc8b22fec",
+      "prompt_ref": ".responses/s5-phaseC-w5-haiku45-20260925.prompt.txt",
+      "prompt_digest": "d159396f4bb53dfb46d36c58caa18a2f8cb612d811b0bbd3323d97f6545d9e89",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q2_7/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q2_7/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (5 clauses with empty sample_ids); the reviewer added the samples it examined (6 tool uses). Every verdict byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both step counts the competency names are present and correctly keyed. I recomputed all fifteen: the two-step chains such as 314 less 193 less 107 giving 14 and 717 less 145 less 304 giving 268 are right, as are the one-step ones such as 630 less 96 giving 534."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Money problems are threaded through the set in peso amounts alongside object problems in stamps, bread and erasers, and the regrouped and non-regrouped cases both occur, so no clause of this competency's wording is left unsampled."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Two-step stems introduce the two recipients in a single readable sentence rather than nesting conditions, and the contexts - a sari-sari store, a school project, lunch - are ones a Filipino second grader already navigates."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Giving away to two people, buying two items, spending once at a shop and a single gift to a library each appear, and the formatter mix runs across cloze, choice, true-or-false and peer-error, so both the situation and the response mode vary."
+      "rationale": "The problem set appropriately targets Grade 2, Quarter 2 learners with a blend of basic subtraction tasks and multi-step regrouping scenarios, matching expected computational capacity for this grade and quarter without overwhelming cognitive demand or exceeding typical second-quarter expectations."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The harder samples are the ones with two sequential removals from a three-digit start, and the easier ones a single removal, which is precisely the one-step-to-two-step progression this node is defined by rather than a change in context dressing."
+      "rationale": "Every sample directly instantiates subtraction operations within the stated competency range, focusing exclusively on the required operation with numbers less than 1000, including proper treatment of monetary contexts where applicable throughout the sample set."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly requires both one-step and two-step problems, but the entire sample set contains only one-step subtraction operations with no problems requiring two sequential arithmetic operations or solution steps to reach the final answer.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "While the five listed requirements cover core competency dimensions including solving problems, involving subtraction, numbers below one thousand, money inclusion, and regrouping variety, the absence of any two-step problem instances means the decomposition is not fully validated in the sample output, as one required element remains undemonstrated.",
+        "requirement_ids": [
+          "solve_problems",
+          "involving_subtraction",
+          "less_than_1000",
+          "problems_money",
+          "regrouping"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "involving_subtraction",
+        "less_than_1000",
+        "problems_money",
+        "regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The samples comprehensively cover one-step problems, money and non-money contexts, regrouping and non-regrouping scenarios, and multiple response formats across all thirty items. However, the competency explicitly requires two-step problems, and no such problems appear in any rendered sample.",
+      "clause_ids": [
+        "solve_problems",
+        "involving_subtraction",
+        "less_than_1000",
+        "problems_money",
+        "regrouping"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Starting amounts run up to 810 and 780, comfortably inside the under-1000 bound, while remaining large enough that the two-step subtractions actually exercise three-digit work."
+      "rationale": "All numbers in every sample remain below one thousand as required, ranging from small operations like fifty-two minus forty-three to three-digit operations like nine hundred seventy-five minus twenty, providing appropriate numerical scale diversity for Grade 2 Quarter 2 learners."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set exhibits strong format diversity across cloze or fill-in-blank items, multiple choice questions, true or false evaluation, and error detection tasks, providing varied interaction modes and cognitive engagement strategies suited for assessing and practicing the subtraction competency."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }
