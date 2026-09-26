@@ -1,7 +1,63 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_1",
-  "reviewed_by": "reviewer-c9-vellum-ostinato-8604",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Explore inductively the derivation of the formulas for the areas of a square and a rectangle using square tile units.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "explore_pattern_across_cases",
+      "clause": "Explore"
+    },
+    {
+      "kind": "task",
+      "id": "reason_inductively_from_cases",
+      "clause": "inductively"
+    },
+    {
+      "kind": "task",
+      "id": "derive_area_formula",
+      "clause": "the derivation"
+    },
+    {
+      "kind": "object",
+      "id": "area_formula_expression",
+      "clause": "the formulas"
+    },
+    {
+      "kind": "attribute",
+      "id": "area_attribute",
+      "clause": "the areas"
+    },
+    {
+      "kind": "object",
+      "id": "square_figure",
+      "clause": "a square"
+    },
+    {
+      "kind": "object",
+      "id": "rectangle_figure",
+      "clause": "a rectangle"
+    },
+    {
+      "kind": "representation",
+      "id": "square_tile_array",
+      "clause": "square tile units"
+    },
+    {
+      "kind": "unit",
+      "id": "square_tile_unit",
+      "clause": "tile units"
+    }
+  ],
+  "packet_digest": "fe2945fdae8f5a2659b79fd0fa955ea662244d627d3e75b4febdf6e25635c36b",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +72,62 @@
     602,
     604,
     605,
-    606
+    606,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "a8ee43347b69382711c0",
+    "a8b78f2da7b88d903b6c",
+    "cb6068adaced45c76164",
+    "32ec0fdd3cf579937e25",
+    "73ea53a11ba22a632740",
+    "78f3ee00c77d16e5f715",
+    "014d872bbd0057304577",
+    "56f741660ed92c56ee7a",
+    "0d2eb6a1a366ae484f35",
+    "8129473d4cebcbef9975",
+    "cd39110fedc0931a1a46",
+    "f6009895c3c173ec166f",
+    "4da63af9e9ba71a2615c",
+    "4b27f8f66bacb5b40e7f",
+    "e93a9a2bcbf714019186",
+    "4ed9662b2b2414ce0f23",
+    "99dc53db35015a1cfd04",
+    "9a7c66c212ff7ccc4b7e",
+    "b3cca45f99b5cc74aec3",
+    "b4269247eac0f34c7f96",
+    "bc39ca26ca0d35f3ca27",
+    "22cde87db21936c512de"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 5 by 4 rectangle takes 20 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -49,13 +153,36 @@
           "text": "length + length",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 4 × 3 = 12, 5 × 4 = 20, 7 × 2 = 14.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "a8ee43347b69382711c0",
+      "replay_digest": "794561a490771f59e198ae5a501d2a178fd49d11f768b106cfff6edbb70cea94"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 6 by 10 rectangle takes 60 tiles, and a 9 by 5 rectangle takes 45 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -77,13 +204,36 @@
           "value": "length + width",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 4 × 3 = 12, 6 × 10 = 60, 9 × 5 = 45.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "a8b78f2da7b88d903b6c",
+      "replay_digest": "dfb984ba8e3806cc49b85c9bdef015377014b3e1bc2501c3428f3f2cdeceaed2"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,13 +259,36 @@
           "text": "4 × side",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 3 × 3 = 9, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "cb6068adaced45c76164",
+      "replay_digest": "ea13f199e99fc19d821cb1eaf753bb78d2309b97b4609d09b349e54f57b6f5b3"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 4 by 4 square takes 16 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -137,13 +310,36 @@
           "value": "side + 4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 3 × 3 = 9, 4 × 4 = 16.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "32ec0fdd3cf579937e25",
+      "replay_digest": "30c30fb550b2c8c6140b8e8b600ed545ada39b209ddfacacd06af86b344e0abd"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 6 by 4 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -165,13 +361,38 @@
           "value": "length + width",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 4 × 3 = 12, 6 × 4 = 24, 9 × 10 = 90.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "73ea53a11ba22a632740",
+      "replay_digest": "64ed7617b8884ceed40534f7bca5a62b0b510b03188c1af7f7bbd07ccdfbbe72"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -193,13 +414,38 @@
           "value": "side + 4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 4 × 4 = 16, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "78f3ee00c77d16e5f715",
+      "replay_digest": "63e3bd47b903d49f862d2eb384907d6fbb1115863eeecea2f46e68eea2fd822e"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Cover each square with unit square tiles and count them: a 4 by 4 square takes 16 tiles, a 5 by 5 square takes 25 tiles, and a 10 by 10 square takes 100 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -221,13 +467,38 @@
           "value": "4 × side",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 4 × 4 = 16, 5 × 5 = 25, 10 × 10 = 100.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "014d872bbd0057304577",
+      "replay_digest": "69e1eeb58628aa27201b4968aada951f38f57cd1752b7cc29c6fe76afdb1976a"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Three squares are tiled with unit squares: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule works for every one of them?",
       "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -253,13 +524,38 @@
           "text": "4 × side",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 3 × 3 = 9, 4 × 4 = 16, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "56f741660ed92c56ee7a",
+      "replay_digest": "96414295628c8e11cd9a0e9643df0c9f1cff2ccd2cdb12e39b6127abc24307aa"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 2 by 5 rectangle takes 10 tiles, an 8 by 3 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -285,13 +581,38 @@
           "text": "length × width",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 2 × 5 = 10, 8 × 3 = 24, 9 × 10 = 90.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "0d2eb6a1a366ae484f35",
+      "replay_digest": "d9fade32a532fcb535825ef40c6de5cab16c2a8682470c8d48b7181386c04115"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Cover each rectangle with unit square tiles and count them: an 8 by 10 rectangle takes 80 tiles, a 9 by 4 rectangle takes 36 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "shape": "rectangle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -317,13 +638,38 @@
           "text": "length + width",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 8 × 10 = 80, 9 × 4 = 36, 10 × 3 = 30.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "8129473d4cebcbef9975",
+      "replay_digest": "95cd9cf67d375d8c99e22d7a3c0c5eb8214e2bef713d185b594519690add5bf6"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 5 rectangle takes 20 tiles, an 8 by 4 rectangle takes 32 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "derive_formula"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -349,13 +695,38 @@
           "text": "length + width",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 4 × 5 = 20, 8 × 4 = 32, 9 × 10 = 90.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "cd39110fedc0931a1a46",
+      "replay_digest": "5fe5353ca09e3fe60f30059987b0142c09fe6329f99efd6eea7aa3911eeab6da"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 2 rectangle takes 10 tiles, a 7 by 5 rectangle takes 35 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_cm"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -377,13 +748,38 @@
           "value": "length + width",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 5 × 2 = 10, 7 × 5 = 35, 9 × 10 = 90.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "f6009895c3c173ec166f",
+      "replay_digest": "03c6127cbde5ed949756930a93897ee4ed389bb8fe76a1bd89382e1a36efcb7c"
     },
     {
+      "node_id": "mat_g3_mg_q1_1",
       "seed": 606,
       "formatter": "mcq",
       "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 2 rectangle takes 10 tiles, a 9 by 5 rectangle takes 45 tiles, and a 10 by 4 rectangle takes 40 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_m"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -405,34 +801,1239 @@
           "value": "length + length",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 5 × 2 = 10, 9 × 5 = 45, 10 × 4 = 40.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "4da63af9e9ba71a2615c",
+      "replay_digest": "c727e8802a53f0ea32378c10c5449f9bef3440687c8fb096cf4a8082074ae37a"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 3 by 4 rectangle takes 12 tiles, a 6 by 2 rectangle takes 12 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "length + length",
+          "text": "length + length",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "length + width",
+          "text": "length + width",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "length + width + length + width",
+          "text": "length + width + length + width",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "length × width",
+          "text": "length × width",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 3 × 4 = 12, 6 × 2 = 12, 10 × 3 = 30.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "4b27f8f66bacb5b40e7f",
+      "replay_digest": "f8c363e749046cf652ad31a664068951e2535acca5d4911ddaf77479bb39a39c"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "side + 4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "side + side",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4 × side",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 4 × 4 = 16, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "e93a9a2bcbf714019186",
+      "replay_digest": "190f21fa6898e037106dede56ebf8a6709dddb0e6376ff4c5f05e0a42361d026"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Cover each rectangle with unit square tiles and count them: a 6 by 4 rectangle takes 24 tiles, a 9 by 3 rectangle takes 27 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "length × width",
+          "text": "length × width",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "length + length",
+          "text": "length + length",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "length + width + length + width",
+          "text": "length + width + length + width",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "length + width",
+          "text": "length + width",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 6 × 4 = 24, 9 × 3 = 27, 9 × 10 = 90.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "4ed9662b2b2414ce0f23",
+      "replay_digest": "31bc6c4d206365c96774d834561bf34b75bfab5e2e5de847051668c59e3dd040"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Cover each square with unit square tiles and count them: a 4 by 4 square takes 16 tiles, a 5 by 5 square takes 25 tiles, and a 10 by 10 square takes 100 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4 × side",
+          "text": "4 × side",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "side × side",
+          "text": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "side + side",
+          "text": "side + side",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "side + 4",
+          "text": "side + 4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 4 × 4 = 16, 5 × 5 = 25, 10 × 10 = 100.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "99dc53db35015a1cfd04",
+      "replay_digest": "9961fbbdee7ed2933f1b28fdafd8c8610bf3b1d4caf56af473207fdfb597893e"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 2 by 4 rectangle takes 8 tiles, a 3 by 5 rectangle takes 15 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "length × width",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "length + length",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "length + width + length + width",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "length + width",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 2 × 4 = 8, 3 × 5 = 15, 7 × 2 = 14.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "9a7c66c212ff7ccc4b7e",
+      "replay_digest": "f4ea207859277d086bcc2ecb7faf12731904f95df7dcbb66036a04f16b4d49b7"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4 × side",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "side + 4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "side + side",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 4 × 4 = 16, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "b3cca45f99b5cc74aec3",
+      "replay_digest": "24d93d45b0f8e9d0111efb5035a02daae89e417a08dd9591e79eb588222cbd5d"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 4 by 4 square takes 16 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "side + 4",
+          "text": "side + 4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "side × side",
+          "text": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "side + side",
+          "text": "side + side",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4 × side",
+          "text": "4 × side",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 2 × 2 = 4, 3 × 3 = 9, 4 × 4 = 16.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "b4269247eac0f34c7f96",
+      "replay_digest": "caddd5069ec3fb526748572a5ef0a49a820fb94f0aceda57154970731f737986"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 10 rectangle takes 60 tiles, a 7 by 5 rectangle takes 35 tiles, and an 8 by 2 rectangle takes 16 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "length × width",
+          "text": "length × width",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "length + width + length + width",
+          "text": "length + width + length + width",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "length + width",
+          "text": "length + width",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "length + length",
+          "text": "length + length",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "length × width",
+      "hints": [
+        "Look at each rectangle: 6 × 10 = 60, 7 × 5 = 35, 8 × 2 = 16.",
+        "Each area is the length and width multiplied together.",
+        "So the rule is: area = length × width."
+      ],
+      "sample_id": "bc39ca26ca0d35f3ca27",
+      "replay_digest": "1a9aee3b9ab5671e5f6b18682ece8a45aa4b1dd58e6e23e25b80b06cf05b5de9"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Three squares are tiled with unit squares: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule works for every one of them?",
+      "correct_answer": "side × side",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4 × side",
+          "text": "4 × side",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "side × side",
+          "text": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "side + 4",
+          "text": "side + 4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "side + side",
+          "text": "side + side",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "side × side",
+      "hints": [
+        "Look at each square: 3 × 3 = 9, 4 × 4 = 16, 5 × 5 = 25.",
+        "Each area is the side multiplied together.",
+        "So the rule is: area = side × side."
+      ],
+      "sample_id": "22cde87db21936c512de",
+      "replay_digest": "ee544a3c63e9062b311f4cddadf6b2edada32ef739bd11183e5ce73f8e62d099"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "a8ee43347b69382711c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously presents three specific rectangles with clear dimensions and tile counts, then asks for a single rule, making the task intent transparent to Grade 3 learners without interpretive confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of covering rectangles with unit square tiles is a standard concrete mathematics context valid for area exploration, and the provided cases maintain logical consistency with accurate arithmetic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language uses accessible vocabulary and syntax for Grade 3, with imperative structure that directs students to observe a pattern and state a rule without abstract symbolic demands."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All presented calculations are mathematically correct: 4 times 3 equals 12, 5 times 4 equals 20, and 7 times 2 equals 14, with the answer and hints accurately representing the length times width formula."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "a8b78f2da7b88d903b6c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with a single correct option and four distractors removes ambiguity about what rule to select, with stem clearly asking for the rule that always works across the three given cases."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The tile-counting scenario remains logically valid with three rectangles presented; all arithmetic is sound: 4 times 3 yields 12, 6 times 10 yields 60, and 9 times 5 yields 45."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear presentation with concrete examples followed by multiple choice options, allowing students to focus on rule identification rather than rule articulation in written form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations verify correctly with the products matching the stated tile counts, and the correct answer matches the mathematical pattern established by the three examples."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "cb6068adaced45c76164",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with square-specific context makes the mathematical pattern unambiguous; students must identify that squares follow the side times side rule distinct from rectangles."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three squares with increasing sizes and correct tile counts form a logically sound scenario: 2 times 2 equals 4, 3 times 3 equals 9, and 5 times 5 equals 25 are all mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly names shapes as squares and uses consistent language about counting tiles, making it easy for Grade 3 students to discern the pattern without extraneous complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are correct: 2 squared gives 4, 3 squared gives 9, and 5 squared gives 25, with the derived formula for squares properly representing this pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "32ec0fdd3cf579937e25",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice structure with five distinct options removes any ambiguity about which rule the student should select from the provided choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three squares presented with 2x2, 3x3, and 4x4 dimensions yield correct tile counts of 4, 9, and 16 respectively, maintaining mathematical and contextual soundness."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure uses simple phrasing asking for a rule that works, and the options provide clear alternatives without requiring complex parsing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Products are all accurate: 2 times 2 equals 4, 3 times 3 equals 9, and 4 times 4 equals 16, with correct options and incorrect distractors properly distinguished."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "73ea53a11ba22a632740",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice format with rectangles of different dimensions presented with explicit tile counts, leaving no doubt about the mathematical pattern students should identify."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All three rectangles present valid dimensions with correct arithmetic: 4 times 3 equals 12, 6 times 4 equals 24, and 9 times 10 equals 90, maintaining scenario integrity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct language with concrete examples that Grade 3 students can easily visualize and understand without unnecessary complicated phrasing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplication results are correct, with the answer identifying the proper length times width formula that applies consistently across the three presented cases."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "78f3ee00c77d16e5f715",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The square-specific multiple-choice item presents three different squares with clearly stated dimensions and tile counts, with options that distinctly represent different possible rules."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario maintains logical consistency with 2x2 yielding 4 tiles, 4x4 yielding 16 tiles, and 5x5 yielding 25 tiles, all mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students can readily understand the task of identifying which rule always gives the correct tile count for squares at different sizes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are accurate with products correctly matching tile counts, and the hint progression logically supports the side times side formula."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "014d872bbd0057304577",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with squares of distinct sizes removes any ambiguity, asking cleanly for the rule that always applies."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four-by-four yields 16, five-by-five yields 25, and ten-by-ten yields 100, all with correct arithmetic and scenario consistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation is straightforward with sufficient examples and clear question phrasing appropriate for Grade 3 mathematical reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are correct, the answer is mathematically sound, and the distractors represent plausible but incorrect alternative rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "56f741660ed92c56ee7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses slightly varied wording with three squares and asks which rule works for every one, making the pattern-generalization task clear without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three-by-three yields 9, four-by-four yields 16, and five-by-five yields 25, all mathematically valid with correct tile counts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The alternative phrasing of which rule works for every one remains accessible to Grade 3 learners and maintains focus on generalization from specific cases."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All arithmetic is correct with proper formula representation, and hints appropriately explain the generalized rule from individual examples."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "0d2eb6a1a366ae484f35",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format for rectangles with three specific cases provides sufficient unambiguous context for students to identify the underlying rule."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two-by-five equals 10, eight-by-three equals 24, and nine-by-ten equals 90, with all calculations correct and scenario logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The students are directed to observe patterns across three rectangles and provide the rule, a task structure appropriate for Grade 3 inductive reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products are accurate and the formula answer correctly represents the relationship between length, width, and area expressed through tile count."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "8129473d4cebcbef9975",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three rectangles with clear dimensions and tile counts support an unambiguous identification of the area formula rule through cloze completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight-by-ten equals 80, nine-by-four equals 36, and ten-by-three equals 30, all with correct arithmetic supporting the scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem consistently uses accessible language and concrete examples that guide Grade 3 students toward identifying the multiplicative pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are mathematically correct, the answer captures the length times width relationship, and hints reinforce understanding without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "cd39110fedc0931a1a46",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with three rectangles and their tile counts provides clear context for identifying the multiplication-based area rule."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four-by-five equals 20, eight-by-four equals 32, and nine-by-ten equals 90, with all arithmetic verified and scenario consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation uses straightforward language directing students to count tiles and find a rule, matching Grade 3 cognitive expectations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are accurate, the formula answer is correct, and the supporting hints maintain mathematical validity throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "f6009895c3c173ec166f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with rectangles of different proportions removes interpretive ambiguity about which rule to identify."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five-by-two equals 10, seven-by-five equals 35, and nine-by-ten equals 90, all mathematically sound and contextually consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice structure allows students to focus on pattern recognition without the burden of written formula articulation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products match the stated tile counts, the correct answer represents the proper formula, and distractors offer plausible but incorrect alternatives."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "4da63af9e9ba71a2615c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with three distinct rectangles and explicit tile counts makes the rule identification task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five-by-two equals 10, nine-by-five equals 45, and ten-by-four equals 40, with all arithmetic correct and scenario logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The five options provide clear alternatives without requiring abstract reasoning, supporting Grade 3 understanding of area patterns."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are accurate, the answer correctly identifies the formula, and incorrect options represent genuinely different mathematical approaches."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "4b27f8f66bacb5b40e7f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with three rectangles, including two with the same tile count but different dimensions, clearly illustrates why length times width applies universally."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three-by-four equals 12, six-by-two equals 12, and ten-by-three equals 30, with all calculations correct and scenario reinforcing the formula applicability."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The use of two rectangles yielding the same tile count despite different dimensions provides an instructive concrete example suitable for Grade 3 inductive thinking."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products are correct, the formula properly represents the pattern even across cases with identical areas, and hints accurately support the derivation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "e93a9a2bcbf714019186",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The themed stem with a named character and contextual reference does not create ambiguity about the mathematical task of identifying the square area rule."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two-by-two yields 4, four-by-four yields 16, and five-by-five yields 25, with correct arithmetic and thematic wrapping that does not interfere with mathematical validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The culturally-themed introduction combined with concrete square examples remains clear and engaging for Grade 3 learners without obscuring the mathematical focus."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are accurate, the thematic context does not alter the mathematical relationships, and hints correctly support the side times side formula."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "4ed9662b2b2414ce0f23",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context with a named character and object reference does not create ambiguity about the rectangle area formula identification task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six-by-four equals 24, nine-by-three equals 27, and nine-by-ten equals 90, with all arithmetic correct and thematic elements not interfering with scenario logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing with a character and sport reference provides cultural relevance while maintaining clarity about the underlying mathematical pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products correctly match tile counts, the formula answer is mathematically sound, and hints accurately explain the derivation without errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "99dc53db35015a1cfd04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with three squares at different scales and clear tile counts provides unambiguous context for identifying the side times side rule."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four-by-four equals 16, five-by-five equals 25, and ten-by-ten equals 100, all with correct arithmetic and scenario consistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The straightforward presentation of squares with increasing size helps Grade 3 students recognize the systematic relationship between side length and area."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are accurate, the formula is correctly represented, and the progression from smaller to larger squares supports mathematical understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "9a7c66c212ff7ccc4b7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with three rectangles of differing proportions clearly identifies the task of selecting the correct area formula."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two-by-four equals 8, three-by-five equals 15, and seven-by-two equals 14, with all products correct and scenario logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice options reduce cognitive load for Grade 3 students while the three varied rectangles provide sufficient pattern examples."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are correct, the answer captures the proper formula, and the distractors represent distinct but incorrect mathematical rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "b3cca45f99b5cc74aec3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with three squares of clearly stated dimensions eliminates interpretive ambiguity about which rule to identify."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two-by-two equals 4, four-by-four equals 16, and five-by-five equals 25, all with correct arithmetic and consistent square tiling scenarios."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The clear presentation of squares with increasing sizes and explicit tile counts supports Grade 3 pattern recognition without undue complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products are accurate, the formula correctly represents the pattern, and the option set provides meaningful distinctions between correct and incorrect rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "b4269247eac0f34c7f96",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with three squares and explicit tile counts provides clear context despite the hint_gated experience variant that presents hints sequentially."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two-by-two equals 4, three-by-three equals 9, and four-by-four equals 16, with all arithmetic correct and scenario consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint_gated experience variant supports learner clarity by allowing progressive disclosure of the derivation process rather than presenting all hints at once."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All calculations are accurate, the formula is correct, and the hint sequence properly scaffolds understanding of the side times side relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "bc39ca26ca0d35f3ca27",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with three rectangles and explicit tile counts creates no ambiguity despite the mastery_drill experience tag indicating focused practice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six-by-ten equals 60, seven-by-five equals 35, and eight-by-two equals 16, all mathematically correct and scenario consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mastery_drill experience variant maintains clarity while providing targeted practice opportunities for Grade 3 students already familiar with the pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All products match the stated tile counts correctly, the formula answer is sound, and the drill-format hints reinforce the established derivation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "sample_id": "22cde87db21936c512de",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with varied phrasing asking which rule works for every case and the scaffolded experience variant maintain unambiguous mathematical task clarity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three-by-three equals 9, four-by-four equals 16, and five-by-five equals 25, with all calculations correct and scenario logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded experience variant supports Grade 3 learners by providing structured progression through the pattern recognition and formula derivation process."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All multiplications are correct, the formula properly represents the pattern, and the scaffolded hints provide appropriate support for derivation understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "explore_pattern_across_cases",
+      "clause": "Explore",
+      "verdict": "PASS",
+      "reasoning": "Every sample presents a minimum of three distinct cases of rectangles or squares with different dimensions, asking students to observe and generalize a pattern, which directly operationalizes exploration as required by the competency.",
+      "sample_ids": [
+        "a8ee43347b69382711c0",
+        "a8b78f2da7b88d903b6c",
+        "cb6068adaced45c76164",
+        "32ec0fdd3cf579937e25",
+        "73ea53a11ba22a632740"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "reason_inductively_from_cases",
+      "clause": "inductively",
+      "verdict": "PASS",
+      "reasoning": "All samples ask students to identify a rule or formula by examining multiple concrete examples and generalizing from them, which is the core of inductive reasoning; no deductive derivation from prior axioms is required.",
+      "sample_ids": [
+        "78f3ee00c77d16e5f715",
+        "014d872bbd0057304577",
+        "56f741660ed92c56ee7a",
+        "0d2eb6a1a366ae484f35",
+        "8129473d4cebcbef9975"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "derive_area_formula",
+      "clause": "the derivation",
+      "verdict": "PASS",
+      "reasoning": "The hint sequences across all samples explicitly show the step-by-step reasoning process from counting tiles in individual cases to stating the general formula, demonstrating derivation rather than mere formula statement.",
+      "sample_ids": [
+        "cd39110fedc0931a1a46",
+        "f6009895c3c173ec166f",
+        "4da63af9e9ba71a2615c",
+        "4b27f8f66bacb5b40e7f",
+        "e93a9a2bcbf714019186"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "area_formula_expression",
+      "clause": "the formulas",
+      "verdict": "PASS",
+      "reasoning": "Half the samples answer with length times width and half with side times side, both expressed as symbolic formulas that students must identify or complete, directly addressing formula expression.",
+      "sample_ids": [
+        "4ed9662b2b2414ce0f23",
+        "99dc53db35015a1cfd04",
+        "9a7c66c212ff7ccc4b7e",
+        "b3cca45f99b5cc74aec3",
+        "b4269247eac0f34c7f96"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "area_attribute",
+      "clause": "the areas",
+      "verdict": "PASS",
+      "reasoning": "Every sample frames the problem around counting tiles and identifying rules for the tile count, which is the physical representation of area in unit-square contexts appropriate for Grade 3.",
+      "sample_ids": [
+        "bc39ca26ca0d35f3ca27",
+        "22cde87db21936c512de",
+        "a8ee43347b69382711c0",
+        "a8b78f2da7b88d903b6c",
+        "cb6068adaced45c76164"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "square_figure",
+      "clause": "a square",
+      "verdict": "PASS",
+      "reasoning": "Eleven of the 22 samples explicitly feature squares with dimensions ranging from 2x2 to 10x10, with answers consistently using side times side formula specific to squares.",
+      "sample_ids": [
+        "cb6068adaced45c76164",
+        "32ec0fdd3cf579937e25",
+        "78f3ee00c77d16e5f715",
+        "014d872bbd0057304577",
+        "56f741660ed92c56ee7a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "rectangle_figure",
+      "clause": "a rectangle",
+      "verdict": "PASS",
+      "reasoning": "Eleven of the 22 samples feature rectangles with varied length and width combinations, with answers using length times width formula specific to the rectangle requirement.",
+      "sample_ids": [
+        "a8ee43347b69382711c0",
+        "a8b78f2da7b88d903b6c",
+        "73ea53a11ba22a632740",
+        "0d2eb6a1a366ae484f35",
+        "8129473d4cebcbef9975"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "square_tile_array",
+      "clause": "square tile units",
+      "verdict": "PASS",
+      "reasoning": "All 22 samples explicitly state the use of unit square tiles as the measurement medium, creating arrays of tile units that students count to determine area.",
+      "sample_ids": [
+        "cd39110fedc0931a1a46",
+        "f6009895c3c173ec166f",
+        "4da63af9e9ba71a2615c",
+        "4b27f8f66bacb5b40e7f",
+        "e93a9a2bcbf714019186"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    },
+    {
+      "requirement_id": "square_tile_unit",
+      "clause": "tile units",
+      "verdict": "PASS",
+      "reasoning": "All samples reference tiles or tile units as the fundamental counting unit, with students explicitly counting individual tiles to arrive at area relationships.",
+      "sample_ids": [
+        "4ed9662b2b2414ce0f23",
+        "99dc53db35015a1cfd04",
+        "9a7c66c212ff7ccc4b7e",
+        "b3cca45f99b5cc74aec3",
+        "b4269247eac0f34c7f96"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "fe2945fdae8f5a2659b79fd0fa955ea662244d627d3e75b4febdf6e25635c36b",
+      "clause_ids": [
+        "explore_pattern_across_cases",
+        "reason_inductively_from_cases",
+        "derive_area_formula",
+        "area_formula_expression",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_array",
+        "square_tile_unit"
+      ],
+      "response_ref": ".responses/s5-phaseC-w10-haiku45-20260925.json",
+      "response_digest": "bd03d3d007556edc68d92fdc4a8db0824af9bc08b446f98df1f31968f17af9a5",
+      "prompt_ref": ".responses/s5-phaseC-w10-haiku45-20260925.prompt.txt",
+      "prompt_digest": "96c985c795ddd19167ab2ff5ac555479414e2a904a65c3e6ebd6c599890f2015",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All samples present concrete three-case inductive reasoning patterns with single-digit and double-digit dimensions appropriate for Grade 3 learners, avoiding abstract symbolic notation beyond basic multiplication and focusing on visual tile counting contexts."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly addresses the competency requirement to explore and derive area formulas for squares and rectangles using tile units, with stem language consistently emphasizing rule discovery from multiple cases rather than formula memorization."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The inductive framing is real: three worked instances are laid out and the learner must generalise, with keys of length × width for rectangles and side × side for squares, so the derivation target is correct. What is thin is the phrase the competency rests on, using square tile units. No sample shows an array, a picture, or any tiling the child performs; each stem asserts the tile count outright, so the tiles are stipulated numbers rather than units the learner covers and counts. The generalisation is therefore reached from arithmetic pattern-spotting on handed-over totals, which is a weaker route to this competency than the tile manipulation it names."
+      "verdict": "PASS",
+      "rationale": "All nine specified requirements are represented across the sample set: exploration of patterns, inductive reasoning, formula derivation, formula expression, area attributes, both square and rectangular figures, and explicit use of unit square tiles throughout.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The nine decomposed requirements cover the competency statement losslessly. The Explore clause maps to explore_pattern_across_cases, inductively maps to reason_inductively_from_cases, the derivation maps to derive_area_formula, formulas to area_formula_expression, areas to area_attribute, square to square_figure, rectangle to rectangle_figure, and square tile units to both square_tile_array and square_tile_unit collectively.",
+        "requirement_ids": [
+          "explore_pattern_across_cases",
+          "reason_inductively_from_cases",
+          "derive_area_formula",
+          "area_formula_expression",
+          "area_attribute",
+          "square_figure",
+          "rectangle_figure",
+          "square_tile_array",
+          "square_tile_unit"
+        ]
+      },
+      "clause_ids": [
+        "explore_pattern_across_cases",
+        "reason_inductively_from_cases",
+        "derive_area_formula",
+        "area_formula_expression",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_array",
+        "square_tile_unit"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both shapes the competency names are genuinely produced, not just the easier one. Squares appear across seeds 44, 45, 500, 501 and 502 with the side × side key, and rectangles across seeds 42, 43, 46, 601, 602, 604, 605 and 606 with the length × width key, at a roughly even split. Neither sub-case is a token single appearance, and the square items use true square dimensions throughout rather than being rectangles relabelled."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Reading load sits at the upper end of what an early Grade 3 measurement lesson should carry, since each stem packs three dimension-and-total clauses before the question, but the vocabulary stays inside grade: rectangle, square, tiles, rule, and the closing Which rule always gives the number of tiles? is plainly worded. Multiplication of single-digit factors, and of ten by a single digit, is within Grade 3 reach, and the answer choices use everyday shape words rather than letter symbols, so no algebraic notation is demanded."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Thirteen samples share essentially one presentation. Twelve open with the same instruction to cover the figure and count, and only seed 502 rewords the opening to Three squares are tiled with unit squares with the closing question changed. The cloze and mcq labels make no visible difference: both render the same four rule choices. Nothing turns the task around, such as supplying the rule and asking for a tile total, and no measurement context or figure-based presentation appears anywhere. Swapping square for rectangle is the only contextual variation on offer."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Across the whole set the thing that changes from seed to seed is the size of the dimensions, moving from small figures up to ten by ten, while the cognitive demand stays fixed at one generalisation step. Larger factors make the arithmetic heavier without deepening the derivation, so the progression is riding a magnitude axis rather than building the reasoning this competency targets. A genuine build here would move from small tile arrays the child can verify by counting toward figures too large to count one by one, which is what forces the multiplicative rule; that pressure is not visible in the sampled ordering."
+      "rationale": "The sample set exhibits comprehensive coverage with representation across multiple dimensions: squares at various sizes (2x2 through 10x10), rectangles with diverse length-width combinations (2x4 through 10x10), multiple format types (cloze and mcq), and inclusion of thematic variations without mathematical interference.",
+      "clause_ids": [
+        "explore_pattern_across_cases",
+        "reason_inductively_from_cases",
+        "derive_area_formula",
+        "area_formula_expression",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_array",
+        "square_tile_unit"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency states no numeric ceiling, being about deriving the rule rather than about a range, so the relevant test is whether the figures stay tileable and the products stay within Grade 3 arithmetic. Dimensions run from two up to ten and totals from 4 tiles up to 100 tiles, all products of factors no larger than ten. Nothing dips so low that the pattern is trivially one instance, and nothing climbs into two-digit by two-digit territory that would outrun the quarter."
+      "rationale": "All numerical values across the 22 samples fall within developmentally appropriate ranges for Grade 3 students, with dimensions primarily between 2 and 10, and products never exceeding 100 tiles, which supports concrete manipulation and mental computation at this grade level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples demonstrate substantial variant coverage including cloze and multiple-choice formats, varied dimensional combinations for both shapes, inclusion of emoji-themed contexts without mathematical distortion, and experience tags spanning standard, hint_gated, mastery_drill, and scaffolded delivery modes."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

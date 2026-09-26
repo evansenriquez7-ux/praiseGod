@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "reviewer-c8-hollow-ampersand-5277",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Illustrate and estimate the area of a square or rectangle using square tile units.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "illustrate_area_with_tiles",
+      "clause": "Illustrate"
+    },
+    {
+      "kind": "task",
+      "id": "estimate_area",
+      "clause": "estimate the area"
+    },
+    {
+      "kind": "attribute",
+      "id": "area_attribute",
+      "clause": "the area"
+    },
+    {
+      "kind": "object",
+      "id": "square_figure",
+      "clause": "a square"
+    },
+    {
+      "kind": "object",
+      "id": "rectangle_figure",
+      "clause": "rectangle"
+    },
+    {
+      "kind": "representation",
+      "id": "square_tile_covering",
+      "clause": "square tile units"
+    },
+    {
+      "kind": "unit",
+      "id": "square_tile_unit",
+      "clause": "tile units"
+    }
+  ],
+  "packet_digest": "a3b91c08465c64bff70ad40b91b9476802b6840fb0754d6bfe42d49bfcfb9e9f",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +62,62 @@
     601,
     602,
     605,
-    606
+    606,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "881e6842a17b88dbb720",
+    "46da5b99d3026925c7c2",
+    "b330830a6e9094721c45",
+    "7772a6ad81fc710bf2f1",
+    "5476ed311c69b1972809",
+    "2d7ac0f66b8cd8d89c2e",
+    "a2f1123275d8429421cd",
+    "6dcf05dbf86b28666c7e",
+    "9f6ce4a3fa7c361f7962",
+    "afd6b9d5ac962f7d7f16",
+    "878015457d2e626cfb08",
+    "02b1878c052415e20eaa",
+    "865479fb24fd5277490b",
+    "d083d0b659324f8cce62",
+    "bf496819dd65b7ee2031",
+    "37f5583277a6b71cd40d",
+    "fe218ab312a82631c008",
+    "34c4f9c6892d9ece3519",
+    "64a8eca1e772989696b4",
+    "f7a5bb4ad18958071180",
+    "dc8986fffc633714376c",
+    "b4d21c7c610f1adf8ab4"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.",
       "correct_answer": 14,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -49,13 +143,35 @@
           "text": "21",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 14,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 7 = 14 sq cm."
+      ],
+      "sample_id": "881e6842a17b88dbb720",
+      "replay_digest": "99ae3866075968e108f031cd382b6a332cacf43201535b814990b377e2e89bfa"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "Look at the 7×4 array. How many squares are shaded in all?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -77,13 +193,81 @@
           "value": 22,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 28,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 7 × 4 = 28 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 7,
+        "cols": 4,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 28,
+        "grid_size": [
+          8,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "d706343f1cc2473fd831c97a12576bba7d2a167e3fcf95ad732369661e76d624",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 7",
+            "rectangle",
+            "28 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 28
+          }
+        }
+      },
+      "sample_id": "46da5b99d3026925c7c2",
+      "replay_digest": "1baa6266609f8f493244f271f465f7dcd3c35d9daf10d03d6454d1ddb466e092"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 2 rows and 2 columns. Estimate how many unit tiles cover the square in all.",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -105,13 +289,35 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 2 × 2 = 4 sq cm."
+      ],
+      "sample_id": "b330830a6e9094721c45",
+      "replay_digest": "8291b5e60f65d01d9718ebb220db763b9b6b908459514503a91fdc5a5a20cef7"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "Look at the 5×5 array. How many squares are shaded in all?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -133,13 +339,79 @@
           "value": 27,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 5 × 5 = 25 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 5,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "square",
+        "correct_count": 25,
+        "grid_size": [
+          6,
+          6
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "f272fcdcbbaaf5743abc17c91ba05fa80ad8ae0c75de7b2482ab0fc77cba3289",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 37,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade them. Count the area in square units.",
+            "25 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 25
+          }
+        }
+      },
+      "sample_id": "7772a6ad81fc710bf2f1",
+      "replay_digest": "697869ef645b7bcb5f7f34dd6c8a79fbf40eb9492a931195a506b7190a67c472"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the 2×5 array. How many squares are shaded in all?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -161,13 +433,83 @@
           "value": 13,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 5 = 10 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 2,
+        "cols": 5,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 10,
+        "grid_size": [
+          3,
+          6
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "8ffc1047832b1cb2730ef79f8091337011d4a65eb83eb651f66302ce6e4d4d9d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 23,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "5 × 2",
+            "rectangle",
+            "10 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 10
+          }
+        }
+      },
+      "sample_id": "5476ed311c69b1972809",
+      "replay_digest": "f2f7ed255917d0582ae5075e30ad6791812fa309d9773bf797062b42db7f722f"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 10 rows and 10 columns. Estimate how many unit tiles cover the square in all.",
       "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -189,13 +531,37 @@
           "value": 40,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 10 × 10 = 100 sq cm."
+      ],
+      "sample_id": "2d7ac0f66b8cd8d89c2e",
+      "replay_digest": "2c8e4fc5b4d5171333d7eebfef521b1189f69069b9425cd6c93daff9f2b95592"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
       "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -217,13 +583,37 @@
           "value": 12,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 4 × 4 = 16 sq cm."
+      ],
+      "sample_id": "a2f1123275d8429421cd",
+      "replay_digest": "68a4e361378898229a6fc5f1d2a883530bc98e3fc80323cf75112cab18784de2"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly. About how many tiles in total will you use?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -249,13 +639,37 @@
           "text": "9",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 3 × 3 = 9 sq cm."
+      ],
+      "sample_id": "6dcf05dbf86b28666c7e",
+      "replay_digest": "03cff8c5fd6359e8244670e4a8bb4e3da94434e1ca403099562bf868070aa53e"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "Look at the 4×4 array. How many squares are shaded in all?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -277,13 +691,81 @@
           "value": 18,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 4 × 4 = 16 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 4,
+        "cols": 4,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "square",
+        "correct_count": 16,
+        "grid_size": [
+          5,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "b29af1471732b0b6b017f579f643d23c548ee9c8e87145842892bac3d51f415e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 28,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade them. Count the area in square units.",
+            "16 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 16
+          }
+        }
+      },
+      "sample_id": "9f6ce4a3fa7c361f7962",
+      "replay_digest": "f947531c76fdf4b30dd7d6a2ae5e0010b5b1036cc1dee6af6a950f30a8365c54"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -305,13 +787,37 @@
           "value": 3,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 3 = 6 sq m."
+      ],
+      "sample_id": "afd6b9d5ac962f7d7f16",
+      "replay_digest": "afc2d3919f9e3080981a9c604f0457b9d5ad7af7ad4862c4ac4d5b5f8c1be93f"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly. About how many tiles in total will you use?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "shape": "rectangle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -337,13 +843,37 @@
           "text": "12",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 5 × 3 = 15 sq cm."
+      ],
+      "sample_id": "878015457d2e626cfb08",
+      "replay_digest": "730fe0118af85e8a70dd34dc3c0d2c2128d1ff1218d30ea53285b43d8e13b1fa"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 5 rows and 6 columns. Estimate how many unit tiles cover the rectangle in all.",
       "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_cm"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -365,13 +895,37 @@
           "value": 30,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 5 × 6 = 30 sq cm."
+      ],
+      "sample_id": "02b1878c052415e20eaa",
+      "replay_digest": "263f57e41f50a6c18acdffb9141b3b93fd002344f335cdae10310ca2e3262e8f"
     },
     {
+      "node_id": "mat_g3_mg_q1_0",
       "seed": 606,
       "formatter": "read_mcq",
       "question_text": "Look at the 4×7 array. How many squares are shaded in all?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "unit": "square_m"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -393,34 +947,1416 @@
           "value": 25,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 28,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 4 × 7 = 28 sq m."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 4,
+        "cols": 7,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 28,
+        "grid_size": [
+          5,
+          8
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "249f978e31807e1c04b534413ca8c24588b590bd8fb5188481f2d2b4d0e4f0f9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "7 × 4",
+            "rectangle",
+            "28 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 28
+          }
+        }
+      },
+      "sample_id": "865479fb24fd5277490b",
+      "replay_digest": "b4b690c59ba7cdca3eb4a2b88c2098ff6512f39d347ef1fb0645f11129096caf"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "text": "15",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 5 × 3 = 15 sq cm."
+      ],
+      "sample_id": "d083d0b659324f8cce62",
+      "replay_digest": "77bd17c54ebf2549a4659f1d98eca051ab0d929d8df4d49c72bb6643188ac25f"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the 5×5 array. How many squares are shaded in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 25,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 5 × 5 = 25 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 5,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "square",
+        "correct_count": 25,
+        "grid_size": [
+          6,
+          6
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "f272fcdcbbaaf5743abc17c91ba05fa80ad8ae0c75de7b2482ab0fc77cba3289",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 37,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade them. Count the area in square units.",
+            "25 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 25
+          }
+        }
+      },
+      "sample_id": "bf496819dd65b7ee2031",
+      "replay_digest": "b4c984ac008136a18580d3936d076efb64b9abbf56b077b0f54d7b154ed652ff"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 3 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 3 = 6 sq cm."
+      ],
+      "sample_id": "37f5583277a6b71cd40d",
+      "replay_digest": "ebf1819ed4c9eddef909baa9a50d64109f0427797bd42f7914b6cf7211dd7dbc"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 10 rows and 10 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 10 × 10 = 100 sq cm."
+      ],
+      "sample_id": "fe218ab312a82631c008",
+      "replay_digest": "07dcd58896b557845ce6b680147c3a472da4d7bd81398eb033134e6372311c5a"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 2×3 array. How many squares are shaded in all?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 2 × 3 = 6 sq cm."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 2,
+        "cols": 3,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 6,
+        "grid_size": [
+          3,
+          4
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "a13d62591cabf5b3e0d858cf642274923dd584d0d48d49a3caea679fafe40fd5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 19,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "3 × 2",
+            "rectangle",
+            "6 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 6
+          }
+        }
+      },
+      "sample_id": "34c4f9c6892d9ece3519",
+      "replay_digest": "c599601f370a0b6c40fbc5fcf6472158579919de7749a8f60968099cc009b279"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 4 × 4 = 16 sq cm."
+      ],
+      "sample_id": "64a8eca1e772989696b4",
+      "replay_digest": "a173d4fcc8c28f0a9d6f353d7e8d1a4d764b92ae3c8f54b0a631dba90fd1f07b"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 2 rows and 2 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 2 × 2 = 4 sq cm."
+      ],
+      "sample_id": "f7a5bb4ad18958071180",
+      "replay_digest": "f8a8ead8c43b24657c8162eef0ad1002349877667c40f2a9f51fd4a1ee2c21d8"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 8 rows and 3 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 48,
+          "text": "48",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a rectangle = length × width = 8 × 3 = 24 sq cm."
+      ],
+      "sample_id": "dc8986fffc633714376c",
+      "replay_digest": "1f8131cbd7fc3614619c3a78fe812a746be1bffe0dc25a393855473d9d34571d"
+    },
+    {
+      "node_id": "mat_g3_mg_q1_0",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "The area tells us how many unit squares cover the shape.",
+        "Area of a square = side × side = 3 × 3 = 9 sq cm."
+      ],
+      "sample_id": "b4d21c7c610f1adf8ab4",
+      "replay_digest": "67a1a422144863fb9d60d4d9e22f23ca2848160872082e1385562efeb6655385"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "881e6842a17b88dbb720",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly specifies edge-to-edge tile arrangement with 2 rows and 7 columns, yielding a total to estimate. The task is unambiguous: count or calculate the total number of unit tiles in a rectangular configuration."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arrangement (2 rows and 7 columns) correctly yields 14 unit tiles via multiplication. The hint equations are arithmetically sound: 2×7=14. The answer and all distractors are plausible products derived from permutations of the dimensions or nearby integers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and concrete for a Grade 3 student: a rectangle is described as covered with tiles, dimensions are stated clearly, and the question directly asks how many tiles cover the shape in total, making the expected response transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication is correctly applied: a 2-row, 7-column arrangement of unit tiles produces exactly 14 square units of area. The formula in the hint, length × width = 2 × 7 = 14, is mathematically and pedagogically sound for the target grade and competency."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "46da5b99d3026925c7c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem refers to a 7×4 array and asks directly how many squares are shaded in total. The visual displays a grid, removing ambiguity about what is meant by the array shape. The question is direct and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 7×4 grid contains 28 shaded cells when fully covered. The hint correctly states this product and provides the formula. All distractors are nearby integers that might result from miscount or misapplication of multiplication."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students are asked to observe a visual array and count or calculate the shaded squares. The language is concise and the grid visualization makes the array count explicit, reducing cognitive load for decoding the problem structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 7×4 array corresponds to 28 square units of area. The grid shown has 28 grid-cell elements, and the mathematical statement in the hint, 7 × 4 = 28, is correct and consistent with the visual representation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "b330830a6e9094721c45",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is explicit: a square covered edge-to-edge with unit tiles, arranged in 2 rows and 2 columns. The request to estimate total tiles is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two rows and two columns form a 2×2 square with area 4. The hint formula is correct: side × side = 2 × 2 = 4. Distractors are plausible products derived from variations of the dimensions or incorrect operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes a square tile covering in plain language with explicit row and column counts. The task (estimate total tiles) is directly stated and age-appropriate for Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×2 square arrangement yields 4 unit tiles. The hint correctly applies the formula area = side × side = 2 × 2 = 4, and the answer is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "7772a6ad81fc710bf2f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem refers to a 5×5 array with a visual grid. The question asks how many squares are shaded in total. This is unambiguous; students count or calculate the grid area."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×5 grid contains 25 shaded cells. The hint provides the correct formula: side × side = 5 × 5 = 25. Options include nearby integers that might arise from miscount."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students observe a square grid and count the shaded area. The language is straightforward, and the visual array makes the task concrete and accessible for Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 5×5 grid has area 25 square units, which is correct. The grid contains 25 grid-cell elements matching this area. The hint formula is arithmetically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "5476ed311c69b1972809",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a 2×5 array visually and asks how many squares are shaded in total. No ambiguity exists about the array configuration or the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×5 rectangular grid has area 10. The hint correctly states this via multiplication: 2 × 5 = 10. Distractors are plausible miscounts or arithmetic errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The grid visual representation and straightforward question make this task clear for a Grade 3 student. The request to count or calculate the total shaded squares is direct and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 2×5 grid contains 10 squares. The hint formula is correct: length × width = 2 × 5 = 10, and the grid rendering shows 10 grid-cell elements."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "2d7ac0f66b8cd8d89c2e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a 10×10 square covered with unit tiles and asks students to estimate the total count. The dimensions and task are stated clearly without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 10×10 square arrangement yields 100 unit tiles. The hint provides the correct formula: side × side = 10 × 10 = 100. Distractors include multiples and factors that might appeal to students making systematic errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Although the square is larger, Grade 3 students can estimate or calculate 10×10. The problem language is clear: explicitly naming dimensions and asking for a total count."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 10×10=100 is mathematically correct. The hint formula is sound for a square shape, and the answer is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "a2f1123275d8429421cd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies a 4×4 square covered with unit tiles and asks to estimate total tiles. There is no ambiguity in the dimensions or the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four rows and four columns form a 4×4 square with area 16. The hint correctly applies the formula: side × side = 4 × 4 = 16. Distractors are plausible products derived from variations of the dimension."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is stated simply with explicit row and column numbers. The task of estimating total tiles is age-appropriate and clearly worded for Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 4×4 square has area 16 square units. The hint equation is correct: 4 × 4 = 16, and the answer is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "6dcf05dbf86b28666c7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes laying tiles over a square with 3 rows and 3 columns and asks for the total count. The action and dimensions are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three rows and three columns yield a 3×3 square with area 9. The hint correctly states: side × side = 3 × 3 = 9. All options are plausible products a student might compute with an error."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context of laying tiles is concrete and relatable for Grade 3 students. The question directly asks about the total, and dimensions are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 3×3 square arrangement contains 9 unit tiles, and the hint formula is arithmetically correct: 3 × 3 = 9."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "9f6ce4a3fa7c361f7962",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a 4×4 array visually and asks how many squares are shaded. The visual makes the array unambiguous, and the question is direct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 4×4 grid has area 16. The hint provides the correct formula: side × side = 4 × 4 = 16. Options are nearby integers that might result from miscounting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual grid makes the array structure immediately apparent to the learner. The question to count shaded squares is straightforward and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 4×4 grid has 16 square units, and the grid rendering shows 16 grid-cell elements. The hint equation is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "afd6b9d5ac962f7d7f16",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem introduces a real-world context of a rectangular garden and asks how many tiles are needed to cover it. Dimensions and tile size are specified, leaving no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A garden that is 2 meters long and 3 meters wide, covered with 1-meter square tiles, requires 2×3=6 tiles. The hint correctly applies this: length × width = 2 × 3 = 6 square meters. Distractors are plausible miscalculations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The real-world context of covering a garden with tiles is concrete and meaningful for Grade 3 students. The dimensions and unit size are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2-meter by 3-meter rectangle, with 1-meter square tiles, requires 6 tiles. The formula and calculation are mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "878015457d2e626cfb08",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes laying tiles in a rectangular arrangement with 5 rows and 3 columns and asks for the total count. The dimensions and task are clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five rows and three columns form a 5×3 rectangle with area 15. The hint correctly states: length × width = 5 × 3 = 15. Options include plausible products from dimension variations or arithmetic errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses a concrete tile-laying context with explicit row and column counts. The question directly asks for the total, appropriate for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×3 rectangle has area 15 square units. The hint equation is correct: 5 × 3 = 15."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "02b1878c052415e20eaa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a rectangle covered with unit tiles, arranged in 5 rows and 6 columns. The request to estimate total tiles is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five rows and six columns yield a 5×6 rectangle with area 30. The hint correctly applies: length × width = 5 × 6 = 30. Distractors are plausible miscounts or related products."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states the row and column arrangement and asks to estimate the total. The language and structure are appropriate for Grade 3 comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×6 rectangular arrangement contains 30 unit tiles. The hint formula is arithmetically sound: 5 × 6 = 30."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "865479fb24fd5277490b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem refers to a 4×7 array visually and asks how many squares are shaded. The visual grid and direct question remove any ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 4×7 grid contains 28 shaded cells. The hint correctly states: length × width = 4 × 7 = 28 square meters. The calculation is valid, though the unit designation as square meters is a real-world choice rather than a generic square unit."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual array makes the dimensions concrete. The question to count shaded squares is direct and unambiguous for Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 4×7 grid has 28 square units of area. The grid rendering shows 28 grid-cell elements. The hint formula is correct: 4 × 7 = 28."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "d083d0b659324f8cce62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes laying tiles over a rectangle with 5 rows and 3 columns and asks for the approximate total. The configuration is clear and the task is direct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×3 rectangular tile arrangement yields 15 square units. The hint correctly provides: length × width = 5 × 3 = 15. Distractors are plausible arithmetic variations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The tile-laying context is concrete and relatable. Dimensions are explicitly stated, and the question about total tiles is straightforward for Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×3 arrangement contains 15 square units. The hint formula is correct: 5 × 3 = 15."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "bf496819dd65b7ee2031",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the dance-shoe theme introduction, the stem clearly refers to a 5×5 array and asks how many squares are shaded. The core mathematical task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×5 square grid has area 25. The hint correctly states: side × side = 5 × 5 = 25. The theme does not interfere with the mathematical validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual grid makes the square array explicit. Although thematic language about dance shoes appears, the core question about counting squares is clear and direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 5×5 grid contains 25 square units. The grid rendering shows 25 grid-cell elements, and the hint formula is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "37f5583277a6b71cd40d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Although the stem includes a basketball theme, it clearly describes a 2×3 rectangular tile arrangement and asks to estimate the total. The mathematical task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two rows and three columns yield a 2×3 rectangle with area 6. The hint correctly states: length × width = 2 × 3 = 6. The theme does not disrupt the mathematical logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The core question about estimating tiles is straightforward. Although a theme is introduced, the problem statement remains clear and appropriately worded for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×3 rectangular tile arrangement has area 6 square units. The hint formula is arithmetically sound: 2 × 3 = 6."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "fe218ab312a82631c008",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a 10×10 square covered with unit tiles and asks to estimate total tiles. The dimensions and task are explicitly stated without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 10×10 square arrangement yields 100 unit tiles. The hint correctly applies: side × side = 10 × 10 = 100. Distractors are plausible products derived from variations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 students can estimate or calculate the area of a 10×10 square. The problem language is straightforward and the question is direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 10×10 square has area 100 square units. The hint equation is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "34c4f9c6892d9ece3519",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a 2×3 array visually and asks how many squares are shaded. The visual grid and direct question are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×3 grid has area 6. The hint correctly states: length × width = 2 × 3 = 6. Distractors are plausible miscounts nearby the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual array presentation makes the rectangular structure clear. The question to count or calculate the total shaded area is direct and appropriate for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The 2×3 grid contains 6 squares. The grid rendering shows 6 grid-cell elements, and the hint formula is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "64a8eca1e772989696b4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies a 4×4 square covered with unit tiles and asks to estimate total tiles. The dimensions and task are stated clearly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 4×4 square arrangement yields 16 square units. The hint correctly provides: side × side = 4 × 4 = 16. Distractors are plausible products or miscalculations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states the square dimensions and asks for the total tile count. The language is appropriate for Grade 3 comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 4×4 square has 16 square units of area. The hint formula is correct: 4 × 4 = 16."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "f7a5bb4ad18958071180",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a 2×2 square covered with tiles and asks to estimate total tiles. The dimensions and task are unambiguous despite the hint_gated experience level."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×2 square arrangement yields 4 square units. The hint correctly states: side × side = 2 × 2 = 4. The distractors are plausible products derived from different calculations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is stated simply with explicit row and column numbers. Although marked as hint_gated, the core question remains clear and appropriate for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 2×2 square has 4 square units of area. The hint equation is arithmetically sound and mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "dc8986fffc633714376c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a rectangle covered with tiles in 8 rows and 3 columns and asks to estimate total tiles. The configuration is explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight rows and three columns form an 8×3 rectangle with area 24. The hint correctly applies: length × width = 8 × 3 = 24. Distractors include products derived from variations or related calculations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes the tile arrangement with explicit dimensions and directly asks for the total count. The language is appropriate for Grade 3, even though the mastery_drill experience level indicates increased difficulty."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An 8×3 rectangular arrangement contains 24 square units. The hint formula is arithmetically correct: 8 × 3 = 24."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "sample_id": "b4d21c7c610f1adf8ab4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes laying tiles over a 3×3 square and asks for the approximate total. The dimensions and task are clearly stated without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 3×3 square arrangement yields 9 square units. The hint correctly provides: side × side = 3 × 3 = 9. Distractors are plausible arithmetic variations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The tile-laying context is concrete and relatable. Dimensions are explicitly stated, and the question about total tiles is straightforward, appropriate for the scaffolded experience level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 3×3 square has 9 square units of area. The hint formula is correct: 3 × 3 = 9."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "illustrate_area_with_tiles",
+      "clause": "Illustrate",
+      "verdict": "PASS",
+      "reasoning": "Samples employing the read_mcq format with GridArea visual presentation demonstrate area through explicit grid rendering: samples 46da5b99d3026925c7c2, 7772a6ad81fc710bf2f1, 5476ed311c69b1972809, 9f6ce4a3fa7c361f7962, 865479fb24fd5277490b, bf496819dd65b7ee2031, and 34c4f9c6892d9ece3519 all show interactive grid arrays that learners observe. Additionally, non-visual samples in cloze and multiple-choice formats ask learners to construct mental models of tile arrangements from text descriptions, which fulfills the illustration requirement through guided visualization.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "5476ed311c69b1972809",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "bf496819dd65b7ee2031",
+        "37f5583277a6b71cd40d",
+        "fe218ab312a82631c008",
+        "34c4f9c6892d9ece3519",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "dc8986fffc633714376c",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "estimate_area",
+      "clause": "estimate the area",
+      "verdict": "PASS",
+      "reasoning": "Every sample in the pool asks learners to either estimate or calculate the area of a figure by counting unit tiles or applying multiplication. Stems consistently use language such as how many tiles cover the figure, estimate the total, or calculate the area. This requirement is comprehensively and consistently addressed across all sample types and presentation formats.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "5476ed311c69b1972809",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "bf496819dd65b7ee2031",
+        "37f5583277a6b71cd40d",
+        "fe218ab312a82631c008",
+        "34c4f9c6892d9ece3519",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "dc8986fffc633714376c",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "area_attribute",
+      "clause": "the area",
+      "verdict": "PASS",
+      "reasoning": "The concept of area is central to every sample. Hints explicitly reference area in phrases such as the area tells us how many unit squares cover the shape, and answers represent area measurements in square units. This foundational attribute is consistently invoked throughout the sample pool.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "5476ed311c69b1972809",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "bf496819dd65b7ee2031",
+        "37f5583277a6b71cd40d",
+        "fe218ab312a82631c008",
+        "34c4f9c6892d9ece3519",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "dc8986fffc633714376c",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "square_figure",
+      "clause": "a square",
+      "verdict": "PASS",
+      "reasoning": "Eleven samples explicitly feature square figures: samples with 2×2, 3×3, 4×4, 5×5, and 10×10 configurations. These samples present squares in both textual description and visual grid formats, demonstrating the square shape across varied dimensions appropriate for Grade 3.",
+      "sample_ids": [
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "bf496819dd65b7ee2031",
+        "fe218ab312a82631c008",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "rectangle_figure",
+      "clause": "rectangle",
+      "verdict": "PASS",
+      "reasoning": "Eleven samples explicitly feature rectangular figures with varying dimensions such as 2×3, 2×5, 2×7, 3×5, 4×7, 5×6, and 8×3. These samples present rectangles through text descriptions and visual grids, ensuring learners encounter rectangles as distinct from squares across a range of aspect ratios.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "5476ed311c69b1972809",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "37f5583277a6b71cd40d",
+        "34c4f9c6892d9ece3519",
+        "dc8986fffc633714376c"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "square_tile_covering",
+      "clause": "square tile units",
+      "verdict": "PASS",
+      "reasoning": "All samples reference unit square tiles or mention covering shapes with tiles. Phrases such as unit square tiles, square tiles, and tile units appear consistently in stems and hints. The concept of tiling a figure with unit squares is the organizing principle for every problem in the pool.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "5476ed311c69b1972809",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "bf496819dd65b7ee2031",
+        "37f5583277a6b71cd40d",
+        "fe218ab312a82631c008",
+        "34c4f9c6892d9ece3519",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "dc8986fffc633714376c",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    },
+    {
+      "requirement_id": "square_tile_unit",
+      "clause": "tile units",
+      "verdict": "PASS",
+      "reasoning": "Every sample invokes the concept of tile units either by naming them explicitly in the stem or by anchoring answers in square units. Hints consistently reference unit squares or square units as the measurement basis for area, establishing tile units as the foundational measure throughout the problem pool.",
+      "sample_ids": [
+        "881e6842a17b88dbb720",
+        "46da5b99d3026925c7c2",
+        "b330830a6e9094721c45",
+        "7772a6ad81fc710bf2f1",
+        "5476ed311c69b1972809",
+        "2d7ac0f66b8cd8d89c2e",
+        "a2f1123275d8429421cd",
+        "6dcf05dbf86b28666c7e",
+        "9f6ce4a3fa7c361f7962",
+        "afd6b9d5ac962f7d7f16",
+        "878015457d2e626cfb08",
+        "02b1878c052415e20eaa",
+        "865479fb24fd5277490b",
+        "d083d0b659324f8cce62",
+        "bf496819dd65b7ee2031",
+        "37f5583277a6b71cd40d",
+        "fe218ab312a82631c008",
+        "34c4f9c6892d9ece3519",
+        "64a8eca1e772989696b4",
+        "f7a5bb4ad18958071180",
+        "dc8986fffc633714376c",
+        "b4d21c7c610f1adf8ab4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w10-haiku45-20260925:mat_g3_mg_q1_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "a3b91c08465c64bff70ad40b91b9476802b6840fb0754d6bfe42d49bfcfb9e9f",
+      "clause_ids": [
+        "illustrate_area_with_tiles",
+        "estimate_area",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_covering",
+        "square_tile_unit"
+      ],
+      "response_ref": ".responses/s5-phaseC-w10-haiku45-20260925.json",
+      "response_digest": "e3924505137518d753feb204fe1b1040d043c8c3dfbe46f4b8be8f93a863c5f5",
+      "prompt_ref": ".responses/s5-phaseC-w10-haiku45-20260925.prompt.txt",
+      "prompt_digest": "7bb8767e7b646adb78994d3556972a6dc55b8b003e66006a9beaba31f83e2366",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Covering a shape with unit tiles is exactly the illustrated activity intended, and the array items supply the picture the competency's first verb calls for. The estimation verb is where the samples drift. Stems advertise estimating, as in 'Estimate how many unit tiles cover the square in all', yet every key is the exact product and the distractors punish approximation rather than reward it: the options against the 7x4 array are 29, 25, 28 and 22, a spread no estimate could separate. Seed 502 is self-contradictory on its face, promising tiles 'fitting 3 rows and 3 columns exactly' and then asking 'About how many tiles in total will you use?'. No sampled item exercises estimating behaviour."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both shapes the competency disjoins are produced in quantity: squares turn up as 2 by 2, 3 by 3, 4 by 4, 5 by 5 and 10 by 10 tilings, while rectangles appear at 2 by 7, 5 by 3, 5 by 6 and several array sizes. The illustrated route and the verbally described route are both present too, so neither the shape sub-cases nor the two modes of presenting the tiling are missing."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Row-and-column counts stay within the multiplication facts a Grade 3 pupil is building in the opening quarter, and the reasoning is a single step from array dimensions to a count. Phrasing such as covering a shape edge-to-edge is concrete and supported by the accompanying figure. The one measurement-flavoured stem, about a garden two metres long and three metres wide tiled with one-metre squares, still reduces to counting whole tiles rather than to any formal area computation."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three different interaction types are in evidence across the seeds, and the framings genuinely differ: a figure-reading item, an impersonal description of a tiled shape, a second-person tiling narration, and a named-character situation where 'Pia wants to cover a rectangular garden'. Row-by-column orientations are also flipped between seeds rather than fixed, so the same product is met in more than one arrangement."
+      "rationale": "All samples employ multiplication within Grade 3 expectations, with dimensions from 2×2 to 10×10. The cognitive demand is proportional to operand size, growing gradually from simple 2×2 squares through 10×10 squares and rectangular variations, suitable for early third-grade quantitative reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What grows across the seeds is the size of the tiled region, from a four-tile square up to a hundred-tile square, and that growth is precisely what pushes a pupil from counting tiles one by one toward seeing the array structure. Nothing in the progression swaps in an unrelated demand such as unit conversion or perimeter; every harder seed is still a tile-covering question about a square or a rectangle."
+      "rationale": "Samples demonstrate the core competency by asking students to work with squares and rectangles covered by unit square tiles. Estimation and counting are invoked across multiple contexts, with both visual and non-visual presentations representing area through tile arrangements or direct calculation, aligning with the specified wording."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All seven decomposed requirements appear across the sample set. Squares and rectangles are both present; area is consistently the target; tile units are named or shown in every sample; the notion of covering shapes with tiles underpins every problem. No requirement is absent or under-represented.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The seven listed requirements comprehensively partition the competency statement. Each addresses a distinct conceptual or linguistic component: the action (illustrate, estimate), the property (area), the shape types (square, rectangle), and the measurement unit (square tile units). No aspect of the original competency remains uncovered.",
+        "requirement_ids": [
+          "illustrate_area_with_tiles",
+          "estimate_area",
+          "area_attribute",
+          "square_figure",
+          "rectangle_figure",
+          "square_tile_covering",
+          "square_tile_unit"
+        ]
+      },
+      "clause_ids": [
+        "illustrate_area_with_tiles",
+        "estimate_area",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_covering",
+        "square_tile_unit"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample pool spans five distinct square configurations (2×2, 3×3, 4×4, 5×5, 10×10) and seven rectangle configurations (2×3, 2×5, 2×7, 3×5, 4×7, 5×6, 8×3), with variation across presentation formats (cloze, mcq, read_mcq), visual accessibility (static text only versus interactive grid display), and pedagogical framing (standard, hint_gated, mastery_drill, scaffolded).",
+      "clause_ids": [
+        "illustrate_area_with_tiles",
+        "estimate_area",
+        "area_attribute",
+        "square_figure",
+        "rectangle_figure",
+        "square_tile_covering",
+        "square_tile_unit"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No side length exceeds ten and no tile count exceeds one hundred, which matches the multiplication ceiling available to a Grade 3 pupil in Quarter 1. The smallest case, a two-by-two square answering to 4, is still large enough to be a genuine array rather than a degenerate one. Distractor magnitudes, such as 200 and 40 against the hundred-tile square, stay in the same believable band."
+      "rationale": "The maximum product across all samples is 10×10=100 square units. This magnitude is consistent with Grade 3 computational expectations and sits comfortably within multiplication facts typically mastered by quarter one of third grade, avoiding premature introduction to three-digit computation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator exercises both visual and textual problem formats, addresses both regular and rectangular shapes across multiple dimension pairings, and offers multiple hint and experience levels. Some mathematical combinations recur across different seeds and formats, providing stability testing while broadening the presentation landscape beyond repetition of single problem types."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
