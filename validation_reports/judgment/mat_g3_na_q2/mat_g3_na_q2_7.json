@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q2_7",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems involving addition and subtraction with 3 to 4 numbers of up to 2 digits, including problems involving money.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems_involving_addition_and_subtraction",
+      "clause": "Solve problems involving addition and subtraction"
+    },
+    {
+      "kind": "object",
+      "id": "3_to_4_numbers",
+      "clause": "3 to 4 numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_2_digits",
+      "clause": "up to 2 digits"
+    },
+    {
+      "kind": "context",
+      "id": "problems_involving_money",
+      "clause": "problems involving money"
+    }
+  ],
+  "packet_digest": "1aaa63b1ec50277eaafd23af3927e5da96058e9a2d9ff267ca3d035bf8d750b6",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +48,63 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d6241e3a97992263109f",
+    "2c1ef563db9bf77f44fc",
+    "a9b65a2b78bcd35cad2a",
+    "0e0346a54c540ce04ad1",
+    "f28c99102fe0a5e54b72",
+    "6e28cbe2dafde2a81989",
+    "875833c47e189aaaf9ea",
+    "c9491af6c76039a80e00",
+    "778e164bc50ff3c646b1",
+    "a33975a568a8c3a55561",
+    "46c29b740e527f3b2f32",
+    "e52cfe0af3221eb667b8",
+    "f4a6c4abe986378c573e",
+    "cb71308e1c19a8c80143",
+    "aa28e5b644fc5b5d5270",
+    "9d6b07b5639e810e256d",
+    "742a727ab309fd4b1453",
+    "ced24a25e11d7414f37a",
+    "d8559d418e405d93327c",
+    "5732ed0c52be80af05ce",
+    "762f3f7ab0a8744d675c",
+    "68fb39b792da0f18165b",
+    "5331d98cdedd6a120e72"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?",
       "correct_answer": 97,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -50,13 +130,38 @@
           "text": "98",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 97,
+      "hints": [
+        "Evaluate the number sentence: 36 + 32 + 29.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 36 + 32 = 68.",
+        "Step 2: 68 + 29 = 97.",
+        "The answer is 97."
+      ],
+      "sample_id": "d6241e3a97992263109f",
+      "replay_digest": "297be2363c0652955b60b14498df5bba4b67aa59307de43afa2c0b67772dab2a"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Dina starts with ₱98. Then Dina gives away ₱19. Then Dina receives ₱60. How much money does Dina have now?",
       "correct_answer": 139,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +183,38 @@
           "value": 141,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 139,
+      "hints": [
+        "Evaluate the number sentence: 98 - 19 + 60.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 98 - 19 = 79.",
+        "Step 2: 79 + 60 = 139.",
+        "The answer is 139."
+      ],
+      "sample_id": "2c1ef563db9bf77f44fc",
+      "replay_digest": "e0695dd1353cff2cd878354f198ee960cb7027fc9de46a5ebd14891addf2d450"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Ben starts with 90 mangoes. Then Ben receives 15 mangoes. Then Ben gives away 23 mangoes. Then Ben receives 49 mangoes. How many mangoes does Ben have now?",
       "correct_answer": 131,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -110,13 +240,39 @@
           "text": "131",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 131,
+      "hints": [
+        "Evaluate the number sentence: 90 + 15 - 23 + 49.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 90 + 15 = 105.",
+        "Step 2: 105 - 23 = 82.",
+        "Step 3: 82 + 49 = 131.",
+        "The answer is 131."
+      ],
+      "sample_id": "a9b65a2b78bcd35cad2a",
+      "replay_digest": "90eed7c24baa9a5f495b719d2834815177299381bf8157d362ec2781f62b39e4"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Ana starts with ₱33. Then Ana receives ₱11. Then Ana receives ₱39. Then Ana gives away ₱44. How much money does Ana have now?",
       "correct_answer": 39,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,13 +294,39 @@
           "value": 38,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 39,
+      "hints": [
+        "Evaluate the number sentence: 33 + 11 + 39 - 44.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 33 + 11 = 44.",
+        "Step 2: 44 + 39 = 83.",
+        "Step 3: 83 - 44 = 39.",
+        "The answer is 39."
+      ],
+      "sample_id": "0e0346a54c540ce04ad1",
+      "replay_digest": "365a349a3e2cd75082fb5e4a938c0391b8636c16e43d570060ed12762c553e86"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Ana starts with ₱76. Then Ana receives ₱76. Then Ana receives ₱30. How much money does Ana have now?",
       "correct_answer": 182,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,13 +348,38 @@
           "value": 182,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 182,
+      "hints": [
+        "Evaluate the number sentence: 76 + 76 + 30.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 76 + 76 = 152.",
+        "Step 2: 152 + 30 = 182.",
+        "The answer is 182."
+      ],
+      "sample_id": "f28c99102fe0a5e54b72",
+      "replay_digest": "5c84c6ddc8418c2add64a32dca2e4b44bb1a2af3fc0a38d26a6416ca22f14991"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Carlo starts with 75 eggs. Then Carlo gives away 60 eggs. Then Carlo receives 33 eggs. Then Carlo receives 82 eggs. How many eggs does Carlo have now?",
       "correct_answer": 130,
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,13 +401,39 @@
           "value": 130,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 130,
+      "hints": [
+        "Evaluate the number sentence: 75 - 60 + 33 + 82.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 75 - 60 = 15.",
+        "Step 2: 15 + 33 = 48.",
+        "Step 3: 48 + 82 = 130.",
+        "The answer is 130."
+      ],
+      "sample_id": "6e28cbe2dafde2a81989",
+      "replay_digest": "4a22c9c70c5ee17598c7c2912def4c994ae1624e1aefe0baedf5f17e1d4e3557"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Dina starts with 3 notebooks. Then Dina receives 97 notebooks. Then Dina gives away 48 notebooks. Then Dina receives 28 notebooks. How many notebooks does Dina have now?",
       "correct_answer": 80,
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -222,13 +455,39 @@
           "value": 79,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "Evaluate the number sentence: 3 + 97 - 48 + 28.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 3 + 97 = 100.",
+        "Step 2: 100 - 48 = 52.",
+        "Step 3: 52 + 28 = 80.",
+        "The answer is 80."
+      ],
+      "sample_id": "875833c47e189aaaf9ea",
+      "replay_digest": "7fe0eaa790d857d3a0b5a990d267d05063352e8398f6d2be0ea08d9cea589db0"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Fidel starts with ₱46. Then Fidel receives ₱94. Then Fidel gives away ₱95. Then Fidel receives ₱90. How much money does Fidel have now?",
       "correct_answer": 135,
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -254,13 +513,41 @@
           "text": "137",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 135,
+      "hints": [
+        "Evaluate the number sentence: 46 + 94 - 95 + 90.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 46 + 94 = 140.",
+        "Step 2: 140 - 95 = 45.",
+        "Step 3: 45 + 90 = 135.",
+        "The answer is 135."
+      ],
+      "sample_id": "c9491af6c76039a80e00",
+      "replay_digest": "91b74a3542472c0c94f7f7414630dcc4126f2156bccd746894a4addb7740d83e"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Ana starts with ₱44. Then Ana receives ₱16. Then Ana receives ₱22. Then Ana receives ₱1. How much money does Ana have now?",
       "correct_answer": 83,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -282,13 +569,41 @@
           "value": 82,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 83,
+      "hints": [
+        "Evaluate the number sentence: 44 + 16 + 22 + 1.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 44 + 16 = 60.",
+        "Step 2: 60 + 22 = 82.",
+        "Step 3: 82 + 1 = 83.",
+        "The answer is 83."
+      ],
+      "sample_id": "778e164bc50ff3c646b1",
+      "replay_digest": "5f64ffcc941d077566ee3d818eb479a49ad7be89f202f1e2e0e0a32539be48f3"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Dina starts with ₱73. Then Dina receives ₱70. Then Dina gives away ₱94. Then Dina gives away ₱5. How much money does Dina have now?",
       "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": {
+          "num_operands": "four_terms"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -314,13 +629,41 @@
           "text": "46",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "Evaluate the number sentence: 73 + 70 - 94 - 5.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 73 + 70 = 143.",
+        "Step 2: 143 - 94 = 49.",
+        "Step 3: 49 - 5 = 44.",
+        "The answer is 44."
+      ],
+      "sample_id": "a33975a568a8c3a55561",
+      "replay_digest": "04319b38f4c6acb13f63df26f763fc2d4ac7b14beb2944ad68d6024bdfef4dfe"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Elena starts with ₱93. Then Elena gives away ₱78. Then Elena receives ₱62. How much money does Elena have now?",
       "correct_answer": 77,
+      "requested": {
+        "difficulty_profile": {
+          "num_operands": "three_terms"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -346,13 +689,40 @@
           "text": "78",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 77,
+      "hints": [
+        "Evaluate the number sentence: 93 - 78 + 62.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 93 - 78 = 15.",
+        "Step 2: 15 + 62 = 77.",
+        "The answer is 77."
+      ],
+      "sample_id": "46c29b740e527f3b2f32",
+      "replay_digest": "b952aac4d112c4dc5ac15b075720822a2c78c55b3c2654ec04bcd00cf889b2e4"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Dina starts with 6 mangoes. Then Dina receives 8 mangoes. Then Dina receives 1 mangoes. How many mangoes does Dina have now?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "number_size": "1_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -374,13 +744,40 @@
           "value": 17,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "Evaluate the number sentence: 6 + 8 + 1.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 6 + 8 = 14.",
+        "Step 2: 14 + 1 = 15.",
+        "The answer is 15."
+      ],
+      "sample_id": "e52cfe0af3221eb667b8",
+      "replay_digest": "779fa4bd4a41958200e8ef16a33f452e1885d83e76c467e71396d750570e528e"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "Elena starts with ₱60. Then Elena receives ₱38. Then Elena receives ₱88. How much money does Elena have now?",
       "correct_answer": 186,
+      "requested": {
+        "difficulty_profile": {
+          "number_size": "2_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -406,13 +803,40 @@
           "text": "186",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 186,
+      "hints": [
+        "Evaluate the number sentence: 60 + 38 + 88.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 60 + 38 = 98.",
+        "Step 2: 98 + 88 = 186.",
+        "The answer is 186."
+      ],
+      "sample_id": "f4a6c4abe986378c573e",
+      "replay_digest": "468cbee63b11cd5328324daef2d95f09ba1f72dab8a59dfc123fc5a9f00824e8"
     },
     {
+      "node_id": "mat_g3_na_q2_7",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "Ana starts with 56 mangoes. Then Ana receives 70 mangoes. Then Ana receives 64 mangoes. How many mangoes does Ana have now?",
       "correct_answer": 190,
+      "requested": {
+        "difficulty_profile": {
+          "operation_mix": "add_only"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -434,34 +858,1242 @@
           "value": 189,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 190,
+      "hints": [
+        "Evaluate the number sentence: 56 + 70 + 64.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 56 + 70 = 126.",
+        "Step 2: 126 + 64 = 190.",
+        "The answer is 190."
+      ],
+      "sample_id": "cb71308e1c19a8c80143",
+      "replay_digest": "9ec937ecd143743b089c8977b0cab736c60fbaca68fee356fa869b70b6af7c23"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Dina starts with ₱56. Then Dina receives ₱85. Then Dina gives away ₱45. How much money does Dina have now?",
+      "correct_answer": 96,
+      "requested": {
+        "difficulty_profile": {
+          "operation_mix": "mixed_add_sub"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 97,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 98,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 95,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 96,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 96,
+      "hints": [
+        "Evaluate the number sentence: 56 + 85 - 45.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 56 + 85 = 141.",
+        "Step 2: 141 - 45 = 96.",
+        "The answer is 96."
+      ],
+      "sample_id": "aa28e5b644fc5b5d5270",
+      "replay_digest": "bd22e37bdac26943aa8ca7919f5ce49ebc514b0337d43be49cf9c1ca5d4f956b"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Carlo starts with 78 storybooks. Then Carlo receives 71 storybooks. Then Carlo receives 12 storybooks. How many storybooks does Carlo have now?",
+      "correct_answer": 161,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 161,
+          "text": "161",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 162,
+          "text": "162",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 163,
+          "text": "163",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 160,
+          "text": "160",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 161,
+      "hints": [
+        "Evaluate the number sentence: 78 + 71 + 12.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 78 + 71 = 149.",
+        "Step 2: 149 + 12 = 161.",
+        "The answer is 161."
+      ],
+      "sample_id": "9d6b07b5639e810e256d",
+      "replay_digest": "c61bf95a56cd8c4af5da9fe312174c4aadf5cb13a14e2264c0fc2a428971f358"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Carlo starts with ₱15. Then Carlo receives ₱71. Then Carlo gives away ₱75. Then Carlo receives ₱31. How much money does Carlo have now?",
+      "correct_answer": 42,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "western_pop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 44,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 42,
+      "hints": [
+        "Evaluate the number sentence: 15 + 71 - 75 + 31.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 15 + 71 = 86.",
+        "Step 2: 86 - 75 = 11.",
+        "Step 3: 11 + 31 = 42.",
+        "The answer is 42."
+      ],
+      "sample_id": "742a727ab309fd4b1453",
+      "replay_digest": "460c7b7215d33ee7b6cd8122a16d09fbefbc3fdf37d9caf3bd248f0a08da024e"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🧁 Ate Nena has a math challenge about loaves of bread. Elena starts with ₱99. Then Elena gives away ₱35. Then Elena gives away ₱26. How much money does Elena have now?",
+      "correct_answer": 38,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "food_baking",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "text": "38",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 38,
+      "hints": [
+        "Evaluate the number sentence: 99 - 35 - 26.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 99 - 35 = 64.",
+        "Step 2: 64 - 26 = 38.",
+        "The answer is 38."
+      ],
+      "sample_id": "ced24a25e11d7414f37a",
+      "replay_digest": "3042697d73123249a03b2e7e75223b63d96cacd973a9c498a09759d41d55f381"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ana starts with ₱13. Then Ana receives ₱85. Then Ana gives away ₱11. How much money does Ana have now?",
+      "correct_answer": 87,
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 87,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 86,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 88,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 87,
+      "hints": [
+        "Evaluate the number sentence: 13 + 85 - 11.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 13 + 85 = 98.",
+        "Step 2: 98 - 11 = 87.",
+        "The answer is 87."
+      ],
+      "sample_id": "d8559d418e405d93327c",
+      "replay_digest": "7063dcfe541fe03a6c789c12b88b797878c2c6e4242d752522a5dbc5b238f457"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Fidel starts with 65 mangoes. Then Fidel receives 15 mangoes. Then Fidel gives away 39 mangoes. Then Fidel receives 49 mangoes. How many mangoes does Fidel have now?",
+      "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {},
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 89,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 91,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 92,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "Evaluate the number sentence: 65 + 15 - 39 + 49.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 65 + 15 = 80.",
+        "Step 2: 80 - 39 = 41.",
+        "Step 3: 41 + 49 = 90.",
+        "The answer is 90."
+      ],
+      "sample_id": "5732ed0c52be80af05ce",
+      "replay_digest": "00d4d60766a9c9651bbecb219654bfa29d968f649845692d385c409d5f13aa25"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Fidel starts with 88 storybooks. Then Fidel gives away 86 storybooks. Then Fidel receives 47 storybooks. Then Fidel receives 30 storybooks. How many storybooks does Fidel have now?",
+      "correct_answer": 79,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 78,
+          "text": "78",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 79,
+          "text": "79",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 79,
+      "hints": [
+        "Evaluate the number sentence: 88 - 86 + 47 + 30.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 88 - 86 = 2.",
+        "Step 2: 2 + 47 = 49.",
+        "Step 3: 49 + 30 = 79.",
+        "The answer is 79."
+      ],
+      "sample_id": "762f3f7ab0a8744d675c",
+      "replay_digest": "2372fe9ab708368592b97a71ef6d9ac4895a4cecb2c2235cc88a6c93d8eb2423"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Dina starts with 26 storybooks. Then Dina gives away 12 storybooks. Then Dina receives 72 storybooks. How many storybooks does Dina have now?",
+      "correct_answer": 86,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 86,
+          "text": "86",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "text": "87",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 88,
+          "text": "88",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 86,
+      "hints": [
+        "Evaluate the number sentence: 26 - 12 + 72.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 26 - 12 = 14.",
+        "Step 2: 14 + 72 = 86.",
+        "The answer is 86."
+      ],
+      "sample_id": "68fb39b792da0f18165b",
+      "replay_digest": "4e57bc727bf9b045beed24255bf1cd80aff38e79d45b5ae7698c98925797d1dc"
+    },
+    {
+      "node_id": "mat_g3_na_q2_7",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Elena starts with 19 mangoes. Then Elena receives 17 mangoes. Then Elena receives 36 mangoes. Then Elena gives away 62 mangoes. How many mangoes does Elena have now?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Evaluate the number sentence: 19 + 17 + 36 - 62.",
+        "Use the order of operations: work left to right for + and −.",
+        "Step 1: 19 + 17 = 36.",
+        "Step 2: 36 + 36 = 72.",
+        "Step 3: 72 - 62 = 10.",
+        "The answer is 10."
+      ],
+      "sample_id": "5331d98cdedd6a120e72",
+      "replay_digest": "1c8b2f89fbacb31aca3de75892e59d668c650d3534585f842b8b510a37c60511"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d6241e3a97992263109f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly asks for the total amount Fidel has after receiving two additional amounts. The sequence of transactions is unambiguous, the question is straightforward asking for the final amount, and all numerical values are presented with the peso symbol for clarity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of a person starting with money and receiving additional amounts is logically sound and contextually appropriate for a mathematics problem about accumulation of funds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and direct, using repetitive sentence structure that supports comprehension for Grade 3 learners. The progression through each transaction step is clearly marked with temporal connectors, and the final question is phrased in accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic is correct: starting amount plus two subsequent amounts equals the stated answer, with the provided hints correctly showing each intermediate calculation step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "2c1ef563db9bf77f44fc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a clear sequence of money transactions including both giving away and receiving. Each transaction type is explicitly labeled, the question asks for the final amount, and numerical values are unambiguously presented."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario combines giving away and receiving money in sequence, which represents realistic transactions a person might encounter in daily life."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language follows a consistent pattern with clear transaction descriptions. Grade 3 learners can readily identify what action occurs at each step through the repeated sentence structures using gives away and receives language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation sequence is arithmetically correct with subtraction followed by addition yielding the stated answer, and all hint statements accurately reflect the computation steps."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "a9b65a2b78bcd35cad2a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly describes a four-step transaction sequence with mangoes, specifying whether each step involves receiving or giving away. The question explicitly asks for the final count, and all numerical values are presented without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of managing a quantity of mangoes through receiving and giving away is logically consistent and realistic, providing an appropriate real-world context for the mathematical operations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language uses repetitive structure making the pattern easy for Grade 3 students to follow. Each transaction is described using consistent language patterns that identify the action and quantity involved in each step."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four-number arithmetic sequence with mixed operations is computed correctly, and all provided hint steps accurately show the intermediate calculations leading to the correct final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "0e0346a54c540ce04ad1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents four distinct transactions involving money, clearly labeling whether each involves receiving or giving away. The question asks for the final amount, and the problem structure leaves no doubt about what is being asked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of receiving money multiple times and then giving away an amount represents realistic financial situations that make sense in a Grade 3 context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem follows the familiar pattern of repeated sentence structures describing each transaction. Students can track Ana's money through each step using the consistent language pattern employed throughout the problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four operations combining three additions and one subtraction are computed correctly, with the provided hints showing accurate calculations for each intermediate step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "f28c99102fe0a5e54b72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly describes three additions involving money, with Ana receiving two identical amounts. The question straightforwardly asks for the total amount possessed after all transactions."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of receiving money twice and checking the total is a sensible and realistic scenario for a mathematics problem at this grade level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is consistent and simple, with the repeated receiving transactions clearly identified. The pattern is easy for Grade 3 learners to track through multiple similar operations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three additions are correctly computed with the stated answer matching the sum of the starting amount and two received quantities, verified by the provided hint calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "6e28cbe2dafde2a81989",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents four transactions involving eggs with clear labeling of giving away versus receiving in each step. The final question asks unambiguously for the total number of eggs remaining."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Managing a quantity of eggs through losses and gains is a logically coherent scenario that provides real-world context for the mathematical operations being practiced."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The consistent use of repeated sentence structures describing each transaction makes it easy for Grade 3 students to follow Carlo's egg inventory through the four steps."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence of subtraction followed by multiple additions is correctly computed, and the hint statements accurately show each calculation step leading to the correct final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "875833c47e189aaaf9ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes a four-step sequence of notebook transactions clearly marked with giving away or receiving language. The question directly asks for the final count of notebooks with no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of managing a notebook inventory through giving away and receiving items is realistic and contextually appropriate for a Grade 3 problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the familiar repetitive sentence pattern that guides Grade 3 students through tracking Dina's notebooks at each step. The language remains clear and accessible throughout."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mixed addition and subtraction operations across four numbers are correctly computed with the answer verified by the step-by-step hint calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "c9491af6c76039a80e00",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly presents four money transactions with receiving and giving away operations distinctly labeled. The question asks for the final amount without ambiguity or alternative interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence of receiving a large amount, giving away, and receiving again represents realistic money management scenarios for Grade 3 learners to practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repetitive structure of sentence patterns makes each transaction easy to identify and track. Grade 3 students can follow Fidel's money balance through all four steps using the consistent language employed."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All four arithmetic operations combining additions and subtractions are correctly computed, with the hints providing accurate step-by-step calculations verifying the final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "778e164bc50ff3c646b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents four money transactions all involving receiving, with each amount clearly identified in pesos. The question unambiguously asks for the total amount Ana possesses."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of receiving money four times in sequence is a straightforward and realistic context for practicing addition skills at the Grade 3 level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language consistently uses the receiving pattern repeated four times, making it easy for students to identify and sum each transaction. The final question is clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four successive additions including one operation with the number one are correctly computed, with hints accurately showing each step including the final addition of one unit."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "a33975a568a8c3a55561",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly describes four money transactions including one addition followed by two consecutive subtractions. Each transaction is explicitly labeled and the question asks for the final amount without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario combines receiving money and then giving away amounts in two separate transactions, representing realistic money management that Grade 3 learners can understand."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The consistent sentence structure used throughout allows Grade 3 students to track Dina's money through receiving and then multiple giving away transactions. The language remains accessible and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence of one addition followed by two subtractions is correctly computed to yield the stated answer, with all hint steps accurately reflecting the intermediate calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "46c29b740e527f3b2f32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents three money transactions with Elena giving away and then receiving an amount. The sequence is clear and the question asks for the final amount in unambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of starting with money, giving some away, and then receiving more is a realistic financial scenario that makes sense for Grade 3 problem-solving practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language employs the familiar pattern of describing one transaction at a time, using clear action words to indicate whether Elena is giving away or receiving. Students can easily track the sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction followed by addition is correctly computed with the stated answer matching the calculation, verified by the hints showing both the subtraction and addition steps."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "e52cfe0af3221eb667b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes three additions involving mangoes with the quantities clearly stated for each transaction. The question asks for the total count in unambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of receiving mangoes multiple times and determining the total is a contextually appropriate problem for Grade 3 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the problem is generally clear, there is a grammatical inconsistency where the problem refers to receiving a single mango item but uses the plural form mangoes. This grammatical error could cause minor confusion for Grade 3 readers learning proper language conventions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three additions are correctly computed with the provided hints showing accurate calculations for each step leading to the correct final total."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "f4a6c4abe986378c573e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly presents three money transactions all involving Elena receiving amounts, with each value distinctly identified. The question asks for the total amount without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of receiving money three times and calculating the total is a realistic and appropriate context for Grade 3 mathematics practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language uses a repetitive pattern describing each receiving transaction, making the accumulation of amounts clear to Grade 3 students. The final question is straightforwardly phrased."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three successive additions are correctly computed with the stated answer matching the sum, confirmed by the hints showing each calculation step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "cb71308e1c19a8c80143",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes three transactions where Ana receives mangoes each time, with quantities clearly stated for each step. The question asks for the total count in clear language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of receiving mangoes multiple times and calculating the total provides a realistic scenario for Grade 3 problem-solving practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repetitive sentence structure describing each receiving transaction makes the pattern easy for Grade 3 students to follow and understand. The language remains clear and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three additions are correctly computed with the provided hints accurately showing each calculation step to arrive at the correct total."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "aa28e5b644fc5b5d5270",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly presents three money transactions including receiving and giving away, with each amount distinctly identified. The question asks for the final amount without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of starting with money, receiving more, and then giving away an amount represents realistic money transactions that make sense for Grade 3 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language follows a consistent pattern describing each transaction type, making it easy for Grade 3 students to track Dina's money through receiving and then giving away."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition followed by subtraction is correctly computed with the stated answer verified by the hint calculations showing both operations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "9d6b07b5639e810e256d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents three transactions involving storybooks with Carlo receiving items in each step. The quantities are clearly stated and the final question asks unambiguously for the total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of building a storybook collection through multiple acquisitions is a realistic context that provides meaningful practice for Grade 3 addition skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The consistent use of repetitive sentence patterns describing each receiving transaction makes the problem easy for Grade 3 students to follow and understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three successive additions are correctly computed with the provided hints accurately showing each calculation step to reach the correct final total."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "742a727ab309fd4b1453",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem includes a thematic wrapper with an emoji and reference to a person and a challenge topic, followed by four clear money transactions. The mathematical question is unambiguous despite the thematic element."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario combines a cultural theme reference with a realistic money transaction sequence. The thematic wrapper does not create logical inconsistency in the mathematical context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic opening is followed by the familiar repetitive structure describing each money transaction. Grade 3 students can distinguish the thematic wrapper from the core mathematical problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four operations combining additions and subtractions are correctly computed, with hints accurately showing each calculation step leading to the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "ced24a25e11d7414f37a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem includes a thematic wrapper with emoji and cultural reference before presenting three clear money transactions. The mathematical question is unambiguous and asks for the final amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic introduction provides cultural context without creating logical inconsistency. The money transactions sequence is realistic and contextually sound for the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "After the thematic opening, the problem follows the familiar repetitive structure for transaction descriptions. Grade 3 students can identify and track the money operations clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The two consecutive subtractions are correctly computed with hints accurately showing each step to reach the correct final amount."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "d8559d418e405d93327c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly describes three money transactions for Ana including receiving and giving away. The question asks for the final amount in unambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of receiving money and then giving some away is a realistic financial situation that provides meaningful context for Grade 3 problem-solving."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language uses the consistent pattern of describing each transaction with clear action words. Grade 3 students can readily track Ana's money through the two receiving transactions and one giving away."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition followed by subtraction is correctly computed with the hints showing both operation steps to verify the final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "5732ed0c52be80af05ce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents four transactions involving mangoes with clear language indicating whether Fidel is receiving or giving away at each step. The question asks unambiguously for the final count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of managing a mango inventory through multiple transactions is logically consistent and provides realistic context for Grade 3 arithmetic practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repetitive sentence structure describing each transaction makes the sequence easy for Grade 3 students to follow. The language clearly identifies actions and quantities."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four-operation sequence combining additions and subtractions is correctly computed, with hints accurately showing each intermediate calculation step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "762f3f7ab0a8744d675c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes four transactions involving storybooks with giving away and receiving clearly labeled. The question asks unambiguously for the final count of storybooks."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of managing a storybook collection through losses and gains is logically appropriate and provides realistic context for Grade 3 problem-solving."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The familiar repetitive structure describing each storybook transaction makes the sequence clear for Grade 3 students. The language remains accessible throughout."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence beginning with subtraction followed by multiple additions is correctly computed, with hints accurately showing each step leading to the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "68fb39b792da0f18165b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly presents three transactions involving storybooks with giving away and receiving distinctly marked. The question asks for the final count in unambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of managing a storybook collection through losing and gaining items is realistic and appropriate for Grade 3 mathematics problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The consistent use of repetitive sentence patterns makes it easy for Grade 3 students to track Dina's storybook inventory through the subtraction and addition transactions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The subtraction followed by addition is correctly computed with hints accurately showing both operation steps to verify the correct final total."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "sample_id": "5331d98cdedd6a120e72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes four transactions involving mangoes with Elena receiving or giving away items in each step. The quantities and operations are clearly stated and the question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of managing a mango inventory through multiple receiving and giving away transactions is logically coherent and contextually sound for a Grade 3 problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The repetitive sentence structure describing each transaction makes the sequence easy to follow for Grade 3 students. The language clearly indicates what happens at each step."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The four-operation sequence combining multiple additions and one subtraction is correctly computed, with hints accurately showing all intermediate calculation steps."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems_involving_addition_and_subtraction",
+      "clause": "Solve problems involving addition and subtraction",
+      "verdict": "PASS",
+      "reasoning": "Every one of the twenty-three samples in this node requires learners to add and subtract quantities within realistic problem contexts. Problems range from addition-only scenarios to complex multi-step problems combining multiple additions and subtractions with clear sequencing of operations. Learners must identify which operation applies at each step and execute calculations correctly.",
+      "sample_ids": [
+        "d6241e3a97992263109f",
+        "2c1ef563db9bf77f44fc",
+        "a9b65a2b78bcd35cad2a",
+        "0e0346a54c540ce04ad1",
+        "f28c99102fe0a5e54b72",
+        "6e28cbe2dafde2a81989",
+        "875833c47e189aaaf9ea",
+        "c9491af6c76039a80e00",
+        "778e164bc50ff3c646b1",
+        "a33975a568a8c3a55561",
+        "46c29b740e527f3b2f32",
+        "e52cfe0af3221eb667b8",
+        "f4a6c4abe986378c573e",
+        "cb71308e1c19a8c80143",
+        "aa28e5b644fc5b5d5270",
+        "9d6b07b5639e810e256d",
+        "742a727ab309fd4b1453",
+        "ced24a25e11d7414f37a",
+        "d8559d418e405d93327c",
+        "5732ed0c52be80af05ce",
+        "762f3f7ab0a8744d675c",
+        "68fb39b792da0f18165b",
+        "5331d98cdedd6a120e72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "requirement_id": "3_to_4_numbers",
+      "clause": "3 to 4 numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample in this node contains either exactly three numbers or exactly four numbers as specified. The distribution includes eleven samples with three quantities and twelve samples with four quantities, providing balanced representation of both variants. No sample contains fewer than three or more than four numbers.",
+      "sample_ids": [
+        "d6241e3a97992263109f",
+        "2c1ef563db9bf77f44fc",
+        "a9b65a2b78bcd35cad2a",
+        "0e0346a54c540ce04ad1",
+        "f28c99102fe0a5e54b72",
+        "6e28cbe2dafde2a81989",
+        "875833c47e189aaaf9ea",
+        "c9491af6c76039a80e00",
+        "778e164bc50ff3c646b1",
+        "a33975a568a8c3a55561",
+        "46c29b740e527f3b2f32",
+        "e52cfe0af3221eb667b8",
+        "f4a6c4abe986378c573e",
+        "cb71308e1c19a8c80143",
+        "aa28e5b644fc5b5d5270",
+        "9d6b07b5639e810e256d",
+        "742a727ab309fd4b1453",
+        "ced24a25e11d7414f37a",
+        "d8559d418e405d93327c",
+        "5732ed0c52be80af05ce",
+        "762f3f7ab0a8744d675c",
+        "68fb39b792da0f18165b",
+        "5331d98cdedd6a120e72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "requirement_id": "up_to_2_digits",
+      "clause": "up to 2 digits",
+      "verdict": "PASS",
+      "reasoning": "All quantities used across every sample fall within the specified range of up to two digits, meaning all operands are single-digit or two-digit numbers ranging from one to ninety-nine. No sample contains any number exceeding two digits, and values range appropriately including both one-digit and two-digit operands.",
+      "sample_ids": [
+        "d6241e3a97992263109f",
+        "2c1ef563db9bf77f44fc",
+        "a9b65a2b78bcd35cad2a",
+        "0e0346a54c540ce04ad1",
+        "f28c99102fe0a5e54b72",
+        "6e28cbe2dafde2a81989",
+        "875833c47e189aaaf9ea",
+        "c9491af6c76039a80e00",
+        "778e164bc50ff3c646b1",
+        "a33975a568a8c3a55561",
+        "46c29b740e527f3b2f32",
+        "e52cfe0af3221eb667b8",
+        "f4a6c4abe986378c573e",
+        "cb71308e1c19a8c80143",
+        "aa28e5b644fc5b5d5270",
+        "9d6b07b5639e810e256d",
+        "742a727ab309fd4b1453",
+        "ced24a25e11d7414f37a",
+        "d8559d418e405d93327c",
+        "5732ed0c52be80af05ce",
+        "762f3f7ab0a8744d675c",
+        "68fb39b792da0f18165b",
+        "5331d98cdedd6a120e72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    },
+    {
+      "requirement_id": "problems_involving_money",
+      "clause": "problems involving money",
+      "verdict": "CONCERN",
+      "reasoning": "The competency explicitly includes money-based contexts as part of expected problem types. However, only thirteen of twenty-three samples present problems using Philippine currency, while ten samples use non-monetary contexts such as mangoes, storybooks, notebooks, or eggs. This represents approximately forty-three percent of samples lacking the money-based context specified in the competency requirement, indicating insufficient representation of this important variant.",
+      "sample_ids": [
+        "a9b65a2b78bcd35cad2a",
+        "6e28cbe2dafde2a81989",
+        "875833c47e189aaaf9ea",
+        "e52cfe0af3221eb667b8",
+        "cb71308e1c19a8c80143",
+        "9d6b07b5639e810e256d",
+        "5732ed0c52be80af05ce",
+        "762f3f7ab0a8744d675c",
+        "68fb39b792da0f18165b",
+        "5331d98cdedd6a120e72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q2_7",
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "1aaa63b1ec50277eaafd23af3927e5da96058e9a2d9ff267ca3d035bf8d750b6",
+      "clause_ids": [
+        "solve_problems_involving_addition_and_subtraction",
+        "3_to_4_numbers",
+        "up_to_2_digits",
+        "problems_involving_money"
+      ],
+      "response_ref": ".responses/s5-phaseC-w16-haiku45-20260925.json",
+      "response_digest": "7188471ca2c745365c6f0567001af7c06c73a43b459d3b6db19bf699e154988a",
+      "prompt_ref": ".responses/s5-phaseC-w16-haiku45-20260925.prompt.txt",
+      "prompt_digest": "6b2430db3e8d51345d8665448c1b0771acb5d81225d75454a73bb67f73ec3fab",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q2_7/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q2_7/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
+    "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each item resolves into a chain of three or four two-digit amounts combining addition and subtraction, and the money strand named in the wording is carried by peso amounts throughout roughly two thirds of the set."
+      "rationale": "All problems follow a consistent narrative structure appropriate for Grade 3 learners. Each problem uses simple, repetitive language with a person starting with an amount, then receiving or giving away quantities in subsequent steps. The computational demands match G3 expectations, requiring two-step or multi-step addition and subtraction without requiring knowledge of computational shortcuts or advanced number sense strategies."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "While all problems involve addition and subtraction with 3 to 4 numbers of up to 2 digits, the competency specifically states problems should include money-based contexts. Only 13 of 23 samples involve Philippine currency, meaning 10 samples use non-monetary contexts such as mangoes, notebooks, eggs, or storybooks. This represents a significant underrepresentation of the stated money-based problem variant in the competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The printed requirements provide a lossless decomposition of the stated competency, breaking it into four distinct components. However, the fulfillment of these requirements across the sample set is uneven. While the first three requirements are consistently met across all samples, the fourth requirement regarding money-based problems is met in only about half the samples, creating a gap in the comprehensive fulfillment of the full competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four printed requirements accurately capture all essential elements of the competency. The requirements separately identify addition and subtraction operations, the constraint on number count, the digit constraint, and the money-based variant. Together they form a complete and lossless decomposition without redundancy or omissions of key competency aspects.",
+        "requirement_ids": [
+          "solve_problems_involving_addition_and_subtraction",
+          "3_to_4_numbers",
+          "up_to_2_digits",
+          "problems_involving_money"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems_involving_addition_and_subtraction",
+        "3_to_4_numbers",
+        "up_to_2_digits",
+        "problems_involving_money"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both term counts the wording allows are generated, receiving and giving away are mixed in varying order, and non-money contexts with eggs, notebooks and mangoes sit beside the peso ones."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Agreement errors intrude, with one stem reading 'Then Dina receives 1 mangoes.' before asking for the total. Amounts as small as 3, 6, 8 and 1 also drop the arithmetic below what a Grade 3 second-quarter pupil should be stretched by."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Every one of the fourteen samples is the same running-transaction script: a person starts with an amount, then receives or gives away twice or three times, then is asked what they have now. Nothing is combined, compared, or worked backwards from; only the names, nouns and numbers rotate."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "What is varied across samples is the number of transactions and the mix of gains and losses, which is exactly the axis this three-to-four-number problem-solving objective rests on."
+      "rationale": "The sample set demonstrates good variety across multiple dimensions. Problem structures include both 3-number and 4-number variants with balanced representation, operation types range from addition-only to mixed addition-subtraction patterns, and thematic contexts vary including money and multiple non-monetary items. Item formats include both cloze and multiple-choice questions with variation in experience modes, providing comprehensive exploration of the problem space.",
+      "clause_ids": [
+        "solve_problems_involving_addition_and_subtraction",
+        "3_to_4_numbers",
+        "up_to_2_digits",
+        "problems_involving_money"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Individual amounts stay within two digits as stated, with the largest around ninety-eight, and totals remain under two hundred."
+      "rationale": "The mathematical complexity is well-calibrated for Grade 3, Quarter 2. Problems require computational steps that extend beyond single-digit addition and subtraction, such as adding 36 plus 32 plus 29, or subtracting sequentially from two-digit starting amounts. Most problems require meaningful two-step or multi-step calculations, though a small number of problems approach triviality, the overall set maintains appropriate challenge level for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show good representation of key variants including variation in problem size with both 3 and 4 numbers, operation combinations ranging from addition-heavy to mixed sequences, contextual themes including money and diverse non-monetary items, and interactive formats with both cloze fill-in-blank and multiple-choice. This provides learners with exposure to diverse problem structures within the competency domain."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

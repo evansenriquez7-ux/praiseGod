@@ -1,0 +1,579 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+  "mat_g3_na_q3_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The variety of task formats including true/false statements, error detection with named character analysis, fill-in-blank calculations, multiple choice questions, and visual grid-based counting tasks are all cognitively appropriate for Grade 3 Quarter 3 learners developing automaticity with multiplication facts."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "Two samples violate the required operand range: sample 354fa4ce67194732fd04 uses 5 times 7 and sample 4e8db5e03f2c7cc0de87 uses 5 times 6, where 5 is not in the specified 6, 7, 8, and 9 multiplication tables. This represents a clear misalignment with the competency boundary."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The two-part decomposition correctly identifies the core operations needed, but implementation failures undermine fulfillment of the curriculum requirement. The presence of out-of-range multipliers means students are asked to perform multiplication table work beyond the specified scope.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The decomposition into multiply_numbers and 6_7_8_and_9_multiplication_tables losslessly captures the competency statement. These two components together require students to multiply using exactly the specified table range without overlap or gap."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "All four required tables are represented across multiple samples: the 6 table appears in eight samples covering various multipliers, the 7 table in seven samples, the 8 table in four samples, and the 9 table in four samples. Format diversity includes symbolic problems, word problems, visual grids, and error analysis."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The product range from 6 times 1 equals 6 through 9 times 9 equals 81 is developmentally suitable for Grade 3 Quarter 3 learners. Visual grid representations effectively support the equal-groups conceptualization. Word problems use realistic, age-appropriate contexts with familiar objects."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Questions span multiple formats: true or false statements, error detection with plausible misconceptions, fill-in-the-blank with options, multiple choice, visual grid tasks for both reading and interactive shading, and realistic word problem scenarios. Experience levels vary including standard, hint-gated, mastery drill, and scaffolded versions."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "9c6770d3a349fdd9fdb7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is unambiguous: one times six does not equal seven. The question clearly asks whether this equation is true or false with no interpretive variation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is logically sound for assessing multiplication fact fluency. The false statement tests whether students recognize an incorrect product, which is developmentally appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is direct and accessible to Grade 3 readers. The mathematical notation and answer choices are clear without extraneous complexity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "One times six equals six, not seven, so the correct answer is false. The mathematics is sound and the correct response is clearly justified."
+          }
+        }
+      },
+      {
+        "sample_id": "35d54ef5d737660eabd9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a named student's work with a specific proposed answer and asks for judgment of correctness. No ambiguity exists in what is being evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with named characters is a valid assessment method for checking multiplication fact knowledge. The scenario of checking someone else's work reflects real problem-solving contexts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students are asked to evaluate whether Grace's answer of 24 to the problem four times six is correct. The task is clearly stated with a specific computational claim to judge."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four times six equals 24, which is correct, so Grace's work is error-free and the answer has_error false is mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "e43725555501b7abbe2b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual task is explicit: shade all squares in a rectangle and count them. The grid format removes ambiguity about which squares to count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting rectangular arrays is a well-established visual model for multiplication. The setup of a four by nine rectangle logically supports computation of four times nine."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is direct: shade all squares in the rectangle and report the total. Grid-based visual problems are familiar to Grade 3 students at this quarter."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A four by nine rectangular array contains exactly thirty-six squares, corresponding to the product four times nine equals thirty-six."
+          }
+        }
+      },
+      {
+        "sample_id": "c5a7148398aef9851dfd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is unambiguous: fill in the missing factor for three times eight. No alternative interpretation of the multiplication expression exists."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A cloze multiplication problem is logically valid for assessing fluency. The structure with plausible distractors supports diagnostic understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is familiar: students see the incomplete equation and select the correct product from four options including twenty-four, the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three times eight equals twenty-four. The distractors twenty-three, sixteen, and eleven are distinct wrong values that test genuine fact knowledge."
+          }
+        }
+      },
+      {
+        "sample_id": "f2642622eec24900d8b2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual read-only multiple choice question is clear: count the shaded squares in a presented six by six array and select the correct total."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A visual six-by-six grid with counted shaded squares is a valid model for six times six multiplication. The read-only format ensures students observe, not manipulate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task instructs students to look at the array and report how many squares are shaded. Visual counting of a clear rectangular grid is accessible to Grade 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A six-by-six array contains thirty-six unit squares, and the correct answer option is thirty-six. Distractors thirty-nine, thirty-three, and twenty-four test whether students count accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "4f3faf1d7823f5656245",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct with no ambiguity: what is the product when eight is multiplied by eight. The multiple choice format provides clear alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Asking students to compute eight times eight tests knowledge of the eight table at its maximum within the specified range. The product-selection format is logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students identify the result of eight times eight from options including sixty-four, sixty-three, fifty-six, and sixteen. The language and format are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Eight times eight equals sixty-four. The distractors are plausible near-misses: sixty-three is one away, fifty-six is related to eight times seven, and sixteen is eight times two."
+          }
+        }
+      },
+      {
+        "sample_id": "1f4ce568a0acddefc551",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for the product of nine times eight with no ambiguous phrasing. Options range from one to seventy-two with no overlapping or unclear choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing nine times eight combines two of the required tables and is a valid assessment of the eight table or nine table fluency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is straightforward: students select the product of nine times eight from four options. The distractors one, sixty-four, and seventeen are sufficiently distinct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nine times eight equals seventy-two. The distractors include one (clearly too small), sixty-four (eight times eight), and seventeen (random), which test actual knowledge."
+          }
+        }
+      },
+      {
+        "sample_id": "dc73c8c2eabac807a1f8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement eight times nine equals sixty-three presents a clear false claim without any ambiguous wording. Students must judge whether this equation is true or false."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true/false statement about a multiplication fact is a valid format for assessing whether students recognize incorrect products. The false value tests discrimination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical statement is presented in standard notation and the question asks directly for a true or false judgment. Language is simple and direct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Eight times nine equals seventy-two, not sixty-three. The incorrect value sixty-three is close enough to require genuine knowledge rather than estimation."
+          }
+        }
+      },
+      {
+        "sample_id": "0ace611f928137ee0fdd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual task is unambiguous: shade all squares in a four by nine rectangle and report the total count. The interactive format clearly defines the action."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "An interactive grid-shading task provides kinesthetic engagement with the four by nine multiplication model. The scenario reflects authentic counting contexts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instructions tell students to shade all squares in a four by nine rectangle and report how many they shaded. The interface is described as set-mode shading."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A four by nine rectangular array has thirty-six unit squares. Students who shade all squares and count correctly will arrive at thirty-six."
+          }
+        }
+      },
+      {
+        "sample_id": "103b2526da3759fc20a4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement six times seven equals thirty-five is clear and unambiguous. The true or false judgment is straightforward with no interpretive variance."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Testing whether students recognize the incorrect product thirty-five for six times seven is a valid error-identification task within the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical statement and the true/false question are presented in a format familiar to Grade 3 students. Language is concise and clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six times seven equals forty-two, not thirty-five. The incorrect value is close enough that students must know the fact rather than guess."
+          }
+        }
+      },
+      {
+        "sample_id": "89cce8913b688fa21af9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem describes a clear scenario: Pia puts seven water bowls in each of six bags. The question asks for the total count. No ambiguity about what to calculate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of distributing objects into containers is a realistic equal-groups context that supports the multiplicative reasoning for six times seven."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The story uses familiar objects and actions. Students understand that they need to find the total number of bowls across all six bags with seven in each."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six bags with seven bowls each equals forty-two bowls total. The distractors thirty-five, forty-one, and thirteen are sufficiently varied to require computation."
+          }
+        }
+      },
+      {
+        "sample_id": "803ef22cc6d1a4a7e7b5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question directly asks for the product of three times nine with no interpretive ambiguity. The four options are distinct numerical values."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Asking for the product of three times nine tests the nine table within the specified range. The multiple choice format is valid for fact recall."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students select the correct product from options including twenty-seven, twelve, twenty-six, and eighteen. The language and format are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three times nine equals twenty-seven. The distractors include twelve (three times four), twenty-six (off by one), and eighteen (two times nine), testing fact knowledge."
+          }
+        }
+      },
+      {
+        "sample_id": "71b8232ed03c01e53aac",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ana claims that four times seven equals eleven. The question clearly asks whether Ana is correct. No ambiguity exists about what claim is being evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with a plausible wrong answer is a valid assessment method. Ana's error eleven is not a simple computational typo but tests genuine understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students evaluate whether Ana's answer of eleven to four times seven is correct. The task structure and named character make the problem engaging and clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four times seven equals twenty-eight, not eleven. Ana's error is significant enough to require students to know the correct seven table fact."
+          }
+        }
+      },
+      {
+        "sample_id": "054c50f6c48bb20f2467",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents an incomplete equation six times six equals blank with options. Students must identify the missing product. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Completing a multiplication equation for six times six is a direct and valid test of the six table at its highest value."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with four options is familiar to Grade 3. Students identify the product thirty-six from choices including thirty-five, twelve, thirty, and thirty-six."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six times six equals thirty-six. The distractors thirty-five and thirty are near-misses, while twelve is six times two, all requiring actual knowledge."
+          }
+        }
+      },
+      {
+        "sample_id": "354fa4ce67194732fd04",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for the product of five times seven. Despite the content issue, the question phrasing is clear and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "As a general multiplication problem, the question format is logically sound. The issue is curricular scope, not logical structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased clearly: students identify the product from four options. The format is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically, five times seven equals thirty-five, and this is correctly designated as the answer. However, five is not in the required table set of six, seven, eight, and nine."
+          }
+        }
+      },
+      {
+        "sample_id": "1965536df162b987a964",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Carlo claims that four times seven equals twenty-seven. The question asks whether Carlo is correct. The statement and judgment are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with Carlo's incorrect answer of twenty-seven is a valid assessment method. The incorrect value is sufficiently different to require genuine knowledge."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents Carlo's work with a specific wrong answer and asks for evaluation. The named character and clear claim make the task accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four times seven equals twenty-eight, not twenty-seven. Carlo's error is close but distinguishable, requiring students to know the seven table fact."
+          }
+        }
+      },
+      {
+        "sample_id": "83a3d5d3330a8f71e81e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual question presents a one by seven array with multiple choice options. Despite the dance-shoes theme, the mathematical task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting shaded squares in a visual array is a valid model for one times seven. The thematic wrapper does not interfere with the logical structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task asks students to look at the array and count shaded squares. The dance-shoes context does not confuse the mathematical question being asked."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A one by seven array contains seven squares. The answer seven is listed among options including six, sixteen, and ten. The correct response corresponds to the actual count."
+          }
+        }
+      },
+      {
+        "sample_id": "4e8db5e03f2c7cc0de87",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual instruction is clear: shade all squares in a five by six rectangle and count them. The task definition is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "As a mathematical structure, counting rectangular arrays is valid. However, five is not in the required multiplication table set."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task instructs students to shade squares in a rectangle and report the total. Despite the cat-toys theme, the visual task is clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically, a five by six rectangle contains thirty squares, which is the designated answer. However, five is not in the specified table range of six, seven, eight, and nine."
+          }
+        }
+      },
+      {
+        "sample_id": "4661f64f71ed606e4385",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for the product of nine times nine with multiple choice options. The question is clear and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing nine times nine tests the nine table at its maximum value. The multiple choice format is logically sound for this assessment."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students identify the product eighty-one from options including eighty-one, eighteen, eighty, and seventy-two. The format is familiar and clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Nine times nine equals eighty-one. The distractors include eighteen (nine times two), eighty (off by one), and seventy-two (nine times eight), testing genuine knowledge."
+          }
+        }
+      },
+      {
+        "sample_id": "a977a15eea298fd32764",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual task is explicit: shade all squares in a four by seven rectangle and report the total. No ambiguity about the shading scope or counting task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A four by seven rectangular array is a valid visual model for multiplication. Interactive shading supports engagement with the seven table."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is clear: shade all squares in the four by seven rectangle and count them. The grid format is familiar to Grade 3 students."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A four by seven rectangular array contains twenty-eight unit squares, corresponding to the product four times seven equals twenty-eight."
+          }
+        }
+      },
+      {
+        "sample_id": "6e17117b389b7b8c2070",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The equation one times six equals blank is presented clearly with four options. Students must identify the missing product without ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A cloze problem for one times six is valid even though it involves the multiplicative identity. The problem structure is logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format presents the incomplete equation with options seven, six, five, and twelve. Students select the correct product six in a familiar cloze format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "One times six equals six. The distractors seven (off by one), five (off by one), and twelve (two times six) test whether students know the identity property."
+          }
+        }
+      },
+      {
+        "sample_id": "2b0ccdcdcc75040e479b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement one times six equals seven presents a clear false claim. The true/false judgment requires no interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true/false statement about one times six is a valid format for assessing multiplication fact knowledge, particularly the identity property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical statement is presented in standard notation. The question asks for a true or false judgment in accessible language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "One times six equals six, not seven. The correct answer is false. The incorrect value seven tests whether students know the basic fact."
+          }
+        }
+      },
+      {
+        "sample_id": "3f480174626bfeb864aa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Carlo claims that one times six equals six. The question clearly asks whether Carlo is correct. No ambiguity exists about what is being evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with a correct answer is valid assessment. When Carlo is actually correct, students must verify this rather than assume errors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students evaluate whether Carlo's answer of six to one times six is correct. The task structure with a named character is clear and engaging."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "One times six equals six, so Carlo is correct and has_error is false. The item appropriately confirms the identity property of multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "4d496cfe4e83cb87a16d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual shading task is unambiguous: students shade all squares in a three by six rectangle and report the total. No interpretive variation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A three by six rectangular array is a valid model for the six table. Interactive shading provides multiple representations of the multiplication fact."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is direct: shade all squares in the three by six rectangle. The grid visual is a familiar format for Grade 3 mastery practice."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A three by six rectangular array contains eighteen unit squares, corresponding to three times six equals eighteen."
+          }
+        }
+      },
+      {
+        "sample_id": "596693cc1652e3f2ad04",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The visual shading task is explicit: shade all squares in a one by seven rectangle and count them. The task definition is clear without ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A one by seven array is a valid visual model for the seven table. The interactive shading format supports kinesthetic learning of the multiplication fact."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction tells students to shade all squares in a one by seven rectangle. The grid is clearly displayed and the counting task is straightforward."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A one by seven rectangular array contains seven unit squares, corresponding to one times seven equals seven. The visual model supports the fact."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "multiply_numbers",
+        "clause": "Multiply numbers",
+        "verdict": "PASS",
+        "reasoning": "Every sample involves multiplication. Tasks range from direct computation to error detection to visual array counting. All samples require students to multiply two factors to arrive at a product within the context of the specified multiplication tables.",
+        "sample_ids": ["9c6770d3a349fdd9fdb7", "35d54ef5d737660eabd9", "e43725555501b7abbe2b", "c5a7148398aef9851dfd", "f2642622eec24900d8b2", "4f3faf1d7823f5656245", "1f4ce568a0acddefc551", "dc73c8c2eabac807a1f8", "0ace611f928137ee0fdd", "103b2526da3759fc20a4", "89cce8913b688fa21af9", "803ef22cc6d1a4a7e7b5", "71b8232ed03c01e53aac", "054c50f6c48bb20f2467", "354fa4ce67194732fd04", "1965536df162b987a964", "83a3d5d3330a8f71e81e", "4e8db5e03f2c7cc0de87", "4661f64f71ed606e4385", "a977a15eea298fd32764", "6e17117b389b7b8c2070", "2b0ccdcdcc75040e479b", "3f480174626bfeb864aa", "4d496cfe4e83cb87a16d", "596693cc1652e3f2ad04"]
+      },
+      {
+        "requirement_id": "6_7_8_and_9_multiplication_tables",
+        "clause": "6, 7, 8, and 9 multiplication tables",
+        "verdict": "FAIL",
+        "reasoning": "Two samples violate the specified operand range. Sample 354fa4ce67194732fd04 asks for five times seven where five is outside the required set. Sample 4e8db5e03f2c7cc0de87 presents a five by six rectangle requiring students to compute five times six, also violating the boundary. This represents a material failure to constrain problems to the specified multiplication tables.",
+        "sample_ids": ["354fa4ce67194732fd04", "4e8db5e03f2c7cc0de87"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

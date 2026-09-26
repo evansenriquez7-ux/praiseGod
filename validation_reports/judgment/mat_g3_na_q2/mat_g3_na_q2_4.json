@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Subtract numbers, where both numbers are less than 10 000, with and without regrouping.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "subtract_numbers",
+      "clause": "Subtract numbers"
+    },
+    {
+      "kind": "range",
+      "id": "less_than_10_000",
+      "clause": "less than 10 000"
+    },
+    {
+      "kind": "property",
+      "id": "with_and_without_regrouping",
+      "clause": "with and without regrouping"
+    }
+  ],
+  "packet_digest": "4efa34cb9ad6e6cf21c3abc106ec596393b2f5a41c5bd9f7f0211f85c7a53b66",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,14 +45,83 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "47565ef0b60751688f4f",
+    "8b52fa68d0198ab7e884",
+    "ee1a2aec4d1f4953de85",
+    "ce2a46e0b29fa377a163",
+    "705493e7b1284e61df89",
+    "7c46139efef749050cf0",
+    "f7905df14c6eb32cbedd",
+    "ec69810e482a66ede2d2",
+    "62924b897bb2863572b8",
+    "2a3e264710a5c09f3288",
+    "3ec0ff78d22ce2c111db",
+    "3f1ca6090736c9479ca0",
+    "c9c9b21f593d337c57d6",
+    "db2e741f81efaee321f4",
+    "0965a4c5c515b84a59b3",
+    "c8ff037f3c3112ae2dd1",
+    "16bf9f28e6fa5500a8c1",
+    "431a8a87074151db39cc",
+    "cd5ad35832314d9c9b84",
+    "5170be44081272512b4e",
+    "725c99a218e7ea4beab0",
+    "96a2dbbedfa809695716",
+    "f239fa04d32dac258ca2",
+    "a9bdd2b79aca8cf7556a",
+    "6e63c0d6339006639e1a",
+    "318ca70771af00e09632",
+    "7eb7912ae3235d838530",
+    "fd77d1a619bee5daf27f",
+    "edffcfda55b1abfbdb0c",
+    "a5080006a678d19f95c7",
+    "8fd90f30c3bed8268a10",
+    "b4b1df23b63e4ca5c25f",
+    "e08ddda1bd242a9519e6",
+    "245deef0e0c1830f2d98"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "1830 − 1744 = ___",
       "correct_answer": 86,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -52,13 +147,37 @@
           "text": "85",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 86,
+      "hints": [
+        "We are subtracting 1744 from 1830.",
+        "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.",
+        "Subtract the tens: 2 − 4 = -2. (after borrowing)",
+        "The difference of 1830 − 1744 = 86."
+      ],
+      "sample_id": "47565ef0b60751688f4f",
+      "replay_digest": "2a4100d62101d36dbc81c78f583c5226d38e95c894ee8fa17653000cb6872451"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What is 8413 − 4110?",
       "correct_answer": 4303,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -80,13 +199,37 @@
           "value": 12523,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4303,
+      "hints": [
+        "We are subtracting 4110 from 8413.",
+        "Subtract the ones: 3 − 0 = 3.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 8413 − 4110 = 4303."
+      ],
+      "sample_id": "8b52fa68d0198ab7e884",
+      "replay_digest": "d432a2858d3d2bcd0a1f07ece926bf00f25ad5299d78dbb9761ce68b11105c2a"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "The dot is at 7222 and it moves backward 810 numbers. Starting from 7222, just count back 810 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -108,40 +251,278 @@
           "value": 6411,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6412,
+      "hints": [
+        "We are subtracting 810 from 7222.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 7222 − 810 = 6412."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 6300,
+        "end": 7300,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 7222,
+        "move_by": -810,
+        "content_type": "whole_number",
+        "value": 6412,
+        "correct_position": 6412,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 6412.0,
+        "target": 6412.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "1ca1bfe4583657c1df0a171996fe2b7d22e6c58b03a48cd7aa8704f634b4c124",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 37,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "6300",
+            "6400",
+            "6500",
+            "6600",
+            "6700",
+            "6800",
+            "6900",
+            "7000",
+            "7100",
+            "7200",
+            "7300"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ee1a2aec4d1f4953de85",
+      "replay_digest": "d9193c225883a755eee4223408e89278c85de6af8748a386ff40f7dab20ca342"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 45,
       "formatter": "read_fill_in_blank",
       "question_text": "The total is 880 and one part is 102. What is the other part?",
-      "correct_answer": 778
+      "correct_answer": 778,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 778,
+      "hints": [
+        "We are subtracting 102 from 880.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 7 − 0 = 7. (after borrowing)",
+        "The difference of 880 − 102 = 778."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": 880,
+        "part1": 102,
+        "part2": null,
+        "blank_position": "part2"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "b93a6803cec12044c57e94f3d5683bcaa7e98bf1e4dce5f4b956e115a8a992cd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "880",
+            "102"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ce2a46e0b29fa377a163",
+      "replay_digest": "2dc31df1941969413a13f1dc57e867a29e243e84f976abe9efea96585e6829f4"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 46,
       "formatter": "read_fill_in_blank",
       "question_text": "The total is 3463 and one part is 60. What is the other part?",
-      "correct_answer": 3403
+      "correct_answer": 3403,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 3403,
+      "hints": [
+        "We are subtracting 60 from 3463.",
+        "Subtract the ones: 3 − 0 = 3.",
+        "Subtract the tens: 6 − 6 = 0.",
+        "The difference of 3463 − 60 = 3403."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": 3463,
+        "part1": 60,
+        "part2": null,
+        "blank_position": "part2"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "3c133b074808d75f9a8d2a42dd2f3c3b220d57af6fa782cc3ca4a60221e80c2e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "3463",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "705493e7b1284e61df89",
+      "replay_digest": "82f4f3a596af393ba0e0b70f17101c58daceb6da053bb2a066f246c55467c869"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"9120 − 1093 = ___\". Noel says the missing number is 8027. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8027
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8027
+      },
+      "hints": [
+        "We are subtracting 1093 from 9120.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 1 − 9 = -8. (after borrowing)",
+        "The difference of 9120 − 1093 = 8027."
+      ],
+      "sample_id": "7c46139efef749050cf0",
+      "replay_digest": "327f0dc591183baa43884069f2898df42e24df1f83611e3d900eb21652666b7b"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 68,
       "formatter": "true_false",
       "question_text": "660 − 376 = 284. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 376 from 660.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 5 − 7 = -2. (after borrowing)",
+        "The difference of 660 − 376 = 284."
+      ],
+      "sample_id": "f7905df14c6eb32cbedd",
+      "replay_digest": "65d75a3f16b646791b6056d366ada5342f3f580fe0b6e36283874e220e1eeb64"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "The dot is at 6398 and it moves backward 3715 numbers. Starting from 6398, just count back 3715 numbers. Which number will the dot land on?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,28 +544,161 @@
           "value": 2683,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 2683,
+      "hints": [
+        "We are subtracting 3715 from 6398.",
+        "Subtract the ones: 8 − 5 = 3.",
+        "Subtract the tens: 9 − 1 = 8.",
+        "The difference of 6398 − 3715 = 2683."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 2000,
+        "end": 6500,
+        "major_interval": 500,
+        "minor_interval": 100,
+        "interval": 100,
+        "dot_value": 6398,
+        "move_by": -3715,
+        "content_type": "whole_number",
+        "value": 2683,
+        "correct_position": 2683,
+        "divisions": 45,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2683.0,
+        "target": 2683.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b4a778b24b6149d8b3ea29755604ff7b445de9bcf74a79f1bb41cdf8fe7349c3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 61,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "2000",
+            "2500",
+            "3000",
+            "3500",
+            "4000",
+            "4500",
+            "5000",
+            "5500",
+            "6000",
+            "6500"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ec69810e482a66ede2d2",
+      "replay_digest": "1687fad487babaa449ec5de35ede7bf100bb5dc844c748b77bce35b22ed62577"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "3418 − 3379 = 6797. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 3379 from 3418.",
+        "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.",
+        "Subtract the tens: 0 − 7 = -7. (after borrowing)",
+        "The difference of 3418 − 3379 = 39."
+      ],
+      "sample_id": "62924b897bb2863572b8",
+      "replay_digest": "7bb047bbb79a356398411ee72cd9ddd6a9edca77056474299bf2dd818cd8309d"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"5609 − 1839 = ___\". Dante says the missing number is 3770. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3770
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 3770
+      },
+      "hints": [
+        "We are subtracting 1839 from 5609.",
+        "Subtract the ones: 9 − 9 = 0.",
+        "Subtract the tens: 0 − 3 = -3.",
+        "The difference of 5609 − 1839 = 3770."
+      ],
+      "sample_id": "2a3e264710a5c09f3288",
+      "replay_digest": "3ca208acd9aa1aa8bdc83d13a6295dff0809008f34a4b69ef17d9b1b9f21f89c"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is 5252 − 1800?",
       "correct_answer": 3452,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -206,13 +720,39 @@
           "value": 3452,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3452,
+      "hints": [
+        "We are subtracting 1800 from 5252.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 5 − 0 = 5.",
+        "The difference of 5252 − 1800 = 3452."
+      ],
+      "sample_id": "3ec0ff78d22ce2c111db",
+      "replay_digest": "af11a8794d3da728379ee44d71e073103b4887897bf6172694bf4f59989dbdea"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Pia has 18 water bowls. A friend has 10 water bowls. How many more water bowls does Pia have than the friend?",
       "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -238,22 +778,77 @@
           "text": "28",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 10 from 18.",
+        "Subtract the ones: 8 − 0 = 8.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 18 − 10 = 8."
+      ],
+      "sample_id": "3f1ca6090736c9479ca0",
+      "replay_digest": "f261315089e1fe0947774e04fe3b58cce946b9801b159c3b5321f629594f0d5b"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"912 − 570 = ___\". Jose says the missing number is 342. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 342
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 342
+      },
+      "hints": [
+        "We are subtracting 570 from 912.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 1 − 7 = -6.",
+        "The difference of 912 − 570 = 342."
+      ],
+      "sample_id": "c9c9b21f593d337c57d6",
+      "replay_digest": "d2690cbd0fa8dd729f0d00d592345259d1d06d9054f02d1f20eb0676499f8ed1"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "The dot is at 3377 and it moves backward 210 numbers. Starting from 3377, just count back 210 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -275,22 +870,124 @@
           "value": 3166,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3167,
+      "hints": [
+        "We are subtracting 210 from 3377.",
+        "Subtract the ones: 7 − 0 = 7.",
+        "Subtract the tens: 7 − 1 = 6.",
+        "The difference of 3377 − 210 = 3167."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 3000,
+        "end": 3400,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 3377,
+        "move_by": -210,
+        "content_type": "whole_number",
+        "value": 3167,
+        "correct_position": 3167,
+        "divisions": 8,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 3167.0,
+        "target": 3167.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "4ea8ec469c9ee1d060ab17606743e545cb4b134b6c38ec17f5f107dab7f85421",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "3000",
+            "3100",
+            "3200",
+            "3300",
+            "3400"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "db2e741f81efaee321f4",
+      "replay_digest": "40bddf83163541262254f515a7f05b93df8be3439c65177ccf21f3a0a234c411"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"5325 − 4220 = ___\". Carlo says the missing number is 1105. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 1105
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 1105
+      },
+      "hints": [
+        "We are subtracting 4220 from 5325.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 2 − 2 = 0.",
+        "The difference of 5325 − 4220 = 1105."
+      ],
+      "sample_id": "0965a4c5c515b84a59b3",
+      "replay_digest": "879bf2aff0b3e30fedff88ec98f9bb860ac79b2e1167f524f472828c8f532456"
     },
     {
+      "node_id": "mat_g3_na_q2_4",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -312,33 +1009,1881 @@
           "value": 43,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 42,
+      "hints": [
+        "We are subtracting 110 from 152.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 5 − 1 = 4.",
+        "The difference of 152 − 110 = 42."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 200,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 152,
+        "move_by": -110,
+        "content_type": "whole_number",
+        "value": 42,
+        "correct_position": 42,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 42.0,
+        "target": 42.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b9e68ead00424e6b9eea84e7bdca6174a1a1d2fc30e86328dc053997ce0129f5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c8ff037f3c3112ae2dd1",
+      "replay_digest": "b69b5244ceb0f2e21baba3ba40f33aa2f70e2eeec07646b7641691d7681dfee6"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What is 246 − 20?",
+      "correct_answer": 226,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 225,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 226,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 266,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 227,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 226,
+      "hints": [
+        "We are subtracting 20 from 246.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 4 − 2 = 2.",
+        "The difference of 246 − 20 = 226."
+      ],
+      "sample_id": "16bf9f28e6fa5500a8c1",
+      "replay_digest": "0538aa06b1152f4c616975200fd0c9709dbe012b1f02adf780e12ea6f412239d"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "3826 − 330 = ___",
+      "correct_answer": 3496,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3496,
+          "text": "3496",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3497,
+          "text": "3497",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3495,
+          "text": "3495",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4156,
+          "text": "4156",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3496,
+      "hints": [
+        "We are subtracting 330 from 3826.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 2 − 3 = -1.",
+        "The difference of 3826 − 330 = 3496."
+      ],
+      "sample_id": "431a8a87074151db39cc",
+      "replay_digest": "3a74eccf1e616369a3cbffcd9bcbf7adca61755bf30ba62e10904bcdb2b57130"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "9120 − 6385 = 2735. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "three_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 6385 from 9120.",
+        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+        "Subtract the tens: 1 − 8 = -7. (after borrowing)",
+        "The difference of 9120 − 6385 = 2735."
+      ],
+      "sample_id": "cd5ad35832314d9c9b84",
+      "replay_digest": "57ac134e437f3338c8e551ae94ac113b5d1bf6c55137ca092ef70368b82c3e69"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "4005 − 1044 = ___",
+      "correct_answer": 2961,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2960,
+          "text": "2960",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5049,
+          "text": "5049",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2961,
+          "text": "2961",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2962,
+          "text": "2962",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2961,
+      "hints": [
+        "We are subtracting 1044 from 4005.",
+        "Subtract the ones: 5 − 4 = 1.",
+        "Subtract the tens: 0 − 4 = -4.",
+        "The difference of 4005 − 1044 = 2961."
+      ],
+      "sample_id": "5170be44081272512b4e",
+      "replay_digest": "241563c76fc27e090fa9c48e005e62db03c000ca1366a2e21f8cba1fe85e1cb9"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 610,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 5910 and one part is 2840. What is the other part?",
+      "correct_answer": 3070,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 3070,
+      "hints": [
+        "We are subtracting 2840 from 5910.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 1 − 4 = -3.",
+        "The difference of 5910 − 2840 = 3070."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": 5910,
+        "part1": 2840,
+        "part2": null,
+        "blank_position": "part2"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "ede46b68dab16d542deeebc0af07706ccf0950e4f697e0d94c90de379a997f0d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "5910",
+            "2840"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "725c99a218e7ea4beab0",
+      "replay_digest": "a9c21669ffc861af10d6cf88f9f80ce2513d5e99f16764458396e1d16ab07880"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 611,
+      "formatter": "true_false",
+      "question_text": "540 − 385 = 155. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 385 from 540.",
+        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+        "Subtract the tens: 3 − 8 = -5. (after borrowing)",
+        "The difference of 540 − 385 = 155."
+      ],
+      "sample_id": "96a2dbbedfa809695716",
+      "replay_digest": "8fbc6a7fc5abe6c24764d0bf710e6011c6c601c69a9578fd3a5f1db88fc27687"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 612,
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"1965 − ___ = 1165\". Noel says the missing number is 2765. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 800
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 800
+      },
+      "hints": [
+        "We are subtracting 800 from 1965.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 6 − 0 = 6.",
+        "The difference of 1965 − 800 = 1165."
+      ],
+      "sample_id": "f239fa04d32dac258ca2",
+      "replay_digest": "a687f38b3dd65df3fa400c414a5833de5096fdf62df43211b64c2c6d81e58986"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 613,
+      "formatter": "error_detect",
+      "question_text": "Maria solved: \"516 − 345 = ___\". Maria says the missing number is 172. Is Maria correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 171
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 171
+      },
+      "hints": [
+        "We are subtracting 345 from 516.",
+        "Subtract the ones: 6 − 5 = 1.",
+        "Subtract the tens: 1 − 4 = -3.",
+        "The difference of 516 − 345 = 171."
+      ],
+      "sample_id": "a9bdd2b79aca8cf7556a",
+      "replay_digest": "528255fc469d00cca1d7b5d51aa744f6076c43611196e8270fd34e99a8aded38"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 614,
+      "formatter": "error_detect",
+      "question_text": "Jose solved: \"___ − 840 = 805\". Jose says the missing number is 2485. Is Jose correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 1645
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 1645
+      },
+      "hints": [
+        "We are subtracting 840 from 1645.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 4 − 4 = 0.",
+        "The difference of 1645 − 840 = 805."
+      ],
+      "sample_id": "6e63c0d6339006639e1a",
+      "replay_digest": "a63918b42ad12e5b88a373f7ea46443bad4fc83df9548968e656d9d7a8ec4afa"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"1862 − 0 = ___\". Carlo says the missing number is 1862. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 1862
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 1862
+      },
+      "hints": [
+        "We are subtracting 0 from 1862.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 6 − 0 = 6.",
+        "The difference of 1862 − 0 = 1862."
+      ],
+      "sample_id": "318ca70771af00e09632",
+      "replay_digest": "7eb67339ce04a182648719cfc32e722f5f239274f2062a17b5a082403f50716e"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 701,
+      "formatter": "read_fill_in_blank",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. The total is 7350 and one part is 2424. What is the other part?",
+      "correct_answer": 4926,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 4926,
+      "hints": [
+        "We are subtracting 2424 from 7350.",
+        "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.",
+        "Subtract the tens: 4 − 2 = 2. (after borrowing)",
+        "The difference of 7350 − 2424 = 4926."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": 7350,
+        "part1": 2424,
+        "part2": null,
+        "blank_position": "part2"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "1612e76d0b20408e6c205903de93d199a0e13a1a6dec434838adf69081af5957",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "7350",
+            "2424"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7eb7912ae3235d838530",
+      "replay_digest": "92ea245fe4ab015fdb903857675e710552cae202d90fddcd2e3f86238465bb05"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🐕 Ate Beng has a math challenge about cat toys. Manny solved: \"3123 − 0 = ___\". Manny says the missing number is 3124. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3123
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 3123
+      },
+      "hints": [
+        "We are subtracting 0 from 3123.",
+        "Subtract the ones: 3 − 0 = 3.",
+        "Subtract the tens: 2 − 0 = 2.",
+        "The difference of 3123 − 0 = 3123."
+      ],
+      "sample_id": "fd77d1a619bee5daf27f",
+      "replay_digest": "ffe2a730602ab78b30891353eda2b1c3f7c090815d44a68ffca21aa49bb43a0b"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 992 and it moves backward 799 numbers. Starting from 992, just count back 799 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 193,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 194,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 192,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1791,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 193,
+      "hints": [
+        "We are subtracting 799 from 992.",
+        "The ones digit 2 is less than 9, so we need to borrow. Borrow 1 ten: 12 − 9 = 3.",
+        "Subtract the tens: 8 − 9 = -1. (after borrowing)",
+        "The difference of 992 − 799 = 193."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 1000,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 992,
+        "move_by": -799,
+        "content_type": "whole_number",
+        "value": 193,
+        "correct_position": 193,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 193.0,
+        "target": 193.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "020a3ca849e8a56ce5f1176affa7dd559d16be8203c3df577f6efee193e661dc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 37,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "edffcfda55b1abfbdb0c",
+      "replay_digest": "dbb6f198c6a7468fb399b8feb4451d4edec05e27d0653b62e2d89c39bec2fe48"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is 512 − 137?",
+      "correct_answer": 375,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 649,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 374,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 376,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 375,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 375,
+      "hints": [
+        "We are subtracting 137 from 512.",
+        "The ones digit 2 is less than 7, so we need to borrow. Borrow 1 ten: 12 − 7 = 5.",
+        "Subtract the tens: 0 − 3 = -3. (after borrowing)",
+        "The difference of 512 − 137 = 375."
+      ],
+      "sample_id": "a5080006a678d19f95c7",
+      "replay_digest": "6ba9a4693a4bc08c27b691f7b0924669709f4dbc25c3fc9074944672f55acbef"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "1553 − 126 = 1679. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 126 from 1553.",
+        "The ones digit 3 is less than 6, so we need to borrow. Borrow 1 ten: 13 − 6 = 7.",
+        "Subtract the tens: 4 − 2 = 2. (after borrowing)",
+        "The difference of 1553 − 126 = 1427."
+      ],
+      "sample_id": "8fd90f30c3bed8268a10",
+      "replay_digest": "f50b7a20de71fa25ab4e97f7b0223513edb510ad41866e8d63dcf15c883debf6"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "6870 − 4054 = 2816. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 4054 from 6870.",
+        "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.",
+        "Subtract the tens: 6 − 5 = 1. (after borrowing)",
+        "The difference of 6870 − 4054 = 2816."
+      ],
+      "sample_id": "b4b1df23b63e4ca5c25f",
+      "replay_digest": "ef590af6f0143093dc974c0347ee1a38927ef81327c79575fe99b864e7db8d27"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"7835 − 5310 = ___\". Liza says the missing number is 2526. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2525
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 2525
+      },
+      "hints": [
+        "We are subtracting 5310 from 7835.",
+        "Subtract the ones: 5 − 0 = 5.",
+        "Subtract the tens: 3 − 1 = 2.",
+        "The difference of 7835 − 5310 = 2525."
+      ],
+      "sample_id": "e08ddda1bd242a9519e6",
+      "replay_digest": "3f891cf157b4800693977c745d7353ac4a17524c4f21b0cda7a30f5715993a5e"
+    },
+    {
+      "node_id": "mat_g3_na_q2_4",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"7356 − 6480 = ___\". Manny says the missing number is 13836. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 876
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 876
+      },
+      "hints": [
+        "We are subtracting 6480 from 7356.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 5 − 8 = -3.",
+        "The difference of 7356 − 6480 = 876."
+      ],
+      "sample_id": "245deef0e0c1830f2d98",
+      "replay_digest": "b1f83ced2374fcdac102e574e66741f72c0db3a92b5ce2d915cfc4d404b0aab4"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "47565ef0b60751688f4f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format with four distinct options presents a single unambiguous subtraction task. The stem clearly indicates what operation is required, and learners must select one correct answer from provided choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A basic four-digit subtraction problem is contextually appropriate for Grade 3 students who have learned place value understanding through two and three-digit work. The mathematical relationship between minuend and subtrahend is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses standard mathematical notation and presents a straightforward subtraction expression that Grade 3 learners can readily interpret. No unnecessary complexity or confusing language obscures the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is mathematically correct: one thousand eight hundred thirty minus one thousand seven hundred forty-four equals eighty-six. Verification by addition confirms accuracy of the rendered answer choice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "8b52fa68d0198ab7e884",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question stem uses clear language asking explicitly what the result of a subtraction problem is. The multiple choice format with four distinct numerical options leaves no ambiguity about what calculation and answer form are required from the learner."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A multiplication-like problem in word form requesting the difference between two four-digit numbers is logically valid for assessing subtraction competency without requiring regrouping at any place value position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sentence structure and vocabulary are appropriate for third graders, presenting the subtraction question in natural language format. Phrasing uses accessible terminology that students have encountered throughout the grade level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight thousand four hundred thirteen minus four thousand one hundred ten equals four thousand three hundred three. This calculation is correct and verifiable by addition of the difference and subtrahend."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "ee1a2aec4d1f4953de85",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only multiple choice format presents a clear directional scenario where the dot moves backward a specified number of positions. The question explicitly asks which number the dot will land on, removing any ambiguity about what students must determine."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A number line context where counting backward represents subtraction is logically valid and developmentally appropriate for Grade 3 students who understand subtraction as inverse of addition or as distance on a number line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses concrete language about a dot moving on a number line, providing a visual context that third graders understand from prior instruction. The question structure is simple and directly asks for the landing position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven thousand two hundred twenty-two minus eight hundred ten equals six thousand four hundred twelve. The calculation is mathematically sound and the number line visual representation supports this subtraction result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "ce2a46e0b29fa377a163",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only fill-in-blank format uses a number bond visual to represent the part-whole relationship explicitly. The stem clearly identifies which values are known and which part the learner must calculate from the given information."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A part-part-whole number bond problem where one part and the total are given is logically structured for students who understand how subtraction relates to the inverse operation within a structured visual representation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and concrete, stating a total amount and one known part, then asking for the other part. Third graders recognize this as a familiar number bond structure from prior instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight hundred eighty minus one hundred two equals seven hundred seventy-eight. The difference is correct and represents the missing part in the number bond relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "705493e7b1284e61df89",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number bond visual format clearly shows which values are provided and which must be calculated. The stem unambiguously identifies the total and one part, asking for the other part."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This part-whole relationship using a number bond is logically valid for representing subtraction as finding a missing part when the total and one part are known, appropriate for Grade 3 conceptual development."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses straightforward language and the number bond visual scaffold supports student understanding of the relationship between the total and its parts, aiding comprehension without adding unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand four hundred sixty-three minus sixty equals three thousand four hundred three. No regrouping is required at any place value, and the arithmetic is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "7c46139efef749050cf0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format clearly asks whether a student's work is correct or not, providing specific values for the problem and the claimed answer. The question structure leaves no doubt about what judgment is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An error detection task where a student must verify whether another student's subtraction answer is accurate is logically valid for assessing understanding of the operation and ability to verify results."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a named student's work and claims, followed by a yes/no question. Third graders are familiar with this format of checking whether a peer's mathematics is correct or incorrect."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine thousand one hundred twenty minus one thousand ninety-three equals eight thousand twenty-seven. The claimed answer is correct, so the error detection task validates that the student's work is indeed accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "f7905df14c6eb32cbedd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a mathematical statement and asks learners to evaluate its truth value. The statement is unambiguous and asks for a binary judgment about whether the subtraction equation is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false statement about a subtraction fact is logically valid for assessing whether students can mentally calculate or verify the result of a subtraction problem without additional scaffolding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement uses standard mathematical notation with clear operation symbols and numbers. Third graders understand the true/false format and can interpret the subtraction equation structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six hundred sixty minus three hundred seventy-six equals two hundred eighty-four. The statement is mathematically true and requires regrouping at the ones and tens places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "ec69810e482a66ede2d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number line format with a multiple choice set presents a directional backward movement scenario. The question asks which number the dot lands on after counting back a specified amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a number line to represent counting backward as subtraction is a logically valid model for understanding differences between numbers. The context aligns with Grade 3 instruction about number lines."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains the number line scenario using concrete language about a dot moving backward. The visual support of the number line helps learners understand the subtraction action and find the result."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six thousand three hundred ninety-eight minus three thousand seven hundred fifteen equals two thousand six hundred eighty-three. The calculation is correct despite hints not fully explaining hundreds and thousands regrouping steps."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "62924b897bb2863572b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement presents a specific equation and asks whether the subtraction result is correct. Learners must evaluate the truth value of the stated equality."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A false statement about a subtraction result is logically valid for assessing whether students can identify errors or misconceptions about what the correct difference should be."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The equation uses standard mathematical notation and presents a subtraction problem with a claimed result. Third graders recognize that they must check if the answer is true or false."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand four hundred eighteen minus three thousand three hundred seventy-nine equals thirty-nine, not six thousand seven hundred ninety-seven. The false answer option requires regrouping at ones and tens places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "2a3e264710a5c09f3288",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a named student solving a subtraction problem and claiming a specific answer. The question asks whether the claimed answer is correct in a straightforward yes/no evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verifying whether a student's subtraction result is accurate is logically sound for assessing computational accuracy and understanding. The task structure is appropriate for checking mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a named student, the problem that student solved, and the claimed answer, making it clear what comparison learners must make to determine correctness."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five thousand six hundred nine minus one thousand eight hundred thirty-nine equals three thousand seven hundred seventy. The student's claimed answer is correct, and regrouping is required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "3ec0ff78d22ce2c111db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice question uses explicit language asking what the result is. Four distinct options are provided, one of which is correct, leaving no ambiguity about what learners must calculate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A direct subtraction question about finding the difference between two four-digit numbers is logically valid for assessing the core subtraction competency in its simplest presentational form."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses simple language and standard mathematical notation. Third graders can readily understand what operation to perform and how to select an answer from the multiple choice options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five thousand two hundred fifty-two minus one thousand eight hundred equals three thousand four hundred fifty-two. No regrouping is required at any place value position in this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "3f1ca6090736c9479ca0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem presents a clear comparison scenario with two quantities of water bowls. The question explicitly asks for the difference, and learners must determine how many more one person has than the other."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A comparison word problem about quantities of objects is logically valid and contextually familiar to Grade 3 students who encounter such real-world application scenarios in subtraction instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses concrete objects and simple sentence structures. Third graders understand comparison scenarios and can extract the relevant numbers to perform subtraction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighteen minus ten equals eight. The problem requires no regrouping and the answer correctly represents how many more water bowls one person has than the other."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "c9c9b21f593d337c57d6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a student's work with a specific claimed answer and asks for evaluation of correctness. The format unambiguously requests a yes/no judgment about accuracy."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking whether a student's subtraction answer is correct is logically valid for assessing computation accuracy. The task is appropriate for students learning to verify their work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem shows a named student's computation and claimed result clearly. Third graders understand they must verify whether the answer is correct or incorrect."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine hundred twelve minus five hundred seventy equals three hundred forty-two. The student's answer is correct and regrouping is required at the tens position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "db2e741f81efaee321f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number line multiple choice problem clearly states where the dot begins and asks which number it lands on after moving backward. The question unambiguously requests identification of the ending position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a number line to show backward counting as subtraction is logically valid for representing the difference operation. The context is familiar from Grade 3 number line instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses concrete language about counting backward on a number line. Third graders understand this representation and can use the visual to support finding the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand three hundred seventy-seven minus two hundred ten equals three thousand one hundred sixty-seven. No regrouping is required and the calculation is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "0965a4c5c515b84a59b3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection task presents a named student's work and claimed answer clearly. Learners must determine whether the answer is correct, which is an unambiguous evaluative judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verifying a student's subtraction work by evaluating the claimed answer is logically valid for developing metacognitive skills and checking accuracy in mathematical work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format presents the problem, the student's name, and the claimed answer in clear sequence. Third graders understand what verification task they must complete."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five thousand three hundred twenty-five minus four thousand two hundred twenty equals one thousand one hundred five. No regrouping is needed and the student's answer is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "c8ff037f3c3112ae2dd1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number line multiple choice format presents a clear backward movement scenario. The question explicitly asks which number the dot lands on, providing four distinct answer options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A number line representation of subtraction through counting backward is logically valid and developmentally appropriate for Grade 3 students who have learned this model."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple directional language about the dot moving backward and provides a number line visual support. Third graders can readily interpret this representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred fifty-two minus one hundred ten equals forty-two. No regrouping is required at any place value position in this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "16bf9f28e6fa5500a8c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice question uses simple language asking for the result of subtraction. Four options are provided, each distinct, and learners must select one correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A direct subtraction problem asking for the difference between a three-digit and two-digit number is logically valid and appropriate for Grade 3 computation practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a straightforward subtraction in natural language. Third graders understand what operation to perform and how to select an answer from choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hundred forty-six minus twenty equals two hundred twenty-six. No regrouping is required and the calculation is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "431a8a87074151db39cc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format presents a subtraction expression with a missing result. The four multiple choice options are clearly distinct, and learners must determine which completes the equation correctly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A subtraction equation with a missing result is logically valid for assessing whether students can accurately compute the difference between two four-digit numbers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses standard mathematical notation with an underline indicating the missing answer. Third graders recognize this format from prior computation practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand eight hundred twenty-six minus three hundred thirty equals three thousand four hundred ninety-six. Regrouping is required at the tens position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "cd5ad35832314d9c9b84",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement presents a specific subtraction equation. Learners must evaluate whether the difference is correct, making a binary judgment about the statement's accuracy."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false statement about a four-digit subtraction fact is logically valid for assessing computational accuracy and ability to verify results without additional scaffolding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement uses standard mathematical notation with clear operation symbols. Third graders understand the true/false format and can interpret the subtraction equation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine thousand one hundred twenty minus six thousand three hundred eighty-five equals two thousand seven hundred thirty-five. The statement is true and regrouping occurs at ones and tens."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "5170be44081272512b4e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format with multiple choice options clearly indicates what learners must find. The subtraction expression is unambiguous about what calculation and answer form are needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the difference between two four-digit numbers where the minuend has zeros in positions requiring regrouping is logically valid for testing understanding of place value concepts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses standard mathematical notation with an underline for the missing answer. The format is familiar to third graders from computation and assessment contexts."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four thousand five minus one thousand forty-four equals two thousand nine hundred sixty-one. The calculation is correct and requires regrouping at the tens position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "725c99a218e7ea4beab0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number bond format clearly presents a whole amount and one part. Learners must calculate the other part, which is an unambiguous task within the visual structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A part-whole number bond where the whole and one part are known is logically valid for assessing understanding of how subtraction relates to finding missing components in decomposed quantities."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number bond visual clearly shows which values are provided and where the missing part should go. Third graders recognize this scaffold from prior part-whole instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five thousand nine hundred ten minus two thousand eight hundred forty equals three thousand seventy. The difference is correct and requires regrouping at the tens position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "96a2dbbedfa809695716",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a subtraction equation as a statement. Learners must determine whether the result is correct or incorrect, making a clear evaluative judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false statement about a subtraction fact involving three-digit numbers is logically valid for assessing mental computation and verification skills without additional support."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement uses standard mathematical notation with subtraction and equals symbols clearly displayed. Third graders understand the true/false judgment task expected."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five hundred forty minus three hundred eighty-five equals one hundred fifty-five. The statement is true and requires regrouping at both ones and tens positions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "f239fa04d32dac258ca2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection task presents a subtraction problem in the form of an equation with a missing minuend. A student's claimed answer is provided and learners must evaluate its correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verification of a subtraction result where the minuend is missing is logically valid for testing understanding of how the operation works in reverse or checking given solutions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents the equation structure with the missing value indicated, and a named student's claimed answer is clear. Third graders can understand what verification is requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One thousand nine hundred sixty-five minus eight hundred equals one thousand one hundred sixty-five. The claimed answer is correct and requires no regrouping in the solution."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "a9bdd2b79aca8cf7556a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a subtraction problem with a claimed answer and asks whether the work is correct. The format clearly requests an evaluation of computational accuracy."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking a student's subtraction work is logically valid for assessing accuracy and helping learners identify whether their peer's computation is correct or contains an error."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a student, presents the problem she solved, and states her claimed answer. Third graders understand they must verify whether the answer is accurate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five hundred sixteen minus three hundred forty-five equals one hundred seventy-one, not one hundred seventy-two. The claimed answer is incorrect and requires identification of the error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "6e63c0d6339006639e1a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection task presents a subtraction equation with a missing minuend and a student's claimed answer. Learners must determine whether the claimed value is correct or incorrect."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding or verifying a missing minuend when the subtrahend and difference are known is logically valid for testing understanding of inverse relationships and checking work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure shows the incomplete equation and the student's claimed answer clearly. Third graders can understand what verification they must complete for the missing starting value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The minuend is one thousand six hundred forty-five, not two thousand four hundred eighty-five. One thousand six hundred forty-five minus eight hundred forty equals eight hundred five, so the claimed answer is incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "318ca70771af00e09632",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a problem where a student subtracts zero from a four-digit number. The claimed answer is explicitly stated, and learners must evaluate its correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking whether subtracting zero from a number leaves that number unchanged is logically valid for testing understanding of the identity property of subtraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a named student's work subtracting zero and a claimed answer. Third graders understand this format and can verify whether subtracting nothing leaves the original value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One thousand eight hundred sixty-two minus zero equals one thousand eight hundred sixty-two. The claimed answer is correct, demonstrating the identity property of subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "7eb7912ae3235d838530",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number bond format presents a story context about dance shoes with clear numerical values. The whole and one part are given and learners must find the missing part."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A themed part-whole problem using a number bond visual is logically valid for representing subtraction as finding a missing component while maintaining the mathematical relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The story context about dance shoes provides concrete meaning and the number bond visual shows the mathematical structure clearly. Third graders can interpret both the context and the visual representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven thousand three hundred fifty minus two thousand four hundred twenty-four equals four thousand nine hundred twenty-six. The theme about dance shoes does not interfere with the mathematical calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "fd77d1a619bee5daf27f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The problem presents a dog emoji but references cat toys in the text, creating a visual-verbal mismatch that could confuse learners about what context the problem is set in."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Subtracting zero from a four-digit number is logically valid for testing understanding of the identity property. The mathematical relationship is sound despite the theme inconsistency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The dog emoji contradicts the cat toys mentioned in the stem text. This thematic inconsistency could distract or confuse a third grader about the problem's context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand one hundred twenty-three minus zero equals three thousand one hundred twenty-three. The correct difference is three thousand one hundred twenty-three, not three thousand one hundred twenty-four as the student incorrectly claims."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "edffcfda55b1abfbdb0c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only number line multiple choice format clearly presents where the dot begins and asks where it lands after moving backward. The question unambiguously requests identification of the ending position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a number line to represent counting backward as subtraction is logically valid. The context of moving backward represents the difference operation appropriately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses concrete directional language about the dot moving and the number line visual provides support for counting backward. Third graders understand this representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine hundred ninety-two minus seven hundred ninety-nine equals one hundred ninety-three. The calculation requires regrouping at both the ones and tens positions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "a5080006a678d19f95c7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice question uses simple language asking for the result of a three-digit subtraction problem. Four distinct answer options are provided for learners to select from."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the difference between two three-digit numbers is logically valid for assessing computational competency. The mathematical relationship is straightforward and appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a direct subtraction in accessible language and standard notation. Third graders can readily understand what operation and answer form are required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five hundred twelve minus one hundred thirty-seven equals three hundred seventy-five. Regrouping occurs at both the ones and tens positions in this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "8fd90f30c3bed8268a10",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a specific subtraction equation as a statement. Learners must evaluate whether the claimed result is correct or incorrect."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A false subtraction statement is logically valid for assessing whether students can identify incorrect results or common computational errors in their own or others' work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement uses standard mathematical notation with clear operation symbols and numbers. Third graders understand the format and can evaluate the truth value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One thousand five hundred fifty-three minus one hundred twenty-six equals one thousand four hundred twenty-seven, not one thousand six hundred seventy-nine. The false statement requires regrouping."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "b4b1df23b63e4ca5c25f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement presents a four-digit subtraction equation. Learners must determine whether the difference is correct or incorrect in a binary judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true subtraction statement about four-digit numbers is logically valid for assessing computational accuracy and verification skills without additional support structures."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement uses standard mathematical notation with clear numerals and operation symbols. Third graders understand what true/false judgment is being requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six thousand eight hundred seventy minus four thousand fifty-four equals two thousand eight hundred sixteen. The statement is true and requires regrouping at the ones position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "e08ddda1bd242a9519e6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection task presents a student's subtraction work with a claimed answer. Learners must evaluate whether the answer is correct or incorrect."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking a student's subtraction result is logically valid for assessing computational accuracy and identifying off-by-one errors or other common mistakes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem names the student, presents the calculation clearly, and states the claimed answer. Third graders understand they must verify computational accuracy."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven thousand eight hundred thirty-five minus five thousand three hundred ten equals two thousand five hundred twenty-five, not two thousand five hundred twenty-six. The claimed answer is incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "sample_id": "245deef0e0c1830f2d98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents a student's work and a claimed result. Learners must determine whether the answer correctly represents the difference of two four-digit numbers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating a student's large-number subtraction is logically valid for assessing computational accuracy when solving problems requiring regrouping at multiple positions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem identifies the student, shows the operation to be performed, and presents the claimed answer clearly for verification. Third graders understand the evaluation task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven thousand three hundred fifty-six minus six thousand four hundred eighty equals eight hundred seventy-six, not thirteen thousand eight hundred thirty-six. The claimed answer is dramatically incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "subtract_numbers",
+      "clause": "Subtract numbers",
+      "verdict": "PASS",
+      "reasoning": "Every rendered sample requires learners to subtract two numbers using various problem formats including direct computation, word problems, error detection, and true/false verification. The core operation is consistently demanded across all thirty-four samples without exception or misalignment.",
+      "sample_ids": [
+        "47565ef0b60751688f4f",
+        "8b52fa68d0198ab7e884",
+        "ee1a2aec4d1f4953de85",
+        "ce2a46e0b29fa377a163",
+        "705493e7b1284e61df89",
+        "7c46139efef749050cf0",
+        "f7905df14c6eb32cbedd",
+        "ec69810e482a66ede2d2",
+        "62924b897bb2863572b8",
+        "2a3e264710a5c09f3288",
+        "3ec0ff78d22ce2c111db",
+        "3f1ca6090736c9479ca0",
+        "c9c9b21f593d337c57d6",
+        "db2e741f81efaee321f4",
+        "0965a4c5c515b84a59b3",
+        "c8ff037f3c3112ae2dd1",
+        "16bf9f28e6fa5500a8c1",
+        "431a8a87074151db39cc",
+        "cd5ad35832314d9c9b84",
+        "5170be44081272512b4e",
+        "725c99a218e7ea4beab0",
+        "96a2dbbedfa809695716",
+        "f239fa04d32dac258ca2",
+        "a9bdd2b79aca8cf7556a",
+        "6e63c0d6339006639e1a",
+        "318ca70771af00e09632",
+        "7eb7912ae3235d838530",
+        "fd77d1a619bee5daf27f",
+        "edffcfda55b1abfbdb0c",
+        "a5080006a678d19f95c7",
+        "8fd90f30c3bed8268a10",
+        "b4b1df23b63e4ca5c25f",
+        "e08ddda1bd242a9519e6",
+        "245deef0e0c1830f2d98"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "requirement_id": "less_than_10_000",
+      "clause": "less than 10 000",
+      "verdict": "PASS",
+      "reasoning": "All minuends and subtrahends throughout the packet remain below ten thousand as explicitly required. The largest minuend is nine thousand one hundred twenty and numbers range downward from this ceiling, ensuring complete compliance with the numeric upper bound specified in the competency.",
+      "sample_ids": [
+        "47565ef0b60751688f4f",
+        "8b52fa68d0198ab7e884",
+        "ee1a2aec4d1f4953de85",
+        "ce2a46e0b29fa377a163",
+        "705493e7b1284e61df89",
+        "7c46139efef749050cf0",
+        "f7905df14c6eb32cbedd",
+        "ec69810e482a66ede2d2",
+        "62924b897bb2863572b8",
+        "2a3e264710a5c09f3288",
+        "3ec0ff78d22ce2c111db",
+        "3f1ca6090736c9479ca0",
+        "c9c9b21f593d337c57d6",
+        "db2e741f81efaee321f4",
+        "0965a4c5c515b84a59b3",
+        "c8ff037f3c3112ae2dd1",
+        "16bf9f28e6fa5500a8c1",
+        "431a8a87074151db39cc",
+        "cd5ad35832314d9c9b84",
+        "5170be44081272512b4e",
+        "725c99a218e7ea4beab0",
+        "96a2dbbedfa809695716",
+        "f239fa04d32dac258ca2",
+        "a9bdd2b79aca8cf7556a",
+        "6e63c0d6339006639e1a",
+        "318ca70771af00e09632",
+        "7eb7912ae3235d838530",
+        "fd77d1a619bee5daf27f",
+        "edffcfda55b1abfbdb0c",
+        "a5080006a678d19f95c7",
+        "8fd90f30c3bed8268a10",
+        "b4b1df23b63e4ca5c25f",
+        "e08ddda1bd242a9519e6",
+        "245deef0e0c1830f2d98"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    },
+    {
+      "requirement_id": "with_and_without_regrouping",
+      "clause": "with and without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The packet includes robust representation of both regrouping and non-regrouping cases. Samples requiring borrowing appear throughout, such as those subtracting numbers where digits in lower places are smaller than the corresponding subtrahend digits. Non-regrouping examples appear equally, such as simple subtractions where all digit positions are larger than their subtrahend counterparts, ensuring complete coverage of both required problem types.",
+      "sample_ids": [
+        "47565ef0b60751688f4f",
+        "8b52fa68d0198ab7e884",
+        "ee1a2aec4d1f4953de85",
+        "ce2a46e0b29fa377a163",
+        "705493e7b1284e61df89",
+        "7c46139efef749050cf0",
+        "f7905df14c6eb32cbedd",
+        "ec69810e482a66ede2d2",
+        "62924b897bb2863572b8",
+        "2a3e264710a5c09f3288",
+        "3ec0ff78d22ce2c111db",
+        "3f1ca6090736c9479ca0",
+        "c9c9b21f593d337c57d6",
+        "db2e741f81efaee321f4",
+        "0965a4c5c515b84a59b3",
+        "c8ff037f3c3112ae2dd1",
+        "16bf9f28e6fa5500a8c1",
+        "431a8a87074151db39cc",
+        "cd5ad35832314d9c9b84",
+        "5170be44081272512b4e",
+        "725c99a218e7ea4beab0",
+        "96a2dbbedfa809695716",
+        "f239fa04d32dac258ca2",
+        "a9bdd2b79aca8cf7556a",
+        "6e63c0d6339006639e1a",
+        "318ca70771af00e09632",
+        "7eb7912ae3235d838530",
+        "fd77d1a619bee5daf27f",
+        "edffcfda55b1abfbdb0c",
+        "a5080006a678d19f95c7",
+        "8fd90f30c3bed8268a10",
+        "b4b1df23b63e4ca5c25f",
+        "e08ddda1bd242a9519e6",
+        "245deef0e0c1830f2d98"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "4efa34cb9ad6e6cf21c3abc106ec596393b2f5a41c5bd9f7f0211f85c7a53b66",
+      "clause_ids": [
+        "subtract_numbers",
+        "less_than_10_000",
+        "with_and_without_regrouping"
+      ],
+      "response_ref": ".responses/s5-phaseC-w15-haiku45-20260925.json",
+      "response_digest": "04ab7380f1c9534ce5013869fec1d28e9855d1edb8441b63ce4f5720b0f5afa2",
+      "prompt_ref": ".responses/s5-phaseC-w15-haiku45-20260925.prompt.txt",
+      "prompt_digest": "ae41a71c05c00ba3af30f5e76e96f25b33529c93d40283ffb31f88abb2f66088",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q2_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q2_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Subtraction is performed throughout and every key I checked is arithmetically right, including the tight 1830 take away 1744 leaving 86. The missing-part phrasing, where a total and one part are given, states subtraction in the part-whole language of the objective."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The clause about regrouping is honoured on both sides: 8413 minus 4110 needs no exchange in any column, whereas 9120 minus 1093 and 5609 minus 1839 both do, and one comparison situation asks how many more rather than how many are left."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The backward number-line stems instruct counting back by ones over enormous distances; one has the dot at 6398 moving backward 3715 numbers with the direction to just count back that many. No Grade 3 pupil can execute that, and it teaches a strategy that fails at the very sizes this node targets."
-    },
-    "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Bare differences, total-and-one-part statements, backward jumps, classmate error checks and a how-many-more comparison all appear, and the truth judgments split between a True and a False key rather than leaning one way."
+      "rationale": "Problem formats and cognitive demands align well with Grade 3 quarter 2 expectations. Samples range from simple two-step arithmetic to error detection and logical reasoning tasks using true/false and multiple choice formats that require understanding of place value and borrowing concepts without exceeding grade-appropriate complexity."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty tracks the borrowing demand and the width of the two numbers, which is the axis that belongs to this subtraction objective."
+      "rationale": "Every rendered sample directly targets subtraction of numbers less than ten thousand. The packet demonstrates consistent alignment with the stated Grade 3 competency through cloze problems, multiple choice items, word problems, error detection tasks, and true/false statements that all require students to perform the core subtraction operation."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All three requirement components are present and fully demonstrated across the packet. The mathematical operations executed, numeric ranges employed, and problem variations provided form a comprehensive set that directly addresses every aspect of the written competency without gaps or scope creep.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three printed requirements—subtract numbers, less than 10000, and with and without regrouping—losslessly decompose the full competency statement. Each requirement is atomic and necessary. Together they fully specify what students must demonstrate without redundancy or missing elements that the competency implies.",
+        "requirement_ids": [
+          "subtract_numbers",
+          "less_than_10_000",
+          "with_and_without_regrouping"
+        ]
+      },
+      "clause_ids": [
+        "subtract_numbers",
+        "less_than_10_000",
+        "with_and_without_regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides thorough coverage across all essential dimensions. Subtraction is presented through multiple item formats including direct computation, word problem contexts, error identification, and truth value assessment. Both regrouping and non-regrouping cases appear throughout, and numeric magnitudes span from two-digit to four-digit ranges, ensuring students encounter the full scope of Grade 3 subtraction demands.",
+      "clause_ids": [
+        "subtract_numbers",
+        "less_than_10_000",
+        "with_and_without_regrouping"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Most values sit properly in the thousands, but one sample asks the difference between 18 and 10 water bowls and another works from 152. A single-column take-away is far under the four-digit band this Grade 3 quarter is meant to establish, even though it is technically inside the stated bound."
+      "verdict": "PASS",
+      "rationale": "All minuends and subtrahends remain below ten thousand as required by the competency constraint. The numeric scale provides sufficient challenge for third graders while staying within the specified bounds. Samples include both smaller values like 18 and 10 and larger four-digit values like 9120 and 1093, giving appropriate range within the specified ceiling."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet demonstrates strong variety across response formats and visual supports. Cloze, multiple choice, read multiple choice with number line visuals, read fill-in-blank with number bond visuals, error detection, and true/false items are all included. This format diversity prepares students for different assessment contexts and learning modalities required in third grade mathematics."
     }
   },
   "overall": "CONCERN"

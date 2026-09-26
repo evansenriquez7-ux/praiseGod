@@ -1,0 +1,252 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q2_7/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q2_7-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_7
+PACKET DIGEST: 1aaa63b1ec50277eaafd23af3927e5da96058e9a2d9ff267ca3d035bf8d750b6
+COMPETENCY (Grade 3, Quarter 2, None):
+Solve problems involving addition and subtraction with 3 to 4 numbers of up to 2 digits, including problems involving money.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems_involving_addition_and_subtraction: Solve problems involving addition and subtraction
+  3_to_4_numbers: 3 to 4 numbers
+  up_to_2_digits: up to 2 digits
+  problems_involving_money: problems involving money
+
+SAMPLES (every one of these is real rendered output):
+  sample d6241e3a97992263109f  seed 42  [cloze]
+      stem:    Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?
+      answer:  97
+      options: 97 / 99 / 96 / 98
+      hints:   ["Evaluate the number sentence: 36 + 32 + 29.", "Use the order of operations: work left to right for + and −.", "Step 1: 36 + 32 = 68.", "Step 2: 68 + 29 = 97.", "The answer is 97."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2c1ef563db9bf77f44fc  seed 43  [mcq]
+      stem:    Dina starts with ₱98. Then Dina gives away ₱19. Then Dina receives ₱60. How much money does Dina have now?
+      answer:  139
+      options: 138 / 139 / 140 / 141
+      hints:   ["Evaluate the number sentence: 98 - 19 + 60.", "Use the order of operations: work left to right for + and −.", "Step 1: 98 - 19 = 79.", "Step 2: 79 + 60 = 139.", "The answer is 139."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a9b65a2b78bcd35cad2a  seed 44  [cloze]
+      stem:    Ben starts with 90 mangoes. Then Ben receives 15 mangoes. Then Ben gives away 23 mangoes. Then Ben receives 49 mangoes. How many mangoes does Ben have now?
+      answer:  131
+      options: 132 / 133 / 130 / 131
+      hints:   ["Evaluate the number sentence: 90 + 15 - 23 + 49.", "Use the order of operations: work left to right for + and −.", "Step 1: 90 + 15 = 105.", "Step 2: 105 - 23 = 82.", "Step 3: 82 + 49 = 131.", "The answer is 131."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0e0346a54c540ce04ad1  seed 45  [mcq]
+      stem:    Ana starts with ₱33. Then Ana receives ₱11. Then Ana receives ₱39. Then Ana gives away ₱44. How much money does Ana have now?
+      answer:  39
+      options: 39 / 41 / 40 / 38
+      hints:   ["Evaluate the number sentence: 33 + 11 + 39 - 44.", "Use the order of operations: work left to right for + and −.", "Step 1: 33 + 11 = 44.", "Step 2: 44 + 39 = 83.", "Step 3: 83 - 44 = 39.", "The answer is 39."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f28c99102fe0a5e54b72  seed 46  [mcq]
+      stem:    Ana starts with ₱76. Then Ana receives ₱76. Then Ana receives ₱30. How much money does Ana have now?
+      answer:  182
+      options: 183 / 181 / 184 / 182
+      hints:   ["Evaluate the number sentence: 76 + 76 + 30.", "Use the order of operations: work left to right for + and −.", "Step 1: 76 + 76 = 152.", "Step 2: 152 + 30 = 182.", "The answer is 182."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6e28cbe2dafde2a81989  seed 500  [mcq]
+      stem:    Carlo starts with 75 eggs. Then Carlo gives away 60 eggs. Then Carlo receives 33 eggs. Then Carlo receives 82 eggs. How many eggs does Carlo have now?
+      answer:  130
+      options: 132 / 129 / 131 / 130
+      hints:   ["Evaluate the number sentence: 75 - 60 + 33 + 82.", "Use the order of operations: work left to right for + and −.", "Step 1: 75 - 60 = 15.", "Step 2: 15 + 33 = 48.", "Step 3: 48 + 82 = 130.", "The answer is 130."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 875833c47e189aaaf9ea  seed 501  [mcq]
+      stem:    Dina starts with 3 notebooks. Then Dina receives 97 notebooks. Then Dina gives away 48 notebooks. Then Dina receives 28 notebooks. How many notebooks does Dina have now?
+      answer:  80
+      options: 80 / 82 / 81 / 79
+      hints:   ["Evaluate the number sentence: 3 + 97 - 48 + 28.", "Use the order of operations: work left to right for + and −.", "Step 1: 3 + 97 = 100.", "Step 2: 100 - 48 = 52.", "Step 3: 52 + 28 = 80.", "The answer is 80."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c9491af6c76039a80e00  seed 502  [cloze]
+      stem:    Fidel starts with ₱46. Then Fidel receives ₱94. Then Fidel gives away ₱95. Then Fidel receives ₱90. How much money does Fidel have now?
+      answer:  135
+      options: 134 / 136 / 135 / 137
+      hints:   ["Evaluate the number sentence: 46 + 94 - 95 + 90.", "Use the order of operations: work left to right for + and −.", "Step 1: 46 + 94 = 140.", "Step 2: 140 - 95 = 45.", "Step 3: 45 + 90 = 135.", "The answer is 135."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 778e164bc50ff3c646b1  seed 600  [mcq]
+      stem:    Ana starts with ₱44. Then Ana receives ₱16. Then Ana receives ₱22. Then Ana receives ₱1. How much money does Ana have now?
+      answer:  83
+      options: 83 / 85 / 84 / 82
+      hints:   ["Evaluate the number sentence: 44 + 16 + 22 + 1.", "Use the order of operations: work left to right for + and −.", "Step 1: 44 + 16 = 60.", "Step 2: 60 + 22 = 82.", "Step 3: 82 + 1 = 83.", "The answer is 83."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a33975a568a8c3a55561  seed 601  [cloze]
+      stem:    Dina starts with ₱73. Then Dina receives ₱70. Then Dina gives away ₱94. Then Dina gives away ₱5. How much money does Dina have now?
+      answer:  44
+      options: 45 / 43 / 44 / 46
+      hints:   ["Evaluate the number sentence: 73 + 70 - 94 - 5.", "Use the order of operations: work left to right for + and −.", "Step 1: 73 + 70 = 143.", "Step 2: 143 - 94 = 49.", "Step 3: 49 - 5 = 44.", "The answer is 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 46c29b740e527f3b2f32  seed 602  [cloze]
+      stem:    Elena starts with ₱93. Then Elena gives away ₱78. Then Elena receives ₱62. How much money does Elena have now?
+      answer:  77
+      options: 76 / 77 / 79 / 78
+      hints:   ["Evaluate the number sentence: 93 - 78 + 62.", "Use the order of operations: work left to right for + and −.", "Step 1: 93 - 78 = 15.", "Step 2: 15 + 62 = 77.", "The answer is 77."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e52cfe0af3221eb667b8  seed 603  [mcq]
+      stem:    Dina starts with 6 mangoes. Then Dina receives 8 mangoes. Then Dina receives 1 mangoes. How many mangoes does Dina have now?
+      answer:  15
+      options: 15 / 14 / 16 / 17
+      hints:   ["Evaluate the number sentence: 6 + 8 + 1.", "Use the order of operations: work left to right for + and −.", "Step 1: 6 + 8 = 14.", "Step 2: 14 + 1 = 15.", "The answer is 15."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f4a6c4abe986378c573e  seed 604  [cloze]
+      stem:    Elena starts with ₱60. Then Elena receives ₱38. Then Elena receives ₱88. How much money does Elena have now?
+      answer:  186
+      options: 188 / 185 / 187 / 186
+      hints:   ["Evaluate the number sentence: 60 + 38 + 88.", "Use the order of operations: work left to right for + and −.", "Step 1: 60 + 38 = 98.", "Step 2: 98 + 88 = 186.", "The answer is 186."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cb71308e1c19a8c80143  seed 605  [mcq]
+      stem:    Ana starts with 56 mangoes. Then Ana receives 70 mangoes. Then Ana receives 64 mangoes. How many mangoes does Ana have now?
+      answer:  190
+      options: 191 / 192 / 190 / 189
+      hints:   ["Evaluate the number sentence: 56 + 70 + 64.", "Use the order of operations: work left to right for + and −.", "Step 1: 56 + 70 = 126.", "Step 2: 126 + 64 = 190.", "The answer is 190."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aa28e5b644fc5b5d5270  seed 606  [mcq]
+      stem:    Dina starts with ₱56. Then Dina receives ₱85. Then Dina gives away ₱45. How much money does Dina have now?
+      answer:  96
+      options: 97 / 98 / 95 / 96
+      hints:   ["Evaluate the number sentence: 56 + 85 - 45.", "Use the order of operations: work left to right for + and −.", "Step 1: 56 + 85 = 141.", "Step 2: 141 - 45 = 96.", "The answer is 96."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9d6b07b5639e810e256d  seed 700  [cloze]
+      stem:    Carlo starts with 78 storybooks. Then Carlo receives 71 storybooks. Then Carlo receives 12 storybooks. How many storybooks does Carlo have now?
+      answer:  161
+      options: 161 / 162 / 163 / 160
+      hints:   ["Evaluate the number sentence: 78 + 71 + 12.", "Use the order of operations: work left to right for + and −.", "Step 1: 78 + 71 = 149.", "Step 2: 149 + 12 = 161.", "The answer is 161."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 742a727ab309fd4b1453  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Carlo starts with ₱15. Then Carlo receives ₱71. Then Carlo gives away ₱75. Then Carlo receives ₱31. How much money does Carlo have now?
+      answer:  42
+      options: 43 / 41 / 42 / 44
+      hints:   ["Evaluate the number sentence: 15 + 71 - 75 + 31.", "Use the order of operations: work left to right for + and −.", "Step 1: 15 + 71 = 86.", "Step 2: 86 - 75 = 11.", "Step 3: 11 + 31 = 42.", "The answer is 42."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ced24a25e11d7414f37a  seed 702  [cloze]
+      stem:    🧁 Ate Nena has a math challenge about loaves of bread. Elena starts with ₱99. Then Elena gives away ₱35. Then Elena gives away ₱26. How much money does Elena have now?
+      answer:  38
+      options: 38 / 39 / 37 / 40
+      hints:   ["Evaluate the number sentence: 99 - 35 - 26.", "Use the order of operations: work left to right for + and −.", "Step 1: 99 - 35 = 64.", "Step 2: 64 - 26 = 38.", "The answer is 38."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d8559d418e405d93327c  seed 900  [mcq]
+      stem:    Ana starts with ₱13. Then Ana receives ₱85. Then Ana gives away ₱11. How much money does Ana have now?
+      answer:  87
+      options: 87 / 86 / 89 / 88
+      hints:   ["Evaluate the number sentence: 13 + 85 - 11.", "Use the order of operations: work left to right for + and −.", "Step 1: 13 + 85 = 98.", "Step 2: 98 - 11 = 87.", "The answer is 87."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5732ed0c52be80af05ce  seed 901  [mcq]
+      stem:    Fidel starts with 65 mangoes. Then Fidel receives 15 mangoes. Then Fidel gives away 39 mangoes. Then Fidel receives 49 mangoes. How many mangoes does Fidel have now?
+      answer:  90
+      options: 90 / 89 / 91 / 92
+      hints:   ["Evaluate the number sentence: 65 + 15 - 39 + 49.", "Use the order of operations: work left to right for + and −.", "Step 1: 65 + 15 = 80.", "Step 2: 80 - 39 = 41.", "Step 3: 41 + 49 = 90.", "The answer is 90."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 762f3f7ab0a8744d675c  seed 1000  [cloze]
+      stem:    Fidel starts with 88 storybooks. Then Fidel gives away 86 storybooks. Then Fidel receives 47 storybooks. Then Fidel receives 30 storybooks. How many storybooks does Fidel have now?
+      answer:  79
+      options: 78 / 79 / 80 / 81
+      hints:   ["Evaluate the number sentence: 88 - 86 + 47 + 30.", "Use the order of operations: work left to right for + and −.", "Step 1: 88 - 86 = 2.", "Step 2: 2 + 47 = 49.", "Step 3: 49 + 30 = 79.", "The answer is 79."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 68fb39b792da0f18165b  seed 1001  [cloze]
+      stem:    Dina starts with 26 storybooks. Then Dina gives away 12 storybooks. Then Dina receives 72 storybooks. How many storybooks does Dina have now?
+      answer:  86
+      options: 86 / 87 / 85 / 88
+      hints:   ["Evaluate the number sentence: 26 - 12 + 72.", "Use the order of operations: work left to right for + and −.", "Step 1: 26 - 12 = 14.", "Step 2: 14 + 72 = 86.", "The answer is 86."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 5331d98cdedd6a120e72  seed 1002  [cloze]
+      stem:    Elena starts with 19 mangoes. Then Elena receives 17 mangoes. Then Elena receives 36 mangoes. Then Elena gives away 62 mangoes. How many mangoes does Elena have now?
+      answer:  10
+      options: 10 / 11 / 9 / 12
+      hints:   ["Evaluate the number sentence: 19 + 17 + 36 - 62.", "Use the order of operations: work left to right for + and −.", "Step 1: 19 + 17 = 36.", "Step 2: 36 + 36 = 72.", "Step 3: 72 - 62 = 10.", "The answer is 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

@@ -1,7 +1,28 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Multiply numbers using the 6, 7, 8, and 9 multiplication tables.",
+    "grade": 3,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "multiply_numbers",
+      "clause": "Multiply numbers"
+    },
+    {
+      "kind": "representation",
+      "id": "6_7_8_and_9_multiplication_tables",
+      "clause": "6, 7, 8, and 9 multiplication tables"
+    }
+  ],
+  "packet_digest": "b801b2793126ce4ac0f029441ff03d8202817bc483c4afd168fbaed86bd5fa6e",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,35 +39,208 @@
     602,
     603,
     604,
-    605
+    605,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "9c6770d3a349fdd9fdb7",
+    "35d54ef5d737660eabd9",
+    "e43725555501b7abbe2b",
+    "c5a7148398aef9851dfd",
+    "f2642622eec24900d8b2",
+    "4f3faf1d7823f5656245",
+    "1f4ce568a0acddefc551",
+    "dc73c8c2eabac807a1f8",
+    "0ace611f928137ee0fdd",
+    "103b2526da3759fc20a4",
+    "89cce8913b688fa21af9",
+    "803ef22cc6d1a4a7e7b5",
+    "71b8232ed03c01e53aac",
+    "054c50f6c48bb20f2467",
+    "354fa4ce67194732fd04",
+    "1965536df162b987a964",
+    "83a3d5d3330a8f71e81e",
+    "4e8db5e03f2c7cc0de87",
+    "4661f64f71ed606e4385",
+    "a977a15eea298fd32764",
+    "6e17117b389b7b8c2070",
+    "2b0ccdcdcc75040e479b",
+    "3f480174626bfeb864aa",
+    "4d496cfe4e83cb87a16d",
+    "596693cc1652e3f2ad04"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "1 × 6 = 7. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 6.",
+        "Use the 6 times table: 6 × 1.",
+        "The product of 1 × 6 = 6."
+      ],
+      "sample_id": "9c6770d3a349fdd9fdb7",
+      "replay_digest": "fe291bc45ef24964558a4249491e21c5e172d227bf191470342bc01fc91a0662"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 43,
       "formatter": "error_detect",
       "question_text": "Grace solved: \"4 × 6 = ___\". Grace says the missing number is 24. Is Grace correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 24
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 24
+      },
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 6.",
+        "Use the 6 times table: 6 × 4.",
+        "The product of 4 × 6 = 24."
+      ],
+      "sample_id": "35d54ef5d737660eabd9",
+      "replay_digest": "9511c6ab078cd7c98e435841fd34400aee96c6e6d612f931690ef59eeee7d204"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 44,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade all the squares inside the 4×9 rectangle. How many squares did you shade in all?",
-      "correct_answer": 36
+      "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 36,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 9.",
+        "Use the 9 times table: 9 × 4.",
+        "The product of 4 × 9 = 36."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 4,
+        "cols": 9,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 36,
+        "grid_size": [
+          5,
+          10
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "12bbf3a4b4a34181f293218ff4470435110d1444d43a5cdd0ecd3b50e1448447",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 49,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "9 × 4",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 36
+          }
+        }
+      },
+      "sample_id": "e43725555501b7abbe2b",
+      "replay_digest": "a07ef155096a86dc523afe6afadc788a83ef950a880d2822ab30283e24169a54"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 45,
       "formatter": "cloze",
       "question_text": "3 × 8 = ___",
       "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -72,13 +266,36 @@
           "text": "24",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 8.",
+        "Use the 8 times table: 8 × 3.",
+        "The product of 3 × 8 = 24."
+      ],
+      "sample_id": "c5a7148398aef9851dfd",
+      "replay_digest": "10faa0db520bc6fb80fe10968b318f8f2aaf261c231512e1695f37d9e393f5b3"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the 6×6 array. How many squares are shaded in all?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -100,13 +317,82 @@
           "value": 24,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 6.",
+        "Use the 6 times table: 6 × 6.",
+        "The product of 6 × 6 = 36."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 6,
+        "cols": 6,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 36,
+        "grid_size": [
+          7,
+          7
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "47e12923c6b004c587134992dcbb6b679c39c6f79ee4f94cb2ba417d65ca90d7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 49,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "6 × 6",
+            "rectangle",
+            "36 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 36
+          }
+        }
+      },
+      "sample_id": "f2642622eec24900d8b2",
+      "replay_digest": "2d07b9ab0c2bc4cd7f32a0356e355bca774efc2f33d7189afd8b53fb4d706e9d"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 47,
       "formatter": "mcq",
       "question_text": "What is 8 × 8?",
       "correct_answer": 64,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -128,13 +414,39 @@
           "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 64,
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 8.",
+        "Use the 8 times table: 8 × 8.",
+        "The product of 8 × 8 = 64."
+      ],
+      "sample_id": "4f3faf1d7823f5656245",
+      "replay_digest": "9f8e554cf1b2a1cf2a770ebd12474b1406a7619357c6830e5a9a4390c9f05322"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "What is 9 × 8?",
       "correct_answer": 72,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -156,31 +468,182 @@
           "value": 72,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 8.",
+        "Use the 8 times table: 8 × 9.",
+        "The product of 9 × 8 = 72."
+      ],
+      "sample_id": "1f4ce568a0acddefc551",
+      "replay_digest": "24a0d0de4dca2f40a274b7212ec3e4d73632a210ba39c25f714ccbf3545baf50"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "8 × 9 = 63. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 9.",
+        "Use the 9 times table: 9 × 8.",
+        "The product of 8 × 9 = 72."
+      ],
+      "sample_id": "dc73c8c2eabac807a1f8",
+      "replay_digest": "c486368899ff1208a28ce5babaf02ff70a47eb8de07b1e8f9e54206ac2714e13"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 502,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade all the squares inside the 4×9 rectangle. How many squares did you shade in all?",
-      "correct_answer": 36
+      "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 36,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 9.",
+        "Use the 9 times table: 9 × 4.",
+        "The product of 4 × 9 = 36."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 4,
+        "cols": 9,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 36,
+        "grid_size": [
+          5,
+          10
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "12bbf3a4b4a34181f293218ff4470435110d1444d43a5cdd0ecd3b50e1448447",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 49,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "9 × 4",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 36
+          }
+        }
+      },
+      "sample_id": "0ace611f928137ee0fdd",
+      "replay_digest": "be8dd0fd7e9b1ecdb087b3784d79ee50bf640a44f12e3f625f8b6943b82dd89f"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "6 × 7 = 35. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 7.",
+        "Use the 7 times table: 7 × 6.",
+        "The product of 6 × 7 = 42."
+      ],
+      "sample_id": "103b2526da3759fc20a4",
+      "replay_digest": "0d821e5cef535b9ebb76bf2bb9fd082c29585536b50a313e58aadb3513bb9fb0"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Pia puts 7 water bowls in each of 6 bags. How many water bowls are in all the bags?",
       "correct_answer": 42,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -206,13 +669,38 @@
           "text": "13",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 42,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 7.",
+        "Use the 7 times table: 7 × 6.",
+        "The product of 6 × 7 = 42."
+      ],
+      "sample_id": "89cce8913b688fa21af9",
+      "replay_digest": "bda9bde2a9116b44ad228ef7062aa7b249a7d0a27090653dae91aadad3dd32ae"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is 3 × 9?",
       "correct_answer": 27,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "multi_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -234,22 +722,75 @@
           "value": 18,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 27,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 9.",
+        "Use the 9 times table: 9 × 3.",
+        "The product of 3 × 9 = 27."
+      ],
+      "sample_id": "803ef22cc6d1a4a7e7b5",
+      "replay_digest": "d863c36356f50227256af7fc22e10d8be4e243e4d83cb3325ae822227f18321c"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 603,
       "formatter": "error_detect",
       "question_text": "Ana solved: \"4 × 7 = ___\". Ana says the missing number is 11. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 28
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "single_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 28
+      },
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 7.",
+        "Use the 7 times table: 7 × 4.",
+        "The product of 4 × 7 = 28."
+      ],
+      "sample_id": "71b8232ed03c01e53aac",
+      "replay_digest": "e5e6b1303b524c7b47063474327e3161e2dcfb0abd95538b462abda03c7a73a9"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "6 × 6 = ___",
       "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -275,13 +816,38 @@
           "text": "36",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 6.",
+        "Use the 6 times table: 6 × 6.",
+        "The product of 6 × 6 = 36."
+      ],
+      "sample_id": "054c50f6c48bb20f2467",
+      "replay_digest": "4eea4dc83ee0563914b37b884363111e92186a77699918ec0afcc62cc4e594a8"
     },
     {
+      "node_id": "mat_g3_na_q3_0",
       "seed": 605,
       "formatter": "mcq",
       "question_text": "What is 5 × 7?",
       "correct_answer": 35,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "find_product"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -303,34 +869,1327 @@
           "value": 34,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 35,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 7.",
+        "Use the 7 times table: 7 × 5.",
+        "The product of 5 × 7 = 35."
+      ],
+      "sample_id": "354fa4ce67194732fd04",
+      "replay_digest": "4e382eaa1cde0637d20a3c36ed053815973e30c54a6a7bed204eede94fc711c6"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"4 × 7 = ___\". Carlo says the missing number is 27. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 28
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 28
+      },
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 7.",
+        "Use the 7 times table: 7 × 4.",
+        "The product of 4 × 7 = 28."
+      ],
+      "sample_id": "1965536df162b987a964",
+      "replay_digest": "34b606842ee6f5067ae1ab3a9c25b3c95ee03451258e4be73bfb9cd00a08d1e5"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the 1×7 array. How many squares are shaded in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 7.",
+        "Use the 7 times table: 7 × 1.",
+        "The product of 1 × 7 = 7."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 1,
+        "cols": 7,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 7,
+        "grid_size": [
+          2,
+          8
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "805445f3c4721b83ea4951e451a09fa128736e882f3f357e58b5fa8cb9b1570d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 20,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "7 × 1",
+            "rectangle",
+            "7 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 7
+          }
+        }
+      },
+      "sample_id": "83a3d5d3330a8f71e81e",
+      "replay_digest": "97ad5ee292d5e7d04f93974b9d63c7047c066e460af7107b88e0993d17185cc8"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 702,
+      "formatter": "set_fill_in_blank",
+      "question_text": "🐕 Ate Beng has a math challenge about cat toys. Shade all the squares inside the 5×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 30,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 6.",
+        "Use the 6 times table: 6 × 5.",
+        "The product of 5 × 6 = 30."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 6,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 30,
+        "grid_size": [
+          6,
+          7
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "ec424f682862a2260f90065f6dc8b382290b767966910d3f56a845f92e7e96eb",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 43,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "6 × 5",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 30
+          }
+        }
+      },
+      "sample_id": "4e8db5e03f2c7cc0de87",
+      "replay_digest": "3606f2aa345c121c8afd409ac846b77b124d7481f6db5f66eb7b00dbfe490f4e"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "What is 9 × 9?",
+      "correct_answer": 81,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 81,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 9.",
+        "Use the 9 times table: 9 × 9.",
+        "The product of 9 × 9 = 81."
+      ],
+      "sample_id": "4661f64f71ed606e4385",
+      "replay_digest": "a4102f0cd39cf5b4ad5ec0dabc42ef2e78b7db2c6063e77836f4679d310126be"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 801,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 4×7 rectangle. How many squares did you shade in all?",
+      "correct_answer": 28,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 28,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 7.",
+        "Use the 7 times table: 7 × 4.",
+        "The product of 4 × 7 = 28."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 4,
+        "cols": 7,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 28,
+        "grid_size": [
+          5,
+          8
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "fd9785e51268ff8c2fff240eafd3d8bfb79aecec1c8e397f5d489449cc331f74",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "7 × 4",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 28
+          }
+        }
+      },
+      "sample_id": "a977a15eea298fd32764",
+      "replay_digest": "2bca537fc5b55919344a7aa4d814bef52dd5e343688fd2bc4f812f75adbdab4a"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 900,
+      "formatter": "cloze",
+      "question_text": "1 × 6 = ___",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 6.",
+        "Use the 6 times table: 6 × 1.",
+        "The product of 1 × 6 = 6."
+      ],
+      "sample_id": "6e17117b389b7b8c2070",
+      "replay_digest": "5b13f8d5858dbe343ba132d06841836e75b4962945bd1f87da4564462cc8f80c"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "1 × 6 = 7. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 6.",
+        "Use the 6 times table: 6 × 1.",
+        "The product of 1 × 6 = 6."
+      ],
+      "sample_id": "2b0ccdcdcc75040e479b",
+      "replay_digest": "39731988f5eb29ad6585f095dc7e768bcdea308180edf31aa6ce422ff0895323"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 1000,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"1 × 6 = ___\". Carlo says the missing number is 6. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 6
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 6
+      },
+      "hints": [
+        "We need to find the total of equal groups 1 group of 6.",
+        "Use the 6 times table: 6 × 1.",
+        "The product of 1 × 6 = 6."
+      ],
+      "sample_id": "3f480174626bfeb864aa",
+      "replay_digest": "33be84941b8c5ed0e74b76b2a65b65d7ee746008b3aa732a795d2590d75ee4f7"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 1001,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 3×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": 18,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 6.",
+        "Use the 6 times table: 6 × 3.",
+        "The product of 3 × 6 = 18."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 3,
+        "cols": 6,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 18,
+        "grid_size": [
+          4,
+          7
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "afa1c0cf0b836b746db10500127a7d771ca77d64ff4843b623c12360a0ec8b15",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 31,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "6 × 3",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 18
+          }
+        }
+      },
+      "sample_id": "4d496cfe4e83cb87a16d",
+      "replay_digest": "8f45ff203c4843844a0cee9e02e91f5b5dd7b900b4f45af1f9bfcf2b89a1a8da"
+    },
+    {
+      "node_id": "mat_g3_na_q3_0",
+      "seed": 1002,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 1×7 rectangle. How many squares did you shade in all?",
+      "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": 7,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 7.",
+        "Use the 7 times table: 7 × 1.",
+        "The product of 1 × 7 = 7."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 1,
+        "cols": 7,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 7,
+        "grid_size": [
+          2,
+          8
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "24357f8b33ca2d6d5fb5ae526ce999050ae6afe4bdfe07e10e6e2a72569c75b8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 20,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "7 × 1",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 7
+          }
+        }
+      },
+      "sample_id": "596693cc1652e3f2ad04",
+      "replay_digest": "5d5d2520a4d3a407f914d4f7baa0632126a65a0c93c57a47aecaf0e241730420"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "9c6770d3a349fdd9fdb7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is unambiguous: one times six does not equal seven. The question clearly asks whether this equation is true or false with no interpretive variation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format is logically sound for assessing multiplication fact fluency. The false statement tests whether students recognize an incorrect product, which is developmentally appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and accessible to Grade 3 readers. The mathematical notation and answer choices are clear without extraneous complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times six equals six, not seven, so the correct answer is false. The mathematics is sound and the correct response is clearly justified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "35d54ef5d737660eabd9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a named student's work with a specific proposed answer and asks for judgment of correctness. No ambiguity exists in what is being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection with named characters is a valid assessment method for checking multiplication fact knowledge. The scenario of checking someone else's work reflects real problem-solving contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students are asked to evaluate whether Grace's answer of 24 to the problem four times six is correct. The task is clearly stated with a specific computational claim to judge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times six equals 24, which is correct, so Grace's work is error-free and the answer has_error false is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "e43725555501b7abbe2b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual task is explicit: shade all squares in a rectangle and count them. The grid format removes ambiguity about which squares to count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting rectangular arrays is a well-established visual model for multiplication. The setup of a four by nine rectangle logically supports computation of four times nine."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is direct: shade all squares in the rectangle and report the total. Grid-based visual problems are familiar to Grade 3 students at this quarter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four by nine rectangular array contains exactly thirty-six squares, corresponding to the product four times nine equals thirty-six."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "c5a7148398aef9851dfd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is unambiguous: fill in the missing factor for three times eight. No alternative interpretation of the multiplication expression exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A cloze multiplication problem is logically valid for assessing fluency. The structure with plausible distractors supports diagnostic understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is familiar: students see the incomplete equation and select the correct product from four options including twenty-four, the correct answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three times eight equals twenty-four. The distractors twenty-three, sixteen, and eleven are distinct wrong values that test genuine fact knowledge."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "f2642622eec24900d8b2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual read-only multiple choice question is clear: count the shaded squares in a presented six by six array and select the correct total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A visual six-by-six grid with counted shaded squares is a valid model for six times six multiplication. The read-only format ensures students observe, not manipulate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task instructs students to look at the array and report how many squares are shaded. Visual counting of a clear rectangular grid is accessible to Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A six-by-six array contains thirty-six unit squares, and the correct answer option is thirty-six. Distractors thirty-nine, thirty-three, and twenty-four test whether students count accurately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "4f3faf1d7823f5656245",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct with no ambiguity: what is the product when eight is multiplied by eight. The multiple choice format provides clear alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking students to compute eight times eight tests knowledge of the eight table at its maximum within the specified range. The product-selection format is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students identify the result of eight times eight from options including sixty-four, sixty-three, fifty-six, and sixteen. The language and format are clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times eight equals sixty-four. The distractors are plausible near-misses: sixty-three is one away, fifty-six is related to eight times seven, and sixteen is eight times two."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "1f4ce568a0acddefc551",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the product of nine times eight with no ambiguous phrasing. Options range from one to seventy-two with no overlapping or unclear choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Computing nine times eight combines two of the required tables and is a valid assessment of the eight table or nine table fluency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is straightforward: students select the product of nine times eight from four options. The distractors one, sixty-four, and seventeen are sufficiently distinct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine times eight equals seventy-two. The distractors include one (clearly too small), sixty-four (eight times eight), and seventeen (random), which test actual knowledge."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "dc73c8c2eabac807a1f8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement eight times nine equals sixty-three presents a clear false claim without any ambiguous wording. Students must judge whether this equation is true or false."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false statement about a multiplication fact is a valid format for assessing whether students recognize incorrect products. The false value tests discrimination."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical statement is presented in standard notation and the question asks directly for a true or false judgment. Language is simple and direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times nine equals seventy-two, not sixty-three. The incorrect value sixty-three is close enough to require genuine knowledge rather than estimation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "0ace611f928137ee0fdd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual task is unambiguous: shade all squares in a four by nine rectangle and report the total count. The interactive format clearly defines the action."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An interactive grid-shading task provides kinesthetic engagement with the four by nine multiplication model. The scenario reflects authentic counting contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instructions tell students to shade all squares in a four by nine rectangle and report how many they shaded. The interface is described as set-mode shading."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four by nine rectangular array has thirty-six unit squares. Students who shade all squares and count correctly will arrive at thirty-six."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "103b2526da3759fc20a4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement six times seven equals thirty-five is clear and unambiguous. The true or false judgment is straightforward with no interpretive variance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing whether students recognize the incorrect product thirty-five for six times seven is a valid error-identification task within the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical statement and the true/false question are presented in a format familiar to Grade 3 students. Language is concise and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times seven equals forty-two, not thirty-five. The incorrect value is close enough that students must know the fact rather than guess."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "89cce8913b688fa21af9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem describes a clear scenario: Pia puts seven water bowls in each of six bags. The question asks for the total count. No ambiguity about what to calculate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of distributing objects into containers is a realistic equal-groups context that supports the multiplicative reasoning for six times seven."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The story uses familiar objects and actions. Students understand that they need to find the total number of bowls across all six bags with seven in each."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six bags with seven bowls each equals forty-two bowls total. The distractors thirty-five, forty-one, and thirteen are sufficiently varied to require computation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "803ef22cc6d1a4a7e7b5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks for the product of three times nine with no interpretive ambiguity. The four options are distinct numerical values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking for the product of three times nine tests the nine table within the specified range. The multiple choice format is valid for fact recall."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students select the correct product from options including twenty-seven, twelve, twenty-six, and eighteen. The language and format are clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three times nine equals twenty-seven. The distractors include twelve (three times four), twenty-six (off by one), and eighteen (two times nine), testing fact knowledge."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "71b8232ed03c01e53aac",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ana claims that four times seven equals eleven. The question clearly asks whether Ana is correct. No ambiguity exists about what claim is being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection with a plausible wrong answer is a valid assessment method. Ana's error eleven is not a simple computational typo but tests genuine understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students evaluate whether Ana's answer of eleven to four times seven is correct. The task structure and named character make the problem engaging and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times seven equals twenty-eight, not eleven. Ana's error is significant enough to require students to know the correct seven table fact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "054c50f6c48bb20f2467",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents an incomplete equation six times six equals blank with options. Students must identify the missing product. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Completing a multiplication equation for six times six is a direct and valid test of the six table at its highest value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with four options is familiar to Grade 3. Students identify the product thirty-six from choices including thirty-five, twelve, thirty, and thirty-six."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times six equals thirty-six. The distractors thirty-five and thirty are near-misses, while twelve is six times two, all requiring actual knowledge."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "354fa4ce67194732fd04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the product of five times seven. Despite the content issue, the question phrasing is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "As a general multiplication problem, the question format is logically sound. The issue is curricular scope, not logical structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is phrased clearly: students identify the product from four options. The format is accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically, five times seven equals thirty-five, and this is correctly designated as the answer. However, five is not in the required table set of six, seven, eight, and nine."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "1965536df162b987a964",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Carlo claims that four times seven equals twenty-seven. The question asks whether Carlo is correct. The statement and judgment are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection with Carlo's incorrect answer of twenty-seven is a valid assessment method. The incorrect value is sufficiently different to require genuine knowledge."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents Carlo's work with a specific wrong answer and asks for evaluation. The named character and clear claim make the task accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times seven equals twenty-eight, not twenty-seven. Carlo's error is close but distinguishable, requiring students to know the seven table fact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "83a3d5d3330a8f71e81e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual question presents a one by seven array with multiple choice options. Despite the dance-shoes theme, the mathematical task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting shaded squares in a visual array is a valid model for one times seven. The thematic wrapper does not interfere with the logical structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task asks students to look at the array and count shaded squares. The dance-shoes context does not confuse the mathematical question being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A one by seven array contains seven squares. The answer seven is listed among options including six, sixteen, and ten. The correct response corresponds to the actual count."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "4e8db5e03f2c7cc0de87",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual instruction is clear: shade all squares in a five by six rectangle and count them. The task definition is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "As a mathematical structure, counting rectangular arrays is valid. However, five is not in the required multiplication table set."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task instructs students to shade squares in a rectangle and report the total. Despite the cat-toys theme, the visual task is clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically, a five by six rectangle contains thirty squares, which is the designated answer. However, five is not in the specified table range of six, seven, eight, and nine."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "4661f64f71ed606e4385",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the product of nine times nine with multiple choice options. The question is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Computing nine times nine tests the nine table at its maximum value. The multiple choice format is logically sound for this assessment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students identify the product eighty-one from options including eighty-one, eighteen, eighty, and seventy-two. The format is familiar and clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine times nine equals eighty-one. The distractors include eighteen (nine times two), eighty (off by one), and seventy-two (nine times eight), testing genuine knowledge."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "a977a15eea298fd32764",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual task is explicit: shade all squares in a four by seven rectangle and report the total. No ambiguity about the shading scope or counting task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four by seven rectangular array is a valid visual model for multiplication. Interactive shading supports engagement with the seven table."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is clear: shade all squares in the four by seven rectangle and count them. The grid format is familiar to Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A four by seven rectangular array contains twenty-eight unit squares, corresponding to the product four times seven equals twenty-eight."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "6e17117b389b7b8c2070",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The equation one times six equals blank is presented clearly with four options. Students must identify the missing product without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A cloze problem for one times six is valid even though it involves the multiplicative identity. The problem structure is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format presents the incomplete equation with options seven, six, five, and twelve. Students select the correct product six in a familiar cloze format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times six equals six. The distractors seven (off by one), five (off by one), and twelve (two times six) test whether students know the identity property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "2b0ccdcdcc75040e479b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement one times six equals seven presents a clear false claim. The true/false judgment requires no interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A true/false statement about one times six is a valid format for assessing multiplication fact knowledge, particularly the identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical statement is presented in standard notation. The question asks for a true or false judgment in accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times six equals six, not seven. The correct answer is false. The incorrect value seven tests whether students know the basic fact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "3f480174626bfeb864aa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Carlo claims that one times six equals six. The question clearly asks whether Carlo is correct. No ambiguity exists about what is being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection with a correct answer is valid assessment. When Carlo is actually correct, students must verify this rather than assume errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students evaluate whether Carlo's answer of six to one times six is correct. The task structure with a named character is clear and engaging."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times six equals six, so Carlo is correct and has_error is false. The item appropriately confirms the identity property of multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "4d496cfe4e83cb87a16d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual shading task is unambiguous: students shade all squares in a three by six rectangle and report the total. No interpretive variation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A three by six rectangular array is a valid model for the six table. Interactive shading provides multiple representations of the multiplication fact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is direct: shade all squares in the three by six rectangle. The grid visual is a familiar format for Grade 3 mastery practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A three by six rectangular array contains eighteen unit squares, corresponding to three times six equals eighteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "sample_id": "596693cc1652e3f2ad04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual shading task is explicit: shade all squares in a one by seven rectangle and count them. The task definition is clear without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A one by seven array is a valid visual model for the seven table. The interactive shading format supports kinesthetic learning of the multiplication fact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction tells students to shade all squares in a one by seven rectangle. The grid is clearly displayed and the counting task is straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A one by seven rectangular array contains seven unit squares, corresponding to one times seven equals seven. The visual model supports the fact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "multiply_numbers",
+      "clause": "Multiply numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample involves multiplication. Tasks range from direct computation to error detection to visual array counting. All samples require students to multiply two factors to arrive at a product within the context of the specified multiplication tables.",
+      "sample_ids": [
+        "9c6770d3a349fdd9fdb7",
+        "35d54ef5d737660eabd9",
+        "e43725555501b7abbe2b",
+        "c5a7148398aef9851dfd",
+        "f2642622eec24900d8b2",
+        "4f3faf1d7823f5656245",
+        "1f4ce568a0acddefc551",
+        "dc73c8c2eabac807a1f8",
+        "0ace611f928137ee0fdd",
+        "103b2526da3759fc20a4",
+        "89cce8913b688fa21af9",
+        "803ef22cc6d1a4a7e7b5",
+        "71b8232ed03c01e53aac",
+        "054c50f6c48bb20f2467",
+        "354fa4ce67194732fd04",
+        "1965536df162b987a964",
+        "83a3d5d3330a8f71e81e",
+        "4e8db5e03f2c7cc0de87",
+        "4661f64f71ed606e4385",
+        "a977a15eea298fd32764",
+        "6e17117b389b7b8c2070",
+        "2b0ccdcdcc75040e479b",
+        "3f480174626bfeb864aa",
+        "4d496cfe4e83cb87a16d",
+        "596693cc1652e3f2ad04"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    },
+    {
+      "requirement_id": "6_7_8_and_9_multiplication_tables",
+      "clause": "6, 7, 8, and 9 multiplication tables",
+      "verdict": "FAIL",
+      "reasoning": "Two samples violate the specified operand range. Sample 354fa4ce67194732fd04 asks for five times seven where five is outside the required set. Sample 4e8db5e03f2c7cc0de87 presents a five by six rectangle requiring students to compute five times six, also violating the boundary. This represents a material failure to constrain problems to the specified multiplication tables.",
+      "sample_ids": [
+        "354fa4ce67194732fd04",
+        "4e8db5e03f2c7cc0de87"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "b801b2793126ce4ac0f029441ff03d8202817bc483c4afd168fbaed86bd5fa6e",
+      "clause_ids": [
+        "multiply_numbers",
+        "6_7_8_and_9_multiplication_tables"
+      ],
+      "response_ref": ".responses/s5-phaseC-w16-haiku45-20260925.json",
+      "response_digest": "116259ecaad548f26fd1e5f7d996c4e7c98756d488b0b3f3234c5d241733c33b",
+      "prompt_ref": ".responses/s5-phaseC-w16-haiku45-20260925.prompt.txt",
+      "prompt_digest": "9c627f95fb2470574ce7d1098b8877ace508122b61a5f8a9577c82838aaf7f54",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q3_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
+    "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Products are asked for directly and each of the four tables named supplies a factor somewhere, with six, seven, eight and nine all appearing. The array and shading items tie the product to an area model rather than to recall alone."
+      "rationale": "The variety of task formats including true/false statements, error detection with named character analysis, fill-in-blank calculations, multiple choice questions, and visual grid-based counting tasks are all cognitively appropriate for Grade 3 Quarter 3 learners developing automaticity with multiplication facts."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Two samples violate the required operand range: sample 354fa4ce67194732fd04 uses 5 times 7 and sample 4e8db5e03f2c7cc0de87 uses 5 times 6, where 5 is not in the specified 6, 7, 8, and 9 multiplication tables. This represents a clear misalignment with the competency boundary."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The two-part decomposition correctly identifies the core operations needed, but implementation failures undermine fulfillment of the curriculum requirement. The presence of out-of-range multipliers means students are asked to perform multiplication table work beyond the specified scope.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The decomposition into multiply_numbers and 6_7_8_and_9_multiplication_tables losslessly captures the competency statement. These two components together require students to multiply using exactly the specified table range without overlap or gap.",
+        "requirement_ids": [
+          "multiply_numbers",
+          "6_7_8_and_9_multiplication_tables"
+        ]
+      },
+      "clause_ids": [
+        "multiply_numbers",
+        "6_7_8_and_9_multiplication_tables"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Facts are drawn across the range of each table rather than clustering at the doubles, and both orders of a fact appear, since a nine times eight item sits alongside an eight times nine one."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Single-digit multiplication with an array to fall back on is the right demand for this quarter, and the equal-groups sentence about bowls in bags is one clause of setup plus one question."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Recall, arrays to count, a rectangle to shade, an equal-groups story, a truth judgment and a classmate's error to check all appear, and the error checks are keyed both ways rather than always accepting the work."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Two different seeds return the identical item 'Shade all the squares inside the 4×9 rectangle.' with the same key, so seed variation is not always producing a new problem. The set also opens on '1 × 6 = 7. True or False?', a fact that belongs to the identity property rather than to table fluency."
+      "rationale": "All four required tables are represented across multiple samples: the 6 table appears in eight samples covering various multipliers, the 7 table in seven samples, the 8 table in four samples, and the 9 table in four samples. Format diversity includes symbolic problems, word problems, visual grids, and error analysis.",
+      "clause_ids": [
+        "multiply_numbers",
+        "6_7_8_and_9_multiplication_tables"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Factors stay inside the tables named and products top out at sixty-four and seventy-two, which is exactly the band this objective occupies."
+      "rationale": "The product range from 6 times 1 equals 6 through 9 times 9 equals 81 is developmentally suitable for Grade 3 Quarter 3 learners. Visual grid representations effectively support the equal-groups conceptualization. Word problems use realistic, age-appropriate contexts with familiar objects."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Questions span multiple formats: true or false statements, error detection with plausible misconceptions, fill-in-the-blank with options, multiple choice, visual grid tasks for both reading and interactive shading, and realistic word problem scenarios. Experience levels vary including standard, hint-gated, mastery drill, and scaffolded versions."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
