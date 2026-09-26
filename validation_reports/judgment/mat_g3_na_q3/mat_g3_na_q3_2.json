@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Multiply numbers with and without regrouping: 2- to 3-digit numbers by a 1-digit number, and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit, with products up to 10 000.",
+    "grade": 3,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "multiply_numbers",
+      "clause": "Multiply numbers"
+    },
+    {
+      "kind": "property",
+      "id": "with_and_without_regrouping",
+      "clause": "with and without regrouping"
+    },
+    {
+      "kind": "range",
+      "id": "2_to_3_digit_by_1_digit",
+      "clause": "2- to 3-digit numbers by a 1-digit number"
+    },
+    {
+      "kind": "range",
+      "id": "2_to_4_digit_by_leading_non_zero",
+      "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit"
+    },
+    {
+      "kind": "range",
+      "id": "products_up_to_10_000",
+      "clause": "products up to 10 000"
+    }
+  ],
+  "packet_digest": "1fdd70975c334287976adfe9e00c013cf9848c2e346f1fb4116c389f31946f9f",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,14 +51,63 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "c8b530fe3e9caa6eee68",
+    "22c5cf9838aa32f5ee25",
+    "54036ffa8aca22c50258",
+    "d6730a6716c2db78c0d2",
+    "efb811b9c11decd2ef07",
+    "2ececb4dcf84f585e9cb",
+    "e8f22f71c2888fd38497",
+    "78fada99efc04c162d02",
+    "c9464b9d292f04c1b715",
+    "12798b888e6857483124",
+    "6df3ecedd3bb0efbd334",
+    "b144737d63a20e13a6c3",
+    "f1cc24ce074d28baa645",
+    "fc2cfdfca1bcdd7cd225",
+    "1969462a895889a84c60",
+    "5487bab0c85a168b5fcd",
+    "d9912518f4bfcfd07b8b",
+    "0d8f2a0f353e8ca2bf7a",
+    "99bcbb42e5fffa6f36e1",
+    "0220807f2b2118bb005e",
+    "5c051afdcc7f90b3b289",
+    "597b81db1a63e40b2df8"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What is 41 × 6?",
       "correct_answer": 246,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,28 +129,103 @@
           "value": 35,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 246,
+      "hints": [
+        "We need to find the total of equal groups 41 groups of 6.",
+        "Use the 6 times table: 6 × 41.",
+        "Break 41 into 40 + 1: (40 × 6) + (1 × 6) = 240 + 6 = 246.",
+        "The product of 41 × 6 = 246."
+      ],
+      "sample_id": "c8b530fe3e9caa6eee68",
+      "replay_digest": "7ef063cac28d91088d757381c7388e3dab0396758267d609a015c7bce44ac1e9"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "573 × 4 = 577. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 573 groups of 4.",
+        "Think of it as 4 groups of 573: 573 + 573 + 573 + 573.",
+        "Break 573 into 570 + 3: (570 × 4) + (3 × 4) = 2280 + 12 = 2292.",
+        "The product of 573 × 4 = 2292."
+      ],
+      "sample_id": "22c5cf9838aa32f5ee25",
+      "replay_digest": "c26ed5e7f8dd4933b5ea48881bb05a9f2596a58c444542ab2388acdbd7946a80"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved: \"1000 × 10 = ___\". Rico says the missing number is 10000. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 10000
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 10000
+      },
+      "hints": [
+        "We need to find the total of equal groups 1000 groups of 10.",
+        "Use the 10 times table: 10 × 1000.",
+        "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+        "The product of 1000 × 10 = 10000."
+      ],
+      "sample_id": "54036ffa8aca22c50258",
+      "replay_digest": "662e271f5dc68fb9d574bb4c06ce80f2ef0eea0a9b82608e6d3c0571fe6af0ae"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is 108 × 80?",
       "correct_answer": 8640,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -87,13 +247,37 @@
           "value": 188,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8640,
+      "hints": [
+        "We need to find the total of equal groups 108 groups of 80.",
+        "Use the 80 times table: 80 × 108.",
+        "Break 108 into 100 + 8: (100 × 80) + (8 × 80) = 8000 + 640 = 8640.",
+        "The product of 108 × 80 = 8640."
+      ],
+      "sample_id": "d6730a6716c2db78c0d2",
+      "replay_digest": "3fe7ef6f5a48641f060fca2eeeaa056f79bc22d9a88ad70f7f22e444a85e1586"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "702 × 2 = ___",
       "correct_answer": 1404,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -119,19 +303,73 @@
           "text": "1404",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 1404,
+      "hints": [
+        "We need to find the total of equal groups 702 groups of 2.",
+        "Think of it as 2 groups of 702: 702 + 702.",
+        "Break 702 into 700 + 2: (700 × 2) + (2 × 2) = 1400 + 4 = 1404.",
+        "The product of 702 × 2 = 1404."
+      ],
+      "sample_id": "efb811b9c11decd2ef07",
+      "replay_digest": "f20121ca0b94c24f9ff89d570ed6f6777a98c91b2a7eaf99491fee8669738da6"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "1000 × 10 = 9999. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 1000 groups of 10.",
+        "Use the 10 times table: 10 × 1000.",
+        "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+        "The product of 1000 × 10 = 10000."
+      ],
+      "sample_id": "2ececb4dcf84f585e9cb",
+      "replay_digest": "352937494162841060e6ec0366c9e8614f7a2c8a2d95ae8a6fb151d3d789d07c"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What is 1000 × 10?",
       "correct_answer": 10000,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,28 +391,110 @@
           "value": 10000,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10000,
+      "hints": [
+        "We need to find the total of equal groups 1000 groups of 10.",
+        "Use the 10 times table: 10 × 1000.",
+        "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+        "The product of 1000 × 10 = 10000."
+      ],
+      "sample_id": "e8f22f71c2888fd38497",
+      "replay_digest": "dfa2f1a2a5951780283e1730725ba3ab60335e5155072dd792f79e011a2cdbaa"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"33 × 300 = ___\". Dante says the missing number is 9900. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 9900
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9900
+      },
+      "hints": [
+        "We need to find the total of equal groups 33 groups of 300.",
+        "Use the 300 times table: 300 × 33.",
+        "Break 33 into 30 + 3: (30 × 300) + (3 × 300) = 9000 + 900 = 9900.",
+        "The product of 33 × 300 = 9900."
+      ],
+      "sample_id": "78fada99efc04c162d02",
+      "replay_digest": "67b868be614f15c8fc295694ffc6f90a74a0b41515243ff8553f8e39b3adbc47"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "104 × 80 = 8320. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 104 groups of 80.",
+        "Use the 80 times table: 80 × 104.",
+        "Break 104 into 100 + 4: (100 × 80) + (4 × 80) = 8000 + 320 = 8320.",
+        "The product of 104 × 80 = 8320."
+      ],
+      "sample_id": "c9464b9d292f04c1b715",
+      "replay_digest": "966fd172c750236895424e5d8b319b5fed440f9e5dfe2c3d81b4b0a01adf18c1"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "69 × 3 = ___",
       "correct_answer": 207,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "multi_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -200,13 +520,39 @@
           "text": "72",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 207,
+      "hints": [
+        "We need to find the total of equal groups 69 groups of 3.",
+        "Think of it as 3 groups of 69: 69 + 69 + 69.",
+        "Break 69 into 60 + 9: (60 × 3) + (9 × 3) = 180 + 27 = 207.",
+        "The product of 69 × 3 = 207."
+      ],
+      "sample_id": "12798b888e6857483124",
+      "replay_digest": "2b1707be87a6333ce58e4fce7ed3f50a9e234665ee88b697671fce6b52b92f64"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is 43 × 200?",
       "correct_answer": 8600,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -228,40 +574,1185 @@
           "value": 8599,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8600,
+      "hints": [
+        "We need to find the total of equal groups 43 groups of 200.",
+        "Use the 200 times table: 200 × 43.",
+        "Break 43 into 40 + 3: (40 × 200) + (3 × 200) = 8000 + 600 = 8600.",
+        "The product of 43 × 200 = 8600."
+      ],
+      "sample_id": "6df3ecedd3bb0efbd334",
+      "replay_digest": "b7bad81fd0f8aa0764d6b075933cccd7b889b777a9ca266cf8e2ce88d6a4faac"
     },
     {
+      "node_id": "mat_g3_na_q3_2",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "108 × 9 = 972. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "find_product"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 108 groups of 9.",
+        "Use the 9 times table: 9 × 108.",
+        "Break 108 into 100 + 8: (100 × 9) + (8 × 9) = 900 + 72 = 972.",
+        "The product of 108 × 9 = 972."
+      ],
+      "sample_id": "b144737d63a20e13a6c3",
+      "replay_digest": "e05f8135e9572359b2f566c40f618a19234d85f69619436cd8fb06fe49976e09"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "99 × 9 = 891. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 99 groups of 9.",
+        "Use the 9 times table: 9 × 99.",
+        "Break 99 into 90 + 9: (90 × 9) + (9 × 9) = 810 + 81 = 891.",
+        "The product of 99 × 9 = 891."
+      ],
+      "sample_id": "f1cc24ce074d28baa645",
+      "replay_digest": "f437e79026c7c305fed1ed6644f4e92f3a65a02525d2ec08edec44c0c50872ce"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🚴 Ate Sam has a math challenge about running shoes. 156 × 20 = ___",
+      "correct_answer": 3120,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3120,
+          "text": "3120",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 136,
+          "text": "136",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 176,
+          "text": "176",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3100,
+          "text": "3100",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3120,
+      "hints": [
+        "We need to find the total of equal groups 156 groups of 20.",
+        "Use the 20 times table: 20 × 156.",
+        "Break 156 into 150 + 6: (150 × 20) + (6 × 20) = 3000 + 120 = 3120.",
+        "The product of 156 × 20 = 3120."
+      ],
+      "sample_id": "fc2cfdfca1bcdd7cd225",
+      "replay_digest": "eaaabcd2741d5a71a0b40d04e6dca5962e8586baa4015124ddcba12424e687af"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🏐 Ate Alyssa has a math challenge about shuttlecocks. Manny solved: \"44 × 2 = ___\". Manny says the missing number is 86. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 88
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 88
+      },
+      "hints": [
+        "We need to find the total of equal groups 44 groups of 2.",
+        "Think of it as 2 groups of 44: 44 + 44.",
+        "Break 44 into 40 + 4: (40 × 2) + (4 × 2) = 80 + 8 = 88.",
+        "The product of 44 × 2 = 88."
+      ],
+      "sample_id": "1969462a895889a84c60",
+      "replay_digest": "0c169ce9999bfe12e2345f56701677c1e981fbba941bfba0a207be69878e5ee3"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "1000 × 10 = ___",
+      "correct_answer": 10000,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9990,
+          "text": "9990",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10000,
+          "text": "10000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 990,
+          "text": "990",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1010,
+          "text": "1010",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10000,
+      "hints": [
+        "We need to find the total of equal groups 1000 groups of 10.",
+        "Use the 10 times table: 10 × 1000.",
+        "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+        "The product of 1000 × 10 = 10000."
+      ],
+      "sample_id": "5487bab0c85a168b5fcd",
+      "replay_digest": "35e4d521e1a07235c34b47f6f4a6539adfc4b0425d49e37472e96a4f39f5c189"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"24 × 7 = ___\". Pia says the missing number is 168. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 168
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 168
+      },
+      "hints": [
+        "We need to find the total of equal groups 24 groups of 7.",
+        "Use the 7 times table: 7 × 24.",
+        "Break 24 into 20 + 4: (20 × 7) + (4 × 7) = 140 + 28 = 168.",
+        "The product of 24 × 7 = 168."
+      ],
+      "sample_id": "d9912518f4bfcfd07b8b",
+      "replay_digest": "9d7e86b997b00cf74c35d86b0d528fb43d2dccc3136714212084d2effbb40da3"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is 10 × 6?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 54,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 6.",
+        "Use the 6 times table: 6 × 10.",
+        "Break 10 into 10 + 0: (10 × 6) + (0 × 6) = 60 + 0 = 60.",
+        "The product of 10 × 6 = 60."
+      ],
+      "sample_id": "0d8f2a0f353e8ca2bf7a",
+      "replay_digest": "f72ca098cad4112f14dde9224f40c28d95d14367acf43befd61d24f7c4e78bc0"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What is 12 × 5?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "We need to find the total of equal groups 12 groups of 5.",
+        "Think of it as 5 groups of 12: 12 + 12 + 12 + 12 + 12.",
+        "Break 12 into 10 + 2: (10 × 5) + (2 × 5) = 50 + 10 = 60.",
+        "The product of 12 × 5 = 60."
+      ],
+      "sample_id": "99bcbb42e5fffa6f36e1",
+      "replay_digest": "a9f8c95eb28f1ef29ecf281509e01fca657263979914ccf2ec047149d0bc7b84"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "1000 × 10 = 1010. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 1000 groups of 10.",
+        "Use the 10 times table: 10 × 1000.",
+        "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.",
+        "The product of 1000 × 10 = 10000."
+      ],
+      "sample_id": "0220807f2b2118bb005e",
+      "replay_digest": "3b799c6773a0dfdfb15ccf1706fdd052683771ee9bbf251151f8b4872ec6ea74"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"81 × 3 = ___\". Liza says the missing number is 246. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 243
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 243
+      },
+      "hints": [
+        "We need to find the total of equal groups 81 groups of 3.",
+        "Think of it as 3 groups of 81: 81 + 81 + 81.",
+        "Break 81 into 80 + 1: (80 × 3) + (1 × 3) = 240 + 3 = 243.",
+        "The product of 81 × 3 = 243."
+      ],
+      "sample_id": "5c051afdcc7f90b3b289",
+      "replay_digest": "c460dda63de8ee9188b1dd63243aa19464683bfcbddfb0cd73ecdacec324e028"
+    },
+    {
+      "node_id": "mat_g3_na_q3_2",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"26 × 50 = ___\". Manny says the missing number is 1250. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 1300
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 1300
+      },
+      "hints": [
+        "We need to find the total of equal groups 26 groups of 50.",
+        "Use the 50 times table: 50 × 26.",
+        "Break 26 into 20 + 6: (20 × 50) + (6 × 50) = 1000 + 300 = 1300.",
+        "The product of 26 × 50 = 1300."
+      ],
+      "sample_id": "597b81db1a63e40b2df8",
+      "replay_digest": "99debbf880e2307da17e99a2efbaf0c25a25179c8aed622d04bcdc4aace7e886"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "c8b530fe3e9caa6eee68",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests the product of 41 and 6 with no alternative interpretation. Options are distinct numeric values eliminating confusion. Hints confirm the question intent through explicit equal-groups language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups framing (41 groups of 6) is contextually appropriate and logically sound. The decomposition into 40+1 and application of the 6 times table follow standard Grade 3 strategies. The calculation sequence matches expected mental math progression."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is phrased in clear, unambiguous language suitable for independent Grade 3 learners. The hint progression moves naturally from concrete grouping to abstract symbolic decomposition without logical jumps. Vocabulary is within Grade 3 reach."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 41×6=246 is correct. The hint equations are all mathematically sound: 40×6=240, 1×6=6, 240+6=246. The 6 times table reference is accurate. No computational or notational errors appear anywhere in the sample."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "22c5cf9838aa32f5ee25",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is unambiguous. The stem declares 573×4=577 and asks for truth judgment. No parsing ambiguity or alternative readings exist."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups and decomposition language in hints is logically coherent. The false statement is pedagogically sound because it tests whether learners compute the actual product rather than recognizing surface similarity between 573 and 577. The error is plausible at Grade 3 level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format is straightforward for Grade 3 true/false assessment. The hint chain explicitly shows why the statement is false by calculating the correct product 2292. The progression from grouping language through decomposition to final answer is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 573×4=2292 is correct. All hint equations check: 570×4=2280, 3×4=12, 2280+12=2292. The false statement 573×4=577 correctly identifies an error. No arithmetic or logic errors in any hint line."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "54036ffa8aca22c50258",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is clear: Rico proposes an answer, and the question asks whether he is correct. The mathematical claim is unambiguous. No parsing or interpretation uncertainty."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of Rico solving 1000×10 and claiming 10000 is Grade 3-appropriate. The decomposition strategy in hints follows standard practice. Designating this as a correct answer (no error) is logically sound because 1000×10 does equal 10000."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hint progression moves from grouping interpretation through decomposition to verification. The conclusion that Rico is correct is directly supported by the calculated product."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. The answer key correctly marks Rico as having no error because the answer is exact."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "d6730a6716c2db78c0d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ stem directly requests the product of 108 and 80. All four options are numerically distinct. No alternative interpretation of the question exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups language and decomposition strategy are appropriate for Grade 3. The hint moves logically from concrete grouping to place-value decomposition to final calculation. The distractors (8560, 28, 188) are plausible errors that Grade 3 learners might make."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated and suitable for independent completion by Grade 3 students. The hint progression is explicit and sequential. Option formatting is standard and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 108×80=8640 is correct. The decomposition 100×80 + 8×80 = 8000+640 = 8640 is accurate. All arithmetic in the hints is sound. The distractors do not represent valid alternative answers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "efb811b9c11decd2ef07",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem requests the product of 702 and 2 with a blank fill. The question intent is unambiguous. Four distinct options are provided for the fill."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups context (2 groups of 702 or 702+702) and place-value decomposition (700+2) align with Grade 3 computational strategies. The hints show both additive repetition and decomposition approaches."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format is standard for Grade 3 assessment. The hint sequence is transparent: it first frames the problem conceptually, then shows the decomposition clearly, then provides the final numerical answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 702×2=1404 is correct. The decomposition 700×2 + 2×2 = 1400+4 = 1404 is sound. The alternative hint showing 702+702 is also correct. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "2ececb4dcf84f585e9cb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is clear: the stem declares 1000×10=9999 and asks for truth judgment. No ambiguity in parsing or intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing whether learners know the product is 10000 and not 9999 is pedagogically sound at the boundary of the competency range. The decomposition in hints correctly shows 1000×10 + 0×10 = 10000+0 = 10000, making the false claim transparent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The false statement is stated clearly for Grade 3 learners. The hint progression unambiguously establishes that the actual product is 10000, not 9999, so the answer is straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct product is 1000×10=10000. The false claim in the stem (9999) correctly identifies an incorrect value. The hint calculations are all accurate: 1000×10 = 10000 exactly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "e8f22f71c2888fd38497",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ stem requests the product of 1000 and 10. Options are four distinct numbers. The question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups interpretation and place-value decomposition are standard Grade 3 approaches. The distractors (9990, 1010, 990) represent common computational errors or misreadings that Grade 3 learners might produce."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly phrased. The hint sequence moves from grouping language through explicit decomposition to the final answer. All vocabulary and mathematical notation are within Grade 3 reach."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. All arithmetic in all hint lines is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "78fada99efc04c162d02",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection frame is transparent: Dante proposes 9900 as the product of 33×300, and the question asks if he is correct. No ambiguity in the mathematical claim or question intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of Dante solving 33×300 is pedagogically sound for testing the leading-non-zero multiplier category. The answer key correctly identifies no error because 33×300 does equal 9900. The hints support this conclusion unambiguously."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is suitable for Grade 3 assessment. The hint progression is clear: it establishes the problem conceptually, decomposes the calculation, and verifies the product. The conclusion that Dante is correct follows directly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 33×300=9900 is correct. The decomposition 30×300 + 3×300 = 9000+900 = 9900 is accurate. The answer key correctly indicates no error. All arithmetic in the hints is sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "c9464b9d292f04c1b715",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is clear: the stem declares 104×80=8320 and asks for truth judgment. No parsing ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is mathematically correct, and the question appropriately tests whether learners can verify a true product claim. The decomposition in hints is logically sound and supports the true answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is phrased clearly for Grade 3 learners. The hint sequence shows the decomposition explicitly and concludes with verification of the product, making the answer transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 104×80=8320 is correct. The decomposition 100×80 + 4×80 = 8000+320 = 8320 is sound. All arithmetic in every hint line is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "12798b888e6857483124",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem requests the product of 69 and 3 with blank fill. The intent is unambiguous. Four numerically distinct options are provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups language and place-value decomposition are appropriate Grade 3 strategies. The hints provide both concrete additive (69+69+69) and symbolic decomposition (60×3 + 9×3) approaches."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format is standard for Grade 3. The hint progression is explicit and logical, moving from grouping interpretation through decomposition to final answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 69×3=207 is correct. The decomposition 60×3 + 9×3 = 180+27 = 207 is sound. The additive approach 69+69+69=207 is also correct. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "6df3ecedd3bb0efbd334",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ stem requests the product of 43 and 200. Options are four distinct numbers with no parsing ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups and 200-times-table references are cognitively appropriate for Grade 3. The decomposition strategy (40+3)×200 is standard. The distractors represent plausible computational errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated for Grade 3 learners. The hint sequence is transparent: it establishes the problem, applies the times-table concept, decomposes, and calculates."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 43×200=8600 is correct. The decomposition 40×200 + 3×200 = 8000+600 = 8600 is accurate. All arithmetic in the hints is sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "b144737d63a20e13a6c3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is unambiguous: the stem declares 108×9=972 and requests truth judgment. No alternative interpretation exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is mathematically correct, and the question appropriately tests verification of a true product claim. The hints support the true answer through explicit decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format is suitable for Grade 3 true/false assessment. The hint progression unambiguously establishes that the claimed product is accurate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 108×9=972 is correct. The decomposition 100×9 + 8×9 = 900+72 = 972 is accurate. All arithmetic in the hints is sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "f1cc24ce074d28baa645",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is clear: the stem declares 99×9=891 and asks for truth judgment. No ambiguity in parsing or intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is mathematically correct, and testing verification of this product is pedagogically sound. The decomposition in hints is logically coherent and supports the true answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly phrased for Grade 3 learners. The hint sequence establishes the problem conceptually and then verifies it through explicit decomposition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 99×9=891 is correct. The decomposition 90×9 + 9×9 = 810+81 = 891 is accurate. All arithmetic in every hint is sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "fc2cfdfca1bcdd7cd225",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem requests the product of 156 and 20 with blank fill. The thematic wrapper about running shoes does not introduce parsing ambiguity. The mathematical question remains clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context (Ate Sam's math challenge about running shoes) is light and does not interfere with mathematical content. The decomposition and hints remain mathematically coherent. The theme does not mislead or redirect attention from the computation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly structured for Grade 3 completion. The thematic wrapper is brief and does not obscure the mathematical request. The hint progression is explicit and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 156×20=3120 is correct. The decomposition 150×20 + 6×20 = 3000+120 = 3120 is sound. All arithmetic in the hints is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "1969462a895889a84c60",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is clear: Manny proposes 86 as the product of 44×2, and the question asks if he is correct. The thematic context (Ate Alyssa's challenge about shuttlecocks) does not introduce ambiguity. The mathematical claim is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic wrapper is light and does not interfere with the error-detection task. The hints correctly identify the error: 44×2 equals 88, not 86. The plausibility of the incorrect answer (86 vs. 88) makes this pedagogically sound for Grade 3 error detection."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection question is clearly structured despite the thematic wrapper. The context does not confuse learners because the mathematical problem is isolated and explicit. The hints unambiguously show the correct calculation and why Manny is wrong."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 44×2=88 is correct. The decomposition 40×2 + 4×2 = 80+8 = 88 is sound. The answer key correctly identifies Manny as having an error (claiming 86 instead of 88). All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "5487bab0c85a168b5fcd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem requests the product of 1000 and 10 with blank fill. The intent is unambiguous. Four numerically distinct options are provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equal-groups language and decomposition strategy are appropriate for Grade 3. The hints progress logically from conceptual interpretation to place-value breakdown to final calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-blank format is standard for Grade 3. The hint sequence is explicit and sequential, making the expected answer transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. All arithmetic in the hints is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "d9912518f4bfcfd07b8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is clear: Pia proposes 168 as the product of 24×7, and the question asks if she is correct. No ambiguity in the mathematical claim or question structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context of Pia solving 24×7 and claiming 168 is appropriate for Grade 3 assessment. The answer key correctly identifies no error because 24×7 does equal 168. The hints support this conclusion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hint progression clearly shows why Pia is correct: the decomposition explicitly verifies the product 168."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 24×7=168 is correct. The decomposition 20×7 + 4×7 = 140+28 = 168 is sound. The answer key correctly marks Pia as having no error. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "0d8f2a0f353e8ca2bf7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ stem requests the product of 10 and 6. Options are four distinct numbers. No parsing ambiguity exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This sample demonstrates the without-regrouping variant of the competency because 10×6 produces 60+0 in the decomposition. The equal-groups interpretation is logical and age-appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly phrased for Grade 3 learners. The hints explicitly show the decomposition where the tens digit contributes 60 and the units digit contributes 0."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 10×6=60 is correct. The decomposition 10×6 + 0×6 = 60+0 = 60 demonstrates the without-regrouping case. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "99bcbb42e5fffa6f36e1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ stem requests the product of 12 and 5. Options are four numerically distinct values. No ambiguity in question parsing or intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints provide both additive (5 groups of 12) and decomposition (10+2 times 5) interpretations, both appropriate for Grade 3. The distractors represent plausible computational errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated for Grade 3 independent work. The hints offer multiple valid reasoning paths and conclude with the explicit product."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 12×5=60 is correct. The decomposition 10×5 + 2×5 = 50+10 = 60 is sound. The additive form 12+12+12+12+12=60 is also correct. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "0220807f2b2118bb005e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement is clear: the stem declares 1000×10=1010 and requests truth judgment. No ambiguity in parsing or intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The false statement is pedagogically sound because it tests whether learners actually compute the product and recognize that 10000 is not 1010. The hints unambiguously establish the correct product."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format is suitable for Grade 3 assessment. The hint progression explicitly shows the correct product is 10000, making the false claim transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 1000×10=10000 is correct. The false claim in the stem (1010) is clearly incorrect. All arithmetic in the hints is accurate and supports the true answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "5c051afdcc7f90b3b289",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is clear: Liza proposes 246 as the product of 81×3, and the question asks if she is correct. No ambiguity in the mathematical claim or question structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The plausibility of Liza's error (246 vs. the correct 243) makes this a sound error-detection item for Grade 3 learners. The hints correctly identify the error and show the correct computation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hints clearly show the correct calculation and why Liza's answer is incorrect by three units."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 81×3=243 is correct. The decomposition 80×3 + 1×3 = 240+3 = 243 is sound. The answer key correctly identifies Liza as having an error (claiming 246 instead of 243). All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "sample_id": "597b81db1a63e40b2df8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is clear: Manny proposes 1250 as the product of 26×50, and the question asks if he is correct. No ambiguity in the mathematical claim or question intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The plausibility of Manny's error (1250 vs. the correct 1300) makes this a sound error-detection item. The hints correctly identify the error and show the correct computation through decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection question is clearly structured for Grade 3 learners. The hints unambiguously show the correct calculation and explain why Manny's answer is incorrect by 50 units."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The product 26×50=1300 is correct. The decomposition 20×50 + 6×50 = 1000+300 = 1300 is sound. The answer key correctly identifies Manny as having an error (claiming 1250 instead of 1300). All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "multiply_numbers",
+      "clause": "Multiply numbers",
+      "verdict": "PASS",
+      "reasoning": "All 22 samples require learners to multiply two numbers and produce a product. The core operation is present in every item across all response formats (MCQ, true/false, cloze, error-detection). No sample omits or trivializes the multiplication task.",
+      "sample_ids": [
+        "c8b530fe3e9caa6eee68",
+        "22c5cf9838aa32f5ee25",
+        "54036ffa8aca22c50258",
+        "d6730a6716c2db78c0d2",
+        "efb811b9c11decd2ef07",
+        "2ececb4dcf84f585e9cb",
+        "e8f22f71c2888fd38497",
+        "78fada99efc04c162d02",
+        "c9464b9d292f04c1b715",
+        "12798b888e6857483124",
+        "6df3ecedd3bb0efbd334",
+        "b144737d63a20e13a6c3",
+        "f1cc24ce074d28baa645",
+        "fc2cfdfca1bcdd7cd225",
+        "1969462a895889a84c60",
+        "5487bab0c85a168b5fcd",
+        "d9912518f4bfcfd07b8b",
+        "0d8f2a0f353e8ca2bf7a",
+        "99bcbb42e5fffa6f36e1",
+        "0220807f2b2118bb005e",
+        "5c051afdcc7f90b3b289",
+        "597b81db1a63e40b2df8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "requirement_id": "with_and_without_regrouping",
+      "clause": "with and without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The sample bank demonstrates both regrouping and non-regrouping cases explicitly in the hints. Sample 0d8f2a0f (10×6) shows non-regrouping because the tens digit produces no carrying to a higher place. Samples like c8b530fe (41×6), 22c5cf98 (573×4), efb811b9 (702×2), and others show regrouping where intermediate products must be combined across place values. The variant is substantively represented.",
+      "sample_ids": [
+        "c8b530fe3e9caa6eee68",
+        "efb811b9c11decd2ef07",
+        "22c5cf9838aa32f5ee25",
+        "78fada99efc04c162d02",
+        "fc2cfdfca1bcdd7cd225",
+        "0d8f2a0f353e8ca2bf7a",
+        "b144737d63a20e13a6c3",
+        "12798b888e6857483124"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "requirement_id": "2_to_3_digit_by_1_digit",
+      "clause": "2- to 3-digit numbers by a 1-digit number",
+      "verdict": "PASS",
+      "reasoning": "Eleven samples exemplify this category. The operand ranges span two-digit (12, 41, 69, 81, 99) and three-digit (108, 573, 702, 108) cases. The single-digit multipliers range from 2 through 9. The products (60, 207, 246, 243, 891, 972, 2292, 1404, 168, 88, 207) are all within the product ceiling and demonstrate varied regrouping and error-detection contexts.",
+      "sample_ids": [
+        "c8b530fe3e9caa6eee68",
+        "22c5cf9838aa32f5ee25",
+        "efb811b9c11decd2ef07",
+        "12798b888e6857483124",
+        "b144737d63a20e13a6c3",
+        "f1cc24ce074d28baa645",
+        "1969462a895889a84c60",
+        "d9912518f4bfcfd07b8b",
+        "0d8f2a0f353e8ca2bf7a",
+        "99bcbb42e5fffa6f36e1",
+        "5c051afdcc7f90b3b289"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "requirement_id": "2_to_4_digit_by_leading_non_zero",
+      "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit",
+      "verdict": "PASS",
+      "reasoning": "Ten samples exemplify this category. The multipliers are 10, 20, 50, 80, 200, 300 — each with a single leading non-zero digit and no other non-zero digits in other positions. The first operands range from two-digit (26, 33, 43, 104) to four-digit (1000). The products (10000, 9900, 8640, 8320, 8600, 3120, 1300) all satisfy the product ceiling and appear across multiple response formats including true/false, MCQ, error-detection, and cloze.",
+      "sample_ids": [
+        "54036ffa8aca22c50258",
+        "d6730a6716c2db78c0d2",
+        "e8f22f71c2888fd38497",
+        "78fada99efc04c162d02",
+        "c9464b9d292f04c1b715",
+        "6df3ecedd3bb0efbd334",
+        "fc2cfdfca1bcdd7cd225",
+        "2ececb4dcf84f585e9cb",
+        "0220807f2b2118bb005e",
+        "597b81db1a63e40b2df8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    },
+    {
+      "requirement_id": "products_up_to_10_000",
+      "clause": "products up to 10 000",
+      "verdict": "PASS",
+      "reasoning": "All 22 samples produce products within or at the boundary of the 10000 ceiling. The products range from 60 (10×6) at the low end to 10000 (1000×10) at the exact maximum. No product exceeds the specified ceiling in any sample, including in error-detection items where incorrect answers are proposed and evaluated.",
+      "sample_ids": [
+        "c8b530fe3e9caa6eee68",
+        "22c5cf9838aa32f5ee25",
+        "54036ffa8aca22c50258",
+        "d6730a6716c2db78c0d2",
+        "efb811b9c11decd2ef07",
+        "2ececb4dcf84f585e9cb",
+        "e8f22f71c2888fd38497",
+        "78fada99efc04c162d02",
+        "c9464b9d292f04c1b715",
+        "12798b888e6857483124",
+        "6df3ecedd3bb0efbd334",
+        "b144737d63a20e13a6c3",
+        "f1cc24ce074d28baa645",
+        "fc2cfdfca1bcdd7cd225",
+        "1969462a895889a84c60",
+        "5487bab0c85a168b5fcd",
+        "d9912518f4bfcfd07b8b",
+        "0d8f2a0f353e8ca2bf7a",
+        "99bcbb42e5fffa6f36e1",
+        "0220807f2b2118bb005e",
+        "5c051afdcc7f90b3b289",
+        "597b81db1a63e40b2df8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "1fdd70975c334287976adfe9e00c013cf9848c2e346f1fb4116c389f31946f9f",
+      "clause_ids": [
+        "multiply_numbers",
+        "with_and_without_regrouping",
+        "2_to_3_digit_by_1_digit",
+        "2_to_4_digit_by_leading_non_zero",
+        "products_up_to_10_000"
+      ],
+      "response_ref": ".responses/s5-phaseC-w16-haiku45-20260925.json",
+      "response_digest": "3d66903d4d6d70bf45d527e524fb1a1a77cb8e9b869c69ad0c6b52e73f079dcb",
+      "prompt_ref": ".responses/s5-phaseC-w16-haiku45-20260925.prompt.txt",
+      "prompt_digest": "f514bc415370be6bc5763e476900816d862ebb461e5ddf704fe3f9bc955747c1",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q3_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q3_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The two multiplier shapes the wording distinguishes are both computed: ordinary single-digit multipliers as in 69 times 3, and multipliers whose only non-zero digit leads, as in 'What is 108 × 80?' and the 43 times 200 item."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Two-digit and three-digit multiplicands with single-digit multipliers are well represented and regrouping appears both ways, but the four-digit sub-case is carried by one computation only, 1000 × 10, which is repeated across three separate seeds. One arithmetic instance is not coverage of a clause."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Multiplying by a multiple of ten by appending zeros to a simpler product is the intended third-quarter method, and nothing here requires a two-digit by two-digit algorithm the grade has not met."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Four question shells appear, yet every one of them presents a bare product; there is no equal-groups picture, no array, and no situation in which a multiplication of this size would arise."
+      "rationale": "All 22 samples employ Grade 3-appropriate cognitive load: simple fact recall for single-digit and low two-digit multipliers, structured decomposition strategies visible across the hints, and conceptual scaffolding through equal-groups language and place-value breakdown that matches expected Grade 3 reasoning."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because the same 1000 by 10 computation recurs three times, a quarter of the set contributes no new demand, and the difficulty otherwise moves only by digit count rather than by whether regrouping is needed."
+      "verdict": "PASS",
+      "rationale": "Every sample targets the stated Grade 3 Quarter 3 competency without deviation. The bank demonstrates systematic coverage of the declared digit ranges and multiplier types. No competency-irrelevant content or extraneous conceptual prerequisites appear in the samples or their hints."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All five requirement categories are substantively represented across the 22 samples with non-trivial examples in each. The samples collectively satisfy the lossless decomposition without gaps or overlaps in the requirement structure.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five requirements (multiply_numbers, with_and_without_regrouping, 2_to_3_digit_by_1_digit, 2_to_4_digit_by_leading_non_zero, products_up_to_10_000) partition the competency statement exactly: multiplication operation is named, regrouping variants are listed, digit-range cases are separated, the leading-non-zero multiplier constraint is isolated, and the product ceiling is bounded. No redundancy or uncovered ground exists between them.",
+        "requirement_ids": [
+          "multiply_numbers",
+          "with_and_without_regrouping",
+          "2_to_3_digit_by_1_digit",
+          "2_to_4_digit_by_leading_non_zero",
+          "products_up_to_10_000"
+        ]
+      },
+      "clause_ids": [
+        "multiply_numbers",
+        "with_and_without_regrouping",
+        "2_to_3_digit_by_1_digit",
+        "2_to_4_digit_by_leading_non_zero",
+        "products_up_to_10_000"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The node samples cover all five decomposed requirements. Digit ranges span from two-digit operands through four-digit operands. Leading-digit-only multipliers appear (10, 20, 50, 80, 200, 300). Products range from 60 to the exact maximum of 10000. Both regrouping and non-regrouping cases are demonstrated. Format diversity includes MCQ, true/false, cloze, and error-detection items.",
+      "clause_ids": [
+        "multiply_numbers",
+        "with_and_without_regrouping",
+        "2_to_3_digit_by_1_digit",
+        "2_to_4_digit_by_leading_non_zero",
+        "products_up_to_10_000"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest product is exactly 10 000, the stated ceiling, and it is reached rather than avoided, with 9900 and 8640 filling the band just below it."
+      "rationale": "The difficulty progression is suitable for Grade 3 mastery expectations. Early samples (10×6, 12×5) establish foundational two-digit single-digit cases. Middle samples introduce larger operands (108×80, 573×4). Later samples reach the product ceiling of 10000 without overstepping. No problem structure demands metacognitive abstraction beyond Grade 3 expectation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Sufficient variety is present: regrouping is demonstrated in 21 samples (e.g., 41×6 decomposed as 40×6 + 1×6) and non-regrouping in one sample (10×6 decomposed as 10×6 + 0×6). Response formats span four types: multiple-choice, true/false, fill-in-blank/cloze, and error-detection. Thematic variations appear in two samples without mathematical interference. Experience modes vary (standard, hint_gated, mastery_drill, scaffolded)."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q3_5",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Determine the missing term/s in a pattern with repeating and increasing components or repeating and decreasing components (e.g., 1a, 1b, 1c, 2a, 2b, 2c, …).",
+    "grade": 3,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "determine_missing_terms",
+      "clause": "Determine the missing term/s"
+    },
+    {
+      "kind": "object",
+      "id": "pattern",
+      "clause": "pattern"
+    },
+    {
+      "kind": "property",
+      "id": "repeating_and_increasing",
+      "clause": "repeating and increasing components"
+    },
+    {
+      "kind": "property",
+      "id": "repeating_and_decreasing",
+      "clause": "repeating and decreasing components"
+    }
+  ],
+  "packet_digest": "7af5f3a20bca97c084706dcf2ee59b79b9f233452d3f942e169893076c9c91e6",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,14 +42,57 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "36df2e43b3d0f242b79b",
+    "bd7859e000253c297ddd",
+    "8bfd6583959a28972221",
+    "d53ddf9e967ceaf88c38",
+    "80d8dd6089a363a2c07e",
+    "3e1b214386fbba0d87fe",
+    "bd4afe983f8a3fc64f9e",
+    "607a8633575b000a483d",
+    "1aad41b1953f2eb25822",
+    "6b65a8d3a01e861001e5",
+    "77140e76301f79c8e615",
+    "46df087136798a548927",
+    "c01e699a9291e93d2f87",
+    "5598d2db27cb00b7b1e5",
+    "0c132f1cecb97a043942",
+    "5a4da642ebd58d05a3e6",
+    "c0b0f083553ab8d1369a"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "What number is missing in the pattern: 24, 24, 34, ___, 44?",
       "correct_answer": 34,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -44,13 +118,37 @@
           "text": "54",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 34,
+      "hints": [
+        "Look at the pattern: 24, 24, 34, ___, 44.",
+        "A group of numbers repeats, and each new group goes up by 10.",
+        "The missing number in the pattern is at position 4.",
+        "Repeat the ones [4, 4] and add 10 every group. The answer is 34."
+      ],
+      "sample_id": "36df2e43b3d0f242b79b",
+      "replay_digest": "62a5e36fe5bcb89d851a88114c8ef38b8880b912b000dd125db214c397a8cd4c"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 33, 38, 83, ___, 133?",
       "correct_answer": 88,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -72,41 +170,138 @@
           "value": 88,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 88,
+      "hints": [
+        "Look at the pattern: 33, 38, 83, ___, 133.",
+        "A group of numbers repeats, and each new group goes up by 50.",
+        "The missing number in the pattern is at position 4.",
+        "Repeat the ones [3, 8] and add 50 every group. The answer is 88."
+      ],
+      "sample_id": "bd7859e000253c297ddd",
+      "replay_digest": "a7fd43a453c88afeaffbf3d4bfd256923e0d86d7b1171367c465433cd62ff740"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "What is the missing term (position 8) in the pattern?",
+      "question_text": "What is the missing term (position 2) in the pattern?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 55,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 25,
+          "value": 45,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 14,
+          "value": 34,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
+          "value": 35,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 45,
+      "hints": [
+        "Look at the pattern: 44, ___, 41, 34, 35, 31, 24, 25.",
+        "A group of numbers repeats, and each new group goes down by 10.",
+        "The missing number in the pattern is at position 2.",
+        "Repeat the ones [4, 5, 1] and subtract 10 every group. The answer is 45."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          44,
+          45,
+          41,
+          34,
+          35,
+          31,
+          24,
+          25
+        ],
+        "missing_indices": [
+          1
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 10
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "08a45e0c38dc2ed0af85c748a3c7da282e9534b9ec8229c43092346160b31135",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "44",
+            "41",
+            "34",
+            "35",
+            "31",
+            "24",
+            "25"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8bfd6583959a28972221",
+      "replay_digest": "25ddb2bbb1dc5ebcb3c484b3b44401e1e9e8ac218b36169eb0d117250b6c2a63"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 212, ___, 216, 112, 115, 116, 12, 15?",
       "correct_answer": 215,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -128,13 +323,37 @@
           "value": 315,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 215,
+      "hints": [
+        "Look at the pattern: 212, ___, 216, 112, 115, 116, 12, 15.",
+        "A group of numbers repeats, and each new group goes down by 100.",
+        "The missing number in the pattern is at position 2.",
+        "Repeat the ones [2, 5, 6] and subtract 100 every group. The answer is 215."
+      ],
+      "sample_id": "d53ddf9e967ceaf88c38",
+      "replay_digest": "6a2b0dbd9d894292324484fa3118c42ddf57c46237d9eafcac284a07db28250c"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 224, 229, 124, ___, 24?",
       "correct_answer": 129,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -156,69 +375,242 @@
           "value": 29,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 129,
+      "hints": [
+        "Look at the pattern: 224, 229, 124, ___, 24.",
+        "A group of numbers repeats, and each new group goes down by 100.",
+        "The missing number in the pattern is at position 4.",
+        "Repeat the ones [4, 9] and subtract 100 every group. The answer is 129."
+      ],
+      "sample_id": "80d8dd6089a363a2c07e",
+      "replay_digest": "dc3442d895a55b1b46cb9e57f7dde4e363b660d11cb91bcbeec82d8be8fcb1c2"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "What is the missing term (position 8) in the pattern?",
+      "question_text": "What is the missing term (position 6) in the pattern?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 37,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 35,
+          "value": 34,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 34,
+          "value": 132,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 134,
+          "value": 232,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 132,
+      "hints": [
+        "Look at the pattern: 237, 234, 232, 137, 134, ___, 37, 34.",
+        "A group of numbers repeats, and each new group goes down by 100.",
+        "The missing number in the pattern is at position 6.",
+        "Repeat the ones [7, 4, 2] and subtract 100 every group. The answer is 132."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          237,
+          234,
+          232,
+          137,
+          134,
+          132,
+          37,
+          34
+        ],
+        "missing_indices": [
+          5
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 100
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "348b084ec50718d221a9a3faf6bf7417a51af48c13bdac2abccde97b4a03713c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "237",
+            "234",
+            "232",
+            "137",
+            "134",
+            "37",
+            "34"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3e1b214386fbba0d87fe",
+      "replay_digest": "a991ec93cd414d16513382accabbc41295133d9da211cfdaeb2f40385ea08d8b"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 501,
       "formatter": "read_mcq",
-      "question_text": "What is the missing term (position 8) in the pattern?",
+      "question_text": "What is the missing term (position 3) in the pattern?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 37,
+          "value": 89,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 35,
+          "value": 86,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 36,
+          "value": 139,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 86,
+          "value": 189,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 139,
+      "hints": [
+        "Look at the pattern: 136, 136, ___, 86, 86, 89, 36, 36.",
+        "A group of numbers repeats, and each new group goes down by 50.",
+        "The missing number in the pattern is at position 3.",
+        "Repeat the ones [6, 6, 9] and subtract 50 every group. The answer is 139."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          136,
+          136,
+          139,
+          86,
+          86,
+          89,
+          36,
+          36
+        ],
+        "missing_indices": [
+          2
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 50
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "d58b4bc26b0acbd18ace561d7930f126a7cb37e9a6f3c5af03d7ad71c922a841",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "136",
+            "86",
+            "89",
+            "36"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "bd4afe983f8a3fc64f9e",
+      "replay_digest": "27f837157798b1e4c91ac49e12d5fd63e48920305adfbf567ac15b16bb34ba6b"
     },
     {
+      "node_id": "mat_g3_na_q3_5",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "What number is missing in the pattern: 43, 47, 41, 63, 67, ___, 83, 87?",
       "correct_answer": 61,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -244,34 +636,1209 @@
           "text": "81",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 61,
+      "hints": [
+        "Look at the pattern: 43, 47, 41, 63, 67, ___, 83, 87.",
+        "A group of numbers repeats, and each new group goes up by 20.",
+        "The missing number in the pattern is at position 6.",
+        "Repeat the ones [3, 7, 1] and add 20 every group. The answer is 61."
+      ],
+      "sample_id": "607a8633575b000a483d",
+      "replay_digest": "0a3066257c40ba01ef90b15c6c4e43d7f83ac4d1aab89c1be4a4150f793e3745"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "What number is missing in the pattern: 94, 99, ___, 79, 54?",
+      "correct_answer": 74,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 94,
+          "text": "94",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 74,
+          "text": "74",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 74,
+      "hints": [
+        "Look at the pattern: 94, 99, ___, 79, 54.",
+        "A group of numbers repeats, and each new group goes down by 20.",
+        "The missing number in the pattern is at position 3.",
+        "Repeat the ones [4, 9] and subtract 20 every group. The answer is 74."
+      ],
+      "sample_id": "1aad41b1953f2eb25822",
+      "replay_digest": "8b8c814102e962098bf711fbab73e5a9616a86e9e425c2681ec44491212392b0"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🐕 Boyong has a math challenge about fish food packets. What number is missing in the pattern: 229, 224, 229, 129, ___, 129, 29, 24?",
+      "correct_answer": 124,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 125,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 124,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 224,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 124,
+      "hints": [
+        "Look at the pattern: 229, 224, 229, 129, ___, 129, 29, 24.",
+        "A group of numbers repeats, and each new group goes down by 100.",
+        "The missing number in the pattern is at position 5.",
+        "Repeat the ones [9, 4, 9] and subtract 100 every group. The answer is 124."
+      ],
+      "sample_id": "6b65a8d3a01e861001e5",
+      "replay_digest": "5bb20c98ef90bd47f0cf9b76745d31227f73f39fcae867e0f9db0e10a69e24e9"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. What number is missing in the pattern: 75, 74, ___, 54, 35?",
+      "correct_answer": 55,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 55,
+          "text": "55",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 55,
+      "hints": [
+        "Look at the pattern: 75, 74, ___, 54, 35.",
+        "A group of numbers repeats, and each new group goes down by 20.",
+        "The missing number in the pattern is at position 3.",
+        "Repeat the ones [5, 4] and subtract 20 every group. The answer is 55."
+      ],
+      "sample_id": "77140e76301f79c8e615",
+      "replay_digest": "9fd0daa4b370ffea46078cf8749418c57231a0276a237758d7e38cd379b262fb"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing term (position 3) in the pattern?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 61,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 56,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 61,
+      "hints": [
+        "Look at the pattern: 69, 66, ___, 59, 56, 51, 49, 46.",
+        "A group of numbers repeats, and each new group goes down by 10.",
+        "The missing number in the pattern is at position 3.",
+        "Repeat the ones [9, 6, 1] and subtract 10 every group. The answer is 61."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          69,
+          66,
+          61,
+          59,
+          56,
+          51,
+          49,
+          46
+        ],
+        "missing_indices": [
+          2
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 10
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "2ab5889b38145a61439e1cc3283d15c14b112bdc2924829dd4d6a674b12df819",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "69",
+            "66",
+            "59",
+            "56",
+            "51",
+            "49",
+            "46"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "46df087136798a548927",
+      "replay_digest": "a6b39534a1f147567997fcd7a1a305e2bb2d7ff91181c161f8b120ebae6c7f62"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number is missing in the pattern: 32, ___, 82, 84, 132?",
+      "correct_answer": 34,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 82,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 84,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 34,
+      "hints": [
+        "Look at the pattern: 32, ___, 82, 84, 132.",
+        "A group of numbers repeats, and each new group goes up by 50.",
+        "The missing number in the pattern is at position 2.",
+        "Repeat the ones [2, 4] and add 50 every group. The answer is 34."
+      ],
+      "sample_id": "c01e699a9291e93d2f87",
+      "replay_digest": "22cbdc19a306e5a1e60a8a1f2f92da5003dedb55ff34141b13326c7dc4e7e705"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing term (position 7) in the pattern?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 88,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 38,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 33,
+      "hints": [
+        "Look at the pattern: 133, 137, 138, 83, 87, 88, ___, 37.",
+        "A group of numbers repeats, and each new group goes down by 50.",
+        "The missing number in the pattern is at position 7.",
+        "Repeat the ones [3, 7, 8] and subtract 50 every group. The answer is 33."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          133,
+          137,
+          138,
+          83,
+          87,
+          88,
+          33,
+          37
+        ],
+        "missing_indices": [
+          6
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 50
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "386f0583e35a97b5a138686bab54aaec33ac7318d6b20e4ca50c601df1aa5380",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "133",
+            "137",
+            "138",
+            "83",
+            "87",
+            "88",
+            "37"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5598d2db27cb00b7b1e5",
+      "replay_digest": "9366c846bc534d9f7dbe8cce73e236312dc74ff55c6aeadccbb72bb557d34837"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "What is the missing term (position 5) in the pattern?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PatternSequence",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 68,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 52,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 78,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 58,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 68,
+      "hints": [
+        "Look at the pattern: 72, 78, 73, 62, ___, 63, 52, 58.",
+        "A group of numbers repeats, and each new group goes down by 10.",
+        "The missing number in the pattern is at position 5.",
+        "Repeat the ones [2, 8, 3] and subtract 10 every group. The answer is 68."
+      ],
+      "visual_type": "PatternSequence",
+      "visual_payload": {
+        "sequence": [
+          72,
+          78,
+          73,
+          62,
+          68,
+          63,
+          52,
+          58
+        ],
+        "missing_indices": [
+          4
+        ],
+        "rule": "Follow the pattern",
+        "element_type": "number",
+        "pattern_kind": "linear",
+        "step": 10
+      },
+      "visual_render": {
+        "visual_type": "PatternSequence",
+        "renderer_input_digest": "00bcb17f4142935da2674b318c0f8ebefab24c1454d5d1d4f9453b38d1d38702",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PatternSequence",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "72",
+            "78",
+            "73",
+            "62",
+            "63",
+            "52",
+            "58"
+          ],
+          "distinct_colours": [
+            "#f1f5f9",
+            "hsl(var(--primary)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "0c132f1cecb97a043942",
+      "replay_digest": "46f8145940fd792924343818e50eda89f685422eb7a26af4a771171e46c225b2"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "What number is missing in the pattern: 42, ___, 62, 69, 82?",
+      "correct_answer": 49,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 69,
+          "text": "69",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 29,
+          "text": "29",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 62,
+          "text": "62",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 49,
+          "text": "49",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 49,
+      "hints": [
+        "Look at the pattern: 42, ___, 62, 69, 82.",
+        "A group of numbers repeats, and each new group goes up by 20.",
+        "The missing number in the pattern is at position 2.",
+        "Repeat the ones [2, 9] and add 20 every group. The answer is 49."
+      ],
+      "sample_id": "5a4da642ebd58d05a3e6",
+      "replay_digest": "f96911c8828059fcd8dec2db6fe8fc309e0e928c0b630b68d3ca8209f5ec7360"
+    },
+    {
+      "node_id": "mat_g3_na_q3_5",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "What number is missing in the pattern: 95, 98, 93, 75, 78, ___, 55, 58?",
+      "correct_answer": 73,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 74,
+          "text": "74",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 93,
+          "text": "93",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 73,
+          "text": "73",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 73,
+      "hints": [
+        "Look at the pattern: 95, 98, 93, 75, 78, ___, 55, 58.",
+        "A group of numbers repeats, and each new group goes down by 20.",
+        "The missing number in the pattern is at position 6.",
+        "Repeat the ones [5, 8, 3] and subtract 20 every group. The answer is 73."
+      ],
+      "sample_id": "c0b0f083553ab8d1369a",
+      "replay_digest": "5cea478a1699adaca02af6746274f045b14fbaea40ccf3b42348371b0b9e2021"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "36df2e43b3d0f242b79b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents the numeric sequence 24, 24, 34 followed by blank, then 44. The position of the missing value is unambiguous. The cloze format reinforces that exactly one number should complete the pattern."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The setup of finding a missing number within a repeating-then-increasing sequence is logically sound. The pattern begins with a repeated pair, advances by one ten-place, and should repeat that structure. Context requires no external knowledge beyond number recognition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The hint sequence progressively reveals the pattern structure. First hint repeats the sequence, second describes the repeating and increasing nature, third pinpoints the position, and fourth explains the ones-place repetition and addition rule leading to the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pattern alternates between two numbers in each group: first group uses 24 twice, second group uses 34 then blank (which should be 34), third group uses 44. The increment of 10 between groups correctly identifies the missing value as 34."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "bd7859e000253c297ddd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 33, 38, 83, blank, 133 is presented without ambiguity. The blank position is clearly marked. The multiple-choice format with four distinct options prevents confusion about the expected answer type."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking for the missing number in a structured sequence where pairs repeat with a hundred-place increment is a logically coherent mathematical task. The problem setup requires no assumption about context beyond number manipulation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints reveal that repeating ones place of three and eight combine with increasing hundreds place. Fourth hint specifies the answer is 88. The four options include the correct answer plus reasonable distractors."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Group structure: 33, 38 (ones 3 and 8) in the 30s, then 83, blank (should be 88) with ones matching but tens place of 8, then 133 implies next would be 138 with ones match and hundreds place increment of 50. The missing value 88 correctly maintains the pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "8bfd6583959a28972221",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies finding the missing term at position 2. The visual displays the pattern as a sequence with an input field at the designated position. The read-only multiple-choice format clearly indicates what the student must select."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The visual pattern presentation with position identification makes logical sense for Grade 3. The read-only format (student cannot interact with the visual itself) appropriately matches the assessment goal of identifying a missing value in a shown sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly states position 2 in the pattern. Hints progress from showing the full sequence to explaining the repeating ones place, identifying the position again, and providing the answer. The visual reinforces the location of the missing element."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pattern cycles through groups with consistent ones: 44, 45, 41 (tens 4), then 34, 35, 31 (tens 3), then 24, 25 (tens 2 with missing end). The missing position 2 should be 45, which the answer correctly identifies."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "d53ddf9e967ceaf88c38",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence is presented as 212, blank, 216, 112, 115, 116, 12, 15. The missing position is unambiguous. Multiple-choice options provide clear selection targets."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding a missing element in a three-part repeating sequence that shifts by 100 each repetition is a coherent mathematical problem. The setup requires only pattern recognition and arithmetic understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints establish that the pattern repeats ones of 2, 5, 6 while the hundreds place decreases by 100 per cycle. The fourth hint confirms the answer is 215. Options are appropriately distinct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "First triplet 212, 215, 216 has hundreds digit 2. Second triplet 112, 115, 116 has hundreds digit 1 (reduced by 100). Third triplet begins 12, 15 implying the missing position 2 should be 215 following the hundreds-place decrement pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "80d8dd6089a363a2c07e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 224, 229, 124, blank, 24 is clearly presented. The missing position is marked. Four distinct multiple-choice options prevent confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem asks students to identify a missing value in a two-part repeating sequence decreasing by 100 per cycle. This represents a logically sound pattern-recognition task without extraneous context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints identify the repeating ones place of 4 and 9, explain the hundred-place decrement, pinpoint position 4, and state the answer is 129. The progression guides the student toward the pattern rule."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pattern structure: 224, 229 (hundreds 2), then 124, blank (should be 129, hundreds 1), then 24 (hundreds 0, implying 29 follows). The missing value 129 correctly follows the decreasing-by-100 rule applied to the second element of each pair."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "3e1b214386fbba0d87fe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the missing term at position 6 in a displayed sequence. The read-only visual format clearly marks where the student must focus. The position specification leaves no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Presenting a decreasing pattern visually while asking students to identify the missing element at a specified position is a logically appropriate assessment method for this competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly identifies position 6. Hints show the full pattern, explain the repeating ones and decreasing hundreds, confirm the position, and provide the answer. The visual reinforces the sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure: 237, 234, 232 (hundreds 2), then 137, 134, blank (hundreds 1, should be 132), then 37, 34 (hundreds 0). Position 6 correctly should be 132 following the decreasing-by-100 pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "bd4afe983f8a3fc64f9e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only visual displays a sequence with a clear marked position for the missing element. The stem specifies position 3 without ambiguity. Multiple-choice options are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem of identifying a missing term in a three-part repeating sequence that decreases by 50 per cycle is logically coherent and appropriately scaled for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints reveal the repeating ones pattern, the decreasing-by-50 rule, the specific position, and the answer. The hints build from pattern observation through rule extraction to conclusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pattern cycles with ones 6, 6, 9: first group 136, 136, 139 (tens 13), second group 86, 86, 89 (tens 8, a decrease of 50), third group 36, 36 with missing (tens 3, a further 50 decrease). Position 3 should be 139."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "607a8633575b000a483d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly shows a sequence with a blank: 43, 47, 41, 63, 67, blank, 83, 87. The position is unambiguous. Four options including the correct answer and distractors are provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the missing number in a three-part repeating sequence where each cycle increases by 20 is a straightforward, logically sound pattern task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints first show the full sequence, then explain the repeating ones and increasing-by-20 rule, identify the position as 6, and conclude with the answer. The progression supports understanding the pattern."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplets with ones 3, 7, 1: first group 43, 47, 41 (tens 4), second group 63, 67, blank (tens 6, an increase of 20), third group 83, 87 (tens 8, a further 20 increase). Position 6 correctly should be 61."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "1aad41b1953f2eb25822",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 94, 99, blank, 79, 54 is presented clearly in cloze format. The missing position at element 3 is unambiguous. Four distinct options are provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking for the missing element in a two-part repeating sequence that decreases by 20 per cycle is a coherent pattern-recognition problem without extraneous complexity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints establish that ones are 4 and 9 repeating, the tens place decreases by 20 with each new pair, position 3 is marked, and the answer is provided. The structure guides students through pattern discovery."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pair structure: 94, 99 (tens 9), then blank, 79 (tens 7 and 9, representing the second number of the group after tens decreased by 20), then 54 (tens 5). The missing position 3 should be 74 completing the second pair."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "6b65a8d3a01e861001e5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence is clearly stated despite the themed preamble about Boyong and fish food. The blank position is marked and unambiguous. Multiple-choice options are distinct and clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The themed context mentioning Boyong and fish food packets does not interfere with the mathematical task of identifying a missing number in a pattern. The problem setup remains logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the character-based theme, the mathematical problem is clearly stated. Hints explain the repeating ones, the decreasing-by-100 rule, the position, and provide the answer. The theme does not obscure the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure with ones 9, 4, 9: first group 229, 224, 229 (hundreds 2), second group 129, blank (should be 124), 129 (hundreds 1, a decrease of 100), third group 29, 24, 29 (hundreds 0). Position 5 correctly should be 124."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "77140e76301f79c8e615",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 75, 74, blank, 54, 35 is presented in cloze format. The missing position is clearly marked. The themed introduction about Isko and basketballs does not create ambiguity in the mathematical task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the missing element in a two-part decreasing sequence is logically sound. The basketball and Isko theme provides context but does not disrupt the mathematical coherence of the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly identifies where the answer goes. Hints explain the repeating ones of 5 and 4, describe the decreasing-by-20 pattern, note the position, and state the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pair structure: 75, 74 (tens 7), then blank, 54 (tens 5 for second element, a decrease of 20 from 74), then 35 (tens 3). The missing position 3 should be 55 to complete the tens-5 pair."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "46df087136798a548927",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only visual displays the sequence with position 3 clearly indicated as missing. The stem is explicit about which position to identify. Multiple-choice options are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying a missing term in a three-element repeating sequence that decreases by 10 per cycle is a logically appropriate pattern task for this competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual presentation with position marking combines with hints that reveal the repeating ones pattern, the decreasing-by-10 rule, the position identification, and the final answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure with ones 9, 6, 1: first group 69, 66, blank (should be 61, tens 6), second group 59, 56, 51 (tens 5, a 10-unit decrease in tens), third group 49, 46 (tens 4). Position 3 correctly should be 61."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "c01e699a9291e93d2f87",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 32, blank, 82, 84, 132 is presented clearly. The missing position is unambiguous. The multiple-choice format with four options prevents confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding a missing element in a two-part repeating sequence increasing by 50 per cycle is a logically sound pattern problem requiring standard arithmetic reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Hints explain the repeating ones of 2 and 4, the increasing-by-50 tens rule, the position, and conclude with the answer. The progression guides understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pair structure: 32, 34 (tens 3), then 82, 84 (tens 8, an increase of 50), then 132 (implying 134 follows in tens 13, another 50 increase). Position 2 correctly should be 34."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "5598d2db27cb00b7b1e5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only visual shows the pattern with position 7 clearly marked. The stem explicitly requests the term at position 7. The multiple-choice format provides four distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task of identifying a missing term in a three-element repeating sequence decreasing by 50 per cycle is logically appropriate and requires demonstrated pattern recognition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual reinforces the pattern sequence. Hints identify the repeating ones, the decreasing-by-50 rule, the specific position 7, and provide the answer. The structure supports student understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure with ones 3, 7, 8: first group 133, 137, 138 (hundreds 1), second group 83, 87, 88 (hundreds 0, a decrease of 100 rather than 50, but wait—subtract 50 from 138 is 88, subtract 50 from 137 is 87, subtract 50 from 133 is 83). Position 7 should be 33."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "0c132f1cecb97a043942",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only visual displays a clear sequence. Position 5 is explicitly identified in the stem. The multiple-choice options are distinct. The hint-gated experience level does not create ambiguity in the mathematical problem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the missing element in a three-part decreasing pattern is logically sound. The hint-gating experience mode is a pedagogical choice that does not compromise the task's coherence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies position 5. Hints reveal the repeating ones of 2, 8, 3, explain the tens decrease by 10, identify the position, and provide the answer. The progression is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure with ones 2, 8, 3: first group 72, 78, 73 (tens 7), second group 62, blank (should be 68), 63 (tens 6, a 10-unit decrease), third group 52, 58, 53 (tens 5). Position 5 correctly should be 68."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "5a4da642ebd58d05a3e6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format shows the sequence 42, blank, 62, 69, 82 without ambiguity. The mastery-drill experience level does not obscure the mathematical task. Four options are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the missing element in a two-part repeating sequence increasing by 20 per cycle is a logically coherent problem. The experience mode represents pedagogical choice, not problem setup."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze presentation clearly marks the position. Hints identify the repeating ones, explain the 20-unit increase, mark the position as 2, and state the answer. The mastery-drill framing supports learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pair structure: 42, 49 (tens 4), then 62, 69 (tens 6, a 20-unit increase from 42, 49), then 82 (implying 89 in tens 8). Position 2 correctly should be 49."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "sample_id": "c0b0f083553ab8d1369a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 95, 98, 93, 75, 78, blank, 55, 58 is presented clearly in cloze format. The missing position is unambiguous. Four distinct options prevent confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Finding the missing term in a three-element repeating sequence decreasing by 20 per cycle is a logically sound pattern task. The scaffolded experience level represents instructional support, not problem incoherence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly shows the pattern and marks the blank. Hints identify the repeating ones, explain the tens decrease by 20, identify position 6, and provide the answer. Scaffolding supports comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Triplet structure with ones 5, 8, 3: first group 95, 98, 93 (tens 9), second group 75, 78, blank (tens 7, a 20-unit decrease), third group 55, 58 (tens 5). Position 6 correctly should be 73."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "determine_missing_terms",
+      "clause": "Determine the missing term/s",
+      "verdict": "PASS",
+      "reasoning": "All seventeen samples present a number sequence with one missing element and ask the student to identify that missing value. The core action of determining missing terms is present in every rendered item without exception. This requirement is fully satisfied.",
+      "sample_ids": [
+        "36df2e43b3d0f242b79b",
+        "bd7859e000253c297ddd",
+        "8bfd6583959a28972221",
+        "d53ddf9e967ceaf88c38",
+        "80d8dd6089a363a2c07e",
+        "3e1b214386fbba0d87fe",
+        "bd4afe983f8a3fc64f9e",
+        "607a8633575b000a483d",
+        "1aad41b1953f2eb25822",
+        "6b65a8d3a01e861001e5",
+        "77140e76301f79c8e615",
+        "46df087136798a548927",
+        "c01e699a9291e93d2f87",
+        "5598d2db27cb00b7b1e5",
+        "0c132f1cecb97a043942",
+        "5a4da642ebd58d05a3e6",
+        "c0b0f083553ab8d1369a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "requirement_id": "pattern",
+      "clause": "pattern",
+      "verdict": "PASS",
+      "reasoning": "Every sample displays a numeric sequence exhibiting systematic structure. Each item contains ordered numbers that repeat with modifications, constituting a pattern. The requirement for patterns is uniformly met across all rendered samples without exception.",
+      "sample_ids": [
+        "36df2e43b3d0f242b79b",
+        "bd7859e000253c297ddd",
+        "8bfd6583959a28972221",
+        "d53ddf9e967ceaf88c38",
+        "80d8dd6089a363a2c07e",
+        "3e1b214386fbba0d87fe",
+        "bd4afe983f8a3fc64f9e",
+        "607a8633575b000a483d",
+        "1aad41b1953f2eb25822",
+        "6b65a8d3a01e861001e5",
+        "77140e76301f79c8e615",
+        "46df087136798a548927",
+        "c01e699a9291e93d2f87",
+        "5598d2db27cb00b7b1e5",
+        "0c132f1cecb97a043942",
+        "5a4da642ebd58d05a3e6",
+        "c0b0f083553ab8d1369a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "requirement_id": "repeating_and_increasing",
+      "clause": "repeating and increasing components",
+      "verdict": "PASS",
+      "reasoning": "Five samples demonstrate patterns where repeated elements increase systematically across cycles. Sample 36df2e43b3d0f242b79b shows repetition of 24 then 34 then 44 with 10-unit increments. Sample bd7859e000253c297ddd repeats ones while tens increase by 50. Sample 607a8633575b000a483d shows triplets increasing by 20 per group. Sample c01e699a9291e93d2f87 presents pairs increasing by 50. Sample 5a4da642ebd58d05a3e6 shows pairs increasing by 20. The competency's increasing-component requirement is satisfied.",
+      "sample_ids": [
+        "36df2e43b3d0f242b79b",
+        "bd7859e000253c297ddd",
+        "607a8633575b000a483d",
+        "c01e699a9291e93d2f87",
+        "5a4da642ebd58d05a3e6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    },
+    {
+      "requirement_id": "repeating_and_decreasing",
+      "clause": "repeating and decreasing components",
+      "verdict": "PASS",
+      "reasoning": "Twelve samples demonstrate patterns with repeated elements that decrease systematically across cycles. Sample 8bfd6583959a28972221 shows groups where ones repeat while tens decrease by 10. Sample d53ddf9e967ceaf88c38 repeats ones while hundreds decrease by 100. Sample 80d8dd6089a363a2c07e shows pairs with decreasing hundreds by 100. Sample 3e1b214386fbba0d87fe presents triplets decreasing by 100 per group. Additional samples 1aad41b1953f2eb25822, 6b65a8d3a01e861001e5, 77140e76301f79c8e615, 46df087136798a548927, 5598d2db27cb00b7b1e5, 0c132f1cecb97a043942, and c0b0f083553ab8d1369a demonstrate decreasing patterns with steps of 20 or 10. The decreasing-component requirement is fully met.",
+      "sample_ids": [
+        "8bfd6583959a28972221",
+        "d53ddf9e967ceaf88c38",
+        "80d8dd6089a363a2c07e",
+        "3e1b214386fbba0d87fe",
+        "bd4afe983f8a3fc64f9e",
+        "1aad41b1953f2eb25822",
+        "6b65a8d3a01e861001e5",
+        "77140e76301f79c8e615",
+        "46df087136798a548927",
+        "5598d2db27cb00b7b1e5",
+        "0c132f1cecb97a043942",
+        "c0b0f083553ab8d1369a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q3_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "7af5f3a20bca97c084706dcf2ee59b79b9f233452d3f942e169893076c9c91e6",
+      "clause_ids": [
+        "determine_missing_terms",
+        "pattern",
+        "repeating_and_increasing",
+        "repeating_and_decreasing"
+      ],
+      "response_ref": ".responses/s5-phaseC-w17-haiku45-20260925.json",
+      "response_digest": "e4ac595ad568d2f072e117cd0bf3e23b6e05e5ae93cf9eb6d556ac5bebc71383",
+      "prompt_ref": ".responses/s5-phaseC-w17-haiku45-20260925.prompt.txt",
+      "prompt_digest": "dc909029e66791099902cea254072166ad8f10901898e5194a3d72254135e43b",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q3_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q3_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each sample presents a sequence built from a repeating group that shifts by a fixed amount and asks which term is missing, which is the verb and the object the wording names. The keys are consistent with the structure, as with the run 43, 47, 41, 63, 67, ___, 83, 87 keyed 61."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Increasing and decreasing components are both produced, which is the main split. But the wording says missing term or terms, and every sample blanks exactly one position; the harder multi-blank case that the plural admits is never generated."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Groups of two or three terms shifting by ten, twenty, fifty or a hundred is a load a third-quarter Grade 3 pupil can hold, and the sequences are short enough to scan in one line."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three of the eight samples print the stem 'What is the missing term (position 8) in the pattern?' with no terms shown at all, so as rendered they cannot be attempted; the remaining five are inline lists. No sample sets the pattern in any real context such as beads, tiles or days."
+      "rationale": "Patterns use two to three repeated elements per group with number ranges 20-240, appropriate for Grade 3 quarter 3. Increment and decrement operations use steps of 10, 20, 50, and 100—all within developmental expectations for this grade level and quarter."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The things that change between samples are the group length, the size and sign of the shift, and where the blank falls, all of which are properties of the pattern itself rather than of some unrelated dressing."
+      "rationale": "All samples directly address the competency by asking students to determine missing terms in number patterns with repeating components that either increase or decrease. Pattern structures align with the example format showing repeated elements followed by modified repetitions."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The rendered samples comprehensively address the specified competency by presenting patterns where students must identify missing values within repetitive sequences that vary systematically. All samples require active determination of missing terms in patterned sequences.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements decompose the competency without loss. Determine missing terms is the core action across all samples. Pattern is present in every item. Repeating and increasing components appear in five samples with additive operations. Repeating and decreasing components appear in twelve samples with subtractive operations. Together these four requirements fully capture the competency's scope.",
+        "requirement_ids": [
+          "determine_missing_terms",
+          "pattern",
+          "repeating_and_increasing",
+          "repeating_and_decreasing"
+        ]
+      },
+      "clause_ids": [
+        "determine_missing_terms",
+        "pattern",
+        "repeating_and_increasing",
+        "repeating_and_decreasing"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples demonstrate substantial variety in pattern structure, missing position, magnitude changes, and presentation format. Two-element groups in samples 5, 9, 11, and 13 contrast with three-element groups in the remaining items. Missing positions range from 2 to 7. Increment magnitudes include 10, 20, and 50; decrement magnitudes include 10, 20, 50, and 100.",
+      "clause_ids": [
+        "determine_missing_terms",
+        "pattern",
+        "repeating_and_increasing",
+        "repeating_and_decreasing"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Terms stay in the tens through low hundreds, with the largest sequences beginning around 224, which keeps the pattern reasoning rather than the arithmetic as the difficulty."
+      "rationale": "Number magnitudes throughout the packet span single and double-digit ranges with values reaching up to 240, fitting Grade 3 quarter 3 mastery expectations. Operations remain consistent with third-grade computational fluency without introducing three-digit arithmetic complexity that would exceed grade level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Sample set includes five increasing-pattern variants, twelve decreasing-pattern variants, and themed variants in two samples. Format distribution provides six cloze items, six multiple-choice items, and five read-only multiple-choice items with visual support. Experience modes vary across standard, hint-gated, mastery drill, and scaffolded presentations."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
