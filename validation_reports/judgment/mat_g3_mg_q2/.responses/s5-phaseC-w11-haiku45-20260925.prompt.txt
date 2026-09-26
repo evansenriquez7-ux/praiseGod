@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925
+  blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_mg_q2_0/verdicts.json
+  local_only/scratch/phaseC/mat_g3_mg_q2_1/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_0-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,195 +99,147 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_mg_q2_0
-PACKET DIGEST: 2951abbcbb0e3696b6aa0f305f19d42baff2bf96a40a26234ab25627bff6600f
+NODE: mat_g3_mg_q2_1
+PACKET DIGEST: 471eadafb1d77b1bf5b570cbfc6a1ab3161926c861632e68b88803c5ea931e25
 COMPETENCY (Grade 3, Quarter 2, None):
-Measure mass in grams (g), kilograms (kg) and/or milligrams (mg), using appropriate measuring tools.
+Estimate mass of an object using grams, kilograms, and/or milligrams.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  measure_mass: Measure mass
-  grams_kilograms_and_or_milligrams: grams (g), kilograms (kg) and/or milligrams (mg)
-  measuring_tools: measuring tools
+  estimate_mass: Estimate mass
+  an_object: an object
+  grams_kilograms_and_or_milligrams: grams, kilograms, and/or milligrams
 
 SAMPLES (every one of these is real rendered output):
-  sample c9908165709971b9948d  seed 42  [read_mcq]
-      stem:    Look at the scale. What is the mass of the object? Give your answer in g.
-      answer:  7
-      options: 6 / 9 / 8 / 7
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 7 g."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "g", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 8b67d17085e6d176a168  seed 43  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in g.
-      answer:  30
-      options: 40 / 30 / 25 / 6
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 30 g."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 35, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "25", "30", "35", "40", "g", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample afc02b083292d46df035  seed 44  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
-      answer:  18
-      options: 24 / 9 / 18 / 16
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 18 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample ceb300771fc285155cc6  seed 45  [read_mcq]
-      stem:    Look at the scale. What is the mass of the object? Give your answer in kg.
+  sample 709cc08190a77103c7fb  seed 42  [cloze]
+      stem:    An object's mass measures 23 g. About how many g is that, rounded to the nearest 10?
       answer:  20
-      options: 22 / 18 / 10 / 20
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 20 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 43, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 8f0352a094a5eb9f8be6  seed 46  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in mg.
-      answer:  60
-      options: 60 / 75 / 65 / 55
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 60 mg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 48, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "mg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample d83b74ac4285152920be  seed 500  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
-      answer:  300
-      options: 12 / 325 / 375 / 300
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 300 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 48, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "50", "100", "150", "200", "250", "300", "350", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 9ee97d725fdb8ac00ee8  seed 501  [read_mcq]
-      stem:    Look at the scale. What is the mass of the object? Give your answer in mg.
+      options: 21 / 19 / 20 / 22
+      hints:   ["Count by 10s: 23 is between 20 and 30.", "23 is closer to 20.", "So 23 g is about 20 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample df5d61848dc9600290ef  seed 43  [mcq]
+      stem:    An object's mass measures 6 g. About how many g is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 12 / 11 / 10
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 g is about 10 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 18f2b16cd6ab9f425b4f  seed 44  [cloze]
+      stem:    An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 19 / 20 / 22
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample acf03a4ef29fc4bae88f  seed 45  [mcq]
+      stem:    An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 22 / 20 / 19
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b17c26c6337f2951af74  seed 46  [mcq]
+      stem:    An object's mass measures 68 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  70
+      options: 70 / 72 / 69 / 71
+      hints:   ["Count by 10s: 68 is between 60 and 70.", "68 is closer to 70.", "So 68 mg is about 70 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 22fc58d4a0eef049afde  seed 500  [mcq]
+      stem:    An object's mass measures 424 kg. About how many kg is that, rounded to the nearest 100?
+      answer:  400
+      options: 402 / 401 / 400 / 399
+      hints:   ["Count by 100s: 424 is between 400 and 500.", "424 is closer to 400.", "So 424 kg is about 400 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1b8ec6fc8f4272362d2f  seed 501  [mcq]
+      stem:    An object's mass measures 3204 mg. About how many mg is that, rounded to the nearest 1000?
+      answer:  3000
+      options: 2999 / 3002 / 3001 / 3000
+      hints:   ["Count by 1000s: 3204 is between 3000 and 4000.", "3204 is closer to 3000.", "So 3204 mg is about 3000 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ede7df9224e786e36ef2  seed 502  [cloze]
+      stem:    An object's mass measures 2355 mg. About how many mg is that, rounded to the nearest 1000?
       answer:  2000
-      options: 2000 / 1750 / 8 / 2500
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 2000 mg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "250", "500", "750", "1000", "1250", "1500", "1750", "2000", "2250", "2500", "mg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample dcc617830eb87a6b60c1  seed 502  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in mg.
-      answer:  450
-      options: 500 / 600 / 450 / 9
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 450 mg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "50", "100", "150", "200", "250", "300", "350", "400", "450", "500", "550", "600", "mg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample e7961c1b9ad1b95f73a6  seed 601  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
-      answer:  14
-      options: 16 / 18 / 12 / 14
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 14 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample dbf17f65b25154d382b1  seed 602  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in mg.
-      answer:  13
-      options: 14 / 17 / 12 / 13
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 13 mg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 53, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "mg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 381aaf5a2ac60203f499  seed 605  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in g.
-      answer:  26
-      options: 24 / 26 / 28 / 13
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 26 g."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 53, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "28", "32", "g", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 7e38015f40c86b9b76d2  seed 700  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
-      answer:  16
-      options: 8 / 18 / 14 / 16
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 16 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample b4df5de2d704a611d15e  seed 701  [read_mcq]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. Look at the scale. What is the mass of the bag? Give your answer in kg.
-      answer:  16
-      options: 18 / 16 / 20 / 14
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 16 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 7a48135b1579aadb498d  seed 702  [read_mcq]
-      stem:    🏀 Isko has a math challenge about basketballs. Look at the scale. What is the mass of the object? Give your answer in kg.
-      answer:  2
-      options: 1 / 2 / 3 / 6
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 2 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample d416480034e95eb1ae5f  seed 800  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
-      answer:  90
-      options: 90 / 9 / 100 / 80
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 90 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 41834693a00433869d2a  seed 900  [read_mcq]
-      stem:    Look at the scale. What is the mass of the object? Give your answer in kg.
-      answer:  1
-      options: 2 / 3 / 6 / 1
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 1 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 3decad15173d83d40b31  seed 901  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
-      answer:  1
-      options: 2 / 1 / 3 / 6
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 1 kg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 845374d47c44b3a0f207  seed 1000  [read_mcq]
-      stem:    Look at the scale. What is the mass of the parcel? Give your answer in g.
-      answer:  7
-      options: 9 / 6 / 7 / 8
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 7 g."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "g", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 4cb8eb0f6cdcc31bf6d0  seed 1001  [read_mcq]
-      stem:    Look at the scale. What is the mass of the bag? Give your answer in mg.
-      answer:  18
-      options: 20 / 16 / 18 / 24
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 18 mg."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "mg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample f4f3e330fa70ba558153  seed 1002  [read_mcq]
-      stem:    Look at the scale. What is the mass of the object? Give your answer in g.
-      answer:  28
-      options: 28 / 36 / 14 / 26
-      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 28 g."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
-      visual:  ScaleRead
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 56, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "28", "32", "36", "g", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+      options: 2001 / 2002 / 1999 / 2000
+      hints:   ["Count by 1000s: 2355 is between 2000 and 3000.", "2355 is closer to 2000.", "So 2355 mg is about 2000 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d88d6f09c9a8e18bc58b  seed 600  [mcq]
+      stem:    An object's mass measures 8 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 12 / 9 / 10
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 mg is about 10 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0c200462eb55f9ebdcbb  seed 601  [cloze]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 12 / 9 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 089754926313bdb4ff49  seed 602  [cloze]
+      stem:    An object's mass measures 24 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  20
+      options: 19 / 22 / 21 / 20
+      hints:   ["Count by 10s: 24 is between 20 and 30.", "24 is closer to 20.", "So 24 mg is about 20 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ce9316ac321344edb8a2  seed 604  [cloze]
+      stem:    An object's mass measures 8 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 11 / 10 / 12
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ead470c6b327ae1062d8  seed 605  [mcq]
+      stem:    An object's mass measures 8 g. About how many g is that, rounded to the nearest 10?
+      answer:  10
+      options: 12 / 10 / 11 / 9
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 g is about 10 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 91a007a11e0dcf169159  seed 700  [cloze]
+      stem:    An object's mass measures 13 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 12 / 10 / 9
+      hints:   ["Count by 10s: 13 is between 10 and 20.", "13 is closer to 10.", "So 13 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7b4038dce8e1df563bbf  seed 701  [mcq]
+      stem:    🏐 Romel has a math challenge about whistles. An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 20 / 21 / 19 / 22
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 42f804e3a99b1655d250  seed 702  [cloze]
+      stem:    🚴 Kuya Chad has a math challenge about wristbands. An object's mass measures 9 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 10 / 9 / 12
+      hints:   ["Count by 10s: 9 is between 0 and 10.", "9 is closer to 10.", "So 9 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 77bb28a971b9af2c3c62  seed 800  [cloze]
+      stem:    An object's mass measures 46 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  50
+      options: 51 / 50 / 52 / 49
+      hints:   ["Count by 10s: 46 is between 40 and 50.", "46 is closer to 50.", "So 46 kg is about 50 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 34a2f24cbb11d0d527c5  seed 900  [mcq]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 12 / 10 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 619ce706e1086b941ed9  seed 901  [mcq]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 12 / 10 / 9 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 40c66450762fb833b73a  seed 1000  [cloze]
+      stem:    An object's mass measures 64 g. About how many g is that, rounded to the nearest 10?
+      answer:  60
+      options: 60 / 62 / 61 / 59
+      hints:   ["Count by 10s: 64 is between 60 and 70.", "64 is closer to 60.", "So 64 g is about 60 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 5ccc6e8bd01bd3277ef7  seed 1001  [cloze]
+      stem:    An object's mass measures 28 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  30
+      options: 30 / 31 / 29 / 32
+      hints:   ["Count by 10s: 28 is between 20 and 30.", "28 is closer to 30.", "So 28 mg is about 30 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 4bf413fa2747d6296659  seed 1002  [cloze]
+      stem:    An object's mass measures 46 g. About how many g is that, rounded to the nearest 10?
+      answer:  50
+      options: 50 / 49 / 51 / 52
+      hints:   ["Count by 10s: 46 is between 40 and 50.", "46 is closer to 50.", "So 46 g is about 50 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

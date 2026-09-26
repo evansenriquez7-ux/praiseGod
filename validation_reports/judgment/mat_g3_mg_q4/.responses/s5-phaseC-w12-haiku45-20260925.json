@@ -1,0 +1,453 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+  "mat_g3_mg_q4_0": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Samples range from basic classification of movement type to coordinate arithmetic requiring addition and subtraction. Grade 3 students learn single-digit addition and subtraction with coordinates in this quarter. Problem complexity scales appropriately from identifying movement categories to calculating multi-step cumulative displacements."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "The competency explicitly requires students to both describe AND draw the effect of two-direction multi-step slides in basic shapes and figures. All 16 samples are non-visual multiple-choice items with is_visual set to false and visual_type null. No sample asks students to produce a drawing, sketch, or visual representation of a translated shape, which constitutes half the required demonstration of competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The decomposition lists five requirements presented as lossless coverage of the competency. Four requirements are addressed: describe (all samples), two-direction multi-step slide (samples 44, 901, 1000, and others), translation (explicit in sample stems and hints), and basic shapes and figures (circles, rectangles, triangles, stars, figures mentioned). However, the draw requirement is entirely absent from rendered output.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The listed decomposition includes draw as a discrete requirement, but examining all 16 samples reveals zero instances where a learner is asked to draw, sketch, or construct any visual representation. The decomposition claims to losslessly cover the competency yet omits one of two primary verbs from the original competency statement. This is a structural failure of the decomposition itself."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "FAIL",
+        "rationale": "Coverage of translation concepts is strong across the 16 samples, addressing classification of movement type, direction counting, position calculation, preservation of shape properties, and cumulative movement determination. However, the complete absence of drawing tasks means the generator provides only receptive understanding assessment, not productive/constructive demonstration that the competency explicitly requires."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Coordinate values remain in single-digit positive ranges appropriate for Grade 3 spatial reasoning (from 0 to 8 in most cases). Movement distances are similarly small (1 to 5 units). No sample introduces negative coordinates, fractions, or large numbers that would exceed Grade 3 computational capacity, keeping cognitive load aligned with quarter-level expectations."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "Samples show useful variation in problem structure (identification, counting, calculation, reversal, property analysis) and in shapes referenced (circles, rectangles, triangles, stars, points, generic figures). Thematic variation includes culturally framed items for learner engagement. However, because all samples are non-visual multiple-choice items, there is no variation in format type, response modality, or cognitive pathway required to demonstrate the draw component of the competency."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "d0913bb21df9831a10a4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a clear scenario with two specified directional movements (5 left, 2 down) and asks an unambiguous classification question. The answer option clearly identifies this as a two-direction slide with the term translation provided for mathematical language reinforcement."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is realistic for Grade 3 geometric thinking. The movement description is mathematically sound: two independent directional components combine into a single composite translation. Distractors (one-direction slide, flip, turn) represent plausible misconceptions about transformation types."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language uses Grade 3 appropriate vocabulary and sentence structure. The directional language (left, down) is concrete and accessible. The distinction between slide, flip, and turn uses terminology students learn in Grade 3 geometry. No ambiguous pronoun references or compound structures impede understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is correct: combining a 5-unit leftward movement with a 2-unit downward movement does indeed produce a two-directional translation. The answer correctly identifies this as translation and rejects one-directional, reflection, and rotation alternatives."
+          }
+        }
+      },
+      {
+        "sample_id": "88f76c9f7fabb4509a0e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem explicitly connects two independent directional movements with AND, making clear that both occur. The question asks how many directions, which has a determinate numerical answer. The options provide sensible distractors including the total distance moved (5) rather than direction count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A shape moving 2 right and 3 up is a valid two-direction translation scenario. The question appropriately tests whether students can distinguish number of directions from magnitude of movement or total distance. The scenario has pedagogical value for clarifying concepts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrase moves 2 spaces right AND 3 spaces up is unambiguous. The answer prompt asks explicitly for the count of directions. Grade 3 students familiar with direction and quantity should grasp the distinction between how far versus how many directions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Two independent directions (right and up) are present, so the correct answer is 2. The distractor 5 likely appeals to students who add the movement distances. Options 1 and 3 test whether students recognize multiple directions versus treating them as a single combined movement."
+          }
+        }
+      },
+      {
+        "sample_id": "98509aba57ba7fd85199",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes three sequential movements and asks for the total movement in two directions, making clear that intermediate steps must be combined. The term total movement signals that cumulative effect in each direction is required. No ambiguity about whether to sum movements in each direction independently."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A figure undergoing multiple slides in sequence (2 left, then 1 more left, then 4 up) is valid. The mathematical result is determinate: net movement is 3 left and 4 up. Distractors represent partial calculations or misunderstandings of cumulative movement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The step-by-step description (2 left, then 1 more left, then 4 up) matches Grade 3 reading level. The phrasing total movement in the two directions guides students to aggregate movements within each directional axis. Temporal sequencing with then is clear for understanding that movements compound."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer combines leftward movements: 2 plus 1 equals 3 spaces left, and includes the 4 spaces up. The distractor 7 spaces left appeals to students who add all movement magnitudes regardless of direction. Other distractors test partial combinations or misunderstandings."
+          }
+        }
+      },
+      {
+        "sample_id": "c3da572dcdb9746de4d8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem specifies initial coordinates, describes a translation, and asks for the resulting location using coordinate notation. The question is deterministic: given starting position and movement, the endpoint is uniquely determined. No ambiguity in what transformation applies or how to represent the answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A circle at coordinate (2, 4) translating 5 right and 1 down to (7, 3) is mathematically sound. The scenario is appropriate for Grade 3 students who have begun working with coordinate grids. The transformation rules are consistent with translation geometry."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The coordinate notation and directional language are concrete. Describing a circle at grid coordinate establishes the shape and starting position clearly. The question asks where it will be drawn, using language consistent with grade-level spatial reasoning activities."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: starting x-coordinate 2 plus 5 right equals 7; starting y-coordinate 4 minus 1 down equals 3. The answer (7, 3) is correct. Distractors represent common errors: (2, 3) ignores rightward movement, (7, 5) ignores downward movement, (3, 9) reverses or miscalculates both coordinates."
+          }
+        }
+      },
+      {
+        "sample_id": "43134419db3b2c3b7ce2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is identical in structure to sample d0913bb21df9831a10a4, asking for classification of a two-directional slide. The scenario and question are entirely unambiguous. Answer options clearly present the four transformation types students learn in Grade 3 geometry."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A shape sliding 5 left and 2 down is a coherent translation scenario. The question validates whether students can distinguish sliding (translation) from flipping (reflection) and turning (rotation), which are distinct Grade 3 geometric transformations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is identical in structure to earlier sample, using simple directional vocabulary accessible to Grade 3 readers. The four answer options use consistent terminology for shape transformations that students encounter in grade-level geometry instruction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Two independent directional components (5 left, 2 down) combine into a translation, correctly identified as two-direction slide. The answer includes the mathematical term translation. Distractors correctly represent alternative transformation types."
+          }
+        }
+      },
+      {
+        "sample_id": "513a2b857533ce832641",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a specific translation of a rectangle and asks whether orientation or shape changes. The question has a determinate answer based on the definition of translation. No ambiguity about what property is being tested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A rectangle undergoing a 4-right, 2-up translation does not change shape or orientation; only position changes. This is a core property of translation that Grade 3 students must understand. The scenario tests whether learners grasp an essential geometric principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks a yes-or-no question followed by a brief condition, which is clear for Grade 3 readers. The terms orientation and shape are introduced in geometric instruction at this level. The answer options distinguish misconceptions from correct understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Translations preserve shape and orientation; only position changes. The correct answer no, only its position changes accurately reflects this property. Distractors represent common misconceptions that shape becomes smaller, becomes different, or rotates during sliding."
+          }
+        }
+      },
+      {
+        "sample_id": "4261652656fb577f6cbd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is identical to sample c3da572dcdb9746de4d8 in mathematical content, asking for the coordinate result of translating a circle 5 right and 1 down from starting position (2, 4). No ambiguity in the transformation or the notation of the answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The translation of a circle on a coordinate grid with specified movements is a valid Grade 3 geometry scenario. The mathematics is sound and the task tests both coordinate understanding and translation application."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Coordinate grid language and directional movement descriptions are accessible to Grade 3 students working with spatial reasoning. The question asks at what grid point, using language consistent with geometric vocabulary at this level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Starting from (2, 4), moving 5 right and 1 down yields (7, 3). The calculation is correct. Answer options vary by distractor type: omitting one movement component or miscalculating coordinates."
+          }
+        }
+      },
+      {
+        "sample_id": "235b6f79da5c57068b94",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a point moving from an initial coordinate to a final coordinate and asks students to determine the distance traveled in each direction. The question has a unique correct answer. No ambiguity about what calculation is needed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Determining the translation that maps one point to another is the inverse problem of predicting the new position after translation. This is a valid Grade 3 coordinate and geometry activity that deepens understanding of translation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly states a starting position and ending position, then asks how many units in each direction the move occurred. The answer format specifies units right and units up, matching the question structure."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "From (1, 1) to (4, 5) requires movement of 3 units right and 4 units up. The calculation is correct. Distractors include transposed values, added values, or partially correct components."
+          }
+        }
+      },
+      {
+        "sample_id": "e54d40c25e397fa1e8dc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem specifies a starting position, the two-direction translation that occurs, and asks for the new position. The question is unambiguous: apply the specified translation to find the endpoint coordinate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A shape starting at (5, 5) and translating 2 left and 3 down to reach (3, 2) is mathematically valid. The scenario reinforces that translation involves independent movements in each direction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The use of starts at establishes initial position clearly. The directional language left and down is concrete. Asking for the new position using coordinate notation is consistent with Grade 3 geometry learning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "From (5, 5), moving 2 left yields x = 3, and moving 3 down yields y = 2, giving (3, 2). The calculation is correct. Distractors are coordinate variations testing partial or incorrect calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "13a82e83849f380d5da9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a triangle at a grid mark, specifies a translation, and asks for the resulting position. The question is straightforward: apply the transformation to find the new location."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A triangle translated 3 right and 4 up from (1, 2) to (4, 6) is a valid scenario. Using a triangle as the shape being translated reinforces that translation applies to any figure or shape."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrase at grid mark establishes the starting position. Directional language and the question format asking where is its new position are clear for Grade 3 coordinate work."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "From (1, 2), adding 3 to x gives 4, and adding 4 to y gives 6, so (4, 6) is correct. Distractors represent common calculation errors or partial applications of the translation."
+          }
+        }
+      },
+      {
+        "sample_id": "827d1521b3570c0d034e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the thematic framing involving Sir Rez and dance shoes, the mathematical content is identical to earlier coordinate translation problems. The core question remains unambiguous: find the result of translating a circle from (2, 4) by 5 right and 1 down."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The theme of dance shoes provides cultural interest without interfering with the geometric task. The circle translation problem remains valid. Thematic elements do not create contradictions or change the mathematical scenario."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic framing is brief and does not obscure the mathematical problem. Students reading about Sir Rez and math challenges understand that a challenge follows. The geometry problem statement is clear despite the theme layer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical content is sound: (2, 4) translated by 5 right and 1 down yields (7, 3). Theme does not alter the correctness of the transformation calculation."
+          }
+        }
+      },
+      {
+        "sample_id": "3d7bd78b5a23191ad99a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic framing with Moses and olives does not introduce ambiguity. The underlying mathematical question is identical to sample d0913bb21df9831a10a4: classify a two-directional slide as a type of transformation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The cultural theme involving Moses and olives is contextually appropriate and does not conflict with the geometric content. The shape sliding 5 left and 2 down remains a valid translation scenario."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic introduction is brief and culturally respectful. The mathematics question that follows is clearly stated. Grade 3 learners can distinguish the narrative frame from the geometric task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The transformation is correctly identified as two-direction slide (translation). Theme does not affect the mathematical accuracy of the classification."
+          }
+        }
+      },
+      {
+        "sample_id": "f1e63b3240c1584868ee",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a rectangle undergoing a two-direction translation and asks whether shape or orientation changes. The question is unambiguous: does this transformation alter the figure's geometric properties?"
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A rectangle translating 4 right and 2 up does not change. The scenario is valid and tests understanding that translations preserve properties of the original figure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question structure with yes-or-no followed by a condition is clear. Terms like orientation and shape are consistent with Grade 3 geometric vocabulary. Answer options are distinct and interpretable."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Translations preserve shape and orientation. The correct answer that only position changes is mathematically sound. Distractors represent misconceptions about what translation does to a figure."
+          }
+        }
+      },
+      {
+        "sample_id": "73232ea9ef84fc2c9a58",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a star at the origin translating 4 right then 3 up and asks where to draw it. The sequence of movements is clear and the question has a determinate answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Starting at the origin (0, 0) and translating 4 right and 3 up to (4, 3) is a valid coordinate geometry scenario appropriate for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrase at point (0, 0) establishes the starting location. The sequential language slides, then determines the order of application. The question asks where to draw, connecting to geometric visualization."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "From origin (0, 0), moving 4 right yields x = 4, moving 3 up yields y = 3, so (4, 3) is correct. Distractors test if students confuse coordinate components or apply movements incorrectly."
+          }
+        }
+      },
+      {
+        "sample_id": "3b5e962d20e4b88353e7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents three sequential movements and asks for total movement in two directions. The problem structure is identical to sample 98509aba57ba7fd85199. No ambiguity in what calculation is required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A figure sliding 2 left, then 1 more left, then 4 up represents a valid multi-step translation. The scenario tests whether students aggregate movements within each directional component."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The step-by-step description with then creates clear temporal sequencing. Total movement in the two directions guides students to combine movements separately for each direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The net movement is 3 left (2 plus 1) and 4 up. The answer is correct. Distractors represent partial or incorrect combinations of the three movements."
+          }
+        }
+      },
+      {
+        "sample_id": "cfcb8f398b9281ce0454",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is identical to samples 98509aba57ba7fd85199 and 3b5e962d20e4b88353e7. The multi-step translation and request for total movement have no ambiguity. The experience mode hint_gated does not change the mathematical clarity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The three-step sliding scenario is valid. The mathematical result is determinate. The hint_gated experience type indicates pedagogical support is available but does not affect scenario validity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is clear and identical in structure to earlier multi-step samples. Students can understand what calculation is required."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The net displacement is 3 spaces left and 4 spaces up, correctly computed from the three given movements. Answer is mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "e649f3f71880fa4e487c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is identical to sample 88f76c9f7fabb4509a0e. A shape moving 2 right and 3 up is asked to yield the count of directions. The question has one correct answer. The mastery_drill experience mode does not introduce ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is valid: a shape in two-directional motion. The question appropriately distinguishes direction count from total distance or individual magnitudes."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is clear. The mastery_drill experience suggests the item targets repeated skill practice but does not alter the clarity of the question."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Two directions (right and up) are present, so 2 is correct. Distractors test common misconceptions about combining magnitudes or conflating distance with direction."
+          }
+        }
+      },
+      {
+        "sample_id": "97f733a81f8e9b335e93",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is identical to sample 235b6f79da5c57068b94. A point moves from (1, 1) to (4, 5) and students determine the translation that created this movement. The scaffolded experience mode provides support but does not create ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The reverse translation problem (finding the movement from start and end coordinates) is valid and complements direct translation problems."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem asks how many units in each direction the point moved, which is clear. Scaffolded experience indicates support structures are in place but the question itself is unambiguous."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "From (1, 1) to (4, 5) requires 3 units right and 4 units up. The mathematics is correct."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "describe",
+        "clause": "Describe",
+        "verdict": "PASS",
+        "reasoning": "All 16 samples ask students to describe some aspect of a translation: the type of movement, the number of directions, the total combined movement, the resulting position after translation, or whether shape properties persist. Each sample requires learners to articulate or identify descriptions of translational movement, fulfilling the requirement that students describe effects of slides.",
+        "sample_ids": ["d0913bb21df9831a10a4", "88f76c9f7fabb4509a0e", "98509aba57ba7fd85199", "c3da572dcdb9746de4d8", "43134419db3b2c3b7ce2", "513a2b857533ce832641", "4261652656fb577f6cbd", "235b6f79da5c57068b94", "e54d40c25e397fa1e8dc", "13a82e83849f380d5da9", "827d1521b3570c0d034e", "3d7bd78b5a23191ad99a", "f1e63b3240c1584868ee", "73232ea9ef84fc2c9a58", "3b5e962d20e4b88353e7", "cfcb8f398b9281ce0454"]
+      },
+      {
+        "requirement_id": "draw",
+        "clause": "draw",
+        "verdict": "FAIL",
+        "reasoning": "No sample asks students to draw, sketch, or produce a visual representation of a translated shape. All 16 items are non-visual multiple-choice assessments with is_visual set to false and visual_type null. Students select from text-only options rather than generating visual output. The competency explicitly requires both describing AND drawing; this sample set addresses only description through receptive (multiple-choice) means.",
+        "sample_ids": ["d0913bb21df9831a10a4", "88f76c9f7fabb4509a0e", "98509aba57ba7fd85199", "c3da572dcdb9746de4d8", "43134419db3b2c3b7ce2", "513a2b857533ce832641", "4261652656fb577f6cbd", "235b6f79da5c57068b94", "e54d40c25e397fa1e8dc", "13a82e83849f380d5da9", "827d1521b3570c0d034e", "3d7bd78b5a23191ad99a", "f1e63b3240c1584868ee", "73232ea9ef84fc2c9a58", "3b5e962d20e4b88353e7", "cfcb8f398b9281ce0454"]
+      },
+      {
+        "requirement_id": "two_direction_multi_step_slide",
+        "clause": "two-direction multi-step slide",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples explicitly involve two-direction slides. Samples 44, 901, and 1000 contain multi-step slides where the same direction is applied twice before a perpendicular direction (2 left, then 1 more left, then 4 up). Samples 45, 46, 500, 501, 601, 700, 702, 800, and others contain two-direction movements in single steps (right and up, or left and down). The variation between true multi-step and single-step combined movements adequately represents the requirement.",
+        "sample_ids": ["98509aba57ba7fd85199", "513a2b857533ce832641", "4261652656fb577f6cbd", "e54d40c25e397fa1e8dc", "13a82e83849f380d5da9", "827d1521b3570c0d034e", "3d7bd78b5a23191ad99a", "f1e63b3240c1584868ee", "3b5e962d20e4b88353e7", "cfcb8f398b9281ce0454"]
+      },
+      {
+        "requirement_id": "translation",
+        "clause": "translation",
+        "verdict": "PASS",
+        "reasoning": "The term translation appears explicitly in samples 42, 46, 702 and in all three hint lines, which state: A slide (translation) moves a shape without turning or flipping it. Samples focus on slides as the primary geometric operation tested. The conceptual definition of translation (movement without turning or flipping) appears across all samples through scenario design or hints, establishing that learners must understand translation as the specific transformation being taught.",
+        "sample_ids": ["d0913bb21df9831a10a4", "43134419db3b2c3b7ce2", "3d7bd78b5a23191ad99a", "88f76c9f7fabb4509a0e", "98509aba57ba7fd85199", "c3da572dcdb9746de4d8", "513a2b857533ce832641", "4261652656fb577f6cbd", "235b6f79da5c57068b94", "e54d40c25e397fa1e8dc", "13a82e83849f380d5da9", "827d1521b3570c0d034e", "f1e63b3240c1584868ee", "73232ea9ef84fc2c9a58", "3b5e962d20e4b88353e7"]
+      },
+      {
+        "requirement_id": "basic_shapes_and_figures",
+        "clause": "basic shapes and figures",
+        "verdict": "PASS",
+        "reasoning": "Samples employ diverse basic shapes and figures appropriate to Grade 3: circles appear in samples 45, 501, 701; rectangles in samples 500, 800; triangles in sample 700; stars in sample 900; and generic terms shape and figure throughout the remaining samples. Points are referenced in samples 502 and 1002 as minimal geometric entities. This breadth of shape references ensures the competency requirement to apply translation understanding across multiple basic geometric forms is substantiated.",
+        "sample_ids": ["c3da572dcdb9746de4d8", "4261652656fb577f6cbd", "513a2b857533ce832641", "f1e63b3240c1584868ee", "13a82e83849f380d5da9", "827d1521b3570c0d034e", "73232ea9ef84fc2c9a58", "235b6f79da5c57068b94", "97f733a81f8e9b335e93"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q4_0",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Describe and draw the effect of a two-direction multi-step slide (or translation) in basic shapes and figures.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "describe",
+      "clause": "Describe"
+    },
+    {
+      "kind": "task",
+      "id": "draw",
+      "clause": "draw"
+    },
+    {
+      "kind": "property",
+      "id": "two_direction_multi_step_slide",
+      "clause": "two-direction multi-step slide"
+    },
+    {
+      "kind": "property",
+      "id": "translation",
+      "clause": "translation"
+    },
+    {
+      "kind": "object",
+      "id": "basic_shapes_and_figures",
+      "clause": "basic shapes and figures"
+    }
+  ],
+  "packet_digest": "987372596e86013186e7085e09376a35e34ffff7a5158ecbc6074174a0a76a7e",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,14 +48,58 @@
     500,
     501,
     502,
-    601
+    601,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d0913bb21df9831a10a4",
+    "88f76c9f7fabb4509a0e",
+    "98509aba57ba7fd85199",
+    "c3da572dcdb9746de4d8",
+    "43134419db3b2c3b7ce2",
+    "513a2b857533ce832641",
+    "4261652656fb577f6cbd",
+    "235b6f79da5c57068b94",
+    "e54d40c25e397fa1e8dc",
+    "13a82e83849f380d5da9",
+    "827d1521b3570c0d034e",
+    "3d7bd78b5a23191ad99a",
+    "f1e63b3240c1584868ee",
+    "73232ea9ef84fc2c9a58",
+    "3b5e962d20e4b88353e7",
+    "cfcb8f398b9281ce0454",
+    "e649f3f71880fa4e487c",
+    "97f733a81f8e9b335e93"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?",
       "correct_answer": "two-direction slide (translation)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -41,13 +121,36 @@
           "value": "turn (rotation)",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two-direction slide (translation)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "d0913bb21df9831a10a4",
+      "replay_digest": "9e0f2c92d52ed6fcaa8f49d101d2663855eafc59792088b442e107a76463fae4"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
       "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +172,36 @@
           "value": "3",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "88f76c9f7fabb4509a0e",
+      "replay_digest": "678055c86d6fa13f6a3cc43a2671fc6c3856c0ec12d316616393605d636a652c"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 44,
       "formatter": "mcq",
       "question_text": "A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?",
       "correct_answer": "3 spaces left and 4 spaces up",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -97,13 +223,36 @@
           "value": "3 spaces left and 4 spaces up",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3 spaces left and 4 spaces up",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "98509aba57ba7fd85199",
+      "replay_digest": "6f8aafb3a87951902529ca473612107421e9cb3bafce8797765a0b4520f71b5f"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?",
       "correct_answer": "(7, 3)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -125,13 +274,36 @@
           "value": "(3, 9)",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "(7, 3)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "c3da572dcdb9746de4d8",
+      "replay_digest": "e65b64edd5e7327ebef9c656f9dafde25775cd426caadff0af71e0c4f2a7a7bc"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?",
       "correct_answer": "two-direction slide (translation)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -153,13 +325,38 @@
           "value": "turn (rotation)",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "two-direction slide (translation)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "43134419db3b2c3b7ce2",
+      "replay_digest": "915cc322adec063745c4d472c4f919acbc0bb7f722f224cb1a3dbed934b6f037"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
       "correct_answer": "No, only its position changes.",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -181,13 +378,38 @@
           "value": "No, only its position changes.",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "No, only its position changes.",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "513a2b857533ce832641",
+      "replay_digest": "727754aff6612ac061be59437103c24cc853b8f8b07e4f0a384e0aa837337b68"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?",
       "correct_answer": "(7, 3)",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -209,13 +431,38 @@
           "value": "(2, 3)",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "(7, 3)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "4261652656fb577f6cbd",
+      "replay_digest": "559fdb64c4293249cf5c4152fe85f77ab082c7ef25fdcc9446e32987a7cea27c"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?",
       "correct_answer": "3 units right and 4 units up",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -237,13 +484,38 @@
           "value": "3 units right and 5 units up",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3 units right and 4 units up",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "235b6f79da5c57068b94",
+      "replay_digest": "df9892cb2f3f3ce6ab283f7c0bad6a75ea2ef04cb599b5a332999c415988198e"
     },
     {
+      "node_id": "mat_g3_mg_q4_0",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?",
       "correct_answer": "(3, 2)",
+      "requested": {
+        "difficulty_profile": {
+          "directions": "two_directions"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,34 +537,1088 @@
           "value": "(3, 5)",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "(3, 2)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "e54d40c25e397fa1e8dc",
+      "replay_digest": "5eb3d8a3587e9815c2fb050c4ce4a0bda4110bab1f97a50cbe151566be4042a7"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "A triangle at grid mark (1, 2) slides 3 units to the right and 4 units up. Where is its new position?",
+      "correct_answer": "(4, 6)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "(4, 6)",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "(3, 4)",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "(1, 6)",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "(4, 2)",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "(4, 6)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "13a82e83849f380d5da9",
+      "replay_digest": "95ca0950de80ca5c9ade5ebc1d5b9c6438fd45c3733536ec4af7578fce37f223"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?",
+      "correct_answer": "(7, 3)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "(7, 5)",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "(7, 3)",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "(2, 3)",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "(3, 9)",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "(7, 3)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "827d1521b3570c0d034e",
+      "replay_digest": "94aa570f07285f8a65f926d82ddd79a9b650fae00a8b313953b1d2533b6f09e4"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "✝️ Moses has a math challenge about olives. A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?",
+      "correct_answer": "two-direction slide (translation)",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one-direction slide",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "flip (reflection)",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "two-direction slide (translation)",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "turn (rotation)",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "two-direction slide (translation)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "3d7bd78b5a23191ad99a",
+      "replay_digest": "b9db9abeca72d2563350d0b6f8d61d6d62318f97dfc7702c462dbb253dff93dc"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+      "correct_answer": "No, only its position changes.",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "No, only its position changes.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Yes, it becomes a square.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Yes, it turns upside down.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Yes, it gets smaller.",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "No, only its position changes.",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "f1e63b3240c1584868ee",
+      "replay_digest": "987e9956b039d491695249f681505f4838964f59264779f6acbf7bdae401e213"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "A star at point (0, 0) slides 4 spaces right, then 3 spaces up. Where should the star be drawn?",
+      "correct_answer": "(4, 3)",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "(3, 4)",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "(0, 3)",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "(4, 3)",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "(4, 0)",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "(4, 3)",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "73232ea9ef84fc2c9a58",
+      "replay_digest": "16213bd72564921f6b0d41101902ec0a3557b96c01ac50931ca4dbc41cd25528"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?",
+      "correct_answer": "3 spaces left and 4 spaces up",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3 spaces left and 4 spaces up",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2 spaces left and 4 spaces up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3 spaces left and 1 space up",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7 spaces left",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3 spaces left and 4 spaces up",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "3b5e962d20e4b88353e7",
+      "replay_digest": "ba553ebecba9d857533c1b97d56a689b029b61bfb6d3c93d7fc6fdb68a31afa2"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?",
+      "correct_answer": "3 spaces left and 4 spaces up",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3 spaces left and 4 spaces up",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3 spaces left and 1 space up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7 spaces left",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2 spaces left and 4 spaces up",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3 spaces left and 4 spaces up",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "cfcb8f398b9281ce0454",
+      "replay_digest": "d1b4668d664681d3166669b110551dd363a6460e9be8dbef3e57d10f48116964"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
+      "correct_answer": "2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "2",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "e649f3f71880fa4e487c",
+      "replay_digest": "a5481edb7a43b050679645283545ebd5488e7529a55f4e2259adbeda6afab8b1"
+    },
+    {
+      "node_id": "mat_g3_mg_q4_0",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?",
+      "correct_answer": "3 units right and 4 units up",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3 units right and 5 units up",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4 units right and 5 units up",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3 units right and 4 units up",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 unit right and 1 unit up",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3 units right and 4 units up",
+      "hints": [
+        "A slide (translation) moves a shape without turning or flipping it.",
+        "The shape looks the same — only its position changes.",
+        "Count how many spaces it moved in each direction."
+      ],
+      "sample_id": "97f733a81f8e9b335e93",
+      "replay_digest": "98c0df14ba90c716c24580df60c3372c88b10399d69baae27ce2ce498d65713c"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d0913bb21df9831a10a4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a clear scenario with two specified directional movements (5 left, 2 down) and asks an unambiguous classification question. The answer option clearly identifies this as a two-direction slide with the term translation provided for mathematical language reinforcement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is realistic for Grade 3 geometric thinking. The movement description is mathematically sound: two independent directional components combine into a single composite translation. Distractors (one-direction slide, flip, turn) represent plausible misconceptions about transformation types."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language uses Grade 3 appropriate vocabulary and sentence structure. The directional language (left, down) is concrete and accessible. The distinction between slide, flip, and turn uses terminology students learn in Grade 3 geometry. No ambiguous pronoun references or compound structures impede understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct: combining a 5-unit leftward movement with a 2-unit downward movement does indeed produce a two-directional translation. The answer correctly identifies this as translation and rejects one-directional, reflection, and rotation alternatives."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "88f76c9f7fabb4509a0e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly connects two independent directional movements with AND, making clear that both occur. The question asks how many directions, which has a determinate numerical answer. The options provide sensible distractors including the total distance moved (5) rather than direction count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A shape moving 2 right and 3 up is a valid two-direction translation scenario. The question appropriately tests whether students can distinguish number of directions from magnitude of movement or total distance. The scenario has pedagogical value for clarifying concepts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase moves 2 spaces right AND 3 spaces up is unambiguous. The answer prompt asks explicitly for the count of directions. Grade 3 students familiar with direction and quantity should grasp the distinction between how far versus how many directions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two independent directions (right and up) are present, so the correct answer is 2. The distractor 5 likely appeals to students who add the movement distances. Options 1 and 3 test whether students recognize multiple directions versus treating them as a single combined movement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "98509aba57ba7fd85199",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes three sequential movements and asks for the total movement in two directions, making clear that intermediate steps must be combined. The term total movement signals that cumulative effect in each direction is required. No ambiguity about whether to sum movements in each direction independently."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A figure undergoing multiple slides in sequence (2 left, then 1 more left, then 4 up) is valid. The mathematical result is determinate: net movement is 3 left and 4 up. Distractors represent partial calculations or misunderstandings of cumulative movement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The step-by-step description (2 left, then 1 more left, then 4 up) matches Grade 3 reading level. The phrasing total movement in the two directions guides students to aggregate movements within each directional axis. Temporal sequencing with then is clear for understanding that movements compound."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer combines leftward movements: 2 plus 1 equals 3 spaces left, and includes the 4 spaces up. The distractor 7 spaces left appeals to students who add all movement magnitudes regardless of direction. Other distractors test partial combinations or misunderstandings."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "c3da572dcdb9746de4d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies initial coordinates, describes a translation, and asks for the resulting location using coordinate notation. The question is deterministic: given starting position and movement, the endpoint is uniquely determined. No ambiguity in what transformation applies or how to represent the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A circle at coordinate (2, 4) translating 5 right and 1 down to (7, 3) is mathematically sound. The scenario is appropriate for Grade 3 students who have begun working with coordinate grids. The transformation rules are consistent with translation geometry."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The coordinate notation and directional language are concrete. Describing a circle at grid coordinate establishes the shape and starting position clearly. The question asks where it will be drawn, using language consistent with grade-level spatial reasoning activities."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is correct: starting x-coordinate 2 plus 5 right equals 7; starting y-coordinate 4 minus 1 down equals 3. The answer (7, 3) is correct. Distractors represent common errors: (2, 3) ignores rightward movement, (7, 5) ignores downward movement, (3, 9) reverses or miscalculates both coordinates."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "43134419db3b2c3b7ce2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is identical in structure to sample d0913bb21df9831a10a4, asking for classification of a two-directional slide. The scenario and question are entirely unambiguous. Answer options clearly present the four transformation types students learn in Grade 3 geometry."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A shape sliding 5 left and 2 down is a coherent translation scenario. The question validates whether students can distinguish sliding (translation) from flipping (reflection) and turning (rotation), which are distinct Grade 3 geometric transformations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is identical in structure to earlier sample, using simple directional vocabulary accessible to Grade 3 readers. The four answer options use consistent terminology for shape transformations that students encounter in grade-level geometry instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two independent directional components (5 left, 2 down) combine into a translation, correctly identified as two-direction slide. The answer includes the mathematical term translation. Distractors correctly represent alternative transformation types."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "513a2b857533ce832641",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a specific translation of a rectangle and asks whether orientation or shape changes. The question has a determinate answer based on the definition of translation. No ambiguity about what property is being tested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle undergoing a 4-right, 2-up translation does not change shape or orientation; only position changes. This is a core property of translation that Grade 3 students must understand. The scenario tests whether learners grasp an essential geometric principle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks a yes-or-no question followed by a brief condition, which is clear for Grade 3 readers. The terms orientation and shape are introduced in geometric instruction at this level. The answer options distinguish misconceptions from correct understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Translations preserve shape and orientation; only position changes. The correct answer no, only its position changes accurately reflects this property. Distractors represent common misconceptions that shape becomes smaller, becomes different, or rotates during sliding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "4261652656fb577f6cbd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is identical to sample c3da572dcdb9746de4d8 in mathematical content, asking for the coordinate result of translating a circle 5 right and 1 down from starting position (2, 4). No ambiguity in the transformation or the notation of the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The translation of a circle on a coordinate grid with specified movements is a valid Grade 3 geometry scenario. The mathematics is sound and the task tests both coordinate understanding and translation application."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Coordinate grid language and directional movement descriptions are accessible to Grade 3 students working with spatial reasoning. The question asks at what grid point, using language consistent with geometric vocabulary at this level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting from (2, 4), moving 5 right and 1 down yields (7, 3). The calculation is correct. Answer options vary by distractor type: omitting one movement component or miscalculating coordinates."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "235b6f79da5c57068b94",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a point moving from an initial coordinate to a final coordinate and asks students to determine the distance traveled in each direction. The question has a unique correct answer. No ambiguity about what calculation is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Determining the translation that maps one point to another is the inverse problem of predicting the new position after translation. This is a valid Grade 3 coordinate and geometry activity that deepens understanding of translation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states a starting position and ending position, then asks how many units in each direction the move occurred. The answer format specifies units right and units up, matching the question structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From (1, 1) to (4, 5) requires movement of 3 units right and 4 units up. The calculation is correct. Distractors include transposed values, added values, or partially correct components."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "e54d40c25e397fa1e8dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies a starting position, the two-direction translation that occurs, and asks for the new position. The question is unambiguous: apply the specified translation to find the endpoint coordinate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A shape starting at (5, 5) and translating 2 left and 3 down to reach (3, 2) is mathematically valid. The scenario reinforces that translation involves independent movements in each direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The use of starts at establishes initial position clearly. The directional language left and down is concrete. Asking for the new position using coordinate notation is consistent with Grade 3 geometry learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From (5, 5), moving 2 left yields x = 3, and moving 3 down yields y = 2, giving (3, 2). The calculation is correct. Distractors are coordinate variations testing partial or incorrect calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "13a82e83849f380d5da9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a triangle at a grid mark, specifies a translation, and asks for the resulting position. The question is straightforward: apply the transformation to find the new location."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A triangle translated 3 right and 4 up from (1, 2) to (4, 6) is a valid scenario. Using a triangle as the shape being translated reinforces that translation applies to any figure or shape."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase at grid mark establishes the starting position. Directional language and the question format asking where is its new position are clear for Grade 3 coordinate work."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From (1, 2), adding 3 to x gives 4, and adding 4 to y gives 6, so (4, 6) is correct. Distractors represent common calculation errors or partial applications of the translation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "827d1521b3570c0d034e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic framing involving Sir Rez and dance shoes, the mathematical content is identical to earlier coordinate translation problems. The core question remains unambiguous: find the result of translating a circle from (2, 4) by 5 right and 1 down."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The theme of dance shoes provides cultural interest without interfering with the geometric task. The circle translation problem remains valid. Thematic elements do not create contradictions or change the mathematical scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing is brief and does not obscure the mathematical problem. Students reading about Sir Rez and math challenges understand that a challenge follows. The geometry problem statement is clear despite the theme layer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical content is sound: (2, 4) translated by 5 right and 1 down yields (7, 3). Theme does not alter the correctness of the transformation calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "3d7bd78b5a23191ad99a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing with Moses and olives does not introduce ambiguity. The underlying mathematical question is identical to sample d0913bb21df9831a10a4: classify a two-directional slide as a type of transformation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The cultural theme involving Moses and olives is contextually appropriate and does not conflict with the geometric content. The shape sliding 5 left and 2 down remains a valid translation scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic introduction is brief and culturally respectful. The mathematics question that follows is clearly stated. Grade 3 learners can distinguish the narrative frame from the geometric task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The transformation is correctly identified as two-direction slide (translation). Theme does not affect the mathematical accuracy of the classification."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "f1e63b3240c1584868ee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a rectangle undergoing a two-direction translation and asks whether shape or orientation changes. The question is unambiguous: does this transformation alter the figure's geometric properties?"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A rectangle translating 4 right and 2 up does not change. The scenario is valid and tests understanding that translations preserve properties of the original figure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure with yes-or-no followed by a condition is clear. Terms like orientation and shape are consistent with Grade 3 geometric vocabulary. Answer options are distinct and interpretable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Translations preserve shape and orientation. The correct answer that only position changes is mathematically sound. Distractors represent misconceptions about what translation does to a figure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "73232ea9ef84fc2c9a58",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a star at the origin translating 4 right then 3 up and asks where to draw it. The sequence of movements is clear and the question has a determinate answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at the origin (0, 0) and translating 4 right and 3 up to (4, 3) is a valid coordinate geometry scenario appropriate for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase at point (0, 0) establishes the starting location. The sequential language slides, then determines the order of application. The question asks where to draw, connecting to geometric visualization."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From origin (0, 0), moving 4 right yields x = 4, moving 3 up yields y = 3, so (4, 3) is correct. Distractors test if students confuse coordinate components or apply movements incorrectly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "3b5e962d20e4b88353e7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents three sequential movements and asks for total movement in two directions. The problem structure is identical to sample 98509aba57ba7fd85199. No ambiguity in what calculation is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A figure sliding 2 left, then 1 more left, then 4 up represents a valid multi-step translation. The scenario tests whether students aggregate movements within each directional component."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The step-by-step description with then creates clear temporal sequencing. Total movement in the two directions guides students to combine movements separately for each direction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The net movement is 3 left (2 plus 1) and 4 up. The answer is correct. Distractors represent partial or incorrect combinations of the three movements."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "cfcb8f398b9281ce0454",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is identical to samples 98509aba57ba7fd85199 and 3b5e962d20e4b88353e7. The multi-step translation and request for total movement have no ambiguity. The experience mode hint_gated does not change the mathematical clarity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three-step sliding scenario is valid. The mathematical result is determinate. The hint_gated experience type indicates pedagogical support is available but does not affect scenario validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is clear and identical in structure to earlier multi-step samples. Students can understand what calculation is required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The net displacement is 3 spaces left and 4 spaces up, correctly computed from the three given movements. Answer is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "e649f3f71880fa4e487c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is identical to sample 88f76c9f7fabb4509a0e. A shape moving 2 right and 3 up is asked to yield the count of directions. The question has one correct answer. The mastery_drill experience mode does not introduce ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is valid: a shape in two-directional motion. The question appropriately distinguishes direction count from total distance or individual magnitudes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is clear. The mastery_drill experience suggests the item targets repeated skill practice but does not alter the clarity of the question."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two directions (right and up) are present, so 2 is correct. Distractors test common misconceptions about combining magnitudes or conflating distance with direction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "sample_id": "97f733a81f8e9b335e93",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is identical to sample 235b6f79da5c57068b94. A point moves from (1, 1) to (4, 5) and students determine the translation that created this movement. The scaffolded experience mode provides support but does not create ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The reverse translation problem (finding the movement from start and end coordinates) is valid and complements direct translation problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem asks how many units in each direction the point moved, which is clear. Scaffolded experience indicates support structures are in place but the question itself is unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From (1, 1) to (4, 5) requires 3 units right and 4 units up. The mathematics is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "describe",
+      "clause": "Describe",
+      "verdict": "PASS",
+      "reasoning": "All 16 samples ask students to describe some aspect of a translation: the type of movement, the number of directions, the total combined movement, the resulting position after translation, or whether shape properties persist. Each sample requires learners to articulate or identify descriptions of translational movement, fulfilling the requirement that students describe effects of slides.",
+      "sample_ids": [
+        "d0913bb21df9831a10a4",
+        "88f76c9f7fabb4509a0e",
+        "98509aba57ba7fd85199",
+        "c3da572dcdb9746de4d8",
+        "43134419db3b2c3b7ce2",
+        "513a2b857533ce832641",
+        "4261652656fb577f6cbd",
+        "235b6f79da5c57068b94",
+        "e54d40c25e397fa1e8dc",
+        "13a82e83849f380d5da9",
+        "827d1521b3570c0d034e",
+        "3d7bd78b5a23191ad99a",
+        "f1e63b3240c1584868ee",
+        "73232ea9ef84fc2c9a58",
+        "3b5e962d20e4b88353e7",
+        "cfcb8f398b9281ce0454"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "requirement_id": "draw",
+      "clause": "draw",
+      "verdict": "FAIL",
+      "reasoning": "No sample asks students to draw, sketch, or produce a visual representation of a translated shape. All 16 items are non-visual multiple-choice assessments with is_visual set to false and visual_type null. Students select from text-only options rather than generating visual output. The competency explicitly requires both describing AND drawing; this sample set addresses only description through receptive (multiple-choice) means.",
+      "sample_ids": [
+        "d0913bb21df9831a10a4",
+        "88f76c9f7fabb4509a0e",
+        "98509aba57ba7fd85199",
+        "c3da572dcdb9746de4d8",
+        "43134419db3b2c3b7ce2",
+        "513a2b857533ce832641",
+        "4261652656fb577f6cbd",
+        "235b6f79da5c57068b94",
+        "e54d40c25e397fa1e8dc",
+        "13a82e83849f380d5da9",
+        "827d1521b3570c0d034e",
+        "3d7bd78b5a23191ad99a",
+        "f1e63b3240c1584868ee",
+        "73232ea9ef84fc2c9a58",
+        "3b5e962d20e4b88353e7",
+        "cfcb8f398b9281ce0454"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "requirement_id": "two_direction_multi_step_slide",
+      "clause": "two-direction multi-step slide",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly involve two-direction slides. Samples 44, 901, and 1000 contain multi-step slides where the same direction is applied twice before a perpendicular direction (2 left, then 1 more left, then 4 up). Samples 45, 46, 500, 501, 601, 700, 702, 800, and others contain two-direction movements in single steps (right and up, or left and down). The variation between true multi-step and single-step combined movements adequately represents the requirement.",
+      "sample_ids": [
+        "98509aba57ba7fd85199",
+        "513a2b857533ce832641",
+        "4261652656fb577f6cbd",
+        "e54d40c25e397fa1e8dc",
+        "13a82e83849f380d5da9",
+        "827d1521b3570c0d034e",
+        "3d7bd78b5a23191ad99a",
+        "f1e63b3240c1584868ee",
+        "3b5e962d20e4b88353e7",
+        "cfcb8f398b9281ce0454"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "requirement_id": "translation",
+      "clause": "translation",
+      "verdict": "PASS",
+      "reasoning": "The term translation appears explicitly in samples 42, 46, 702 and in all three hint lines, which state: A slide (translation) moves a shape without turning or flipping it. Samples focus on slides as the primary geometric operation tested. The conceptual definition of translation (movement without turning or flipping) appears across all samples through scenario design or hints, establishing that learners must understand translation as the specific transformation being taught.",
+      "sample_ids": [
+        "d0913bb21df9831a10a4",
+        "43134419db3b2c3b7ce2",
+        "3d7bd78b5a23191ad99a",
+        "88f76c9f7fabb4509a0e",
+        "98509aba57ba7fd85199",
+        "c3da572dcdb9746de4d8",
+        "513a2b857533ce832641",
+        "4261652656fb577f6cbd",
+        "235b6f79da5c57068b94",
+        "e54d40c25e397fa1e8dc",
+        "13a82e83849f380d5da9",
+        "827d1521b3570c0d034e",
+        "f1e63b3240c1584868ee",
+        "73232ea9ef84fc2c9a58",
+        "3b5e962d20e4b88353e7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    },
+    {
+      "requirement_id": "basic_shapes_and_figures",
+      "clause": "basic shapes and figures",
+      "verdict": "PASS",
+      "reasoning": "Samples employ diverse basic shapes and figures appropriate to Grade 3: circles appear in samples 45, 501, 701; rectangles in samples 500, 800; triangles in sample 700; stars in sample 900; and generic terms shape and figure throughout the remaining samples. Points are referenced in samples 502 and 1002 as minimal geometric entities. This breadth of shape references ensures the competency requirement to apply translation understanding across multiple basic geometric forms is substantiated.",
+      "sample_ids": [
+        "c3da572dcdb9746de4d8",
+        "4261652656fb577f6cbd",
+        "513a2b857533ce832641",
+        "f1e63b3240c1584868ee",
+        "13a82e83849f380d5da9",
+        "827d1521b3570c0d034e",
+        "73232ea9ef84fc2c9a58",
+        "235b6f79da5c57068b94",
+        "97f733a81f8e9b335e93"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q4_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q4_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "987372596e86013186e7085e09376a35e34ffff7a5158ecbc6074174a0a76a7e",
+      "clause_ids": [
+        "describe",
+        "draw",
+        "two_direction_multi_step_slide",
+        "translation",
+        "basic_shapes_and_figures"
+      ],
+      "response_ref": ".responses/s5-phaseC-w12-haiku45-20260925.json",
+      "response_digest": "675e61228fd68a799bd27d9520ac9ec0819e02f8d9735f0cb2cdae887dcaa555",
+      "prompt_ref": ".responses/s5-phaseC-w12-haiku45-20260925.prompt.txt",
+      "prompt_digest": "9b2a778f43b850ae668633f9aa5d37798054d630cac5725e0becfdb665eca8ee",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q4_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The two-direction aspect is well handled, but the multi-step qualifier the competency states is met by only one item, the figure that slides 2 spaces left, then 1 more space left, then 4 spaces up. Every other slide is a single move in each of two directions. The drawing verb is likewise served only indirectly, by predicting where a shape would land."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Direction pairs are covered reasonably, left with down, right with up, and right with down, and the inverse case appears where a point moving from one position to another must be described as a slide. But composing several steps before reporting the net effect, which is the distinguishing feature of this competency, occurs once in nine samples."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Four items work in ordered-pair coordinate notation, asking where a circle at grid coordinate (2, 4) lands and giving the key (7, 3). Formal coordinate pairs with independent arithmetic on each component are heavier than the informal grid-and-spaces language that the rest of the node uses and that suits Grade 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All items are mcq, and two stems each appear twice with only reordered options, the 5-left-and-2-down naming item and the circle at (2, 4) item, so four of the nine rendered samples are duplicate pairs. The invariance item about whether the orientation or shape changes is the one genuinely distinct framing."
+      "verdict": "PASS",
+      "rationale": "Samples range from basic classification of movement type to coordinate arithmetic requiring addition and subtraction. Grade 3 students learn single-digit addition and subtraction with coordinates in this quarter. Problem complexity scales appropriately from identifying movement categories to calculating multi-step cumulative displacements."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The items do build the same idea from different sides, naming the movement, counting its directions, composing steps, predicting the landing point, recovering the slide from before-and-after positions, and recognising that a translation preserves shape. All of these are translation reasoning rather than a substituted axis."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires students to both describe AND draw the effect of two-direction multi-step slides in basic shapes and figures. All 16 samples are non-visual multiple-choice items with is_visual set to false and visual_type null. No sample asks students to produce a drawing, sketch, or visual representation of a translated shape, which constitutes half the required demonstration of competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The decomposition lists five requirements presented as lossless coverage of the competency. Four requirements are addressed: describe (all samples), two-direction multi-step slide (samples 44, 901, 1000, and others), translation (explicit in sample stems and hints), and basic shapes and figures (circles, rectangles, triangles, stars, figures mentioned). However, the draw requirement is entirely absent from rendered output.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The listed decomposition includes draw as a discrete requirement, but examining all 16 samples reveals zero instances where a learner is asked to draw, sketch, or construct any visual representation. The decomposition claims to losslessly cover the competency yet omits one of two primary verbs from the original competency statement. This is a structural failure of the decomposition itself.",
+        "requirement_ids": [
+          "describe",
+          "draw",
+          "two_direction_multi_step_slide",
+          "translation",
+          "basic_shapes_and_figures"
+        ]
+      },
+      "clause_ids": [
+        "describe",
+        "draw",
+        "two_direction_multi_step_slide",
+        "translation",
+        "basic_shapes_and_figures"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Coverage of translation concepts is strong across the 16 samples, addressing classification of movement type, direction counting, position calculation, preservation of shape properties, and cumulative movement determination. However, the complete absence of drawing tasks means the generator provides only receptive understanding assessment, not productive/constructive demonstration that the competency explicitly requires.",
+      "clause_ids": [
+        "describe",
+        "draw",
+        "two_direction_multi_step_slide",
+        "translation",
+        "basic_shapes_and_figures"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Slide distances are at most 5 spaces and grid positions stay in single digits, so the arithmetic never distracts from the geometric idea, which is the right emphasis for a Quarter 4 transformation competency."
+      "rationale": "Coordinate values remain in single-digit positive ranges appropriate for Grade 3 spatial reasoning (from 0 to 8 in most cases). Movement distances are similarly small (1 to 5 units). No sample introduces negative coordinates, fractions, or large numbers that would exceed Grade 3 computational capacity, keeping cognitive load aligned with quarter-level expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Samples show useful variation in problem structure (identification, counting, calculation, reversal, property analysis) and in shapes referenced (circles, rectangles, triangles, stars, points, generic figures). Thematic variation includes culturally framed items for learner engagement. However, because all samples are non-visual multiple-choice items, there is no variation in format type, response modality, or cognitive pathway required to demonstrate the draw component of the competency."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

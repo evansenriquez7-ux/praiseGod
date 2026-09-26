@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q2_1",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Estimate mass of an object using grams, kilograms, and/or milligrams.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "estimate_mass",
+      "clause": "Estimate mass"
+    },
+    {
+      "kind": "object",
+      "id": "an_object",
+      "clause": "an object"
+    },
+    {
+      "kind": "representation",
+      "id": "grams_kilograms_and_or_milligrams",
+      "clause": "grams, kilograms, and/or milligrams"
+    }
+  ],
+  "packet_digest": "471eadafb1d77b1bf5b570cbfc6a1ab3161926c861632e68b88803c5ea931e25",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -15,75 +41,63 @@
     600,
     601,
     602,
-    603,
-    605
+    604,
+    605,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "709cc08190a77103c7fb",
+    "df5d61848dc9600290ef",
+    "18f2b16cd6ab9f425b4f",
+    "acf03a4ef29fc4bae88f",
+    "b17c26c6337f2951af74",
+    "22fc58d4a0eef049afde",
+    "1b8ec6fc8f4272362d2f",
+    "ede7df9224e786e36ef2",
+    "d88d6f09c9a8e18bc58b",
+    "0c200462eb55f9ebdcbb",
+    "089754926313bdb4ff49",
+    "ce9316ac321344edb8a2",
+    "ead470c6b327ae1062d8",
+    "91a007a11e0dcf169159",
+    "7b4038dce8e1df563bbf",
+    "42f804e3a99b1655d250",
+    "77bb28a971b9af2c3c62",
+    "34a2f24cbb11d0d527c5",
+    "619ce706e1086b941ed9",
+    "40c66450762fb833b73a",
+    "5ccc6e8bd01bd3277ef7",
+    "4bf413fa2747d6296659"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 42,
       "formatter": "cloze",
-      "question_text": "An object's mass measures 7 g. About how many g is that, rounded to the nearest 10?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "An object's mass measures 31 g. About how many g is that, rounded to the nearest 10?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "An object's mass measures 18 kg. About how many kg is that, rounded to the nearest 10?",
+      "question_text": "An object's mass measures 23 g. About how many g is that, rounded to the nearest 10?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,13 +123,142 @@
           "text": "22",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 23 is between 20 and 30.",
+        "23 is closer to 20.",
+        "So 23 g is about 20 g."
+      ],
+      "sample_id": "709cc08190a77103c7fb",
+      "replay_digest": "267c3d9c077758f5d35d4c180d8e6bf6c29fb8a2bd335c563fb0068bdb4ade01"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "An object's mass measures 6 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 g is about 10 g."
+      ],
+      "sample_id": "df5d61848dc9600290ef",
+      "replay_digest": "2f40a0e7907631cdce5e6fc9cf8294016a7df8b455b272a13f42667d64965081"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 19 is between 10 and 20.",
+        "19 is closer to 20.",
+        "So 19 kg is about 20 kg."
+      ],
+      "sample_id": "18f2b16cd6ab9f425b4f",
+      "replay_digest": "db82d92bfdd4d5e8525eea7bcf10c050b8b958c089f05aafaebb709246e0efee"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 21 kg. About how many kg is that, rounded to the nearest 10?",
+      "question_text": "An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -137,157 +280,305 @@
           "value": 19,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 19 is between 10 and 20.",
+        "19 is closer to 20.",
+        "So 19 kg is about 20 kg."
+      ],
+      "sample_id": "acf03a4ef29fc4bae88f",
+      "replay_digest": "fc021f04bc86b9821a9947d92b8abe9318399776816b56f0908183d567f747cb"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 62 mg. About how many mg is that, rounded to the nearest 10?",
-      "correct_answer": 60,
+      "question_text": "An object's mass measures 68 mg. About how many mg is that, rounded to the nearest 10?",
+      "correct_answer": 70,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 60,
+          "value": 70,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 62,
+          "value": 72,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 59,
+          "value": 69,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 61,
+          "value": 71,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "Count by 10s: 68 is between 60 and 70.",
+        "68 is closer to 70.",
+        "So 68 mg is about 70 mg."
+      ],
+      "sample_id": "b17c26c6337f2951af74",
+      "replay_digest": "a7ac37045b954e91b938d9392a7ae1876aae77ab5d9e22d3c6b3ac54572b60f3"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 500,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 307 kg. About how many kg is that, rounded to the nearest 100?",
-      "correct_answer": 300,
+      "question_text": "An object's mass measures 424 kg. About how many kg is that, rounded to the nearest 100?",
+      "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 302,
+          "value": 402,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 301,
+          "value": 401,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 300,
+          "value": 400,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 299,
+          "value": 399,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "Count by 100s: 424 is between 400 and 500.",
+        "424 is closer to 400.",
+        "So 424 kg is about 400 kg."
+      ],
+      "sample_id": "22fc58d4a0eef049afde",
+      "replay_digest": "3f2ac814423984f00bec3d1183fb9f35a7213aa10258c7febe9f99d758e3faf5"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 1927 mg. About how many mg is that, rounded to the nearest 1000?",
-      "correct_answer": 2000,
+      "question_text": "An object's mass measures 3204 mg. About how many mg is that, rounded to the nearest 1000?",
+      "correct_answer": 3000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 1999,
+          "value": 2999,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3002,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3000,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "Count by 1000s: 3204 is between 3000 and 4000.",
+        "3204 is closer to 3000.",
+        "So 3204 mg is about 3000 mg."
+      ],
+      "sample_id": "1b8ec6fc8f4272362d2f",
+      "replay_digest": "266758a1adc5ada888c7435d229e20b37a5ba6dc49484db5e1be6a891e7c55c6"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 502,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 2355 mg. About how many mg is that, rounded to the nearest 1000?",
+      "correct_answer": 2000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2001,
+          "text": "2001",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2002,
+          "text": "2002",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2001,
+          "value": 1999,
+          "text": "1999",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2000,
+          "text": "2000",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 2000,
+      "hints": [
+        "Count by 1000s: 2355 is between 2000 and 3000.",
+        "2355 is closer to 2000.",
+        "So 2355 mg is about 2000 mg."
+      ],
+      "sample_id": "ede7df9224e786e36ef2",
+      "replay_digest": "478d49ea5c3229f7e5d946e9fd4d74221553a730c5191fd4378941391017aea9"
     },
     {
-      "seed": 502,
-      "formatter": "cloze",
-      "question_text": "An object's mass measures 454 mg. About how many mg is that, rounded to the nearest 100?",
-      "correct_answer": 500,
-      "options": [
-        {
-          "key": "A",
-          "value": 501,
-          "text": "501",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 502,
-          "text": "502",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 499,
-          "text": "499",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 500,
-          "text": "500",
-          "is_correct": true
-        }
-      ]
-    },
-    {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 4 mg. About how many mg is that, rounded to the nearest 10?",
-      "correct_answer": 0,
+      "question_text": "An object's mass measures 8 mg. About how many mg is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "measurement_type": "mass"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 10,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 8 is between 0 and 10.",
+        "8 is closer to 10.",
+        "So 8 mg is about 10 mg."
+      ],
+      "sample_id": "d88d6f09c9a8e18bc58b",
+      "replay_digest": "93c4a512411a81926e44d0fa94b7a563dacbd9a4f6b0d0bf82fa58d0bb80f339"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "An object's mass measures 14 kg. About how many kg is that, rounded to the nearest 10?",
+      "question_text": "An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "estimate"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -313,18 +604,208 @@
           "text": "11",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 kg is about 10 kg."
+      ],
+      "sample_id": "0c200462eb55f9ebdcbb",
+      "replay_digest": "e4bed66a32f18df2a748b9d4045453c7277685bf870ca42b9968b2a73cd83f87"
     },
     {
+      "node_id": "mat_g3_mg_q2_1",
       "seed": 602,
       "formatter": "cloze",
-      "question_text": "An object's mass measures 13 mg. About how many mg is that, rounded to the nearest 10?",
+      "question_text": "An object's mass measures 24 mg. About how many mg is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "g"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 24 is between 20 and 30.",
+        "24 is closer to 20.",
+        "So 24 mg is about 20 mg."
+      ],
+      "sample_id": "089754926313bdb4ff49",
+      "replay_digest": "4190fef9388aaef91b6ca0303d494f05a1afe5802c78bccf9c28d99720c3168c"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 604,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 8 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "l"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": 9,
           "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 8 is between 0 and 10.",
+        "8 is closer to 10.",
+        "So 8 kg is about 10 kg."
+      ],
+      "sample_id": "ce9316ac321344edb8a2",
+      "replay_digest": "d5cec1960e767b205e74aa66cca65b9bdf960e32edd47dd2a76a66005ddcab00"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 605,
+      "formatter": "mcq",
+      "question_text": "An object's mass measures 8 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "ml"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 8 is between 0 and 10.",
+        "8 is closer to 10.",
+        "So 8 g is about 10 g."
+      ],
+      "sample_id": "ead470c6b327ae1062d8",
+      "replay_digest": "6dce67368ff3521de3c6131d5ac5dc71bfde25a6d99d042406a7c2e24890e9f4"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 13 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
@@ -335,23 +816,264 @@
         },
         {
           "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 13 is between 10 and 20.",
+        "13 is closer to 10.",
+        "So 13 kg is about 10 kg."
+      ],
+      "sample_id": "91a007a11e0dcf169159",
+      "replay_digest": "eb719c2d77b82a417ffe87f9f1501379d9aebf0f6321c5ad75e04dc178c751d6"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🏐 Romel has a math challenge about whistles. An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 19 is between 10 and 20.",
+        "19 is closer to 20.",
+        "So 19 kg is about 20 kg."
+      ],
+      "sample_id": "7b4038dce8e1df563bbf",
+      "replay_digest": "b4e58a945ccc23c099ff3271028ecbe76785c5afb2d925d44c836fb80968b47f"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🚴 Kuya Chad has a math challenge about wristbands. An object's mass measures 9 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
           "value": 11,
           "text": "11",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 10,
           "text": "10",
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 9 is between 0 and 10.",
+        "9 is closer to 10.",
+        "So 9 kg is about 10 kg."
+      ],
+      "sample_id": "42f804e3a99b1655d250",
+      "replay_digest": "ddc27e8d4dcfdfaa32b07b27cde49d14df1c38f36f1fe62740d7c39494004dd9"
     },
     {
-      "seed": 603,
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 46 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 50,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 52,
+          "text": "52",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 49,
+          "text": "49",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "Count by 10s: 46 is between 40 and 50.",
+        "46 is closer to 50.",
+        "So 46 kg is about 50 kg."
+      ],
+      "sample_id": "77bb28a971b9af2c3c62",
+      "replay_digest": "bc8ac079d9af2b7e22e8730973b2d0c3d67c145117d4ded7cd34f2ed16d68778"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 900,
       "formatter": "mcq",
-      "question_text": "An object's mass measures 7 kg. About how many kg is that, rounded to the nearest 10?",
+      "question_text": "An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 kg is about 10 kg."
+      ],
+      "sample_id": "34a2f24cbb11d0d527c5",
+      "replay_digest": "e590347fa4291186856d8af07c7aeb78eb8459256f0baf6abd99ce2a7fc7628d"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -360,75 +1082,865 @@
         },
         {
           "key": "B",
-          "value": 9,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 10,
-          "is_correct": true
+          "value": 9,
+          "is_correct": false
         },
         {
           "key": "D",
           "value": 11,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 kg is about 10 kg."
+      ],
+      "sample_id": "619ce706e1086b941ed9",
+      "replay_digest": "7de01619e7b104deee2a91407cc171013c9d0d0da3b2bbf24e79834590111f44"
     },
     {
-      "seed": 605,
-      "formatter": "mcq",
-      "question_text": "An object's mass measures 26 g. About how many g is that, rounded to the nearest 10?",
-      "correct_answer": 30,
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 64 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
       "options": [
         {
           "key": "A",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
+          "value": 60,
+          "text": "60",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 62,
+          "text": "62",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 31,
+          "value": 61,
+          "text": "61",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 29,
+          "value": 59,
+          "text": "59",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Count by 10s: 64 is between 60 and 70.",
+        "64 is closer to 60.",
+        "So 64 g is about 60 g."
+      ],
+      "sample_id": "40c66450762fb833b73a",
+      "replay_digest": "6ef870ac62d3f9d8051a6e7b87415a44270851c1273dc31079ba5532c8dedcce"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 28 mg. About how many mg is that, rounded to the nearest 10?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "text": "29",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "Count by 10s: 28 is between 20 and 30.",
+        "28 is closer to 30.",
+        "So 28 mg is about 30 mg."
+      ],
+      "sample_id": "5ccc6e8bd01bd3277ef7",
+      "replay_digest": "2797079fbe9c1878b1a3fff539a5eec99437e1b0bf0c5f8b9a4ccf5b4dedc16c"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "An object's mass measures 46 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 50,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 49,
+          "text": "49",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 52,
+          "text": "52",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "Count by 10s: 46 is between 40 and 50.",
+        "46 is closer to 50.",
+        "So 46 g is about 50 g."
+      ],
+      "sample_id": "4bf413fa2747d6296659",
+      "replay_digest": "10e96691a5c495f62bc48ef5c6c73be124f12c8188877e12b802b33e36281d99"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "709cc08190a77103c7fb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents a mass of 23 grams and requests rounding to the nearest 10. The correct answer of 20 is distinct from distractors 21, 19, and 22, each positioned one unit away from the correct value to test understanding of rounding boundaries and place value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The three-step hint sequence correctly establishes that 23 falls between 20 and 30, identifies it as closer to 20 than 30, and concludes with the valid estimate. The logical progression from identifying the range, to comparing distance, to stating the final answer supports sound mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses straightforward language and a familiar structure. A Grade 3 student would readily understand that 23 grams needs to be rounded and that 20 represents the nearest 10. The concrete context of a measured object makes the problem accessible and interpretable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct and precise: 23 is indeed between 20 and 30, is closer to 20 than to 30, and therefore correctly rounds to 20 when rounding to the nearest 10 using standard rounding rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "df5d61848dc9600290ef",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 6 grams with multiple-choice options positioned as 9, 12, 11, and 10. The correct answer 10 stands clearly apart from the distractors, and the question unambiguously asks for rounding to the nearest 10, leaving no room for misinterpretation of the task requirements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify that 6 is positioned between 0 and 10, note that it is closer to 10 than to 0, and therefore validates the rounded estimate of 10. The mathematical logic is sound throughout the hint sequence and directly supports the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with nearby distractors makes the task transparent and accessible to Grade 3 learners. Students can understand they are estimating a small mass measurement by rounding to the nearest power of 10."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 6 to the nearest 10 correctly produces 10, as 6 is closer to 10 than to 0 using standard rounding conventions. The answer is mathematically valid and appropriate for the stated task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "18f2b16cd6ab9f425b4f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states 19 kilograms rounded to nearest 10 in a cloze format. The available options 21, 19, 20, and 22 form a natural cluster around the correct answer 20, providing plausible but distinguishable alternatives that test understanding of the rounding threshold."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint sequence properly places 19 between 10 and 20, correctly identifies it as closer to 20, and concludes with a valid estimate. The logical chain from identifying bounds, to measuring distance, to reaching a conclusion follows sound mathematical reasoning principles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure mirrors others in the set and would be clear to Grade 3 students. The unit is explicitly specified as kilograms, and the rounding instruction is direct and unambiguous about what is required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer of 20 is mathematically correct when rounding 19 kilograms to the nearest 10, as 19 is closer to 20 than to 10 using standard place-value rounding rules applicable at the Grade 3 level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "acf03a4ef29fc4bae88f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "This sample presents identical content to seed 44 but with reordered multiple-choice options: 21, 22, 20, 19. The correct answer 20 remains clearly identifiable and distinct from the three distractors, providing unambiguous assessment of rounding knowledge."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hint structure is consistent and mathematically valid, correctly reasoning that 19 lies between 10 and 20 and is closer to 20, validating the estimate. No contradictions appear in the logical steps from problem statement through hints to answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents the rounding task with explicit instructions and clear language. No confusing elements or ambiguous phrasing would impede a Grade 3 student's understanding of what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 20 is valid when rounding 19 kilograms to the nearest 10, as 19 is positioned closer to 20 than to 10 on the number line. The mathematics is correct and consistent with standard rounding procedures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "b17c26c6337f2951af74",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 68 milligrams with rounding to nearest 10. Multiple-choice options 70, 72, 69, and 71 are provided. The correct answer 70 is unambiguously correct and clearly differentiated from distractors positioned nearby for difficulty calibration."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify that 68 is positioned between 60 and 70, properly note that it is closer to 70, and validly conclude with the rounded estimate. The logical progression supports sound mathematical reasoning about place-value rounding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem format is consistent with previous samples and communicates the rounding task clearly using the milligram unit. The task is stated in straightforward language accessible to Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 68 to the nearest 10 correctly produces 70 since 68 is closer to 70 than to 60. The mathematical answer is valid and reflects proper application of rounding rules to the nearest 10."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "22fc58d4a0eef049afde",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem introduces rounding 424 kilograms to the nearest 100. Options 402, 401, 400, and 399 are presented in multiple-choice format. The correct answer 400 is distinct and clearly identifiable despite the compressed range of distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Although the mathematics is valid, the cognitive demand of rounding a three-digit number to the nearest hundred significantly exceeds typical Grade 3 Quarter 2 expectations. This represents a substantial jump in place-value complexity and number magnitude compared to the predominantly two-digit nearest-10 problems in the packet."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents the mass value and explicitly requests rounding to the nearest 100. The language is unambiguous about the mathematical operation required, even if the computational demand is advanced."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer is mathematically correct: 424 falls between 400 and 500 and is closer to 400, so it correctly rounds to 400 when rounding to the nearest 100 using standard rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "1b8ec6fc8f4272362d2f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 3204 milligrams with rounding to the nearest 1000. Options 2999, 3002, 3001, and 3000 are provided. The correct answer 3000 is distinct from distractors, clearly identifiable despite the large number magnitudes involved."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The problem requires rounding a four-digit number to the nearest thousand, which substantially exceeds Grade 3 Quarter 2 curriculum expectations. This represents a significant escalation in mathematical sophistication, place-value understanding, and number magnitude far beyond typical third-grade capabilities."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the advanced content, the problem is clearly stated with explicit instruction to round to the nearest 1000. The language poses no barrier to understanding the stated task, though the task itself is developmentally inappropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is valid: 3204 is between 3000 and 4000 and closer to 3000, correctly rounding to 3000 when using standard rounding procedures for the nearest thousand."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "ede7df9224e786e36ef2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 2355 milligrams rounded to the nearest 1000 in cloze format. Options 2001, 2002, 1999, and 2000 are provided. The correct answer 2000 is identifiable and distinct from the three distractors positioned near the correct value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Like seed 501, this problem requires rounding a four-digit number to the nearest thousand, significantly exceeding Grade 3 Quarter 2 level. The mathematical logic is sound, but the cognitive demand and number magnitudes are misaligned with typical third-grade curriculum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests rounding to the nearest 1000 with explicit instruction. The cloze format is standard and would be familiar to Grade 3 students, though the content difficulty is inappropriate for that grade level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 2000 is correct: 2355 is between 2000 and 3000 and is closer to 2000 than to 3000, correctly rounding to 2000 when applying standard rounding rules to the nearest thousand."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "d88d6f09c9a8e18bc58b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 8 milligrams rounded to the nearest 10 in multiple-choice format. Options 11, 12, 9, and 10 are provided. The correct answer 10 clearly stands out from the distractors, leaving no ambiguity about the expected response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify the range from 0 to 10, note that 8 is closer to 10 than to 0, and conclude with the valid estimate of 10. The logical progression through mathematical reasoning is sound and supports the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the familiar rounding-to-10 structure and is stated in clear language accessible to Grade 3 students. No confusing elements or ambiguous phrasing would prevent understanding of the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 8 to the nearest 10 correctly yields 10 as the answer, since 8 is closer to 10 than to 0. The mathematics is precise and reflects proper application of rounding rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "0c200462eb55f9ebdcbb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 6 kilograms rounded to the nearest 10 in cloze format. Options 10, 12, 9, and 11 are provided. The correct answer 10 is unambiguously correct and clearly distinct from distractors adjacent to it on the number line."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints establish that 6 is between 0 and 10, correctly identify it as closer to 10, and lead to the proper estimate. The logical chain from identifying bounds, to comparing proximity, to reaching a conclusion follows valid mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem follows a familiar structure and clearly communicates the rounding requirement. No ambiguous language or confusing elements would impede a Grade 3 student's comprehension of the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 10 is mathematically correct when rounding 6 kilograms to the nearest 10, as 6 is positioned closer to 10 than to 0 on the number line using standard rounding procedures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "089754926313bdb4ff49",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem shows 24 milligrams rounded to the nearest 10 in cloze format. Options 19, 22, 21, and 20 are presented. The correct answer 20 is clearly differentiated from the three distractors positioned nearby for assessment purposes."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly note that 24 is between 20 and 30, properly identify it as closer to 20, and yield the valid estimate. The step-by-step reasoning from identifying the bounds to determining the closer ten demonstrates sound mathematical logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states the mass value and rounding requirement with no confusing or ambiguous language. The mathematical task is straightforward and interpretable to Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 24 to the nearest 10 correctly produces 20, since 24 is closer to 20 than to 30. The mathematical answer is valid and represents proper application of rounding procedures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "ce9316ac321344edb8a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents 8 kilograms rounded to the nearest 10 in cloze format. Options 9, 11, 10, and 12 are provided with 10 as the correct answer. The correct response is distinct from alternatives, providing unambiguous assessment of rounding understanding."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify that 8 is between 0 and 10 and is positioned closer to 10 than to 0. The logical steps from establishing the range, to comparing distance, to reaching the conclusion are mathematically sound throughout."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem follows the standard structure and is clearly communicated to learners. The task requirements are explicit and would be readily understood by Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 10 is correct when rounding 8 to the nearest 10, as 8 is closer to 10 than to 0 using standard rounding conventions applicable at the primary grade level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "ead470c6b327ae1062d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 8 grams rounded to the nearest 10 in multiple-choice format. Options 12, 10, 11, and 9 are given. The correct answer 10 is clearly identifiable and distinct from the three distractors positioned nearby."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly establish the range from 0 to 10, identify 8 as closer to 10 than to 0, and conclude with a valid estimate. The logical chain is coherent and supports sound mathematical reasoning about place-value boundaries."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is clear and the task is straightforward for Grade 3 students. No ambiguous language or confusing elements would impede comprehension of what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 8 grams to the nearest 10 correctly yields 10 as the answer, since 8 is closer to 10 than to 0. The mathematics reflects proper application of rounding rules to the nearest 10."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "91a007a11e0dcf169159",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem shows 13 kilograms rounded to the nearest 10 in cloze format. Options 11, 12, 10, and 9 are provided. The correct answer 10 is distinct and clearly differentiated from alternatives, leaving no room for misinterpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly note that 13 is between 10 and 20 and is closer to 10 than to 20. The logical progression from identifying boundaries, to comparing distance, to stating the estimate is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and uses consistent phrasing with other problems in the set. The task is stated explicitly with no ambiguous language that would confuse Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 10 is mathematically correct when rounding 13 kilograms to the nearest 10, as 13 is closer to 10 than to 20 using standard rounding procedures applicable at the Grade 3 level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "7b4038dce8e1df563bbf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a thematic wrapper with an emoji and a cultural name, followed by the core rounding task: 19 kilograms to nearest 10. Multiple-choice options 20, 21, 19, and 22 are presented. The correct answer 20 is clearly identified and distinct from distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic opening does not interfere with or contradict the mathematical content. The hints correctly establish the rounding from 19 to 20, and the mathematical logic remains sound throughout, validating the estimate without confusion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic element about a math challenge provides contextual framing that enriches rather than obscures the core rounding task. Grade 3 students would understand that the mathematical problem remains focused on estimating mass."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics remains valid and correct: 19 kilograms correctly rounds to 20 when rounding to the nearest 10. The thematic wrapper does not alter the mathematical validity of the problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "42f804e3a99b1655d250",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a thematic wrapper with a cultural name, emoji, and context about wristbands, then presents 9 kilograms rounded to the nearest 10 in cloze format. Options 11, 10, 9, and 12 are provided. The correct answer 10 is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context does not create contradictions or interfere with mathematical logic. The hints correctly reason that 9 is between 0 and 10 and closer to 10, validating the estimate. No logical inconsistencies appear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic wrapper provides student engagement and interest without obscuring the mathematical task. The rounding instruction remains clear and the core problem is readily interpretable by Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 9 kilograms to the nearest 10 correctly produces 10 as the answer. The mathematics is valid and reflects proper application of rounding rules despite the thematic framing."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "77bb28a971b9af2c3c62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 46 kilograms rounded to the nearest 10 in cloze format. Options 51, 50, 52, and 49 are given. The correct answer 50 is clearly distinct from distractors and identifiable without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly establish that 46 is between 40 and 50 and is closer to 50 than to 40. The logical reasoning steps from identifying bounds through measuring proximity to reaching a conclusion are mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is straightforward and clearly communicated with no confusing language or elements. Grade 3 students would readily understand that they are rounding a larger two-digit mass measurement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 50 is mathematically correct when rounding 46 kilograms to the nearest 10, as 46 is closer to 50 than to 40 using standard place-value rounding rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "34a2f24cbb11d0d527c5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 6 kilograms rounded to the nearest 10 in multiple-choice format. Options 9, 12, 10, and 11 are provided. The correct answer 10 is unambiguous and clearly differentiated from the three alternative choices."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify that 6 is between 0 and 10 and is positioned closer to 10 than to 0, yielding a valid estimate. The mathematical logic supporting the answer is sound throughout the hint sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents the rounding task with standard language and structure. The question is readily interpretable to Grade 3 learners with no ambiguous phrasing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 10 is valid when rounding 6 kilograms to the nearest 10, as 6 is positioned closer to 10 than to 0 on the number line using standard rounding conventions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "619ce706e1086b941ed9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 6 kilograms rounded to the nearest 10 in mcq format. Options 12, 10, 9, and 11 are given. The correct answer 10 is clearly identifiable and distinct from the three distractors positioned nearby."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly establish the range of 0 to 10 and identify 6 as closer to 10 than to 0. The logical chain from establishing bounds through comparing proximity to reaching the conclusion is mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is clearly stated with no ambiguous language or confusing elements. Grade 3 students would understand the rounding task and what response is being requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 6 kilograms to the nearest 10 correctly yields 10, since 6 is closer to 10 than to 0. The mathematical answer reflects proper application of rounding rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "40c66450762fb833b73a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 64 grams rounded to the nearest 10 in cloze format. Options 60, 62, 61, and 59 are provided. The correct answer 60 is distinct from alternatives, clearly identifiable despite the narrow range of distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly identify that 64 is between 60 and 70 and is closer to 60 than to 70. The logic supporting the estimate is sound and leads validly to the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is clearly communicated and the cloze format is standard and accessible. No confusing language or ambiguous phrasing would prevent Grade 3 students from understanding the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 60 is mathematically correct when rounding 64 grams to the nearest 10, as 64 is closer to 60 than to 70. The mathematics reflects proper application of rounding procedures."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "5ccc6e8bd01bd3277ef7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem shows 28 milligrams rounded to the nearest 10 in cloze format. Options 30, 31, 29, and 32 are provided. The correct answer 30 is clearly distinguished and unambiguously identifiable among the alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly establish that 28 is between 20 and 30 and is closer to 30 than to 20. The logical steps from identifying the range through measuring proximity to stating the estimate are mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clearly written and the rounding task is straightforward and interpretable to Grade 3 learners. No ambiguous or confusing language would prevent understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 30 is mathematically correct when rounding 28 milligrams to the nearest 10, as 28 is closer to 30 than to 20 using standard rounding rules."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "sample_id": "4bf413fa2747d6296659",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents 46 grams rounded to the nearest 10 in cloze format. Options 50, 49, 51, and 52 are given. The correct answer 50 is unambiguous and clearly distinct from the three distractors positioned nearby."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The hints correctly note that 46 is between 40 and 50 and is closer to 50 than to 40. The reasoning chain from establishing boundaries through comparing proximity to reaching the final estimate is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states the mass value and rounding target with no confusing or ambiguous elements. Grade 3 students would readily understand the mathematical task being presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 50 is mathematically correct when rounding 46 grams to the nearest 10. The mathematics reflects proper application of rounding conventions to the nearest 10 place value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "estimate_mass",
+      "clause": "Estimate mass",
+      "verdict": "PASS",
+      "reasoning": "Every sample in the complete set requires learners to estimate a given mass measurement through rounding to a specified place value. This estimation skill is consistently demonstrated across all 21 samples using different units, number magnitudes, and rounding scales, with three-step hint sequences that explicitly model the estimation process.",
+      "sample_ids": [
+        "709cc08190a77103c7fb",
+        "df5d61848dc9600290ef",
+        "18f2b16cd6ab9f425b4f",
+        "acf03a4ef29fc4bae88f",
+        "b17c26c6337f2951af74",
+        "22fc58d4a0eef049afde",
+        "1b8ec6fc8f4272362d2f",
+        "ede7df9224e786e36ef2",
+        "d88d6f09c9a8e18bc58b",
+        "0c200462eb55f9ebdcbb",
+        "089754926313bdb4ff49",
+        "ce9316ac321344edb8a2",
+        "ead470c6b327ae1062d8",
+        "91a007a11e0dcf169159",
+        "7b4038dce8e1df563bbf",
+        "42f804e3a99b1655d250",
+        "77bb28a971b9af2c3c62",
+        "34a2f24cbb11d0d527c5",
+        "619ce706e1086b941ed9",
+        "40c66450762fb833b73a",
+        "5ccc6e8bd01bd3277ef7",
+        "4bf413fa2747d6296659"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "requirement_id": "an_object",
+      "clause": "an object",
+      "verdict": "PASS",
+      "reasoning": "The competency requirement for an object is fulfilled in all samples through consistent stem phrasing beginning with an object's mass measure. Every problem contextualizes the estimation within a measured physical object rather than abstract numerals, satisfying the curricular intent that learners are estimating real-world mass quantities.",
+      "sample_ids": [
+        "709cc08190a77103c7fb",
+        "df5d61848dc9600290ef",
+        "18f2b16cd6ab9f425b4f",
+        "acf03a4ef29fc4bae88f",
+        "b17c26c6337f2951af74",
+        "22fc58d4a0eef049afde",
+        "1b8ec6fc8f4272362d2f",
+        "ede7df9224e786e36ef2",
+        "d88d6f09c9a8e18bc58b",
+        "0c200462eb55f9ebdcbb",
+        "089754926313bdb4ff49",
+        "ce9316ac321344edb8a2",
+        "ead470c6b327ae1062d8",
+        "91a007a11e0dcf169159",
+        "7b4038dce8e1df563bbf",
+        "42f804e3a99b1655d250",
+        "77bb28a971b9af2c3c62",
+        "34a2f24cbb11d0d527c5",
+        "619ce706e1086b941ed9",
+        "40c66450762fb833b73a",
+        "5ccc6e8bd01bd3277ef7",
+        "4bf413fa2747d6296659"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    },
+    {
+      "requirement_id": "grams_kilograms_and_or_milligrams",
+      "clause": "grams, kilograms, and/or milligrams",
+      "verdict": "PASS",
+      "reasoning": "The competency requirement to use grams, kilograms, and/or milligrams is fully satisfied. The sample set comprehensively includes problems featuring grams in seeds 42, 43, 1000, 1002, 605; kilograms in seeds 44, 45, 500, 601, 604, 700, 702, 800, 900, 901; and milligrams in seeds 46, 501, 502, 600, 602, 1001. Learners encounter and must reason about all three mass units across the packet.",
+      "sample_ids": [
+        "709cc08190a77103c7fb",
+        "df5d61848dc9600290ef",
+        "18f2b16cd6ab9f425b4f",
+        "acf03a4ef29fc4bae88f",
+        "b17c26c6337f2951af74",
+        "22fc58d4a0eef049afde",
+        "1b8ec6fc8f4272362d2f",
+        "ede7df9224e786e36ef2",
+        "d88d6f09c9a8e18bc58b",
+        "0c200462eb55f9ebdcbb",
+        "089754926313bdb4ff49",
+        "ce9316ac321344edb8a2",
+        "ead470c6b327ae1062d8",
+        "91a007a11e0dcf169159",
+        "7b4038dce8e1df563bbf",
+        "42f804e3a99b1655d250",
+        "77bb28a971b9af2c3c62",
+        "34a2f24cbb11d0d527c5",
+        "619ce706e1086b941ed9",
+        "40c66450762fb833b73a",
+        "5ccc6e8bd01bd3277ef7",
+        "4bf413fa2747d6296659"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w11-haiku45-20260925:mat_g3_mg_q2_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc11-mat_g3_mg_q2_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "471eadafb1d77b1bf5b570cbfc6a1ab3161926c861632e68b88803c5ea931e25",
+      "clause_ids": [
+        "estimate_mass",
+        "an_object",
+        "grams_kilograms_and_or_milligrams"
+      ],
+      "response_ref": ".responses/s5-phaseC-w11-haiku45-20260925.json",
+      "response_digest": "4514426afd3b4731e64b3e96cac561b924db924106ab0554b322c83b8dbf8e4a",
+      "prompt_ref": ".responses/s5-phaseC-w11-haiku45-20260925.prompt.txt",
+      "prompt_digest": "cff70cc272f04ac5226579f0fb35466646ec058a56e8e6f2ce706b7969db9983",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q2_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q2_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 3 tool uses (Read prompt in chunks, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The majority of samples present single and two-digit numbers rounded to the nearest 10, which aligns with Grade 3 Quarter 2 expectations. However, three samples significantly exceed this level: one requires rounding 424 to the nearest 100, and two require rounding four-digit numbers to the nearest 1000. These place-value scales are typically Grade 4 content, creating inconsistent cognitive demands across the packet."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly addresses the core competency of estimating mass using metric units. The estimation task is demonstrated through rounding to appropriate place values, which is the standard pedagogical approach to mass estimation at the primary grade level and consistently reflects the competency intent across all 21 samples."
+    },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "In every multiple-choice item only one option is a multiple of the stated rounding unit. For the 7 g item the options are 11, 9, 10 and 12, and for the 1927 mg item they are 1999, 2002, 2001 and 2000, so a pupil who has never rounded anything can pick the single round number and be right every time. The rounding the competency is about is never actually required."
+      "verdict": "PASS",
+      "rationale": "All three decomposed requirements are consistently demonstrated throughout the sample set. Every problem requests mass estimation, every stem references an object with a measured mass, and all three metric units are represented across the packet, fully satisfying the competency's and/or clause structure.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The estimate_mass requirement is fulfilled by every sample through rounding tasks that require estimation thinking. The an_object requirement appears in all 21 stems through consistent phrasing beginning with an object's mass measure. The grams_kilograms_and_or_milligrams requirement is fully satisfied by the presence of grams in five samples, kilograms in eleven samples, and milligrams in six samples.",
+        "requirement_ids": [
+          "estimate_mass",
+          "an_object",
+          "grams_kilograms_and_or_milligrams"
+        ]
+      },
+      "clause_ids": [
+        "estimate_mass",
+        "an_object",
+        "grams_kilograms_and_or_milligrams"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three units appear as keys and three different rounding units are generated, to the nearest 10, 100 and 1000, with both rounding up and rounding down occurring, for example 31 g going down to 30 and 26 g going up to 30."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Rounding to the nearest 1000 on a four-digit milligram reading sits at the edge of Grade 3 Quarter 2, and the stem asks the pupil to accept an object measured to 1927 mg, a precision that no Grade 3 estimation activity would produce."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "One frame is used for all thirteen samples, and the object is never anything but an unnamed object. Nothing asks a pupil to choose a sensible benchmark mass for a real item, which is the form estimation normally takes at this level."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because the exact mass is supplied in the stem, the competency's verb of estimating collapses into a pure number-rounding exercise that belongs to the number-sense strand; no item asks the pupil to judge a mass without being told it first."
+      "rationale": "The sample set includes all three mass units with meaningful distribution: grams appear in seeds 42, 43, 1000, 1002, 605; kilograms in seeds 44, 45, 500, 601, 604, 700, 702, 800, 900, 901, and others; milligrams in seeds 46, 501, 502, 600, 602, 1001. Both cloze fill-in-blank and multiple-choice response formats are well represented throughout the packet.",
+      "clause_ids": [
+        "estimate_mass",
+        "an_object",
+        "grams_kilograms_and_or_milligrams"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "Seed 600 gives an object measuring 4 mg and a key of 0, which asserts that a real object has a mass of about zero milligrams. The generator's lower bound is not compatible with the rounding unit it pairs with it, and the 307 kg and 1927 mg cases are similarly outside plausible object masses."
+      "verdict": "CONCERN",
+      "rationale": "While the core problems appropriately target Grade 3 with single and two-digit numbers rounded to the nearest 10, the sample set includes three outlier problems that significantly exceed grade-level expectations. Rounding 424 to the nearest 100 and rounding 3204 and 2355 to the nearest 1000 demand place-value understanding and number magnitudes typically taught in Grade 4, creating an inappropriate range of cognitive complexity for Grade 3 Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The sample set exhibits substantial repetition of identical problem values across different seeds and response formats. The value 6 kilograms rounded to 10 appears four times, 19 kilograms rounded to 20 appears three times, and 8 kilograms rounded to 10 and 46 rounded to 50 each appear multiple times. Additionally, 18 of the 21 samples focus exclusively on rounding to the nearest 10, with minimal variation to other place values, limiting the diversity of rounding-scale experiences."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

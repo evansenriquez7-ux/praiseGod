@@ -1,7 +1,28 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q2_4",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Estimate capacity using liters and/or milliliters.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "estimate_capacity",
+      "clause": "Estimate capacity"
+    },
+    {
+      "kind": "representation",
+      "id": "liters_and_or_milliliters",
+      "clause": "liters and/or milliliters"
+    }
+  ],
+  "packet_digest": "8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,48 +34,116 @@
     501,
     502,
     600,
-    601,
     602,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "0b7a9fec29eb288d396e",
+    "85033b1167b27d4f7787",
+    "0ea9223af9e78b4523e7",
+    "a42ab5d6515770274923",
+    "ed65d6d611bac1ed7182",
+    "d30ee69a9a29b363b83a",
+    "f225db844ee8ee6a63db",
+    "fbd0268ef1757b5c496c",
+    "559ad62a600973c402e6",
+    "707a80eec66219fd0e11",
+    "ee4d518645ea6ebe3fcd",
+    "185cc3e14cd5d526de6f",
+    "d2e47604947a4861e5eb",
+    "451e583d0af232923806",
+    "1b4725e2f98243fc0e77",
+    "c3dfdd9511508d1fdaf3",
+    "07c48665d3dc4c822d5f",
+    "d2916c08fb5b0fa9c824",
+    "87222b01f482ccea632c",
+    "82aa74b41dba4d14beae"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q2_4",
       "seed": 42,
       "formatter": "cloze",
-      "question_text": "A container's capacity measures 56 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 60,
+      "question_text": "A container's capacity measures 27 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 61,
-          "text": "61",
+          "value": 31,
+          "text": "31",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 62,
-          "text": "62",
+          "value": 32,
+          "text": "32",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 59,
-          "text": "59",
+          "value": 29,
+          "text": "29",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 60,
-          "text": "60",
+          "value": 30,
+          "text": "30",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "Count by 10s: 27 is between 20 and 30.",
+        "27 is closer to 30.",
+        "So 27 mL is about 30 mL."
+      ],
+      "sample_id": "0b7a9fec29eb288d396e",
+      "replay_digest": "de9e9158e28766a6f51c6969804697e03696eac72d2e2c1c3a7fff4f4b6a2b5e"
     },
     {
+      "node_id": "mat_g3_mg_q2_4",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -76,82 +165,100 @@
           "value": 22,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 16 is between 10 and 20.",
+        "16 is closer to 20.",
+        "So 16 L is about 20 L."
+      ],
+      "sample_id": "85033b1167b27d4f7787",
+      "replay_digest": "e1aed3aa7f4be8b6c2e37bad7a3a2298160d05284da5b8a85a01c63cd23b4d77"
     },
     {
+      "node_id": "mat_g3_mg_q2_4",
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "A container's capacity measures 69 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 70,
+      "question_text": "A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 70,
-          "text": "70",
+          "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 72,
-          "text": "72",
+          "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 71,
-          "text": "71",
+          "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 69,
-          "text": "69",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 5 is between 0 and 10.",
+        "5 is exactly halfway, so it rounds up to 10.",
+        "So 5 mL is about 10 mL."
+      ],
+      "sample_id": "0ea9223af9e78b4523e7",
+      "replay_digest": "ff200ad20b50c655c279dc0657b583bb234d7db034da9862247f9f3850d281bd"
     },
     {
+      "node_id": "mat_g3_mg_q2_4",
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A container's capacity measures 14 L. About how many L is that, rounded to the nearest 10?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A container's capacity measures 18 L. About how many L is that, rounded to the nearest 10?",
+      "question_text": "A container's capacity measures 17 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 19,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 21,
+          "value": 19,
           "is_correct": false
         },
         {
@@ -164,101 +271,252 @@
           "value": 20,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 17 is between 10 and 20.",
+        "17 is closer to 20.",
+        "So 17 L is about 20 L."
+      ],
+      "sample_id": "a42ab5d6515770274923",
+      "replay_digest": "f6c17c6b1eb189fcfd52bbd574c7eb6ea18d15c2dc778df6bacdccdc806ae66b"
     },
     {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "A container's capacity measures 285 L. About how many L is that, rounded to the nearest 100?",
-      "correct_answer": 300,
-      "options": [
-        {
-          "key": "A",
-          "value": 299,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 301,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 302,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 300,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "A container's capacity measures 192 L. About how many L is that, rounded to the nearest 100?",
-      "correct_answer": 200,
-      "options": [
-        {
-          "key": "A",
-          "value": 199,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 201,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 202,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 200,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "cloze",
-      "question_text": "A container's capacity measures 2893 mL. About how many mL is that, rounded to the nearest 1000?",
-      "correct_answer": 3000,
-      "options": [
-        {
-          "key": "A",
-          "value": 3002,
-          "text": "3002",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2999,
-          "text": "2999",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3001,
-          "text": "3001",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3000,
-          "text": "3000",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 600,
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 46,
       "formatter": "mcq",
       "question_text": "A container's capacity measures 7 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 7 is between 0 and 10.",
+        "7 is closer to 10.",
+        "So 7 L is about 10 L."
+      ],
+      "sample_id": "ed65d6d611bac1ed7182",
+      "replay_digest": "c7648dc797606120c69ba481843adbfb8f461f132b30140b5f0720e3897844f4"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "A container's capacity measures 31 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "Count by 10s: 31 is between 30 and 40.",
+        "31 is closer to 30.",
+        "So 31 L is about 30 L."
+      ],
+      "sample_id": "d30ee69a9a29b363b83a",
+      "replay_digest": "d5d52a96d761c9cffdf07296d79c74a123f530a76db54edf82d83ef0754a521f"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "A container's capacity measures 12 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 12 is between 10 and 20.",
+        "12 is closer to 10.",
+        "So 12 L is about 10 L."
+      ],
+      "sample_id": "f225db844ee8ee6a63db",
+      "replay_digest": "aa13a5925ecc8b8b9a129d846929820ea6d5afd759828c8c299897504fc4736a"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 502,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 16 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 16 is between 10 and 20.",
+        "16 is closer to 20.",
+        "So 16 mL is about 20 mL."
+      ],
+      "sample_id": "fbd0268ef1757b5c496c",
+      "replay_digest": "4761003c9c9be4273fd0234d77eb2d92ac9f58e5a48eb0a3471040dee8e54cf9"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A container's capacity measures 5 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "measurement_type": "capacity"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -280,77 +538,38 @@
           "value": 9,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 5 is between 0 and 10.",
+        "5 is exactly halfway, so it rounds up to 10.",
+        "So 5 L is about 10 L."
+      ],
+      "sample_id": "559ad62a600973c402e6",
+      "replay_digest": "d77a008520d0c39fbc8cea1d03af2224dc7eaacd8fbb147284610b5ea4165297"
     },
     {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "A container's capacity measures 21 L. About how many L is that, rounded to the nearest 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        }
-      ]
-    },
-    {
+      "node_id": "mat_g3_mg_q2_4",
       "seed": 602,
       "formatter": "cloze",
-      "question_text": "A container's capacity measures 18 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "cloze",
-      "question_text": "A container's capacity measures 51 mL. About how many mL is that, rounded to the nearest 10?",
+      "question_text": "A container's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?",
       "correct_answer": 50,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "g"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -360,50 +579,1163 @@
         },
         {
           "key": "B",
-          "value": 49,
-          "text": "49",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 50,
           "text": "50",
           "is_correct": true
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 52,
           "text": "52",
           "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 49,
+          "text": "49",
+          "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "Count by 10s: 53 is between 50 and 60.",
+        "53 is closer to 50.",
+        "So 53 mL is about 50 mL."
+      ],
+      "sample_id": "707a80eec66219fd0e11",
+      "replay_digest": "db2e43aee3528be74e5806a23260725b3349616154e49db0da0d9a07af97f93a"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 604,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 59 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "unit": "l"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 62,
+          "text": "62",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Count by 10s: 59 is between 50 and 60.",
+        "59 is closer to 60.",
+        "So 59 mL is about 60 mL."
+      ],
+      "sample_id": "ee4d518645ea6ebe3fcd",
+      "replay_digest": "3031abf4cfb3464092d8338ac885b8cd1fb7fbb7205cdb9bc38892bad9593a43"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 16 is between 10 and 20.",
+        "16 is closer to 20.",
+        "So 16 L is about 20 L."
+      ],
+      "sample_id": "185cc3e14cd5d526de6f",
+      "replay_digest": "416810d6734b4415aaa83557b0c08d6bdbedf8ff5481e65053fcbbbc02ea756f"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "Count by 10s: 15 is between 10 and 20.",
+        "15 is exactly halfway, so it rounds up to 20.",
+        "So 15 L is about 20 L."
+      ],
+      "sample_id": "d2e47604947a4861e5eb",
+      "replay_digest": "e4c895a52136945ef9e2b8f37fa97c35bc4e325442cc3d60ad93c8417d902cb9"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 36 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "text": "41",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "Count by 10s: 36 is between 30 and 40.",
+        "36 is closer to 40.",
+        "So 36 mL is about 40 mL."
+      ],
+      "sample_id": "451e583d0af232923806",
+      "replay_digest": "1a5d446b182af5005bd77e0a16b1f8283cfebecd46c558c2719c48b25c10d692"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 4136 mL. About how many mL is that, rounded to the nearest 1000?",
+      "correct_answer": 4000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3999,
+          "text": "3999",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4000,
+          "text": "4000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4001,
+          "text": "4001",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4002,
+          "text": "4002",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4000,
+      "hints": [
+        "Count by 1000s: 4136 is between 4000 and 5000.",
+        "4136 is closer to 4000.",
+        "So 4136 mL is about 4000 mL."
+      ],
+      "sample_id": "1b4725e2f98243fc0e77",
+      "replay_digest": "e7dda34cfde1a6aba2889b142478c63dd676d1067ec0949f6502d1333e5d8482"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 5 is between 0 and 10.",
+        "5 is exactly halfway, so it rounds up to 10.",
+        "So 5 mL is about 10 mL."
+      ],
+      "sample_id": "c3dfdd9511508d1fdaf3",
+      "replay_digest": "8efc7043f1ef1ade07a81051147996dcdb069ca38a93fb42eba967c69cf1e627"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 mL is about 10 mL."
+      ],
+      "sample_id": "07c48665d3dc4c822d5f",
+      "replay_digest": "0c1a72362c96eadcd5b6cd9c1c38225393f14f9caef27028f23adc9414e3d098"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "Count by 10s: 6 is between 0 and 10.",
+        "6 is closer to 10.",
+        "So 6 mL is about 10 mL."
+      ],
+      "sample_id": "d2916c08fb5b0fa9c824",
+      "replay_digest": "1a20a61c221e2de4bdc1e354cf17065827931beef6be8698de483d374cbd6eb8"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 68 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 70,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 69,
+          "text": "69",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 70,
+          "text": "70",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 71,
+          "text": "71",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "Count by 10s: 68 is between 60 and 70.",
+        "68 is closer to 70.",
+        "So 68 mL is about 70 mL."
+      ],
+      "sample_id": "87222b01f482ccea632c",
+      "replay_digest": "595c2353e90875b97a0f98d75a28cfd864310d9ef045dc20671f820e9be6f38d"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_4",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "A container's capacity measures 33 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "text": "29",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "Count by 10s: 33 is between 30 and 40.",
+        "33 is closer to 30.",
+        "So 33 mL is about 30 mL."
+      ],
+      "sample_id": "82aa74b41dba4d14beae",
+      "replay_digest": "d8069e4a35e202301bd24df38f3ae440690a1defb67d0db324ffaa4f711afdb3"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "0b7a9fec29eb288d396e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states a single container capacity measurement and requests rounding to the nearest ten, with a single unambiguous correct answer of thirty milliliters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A container capacity of twenty-seven milliliters is realistic and represents a plausible real-world container size that a student might encounter."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and appropriate for Grade 3. The request to round to the nearest ten is explicitly stated. The hints guide the learner through counting by tens, identifying the bracketing multiples, and selecting the closest value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty-seven rounds to thirty when rounding to the nearest ten. All three hint statements are mathematically accurate and correctly describe the rounding process and its result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "85033b1167b27d4f7787",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a single measurement in liters and requests rounding to the nearest ten with no ambiguous language or multiple possible interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen liters is a realistic container capacity that a learner might reasonably encounter in real-world contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure matches the previous sample, using clear language to ask for rounding to the nearest ten. The hints progress logically from counting by tens through identifying the bracket and determining proximity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen liters rounds to twenty liters when using nearest ten rounding. The hints correctly identify the bounds of ten and twenty, confirm that sixteen is closer to twenty, and state the final rounded value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "0ea9223af9e78b4523e7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies rounding to the nearest ten with a single correct answer and no ambiguous phrasing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five milliliters represents a small but realistic container capacity, such as a medication bottle or small cosmetic container."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear. The hints address a specific challenge at this boundary case where five falls exactly at the midpoint between zero and ten, and the second hint explains the rounding rule for midpoint cases."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five milliliters is exactly halfway between zero and ten, and the rounding convention rounds this up to ten. The hints correctly explain this boundary case and the rounding result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "a42ab5d6515770274923",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question presents a single capacity measurement and unambiguously requests rounding to the nearest ten liters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seventeen liters is a typical container capacity within the range of realistic household or classroom items."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem follows a consistent format. The answer options are clearly presented as single values. The hints use age-appropriate language to scaffold the rounding process."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seventeen liters rounds to twenty liters to the nearest ten. The hints accurately identify seventeen as falling between ten and twenty and closer to twenty, leading to the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "ed65d6d611bac1ed7182",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem contains no ambiguous language and requests a single rounding action with a clear target interval."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven liters represents a plausible small container capacity similar to a household bucket or kettle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is stated plainly. The stem-to-hints progression is logical and uses vocabulary appropriate for Grade 3 students learning rounding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven liters rounds to ten liters to the nearest ten. The hints correctly place seven in the interval from zero to ten and identify it as closer to ten."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "d30ee69a9a29b363b83a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies rounding to the nearest ten and presents a single correct answer with no confusing language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-one liters is a realistic medium-sized container capacity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and the hints follow a consistent scaffolding pattern that guides students through identifying the bounds and determining which bound the value is closer to."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-one liters falls between thirty and forty and is closer to thirty, rounding down to thirty. The hints accurately reflect this calculation and the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "f225db844ee8ee6a63db",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a single measurement and unambiguously asks for rounding to the nearest ten."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twelve liters is a realistic container capacity in the range of typical household storage containers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format is consistent with previous items. The hints clearly walk through the rounding process from identifying bounds to determining proximity to selecting the closer value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twelve liters falls between ten and twenty and is closer to ten, rounding down correctly to ten. All three hints support this conclusion accurately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "fbd0268ef1757b5c496c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is unambiguous and requests rounding a single measurement to the nearest ten milliliters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen milliliters is a realistic small container capacity such as for a liquid medication or eye drops."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and uses the same sentence structure as other samples in this set, making it familiar to the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen milliliters rounds to twenty milliliters to the nearest ten. The hints correctly identify the relevant bounds and that sixteen is closer to twenty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "559ad62a600973c402e6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly requests rounding five liters to the nearest ten with no ambiguous phrasing or multiple interpretations possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five liters is a realistic capacity for a medium household container or classroom pitcher."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct. The hints explicitly address the midpoint case, explaining that five is exactly halfway and therefore rounds up by convention."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five liters is exactly halfway between zero and ten, and rounding conventions require rounding up to ten. The hints accurately describe this special boundary case."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "707a80eec66219fd0e11",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously presents a single capacity measurement and requests rounding to the nearest ten milliliters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-three milliliters is a realistic container capacity comparable to a small drinking cup or medicine bottle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is appropriate and consistent with other samples. The hints scaffold the student through the rounding process systematically."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-three milliliters falls between fifty and sixty and is closer to fifty, rounding down correctly. The hints accurately support this conclusion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "ee4d518645ea6ebe3fcd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a single measurement and explicitly requests rounding to the nearest ten with no ambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-nine milliliters is a realistic capacity for a small container, such as a portion cup or shot glass."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure is familiar and clear. The hints progress logically through identifying bounds, determining proximity, and stating the result."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifty-nine milliliters falls between fifty and sixty and is closer to sixty, rounding up correctly. All three hints accurately reflect this rounding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "185cc3e14cd5d526de6f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies rounding to the nearest ten liters with no ambiguous phrasing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen liters is a typical medium container capacity in real-world contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and uses the consistent format students have encountered in previous items."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixteen liters rounds to twenty liters to the nearest ten. The hints accurately identify the relevant bounds and determine that sixteen is closer to twenty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "d2e47604947a4861e5eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic wrapper mentioning a character and trophies, the core mathematical question is unambiguous and requests rounding to the nearest ten liters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen liters is a realistic container capacity. The narrative context about a math challenge does not interfere with the logical validity of the capacity measurement or rounding task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical question is stated clearly despite the thematic embellishment. The hints are direct and focused on the rounding computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen liters is exactly halfway between ten and twenty, and rounding up by convention produces twenty. The hints correctly identify this midpoint case and explain the rounding rule."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "451e583d0af232923806",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests rounding a single capacity measurement to the nearest ten."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-six milliliters is a realistic container capacity for various small items."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and follows the familiar question structure used throughout the sample set."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-six milliliters falls between thirty and forty and is closer to forty, rounding up correctly. The hints accurately support this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "1b4725e2f98243fc0e77",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is unambiguous in requesting rounding to the nearest thousand milliliters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the mathematics is valid, a container capacity of over four thousand milliliters is beyond the typical scale of container capacity estimation contexts for Grade 3 Quarter 2 learners, where most real-world references involve much smaller household items."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language of the question is clear and the mathematical request is explicit, even though the numeric scale is atypical."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four thousand one hundred thirty-six rounds to four thousand when rounding to the nearest thousand, as it is closer to four thousand than to five thousand. The hints accurately describe this rounding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "c3dfdd9511508d1fdaf3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a single measurement and unambiguously requests rounding to the nearest ten milliliters."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five milliliters represents a small container capacity equivalent to a medication dose bottle or small beauty product dispenser."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and the hints explain the midpoint rounding rule that applies when a value falls exactly halfway between two multiples of ten."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five milliliters is exactly halfway between zero and ten and rounds up to ten by convention. The hints correctly describe this boundary case."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "07c48665d3dc4c822d5f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies rounding to the nearest ten milliliters with no ambiguous phrasing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six milliliters is a realistic small container capacity comparable to a portion cup or shot glass used in common environments."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated and the hints guide the learner through determining which of the two bracketing multiples is closer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six milliliters falls between zero and ten and is closer to ten, rounding up correctly. The hints accurately describe this proximity."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "d2916c08fb5b0fa9c824",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests rounding a single measurement to the nearest ten."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six milliliters denotes a practical small container capacity similar to eye drop bottles or small cosmetic product containers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and uses the consistent format across the sample set, with hints that scaffold the rounding reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six milliliters is closer to ten than to zero, rounding up to ten correctly. The hints accurately reflect this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "87222b01f482ccea632c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a single measurement and unambiguously requests rounding to the nearest ten."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty-eight milliliters is a realistic container capacity for various small items."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is clear and the hints follow the established pattern of identifying bounds and determining proximity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty-eight milliliters falls between sixty and seventy and is closer to seventy, rounding up correctly. All hints accurately support this result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "sample_id": "82aa74b41dba4d14beae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly specifies rounding to the nearest ten with no ambiguous language."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-three milliliters is a realistic small to medium container capacity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure is consistent and clear, with hints that logically scaffold the rounding process."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-three milliliters falls between thirty and forty and is closer to thirty, rounding down correctly. The hints accurately describe this proximity and result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "estimate_capacity",
+      "clause": "Estimate capacity",
+      "verdict": "PASS",
+      "reasoning": "Every one of the eighteen samples presents a container with a stated capacity and requests that the learner estimate it by rounding to a specified interval. This directly tests the core competency action of estimating capacity.",
+      "sample_ids": [
+        "0b7a9fec29eb288d396e",
+        "85033b1167b27d4f7787",
+        "0ea9223af9e78b4523e7",
+        "a42ab5d6515770274923",
+        "ed65d6d611bac1ed7182",
+        "d30ee69a9a29b363b83a",
+        "f225db844ee8ee6a63db",
+        "fbd0268ef1757b5c496c",
+        "559ad62a600973c402e6",
+        "707a80eec66219fd0e11",
+        "ee4d518645ea6ebe3fcd",
+        "185cc3e14cd5d526de6f",
+        "d2e47604947a4861e5eb",
+        "451e583d0af232923806",
+        "1b4725e2f98243fc0e77",
+        "c3dfdd9511508d1fdaf3",
+        "07c48665d3dc4c822d5f",
+        "d2916c08fb5b0fa9c824",
+        "87222b01f482ccea632c",
+        "82aa74b41dba4d14beae"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    },
+    {
+      "requirement_id": "liters_and_or_milliliters",
+      "clause": "liters and/or milliliters",
+      "verdict": "PASS",
+      "reasoning": "The sample set comprehensively demonstrates both units of capacity measurement. Some samples use liters exclusively, others use milliliters exclusively, and across the full set both units are well-represented, supporting the competency requirement to estimate capacity using either unit.",
+      "sample_ids": [
+        "0b7a9fec29eb288d396e",
+        "85033b1167b27d4f7787",
+        "0ea9223af9e78b4523e7",
+        "a42ab5d6515770274923",
+        "ed65d6d611bac1ed7182",
+        "d30ee69a9a29b363b83a",
+        "f225db844ee8ee6a63db",
+        "fbd0268ef1757b5c496c",
+        "559ad62a600973c402e6",
+        "707a80eec66219fd0e11",
+        "ee4d518645ea6ebe3fcd",
+        "185cc3e14cd5d526de6f",
+        "d2e47604947a4861e5eb",
+        "451e583d0af232923806",
+        "1b4725e2f98243fc0e77",
+        "c3dfdd9511508d1fdaf3",
+        "07c48665d3dc4c822d5f",
+        "d2916c08fb5b0fa9c824",
+        "87222b01f482ccea632c",
+        "82aa74b41dba4d14beae"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf",
+      "clause_ids": [
+        "estimate_capacity",
+        "liters_and_or_milliliters"
+      ],
+      "response_ref": ".responses/s5-phaseC-w12-haiku45-20260925.json",
+      "response_digest": "454f251d0e110319f732825a234c7675b1b6ec027eee73bb892d6644c790bc4d",
+      "prompt_ref": ".responses/s5-phaseC-w12-haiku45-20260925.prompt.txt",
+      "prompt_digest": "56a66f0d90cfe40d4204320c0d55ee9cb64de7002f04717d2d8a868406617e8a",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q2_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q2_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; one wording revision by the reviewer (3 strings under 60 chars, 1 repeat), 6 tool uses. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seventeen of eighteen samples present single or double-digit numbers rounded to the nearest ten, which is appropriate for Grade 3 cognitive demands. However, one sample uses 4136 milliliters rounded to the nearest thousand, introducing substantially larger magnitude numbers and a different rounding interval that exceeds typical Grade 3 cognitive expectations for this quarter."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples directly address the competency of estimating capacity by asking learners to round container measurements to a specified interval. Every item explicitly focuses on the estimation task with liters or milliliters as the unit of capacity measurement, maintaining tight alignment with the stated competency."
+    },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The option sets defeat the task. For the 2893 mL item rounded to the nearest 1000 the choices are 3002, 2999, 3001 and 3000, and for the 51 mL item rounded to the nearest 10 they are 51, 49, 50 and 52; in each case exactly one option is a multiple of the rounding unit, so the correct answer is identifiable by inspection without estimating."
+      "verdict": "PASS",
+      "rationale": "The competency describes estimating capacity using liters and/or milliliters. The printed requirements decompose this into two components: the action of estimating capacity and the units liters and/or milliliters. This decomposition is lossless and complete.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The requirement to estimate capacity covers the core action demanded by the competency. The requirement to use liters and or milliliters covers the unit specification. Together these requirements form a lossless decomposition that captures the complete meaning of the competency statement without addition or omission.",
+        "requirement_ids": [
+          "estimate_capacity",
+          "liters_and_or_milliliters"
+        ]
+      },
+      "clause_ids": [
+        "estimate_capacity",
+        "liters_and_or_milliliters"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both units named in the competency are produced, and the rounding target varies across 10, 100 and 1000 with instances that round up, as with 16 L to 20, and instances that round down, as with 21 L to 20."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Asking a third grader to accept a container measured as exactly 2893 mL and then round it to the nearest thousand mixes a precision no classroom vessel offers with a rounding unit at the top of the grade's range."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Every sample repeats the same single sentence about an unnamed container, with only the numeral, the unit and the rounding target changing. There is no benchmark-comparison item, no pouring context and no item asking which estimate is reasonable for a named object such as a glass or a pail."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because the capacity is stated exactly in the stem, the estimating verb of the competency is discharged entirely by a rounding rule, so the progression tracks numeral size rather than any growing sense of how much a litre or millilitre is."
+      "rationale": "The sample set demonstrates diversity in rounding contexts including boundary cases where numbers land at the exact midpoint between rounding intervals, items requiring rounding down to the lower ten, and items requiring rounding up to the higher ten. Both liters and milliliters units are represented across multiple samples. Multiple experience types and item formats appear.",
+      "clause_ids": [
+        "estimate_capacity",
+        "liters_and_or_milliliters"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Capacities of 285 L and 192 L do not correspond to containers within a Grade 3 pupil's experience, and pairing such values with the near-miss options 299, 301 and 302 further removes the item from realistic capacity estimation."
+      "rationale": "Most samples use numeric values within the range of five to seventy, which is age-appropriate for container capacity estimation in Grade 3. One sample presents a four-digit number of 4136 milliliters rounded to the nearest thousand, which exceeds the typical numeric scale and complexity for this grade level in practical capacity contexts."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show variation across multiple dimensions including units used (liters versus milliliters), response format (cloze versus multiple-choice), numeric magnitude, rounding interval direction (up or down), and whether numbers fall at midpoint rounding boundaries. This variety supports learners encountering estimation in multiple contexts."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
