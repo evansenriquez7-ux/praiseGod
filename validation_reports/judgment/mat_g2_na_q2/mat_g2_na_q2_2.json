@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q2_2",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems involving addition with sums up to 1000, including problems involving money, with and without regrouping.",
+    "grade": 2,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve problems"
+    },
+    {
+      "kind": "context",
+      "id": "involving",
+      "clause": "involving"
+    },
+    {
+      "kind": "task",
+      "id": "addition",
+      "clause": "addition"
+    },
+    {
+      "kind": "range",
+      "id": "sums_up_to_1000",
+      "clause": "sums up to 1000"
+    },
+    {
+      "kind": "task",
+      "id": "problems",
+      "clause": "problems"
+    },
+    {
+      "kind": "context",
+      "id": "money",
+      "clause": "money"
+    },
+    {
+      "kind": "property",
+      "id": "regrouping",
+      "clause": "with and without regrouping"
+    }
+  ],
+  "packet_digest": "6abe1a0642ca213580b5da0fd00c0f40cfec9a55c17b893d1fcc4ac721d7073b",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +63,105 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614,
+    615,
+    616,
+    617,
+    618,
+    619,
+    620,
+    621,
+    622,
+    623,
+    624,
+    700,
+    701,
+    702,
+    800,
+    801,
+    802,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "3959b6d9583b84187a4b",
+    "56e12b0991185b848085",
+    "84ae88c250ce97224e79",
+    "375e9a674b43afda036b",
+    "f3178a63e822dccf4618",
+    "9cf332415aafab808ad9",
+    "38f437260b42defd6d98",
+    "913c95ff90bba3f9caf5",
+    "2426c8ef66a8b152145c",
+    "b325620cc5d05fda1c0d",
+    "c8c2d4d390abd0b4784b",
+    "8b5d4f3b20c1197ad4b3",
+    "13de79b34be8a958fcb7",
+    "0597c020b5a38e7b62b6",
+    "fda639badbc187d7da30",
+    "875f02d69c91f46b0a19",
+    "ef46408a0a1bf5caf632",
+    "04e55c4e9c62c4b3a249",
+    "ef00a636add9a38b923f",
+    "f62032c244789f7d37ff",
+    "e3fe2246411978c69bc0",
+    "9142d191d86fe37497f1",
+    "14dd0ee67b650e0dd185",
+    "56345c34e903ec1264a9",
+    "ba4e6e861fc90e7969d4",
+    "cbe83cc21ba5ce7088a2",
+    "b9685160470c50f5cc04",
+    "33b019494a2648258365",
+    "18129883b440a176c855",
+    "806cbfcc612dc7d04615",
+    "915549e4fb4c243c83ef",
+    "5113ce832f38a079b5c1",
+    "bb00895389faf45fe53e",
+    "718e19dfcad2114a1e46",
+    "ddd31c57a5b07a10b02a",
+    "0551058c181a7bf417ac",
+    "e3218b889a3b45315ebf",
+    "3712f5c370c91ca274bf",
+    "33000d837ba225c3ea4b",
+    "f9d575b28f09f92f6327",
+    "f61e23d0f386d8f93234",
+    "982c8a1dc5e455a78729",
+    "52cfd9783ff822e12376",
+    "38b94049a344cde85f71"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Start at 57. Count up 345 more. What number do you land on?",
       "correct_answer": 402,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,28 +183,103 @@
           "value": 412,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 402,
+      "hints": [
+        "We are adding two numbers: 57 and 345.",
+        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 5 + 4 + 1 (carried) = 10.",
+        "The sum is 57 + 345 = 402."
+      ],
+      "sample_id": "3959b6d9583b84187a4b",
+      "replay_digest": "e8087d5ffef6d5a0a70794b051991dff56a5d022387aa3d6e1af52b5af9a4964"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "Nanding bought a pencil for ₱784 and an eraser for ₱112. How much did Nanding spend in all? The answer is 672. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 784 and 112.",
+        "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.",
+        "Add the tens: 8 + 1 = 9.",
+        "The sum is 784 + 112 = 896."
+      ],
+      "sample_id": "56e12b0991185b848085",
+      "replay_digest": "7af46b1accf91145cac3bcba2ef440517454ddb6758aa373bd26b853f58f9b54"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved this problem: \"Coach Nora had ₱144 and received ₱480 more from Nanay. How much money does Coach Nora have in all?\" Rico says the answer is 624. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 624
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 624
+      },
+      "hints": [
+        "We are adding two numbers: 144 and 480.",
+        "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.",
+        "Add the tens: 4 + 8 = 12.",
+        "The sum is 144 + 480 = 624."
+      ],
+      "sample_id": "84ae88c250ce97224e79",
+      "replay_digest": "b23a950588974fc493fb1f5682293a2717be69a8af67c543036033674dc276a3"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "Ate Gab has ₱20 in one pocket and ₱20 in another pocket. How much money does Ate Gab have in total?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -89,13 +301,86 @@
           "value": 40,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso20'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso20 → running total = peso40.",
+        "The total is peso40."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 20,
+        "content_type": "whole_number",
+        "value": 40,
+        "correct_position": 40,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 40.0,
+        "target": 40.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "5170d3aa2bd2b9c7b87b9e8b2dbc47344da33673815c1923204881da4a5810cc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "375e9a674b43afda036b",
+      "replay_digest": "6edcd7dd69fbc739bd16c6d13234699b397493e56f4f7935c7075bc09f1b9aa4"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Ate Joy has ₱100 in one pocket and ₱556 in another pocket. How much money does Ate Joy have in total?",
       "correct_answer": 656,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -121,13 +406,41 @@
           "text": "656",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 656,
+      "hints": [
+        "You have these amounts: ['peso100', 'peso556'].",
+        "Step 1: Add peso100 → running total = peso100.",
+        "Step 2: Add peso556 → running total = peso656.",
+        "The total is peso656."
+      ],
+      "sample_id": "f3178a63e822dccf4618",
+      "replay_digest": "5d4622d6576bf39615a0cb19784270722d855e19ebbe7e71a0549520fd47b3c6"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Kuya Ton has ₱100 in one pocket and ₱670 in another pocket. How much money does Kuya Ton have in total?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0,
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -149,13 +462,114 @@
           "value": 770,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 770,
+      "hints": [
+        "You have these amounts: ['peso100', 'peso670'].",
+        "Step 1: Add peso100 → running total = peso100.",
+        "Step 2: Add peso670 → running total = peso770.",
+        "The total is peso770."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          },
+          {
+            "denomination": 50,
+            "count": 1
+          },
+          {
+            "denomination": 100,
+            "count": 1
+          },
+          {
+            "denomination": 200,
+            "count": 3
+          }
+        ],
+        "total": 770,
+        "target_amount": 770,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100,
+          200
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "d519aec691fea08aedb7f9b5f17ba427b227636355fe44c3aad0a93eb0aa1f2d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS",
+            "₱50",
+            "₱100",
+            "₱200"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff",
+            "#fda4af,",
+            "#dc2626)",
+            "#c084fc,",
+            "#7c3aed)",
+            "#86efac,",
+            "#16a34a)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9cf332415aafab808ad9",
+      "replay_digest": "8e884ccb6ab8c58d1f43637ad052f0b5486d49dc87da4a240ff03e33e5677d8b"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "Ate Sam saved ₱200 on Monday and ₱705 on Tuesday. How much money did Ate Sam save altogether?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0,
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -177,13 +591,93 @@
           "value": 905,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 905,
+      "hints": [
+        "You have these amounts: ['peso200', 'peso705'].",
+        "Step 1: Add peso200 → running total = peso200.",
+        "Step 2: Add peso705 → running total = peso905.",
+        "The total is peso905."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 100,
+        "end": 1000,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 200,
+        "move_by": 705,
+        "content_type": "whole_number",
+        "value": 905,
+        "correct_position": 905,
+        "divisions": 18,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 905.0,
+        "target": 905.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a555740310e59206e5714026e07dc031b2d6e33aacab435d6625845ba57f8798",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "38f437260b42defd6d98",
+      "replay_digest": "e4f18ed8d476161c5c5a88782bb04e90ad0feb1ddeeb182f5787e3e98310a186"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Kuya Renz bought a pencil for ₱500 and an eraser for ₱500. How much did Kuya Renz spend in all?",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0,
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -205,13 +699,39 @@
           "value": 1001,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "You have these amounts: ['peso500', 'peso500'].",
+        "Step 1: Add peso500 → running total = peso500.",
+        "Step 2: Add peso500 → running total = peso1000.",
+        "The total is peso1000."
+      ],
+      "sample_id": "913c95ff90bba3f9caf5",
+      "replay_digest": "dcc51aa430d85a4935a363713bab321999ab654e72815f6888b8b2d3490a5b2a"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 600,
       "formatter": "read_mcq",
       "question_text": "Kuya Tads saved ₱50 on Monday and ₱61 on Tuesday. How much money did Kuya Tads save altogether?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -233,13 +753,110 @@
           "value": 111,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 111,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso61'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso61 → running total = peso111.",
+        "The total is peso111."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 1
+          },
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 2
+          }
+        ],
+        "total": 111,
+        "target_amount": 111,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100,
+          200
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "08099a9b6c33755cea283f54acc1ea4d04bf9535c66f5bdcde931b03de2a91f0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS",
+            "COINS",
+            "₱1",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#fda4af,",
+            "#dc2626)",
+            "#fff",
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2426c8ef66a8b152145c",
+      "replay_digest": "98d5b4718711d54a7a4a851e999cba3f0add43a15b103df02146830cff0eb253"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Coach Roel had ₱750 and received ₱0 more from Nanay. How much money does Coach Roel have in all?",
       "correct_answer": 750,
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "bills"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -265,13 +882,39 @@
           "text": "749",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 750,
+      "hints": [
+        "We are adding two numbers: 750 and 0.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 750 + 0 = 750."
+      ],
+      "sample_id": "b325620cc5d05fda1c0d",
+      "replay_digest": "437bd557743ba3a58f2b358f357598cf16212111ac5abc96f0c3b0b366ee69bb"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "Sir Rez saved ₱20 on Monday and ₱30 on Tuesday. How much money did Sir Rez save altogether?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "coins"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -293,13 +936,89 @@
           "value": 45,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso30'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso30 → running total = peso50.",
+        "The total is peso50."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 30,
+        "content_type": "whole_number",
+        "value": 50,
+        "correct_position": 50,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 50.0,
+        "target": 50.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a159208c5f7dfdb511573a81b285fe3381f69d362c0b67491f12443768c73478",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c8c2d4d390abd0b4784b",
+      "replay_digest": "5a1db3c70c771685c3f280d782a230a0f97a2bafcb39f79b27d07baa9307c6c1"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 603,
       "formatter": "read_mcq",
       "question_text": "Ate Beng saved ₱10 on Monday and ₱500 on Tuesday. How much money did Ate Beng save altogether?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "denomination_type": "mixed"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -321,13 +1040,109 @@
           "value": 500,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 510,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso500'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso500 → running total = peso510.",
+        "The total is peso510."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 100,
+            "count": 1
+          },
+          {
+            "denomination": 200,
+            "count": 2
+          }
+        ],
+        "total": 510,
+        "target_amount": 510,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100,
+          200
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "a92289a9ab5d01f4035f5ca5b290ea05594d8ffd6f3f4b79e20a4da53bf7205f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱100",
+            "REPUBLIKA NG PILIPINAS",
+            "₱200",
+            "COINS",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#c084fc,",
+            "#7c3aed)",
+            "#fff",
+            "#86efac,",
+            "#16a34a)",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#1e293b",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8b5d4f3b20c1197ad4b3",
+      "replay_digest": "51c7c2ad6e35d8090a5472d1977eb3d0cb176dad5c224b5a982591f31c68bd95"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 604,
       "formatter": "read_mcq",
       "question_text": "Kuya Renz has ₱10 in one pocket and ₱500 in another pocket. How much money does Kuya Renz have in total?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "operation": "add"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -349,13 +1164,88 @@
           "value": 509,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 510,
+      "hints": [
+        "You have these amounts: ['peso10', 'peso500'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso500 → running total = peso510.",
+        "The total is peso510."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 600,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 10,
+        "move_by": 500,
+        "content_type": "whole_number",
+        "value": 510,
+        "correct_position": 510,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 510.0,
+        "target": 510.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "74d443bd2928087a30fbc8fc9264b06b6a32379b86aabce68d0a4dd706e77dea",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "13de79b34be8a958fcb7",
+      "replay_digest": "99f5756f1eb022ebda24d0ed4ff85076b7420f9376dab7155dbd8f11771b1605"
     },
     {
+      "node_id": "mat_g2_na_q2_2",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "operation": "subtract"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -377,33 +1267,2930 @@
           "value": 150,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 150,
+      "hints": [
+        "You have these amounts: ['peso200', 'peso50'].",
+        "You paid peso200 for an item that costs peso50.",
+        "Money back = peso200 − peso50 = peso150."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 200,
+            "count": 1
+          }
+        ],
+        "total": 200,
+        "target_amount": 200,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100,
+          200
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "f92d7cd64da5fa2aea724957caf49459bdab0e1b1a82ee893a316d79ffaecf1b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "BILLS",
+            "₱200",
+            "REPUBLIKA NG PILIPINAS"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#86efac,",
+            "#16a34a)",
+            "#fff"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "0597c020b5a38e7b62b6",
+      "replay_digest": "75e13d596c9632c43eef01c28eae4dfb42e6cf2562c33050503292df877d15aa"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Start at 744. Count up 10 more. What number do you land on?",
+      "correct_answer": 754,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 764,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 754,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 734,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 753,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 754,
+      "hints": [
+        "We are adding two numbers: 744 and 10.",
+        "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.",
+        "Add the tens: 4 + 1 = 5.",
+        "The sum is 744 + 10 = 754."
+      ],
+      "sample_id": "fda639badbc187d7da30",
+      "replay_digest": "16c5944846278e8546fcf50c4cb324b3e3b5b82283eae4b8b7809283e9a52baa"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 607,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Isko collected 260 jersey and 669 sports towel at the barangay court. How many items did Isko collect in total?\" Grace says the answer is 929. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 929
+      },
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 929
+      },
+      "hints": [
+        "We are adding two numbers: 260 and 669.",
+        "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.",
+        "Add the tens: 6 + 6 = 12.",
+        "The sum is 260 + 669 = 929."
+      ],
+      "sample_id": "875f02d69c91f46b0a19",
+      "replay_digest": "fb6f275280589871f2965e16700784eff1941f580020cf9a69cda17b243a06c5"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "Boyong bought a pencil for ₱641 and an eraser for ₱359. How much did Boyong spend in all? The answer is 641. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "three_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 641 and 359.",
+        "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 5 + 1 (carried) = 10.",
+        "The sum is 641 + 359 = 1000."
+      ],
+      "sample_id": "ef46408a0a1bf5caf632",
+      "replay_digest": "46d6fa5168421b29b430fdf7727a3328b26160a71573888eaed90d74a8953462"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "Ruth saved ₱200 on Monday and ₱551 on Tuesday. How much money did Ruth save altogether?",
+      "correct_answer": 751,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 741,
+          "text": "741",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 752,
+          "text": "752",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7510,
+          "text": "7510",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 751,
+          "text": "751",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 751,
+      "hints": [
+        "You have these amounts: ['peso200', 'peso551'].",
+        "Step 1: Add peso200 → running total = peso200.",
+        "Step 2: Add peso551 → running total = peso751.",
+        "The total is peso751."
+      ],
+      "sample_id": "04e55c4e9c62c4b3a249",
+      "replay_digest": "8095365de5a10d5eaec67e71711183600c7b141a6494e563c39e266b3e86792a"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 610,
+      "formatter": "read_mcq",
+      "question_text": "Bianca saved ₱5 on Monday and ₱180 on Tuesday. How much money did Bianca save altogether?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 135,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 184,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 235,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 185,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 185,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso180'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso180 → running total = peso185.",
+        "The total is peso185."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 200,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 5,
+        "move_by": 180,
+        "content_type": "whole_number",
+        "value": 185,
+        "correct_position": 185,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 185.0,
+        "target": 185.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "e4241d8c3ecabdfbed4ca5357fe79ba1d3c846c3e829f57449c33759a88f63af",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ef00a636add9a38b923f",
+      "replay_digest": "5c997fdd3b89a83fa6495fb847607964572be71c2767098c08b27b0e48096379"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 611,
+      "formatter": "mcq",
+      "question_text": "Romel saved ₱500 on Monday and ₱131 on Tuesday. How much money did Romel save altogether?",
+      "correct_answer": 631,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 631,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6310,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 632,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 621,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 631,
+      "hints": [
+        "You have these amounts: ['peso500', 'peso131'].",
+        "Step 1: Add peso500 → running total = peso500.",
+        "Step 2: Add peso131 → running total = peso631.",
+        "The total is peso631."
+      ],
+      "sample_id": "f62032c244789f7d37ff",
+      "replay_digest": "a42b5f70002e0a18ea8f683be1951eb2ba700ed97f3eb374c442241220ed5582"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 612,
+      "formatter": "error_detect",
+      "question_text": "Noel solved this problem: \"Arnel is on step 991. Arnel climbs up 6 more steps. What step is Arnel on now?\" Noel says the answer is 985. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 997
+      },
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 997
+      },
+      "hints": [
+        "We are adding two numbers: 991 and 6.",
+        "Add the ones: 1 + 6 = 7. Keep 7 in the ones place.",
+        "Add the tens: 9 + 0 = 9.",
+        "The sum is 991 + 6 = 997."
+      ],
+      "sample_id": "e3fe2246411978c69bc0",
+      "replay_digest": "7142ae380f623f762a94fa55dd2e9012b2c564544c87a83200cd7c5b3de32651"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 613,
+      "formatter": "true_false",
+      "question_text": "Lola Caring had ₱290 and received ₱142 more from Nanay. How much money does Lola Caring have in all? The answer is 433. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 290 and 142.",
+        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
+        "Add the tens: 9 + 4 = 13.",
+        "The sum is 290 + 142 = 432."
+      ],
+      "sample_id": "9142d191d86fe37497f1",
+      "replay_digest": "5cbf68d1dbb2b20c4d48e62f50049794f7cca0992f3ad7a4006cc7c765bf7692"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 614,
+      "formatter": "cloze",
+      "question_text": "Jun bought a pencil for ₱360 and an eraser for ₱570. How much did Jun spend in all?",
+      "correct_answer": 930,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 931,
+          "text": "931",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 940,
+          "text": "940",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 930,
+          "text": "930",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 929,
+          "text": "929",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 930,
+      "hints": [
+        "We are adding two numbers: 360 and 570.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 6 + 7 = 13.",
+        "The sum is 360 + 570 = 930."
+      ],
+      "sample_id": "14dd0ee67b650e0dd185",
+      "replay_digest": "3573a229a33d64a9e817cccef30b906315e9c1debab64726e44a1db3d006401a"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 615,
+      "formatter": "mcq",
+      "question_text": "Is (624 + 41) + 22 the same as 624 + (41 + 23)?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "associative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side adds 624, 41 and 22. The right side adds 624, 41 and 23.",
+        "(624 + 41) + 22 = 687 and 624 + (41 + 23) = 688.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "56345c34e903ec1264a9",
+      "replay_digest": "6f171bab6ed5edae9983acdd8207d1be87aca303e41a41e765891c0d04c6607e"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 616,
+      "formatter": "mcq",
+      "question_text": "Is 258 + 341 the same as 341 + 258?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "commutative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides add the same two numbers, 258 and 341, in a different order.",
+        "258 + 341 = 599 and 341 + 258 = 599.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "ba4e6e861fc90e7969d4",
+      "replay_digest": "9ae8de4bb42e3e8fd565e9d2c16a58030c472cff85d4cf0ccd3d56f0dfc5443f"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 617,
+      "formatter": "read_mcq",
+      "question_text": "Bianca has ₱20 in one pocket and ₱531 in another pocket. How much money does Bianca have in total?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 550,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 601,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 551,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 501,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 551,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso531'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso531 → running total = peso551.",
+        "The total is peso551."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 600,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 20,
+        "move_by": 531,
+        "content_type": "whole_number",
+        "value": 551,
+        "correct_position": 551,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 551.0,
+        "target": 551.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9bca2b854bc743351d38e2922e6bb315ebd9597d917c0965db028997bc87834c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cbe83cc21ba5ce7088a2",
+      "replay_digest": "16e79e2b7518023e7bb2fe67c21cf1f4a0623683b65197c3811815b7929622c4"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 618,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 630 and it moves forward 51 numbers. Starting from 630, just count up 51 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 691,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 681,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 579,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 680,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 681,
+      "hints": [
+        "We are adding two numbers: 630 and 51.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "Add the tens: 3 + 5 = 8.",
+        "The sum is 630 + 51 = 681."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 620,
+        "end": 690,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 630,
+        "move_by": 51,
+        "content_type": "whole_number",
+        "value": 681,
+        "correct_position": 681,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 681.0,
+        "target": 681.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "d46870f3cb9802cd1dafb6f839fa752bb543886d8f33083bca616087e5136362",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "620",
+            "630",
+            "640",
+            "650",
+            "660",
+            "670",
+            "680",
+            "690"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b9685160470c50f5cc04",
+      "replay_digest": "1de7c414ced5ab8047818d22a0e052c8f8ee15094ecbdb136a53920e3cf1ad81"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 619,
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"242 is 2 hundreds, 4 tens, and 2 ones. 120 is 1 hundred, 2 tens, and 0 ones. Add the place values, then find the total: 242 + 120 = ___\". Grace says the missing number is 362. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 362
+      },
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 362
+      },
+      "hints": [
+        "We are adding two numbers: 242 and 120.",
+        "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.",
+        "Add the tens: 4 + 2 = 6.",
+        "The sum is 242 + 120 = 362."
+      ],
+      "sample_id": "33b019494a2648258365",
+      "replay_digest": "4dbb6a44ed8b424e1ce88758ad716fb76d66a3caa139a0343313a12f517a5f2d"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 620,
+      "formatter": "read_mcq",
+      "question_text": "Gab has ₱5 in one pocket and ₱5 in another pocket. How much money does Gab have in total?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "give_money"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "You have these amounts: ['peso5', 'peso5'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso5 → running total = peso10.",
+        "The total is peso10."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 5,
+        "move_by": 5,
+        "content_type": "whole_number",
+        "value": 10,
+        "correct_position": 10,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 10.0,
+        "target": 10.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "44f6c009a5b92a2e316054a864f6c580fdef6cd30765b7b49206204a2d715d39",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "18129883b440a176c855",
+      "replay_digest": "5e8d429531059497a716bb4f94ae5e415a3a0db04b8352f325438dbb68c6ca9a"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 621,
+      "formatter": "mcq",
+      "question_text": "Sir Ben saved ₱1 on Monday and ₱20 on Tuesday. How much money did Sir Ben save altogether?",
+      "correct_answer": 21,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "make_change"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 210,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 21,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso20'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso20 → running total = peso21.",
+        "The total is peso21."
+      ],
+      "sample_id": "806cbfcc612dc7d04615",
+      "replay_digest": "39c68198e0309c42c3310976c480048cedffa4dda28133ecd92a488eec6f3d25"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 622,
+      "formatter": "true_false",
+      "question_text": "Start at 693. Count up 156 more. You land on 537. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "models_strategies"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 693 and 156.",
+        "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.",
+        "Add the tens: 9 + 5 = 14.",
+        "The sum is 693 + 156 = 849."
+      ],
+      "sample_id": "915549e4fb4c243c83ef",
+      "replay_digest": "77a58e0185f545362036650c400ac77b8a611ba35513293b9a890bfa484f6253"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 623,
+      "formatter": "cloze",
+      "question_text": "One group has 150 items and another group has 300 items. Putting them together makes ___ items in all.",
+      "correct_answer": 450,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 449,
+          "text": "449",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 460,
+          "text": "460",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 450,
+          "text": "450",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 451,
+          "text": "451",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 450,
+      "hints": [
+        "We are adding two numbers: 150 and 300.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 150 + 300 = 450."
+      ],
+      "sample_id": "5113ce832f38a079b5c1",
+      "replay_digest": "2fe6d63be60dbfeec9dd463a788151981be031b200b771b49ba5e06fa69d20b4"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 624,
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"0 + 923 = ___\". Noel says the missing number is 924. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 923
+      },
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "zero_identity"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 923
+      },
+      "hints": [
+        "We are adding two numbers: 0 and 923.",
+        "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.",
+        "Add the tens: 0 + 2 = 2.",
+        "The sum is 0 + 923 = 923."
+      ],
+      "sample_id": "bb00895389faf45fe53e",
+      "replay_digest": "16450ef3f0f4f2a10d54949f303e34e3ad0a5a2351cfd2f10aff735ef9bcf538"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "Boyong bought a pencil for ₱630 and an eraser for ₱150. How much did Boyong spend in all? The answer is 780. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 630 and 150.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 3 + 5 = 8.",
+        "The sum is 630 + 150 = 780."
+      ],
+      "sample_id": "718e19dfcad2114a1e46",
+      "replay_digest": "7d6ae37bfd7948ccfe6d4484c64acfdd0507466448f95dab3276a3fb8becf353"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "Marco has ₱100 in one pocket and ₱500 in another pocket. How much money does Marco have in total?",
+      "correct_answer": 600,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 600,
+          "text": "600",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6000,
+          "text": "6000",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 590,
+          "text": "590",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 601,
+          "text": "601",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 600,
+      "hints": [
+        "You have these amounts: ['peso100', 'peso500'].",
+        "Step 1: Add peso100 → running total = peso100.",
+        "Step 2: Add peso500 → running total = peso600.",
+        "The total is peso600."
+      ],
+      "sample_id": "ddd31c57a5b07a10b02a",
+      "replay_digest": "d61159280ca22593dc190c3e0427f79a62ae5fe1593fc7e633d950e97eb5b3ee"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Isko collected 362 jersey and 403 cap at the covered court. How many items did Isko collect in total?\" Manny says the answer is 766. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 765
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 765
+      },
+      "hints": [
+        "We are adding two numbers: 362 and 403.",
+        "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 362 + 403 = 765."
+      ],
+      "sample_id": "0551058c181a7bf417ac",
+      "replay_digest": "cc3ee3e624ef7c99c4fcfd0685ba1f24811a47290c5ffbbae72a6f09e65bd5bf"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Lola Caring had ₱20 and received ₱711 more from Nanay. How much money does Lola Caring have in all?",
+      "correct_answer": 731,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 732,
+          "text": "732",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 731,
+          "text": "731",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 721,
+          "text": "721",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7310,
+          "text": "7310",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 731,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso711'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso711 → running total = peso731.",
+        "The total is peso731."
+      ],
+      "sample_id": "e3218b889a3b45315ebf",
+      "replay_digest": "c5e064e4144d065698850036e982f4467dd641d3ef294b7771afd68ed197dfd7"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 801,
+      "formatter": "cloze",
+      "question_text": "Coach Roel saved ₱50 on Monday and ₱700 on Tuesday. How much money did Coach Roel save altogether?",
+      "correct_answer": 750,
+      "requested": {
+        "difficulty_profile": {
+          "max_total": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 750,
+          "text": "750",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 740,
+          "text": "740",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 751,
+          "text": "751",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7500,
+          "text": "7500",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 750,
+      "hints": [
+        "You have these amounts: ['peso50', 'peso700'].",
+        "Step 1: Add peso50 → running total = peso50.",
+        "Step 2: Add peso700 → running total = peso750.",
+        "The total is peso750."
+      ],
+      "sample_id": "3712f5c370c91ca274bf",
+      "replay_digest": "d56ff6740b81ce6335d64362ede8636bd9ceaadb8263bc0dd38db22b007bf6fe"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 802,
+      "formatter": "mcq",
+      "question_text": "Mika had 679 sketchpads. Then Mika got 258 more. How many sketchpads does Mika have now?",
+      "correct_answer": 937,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 936,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 421,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 937,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 947,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 937,
+      "hints": [
+        "We are adding two numbers: 679 and 258.",
+        "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.",
+        "Add the tens: 7 + 5 + 1 (carried) = 13.",
+        "The sum is 679 + 258 = 937."
+      ],
+      "sample_id": "33000d837ba225c3ea4b",
+      "replay_digest": "3951f70a06ddad1d05f322722e4f0b9a78c606ae86f6c2b2a2d16b94972a9cc5"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ate Liza is on step 0. Ate Liza climbs up 1 more step. What step is Ate Liza on now?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "sample_id": "f9d575b28f09f92f6327",
+      "replay_digest": "f0657159adb842d9b1387caa3ca93e19e71e92015f679062b2d85b889ccb0b8f"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Jun saved ₱1 on Monday and ₱1 on Tuesday. How much money did Jun save altogether?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "max_total": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso1'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso1 → running total = peso2.",
+        "The total is peso2."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 1,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 2,
+        "correct_position": 2,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2.0,
+        "target": 2.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "17460464d42d1f314b78b32e2ad698a03f10b814f66f71c847cf917742957e35",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f61e23d0f386d8f93234",
+      "replay_digest": "abcf391590eadefb5ff992ada918096e1ae1c65a7f09ef5780d436278fc18603"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "There are 807 water bottles in one basket and 59 water bottles in another basket. How many water bottles are there in all? The answer is 748. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 807 and 59.",
+        "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and carry over 1 ten.",
+        "Add the tens: 0 + 5 + 1 (carried) = 6.",
+        "The sum is 807 + 59 = 866."
+      ],
+      "sample_id": "982c8a1dc5e455a78729",
+      "replay_digest": "aed6b92b0a5aae67d751ee46d5738fc82701142f72eb71f6f1af6658cbe23962"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Start at 805. Count up 141 more. What number do you land on?\" Liza says the answer is 805. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 946
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 946
+      },
+      "hints": [
+        "We are adding two numbers: 805 and 141.",
+        "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.",
+        "Add the tens: 0 + 4 = 4.",
+        "The sum is 805 + 141 = 946."
+      ],
+      "sample_id": "52cfd9783ff822e12376",
+      "replay_digest": "0a0cb42156b2ae9e4015dbdacffdf5bd47c50667c175bf6af034ec99397cfda0"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 1002,
+      "formatter": "mcq",
+      "question_text": "Aling Rosa has ₱100 in one pocket and ₱12 in another pocket. How much money does Aling Rosa have in total?",
+      "correct_answer": 112,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 112,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 102,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1120,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 113,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 112,
+      "hints": [
+        "You have these amounts: ['peso100', 'peso12'].",
+        "Step 1: Add peso100 → running total = peso100.",
+        "Step 2: Add peso12 → running total = peso112.",
+        "The total is peso112."
+      ],
+      "sample_id": "38b94049a344cde85f71",
+      "replay_digest": "da0c5e17f099deec800011ff5b370eef55762f8246d0996933df1fcaf2c1f4d7"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "3959b6d9583b84187a4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is clear: starting at 57 and counting up 345 more yields a single unambiguous answer of 402. The language is direct and the task is transparently addition with no competing interpretations possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up framing is contextually sound for Grade 2 students learning addition. The scenario of starting at a number and counting forward is a developmentally appropriate model for understanding addition as forward movement along a number line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For a Grade 2 reader, the stem employs clear and familiar language with the action verb count and directional indicator up. The numerical values 57 and 345 are presented plainly without unnecessary decoration."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic is correct: 57 plus 345 equals 402. The hint steps accurately trace through the standard algorithm showing ones addition of 7 plus 5 equaling 12 with regrouping to tens, then tens addition with the carried 1, and finally hundreds addition, reaching the correct sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "56e12b0991185b848085",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format removes ambiguity about what answer is expected. The student must evaluate whether the claimed answer of 672 is correct for the sum of 784 and 112, with only two possible verdicts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of purchasing two items and finding the total spending is contextually valid and represents real-world application of addition within the money domain appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies named persons purchasing items with prices given in Philippine peso currency, a familiar monetary context for the target learner population. The true-false judgment is clearly stated at the end."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 784 plus 112 is 896. The sample correctly identifies 672 as false. The hint steps accurately decompose the addition: ones place adds to 6, tens place requires carrying, and hundreds place completes the sum of 896."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "84ae88c250ce97224e79",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format is unambiguous: students must judge whether the proposed answer of 624 is correct. The yes-or-no judgment framework leaves no room for interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A coach receiving money as a transfer and needing to calculate total holdings is a realistic scenario. The addition context of receiving more money aligns with the competency requirement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative presents named characters and a clear action, with amounts expressed in Philippine peso. The question asks students to verify a solution rather than generate one, reducing cognitive load."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Coach Nora has 144 plus receives 480, totaling 644 plus 480, which equals... wait, let me recalculate: 144 plus 480 equals 624. The sample correctly states no error and accepts 624. The hint decomposition is accurate: ones add to 4, tens add to 12 with carrying, hundreds add to 6, final sum 624."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "375e9a674b43afda036b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A money amount in each pocket with a total to find is unambiguous. The four numeric choices are distinct, and only one is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A child finding the total money available in two separate pockets is a familiar and contextually reasonable scenario for a Grade 2 student learning to manage money and combine amounts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple language with named person and clear monetary context. The visual display of a number line with labels at intervals of 10 supports understanding for students not yet fluent with pure symbolic addition."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 20 plus 20 yields 40, which is presented as the correct answer. The visual number line increments from 0 to 60 and clearly marks the endpoint at 40. The hints accurately track the running total through two steps of 20 each."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "f3178a63e822dccf4618",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank question with four distinct numeric options leaves no ambiguity about the expected response format or the correctness criterion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person combining money from two separate locations is contextually valid. The scenario requires addition to combine amounts, aligning with the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question stem is direct: one pocket has 100 peso, another has 556 peso, total in pesos is unknown. The blank is clearly indicated. Distractor options include a multi-digit error of 6560 which tests whether students understand place value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 100 plus 556 yields 656 as the correct sum. The hint traces addition of ones to 6, tens to 5, and hundreds to 6. The option 6560 serves as a plausible distractor for students who may mistakenly concatenate digits instead of combining place values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "9cf332415aafab808ad9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four distinct options clearly signals that students must select one correct answer from alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person with money in one pocket and more money in another pocket combining the amounts is a realistic Grade 2 scenario requiring addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a person, specifies the money amounts, and asks for the total. The visual representation as currency bills and coins provides a familiar representation of peso value. The monetary context is explicit and relevant."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 100 peso plus 670 peso equals 770 peso, which is the marked correct answer. The hints show the running total after each addition step, confirming 770 as the correct result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "38f437260b42defd6d98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with a defined correct answer among four options is unambiguous regarding the task and expected response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on different days being combined into a total is a contextually valid scenario that reflects real money-management situations for a student."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem mentions a named person, specifies amounts saved on named days, and asks for the total. The time sequence adds context without creating cognitive complexity. The number line visual with scale from 100 to 1000 supports computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 200 plus 705 correctly yields 905. The hints accurately trace both the conceptual running total and the numerical result, confirming the correct sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "913c95ff90bba3f9caf5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for a single total, with four distinct numeric options provided as choices. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing two items with prices in peso and computing the total spending is a valid and grade-appropriate scenario for understanding addition in monetary contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a purchaser, item names, prices in familiar Philippine currency, and asks for total spending. The language is straightforward and the task is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 500 plus 500 yields 1000, which is the correct answer and reaches the stated upper boundary for the competency. The problem tests whether students can perform addition that reaches the ceiling of the specified range."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "2426c8ef66a8b152145c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice question requests a single total amount, with options provided and only one correct. The ambiguity level is minimal."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on separate days being combined to find total savings is a realistic and developmentally appropriate scenario for a Grade 2 learner."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A named person saves specific amounts in peso on two named days, and the question asks for the total. The daily sequence provides context. The peso money visual representation supports understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 50 plus 61 equals 111. The regrouping occurs at the tens place: 5 tens plus 6 tens yields 11 tens, which becomes 1 hundred and 1 ten. The hints correctly trace this algorithm."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "b325620cc5d05fda1c0d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-the-blank format with four options clearly requests a single numeric answer for the total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While money is the context, the phrase and received 0 more is unusual. Adding zero is a valid edge case, but the phrasing may confuse learners about whether anything is being added at all. The semantic validity is present but pedagogically awkward."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a coach, specifies an initial amount and an additional amount, and asks for the total. The facts are stated clearly, though the receipt of zero may momentarily confuse a young reader."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 750 plus 0 correctly yields 750. This tests the identity property of addition. The hints correctly decompose the calculation showing that adding zero to any number returns that number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "c8c2d4d390abd0b4784b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four numeric options presents a clear task requiring identification of the correct sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on two separate days being combined to find total savings is a valid and realistic scenario aligned with Grade 2 student experience."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a named saver, specifies amounts in peso for two named days, and directly asks for the total. The language is clear and the time sequence provides context. The number line visual spans appropriate values."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 20 plus 30 equals 50. The calculation involves no regrouping and is straightforward. The running total hints correctly show the progression to the sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "8b5d4f3b20c1197ad4b3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four options clearly indicates the task of finding and selecting the correct total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on consecutive days being totaled is contextually sound and reflects realistic financial scenarios appropriate for a Grade 2 student."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses named person, specific day names, explicit peso amounts, and clear question asking for the combined total. The visual representation of currency supports learner comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 10 plus 500 yields 510. No regrouping occurs as 0 plus 0 stays 0 in the ones and 1 plus 5 equals 6 in the... wait: ones are 0+0=0, tens are 1+0=1, hundreds are 0+5=5, so the sum reads as 510. The hints correctly show the running total after each addition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "13de79b34be8a958fcb7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four options gives clear direction for the student to identify the total amount of money."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person with money divided across two pockets finding the combined amount is realistic and contextually appropriate for Grade 2 money-management learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem states a named person has specific peso amounts in each of two pockets and asks for the total in clear language. The number line visual provides support for the addition task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 10 plus 500 equals 510. The visual number line appropriately scales from 0 to 600 in increments of 100, supporting student estimation and verification of the sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "0597c020b5a38e7b62b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for a single amount of money remaining, which is unambiguous in format despite the problematic nature of the operation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "This sample presents a subtraction scenario, not an addition scenario. A person had money and used some to buy an item, then the question asks how much is left. The operation explicitly shown in the hints is subtraction: 200 minus 50 equals 150. This directly violates the competency requirement to solve problems involving addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clearly stated with a named person, a starting amount in peso, an item purchased with a price in peso, and a question about remaining money. The language and logic flow coherently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic shown in the hints is correct for the described scenario: 200 minus 50 does equal 150. However, the operation is subtraction, which is not the operation specified in the node competency. The mathematical validity of the individual calculation does not redeem the fundamental misalignment."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "fda639badbc187d7da30",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks what number a dot lands on after counting forward a specified amount, with four options provided. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The counting-up model is a valid representation of addition for Grade 2 students. Starting at a number and advancing by another number models the addition operation appropriately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses a concrete visual model of a dot at a starting position moving forward by a stated number of units. The language is direct and the task is clearly explained."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 744 plus 10 yields 754. The calculation is straightforward with no regrouping. The hints correctly trace ones addition staying at 4 and tens addition becoming 5, with hundreds unchanged at 7."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "875f02d69c91f46b0a19",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format presents a yes-or-no judgment about whether a stated answer is correct. The format is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Collecting items of different types and finding the total count is a realistic scenario appropriate for Grade 2. Addition is the correct operation for combining quantities of different categories."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes collecting jerseys and sports towels at a barangay court, specifies quantities for each type, and asks whether a proposed total is correct. The scenario and numbers are clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 260 plus 669 yields 929. The addition requires regrouping: ones add to 9, tens add to 12 with carrying, hundreds add to 9. The error-detect format correctly identifies that the stated answer of 929 is indeed correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "ef46408a0a1bf5caf632",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format requires the student to evaluate whether a stated answer to an addition problem is correct. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing two items with prices in currency and determining total spending is a realistic money scenario appropriate for Grade 2 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a named purchaser, item names, prices in peso, and asks students to judge a proposed total. The scenario and question are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 641 plus 359 yields 1000, not 641. The sample correctly identifies the proposed answer of 641 as false. The addition requires regrouping at both the ones and tens places, and the hints correctly trace the computation to reach 1000."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "04e55c4e9c62c4b3a249",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank question with four distinct numeric options has no ambiguity about the expected response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on two separate days being combined to find total savings is a valid real-world scenario appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a saver, specifies amounts saved on two named days, and asks for the total in pesos. The question is direct and the task is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 200 plus 551 yields 751. The calculation requires regrouping at the tens place: 0 plus 5 gives 5 in the ones, 0 plus 5 gives 5 in the tens... actually: ones are 0+1=1, tens are 0+5=5, hundreds are 2+5=7, yielding 751. The distractor 7510 tests whether students place the digits correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "ef00a636add9a38b923f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four options clearly specifies the task of identifying the correct total amount saved."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on consecutive days being totaled is a contextually appropriate scenario for Grade 2 students developing money-handling skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a named person, states peso amounts saved on two named days, and asks for the total. The language is simple and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 5 plus 180 yields 185. The calculation is straightforward: ones add to 5, tens add to 8, hundreds add to 1, yielding 185. The number line visual appropriately spans from 0 to 200."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "f62032c244789f7d37ff",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four options presents an unambiguous task to identify the total amount saved."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on separate days being combined is a realistic and appropriate scenario for Grade 2 student learning about money and addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a saver, specifies amounts in peso saved on two named days, and asks for the total. No visual support is provided, but the language is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 500 plus 131 yields 631. The addition is straightforward: ones add to 1, tens add to 3, hundreds add to 6, yielding 631. The distractor 6310 may appeal to students who concatenate instead of place-add."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "e3fe2246411978c69bc0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format asks students to judge whether a proposed answer to a clearly stated addition problem is correct. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person climbing steps and advancing by additional steps is a valid scenario for modeling addition. The context does not involve money but remains appropriate for practicing addition skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem states a starting step position, an upward movement by a number of steps, and asks whether a proposed final position is correct. The scenario and numbers are clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 991 plus 6 yields 997, not 985. The error-detect sample correctly identifies that the proposed answer is wrong. The addition requires regrouping: 1 plus 6 gives 7 in the ones, 9 plus 0 gives 9 in the tens, 9 plus 0 gives 9 in the hundreds, yielding 997."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "9142d191d86fe37497f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format requires a binary judgment about whether the proposed total is correct. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Receiving money as a transfer and combining it with existing money to find total holdings is a realistic and appropriate money scenario for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a person receiving money from a relative and asks students to judge a proposed total. The scenario, amounts in peso, and question are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 290 plus 142 yields 432, not 433. The sample correctly identifies the proposed answer as false. Regrouping at the tens place: 0 plus 2 gives 2 ones, 9 plus 4 equals 13 tens requiring a carry, resulting in 432."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "14dd0ee67b650e0dd185",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank with four numeric options clearly requests the total spending with no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing two items with prices in currency and calculating total spending is contextually valid for Grade 2 money-mathematics learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a purchaser, item names, prices in peso, and asks for the total. The language is direct and the scenario is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 360 plus 570 yields 930. The calculation requires regrouping at the tens place: 0 plus 0 gives 0 ones, 6 plus 7 equals 13 tens requiring a carry, resulting in 930. The distractor 940 may appeal to students who miscalculate the tens regrouping."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "56345c34e903ec1264a9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format asking whether two expressions are the same has an unambiguous format with clearly distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "This sample tests properties of addition rather than problem-solving with addition. Students must judge whether grouping affects the result, but the expressions compared actually involve different numbers on the right side of the parentheses, testing numerical comparison rather than associativity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The symbolic expressions are presented clearly. The stem asks a binary comparison question that is understandable, though the conceptual demand exceeds typical Grade 2 problem-solving."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side adds 624, 41, and 22 yielding 687. The right side adds 624, 41, and 23 yielding 688. The two sides differ not only in grouping but in the actual numbers being summed, making them correctly identified as unequal."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "ba4e6e861fc90e7969d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether two expressions yield the same result, with four options provided. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "This sample tests the commutative property of addition rather than problem-solving involving addition. Students judge whether changing the order of addends affects the sum, which extends beyond the core competency of solving addition problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Two symbolic expressions are presented in parallel, asking whether they are the same. The format is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both 258 plus 341 and 341 plus 258 correctly yield 599. The sample accurately demonstrates the commutative property, and the correct answer of true is appropriate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "cbe83cc21ba5ce7088a2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A read-mcq format with four options clearly specifies the task of identifying the total amount of money."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money in separate pockets being combined to find the total is a realistic scenario appropriate for Grade 2 students developing money skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a person with specific peso amounts in each pocket and asks for the total. The number line visual spans appropriate values and supports student calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 20 plus 531 yields 551. The calculation requires regrouping at the tens place: 0 plus 1 gives 1 one, 2 plus 3 gives 5 tens, 0 plus 5 gives 5 hundreds, yielding 551."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "b9685160470c50f5cc04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four options presents a clear task to identify where the dot lands after moving forward."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A dot moving forward on a number line models addition appropriately. The scenario provides concrete representation of the addition operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a dot at a starting position moving forward by a stated number of steps, asking which number it lands on. The language is clear and the visual support with a number line aids comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 630 plus 51 yields 681. The calculation: 0 plus 1 gives 1 one, 3 plus 5 gives 8 tens, 6 plus 0 gives 6 hundreds, yielding 681. The number line visual appropriately marks the relevant scale."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "33b019494a2648258365",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format asks students to evaluate whether a proposed answer is correct. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A scenario where numbers are decomposed by place value and then summed is contextually valid for Grade 2 place-value and addition instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem explicitly states place-value decompositions for each number, then asks whether the sum is correct. The step-by-step breakdown supports student understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 242 plus 120 yields 362. The addition: 2 plus 0 gives 2 ones, 4 plus 2 gives 6 tens, 2 plus 1 gives 3 hundreds, yielding 362. The error-detect sample correctly accepts 362 as the right answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "18129883b440a176c855",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four options presents an unambiguous task to identify the total money."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem states a person has equal amounts in two pockets and asks for the total. The number line visual spans a small scale appropriate for the small numbers involved."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 5 plus 5 yields 10. This simple calculation with identical addends tests basic addition. The visual and hints correctly show the progression to the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "806cbfcc612dc7d04615",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four numeric options is unambiguous about the expected response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved across two days being combined is a realistic and appropriate scenario for Grade 2 learning about money and addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a saver, states amounts in peso saved on two named days, and asks for the total. The scenario is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 1 plus 20 yields 21. The calculation is straightforward: 1 plus 0 gives 1 one, 0 plus 2 gives 2 tens, yielding 21. The distractor 210 may appeal to students who concatenate instead of place-add."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "915549e4fb4c243c83ef",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format requires judging whether a stated endpoint after counting is correct. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting forward from a start position models addition appropriately. The scenario is contextually sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem states a starting number, the amount to count up, and proposes an endpoint, asking for a true-false judgment. The language is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 693 plus 156 yields 849, not 537. The sample correctly identifies the proposed endpoint of 537 as false. The regrouping: 3 plus 6 gives 9 ones, 9 plus 5 equals 14 tens with carry, 6 plus 1 plus 1 carried equals 8 hundreds, yielding 849."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "5113ce832f38a079b5c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining two groups of items is a valid scenario for addition. The non-monetary context tests whether students can apply addition beyond money problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes two groups of items, specifies quantities, and asks for the combined total. The scenario is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 150 plus 300 yields 450. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 1 plus 3 gives 4 hundreds, yielding 450."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "bb00895389faf45fe53e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format testing the identity property with zero as an addend presents a clear yes-or-no judgment framework about whether adding zero to 923 yields 924, leaving no room for ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding zero as one of two addends is a valid edge case for testing student understanding of addition identity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem states an addition with zero as one addend and proposes an answer, asking for verification. The scenario and question are clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 0 plus 923 yields 923, not 924. The sample correctly identifies the proposed answer of 924 as incorrect. The identity property of zero is tested here."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "718e19dfcad2114a1e46",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format asks whether a stated total for a purchase is correct. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Purchasing two items with prices in currency and calculating total spending is appropriate for Grade 2 money learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a purchaser, items with prices in peso, and proposes a total for judgment. The scenario is clear and the question is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 630 plus 150 yields 780. The sample correctly identifies 780 as the true answer. The calculation: 0 plus 0 gives 0 ones, 3 plus 5 gives 8 tens, 6 plus 1 gives 7 hundreds, yielding 780."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "ddd31c57a5b07a10b02a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank with four options is unambiguous about the response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money in separate pockets being combined is contextually valid for Grade 2 money scenarios."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a person with amounts in separate pockets and asks for the total. The scenario is clear. The distractor 6000 tests whether students understand place value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 100 plus 500 yields 600, not 6000. The calculation: 0 plus 0 gives 0 ones, 0 plus 0 gives 0 tens, 1 plus 5 gives 6 hundreds, yielding 600. The distractor 6000 may appeal to students confusing place values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "0551058c181a7bf417ac",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection scenario evaluating the total collected items of 362 jerseys plus 403 caps with a proposed sum of 766 presents a clear yes-or-no judgment with no competing interpretations possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Collecting different types of items and finding the total count is a valid scenario for practicing addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes collecting two types of items, specifies quantities, and asks whether a proposed total is correct. The scenario and question are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 362 plus 403 yields 765, not 766. The sample correctly identifies 766 as an incorrect answer. The addition: 2 plus 3 gives 5 ones, 6 plus 0 gives 6 tens, 3 plus 4 gives 7 hundreds, yielding 765."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "e3218b889a3b45315ebf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Receiving money as a transfer and combining with existing money is a valid money scenario appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a person receiving money from a relative and asks for the total in pesos. The scenario and question are clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 20 plus 711 yields 731. The calculation: 0 plus 1 gives 1 one, 2 plus 1 gives 3 tens, 0 plus 7 gives 7 hundreds, yielding 731. The distractor 7310 tests place-value understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "3712f5c370c91ca274bf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "A fill-in-the-blank with four options is unambiguous about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on consecutive days being combined is a realistic scenario for Grade 2 money learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a saver with amounts saved on named days and asks for the total. The scenario is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 50 plus 700 yields 750. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 0 plus 7 gives 7 hundreds, yielding 750. The distractor 7500 tests place-value confusion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "33000d837ba225c3ea4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four options presents a clear task to identify the total number of items."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person receiving additional items and finding the total count is a valid scenario for practicing addition in non-monetary contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names a person with an initial quantity who receives more items, and asks for the new total. The language is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 679 plus 258 yields 937. The calculation requires regrouping: 9 plus 8 equals 17 ones with carry, 7 plus 5 plus 1 carried equals 13 tens with carry, 6 plus 2 plus 1 carried equals 9 hundreds, yielding 937."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "f9d575b28f09f92f6327",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format asking about Ate Liza climbing from step 0 to step 1 with four numeric options clearly signals selecting one answer regarding the new step position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person climbing steps and advancing by additional steps models addition appropriately for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes a person at a starting step position who climbs additional steps, and asks for the new position. The language is clear and the task is simple."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 0 plus 1 yields 1. This trivial calculation tests basic understanding that adding any number to zero yields that number. The visual and hints correctly show the result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "f61e23d0f386d8f93234",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format with four options is unambiguous about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money saved on consecutive days being combined is a valid scenario for Grade 2 money and addition learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a saver with equal amounts saved on two named days and asks for the total. The scenario is clear. The number line visual spans appropriate values."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 1 plus 1 yields 2. This simple calculation tests basic addition with identical small addends. The hints correctly trace the progression to the answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "982c8a1dc5e455a78729",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format asks whether a stated total for combining two quantities is correct. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting items in multiple containers and finding the total is a valid and realistic scenario for practicing addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes items in two separate baskets with specific quantities and proposes a total for judgment. The scenario is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 807 plus 59 yields 866, not 748. The sample correctly identifies the proposed total as false. The addition requires regrouping: 7 plus 9 equals 16 ones with carry, 0 plus 5 plus 1 carried equals 6 tens, 8 plus 0 equals 8 hundreds, yielding 866."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "52cfd9783ff822e12376",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format asks students to verify whether a proposed endpoint is correct. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting forward from a starting position models addition appropriately. The scenario provides a concrete model for the addition operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem describes a starting position and an upward movement, then proposes an endpoint for verification. The scenario and question are clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 805 plus 141 yields 946, not 805. The sample correctly identifies the proposed answer as incorrect. The addition: 5 plus 1 gives 6 ones, 0 plus 4 gives 4 tens, 8 plus 1 gives 9 hundreds, yielding 946."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "38b94049a344cde85f71",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format with four options for combining 100 pesos and 12 pesos in Aling Rosa's pockets presents an unambiguous task requiring selection of the correct total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 money and addition learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies a person with amounts in two separate pockets and asks for the total. The scenario is clear and the task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 100 plus 12 yields 112. The calculation: 0 plus 2 gives 2 ones, 0 plus 1 gives 1 ten, 1 plus 0 gives 1 hundred, yielding 112. The distractor 1120 tests place-value understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve problems",
+      "verdict": "CONCERN",
+      "reasoning": "Most samples present problems for students to solve through calculation or error verification. However, two samples test properties of addition rather than solving problems with addition. Samples testing properties represent an extension beyond the core competency scope and should be evaluated separately from direct problem-solving items.",
+      "sample_ids": [
+        "3959b6d9583b84187a4b",
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "375e9a674b43afda036b",
+        "f3178a63e822dccf4618"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "involving",
+      "clause": "involving",
+      "verdict": "PASS",
+      "reasoning": "Every sample involves some context or scenario. Problems reference money, items, people in named situations, or numerical contexts. No item presents bare abstract calculation without contextual framing. The involving requirement is met across all samples.",
+      "sample_ids": [
+        "3959b6d9583b84187a4b",
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "375e9a674b43afda036b",
+        "f3178a63e822dccf4618"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "addition",
+      "clause": "addition",
+      "verdict": "FAIL",
+      "reasoning": "One sample explicitly violates the addition requirement. Sample 0597c020b5a38e7b62b6 presents a subtraction scenario where a person used money to buy an item and the question asks about money remaining. The hints confirm the operation is subtraction with the calculation shown as 200 minus 50 equals 150. This directly contradicts the competency requirement for addition problems.",
+      "sample_ids": [
+        "0597c020b5a38e7b62b6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "sums_up_to_1000",
+      "clause": "sums up to 1000",
+      "verdict": "PASS",
+      "reasoning": "All computed sums remain within or at the specified ceiling. The maximum sum reaches exactly 1000 when adding 500 plus 500 in sample 913c95ff90bba3f9caf5. No sum exceeds the stated upper bound. Sums range from minimal like 1 or 2 to the boundary of 1000.",
+      "sample_ids": [
+        "3959b6d9583b84187a4b",
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "375e9a674b43afda036b",
+        "f3178a63e822dccf4618"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "problems",
+      "clause": "problems",
+      "verdict": "CONCERN",
+      "reasoning": "Most samples present well-defined problems requiring computation or verification. However, some samples testing properties of addition shift the cognitive task from problem-solving to abstract reasoning about mathematical properties. The property-based samples remain tangential to core problem-solving instruction.",
+      "sample_ids": [
+        "3959b6d9583b84187a4b",
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "56345c34e903ec1264a9",
+        "ba4e6e861fc90e7969d4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "money",
+      "clause": "money",
+      "verdict": "PASS",
+      "reasoning": "A substantial portion of the sample set explicitly involves money in the Philippine peso currency. Problems reference purchases, savings, money in pockets, money transfers, and money counts. The money context is well-represented across monetary problem types including multiple-choice, true-false, cloze, and visual reading tasks.",
+      "sample_ids": [
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "375e9a674b43afda036b",
+        "f3178a63e822dccf4618",
+        "9cf332415aafab808ad9"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    },
+    {
+      "requirement_id": "regrouping",
+      "clause": "with and without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The sample set demonstrates both types of addition. Problems without regrouping include simple sums like 57 plus 20 or 0 plus 1. Problems with regrouping require carrying across place values, such as adding 50 plus 61 or 784 plus 112. Both scenarios are adequately represented.",
+      "sample_ids": [
+        "3959b6d9583b84187a4b",
+        "56e12b0991185b848085",
+        "84ae88c250ce97224e79",
+        "2426c8ef66a8b152145c",
+        "f3178a63e822dccf4618"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "6abe1a0642ca213580b5da0fd00c0f40cfec9a55c17b893d1fcc4ac721d7073b",
+      "clause_ids": [
+        "solve_problems",
+        "involving",
+        "addition",
+        "sums_up_to_1000",
+        "problems",
+        "money",
+        "regrouping"
+      ],
+      "response_ref": ".responses/s5-phaseC-w4-haiku45-20260925.json",
+      "response_digest": "60a89eba3ebdf3c4a50f93f891ad94cfa28d88b61447a346746a618c5706ee83",
+      "prompt_ref": ".responses/s5-phaseC-w4-haiku45-20260925.prompt.txt",
+      "prompt_digest": "299ae46771609cddad745391e1b976b9687903149d3ed5778ac06f7dc4e86844",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q2_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q2_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; revision 7 tool uses (4 repeated ambiguity reasonings made sample-specific); wording-only revision requested by the dispatcher; verdicts, sample ids, clause citations and overall byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "One sample is not an addition problem at all: 'Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook' is keyed to 150, a take-away. This competency is confined to addition with sums up to 1000, so a subtraction item rendered under it is off-competency content reaching the student."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Regrouped and non-regrouped sums both do occur, and money contexts are plentiful, but the coverage is polluted at the low end by a degenerate item that adds nothing: 'received ₱0 more from Nanay' requires no addition to answer."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are two-clause Filipino-context sentences of the length a second grader reads independently, honorifics such as Ate and Kuya are used naturally, and no operation beyond joining two amounts is demanded."
+      "rationale": "The problem set appropriately matches Grade 2 Quarter 2 cognitive demands, with single-digit and two-digit addition problems requiring varying levels of regrouping complexity, progressing from simple sums like 0+1 and 5+5 to three-digit sums requiring carrying. The mix of direct computation, error detection, and property reasoning challenges students at an age-appropriate level without excessive cognitive load."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "One sample (seed 605) explicitly describes a subtraction scenario rather than an addition problem. The student is asked about money remaining after a purchase, with hints stating money back equals 200 minus 50. The competency specifies solving problems involving addition, not subtraction. This represents a fundamental misalignment with the stated learning objective that undermines the validity of the entire sample set."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The printed requirements claim to cover addition, money contexts, and both with and without regrouping. However, the inclusion of a subtraction sample violates the core requirement of the competency. Two additional samples (seeds 615 and 616) test properties of addition rather than problem-solving with addition. The decomposition is incomplete because the actual rendered samples do not losslessly map to the stated competency.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The decomposed requirements list solve_problems, involving, addition, sums_up_to_1000, problems, money, and regrouping. However, sample 0597c020b5a38e7b62b6 directly violates the addition requirement by presenting a subtraction calculation. The requirements fail to exclude property-testing items that appear in seeds 615 and 616. The decomposition purports to cover the full competency, but the evidence shows at least one critical violation where a subtraction operation is rendered despite the requirement explicitly naming addition.",
+        "requirement_ids": [
+          "solve_problems",
+          "involving",
+          "addition",
+          "sums_up_to_1000",
+          "problems",
+          "money",
+          "regrouping"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "involving",
+        "addition",
+        "sums_up_to_1000",
+        "problems",
+        "money",
+        "regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates coverage across multiple dimensions: a variety of monetary and non-monetary problem contexts, problems both with and without regrouping, multiple response formats including multiple-choice, true-false, error-detection, and fill-in-blank formats, and a broad range of addend magnitudes spanning from 0 to 991 in the first addend and 0 to 670 in the second addend, all within the specified ceiling of 1000.",
+      "clause_ids": [
+        "solve_problems",
+        "involving",
+        "addition",
+        "sums_up_to_1000",
+        "problems",
+        "money",
+        "regrouping"
+      ]
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All sums fall within or at the boundary of the required range up to 1000, with the maximum sum reaching exactly 1000 when adding 500 plus 500. No sums exceed the stated ceiling, and the progression of magnitude challenges is gradual and appropriate, testing student mastery across the full allowed range without exceeding specified competency boundaries."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Nearly every sample is one of two interchangeable money templates - money in two pockets, or money saved on Monday and Tuesday. Bare computation appears only through a counting-on stem, and no part-whole or missing-addend presentation is sampled."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The sampled difficulty ladder moves mostly by swapping character names rather than by moving up the addition range; a two-digit pocket sum and a sum touching four digits sit side by side with nothing in the item design marking the step."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The 1000 ceiling is touched exactly once, by a 500-plus-500 purchase. A large share of the remaining samples settle at sums below 120, so the stated range up to 1000 is barely exercised. Two option lists also carry values an order of magnitude off - 6560 and 10000 - which a pupil discards without adding."
+      "rationale": "The sample set demonstrates strong variation in contexts and response formats. However, two samples present property-based reasoning about addition rather than problem-solving with addition. Seeds 615 and 616 ask whether expressions are equivalent under associativity and commutativity rather than asking students to compute or apply addition within a realistic scenario. This variant type extends beyond the core competency of solving addition problems."
     }
   },
   "overall": "FAIL"

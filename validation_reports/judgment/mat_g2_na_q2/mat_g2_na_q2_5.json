@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems (given orally or in pictures) involving subtraction where both numbers are less than 100, with and without regrouping.",
+    "grade": 2,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve problems"
+    },
+    {
+      "kind": "representation",
+      "id": "in_pictures",
+      "clause": "in pictures"
+    },
+    {
+      "kind": "context",
+      "id": "involving_subtraction",
+      "clause": "involving subtraction"
+    },
+    {
+      "kind": "range",
+      "id": "less_than_100",
+      "clause": "both numbers are less than 100"
+    },
+    {
+      "kind": "property",
+      "id": "regrouping",
+      "clause": "with and without regrouping"
+    }
+  ],
+  "packet_digest": "d2f065a39d9db3c9d08d20e85ef81cfc9ec8a6281c02d3df149b3c34e89a3709",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +54,76 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "39a40bea56ce5d57c033",
+    "15b765fc0e3122a1460f",
+    "2050ec4dde4af727d826",
+    "ca61ce570d268180c2c9",
+    "fbc0373f0ac517ef73bb",
+    "3a314a7a6420b91bdde0",
+    "5a3dc9ccba455a548c8f",
+    "9dd1dc74e3b183e6b012",
+    "7cb18268d5949e50eae8",
+    "d536faf8bdab5b3bfadf",
+    "8e71b588fe663491790a",
+    "c39426dccc6882e0d8a8",
+    "c3594b9c09622be10bbf",
+    "15c49b444d8f2315d218",
+    "cbd2197aeff06db180d4",
+    "c0ab00d1cda101a1158d",
+    "447f5b96a8b1cdbd6e0a",
+    "093b6489046f94c0291d",
+    "a2cc68cbef9d2aa7ca8d",
+    "a6023c322dbe1b4ab7a7",
+    "fea219e4e01f7c5e1d4c",
+    "97542e9b3ed0e5380058",
+    "66611933ed6ddd635982",
+    "efb5c3582831a2962b8f",
+    "fd091cfe399445baa5ce",
+    "4299f26a8662183cfca8",
+    "86c0df73fdab118527b0",
+    "dbecd05d9e748b8dc6dd",
+    "43c4bf418bce9c9a4c32",
+    "61bdbe21d22dd45deb67"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Daniel is on step 4. Daniel goes down 1 step. What step is Daniel on now?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,28 +149,102 @@
           "text": "4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We are subtracting 1 from 4.",
+        "Subtract the ones: 4 − 1 = 3.",
+        "The difference of 4 − 1 = 3."
+      ],
+      "sample_id": "39a40bea56ce5d57c033",
+      "replay_digest": "7bbc34f5d429255af8db6cd0f2a675d6754e90f9b99ca5e6e14cbedd3bda824b"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 43,
       "formatter": "error_detect",
       "question_text": "Grace solved this problem: \"Start at 42. Count back 10. What number do you land on?\" Grace says the answer is 31. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 32
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 32
+      },
+      "hints": [
+        "We are subtracting 10 from 42.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 4 − 1 = 3.",
+        "The difference of 42 − 10 = 32."
+      ],
+      "sample_id": "15b765fc0e3122a1460f",
+      "replay_digest": "0edc950f6bd95d4f1676d5c0ca791f1baece017ae79f1b28bee60803da5444c5"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 44,
       "formatter": "true_false",
       "question_text": "Isko has 90 medals. A friend has 26 medals. How many fewer medals does the friend have? The answer is 64. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 26 from 90.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 8 − 2 = 6. (after borrowing)",
+        "The difference of 90 − 26 = 64."
+      ],
+      "sample_id": "2050ec4dde4af727d826",
+      "replay_digest": "187f4cc3146c670275e8716ee598ac8951c6c2bee4f83cf84704b73d06bd2130"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A kitchen has 60 cookies. Chef Demi removes 53 cookies. How many cookies are left in the kitchen?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -94,13 +266,37 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We are subtracting 53 from 60.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 5 − 5 = 0. (after borrowing)",
+        "The difference of 60 − 53 = 7."
+      ],
+      "sample_id": "ca61ce570d268180c2c9",
+      "replay_digest": "0fc3c9c0cba70f02a0e91e9baa0775b4cca896d1c5b31c19932dbdab8f2ed559"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Ate Nena is on step 60. Ate Nena goes down 20 steps. What step is Ate Nena on now?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -122,13 +318,37 @@
           "value": 40,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "We are subtracting 20 from 60.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 6 − 2 = 4.",
+        "The difference of 60 − 20 = 40."
+      ],
+      "sample_id": "fbc0373f0ac517ef73bb",
+      "replay_digest": "7a429db57f9886b7bac2a707326df3001e4ab2187732760e4046dd3018f666e8"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 48,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 30 candies) — There are 30 candies.\nTaking away 8 candies.\nHow many candies are left?",
+      "question_text": "(Large group of 30 paints) — There are 30 paints.\nTaking away 8 paints.\nHow many paints are left?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -150,28 +370,145 @@
           "value": 23,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 22,
+      "hints": [
+        "We are subtracting 8 from 30.",
+        "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.",
+        "Subtract the tens: 2 − 0 = 2. (after borrowing)",
+        "The difference of 30 − 8 = 22."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 30,
+        "group_b": 8,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 30 paints)",
+        "reveal_display": "(Large group of 22 paints)",
+        "reveal_text": "22 paints"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "934e92f2d0724bc63484cbbeb1daa523bdcb84d55d3995a1b64e6b0dd65229ab",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🎨",
+            "🎨",
+            "1x 🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3a314a7a6420b91bdde0",
+      "replay_digest": "d3502c24c725d628b17c0039addb28253fc65e2d3c27bb863ed0ee993248523b"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "Nanding had 94 water bowls. Nanding used 27 of them. How many water bowls are left? The answer is 66. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 27 from 94.",
+        "The ones digit 4 is less than 7, so we need to borrow. Borrow 1 ten: 14 − 7 = 7.",
+        "Subtract the tens: 8 − 2 = 6. (after borrowing)",
+        "The difference of 94 − 27 = 67."
+      ],
+      "sample_id": "5a3dc9ccba455a548c8f",
+      "replay_digest": "fea3ed7576210129b457e455661bb0e6e00dfdb3c98935b420a7a3eae66f2500"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 501,
       "formatter": "error_detect",
-      "question_text": "Pia solved this problem: \"A home desk has 98 canvases. Carlo removes 49 canvases. How many canvases are left in the home desk?\" Pia says the answer is 50. Is Pia correct?",
+      "question_text": "Pia solved this problem: \"A home desk has 98 paint tubes. Carlo removes 49 paint tubes. How many paint tubes are left in the home desk?\" Pia says the answer is 50. Is Pia correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 49
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 49
+      },
+      "hints": [
+        "We are subtracting 49 from 98.",
+        "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.",
+        "Subtract the tens: 8 − 4 = 4. (after borrowing)",
+        "The difference of 98 − 49 = 49."
+      ],
+      "sample_id": "9dd1dc74e3b183e6b012",
+      "replay_digest": "922a480089d7cb9336f3765e85e698ab0eb3bf2d97a722d9f9f611c0a46808c7"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 73 trees) — There are 73 trees.\nTaking away 67 trees.\nHow many trees are left?",
+      "question_text": "(Large group of 73 paints) — There are 73 paints.\nTaking away 67 paints.\nHow many paints are left?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,31 +527,148 @@
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 73,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We are subtracting 67 from 73.",
+        "The ones digit 3 is less than 7, so we need to borrow. Borrow 1 ten: 13 − 7 = 6.",
+        "Subtract the tens: 6 − 6 = 0. (after borrowing)",
+        "The difference of 73 − 67 = 6."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 73,
+        "group_b": 67,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 73 paints)",
+        "reveal_display": "🎨🎨🎨🎨🎨🎨",
+        "reveal_text": "6 paints"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "918fc97c241cbe4af41d86e026c29eb5e300e0000814a698972707fa54b1ecd8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 61,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨",
+            "🛍️",
+            "10x 🎨",
+            "1x 🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7cb18268d5949e50eae8",
+      "replay_digest": "a88a3c3a120ef73d62c0af096b1abf0e29f881db7da360232db80dcd4a0813b7"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 600,
       "formatter": "error_detect",
       "question_text": "Noel solved this problem: \"A art room has 60 colored pencils. Kuya Renz removes 26 colored pencils. How many colored pencils are left in the art room?\" Noel says the answer is 34. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 34
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 34
+      },
+      "hints": [
+        "We are subtracting 26 from 60.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 5 − 2 = 3. (after borrowing)",
+        "The difference of 60 − 26 = 34."
+      ],
+      "sample_id": "d536faf8bdab5b3bfadf",
+      "replay_digest": "f5bc180fa9a983320f98ca472f9f0836bc664fb6f7d33a6ab48dc36d499d804f"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 601,
       "formatter": "true_false",
       "question_text": "There are 37 baskets on the table. Moses takes away 0 baskets. How many baskets are left on the table? The answer is 37. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 0 from 37.",
+        "Subtract the ones: 7 − 0 = 7.",
+        "Subtract the tens: 3 − 0 = 3.",
+        "The difference of 37 − 0 = 37."
+      ],
+      "sample_id": "8e71b588fe663491790a",
+      "replay_digest": "7f1ea0f7aceaa714f6637500f39cfa70a19bc7609ada7ea031a3b15688bc8040"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 602,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 30 clovers) — There are 30 clovers.\nTaking away 26 clovers.\nHow many clovers are left?",
+      "question_text": "(Large group of 30 items) — There are 30 items.\nTaking away 26 items.\nHow many items are left?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -236,29 +690,117 @@
           "value": 5,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We are subtracting 26 from 30.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 2 − 2 = 0. (after borrowing)",
+        "The difference of 30 − 26 = 4."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 30,
+        "group_b": 26,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 30 items)",
+        "reveal_display": "🏐🏐🏐🏐",
+        "reveal_text": "4 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "07e9067a491d2a3ba94d82efb02998fc2ec4b0159170a2f158caca97acf7a11a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 39,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐",
+            "🛍️",
+            "10x 🏐",
+            "1x 🏐"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c39426dccc6882e0d8a8",
+      "replay_digest": "5911e67bf47bce224884b62577d6039492117e6d6cca8607f162813258d5b1db"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "Sir Ben has 90 crayons. Sir Ben gives away 20 crayons. How many crayons does Sir Ben have left? The answer is 69. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 20 from 90.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 9 − 2 = 7.",
+        "The difference of 90 − 20 = 70."
+      ],
+      "sample_id": "c3594b9c09622be10bbf",
+      "replay_digest": "c444fd5cb01e70d01c3a47c48fea7b374afb872dfb24594a62fdcef4142da6ec"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 604,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 31 books) — There are 31 books.\nTaking away 10 books.\nHow many books are left?",
-      "correct_answer": "B",
+      "question_text": "(Large group of 31 items) — There are 31 items.\nTaking away 10 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": false
+          "value": 21,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 21,
-          "is_correct": true
+          "value": 10,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -267,43 +809,1973 @@
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 31,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 21,
+      "hints": [
+        "We are subtracting 10 from 31.",
+        "Subtract the ones: 1 − 0 = 1.",
+        "Subtract the tens: 3 − 1 = 2.",
+        "The difference of 31 − 10 = 21."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 31,
+        "group_b": 10,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 31 items)",
+        "reveal_display": "(Large group of 21 items)",
+        "reveal_text": "21 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e2834191a1021b5b87ee977a8e41eec5f43b8400d08d397c591a7848735f35a0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 32,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🚴",
+            "🚴",
+            "1x 🚴"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "15c49b444d8f2315d218",
+      "replay_digest": "f2265681d7d97b866d3f0adc8858ae559be0bee63f4e7a4b57c9aee65b4579d9"
     },
     {
+      "node_id": "mat_g2_na_q2_5",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "Riza has 24 milk tea cups. Riza gives away 1 milk tea cup. How many milk tea cups does Riza have left? The answer is 24. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 1 from 24.",
+        "Subtract the ones: 4 − 1 = 3.",
+        "Subtract the tens: 2 − 0 = 2.",
+        "The difference of 24 − 1 = 23."
+      ],
+      "sample_id": "cbd2197aeff06db180d4",
+      "replay_digest": "a82f1ea336c1f998c0144088dce658edd7aa4f0cfaeec92ffe10fa5815fe6b59"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 606,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Start at 20. Count back 6. What number do you land on?\" Manny says the answer is 14. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 14
+      },
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 14
+      },
+      "hints": [
+        "We are subtracting 6 from 20.",
+        "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.",
+        "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+        "The difference of 20 − 6 = 14."
+      ],
+      "sample_id": "c0ab00d1cda101a1158d",
+      "replay_digest": "1a385494968b1b7b8c0ad103dd51d4f33950463264ae59fd55f308f0f96e7887"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "Isko is on step 57. Isko goes down 0 steps. What step is Isko on now?",
+      "correct_answer": 57,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 58,
+          "text": "58",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 57,
+          "text": "57",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 57,
+      "hints": [
+        "We are subtracting 0 from 57.",
+        "Subtract the ones: 7 − 0 = 7.",
+        "Subtract the tens: 5 − 0 = 5.",
+        "The difference of 57 − 0 = 57."
+      ],
+      "sample_id": "447f5b96a8b1cdbd6e0a",
+      "replay_digest": "c8c6f38f8cfa0bca05f2695b1610196fe14329291664e0f0aae42713e998fbdb"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 608,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 32 items) — There are 32 items.\nTaking away 0 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 32,
+      "hints": [
+        "We are subtracting 0 from 32.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 3 − 0 = 3.",
+        "The difference of 32 − 0 = 32."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 32,
+        "group_b": 0,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 32 items)",
+        "reveal_display": "(Large group of 32 items)",
+        "reveal_text": "32 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "f41c0a4934aa3db9326a4b0f7cb60f87cb8ab11dee8ffb908df1a22790bbc3b8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 18,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🚴",
+            "🚴",
+            "1x 🚴"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "093b6489046f94c0291d",
+      "replay_digest": "ed0904386ea6f6aba24809def45f330a39bd7d1f5d2a785cc78b11d28bbb3e72"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "Ruth had 20 coins. After giving away some, Ruth had 18 left. How many coins did Ruth give away?",
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We are subtracting 2 from 20.",
+        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+        "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+        "The difference of 20 − 2 = 18."
+      ],
+      "sample_id": "a2cc68cbef9d2aa7ca8d",
+      "replay_digest": "1f40956fe244be470434db24a8f817c93d7e9885556d092872c879c07e7a1039"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "Lola Ising had 60 cookies. Lola Ising used 51 of them. How many cookies are left?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 111,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We are subtracting 51 from 60.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 5 − 5 = 0. (after borrowing)",
+        "The difference of 60 − 51 = 9."
+      ],
+      "sample_id": "a6023c322dbe1b4ab7a7",
+      "replay_digest": "6f37f3f8ea3981f07042f2d8c8cbd01500b5cd3ba99f1ca0de4993848f69783c"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 611,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 30 items) — There are 30 items.\nTaking away 11 items.\nHow many items are left?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 19,
+      "hints": [
+        "We are subtracting 11 from 30.",
+        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+        "Subtract the tens: 2 − 1 = 1. (after borrowing)",
+        "The difference of 30 − 11 = 19."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 30,
+        "group_b": 11,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 30 items)",
+        "reveal_display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_text": "19 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "88552b24c1931cab3197ad7044fd5cfc0d73fe93a23e0ca97d2bb2264e1cf692",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 44,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fea219e4e01f7c5e1d4c",
+      "replay_digest": "6663c77ff9037dc1d725e352ab0f4e34dee3cec9cef06a43a37242c9b40a8485"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 25 items) — There are 25 items.\nTaking away 15 items.\nHow many items are left?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "We are subtracting 15 from 25.",
+        "Subtract the ones: 5 − 5 = 0.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 25 − 15 = 10."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 25,
+        "group_b": 15,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 25 items)",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "10 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "fa78011240b94e57b267410a447c7ccb81d3c1d32c7e87436f3cddb271fa6788",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 43,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "97542e9b3ed0e5380058",
+      "replay_digest": "082c10149b7c5672716bccfc9175cd496a84bf2ead0e1bad3a3b1bba79b63f50"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "A barangay has 90 dog treats. Ate Beng removes 18 dog treats. How many dog treats are left in the barangay?",
+      "correct_answer": 72,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 108,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 72,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 73,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "We are subtracting 18 from 90.",
+        "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.",
+        "Subtract the tens: 8 − 1 = 7. (after borrowing)",
+        "The difference of 90 − 18 = 72."
+      ],
+      "sample_id": "66611933ed6ddd635982",
+      "replay_digest": "988f64bf304fe3780a73a9274edb0bcebb99da6bd07927b48e6e19e1114ff51b"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 18 items.\nTaking away 15 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We are subtracting 15 from 18.",
+        "Subtract the ones: 8 − 5 = 3.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 18 − 15 = 3."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 18,
+        "group_b": 15,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "🏐🏐🏐",
+        "reveal_text": "3 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "7d70927725b399f31629f4fb5ebecd91e6a2c2e2a4d444167cf08c8b0ca5f8fd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 36,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "efb5c3582831a2962b8f",
+      "replay_digest": "dfaeda758f45c0aad1c5cbe5d85a27c4044b495ef5819891770f095c9742abc7"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "Paul had 96 baskets. Paul used 39 of them. How many baskets are left? The answer is 57. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 39 from 96.",
+        "The ones digit 6 is less than 9, so we need to borrow. Borrow 1 ten: 16 − 9 = 7.",
+        "Subtract the tens: 8 − 3 = 5. (after borrowing)",
+        "The difference of 96 − 39 = 57."
+      ],
+      "sample_id": "fd091cfe399445baa5ce",
+      "replay_digest": "f9e30dd6965632bb27535d7ef9906db13b84c2ae7e65dfff211df13c89b94b0e"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 900,
+      "formatter": "error_detect",
+      "question_text": "Noel solved this problem: \"There were 26 jump ropes in a box. 10 jump ropes were taken out. How many jump ropes are still in the box?\" Noel says the answer is 17. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 16
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 16
+      },
+      "hints": [
+        "We are subtracting 10 from 26.",
+        "Subtract the ones: 6 − 0 = 6.",
+        "Subtract the tens: 2 − 1 = 1.",
+        "The difference of 26 − 10 = 16."
+      ],
+      "sample_id": "4299f26a8662183cfca8",
+      "replay_digest": "618c1048996e74a9995c8fa3f8d7a61f5970b5f3a2e026b0d07e4746d7927c39"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 901,
+      "formatter": "error_detect",
+      "question_text": "Maria solved this problem: \"Ate Gab has 32 pom-poms. A friend has 13 pom-poms. How many fewer pom-poms does the friend have?\" Maria says the answer is 20. Is Maria correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 19
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 19
+      },
+      "hints": [
+        "We are subtracting 13 from 32.",
+        "The ones digit 2 is less than 3, so we need to borrow. Borrow 1 ten: 12 − 3 = 9.",
+        "Subtract the tens: 2 − 1 = 1. (after borrowing)",
+        "The difference of 32 − 13 = 19."
+      ],
+      "sample_id": "86c0df73fdab118527b0",
+      "replay_digest": "e5bb8ac0f9dd77171da2cf98d39b27fd0ae28e829d956c4385c5aac28683b087"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Coach Roel has 23 water bottles. A friend has 15 water bottles. How many fewer water bottles does the friend have?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 38,
+          "text": "38",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 15 from 23.",
+        "The ones digit 3 is less than 5, so we need to borrow. Borrow 1 ten: 13 − 5 = 8.",
+        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+        "The difference of 23 − 15 = 8."
+      ],
+      "sample_id": "dbecd05d9e748b8dc6dd",
+      "replay_digest": "4f44d7624b800a59f694a2a97a9a5b64a74c81de46e4cbbccc332737d62c59cd"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 61 items) — There are 61 items.\nTaking away 0 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 62,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 61,
+      "hints": [
+        "We are subtracting 0 from 61.",
+        "Subtract the ones: 1 − 0 = 1.",
+        "Subtract the tens: 6 − 0 = 6.",
+        "The difference of 61 − 0 = 61."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 61,
+        "group_b": 0,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 61 items)",
+        "reveal_display": "(Large group of 61 items)",
+        "reveal_text": "61 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "fc89b8307d04a684667b88dbb0c4bccdb986c98999379a4072531cc0b710e999",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🚴",
+            "🚴",
+            "1x 🚴"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "43c4bf418bce9c9a4c32",
+      "replay_digest": "0a4bd4661bd8cb5ede1f48d4280874f504d2f277c4110040954cede148d9b9cf"
+    },
+    {
+      "node_id": "mat_g2_na_q2_5",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 40 cupcakes) — There are 40 cupcakes.\nTaking away 3 cupcakes.\nHow many cupcakes are left?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 37,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 38,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 37,
+      "hints": [
+        "We are subtracting 3 from 40.",
+        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+        "Subtract the tens: 3 − 0 = 3. (after borrowing)",
+        "The difference of 40 − 3 = 37."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 40,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "(Large group of 40 cupcakes)",
+        "reveal_display": "(Large group of 37 cupcakes)",
+        "reveal_text": "37 cupcakes"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e70629fc1bfbf04b66aaa2c81ea1ec5dad06abf1b64ac0c6cccb2bb5b9ee28a0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 39,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🛍️",
+            "10x 🧁",
+            "🧁",
+            "1x 🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "61bdbe21d22dd45deb67",
+      "replay_digest": "40c3299b64eda7ed211a3af2b6f48cd87f2452f62605fcaa9fef683b3a34200e"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "39a40bea56ce5d57c033",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly positions a character on a starting step and describes a descent, then directly asks for the new position. No alternative interpretations of the question exist; the cloze format unambiguously requests a single numeric answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Movement down steps by single units is a familiar physical experience for Grade 2 children. The context makes logical sense: a person starts at one position and moves to another, resulting in a measurable distance traveled."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is concrete and directly tied to familiar actions: being on a step and going down. The question structure mirrors everyday events Grade 2 students experience on playgrounds or in stairwells, requiring no abstract interpretation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic 4 minus 1 equals 3 is correct. Options include the correct answer plus three plausible single-step errors: 5 (adding), 2 (subtracting too much), and 4 (unchanged), providing meaningful distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "15b765fc0e3122a1460f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format presents a specific claim and asks binary judgment. The phrasing leaves no room for interpretation: Grace offers an answer, and the learner must determine correctness, a clearly defined task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting back from 42 by 10 is grounded in standard Grade 2 mental math instruction. The scenario is internally coherent: one could reasonably count backward from any position by a given interval."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Sequential language guides the learner step by step: start at 42, count back 10. Each instruction is simple and actionable. Asking about correctness of a peer's answer aligns with error-detection experience Grade 2 students build throughout math instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 42 minus 10 equals 32 is correct. Grace's proposed answer of 31 represents a plausible counting-back error (off-by-one in the tens place), making the error educationally meaningful for identifying misconceptions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "2050ec4dde4af727d826",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format presents a declarative statement with a specific numeric claim: the answer to the comparison is 64. The learner's task is unambiguous: decide whether the statement is true or false."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario involves comparing quantities of the same object (medals) between two people and asking how many more one has than the other. This is a Grade-2-appropriate real-world comparison structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses simple comparative language: Isko has X, a friend has Y, how many fewer for the friend. The true-false statement form provides clear scaffolding by offering the answer before asking for judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 90 minus 26 equals 64 is arithmetically correct. The regrouping process in the hints shows borrowing in the ones place and subtracting tens, properly executed."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "ca61ce570d268180c2c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ format explicitly asks how many cookies remain after removal. The four options present distinct values, making it impossible for the learner to be unclear about what is being asked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A kitchen with cookies, where a chef removes some, presents a tangible, Grade-2-appropriate scenario. The removal action and remaining-quantity question reflect real kitchen operations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks how many are left after removal. The language is simple and action-focused, with the noun (cookies) repeated for clarity. The problem structure matches subtraction story problems students encounter regularly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 60 minus 53 equals 7 is correct. The four options include one with double-digit concatenation (113) and others off by one, providing cognitively appropriate distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "fbc0373f0ac517ef73bb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure is direct: Ate Nena starts at a position, moves, and the learner must determine the new position. Each option is a distinct number, allowing no ambiguity about the expected answer format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person descending steps is a concrete, familiar scenario. The number of steps descended and the resulting position follow logical cause-and-effect that young learners readily understand."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses the honorific Ate, a culturally familiar form of address in the Philippines, and describes a familiar physical action of going down a discrete number of steps."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic 60 minus 20 equals 40 is correct. This is a no-regrouping case (clean tens subtraction). The options include one answer (80) that represents the sum, plus off-by-one variants."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "3a314a7a6420b91bdde0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format combines visual and textual input. The question asks directly how many items remain, with four options that are distinct numeric values. The visual pictorial format does not introduce ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A collection of tangible items (paints) being reduced through removal is a concrete, real-world scenario. The pictorial representation with emoji aligns with how Grade 2 learners conceptualize countable collections."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial visual supports learners who are emerging readers. The text instructs clearly: there are 30 items, and some are taken away. The question about remaining quantity follows naturally from the setup."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 30 minus 8 equals 22 is correct and requires regrouping (borrowing 1 ten to make 10 in the ones, then 10 minus 8 equals 2). The hints correctly walk through this process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "5a3dc9ccba455a548c8f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false statement provides an explicit claim about a subtraction result. The learner must judge whether the presented answer of 66 is true or false for the given scenario."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person having items and using some of them is a realistic scenario. The context of water bowls is concrete and tangible for Grade 2 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure is clear: had some, used some, how many are left. The true-false format provides the proposed answer upfront, allowing the learner to verify rather than generate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct calculation is 94 minus 27 equals 67, not 66. The hints correctly show the regrouping process: borrowing in the ones place and subtracting tens, arriving at 67. The true answer is False, correctly identified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "9dd1dc74e3b183e6b012",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format is clear: Pia solves a problem and provides an answer (50). The learner must determine whether Pia's work is correct or contains an error."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A home desk containing paint tubes that someone removes is a realistic household scenario. The subtraction action (removing items) is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a clear before-and-after structure: 98 tubes, Carlo removes 49, how many remain. The learner must verify whether Pia's answer of 50 is correct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer is 98 minus 49 equals 49, not 50. Pia's answer of 50 is off-by-one. The hints correctly demonstrate the regrouping process (borrowing) and arrive at 49 as the correct difference."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "7cb18268d5949e50eae8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format presents a visual, text, and four numeric options. The question asks directly how many items remain, with no opportunity for misinterpretation of the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking some items from a collection is a universally familiar action for Grade 2 learners. The pictorial representation using emoji reinforces the concrete nature of the scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual representation of a collection followed by the action of taking away supports comprehension. The text mirrors this: there are 73 items, and 67 are taken away."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 73 minus 67 equals 6 is correct. This requires regrouping: borrowing 1 ten to subtract 7 from the ones place. The hints correctly execute this process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "d536faf8bdab5b3bfadf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format presents Noel's solution and asks for a determination of correctness. The binary judgment is unambiguous: is the answer correct or does it contain an error."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An art room stocked with materials that someone removes is a realistic school setting. The subtraction represents a plausible inventory change."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states initial quantity, action taken, and asks about remaining quantity. The error-detect task aligns with Grade 2 literacy around verification and checking."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 60 minus 26 equals 34 is correct. Noel's answer of 34 is indeed correct. The hints properly show borrowing in the ones place and subtracting tens to arrive at 34."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "8e71b588fe663491790a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false statement explicitly claims that subtracting zero from 37 yields 37. The learner must verify whether this statement is true or false."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person taking away zero items is a logically valid scenario, even if it represents a degenerate case. The context of baskets on a table is concrete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure is simple: there are baskets, zero are taken away, how many remain. The identity property is presented as a learner verification task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 37 minus 0 equals 37 is correct. This exemplifies the identity property of subtraction. The hints correctly show that subtracting zero from each place value yields the same digits."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "c39426dccc6882e0d8a8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format combines a visual representation with a text statement and four options. The question about remaining items after taking some away is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A collection of items with some removed is a fundamental real-world scenario. The context is appropriate for Grade 2 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial provides visual scaffolding for emerging readers. The text clearly states there are items and some are taken away, followed by a question about remaining quantity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 30 minus 26 equals 4 is correct. This requires regrouping: borrowing to subtract 6 from the ones place. The hints show this process correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "c3594b9c09622be10bbf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format presents a claim about the result of subtracting 20 from 90. The learner must determine whether the stated answer of 69 is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person giving away items from a collection is a familiar scenario. The context of crayons is concrete and appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the verb give away to describe subtraction. The true-false statement provides the answer to evaluate, supporting verification-based learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct calculation is 90 minus 20 equals 70, not 69. The stated answer of 69 is incorrect. The hints correctly show that this is a no-regrouping case with clean tens subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "15c49b444d8f2315d218",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format presents a visual, text, and four distinct options. The question directly asks how many items remain, with no ambiguity in interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Items being taken from a collection is a logically coherent scenario. The context of a large group being reduced is realistic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial supports comprehension for emerging readers. The text structure mirrors typical subtraction word problems: there are items, some are taken, how many remain."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 31 minus 10 equals 21 is correct. This is a no-regrouping case: subtracting a clean tens value does not require borrowing. The hints correctly show this straightforward process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "cbd2197aeff06db180d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false statement claims that giving away one item from 24 results in having 24 left. The learner must determine whether this claim is true or false."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person giving away items is a realistic action. The context of milk tea cups is concrete and familiar to Grade 2 learners in a Philippine setting."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states the initial quantity, the action of giving away a specific number, and asks the learner to verify the remaining quantity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct calculation is 24 minus 1 equals 23, not 24. The stated answer of 24 is incorrect. The hints show that subtracting 1 from the ones place yields 3, making the correct answer 23."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "c0ab00d1cda101a1158d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format presents Manny's solution to a counting-back problem and asks whether his answer is correct. The binary judgment is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting back from 20 by 6 is a valid mental math operation. The scenario is logically sound and pedagogically relevant."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the counting-back strategy: start at 20, count back 6. The learner must verify whether Manny's answer of 14 is correct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 20 minus 6 equals 14 is correct. Manny's answer is indeed correct. The hints show that borrowing is needed in the ones place to perform this subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "447f5b96a8b1cdbd6e0a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks where Isko is after descending zero steps. The question expects a single numeric answer, with no ambiguity about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person who moves zero steps remaining at the starting position is logically coherent. The identity action is presented as a concrete scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure is simple: Isko starts at a position and goes down zero steps. The learner must determine the resulting position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 57 minus 0 equals 57 is correct. Subtracting zero yields the original value. The options include the correct answer plus variants (59, 58, 56)."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "093b6489046f94c0291d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format combines visual representation with a text question and four options. The question about remaining items is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking zero items from a collection is a logically valid scenario, though it represents a degenerate case. The context remains concrete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial supports comprehension. The text clearly states the starting quantity and that zero items are taken away."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 32 minus 0 equals 32 is correct. This exemplifies the identity property. The options include the correct answer, the original value minus one, and distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "a2cc68cbef9d2aa7ca8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents an inverse subtraction structure: Ruth had 20, gave away some, and ended with 18. The question asks how many were given away. The task is clear despite the structural complexity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person having items, giving some away, and knowing the remainder is a realistic scenario that mirrors real-world inventory situations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Although the problem structure is more complex than direct subtraction, the language is simple and the hints reframe the inverse thinking as a forward subtraction problem (20 minus 2 equals 18)."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation is correct: Ruth gave away 2 coins. The hints demonstrate converting the inverse scenario into a forward subtraction: 20 minus 2 equals 18. The regrouping process is properly shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "a6023c322dbe1b4ab7a7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ format explicitly asks how many cookies remain after using some. The four options are distinct numeric values, eliminating ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using items from a collection is a realistic action. The context of cookies is concrete and appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the verb used instead of took or removed, but the meaning is clear in context: some items are no longer available from the original collection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 60 minus 51 equals 9 is correct. This requires regrouping in the ones place. The options include one distracter (111) that might result from concatenating digits incorrectly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "fea219e4e01f7c5e1d4c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format combines visual and text elements. The question asks directly how many items remain, with four distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking items from a collection is a fundamental real-world action. The scenario is logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial supports emerging readers. The text clearly describes the initial quantity and the removal action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 30 minus 11 equals 19 is correct. This requires regrouping in the ones place. The hints show the borrowing process and proper subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "97542e9b3ed0e5380058",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format presents a visual representation and asks how many items remain after removal. The question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A collection being reduced is a logically sound scenario. The context mirrors real inventory or collection management."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial provides visual support. The text structure is straightforward: there are items, some are taken away, how many remain."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 25 minus 15 equals 10 is correct. This is a no-regrouping case: both digits subtract cleanly (5 minus 5 equals 0 in ones, 2 minus 1 equals 1 in tens)."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "66611933ed6ddd635982",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ format directly asks how many dog treats remain. The four options are distinct numeric values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A barangay official removing items from a community collection is a realistic scenario that children can understand."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the honorific Ate Beng and describes a concrete action of removing items from a collection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 90 minus 18 equals 72 is correct. This requires regrouping in the ones place. The options include a plausible distracter (108) that represents the sum of the two numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "efb5c3582831a2962b8f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format presents 18 emoji items visually and asks how many remain after taking 15. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Items represented by emoji and some being removed is a logically coherent scenario that mirrors the visual representation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji stem directly shows the collection size, and the text confirms there are 18 items. Taking away 15 is a clear action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 18 minus 15 equals 3 is correct. This is a no-regrouping case: 8 minus 5 equals 3 in ones, and 1 minus 1 equals 0 in tens. The options include plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "fd091cfe399445baa5ce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format presents a specific claim about the result of subtracting 39 from 96. The learner must verify correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person using items from a collection is realistic. The context of baskets is concrete and appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem structure is clear: had items, used some, statement about remainder provided. The true-false format supports verification-based learning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 96 minus 39 equals 57 is correct. This requires regrouping: borrowing from the tens place to subtract 9 from the ones. The hints show this process correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "4299f26a8662183cfca8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format presents Noel's answer and asks whether the work is correct. The binary judgment is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A box containing items with some removed is a familiar scenario. The context is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly describes the action: 10 jump ropes are taken from a box of 26. The learner must verify whether Noel's answer of 17 is correct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct calculation is 26 minus 10 equals 16, not 17. Noel's answer of 17 is incorrect. The hints show that this is a no-regrouping case and the correct answer is 16."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "86c0df73fdab118527b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detect format presents Maria's solution to a comparison problem and asks whether her answer is correct. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A comparison between two people's possessions of the same object is a logically valid scenario. The context of pom-poms is familiar to Grade 2 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem asks how many fewer pom-poms the friend has compared to Ate Gab. The learner must verify whether Maria's answer of 20 is correct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 32 minus 13 equals 19, not 20. Maria's answer of 20 is incorrect. The hints demonstrate the regrouping process and correctly arrive at 19."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "dbecd05d9e748b8dc6dd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks how many fewer water bottles the friend has compared to Coach Roel. The question expects a single numeric answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A comparison between two people's quantities of the same object is logically sound. The context of water bottles is concrete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem uses the comparison language how many fewer, which Grade 2 learners practice regularly. The context is clear and the action is well-defined."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 23 minus 15 equals 8 is correct. This requires regrouping in the ones place. The hints show the borrowing process and proper subtraction, arriving at 8."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "43c4bf418bce9c9a4c32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format combines visual representation, text, and four options. The question asks directly how many items remain after taking zero."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking zero items from a collection is a logically valid scenario that represents a degenerate case of the subtraction operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial supports comprehension for emerging readers. The text clearly states that zero items are taken away."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 61 minus 0 equals 61 is correct. This reinforces the identity property. The options include the correct answer, one distracter (60), and others."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "sample_id": "61bdbe21d22dd45deb67",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-mcq format presents a visual collection labeled as cupcakes and asks how many remain after removal. The task is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A collection of cupcakes with some removed is a familiar scenario for Grade 2 learners. The action is logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji pictorial provides visual scaffolding. The text clearly describes the initial quantity and the removal action."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The calculation 40 minus 3 equals 37 is correct. This requires regrouping in the ones place. The hints show the borrowing process and proper subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve problems",
+      "verdict": "PASS",
+      "reasoning": "Every sample presents a problem requiring the student to solve a subtraction task. Formats vary (direct calculation, error identification, verification, inverse reasoning) but all samples ask students to determine an answer or verify a claim, directly satisfying the solve-problems requirement.",
+      "sample_ids": [
+        "39a40bea56ce5d57c033",
+        "15b765fc0e3122a1460f",
+        "2050ec4dde4af727d826",
+        "ca61ce570d268180c2c9",
+        "fbc0373f0ac517ef73bb",
+        "3a314a7a6420b91bdde0",
+        "5a3dc9ccba455a548c8f",
+        "9dd1dc74e3b183e6b012",
+        "7cb18268d5949e50eae8",
+        "d536faf8bdab5b3bfadf",
+        "8e71b588fe663491790a",
+        "c39426dccc6882e0d8a8",
+        "c3594b9c09622be10bbf",
+        "15c49b444d8f2315d218",
+        "cbd2197aeff06db180d4",
+        "c0ab00d1cda101a1158d",
+        "447f5b96a8b1cdbd6e0a",
+        "093b6489046f94c0291d",
+        "a2cc68cbef9d2aa7ca8d",
+        "a6023c322dbe1b4ab7a7",
+        "fea219e4e01f7c5e1d4c",
+        "97542e9b3ed0e5380058",
+        "66611933ed6ddd635982",
+        "efb5c3582831a2962b8f",
+        "fd091cfe399445baa5ce",
+        "4299f26a8662183cfca8",
+        "86c0df73fdab118527b0",
+        "dbecd05d9e748b8dc6dd",
+        "43c4bf418bce9c9a4c32",
+        "61bdbe21d22dd45deb67"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "requirement_id": "in_pictures",
+      "clause": "in pictures",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples employ visual representation through the read-mcq format with EmojiPictorial visuals, supporting the pictorial presentation requirement. Additionally, one sample (seed 702) uses emoji directly in the stem as pictorial elements. While many samples are text-based, the competency statement uses or, making either modality acceptable. The pictorial samples demonstrate compliance with the picture-based aspect.",
+      "sample_ids": [
+        "3a314a7a6420b91bdde0",
+        "7cb18268d5949e50eae8",
+        "c39426dccc6882e0d8a8",
+        "15c49b444d8f2315d218",
+        "093b6489046f94c0291d",
+        "fea219e4e01f7c5e1d4c",
+        "97542e9b3ed0e5380058",
+        "efb5c3582831a2962b8f",
+        "43c4bf418bce9c9a4c32",
+        "61bdbe21d22dd45deb67"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "requirement_id": "involving_subtraction",
+      "clause": "involving subtraction",
+      "verdict": "PASS",
+      "reasoning": "All 30 samples involve subtraction as the core operation. Every problem requires subtracting one number from another, whether presented as direct calculation, error detection, true-false verification, or inverse reasoning. The operation is consistently subtraction across all samples, satisfying this requirement uniformly.",
+      "sample_ids": [
+        "39a40bea56ce5d57c033",
+        "15b765fc0e3122a1460f",
+        "2050ec4dde4af727d826",
+        "ca61ce570d268180c2c9",
+        "fbc0373f0ac517ef73bb",
+        "3a314a7a6420b91bdde0",
+        "5a3dc9ccba455a548c8f",
+        "9dd1dc74e3b183e6b012",
+        "7cb18268d5949e50eae8",
+        "d536faf8bdab5b3bfadf",
+        "8e71b588fe663491790a",
+        "c39426dccc6882e0d8a8",
+        "c3594b9c09622be10bbf",
+        "15c49b444d8f2315d218",
+        "cbd2197aeff06db180d4",
+        "c0ab00d1cda101a1158d",
+        "447f5b96a8b1cdbd6e0a",
+        "093b6489046f94c0291d",
+        "a2cc68cbef9d2aa7ca8d",
+        "a6023c322dbe1b4ab7a7",
+        "fea219e4e01f7c5e1d4c",
+        "97542e9b3ed0e5380058",
+        "66611933ed6ddd635982",
+        "efb5c3582831a2962b8f",
+        "fd091cfe399445baa5ce",
+        "4299f26a8662183cfca8",
+        "86c0df73fdab118527b0",
+        "dbecd05d9e748b8dc6dd",
+        "43c4bf418bce9c9a4c32",
+        "61bdbe21d22dd45deb67"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "requirement_id": "less_than_100",
+      "clause": "both numbers are less than 100",
+      "verdict": "PASS",
+      "reasoning": "All operands across every sample fall within the bounds specified. Minuends range from 4 to 96, and subtrahends from 0 to 67, all strictly less than 100. No sample violates this constraint. The requirement is met uniformly.",
+      "sample_ids": [
+        "39a40bea56ce5d57c033",
+        "15b765fc0e3122a1460f",
+        "2050ec4dde4af727d826",
+        "ca61ce570d268180c2c9",
+        "fbc0373f0ac517ef73bb",
+        "3a314a7a6420b91bdde0",
+        "5a3dc9ccba455a548c8f",
+        "9dd1dc74e3b183e6b012",
+        "7cb18268d5949e50eae8",
+        "d536faf8bdab5b3bfadf",
+        "8e71b588fe663491790a",
+        "c39426dccc6882e0d8a8",
+        "c3594b9c09622be10bbf",
+        "15c49b444d8f2315d218",
+        "cbd2197aeff06db180d4",
+        "c0ab00d1cda101a1158d",
+        "447f5b96a8b1cdbd6e0a",
+        "093b6489046f94c0291d",
+        "a2cc68cbef9d2aa7ca8d",
+        "a6023c322dbe1b4ab7a7",
+        "fea219e4e01f7c5e1d4c",
+        "97542e9b3ed0e5380058",
+        "66611933ed6ddd635982",
+        "efb5c3582831a2962b8f",
+        "fd091cfe399445baa5ce",
+        "4299f26a8662183cfca8",
+        "86c0df73fdab118527b0",
+        "dbecd05d9e748b8dc6dd",
+        "43c4bf418bce9c9a4c32",
+        "61bdbe21d22dd45deb67"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    },
+    {
+      "requirement_id": "regrouping",
+      "clause": "with and without regrouping",
+      "verdict": "PASS",
+      "reasoning": "The sample set deliberately includes problems both with and without borrowing. No-regrouping examples include 4-1, 37-0, 60-20, 18-15, 25-15, 57-0, 32-0, 31-10, 24-1, 26-10. With-regrouping examples include 90-26, 60-53, 30-8, 94-27, 73-67, 20-6, 20-2, 60-51, 30-11, 40-3, and others. Both categories are well-represented, satisfying the requirement.",
+      "sample_ids": [
+        "39a40bea56ce5d57c033",
+        "15b765fc0e3122a1460f",
+        "2050ec4dde4af727d826",
+        "ca61ce570d268180c2c9",
+        "fbc0373f0ac517ef73bb",
+        "3a314a7a6420b91bdde0",
+        "5a3dc9ccba455a548c8f",
+        "9dd1dc74e3b183e6b012",
+        "7cb18268d5949e50eae8",
+        "d536faf8bdab5b3bfadf",
+        "8e71b588fe663491790a",
+        "c39426dccc6882e0d8a8",
+        "c3594b9c09622be10bbf",
+        "15c49b444d8f2315d218",
+        "cbd2197aeff06db180d4",
+        "c0ab00d1cda101a1158d",
+        "447f5b96a8b1cdbd6e0a",
+        "093b6489046f94c0291d",
+        "a2cc68cbef9d2aa7ca8d",
+        "a6023c322dbe1b4ab7a7",
+        "fea219e4e01f7c5e1d4c",
+        "97542e9b3ed0e5380058",
+        "66611933ed6ddd635982",
+        "efb5c3582831a2962b8f",
+        "fd091cfe399445baa5ce",
+        "4299f26a8662183cfca8",
+        "86c0df73fdab118527b0",
+        "dbecd05d9e748b8dc6dd",
+        "43c4bf418bce9c9a4c32",
+        "61bdbe21d22dd45deb67"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w5-haiku45-20260925:mat_g2_na_q2_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "d2f065a39d9db3c9d08d20e85ef81cfc9ec8a6281c02d3df149b3c34e89a3709",
+      "clause_ids": [
+        "solve_problems",
+        "in_pictures",
+        "involving_subtraction",
+        "less_than_100",
+        "regrouping"
+      ],
+      "response_ref": ".responses/s5-phaseC-w5-haiku45-20260925.json",
+      "response_digest": "e9654de01d30c7d44903c5c27967d3617e807215ba377830bb734e950ecdfd7a",
+      "prompt_ref": ".responses/s5-phaseC-w5-haiku45-20260925.prompt.txt",
+      "prompt_digest": "dc930664f04e6e7f7f8e95cab0d573e782bda016e57c8dc71f85409a6a11bf04",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q2_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q2_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Cognitive demands scale appropriately from single-digit subtraction without regrouping to two-digit problems requiring borrowing. Problem structures include direct calculation, error identification requiring metacognition, and inverse reasoning, supporting varied cognitive pathways for Grade 2 Quarter 2 learners."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples directly address subtraction of two numbers both under 100. Samples deliberately split between regrouping and non-regrouping cases, with sufficient diversity in problem contexts and presentation formats to align with competency scope."
+    },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are framed as problems rather than exercises, and the subtraction meanings vary usefully - removal from a set, descending a staircase, and a comparison item asking how many fewer medals a friend has. Each key I recomputed matched the stem."
+      "rationale": "All five decomposed requirements are satisfied across the sample set. Each component maps directly to rendered problems: solving strategies demonstrated, pictorial support provided in read-mcq samples, subtraction is the core operation, number bounds respected consistently, and regrouping scenarios present in roughly half the samples.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five-part decomposition losslessly captures the competency statement. Solve problems appears in all samples; in pictures is addressed through EmojiPictorial visuals in read-mcq items; involving subtraction is uniform across all problems; less than 100 constraint is maintained for both operands in every sample; with and without regrouping is demonstrated by distinct subsets of samples.",
+        "requirement_ids": [
+          "solve_problems",
+          "in_pictures",
+          "involving_subtraction",
+          "less_than_100",
+          "regrouping"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "in_pictures",
+        "involving_subtraction",
+        "less_than_100",
+        "regrouping"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Regrouped takes such as 94 less 27 and 98 less 49 sit alongside clean ones such as 90 less 20 and 42 less 10, so the with-and-without pairing the competency spells out is genuinely realised, and pictorial group presentations satisfy the in-pictures clause."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentences are short, one situation per stem, and the vocabulary stays inside a Grade 2 world of medals, cookies, crayons and milk tea cups. Nothing asks for more than one take-away step."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Stair-descent, shelf removal, giving away, how-many-fewer comparison, counting back and pictured groups all occur, and the formatter mix spreads across cloze, error-check, true-or-false and picture-led choice."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The floor of the progression is occupied by items that do not exercise subtraction under 100 at all: 'Moses takes away 0 baskets' leaves the count untouched, and a staircase item works with 4 less 1. Neither requires the regrouping decision the node is meant to develop."
+      "rationale": "The sample set demonstrates thorough coverage across key dimensions: regrouping (approximately half without, half with borrowing), response formats (five distinct types: cloze, MCQ, true/false, error_detect, read_mcq), problem contexts (steps, collections, coins, meals, animals, people), and edge cases including subtraction of zero and inverse problem structure.",
+      "clause_ids": [
+        "solve_problems",
+        "in_pictures",
+        "involving_subtraction",
+        "less_than_100",
+        "regrouping"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Operands reach 98 and 94, just under the competency's stated limit, and no sample crosses 100 in either the minuend or the result."
+      "rationale": "Minuends range from 4 to 96, and subtrahends from 0 to 67, all satisfying the <100 bound. The progression supports Grade 2 competency development: simple problems with concrete imagery build foundational confidence, while higher-value problems with regrouping extend understanding appropriate for Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples span multiple dimensions: five response format types (cloze, true/false, MCQ, error_detect, read_mcq), varied experiences (standard, hint_gated, mastery_drill, scaffolded), visual modalities (text only and emoji pictorial), concrete contexts (12+ distinct scenarios), and problem structures (direct, error identification, verification, inverse)."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
