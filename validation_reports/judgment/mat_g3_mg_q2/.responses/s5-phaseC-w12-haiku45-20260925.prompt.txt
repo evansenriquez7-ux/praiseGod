@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925
+  blind-reviewer-haiku45-pc12-mat_g3_mg_q2_5-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_mg_q2_4/verdicts.json
+  local_only/scratch/phaseC/mat_g3_mg_q2_5/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_5-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,134 +99,194 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_mg_q2_4
-PACKET DIGEST: 8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf
+NODE: mat_g3_mg_q2_5
+PACKET DIGEST: c925e8a4093ac916ff208c6494d9d12b49aa220270c0ccbcf0c27c36f24570f0
 COMPETENCY (Grade 3, Quarter 2, None):
-Estimate capacity using liters and/or milliliters.
+Compare capacities of two containers.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  estimate_capacity: Estimate capacity
-  liters_and_or_milliliters: liters and/or milliliters
+  compare_capacities: Compare capacities
+  two_containers: two containers
 
 SAMPLES (every one of these is real rendered output):
-  sample 0b7a9fec29eb288d396e  seed 42  [cloze]
-      stem:    A container's capacity measures 27 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  30
-      options: 31 / 32 / 29 / 30
-      hints:   ["Count by 10s: 27 is between 20 and 30.", "27 is closer to 30.", "So 27 mL is about 30 mL."]
+  sample 5c3ad52282fc8a6778f8  seed 42  [cloze]
+      stem:    Which is more: 23 mL or 56 mL?
+      answer:  56
+      options: 56 / 55 / 58 / 57
+      hints:   ["Compare the two measurements: 23 mL and 56 mL.", "The larger number holds more: 56 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 85033b1167b27d4f7787  seed 43  [mcq]
-      stem:    A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?
-      answer:  20
-      options: 19 / 21 / 20 / 22
-      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 L is about 20 L."]
+  sample c401f8a799b534aac6bd  seed 43  [mcq]
+      stem:    Which is more: 22 L or 12 L?
+      answer:  22
+      options: 23 / 24 / 21 / 22
+      hints:   ["Compare the two measurements: 22 L and 12 L.", "The larger number holds more: 22 L."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 0ea9223af9e78b4523e7  seed 44  [cloze]
-      stem:    A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?
+  sample d3868076d1f1df8e3f49  seed 44  [cloze]
+      stem:    Which is more: 1 mL or 38 mL?
+      answer:  38
+      options: 38 / 37 / 40 / 39
+      hints:   ["Compare the two measurements: 1 mL and 38 mL.", "The larger number holds more: 38 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7cd6c1aff3a1b8351660  seed 45  [mcq]
+      stem:    Which is more: 21 L or 13 L?
+      answer:  21
+      options: 22 / 20 / 21 / 23
+      hints:   ["Compare the two measurements: 21 L and 13 L.", "The larger number holds more: 21 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d61fd275384910aceb99  seed 46  [mcq]
+      stem:    Which is more: 3 L or 17 L?
+      answer:  17
+      options: 19 / 18 / 17 / 16
+      hints:   ["Compare the two measurements: 3 L and 17 L.", "The larger number holds more: 17 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ecdab7c4b2848d5a902d  seed 500  [mcq]
+      stem:    Which is more: 26 L or 231 L?
+      answer:  231
+      options: 231 / 233 / 230 / 232
+      hints:   ["Compare the two measurements: 26 L and 231 L.", "The larger number holds more: 231 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ccb55ac165deda97a558  seed 501  [mcq]
+      stem:    Which is more: 8 L or 447 L?
+      answer:  447
+      options: 448 / 449 / 447 / 446
+      hints:   ["Compare the two measurements: 8 L and 447 L.", "The larger number holds more: 447 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 835586d24f38eafa5ecd  seed 502  [cloze]
+      stem:    Which is more: 12 mL or 3348 mL?
+      answer:  3348
+      options: 3347 / 3349 / 3348 / 3350
+      hints:   ["Compare the two measurements: 12 mL and 3348 mL.", "The larger number holds more: 3348 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6f7e00c3f0c6fde1b933  seed 600  [mcq]
+      stem:    Which is more: 1 L or 22 L?
+      answer:  22
+      options: 21 / 23 / 22 / 24
+      hints:   ["Compare the two measurements: 1 L and 22 L.", "The larger number holds more: 22 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4a9e24962bcfad44fdfb  seed 601  [cloze]
+      stem:    Which is more: 12 L or 15 L?
+      answer:  15
+      options: 15 / 17 / 16 / 14
+      hints:   ["Compare the two measurements: 12 L and 15 L.", "The larger number holds more: 15 L."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cd19be62af8ebe8c7cbe  seed 602  [cloze]
+      stem:    Which is more: 49 mL or 67 mL?
+      answer:  67
+      options: 69 / 67 / 68 / 66
+      hints:   ["Compare the two measurements: 49 mL and 67 mL.", "The larger number holds more: 67 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 11e039ae61401531214c  seed 603  [mcq]
+      stem:    Which is more: 3 L or 12 L?
+      answer:  12
+      options: 12 / 13 / 14 / 11
+      hints:   ["Compare the two measurements: 3 L and 12 L.", "The larger number holds more: 12 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7f4922b5205311ef0862  seed 604  [cloze]
+      stem:    Which is more: 69 mL or 55 mL?
+      answer:  69
+      options: 68 / 70 / 69 / 71
+      hints:   ["Compare the two measurements: 69 mL and 55 mL.", "The larger number holds more: 69 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 83a3be5aea7d08e933da  seed 605  [mcq]
+      stem:    Which is more: 1 L or 14 L?
+      answer:  14
+      options: 16 / 14 / 13 / 15
+      hints:   ["Compare the two measurements: 1 L and 14 L.", "The larger number holds more: 14 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4e7f0a4da4ba09634fd8  seed 606  [mcq]
+      stem:    Which is more: 55 mL or 5 mL?
+      answer:  55
+      options: 54 / 55 / 57 / 56
+      hints:   ["Compare the two measurements: 55 mL and 5 mL.", "The larger number holds more: 55 mL."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample df97d3c0bdb9aae6ba18  seed 607  [cloze]
+      stem:    Which is more: 54 mL or 6 mL?
+      answer:  54
+      options: 55 / 56 / 54 / 53
+      hints:   ["Compare the two measurements: 54 mL and 6 mL.", "The larger number holds more: 54 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0c7fe9bbcfe09e0f290d  seed 608  [cloze]
+      stem:    Which is more: 1 L or 10 L?
       answer:  10
-      options: 10 / 12 / 11 / 9
-      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 mL is about 10 mL."]
+      options: 12 / 9 / 11 / 10
+      hints:   ["Compare the two measurements: 1 L and 10 L.", "The larger number holds more: 10 L."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample a42ab5d6515770274923  seed 45  [mcq]
-      stem:    A container's capacity measures 17 L. About how many L is that, rounded to the nearest 10?
-      answer:  20
-      options: 21 / 19 / 22 / 20
-      hints:   ["Count by 10s: 17 is between 10 and 20.", "17 is closer to 20.", "So 17 L is about 20 L."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample ed65d6d611bac1ed7182  seed 46  [mcq]
-      stem:    A container's capacity measures 7 L. About how many L is that, rounded to the nearest 10?
-      answer:  10
-      options: 9 / 11 / 12 / 10
-      hints:   ["Count by 10s: 7 is between 0 and 10.", "7 is closer to 10.", "So 7 L is about 10 L."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample d30ee69a9a29b363b83a  seed 500  [mcq]
-      stem:    A container's capacity measures 31 L. About how many L is that, rounded to the nearest 10?
-      answer:  30
-      options: 29 / 31 / 32 / 30
-      hints:   ["Count by 10s: 31 is between 30 and 40.", "31 is closer to 30.", "So 31 L is about 30 L."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample f225db844ee8ee6a63db  seed 501  [mcq]
-      stem:    A container's capacity measures 12 L. About how many L is that, rounded to the nearest 10?
-      answer:  10
-      options: 9 / 11 / 12 / 10
-      hints:   ["Count by 10s: 12 is between 10 and 20.", "12 is closer to 10.", "So 12 L is about 10 L."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample fbd0268ef1757b5c496c  seed 502  [cloze]
-      stem:    A container's capacity measures 16 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  20
-      options: 22 / 19 / 21 / 20
-      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 mL is about 20 mL."]
+  sample 95ef4207e472d0e6338c  seed 609  [cloze]
+      stem:    Which is more: 2 L or 11 L?
+      answer:  11
+      options: 13 / 11 / 12 / 10
+      hints:   ["Compare the two measurements: 2 L and 11 L.", "The larger number holds more: 11 L."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 559ad62a600973c402e6  seed 600  [mcq]
-      stem:    A container's capacity measures 5 L. About how many L is that, rounded to the nearest 10?
-      answer:  10
-      options: 10 / 11 / 12 / 9
-      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 L is about 10 L."]
+  sample 195d5393272f3c12ddc3  seed 610  [mcq]
+      stem:    Which is more: 5 L or 4 L?
+      answer:  5
+      options: 7 / 4 / 6 / 5
+      hints:   ["Compare the two measurements: 5 L and 4 L.", "The larger number holds more: 5 L."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 707a80eec66219fd0e11  seed 602  [cloze]
-      stem:    A container's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  50
-      options: 51 / 50 / 52 / 49
-      hints:   ["Count by 10s: 53 is between 50 and 60.", "53 is closer to 50.", "So 53 mL is about 50 mL."]
+  sample 9d49a60b2f59f459f5e8  seed 611  [cloze]
+      stem:    Which is more: 8 mL or 22 mL?
+      answer:  22
+      options: 21 / 24 / 23 / 22
+      hints:   ["Compare the two measurements: 8 mL and 22 mL.", "The larger number holds more: 22 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample ee4d518645ea6ebe3fcd  seed 604  [cloze]
-      stem:    A container's capacity measures 59 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  60
-      options: 61 / 59 / 60 / 62
-      hints:   ["Count by 10s: 59 is between 50 and 60.", "59 is closer to 60.", "So 59 mL is about 60 mL."]
+  sample bfb188382ecff31f1a83  seed 700  [cloze]
+      stem:    Which is more: 12 L or 7 L?
+      answer:  12
+      options: 14 / 11 / 12 / 13
+      hints:   ["Compare the two measurements: 12 L and 7 L.", "The larger number holds more: 12 L."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 185cc3e14cd5d526de6f  seed 700  [cloze]
-      stem:    A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?
-      answer:  20
-      options: 22 / 19 / 21 / 20
-      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 L is about 20 L."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample d2e47604947a4861e5eb  seed 701  [mcq]
-      stem:    💃 Kuya Ton has a math challenge about trophies. A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?
-      answer:  20
-      options: 20 / 22 / 19 / 21
-      hints:   ["Count by 10s: 15 is between 10 and 20.", "15 is exactly halfway, so it rounds up to 20.", "So 15 L is about 20 L."]
+  sample aa3daed07d9c8ac5ea12  seed 701  [mcq]
+      stem:    🎸 Dana has a math challenge about song sheets. Which is more: 11 L or 12 L?
+      answer:  12
+      options: 13 / 11 / 14 / 12
+      hints:   ["Compare the two measurements: 11 L and 12 L.", "The larger number holds more: 12 L."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 451e583d0af232923806  seed 702  [cloze]
-      stem:    A container's capacity measures 36 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  40
-      options: 41 / 40 / 39 / 42
-      hints:   ["Count by 10s: 36 is between 30 and 40.", "36 is closer to 40.", "So 36 mL is about 40 mL."]
+  sample 1c4f3a9ed0bd203453a2  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Which is more: 32 mL or 2 mL?
+      answer:  32
+      options: 33 / 34 / 32 / 31
+      hints:   ["Compare the two measurements: 32 mL and 2 mL.", "The larger number holds more: 32 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 1b4725e2f98243fc0e77  seed 800  [cloze]
-      stem:    A container's capacity measures 4136 mL. About how many mL is that, rounded to the nearest 1000?
-      answer:  4000
-      options: 3999 / 4000 / 4001 / 4002
-      hints:   ["Count by 1000s: 4136 is between 4000 and 5000.", "4136 is closer to 4000.", "So 4136 mL is about 4000 mL."]
+  sample ecde24e3cddc4e2850e3  seed 800  [cloze]
+      stem:    Which is more: 65 mL or 15 mL?
+      answer:  65
+      options: 64 / 65 / 66 / 67
+      hints:   ["Compare the two measurements: 65 mL and 15 mL.", "The larger number holds more: 65 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample c3dfdd9511508d1fdaf3  seed 900  [mcq]
-      stem:    A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  10
-      options: 10 / 9 / 12 / 11
-      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 mL is about 10 mL."]
+  sample caf69d178b4b1c5b710d  seed 801  [cloze]
+      stem:    Which is more: 117 L or 129 L?
+      answer:  129
+      options: 131 / 129 / 130 / 128
+      hints:   ["Compare the two measurements: 117 L and 129 L.", "The larger number holds more: 129 L."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4cf9cff688c145ee4294  seed 900  [mcq]
+      stem:    Which is more: 1 mL or 2 mL?
+      answer:  2
+      options: 3 / 2 / 1 / 4
+      hints:   ["Compare the two measurements: 1 mL and 2 mL.", "The larger number holds more: 2 mL."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 07c48665d3dc4c822d5f  seed 901  [mcq]
-      stem:    A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  10
-      options: 11 / 9 / 10 / 12
-      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 mL is about 10 mL."]
+  sample 13efff20f6911011cd36  seed 901  [mcq]
+      stem:    Which is more: 2 mL or 1 mL?
+      answer:  2
+      options: 4 / 3 / 1 / 2
+      hints:   ["Compare the two measurements: 2 mL and 1 mL.", "The larger number holds more: 2 mL."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample d2916c08fb5b0fa9c824  seed 1000  [cloze]
-      stem:    A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  10
-      options: 10 / 12 / 11 / 9
-      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 mL is about 10 mL."]
+  sample 307f1e8391ba37aa2ed4  seed 1000  [cloze]
+      stem:    Which is more: 2 mL or 31 mL?
+      answer:  31
+      options: 31 / 32 / 33 / 30
+      hints:   ["Compare the two measurements: 2 mL and 31 mL.", "The larger number holds more: 31 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
-  sample 87222b01f482ccea632c  seed 1001  [cloze]
-      stem:    A container's capacity measures 68 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  70
-      options: 69 / 70 / 71 / 72
-      hints:   ["Count by 10s: 68 is between 60 and 70.", "68 is closer to 70.", "So 68 mL is about 70 mL."]
+  sample a6f48d037719ed721871  seed 1001  [cloze]
+      stem:    Which is more: 64 mL or 59 mL?
+      answer:  64
+      options: 63 / 66 / 64 / 65
+      hints:   ["Compare the two measurements: 64 mL and 59 mL.", "The larger number holds more: 64 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
-  sample 82aa74b41dba4d14beae  seed 1002  [cloze]
-      stem:    A container's capacity measures 33 mL. About how many mL is that, rounded to the nearest 10?
-      answer:  30
-      options: 32 / 30 / 29 / 31
-      hints:   ["Count by 10s: 33 is between 30 and 40.", "33 is closer to 30.", "So 33 mL is about 30 mL."]
+  sample 61de24a18bad3423d5b5  seed 1002  [cloze]
+      stem:    Which is more: 29 mL or 62 mL?
+      answer:  62
+      options: 64 / 63 / 62 / 61
+      hints:   ["Compare the two measurements: 29 mL and 62 mL.", "The larger number holds more: 62 mL."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

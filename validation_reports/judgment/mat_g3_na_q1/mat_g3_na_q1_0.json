@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q1_0",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Represent numbers up to 10 000 using pictorial models and numerals.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "represent",
+      "clause": "Represent"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10000",
+      "clause": "up to 10 000"
+    },
+    {
+      "kind": "representation",
+      "id": "pictorial_models",
+      "clause": "pictorial models"
+    },
+    {
+      "kind": "representation",
+      "id": "numerals",
+      "clause": "numerals"
+    }
+  ],
+  "packet_digest": "633bae883a8fa9b4d19bdc24e40439b8b69669196fdcdf06fa8737deda483f95",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,26 +47,222 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "760c0f936742081411e4",
+    "e5a045ec98d406f86058",
+    "f646b3942b453c5b376b",
+    "2b0391c16e34f4b8cd55",
+    "d975f0e5c5d4dcb31d5b",
+    "ce0fb97320f43a5fa24a",
+    "c3f5929066426b08f995",
+    "e3de35d3e3c403545b2f",
+    "033e818e53434e85cd98",
+    "764a3c066b5ae708dd3a",
+    "7aa57ae1453c2f664982",
+    "4c43fdaf6cb5fec69e5f",
+    "9e8c86256c08d8892152",
+    "46a11e147f67ea9c5424",
+    "f5b57459ad534626a263",
+    "9ae3dfe7dd5cfb4090ad",
+    "178035fe2930dca05b55"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 42,
       "formatter": "set_fill_in_blank",
       "question_text": "Use base-10 blocks to show the number 1410.",
-      "correct_answer": 1410
+      "correct_answer": 1410,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 1410,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 4 blocks.",
+        "Tens: 1 block.",
+        "Add the value of every block together to get the total, 1410."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 1,
+        "hundreds": 4,
+        "tens": 1,
+        "ones": 0,
+        "total_value": 1410,
+        "number": 1410,
+        "question_type": "build_number",
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "511e4a19c4058583ce114404ccbecbdb84dbf277016ca2d88b7b771d8fd67393",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 35,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 8,
+          "input_count": 0,
+          "text_labels": [
+            "■ = 1000",
+            "■ = 100",
+            "▮ = 10",
+            "• = 1",
+            "Your blocks: None = 0",
+            "1000s",
+            "-",
+            "0",
+            "+",
+            "100s",
+            "10s",
+            "1s"
+          ],
+          "distinct_colours": [
+            "#a78bfa",
+            "#10b981",
+            "#3b82f6",
+            "#b91c5c",
+            "hsl(var(--text-muted)",
+            "#a78bfa20",
+            "#10b98120",
+            "#3b82f620",
+            "#b91c5c20"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "760c0f936742081411e4",
+      "replay_digest": "8d9bc89e2362805255163e8af763e0ada443a555326e4b6f1d2b8a0d25f51ce4"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 43,
       "formatter": "set_fill_in_blank",
       "question_text": "Use base-10 blocks to show the number 5688.",
-      "correct_answer": 5688
+      "correct_answer": 5688,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 5688,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 6 blocks.",
+        "Tens: 8 blocks.",
+        "Ones: 8 blocks.",
+        "Add the value of every block together to get the total, 5688."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 5,
+        "hundreds": 6,
+        "tens": 8,
+        "ones": 8,
+        "total_value": 5688,
+        "number": 5688,
+        "question_type": "build_number",
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "86a37d957d453185e20941a199edbcc61468f4a5157c78c663a9e48bcd2a7c6c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 35,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 8,
+          "input_count": 0,
+          "text_labels": [
+            "■ = 1000",
+            "■ = 100",
+            "▮ = 10",
+            "• = 1",
+            "Your blocks: None = 0",
+            "1000s",
+            "-",
+            "0",
+            "+",
+            "100s",
+            "10s",
+            "1s"
+          ],
+          "distinct_colours": [
+            "#a78bfa",
+            "#10b981",
+            "#3b82f6",
+            "#b91c5c",
+            "hsl(var(--text-muted)",
+            "#a78bfa20",
+            "#10b98120",
+            "#3b82f620",
+            "#b91c5c20"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e5a045ec98d406f86058",
+      "replay_digest": "9c951a954bfaf2037b81a5c170ef9488157ffc949d03ce275f78310bb7293fd6"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 44,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -52,19 +284,179 @@
           "value": 9521,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 9521,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 500 + 20 + 1.",
+        "Add the parts together to get 9521."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 9521,
+        "start": 9520,
+        "end": 9530,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 9521,
+        "dot_value": 9521,
+        "content_type": "whole_number",
+        "labels": [
+          "9520",
+          "9530"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 9521.0,
+        "target": 9521.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "354c54fd22d7c9c5bda647ef75bc8cfeef668d61976503d9d64b75c1f4d08213",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "9520",
+            "9521",
+            "9522",
+            "9523",
+            "9524",
+            "9525",
+            "9526",
+            "9527",
+            "9528",
+            "9529",
+            "9530"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f646b3942b453c5b376b",
+      "replay_digest": "f6c2a060a3cf6bd86a892fdb669b2009bb2749c741144f46f7390b3b0747b2cf"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 45,
       "formatter": "set_fill_in_blank",
       "question_text": "Move the dot to show 7844 on the number line.",
-      "correct_answer": 7844
+      "correct_answer": 7844,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 7844,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 7000 + 800 + 40 + 4.",
+        "Add the parts together to get 7844."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 7844,
+        "start": 7840,
+        "end": 7850,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 7844,
+        "dot_value": 7840,
+        "content_type": "whole_number",
+        "labels": [
+          "7840",
+          "7850"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 7844.0,
+        "target": 7844.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9a70f17a24c2a8e360f47979a0e6459bf07ecbfbc60911fb0c1df457053fc446",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "7840",
+            "7841",
+            "7842",
+            "7843",
+            "7844",
+            "7845",
+            "7846",
+            "7847",
+            "7848",
+            "7849",
+            "7850",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2b0391c16e34f4b8cd55",
+      "replay_digest": "911c5640d3cd8f4e2e6de6008c5988e1105721e6be96976ab9c0126b1d66a8b5"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "What number do the blocks show?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -86,25 +478,257 @@
           "value": 7554,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 7554,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 5 blocks.",
+        "Tens: 5 blocks.",
+        "Ones: 4 blocks.",
+        "Add the value of every block together to get the total, 7554."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 7,
+        "hundreds": 5,
+        "tens": 5,
+        "ones": 4,
+        "total_value": 7554,
+        "number": 7554,
+        "question_type": "identify_value",
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "6d079d92008922a13ac2f4d677b6e3e2611c625151b9adb701294f3ad2dd08fa",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d975f0e5c5d4dcb31d5b",
+      "replay_digest": "dab2373e87908c09fc0f1117098e8d17a615166b8a5111ed569a8ec9a380af5b"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 500,
       "formatter": "set_fill_in_blank",
       "question_text": "Move the dot to show 9630 on the number line.",
-      "correct_answer": 9630
+      "correct_answer": 9630,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 9630,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 600 + 30.",
+        "Add the parts together to get 9630."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 9630,
+        "start": 9620,
+        "end": 9640,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 9630,
+        "dot_value": 9620,
+        "content_type": "whole_number",
+        "labels": [
+          "9620",
+          "9640"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 9630.0,
+        "target": 9630.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "e863e527200492ab98324ce43e075d940c9b31985470374957fcd1e9877195e4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 50,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "9620",
+            "9621",
+            "9622",
+            "9623",
+            "9624",
+            "9625",
+            "9626",
+            "9627",
+            "9628",
+            "9629",
+            "9630",
+            "9631",
+            "9632",
+            "9633",
+            "9634",
+            "9635",
+            "9636",
+            "9637",
+            "9638",
+            "9639",
+            "9640",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ce0fb97320f43a5fa24a",
+      "replay_digest": "3c22de4f739cdf704398fa98f28bd2f709c1a7097c2e90d8cd199a20899bc105"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 501,
       "formatter": "set_fill_in_blank",
       "question_text": "Move the dot to show 6795 on the number line.",
-      "correct_answer": 6795
+      "correct_answer": 6795,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 6795,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 6000 + 700 + 90 + 5.",
+        "Add the parts together to get 6795."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 6795,
+        "start": 6790,
+        "end": 6800,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 6795,
+        "dot_value": 6790,
+        "content_type": "whole_number",
+        "labels": [
+          "6790",
+          "6800"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 6795.0,
+        "target": 6795.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "30f0baf3de26d6249cf8dada6851db579cbdee16692b6c776f5e3f0ca7c70671",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "6790",
+            "6791",
+            "6792",
+            "6793",
+            "6794",
+            "6795",
+            "6796",
+            "6797",
+            "6798",
+            "6799",
+            "6800",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c3f5929066426b08f995",
+      "replay_digest": "81965dcf27c7f53d03db63142866cdc0ce557248eef15274d12e78d9c403a253"
     },
     {
+      "node_id": "mat_g3_na_q1_0",
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -126,33 +750,1506 @@
           "value": 3760,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3761,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 3000 + 700 + 60 + 1.",
+        "Add the parts together to get 3761."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 3761,
+        "start": 3760,
+        "end": 3770,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 3761,
+        "dot_value": 3761,
+        "content_type": "whole_number",
+        "labels": [
+          "3760",
+          "3770"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 3761.0,
+        "target": 3761.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b243f51a30aff0635b0a489e2336ed76d7a90a0b825b2aa9aaa2a1a4a5544006",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "3760",
+            "3761",
+            "3762",
+            "3763",
+            "3764",
+            "3765",
+            "3766",
+            "3767",
+            "3768",
+            "3769",
+            "3770"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "e3de35d3e3c403545b2f",
+      "replay_digest": "b32240e952795d2cf2fc2d989153e339108a5928ce7edc3d750bb940002f71c8"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 700,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 4143.",
+      "correct_answer": 4143,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 4143,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 1 block.",
+        "Tens: 4 blocks.",
+        "Ones: 3 blocks.",
+        "Add the value of every block together to get the total, 4143."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 4,
+        "hundreds": 1,
+        "tens": 4,
+        "ones": 3,
+        "total_value": 4143,
+        "number": 4143,
+        "question_type": "build_number",
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "f47b58b150d2acd25ab13a19bc387f9a0be781d090879cab69887bd6472df6e0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 35,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 8,
+          "input_count": 0,
+          "text_labels": [
+            "■ = 1000",
+            "■ = 100",
+            "▮ = 10",
+            "• = 1",
+            "Your blocks: None = 0",
+            "1000s",
+            "-",
+            "0",
+            "+",
+            "100s",
+            "10s",
+            "1s"
+          ],
+          "distinct_colours": [
+            "#a78bfa",
+            "#10b981",
+            "#3b82f6",
+            "#b91c5c",
+            "hsl(var(--text-muted)",
+            "#a78bfa20",
+            "#10b98120",
+            "#3b82f620",
+            "#b91c5c20"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "033e818e53434e85cd98",
+      "replay_digest": "a79300c9d9036d20cad56015a872e79027a4f51a94d51995c4a638d2434017c3"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What number is marked on the number line?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9181,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9182,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9184,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9183,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9182,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 100 + 80 + 2.",
+        "Add the parts together to get 9182."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 9182,
+        "start": 9180,
+        "end": 9190,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 9182,
+        "dot_value": 9182,
+        "content_type": "whole_number",
+        "labels": [
+          "9180",
+          "9190"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 9182.0,
+        "target": 9182.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "5b6bfd25a9cc47512eacf7544438d7e71d8c785a7a9007ec0f92c92066ab187e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "9180",
+            "9181",
+            "9182",
+            "9183",
+            "9184",
+            "9185",
+            "9186",
+            "9187",
+            "9188",
+            "9189",
+            "9190"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "764a3c066b5ae708dd3a",
+      "replay_digest": "b12434228af5873db81caeb09d2bcd17d388a7493277cd6c8871aed018063231"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. What number do the blocks show?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3223,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3132,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3222,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3232,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 3232,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 2 blocks.",
+        "Tens: 3 blocks.",
+        "Ones: 2 blocks.",
+        "Add the value of every block together to get the total, 3232."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 3,
+        "hundreds": 2,
+        "tens": 3,
+        "ones": 2,
+        "total_value": 3232,
+        "number": 3232,
+        "question_type": "identify_value",
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "b083bccc7820dcdbb61c93b85695f2531e754a3f09233c02ac701c648176d607",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7aa57ae1453c2f664982",
+      "replay_digest": "f276b0b55115bb9f55ddc28e8a8e6491c27879417be27d6b4f8797620bbe5a26"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1778,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1780,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1777,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1779,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1778,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 1000 + 700 + 70 + 8.",
+        "Add the parts together to get 1778."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 1778,
+        "start": 1770,
+        "end": 1780,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 1778,
+        "dot_value": 1778,
+        "content_type": "whole_number",
+        "labels": [
+          "1770",
+          "1780"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 1778.0,
+        "target": 1778.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "d0d1b89dfa8b1a6a3fc7b2380ee6a2bf450b6302e64179c900803770aaae75e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "1770",
+            "1771",
+            "1772",
+            "1773",
+            "1774",
+            "1775",
+            "1776",
+            "1777",
+            "1778",
+            "1779",
+            "1780"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4c43fdaf6cb5fec69e5f",
+      "replay_digest": "68a15745c0aa1aa10f4fb89955e4ef5c2ed50ec2a4dca773c7a12c74476e8399"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 900,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 27.",
+      "correct_answer": 27,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 27,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Tens: 2 blocks.",
+        "Ones: 7 blocks.",
+        "Add the value of every block together to get the total, 27."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 0,
+        "hundreds": 0,
+        "tens": 2,
+        "ones": 7,
+        "total_value": 27,
+        "number": 27,
+        "question_type": "build_number",
+        "is_interactive": true
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "7d42532ef53d1a8ce319719bef1a5231f0fc68f89daf5f52d2ce42dd8d6287fa",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 4,
+          "input_count": 0,
+          "text_labels": [
+            "▮ = 10",
+            "• = 1",
+            "Your blocks: None = 0",
+            "10s",
+            "-",
+            "0",
+            "+",
+            "1s"
+          ],
+          "distinct_colours": [
+            "#3b82f6",
+            "#b91c5c",
+            "hsl(var(--text-muted)",
+            "#3b82f620",
+            "#b91c5c20"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9e8c86256c08d8892152",
+      "replay_digest": "95cf6d3a7579addac993e7f96a17ce1759850b5da82f5fd1b1ce8d028d10b6de"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 901,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 22 on the number line.",
+      "correct_answer": 22,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 22,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 20 + 2.",
+        "Add the parts together to get 22."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 22,
+        "start": 20,
+        "end": 30,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 22,
+        "dot_value": 20,
+        "content_type": "whole_number",
+        "labels": [
+          "20",
+          "30"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 22.0,
+        "target": 22.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9b95d1306129b25b180f57890e17f90683b6d2aa2249abb9db36c154994f1780",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "46a11e147f67ea9c5424",
+      "replay_digest": "4cfc780c44ec9a431e0883837d108c2a3bf99e169d8cea461c01c0d208d436e6"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 1000,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 2625 on the number line.",
+      "correct_answer": 2625,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": 2625,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 2000 + 600 + 20 + 5.",
+        "Add the parts together to get 2625."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 2625,
+        "start": 2620,
+        "end": 2630,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 2625,
+        "dot_value": 2620,
+        "content_type": "whole_number",
+        "labels": [
+          "2620",
+          "2630"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 2625.0,
+        "target": 2625.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a963da948dacc8e83b875bcf420a5137e3e43009093372e394a86b387c7d9c7e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "2620",
+            "2621",
+            "2622",
+            "2623",
+            "2624",
+            "2625",
+            "2626",
+            "2627",
+            "2628",
+            "2629",
+            "2630",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f5b57459ad534626a263",
+      "replay_digest": "04cbc576359239ddccb1aff84e1655135e2b3c9e6eefe07e490c7e28026d3762"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "What number do the blocks show?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PlaceValueBlocks",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4254,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4245,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4235,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4245,
+      "hints": [
+        "Count how many of each size of block there are.",
+        "Multiply each block's own value by how many there are, then add all the totals together.",
+        "Hundreds: 2 blocks.",
+        "Tens: 4 blocks.",
+        "Ones: 5 blocks.",
+        "Add the value of every block together to get the total, 4245."
+      ],
+      "visual_type": "PlaceValueBlocks",
+      "visual_payload": {
+        "thousands": 4,
+        "hundreds": 2,
+        "tens": 4,
+        "ones": 5,
+        "total_value": 4245,
+        "number": 4245,
+        "question_type": "identify_value",
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PlaceValueBlocks",
+        "renderer_input_digest": "3bf21760bcddf750e759397c7c7c9a471acb6806463cbb64e9a48a64b693d766",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PlaceValueBlocks",
+          "element_count": 5,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9ae3dfe7dd5cfb4090ad",
+      "replay_digest": "fca517a3790b8ce347db609a1f3f01aec00eb73baefdd39ae8965dd67740f62d"
+    },
+    {
+      "node_id": "mat_g3_na_q1_0",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4619,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4621,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4622,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4620,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4620,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 4000 + 600 + 20.",
+        "Add the parts together to get 4620."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 4620,
+        "start": 4610,
+        "end": 4630,
+        "interval": 1,
+        "divisions": 20,
+        "correct_position": 4620,
+        "dot_value": 4620,
+        "content_type": "whole_number",
+        "labels": [
+          "4610",
+          "4630"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 4620.0,
+        "target": 4620.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "fdded3327c6b31888e1b70269e518b1e40d6df3938002b8baff85443086c890d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 47,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "4610",
+            "4611",
+            "4612",
+            "4613",
+            "4614",
+            "4615",
+            "4616",
+            "4617",
+            "4618",
+            "4619",
+            "4620",
+            "4621",
+            "4622",
+            "4623",
+            "4624",
+            "4625",
+            "4626",
+            "4627",
+            "4628",
+            "4629",
+            "4630"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "178035fe2930dca05b55",
+      "replay_digest": "a7ec68530dcd0d23849a94082e59c9c84f3410b58594415cde34ea8da89a4a72"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "760c0f936742081411e4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly directs learner to use base-10 blocks to represent 1410 without alternative interpretations of the task or number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using blocks to show a specific number is a standard, educationally sound activity for teaching place value representation in Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are simple and age-appropriate. Layout shows block symbols and labels matching base-10 place values clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints decompose only hundreds and tens places (4 and 1 blocks respectively) but omit thousands (1 block) and ones (0 blocks) from explicit enumeration, leaving partial guidance for 1410's full composition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "e5a045ec98d406f86058",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Task is unambiguous: learner must represent 5688 using base-10 blocks with clear visual affordances."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Representing four-digit numbers with blocks is grade-appropriate and aligns with place value instruction in Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions and visual layout provide clear guidance on block types and their place values."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints list hundreds, tens, and ones blocks (6, 8, 8) but omit thousands place (5 blocks) from explicit decomposition guidance, providing incomplete scaffolding for representing 5688."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "f646b3942b453c5b376b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks which number is marked on the number line; the visual shows a specific marked position, making the task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading a number from a marked position on a number line is a standard place value activity for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Stem is direct and options are clearly numbered choices; visual shows a number line with distinct labels."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 9000 + 500 + 20 + 1 correctly decomposes to 9521; all arithmetic in hints is accurate and complete."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "2b0391c16e34f4b8cd55",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner must move a dot to show 7844 on a number line; the task and target number are clearly stated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Positioning a dot on a number line to represent a specific number is a valid place value exercise for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are simple and visual provides number line labels from 7840 to 7850 for clear positioning context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 7000 + 800 + 40 + 4 = 7844 is mathematically correct; hints accurately guide decomposition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "d975f0e5c5d4dcb31d5b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks learner to identify what number the displayed blocks show; the visual configuration of blocks is the sole determiner."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading a number represented by base-10 blocks is a foundational place value task appropriate for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format is clear; stem specifies that blocks show a number to be identified."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints enumerate hundreds, tens, and ones (5, 5, 4 blocks) but omit thousands place (7 blocks) from explicit decomposition, resulting in incomplete guidance for determining that blocks represent 7554."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "ce0fb97320f43a5fa24a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner is instructed to move a dot to mark 9630 on the number line; the target number is explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Positioning a marker on a number line to show a given number reinforces place value and number magnitude understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are direct; number line shows labels spanning 9620 to 9640 with 9630 included."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 9000 + 600 + 30 correctly represents 9630; the omission of zero ones is standard and mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "c3f5929066426b08f995",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner must move a dot to show 6795 on a number line; the specific number and task are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Marking a four-digit number on a number line is a valid place value and number sense activity for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are clear and visual shows number line labels from 6790 to 6800 enabling accurate positioning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 6000 + 700 + 90 + 5 = 6795 is mathematically accurate and completely decomposes the target number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "e3de35d3e3c403545b2f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks what number is marked on the number line; a single marked position makes the answer unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying a marked number on a number line is a standard, developmentally appropriate place value task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question is direct; number line shows clear labels from 3760 to 3770 with marked position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 3000 + 700 + 60 + 1 = 3761 is complete and correct; all place values are accurately represented."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "033e818e53434e85cd98",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner is instructed to use base-10 blocks to show 4143; the number and task are clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Representing a four-digit number with blocks reinforces place value understanding and is appropriate for Grade 3 Quarter 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are simple and visual shows block symbols and place value labels clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints enumerate hundreds, tens, and ones (1, 4, 3 blocks) but omit the thousands place (4 blocks) from explicit decomposition, resulting in incomplete scaffolding for 4143."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "764a3c066b5ae708dd3a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite thematic framing about Sir Rez and dance shoes, the mathematical question is clear: identify the marked number on the number line."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The theme context does not interfere with the mathematical validity of reading a number line; the activity remains educationally sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies the mathematical task (finding the marked number); theme elements do not create ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 9000 + 100 + 80 + 2 = 9182 is complete and accurate; all place value components are correctly represented."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "7aa57ae1453c2f664982",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite thematic framing about Isko and basketballs, the mathematical question is unambiguous: identify what number the blocks show."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Theme does not affect the validity of the place value task; reading a number from base-10 blocks remains a sound mathematical activity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The core mathematical question is clearly stated and theme does not create confusion about the task."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints identify hundreds, tens, and ones (2, 3, 2 blocks) but omit the thousands place (3 blocks) from enumeration, leaving incomplete guidance for recognizing 3232."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "4c43fdaf6cb5fec69e5f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks what number is marked on the number line; a single marked position provides an unambiguous answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying a number from a marked position on a number line is standard Grade 3 place value instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question is direct and number line clearly shows labels from 1770 to 1780 establishing context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 1000 + 700 + 70 + 8 = 1778 is complete and correct; all place values are properly represented."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "9e8c86256c08d8892152",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner must represent 27 using base-10 blocks; the number and task are explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Representing a two-digit number with blocks is an appropriate foundational activity for Grade 3 place value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are simple and visual shows block symbols with place value labels for tens and ones."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Hints correctly enumerate tens (2) and ones (7) blocks, completely and accurately decomposing 27."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "46a11e147f67ea9c5424",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner is instructed to move a dot to show 22 on a number line; the task and number are clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Positioning a marker on a number line to represent a given number is developmentally appropriate for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are direct; number line spans 20 to 30 with 22 labeled for easy positioning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 20 + 2 = 22 is correct and complete; the decomposition accurately represents the number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "f5b57459ad534626a263",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner must move a dot to show 2625 on a number line; the specific target and task are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Positioning a four-digit number on a number line is a valid place value activity appropriate for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions are clear and visual shows number line labels from 2620 to 2630 enabling precise positioning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 2000 + 600 + 20 + 5 = 2625 is mathematically complete and accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "9ae3dfe7dd5cfb4090ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem asks what number the blocks show with multiple choice format; the task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading a number from base-10 blocks in a multiple-choice context is a standard place value assessment for Grade 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format is clear and stem explicitly asks learner to identify the number from blocks."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hints enumerate hundreds, tens, and ones (2, 4, 5 blocks) but omit the thousands place (4 blocks), providing incomplete decomposition for determining 4245."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "sample_id": "178035fe2930dca05b55",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Learner is asked what number is marked on the number line; a single marked position provides an unambiguous answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying a marked number on a number line is a standard, grade-appropriate place value task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Question is direct and number line displays clear labels from 4610 to 4630 with marked position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Expanded form 4000 + 600 + 20 = 4620 is complete and correct; omission of zero ones is standard practice."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "represent",
+      "clause": "Represent",
+      "verdict": "PASS",
+      "reasoning": "All 17 samples explicitly ask learners to represent numbers through placement of blocks or positioning on number lines, directly fulfilling the action specified in the requirement.",
+      "sample_ids": [
+        "760c0f936742081411e4",
+        "e5a045ec98d406f86058",
+        "f646b3942b453c5b376b",
+        "2b0391c16e34f4b8cd55",
+        "d975f0e5c5d4dcb31d5b",
+        "ce0fb97320f43a5fa24a",
+        "c3f5929066426b08f995",
+        "e3de35d3e3c403545b2f",
+        "033e818e53434e85cd98",
+        "764a3c066b5ae708dd3a",
+        "7aa57ae1453c2f664982",
+        "4c43fdaf6cb5fec69e5f",
+        "9e8c86256c08d8892152",
+        "46a11e147f67ea9c5424",
+        "f5b57459ad534626a263",
+        "9ae3dfe7dd5cfb4090ad",
+        "178035fe2930dca05b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample involves a specific numerical value as the core object of representation or identification, with numbers explicitly named in stems and answers throughout.",
+      "sample_ids": [
+        "760c0f936742081411e4",
+        "e5a045ec98d406f86058",
+        "f646b3942b453c5b376b",
+        "2b0391c16e34f4b8cd55",
+        "d975f0e5c5d4dcb31d5b",
+        "ce0fb97320f43a5fa24a",
+        "c3f5929066426b08f995",
+        "e3de35d3e3c403545b2f",
+        "033e818e53434e85cd98",
+        "764a3c066b5ae708dd3a",
+        "7aa57ae1453c2f664982",
+        "4c43fdaf6cb5fec69e5f",
+        "9e8c86256c08d8892152",
+        "46a11e147f67ea9c5424",
+        "f5b57459ad534626a263",
+        "9ae3dfe7dd5cfb4090ad",
+        "178035fe2930dca05b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "requirement_id": "up_to_10000",
+      "clause": "up to 10 000",
+      "verdict": "PASS",
+      "reasoning": "All numbers used in samples fall within the specified range: the smallest is 22 and the largest is 9630, confirming that every sample respects the up to 10 000 constraint.",
+      "sample_ids": [
+        "760c0f936742081411e4",
+        "e5a045ec98d406f86058",
+        "f646b3942b453c5b376b",
+        "2b0391c16e34f4b8cd55",
+        "d975f0e5c5d4dcb31d5b",
+        "ce0fb97320f43a5fa24a",
+        "c3f5929066426b08f995",
+        "e3de35d3e3c403545b2f",
+        "033e818e53434e85cd98",
+        "764a3c066b5ae708dd3a",
+        "7aa57ae1453c2f664982",
+        "4c43fdaf6cb5fec69e5f",
+        "9e8c86256c08d8892152",
+        "46a11e147f67ea9c5424",
+        "f5b57459ad534626a263",
+        "9ae3dfe7dd5cfb4090ad",
+        "178035fe2930dca05b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "requirement_id": "pictorial_models",
+      "clause": "pictorial models",
+      "verdict": "PASS",
+      "reasoning": "Every sample uses visual pictorial representations: 8 samples employ PlaceValueBlocks showing individual block units and 9 samples use NumberLine showing numeric positions, fulfilling pictorial representation requirement.",
+      "sample_ids": [
+        "760c0f936742081411e4",
+        "e5a045ec98d406f86058",
+        "f646b3942b453c5b376b",
+        "2b0391c16e34f4b8cd55",
+        "d975f0e5c5d4dcb31d5b",
+        "ce0fb97320f43a5fa24a",
+        "c3f5929066426b08f995",
+        "e3de35d3e3c403545b2f",
+        "033e818e53434e85cd98",
+        "764a3c066b5ae708dd3a",
+        "7aa57ae1453c2f664982",
+        "4c43fdaf6cb5fec69e5f",
+        "9e8c86256c08d8892152",
+        "46a11e147f67ea9c5424",
+        "f5b57459ad534626a263",
+        "9ae3dfe7dd5cfb4090ad",
+        "178035fe2930dca05b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    },
+    {
+      "requirement_id": "numerals",
+      "clause": "numerals",
+      "verdict": "PASS",
+      "reasoning": "All samples require learners to work with numerals as answers (fill-in responses or multiple-choice selections) and read numerals from visuals or labels, demonstrating comprehensive use of numeral representation.",
+      "sample_ids": [
+        "760c0f936742081411e4",
+        "e5a045ec98d406f86058",
+        "f646b3942b453c5b376b",
+        "2b0391c16e34f4b8cd55",
+        "d975f0e5c5d4dcb31d5b",
+        "ce0fb97320f43a5fa24a",
+        "c3f5929066426b08f995",
+        "e3de35d3e3c403545b2f",
+        "033e818e53434e85cd98",
+        "764a3c066b5ae708dd3a",
+        "7aa57ae1453c2f664982",
+        "4c43fdaf6cb5fec69e5f",
+        "9e8c86256c08d8892152",
+        "46a11e147f67ea9c5424",
+        "f5b57459ad534626a263",
+        "9ae3dfe7dd5cfb4090ad",
+        "178035fe2930dca05b55"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "633bae883a8fa9b4d19bdc24e40439b8b69669196fdcdf06fa8737deda483f95",
+      "clause_ids": [
+        "represent",
+        "numbers",
+        "up_to_10000",
+        "pictorial_models",
+        "numerals"
+      ],
+      "response_ref": ".responses/s5-phaseC-w13-haiku45-20260925.json",
+      "response_digest": "a8e503b717f660577256fc2b1a71d4d1db24ec4bf23f010c04eebdc76db6e55d",
+      "prompt_ref": ".responses/s5-phaseC-w13-haiku45-20260925.prompt.txt",
+      "prompt_digest": "82088d26de7f5ac1cdb93cc0504fd04c96a3cccea7cc344d01df6e41f81a5240",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Both halves of the competency are exercised, pictorial models and numerals, in both directions. The flaw is one option set: the blocks item with key 7554 offers 21 alongside 7544 and 7454, and a two-digit value cannot arise from any reading of a four-digit block picture, so that option is dead weight a pupil discards immediately."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Two genuinely different pictorial models are used, base-10 blocks and the number line, and each is presented in both directions, once asking the pupil to build the representation for a given numeral and once asking for the numeral shown by the representation."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Numerals are four digits throughout, which is what Grade 3 Quarter 1 establishes, and the instructions are single imperatives such as moving a dot to show a value on the number line, with no multi-clause reasoning."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two interaction types appear, a constructed representation and a read-and-choose, and they are crossed against the two model types, so the four combinations of model and direction are all represented in eight samples."
+      "rationale": "All problems appropriately scaffold place value understanding for Grade 3 Quarter 1. Tasks range from two-digit numbers (22, 27) to four-digit numbers, matching developmental expectations with visual support through base-10 blocks and number lines."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The near-miss options in the number line items, 9520 through 9523 around the key, force attention to the ones digit on a scaled line, which is exactly the representational precision this competency is about rather than an arithmetic skill."
+      "rationale": "Every sample directly addresses representing numbers using pictorial models and numerals as stated. Base-10 blocks and number lines are authentic pictorial representations, and all problems require reading or writing numerals as the core answer."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The five stated requirements (represent, numbers, up to 10 000, pictorial models, numerals) fully capture the competency's scope without omission of essential elements or addition of unrelated demands.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The decomposition identifies action (represent), object (numbers), range constraint (up to 10 000), and two core tools (pictorial models and numerals). These map exactly to the original competency statement with no lossless gaps.",
+        "requirement_ids": [
+          "represent",
+          "numbers",
+          "up_to_10000",
+          "pictorial_models",
+          "numerals"
+        ]
+      },
+      "clause_ids": [
+        "represent",
+        "numbers",
+        "up_to_10000",
+        "pictorial_models",
+        "numerals"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The collection demonstrates both pictorial model types (base-10 blocks in 8 samples, number lines in 9 samples) and both primary interaction modes (set/fill-in-blank in 9 samples, read multiple-choice in 8 samples). Coverage spans competency fully.",
+      "clause_ids": [
+        "represent",
+        "numbers",
+        "up_to_10000",
+        "pictorial_models",
+        "numerals"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values run from 1410 to 9630, all strictly below the stated ceiling of 10 000 and all four-digit, so the representations stretch to the top of the range the competency names without crossing it."
+      "rationale": "Numbers span the full up-to-10 000 range with appropriate distribution: two-digit (22, 27), low thousands (1410, 1778), mid thousands (2625, 3232, 3761, 4143, 4245, 4620), high thousands (5688, 6795, 7554, 7844, 9182, 9521, 9630). No clustering or gaps."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Sufficient variants demonstrated across model types (PlaceValueBlocks, NumberLine), interaction modes (set, read), number ranges (single through four digits), and experience levels (standard, hint_gated, mastery_drill, scaffolded). Theming present in 2 samples without interference."
     }
   },
   "overall": "CONCERN"

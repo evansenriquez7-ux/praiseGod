@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_mg_q2_3",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Measure capacity in liters (L) and/or milliliters (mL), using appropriate measuring tools.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "measure_capacity",
+      "clause": "Measure capacity"
+    },
+    {
+      "kind": "attribute",
+      "id": "capacity_of_a_container",
+      "clause": "capacity"
+    },
+    {
+      "kind": "unit",
+      "id": "liters_and_or_milliliters",
+      "clause": "liters (L) and/or milliliters (mL)"
+    },
+    {
+      "kind": "object",
+      "id": "measuring_tools_for_capacity",
+      "clause": "measuring tools"
+    }
+  ],
+  "packet_digest": "459c0c8aa3be65571184a4050cfc4cb90aa729410c734acce11c649d4e61a056",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,106 +42,344 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "1ab291e9c4fa6b800e71",
+    "91261c9ae463f3dfcbbb",
+    "7a3b29a34e309ce12101",
+    "cb5f710f766786f334c9",
+    "6388c343c1f4720d46bf",
+    "520cd5e27763a1cf8da7",
+    "92fb1ce13acec50433b6",
+    "de3f2383fd932ce2e2ca",
+    "561a1bfe43fb4aec3d9f",
+    "6993e8a4f03e9444ac90",
+    "711dc3cb1968a2cf3409",
+    "b5767dbfe223eb9d7b1f",
+    "73a611cda79e501a09e8",
+    "1160d3b8564b562baec0",
+    "55100390720b92d1dda9",
+    "6d32946b8ec9b348bffa",
+    "3f427dfd607b533323b1"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_mg_q2_3",
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "What is the capacity of the container in mL?",
-      "correct_answer": 56,
-      "options": [
-        {
-          "key": "A",
-          "value": 55,
-          "text": "55",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 57,
-          "text": "57",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 58,
-          "text": "58",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 56,
-          "text": "56",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "What is the capacity of the container in mL?",
-      "correct_answer": 69,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
           "value": 70,
-          "text": "70",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 71,
-          "text": "71",
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 68,
-          "text": "68",
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 69,
-          "text": "69",
+          "value": 55,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 55,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 55 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 55,
+        "unit": "mL",
+        "scale_max": 70,
+        "tick_interval": 5,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "e17cc70e3ef469feaea0d0bb50f5847cbac8301f9051c066698555d4a3e6db54",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "mL",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1ab291e9c4fa6b800e71",
+      "replay_digest": "b030097d2bbbb9e931ef544ae3dad57be7451eb577334a34f8e9960b64519979"
     },
     {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 16 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 16,
+        "unit": "L",
+        "scale_max": 20,
+        "tick_interval": 2,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "237382677840d095c3f877c4345a4aca989595ba16d988ecebc391db3172d4e9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "L",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "91261c9ae463f3dfcbbb",
+      "replay_digest": "752212c1030fdd45de95e005a274d46ede224c1cf9562300f2d2af6412c72b98"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 70 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 70,
+        "unit": "mL",
+        "scale_max": 90,
+        "tick_interval": 10,
+        "instrument": "cylinder",
+        "object_label": "the bottle"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "5ad27d807bb9cbbaf679f85cbeffa2db5f2f0bfb5ea2bb92467539c81c08c9c8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "mL",
+            "the bottle"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7a3b29a34e309ce12101",
+      "replay_digest": "2c9898c30580ac4b57934d4b4cfdcc75d0c9418b4d7a6531feeefd4da456fe0b"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 14,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in L.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -119,7 +388,7 @@
         },
         {
           "key": "B",
-          "value": 13,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -129,16 +398,84 @@
         },
         {
           "key": "D",
-          "value": 15,
+          "value": 12,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 14,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 14 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 14,
+        "unit": "L",
+        "scale_max": 18,
+        "tick_interval": 2,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "8e9bf0f6887e1b516931c260cceccb003f9b70a0ccc8fcf86ad56bde95b9f49e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "L",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cb5f710f766786f334c9",
+      "replay_digest": "030f4056fd36b47a6927532bfb6cfc9b0499ca8faf22fca297dcf38f5605eaea"
     },
     {
+      "node_id": "mat_g3_mg_q2_3",
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -147,12 +484,402 @@
         },
         {
           "key": "B",
-          "value": 19,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 18 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 18,
+        "unit": "L",
+        "scale_max": 24,
+        "tick_interval": 2,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "47869539b1002c6a0eb2d15640a65135077b49f9a1d767ac8e6b7ec21ea2a88f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 33,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "L",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6388c343c1f4720d46bf",
+      "replay_digest": "9ffff28945c706cf506a5fa75d40099cbe1b1852e12bd5a61e09c240ca9e7011"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 275,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 300,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 350,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 275,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 275 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 275,
+        "unit": "L",
+        "scale_max": 350,
+        "tick_interval": 25,
+        "instrument": "cylinder",
+        "object_label": "the bottle"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "36de470b71a321f61908cc5ec7d381aa38de6d402210e2f32f574000e93d8758",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "50",
+            "100",
+            "150",
+            "200",
+            "250",
+            "300",
+            "350",
+            "L",
+            "the bottle"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "520cd5e27763a1cf8da7",
+      "replay_digest": "eeadb8d8683de16fa0bf07fc3d9e7b0497556e91d3515ab8c06a2c6c0d76f79b"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in L.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 250,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 175,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 200,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 200,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 200 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 200,
+        "unit": "L",
+        "scale_max": 250,
+        "tick_interval": 25,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "20f05f2aff9d703829a9962a53ddde29c2b75166fe5b3e86b5db8f04d597fe45",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "25",
+            "50",
+            "75",
+            "100",
+            "125",
+            "150",
+            "175",
+            "200",
+            "225",
+            "250",
+            "L",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "92fb1ce13acec50433b6",
+      "replay_digest": "817d3c85f79b2d7021b728c7794b3db5c94ea47c0ecbfc53eff2e117f94d4444"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3250,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3750,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3000,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 3000 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 3000,
+        "unit": "mL",
+        "scale_max": 3750,
+        "tick_interval": 250,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "450aeac23769e6db056e3e39f6500682e2a432aae20cfb054b99b4ea8c10e65d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "500",
+            "1000",
+            "1500",
+            "2000",
+            "2500",
+            "3000",
+            "3500",
+            "mL",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "de3f2383fd932ce2e2ca",
+      "replay_digest": "004a042843a6a1413443784f9aec2d45933a39b711f47f37295d302e587b55e8"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
           "is_correct": false
         },
         {
@@ -160,122 +887,1398 @@
           "value": 17,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 13 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 13,
+        "unit": "L",
+        "scale_max": 17,
+        "tick_interval": 1,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "f52a5b0338bd19a961f726d33eaee1b37729cc957d8fe29edf06f6e27ee8b580",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "L",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "561a1bfe43fb4aec3d9f",
+      "replay_digest": "db21228ed3c64d8ddb9182380781dedb0d68fe0b528292db4861e719cae19008"
     },
     {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 285,
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 286,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 285,
-          "is_correct": true
+          "value": 14,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 284,
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 16,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 16 L."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 16,
+        "unit": "L",
+        "scale_max": 20,
+        "tick_interval": 2,
+        "instrument": "cylinder",
+        "object_label": "the bottle"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "427270a55ff5ad247db6817b15dc1257fbe917040b60c19fdc39a640f6d11d0d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "L",
+            "the bottle"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6993e8a4f03e9444ac90",
+      "replay_digest": "6ef5250d8550bd41d89a243169b001e1b17cfe00ca3dec7cfd40acde740eeb5f"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "💃 Ate Gab has a math challenge about costumes. Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 287,
+          "value": 55,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 50 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 50,
+        "unit": "mL",
+        "scale_max": 65,
+        "tick_interval": 5,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "649fd035cedfe44209fcafb4bc152024089e23e20bd598e226693c78c696ec15",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "mL",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "711dc3cb1968a2cf3409",
+      "replay_digest": "d85b0aadc3195d01ef29b7efa8d21bc2ded70128e82b2fb5393ba50aa7081515"
     },
     {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "What is the capacity of the container in L?",
-      "correct_answer": 192,
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 191,
+          "value": 1750,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 194,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 192,
+          "value": 2000,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 193,
+          "value": 2250,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2000,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 2000 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 2000,
+        "unit": "mL",
+        "scale_max": 2500,
+        "tick_interval": 250,
+        "instrument": "cylinder",
+        "object_label": "the bottle"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "d37248997520d739ea0160a94e6611bf572779c1881dd534c1b960dbbe4b2133",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "250",
+            "500",
+            "750",
+            "1000",
+            "1250",
+            "1500",
+            "1750",
+            "2000",
+            "2250",
+            "2500",
+            "mL",
+            "the bottle"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b5767dbfe223eb9d7b1f",
+      "replay_digest": "a578b949c068683ac03e94d8193e43b8638c0b0d06015d8f6ebb54cee52d637b"
     },
     {
-      "seed": 502,
-      "formatter": "cloze",
-      "question_text": "What is the capacity of the container in mL?",
-      "correct_answer": 2893,
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 900,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 2894,
-          "text": "2894",
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2895,
-          "text": "2895",
-          "is_correct": false
+          "value": 1,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 2892,
-          "text": "2892",
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2893,
-          "text": "2893",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 1 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 1,
+        "unit": "mL",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "a32ac79b22b5084c6cf03f1fcc5fa615fd9100326faee30cc1b2fd803a20cbce",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "mL",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "73a611cda79e501a09e8",
+      "replay_digest": "3a121a87b9fc06514d50b4de80190a18f15ccdd7ef7fa9be7593fc217c3a3ef7"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 1 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 1,
+        "unit": "mL",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "3f75c900bc68adec36f279c260f1190e496c0cd10e590d9cf8f33d9e7e99ee13",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "mL",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1160d3b8564b562baec0",
+      "replay_digest": "bc1339e716c772e68445819af742826736264d3d9d38a3acd5b2d7abf7c05f3e"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 8 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 8,
+        "unit": "mL",
+        "scale_max": 10,
+        "tick_interval": 1,
+        "instrument": "cylinder",
+        "object_label": "the jug"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "c540634b08e3afa78814eead1c374eb69e60f244b5a6d5081a9abf31ec4cb35f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "mL",
+            "the jug"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "55100390720b92d1dda9",
+      "replay_digest": "1978c6b17bb96c67b5d1d64594ed123dd7896e7db76cfff8529f1e8bd989c214"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 1001,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 40 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 40,
+        "unit": "mL",
+        "scale_max": 50,
+        "tick_interval": 5,
+        "instrument": "cylinder",
+        "object_label": "the bottle"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "e102ab41a4fb17797cc244134cdded8ed7293d23031864e9cb51f78b70dde72c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "mL",
+            "the bottle"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "6d32946b8ec9b348bffa",
+      "replay_digest": "ff16b8eb26b3f1b1a6f93345bfb3f1cbde9be8bf1fe5341132e7f8114ba4cee2"
+    },
+    {
+      "node_id": "mat_g3_mg_q2_3",
+      "seed": 1002,
+      "formatter": "read_mcq",
+      "question_text": "Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "ScaleRead",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "Read the measuring cylinder: find the mark at the top of the liquid.",
+        "The capacity shown is 1 mL."
+      ],
+      "visual_type": "ScaleRead",
+      "visual_payload": {
+        "reading": 1,
+        "unit": "mL",
+        "scale_max": 6,
+        "tick_interval": 1,
+        "instrument": "cylinder",
+        "object_label": "the container"
+      },
+      "visual_render": {
+        "visual_type": "ScaleRead",
+        "renderer_input_digest": "a32ac79b22b5084c6cf03f1fcc5fa615fd9100326faee30cc1b2fd803a20cbce",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "ScaleRead",
+          "element_count": 21,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "mL",
+            "the container"
+          ],
+          "distinct_colours": [
+            "#475569",
+            "#f8fafc",
+            "#60a5fa,",
+            "#2563eb)",
+            "#334155",
+            "#0f172a"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3f427dfd607b533323b1",
+      "replay_digest": "88823227465eb92900838a76947d43c653f59aba513d3b3fedc212c5b96dcf2c"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "1ab291e9c4fa6b800e71",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks directly for the measuring cylinder reading in milliliters. The answer of 55 mL is unambiguous. Distractors (70, 60, 11) are plausible but distinct from the target, requiring genuine scale reading rather than guessing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A container with 55 milliliters capacity is a realistic measurement task for Grade 3. Students encounter small bottles and containers in classroom and daily contexts. The scenario is developmentally appropriate and logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides clear direction: look at the measuring cylinder and state the container capacity in milliliters. The language is accessible for Grade 3 and leaves no ambiguity about the required response format or unit."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading a marking on a scale and reporting it as a measurement is mathematically valid. The value of 55 is correctly positioned among the distractors, and the hints accurately describe the reading task and expected outcome."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "91261c9ae463f3dfcbbb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests the capacity in liters with no ambiguity. The answer 16 L is distinct from distractors of 14, 20, and 8 L, requiring careful scale reading and understanding of liter units."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A jug with 16-liter capacity is a realistic scenario. Large water jugs or buckets of similar size are familiar to Grade 3 students. The measurement is within the scope of practical volumes encountered in classrooms and homes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is straightforward: examine the cylinder and give the jug's capacity in liters. Grade 3 students would understand this directive without confusion about task expectation or unit specification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading task is mathematically sound. The hints accurately reflect the item's structure and correctly describe the operation: locating the liquid level and stating the corresponding measurement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "7a3b29a34e309ce12101",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task clearly asks for bottle capacity in milliliters. The answer 70 mL is unambiguous, with plausible distractors (60, 90, 7) that require accurate scale reading to distinguish."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 70-milliliter bottle is a typical size for classroom materials, small containers, or medication bottles. Grade 3 students would reasonably encounter and manipulate containers of this volume in practical settings."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and direct: observe the measuring cylinder and report the bottle's capacity in milliliters. No ambiguity exists regarding the requested unit or the measurement focus."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical task is valid. The student must accurately read a scale marking and express it as a measurement. Hints correctly identify the procedure and expected result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "cb5f710f766786f334c9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question requests container capacity in liters with a specific answer of 14 L. Distractors (16, 7, 12) are sufficiently varied to require genuine scale reading rather than random selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 14-liter container capacity is realistic for Grade 3. Students might encounter buckets, water carriers, or large storage containers of similar volume in everyday and classroom contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides unambiguous instruction: measure the container's capacity from the cylinder display and state it in liters. The language and task structure are appropriate for Grade 3 comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading task is mathematically valid. Students correctly match the liquid level to the labeled scale position. The hints accurately guide the reader to the marking point and confirm the measurement value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "6388c343c1f4720d46bf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task is unambiguous: determine jug capacity in liters. The answer 18 L is distinct from the distractors (20, 16, 24), requiring careful observation of the liquid level on the scale."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An 18-liter jug is a familiar size in households and classrooms. Students learn to estimate and measure water containers of this magnitude. The context is age-appropriate and educationally sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is clear: look at the measuring cylinder and state the jug's capacity in liters. Grade 3 learners would readily understand the task without ambiguity regarding what is measured or how to express the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical operation is valid. Reading a marked scale at a specific point and reporting the number is a foundational measurement skill. Hints accurately describe the procedure and expected numerical outcome."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "520cd5e27763a1cf8da7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests bottle capacity in liters. The answer 275 L is unambiguous though unusual. Distractors (11, 300, 350) require reading the scale accurately."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 275-liter bottle is not a realistic measurement scenario for Grade 3. This volume exceeds what students would encounter in typical classroom, household, or even school grounds contexts. A bottle of this capacity would be an industrial storage tank, far outside the lived experience of eight-year-olds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task instruction is clear: read the cylinder and state the bottle's capacity in liters. The language is accessible and the request is unambiguous, even though the resulting value is developmentally inappropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the scale-reading operation is mathematically sound, the resulting value of 275 liters is inappropriate for Grade 3 mathematics. This measurement lies outside the numeric range students would realistically work with during capacity measurement instruction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "92fb1ce13acec50433b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests container capacity in liters without ambiguity. The answer 200 L is distinct from plausible distractors (250, 175, 8), necessitating accurate scale reading."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 200-liter container exceeds the measurement scale Grade 3 students encounter in practical settings. This volume approaches water tank or large storage barrel size, not something a third-grader would measure in classwork or daily life."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is unambiguous: measure the container capacity in liters. The task setup is clear and comprehensible for Grade 3, even though the scenario is not age-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The scale-reading mathematics is valid, but the resulting measurement of 200 liters is beyond the numeric scope Grade 3 students typically engage with for capacity. This exceeds developmentally appropriate measurement ranges."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "de3f2383fd932ce2e2ca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks for jug capacity in milliliters. The answer 3000 mL is distinct from distractors (3250, 3750, 12), requiring genuine scale reading."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 3000-milliliter jug represents 3 liters, a volume at the extreme upper boundary of what Grade 3 students would encounter. This approaches industrial quantities rather than typical classroom or household containers students measure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly stated: read the cylinder and report the jug's capacity in milliliters. No confusion exists regarding instruction or expected response format."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the mechanics of scale reading are valid, the value 3000 milliliters is disproportionate for Grade 3 capacity measurement. This volume exceeds the numeric and practical experience range appropriate for this grade level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "561a1bfe43fb4aec3d9f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question requests jug capacity in liters with an unambiguous answer of 13 L. Distractors (14, 12, 17) are close values requiring careful scale observation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 13-liter jug is a realistic and practical volume for Grade 3. Students encounter water jugs, buckets, and containers of this size in everyday contexts and classroom demonstrations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is straightforward and unambiguous: examine the measuring cylinder and state the jug capacity in liters. Language is age-appropriate for third graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The measurement task is mathematically sound. Students read the scale at the liquid level and report the corresponding value. Hints accurately guide to the correct procedure and outcome."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "6993e8a4f03e9444ac90",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic preamble about a character and dance shoes, the core task is unambiguous: read the cylinder and state bottle capacity in liters. The answer 16 L is clearly defined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 16-liter bottle is realistic and appropriate for Grade 3. The thematic context about dance shoes does not alter the mathematical validity of the measurement task, which remains centered on a practical volume."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The thematic frame mentioning dance shoes and a character creates a confusing contextual mismatch. The connection between dance footwear and measuring container capacity is unclear, potentially distracting students from the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading mathematics is valid. The 16-liter answer represents an appropriate Grade 3 measurement. Hints accurately describe the cylinder-reading procedure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "711dc3cb1968a2cf3409",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for container capacity in milliliters despite thematic personalization. The answer 50 mL is unambiguous, with distractors (50, 45, 65, 55) requiring precise scale reading."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 50-milliliter container is realistic for Grade 3. Students would measure small bottles, jars, and containers of this capacity. The measurement scale is age-appropriate and practical."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The thematic introduction about a character and costumes creates an unclear link to measuring container capacity. This contextual injection, while not directly interfering with understanding the mathematical task, adds unnecessary cognitive load through irrelevant personalization."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading operation is mathematically valid. The 50-milliliter measurement is appropriate for Grade 3. Hints correctly guide students to identify and report the liquid level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "b5767dbfe223eb9d7b1f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests bottle capacity in milliliters. The answer 2000 mL is clearly defined, though the value is extreme. Distractors (1750, 8, 2250) require accurate scale observation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "A 2000-milliliter bottle represents 2 liters, a volume at the upper limit of what Grade 3 students would reasonably measure. Most classroom and household containers students work with are considerably smaller."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is clear: read the cylinder and state the bottle capacity in milliliters. Task language is accessible for Grade 3 without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While scale-reading is mathematically valid, the 2000-milliliter value exceeds Grade 3 typical measurement range. This numeric magnitude is inappropriate for third-grade capacity work."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "73a611cda79e501a09e8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests container capacity in milliliters. The answer 1 mL is unambiguous. Distractors (2, 3, 6) are very small values requiring precise scale reading at the lower end."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 1-milliliter measurement represents a very small volume, appropriate for Grade 3 to understand the lower range of measurement capacity. Students learn that measurements exist across a wide spectrum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly stated: measure the container's capacity in milliliters using the displayed scale. No ambiguity regarding instruction or expected response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading task is mathematically sound. Reading a marking at 1 mL and reporting it accurately is valid measurement work. Hints correctly identify the procedure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "1160d3b8564b562baec0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests jug capacity in milliliters without ambiguity. The answer 1 mL is distinct from distractors (2, 6, 3) and requires careful scale reading at the very small end."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 1-milliliter jug is realistic as a very small container. Grade 3 students explore the full range of measurement scales, including extremely small volumes used in precise applications."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is unambiguous: read the cylinder and state the jug capacity in milliliters. Language is appropriate for Grade 3 understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The measurement task is mathematically valid. Accurately reading a scale at 1 mL is a legitimate Grade 3 measurement skill. Hints correctly guide to identification and reporting of the value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "55100390720b92d1dda9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for jug capacity in milliliters with a clear answer of 8 mL. Distractors (9, 10, 7) are very similar, requiring precise scale reading to select the correct value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An 8-milliliter jug represents a small but realistic container size for Grade 3. Students encounter small bottles and containers of this approximate capacity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly structured: examine the measuring cylinder and report the jug's capacity in milliliters. Instructions are unambiguous for Grade 3 readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading operation is mathematically sound. Identifying and reporting an 8-milliliter measurement is appropriate Grade 3 work. Hints accurately reflect the procedure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "6d32946b8ec9b348bffa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests bottle capacity in milliliters without ambiguity. The answer 40 mL is clearly defined, with distractors (50, 45, 35) requiring accurate scale observation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 40-milliliter bottle is a realistic size for Grade 3. Students would measure small bottles and containers of this approximate volume in classroom and household contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is straightforward: measure the bottle capacity in milliliters. The task is unambiguous and accessible for third-grade learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The measurement task is mathematically valid. Reading and reporting a 40-milliliter value is appropriate Grade 3 work. Hints accurately guide to the correct procedure and outcome."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "sample_id": "3f427dfd607b533323b1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests container capacity in milliliters. The answer 1 mL is unambiguous. Distractors (3, 6, 2) are small values requiring careful reading at the lower measurement range."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A 1-milliliter container represents the smallest practical measurement students learn. Grade 3 capacity instruction includes understanding the full range from micro to macro volumes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is clearly stated: identify and report the container's capacity in milliliters from the measuring cylinder display. No confusion regarding instruction or expected response."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scale-reading task is mathematically sound. Accurately identifying a 1-milliliter measurement on a scale is valid Grade 3 work. Hints correctly describe the reading procedure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "measure_capacity",
+      "clause": "Measure capacity",
+      "verdict": "PASS",
+      "reasoning": "Every sample directly assesses the act of measuring and reporting capacity. Students must observe a marked measuring cylinder scale and identify the liquid level to state the container's capacity. This core competency is consistently demonstrated across all 17 samples.",
+      "sample_ids": [
+        "1ab291e9c4fa6b800e71",
+        "91261c9ae463f3dfcbbb",
+        "7a3b29a34e309ce12101",
+        "cb5f710f766786f334c9",
+        "6388c343c1f4720d46bf",
+        "520cd5e27763a1cf8da7",
+        "92fb1ce13acec50433b6",
+        "de3f2383fd932ce2e2ca",
+        "561a1bfe43fb4aec3d9f",
+        "6993e8a4f03e9444ac90",
+        "711dc3cb1968a2cf3409",
+        "b5767dbfe223eb9d7b1f",
+        "73a611cda79e501a09e8",
+        "1160d3b8564b562baec0",
+        "55100390720b92d1dda9",
+        "6d32946b8ec9b348bffa",
+        "3f427dfd607b533323b1"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "requirement_id": "capacity_of_a_container",
+      "clause": "capacity",
+      "verdict": "PASS",
+      "reasoning": "The competency focus on container capacity is thoroughly demonstrated. Samples employ diverse container types: bottles, jugs, and containers. Each sample requires students to identify and report the capacity of a specific named container, directly addressing the concept that containers hold varying volumes.",
+      "sample_ids": [
+        "1ab291e9c4fa6b800e71",
+        "91261c9ae463f3dfcbbb",
+        "7a3b29a34e309ce12101",
+        "cb5f710f766786f334c9",
+        "6388c343c1f4720d46bf",
+        "520cd5e27763a1cf8da7",
+        "92fb1ce13acec50433b6",
+        "de3f2383fd932ce2e2ca",
+        "561a1bfe43fb4aec3d9f",
+        "6993e8a4f03e9444ac90",
+        "711dc3cb1968a2cf3409",
+        "b5767dbfe223eb9d7b1f",
+        "73a611cda79e501a09e8",
+        "1160d3b8564b562baec0",
+        "55100390720b92d1dda9",
+        "6d32946b8ec9b348bffa",
+        "3f427dfd607b533323b1"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "requirement_id": "liters_and_or_milliliters",
+      "clause": "liters (L) and/or milliliters (mL)",
+      "verdict": "PASS",
+      "reasoning": "Both measurement units are well represented across samples. Milliliters appear in twelve samples with values ranging from 1 to 3000 mL. Liters appear in five samples with values from 1 to 275 L. The use of both units ensures students encounter and work with each system as specified.",
+      "sample_ids": [
+        "1ab291e9c4fa6b800e71",
+        "91261c9ae463f3dfcbbb",
+        "7a3b29a34e309ce12101",
+        "cb5f710f766786f334c9",
+        "6388c343c1f4720d46bf",
+        "520cd5e27763a1cf8da7",
+        "92fb1ce13acec50433b6",
+        "de3f2383fd932ce2e2ca",
+        "561a1bfe43fb4aec3d9f",
+        "6993e8a4f03e9444ac90",
+        "711dc3cb1968a2cf3409",
+        "b5767dbfe223eb9d7b1f",
+        "73a611cda79e501a09e8",
+        "1160d3b8564b562baec0",
+        "55100390720b92d1dda9",
+        "6d32946b8ec9b348bffa",
+        "3f427dfd607b533323b1"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    },
+    {
+      "requirement_id": "measuring_tools_for_capacity",
+      "clause": "measuring tools",
+      "verdict": "PASS",
+      "reasoning": "All samples employ a measuring cylinder as the tool for determining capacity. The ScaleRead visual type consistently represents a graduated cylinder with marked intervals, which is an appropriate and standard measuring tool for capacity assessment in Grade 3 mathematics instruction.",
+      "sample_ids": [
+        "1ab291e9c4fa6b800e71",
+        "91261c9ae463f3dfcbbb",
+        "7a3b29a34e309ce12101",
+        "cb5f710f766786f334c9",
+        "6388c343c1f4720d46bf",
+        "520cd5e27763a1cf8da7",
+        "92fb1ce13acec50433b6",
+        "de3f2383fd932ce2e2ca",
+        "561a1bfe43fb4aec3d9f",
+        "6993e8a4f03e9444ac90",
+        "711dc3cb1968a2cf3409",
+        "b5767dbfe223eb9d7b1f",
+        "73a611cda79e501a09e8",
+        "1160d3b8564b562baec0",
+        "55100390720b92d1dda9",
+        "6d32946b8ec9b348bffa",
+        "3f427dfd607b533323b1"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w12-haiku45-20260925:mat_g3_mg_q2_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "459c0c8aa3be65571184a4050cfc4cb90aa729410c734acce11c649d4e61a056",
+      "clause_ids": [
+        "measure_capacity",
+        "capacity_of_a_container",
+        "liters_and_or_milliliters",
+        "measuring_tools_for_capacity"
+      ],
+      "response_ref": ".responses/s5-phaseC-w12-haiku45-20260925.json",
+      "response_digest": "1af609a842022ee73a7da3c03ca42948954bdd77cb57bbff66ea8a5e3350f071",
+      "prompt_ref": ".responses/s5-phaseC-w12-haiku45-20260925.prompt.txt",
+      "prompt_digest": "c20b0e1420594179b73f2b5993d444610e9ccc7236cd6aa2fec417d13b2adef0",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q2_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply) by a FRESH blind reviewer; the first reviewer's reply was set aside (overall contradicted its FAIL verdicts) and not filed; its claims are harvested; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "As rendered, 'What is the capacity of the container in L?' supplies no container, no graduation and no reading, so there is nothing in the item from which a capacity could be measured. The competency's requirement to use appropriate measuring tools produces no graduated cylinder, measuring jug or any other instrument in any of the eight samples."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Litres and millilitres both occur as keys, so the unit pair is covered, but the tool clause of the competency generates nothing whatsoever and there is no item distinguishing when litres are the sensible unit and when millilitres are."
-    },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Only whole-number readings are asked for, with no fractional graduations or part-filled containers, which would be the appropriate simplification for Grade 3 Quarter 2 had a reading actually been presented."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Eight samples share one stem that varies only between the two units. No pouring situation, no comparison of a container against a labelled litre bottle, and no alternate presentation of any kind is generated."
+      "verdict": "CONCERN",
+      "rationale": "Most samples employ age-appropriate values for Grade 3 (1–70 mL, 8–20 L). However, six samples present measurements that exceed typical Grade 3 lived experience: a 275-liter bottle, 200-liter container, 3000-milliliter jug, and 2000-milliliter bottle. These unrealistically large volumes are not consonant with classroom and household measurement contexts Grade 3 students would encounter."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The only axis that moves across seeds is the size of the numeral, from 14 up to 2893, while the demand on the pupil is unchanged. Enlarging the number does not make measuring capacity harder in any way this competency cares about."
+      "verdict": "PASS",
+      "rationale": "Every sample directly addresses the core competency by asking students to measure and report container capacity using a measuring cylinder visual. The samples employ both liters and milliliters as specified. The task of reading a marked scale and stating the capacity is precisely what the competency specifies."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency is fully decomposed by the four requirements. All samples demonstrate students measuring capacity, identifying capacity of containers, working with both L and mL units, and using measuring cylinders as the appropriate tool.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements—measure capacity, capacity of a container, liters and/or milliliters, and measuring tools for capacity—losslessly cover the full competency statement. Each requirement maps directly to the competency's explicit demands without gaps or overreach.",
+        "requirement_ids": [
+          "measure_capacity",
+          "capacity_of_a_container",
+          "liters_and_or_milliliters",
+          "measuring_tools_for_capacity"
+        ]
+      },
+      "clause_ids": [
+        "measure_capacity",
+        "capacity_of_a_container",
+        "liters_and_or_milliliters",
+        "measuring_tools_for_capacity"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples exhibit strong variety across container names (bottle, jug, container), measurement units (mL in 12 samples, L in 5 samples), numeric values spanning 1 mL to 3000 mL and 1 L to 275 L, and multiple experience types (standard, hint_gated, mastery_drill, scaffolded). Two samples include thematic framing, ensuring diverse presentation contexts.",
+      "clause_ids": [
+        "measure_capacity",
+        "capacity_of_a_container",
+        "liters_and_or_milliliters",
+        "measuring_tools_for_capacity"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "A container of 285 L or 192 L is not something a Grade 3 pupil measures with a classroom tool, and the options are consistently the key plus or minus one or two, as with 284, 286 and 287 around 285, which tests numeral discrimination rather than capacity."
+      "rationale": "While most samples present values appropriate for Grade 3—such as 55 mL, 70 mL, 8 mL, and 13 L—the inclusion of 275 L, 200 L, 3000 mL, and 2000 mL violates Grade 3 measurement scale expectations. Students at this level measure quantities they can visualize and manipulate, not industrial-scale or pool-scale volumes."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Variant coverage is strong. The samples include multiple container types, both measurement units, a wide range of numeric values, and several experience modes. Samples 10 and 11 include thematic personalization. The range of scale-reading tasks demonstrates flexibility in number interpretation within the measuring-cylinder format."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
