@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc8-mat_g2_na_q4_3-20260925
+  blind-reviewer-haiku45-pc8-mat_g2_na_q4_0-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g2_na_q4_3/verdicts.json
+  local_only/scratch/phaseC/mat_g2_na_q4_0/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_3-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_0-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,32 +99,45 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g2_na_q4_3
-PACKET DIGEST: 05c16bef84bc0d8ed014e326066e9dda4061feb82f500f5cd2d498a9376706bd
+NODE: mat_g2_na_q4_0
+PACKET DIGEST: 6caff8f985e0e47aee4086bdb59aa5a5463b1593824f98059437bb87c0fe3144
 COMPETENCY (Grade 2, Quarter 4, None):
-Represent and identify similar fractions with denominators 2, 3, 4, 5, 6, and 8 using groups of objects, fraction charts, fraction tiles, and the number line.
+Represent and identify unit fractions with denominators 2, 3, 4, 5, 6, and 8.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
   represent: Represent
   identify: identify
-  similar_fractions: similar fractions
+  unit_fractions: unit fractions
   denominators_2_3_4_5_6_8: with denominators 2, 3, 4, 5, 6, and 8
-  groups_of_objects: groups of objects
-  fraction_charts: fraction charts
-  fraction_tiles: fraction tiles
-  number_line: the number line
 
 SAMPLES (every one of these is real rendered output):
-  sample 9f08ef48dac0c9c76c0e  seed 42  [read_mcq]
+  sample 50f80dd4a6ec6dab4054  seed 42  [read_mcq]
       stem:    What fraction does the model show?
-      answer:  2/5
-      options: 5/2 / 2/5 / 3/5 / 5/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/5."]
+      answer:  1/3
+      options: 3/1 / 3/3 / 2/3 / 1/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/3."]
       response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
       visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 3}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 4c9b4c5db6f4f77d7df4  seed 43  [set_click]
+  sample 2d09e71c19bdc98b0fec  seed 43  [set_click]
+      stem:    Shade 1/2 of the shape.
+      answer:  1/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8cd1c25eb3eba5599bea  seed 44  [read_mcq]
+      stem:    What fraction does the model show?
+      answer:  1/4
+      options: 1/4 / 4/1 / 3/4 / 4/4
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/4."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4817a0490678d25144e0  seed 45  [set_click]
       stem:    Shade 1/8 of the shape.
       answer:  1/8
       hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/8."]
@@ -132,140 +145,124 @@ SAMPLES (every one of these is real rendered output):
       visual:  FractionShade
       rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 6c61f2c2e25dbb6a8ff3  seed 44  [read_mcq]
+  sample c902ca39ddfa0bd600f6  seed 46  [set_click]
+      stem:    Shade 1/2 of the shape.
+      answer:  1/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e1f2495011d1d7964bbc  seed 500  [set_click]
+      stem:    Shade 1/2 of the shape.
+      answer:  1/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5c3f8dbf5ae289bf9608  seed 501  [set_click]
+      stem:    Shade 1/2 of the shape.
+      answer:  1/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 46220032772c97835f6e  seed 502  [read_mcq]
+      stem:    What fraction does the model show?
+      answer:  1/2
+      options: 2/2 / 2/1 / 3/2 / 1/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 78975c0b00cdb3cbbeba  seed 601  [read_mcq]
       stem:    What fraction does the number line show?
-      answer:  2/5
-      options: 3/5 / 5/5 / 2/5 / 5/2
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/5."]
+      answer:  1/5
+      options: 1/5 / 5/5 / 4/5 / 5/1
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/5."]
       response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
       visual:  FractionModel
       rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 78dc7381572c7a0f28cb  seed 45  [set_click]
-      stem:    Shade 3/8 of the shape.
-      answer:  3/8
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/8."]
+  sample 59c824d6e6a75d472d36  seed 700  [read_mcq]
+      stem:    What fraction does the model show?
+      answer:  1/5
+      options: 5/1 / 1/5 / 4/5 / 5/5
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7b1eade1b6e449cf0ab4  seed 701  [set_click]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Shade 1/3 of the shape.
+      answer:  1/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/3."]
       response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
       visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 3}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample b59ac97e066cae6a388a  seed 46  [set_click]
-      stem:    Shade 3/8 of the shape.
-      answer:  3/8
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/8."]
-      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
-      visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
+  sample acdda22aaf94786373a1  seed 702  [read_mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. What fraction does the model show?
+      answer:  1/2
+      options: 1/2 / 2/1 / 2/2 / 3/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 7447379d9171f9035f7c  seed 500  [set_click]
-      stem:    Shade 5/6 of the shape.
-      answer:  5/6
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 5.", "So the fraction is 5/6."]
+  sample c85675233e082d2b9a58  seed 800  [read_mcq]
+      stem:    What fraction does the model show?
+      answer:  1/2
+      options: 2/1 / 1/2 / 3/2 / 2/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1fa7b9dc5582fe784812  seed 900  [set_click]
+      stem:    Shade 1/6 of the shape.
+      answer:  1/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/6."]
       response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
       visual:  FractionShade
       rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 6}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 58ef971e4c4fe6fa6e95  seed 501  [set_click]
-      stem:    Shade 3/4 of the shape.
-      answer:  3/4
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/4."]
-      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
-      visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample f618fa3e6061f69309c9  seed 502  [read_mcq]
-      stem:    What fraction does the model show?
-      answer:  3/4
-      options: 3/4 / 1/4 / 4/3 / 4/4
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/4."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 01e48a56927c2a3aadf5  seed 600  [set_click]
-      stem:    Shade 3/5 of the shape.
-      answer:  3/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/5."]
-      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
-      visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample fffac4a9eddec1c1081c  seed 700  [read_mcq]
-      stem:    What fraction does the model show?
-      answer:  2/4
-      options: 1/4 / 2/4 / 4/2 / 4/4
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/4."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample c15bbfe76a2a0ca632ea  seed 701  [set_click]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. Shade 1/8 of the shape.
+  sample de0cd572d53d8667cd5f  seed 901  [set_click]
+      stem:    Shade 1/8 of the shape.
       answer:  1/8
       hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/8."]
       response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
       visual:  FractionShade
       rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample ffeb99f72d25dc243819  seed 702  [read_mcq]
-      stem:    🏀 Isko has a math challenge about basketballs. What fraction does the model show?
-      answer:  4/5
-      options: 5/4 / 1/5 / 5/5 / 4/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 4.", "So the fraction is 4/5."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample c5db4f168090e885bb09  seed 800  [read_mcq]
+  sample 2d1a1582769fb0cf63e5  seed 1000  [read_mcq]
       stem:    What fraction does the model show?
-      answer:  4/5
-      options: 4/5 / 1/5 / 5/4 / 5/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 4.", "So the fraction is 4/5."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 18d5824e92b57726e59b  seed 900  [set_click]
-      stem:    Shade 2/8 of the shape.
-      answer:  2/8
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/8."]
-      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
-      visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 1d5d12459792eaa37cf1  seed 901  [set_click]
-      stem:    Shade 1/5 of the shape.
-      answer:  1/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/5."]
-      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
-      visual:  FractionShade
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 6ff093b7c523f1421403  seed 1000  [read_mcq]
-      stem:    What fraction does the number line show?
-      answer:  2/5
-      options: 2/5 / 3/5 / 5/2 / 5/5
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/5."]
+      answer:  1/4
+      options: 4/1 / 1/4 / 3/4 / 4/4
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/4."]
       response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
-      visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 9d76d6eee8923b8ca686  seed 1001  [read_mcq]
-      stem:    What fraction does the model show?
-      answer:  2/4
-      options: 1/4 / 4/4 / 4/2 / 2/4
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 2.", "So the fraction is 2/4."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
       visual:  FractionModel
       rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 16febc61afe05c61034e  seed 1002  [read_mcq]
+  sample b4405a7139019a26762d  seed 1001  [read_mcq]
       stem:    What fraction does the model show?
-      answer:  3/8
-      options: 8/3 / 8/8 / 5/8 / 3/8
-      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/8."]
+      answer:  1/2
+      options: 2/2 / 1/2 / 3/2 / 2/1
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  FractionModel
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2e1b00dbf3ac4d171659  seed 1002  [read_mcq]
+      stem:    What fraction does the model show?
+      answer:  1/6
+      options: 1/6 / 6/1 / 6/6 / 5/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 1.", "So the fraction is 1/6."]
       response: {"format": "read_mcq", "is_visual": true, "visual_type": "FractionModel", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
       visual:  FractionModel
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 12, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionModel", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 6}}
       layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
 

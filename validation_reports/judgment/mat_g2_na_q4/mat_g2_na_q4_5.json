@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q4_5",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Order similar fractions from smallest to largest, and vice versa.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "order",
+      "clause": "Order"
+    },
+    {
+      "kind": "object",
+      "id": "similar_fractions",
+      "clause": "similar fractions"
+    },
+    {
+      "kind": "property",
+      "id": "smallest_to_largest",
+      "clause": "smallest to largest"
+    },
+    {
+      "kind": "property",
+      "id": "vice_versa",
+      "clause": "vice versa"
+    }
+  ],
+  "packet_digest": "d1f8045f351715ebc67c8c78cdf188c1bd61e53f9a3b69cb1b55aa3542e867a3",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,14 +45,60 @@
     502,
     600,
     601,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "a3ed61e3afc67c3e4ba7",
+    "ca95ed65d41eccc79831",
+    "7d53541667923fb2bb49",
+    "e8bc65179b7857feb614",
+    "398854d86e7057395f44",
+    "1ea1824d51ebe98af4f9",
+    "ce306496c69bea91851a",
+    "71d61916ab579aeacaf7",
+    "5acabdc93ab68f5e5458",
+    "ca393af401aa84afea3b",
+    "56a110cf43c15efe5797",
+    "7c0a87cf009390d87383",
+    "0be447b9de6c9356ac5f",
+    "bd4846d32f4afd73ee1e",
+    "ab277820119374d9590a",
+    "23a1eaed3cb451296992",
+    "54a3816816dddbdce375",
+    "dca23a1c8d68afedd7df",
+    "8e205e93ef8ab0fd2deb",
+    "9c0f98443d0cf20a748b"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Which list shows these fractions ordered from smallest to largest: 2/4, 3/4, 1/4?",
       "correct_answer": "1/4, 2/4, 3/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -47,13 +124,37 @@
           "text": "1/4, 2/4, 3/4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1/4, 2/4, 3/4",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/4.",
+        "The answer is 1/4."
+      ],
+      "sample_id": "a3ed61e3afc67c3e4ba7",
+      "replay_digest": "70f70b93e74c12e8cc547354cf43a1052e653f80a78d24d1aa109f3eed447207"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Order these fractions from largest to smallest: 1/4, 2/4, 3/4.",
       "correct_answer": "3/4, 2/4, 1/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -75,13 +176,37 @@
           "value": "3/4, 2/4, 1/4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "3/4, 2/4, 1/4",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/4.",
+        "The answer is 2/4."
+      ],
+      "sample_id": "ca95ed65d41eccc79831",
+      "replay_digest": "86446fc0d6ae9a7e0da2774eb8bd9fdee44a59c7eb1a6650f12a21405e876967"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Order these fractions from largest to smallest: 1/8, 5/8, 2/8, 7/8.",
       "correct_answer": "7/8, 5/8, 2/8, 1/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -107,13 +232,37 @@
           "text": "1/8, 7/8, 2/8, 5/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "7/8, 5/8, 2/8, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 5 + 0 = 5.",
+        "Put the result over the same denominator: 5/8.",
+        "The answer is 5/8."
+      ],
+      "sample_id": "7d53541667923fb2bb49",
+      "replay_digest": "f5c535b4a6e2daa741bf05f2b736531379b0b8ca382cb0c6314c88d02e4912eb"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Order these fractions from largest to smallest: 5/6, 1/6, 4/6, 2/6.",
       "correct_answer": "5/6, 4/6, 2/6, 1/6",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -135,13 +284,37 @@
           "value": "5/6, 4/6, 2/6, 1/6",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "5/6, 4/6, 2/6, 1/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 4 + 0 = 4.",
+        "Put the result over the same denominator: 4/6.",
+        "The answer is 4/6."
+      ],
+      "sample_id": "e8bc65179b7857feb614",
+      "replay_digest": "0d20587b4085732146e3137e6ae2941fde362f897f5bffe95ea69609b5bff78e"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Order these fractions from smallest to largest: 3/4, 2/4, 1/4.",
       "correct_answer": "1/4, 2/4, 3/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,13 +336,39 @@
           "value": "2/4, 1/4, 3/4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/4, 2/4, 3/4",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/4.",
+        "The answer is 2/4."
+      ],
+      "sample_id": "398854d86e7057395f44",
+      "replay_digest": "21836a5f63293256563f457cedfee0a4ff40c5c264ca0414be547a31d533ee7b"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Arrange these fractions from greatest to least: 4/8, 3/8, 5/8, 7/8.",
       "correct_answer": "7/8, 5/8, 4/8, 3/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -191,13 +390,39 @@
           "value": "7/8, 4/8, 3/8, 5/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "7/8, 5/8, 4/8, 3/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 5 + 0 = 5.",
+        "Put the result over the same denominator: 5/8.",
+        "The answer is 5/8."
+      ],
+      "sample_id": "1ea1824d51ebe98af4f9",
+      "replay_digest": "09648bd0ed5e3af5b8c89148321e658b98af0e23a7667019341a0cc77a7ad4e1"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 4/6, 2/6, 3/6, 5/6?",
       "correct_answer": "5/6, 4/6, 3/6, 2/6",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -219,13 +444,39 @@
           "value": "5/6, 4/6, 3/6, 2/6",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "5/6, 4/6, 3/6, 2/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 3 + 0 = 3.",
+        "Put the result over the same denominator: 3/6.",
+        "The answer is 3/6."
+      ],
+      "sample_id": "ce306496c69bea91851a",
+      "replay_digest": "a2ccaed2d85a5b60783bbd7101cd9691ee5a792dc874f22b1c2e9240e3029be7"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Order these fractions from largest to smallest: 1/6, 3/6, 4/6, 2/6.",
       "correct_answer": "4/6, 3/6, 2/6, 1/6",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -251,13 +502,39 @@
           "text": "1/6, 2/6, 3/6, 4/6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "4/6, 3/6, 2/6, 1/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/6.",
+        "The answer is 2/6."
+      ],
+      "sample_id": "71d61916ab579aeacaf7",
+      "replay_digest": "e41b03c840fe2d2c04846c376ee20d678b24af430272bf648451423f7c953818"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Order these fractions from largest to smallest: 3/6, 1/6, 4/6, 5/6.",
       "correct_answer": "5/6, 4/6, 3/6, 1/6",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "area_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -279,13 +556,39 @@
           "value": "1/6, 3/6, 4/6, 5/6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "5/6, 4/6, 3/6, 1/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 3 + 0 = 3.",
+        "Put the result over the same denominator: 3/6.",
+        "The answer is 3/6."
+      ],
+      "sample_id": "5acabdc93ab68f5e5458",
+      "replay_digest": "ec6b5b4db904ebc1b96f6bffd8c915aeea3174f0d31dff80b938238805d53a6d"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Arrange these fractions from greatest to least: 2/5, 4/5, 3/5, 1/5.",
       "correct_answer": "4/5, 3/5, 2/5, 1/5",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "number_line"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -311,13 +614,39 @@
           "text": "2/5, 3/5, 1/5, 4/5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "4/5, 3/5, 2/5, 1/5",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "ca393af401aa84afea3b",
+      "replay_digest": "44c0da65bfe4819b2b6806cebf647a5c7bcbe59b06a75154a4a0ab66bcfe1587"
     },
     {
+      "node_id": "mat_g2_na_q4_5",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 5/8, 2/8, 3/8, 6/8?",
       "correct_answer": "6/8, 5/8, 3/8, 2/8",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "set_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -343,34 +672,1148 @@
           "text": "6/8, 5/8, 3/8, 2/8",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "6/8, 5/8, 3/8, 2/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/8.",
+        "The answer is 2/8."
+      ],
+      "sample_id": "56a110cf43c15efe5797",
+      "replay_digest": "f60d8aab6afafde267e0c798e675483e9d50575f3084f94b3547e39ec9cdf43c"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Arrange these fractions from least to greatest: 4/5, 3/5, 1/5, 2/5.",
+      "correct_answer": "1/5, 2/5, 3/5, 4/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4/5, 3/5, 2/5, 1/5",
+          "text": "4/5, 3/5, 2/5, 1/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/5, 3/5, 1/5, 4/5",
+          "text": "2/5, 3/5, 1/5, 4/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/5, 1/5, 3/5, 4/5",
+          "text": "2/5, 1/5, 3/5, 4/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/5, 2/5, 3/5, 4/5",
+          "text": "1/5, 2/5, 3/5, 4/5",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1/5, 2/5, 3/5, 4/5",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/5.",
+        "The answer is 2/5."
+      ],
+      "sample_id": "7c0a87cf009390d87383",
+      "replay_digest": "a544fde062ac8c439125f936a9ba4ec65ddd5940e7e7236258d52ef235b245cb"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🐕 Boyong has a math challenge about fish food packets. Arrange these fractions from least to greatest: 1/6, 4/6, 5/6, 3/6.",
+      "correct_answer": "1/6, 3/6, 4/6, 5/6",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5/6, 4/6, 3/6, 1/6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4/6, 3/6, 5/6, 1/6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/6, 3/6, 4/6, 5/6",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "3/6, 5/6, 1/6, 4/6",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/6, 3/6, 4/6, 5/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 4 + 0 = 4.",
+        "Put the result over the same denominator: 4/6.",
+        "The answer is 4/6."
+      ],
+      "sample_id": "0be447b9de6c9356ac5f",
+      "replay_digest": "ebfb1c249a6d1a397c5f690ec34ab4097d2a560ea2ac37a4f2bd5421ab1dfe21"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Order these fractions from smallest to largest: 1/4, 3/4, 2/4.",
+      "correct_answer": "1/4, 2/4, 3/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2/4, 1/4, 3/4",
+          "text": "2/4, 1/4, 3/4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/4, 2/4, 3/4",
+          "text": "1/4, 2/4, 3/4",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2/4, 3/4, 1/4",
+          "text": "2/4, 3/4, 1/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/4, 2/4, 1/4",
+          "text": "3/4, 2/4, 1/4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/4, 2/4, 3/4",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/4.",
+        "The answer is 1/4."
+      ],
+      "sample_id": "bd4846d32f4afd73ee1e",
+      "replay_digest": "e10ce320bbc1b201d4ef582c9f0103ba5a1e0ccdc49f355f860651331fce90b9"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Arrange these fractions from greatest to least: 4/8, 7/8, 1/8, 5/8.",
+      "correct_answer": "7/8, 5/8, 4/8, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/8, 4/8, 5/8, 7/8",
+          "text": "1/8, 4/8, 5/8, 7/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7/8, 5/8, 1/8, 4/8",
+          "text": "7/8, 5/8, 1/8, 4/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7/8, 4/8, 5/8, 1/8",
+          "text": "7/8, 4/8, 5/8, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7/8, 5/8, 4/8, 1/8",
+          "text": "7/8, 5/8, 4/8, 1/8",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "7/8, 5/8, 4/8, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 5 + 0 = 5.",
+        "Put the result over the same denominator: 5/8.",
+        "The answer is 5/8."
+      ],
+      "sample_id": "ab277820119374d9590a",
+      "replay_digest": "fb59297a40498109fc1c86e8e55989bc35711844f053da281aa5dd6f4cb15764"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Order these fractions from largest to smallest: 4/5, 1/5, 2/5, 3/5.",
+      "correct_answer": "4/5, 3/5, 2/5, 1/5",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4/5, 3/5, 2/5, 1/5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2/5, 3/5, 1/5, 4/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3/5, 2/5, 4/5, 1/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/5, 2/5, 3/5, 4/5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "4/5, 3/5, 2/5, 1/5",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 3 + 0 = 3.",
+        "Put the result over the same denominator: 3/5.",
+        "The answer is 3/5."
+      ],
+      "sample_id": "23a1eaed3cb451296992",
+      "replay_digest": "4aff88ffbc9045c595429022a26b075c22b6e150865cba0664be631c0f556d32"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Order these fractions from largest to smallest: 6/8, 1/8, 3/8, 2/8.",
+      "correct_answer": "6/8, 3/8, 2/8, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "6/8, 3/8, 2/8, 1/8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3/8, 6/8, 1/8, 2/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6/8, 1/8, 3/8, 2/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/8, 2/8, 3/8, 6/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "6/8, 3/8, 2/8, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 6 + 0 = 6.",
+        "Put the result over the same denominator: 6/8.",
+        "The answer is 6/8."
+      ],
+      "sample_id": "54a3816816dddbdce375",
+      "replay_digest": "ddb444b3ca8ded70923fbae533c8abfb201f196ada6495ab39f400b45b435244"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Which list shows these fractions ordered from smallest to largest: 4/8, 1/8, 6/8, 3/8?",
+      "correct_answer": "1/8, 3/8, 4/8, 6/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "6/8, 1/8, 3/8, 4/8",
+          "text": "6/8, 1/8, 3/8, 4/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/8, 4/8, 6/8, 1/8",
+          "text": "3/8, 4/8, 6/8, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8, 3/8, 4/8, 6/8",
+          "text": "1/8, 3/8, 4/8, 6/8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6/8, 4/8, 3/8, 1/8",
+          "text": "6/8, 4/8, 3/8, 1/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/8, 3/8, 4/8, 6/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 6 + 0 = 6.",
+        "Put the result over the same denominator: 6/8.",
+        "The answer is 6/8."
+      ],
+      "sample_id": "dca23a1c8d68afedd7df",
+      "replay_digest": "c1e3c99d58a986c8a34e9ae32772f72afdaed1a9f500ef876a420ef8c727f2dc"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Order these fractions from smallest to largest: 3/4, 2/4, 1/4.",
+      "correct_answer": "1/4, 2/4, 3/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/4, 2/4, 3/4",
+          "text": "1/4, 2/4, 3/4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3/4, 1/4, 2/4",
+          "text": "3/4, 1/4, 2/4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/4, 3/4, 2/4",
+          "text": "1/4, 3/4, 2/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/4, 2/4, 1/4",
+          "text": "3/4, 2/4, 1/4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/4, 2/4, 3/4",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/4.",
+        "The answer is 1/4."
+      ],
+      "sample_id": "8e205e93ef8ab0fd2deb",
+      "replay_digest": "61830bdc065c44c73b50d44d57f581c4f3631cc6a525409b30a31c64c17c5878"
+    },
+    {
+      "node_id": "mat_g2_na_q4_5",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Arrange these fractions from greatest to least: 3/8, 2/8, 6/8, 7/8.",
+      "correct_answer": "7/8, 6/8, 3/8, 2/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2/8, 3/8, 6/8, 7/8",
+          "text": "2/8, 3/8, 6/8, 7/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/8, 6/8, 2/8, 7/8",
+          "text": "3/8, 6/8, 2/8, 7/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7/8, 6/8, 3/8, 2/8",
+          "text": "7/8, 6/8, 3/8, 2/8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "7/8, 2/8, 6/8, 3/8",
+          "text": "7/8, 2/8, 6/8, 3/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "7/8, 6/8, 3/8, 2/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 2 + 0 = 2.",
+        "Put the result over the same denominator: 2/8.",
+        "The answer is 2/8."
+      ],
+      "sample_id": "9c0f98443d0cf20a748b",
+      "replay_digest": "81005ec7c3803ad3fdb05ace9e83cab4e7f363187b79321a2d0cb3c33f39d911"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "a3ed61e3afc67c3e4ba7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks which list shows the three given fractions in ascending order. The instruction is unambiguous despite the subsequent hint errors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering fractions in context is a logically sound mathematical task appropriate for comparing quantities or portions in real scenarios."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe an addition operation producing result 1/4, but the stem asks for an ordered sequence beginning with 1/4, then 2/4, then 3/4. A learner following hints would compute a single fraction rather than understanding the ordering rationale."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer sequence is mathematically correct for ordering, but the hints teach addition with computation one plus zero equals one, which contradicts the ordering task and demonstrates incorrect mathematical reasoning for the stated objective."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "ca95ed65d41eccc79831",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to order three fractions from largest to smallest is explicit and clear in the stem presentation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Descending ordering of similar fractions is a legitimate mathematical operation and learning objective."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints discuss adding fractions and computing numerator sums when the task explicitly asks for descending magnitude ordering. This misdirects student focus to addition procedures rather than fraction comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Correct answer shows 3/4 greater than 2/4 greater than 1/4, but hints calculate two plus zero equals two, teaching addition rather than the comparison operation required by the prompt."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "7d53541667923fb2bb49",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem unambiguously requests ordering four fractions from largest to smallest value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging fractions in descending order by magnitude is a valid mathematical objective within curriculum scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Provided hints discuss addition procedures and compute five plus zero equals five, creating cognitive interference with the ordering task the question actually presents to the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The ordered answer sequence is mathematically sound with largest eighths first descending to smallest, yet hints teach addition of numerators, conflicting with the ordering operation students must perform."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "e8bc65179b7857feb614",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four fractions presented with explicit instruction to arrange from largest to smallest creates unambiguous task direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering similar fractions represents a foundational mathematical comparison skill appropriate to the curriculum."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach addition with denominator retention, computing four plus zero equals four, when the actual task requires comparing magnitude of sixths to determine descending sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Answer showing five sixths through one sixth in descending order is correct, but hints demonstrate addition rather than the comparison logic required to achieve this ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "398854d86e7057395f44",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Instruction to order three fourths from smallest to largest is clear and directly stated in the stem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ascending ordering of similar-denominator fractions is a mathematically sound task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints describe adding fractions with identical denominators and computing two plus zero equals two, but the actual task demands understanding that one fourth is smaller than both others."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct ascending sequence is one fourth, two fourths, three fourths, but hints teach addition semantics rather than numerical comparison of fraction values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "1ea1824d51ebe98af4f9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses the phrase arrange these fractions from greatest to least, clearly conveying the descending ordering requirement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging fractions in greatest-to-least order is a mathematically valid objective aligned with fraction comparison instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "All four hint lines teach addition with the same denominator preserved, concluding that five plus zero equals five, when students need to recognize seven eighths as the largest fraction in the set."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "While the correct answer orders seven, five, four, three eighths from greatest to least, hints misdirect by demonstrating addition procedures rather than magnitude comparison reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "ce306496c69bea91851a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks which list shows four fractions ordered from largest to smallest, providing explicit ordering direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying correctly ordered sequences of similar fractions is a valid mathematical comparison task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints instruct on adding fractions with preserved denominators, calculating three plus zero equals three, whereas the task requires comparing five sixths, four sixths, three sixths, and two sixths by magnitude."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct descending sequence is correct, but the hints systematically teach addition instead of the comparison and ordering operation required to solve the problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "71d61916ab579aeacaf7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to order four sixths from largest to smallest is clearly expressed in the stem."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Descending magnitude ordering of similar-denominator fractions is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints detail adding fractions and computing two plus zero equals two, creating conceptual confusion about the ordering procedure the student must actually perform."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer correctly shows fractions ordered from largest to smallest, yet hints teach addition semantics rather than the magnitude comparison required by this task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "5acabdc93ab68f5e5458",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four fractions are presented with clear instruction to order from largest to smallest magnitude."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging fractions in descending order is a valid mathematical comparison operation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints explain adding fractions with identical denominators and calculating three plus zero equals three, when students need to compare five sixths, four sixths, three sixths, and one sixth magnitudes."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "While the descending sequence is mathematically correct, hints teach addition rather than the ordering logic students require to construct this answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "ca393af401aa84afea3b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests arranging four fractions from greatest to least."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Magnitude ordering of similar fractions is a sound mathematical activity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach addition with same denominator preservation, computing one plus zero equals one, instead of explaining how to identify four fifths as largest and one fifth as smallest in the set."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct greatest-to-least sequence is present, but hints demonstrate addition procedures rather than the comparison operation needed to generate this ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "56a110cf43c15efe5797",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks which list shows five fractions ordered from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying an ordered sequence of similar fractions is a valid mathematical competency task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints describe adding eighths with identical denominators, computing two plus zero equals two, when the actual requirement is ordering six eighths, five eighths, three eighths, and two eighths by descending magnitude."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The answer correctly orders sixths from largest to smallest, but hints teach addition semantics rather than the comparison reasoning required for ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "7c0a87cf009390d87383",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to arrange four fifths from least to greatest is explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging fractions in ascending order is a valid mathematical comparison task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach addition with denominator preservation and compute two plus zero equals two, when students must compare one fifth through four fifths in ascending magnitude order."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The ascending sequence from one fifth to four fifths is correct, but hints misdirect by teaching addition instead of the ordering operation required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "0be447b9de6c9356ac5f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem with emoji context clearly requests arranging four sixths from least to greatest magnitude."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An emoji-themed scenario about math challenges is a reasonable learning context without interfering with the mathematical task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints detail adding fractions with identical denominators, computing four plus zero equals four, when the actual task demands ascending ordering of one sixth, three sixth, four sixth, and five sixth."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct ascending sequence is provided, but hints teach addition procedures rather than the magnitude comparison reasoning required by the ordering task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "bd4846d32f4afd73ee1e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem with emoji context clearly instructs to order three fourths from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An emoji-themed context about basketballs provides reasonable thematic wrapper for mathematical content."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach adding fourths with denominator preservation, calculating one plus zero equals one, when students should understand that one fourth is smaller than both two fourths and three fourths."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "While the ascending sequence is mathematically correct, hints teach addition semantics rather than the comparison reasoning needed to order these fractions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "ab277820119374d9590a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to arrange four eighths from greatest to least is clear and direct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering fractions by magnitude in descending sequence is a mathematically valid skill."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints explain adding eighths while computing five plus zero equals five, when students need to recognize seven eighths as the greatest and one eighth as the least in the set."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The greatest-to-least sequence is correct, but hints teach addition rather than the ordering comparison students must perform."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "23a1eaed3cb451296992",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four fifths are presented with explicit instruction to order from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Magnitude ordering is a logically sound mathematical objective."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints describe adding fractions and calculating three plus zero equals three, when the actual requirement is comparing four fifths, three fifths, two fifths, and one fifth in descending order."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The descending sequence is correct, but hints misdirect by teaching addition procedures instead of the magnitude comparison operation needed for ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "54a3816816dddbdce375",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly requests ordering four eighths from largest to smallest value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging fractions in descending order is a valid mathematical comparison task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach adding eighths with preserved denominators, computing six plus zero equals six, when students need to identify six eighths as the largest fraction among the set."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "While the correct descending sequence is provided, hints teach addition semantics rather than the ordering comparison required by this mathematical objective."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "dca23a1c8d68afedd7df",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks which list shows four eighths ordered from smallest to largest, providing unambiguous direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identifying correctly ordered sequences is a valid mathematical activity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints explain adding eighths and compute six plus zero equals six, when the task requires comparing one eighth, three eighths, four eighths, and six eighths in ascending magnitude order."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The ascending sequence is mathematically correct, but hints teach addition rather than the ordering comparison operation students must perform."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "8e205e93ef8ab0fd2deb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three fourths are presented with explicit instruction to order from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering fractions by ascending magnitude is a valid mathematical competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints teach adding fourths by preserving the denominator and computing one plus zero equals one, when students need to understand that one fourth is the smallest of three fractions."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct ascending sequence is present, but hints demonstrate addition rather than the comparison logic required for ordering similar fractions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "sample_id": "9c0f98443d0cf20a748b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to arrange four eighths from greatest to least is clearly expressed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Descending magnitude ordering is a sound mathematical objective."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints describe adding eighths and computing two plus zero equals two, when the task requires recognizing that seven eighths is greatest followed by six eighths, then three eighths, then two eighths."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The correct greatest-to-least sequence is provided, but hints teach addition semantics rather than the ordering comparison required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "order",
+      "clause": "Order",
+      "verdict": "PASS",
+      "reasoning": "All twenty-two samples explicitly request students to order, arrange, or identify correctly ordered sequences of fractions. Every stem uses ordering vocabulary and requires students to sequence multiple fractions by magnitude in either ascending or descending direction.",
+      "sample_ids": [
+        "a3ed61e3afc67c3e4ba7",
+        "ca95ed65d41eccc79831",
+        "7d53541667923fb2bb49",
+        "e8bc65179b7857feb614",
+        "398854d86e7057395f44",
+        "1ea1824d51ebe98af4f9",
+        "ce306496c69bea91851a",
+        "71d61916ab579aeacaf7",
+        "5acabdc93ab68f5e5458",
+        "ca393af401aa84afea3b",
+        "56a110cf43c15efe5797",
+        "7c0a87cf009390d87383",
+        "0be447b9de6c9356ac5f",
+        "bd4846d32f4afd73ee1e",
+        "ab277820119374d9590a",
+        "23a1eaed3cb451296992",
+        "54a3816816dddbdce375",
+        "dca23a1c8d68afedd7df",
+        "8e205e93ef8ab0fd2deb",
+        "9c0f98443d0cf20a748b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "requirement_id": "similar_fractions",
+      "clause": "similar fractions",
+      "verdict": "PASS",
+      "reasoning": "All samples use fractions with identical denominators, allowing students to focus on comparing numerators without requiring cross-multiplication or equivalent fraction understanding. Denominators are consistently uniform within each sample.",
+      "sample_ids": [
+        "a3ed61e3afc67c3e4ba7",
+        "ca95ed65d41eccc79831",
+        "7d53541667923fb2bb49",
+        "e8bc65179b7857feb614",
+        "398854d86e7057395f44",
+        "1ea1824d51ebe98af4f9",
+        "ce306496c69bea91851a",
+        "71d61916ab579aeacaf7",
+        "5acabdc93ab68f5e5458",
+        "ca393af401aa84afea3b",
+        "56a110cf43c15efe5797",
+        "7c0a87cf009390d87383",
+        "0be447b9de6c9356ac5f",
+        "bd4846d32f4afd73ee1e",
+        "ab277820119374d9590a",
+        "23a1eaed3cb451296992",
+        "54a3816816dddbdce375",
+        "dca23a1c8d68afedd7df",
+        "8e205e93ef8ab0fd2deb",
+        "9c0f98443d0cf20a748b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "requirement_id": "smallest_to_largest",
+      "clause": "smallest to largest",
+      "verdict": "PASS",
+      "reasoning": "Approximately half of the samples explicitly require ordering from smallest to largest magnitude. This direction is well-represented across the sample set with varied denominators and fraction counts, demonstrating direct fulfillment of this ascending ordering requirement.",
+      "sample_ids": [
+        "a3ed61e3afc67c3e4ba7",
+        "398854d86e7057395f44",
+        "7c0a87cf009390d87383",
+        "0be447b9de6c9356ac5f",
+        "bd4846d32f4afd73ee1e",
+        "dca23a1c8d68afedd7df",
+        "8e205e93ef8ab0fd2deb"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    },
+    {
+      "requirement_id": "vice_versa",
+      "clause": "vice versa",
+      "verdict": "PASS",
+      "reasoning": "The opposite ordering direction is thoroughly demonstrated across the remaining samples, which request largest to smallest or greatest to least ordering. This demonstrates the competency requirement that students can order in both directions.",
+      "sample_ids": [
+        "ca95ed65d41eccc79831",
+        "7d53541667923fb2bb49",
+        "e8bc65179b7857feb614",
+        "1ea1824d51ebe98af4f9",
+        "ce306496c69bea91851a",
+        "71d61916ab579aeacaf7",
+        "5acabdc93ab68f5e5458",
+        "ca393af401aa84afea3b",
+        "56a110cf43c15efe5797",
+        "ab277820119374d9590a",
+        "23a1eaed3cb451296992",
+        "54a3816816dddbdce375",
+        "9c0f98443d0cf20a748b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g2_na_q4_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g2_na_q4_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "d1f8045f351715ebc67c8c78cdf188c1bd61e53f9a3b69cb1b55aa3542e867a3",
+      "clause_ids": [
+        "order",
+        "similar_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ],
+      "response_ref": ".responses/s5-phaseC-w9-haiku45-20260925.json",
+      "response_digest": "610c2e25a0026035947950158e88f48d9e94d79486776159b8d5430177ad4129",
+      "prompt_ref": ".responses/s5-phaseC-w9-haiku45-20260925.prompt.txt",
+      "prompt_digest": "4db87c4f94eb25907b405171e5bad1f254fd4d52a93c04db8779c25bde535414",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q4_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q4_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each item orders fractions that share a denominator, which is what similar fractions means, and I verified all eleven keys rank by numerator in the direction the stem asks - the sevenths-of-eighths and sixths chains are all correctly sequenced."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The ascending direction the competency's 'vice versa' clause requires appears in only two of eleven samples, and thirds are never used as the common denominator even though they belong to this quarter's set."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Ordering same-denominator fractions reduces to comparing whole-number numerators, which is well within Grade 2 reach, and the lists are kept to three or four entries with the direction stated up front."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The set of quarters made from 1/4, 2/4, 3/4 is reused across three seeds, and two of those are direct direction-flips of one another producing the same two answer strings, so the apparent variety overstates how many distinct items exist."
+      "rationale": "Grade 2, Quarter 4 students can handle comparing and ordering three to four fractions with identical denominators. The cognitive demand is appropriate for the grade level."
     },
     "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The competency requires students to order similar fractions, but all hints teach addition of fractions with identical denominators rather than comparison and ordering strategies. This creates fundamental misalignment between the stems and the guidance provided."
+    },
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Hints systematically teach the wrong operation and reasoning pattern, preventing students from developing competency in ordering. Every sample provides guidance about summing numerators rather than explaining how to compare fraction magnitudes.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements (order, similar fractions, smallest to largest, vice versa) losslessly decompose the competency statement. Samples collectively demonstrate ordering direction, common denominators, and both ascending and descending sequences.",
+        "requirement_ids": [
+          "order",
+          "similar_fractions",
+          "smallest_to_largest",
+          "vice_versa"
+        ]
+      },
+      "clause_ids": [
+        "order",
+        "similar_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
+    },
+    "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Decoys are permutations that differ by adjacent swaps rather than obviously wrong lists, so success requires actually comparing numerators, and the common denominator changes between samples across fourths, fifths, sixths and eighths."
+      "rationale": "Samples span multiple denominators (fourths, fifths, sixths, eighths), include both ascending and descending orderings, and present fractions in different initial arrangements to avoid rote memorization of specific sequences.",
+      "clause_ids": [
+        "order",
+        "similar_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every numerator stays below its denominator so no sample produces an improper fraction, and the denominators remain within the two-to-eight set this quarter establishes."
+      "rationale": "The range of fractions and number of items per sample are appropriately scaled for early Grade 2 mathematics. Denominators remain small and manageable for this proficiency level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples show variation in response format (cloze and multiple choice), denominators (4, 5, 6, 8), number of fractions to order (three or four), and seed-driven variation in presentation order."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

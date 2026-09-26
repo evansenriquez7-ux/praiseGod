@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q4_4",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Read and write similar fractions in fraction notation.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "read",
+      "clause": "Read"
+    },
+    {
+      "kind": "task",
+      "id": "write",
+      "clause": "write"
+    },
+    {
+      "kind": "object",
+      "id": "similar_fractions",
+      "clause": "similar fractions"
+    },
+    {
+      "kind": "representation",
+      "id": "fraction_notation",
+      "clause": "fraction notation"
+    }
+  ],
+  "packet_digest": "ea619b73e0839958582720ec484d413e68920553f4f62b5a15e5c7678331f0d2",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,14 +45,60 @@
     502,
     600,
     601,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "96253626ba8e9c7ed560",
+    "afc9b50bbc34551dff46",
+    "4760bc8a5885131f24ec",
+    "d6e4d1b4cc14c5ce7993",
+    "e71defeab5ce3700ede5",
+    "dcdc7de18ab79450f215",
+    "ed54651d424203b7d18c",
+    "a6fc6e92142564c13edb",
+    "073650315fd778928f2e",
+    "9252afe6eb79358a89d9",
+    "184eb7153be1a941195c",
+    "2c92e95de8313b8cc05b",
+    "21192bea0d4021e86557",
+    "608abcc662e589672ccf",
+    "66f79a991011d493c878",
+    "eb145e10d236aad14556",
+    "145260c419ebebbeab87",
+    "ca7551c7d25d0e739ce7",
+    "f8a86b9ce7525257e95e",
+    "4d355d916ac22a04a601"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "How is \\(\\frac{2}{5}\\) read in words?",
       "correct_answer": "two fifths",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -47,13 +124,37 @@
           "text": "two fifths",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "two fifths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 2.",
+        "So the fraction is 2/5."
+      ],
+      "sample_id": "96253626ba8e9c7ed560",
+      "replay_digest": "3679c93737d8b49e1ea1da226c08727b7eb9221a825213530558d00fb47292e5"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write three eighths in fraction notation.",
       "correct_answer": "3/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -75,13 +176,37 @@
           "value": "2/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/8."
+      ],
+      "sample_id": "afc9b50bbc34551dff46",
+      "replay_digest": "5803f8c4b80f1e2168da4c5921259ba5d102bd7c87121d67d441f805b06c30ea"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Which word name represents \\(\\frac{1}{8}\\)?",
       "correct_answer": "one eighth",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -107,13 +232,37 @@
           "text": "two eighths",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "one eighth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "4760bc8a5885131f24ec",
+      "replay_digest": "586c25d5dfc69134c1a7c0b5982f2321d3a8eddf5d16042cd5ae4d1e96074c5d"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "How is \\(\\frac{3}{5}\\) read in words?",
       "correct_answer": "three fifths",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -135,13 +284,37 @@
           "value": "four fifths",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "three fifths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/5."
+      ],
+      "sample_id": "d6e4d1b4cc14c5ce7993",
+      "replay_digest": "fe528cdb27bb2c7829f7808f745e2f0ea997ae0ad84104b5297e121fdef48000"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Write three fifths in fraction notation.",
       "correct_answer": "3/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,13 +336,39 @@
           "value": "2/5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/5."
+      ],
+      "sample_id": "e71defeab5ce3700ede5",
+      "replay_digest": "caac7e8ba270d786db86075375b65415090ddbc8f4cbddf7026a0066a69c0f3d"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Write five sixths in fraction notation.",
       "correct_answer": "5/6",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -191,13 +390,39 @@
           "value": "4/6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "5/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 5.",
+        "So the fraction is 5/6."
+      ],
+      "sample_id": "dcdc7de18ab79450f215",
+      "replay_digest": "1186d7b6e13ddceb76c0e5bc3d6e55a1124d3f15e3e911e6dcd64866c04a4f37"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "How is \\(\\frac{4}{5}\\) read in words?",
       "correct_answer": "four fifths",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -219,13 +444,39 @@
           "value": "four fifths",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "four fifths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/5."
+      ],
+      "sample_id": "ed54651d424203b7d18c",
+      "replay_digest": "e7d79c12dfe55526f1ce10e6b7b65e992e2f3d857a19b7f1fe82563a1c4b1bd0"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Write four eighths in fraction notation.",
       "correct_answer": "4/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -251,13 +502,39 @@
           "text": "8/4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "4/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/8."
+      ],
+      "sample_id": "a6fc6e92142564c13edb",
+      "replay_digest": "c5f9e0c03f7969b0147e72a6d81ff114ece80063b1245f459f8d801d6016eb32"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Write one eighth in fraction notation.",
       "correct_answer": "1/8",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "area_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -279,13 +556,39 @@
           "value": "2/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "073650315fd778928f2e",
+      "replay_digest": "13269f18282d351c0ef4df82287f1b9c96b2a6de8410b880031224b78e2656b3"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Which word name represents \\(\\frac{2}{4}\\)?",
       "correct_answer": "two fourths",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "number_line"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -311,13 +614,39 @@
           "text": "two fourths",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "two fourths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 2.",
+        "So the fraction is 2/4."
+      ],
+      "sample_id": "9252afe6eb79358a89d9",
+      "replay_digest": "5e087638afcb396488364f08689bed4a9ea071f6228d9871913a99c431884978"
     },
     {
+      "node_id": "mat_g2_na_q4_4",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Write two fourths in fraction notation.",
       "correct_answer": "2/4",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "set_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -343,33 +672,1146 @@
           "text": "2/4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "2/4",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 2.",
+        "So the fraction is 2/4."
+      ],
+      "sample_id": "184eb7153be1a941195c",
+      "replay_digest": "708243adc5664ebafab772a05be860cb220cda7941f4cc94aa18dc99462da076"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "How is \\(\\frac{4}{5}\\) read in words?",
+      "correct_answer": "four fifths",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "five fourths",
+          "text": "five fourths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "four halfs",
+          "text": "four halfs",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "four fifths",
+          "text": "four fifths",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "three fifths",
+          "text": "three fifths",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "four fifths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/5."
+      ],
+      "sample_id": "2c92e95de8313b8cc05b",
+      "replay_digest": "ea8f3c320cb5cae735f4c897d4a1dff50910186fd4c5f384288d9d4d7fadf174"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🏐 Romel has a math challenge about whistles. Read the fraction \\(\\frac{3}{4}\\). Which is the correct word name?",
+      "correct_answer": "three fourths",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "volleyball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "two fourths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "four thirds",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three fourths",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "three halfs",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "three fourths",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/4."
+      ],
+      "sample_id": "21192bea0d4021e86557",
+      "replay_digest": "4f2c91e9b03c837c3563540078aaf0fbd27fb3e512f33b7775c0c2c8cdfbd274"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🚴 Kuya Chad has a math challenge about wristbands. Write two fifths in fraction notation.",
+      "correct_answer": "2/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "fitness_sports",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/5",
+          "text": "1/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/5",
+          "text": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "3/5",
+          "text": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/2",
+          "text": "5/2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "2/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 2.",
+        "So the fraction is 2/5."
+      ],
+      "sample_id": "608abcc662e589672ccf",
+      "replay_digest": "eaa479cc4ac8f2da66e879fb11ac472a8f73bf2ae905195e1eef3ad7752a673a"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Write four eighths in fraction notation.",
+      "correct_answer": "4/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "8/4",
+          "text": "8/4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4/8",
+          "text": "4/8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "5/8",
+          "text": "5/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/8",
+          "text": "3/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "4/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/8."
+      ],
+      "sample_id": "66f79a991011d493c878",
+      "replay_digest": "75ad8805e37cebbc3005870fa3cf2f5e6f2dc58184c3e5d3d9a73fa9bb4205ae"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "How is \\(\\frac{1}{5}\\) read in words?",
+      "correct_answer": "one fifth",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one fifth",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "one half",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "two fifths",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5 oneths",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one fifth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/5."
+      ],
+      "sample_id": "eb145e10d236aad14556",
+      "replay_digest": "fd99eb7950304fbe4cb2100847c7d0d0760aa6eb60aabbd38868f82b6c890be3"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Which word name represents \\(\\frac{1}{5}\\)?",
+      "correct_answer": "one fifth",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "one half",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one fifth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "two fifths",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one fifth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/5."
+      ],
+      "sample_id": "145260c419ebebbeab87",
+      "replay_digest": "90e3389f93f7a2b1ff44eaeffa68739a10e982e2508dc1b5c1e402cf0005d2d9"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Read the fraction \\(\\frac{1}{8}\\). Which is the correct word name?",
+      "correct_answer": "one eighth",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "8 oneths",
+          "text": "8 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two eighths",
+          "text": "two eighths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one eighth",
+          "text": "one eighth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "one half",
+          "text": "one half",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one eighth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "ca7551c7d25d0e739ce7",
+      "replay_digest": "7fcb2de621f449240f6051b69f5ab4e7d1ca50439195b3551babf46c21885fe9"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Write four fifths in fraction notation.",
+      "correct_answer": "4/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "4/5",
+          "text": "4/5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3/5",
+          "text": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4/2",
+          "text": "4/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/4",
+          "text": "5/4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "4/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/5."
+      ],
+      "sample_id": "f8a86b9ce7525257e95e",
+      "replay_digest": "a43e380c866022fb23db62b720b1337ec93ac42dc9aaf5efbc64c3da8f5441aa"
+    },
+    {
+      "node_id": "mat_g2_na_q4_4",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Write two fifths in fraction notation.",
+      "correct_answer": "2/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/5",
+          "text": "1/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/5",
+          "text": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/5",
+          "text": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "5/2",
+          "text": "5/2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "2/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 2.",
+        "So the fraction is 2/5."
+      ],
+      "sample_id": "4d355d916ac22a04a601",
+      "replay_digest": "732f87408a1a10369ab05f23a221f36e298a14d86d782543730640e6b9b00270"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "96253626ba8e9c7ed560",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks how a fraction expressed in notation is read aloud in words, with no alternative interpretations of the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions from notation is the core competency. The task logically precedes writing and builds understanding of fraction names."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses simple, direct phrasing appropriate for Grade 2. The stem clearly identifies the fraction and the expected response type."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 2/5 is correctly interpreted as two fifths. Distractors three fifths and one fifth test numerator confusion. Hints accurately explain denominator and numerator roles."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "afc9b50bbc34551dff46",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to write three eighths in fraction notation has a single unambiguous interpretation and expected answer format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from verbal descriptions is essential to the competency. The task tests ability to convert word names into symbolic notation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrase write three eighths in fraction notation is explicit and unambiguous for Grade 2 students who have learned fraction vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer 3/8 is accurate. Distractors 8/3 inverts numerator and denominator, while 4/8 and 2/8 test confusion about numerator values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "4760bc8a5885131f24ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks which word name represents the given fraction, with clear options distinguishing between fraction names."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting notation to word names tests reading comprehension of fractions and is central to the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the stem is clear, one option contains a malformed ordinal form. The phrase 8 oneths is not standard English; the correct ordinal plural form is eighths or one eighths."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The fraction 1/8 is correctly represented as one eighth. However, the option 8 oneths is mathematically and linguistically invalid as an ordinal form."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "d6e4d1b4cc14c5ce7993",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt clearly asks how the fraction 3/5 is read in words, with no ambiguity in what is being requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions aligns with the competency. The distractors test understanding of numerator and denominator roles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses straightforward language and the fraction is clearly presented for Grade 2 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three fifths is the correct reading of 3/5. Distractors five thirds, two fifths, and four fifths test confusion between numerators and denominators."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "e71defeab5ce3700ede5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to write three fifths in fraction notation is specific and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting word names to notation is integral to the writing component of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states the task using Grade 2 appropriate vocabulary and sentence structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 3/5 correctly represents three fifths. Distractors 5/3, 4/5, and 2/5 test numerator and denominator confusion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "dcdc7de18ab79450f215",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task to write five sixths in fraction notation has a clear, unambiguous interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from verbal descriptions tests competency in converting word names to symbolic form."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is explicit and uses appropriate Grade 2 vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five sixths is correctly written as 5/6. Distractors 5/2, 6/5, and 4/6 test confusion about numerator values and numerator-denominator relationships."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "ed54651d424203b7d18c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks how 4/5 is read in words with no alternative interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions is a core competency component. The multiple-choice format allows assessment of understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the fraction clearly and asks directly for its word name."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The fraction 4/5 is correctly read as four fifths. However, one distractor is four halfs, which contains a spelling error; the correct form is four halves."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "a6fc6e92142564c13edb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze prompt clearly requests writing four eighths in fraction notation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting word names to fraction notation tests the writing competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is direct and age-appropriate for Grade 2 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four eighths is correctly written as 4/8. Distractors 3/8, 5/8, and 8/4 test numerator confusion and inverted numerator-denominator relationships."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "073650315fd778928f2e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task to write one eighth in fraction notation is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from verbal descriptions is central to the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is clear and uses appropriate fraction vocabulary for Grade 2."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One eighth is correctly represented as 1/8. Distractors 1/2, 8/1, and 2/8 test understanding of numerator and denominator positions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "9252afe6eb79358a89d9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks which word name represents the fraction 2/4 with options that are clearly distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting fractions to word names is integral to reading and understanding fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and the options are presented in a way Grade 2 students can evaluate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two fourths is the correct word name for 2/4. Distractors test confusion between numerator and denominator ordinals."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "184eb7153be1a941195c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to write two fourths in fraction notation has a single clear interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from word descriptions tests notation competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is explicit and uses Grade 2 appropriate language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two fourths is correctly written as 2/4. Distractors 3/4, 4/2, and 1/4 test numerator confusion and numerator-denominator inversion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "2c92e95de8313b8cc05b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks how 4/5 is read in words with no ambiguity in interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions from notation is essential to the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and appropriate for Grade 2 students learning fraction reading."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The fraction 4/5 is correctly read as four fifths. However, one distractor contains four halfs instead of the correct spelling four halves."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "21192bea0d4021e86557",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks for the correct word name for the fraction 3/4 despite the contextual theme."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions remains the core task regardless of thematic wrapper. The theme does not interfere with the mathematical question."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies the fraction to read and the context does not obscure the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three fourths is the correct word name for 3/4. Distractors two fourths, four thirds, and three halfs test numerator, denominator, and ordinal understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "608abcc662e589672ccf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task to write two fifths in fraction notation is clear despite the contextual theme about wristbands."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from word forms is the core competency. The thematic context does not change the mathematical content."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is explicit and the theme about wristbands does not obscure the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two fifths is correctly written as 2/5. Distractors 1/5, 3/5, and 5/2 test numerator confusion and numerator-denominator inversion."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "66f79a991011d493c878",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks students to write four eighths in fraction notation with clear expectations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions in notation form is integral to the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is straightforward and uses Grade 2 appropriate vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four eighths is correctly written as 4/8. Distractors 8/4, 5/8, and 3/8 test understanding of numerator position and values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "eb145e10d236aad14556",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks how 1/5 is read in words with a clear, unambiguous task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions such as 1/5 represents a primary component of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and directly asks for the word name of the fraction."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "One fifth is correctly read from 1/5. However, one option contains 5 oneths, which is a malformed ordinal form and not valid in English mathematics vocabulary."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "145260c419ebebbeab87",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks which word name represents 1/5 with distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting fraction notation to word names tests reading competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear and options are presented in a way Grade 2 students can evaluate."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "One fifth is the correct word name for 1/5. However, one distractor contains 5 oneths, which is not a valid English ordinal form."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "ca7551c7d25d0e739ce7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task to read 1/8 and select the correct word name is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions and their word names is central to the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is explicit and options are clearly distinct."
+        },
+        "mathematical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "One eighth is correctly matched to 1/8. However, one option contains 8 oneths, which is a malformed ordinal form not used in standard English mathematics."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "f8a86b9ce7525257e95e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item clearly asks to write four fifths in fraction notation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing fractions from word descriptions is part of the competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction is direct and uses appropriate Grade 2 vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four fifths is correctly written as 4/5. Distractors 3/5, 4/2, and 5/4 test numerator confusion and numerator-denominator relationships."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "sample_id": "4d355d916ac22a04a601",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to write two fifths in fraction notation is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting word names to notation is integral to demonstrating writing competency with fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses clear, grade-appropriate language and explicitly states the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two fifths is correctly written as 2/5. Distractors 1/5, 3/5, and 5/2 test understanding of numerator values and positions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "read",
+      "clause": "Read",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly assess reading fractions by presenting fraction notation and asking for word names. Samples 96253626ba8e9c7ed560, 4760bc8a5885131f24ec, d6e4d1b4cc14c5ce7993, ed54651d424203b7d18c, 2c92e95de8313b8cc05b, 21192bea0d4021e86557, eb145e10d236aad14556, 145260c419ebebbeab87, and ca7551c7d25d0e739ce7 explicitly test reading of various fractions.",
+      "sample_ids": [
+        "96253626ba8e9c7ed560",
+        "4760bc8a5885131f24ec",
+        "d6e4d1b4cc14c5ce7993",
+        "ed54651d424203b7d18c",
+        "2c92e95de8313b8cc05b",
+        "21192bea0d4021e86557",
+        "eb145e10d236aad14556",
+        "145260c419ebebbeab87",
+        "ca7551c7d25d0e739ce7"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "requirement_id": "write",
+      "clause": "write",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples assess writing fractions by presenting word names and asking for notation. Samples afc9b50bbc34551dff46, e71defeab5ce3700ede5, dcdc7de18ab79450f215, a6fc6e92142564c13edb, 073650315fd778928f2e, 184eb7153be1a941195c, 608abcc662e589672ccf, 66f79a991011d493c878, f8a86b9ce7525257e95e, and 4d355d916ac22a04a601 all test writing fractions.",
+      "sample_ids": [
+        "afc9b50bbc34551dff46",
+        "e71defeab5ce3700ede5",
+        "dcdc7de18ab79450f215",
+        "a6fc6e92142564c13edb",
+        "073650315fd778928f2e",
+        "184eb7153be1a941195c",
+        "608abcc662e589672ccf",
+        "66f79a991011d493c878",
+        "f8a86b9ce7525257e95e",
+        "4d355d916ac22a04a601"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "requirement_id": "similar_fractions",
+      "clause": "similar fractions",
+      "verdict": "FAIL",
+      "reasoning": "No sample in this packet demonstrates comparison, recognition, or use of similar or equivalent fractions. While sample 9252afe6eb79358a89d9 and 184eb7153be1a941195c involve the fraction 2/4, neither shows whether students recognize it as equivalent to 1/2 or compares it to other equivalent forms. The competency explicitly requires similar fractions but the samples only present individual fractions in isolation.",
+      "sample_ids": [
+        "96253626ba8e9c7ed560",
+        "afc9b50bbc34551dff46",
+        "4760bc8a5885131f24ec",
+        "d6e4d1b4cc14c5ce7993",
+        "e71defeab5ce3700ede5",
+        "dcdc7de18ab79450f215",
+        "ed54651d424203b7d18c",
+        "a6fc6e92142564c13edb",
+        "073650315fd778928f2e",
+        "9252afe6eb79358a89d9",
+        "184eb7153be1a941195c",
+        "2c92e95de8313b8cc05b",
+        "21192bea0d4021e86557",
+        "608abcc662e589672ccf",
+        "66f79a991011d493c878",
+        "eb145e10d236aad14556",
+        "145260c419ebebbeab87",
+        "ca7551c7d25d0e739ce7",
+        "f8a86b9ce7525257e95e",
+        "4d355d916ac22a04a601"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    },
+    {
+      "requirement_id": "fraction_notation",
+      "clause": "fraction notation",
+      "verdict": "PASS",
+      "reasoning": "All samples use correct fraction notation with numerator and denominator in standard a/b format. Fractions are presented consistently using the notation expected for Grade 2. Students interact with, recognize, and produce fractions in proper notation form throughout the sample set.",
+      "sample_ids": [
+        "96253626ba8e9c7ed560",
+        "afc9b50bbc34551dff46",
+        "4760bc8a5885131f24ec",
+        "d6e4d1b4cc14c5ce7993",
+        "e71defeab5ce3700ede5",
+        "dcdc7de18ab79450f215",
+        "ed54651d424203b7d18c",
+        "a6fc6e92142564c13edb",
+        "073650315fd778928f2e",
+        "9252afe6eb79358a89d9",
+        "184eb7153be1a941195c",
+        "2c92e95de8313b8cc05b",
+        "21192bea0d4021e86557",
+        "608abcc662e589672ccf",
+        "66f79a991011d493c878",
+        "eb145e10d236aad14556",
+        "145260c419ebebbeab87",
+        "ca7551c7d25d0e739ce7",
+        "f8a86b9ce7525257e95e",
+        "4d355d916ac22a04a601"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "ea619b73e0839958582720ec484d413e68920553f4f62b5a15e5c7678331f0d2",
+      "clause_ids": [
+        "read",
+        "write",
+        "similar_fractions",
+        "fraction_notation"
+      ],
+      "response_ref": ".responses/s5-phaseC-w8-haiku45-20260925.json",
+      "response_digest": "60d2369115d67b7a846623763a7ccc9d936038cb3d9ffc664f3d6fa1a180f876",
+      "prompt_ref": ".responses/s5-phaseC-w8-haiku45-20260925.prompt.txt",
+      "prompt_digest": "78dd1036b5772ce86f05cdae999145747a367c8514133ce957938c065e7eedf7",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q4_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q4_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; one wording revision by the reviewer (one string under 60 chars), 4 tool uses. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The reading and writing directions are both generated for genuinely non-unit fractions - three eighths, five sixths, four fifths and two fourths all appear - and each notation-to-words key correctly pluralises the denominator name."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Thirds never appear in either direction despite being available in this quarter's denominator set, and one sample, 'Write one eighth in fraction notation.', is a unit fraction duplicated verbatim from the earlier read-and-write unit fractions node rather than new content for this one."
-    },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "This is the competency where correct fraction words are the object of instruction, and two option lists put a misspelled plural of half in front of the pupil, while a third offers a non-word built from 'oneths'. Printing malformed word names to a Grade 2 reader who is being taught those very names actively works against the node's purpose."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two question shapes exist, writing a spoken name into notation and naming printed notation in words, and the second alternates between two near-identical phrasings, so there is no picture-supported or context-embedded reading of a fraction."
+      "verdict": "PASS",
+      "rationale": "Grade 2, Quarter 4 students work with fractions as parts of wholes. Item complexity, vocabulary such as denominator and numerator, and fraction sizes from halves through eighths are developmentally appropriate for this grade level and quarter."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Because some option sets mix plausible near-misses with nonsense strings, those items can be answered by discarding what is not a word rather than by reading the fraction correctly, which weakens the rung rather than building it."
+      "rationale": "The competency requires reading, writing, similar fractions, and fraction notation. Samples effectively demonstrate reading and writing operations using correct notation. However, samples do not explicitly address comparison, recognition, or use of similar fractions as equivalent representations, which is stated as central to the competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The printed REQUIREMENTS identify reading, writing, similar fractions, and fraction notation as decomposed components. Samples address read, write, and fraction notation effectively with varied examples. However, the similar fractions component lacks explicit demonstration of how students encounter or work with equivalent fractions.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The REQUIREMENTS list similar_fractions as a requirement, but no sample demonstrates recognition or comparison of equivalent fractions. Samples use individual fractions such as two fourths and four eighths but do not show whether these represent the same quantity or explore their relationship.",
+        "requirement_ids": [
+          "read",
+          "write",
+          "similar_fractions",
+          "fraction_notation"
+        ]
+      },
+      "clause_ids": [
+        "read",
+        "write",
+        "similar_fractions",
+        "fraction_notation"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples cover both reading and writing operations across multiple fractions with denominators of 4, 5, 6, and 8. Two items include contextual themes. Response formats include cloze and multiple-choice. Experience types vary with standard, hint_gated, mastery_drill, and scaffolded presentations, providing reasonable variety.",
+      "clause_ids": [
+        "read",
+        "write",
+        "similar_fractions",
+        "fraction_notation"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Denominators stay within fourths through eighths and every numerator is smaller than its denominator, so the fractions sampled sit inside the proper similar-fraction range for this quarter."
+      "rationale": "All fractions use small whole numbers with numerators and denominators ranging from 1 to 8 and all are proper fractions. The focus on unit fractions and common fractions with familiar denominators matches Grade 2 expectations and learning progression."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples employ two response formats, cloze and multiple-choice, across four experience types. Fractions vary with different numerators and denominators including 1/5, 1/8, 2/4, 2/5, 3/4, 3/5, 3/8, 4/5, 4/8, and 5/6. Two items integrate thematic contexts. Reading and writing operations are balanced across the sample set."
     }
   },
   "overall": "FAIL"
