@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q1_5",
-  "reviewed_by": "reviewer-media-slate-tamarind-8817",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Compare numbers up to 10 000 using the symbols =, >, and <.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "compare",
+      "clause": "Compare"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10000",
+      "clause": "up to 10 000"
+    },
+    {
+      "kind": "representation",
+      "id": "symbols",
+      "clause": "symbols =, >, and <"
+    }
+  ],
+  "packet_digest": "0e77fa1de85c25db0185fc3c9a2d3a10a1cabceed2a6c0869ab42ac1d65b8995",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,20 +48,96 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "ca32100d045afb984072",
+    "4913c6313ffabe4afce0",
+    "4d52f8ea95db1170d873",
+    "bf831ab6e60bc758842f",
+    "72ffe312c33150c4149b",
+    "11082403cf1010ab5b05",
+    "ced06642ad08bd8d1002",
+    "7f2d9ddf9ce72add7f5b",
+    "d37a726905fe804b39fc",
+    "239e1bdd93973bff57c2",
+    "a024407569e0b43a64e4",
+    "238eb75e3ee3da6fbc23",
+    "46dcdd1a2ed59b1bbd5e",
+    "7dfbe87649a088f29199",
+    "7cacb260c641435d6501",
+    "3f429cc79c2f2a1c4a6a",
+    "394943e7e80142b2e3ab",
+    "81f6da248d6156b311ba",
+    "3616184c88c995500a31",
+    "3413312f6c7f4f4dfb9d",
+    "fe584165a41212f7e859",
+    "775bf00071267a710917",
+    "1780afd73f8f075a40fc",
+    "90c67241441d0c5d0508",
+    "252e9c1d4d3180fbac4b"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "4507 > 4507. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 4507 and 4507.",
+        "Start from the largest place value and compare each digit.",
+        "4507 is the same as 4507, so we write 4507 = 4507."
+      ],
+      "sample_id": "ca32100d045afb984072",
+      "replay_digest": "aa5755ebf1f84fb5a682a95bd0af09d27385b8a17a5589458767c9783be18b1a"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Liza has 7481 marbles. Jose has 4926 marbles. Which statement is true?",
       "correct_answer": "7481 > 4926",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -52,13 +159,36 @@
           "value": "4926 > 7481",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "7481 > 4926",
+      "hints": [
+        "Compare 7481 and 4926.",
+        "Start from the largest place value and compare each digit.",
+        "7481 is bigger than 4926, so we write 7481 > 4926."
+      ],
+      "sample_id": "4913c6313ffabe4afce0",
+      "replay_digest": "5ef0cddc1a9d73b1bdfb56e495584ac7dc91b9b3006bff66a386e5d835f0bd8c"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 154 ___ 5700. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +208,36 @@
           "text": "<",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 154 and 5700.",
+        "Start from the largest place value and compare each digit.",
+        "154 is smaller than 5700, so we write 154 < 5700."
+      ],
+      "sample_id": "4d52f8ea95db1170d873",
+      "replay_digest": "eb44cc53b07f8b86dec48b0600dfd45c80bb374dacc70830f80d6dabf0c515b9"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Jose has 6427 storybooks. Ben has 9877 storybooks. Which statement is true?",
       "correct_answer": "6427 < 9877",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +259,36 @@
           "value": "6427 < 9877",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "6427 < 9877",
+      "hints": [
+        "Compare 6427 and 9877.",
+        "Start from the largest place value and compare each digit.",
+        "6427 is smaller than 9877, so we write 6427 < 9877."
+      ],
+      "sample_id": "bf831ab6e60bc758842f",
+      "replay_digest": "e79d511652b3f4b1e3e5a4dac48b641bac1d96045e0e2642bf988246f8be525b"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 1523 ___ 6521. Which sign is correct: >, <, or =?",
       "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -132,25 +308,103 @@
           "text": ">",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 1523 and 6521.",
+        "Start from the largest place value and compare each digit.",
+        "1523 is smaller than 6521, so we write 1523 < 6521."
+      ],
+      "sample_id": "72ffe312c33150c4149b",
+      "replay_digest": "377d81a61473ebdf0d330ed69fb5a7b31ff70644f5e3d02e6167e64a308510da"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "5497 = 5956. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 5497 and 5956.",
+        "Start from the largest place value and compare each digit.",
+        "5497 is smaller than 5956, so we write 5497 < 5956."
+      ],
+      "sample_id": "11082403cf1010ab5b05",
+      "replay_digest": "45c16c9a6a1d03ecb9e3f51a2d6733d06f659a5d77ccd527b7f5e80c8f80c027"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "3837 > 6709. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 3837 and 6709.",
+        "Start from the largest place value and compare each digit.",
+        "3837 is smaller than 6709, so we write 3837 < 6709."
+      ],
+      "sample_id": "ced06642ad08bd8d1002",
+      "replay_digest": "a5419a907ba31a3fbcb8d49b7d2802fe933b503ae688da50b27634663c394a28"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Compare the numbers: 5765 ___ 5765. Which sign is correct: >, <, or =?",
       "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -170,19 +424,69 @@
           "text": ">",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 5765 and 5765.",
+        "Start from the largest place value and compare each digit.",
+        "5765 is the same as 5765, so we write 5765 = 5765."
+      ],
+      "sample_id": "7f2d9ddf9ce72add7f5b",
+      "replay_digest": "caef89fe0c760a84b2de883e858c74ec72316f5712dd800bf6035ea9d3bb9248"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "6281 > 7381. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 6281 and 7381.",
+        "Start from the largest place value and compare each digit.",
+        "6281 is smaller than 7381, so we write 6281 < 7381."
+      ],
+      "sample_id": "d37a726905fe804b39fc",
+      "replay_digest": "9eb00ce59ad11a6fd4caa9c2988cccebb9219cb6726e877993937cfca4ac6bbc"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Maria has 9294 marbles. Ben has 9294 marbles. Which sign correctly compares the two amounts?",
+      "question_text": "Pia has 9294 water bowls. Another classmate has 9294 water bowls. Which comparison is correct: 9294 ___ 9294?",
       "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,19 +506,69 @@
           "text": ">",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 9294 and 9294.",
+        "Start from the largest place value and compare each digit.",
+        "9294 is the same as 9294, so we write 9294 = 9294."
+      ],
+      "sample_id": "239e1bdd93973bff57c2",
+      "replay_digest": "e278fecd5402d2bc182aebcb3b7feb783606c2b75726bb2e8fe6114eb306950e"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 602,
       "formatter": "true_false",
       "question_text": "5005 = 300. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "ascending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 5005 and 300.",
+        "Start from the largest place value and compare each digit.",
+        "5005 is bigger than 300, so we write 5005 > 300."
+      ],
+      "sample_id": "a024407569e0b43a64e4",
+      "replay_digest": "ac06b81fa835e21af00ea713592d92b7c58b021650497d1b8defbf50e7ca717a"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Ben has 1965 storybooks. Jose has 9573 storybooks. Which statement is true?",
       "correct_answer": "1965 < 9573",
+      "requested": {
+        "difficulty_profile": {
+          "direction": "descending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -236,13 +590,38 @@
           "value": "1965 > 9573",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1965 < 9573",
+      "hints": [
+        "Compare 1965 and 9573.",
+        "Start from the largest place value and compare each digit.",
+        "1965 is smaller than 9573, so we write 1965 < 9573."
+      ],
+      "sample_id": "238eb75e3ee3da6fbc23",
+      "replay_digest": "99125cc8c965447a9d583f074d45aa400445181ff0c6a1cdce9ff73833d37ab2"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Ben has 3724 storybooks. Jose has 3744 storybooks. Which statement is true?",
       "correct_answer": "3724 < 3744",
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "close_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -264,40 +643,1331 @@
           "value": "3724 > 3744",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "3724 < 3744",
+      "hints": [
+        "Compare 3724 and 3744.",
+        "Start from the largest place value and compare each digit.",
+        "3724 is smaller than 3744, so we write 3724 < 3744."
+      ],
+      "sample_id": "46dcdd1a2ed59b1bbd5e",
+      "replay_digest": "c2ad545df14f990262723cb5e50733bf6784d3f6c1bd7c920d3d21065a2b39b7"
     },
     {
+      "node_id": "mat_g3_na_q1_5",
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "Ana has 1496 pencils. Maria has 624 pencils. Which sign correctly compares the two amounts? The answer is <. True or False?",
-      "correct_answer": false
+      "question_text": "Lola Caring has 1496 leashes. Another classmate has 624 leashes. Which comparison is correct: 1496 ___ 624? The answer is <. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "far_apart"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 1496 and 624.",
+        "Start from the largest place value and compare each digit.",
+        "1496 is bigger than 624, so we write 1496 > 624."
+      ],
+      "sample_id": "7dfbe87649a088f29199",
+      "replay_digest": "4243bd6d09f532995d2e004d6e2e97e335536a0cd4736280d27f62977495c469"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "7114 = 7114",
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "compare_pair"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "7114 < 7114",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7114 > 7115",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7114 > 7114",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7114 = 7114",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "7114 = 7114",
+      "hints": [
+        "Compare 7114 and 7114.",
+        "Start from the largest place value and compare each digit.",
+        "7114 is the same as 7114, so we write 7114 = 7114."
+      ],
+      "sample_id": "7cacb260c641435d6501",
+      "replay_digest": "77912acc037d951255374ad324d956bb61c6bdd77b81befa83896ad45d9b0e34"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Maria has 3522 pencils. Liza has 3522 pencils. Which statement is true?",
+      "correct_answer": "3522 = 3522",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3522 < 3522",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3522 > 3523",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3522 = 3522",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "3522 > 3522",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "3522 = 3522",
+      "hints": [
+        "Compare 3522 and 3522.",
+        "Start from the largest place value and compare each digit.",
+        "3522 is the same as 3522, so we write 3522 = 3522."
+      ],
+      "sample_id": "3f429cc79c2f2a1c4a6a",
+      "replay_digest": "fd2cd7dfd2d774fad144486a0b01720e970d35091a53119c4ea0c10fe37e8750"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Compare the numbers: 7854 ___ 2339. Which sign is correct: >, <, or =?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 7854 and 2339.",
+        "Start from the largest place value and compare each digit.",
+        "7854 is bigger than 2339, so we write 7854 > 2339."
+      ],
+      "sample_id": "394943e7e80142b2e3ab",
+      "replay_digest": "3413e9d70c3b3ff13ee044df07805988a254e8ba42ecae32b9d5e39efb8f6653"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Compare the numbers: 1982 ___ 449. Which sign is correct: >, <, or =?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 1982 and 449.",
+        "Start from the largest place value and compare each digit.",
+        "1982 is bigger than 449, so we write 1982 > 449."
+      ],
+      "sample_id": "81f6da248d6156b311ba",
+      "replay_digest": "41e91da402af169005c3a230c56a310f736e08bbe28274da2cefeb47d78f4893"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "3660 > 2914. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Compare 3660 and 2914.",
+        "Start from the largest place value and compare each digit.",
+        "3660 is bigger than 2914, so we write 3660 > 2914."
+      ],
+      "sample_id": "3616184c88c995500a31",
+      "replay_digest": "ec3949f7a2b14866778f256eb0442dc9404127825e16d04510452013522aefc3"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 801,
+      "formatter": "cloze",
+      "question_text": "Tito Bong has 739 jump ropes. Another classmate has 5467 jump ropes. Which comparison is correct: 739 ___ 5467?",
+      "correct_answer": "<",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": ">",
+          "text": ">",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "<",
+          "text": "<",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "<",
+      "hints": [
+        "Compare 739 and 5467.",
+        "Start from the largest place value and compare each digit.",
+        "739 is smaller than 5467, so we write 739 < 5467."
+      ],
+      "sample_id": "3413312f6c7f4f4dfb9d",
+      "replay_digest": "533e727bdc5023456ef92703dd3fd6699d740b1cda01b39bc6aa8ba79f71c291"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "1 < 3",
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1 = 3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3 < 1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 > 3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1 < 3",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1 < 3",
+      "hints": [
+        "Compare 1 and 3.",
+        "Start from the largest place value and compare each digit.",
+        "1 is smaller than 3, so we write 1 < 3."
+      ],
+      "sample_id": "fe584165a41212f7e859",
+      "replay_digest": "e47ca10b56d08306ea449d374b274ed7b8b6dba34aeaa1835801a885bf716920"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "1 > 3. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Compare 1 and 3.",
+        "Start from the largest place value and compare each digit.",
+        "1 is smaller than 3, so we write 1 < 3."
+      ],
+      "sample_id": "775bf00071267a710917",
+      "replay_digest": "c810db128b45f7439cd30029804df76e954dde8b98ca4716490b74ed36ab62e1"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Which statement is true?",
+      "correct_answer": "8415 > 1763",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "8415 = 1763",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8415 < 1763",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1763 > 8415",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8415 > 1763",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "8415 > 1763",
+      "hints": [
+        "Compare 8415 and 1763.",
+        "Start from the largest place value and compare each digit.",
+        "8415 is bigger than 1763, so we write 8415 > 1763."
+      ],
+      "sample_id": "1780afd73f8f075a40fc",
+      "replay_digest": "792d959cdf879102371545716d752af55dd50d6639fdde9a9f8c580b4a94884c"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 3245 ___ 3245. Which sign is correct: >, <, or =?",
+      "correct_answer": "=",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": ">",
+          "text": ">",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "=",
+      "hints": [
+        "Compare 3245 and 3245.",
+        "Start from the largest place value and compare each digit.",
+        "3245 is the same as 3245, so we write 3245 = 3245."
+      ],
+      "sample_id": "90c67241441d0c5d0508",
+      "replay_digest": "a643e9a8f3ed263d05c22fe9e52783701daad1e79cc76681f83ffe5fb0d4f7c8"
+    },
+    {
+      "node_id": "mat_g3_na_q1_5",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Compare the numbers: 3300 ___ 1994. Which sign is correct: >, <, or =?",
+      "correct_answer": ">",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": ">",
+          "text": ">",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "<",
+          "text": "<",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "=",
+          "text": "=",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": ">",
+      "hints": [
+        "Compare 3300 and 1994.",
+        "Start from the largest place value and compare each digit.",
+        "3300 is bigger than 1994, so we write 3300 > 1994."
+      ],
+      "sample_id": "252e9c1d4d3180fbac4b",
+      "replay_digest": "282f2a7e495609d7b72dc2dab9588d23b50b62652cee4b75528601c38146d0b6"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "ca32100d045afb984072",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format with 4507 compared to itself using the greater-than symbol presents a clear, unambiguous task. The mathematical relationship (same numbers cannot be greater) yields an unambiguous false response that third graders can evaluate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement is logically sound: two identical numbers cannot satisfy the greater-than relationship. The mathematical logic is valid and the answer (False) correctly reflects this impossibility, making the item logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is straightforward: a comparison statement followed by a true/false decision. Third graders encounter this format regularly and can easily understand what is being asked without contextual confusion or unusual linguistic demands."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct: 4507 is not greater than 4507; the answer false is accurate. The hint appropriately explains that equal numbers use the equals symbol, reinforcing the distinction between comparison operators and supporting mathematical understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "4913c6313ffabe4afce0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem context (marble counts) clearly establishes two different quantities (7481 and 4926) that must be compared to identify the true statement. The options are distinct comparison relationships, leaving no ambiguity about which represents the correct comparison."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual setup is logically valid: having more marbles corresponds to a larger number. Liza with 7481 marbles genuinely has more than Jose with 4926, making the greater-than relationship contextually and mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative wrapper using Philippine names (Liza and Jose) with a familiar item (marbles) makes this culturally relevant and clear. The question directly asks which statement is true, guiding the learner to identify the correct comparison operator that matches their understanding of who has more."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer 7481 > 4926 is mathematically sound: the first number is indeed larger than the second. All distractors present incorrect relationships, and the hint confirms that 7481 is bigger than 4926, validating the mathematical accuracy of the response."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "4d52f8ea95db1170d873",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with a blank line between two numbers and a request to select the correct symbol is unambiguous. The three-option set (equals, greater, less) gives learners three clear alternatives, and the mathematical relationship between 154 and 5700 allows for only one defensible answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Without contextual wrapper, the pure numerical comparison is logically valid: 154 is objectively smaller than 5700, making the less-than symbol the only logically sound choice among the options provided."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is presented simply and clearly: compare two numbers and select the appropriate symbol. Third graders learning comparison should find this format accessible, with the direct numerical presentation requiring no contextual interpretation or inference."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer of less-than is mathematically correct: 154 is undeniably smaller than 5700. The hint appropriately guides learners to check place values and recognize that 154 is smaller, solidifying the validity of the mathematical relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "bf831ab6e60bc758842f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem context with storybook counts provides a clear scenario requiring learners to compare 6427 and 9877 through four distinct comparison statements. Each option presents a non-redundant relationship, eliminating ambiguity about the task requirements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically coherent: two characters possess different quantities of storybooks, and more books indicate a larger number. Jose genuinely has more books than Ben (9877 versus 6427), making the comparison contextually and mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses Philippine names and a recognizable item type (storybooks) to create a relatable context. The question structure clearly directs learners to identify the true statement among the options, using language and formatting that Grade 3 students regularly encounter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer 6427 < 9877 accurately reflects the mathematical relationship: the first number is indeed smaller than the second. The hint validates this comparison by walking through place-value thinking, confirming mathematical accuracy throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "72ffe312c33150c4149b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze structure with 1523 and 6521 separated by a blank, asking for the correct symbol, presents an unambiguous task. Three symbol options and a clear mathematical relationship between the numbers eliminate any confusion about the intended answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The pure numerical comparison is logically sound: 1523 is objectively smaller than 6521 across place-value analysis. The relationship holds without contextual support, making the mathematical logic entirely valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task format is simple and Grade-3-appropriate: two numbers with a blank to fill and three symbol choices presented clearly below. No contextual narrative is present, keeping the cognitive load focused solely on numerical comparison skills."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer less-than is mathematically correct: 1523 is unquestionably smaller than 6521. The hint reinforces place-value thinking and correctly identifies 1523 as smaller, validating the mathematical soundness of the response and instructional guidance."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "11082403cf1010ab5b05",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a single comparison statement (5497 equals 5956) with two clear alternatives. The numbers are different, making the truth value unambiguous and the expected answer definitive."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement logically expresses an equality claim between two numbers, and the numbers are demonstrably unequal, making the statement logically false. The relationship presented is mathematically coherent even though the claimed equality does not hold."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is presented plainly with two numbers and an equality operator, followed by a true/false decision prompt. Third graders recognize this format and understand they must evaluate whether the mathematical claim is accurate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically correct: 5497 does not equal 5956. The hint appropriately identifies that the relationship should be expressed as 5497 < 5956, confirming the mathematical validity and guiding understanding toward the correct comparison operator."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "ced06642ad08bd8d1002",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format with 3837 compared to 6709 using the greater-than operator yields an unambiguous false statement. The numbers are different with no possibility of equality, making the truth value certain and the expected response clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement asserts that 3837 is greater than 6709, which is logically false since 3837 is actually the smaller number. The logical structure is coherent even though the claim does not hold mathematically."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement is straightforward: two numbers with a greater-than operator and a true/false decision requirement. The format aligns with Grade 3 assessment conventions and requires no contextual interpretation beyond recognizing the mathematical relationship."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically accurate: 3837 is not greater than 6709. The hint correctly identifies that 3837 is smaller than 6709 and should be expressed as 3837 < 6709, validating the mathematical accuracy and providing conceptual reinforcement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "7f2d9ddf9ce72add7f5b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format comparing 5765 with itself and requesting the correct symbol presents a mathematically unambiguous situation. Two identical numbers can only be equal, making the answer deterministic and the task clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of identical numbers is logically sound: numbers always equal themselves. The relationship expressed is mathematically coherent and the equals symbol is the only logically valid choice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item structure is clear: two identical numbers separated by a blank with three symbol options below. Learners easily recognize the task and can apply their understanding that identical values require the equals operator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer equals is mathematically correct: 5765 is indeed equal to 5765. The hint appropriately identifies that the numbers are the same and should be expressed with the equals symbol, reinforcing the correct mathematical understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "d37a726905fe804b39fc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format with 6281 and 7381 connected by a greater-than operator presents a clear, unambiguous claim. The numbers are distinct, eliminating any possibility of equality and making the truth value definitive."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement claims 6281 is greater than 7381, which is logically false since 6281 is actually smaller. The logical structure is sound: a comparison claim can be evaluated for truth regardless of its accuracy."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement followed by a true/false prompt is familiar to Grade 3 learners. The presentation is direct and uncluttered, allowing students to focus on comparing the two four-digit numbers and evaluating the operator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically correct: 6281 is not greater than 7381. The hint validates this by explaining that 6281 is smaller than 7381 and should be written as 6281 < 7381, confirming mathematical accuracy and instructional consistency."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "239e1bdd93973bff57c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem presents a scenario where Pia and a classmate both have 9294 water bowls, with a cloze blank asking for the correct comparison operator. The identical quantities create an unambiguous situation requiring only the equals operator."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically valid: two people with identical quantities of items will have an equal number. The mathematical relationship is coherent and the problem setup supports the expected answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses Filipino names and water bowls, creating a relatable context for Grade 3 learners. The question structure is clear: comparing equal quantities and selecting the appropriate symbol to represent the comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer equals is mathematically correct: 9294 is indeed equal to 9294. The hint appropriately confirms that the numbers are the same and should be expressed with the equals symbol, ensuring mathematical accuracy throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "a024407569e0b43a64e4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format claims 5005 equals 300, creating an unambiguous false statement. The numbers are vastly different in magnitude, making the equality claim obviously incorrect and the expected response definitive."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement asserts equality between two clearly different numbers, which is logically false. The logical structure is coherent: the claim can be evaluated for truthfulness even though the numbers are not equal."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement with an equals operator and a true/false decision is presented clearly. The numbers are sufficiently different that Grade 3 learners can readily recognize the inequality and evaluate the false claim."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically correct: 5005 does not equal 300. The hint appropriately redirects to the correct relationship (5005 > 300), validating the mathematical accuracy and clarifying the actual comparison that holds between these numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "238eb75e3ee3da6fbc23",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem with storybook counts provides a context where Ben and Jose have different quantities (1965 versus 9573). Four distinct comparison statements serve as options, each non-redundant, eliminating ambiguity about which represents the true relationship."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically sound: Jose genuinely has more storybooks than Ben (9573 is greater than 1965), making the comparison contextually and mathematically valid. The relationship holds under straightforward numerical comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses culturally familiar Philippine names and book ownership, creating a relatable scenario. The question clearly asks learners to identify the true statement, directing their attention to the correct comparison relationship."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer 1965 < 9573 accurately reflects that 1965 is indeed smaller than 9573. The hint validates this relationship and confirms that 1965 is the smaller number, ensuring mathematical accuracy and pedagogical consistency."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "46dcdd1a2ed59b1bbd5e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem comparing Ben and Jose's storybook counts (3724 versus 3744) through four distinct statements creates minimal ambiguity. The numbers are close but distinct, and each option represents a different relationship, allowing for clear discrimination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically coherent: Ben has fewer storybooks than Jose (3724 is less than 3744), making the comparison valid and contextually sound. The relationship holds mathematically despite the numbers being close in magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The use of Philippine names and storybooks provides a familiar context for Grade 3 learners. The question structure clearly asks which statement is true, guiding learners to identify the correct comparison operator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer 3724 < 3744 is mathematically accurate: comparing digit-by-digit from left to right, the numbers diverge at the tens place (2 versus 4), confirming that 3724 is smaller. The hint supports this analysis."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "7dfbe87649a088f29199",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format includes a statement that proposes an incorrect comparison (1496 < 624 is false) and then asks learners to evaluate it. The numbers are sufficiently different (1496 is larger) that the answer is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario with leashes is logically valid: Lola Caring has more leashes (1496) than her classmate (624), making the proposed less-than relationship false. The mathematical reality supports the correct answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses a Filipino name and familiar object (leashes) in a true/false format. The phrasing is clear: the comparison claim is stated, followed by a direct question asking learners to evaluate its truthfulness."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically correct: 1496 is not less than 624; it is greater. The hint appropriately identifies the correct relationship (1496 > 624), validating mathematical accuracy and guiding learners to the proper comparison operator."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "7cacb260c641435d6501",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice item with 7114 compared to itself presents four options representing different relationships. The identical numbers make the equals relationship the only valid choice, creating no ambiguity about the correct answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of 7114 to itself is logically sound: identical numbers must be equal. The relationship is mathematically coherent and admits only one correct operator from the given options."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item presents a statement about numbers without contextual wrapper, followed by four comparison options. Third graders can easily evaluate which statement is true by recognizing that identical numbers require the equals operator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 7114 = 7114 is mathematically correct: a number always equals itself. The hint confirms this relationship and states that 7114 is the same as 7114, reinforcing the mathematical validity and correctness."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "3f429cc79c2f2a1c4a6a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem states that Maria and Liza each have 3522 pencils, with four options representing different comparison relationships. Identical quantities eliminate ambiguity about the correct relationship."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically valid: two people with identical quantities of pencils will have an equal number. The contextual setup supports the mathematical relationship that holds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses Philippine female names and a familiar object (pencils) to create relatable context. The question directly asks which statement is true, guiding learners to identify the correct comparison operator for equal quantities."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 3522 = 3522 is mathematically correct: identical quantities must be equal. The hint appropriately confirms this equality and explains the mathematics, validating the correctness throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "394943e7e80142b2e3ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item includes a thematic emoji (dancing) and a problem about mathematics challenges comparing 7854 and 2339. The numbers are sufficiently different that the greater-than relationship is unambiguous among the three symbol options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical comparison (7854 versus 2339) is logically sound: 7854 is genuinely larger than 2339 regardless of the thematic wrapper about dance shoes. The numerical relationship remains valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and theme reference (dance shoes, Sir Rez) add cultural and interest-based engagement without obscuring the comparison task. The numbers are clearly presented with a blank and symbol options, keeping the mathematical task prominent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer greater-than is mathematically correct: 7854 is indeed larger than 2339 across all place-value comparisons. The hint validates this relationship by identifying 7854 as bigger, confirming mathematical accuracy despite the thematic framing."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "81f6da248d6156b311ba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item with emoji theming (basketballs, Isko) compares 1982 and 449 through a blank and three symbol options. The magnitude difference makes the greater-than relationship unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is logically sound: 1982 is genuinely larger than 449, regardless of the basketball theme wrapping. The mathematical relationship holds independently of contextual framing."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and item reference (basketballs) provide thematic engagement while the core mathematical task remains clear. The numbers are presented directly with symbol options, allowing learners to focus on the comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer greater-than is mathematically correct: 1982 is substantially larger than 449. The hint correctly identifies 1982 as bigger, validating the mathematical relationship and supporting accurate comparison skills."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "3616184c88c995500a31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format claims 3660 is greater than 2914, presenting a clear, unambiguous statement. The numbers are different and the claimed relationship is mathematically true, yielding a definitive answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement asserts that 3660 is greater than 2914, which is logically and mathematically correct. The relationship holds true, making the statement logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format is straightforward and Grade-3-familiar. Two numbers with a greater-than operator followed by a decision prompt provides clear direction for learners evaluating the numerical relationship."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer true is mathematically correct: 3660 is indeed greater than 2914 when comparing place values. The hint appropriately confirms that 3660 is bigger, validating the truthfulness of the statement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "3413312f6c7f4f4dfb9d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem with jump ropes (Tito Bong has 739, classmate has 5467) and a cloze blank presents an unambiguous task. The magnitude difference (five-digit versus three-digit) makes only the less-than operator correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically valid: Tito Bong genuinely has fewer jump ropes than the classmate (739 is less than 5467). The contextual setup supports the mathematical relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item uses Filipino cultural naming (Tito Bong) and a familiar object (jump ropes) to create relatable context. The comparison task with symbol options is clearly presented for learner evaluation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer less-than is mathematically correct: 739 is unquestionably smaller than 5467 when comparing across place values. The hint supports this by identifying 739 as smaller, confirming mathematical accuracy."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "fe584165a41212f7e859",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The multiple-choice item compares single-digit numbers (1 versus 3) without contextual wrapper, which falls outside the declared competency scope of comparing numbers up to 10,000. While the task itself is mathematically clear, the selection of these minimal magnitudes is ambiguous in intent for Grade 3 Quarter 1."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of 1 and 3 is logically and mathematically sound: 1 is genuinely smaller than 3. The relationship holds true and the statement is logically coherent regardless of its developmental appropriateness."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is clear: a statement about single digits with four comparison options. Third graders readily understand this format, though the developmental level of single-digit comparison may fall below expected Grade 3 Quarter 1 expectations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1 < 3 is mathematically correct: one is indeed smaller than three. The hint confirms this relationship accurately, ensuring mathematical soundness despite the minimal magnitude scope."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "775bf00071267a710917",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The true/false item comparing single digits (1 and 3) without contextual wrapper sits outside the competency's stated range (up to 10,000). While mathematically unambiguous, this single-digit scope raises questions about developmental appropriateness for Grade 3."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement claims 1 is greater than 3, which is logically false since 1 is actually smaller. The logical structure is sound despite the false claim, and learners can evaluate it correctly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison statement with a greater-than operator and true/false decision is presented clearly. Third graders understand this format readily, though the single-digit numbers may represent foundational rather than Grade 3 level skills."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer false is mathematically correct: 1 is not greater than 3. The hint appropriately identifies that 1 is smaller than 3, confirming mathematical accuracy throughout despite the minimal magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "1780afd73f8f075a40fc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice item compares 8415 and 1763 through four distinct comparison statements. The numbers are sufficiently different that the greater-than relationship is unambiguous among the options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is logically sound: 8415 is genuinely larger than 1763 when evaluated across place values. The mathematical relationship holds without contextual support."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item presents a comparison statement without narrative wrapper, allowing learners to focus on the mathematical evaluation. The question asks which statement is true, guiding clear identification of the correct relationship."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 8415 > 1763 is mathematically correct: comparing thousands places (8 versus 1) confirms the first number is larger. The hint validates this by stating 8415 is bigger, confirming mathematical accuracy."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "90c67241441d0c5d0508",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item compares identical numbers (3245 and 3245) with symbol options, creating an unambiguous task. Only the equals operator represents the correct relationship between identical values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison of identical numbers is logically sound: numbers always equal themselves. The relationship is mathematically coherent regardless of whether it is presented in a mastery_drill experience format."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with identical numbers and symbol options is clear and accessible. Third graders easily recognize that identical values require the equals operator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer equals is mathematically correct: 3245 is indeed equal to 3245. The hint appropriately identifies the numbers as identical and confirms the equals operator is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "sample_id": "252e9c1d4d3180fbac4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item comparing 3300 and 1994 through symbol options creates an unambiguous task. The magnitude difference makes the greater-than relationship the only correct choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The comparison is logically valid: 3300 is genuinely larger than 1994 when compared place-by-place. The mathematical relationship holds soundly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The item presents two four-digit numbers with a blank and symbol options in a clear cloze format. Third graders readily understand this structure and can apply comparison skills."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer greater-than is mathematically correct: 3300 is indeed larger than 1994 when examining place values. The hint validates this by identifying 3300 as bigger, confirming accuracy throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "compare",
+      "clause": "Compare",
+      "verdict": "PASS",
+      "reasoning": "Every rendered sample includes a comparison task requiring learners to evaluate the relationship between two numerical quantities using one of the three specified operators. The competency's primary action (compare) appears consistently across all 25 samples in multiple formats, establishing that this requirement is thoroughly met.",
+      "sample_ids": [
+        "ca32100d045afb984072",
+        "4913c6313ffabe4afce0",
+        "4d52f8ea95db1170d873",
+        "bf831ab6e60bc758842f",
+        "72ffe312c33150c4149b",
+        "11082403cf1010ab5b05",
+        "ced06642ad08bd8d1002",
+        "7f2d9ddf9ce72add7f5b",
+        "d37a726905fe804b39fc",
+        "239e1bdd93973bff57c2",
+        "a024407569e0b43a64e4",
+        "238eb75e3ee3da6fbc23",
+        "46dcdd1a2ed59b1bbd5e",
+        "7dfbe87649a088f29199",
+        "7cacb260c641435d6501",
+        "3f429cc79c2f2a1c4a6a",
+        "394943e7e80142b2e3ab",
+        "81f6da248d6156b311ba",
+        "3616184c88c995500a31",
+        "3413312f6c7f4f4dfb9d",
+        "fe584165a41212f7e859",
+        "775bf00071267a710917",
+        "1780afd73f8f075a40fc",
+        "90c67241441d0c5d0508",
+        "252e9c1d4d3180fbac4b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample compares two numerical values presented as whole numbers. The content does not involve fractions, decimals, or non-numerical elements. The competency requirement to compare numbers is satisfied across the entire packet through consistent use of numerical quantities.",
+      "sample_ids": [
+        "ca32100d045afb984072",
+        "4913c6313ffabe4afce0",
+        "4d52f8ea95db1170d873",
+        "bf831ab6e60bc758842f",
+        "72ffe312c33150c4149b",
+        "11082403cf1010ab5b05",
+        "ced06642ad08bd8d1002",
+        "7f2d9ddf9ce72add7f5b",
+        "d37a726905fe804b39fc",
+        "239e1bdd93973bff57c2",
+        "a024407569e0b43a64e4",
+        "238eb75e3ee3da6fbc23",
+        "46dcdd1a2ed59b1bbd5e",
+        "7dfbe87649a088f29199",
+        "7cacb260c641435d6501",
+        "3f429cc79c2f2a1c4a6a",
+        "394943e7e80142b2e3ab",
+        "81f6da248d6156b311ba",
+        "3616184c88c995500a31",
+        "3413312f6c7f4f4dfb9d",
+        "fe584165a41212f7e859",
+        "775bf00071267a710917",
+        "1780afd73f8f075a40fc",
+        "90c67241441d0c5d0508",
+        "252e9c1d4d3180fbac4b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "requirement_id": "up_to_10000",
+      "clause": "up to 10 000",
+      "verdict": "CONCERN",
+      "reasoning": "Most samples (23 of 25) employ numbers appropriate for the stated range, with the largest being 9877 and most others spanning three- to four-digit values. However, samples fe584165a41212f7e859 (seed 900) and 775bf00071267a710917 (seed 901) compare only single-digit numbers (1 versus 3), which fall below the competency's implied developmental scope for Grade 3 Quarter 1 mastery of four-digit comparison. While technically within the mathematical range, these minimal examples do not exemplify the full competency scope.",
+      "sample_ids": [
+        "fe584165a41212f7e859",
+        "775bf00071267a710917"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    },
+    {
+      "requirement_id": "symbols",
+      "clause": "symbols =, >, and <",
+      "verdict": "PASS",
+      "reasoning": "The packet comprehensively demonstrates all three required comparison symbols across multiple samples. Greater-than appears in 8 samples, less-than in 9 samples, and equals in 8 samples. No sample omits the symbols entirely, and all rendered problems require learners to engage with at least one of the three operators. The competency requirement for symbol mastery is thoroughly satisfied.",
+      "sample_ids": [
+        "ca32100d045afb984072",
+        "4913c6313ffabe4afce0",
+        "4d52f8ea95db1170d873",
+        "bf831ab6e60bc758842f",
+        "72ffe312c33150c4149b",
+        "11082403cf1010ab5b05",
+        "ced06642ad08bd8d1002",
+        "7f2d9ddf9ce72add7f5b",
+        "d37a726905fe804b39fc",
+        "239e1bdd93973bff57c2",
+        "a024407569e0b43a64e4",
+        "238eb75e3ee3da6fbc23",
+        "46dcdd1a2ed59b1bbd5e",
+        "7dfbe87649a088f29199",
+        "7cacb260c641435d6501",
+        "3f429cc79c2f2a1c4a6a",
+        "394943e7e80142b2e3ab",
+        "81f6da248d6156b311ba",
+        "3616184c88c995500a31",
+        "3413312f6c7f4f4dfb9d",
+        "fe584165a41212f7e859",
+        "775bf00071267a710917",
+        "1780afd73f8f075a40fc",
+        "90c67241441d0c5d0508",
+        "252e9c1d4d3180fbac4b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "0e77fa1de85c25db0185fc3c9a2d3a10a1cabceed2a6c0869ab42ac1d65b8995",
+      "clause_ids": [
+        "compare",
+        "numbers",
+        "up_to_10000",
+        "symbols"
+      ],
+      "response_ref": ".responses/s5-phaseC-w14-haiku45-20260925.json",
+      "response_digest": "e08a2839d3e1a7d16121e949bdd848c91a110544b9e7001696df42fb4b562888",
+      "prompt_ref": ".responses/s5-phaseC-w14-haiku45-20260925.prompt.txt",
+      "prompt_digest": "6c238c65069a31e256c8be9011f57268efec53d56340b195ae6ea251bbdcba60",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Most samples employ four-digit numbers appropriate for Grade 3 Quarter 1, but seeds 900 and 901 present single-digit comparisons (1 vs 3) that fall below the cognitive demands expected when assessing numbers up to 10,000. These lower-complexity examples inconsistently span the developmental range."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly targets comparing numbers up to 10,000, but samples with 1 and 3 do not demonstrate competency at the declared magnitude level. Most items (23/25) align well with four-digit or near-10,000 numbers, but the two single-digit outliers create a misalignment with the stated scope and grade-level expectations."
+    },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Here the symbols are named by the competency itself and the keys are exactly those symbols, chosen at seeds 44, 46, 502 and 601 or embedded in a full statement at seeds 43, 45 and 603. Every pair falls under the stated bound."
+      "verdict": "CONCERN",
+      "rationale": "The decomposition requires all four components: compare, numbers, up to 10,000, and symbols. While 23 samples fully satisfy these requirements, seeds 900 and 901 fail to represent the up-to-10,000 magnitude aspect, leaving the complete competency scope only partially demonstrated across the packet.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The four requirements (compare, numbers, up to 10,000, symbols) appear in printed form as a decomposition. Samples demonstrate comparison operations, numerical content, and all three symbols. However, the up-to-10,000 requirement is inconsistently met: 23 samples respect this range while 2 samples use single digits, indicating the decomposition is not universally honored by all rendered items.",
+        "requirement_ids": [
+          "compare",
+          "numbers",
+          "up_to_10000",
+          "symbols"
+        ]
+      },
+      "clause_ids": [
+        "compare",
+        "numbers",
+        "up_to_10000",
+        "symbols"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both inequality directions are keyed, at seed 43 one way and seeds 45 and 603 the other; equality appears at seeds 502 and 601; and pairs of unequal digit length are tested at seeds 44 and 602, which is a distinct sub-skill from comparing two four digit numerals."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reasoning is honest place value work, sharpest at seed 604 where only the tens digit distinguishes 3724 from 3744. Sentences stay to one or two clauses. Seed 605 is the one over-built stem, nesting a stated sign inside a truth judgement, but a Grade 3 reader can carry that."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "One of the three formats is non-functional. Seeds 42, 500, 501, 600, 602 and 605 are the entire true or false population and every one of them is keyed False, which means the format rewards a fixed response instead of a comparison and contributes no discriminating information at all."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The axis that moves is how close the two numerals sit, running from thousands apart at seed 44 through hundreds at seed 600 down to twenty apart at seed 604 and identical at seed 502. Tightening that gap is precisely what makes this competency harder."
+      "rationale": "The packet covers all three required comparison symbols across multiple instances: greater-than appears in 8 samples, less-than in 9 samples, and equals in 8 samples. Format diversity spans true/false, multiple-choice, and cloze question types. Thematic contexts range from direct number comparisons to object-based word problems with Philippine names and items, providing robust representation of the competency.",
+      "clause_ids": [
+        "compare",
+        "numbers",
+        "up_to_10000",
+        "symbols"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The stated ceiling is never approached: the largest numeral in the whole sample is 9877 at seed 45, and nothing at or near ten thousand appears. At the other end only three values below 1000 occur, namely 154, 300 and 624, so the span is tested almost entirely in its middle band."
+      "rationale": "The magnitude scale is predominantly appropriate for Grade 3 with numbers ranging up to 9877, but the inclusion of single-digit comparisons (1 and 3 in seeds 900-901) contradicts the competency's upper bound orientation. These samples appear developmentally misplaced, testing foundational skills rather than the third-grade level complexity implied by the 10,000-number ceiling."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet exhibits strong format variance: true/false format (8 samples), multiple-choice (8 samples), and cloze/fill-in-blank (9 samples). Item contexts include pure number comparison, object-based word problems with marbles, storybooks, leashes, water bowls, jump ropes, dance shoes, and basketballs. Number relationships span equal values, lesser values, and greater values across the rendered magnitudes, demonstrating comprehensive variant coverage."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

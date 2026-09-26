@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q1_6",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Order numbers up to 10 000 from smallest to largest, and vice versa.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "order",
+      "clause": "Order"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10000",
+      "clause": "up to 10 000"
+    },
+    {
+      "kind": "property",
+      "id": "smallest_to_largest",
+      "clause": "smallest to largest"
+    },
+    {
+      "kind": "property",
+      "id": "vice_versa",
+      "clause": "vice versa"
+    }
+  ],
+  "packet_digest": "f78708105ce086e77efab9c7c6b4cf8f5e533680fc0e970d4a4c84b0aed58364",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,10 +53,49 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "7e7d7f781e39e5dade26",
+    "2b5e578020db7b03f5b8",
+    "ee8a4209ebafd1cc1b1d",
+    "27427647652310fa042b",
+    "78eb41b7844b64e745cf",
+    "fbc0885711725e044d62",
+    "20ed75d210b17feaba33",
+    "be552b54b02b102ca9d2",
+    "7ee00619023495e5a2b4",
+    "62df06cfba9966eadad2",
+    "64e96c23333b808cb174",
+    "ace6517c7f5e182eafb8",
+    "d3e801e9423e367b40da",
+    "265043c7180f32a1ca31",
+    "67f50b02875a81c74940",
+    "dbd18aab179397dfa556",
+    "c10dc9966da8e0b802ce",
+    "d841fec02576c87463bf",
+    "b3106dfd24e73a1864f1",
+    "5eb7eebbab2f3ec5c257",
+    "e629fd0af774a784c51e",
+    "47a984373eba270f5a64",
+    "5baa609ccbcf870f3c85",
+    "d3795b8742a4d0f29a3a",
+    "b94497f59568bafd1c72"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 42,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from smallest to largest: 6397, 6398, 2287",
@@ -28,9 +103,36 @@
         2287,
         6397,
         6398
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2287,
+        6397,
+        6398
+      ],
+      "hints": [
+        "Numbers to order: 2287, 6397, 6398.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 2287, 6397, 6398."
+      ],
+      "sample_id": "7e7d7f781e39e5dade26",
+      "replay_digest": "467fab8b5c71dc84af8a75ec79dad24ebb90a60afdfbbe549d9e9b62207421f6"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 43,
       "formatter": "sort_order",
       "question_text": "Ana counted marbles collected by 3 friends: 393, 401, 404. Arrange the counts from smallest to largest.",
@@ -38,9 +140,36 @@
         393,
         401,
         404
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        393,
+        401,
+        404
+      ],
+      "hints": [
+        "Numbers to order: 393, 401, 404.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 393, 401, 404."
+      ],
+      "sample_id": "2b5e578020db7b03f5b8",
+      "replay_digest": "86eb2db04da04c360df63d53ea778c8441904c296d03cd8cb28988032e05044c"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 44,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from smallest to largest: 4102, 4095, 4097",
@@ -48,9 +177,36 @@
         4095,
         4097,
         4102
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        4095,
+        4097,
+        4102
+      ],
+      "hints": [
+        "Numbers to order: 4095, 4097, 4102.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 4095, 4097, 4102."
+      ],
+      "sample_id": "ee8a4209ebafd1cc1b1d",
+      "replay_digest": "b477a3551b275795e193f1a8e7c3dc07027ed9822598213234a12c592d302b7b"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 45,
       "formatter": "sort_order",
       "question_text": "Ben counted seashells collected by 5 friends: 2690, 2692, 2698, 2699, 2700. Arrange the counts from smallest to largest.",
@@ -60,9 +216,38 @@
         2698,
         2699,
         2700
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2690,
+        2692,
+        2698,
+        2699,
+        2700
+      ],
+      "hints": [
+        "Numbers to order: 2690, 2692, 2698, 2699, 2700.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 2690, 2692, 2698, 2699, 2700."
+      ],
+      "sample_id": "27427647652310fa042b",
+      "replay_digest": "5f312b0386e6ab3d58527c4730314fb86f6d3b65739789c7a10ca1edbdca93a8"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 46,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from largest to smallest: 8908, 8891, 8906, 8897, 8910",
@@ -72,9 +257,38 @@
         8906,
         8897,
         8891
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        8910,
+        8908,
+        8906,
+        8897,
+        8891
+      ],
+      "hints": [
+        "Numbers to order: 8891, 8897, 8906, 8908, 8910.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 8910, 8908, 8906, 8897, 8891."
+      ],
+      "sample_id": "78eb41b7844b64e745cf",
+      "replay_digest": "6c7397643f204a5466080018e56bff8f3f2437705f0e7f38636e80a746c800d8"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 500,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from largest to smallest: 9993, 9996, 10000, 9998",
@@ -83,9 +297,40 @@
         9998,
         9996,
         9993
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10000,
+        9998,
+        9996,
+        9993
+      ],
+      "hints": [
+        "Numbers to order: 9993, 9996, 9998, 10000.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 10000, 9998, 9996, 9993."
+      ],
+      "sample_id": "fbc0885711725e044d62",
+      "replay_digest": "3cf05cb840ea48288fa3aed308d6a9239437fab11cd8b724035cac741108683a"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 501,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from largest to smallest: 10000, 5963, 9997",
@@ -93,9 +338,39 @@
         10000,
         9997,
         5963
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10000,
+        9997,
+        5963
+      ],
+      "hints": [
+        "Numbers to order: 5963, 9997, 10000.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 10000, 9997, 5963."
+      ],
+      "sample_id": "20ed75d210b17feaba33",
+      "replay_digest": "51dc151934f2acf6a29720c50f85beda2d57e5791757ab2db70b24af92c3fdea"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 502,
       "formatter": "ordering",
       "question_text": "Arrange these numbers from largest to smallest: 671, 9995, 10000",
@@ -103,9 +378,39 @@
         10000,
         9995,
         671
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10000,
+        9995,
+        671
+      ],
+      "hints": [
+        "Numbers to order: 671, 9995, 10000.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 10000, 9995, 671."
+      ],
+      "sample_id": "be552b54b02b102ca9d2",
+      "replay_digest": "74045fe0206071465f1b20e7a796a44754404fa82623216e8edb4eceeefe22e4"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 600,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from smallest to largest: 9409, 9404, 9410, 9394, 9401",
@@ -115,9 +420,40 @@
         9404,
         9409,
         9410
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        9394,
+        9401,
+        9404,
+        9409,
+        9410
+      ],
+      "hints": [
+        "Numbers to order: 9394, 9401, 9404, 9409, 9410.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 9394, 9401, 9404, 9409, 9410."
+      ],
+      "sample_id": "7ee00619023495e5a2b4",
+      "replay_digest": "0cdf2dfe7273587635f0bd11d25d8e776f32b92fd8c117e783b1350c6c34871e"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 601,
       "formatter": "ordering",
       "question_text": "Ben counted storybooks collected by 4 friends: 1891, 1893, 1907, 1908. Arrange the counts from smallest to largest.",
@@ -126,9 +462,39 @@
         1893,
         1907,
         1908
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1891,
+        1893,
+        1907,
+        1908
+      ],
+      "hints": [
+        "Numbers to order: 1891, 1893, 1907, 1908.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 1891, 1893, 1907, 1908."
+      ],
+      "sample_id": "62df06cfba9966eadad2",
+      "replay_digest": "bacc16fb4ce55fbc3aba83f5843a7c0c8f978a3d2e3c6dfc16c14d9aab4dbf7e"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 602,
       "formatter": "sort_order",
       "question_text": "Arrange these numbers from smallest to largest: 4005, 3999, 4004, 4009, 4006",
@@ -138,9 +504,40 @@
         4005,
         4006,
         4009
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "direction": "ascending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        3999,
+        4004,
+        4005,
+        4006,
+        4009
+      ],
+      "hints": [
+        "Numbers to order: 3999, 4004, 4005, 4006, 4009.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 3999, 4004, 4005, 4006, 4009."
+      ],
+      "sample_id": "64e96c23333b808cb174",
+      "replay_digest": "30410dd37c9d1c7246d3b6f63981c68e011c244c7458d1c80f37c0075b9f4620"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 603,
       "formatter": "sort_order",
       "question_text": "Ana counted stickers collected by 5 friends: 1590, 1591, 1604, 1606, 1608. Arrange the counts from largest to smallest.",
@@ -150,9 +547,40 @@
         1604,
         1591,
         1590
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "direction": "descending"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1608,
+        1606,
+        1604,
+        1591,
+        1590
+      ],
+      "hints": [
+        "Numbers to order: 1590, 1591, 1604, 1606, 1608.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 1608, 1606, 1604, 1591, 1590."
+      ],
+      "sample_id": "ace6517c7f5e182eafb8",
+      "replay_digest": "f8b75e568e27c9a2441975b999de7cdd0f9ef0f1b3ac657b22120f4a332057ea"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 604,
       "formatter": "sort_order",
       "question_text": "Liza counted seashells collected by 4 friends: 600, 601, 602, 603. Arrange the counts from largest to smallest.",
@@ -161,9 +589,39 @@
         602,
         601,
         600
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "close_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        603,
+        602,
+        601,
+        600
+      ],
+      "hints": [
+        "Numbers to order: 600, 601, 602, 603.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 603, 602, 601, 600."
+      ],
+      "sample_id": "d3e801e9423e367b40da",
+      "replay_digest": "7c2bb394438cf37957cce2fcac9f6f56a0138602f7a95089f7bb9e1c783059c5"
     },
     {
+      "node_id": "mat_g3_na_q1_6",
       "seed": 605,
       "formatter": "sort_order",
       "question_text": "Jose counted stickers collected by 6 friends: 1691, 1693, 1697, 1701, 1705, 1707. Arrange the counts from largest to smallest.",
@@ -174,33 +632,1266 @@
         1697,
         1693,
         1691
-      ]
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "proximity": "far_apart"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1707,
+        1705,
+        1701,
+        1697,
+        1693,
+        1691
+      ],
+      "hints": [
+        "Numbers to order: 1691, 1693, 1697, 1701, 1705, 1707.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 1707, 1705, 1701, 1697, 1693, 1691."
+      ],
+      "sample_id": "265043c7180f32a1ca31",
+      "replay_digest": "83b0dcd69f82a9994d716cf543006a0948a4934cd40e69da208ade97a5c85f0f"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 606,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 7403, 7401, 2186",
+      "correct_answer": [
+        2186,
+        7401,
+        7403
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "order_sequence"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        2186,
+        7401,
+        7403
+      ],
+      "hints": [
+        "Numbers to order: 2186, 7401, 7403.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 2186, 7401, 7403."
+      ],
+      "sample_id": "67f50b02875a81c74940",
+      "replay_digest": "c7e045b84a34366146b203d0450a3afb004c45ae70dfc80ce09f5dfdd644a95b"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 700,
+      "formatter": "sort_order",
+      "question_text": "Ben counted pencils collected by 4 friends: 1696, 1704, 1706, 1709. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        1709,
+        1706,
+        1704,
+        1696
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        1709,
+        1706,
+        1704,
+        1696
+      ],
+      "hints": [
+        "Numbers to order: 1696, 1704, 1706, 1709.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 1709, 1706, 1704, 1696."
+      ],
+      "sample_id": "dbd18aab179397dfa556",
+      "replay_digest": "113ed0e8f1aacf903d8d8d980a3f27693f5998b6c7b95ea1c6806264a4e57284"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 701,
+      "formatter": "ordering",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Arrange these numbers from smallest to largest: 7497, 7508, 7507, 7493",
+      "correct_answer": [
+        7493,
+        7497,
+        7507,
+        7508
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "sandbox_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        7493,
+        7497,
+        7507,
+        7508
+      ],
+      "hints": [
+        "Numbers to order: 7493, 7497, 7507, 7508.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 7493, 7497, 7507, 7508."
+      ],
+      "sample_id": "c10dc9966da8e0b802ce",
+      "replay_digest": "28df57e5e03146143eb76d82c147e9a914a68e325c405144da040d518e93b39b"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 702,
+      "formatter": "ordering",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Arrange these numbers from largest to smallest: 7690, 7694, 7698",
+      "correct_answer": [
+        7698,
+        7694,
+        7690
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "content_creation",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        7698,
+        7694,
+        7690
+      ],
+      "hints": [
+        "Numbers to order: 7690, 7694, 7698.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 7698, 7694, 7690."
+      ],
+      "sample_id": "d841fec02576c87463bf",
+      "replay_digest": "eaaa83ce99ff78857b07bf8d58be4225827b228b7a1a5325da5fe8936ace87f7"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 800,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 5004, 5006, 5005",
+      "correct_answer": [
+        5004,
+        5005,
+        5006
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        5004,
+        5005,
+        5006
+      ],
+      "hints": [
+        "Numbers to order: 5004, 5005, 5006.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 5004, 5005, 5006."
+      ],
+      "sample_id": "b3106dfd24e73a1864f1",
+      "replay_digest": "81a466db4c03e605e08a5024a7a1b21272f063009db9d71b6b8ebba1724298b2"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 801,
+      "formatter": "ordering",
+      "question_text": "Kuya Pat counted pencils collected by 3 friends: 1292, 9993, 10000. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        10000,
+        9993,
+        1292
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        10000,
+        9993,
+        1292
+      ],
+      "hints": [
+        "Numbers to order: 1292, 9993, 10000.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 10000, 9993, 1292."
+      ],
+      "sample_id": "5eb7eebbab2f3ec5c257",
+      "replay_digest": "8cd63f8cdcd1695fee557939c0c5be5a462a60781cb77cec6c699f67a954214b"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 900,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 3, 6, 1",
+      "correct_answer": [
+        6,
+        3,
+        1
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        6,
+        3,
+        1
+      ],
+      "hints": [
+        "Numbers to order: 1, 3, 6.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 6, 3, 1."
+      ],
+      "sample_id": "e629fd0af774a784c51e",
+      "replay_digest": "7ff8e3f1a893accf30dae7c528c9d9c19db7553b977e972ee73fd01669bd442b"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 901,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 2, 6, 5, 1",
+      "correct_answer": [
+        6,
+        5,
+        2,
+        1
+      ],
+      "requested": {
+        "difficulty_profile": {
+          "max_value": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "standard"
+      },
+      "resolved_answer": [
+        6,
+        5,
+        2,
+        1
+      ],
+      "hints": [
+        "Numbers to order: 1, 2, 5, 6.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 6, 5, 2, 1."
+      ],
+      "sample_id": "47a984373eba270f5a64",
+      "replay_digest": "7b5414cc4b96a1a665973c61092d89c54f78abe194f6c6048376a947492d0a19"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 1000,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 7802, 7792, 7801",
+      "correct_answer": [
+        7792,
+        7801,
+        7802
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "sort_order",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": [
+        7792,
+        7801,
+        7802
+      ],
+      "hints": [
+        "Numbers to order: 7792, 7801, 7802.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 7792, 7801, 7802."
+      ],
+      "sample_id": "5baa609ccbcf870f3c85",
+      "replay_digest": "5c963af64a1b0d63683f386a07f4a7976ffee463050987dde2f5cc383a788801"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 1001,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 7992, 7996, 8007",
+      "correct_answer": [
+        8007,
+        7996,
+        7992
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": [
+        8007,
+        7996,
+        7992
+      ],
+      "hints": [
+        "Numbers to order: 7992, 7996, 8007.",
+        "Find the largest number first, then the next largest.",
+        "Ordered from greatest to least: 8007, 7996, 7992."
+      ],
+      "sample_id": "d3795b8742a4d0f29a3a",
+      "replay_digest": "696ff690b42d0e260807aa38ab91862182c1372f3fa439b9f7e024f95cb54d33"
+    },
+    {
+      "node_id": "mat_g3_na_q1_6",
+      "seed": 1002,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 5198, 5205, 5194, 5197",
+      "correct_answer": [
+        5194,
+        5197,
+        5198,
+        5205
+      ],
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "ordering",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "drag",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": [
+        5194,
+        5197,
+        5198,
+        5205
+      ],
+      "hints": [
+        "Numbers to order: 5194, 5197, 5198, 5205.",
+        "Find the smallest number first, then the next smallest.",
+        "Ordered from least to greatest: 5194, 5197, 5198, 5205."
+      ],
+      "sample_id": "b94497f59568bafd1c72",
+      "replay_digest": "e3f800db71d8b9566feba4f5216543548d9248f1cb65cc5a7b878edfab9f12fd"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "7e7d7f781e39e5dade26",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly directs the student to arrange three given numbers from smallest to largest. The three values presented are distinct and require no interpretation of duplicate or unclear intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging bare numbers in ascending order is a mathematically valid and logically sound task for practicing the ordering competency without extraneous context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is direct and unambiguous. The phrase arrange these numbers from smallest to largest immediately conveys the expected action to a third-grade reader."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The provided answer correctly orders 2287 before 6397 before 6398 in ascending sequence. All three hints are mathematically accurate and reinforce the correct ordering principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "2b5e578020db7b03f5b8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The context is clear: Ana counted marbles collected by three friends with specified quantities, and the task is to arrange counts from smallest to largest without any vague phrasing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual framing of counting marbles collected by friends is realistic and provides a plausible motivation for ordering numbers, supporting conceptual understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem names the character, describes the counting scenario, and specifies the ordering direction. A third-grader can identify what is being counted and how to arrange the counts."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 393 before 401 before 404 in ascending sequence. Hints consistently represent this ordering and reinforce the smallest-to-largest principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "ee8a4209ebafd1cc1b1d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers are presented with a clear instruction to arrange them from smallest to largest. No ambiguity in the numeric values or the direction specified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A straightforward ordering task without context is valid for practicing the mechanical and conceptual skill of comparing and sequencing numbers."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple, direct language. The numbers are clearly listed, and the instruction is unambiguous for a Grade 3 student."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 4095 before 4097 before 4102, requiring attention to digit position and magnitude. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "27427647652310fa042b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The context clearly describes Ben counting seashells from five friends with specific counts provided. The ordering direction is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting seashells and arranging counts is a realistic scenario that supports the ordering competency with meaningful context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Five numbers are presented with clear context and a straightforward ordering instruction. The progression from description to task is logical."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct ascending order of 2690, 2692, 2698, 2699, 2700 is maintained in both answer and hints. The sequence tests digit discrimination in the ones place."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "78eb41b7844b64e745cf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Five numbers are presented with an explicit instruction to arrange from largest to smallest. The direction is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An abstract ordering task is logically valid for practicing the vice versa competency requirement of arranging numbers in descending sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem specifies five numbers and requests arrangement from largest to smallest, which a Grade 3 student can interpret clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 8910, 8908, 8906, 8897, 8891 in descending sequence. Hints support the largest-to-smallest principle accurately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "fbc0885711725e044d62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four numbers are provided, one of which reaches the competency boundary at ten thousand. The direction largest-to-smallest is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging numbers including the maximum boundary value tests whether students understand the full scope of the competency range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presentation of numbers and ordering instruction is clear. A student can identify which number is largest when ten thousand is included."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly places ten thousand first in the descending sequence, followed by 9998, 9996, 9993. Hints accurately describe the ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "20ed75d210b17feaba33",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers with a wide range of magnitudes are presented with a clear largest-to-smallest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering numbers that span different magnitude ranges tests the student's understanding of place value across the competency scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly lists the numbers and specifies the ordering direction. The magnitude differences do not create confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders ten thousand before 9997 before 5963 in descending sequence, reflecting proper magnitude comparison across ranges."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "be552b54b02b102ca9d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers spanning from the hundreds through ten thousand are presented with an unambiguous largest-to-smallest direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Arranging numbers across disparate magnitude ranges is a valid assessment of whether students recognize place value across the full competency scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The numbers and ordering direction are clearly stated. A Grade 3 student can identify ten thousand as the largest value despite the smaller numbers present."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders ten thousand, 9995, 671 in descending sequence. Hints accurately support the proper ordering."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "7ee00619023495e5a2b4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Five numbers in the nine-thousand range are presented with a clear smallest-to-largest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Numbers clustered in magnitude require fine discrimination in the thousands place, validating the ordering competency in a focused range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem lists five numbers and specifies ascending order. The instruction is unambiguous for the learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 9394, 9401, 9404, 9409, 9410 in ascending sequence. Hints are accurate and reinforce the smallest-to-largest principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "62df06cfba9966eadad2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ben counted storybooks from four friends with specified quantities. The smallest-to-largest ordering direction is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting storybooks collected by friends is a realistic context that motivates the ordering task meaningfully."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context is introduced clearly, the four numbers are provided, and the ordering instruction is unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 1891, 1893, 1907, 1908 in ascending sequence. Hints accurately represent the ordering principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "64e96c23333b808cb174",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Five numbers are presented around four thousand with a clear smallest-to-largest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering five numbers in close magnitude is a valid test of place-value discrimination in the thousands and hundreds places."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The numbers and ordering direction are clearly specified. No ambiguity in the task instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 3999, 4004, 4005, 4006, 4009 in ascending sequence, requiring careful digit comparison. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "ace6517c7f5e182eafb8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ana counted stickers from five friends with specified counts. The largest-to-smallest direction is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The contextual frame of counting stickers is realistic and supports the ordering task with meaningful purpose."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context, quantities, and ordering instruction are all clearly presented for a third-grader to understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 1608, 1606, 1604, 1591, 1590 in descending sequence. Hints accurately support the largest-to-smallest principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "d3e801e9423e367b40da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Liza counted seashells from four friends with provided quantities. The largest-to-smallest direction is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Counting seashells and arranging the quantities in descending order is a realistic scenario supporting the vice versa competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the context, numbers, and ordering direction clearly. A Grade 3 student can interpret the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 603, 602, 601, 600 in descending sequence. The hint values and final answer are consistent and accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "265043c7180f32a1ca31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Jose counted stickers from six friends. The largest-to-smallest direction is explicit."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering six numbers is a valid test of the student's ability to sequence a moderate set of values in the competency range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context and six numbers are clearly presented. The ordering instruction from largest to smallest is unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 1707, 1705, 1701, 1697, 1693, 1691 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "67f50b02875a81c74940",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers are provided with a clear smallest-to-largest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering numbers with significantly different magnitudes tests whether students understand place value across the full range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly presents the numbers and ordering direction without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 2186, 7401, 7403 in ascending sequence, properly identifying the smallest value despite its different magnitude range."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "dbd18aab179397dfa556",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ben counted pencils from four friends with specified quantities. The largest-to-smallest direction is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The realistic scenario of counting pencils motivates the ordering task and reinforces the competency with contextual meaning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context, four numbers, and ordering direction are all clearly conveyed to the student."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 1709, 1706, 1704, 1696 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "c10dc9966da8e0b802ce",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Sir Rez is introduced with a themed reference to dance shoes. Four numbers are provided with a smallest-to-largest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The themed wrapper references dance shoes but does not interfere with the core ordering task. The mathematical content remains clear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic element, the numbers and ordering instruction are clearly presented. The theme does not obscure the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 7493, 7497, 7507, 7508 in ascending sequence. Hints are accurate and mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "d841fec02576c87463bf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Isko is introduced with a themed reference to basketballs. Three numbers are provided with a largest-to-smallest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball theme is incorporated without interfering with the core ordering competency. The mathematical content is unambiguous."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The three numbers and largest-to-smallest direction are clearly presented despite the thematic wrapper."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 7698, 7694, 7690 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "b3106dfd24e73a1864f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers are presented with a clear smallest-to-largest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An abstract ordering task without context is valid for practicing the core ordering skill."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly lists three numbers and specifies the ordering direction unambiguously."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 5004, 5005, 5006 in ascending sequence. This tests careful digit discrimination in the ones place. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "5eb7eebbab2f3ec5c257",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Kuya Pat counted pencils from three friends with quantities including the competency boundary at ten thousand. The largest-to-smallest direction is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using the boundary value of ten thousand in a contextual ordering task validates student understanding at the competency limit."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The context, three quantities including the maximum value, and ordering direction are all clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders ten thousand, 9993, 1292 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "e629fd0af774a784c51e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three single-digit numbers are presented with a largest-to-smallest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using single-digit numbers provides scaffolding for the ordering competency while remaining within the stated range."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The three numbers and ordering direction are presented clearly and unambiguously."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 6, 3, 1 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "47a984373eba270f5a64",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four single-digit numbers are presented with a largest-to-smallest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering single-digit numbers is a valid scaffolding approach for students beginning to develop ordering competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The four numbers and ordering direction are clearly specified."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 6, 5, 2, 1 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "5baa609ccbcf870f3c85",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers around seven thousand eight hundred are presented with a smallest-to-largest instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering numbers in the high range tests whether students understand place value across the competency scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The three numbers ranging from 7792 to 7802 and the smallest-to-largest direction are clearly presented, allowing Grade 3 students to identify the ordering task without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 7792, 7801, 7802 in ascending sequence, requiring attention to digit position. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "d3795b8742a4d0f29a3a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Three numbers around eight thousand are presented with a largest-to-smallest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering numbers in the high range with descending direction tests mastery of place value and ordering in both directions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The three numbers clustered around eight thousand with the largest-to-smallest direction are clearly specified, enabling students to understand the descending ordering requirement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 8007, 7996, 7992 in descending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "sample_id": "b94497f59568bafd1c72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Four numbers around five thousand two hundred are presented with a smallest-to-largest ordering instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ordering four numbers in a focused range requires fine discrimination in place value, testing the competency thoroughly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The four numbers and ordering direction are clearly presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer correctly orders 5194, 5197, 5198, 5205 in ascending sequence. Hints are accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "order",
+      "clause": "Order",
+      "verdict": "PASS",
+      "reasoning": "All twenty-five samples explicitly require the student to order numbers by arranging them in a specified sequence. The ordering operation appears uniformly across every sample, establishing that the generator reliably produces items demanding this core action.",
+      "sample_ids": [
+        "7e7d7f781e39e5dade26",
+        "2b5e578020db7b03f5b8",
+        "ee8a4209ebafd1cc1b1d",
+        "27427647652310fa042b",
+        "78eb41b7844b64e745cf",
+        "fbc0885711725e044d62",
+        "20ed75d210b17feaba33",
+        "be552b54b02b102ca9d2",
+        "7ee00619023495e5a2b4",
+        "62df06cfba9966eadad2",
+        "64e96c23333b808cb174",
+        "ace6517c7f5e182eafb8",
+        "d3e801e9423e367b40da",
+        "265043c7180f32a1ca31",
+        "67f50b02875a81c74940",
+        "dbd18aab179397dfa556",
+        "c10dc9966da8e0b802ce",
+        "d841fec02576c87463bf",
+        "b3106dfd24e73a1864f1",
+        "5eb7eebbab2f3ec5c257",
+        "e629fd0af774a784c51e",
+        "47a984373eba270f5a64",
+        "5baa609ccbcf870f3c85",
+        "d3795b8742a4d0f29a3a",
+        "b94497f59568bafd1c72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample presents numeric operands that require ordering. No sample attempts to order non-numeric entities, confirming that the generator consistently produces items where numbers are the primary mathematical objects being manipulated.",
+      "sample_ids": [
+        "7e7d7f781e39e5dade26",
+        "2b5e578020db7b03f5b8",
+        "ee8a4209ebafd1cc1b1d",
+        "27427647652310fa042b",
+        "78eb41b7844b64e745cf",
+        "fbc0885711725e044d62",
+        "20ed75d210b17feaba33",
+        "be552b54b02b102ca9d2",
+        "7ee00619023495e5a2b4",
+        "62df06cfba9966eadad2",
+        "64e96c23333b808cb174",
+        "ace6517c7f5e182eafb8",
+        "d3e801e9423e367b40da",
+        "265043c7180f32a1ca31",
+        "67f50b02875a81c74940",
+        "dbd18aab179397dfa556",
+        "c10dc9966da8e0b802ce",
+        "d841fec02576c87463bf",
+        "b3106dfd24e73a1864f1",
+        "5eb7eebbab2f3ec5c257",
+        "e629fd0af774a784c51e",
+        "47a984373eba270f5a64",
+        "5baa609ccbcf870f3c85",
+        "d3795b8742a4d0f29a3a",
+        "b94497f59568bafd1c72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "requirement_id": "up_to_10000",
+      "clause": "up to 10 000",
+      "verdict": "PASS",
+      "reasoning": "All numeric values across the entire sample set remain within or below the ten-thousand ceiling specified by the competency. The largest value observed is exactly ten thousand, and no value exceeds this boundary, confirming that the generator respects the stated range constraint.",
+      "sample_ids": [
+        "7e7d7f781e39e5dade26",
+        "2b5e578020db7b03f5b8",
+        "ee8a4209ebafd1cc1b1d",
+        "27427647652310fa042b",
+        "78eb41b7844b64e745cf",
+        "fbc0885711725e044d62",
+        "20ed75d210b17feaba33",
+        "be552b54b02b102ca9d2",
+        "7ee00619023495e5a2b4",
+        "62df06cfba9966eadad2",
+        "64e96c23333b808cb174",
+        "ace6517c7f5e182eafb8",
+        "d3e801e9423e367b40da",
+        "265043c7180f32a1ca31",
+        "67f50b02875a81c74940",
+        "dbd18aab179397dfa556",
+        "c10dc9966da8e0b802ce",
+        "d841fec02576c87463bf",
+        "b3106dfd24e73a1864f1",
+        "5eb7eebbab2f3ec5c257",
+        "e629fd0af774a784c51e",
+        "47a984373eba270f5a64",
+        "5baa609ccbcf870f3c85",
+        "d3795b8742a4d0f29a3a",
+        "b94497f59568bafd1c72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "requirement_id": "smallest_to_largest",
+      "clause": "smallest to largest",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly ask students to arrange numbers from smallest to largest: samples one through four present this direction for three to five numbers, and samples nine through eleven continue the pattern. Samples nineteen, twenty-three, and twenty-five extend this direction across different magnitude ranges. This demonstrates consistent support for the ascending ordering requirement.",
+      "sample_ids": [
+        "7e7d7f781e39e5dade26",
+        "2b5e578020db7b03f5b8",
+        "ee8a4209ebafd1cc1b1d",
+        "27427647652310fa042b",
+        "7ee00619023495e5a2b4",
+        "62df06cfba9966eadad2",
+        "64e96c23333b808cb174",
+        "b3106dfd24e73a1864f1",
+        "5baa609ccbcf870f3c85",
+        "b94497f59568bafd1c72",
+        "c10dc9966da8e0b802ce"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    },
+    {
+      "requirement_id": "vice_versa",
+      "clause": "vice versa",
+      "verdict": "PASS",
+      "reasoning": "Thirteen samples explicitly ask students to arrange numbers from largest to smallest, fulfilling the vice versa requirement that students order in both ascending and descending directions. Samples five through eight demonstrate this direction for three to five numbers, samples twelve through fourteen extend it with contextual frames, and samples sixteen through eighteen and twenty through twenty-four continue the pattern across various ranges, demonstrating comprehensive support for bidirectional ordering.",
+      "sample_ids": [
+        "78eb41b7844b64e745cf",
+        "fbc0885711725e044d62",
+        "20ed75d210b17feaba33",
+        "be552b54b02b102ca9d2",
+        "ace6517c7f5e182eafb8",
+        "d3e801e9423e367b40da",
+        "265043c7180f32a1ca31",
+        "dbd18aab179397dfa556",
+        "d841fec02576c87463bf",
+        "5eb7eebbab2f3ec5c257",
+        "e629fd0af774a784c51e",
+        "47a984373eba270f5a64",
+        "d3795b8742a4d0f29a3a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_6",
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "f78708105ce086e77efab9c7c6b4cf8f5e533680fc0e970d4a4c84b0aed58364",
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_10000",
+        "smallest_to_largest",
+        "vice_versa"
+      ],
+      "response_ref": ".responses/s5-phaseC-w14-haiku45-20260925.json",
+      "response_digest": "1c0f6e82ff89427cfac893e2197f452fc894ab50fd9b3aa96c93d2afa5a22e37",
+      "prompt_ref": ".responses/s5-phaseC-w14-haiku45-20260925.prompt.txt",
+      "prompt_digest": "5ad500cacb1d4e5b7d6ceb22128624c3f7a0aa48854589efaf2c0ad71e2eb874",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_6/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; one wording revision by the reviewer (2 strings under 60 chars), 5 tool uses. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Ordering is what is asked and ordering is what the keys record, as full arrangements rather than single picks. Both directions the wording demands are genuinely keyed, smallest-first and largest-first alike."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The 'and vice versa' half is not an afterthought here: descending arrangements appear in both the plain and the story shells, and set sizes run from three items up to six, so the work scales rather than staying at one length."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The story stems, such as the one about seashells collected by 5 friends, stay to one sentence of setup plus one instruction. Comparing five four-digit numerals is demanding but is precisely the demand this quarter intends."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two shells are present and each carries both directions: a bare list of numerals to arrange, and a counting context where friends' totals are ordered. Neither shell monopolises the ascending or the descending case."
+      "rationale": "All samples present ordering tasks with numeric ranges developmentally appropriate for Grade 3 Quarter 1. The cognitive demand reflects the core skill of comparing and sequencing numbers without introducing extraneous operations or vocabulary. Complexity scales from three to six items per problem, supporting graduated difficulty aligned with learner progression expectations."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty is tuned on the axis that belongs to ordering, namely how close the values are: clusters such as 9409, 9404, 9410, 9394, 9401 force a digit-by-digit read, while wider spreads like 671, 9995, 10000 can be settled by length."
+      "rationale": "Every sample directly instantiates the competency requirement to order numbers up to 10,000 from smallest to largest and vice versa. The generated problems consistently ask for explicit arrangement of numbers, with representation of both directional requirements evident across the sample distribution."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The rendered items represent all five components of the decomposed competency: the ordering operation appears throughout, numeric values are present in every sample, all numbers remain within the specified range limit, smallest-to-largest direction appears across multiple samples, and largest-to-smallest direction appears across equally numerous samples.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five-component decomposition losslessly captures the competency statement. Each element (order operation, numbers as operands, the ten-thousand ceiling, ascending direction, descending direction) is explicitly rendered across the sample set with no redundancy or omission. The decomposition constitutes a complete and minimal representation of the stated learning objective.",
+        "requirement_ids": [
+          "order",
+          "numbers",
+          "up_to_10000",
+          "smallest_to_largest",
+          "vice_versa"
+        ]
+      },
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_10000",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set spans single-digit numbers through the ten-thousand boundary, encompasses both ascending and descending ordering tasks, includes both abstract and contextual problem frames where items reference collected quantities, varies the count of numbers to order from three to six, and incorporates both thematic and non-thematic variants. This diversity ensures exposure to the full breadth of the ordering competency.",
+      "clause_ids": [
+        "order",
+        "numbers",
+        "up_to_10000",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The stated ceiling is actually reached, since 10000 itself appears in three of the sets, and smaller sets in the hundreds give the low end of the range without leaving it."
+      "rationale": "Numbers used range from one through ten thousand, which precisely matches the stated competency boundary. The distribution emphasizes four-digit numbers in the thousands range, requiring nuanced place-value discrimination appropriate for Grade 3. Including single-digit examples provides scaffolding while higher-magnitude examples provide appropriate challenge."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both interactive formats (sort_order and ordering) are represented across the samples. Multiple experience types appear including standard, hint_gated, mastery_drill, and scaffolded. Thematic variants incorporating emoji and named contexts coexist with plain numerical presentations. Contextual frames using real-world collection scenarios appear alongside abstract number lists."
     }
   },
   "overall": "PASS"

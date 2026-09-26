@@ -1,535 +1,598 @@
 {
-  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
-  "mat_g3_na_q1_4": {
+  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
+  "mat_g3_na_q1_6": {
     "findings": {
       "cognitive_capacity": {
         "verdict": "PASS",
-        "rationale": "All samples use numbers in the 1000-8000 range with rounding tasks targeting nearest 10, 100, or 1000. Complexity of place-value reasoning is appropriate for Grade 3 Quarter 1, with clear procedural steps reflected in consistent hint structures."
+        "rationale": "All samples present ordering tasks with numeric ranges developmentally appropriate for Grade 3 Quarter 1. The cognitive demand reflects the core skill of comparing and sequencing numbers without introducing extraneous operations or vocabulary. Complexity scales from three to six items per problem, supporting graduated difficulty aligned with learner progression expectations."
       },
       "competency_alignment": {
         "verdict": "PASS",
-        "rationale": "Every sample directly instantiates the core competency of rounding to the nearest ten, hundred, or thousand. Problems present unambiguous rounding directives without superfluous context, maintaining tight alignment to the written curriculum objective."
+        "rationale": "Every sample directly instantiates the competency requirement to order numbers up to 10,000 from smallest to largest and vice versa. The generated problems consistently ask for explicit arrangement of numbers, with representation of both directional requirements evident across the sample distribution."
       },
       "competency_fulfillment": {
         "verdict": "PASS",
-        "rationale": "All five decomposed requirements (round, numbers, nearest_ten, hundred, thousand) are demonstrated across the sample set. Coverage is comprehensive with dedicated samples for each rounding target, ensuring lossless mapping to the full competency.",
+        "rationale": "The rendered items represent all five components of the decomposed competency: the ordering operation appears throughout, numeric values are present in every sample, all numbers remain within the specified range limit, smallest-to-largest direction appears across multiple samples, and largest-to-smallest direction appears across equally numerous samples.",
         "decomposition": {
           "verdict": "PASS",
-          "reasoning": "The requirement list covers every semantic component: the verb (round), the object (numbers), and all three target precisions (nearest ten, nearest hundred, nearest thousand). No required element is missing and the decomposition adds no inauthentic constraints."
+          "reasoning": "The five-component decomposition losslessly captures the competency statement. Each element (order operation, numbers as operands, the ten-thousand ceiling, ascending direction, descending direction) is explicitly rendered across the sample set with no redundancy or omission. The decomposition constitutes a complete and minimal representation of the stated learning objective."
         }
       },
       "comprehensive_coverage": {
         "verdict": "PASS",
-        "rationale": "Sample set includes nine rounding-to-nearest-thousand cases, six rounding-to-nearest-hundred cases, and seven rounding-to-nearest-ten cases. Both up-rounding (digit >= 5) and down-rounding (digit < 5) scenarios are represented across targets."
+        "rationale": "The sample set spans single-digit numbers through the ten-thousand boundary, encompasses both ascending and descending ordering tasks, includes both abstract and contextual problem frames where items reference collected quantities, varies the count of numbers to order from three to six, and incorporates both thematic and non-thematic variants. This diversity ensures exposure to the full breadth of the ordering competency."
       },
       "scale_appropriateness": {
         "verdict": "PASS",
-        "rationale": "Numbers used (1310 through 8789) are scaled for Grade 3 learners with manageable digit magnitudes. Visual supports (number lines with 30-label ranges) are appropriate for the grade level without introducing unnecessary cognitive load."
+        "rationale": "Numbers used range from one through ten thousand, which precisely matches the stated competency boundary. The distribution emphasizes four-digit numbers in the thousands range, requiring nuanced place-value discrimination appropriate for Grade 3. Including single-digit examples provides scaffolding while higher-magnitude examples provide appropriate challenge."
       },
       "variant_comprehensiveness": {
         "verdict": "PASS",
-        "rationale": "Sample set spans three response formats (cloze fill-in-blank, multiple-choice, read-based multiple-choice), four experience types (standard, hint_gated, mastery_drill, scaffolded), and includes both unthemed problems and those with character-based theming using emoji."
+        "rationale": "Both interactive formats (sort_order and ordering) are represented across the samples. Multiple experience types appear including standard, hint_gated, mastery_drill, and scaffolded. Thematic variants incorporating emoji and named contexts coexist with plain numerical presentations. Contextual frames using real-world collection scenarios appear alongside abstract number lists."
       }
     },
     "sample_assessments": [
       {
-        "sample_id": "7f1f817ba2f6ef8fab58",
+        "sample_id": "7e7d7f781e39e5dade26",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Stem unambiguously directs rounding 1815 to the nearest 1000. Answer 2000 is mathematically correct; distractors 2010, 0, and 1000 represent plausible errors (rounding to wrong place or off-by-ten)."
+            "reasoning": "The stem clearly directs the student to arrange three given numbers from smallest to largest. The three values presented are distinct and require no interpretation of duplicate or unclear intent."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 1815 to nearest 1000 correctly yields 2000 since the hundreds digit is 8 (≥5). Hint sequence accurately traces the decision path and confirms the mathematical validity of the answer."
+            "reasoning": "Arranging bare numbers in ascending order is a mathematically valid and logically sound task for practicing the ordering competency without extraneous context."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format with a single clear fill-in blank is straightforward for Grade 3 students. Hints provide step-by-step scaffolding that guides reasoning without revealing the answer prematurely."
+            "reasoning": "Language is direct and unambiguous. The phrase arrange these numbers from smallest to largest immediately conveys the expected action to a third-grade reader."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "All four hints are mathematically sound: identifying the digit to examine (8), applying the rounding rule (8≥5 means round up), and arriving at 2000 as the correctly rounded value."
+            "reasoning": "The provided answer correctly orders 2287 before 6397 before 6398 in ascending sequence. All three hints are mathematically accurate and reinforce the correct ordering principle."
           }
         }
       },
       {
-        "sample_id": "76df8a47a8d7a83d94e3",
+        "sample_id": "2b5e578020db7b03f5b8",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice format clearly presents rounding 3929 to the nearest 10 with four distinct options. Position of correct answer (3930) is final position, not first, reducing guessing bias."
+            "reasoning": "The context is clear: Ana counted marbles collected by three friends with specified quantities, and the task is to arrange counts from smallest to largest without any vague phrasing."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The number 3929 rounded to nearest 10 is correctly 3930 since the ones digit 9 is ≥5. Distractors span realistic errors: 3940 (over-rounding), 3900 (rounding down), and 3920 (off-by-ten)."
+            "reasoning": "The contextual framing of counting marbles collected by friends is realistic and provides a plausible motivation for ordering numbers, supporting conceptual understanding."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice item with four plausible options and unambiguous stem language. Hints explicitly identify the digit (9) and apply the rounding rule clearly for Grade 3 comprehension."
+            "reasoning": "The stem names the character, describes the counting scenario, and specifies the ordering direction. A third-grader can identify what is being counted and how to arrange the counts."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 3930 is correct; hint logic traces examining the ones digit (9), recognizing 9≥5, and rounding up from 3920 to 3930. All arithmetic is accurate throughout."
+            "reasoning": "The answer correctly orders 393 before 401 before 404 in ascending sequence. Hints consistently represent this ordering and reinforce the smallest-to-largest principle."
           }
         }
       },
       {
-        "sample_id": "ba3faf22ff3795892dae",
+        "sample_id": "ee8a4209ebafd1cc1b1d",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual reduces ambiguity. Stem clearly specifies rounding 3225 to the nearest 100. Visual marks the number's position on the line, supporting the rounding task."
+            "reasoning": "Three numbers are presented with a clear instruction to arrange them from smallest to largest. No ambiguity in the numeric values or the direction specified."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Number 3225 on number line labeled from 3100 to 3400 in increments of 10. Rounding to nearest 100 yields 3200 (hundreds digit 2 unchanged since the tens digit 2 < 5). Visual placement and arithmetic align."
+            "reasoning": "A straightforward ordering task without context is valid for practicing the mechanical and conceptual skill of comparing and sequencing numbers."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Visual number line with marked position makes the rounding distance intuitive for Grade 3 learners. The line spans 300 units centered around the rounding boundaries, supporting visual understanding."
+            "reasoning": "The stem uses simple, direct language. The numbers are clearly listed, and the instruction is unambiguous for a Grade 3 student."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 3200 is correct; 3225 is closer to 3200 than 3300. Hints correctly identify tens digit (2), apply rule (2<5 means keep hundreds digit), and confirm result 3200."
+            "reasoning": "The answer correctly orders 4095 before 4097 before 4102, requiring attention to digit position and magnitude. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "6758f3d01139b4d161c6",
+        "sample_id": "27427647652310fa042b",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice stem directs rounding 2630 to the nearest 100 without extraneous information. Four options provided; correct answer 2600 is positioned third, not revealing through position."
+            "reasoning": "The context clearly describes Ben counting seashells from five friends with specific counts provided. The ordering direction is explicit."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2630 to nearest 100 is correctly 2600 since tens digit 3 is <5. The distractors (2601, 2310, 2000) represent distinct common errors that Grade 3 students might produce."
+            "reasoning": "Counting seashells and arranging counts is a realistic scenario that supports the ordering competency with meaningful context."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Standard multiple-choice format with clear task statement. Options are sufficiently separated to test understanding rather than careless reading errors."
+            "reasoning": "Five numbers are presented with clear context and a straightforward ordering instruction. The progression from description to task is logical."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "All hints are accurate: examining tens digit (3), recognizing 3<5, keeping hundreds digit unchanged (2), yielding 2600 as final answer."
+            "reasoning": "The correct ascending order of 2690, 2692, 2698, 2699, 2700 is maintained in both answer and hints. The sequence tests digit discrimination in the ones place."
           }
         }
       },
       {
-        "sample_id": "5ae4fe548e26f58b05ab",
+        "sample_id": "78eb41b7844b64e745cf",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Stem unambiguously asks to round 5096 to the nearest 10. Four options are presented; answer 5100 is positioned last, not privileged by location."
+            "reasoning": "Five numbers are presented with an explicit instruction to arrange from largest to smallest. The direction is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 5096 to nearest 10 correctly gives 5100 since ones digit 6 is ≥5. Options include down-rounding (5090) and far-rounding errors (5110, 5000) to test understanding."
+            "reasoning": "An abstract ordering task is logically valid for practicing the vice versa competency requirement of arranging numbers in descending sequence."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice format with four distinct options. Language is clear and directly stated without distracting elements."
+            "reasoning": "The stem specifies five numbers and requests arrangement from largest to smallest, which a Grade 3 student can interpret clearly."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 5096 to 5100 is mathematically correct. Hints trace the examination of ones digit (6), application of rule (6≥5 means round up), and confirmation of answer."
+            "reasoning": "The answer correctly orders 8910, 8908, 8906, 8897, 8891 in descending sequence. Hints support the largest-to-smallest principle accurately."
           }
         }
       },
       {
-        "sample_id": "8796cd362f59b865db4c",
+        "sample_id": "fbc0885711725e044d62",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual clearly communicates the task: rounding 8438 to nearest 100. The visual marks the position and provides scale reference for rounding distance."
+            "reasoning": "Four numbers are provided, one of which reaches the competency boundary at ten thousand. The direction largest-to-smallest is explicit."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Number 8438 rounds to 8400 since tens digit 3 is <5. Number line spans 8300 to 8600 with marked position, supporting visual estimation of nearest hundred boundary."
+            "reasoning": "Arranging numbers including the maximum boundary value tests whether students understand the full scope of the competency range."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Number line visual with clear markers helps Grade 3 learners visualize the distance to rounding boundaries. Multiple-choice options support non-visual verification of the rounding decision."
+            "reasoning": "The presentation of numbers and ordering instruction is clear. A student can identify which number is largest when ten thousand is included."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 8400 is correct; 8438 is 38 units away from 8400 and 62 units from 8500. Hints accurately identify tens digit (3), apply rule (3<5), and confirm 8400."
+            "reasoning": "The answer correctly places ten thousand first in the descending sequence, followed by 9998, 9996, 9993. Hints accurately describe the ordering."
           }
         }
       },
       {
-        "sample_id": "a3caf1b2be02bdf24705",
+        "sample_id": "20ed75d210b17feaba33",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice asking to round 6148 to nearest 1000. Number line visual spans 5000 to 8000, providing scale context. Stem clearly specifies the rounding target."
+            "reasoning": "Three numbers with a wide range of magnitudes are presented with a clear largest-to-smallest instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 6148 to nearest 1000 yields 6000 since hundreds digit 1 is <5. The number line positions 6148 between 6000 and 7000, supporting the down-rounding decision."
+            "reasoning": "Ordering numbers that span different magnitude ranges tests the student's understanding of place value across the competency scope."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Visual presentation with number line makes the magnitude of 6148 and its position relative to thousand-boundaries intuitive. Multiple-choice format provides concrete options to evaluate."
+            "reasoning": "The stem clearly lists the numbers and specifies the ordering direction. The magnitude differences do not create confusion."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 6000 is correct; 6148 is closer to 6000 than 7000. Hints identify hundreds digit (1), apply rule (1<5 means round down), and confirm 6000 as rounded value."
+            "reasoning": "The answer correctly orders ten thousand before 9997 before 5963 in descending sequence, reflecting proper magnitude comparison across ranges."
           }
         }
       },
       {
-        "sample_id": "8a9f7598a7f766af435b",
+        "sample_id": "be552b54b02b102ca9d2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze fill-in-blank clearly directs rounding 6952 to nearest 1000 with a single blank to complete. Four options provided support students who need guidance."
+            "reasoning": "Three numbers spanning from the hundreds through ten thousand are presented with an unambiguous largest-to-smallest direction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 6952 to nearest 1000 correctly gives 7000 since hundreds digit 9 is ≥5. All hints are mathematically accurate and trace the correct reasoning path."
+            "reasoning": "Arranging numbers across disparate magnitude ranges is a valid assessment of whether students recognize place value across the full competency scope."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format is clear and direct. Hints provide step-by-step support for Grade 3 learners: identifying digit (9), recognizing rule application (9≥5 round up), and providing answer."
+            "reasoning": "The numbers and ordering direction are clearly stated. A Grade 3 student can identify ten thousand as the largest value despite the smaller numbers present."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 7000 is correct; rounding 6952 up to the nearest thousand because hundreds digit exceeds 4. Hint sequence accurately traces and validates this reasoning."
+            "reasoning": "The answer correctly orders ten thousand, 9995, 671 in descending sequence. Hints accurately support the proper ordering."
           }
         }
       },
       {
-        "sample_id": "22321e31364940f403f8",
+        "sample_id": "7ee00619023495e5a2b4",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice stem asks to round 2325 to nearest 100 without ambiguity. Four options are distinct and distributed across plausible rounding errors."
+            "reasoning": "Five numbers in the nine-thousand range are presented with a clear smallest-to-largest instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2325 to nearest 100 yields 2300 since tens digit 2 is <5. Options include off-by-one (2301, 2310) and wrong-place-rounding (2000) distractors."
+            "reasoning": "Numbers clustered in magnitude require fine discrimination in the thousands place, validating the ordering competency in a focused range."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Standard multiple-choice with clear language. Hints scaffold Grade 3 learners through identifying the tens digit (2), applying the rounding rule (2<5), and confirming the answer."
+            "reasoning": "The stem lists five numbers and specifies ascending order. The instruction is unambiguous for the learner."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2300 is mathematically correct. Hints accurately trace examining tens digit (2), recognizing 2<5, keeping hundreds digit unchanged, and arriving at 2300."
+            "reasoning": "The answer correctly orders 9394, 9401, 9404, 9409, 9410 in ascending sequence. Hints are accurate and reinforce the smallest-to-largest principle."
           }
         }
       },
       {
-        "sample_id": "5a91ee29347759c53617",
+        "sample_id": "62df06cfba9966eadad2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 7065 to nearest 10. The visual marks the position clearly; multiple-choice options are distinct."
+            "reasoning": "Ben counted storybooks from four friends with specified quantities. The smallest-to-largest ordering direction is explicit."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 7065 to nearest 10 correctly gives 7070 since ones digit 5 is ≥5. Number line spans 7050-7080 with labeled increments showing the 7065 position."
+            "reasoning": "Counting storybooks collected by friends is a realistic context that motivates the ordering task meaningfully."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Number line visual with clear position marking and ten-unit grid helps Grade 3 students visualize rounding to nearest 10. Multiple-choice confirms the visual understanding."
+            "reasoning": "The context is introduced clearly, the four numbers are provided, and the ordering instruction is unambiguous."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 7070 is correct; 7065 is exactly at the midpoint between 7060 and 7070, and the rule (5≥5 round up) applies. Hints accurately confirm this reasoning."
+            "reasoning": "The answer correctly orders 1891, 1893, 1907, 1908 in ascending sequence. Hints accurately represent the ordering principle."
           }
         }
       },
       {
-        "sample_id": "0ab49b4f35529f8aae7a",
+        "sample_id": "64e96c23333b808cb174",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format clearly presents rounding 2565 to nearest 100 with four options. The blank unambiguously requests the rounded value."
+            "reasoning": "Five numbers are presented around four thousand with a clear smallest-to-largest instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2565 to nearest 100 is correctly 2600 since tens digit 6 is ≥5. Distractors (2500, 2610, 2000) test understanding of place value and rounding direction."
+            "reasoning": "Ordering five numbers in close magnitude is a valid test of place-value discrimination in the thousands and hundreds places."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze item presents a straightforward fill-in task. Hints guide Grade 3 learners through identifying tens digit (6), applying rule (6≥5 round up), and providing answer."
+            "reasoning": "The numbers and ordering direction are clearly specified. No ambiguity in the task instruction."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2600 is correct; rounding 2565 up to nearest hundred because tens digit is 6. Hints accurately explain the digit identification and rule application."
+            "reasoning": "The answer correctly orders 3999, 4004, 4005, 4006, 4009 in ascending sequence, requiring careful digit comparison. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "3d2b5cb7d6607078844c",
+        "sample_id": "ace6517c7f5e182eafb8",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2688 to nearest 10. Stem is unambiguous; visual marks the number position clearly."
+            "reasoning": "Ana counted stickers from five friends with specified counts. The largest-to-smallest direction is clear."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2688 to nearest 10 is correctly 2690 since ones digit 8 is ≥5. Number line spans 2670-2700 with marked position supporting visual rounding estimation."
+            "reasoning": "The contextual frame of counting stickers is realistic and supports the ordering task with meaningful purpose."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Number line with clear marking of 2688 and ten-unit labels makes the rounding decision transparent. Multiple-choice options provide concrete verification of visual reasoning."
+            "reasoning": "The context, quantities, and ordering instruction are all clearly presented for a third-grader to understand."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2690 is correct; 2688 rounds to 2690 because ones digit 8 exceeds 4. Hints accurately identify the digit (8), apply rule (8≥5), and confirm answer."
+            "reasoning": "The answer correctly orders 1608, 1606, 1604, 1591, 1590 in descending sequence. Hints accurately support the largest-to-smallest principle."
           }
         }
       },
       {
-        "sample_id": "099af6147954be5419c5",
+        "sample_id": "d3e801e9423e367b40da",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format unambiguously directs rounding 1310 to nearest 1000 with four provided options to support the fill-in task."
+            "reasoning": "Liza counted seashells from four friends with provided quantities. The largest-to-smallest direction is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 1310 to nearest 1000 yields 1000 since hundreds digit 3 is <5. Distractors (1010, 1001, 0) represent plausible errors or off-by-one mistakes."
+            "reasoning": "Counting seashells and arranging the quantities in descending order is a realistic scenario supporting the vice versa competency."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Straightforward cloze item asking for nearest-thousand rounding. Hints provide step-by-step scaffold identifying hundreds digit (3), rule application (3<5), and confirmation."
+            "reasoning": "The stem presents the context, numbers, and ordering direction clearly. A Grade 3 student can interpret the task."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 1000 is correct; 1310 is closer to 1000 than 2000. Hints accurately trace digit identification, rule application, and verification of the rounded value."
+            "reasoning": "The answer correctly orders 603, 602, 601, 600 in descending sequence. The hint values and final answer are consistent and accurate."
           }
         }
       },
       {
-        "sample_id": "ea048806443b2596aa02",
+        "sample_id": "265043c7180f32a1ca31",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format clearly requests rounding 2964 to nearest 10 with four options provided. No ambiguity in task specification or answer format."
+            "reasoning": "Jose counted stickers from six friends. The largest-to-smallest direction is explicit."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2964 to nearest 10 correctly yields 2960 since ones digit 4 is <5. Options span plausible down-rounding (2900) and off-by-digit errors (2961, 2970)."
+            "reasoning": "Ordering six numbers is a valid test of the student's ability to sequence a moderate set of values in the competency range."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze item presents a clear fill-in task for Grade 3 level. Hints scaffold reasoning by identifying ones digit (4), explaining rule (4<5 round down), and confirming answer."
+            "reasoning": "The context and six numbers are clearly presented. The ordering instruction from largest to smallest is unambiguous."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2960 is correct; ones digit 4 triggers down-rounding to 2960. Hints accurately validate digit identification, rule logic, and the final answer."
+            "reasoning": "The answer correctly orders 1707, 1705, 1701, 1697, 1693, 1691 in descending sequence. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "e9a7b743f71de718372e",
+        "sample_id": "67f50b02875a81c74940",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice with character theme (Sir Rez, dance shoes emoji) clearly presents the rounding task: rounding 3250 to nearest 1000. Theming does not obscure the mathematical question."
+            "reasoning": "Three numbers are provided with a clear smallest-to-largest ordering instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 3250 to nearest 1000 is correctly 3000 since hundreds digit 2 is <5. Theming about a character's math challenge provides light context without interfering with the rounding logic."
+            "reasoning": "Ordering numbers with significantly different magnitudes tests whether students understand place value across the full range."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Themed introduction with character name and emoji provides motivational context for Grade 3 learners. Mathematical task remains clear: round 3250 to nearest 1000."
+            "reasoning": "The stem clearly presents the numbers and ordering direction without ambiguity."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 3000 is correct; 3250 rounded to nearest thousand yields 3000. Hints trace digit identification (2), rule application (2<5), and confirmation without being distracted by theme."
+            "reasoning": "The answer correctly orders 2186, 7401, 7403 in ascending sequence, properly identifying the smallest value despite its different magnitude range."
           }
         }
       },
       {
-        "sample_id": "698f4ae820c5b0b0946f",
+        "sample_id": "dbd18aab179397dfa556",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format with character theme (Isko, basketball emoji) presents a clear fill-in task for rounding 2394 to nearest 10. Mathematical directive is unambiguous despite theming."
+            "reasoning": "Ben counted pencils from four friends with specified quantities. The largest-to-smallest direction is clear."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2394 to nearest 10 correctly yields 2390 since ones digit 4 is <5. Theming about basketballs does not interfere with place-value rounding logic or answer validity."
+            "reasoning": "The realistic scenario of counting pencils motivates the ordering task and reinforces the competency with contextual meaning."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Themed introduction provides personal context about a character's math challenge while maintaining clarity of the rounding task. Grade 3 learners can easily identify what to round and to what place."
+            "reasoning": "The context, four numbers, and ordering direction are all clearly conveyed to the student."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2390 is correct; ones digit 4 triggers down-rounding. Hints accurately identify digit (4), apply rule (4<5), and confirm the result, independent of theme elements."
+            "reasoning": "The answer correctly orders 1709, 1706, 1704, 1696 in descending sequence. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "9e54d149ca9e327aa4e7",
+        "sample_id": "c10dc9966da8e0b802ce",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual clearly requests rounding 8128 to nearest 1000. Stem is unambiguous; visual marks position explicitly."
+            "reasoning": "Sir Rez is introduced with a themed reference to dance shoes. Four numbers are provided with a smallest-to-largest instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Number 8128 rounded to nearest 1000 is correctly 8000 since hundreds digit 1 is <5. Number line spans 7000-10000 with clear 8128 position marking, supporting visual verification."
+            "reasoning": "The themed wrapper references dance shoes but does not interfere with the core ordering task. The mathematical content remains clear."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Number line visual with thousand-unit increments and marked position makes rounding to nearest thousand intuitive for Grade 3 learners. Multiple-choice options support verification."
+            "reasoning": "Despite the thematic element, the numbers and ordering instruction are clearly presented. The theme does not obscure the task."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 8000 is correct; 8128 is closer to 8000 than 9000 because hundreds digit 1 is less than 5. Hints validate digit identification and rule application accurately."
+            "reasoning": "The answer correctly orders 7493, 7497, 7507, 7508 in ascending sequence. Hints are accurate and mathematically sound."
           }
         }
       },
       {
-        "sample_id": "ca4e0625ebe4219867c2",
+        "sample_id": "d841fec02576c87463bf",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Multiple-choice format clearly states the task: round 1665 to nearest 1000. Four options are distinct; answer is unambiguously positioned as fourth option."
+            "reasoning": "Isko is introduced with a themed reference to basketballs. Three numbers are provided with a largest-to-smallest instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 1665 to nearest 1000 correctly gives 2000 since hundreds digit 6 is ≥5. Distractors (2010, 1000, 0) test understanding of rounding direction and magnitude."
+            "reasoning": "The basketball theme is incorporated without interfering with the core ordering competency. The mathematical content is unambiguous."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Standard multiple-choice with clear task statement. Hints scaffold Grade 3 reasoning by identifying hundreds digit (6), recognizing rule (6≥5 round up), and confirming answer."
+            "reasoning": "The three numbers and largest-to-smallest direction are clearly presented despite the thematic wrapper."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2000 is correct; 1665 rounded up to nearest thousand is 2000. Hints accurately trace digit examination (6), rule logic (6≥5), and final answer confirmation."
+            "reasoning": "The answer correctly orders 7698, 7694, 7690 in descending sequence. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "3429e2d21caa14fed89a",
+        "sample_id": "b3106dfd24e73a1864f1",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2691 to nearest 100. Stem clearly specifies the rounding target; visual marks position unambiguously."
+            "reasoning": "Three numbers are presented with a clear smallest-to-largest ordering instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 2691 to nearest 100 is correctly 2700 since tens digit 9 is ≥5. Number line spans 2500-2800 with clear position marking supporting the up-rounding decision."
+            "reasoning": "An abstract ordering task without context is valid for practicing the core ordering skill."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Number line with hundred-unit labels and marked position makes the nearest-hundred boundary relationship transparent for Grade 3 learners. Multiple-choice options confirm understanding."
+            "reasoning": "The stem clearly lists three numbers and specifies the ordering direction unambiguously."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 2700 is correct; 2691 is closer to 2700 than 2600 because tens digit 9 exceeds 4. Hints accurately identify digit (9), apply rule (9≥5), and validate answer."
+            "reasoning": "The answer correctly orders 5004, 5005, 5006 in ascending sequence. This tests careful digit discrimination in the ones place. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "fff269ed0142cabf352a",
+        "sample_id": "5eb7eebbab2f3ec5c257",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 4305 to nearest 100. Stem is clear; experience type hint_gated suggests adaptive hint delivery, not answer ambiguity."
+            "reasoning": "Kuya Pat counted pencils from three friends with quantities including the competency boundary at ten thousand. The largest-to-smallest direction is clear."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 4305 to nearest 100 yields 4300 since tens digit 0 is <5. Number line spans 4200-4500 with position marked, supporting down-rounding verification."
+            "reasoning": "Using the boundary value of ten thousand in a contextual ordering task validates student understanding at the competency limit."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Read-based format with number line visual and hint_gated experience support makes the task clear. Visual confirms position and rounding boundary relationship at Grade 3 level."
+            "reasoning": "The context, three quantities including the maximum value, and ordering direction are all clearly presented."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 4300 is correct; 4305 rounds to 4300 because tens digit 0 is less than 5. Hints accurately trace place identification, rule application, and answer confirmation."
+            "reasoning": "The answer correctly orders ten thousand, 9993, 1292 in descending sequence. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "87c8599dc8cf33a4a93d",
+        "sample_id": "e629fd0af774a784c51e",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format with mastery_drill experience clearly requests rounding 8789 to nearest 10. Four options are provided; task is unambiguously a fill-in-blank item."
+            "reasoning": "Three single-digit numbers are presented with a largest-to-smallest ordering instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 8789 to nearest 10 correctly yields 8790 since ones digit 9 is ≥5. Options include down-rounding (8780) and larger-place errors (8700) to test understanding."
+            "reasoning": "Using single-digit numbers provides scaffolding for the ordering competency while remaining within the stated range."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format in mastery_drill context presents a straightforward rounding task. Hints provide Grade 3 appropriate scaffolding identifying ones digit (9), rule application (9≥5), and answer."
+            "reasoning": "The three numbers and ordering direction are presented clearly and unambiguously."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 8790 is correct; ones digit 9 triggers up-rounding to nearest ten. Hints accurately validate digit identification, rule logic, and final result."
+            "reasoning": "The answer correctly orders 6, 3, 1 in descending sequence. Hints are accurate."
           }
         }
       },
       {
-        "sample_id": "31e99e02de46365fb7af",
+        "sample_id": "47a984373eba270f5a64",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format with scaffolded experience clearly requests rounding 5805 to nearest 1000. Four options support the fill-in task; the mathematical directive is unambiguous."
+            "reasoning": "Four single-digit numbers are presented with a largest-to-smallest ordering instruction."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Rounding 5805 to nearest 1000 is correctly 6000 since hundreds digit 8 is ≥5. The scaffolded experience type indicates graduated support; the mathematical validity remains sound."
+            "reasoning": "Ordering single-digit numbers is a valid scaffolding approach for students beginning to develop ordering competency."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze item in scaffolded context provides support for Grade 3 learners tackling thousands-place rounding. Hints break the reasoning into clear steps: digit identification (8), rule recognition (8≥5), and answer."
+            "reasoning": "The four numbers and ordering direction are clearly specified."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "Answer 6000 is correct; 5805 rounded to nearest thousand is 6000 because hundreds digit is 8. Hints accurately trace the entire reasoning path and confirm correctness."
+            "reasoning": "The answer correctly orders 6, 5, 2, 1 in descending sequence. Hints are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "5baa609ccbcf870f3c85",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers around seven thousand eight hundred are presented with a smallest-to-largest instruction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ordering numbers in the high range tests whether students understand place value across the competency scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The three numbers ranging from 7792 to 7802 and the smallest-to-largest direction are clearly presented, allowing Grade 3 students to identify the ordering task without confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer correctly orders 7792, 7801, 7802 in ascending sequence, requiring attention to digit position. Hints are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "d3795b8742a4d0f29a3a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers around eight thousand are presented with a largest-to-smallest ordering instruction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ordering numbers in the high range with descending direction tests mastery of place value and ordering in both directions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The three numbers clustered around eight thousand with the largest-to-smallest direction are clearly specified, enabling students to understand the descending ordering requirement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer correctly orders 8007, 7996, 7992 in descending sequence. Hints are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "b94497f59568bafd1c72",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Four numbers around five thousand two hundred are presented with a smallest-to-largest ordering instruction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ordering four numbers in a focused range requires fine discrimination in place value, testing the competency thoroughly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The four numbers and ordering direction are clearly presented."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer correctly orders 5194, 5197, 5198, 5205 in ascending sequence. Hints are accurate."
           }
         }
       }
     ],
     "clause_evidence": [
       {
-        "requirement_id": "round",
-        "clause": "Round",
+        "requirement_id": "order",
+        "clause": "Order",
         "verdict": "PASS",
-        "reasoning": "All 22 samples contain an explicit directive to perform rounding, using phrasing like Round [number] to the nearest [place]. This core verb is demonstrated consistently and unambiguously across every item in the set.",
-        "sample_ids": ["7f1f817ba2f6ef8fab58", "76df8a47a8d7a83d94e3", "ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "5ae4fe548e26f58b05ab", "8796cd362f59b865db4c", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "22321e31364940f403f8", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "099af6147954be5419c5", "ea048806443b2596aa02", "e9a7b743f71de718372e", "698f4ae820c5b0b0946f", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "87c8599dc8cf33a4a93d", "31e99e02de46365fb7af"]
+        "reasoning": "All twenty-five samples explicitly require the student to order numbers by arranging them in a specified sequence. The ordering operation appears uniformly across every sample, establishing that the generator reliably produces items demanding this core action.",
+        "sample_ids": ["7e7d7f781e39e5dade26", "2b5e578020db7b03f5b8", "ee8a4209ebafd1cc1b1d", "27427647652310fa042b", "78eb41b7844b64e745cf", "fbc0885711725e044d62", "20ed75d210b17feaba33", "be552b54b02b102ca9d2", "7ee00619023495e5a2b4", "62df06cfba9966eadad2", "64e96c23333b808cb174", "ace6517c7f5e182eafb8", "d3e801e9423e367b40da", "265043c7180f32a1ca31", "67f50b02875a81c74940", "dbd18aab179397dfa556", "c10dc9966da8e0b802ce", "d841fec02576c87463bf", "b3106dfd24e73a1864f1", "5eb7eebbab2f3ec5c257", "e629fd0af774a784c51e", "47a984373eba270f5a64", "5baa609ccbcf870f3c85", "d3795b8742a4d0f29a3a", "b94497f59568bafd1c72"]
       },
       {
         "requirement_id": "numbers",
         "clause": "numbers",
         "verdict": "PASS",
-        "reasoning": "Every sample requires rounding a specific four-digit number (ranging from 1310 to 8789). The noun numbers is fulfilled through numeric operands that serve as the objects of the rounding operation in all 22 items.",
-        "sample_ids": ["7f1f817ba2f6ef8fab58", "76df8a47a8d7a83d94e3", "ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "5ae4fe548e26f58b05ab", "8796cd362f59b865db4c", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "22321e31364940f403f8", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "099af6147954be5419c5", "ea048806443b2596aa02", "e9a7b743f71de718372e", "698f4ae820c5b0b0946f", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "87c8599dc8cf33a4a93d", "31e99e02de46365fb7af"]
+        "reasoning": "Every sample presents numeric operands that require ordering. No sample attempts to order non-numeric entities, confirming that the generator consistently produces items where numbers are the primary mathematical objects being manipulated.",
+        "sample_ids": ["7e7d7f781e39e5dade26", "2b5e578020db7b03f5b8", "ee8a4209ebafd1cc1b1d", "27427647652310fa042b", "78eb41b7844b64e745cf", "fbc0885711725e044d62", "20ed75d210b17feaba33", "be552b54b02b102ca9d2", "7ee00619023495e5a2b4", "62df06cfba9966eadad2", "64e96c23333b808cb174", "ace6517c7f5e182eafb8", "d3e801e9423e367b40da", "265043c7180f32a1ca31", "67f50b02875a81c74940", "dbd18aab179397dfa556", "c10dc9966da8e0b802ce", "d841fec02576c87463bf", "b3106dfd24e73a1864f1", "5eb7eebbab2f3ec5c257", "e629fd0af774a784c51e", "47a984373eba270f5a64", "5baa609ccbcf870f3c85", "d3795b8742a4d0f29a3a", "b94497f59568bafd1c72"]
       },
       {
-        "requirement_id": "nearest_ten",
-        "clause": "nearest ten",
+        "requirement_id": "up_to_10000",
+        "clause": "up to 10 000",
         "verdict": "PASS",
-        "reasoning": "Seven samples explicitly target rounding to the nearest ten: seeds 43, 46, 601, 602, 603, 700, and 1001. Each specifies Round [number] to the nearest 10 and assesses correct understanding of ones-place magnitude relative to the rounding rule.",
-        "sample_ids": ["76df8a47a8d7a83d94e3", "5ae4fe548e26f58b05ab", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "ea048806443b2596aa02", "698f4ae820c5b0b0946f", "87c8599dc8cf33a4a93d"]
+        "reasoning": "All numeric values across the entire sample set remain within or below the ten-thousand ceiling specified by the competency. The largest value observed is exactly ten thousand, and no value exceeds this boundary, confirming that the generator respects the stated range constraint.",
+        "sample_ids": ["7e7d7f781e39e5dade26", "2b5e578020db7b03f5b8", "ee8a4209ebafd1cc1b1d", "27427647652310fa042b", "78eb41b7844b64e745cf", "fbc0885711725e044d62", "20ed75d210b17feaba33", "be552b54b02b102ca9d2", "7ee00619023495e5a2b4", "62df06cfba9966eadad2", "64e96c23333b808cb174", "ace6517c7f5e182eafb8", "d3e801e9423e367b40da", "265043c7180f32a1ca31", "67f50b02875a81c74940", "dbd18aab179397dfa556", "c10dc9966da8e0b802ce", "d841fec02576c87463bf", "b3106dfd24e73a1864f1", "5eb7eebbab2f3ec5c257", "e629fd0af774a784c51e", "47a984373eba270f5a64", "5baa609ccbcf870f3c85", "d3795b8742a4d0f29a3a", "b94497f59568bafd1c72"]
       },
       {
-        "requirement_id": "hundred",
-        "clause": "hundred",
+        "requirement_id": "smallest_to_largest",
+        "clause": "smallest to largest",
         "verdict": "PASS",
-        "reasoning": "Seven samples explicitly target rounding to the nearest hundred: seeds 44, 45, 600, 602, 800, 901, and 1000. Each requires students to examine the tens digit and apply rounding logic to determine the correct hundred boundary.",
-        "sample_ids": ["ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "22321e31364940f403f8", "8796cd362f59b865db4c", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "0ab49b4f35529f8aae7a"]
+        "reasoning": "Multiple samples explicitly ask students to arrange numbers from smallest to largest: samples one through four present this direction for three to five numbers, and samples nine through eleven continue the pattern. Samples nineteen, twenty-three, and twenty-five extend this direction across different magnitude ranges. This demonstrates consistent support for the ascending ordering requirement.",
+        "sample_ids": ["7e7d7f781e39e5dade26", "2b5e578020db7b03f5b8", "ee8a4209ebafd1cc1b1d", "27427647652310fa042b", "7ee00619023495e5a2b4", "62df06cfba9966eadad2", "64e96c23333b808cb174", "b3106dfd24e73a1864f1", "5baa609ccbcf870f3c85", "b94497f59568bafd1c72", "c10dc9966da8e0b802ce"]
       },
       {
-        "requirement_id": "thousand",
-        "clause": "thousand",
+        "requirement_id": "vice_versa",
+        "clause": "vice versa",
         "verdict": "PASS",
-        "reasoning": "Nine samples explicitly target rounding to the nearest thousand: seeds 42, 501, 502, 604, 701, 800, 900, 1002, and 1000 yields nearest thousand targets. Each requires examining hundreds digit and correctly rounding to thousand-place boundaries.",
-        "sample_ids": ["7f1f817ba2f6ef8fab58", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "099af6147954be5419c5", "e9a7b743f71de718372e", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "31e99e02de46365fb7af"]
+        "reasoning": "Thirteen samples explicitly ask students to arrange numbers from largest to smallest, fulfilling the vice versa requirement that students order in both ascending and descending directions. Samples five through eight demonstrate this direction for three to five numbers, samples twelve through fourteen extend it with contextual frames, and samples sixteen through eighteen and twenty through twenty-four continue the pattern across various ranges, demonstrating comprehensive support for bidirectional ordering.",
+        "sample_ids": ["78eb41b7844b64e745cf", "fbc0885711725e044d62", "20ed75d210b17feaba33", "be552b54b02b102ca9d2", "ace6517c7f5e182eafb8", "d3e801e9423e367b40da", "265043c7180f32a1ca31", "dbd18aab179397dfa556", "d841fec02576c87463bf", "5eb7eebbab2f3ec5c257", "e629fd0af774a784c51e", "47a984373eba270f5a64", "d3795b8742a4d0f29a3a"]
       }
     ],
     "overall": "PASS"

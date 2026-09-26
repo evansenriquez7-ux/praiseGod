@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925
+  blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_na_q1_4/verdicts.json
+  local_only/scratch/phaseC/mat_g3_na_q1_6/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_6-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,173 +99,142 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_na_q1_4
-PACKET DIGEST: 31d64391638a12d8d14d631b09de5bbb24598ae2b0b90f0cd8c021c3235497e7
+NODE: mat_g3_na_q1_6
+PACKET DIGEST: f78708105ce086e77efab9c7c6b4cf8f5e533680fc0e970d4a4c84b0aed58364
 COMPETENCY (Grade 3, Quarter 1, None):
-Round numbers to the nearest ten, hundred, or thousand.
+Order numbers up to 10 000 from smallest to largest, and vice versa.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  round: Round
+  order: Order
   numbers: numbers
-  nearest_ten: nearest ten
-  hundred: hundred
-  thousand: thousand
+  up_to_10000: up to 10 000
+  smallest_to_largest: smallest to largest
+  vice_versa: vice versa
 
 SAMPLES (every one of these is real rendered output):
-  sample 7f1f817ba2f6ef8fab58  seed 42  [cloze]
-      stem:    Round 1815 to the nearest 1000.
-      answer:  2000
-      options: 2010 / 2000 / 0 / 1000
-      hints:   ["Round 1815 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 8.", "Since 8 ≥ 5, round up.", "1815 rounded to the closest thousands is 2000."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 76df8a47a8d7a83d94e3  seed 43  [mcq]
-      stem:    Round 3929 to the nearest 10.
-      answer:  3930
-      options: 3940 / 3900 / 3920 / 3930
-      hints:   ["Round 3929 to the closest tens.", "Look at the digit just to the right of the tens place: it is 9.", "Since 9 ≥ 5, round up.", "3929 rounded to the closest tens is 3930."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample ba3faf22ff3795892dae  seed 44  [read_mcq]
-      stem:    The number 3225 is marked on the number line. Round 3225 to the nearest 100.
-      answer:  3200
-      options: 3235 / 3000 / 3200 / 3210
-      hints:   ["Round 3225 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 2.", "Since 2 < 5, round down (keep the hundreds digit the same).", "3225 rounded to the closest hundreds is 3200."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["3100", "3110", "3120", "3130", "3140", "3150", "3160", "3170", "3180", "3190", "3200", "3210", "3220", "3230", "3240", "3250", "3260", "3270", "3280", "3290", "3300", "3310", "3320", "3330", "3340", "3350", "3360", "3370", "3380", "3390", "3400"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 6758f3d01139b4d161c6  seed 45  [mcq]
-      stem:    Round 2630 to the nearest 100.
-      answer:  2600
-      options: 2600 / 2610 / 2000 / 2601
-      hints:   ["Round 2630 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 3.", "Since 3 < 5, round down (keep the hundreds digit the same).", "2630 rounded to the closest hundreds is 2600."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 5ae4fe548e26f58b05ab  seed 46  [mcq]
-      stem:    Round 5096 to the nearest 10.
-      answer:  5100
-      options: 5090 / 5000 / 5110 / 5100
-      hints:   ["Round 5096 to the closest tens.", "Look at the digit just to the right of the tens place: it is 6.", "Since 6 ≥ 5, round up.", "5096 rounded to the closest tens is 5100."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 8796cd362f59b865db4c  seed 500  [read_mcq]
-      stem:    The number 8438 is marked on the number line. Round 8438 to the nearest 100.
-      answer:  8400
-      options: 8400 / 8448 / 8000 / 8410
-      hints:   ["Round 8438 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 3.", "Since 3 < 5, round down (keep the hundreds digit the same).", "8438 rounded to the closest hundreds is 8400."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["8300", "8310", "8320", "8330", "8340", "8350", "8360", "8370", "8380", "8390", "8400", "8410", "8420", "8430", "8440", "8450", "8460", "8470", "8480", "8490", "8500", "8510", "8520", "8530", "8540", "8550", "8560", "8570", "8580", "8590", "8600"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample a3caf1b2be02bdf24705  seed 501  [read_mcq]
-      stem:    The number 6148 is marked on the number line. Round 6148 to the nearest 1000.
-      answer:  6000
-      options: 6010 / 6000 / 0 / 6248
-      hints:   ["Round 6148 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 1.", "Since 1 < 5, round down (keep the thousands digit the same).", "6148 rounded to the closest thousands is 6000."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["5000", "5100", "5200", "5300", "5400", "5500", "5600", "5700", "5800", "5900", "6000", "6100", "6200", "6300", "6400", "6500", "6600", "6700", "6800", "6900", "7000", "7100", "7200", "7300", "7400", "7500", "7600", "7700", "7800", "7900", "8000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 8a9f7598a7f766af435b  seed 502  [cloze]
-      stem:    Round 6952 to the nearest 1000.
-      answer:  7000
-      options: 7000 / 7010 / 6000 / 0
-      hints:   ["Round 6952 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 9.", "Since 9 ≥ 5, round up.", "6952 rounded to the closest thousands is 7000."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 22321e31364940f403f8  seed 600  [mcq]
-      stem:    Round 2325 to the nearest 100.
-      answer:  2300
-      options: 2301 / 2310 / 2300 / 2000
-      hints:   ["Round 2325 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 2.", "Since 2 < 5, round down (keep the hundreds digit the same).", "2325 rounded to the closest hundreds is 2300."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 5a91ee29347759c53617  seed 601  [read_mcq]
-      stem:    The number 7065 is marked on the number line. Round 7065 to the nearest 10.
-      answer:  7070
-      options: 7070 / 7080 / 7000 / 7060
-      hints:   ["Round 7065 to the closest tens.", "Look at the digit just to the right of the tens place: it is 5.", "Since 5 ≥ 5, round up.", "7065 rounded to the closest tens is 7070."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["7050", "7051", "7052", "7053", "7054", "7055", "7056", "7057", "7058", "7059", "7060", "7061", "7062", "7063", "7064", "7065", "7066", "7067", "7068", "7069", "7070", "7071", "7072", "7073", "7074", "7075", "7076", "7077", "7078", "7079", "7080"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 0ab49b4f35529f8aae7a  seed 602  [cloze]
-      stem:    Round 2565 to the nearest 100.
-      answer:  2600
-      options: 2600 / 2000 / 2610 / 2500
-      hints:   ["Round 2565 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 6.", "Since 6 ≥ 5, round up.", "2565 rounded to the closest hundreds is 2600."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 3d2b5cb7d6607078844c  seed 603  [read_mcq]
-      stem:    The number 2688 is marked on the number line. Round 2688 to the nearest 10.
-      answer:  2690
-      options: 2700 / 2690 / 2600 / 2680
-      hints:   ["Round 2688 to the closest tens.", "Look at the digit just to the right of the tens place: it is 8.", "Since 8 ≥ 5, round up.", "2688 rounded to the closest tens is 2690."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2670", "2671", "2672", "2673", "2674", "2675", "2676", "2677", "2678", "2679", "2680", "2681", "2682", "2683", "2684", "2685", "2686", "2687", "2688", "2689", "2690", "2691", "2692", "2693", "2694", "2695", "2696", "2697", "2698", "2699", "2700"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 099af6147954be5419c5  seed 604  [cloze]
-      stem:    Round 1310 to the nearest 1000.
-      answer:  1000
-      options: 1010 / 0 / 1001 / 1000
-      hints:   ["Round 1310 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 3.", "Since 3 < 5, round down (keep the thousands digit the same).", "1310 rounded to the closest thousands is 1000."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample ea048806443b2596aa02  seed 700  [cloze]
-      stem:    Round 2964 to the nearest 10.
-      answer:  2960
-      options: 2900 / 2961 / 2960 / 2970
-      hints:   ["Round 2964 to the closest tens.", "Look at the digit just to the right of the tens place: it is 4.", "Since 4 < 5, round down (keep the tens digit the same).", "2964 rounded to the closest tens is 2960."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample e9a7b743f71de718372e  seed 701  [mcq]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. Round 3250 to the nearest 1000.
-      answer:  3000
-      options: 3001 / 3000 / 0 / 3010
-      hints:   ["Round 3250 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 2.", "Since 2 < 5, round down (keep the thousands digit the same).", "3250 rounded to the closest thousands is 3000."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 698f4ae820c5b0b0946f  seed 702  [cloze]
-      stem:    🏀 Isko has a math challenge about basketballs. Round 2394 to the nearest 10.
-      answer:  2390
-      options: 2300 / 2400 / 2390 / 2391
-      hints:   ["Round 2394 to the closest tens.", "Look at the digit just to the right of the tens place: it is 4.", "Since 4 < 5, round down (keep the tens digit the same).", "2394 rounded to the closest tens is 2390."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 9e54d149ca9e327aa4e7  seed 800  [read_mcq]
-      stem:    The number 8128 is marked on the number line. Round 8128 to the nearest 1000.
-      answer:  8000
-      options: 8000 / 0 / 8010 / 8228
-      hints:   ["Round 8128 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 1.", "Since 1 < 5, round down (keep the thousands digit the same).", "8128 rounded to the closest thousands is 8000."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["7000", "7100", "7200", "7300", "7400", "7500", "7600", "7700", "7800", "7900", "8000", "8100", "8200", "8300", "8400", "8500", "8600", "8700", "8800", "8900", "9000", "9100", "9200", "9300", "9400", "9500", "9600", "9700", "9800", "9900", "10000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample ca4e0625ebe4219867c2  seed 900  [mcq]
-      stem:    Round 1665 to the nearest 1000.
-      answer:  2000
-      options: 2010 / 1000 / 0 / 2000
-      hints:   ["Round 1665 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 6.", "Since 6 ≥ 5, round up.", "1665 rounded to the closest thousands is 2000."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 3429e2d21caa14fed89a  seed 901  [read_mcq]
-      stem:    The number 2691 is marked on the number line. Round 2691 to the nearest 100.
-      answer:  2700
-      options: 2600 / 2710 / 2700 / 2000
-      hints:   ["Round 2691 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 9.", "Since 9 ≥ 5, round up.", "2691 rounded to the closest hundreds is 2700."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2500", "2510", "2520", "2530", "2540", "2550", "2560", "2570", "2580", "2590", "2600", "2610", "2620", "2630", "2640", "2650", "2660", "2670", "2680", "2690", "2700", "2710", "2720", "2730", "2740", "2750", "2760", "2770", "2780", "2790", "2800"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample fff269ed0142cabf352a  seed 1000  [read_mcq]
-      stem:    The number 4305 is marked on the number line. Round 4305 to the nearest 100.
-      answer:  4300
-      options: 4300 / 4315 / 4310 / 4000
-      hints:   ["Round 4305 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 0.", "Since 0 < 5, round down (keep the hundreds digit the same).", "4305 rounded to the closest hundreds is 4300."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["4200", "4210", "4220", "4230", "4240", "4250", "4260", "4270", "4280", "4290", "4300", "4310", "4320", "4330", "4340", "4350", "4360", "4370", "4380", "4390", "4400", "4410", "4420", "4430", "4440", "4450", "4460", "4470", "4480", "4490", "4500"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 87c8599dc8cf33a4a93d  seed 1001  [cloze]
-      stem:    Round 8789 to the nearest 10.
-      answer:  8790
-      options: 8780 / 8800 / 8790 / 8700
-      hints:   ["Round 8789 to the closest tens.", "Look at the digit just to the right of the tens place: it is 9.", "Since 9 ≥ 5, round up.", "8789 rounded to the closest tens is 8790."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
-  sample 31e99e02de46365fb7af  seed 1002  [cloze]
-      stem:    Round 5805 to the nearest 1000.
-      answer:  6000
-      options: 6010 / 6000 / 0 / 5000
-      hints:   ["Round 5805 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 8.", "Since 8 ≥ 5, round up.", "5805 rounded to the closest thousands is 6000."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+  sample 7e7d7f781e39e5dade26  seed 42  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 6397, 6398, 2287
+      answer:  [2287, 6397, 6398]
+      hints:   ["Numbers to order: 2287, 6397, 6398.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 2287, 6397, 6398."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 2b5e578020db7b03f5b8  seed 43  [sort_order]
+      stem:    Ana counted marbles collected by 3 friends: 393, 401, 404. Arrange the counts from smallest to largest.
+      answer:  [393, 401, 404]
+      hints:   ["Numbers to order: 393, 401, 404.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 393, 401, 404."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample ee8a4209ebafd1cc1b1d  seed 44  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 4102, 4095, 4097
+      answer:  [4095, 4097, 4102]
+      hints:   ["Numbers to order: 4095, 4097, 4102.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 4095, 4097, 4102."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 27427647652310fa042b  seed 45  [sort_order]
+      stem:    Ben counted seashells collected by 5 friends: 2690, 2692, 2698, 2699, 2700. Arrange the counts from smallest to largest.
+      answer:  [2690, 2692, 2698, 2699, 2700]
+      hints:   ["Numbers to order: 2690, 2692, 2698, 2699, 2700.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 2690, 2692, 2698, 2699, 2700."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 78eb41b7844b64e745cf  seed 46  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 8908, 8891, 8906, 8897, 8910
+      answer:  [8910, 8908, 8906, 8897, 8891]
+      hints:   ["Numbers to order: 8891, 8897, 8906, 8908, 8910.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 8910, 8908, 8906, 8897, 8891."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample fbc0885711725e044d62  seed 500  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 9993, 9996, 10000, 9998
+      answer:  [10000, 9998, 9996, 9993]
+      hints:   ["Numbers to order: 9993, 9996, 9998, 10000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10000, 9998, 9996, 9993."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 20ed75d210b17feaba33  seed 501  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 10000, 5963, 9997
+      answer:  [10000, 9997, 5963]
+      hints:   ["Numbers to order: 5963, 9997, 10000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10000, 9997, 5963."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample be552b54b02b102ca9d2  seed 502  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 671, 9995, 10000
+      answer:  [10000, 9995, 671]
+      hints:   ["Numbers to order: 671, 9995, 10000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10000, 9995, 671."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 7ee00619023495e5a2b4  seed 600  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 9409, 9404, 9410, 9394, 9401
+      answer:  [9394, 9401, 9404, 9409, 9410]
+      hints:   ["Numbers to order: 9394, 9401, 9404, 9409, 9410.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 9394, 9401, 9404, 9409, 9410."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 62df06cfba9966eadad2  seed 601  [ordering]
+      stem:    Ben counted storybooks collected by 4 friends: 1891, 1893, 1907, 1908. Arrange the counts from smallest to largest.
+      answer:  [1891, 1893, 1907, 1908]
+      hints:   ["Numbers to order: 1891, 1893, 1907, 1908.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1891, 1893, 1907, 1908."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 64e96c23333b808cb174  seed 602  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 4005, 3999, 4004, 4009, 4006
+      answer:  [3999, 4004, 4005, 4006, 4009]
+      hints:   ["Numbers to order: 3999, 4004, 4005, 4006, 4009.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 3999, 4004, 4005, 4006, 4009."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample ace6517c7f5e182eafb8  seed 603  [sort_order]
+      stem:    Ana counted stickers collected by 5 friends: 1590, 1591, 1604, 1606, 1608. Arrange the counts from largest to smallest.
+      answer:  [1608, 1606, 1604, 1591, 1590]
+      hints:   ["Numbers to order: 1590, 1591, 1604, 1606, 1608.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 1608, 1606, 1604, 1591, 1590."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample d3e801e9423e367b40da  seed 604  [sort_order]
+      stem:    Liza counted seashells collected by 4 friends: 600, 601, 602, 603. Arrange the counts from largest to smallest.
+      answer:  [603, 602, 601, 600]
+      hints:   ["Numbers to order: 600, 601, 602, 603.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 603, 602, 601, 600."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 265043c7180f32a1ca31  seed 605  [sort_order]
+      stem:    Jose counted stickers collected by 6 friends: 1691, 1693, 1697, 1701, 1705, 1707. Arrange the counts from largest to smallest.
+      answer:  [1707, 1705, 1701, 1697, 1693, 1691]
+      hints:   ["Numbers to order: 1691, 1693, 1697, 1701, 1705, 1707.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 1707, 1705, 1701, 1697, 1693, 1691."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 67f50b02875a81c74940  seed 606  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 7403, 7401, 2186
+      answer:  [2186, 7401, 7403]
+      hints:   ["Numbers to order: 2186, 7401, 7403.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 2186, 7401, 7403."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample dbd18aab179397dfa556  seed 700  [sort_order]
+      stem:    Ben counted pencils collected by 4 friends: 1696, 1704, 1706, 1709. Arrange the counts from largest to smallest.
+      answer:  [1709, 1706, 1704, 1696]
+      hints:   ["Numbers to order: 1696, 1704, 1706, 1709.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 1709, 1706, 1704, 1696."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample c10dc9966da8e0b802ce  seed 701  [ordering]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Arrange these numbers from smallest to largest: 7497, 7508, 7507, 7493
+      answer:  [7493, 7497, 7507, 7508]
+      hints:   ["Numbers to order: 7493, 7497, 7507, 7508.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 7493, 7497, 7507, 7508."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample d841fec02576c87463bf  seed 702  [ordering]
+      stem:    🏀 Isko has a math challenge about basketballs. Arrange these numbers from largest to smallest: 7690, 7694, 7698
+      answer:  [7698, 7694, 7690]
+      hints:   ["Numbers to order: 7690, 7694, 7698.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 7698, 7694, 7690."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample b3106dfd24e73a1864f1  seed 800  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 5004, 5006, 5005
+      answer:  [5004, 5005, 5006]
+      hints:   ["Numbers to order: 5004, 5005, 5006.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 5004, 5005, 5006."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 5eb7eebbab2f3ec5c257  seed 801  [ordering]
+      stem:    Kuya Pat counted pencils collected by 3 friends: 1292, 9993, 10000. Arrange the counts from largest to smallest.
+      answer:  [10000, 9993, 1292]
+      hints:   ["Numbers to order: 1292, 9993, 10000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10000, 9993, 1292."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample e629fd0af774a784c51e  seed 900  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 3, 6, 1
+      answer:  [6, 3, 1]
+      hints:   ["Numbers to order: 1, 3, 6.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 6, 3, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 47a984373eba270f5a64  seed 901  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 2, 6, 5, 1
+      answer:  [6, 5, 2, 1]
+      hints:   ["Numbers to order: 1, 2, 5, 6.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 6, 5, 2, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 5baa609ccbcf870f3c85  seed 1000  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 7802, 7792, 7801
+      answer:  [7792, 7801, 7802]
+      hints:   ["Numbers to order: 7792, 7801, 7802.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 7792, 7801, 7802."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "hint_gated"}
+  sample d3795b8742a4d0f29a3a  seed 1001  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 7992, 7996, 8007
+      answer:  [8007, 7996, 7992]
+      hints:   ["Numbers to order: 7992, 7996, 8007.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 8007, 7996, 7992."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "mastery_drill"}
+  sample b94497f59568bafd1c72  seed 1002  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 5198, 5205, 5194, 5197
+      answer:  [5194, 5197, 5198, 5205]
+      hints:   ["Numbers to order: 5194, 5197, 5198, 5205.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 5194, 5197, 5198, 5205."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "scaffolded"}
 
