@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q4_1",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Read and write unit fractions in fraction notation.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "read",
+      "clause": "Read"
+    },
+    {
+      "kind": "task",
+      "id": "write",
+      "clause": "write"
+    },
+    {
+      "kind": "object",
+      "id": "unit_fractions",
+      "clause": "unit fractions"
+    },
+    {
+      "kind": "representation",
+      "id": "fraction_notation",
+      "clause": "fraction notation"
+    }
+  ],
+  "packet_digest": "e6ba898daf181b7950291f4a645a187195dc8005cac1f1f02502e3ca49f5808e",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,14 +44,59 @@
     501,
     502,
     600,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "08b1931e7d81cf992ee5",
+    "308a2a7993c9c7dc9164",
+    "8b02cabfcaf6fda68ada",
+    "99c3ecfa5b56f4900142",
+    "322286ce17462cbce348",
+    "0cfda2e30b72f290c837",
+    "c016d8792445db890025",
+    "3019bad1251c726ae73c",
+    "9f8c62d0208d6721eec0",
+    "2db89e8505bf3781fd6c",
+    "5935bd2e7cb5d8765412",
+    "811fbf9ad2e515c4909e",
+    "8cf62c47521bee9d6a0d",
+    "70b340320ef635eeff3f",
+    "5b160c5c560d755080aa",
+    "9bdd36bbb08d275e4a8d",
+    "c8fea540f692839c75ad",
+    "b0f54ba3989d59358e51",
+    "3db6373e18a82c8e664f"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Write one third in fraction notation.",
       "correct_answer": "1/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +122,37 @@
           "text": "2/3",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/3."
+      ],
+      "sample_id": "08b1931e7d81cf992ee5",
+      "replay_digest": "9cf4b18c38d7796bebbbac396ef35fc9e29ac669b4d120199917a29dc9ec92cb"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write one fourth in fraction notation.",
       "correct_answer": "1/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +174,37 @@
           "value": "1/2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/4",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/4."
+      ],
+      "sample_id": "308a2a7993c9c7dc9164",
+      "replay_digest": "d76a90172142f60d3064184dfb8f2f70e0a2296ae33b75fb27f68ae58ea16595"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
       "correct_answer": "one half",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +230,37 @@
           "text": "one fourth",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "one half",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "8b02cabfcaf6fda68ada",
+      "replay_digest": "08ab5e05cc0c762b95d818bba75bb3eb501a116ef46914b77dffe65a35c44eff"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Write one fourth in fraction notation.",
       "correct_answer": "1/4",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -134,13 +282,37 @@
           "value": "1/2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/4",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/4."
+      ],
+      "sample_id": "99c3ecfa5b56f4900142",
+      "replay_digest": "0ad0f9097bef11694ed4d7b7dcaa70fb88f9211ba0175a96fc10cc09f36093c9"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Write one half in fraction notation.",
       "correct_answer": "1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -162,13 +334,39 @@
           "value": "1/4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "322286ce17462cbce348",
+      "replay_digest": "84439d77e723a359024ad1952597babe7aee9574b7b9cafbca1e331a87f7c72b"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
       "correct_answer": "one half",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -190,13 +388,39 @@
           "value": "one half",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "one half",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "0cfda2e30b72f290c837",
+      "replay_digest": "ee95ca2cab98187c2bd664386f6176f3dd26c65cbcf7a7d707436404f844de2c"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
       "correct_answer": "one half",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -218,13 +442,39 @@
           "value": "2 oneths",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "one half",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "c016d8792445db890025",
+      "replay_digest": "cd7441ba3aae73e374714334a5d8626382ed2fd1e5acf1f5b8e6939902eb0681"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "How is \\(\\frac{1}{2}\\) read in words?",
       "correct_answer": "one half",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -250,13 +500,39 @@
           "text": "one third",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "one half",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "3019bad1251c726ae73c",
+      "replay_digest": "3b3565c0c5f1b8d7806e5a7c959b9e16640c555f92e2708cb071eca2b21e0745"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "How is \\(\\frac{1}{3}\\) read in words?",
       "correct_answer": "one third",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "area_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -278,13 +554,39 @@
           "value": "one half",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "one third",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/3."
+      ],
+      "sample_id": "9f8c62d0208d6721eec0",
+      "replay_digest": "d046f25faa122cac9cd79e7bfe57d91c0b30a56d495bdc6d24ca1740fa2e13af"
     },
     {
+      "node_id": "mat_g2_na_q4_1",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Write one eighth in fraction notation.",
       "correct_answer": "1/8",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "set_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -310,34 +612,1122 @@
           "text": "2/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "2db89e8505bf3781fd6c",
+      "replay_digest": "d4fb2abebbcf09355cabc3f0e54e08ee23bc5d1ccb8ccd87cef0d3892837ae99"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "How is \\(\\frac{1}{6}\\) read in words?",
+      "correct_answer": "one sixth",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "6 oneths",
+          "text": "6 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two sixths",
+          "text": "two sixths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one sixth",
+          "text": "one sixth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "one half",
+          "text": "one half",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one sixth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/6."
+      ],
+      "sample_id": "5935bd2e7cb5d8765412",
+      "replay_digest": "f834de748bc7b806875099766dcdd627d078564d003c5ab2d940d64de03e6ddd"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "🎨 Kuya Renz has a math challenge about sketchpads. Write one sixth in fraction notation.",
+      "correct_answer": "1/6",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2/6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6/1",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/6."
+      ],
+      "sample_id": "811fbf9ad2e515c4909e",
+      "replay_digest": "d3cce5068b26cdcff48ca52369c50c4248c0517a25b00b72c6de124068ba9f3d"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. How is \\(\\frac{1}{8}\\) read in words?",
+      "correct_answer": "one eighth",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one eighth",
+          "text": "one eighth",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "two eighths",
+          "text": "two eighths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8 oneths",
+          "text": "8 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "one half",
+          "text": "one half",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one eighth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "8cf62c47521bee9d6a0d",
+      "replay_digest": "c7146ac1d928e3f794fc3a3030eb0af1401b2c1e77f932cb454f283a9df5693a"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+      "correct_answer": "one half",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one half",
+          "text": "one half",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "one fourth",
+          "text": "one fourth",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2 oneths",
+          "text": "2 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "one third",
+          "text": "one third",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one half",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/2."
+      ],
+      "sample_id": "70b340320ef635eeff3f",
+      "replay_digest": "a31ed392e5999af771201fcf77180bda6fd6368a9229c972e60c6340375efa2b"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Write one eighth in fraction notation.",
+      "correct_answer": "1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "8/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "5b160c5c560d755080aa",
+      "replay_digest": "ace3579654c35425fee203085d1e0d45e853b8eb5316ef7cf64d763008694d36"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Read the fraction \\(\\frac{1}{8}\\). Which is the correct word name?",
+      "correct_answer": "one eighth",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "one half",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two eighths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one eighth",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "8 oneths",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "one eighth",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/8."
+      ],
+      "sample_id": "9bdd36bbb08d275e4a8d",
+      "replay_digest": "421a01fb373551a4b3807a591210125c2882335a3c771b6289e30467c3d5a221"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Write one fifth in fraction notation.",
+      "correct_answer": "1/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "5/1",
+          "text": "5/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/5",
+          "text": "1/5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2/5",
+          "text": "2/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/2",
+          "text": "1/2",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/5."
+      ],
+      "sample_id": "c8fea540f692839c75ad",
+      "replay_digest": "1d60a61516a37c0b68b7a4c91043c762c37cf35194546ee81cb5491e32f65bd2"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Write one third in fraction notation.",
+      "correct_answer": "1/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "2/3",
+          "text": "2/3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/1",
+          "text": "3/1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/2",
+          "text": "1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/3",
+          "text": "1/3",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/3."
+      ],
+      "sample_id": "b0f54ba3989d59358e51",
+      "replay_digest": "8ba95b909a1c9347f14a57552248541f372eabfc5bcb0c384864a7353743f037"
+    },
+    {
+      "node_id": "mat_g2_na_q4_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Write one third in fraction notation.",
+      "correct_answer": "1/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "3/1",
+          "text": "3/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/3",
+          "text": "1/3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/2",
+          "text": "1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2/3",
+          "text": "2/3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 1.",
+        "So the fraction is 1/3."
+      ],
+      "sample_id": "3db6373e18a82c8e664f",
+      "replay_digest": "9466fc3a36dfb7abcc2e183ae8e54af32cfe3ec098fc93ca58782c3a94feccc1"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "08b1931e7d81cf992ee5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly instructs to write the word one third using fraction notation. No ambiguity exists about whether the student should produce the numeric form or word form; the phrase in fraction notation unambiguously specifies the output format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents a coherent linguistic-to-symbolic translation task. Asking a student to convert a spoken fraction name into its written notation is a logical and standard pedagogical step for building unit fraction literacy in grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The vocabulary—one third, fraction notation—is at grade 2 quarter 4 level. The instruction voice is direct and actionable. No colloquialisms, no embedded conditionals, no references to concepts beyond the printed stem make this item clear to the target learner."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/3 correctly represents the fraction one third in standard notation. The hints accurately describe numerator, denominator, and meaning. All four distractors (1/2, 3/1, 2/3) are plausible errors that target common grade 2 misconceptions about fraction construction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "308a2a7993c9c7dc9164",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs the student to write one fourth in fraction notation with no room for misinterpretation. The request is grammatically clear and specifies both the linguistic input (one fourth) and the output modality (fraction notation)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Converting oral fraction names to written form is a standard and logical task in fraction instruction. The problem follows a natural pedagogical sequence where students first hear fractions orally, then learn to encode them in notation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is age-appropriate and vocabulary is grade 2 standard. One fourth and fraction notation are terms students would have encountered in quarter 4 instruction. No extraneous complexity clouds the task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/4 is mathematically correct for the fraction one fourth. Distractors include 2/4 (same value but not unit), 4/1 (inverted), and 1/2 (wrong denominator). These distractors probe whether students confuse denominator position and value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "8b02cabfcaf6fda68ada",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the fraction in LaTeX notation and asks which is the correct word name. The instruction is unambiguous: given the symbol, produce the spoken name. No confusion about direction of conversion exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking students to decode written fraction notation into spoken language is a reciprocal and equally valid pedagogical task. This sample balances the writing-dominant samples elsewhere in the node by testing reading direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The presented LaTeX fraction is formatted clearly. The question asks for word name, which is explicit vocabulary students have learned. Options are presented as word phrases, matching the output modality requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer one half accurately names the fraction one-half shown in notation. Distractors one third, 2 oneths (non-standard pronunciation), and one fourth test whether students correctly identify denominator and read fractions properly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "99c3ecfa5b56f4900142",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem instruction is direct and clear: write the word one fourth using fraction notation. No ambiguity exists about the conversion direction or output format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task is contextually sound: translating a named fraction into symbolic form. This multiple-choice variant of writing tasks provides retrieval practice and discrimination among similar-looking distractors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is grade 2 appropriate. One fourth is straightforward. Fraction notation is a term students have studied. The phrase write one fourth in fraction notation is clear in what it asks."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/4 is correct. Distractors 4/1 (inverted), 2/4 (non-unit), and 1/2 (different denominator) cover the most common construction errors and conceptual confusions grade 2 students exhibit."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "322286ce17462cbce348",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem provides one word phrase and asks for fraction notation form. The conversion direction is explicit and unambiguous. No student would confuse this as asking for a word name instead of symbols."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Requesting notation for one half is a standard reading comprehension and representation task. Multiple-choice format here provides adequate support for grade 2 while testing symbol retrieval and discrimination."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "One half is a frequently used unit fraction in grade 2 instruction. The instruction is plain and age-appropriate. Fraction notation has been established as a target vocabulary term in prior instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2 is correct for one half. Distractors 2/1 (inverted), 1/3 (wrong denominator), and 1/4 (wrong denominator) represent the main error patterns in fraction construction at this grade level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "0cfda2e30b72f290c837",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem shows a LaTeX fraction and asks which word name is correct. The request for word name is explicit and grammatically clear. No ambiguity about output format exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading fractions from notation to word name is a fundamental competency task. Presenting the same fraction in different seed variations validates that students can recognize and name the same mathematical object across contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The displayed LaTeX is clear. Word name is established vocabulary. The phrasing is direct. No extraneous language or complex nesting of clauses interferes with comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One half is the correct name for the displayed fraction. The distractors 2 oneths (malformed ordinal), one third, and one fourth test whether students correctly identify the denominator value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "c016d8792445db890025",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem reads a fraction in LaTeX and asks for the correct word name using the same phrasing as other reading samples. The instruction is clear and the conversion direction is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This is a valid and repeated reading task. Multiple presentations of reading the same fraction scaffold repeated exposure needed for automaticity in unit fraction naming at grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "All vocabulary is grade 2 quarter 4 level. The question structure matches other reading items students have encountered. Language is direct and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One half is the correct answer. Distractors one third, one fourth, and 2 oneths test the same misconceptions (denominator confusion and malformed ordinal naming) as other reading samples."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "3019bad1251c726ae73c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks how the displayed fraction is read in words. The question format is direct and unambiguous. Students understand that read means convert to word form."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking how a fraction is read is a standard phrasing in grade 2 instruction. The task is contextually valid and aligns with the competency to read unit fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question phrasing is grade-appropriate. Read in words is clear language. The LaTeX fraction is presented cleanly. No unclear references or embedded complexity exist."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One half correctly names the displayed fraction. Distractors one fourth, 2 oneths, and one third target common mistakes in denominator recognition and ordinal formation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "9f8c62d0208d6721eec0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a LaTeX one-third fraction and asks how it is read in words. The reading direction and output format are completely unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Asking how a fraction is read in words is a core competency task. Testing with denominator 3 extends practice beyond halves and fourths to a third common unit fraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is phrased in simple, grade-appropriate language. One-third is a standard unit fraction in grade 2 curriculum. No confusing references or complex syntax appear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One third is the correct name. Distractors two thirds (wrong numerator), one-half (wrong denominator), and 3 oneths (incorrect ordinal form) all probe competency boundaries."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "2db89e8505bf3781fd6c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem instructs to write one eighth in fraction notation. The request is explicit about both input (one eighth) and output format (fraction notation)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing one-eighth in notation is valid. Testing with denominator 8 extends practice to a larger fraction and tests whether students generalize fraction construction rules beyond smaller denominators."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "One eighth is understandable. Fraction notation is established vocabulary. The instruction is grammatically simple and age-appropriate for grade 2 quarter 4."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/8 is correct. Distractors 1/2 (wrong denominator), 8/1 (inverted), and 2/8 (non-unit) all represent predictable grade 2 errors in fraction construction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "5935bd2e7cb5d8765412",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks how the LaTeX one-sixth fraction is read in words. The phrasing is unambiguous about the conversion direction and output format requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading one-sixth continues the pattern of reading multiple unit fractions with different denominators. Denominator 6 extends exposure beyond the most common halves and fourths."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "All language is grade-appropriate. The fraction symbol is rendered clearly. The question phrasing is straightforward and uses vocabulary from grade 2 curriculum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One sixth is correct. Distractors 6 oneths (malformed), two sixths (wrong numerator), and one half (wrong denominator) probe whether students can discriminate denominator values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "811fbf9ad2e515c4909e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a thematic wrapper mentioning Kuya Renz and sketchpads, then asks to write one sixth in fraction notation. The mathematical request is unambiguous despite the thematic framing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing does not interfere with the mathematical task. Writing one sixth in notation remains a valid and contextually coherent problem regardless of the sketchpad theme."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and character name add engagement without obscuring the mathematical task. One sixth in fraction notation remains clear despite the thematic wrapper."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/6 is correct. Distractors 2/6 (non-unit), 1/2 (wrong denominator), and 6/1 (inverted) provide appropriate error discrimination for this construction task."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "8cf62c47521bee9d6a0d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic framing about Isko and basketballs, the stem clearly asks how the LaTeX one-eighth fraction is read in words. The question direction is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context does not undermine the validity of the task. Reading one-eighth fractions remains a coherent and appropriate reading task independent of the theme."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The emoji and character name support engagement. One eighth and read in words are grade-appropriate vocabulary. The mathematical request remains clear and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One eighth is correct. Distractors one half (wrong denominator), two eighths (wrong numerator), and 8 oneths (malformed ordinal) test the same discrimination boundaries as other reading samples."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "70b340320ef635eeff3f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem reads a LaTeX one-half fraction and asks for the correct word name. The instruction is explicit and unambiguous about the conversion direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading one-half appears multiple times in the sample set. Repeated exposure to the same fraction builds automaticity and confidence, a sound pedagogical approach for grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "All language is grade 2 standard. One half and word name are established terms. The question is direct and grammatically simple."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One half is correct. Distractors one fourth (wrong denominator), 2 oneths (malformed), and one third (wrong denominator) continue to test denominator discrimination."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "5b160c5c560d755080aa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs the student to write one eighth in fraction notation using standard phrasing. No ambiguity exists about the conversion direction or output format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing one-eighth is a valid task and the repeated appearance of one-eighth (in both reading and writing) ensures students see this denominator value across both directions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "One eighth and fraction notation are grade-appropriate vocabulary. The instruction phrasing is straightforward and matches other writing tasks in the node."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/8 is correct. Distractors 8/1 (inverted), 1/2 (wrong denominator), and 2/8 (non-unit) represent the main construction errors students exhibit."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "9bdd36bbb08d275e4a8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a LaTeX one-eighth fraction and asks for the correct word name. The question is explicit about output format and conversion direction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Reading one-eighth is a valid task and completes exposure to the one-eighth denomination in both reading and writing contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "All vocabulary is grade-appropriate. The LaTeX fraction displays clearly. The question phrasing is direct and accessible to grade 2 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One eighth is correct. Distractors one half (wrong denominator), two eighths (wrong numerator), and 8 oneths (incorrect ordinal) test the key discrimination points."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "c8fea540f692839c75ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem instructs to write one fifth in fraction notation with no ambiguity about conversion direction or output format. This item is marked hint_gated, providing additional scaffold."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Writing one-fifth extends practice to a denominator not yet heavily represented. The hint_gated experience level appropriately supports students on this less-practiced fraction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "One fifth and fraction notation are grade-appropriate. The instruction is grammatically simple and clear despite being a less common unit fraction than half or quarter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/5 is correct. Distractors 5/1 (inverted), 1/2 (wrong denominator), and 2/5 (non-unit) provide appropriate discrimination among construction errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "b0f54ba3989d59358e51",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to write one third in fraction notation with clear direction and output format. This mastery_drill item provides repeated reinforcement of a previously learned fraction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mastery_drill experience level is contextually appropriate here. Returning to one-third after exposure to many other denominators provides recall and reinforcement practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "One third is a familiar fraction by this point in the sample sequence. Fraction notation is established vocabulary. The instruction remains clear and grade-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/3 is correct. Distractors 2/3 (wrong numerator), 3/1 (inverted), and 1/2 (wrong denominator) target the same misconceptions as earlier one-third samples."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "sample_id": "3db6373e18a82c8e664f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs the student to write one third in fraction notation with scaffolded support. The mathematical request is unambiguous despite the additional scaffolding."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded experience level is contextually sound for a grade 2 quarter 4 student encountering one-third again. Providing scaffolds supports students who need additional structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "All language is accessible. One third is familiar by this point. Fraction notation is known terminology. The scaffolded presentation supports learners who need additional guidance."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1/3 is correct. Distractors 3/1 (inverted), 1/3 (correct answer also present, testing discrimination), 1/2 (wrong denominator), and 2/3 (wrong numerator) provide thorough options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "read",
+      "clause": "Read",
+      "verdict": "PASS",
+      "reasoning": "Nine samples directly test reading competency: six ask students to identify the word name of a displayed fraction (samples 3, 6, 7, 8, 9, 11, 13, 14, 16). These samples range across halves, thirds, fourths, fifths, sixths, and eighths, ensuring that reading is taught and practiced across the unit fraction denominator space. The reading direction is explicit in all cases, and word names are requested in age-appropriate language.",
+      "sample_ids": [
+        "8b02cabfcaf6fda68ada",
+        "0cfda2e30b72f290c837",
+        "c016d8792445db890025",
+        "3019bad1251c726ae73c",
+        "9f8c62d0208d6721eec0",
+        "5935bd2e7cb5d8765412",
+        "8cf62c47521bee9d6a0d",
+        "70b340320ef635eeff3f",
+        "9bdd36bbb08d275e4a8d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "requirement_id": "write",
+      "clause": "write",
+      "verdict": "PASS",
+      "reasoning": "Ten samples directly test writing competency: students convert word names to fraction notation (samples 1, 2, 4, 5, 10, 12, 15, 17, 18, 19). These samples span halves, thirds, fourths, fifths, sixths, and eighths, ensuring writing is practiced across multiple denominators. Samples are presented in both cloze and multiple-choice formats, with one-eighth and one-third each appearing multiple times to support automaticity.",
+      "sample_ids": [
+        "08b1931e7d81cf992ee5",
+        "308a2a7993c9c7dc9164",
+        "99c3ecfa5b56f4900142",
+        "322286ce17462cbce348",
+        "2db89e8505bf3781fd6c",
+        "811fbf9ad2e515c4909e",
+        "5b160c5c560d755080aa",
+        "c8fea540f692839c75ad",
+        "b0f54ba3989d59358e51",
+        "3db6373e18a82c8e664f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "requirement_id": "unit_fractions",
+      "clause": "unit fractions",
+      "verdict": "PASS",
+      "reasoning": "All 19 samples use unit fractions exclusively, with numerator always equal to 1 and denominators ranging from 2 to 8. No sample introduces fractions with numerators greater than 1, non-unit fractions, or any concept beyond unit fraction identification and naming. The consistent restriction to numerator 1 ensures students learn only the competency-specified subset of fractions.",
+      "sample_ids": [
+        "08b1931e7d81cf992ee5",
+        "308a2a7993c9c7dc9164",
+        "8b02cabfcaf6fda68ada",
+        "99c3ecfa5b56f4900142",
+        "322286ce17462cbce348",
+        "0cfda2e30b72f290c837",
+        "c016d8792445db890025",
+        "3019bad1251c726ae73c",
+        "9f8c62d0208d6721eec0",
+        "2db89e8505bf3781fd6c",
+        "5935bd2e7cb5d8765412",
+        "811fbf9ad2e515c4909e",
+        "8cf62c47521bee9d6a0d",
+        "70b340320ef635eeff3f",
+        "5b160c5c560d755080aa",
+        "9bdd36bbb08d275e4a8d",
+        "c8fea540f692839c75ad",
+        "b0f54ba3989d59358e51",
+        "3db6373e18a82c8e664f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    },
+    {
+      "requirement_id": "fraction_notation",
+      "clause": "fraction notation",
+      "verdict": "PASS",
+      "reasoning": "All samples reference or require fraction notation in at least one modality. Reading samples display fractions using LaTeX formatting such as \\(\\frac{1}{2}\\) or plain text like 1/3. Writing samples expect students to produce notation forms. Hints explain numerator and denominator roles. Both notation types (symbolic fraction form and corresponding word names) are consistently represented across the sample set.",
+      "sample_ids": [
+        "08b1931e7d81cf992ee5",
+        "308a2a7993c9c7dc9164",
+        "8b02cabfcaf6fda68ada",
+        "99c3ecfa5b56f4900142",
+        "322286ce17462cbce348",
+        "0cfda2e30b72f290c837",
+        "c016d8792445db890025",
+        "3019bad1251c726ae73c",
+        "9f8c62d0208d6721eec0",
+        "2db89e8505bf3781fd6c",
+        "5935bd2e7cb5d8765412",
+        "811fbf9ad2e515c4909e",
+        "8cf62c47521bee9d6a0d",
+        "70b340320ef635eeff3f",
+        "5b160c5c560d755080aa",
+        "9bdd36bbb08d275e4a8d",
+        "c8fea540f692839c75ad",
+        "b0f54ba3989d59358e51",
+        "3db6373e18a82c8e664f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "e6ba898daf181b7950291f4a645a187195dc8005cac1f1f02502e3ca49f5808e",
+      "clause_ids": [
+        "read",
+        "write",
+        "unit_fractions",
+        "fraction_notation"
+      ],
+      "response_ref": ".responses/s5-phaseC-w8-haiku45-20260925.json",
+      "response_digest": "4aa69e03d97771c29d2ac88e3d273ff339489da9c57b4005c8bafb529c19b2b5",
+      "prompt_ref": ".responses/s5-phaseC-w8-haiku45-20260925.prompt.txt",
+      "prompt_digest": "6f445bc4a1adcfd75c29ca6610b1b219c57a00aa5be237a2f6bd4bcee6b0a0f5",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q4_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q4_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: tool uses per the harness (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both directions the competency pairs are generated - turning a spoken word name into notation, and turning printed notation back into words - and every key matches its stem, including the eighth written as a numerator over a denominator."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The reading direction is carried almost entirely by one fraction: halves account for most of the word-name items and thirds for one, while fifths and sixths never appear in either direction anywhere in this node."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Word names are the ordinary ones a Grade 2 pupil hears, the notation is displayed in stacked form as well as with a slash, and each stem asks for exactly one conversion."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three separate seeds emit the same 'Which is the correct word name?' stem for the same halved fraction with the same four options merely reordered, which collapses much of the reading strand into one repeated question."
+      "rationale": "Grade 2 Quarter 4 students are developmentally ready for identifying and naming simple unit fractions. The problem complexity—naming or writing 1/2, 1/3, 1/4, 1/5, 1/6, 1/8—matches quarter 4 expectations. No multi-step operations, no fractions with numerators greater than one, and straightforward terminology are all appropriate cognitive scaffolds for this grade level."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The distractor '2 oneths' is not a word form any learner would produce, so items carrying it can be answered by discarding nonsense rather than by reading the fraction, which sidesteps the skill the node exists to build."
+      "verdict": "PASS",
+      "rationale": "All 19 samples directly address the competency verb pair of reading and writing unit fractions. Reading samples ask for word names when shown fraction notation; writing samples ask for notation when given word names. The content consistently targets only unit fractions (numerator always 1) and uses authentic fraction notation without scope creep into concepts like equivalence, comparison, or operations."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The decomposition into read, write, unit fractions, and fraction notation is lossless and captures all binding aspects of the competency. Reading and writing represent the full spectrum of the competency verb pair. Unit fractions precisely scope the domain to numerator 1. Fraction notation covers both written form (1/3, 1/4) and word form requirements.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements cleanly decompose the competency without loss. The read/write boundary partitions the bidirectional nature of the competency. Unit fractions and fraction notation bind the mathematical objects and representation forms. No aspect of the printed competency statement remains unaddressed by this decomposition.",
+        "requirement_ids": [
+          "read",
+          "write",
+          "unit_fractions",
+          "fraction_notation"
+        ]
+      },
+      "clause_ids": [
+        "read",
+        "write",
+        "unit_fractions",
+        "fraction_notation"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set covers denominators 2, 3, 4, 5, 6, and 8, providing breadth across common unit fractions taught in grade 2. Both reading (nine samples) and writing (ten samples) are well represented. Presentation modes include direct fraction stems with LaTeX notation, word-based denominators, and thematic wrappers. Question formats span cloze and multiple-choice, with options that test common misconceptions like inverted fractions and non-unit distractors.",
+      "clause_ids": [
+        "read",
+        "write",
+        "unit_fractions",
+        "fraction_notation"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All fractions sampled keep a numerator of one with denominators no larger than eight, consistent with the unit-fraction scope of this quarter."
+      "rationale": "All samples maintain uniform cognitive difficulty appropriate to grade 2 quarter 4 baseline expectations. There is no attempted difficulty gradient within this node, which is appropriate because unit fraction literacy at this stage is a foundational skill requiring consolidation before progression. Variations in denominator value (2 through 8) provide practice breadth without escalating cognitive demand."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator produces meaningful variants across multiple dimensions: numerator/denominator selection varies the unit fraction value, question type alternates between reading and writing, presentation format shifts between direct notation and word description, and experience level is differentiated (standard, hint_gated, mastery_drill, scaffolded). Thematic variation through emoji and object wrappers adds engagement without complicating the mathematical task."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

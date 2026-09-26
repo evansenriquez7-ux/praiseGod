@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q3_9",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve division problems using the 2, 3, 4, 5, and 10 multiplication tables, including problems involving money.",
+    "grade": 2,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_division_problems",
+      "clause": "Solve division problems"
+    },
+    {
+      "kind": "range",
+      "id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables"
+    },
+    {
+      "kind": "context",
+      "id": "money",
+      "clause": "money"
+    }
+  ],
+  "packet_digest": "68d15b30d0ef03f381e2fb1a52dc0f92d0ef4cf2e3976944215363603f612e7a",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +42,62 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d02e7cb8a9cd62f9a5d8",
+    "ca3edf70b56f8dd55c31",
+    "ee6bff8d6fe7fdc38f64",
+    "f26bde384faafb5cb1e9",
+    "f274697cbe6f2da73f9b",
+    "72947c89cb1a5c9e1ef5",
+    "d53a7303cfb1af822cdc",
+    "9620df68fdb8609caa04",
+    "610d20254c2f724f8871",
+    "8666dce8dbdc7baaa9dd",
+    "80f96481843f16d83b55",
+    "ea44af63abf318d72afc",
+    "27305b3e8c390c31bd0f",
+    "a5b0619b952e90cdcb2c",
+    "0b1b838681323e42e291",
+    "5a07d675bbce53b1fb12",
+    "46f382e4b74cc014f7c3",
+    "af319d9e1175e66378f4",
+    "fd8db007fa0fa5370fd2",
+    "d048215c64405767ab4c",
+    "b8e1a0b4232937089edc",
+    "1426dc46a9738c1db5f5"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Maico wants to share 3 costumes equally among 3 friends. How many costumes does each friend get?",
       "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -49,13 +123,36 @@
           "text": "2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+        "The quotient of 3 ÷ 3 = 1."
+      ],
+      "sample_id": "d02e7cb8a9cd62f9a5d8",
+      "replay_digest": "a31dfedc0375c5543ddabfb53c8889ab4b4b7a3ddcace258c1c3074f47639477"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Nanding has ₱10 and wants to share it equally among 2 friends. How much does each friend get?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -77,13 +174,36 @@
           "value": 2,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+        "The quotient of 10 ÷ 2 = 5."
+      ],
+      "sample_id": "ca3edf70b56f8dd55c31",
+      "replay_digest": "6ec98fefd3d1d36fa1297159944df4bb28e51d0a6b10d24104627806c7ebbb42"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Coach Nora has ₱40 and wants to share it equally among 10 friends. How much does each friend get?",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,40 +229,162 @@
           "text": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to divide 40 by 10. The number being divided is 40; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 40? 10 × 4 = 40.",
+        "The quotient of 40 ÷ 10 = 4."
+      ],
+      "sample_id": "ee6bff8d6fe7fdc38f64",
+      "replay_digest": "e654bc16583b2e0c243d7572cd8183457a2e0365856d22f150e28a09cf3855f1"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "Ate Gab has ₱15 and wants to share it equally among 5 friends. How much does each friend get? The answer is 4. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
+        "The quotient of 15 ÷ 5 = 3."
+      ],
+      "sample_id": "f26bde384faafb5cb1e9",
+      "replay_digest": "226addbfb334282faac65d606e57afb511173d4dd794b756d8d2256c4c67c666"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "There are 12 seeds. If 2 seeds are put in each bag, how many bags are needed? The answer is 6. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+        "The quotient of 12 ÷ 2 = 6."
+      ],
+      "sample_id": "f274697cbe6f2da73f9b",
+      "replay_digest": "c75bce6d18d18b910d35640f11deea83af4811dda7d070dc848a462542e2256d"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved this problem: \"Lara wants to share 90 costumes equally among 10 friends. How many costumes does each friend get?\" Noel says the answer is 9. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 9
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9
+      },
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The quotient of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "72947c89cb1a5c9e1ef5",
+      "replay_digest": "79a29dc5d97ce07bd79212a06eb62adc27974e18f675d8de6c43da0a0bfa3fae"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "There are 90 ribbons. If 10 ribbons are put in each bag, how many bags are needed? The answer is 8. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The quotient of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "d53a7303cfb1af822cdc",
+      "replay_digest": "fa4c7927f10600104e622210ef0347d7b3279eab36d17cdd312ccda81b26a831"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "There are 90 running shoes. If 10 running shoes are put in each bag, how many bags are needed?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -164,22 +406,75 @@
           "value": 80,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The quotient of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "9620df68fdb8609caa04",
+      "replay_digest": "d21ee5602d892a52cb7c13316b8ddd75f8bacd3e578e69aad0ba3063202bd315"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 502,
       "formatter": "error_detect",
-      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 90 canvases equally among 10 friends. How many canvases does each friend get?\" Dante says the answer is 9. Is Dante correct?",
+      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 90 paint tubes equally among 10 friends. How many paint tubes does each friend get?\" Dante says the answer is 9. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 9
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9
+      },
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The quotient of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "610d20254c2f724f8871",
+      "replay_digest": "9f986a7e96dcb0f49b64fc66a5dd30c7d9c62a7eb803f2fe59bb2e234d7340b3"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "There are 15 leashes. If 5 leashes are put in each bag, how many bags are needed?",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -201,13 +496,38 @@
           "value": 5,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
+        "The quotient of 15 ÷ 5 = 3."
+      ],
+      "sample_id": "8666dce8dbdc7baaa9dd",
+      "replay_digest": "9b658f8553479044899a3989bc7fa0f447c2a1712908a7455a1d9c9b754533cd"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Coach Roel has ₱20 and wants to share it equally among 4 friends. How much does each friend get?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -233,22 +553,75 @@
           "text": "16",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
+        "The quotient of 20 ÷ 4 = 5."
+      ],
+      "sample_id": "80f96481843f16d83b55",
+      "replay_digest": "d570fbc5052b4ba4a44035eae2e474fc8fcbe24c7edfaafff37b0d9d039364c0"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved this problem: \"Sir Rez has ₱20 and wants to share it equally among 10 friends. How much does each friend get?\" Jose says the answer is 2. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 2
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 2
+      },
+      "hints": [
+        "We need to divide 20 by 10. The number being divided is 20; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 20? 10 × 2 = 20.",
+        "The quotient of 20 ÷ 10 = 2."
+      ],
+      "sample_id": "ea44af63abf318d72afc",
+      "replay_digest": "6a24370c5559c3f725b0a3cb833c9e55ff507e49be13be2dd631116c8158130b"
     },
     {
+      "node_id": "mat_g2_na_q3_9",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Ate Beng has ₱15 and wants to share it equally among 3 friends. How much does each friend get?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "table": "2_3_4_5_10"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -270,34 +643,1060 @@
           "value": 12,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+        "The quotient of 15 ÷ 3 = 5."
+      ],
+      "sample_id": "27305b3e8c390c31bd0f",
+      "replay_digest": "bae4fdd08dbd7d2579d68bd6b243ab4c33612be9b6796566ce283ca8efe9f0e4"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved this problem: \"Boyong has ₱15 and wants to share it equally among 3 friends. How much does each friend get?\" Carlo says the answer is 5. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 5
+      },
+      "hints": [
+        "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+        "The quotient of 15 ÷ 3 = 5."
+      ],
+      "sample_id": "a5b0619b952e90cdcb2c",
+      "replay_digest": "848697766f2fc4f098b1e77d61f88dad1616f3ea8d28baf88d259582bff52d83"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "There are 15 sneakers. If 5 sneakers are put in each bag, how many bags are needed? The answer is 3. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
+        "The quotient of 15 ÷ 5 = 3."
+      ],
+      "sample_id": "0b1b838681323e42e291",
+      "replay_digest": "8a39066c0dcc4ef0884985e6b731c7ca7c0c2f12b05eab833ee41b7f5fd503f3"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Ruth wants to share 3 loaves of bread equally among 3 friends. How many loaves of bread does each friend get?\" Manny says the answer is 3. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 1
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 1
+      },
+      "hints": [
+        "We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+        "The quotient of 3 ÷ 3 = 1."
+      ],
+      "sample_id": "5a07d675bbce53b1fb12",
+      "replay_digest": "0e19aff5530b8d9830fc7edbf5552c781d862740372ce89cd542e4051a850405"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Lola Caring wants to share 90 leashes equally among 10 friends. How many leashes does each friend get?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The quotient of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "46f382e4b74cc014f7c3",
+      "replay_digest": "f40d42f711bda853def95e2d80bb0e159fe29650524ba214c51361700a295304"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ate Liza wants to share 5 paint tubes equally among 5 friends. How many paint tubes does each friend get?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We need to divide 5 by 5. The number being divided is 5; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 5? 5 × 1 = 5.",
+        "The quotient of 5 ÷ 5 = 1."
+      ],
+      "sample_id": "af319d9e1175e66378f4",
+      "replay_digest": "13a8f9ef9a9a389d9d1ef29ae6988d0615cea42ff79986976ea042217d231edc"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Jun has ₱15 and wants to share it equally among 3 friends. How much does each friend get?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+        "The quotient of 15 ÷ 3 = 5."
+      ],
+      "sample_id": "fd8db007fa0fa5370fd2",
+      "replay_digest": "05adb9b941a40125d536c8a4ff3e26e58bb3a13c6b57864b9696978a523a6de2"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Lola Ising wants to share 40 cupcakes equally among 10 friends. How many cupcakes does each friend get?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to divide 40 by 10. The number being divided is 40; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 40? 10 × 4 = 40.",
+        "The quotient of 40 ÷ 10 = 4."
+      ],
+      "sample_id": "d048215c64405767ab4c",
+      "replay_digest": "2482a08de8befbb696b2a98732310e9c331af09d49499580ce39ee2995224234"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Kuya Chad wants to share 10 helmets equally among 2 friends. How many helmets does each friend get?\" Liza says the answer is 4. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "hints": [
+        "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+        "The quotient of 10 ÷ 2 = 5."
+      ],
+      "sample_id": "b8e1a0b4232937089edc",
+      "replay_digest": "25b84588f1f439b0a2b1ce0f264ebb56e717fb2132d20eade5a95a8c5e4bab9d"
+    },
+    {
+      "node_id": "mat_g2_na_q3_9",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"There are 80 wristbands. If 10 wristbands are put in each bag, how many bags are needed?\" Manny says the answer is 10. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 8
+      },
+      "hints": [
+        "We need to divide 80 by 10. The number being divided is 80; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 80? 10 × 8 = 80.",
+        "The quotient of 80 ÷ 10 = 8."
+      ],
+      "sample_id": "1426dc46a9738c1db5f5",
+      "replay_digest": "c1476270854ae9b3a34cdbb270c1869e5791ec27ce6a42cfc5abca77f3a37968"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d02e7cb8a9cd62f9a5d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is entirely unambiguous. Learners are given a total quantity to share, the number of recipients, and a clear question asking for the quantity per recipient. The context of sharing costumes equally is straightforward. No alternative interpretations of the mathematical operation or intent are possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing costumes equally among friends is a realistic, age-appropriate scenario that Grade 2 learners would encounter or understand. The logic is sound: if you have costumes and divide them equally, each friend gets a fair share. The scenario respects learner experience and reasoning ability."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and uses simple Grade 2-level vocabulary. The problem follows a familiar structure: subject, action, quantity, recipients, question. Learners reading this would immediately recognize the equal-sharing context without need for clarification. Sentence length and word choice are appropriate for independent Grade 2 readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division is mathematically correct. Three costumes divided equally among three friends yields one costume per friend. The answer is accurate, and the hints correctly walk through the multiplication relationship and quotient. All arithmetic presented in hints and answer is sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "ca3edf70b56f8dd55c31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement clearly specifies a peso amount, a group size, and asks for equal distribution. No ambiguity about whether money should be counted, how friends are defined, or what equal sharing means. The multiple-choice format further reduces any uncertainty by presenting the four possible answers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing money equally among friends is a fundamental and realistic life scenario that Grade 2 learners understand or encounter. The logic is valid: if you have ten pesos and divide them equally two ways, each person receives five pesos. This reflects authentic consumer or family mathematics."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct language identifies the protagonist Nanding, the money amount in pesos, the number of friends, and the question about equal distribution. Grade 2 learners know the peso symbol and understand equal sharing. Vocabulary and sentence construction are at appropriate difficulty."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division ten by two equals five is arithmetically correct. The peso currency is used appropriately as a real-world context for division. The answer of five pesos per friend is accurate. All hint equations are true: two multiplied by five equals ten."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "ee6bff8d6fe7fdc38f64",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The context specifies a coach, forty pesos, ten friends, and an equal sharing question. No ambiguity about the operation, the count of recipients, or the desired outcome. The problem statement is self-contained and unambiguous in intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A coach distributing money equally among friends is a plausible scenario in Philippine contexts. The context respects learner experience with authority figures, financial management, and fair distribution. The logic is coherent and age-appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear identification of the protagonist Coach Nora, the peso amount, the recipient count, and the question. Vocabulary is simple. Sentence structure follows the familiar pattern of other division problems in the set. Grade 2 readers would recognize the task immediately."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty pesos divided equally among ten friends is forty divided by ten, which equals four pesos per friend. The answer is mathematically correct. Hints confirm the relationship through the multiplication fact ten multiplied by four equals forty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "f26bde384faafb5cb1e9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format asks learners to evaluate whether a given answer to a stated division problem is correct. The problem is unambiguous: given fifteen pesos shared equally among five friends, is the answer four pesos true? No alternative interpretation exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money sharing among friends is logically valid and contextually sound. The error detection format teaches learners to verify mathematical claims. The false answer presented plausibly incorrect but close, which is pedagogically valuable for developing critical evaluation skills in Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states the scenario, names Ate Gab, specifies fifteen pesos, identifies five friends, and presents a claim to evaluate. The true/false question format is age-appropriate. Vocabulary and phrasing are simple and direct for Grade 2 independent work."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen pesos divided by five equals three pesos per friend, making four an incorrect answer. The true/false statement is false as intended, which is mathematically valid. The hint correctly provides the right answer of three, supporting learner understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "f274697cbe6f2da73f9b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents seeds, a bag capacity, and asks how many bags are needed. These elements are clear and unambiguous. The true/false statement evaluates the proposed answer in a straightforward way with no alternative interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing seeds into bags of equal quantities is a realistic task in gardening or agricultural contexts. The scenario is logical and learner-accessible. The problem correctly translates the sharing context to a different real-world framing without losing mathematical coherence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct language describes the seed quantity, bag capacity, and the task. The true/false format is clear. Grade 2 learners understand the concept of putting objects into containers and counting containers needed. All vocabulary and phrasing is appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twelve seeds with two seeds per bag requires six bags. The division twelve by two equals six is correct. The true/false statement affirming this answer is valid. Hints confirm through the multiplication relationship two multiplied by six equals twelve."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "72947c89cb1a5c9e1ef5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states another student's work and asks whether Noel is correct. The error detection format makes the task unambiguous: evaluate the validity of Noel's answer of nine for ninety divided by ten. No ambiguity in task or expectation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario of evaluating a peer's mathematical work is developmentally appropriate for Grade 2 and supports meta-cognitive growth. Noel's answer is correct, which teaches learners that peer work can be right. The scenario is logically sound and pedagogically valuable."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem identifies Noel as the solver, states his claim, provides the original problem with all details, and asks whether he is correct. Grade 2 learners understand the task of checking another student's work. Vocabulary and sentence structure are clear and simple."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety costumes divided equally among ten friends yields nine costumes per friend. Noel's answer of nine is mathematically correct. The error detection format correctly identifies that Noel has no error. Hints confirm the multiplication relationship ten by nine equals ninety."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "d53a7303cfb1af822cdc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format asks learners to evaluate a claim about ribbons and bags. The problem specifies ninety ribbons, ten ribbons per bag, and asks whether the answer of eight bags is correct. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing ribbons into bags of fixed quantity is realistic. The error detection format provides pedagogical value by presenting an incorrect alternative answer. Grade 2 learners can reason about container organization."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear statement of materials, packaging rule, and question. The true/false format is appropriate for Grade 2. Vocabulary is simple. Sentence structure mirrors other problems in the set. The task is accessible to independent readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety ribbons with ten per bag requires nine bags, not eight. The false answer is mathematically incorrect as intended. The hint correctly shows the right answer of nine through the multiplication relationship ten by nine equals ninety."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "9620df68fdb8609caa04",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents running shoes, a packaging rule, and four multiple-choice options. The question about how many bags are needed is unambiguous. Learners must perform the division and select the matching option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing shoes into bags is realistic and age-appropriate. The scenario makes sense: ninety shoes packaged ten per bag. Grade 2 learners understand inventory and storage tasks. The logic is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Direct language identifies the material, the packaging quantity, and the question. Multiple choice provides four answers to evaluate. Vocabulary is appropriate for Grade 2. The problem follows established patterns making it accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety shoes with ten per bag requires nine bags. The answer of nine is correct. The distractor options eight, ten, and eighty are plausibly incorrect alternatives. The hint confirms the multiplication fact ten by nine equals ninety."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "610d20254c2f724f8871",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents Dante's solution to a division problem and asks if he is correct. The statement is clear: Dante claims that ninety paint tubes divided among ten friends yields nine tubes per friend. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating peer work develops mathematical reasoning. The scenario is logically sound. Dante's answer happens to be correct, which is valid for teaching. The context of sharing paint tubes among friends is realistic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear naming of Dante, the division problem, his answer, and the evaluation question. Grade 2 learners understand checking peer work. Language is simple and direct. The format is consistent with other error detection samples."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety paint tubes divided equally among ten friends yields nine per friend. Dante's answer is correct. The error detection format appropriately shows no error. Hints confirm ninety divided by ten equals nine through the multiplication relationship."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "8666dce8dbdc7baaa9dd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice problem clearly states fifteen leashes, a bag capacity of five, and asks how many bags are needed. Four options are presented. The task is unambiguous: divide and select the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing leashes into bags is realistic and relevant to pet care contexts. The scenario is logically coherent. Grade 2 learners can reason about organizing equal-sized groups of objects."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, clear language describes the material, the grouping rule, and the question. Multiple-choice format provides four answers to consider. Vocabulary is Grade 2 appropriate. Sentence construction is direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen leashes with five per bag requires three bags. The answer of three is correct. Distractors ten, four, and five are plausibly incorrect. The hint confirms the multiplication fact five by three equals fifteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "80f96481843f16d83b55",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly identifies Coach Roel, specifies twenty pesos, names four friends, and asks how much each receives. The cloze format requests the numeric answer. No ambiguity about the operation or the required output."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A coach distributing money equally among friends is realistic. Money management and equal distribution are logical concepts for Grade 2. The scenario reflects authentic financial practices."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Direct identification of Coach Roel, the peso amount, the recipient count, and the question. The cloze format is familiar to Grade 2 learners. Vocabulary is simple. Sentence structure is clear and unambiguous."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty pesos divided equally among four friends equals five pesos each. The answer is mathematically correct. The hints show the multiplication relationship four by five equals twenty. All arithmetic is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "ea44af63abf318d72afc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem clearly states Jose's attempted solution to a division problem, gives his answer, and asks if he is correct. The evaluation task is unambiguous: determine whether twenty divided by ten equals two."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating a peer's work on a money problem is pedagogically sound and contextually valid. The scenario of sharing money and checking the result is logical and age-appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear naming of Jose, the problem statement with all details, his claimed answer, and the evaluation question. Grade 2 learners understand checking peer work. Language is simple and direct. Format is consistent with other error detection items."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty pesos divided by ten friends equals two pesos per friend. Jose's answer is correct. The error detection format appropriately confirms no error. Hints verify through the multiplication relationship ten by two equals twenty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "27305b3e8c390c31bd0f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice problem identifies Ate Beng, the peso amount, the recipient count, and asks how much each receives. Four options are clearly presented. No ambiguity in task or intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing money among friends is realistic and contextually sound for Grade 2. The scenario reflects authentic money-sharing situations. Logic is straightforward and accessible to learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct language introduces Ate Beng, specifies the peso amount, names the recipients, and poses the question. Multiple-choice format is familiar to Grade 2 learners. All vocabulary is at appropriate difficulty."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen pesos divided equally among three friends yields five pesos each. The answer is mathematically correct. Distractors three, six, and twelve are plausibly incorrect. Hints confirm the multiplication fact three by five equals fifteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "a5b0619b952e90cdcb2c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Carlo's solution to a division problem and asks if he is correct. The task is clear: evaluate whether fifteen pesos divided among three friends equals five pesos per friend."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating peer mathematical work is developmentally appropriate and logically sound. The money-sharing scenario with another student named Boyong as protagonist is realistic. Grade 2 learners understand this type of reasoning task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear naming of Carlo as evaluator, Boyong as the problem's protagonist, the peso amount, recipient count, and Carlo's answer. The evaluation question is direct. Language and format are appropriate for Grade 2 independent work."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen pesos divided among three friends equals five pesos each. Carlo's answer is mathematically correct. The error detection confirms no error. Hints show the multiplication relationship three by five equals fifteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "0b1b838681323e42e291",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false problem clearly specifies fifteen sneakers, a bag quantity of five, asks about the number of bags needed, and presents a claim to evaluate. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing sneakers into bags is realistic. The equal-grouping scenario is logically coherent. Grade 2 learners understand container organization. The context is accessible and age-appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Direct statement of materials, the grouping rule, and the true/false claim. Vocabulary is simple. Sentence structure is clear. Grade 2 readers would recognize the task and format immediately from prior experience."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen sneakers with five per bag requires three bags. The true/false statement affirming this is mathematically correct. Hints verify the multiplication relationship five by three equals fifteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "5a07d675bbce53b1fb12",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Manny's solution to a bread-sharing problem and asks if Manny is correct. The task is unambiguous: evaluate whether three loaves shared among three friends yields three loaves per friend."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating peer work on a sharing problem is pedagogically sound. The scenario of sharing bread is realistic and food-relevant. The context with Ruth as the original problem's protagonist and Manny as evaluator is logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear identification of Manny as evaluator, Ruth as the problem's subject, the bread quantity, recipient count, and Manny's claimed answer. The evaluation question is direct. Format and language are appropriate for Grade 2."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three loaves divided among three friends equals one loaf per friend. Manny's answer of three is incorrect. The error detection correctly identifies the error. Hints confirm the correct answer of one through the multiplication relationship three by one equals three."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "46f382e4b74cc014f7c3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze problem clearly identifies Lola Caring as the protagonist, specifies ninety leashes, names ten friends, and asks how many leashes each receives. The fill-in-blank format is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A grandmother named Lola distributing items to friends is realistic and culturally familiar in Philippine contexts. The leash-sharing scenario is logical. The context supports learner engagement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct identification of the protagonist, the quantity, the recipients, and the question. The cloze format with numeric answer is familiar to Grade 2 learners. All vocabulary is appropriate. Sentence construction is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ninety leashes divided equally among ten friends yields nine leashes per friend. The answer is mathematically correct. Hints confirm the multiplication relationship ten by nine equals ninety."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "af319d9e1175e66378f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice problem identifies Ate Liza, specifies five paint tubes, names five friends, and asks how many each receives. Four options are presented clearly. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing paint tubes among friends is realistic and contextually sound. The scenario is age-appropriate for Grade 2. The logic is straightforward."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear introduction of Ate Liza, the paint tube quantity, recipient count, and question. Multiple-choice format provides four answers. Vocabulary is simple. Sentence structure is direct and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five paint tubes divided equally among five friends yields one tube per friend. The answer is mathematically correct. Distractors zero, two, and five are plausibly incorrect. Hints confirm the multiplication fact five by one equals five."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "fd8db007fa0fa5370fd2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice problem presents Jun, a peso amount of fifteen, three recipients, and a clear question. Four options are presented. The task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Jun sharing money equally among friends is a realistic scenario. The logic is sound. Grade 2 learners understand money distribution. The context is contextually appropriate and age-relevant."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple, direct language names Jun, specifies the peso amount, identifies the recipients, and poses the question. Multiple-choice format is familiar. Vocabulary is Grade 2 appropriate. Sentence construction is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Fifteen pesos divided equally among three friends equals five pesos each. The answer is mathematically correct. Distractors six, twelve, and three are plausibly incorrect. Hints confirm the multiplication relationship three by five equals fifteen."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "d048215c64405767ab4c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze problem identifies Lola Ising, specifies forty cupcakes, names ten friends, and asks how many each receives. The fill-in-blank request is unambiguous. No alternative interpretations exist."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A grandmother distributing cupcakes to friends is realistic and heartwarming. The scenario reflects authentic gift-giving and sharing practices. Grade 2 learners understand generosity and equal sharing in this context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear identification of Lola Ising, the cupcake quantity, recipient count, and the question. The cloze format requests a numeric response. Vocabulary is simple. Sentence structure is direct and accessible to Grade 2 readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty cupcakes divided equally among ten friends yields four cupcakes per friend. The answer is mathematically correct. Hints show the multiplication relationship ten by four equals forty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "b8e1a0b4232937089edc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Liza's solution to a helmet-sharing problem and asks if she is correct. The task is clear: evaluate whether ten helmets divided by two friends yields four helmets per friend."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating a peer's work develops mathematical thinking. The helmet-sharing scenario with Kuya Chad as protagonist is realistic. The context is logically sound and age-appropriate for Grade 2."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear naming of Liza as evaluator, Kuya Chad as the problem's subject, the helmet quantity, recipient count, and Liza's answer. The evaluation question is direct. Format and language are appropriate for Grade 2 independent work."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten helmets divided equally among two friends equals five per friend. Liza's answer of four is incorrect. The error detection correctly identifies the error. Hints confirm the correct answer of five through the multiplication relationship two by five equals ten."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "sample_id": "1426dc46a9738c1db5f5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format clearly presents Manny's solution to a wristband-packaging problem. The task is unambiguous: evaluate whether eighty wristbands with ten per bag requires ten bags."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing wristbands into equal-sized bags is realistic. The error detection format with Manny's incorrect answer teaches learners to check peer work critically. The scenario is logically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear presentation of the problem, the proposed packaging, Manny's claimed answer, and the evaluation question. Grade 2 learners understand checking peer work. Format and language are simple and direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eighty wristbands with ten per bag requires eight bags, not ten. Manny's answer is incorrect. The error detection correctly identifies the error. Hints confirm the correct answer of eight through the multiplication relationship ten by eight equals eighty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_division_problems",
+      "clause": "Solve division problems",
+      "verdict": "PASS",
+      "reasoning": "All twenty-three samples present explicit division problems requiring learners to compute quotients. Problems span contexts including sharing items equally among people and distributing objects into equal-sized groups. Samples employ four different response mechanisms—cloze fill-in-blank, multiple choice, true/false evaluation, and error detection—all centered on solving division problems. The requirement is comprehensively demonstrated across diverse problem types and contexts.",
+      "sample_ids": [
+        "d02e7cb8a9cd62f9a5d8",
+        "ca3edf70b56f8dd55c31",
+        "ee6bff8d6fe7fdc38f64",
+        "f26bde384faafb5cb1e9",
+        "f274697cbe6f2da73f9b",
+        "72947c89cb1a5c9e1ef5",
+        "d53a7303cfb1af822cdc",
+        "9620df68fdb8609caa04",
+        "610d20254c2f724f8871",
+        "8666dce8dbdc7baaa9dd",
+        "80f96481843f16d83b55",
+        "ea44af63abf318d72afc",
+        "27305b3e8c390c31bd0f",
+        "a5b0619b952e90cdcb2c",
+        "0b1b838681323e42e291",
+        "5a07d675bbce53b1fb12",
+        "46f382e4b74cc014f7c3",
+        "af319d9e1175e66378f4",
+        "fd8db007fa0fa5370fd2",
+        "d048215c64405767ab4c",
+        "b8e1a0b4232937089edc",
+        "1426dc46a9738c1db5f5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "requirement_id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "PASS",
+      "reasoning": "All five multiplication tables appear across the corpus of samples. Division by two uses the two times table in seeds 43, 46, and 1001. Division by three uses the three times table in seeds 42, 603, 700, 702, and 901. Division by four uses the four times table in seed 601. Division by five uses the five times table in seeds 45, 600, 701, and 900. Division by ten uses the ten times table in seeds 44, 48, 500, 501, 502, 602, 800, 1000, and 1002. Each multiplication table is represented through authentic division problems, demonstrating learners encounter all five required facts.",
+      "sample_ids": [
+        "d02e7cb8a9cd62f9a5d8",
+        "ca3edf70b56f8dd55c31",
+        "ee6bff8d6fe7fdc38f64",
+        "f26bde384faafb5cb1e9",
+        "f274697cbe6f2da73f9b",
+        "72947c89cb1a5c9e1ef5",
+        "d53a7303cfb1af822cdc",
+        "9620df68fdb8609caa04",
+        "610d20254c2f724f8871",
+        "8666dce8dbdc7baaa9dd",
+        "80f96481843f16d83b55",
+        "ea44af63abf318d72afc",
+        "27305b3e8c390c31bd0f",
+        "a5b0619b952e90cdcb2c",
+        "0b1b838681323e42e291",
+        "5a07d675bbce53b1fb12",
+        "46f382e4b74cc014f7c3",
+        "af319d9e1175e66378f4",
+        "fd8db007fa0fa5370fd2",
+        "d048215c64405767ab4c",
+        "b8e1a0b4232937089edc",
+        "1426dc46a9738c1db5f5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    },
+    {
+      "requirement_id": "money",
+      "clause": "money",
+      "verdict": "PASS",
+      "reasoning": "Eight of the twenty-three samples explicitly feature money contexts using Philippine peso amounts. Sample ca3edf70b56f8dd55c31 involves sharing ten pesos. Sample ee6bff8d6fe7fdc38f64 presents forty pesos. Samples f26bde384faafb5cb1e9 and 27305b3e8c390c31bd0f involve fifteen pesos. Sample 80f96481843f16d83b55 features twenty pesos. Sample ea44af63abf318d72afc involves twenty pesos. Sample fd8db007fa0fa5370fd2 involves fifteen pesos. These money-based division problems satisfy the competency requirement to include problems involving money, demonstrating authentic financial reasoning appropriate for Grade 2.",
+      "sample_ids": [
+        "ca3edf70b56f8dd55c31",
+        "ee6bff8d6fe7fdc38f64",
+        "f26bde384faafb5cb1e9",
+        "80f96481843f16d83b55",
+        "ea44af63abf318d72afc",
+        "27305b3e8c390c31bd0f",
+        "a5b0619b952e90cdcb2c",
+        "fd8db007fa0fa5370fd2"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w7-haiku45-20260925:mat_g2_na_q3_9",
+      "reviewer_identity": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_9-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "68d15b30d0ef03f381e2fb1a52dc0f92d0ef4cf2e3976944215363603f612e7a",
+      "clause_ids": [
+        "solve_division_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ],
+      "response_ref": ".responses/s5-phaseC-w7-haiku45-20260925.json",
+      "response_digest": "5a52c59fea011c532f2366949feb2d2befebc75032899c457f5449f8118ff963",
+      "prompt_ref": ".responses/s5-phaseC-w7-haiku45-20260925.prompt.txt",
+      "prompt_digest": "d840c419eece919a8e84438431106c2dafd0f4a9f1aca0ec9124c72cecbb69ea",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q3_9/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q3_9/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: tool uses per the harness (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both meanings of division are exercised, which is more than the wording strictly demands - sharing equally among a number of friends gives the partitive sense, and asking how many bags are needed when a fixed count goes in each gives the quotative sense. The peso requirement is met in several items."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Table coverage is uneven: the four table is reached only by a single twenty-pesos-among-four item, while the ninety-divided-by-ten calculation recurs across four separate seeds in different object dressings."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each stem sets up one sharing or grouping situation in a single sentence, the divisions all come out exact, and the money amounts divide into whole pesos with no remainder to explain."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The contexts collapse to two - dividing among friends or filling bags - with no array, no price-per-item inverse, and no picture-led division, so the variety on the page is object nouns rather than problem structures."
+      "rationale": "Grade 2 Quarter 3 learners encounter division problems anchored in multiplication facts from tables 2 through 10. The samples present division in natural, accessible contexts: sharing items equally among friends or putting items into containers. Dividend magnitudes range from 3 to 90, staying within learners' emerging computational reach. Language is direct and simple, avoiding Grade 3 or higher concepts. Problem structures align with Grade 2 cognitive development expectations."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "With the same ninety-by-ten quotient recurring and a floor item sharing three costumes among three friends for an answer of one, several rungs of the ladder change only the story while the division stays fixed or trivial."
+      "verdict": "PASS",
+      "rationale": "The competency explicitly requires solving division problems using tables 2, 3, 4, 5, and 10, including money contexts. Every sample presents a division operation. All five specified multiplication tables appear across the corpus: table 2 divides numbers by 2, table 3 by 3, table 4 by 4, table 5 by 5, and table 10 by 10. Money problems using peso currency appear throughout, demonstrating authentic financial contexts. The samples directly address the stated competency's scope without reaching beyond it."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The three decomposed requirements are: solve division problems, use tables 2 through 10, and include money contexts. Each requirement is satisfied across the sample set. Division operations appear in all 23 samples. All five multiplication tables are represented. Money problems comprise eight samples. The decomposition losslessly captures the core elements of the competency statement without omitting necessary skills or adding unwarranted scope.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three requirements capture all essential elements of the competency. Solving division problems is addressed through diverse problem types and contexts. The five multiplication tables are all explicitly used across the samples. Money scenarios are included to satisfy the competency's mention of money problems. No critical elements of the competency statement are missing from the decomposition, and no elements beyond the stated competency scope are added.",
+        "requirement_ids": [
+          "solve_division_problems",
+          "tables_2_3_4_5_10",
+          "money"
+        ]
+      },
+      "clause_ids": [
+        "solve_division_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Across 23 samples, the generator demonstrates complete coverage of required elements. All five multiplication tables appear in the corpus. Four response formats are used: cloze fill-in-blank, multiple choice, true/false judgment, and error detection. Contexts vary widely including clothing distribution, monetary sharing, seed packaging, container organization, and testing peer understanding. Both sharing-equally and repeated-subtraction framings appear. Money-based scenarios fill eight samples while non-monetary distribution scenarios comprise the remainder, creating natural variety.",
+      "clause_ids": [
+        "solve_division_problems",
+        "tables_2_3_4_5_10",
+        "money"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends stay at ninety or below and the peso amounts sit between ten and forty, which keeps every item inside the two, three, four, five and ten tables the competency names."
+      "rationale": "The problem magnitudes fit Grade 2 Quarter 3 expectations precisely. Dividends range from 3 to 90. All divisors are single digits from the five specified tables. Problems avoid multiplication facts or operations beyond Grade 2 scope. Contexts are age-appropriate, referencing familiar objects and realistic scenarios that Grade 2 learners encounter. Sentence structures use Grade 2-appropriate vocabulary without introducing concepts reserved for Grade 3 or higher grades."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples showcase substantial variety across dimensions. Response mechanisms span four types: cloze with fill-in-blank completion, multiple choice with four distractor options, true/false statements about computed answers, and error detection where learners evaluate another student's work. Real-world scenarios vary widely across contexts such as sharing costumes, distributing money, packaging seeds, organizing ribbons, and storing footwear. Money problems use different peso amounts. Objects and character names provide thematic diversity. This comprehensive variation supports learner engagement and reinforces the core skill."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

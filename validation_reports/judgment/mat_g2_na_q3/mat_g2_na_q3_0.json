@@ -1,7 +1,58 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "reviewer-media-slate-tamarind-8817",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Count the number of concrete objects in a group by repeated addition and create equal groups, using language such as '5 groups of 3' and '5 threes'.",
+    "grade": 2,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "count_number_of",
+      "clause": "Count the number of"
+    },
+    {
+      "kind": "object",
+      "id": "concrete_objects",
+      "clause": "concrete objects"
+    },
+    {
+      "kind": "context",
+      "id": "group",
+      "clause": "group"
+    },
+    {
+      "kind": "task",
+      "id": "repeated_addition",
+      "clause": "repeated addition"
+    },
+    {
+      "kind": "task",
+      "id": "create_equal_groups",
+      "clause": "create equal groups"
+    },
+    {
+      "kind": "representation",
+      "id": "language",
+      "clause": "language"
+    },
+    {
+      "kind": "representation",
+      "id": "5_groups_of_3",
+      "clause": "5 groups of 3"
+    },
+    {
+      "kind": "representation",
+      "id": "5_threes",
+      "clause": "5 threes"
+    }
+  ],
+  "packet_digest": "3d73a7848c81fb7369b8947cf5944ac9b1d12fd83e942cbc5e32b649b93882f0",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,14 +70,83 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "acd5b1dfd61a3061446d",
+    "919797545302a3f2294a",
+    "b2ad03d4ebfc5457114e",
+    "be8a7eb3a8c80e16fa44",
+    "9dc537a0f73af4b66ef2",
+    "94ab89bb2366c2c6fc8d",
+    "1bba9cd3ebc2683fd4f0",
+    "23e1f2e56d38932eec57",
+    "b831c0195fcd7f969998",
+    "521444d9d477353dc3f4",
+    "6783e5edfd947895b600",
+    "3c35dbf9880096867b65",
+    "1774567e774e3a739963",
+    "a9f8fc4f3295981396ad",
+    "0c3c3e065d0ac16de580",
+    "60dc22be5cf677a6c1ea",
+    "1b2b84d62df0fc51838b",
+    "3357f166687081a38fb4",
+    "d4fe917d5ae81baecc03",
+    "7573d889b5c1407d1d35",
+    "c52cb4273747425f1644",
+    "1d0518b26a8edf7a2441",
+    "7b164bc16e564bc4f6b2",
+    "95549a16fefa541633d5",
+    "c5de95213ece73f05d3d",
+    "95e4d6c571f9f3cbf44e",
+    "a1801ab2eaf2344d551d",
+    "d805c806a35c21a1ea3a",
+    "5d0192dcd37d14fff257",
+    "8199681a5c80e7967031",
+    "af5bef2b5853b9e12510",
+    "ffe067d4f7b99798c259",
+    "4a0c7a407bba9ecb5d28",
+    "9aa1cc858d1c5b392f90"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "There are 10 groups of 4 (4 added 10 times). How many in all?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -48,17 +168,40 @@
           "value": 40,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 10.",
+        "Use the 10 times table: 10 × 4.",
+        "The answer of 4 × 10 = 40."
+      ],
+      "sample_id": "acd5b1dfd61a3061446d",
+      "replay_digest": "9d30081de7d0218b176eca256cc42a6b76928ac4259bf0eb6d3668b8a2565c06"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "⭐⭐⭐⭐   ⭐⭐⭐⭐\nThere are 2 groups of 4 stars.\nHow many stars are there in all?",
+      "question_text": "✝️✝️✝️✝️   ✝️✝️✝️✝️\nThere are 2 groups of 4 items.\nHow many items are there in all?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 12,
           "is_correct": false
         },
         {
@@ -76,19 +219,146 @@
           "value": 8,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 2.",
+        "Think of it as 2 groups of 4: 4 + 4.",
+        "The answer of 4 × 2 = 8."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 4,
+        "group_b": 2,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "✝️✝️✝️✝️   ✝️✝️✝️✝️"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "6ba568c4f58d7c565450a54679fc10cd40f5dae6b7beda571c8d5c083ef936e7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "✝️"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "919797545302a3f2294a",
+      "replay_digest": "7600ff0e010033957c0183c7c4579471eeb505e042bc74b458252b46f3b1e941"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 44,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade 10 groups of 4 squares to show 4 added 10 times. How many squares did you shade in all?",
-      "correct_answer": 40
+      "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 40,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 4.",
+        "Think of it as 4 groups of 10: 10 + 10 + 10 + 10.",
+        "Break 10 into 10 + 0: (10 × 4) + (0 × 4) = 40 + 0 = 40.",
+        "The answer of 10 × 4 = 40."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 10,
+        "cols": 4,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 40,
+        "grid_size": [
+          11,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "8e624c1d13c5eb83acf1dca97e2df9e99f63d66339da77a094ca1a7f542cc279",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 53,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 10",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 40
+          }
+        }
+      },
+      "sample_id": "b2ad03d4ebfc5457114e",
+      "replay_digest": "8389361a50b30ca411fdcdf4f719104975d0089d1af30d65cb8885d7e12da1a3"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "3 groups of 10 (10 + 10 + 10) makes ___ in all",
+      "question_text": "Count 3 tens (10 + 10 + 10) = ___",
       "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -114,13 +384,37 @@
           "text": "7",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 3.",
+        "Think of it as 3 groups of 10: 10 + 10 + 10.",
+        "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.",
+        "The answer of 10 × 3 = 30."
+      ],
+      "sample_id": "be8a7eb3a8c80e16fa44",
+      "replay_digest": "3b5d43a82a6f0f62f1abd4099be3f805e8705ea41357181a13c10710f83beed8"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the array. It shows 9 groups of 2 (2 added 9 times). How many squares are shaded in all?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -142,37 +436,187 @@
           "value": 22,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 2.",
+        "Think of it as 2 groups of 9: 9 + 9.",
+        "The answer of 9 × 2 = 18."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 9,
+        "cols": 2,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 18,
+        "grid_size": [
+          10,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "a7db9fa38cb102df620d5d7c537d97839adca369b357e32b19eb73a4621680e9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 31,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 9",
+            "rectangle",
+            "18 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 18
+          }
+        }
+      },
+      "sample_id": "9dc537a0f73af4b66ef2",
+      "replay_digest": "435547864357c45086b6bec96daacaf7af0e25be235e7470838742947a24fed5"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 47,
       "formatter": "error_detect",
       "question_text": "Rosa solved: \"There are 4 groups of 6 (6 + 6 + 6 + 6), so there are ___ in all.\". Rosa says the missing number is 24. Is Rosa correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 24
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 24
+      },
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 4.",
+        "Think of it as 4 groups of 6: 6 + 6 + 6 + 6.",
+        "The answer of 6 × 4 = 24."
+      ],
+      "sample_id": "94ab89bb2366c2c6fc8d",
+      "replay_digest": "5779fc99031bb1d35240fd998069cde32807e8f8b4c83923f699674eb5c74ede"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 61,
       "formatter": "true_false",
       "question_text": "There is 1 group of 1. By repeated addition, 1 = 2. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 1.",
+        "Think of it as 1 group of 1: 1.",
+        "The answer of 1 × 1 = 1."
+      ],
+      "sample_id": "1bba9cd3ebc2683fd4f0",
+      "replay_digest": "cd01faadddf214d1a7f322b64094e2e0affc667e73015d3843b91d71b2b97d3b"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved: \"There are 10 groups of 7 (7 added 10 times), so there are ___ in all.\". Rico says the missing number is 70. Is Rico correct?",
+      "question_text": "Rico solved: \"Count 10 sevens by repeated addition: 7 added 10 times = ___\". Rico says the missing number is 70. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 70
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 70
+      },
+      "hints": [
+        "We need to find the total of equal groups 7 groups of 10.",
+        "Use the 10 times table: 10 × 7.",
+        "The answer of 7 × 10 = 70."
+      ],
+      "sample_id": "23e1f2e56d38932eec57",
+      "replay_digest": "3db79594a98f2ccb7b5e6b657a13042664d77652f69b14b17e3ed57c42e641ac"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "There are 10 groups of 10 (10 added 10 times). How many in all?",
+      "question_text": "Count 10 tens by repeated addition (10 added 10 times): how many in all?",
       "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,19 +638,120 @@
           "value": 90,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 100,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 10.",
+        "Use the 10 times table: 10 × 10.",
+        "Break 10 into 10 + 0: (10 × 10) + (0 × 10) = 100 + 0 = 100.",
+        "The answer of 10 × 10 = 100."
+      ],
+      "sample_id": "b831c0195fcd7f969998",
+      "replay_digest": "e2e28ee54b8f79b19e18653fc73007a0de21f29e111122d5643d852fb65b4c9f"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 502,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade 8 groups of 10 squares to show 10 added 8 times. How many squares did you shade in all?",
-      "correct_answer": 80
+      "correct_answer": 80,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 80,
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 10.",
+        "Use the 10 times table: 10 × 8.",
+        "The answer of 8 × 10 = 80."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 8,
+        "cols": 10,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 80,
+        "grid_size": [
+          9,
+          11
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "0785d0bc31d63c43487d5abd66743f963bb44e49d7716b16ec1dffe5a1f2a81b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 93,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "10 × 8",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 80
+          }
+        }
+      },
+      "sample_id": "521444d9d477353dc3f4",
+      "replay_digest": "11b5f6d51db3d4394877459df05609dc31bb5f2a235415ea263dd9a434273d4d"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "There are 3 groups of 8 (8 + 8 + 8). How many in all?",
+      "question_text": "Count 3 eights by repeated addition (8 + 8 + 8): how many in all?",
       "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -228,13 +773,38 @@
           "value": 21,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "We need to find the total of equal groups 8 groups of 3.",
+        "Think of it as 3 groups of 8: 8 + 8 + 8.",
+        "The answer of 8 × 3 = 24."
+      ],
+      "sample_id": "6783e5edfd947895b600",
+      "replay_digest": "95f98c93c15a84c3656cbb513931053de7d3c22ae30a22be0e422c1c34f1033d"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses puts 3 baskets in each of 5 bags. How many baskets are in all the bags?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -260,22 +830,75 @@
           "text": "15",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 3.",
+        "Think of it as 3 groups of 5: 5 + 5 + 5.",
+        "The answer of 5 × 3 = 15."
+      ],
+      "sample_id": "3c35dbf9880096867b65",
+      "replay_digest": "1b17374a34b3c3257e79d713d725a7d7f90c7ec303d01be5a83b61d9940f69d8"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"There are 5 groups of 3 (3 + 3 + 3 + 3 + 3), so there are ___ in all.\". Jose says the missing number is 15. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 15
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "single_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 15
+      },
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 5.",
+        "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.",
+        "The answer of 3 × 5 = 15."
+      ],
+      "sample_id": "1774567e774e3a739963",
+      "replay_digest": "1a57d7c57e073416ca4d6e54659f39c8c1db62e5258078c6ad6c83ab1bea0791"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 603,
       "formatter": "read_mcq",
-      "question_text": "🍎🍎🍎   🍎🍎🍎   🍎🍎🍎\nThere are 3 groups of 3 apples.\nHow many apples are there in all?",
+      "question_text": "🏐🏐🏐   🏐🏐🏐   🏐🏐🏐\nThere are 3 groups of 3 items.\nHow many items are there in all?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -297,49 +920,2318 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 3.",
+        "Think of it as 3 groups of 3: 3 + 3 + 3.",
+        "The answer of 3 × 3 = 9."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 3,
+        "group_b": 3,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "🏐🏐🏐   🏐🏐🏐   🏐🏐🏐"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "2d8b1d2d528fd5e6affc656e0ae347380e470d5ec0f0c74e3249135e04494c19",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a9f8fc4f3295981396ad",
+      "replay_digest": "e8fb2e6567d8bf8953b17648c9dc35798a499f23a71857928303b7cb2d467b85"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 604,
       "formatter": "true_false",
       "question_text": "There are 2 groups of 6. By repeated addition, 6 + 6 = 14. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "table": "10"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 2.",
+        "Think of it as 2 groups of 6: 6 + 6.",
+        "The answer of 6 × 2 = 12."
+      ],
+      "sample_id": "0c3c3e065d0ac16de580",
+      "replay_digest": "e1d1f3b1e86b0a9cf15dc3f6b2dd083fa7c05ddbb42294727904b3be4fd19d44"
     },
     {
+      "node_id": "mat_g2_na_q3_0",
       "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza solved: \"There are 3 groups of 5 (5 + 5 + 5), so there are ___ in all.\". Liza says the missing number is 15. Is Liza correct?",
+      "question_text": "Liza solved: \"Count 3 fives by repeated addition: 5 + 5 + 5 = ___\". Liza says the missing number is 15. Is Liza correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 15
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "table": "2"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 15
+      },
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 3.",
+        "Think of it as 3 groups of 5: 5 + 5 + 5.",
+        "The answer of 5 × 3 = 15."
+      ],
+      "sample_id": "60dc22be5cf677a6c1ea",
+      "replay_digest": "7b07c38d0f6a9ec7eff1b16e31a7222c0845fd47cb305ff2fe98936e4cba7f73"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 606,
+      "formatter": "cloze",
+      "question_text": "Count 2 fives (5 + 5) = ___",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": {
+          "table": "3"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 2.",
+        "Think of it as 2 groups of 5: 5 + 5.",
+        "The answer of 5 × 2 = 10."
+      ],
+      "sample_id": "1b2b84d62df0fc51838b",
+      "replay_digest": "a8beddccdc2cdeeea58598cc41d0f9e5f4a71b949a9a5105332a2af8ca741d99"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 3 groups of 10 squares to show 10 + 10 + 10. How many squares did you shade in all?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "table": "4"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 30,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 10.",
+        "Use the 10 times table: 10 × 3.",
+        "The answer of 3 × 10 = 30."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 3,
+        "cols": 10,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 30,
+        "grid_size": [
+          4,
+          11
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "0f22e3a6cccfc21da64bda80f8f3f702577809d04392bdcf1dc0f9d40954dead",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 43,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "10 × 3",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 30
+          }
+        }
+      },
+      "sample_id": "3357f166687081a38fb4",
+      "replay_digest": "2489ed7b4baf41a4f6fb618c43362fafc6b74603122875797eac40271b404c18"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 608,
+      "formatter": "mcq",
+      "question_text": "There are 3 groups of 2 (2 + 2 + 2). How many in all?",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "table": "5"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to find the total of equal groups 2 groups of 3.",
+        "Think of it as 3 groups of 2: 2 + 2 + 2.",
+        "The answer of 2 × 3 = 6."
+      ],
+      "sample_id": "d4fe917d5ae81baecc03",
+      "replay_digest": "1c2d24e83d881ae2f39b39cf3e99748b78d01b508ad8909486778de161ec4b36"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 609,
+      "formatter": "read_mcq",
+      "question_text": "Look at the array. It shows 6 groups of 10 (10 added 6 times). How many squares are shaded in all?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "table": "6"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 63,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 10.",
+        "Use the 10 times table: 10 × 6.",
+        "The answer of 6 × 10 = 60."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 6,
+        "cols": 10,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 60,
+        "grid_size": [
+          7,
+          11
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "ed2ca7673ea362e197cf20e96e24c570a8e0788e36a7399b3276743cefe163d9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 73,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "10 × 6",
+            "rectangle",
+            "60 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 60
+          }
+        }
+      },
+      "sample_id": "7573d889b5c1407d1d35",
+      "replay_digest": "d1796e04eaee7d5d6232092defacd832dd270f4acabc4872c6c9c96b7435498e"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 610,
+      "formatter": "cloze",
+      "question_text": "Count 6 fours (4 added 6 times) = ___",
+      "correct_answer": 24,
+      "requested": {
+        "difficulty_profile": {
+          "table": "7"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 24,
+      "hints": [
+        "We need to find the total of equal groups 4 groups of 6.",
+        "Use the 6 times table: 6 × 4.",
+        "The answer of 4 × 6 = 24."
+      ],
+      "sample_id": "c52cb4273747425f1644",
+      "replay_digest": "820e0ff8417a18e0a4c3c4515f22fcc1ac822f165bc6d179bb0d46cd6c50ae3e"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 611,
+      "formatter": "mcq",
+      "question_text": "Count 10 threes by repeated addition (3 added 10 times): how many in all?",
+      "correct_answer": 30,
+      "requested": {
+        "difficulty_profile": {
+          "table": "8"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 10.",
+        "Use the 10 times table: 10 × 3.",
+        "The answer of 3 × 10 = 30."
+      ],
+      "sample_id": "1d0518b26a8edf7a2441",
+      "replay_digest": "46101f7f1e5ee983c2e016a0dfe9cb2e9148077d8199d3fccd3b26beb1a9843a"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 612,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 9 groups of 10 squares to show 10 added 9 times. How many squares did you shade in all?",
+      "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": {
+          "table": "9"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 90,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 10.",
+        "Use the 10 times table: 10 × 9.",
+        "The answer of 9 × 10 = 90."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 9,
+        "cols": 10,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 90,
+        "grid_size": [
+          10,
+          11
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "3fb7a949f03371e7ea7a4d2c6f5bbe23eac09485bd8b168d8fe4f36b5d37017d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 103,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "10 × 9",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 90
+          }
+        }
+      },
+      "sample_id": "7b164bc16e564bc4f6b2",
+      "replay_digest": "5be26e0702d39ae786de1c45cb04ec752767d93f3098ea703afbfc7d8e918d7d"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 613,
+      "formatter": "true_false",
+      "question_text": "There are 3 groups of 10. By repeated addition, 10 + 10 + 10 = 29. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "equal_groups"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 3.",
+        "Think of it as 3 groups of 10: 10 + 10 + 10.",
+        "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.",
+        "The answer of 10 × 3 = 30."
+      ],
+      "sample_id": "95549a16fefa541633d5",
+      "replay_digest": "2d0a32b9118c1ee4962e97ee1a894f40b31edfdf5c840b66ea132437370cd34a"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 700,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐   🏐🏐🏐   🏐🏐🏐\nThere are 3 groups of 3 items.\nHow many items are there in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 3.",
+        "Think of it as 3 groups of 3: 3 + 3 + 3.",
+        "The answer of 3 × 3 = 9."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 3,
+        "group_b": 3,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "🏐🏐🏐   🏐🏐🏐   🏐🏐🏐"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "2d8b1d2d528fd5e6affc656e0ae347380e470d5ec0f0c74e3249135e04494c19",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c5de95213ece73f05d3d",
+      "replay_digest": "92742af97b76b6a3923a49d4a0678b1f2f2b497b5d94f040d7ffdce69cfa08ae"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the array. It shows 5 groups of 4 (4 + 4 + 4 + 4 + 4). How many squares are shaded in all?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "We need to find the total of equal groups 5 groups of 4.",
+        "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.",
+        "The answer of 5 × 4 = 20."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 4,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 20,
+        "grid_size": [
+          6,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "e6a467ae6739c022ee1cc2b75585c8c5189e83bb7cf15845b43a7ca61ac67ab6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 33,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 5",
+            "rectangle",
+            "20 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 20
+          }
+        }
+      },
+      "sample_id": "95e4d6c571f9f3cbf44e",
+      "replay_digest": "e26ed294580b08b95c24eca957172a36072c0c1bc39217535cd6fa7ac840c869"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 702,
+      "formatter": "set_fill_in_blank",
+      "question_text": "✝️ Moses has a math challenge about olives. Shade 9 groups of 2 squares to show 2 added 9 times. How many squares did you shade in all?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 18,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 2.",
+        "Think of it as 2 groups of 9: 9 + 9.",
+        "The answer of 9 × 2 = 18."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 9,
+        "cols": 2,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 18,
+        "grid_size": [
+          10,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "f9a341e7b0423faa3747b7fc97508dd786e0d65493fe2ee446c404894c719b50",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 31,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 9",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 18
+          }
+        }
+      },
+      "sample_id": "a1801ab2eaf2344d551d",
+      "replay_digest": "4144839d52d238499b8849763e7c9a2e38cb65f0fc216c48a201721d7ba99305"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 800,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"There is 1 group of 2 (2), so there are ___ in all.\". Rico says the missing number is 1. Is Rico correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "hints": [
+        "We need to find the total of equal groups 2 groups of 1.",
+        "Think of it as 1 group of 2: 2.",
+        "The answer of 2 × 1 = 2."
+      ],
+      "sample_id": "d805c806a35c21a1ea3a",
+      "replay_digest": "4734e87ebd58a19eb1519bfe5ecf7ca1773d80e69f1c7518ea36d1a9cc8f74d5"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 801,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 7 groups of 4 squares to show 4 added 7 times. How many squares did you shade in all?",
+      "correct_answer": 28,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 28,
+      "hints": [
+        "We need to find the total of equal groups 7 groups of 4.",
+        "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.",
+        "The answer of 7 × 4 = 28."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 7,
+        "cols": 4,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 28,
+        "grid_size": [
+          8,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "b8bfaf8ca1f44bb893a041abeb492d58f6241f4abaafb19c3d1dcb77b6ba1dd6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 41,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 7",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 28
+          }
+        }
+      },
+      "sample_id": "5d0192dcd37d14fff257",
+      "replay_digest": "093150681d52834473e912163fd78e0a21f97fb73e728f2e0dc3f82b3f080e12"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 900,
+      "formatter": "cloze",
+      "question_text": "Count 1 one (1) = ___",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 1.",
+        "Think of it as 1 group of 1: 1.",
+        "The answer of 1 × 1 = 1."
+      ],
+      "sample_id": "8199681a5c80e7967031",
+      "replay_digest": "b4d609dadfad86505c5e6aa99df9bc08eafe789ee1996202b69941e6b7b73fb3"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Count 1 one by repeated addition (1): how many in all?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 1.",
+        "Think of it as 1 group of 1: 1.",
+        "The answer of 1 × 1 = 1."
+      ],
+      "sample_id": "af5bef2b5853b9e12510",
+      "replay_digest": "f3af631e1cc93d5eecf14e5050ebc04a782f7e16abbfba3f000c90795afc7371"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁\nThere are 5 groups of 10 cupcakes.\nHow many cupcakes are there in all?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 50,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 5.",
+        "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.",
+        "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.",
+        "The answer of 10 × 5 = 50."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 10,
+        "group_b": 5,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "dc74fbefabbd50ae847ae5921406416b4805fdd8edb1159360659a281380a915",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 58,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ffe067d4f7b99798c259",
+      "replay_digest": "35908dd86f9c029b9a27a5a04fb45985048177fd95ab91b577b276bcc19eb200"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 1001,
+      "formatter": "true_false",
+      "question_text": "There are 2 groups of 7. By repeated addition, 7 + 7 = 14. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 7 groups of 2.",
+        "Think of it as 2 groups of 7: 7 + 7.",
+        "The answer of 7 × 2 = 14."
+      ],
+      "sample_id": "4a0c7a407bba9ecb5d28",
+      "replay_digest": "b9e4613d7d8e08321f8a8ddb4fcf1dc3408ffe8ce98f01d658bba8a20cf2d3a1"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 1002,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 3 groups of 1 square to show 1 + 1 + 1. How many squares did you shade in all?",
+      "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": 3,
+      "hints": [
+        "We need to find the total of equal groups 3 groups of 1.",
+        "Think of it as 1 group of 3: 3.",
+        "The answer of 3 × 1 = 3."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 3,
+        "cols": 1,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 3,
+        "grid_size": [
+          4,
+          2
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "61f1dc5a913e151e1f669d1b9f95bfc899ad120804971a965fc00d3d1e3d591c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 16,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "1 × 3",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 3
+          }
+        }
+      },
+      "sample_id": "9aa1cc858d1c5b392f90",
+      "replay_digest": "13562a7dfc0279b577a60ceac97f3ba9551406b460f1ff976b1ccc93dd56ae34"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "acd5b1dfd61a3061446d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem states 10 groups of 4, but first hint describes the reversal as 4 groups of 10, creating conflicting grouping language that may confuse early learners about which quantity represents number of groups"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematical relationship between groups and items is logically sound; repeated addition framing of 4 added 10 times correctly yields 40 despite hint language inconsistency"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Presentation mixed between stem showing 10 groups of 4 and hint contradicting this as 4 groups of 10 creates mental model confusion for Grade 2 students still developing understanding of multiplicative structures"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer of 40 is mathematically correct; multiplication 10 × 4 equals 40; commutative property holds even though language swapping remains a pedagogical problem"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "919797545302a3f2294a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Initial hint reverses stem grouping by naming 4 groups of 2 when visual and stem establish 2 groups of 4, though second hint corrects the language back to proper grouping structure"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cross symbol visual clearly shows 2 groups of 4 items each; emoji context supports concrete object counting requirement; mathematical relationship valid"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Emoji visual helps early learners count concretely, but hint language mismatch between first and second hint lines creates conceptual interference during the problem-solving process"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Visual display and answer of 8 are mathematically consistent with 2 groups of 4 items; repeated addition 4 + 4 equals 8"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "b2ad03d4ebfc5457114e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem correctly states shade 10 groups of 4 squares, but second hint reverses this language to 4 groups of 10 during problem explanation"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Grid visual format appropriately models concrete square arrangement; students interact with clickable elements representing physical grouping"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Grade 2 students attempting visual shading task receive contradictory grouping language in hints despite correct final answer, potentially derailing conceptual understanding"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 40 correctly represents 10 groups of 4 squares; breakdown hint showing 10 × 4 plus 0 × 4 confirms mathematical validity"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "be8a7eb3a8c80e16fa44",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem uses tens language without group notation, but first hint describes 10 groups of 3 when the stem actually presents 3 tens, which is 3 groups of 10"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Tens concept builds on equal groups foundation; repeated addition format 10 + 10 + 10 logically supports counting through repeated addition"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Transitioning from concrete groups to abstract tens language is cognitively demanding; hint reversal compounds difficulty by contradicting the stem's grouping representation"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 30 correctly represents 3 tens or 3 groups of 10; 10 × 3 equals 30"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "9dc537a0f73af4b66ef2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem describes 9 groups of 2 with 2 added 9 times, but hint reverses to 2 groups of 9 despite array visual reinforcing 9 × 2 structure"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Grid array visual correctly models 9 groups of 2 shaded squares; learner can verify count through visual inspection"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Read-only format requires students to understand problem statement and hints; hint reversal creates language inconsistency between what students see in array and hint description"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 18 represents 9 × 2 correctly; grid displays 18 total shaded square units"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "94ab89bb2366c2c6fc8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Error detection stem clearly states 4 groups of 6, but initial hint incorrectly references 6 groups of 4 before second hint corrects language"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem setup with named character Rosa provides authentic context; mathematical error detection is appropriately constructed"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "For error detection format, hint consistency is critical; reversing group order in first hint may distract learner from evaluating Rosa's reasoning correctly"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rosa's answer of 24 is correct for 4 groups of 6; hint language issues do not affect mathematical accuracy"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "1bba9cd3ebc2683fd4f0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false problem clearly presents the claim that 1 group of 1 equals 2, which is unambiguous even for early learners to evaluate as false"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logically tests whether students grasp that 1 group of 1 item yields 1 item total, not 2"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Trivial case of 1×1 is concrete and understandable; hints consistently reference 1 group of 1 without reversal"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False since 1 group of 1 item equals 1, not 2 as the stem claims; 1 × 1 = 1"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "23e1f2e56d38932eec57",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem specifies 10 sevens through count language, but first hint describes 7 groups of 10 instead of 10 groups of 7, creating asymmetrical language representation"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection structure is sound; Rico's computation of 70 is correct and problem tests recognition of right answer"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Language reversal in hint creates ambiguity during multiplication fact review at this intermediate level"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 70 represents 10 × 7 correctly; Rico's solution is accurate"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "b831c0195fcd7f969998",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly states 10 tens using repeated addition phrasing; 10 added 10 times creates unambiguous language"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Tens fact is appropriate for Grade 2, Q3; 10 × 10 = 100 is standard multiplication anchor"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Problem language remains consistent throughout; hints reinforce standard multiplication fact pattern"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 100 is mathematically correct; 10 groups of 10 items equals 100 total items; 10 × 10 = 100"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "521444d9d477353dc3f4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem states shade 8 groups of 10 squares with 10 added 8 times; language remains consistent and unambiguous"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Interactive shading task aligns with equal groups concept; grid format allows concrete representation of 8 × 10"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions and hints consistently reference 8 groups of 10; students can verify understanding through visual shading"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 80 is mathematically correct; 8 groups of 10 squares equals 80 total squares; 8 × 10 = 80"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "6783e5edfd947895b600",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem counts 3 eights through repeated addition, but first hint incorrectly reverses to 8 groups of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication context is logically sound; answer 24 follows from either interpretation due to commutativity"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Grade 2 students learning that 3 eights means 3 groups of 8 encounter contradictory hint describing 8 groups of 3"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 24 is mathematically correct for 3 eights; 3 groups of 8 items equals 24; 3 × 8 = 24"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "3c35dbf9880096867b65",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem describes 3 baskets per 5 bags, establishing 5 groups of 3, but second hint reverses to 3 groups of 5"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Real-world context of baskets in bags is authentic and age-appropriate; mathematical relationship holds"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Word problem requires careful language parsing; contradictory hint language may obscure which quantity represents group count"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 15 is mathematically correct for 5 bags of 3 baskets each; 5 × 3 = 15 baskets total"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "1774567e774e3a739963",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Error detection stem shows 5 groups of 3 with explicit addition shown, but first hint reverses to 3 groups of 5"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection format works; Jose's answer is correct, and problem tests recognition of this"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "For error detection, hint consistency aids learning; reversal creates unnecessary cognitive load"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 15 is mathematically correct; 5 groups of 3 items equals 15; 5 × 3 = 15"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "a9f8fc4f3295981396ad",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Emoji visual clearly shows 3 groups of 3 volleyball symbols; stem and hints consistently reference 3 groups of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Symmetric case where 3 groups of 3 equals 3 groups of 3; no confusion possible from reversal"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Visual representation directly supports student counting; language remains consistent throughout"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 9 is mathematically valid for 3 groups of 3 volleyball symbols shown in visual; 3 × 3 = 9"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "0c3c3e065d0ac16de580",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem presents 2 groups of 6, but first hint reverses to 6 groups of 2 before subsequent hint corrects"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "True-false problem correctly identifies false statement; 6 + 6 equals 12, not 14"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "True-false requires focused reasoning; language inconsistency in hints creates distraction from core evaluation"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False; 2 groups of 6 items equals 12, not 14 as claimed; 6 + 6 = 12"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "60dc22be5cf677a6c1ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem counts 3 fives, establishing 3 groups of 5, but first hint reverses to 5 groups of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Named character Liza provides context; problem correctly assesses that 3 fives equals 15"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hint reversal conflicts with stated counting language in problem stem"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 15 is mathematically correct for 3 fives; 3 groups of 5 items equals 15; 5 + 5 + 5 = 15"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "1b2b84d62df0fc51838b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem shows 2 fives through explicit addition, but first hint describes 5 groups of 2"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format provides clear problem structure; repeated addition 5 + 5 logically yields 10"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Count language 2 fives means 2 groups of 5; hint contradiction undermines building correct conceptual model"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 10 is mathematically correct; 2 groups of 5 items equals 10; 5 + 5 = 10"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "3357f166687081a38fb4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly instructs shade 3 groups of 10 squares to show 10 + 10 + 10; language remains consistent"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Interactive grid shading appropriately models equal groups; students build concrete understanding through visual action"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions and hints maintain consistent language about 3 groups of 10"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 30 is mathematically correct; 3 groups of 10 squares equals 30; 10 + 10 + 10 = 30"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "d4fe917d5ae81baecc03",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem shows 3 groups of 2 with explicit repeated addition, but first hint reverses to 2 groups of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with distractor options supports understanding check; mathematics is valid"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hint reversal creates language conflict with visual representation in stem"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 6 is mathematically correct; 3 groups of 2 items equals 6; 2 + 2 + 2 = 6"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "7573d889b5c1407d1d35",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly describes array showing 6 groups of 10 with explicit language 10 added 6 times; all hints reference correct grouping"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Array visual directly supports problem; learner can count or multiply to verify answer"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Consistent language throughout; visual aid helps early learners confirm understanding"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 60 is mathematically correct; 6 groups of 10 squares equals 60; 10 × 6 = 60"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "c52cb4273747425f1644",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem counts 6 fours through 4 added 6 times, establishing 6 groups of 4, but first hint reverses to 4 groups of 6"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze completion format is appropriate; mathematical relationship is correct"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Counting language 6 fours means 6 copies of 4; hint reversal conflicts with this representation"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 24 is mathematically correct for 6 fours; 6 groups of 4 equals 24; 4 × 6 = 24"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "1d0518b26a8edf7a2441",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem counts 10 threes with 3 added 10 times, describing 10 groups of 3, but first hint reverses to 3 groups of 10"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format provides verification opportunity; 10 × 3 = 30 is mathematically sound"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hint reversal creates conceptual mismatch with count language in problem statement"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 30 is mathematically correct for 10 threes; 10 groups of 3 equals 30; 3 × 10 = 30"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "7b164bc16e564bc4f6b2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly instructs shade 9 groups of 10 squares to show 10 added 9 times; language consistent throughout all hints"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Interactive grid shading format supports equal groups concept through student action"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Instructions remain consistent; students build procedural fluency through visual shading"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 90 is mathematically correct; 9 groups of 10 squares equals 90; 10 × 9 = 90"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "95549a16fefa541633d5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem presents 3 groups of 10, but first hint reverses to 10 groups of 3 despite stem's clear grouping"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "True-false evaluation is appropriate; 10 + 10 + 10 equals 30, making statement false"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Language reversal in hint distracts from evaluating accuracy of given statement"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False; 3 groups of 10 items equals 30, not 29 as claimed; 10 + 10 + 10 = 30"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "c5de95213ece73f05d3d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Emoji visual shows 3 distinct groups of 3 volleyballs; stem and hints consistently reference symmetric 3 groups of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Symmetric case; visual arrangement clearly supports student understanding"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Emoji and language provide redundant clarity; no ambiguity from reversal in symmetric case"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 9 is mathematically correct for 3 groups of 3 volleyballs displayed; 3 × 3 = 9 items"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "95e4d6c571f9f3cbf44e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem describes 5 groups of 4 with explicit repeated addition, but second hint reverses to 4 groups of 5"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic context with named character and grid array provides authentic problem structure"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Theme context helps engagement but hint reversal undermines clarity of grouping structure"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 20 is mathematically correct for 5 groups of 4 squares; 4 × 5 = 20"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "a1801ab2eaf2344d551d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem clearly states shade 9 groups of 2 squares to show 2 added 9 times, but second hint reverses to 2 groups of 9"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic context with named character adds engagement; grid format supports equal groups modeling"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Theme and visual help but hint reversal creates language confusion during problem solving"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 18 is mathematically correct for 9 groups of 2 squares; 2 × 9 = 18"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "d805c806a35c21a1ea3a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem describes 1 group of 2, but first hint reverses to 2 groups of 1, creating confusion despite trivial case"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection appropriately identifies that 1 group of 2 equals 2, not 1"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Even in simple case, hint reversal creates unnecessary confusion during error analysis"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct identification that Rico errs; 1 group of 2 equals 2, not 1"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "5d0192dcd37d14fff257",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem instructs shade 7 groups of 4 squares to show 4 added 7 times, but second hint reverses to 4 groups of 7"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Interactive grid format appropriately models equal groups through visual shading action"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Language reversal in hint conflicts with stem instructions during visual shading task"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 28 is mathematically correct for 7 groups of 4 squares; 4 × 7 = 28"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "8199681a5c80e7967031",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze problem using trivial case 1 one is unambiguous; hints consistently reference 1 group of 1"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identity element case is foundational; 1 × 1 = 1 is logically sound"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Straightforward cloze format with consistent language supports early understanding"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1 is mathematically correct for trivial case; 1 group of 1 item equals 1; 1 × 1 = 1"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "af5bef2b5853b9e12510",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice using trivial case 1 one is clear; hints consistently reference 1 group of 1"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identity multiplication is foundational; problem structure is logically valid"
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with identity case is transparent for Grade 2 learners"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1 is correct for 1 one counted by repeated addition; 1 group of 1 equals 1; 1 × 1 = 1"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "ffe067d4f7b99798c259",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem states 5 groups of 10 cupcakes, but first hint reverses to 10 groups of 5 despite clear visual and language"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Cupcake context is engaging and appropriate; emoji visual clearly shows 5 groups of 10"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Despite rich emoji visual showing 5 groups, hint reversal creates cognitive conflict"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 50 is mathematically correct for 5 groups of 10 cupcakes; 10 × 5 = 50"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "4a0c7a407bba9ecb5d28",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem clearly states 2 groups of 7, but first hint reverses to 7 groups of 2"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "True-false evaluation is appropriate; 7 + 7 correctly equals 14"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "True-false assessment requires focused language comprehension; reversal adds confusion"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer True; 2 groups of 7 items equals 14 items; 7 + 7 = 14"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "sample_id": "9aa1cc858d1c5b392f90",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "Stem instructs shade 3 groups of 1 square to show 1 + 1 + 1, but second hint reverses to 1 group of 3"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Interactive grid shading provides concrete modeling; 3 × 1 = 3 is mathematically sound"
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Hint reversal creates language mismatch with stem instructions despite mathematical correctness"
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3 is mathematically correct for 3 groups of 1 square; 1 + 1 + 1 = 3"
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "count_number_of",
+      "clause": "Count the number of",
+      "verdict": "PASS",
+      "reasoning": "All 34 samples explicitly task learners with counting by asking how many items are in all or how many squares to shade, establishing counting as core requirement across every problem type from multiple choice to error detection format",
+      "sample_ids": [
+        "acd5b1dfd61a3061446d",
+        "919797545302a3f2294a",
+        "b2ad03d4ebfc5457114e",
+        "be8a7eb3a8c80e16fa44",
+        "9dc537a0f73af4b66ef2",
+        "94ab89bb2366c2c6fc8d",
+        "1bba9cd3ebc2683fd4f0",
+        "23e1f2e56d38932eec57",
+        "b831c0195fcd7f969998",
+        "521444d9d477353dc3f4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "concrete_objects",
+      "clause": "concrete objects",
+      "verdict": "PASS",
+      "reasoning": "Samples employ visual concrete representations through emojis like cupcakes, volleyballs, and crosses, as well as grid squares that learners interact with through shading, providing tangible object representations throughout the node",
+      "sample_ids": [
+        "919797545302a3f2294a",
+        "a9f8fc4f3295981396ad",
+        "ffe067d4f7b99798c259",
+        "c5de95213ece73f05d3d",
+        "b2ad03d4ebfc5457114e",
+        "521444d9d477353dc3f4",
+        "3357f166687081a38fb4"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "group",
+      "clause": "group",
+      "verdict": "PASS",
+      "reasoning": "Every sample employs group language with consistent use of phrases groups of throughout stems, options and hints, establishing grouping as fundamental organizational structure for all problems despite some hint language reversals",
+      "sample_ids": [
+        "acd5b1dfd61a3061446d",
+        "919797545302a3f2294a",
+        "b2ad03d4ebfc5457114e",
+        "be8a7eb3a8c80e16fa44",
+        "9dc537a0f73af4b66ef2",
+        "94ab89bb2366c2c6fc8d",
+        "1bba9cd3ebc2683fd4f0"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "repeated_addition",
+      "clause": "repeated addition",
+      "verdict": "PASS",
+      "reasoning": "Repeated addition language pervasively appears as added X times in stems and through explicit addition sequences in hints like 4 + 4 + 4 or 5 + 5, making repeated addition reasoning visible across all sample formats and visual types",
+      "sample_ids": [
+        "acd5b1dfd61a3061446d",
+        "919797545302a3f2294a",
+        "b2ad03d4ebfc5457114e",
+        "be8a7eb3a8c80e16fa44",
+        "9dc537a0f73af4b66ef2",
+        "94ab89bb2366c2c6fc8d",
+        "1bba9cd3ebc2683fd4f0",
+        "23e1f2e56d38932eec57",
+        "b831c0195fcd7f969998"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "create_equal_groups",
+      "clause": "create equal groups",
+      "verdict": "PASS",
+      "reasoning": "All samples present equal-sized groups where each group contains the same quantity of items, modeling equal grouping principle throughout, whether through emoji pictorial arrays, shaded grid cells, or abstract numeric groupings",
+      "sample_ids": [
+        "919797545302a3f2294a",
+        "b2ad03d4ebfc5457114e",
+        "9dc537a0f73af4b66ef2",
+        "a9f8fc4f3295981396ad",
+        "521444d9d477353dc3f4",
+        "3357f166687081a38fb4",
+        "7573d889b5c1407d1d35",
+        "7b164bc16e564bc4f6b2"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "language",
+      "clause": "language",
+      "verdict": "CONCERN",
+      "reasoning": "While both language patterns appear across samples, systematic errors in hint generation where first hints reverse grouping order significantly undermine the clarity of language representation, creating pedagogically problematic alternation between correct stem language and reversed hint language throughout the node",
+      "sample_ids": [
+        "acd5b1dfd61a3061446d",
+        "919797545302a3f2294a",
+        "b2ad03d4ebfc5457114e",
+        "be8a7eb3a8c80e16fa44",
+        "9dc537a0f73af4b66ef2",
+        "94ab89bb2366c2c6fc8d",
+        "6783e5edfd947895b600",
+        "3c35dbf9880096867b65",
+        "1774567e774e3a739963",
+        "0c3c3e065d0ac16de580"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "5_groups_of_3",
+      "clause": "5 groups of 3",
+      "verdict": "PASS",
+      "reasoning": "Multiple variations demonstrating this pattern structure appear throughout samples including 4 groups of 3, 5 groups of 4, 6 groups of 3, and others, establishing that the pattern exemplified by 5 groups of 3 is comprehensively represented across diverse quantities and contexts",
+      "sample_ids": [
+        "be8a7eb3a8c80e16fa44",
+        "9dc537a0f73af4b66ef2",
+        "3c35dbf9880096867b65",
+        "1774567e774e3a739963",
+        "a9f8fc4f3295981396ad",
+        "c52cb4273747425f1644",
+        "1d0518b26a8edf7a2441",
+        "95549a16fefa541633d5",
+        "c5de95213ece73f05d3d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    },
+    {
+      "requirement_id": "5_threes",
+      "clause": "5 threes",
+      "verdict": "CONCERN",
+      "reasoning": "Counting language examples appear in stems like count 3 eights and count 10 threes, but hints frequently reverse this language to describe the opposite grouping, undermining consistent representation of the counting language pattern that the competency explicitly requires learners to use",
+      "sample_ids": [
+        "6783e5edfd947895b600",
+        "1d0518b26a8edf7a2441",
+        "23e1f2e56d38932eec57",
+        "60dc22be5cf677a6c1ea",
+        "1b2b84d62df0fc51838b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "3d73a7848c81fb7369b8947cf5944ac9b1d12fd83e942cbc5e32b649b93882f0",
+      "clause_ids": [
+        "count_number_of",
+        "concrete_objects",
+        "group",
+        "repeated_addition",
+        "create_equal_groups",
+        "language",
+        "5_groups_of_3",
+        "5_threes"
+      ],
+      "response_ref": ".responses/s5-phaseC-w6-haiku45-20260925.json",
+      "response_digest": "a382da99d14e951b22c951e18e7c6adc51b95db97d9767e02a4e1da39699d98a",
+      "prompt_ref": ".responses/s5-phaseC-w6-haiku45-20260925.prompt.txt",
+      "prompt_digest": "e5d4db8f7a63458b860efb51e379d35e97d71da940e7dbcbe8e75ef3e662b033",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q3_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 3 tool uses; the filer REFUSED the first reply (26 strings under 60 chars, 2 repeats, one clause with invalid sample_ids); one revision by the reviewer, 5 tool uses. Every verdict byte-compared unchanged; only wording and one clause's citations changed."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Counting by repeated addition is directly served, with the sums written out at seeds 600, 602 and 605, and creating equal groups is genuinely asked through the shading tasks at seeds 44 and 502. What is missing is one of the two forms of language the competency explicitly names."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency names two ways of talking about equal groups and only one of them is ever generated. All sixteen seeds use the groups of phrasing; not a single sample uses the plural multiple naming form, for example calling five groups of three by the name five threes. A named sub-case producing zero items is an uncovered sub-case."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Load is managed sensibly: short sums are spelled out term by term at seeds 603 and 605, while the long ones are compressed into an added so many times phrase at seeds 501 and 502 instead of printing ten addends. Sentence length and vocabulary fit the third quarter of Grade 2."
+      "rationale": "Problem structures appropriately scaffold for Grade 2, Quarter 3 learners, progressing from 1×1 to 10×10 using concrete object representations through emoji and grid visuals, with language and context matched to student developmental stage"
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "While problem contexts require counting concrete objects and identifying totals through equal groups using specified language patterns, systematic hint mismatches in grouping language (reversed order in initial hints) create confusion that undermines direct competency mapping"
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All required components are present: concrete object counting, equal group creation, repeated addition reasoning, and both language pattern examples are represented across the sample set",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The requirements list comprehensively covers all essential elements of the competency without omission or unnecessary expansion, forming a complete and lossless decomposition of the stated learning goal",
+        "requirement_ids": [
+          "count_number_of",
+          "concrete_objects",
+          "group",
+          "repeated_addition",
+          "create_equal_groups",
+          "language",
+          "5_groups_of_3",
+          "5_threes"
+        ]
+      },
+      "clause_ids": [
+        "count_number_of",
+        "concrete_objects",
+        "group",
+        "repeated_addition",
+        "create_equal_groups",
+        "language",
+        "5_groups_of_3",
+        "5_threes"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples span group quantities from 1 through 10, item quantities from 1 through 10, employ diverse visual formats (emoji pictorial, grid areas, text-only), and include varied problem types including multiple choice, error detection, true/false, and fill-in-blank formats",
+      "clause_ids": [
+        "count_number_of",
+        "concrete_objects",
+        "group",
+        "repeated_addition",
+        "create_equal_groups",
+        "language",
+        "5_groups_of_3",
+        "5_threes"
+      ]
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All computational ranges remain within Grade 2, Quarter 3 expectations, with products extending to 100, multiplication factors typically under 10, and difficulty levels suitable for students transitioning into formal multiplication concepts"
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only seed 601 is a genuine context problem, and its baskets placed inside bags framing is both semantically backwards and structurally identical to the container stem used by the neighbouring node. Separately, all four error detect items, seeds 47, 500, 602 and 605, are keyed as no error, so that format never once asks a pupil to locate a mistake."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Across seeds 43, 600, 501 and 603 the quantities that move are the number of groups and the size of each group, which is the equal grouping relationship the competency is about, rather than surface features of the question."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The upper end is well chosen, reaching 100 at seed 501 and 80 at seed 502. The floor is not: seed 61 collapses to one group of one and then presents a bare claim about 1 and 2, which exercises nothing about repeated addition and reads as a malformed item rather than an easy one."
+      "rationale": "Multiple problem formats and visual representations are included, but variant implementation shows systematic errors in hint generation where initial hint consistently reverses the grouping order, suggesting automation issue rather than intentional variant"
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

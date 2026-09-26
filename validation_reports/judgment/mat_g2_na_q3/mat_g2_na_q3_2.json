@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q3_2",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Multiply numbers using the 2, 3, 4, 5, and 10 multiplication tables.",
+    "grade": 2,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "multiply",
+      "clause": "Multiply"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables"
+    }
+  ],
+  "packet_digest": "d384729164ebbd4ae2af4b0fd88b664678ea6359b4a49e26e391b896e409f7a4",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,35 +43,207 @@
     601,
     602,
     603,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "b02d8704eab7a2190f60",
+    "0891329721d5f57e429b",
+    "9e563bfb14a9f4208733",
+    "59441b3c91dec6f51f17",
+    "738c3cfa0cd0b44c9a80",
+    "f7ede28a810f2fc9f238",
+    "ee89d4affcac9332d5c0",
+    "c94b08657a2cb01644b6",
+    "33fdd3e4ff0b113a86f2",
+    "02159b59f98063847b2d",
+    "3038fbf0bc637ae79c57",
+    "e7ff2fca87c5851afa14",
+    "2e226345c7bc1aee2300",
+    "45e3437218be17cbd6c1",
+    "7a54c99a60bf76da56bd",
+    "c82285bb0ca05a6902a5",
+    "bea1efc79b962cde6f16",
+    "ed3f6c86fcc7e06f60e2",
+    "e3c9d5e93c989eb473d2",
+    "6f611bb71fea9ab81458",
+    "945227770071d3aca008",
+    "378c81139b177e5a2303",
+    "862416298b29078603ba",
+    "b5106fa27b0338512cb6"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "3 × 3 = 6. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to multiply 3 groups of 3.",
+        "Think of it as 3 groups of 3: 3 + 3 + 3.",
+        "The product of 3 × 3 = 9."
+      ],
+      "sample_id": "b02d8704eab7a2190f60",
+      "replay_digest": "3be30488c20e745245473d8a85a5e2521728119e4ea3e7f05bc11ecd4276fe90"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 43,
       "formatter": "error_detect",
       "question_text": "Grace solved: \"4 × 2 = ___\". Grace says the missing number is 8. Is Grace correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8
+      },
+      "hints": [
+        "We need to multiply 4 groups of 2.",
+        "Think of it as 2 groups of 4: 4 + 4.",
+        "The product of 4 × 2 = 8."
+      ],
+      "sample_id": "0891329721d5f57e429b",
+      "replay_digest": "39e7171690ff02086f2c84d4d70dcd457907184928bcab0b1c06247ba163d185"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 44,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade all the squares inside the 1×2 rectangle. How many squares did you shade in all?",
-      "correct_answer": 2
+      "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 2,
+      "hints": [
+        "We need to multiply 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 1,
+        "cols": 2,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 2,
+        "grid_size": [
+          2,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "1a4c513575a07cece72ed947db7947736a27bae7dcb6fa92a4d921dbb0ca0d33",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 15,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 1",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 2
+          }
+        }
+      },
+      "sample_id": "9e563bfb14a9f4208733",
+      "replay_digest": "4b34188a1cee6d9b9808f30f318e10d497ab00ffdfc543865bde77ec003d879d"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 45,
       "formatter": "cloze",
       "question_text": "3 × 4 = ___",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -71,13 +269,36 @@
           "text": "7",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to multiply 3 groups of 4.",
+        "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.",
+        "The product of 3 × 4 = 12."
+      ],
+      "sample_id": "59441b3c91dec6f51f17",
+      "replay_digest": "3a94f6a122c82070fbe1a327f62ad8e1f438f42fdbd771b1fe38d4953d59947f"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "Look at the 6×2 array. How many squares are shaded in all?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -99,13 +320,82 @@
           "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to multiply 6 groups of 2.",
+        "Think of it as 2 groups of 6: 6 + 6.",
+        "The product of 6 × 2 = 12."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 6,
+        "cols": 2,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 12,
+        "grid_size": [
+          7,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "3ec1c07cf1e1c097bedcd09fdd4aa14dd949840f1c31580865c79ba5a0558b03",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 25,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 6",
+            "rectangle",
+            "12 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 12
+          }
+        }
+      },
+      "sample_id": "738c3cfa0cd0b44c9a80",
+      "replay_digest": "9cdb618687d441b35eb2ffaeb70713d9a3ab0b9d4cab8a417797531c62a65444"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 47,
       "formatter": "mcq",
       "question_text": "What is 8 × 4?",
       "correct_answer": 32,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -127,13 +417,39 @@
           "value": 28,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 32,
+      "hints": [
+        "We need to multiply 8 groups of 4.",
+        "Think of it as 4 groups of 8: 8 + 8 + 8 + 8.",
+        "The product of 8 × 4 = 32."
+      ],
+      "sample_id": "f7ede28a810f2fc9f238",
+      "replay_digest": "a04845b5864f29354f8e996015243032435d52cb679a3f7819f8c01d169b906d"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "What is 8 × 10?",
       "correct_answer": 80,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -155,31 +471,182 @@
           "value": 80,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "We need to multiply 8 groups of 10.",
+        "Use the 10 times table: 10 × 8.",
+        "The product of 8 × 10 = 80."
+      ],
+      "sample_id": "ee89d4affcac9332d5c0",
+      "replay_digest": "9c3a2b59f69164bd4c6c0a065ab1f562bf5d74bc85d130d8173db2a1581ebbf9"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "6 × 5 = 1. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to multiply 6 groups of 5.",
+        "Think of it as 5 groups of 6: 6 + 6 + 6 + 6 + 6.",
+        "The product of 6 × 5 = 30."
+      ],
+      "sample_id": "c94b08657a2cb01644b6",
+      "replay_digest": "6b5a70228ce23f744963f8c3b294fbc37cfba6414a226e2d178fbfb80916d34d"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 502,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade all the squares inside the 9×4 rectangle. How many squares did you shade in all?",
-      "correct_answer": 36
+      "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 36,
+      "hints": [
+        "We need to multiply 9 groups of 4.",
+        "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.",
+        "The product of 9 × 4 = 36."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 9,
+        "cols": 4,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 36,
+        "grid_size": [
+          10,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "9c9a01af7431f61ed1fbabeb839e31395384f3d694843dd87f9e464aa73f17e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 49,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 9",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 36
+          }
+        }
+      },
+      "sample_id": "33fdd3e4ff0b113a86f2",
+      "replay_digest": "bc39b3163f31d367bc10f229ab3e5c1268d9436488e24b42a960b09bb5f34be5"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "5 × 4 = 1. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to multiply 5 groups of 4.",
+        "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.",
+        "The product of 5 × 4 = 20."
+      ],
+      "sample_id": "02159b59f98063847b2d",
+      "replay_digest": "b9936a565dbf6d75aad69726a977141667914f15021ba3ffe7c0d31470a95163"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses puts 3 baskets in each of 6 bags. How many baskets are in all the bags?",
       "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -205,13 +672,38 @@
           "text": "3",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "We need to multiply 6 groups of 3.",
+        "Think of it as 3 groups of 6: 6 + 6 + 6.",
+        "The product of 6 × 3 = 18."
+      ],
+      "sample_id": "3038fbf0bc637ae79c57",
+      "replay_digest": "f0b7ec9491a98f7fc8c386dc6a632b254287e7d3b68cb79a7a1cd1944ba7ac7c"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is 1 × 2?",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "single_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -233,22 +725,75 @@
           "value": 2,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We need to multiply 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "sample_id": "e7ff2fca87c5851afa14",
+      "replay_digest": "16d879328c737284702742644e6b838c7e31392b8ef30fed7b0658ab960635e6"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 603,
       "formatter": "error_detect",
       "question_text": "Ana solved: \"4 × 3 = ___\". Ana says the missing number is 15. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 12
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 12
+      },
+      "hints": [
+        "We need to multiply 4 groups of 3.",
+        "Think of it as 3 groups of 4: 4 + 4 + 4.",
+        "The product of 4 × 3 = 12."
+      ],
+      "sample_id": "2e226345c7bc1aee2300",
+      "replay_digest": "7f34c9b228c608ce6dc6fc97e8b8505c20d93f33ae7ef6edeff76340214d13cb"
     },
     {
+      "node_id": "mat_g2_na_q3_2",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "6 × 2 = ___",
       "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "find_product"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -274,33 +819,1339 @@
           "text": "12",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to multiply 6 groups of 2.",
+        "Think of it as 2 groups of 6: 6 + 6.",
+        "The product of 6 × 2 = 12."
+      ],
+      "sample_id": "45e3437218be17cbd6c1",
+      "replay_digest": "f394e29025a1397ba0d8bb43b7b4eb425a0c7930a551d2dc229de4b17545c405"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"4 × 3 = ___\". Carlo says the missing number is 15. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 12
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 12
+      },
+      "hints": [
+        "We need to multiply 4 groups of 3.",
+        "Think of it as 3 groups of 4: 4 + 4 + 4.",
+        "The product of 4 × 3 = 12."
+      ],
+      "sample_id": "7a54c99a60bf76da56bd",
+      "replay_digest": "f5404c0676a7b572112518770424369443ffd71f3b324058ce7d86104168f24c"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Gab has a math challenge about water bottles. Look at the 3×4 array. How many squares are shaded in all?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "basketball",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "We need to multiply 3 groups of 4.",
+        "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.",
+        "The product of 3 × 4 = 12."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 3,
+        "cols": 4,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 12,
+        "grid_size": [
+          4,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "24ab9d0135712f676e6e38d6eb6c73097fc758ef035f6ecdc421bf496d845472",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 25,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 3",
+            "rectangle",
+            "12 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 12
+          }
+        }
+      },
+      "sample_id": "c82285bb0ca05a6902a5",
+      "replay_digest": "b6613a862c153426b2ab04e5ccef53073234222bd844cb3ba1b2b539ef5001f6"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 702,
+      "formatter": "set_fill_in_blank",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Shade all the squares inside the 8×2 rectangle. How many squares did you shade in all?",
+      "correct_answer": 16,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "kpop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 16,
+      "hints": [
+        "We need to multiply 8 groups of 2.",
+        "Think of it as 2 groups of 8: 8 + 8.",
+        "The product of 8 × 2 = 16."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 8,
+        "cols": 2,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 16,
+        "grid_size": [
+          9,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "a4b4f0165710ce82e66dac86719d3b288b7b1d07fc13271150fe1e589eeca250",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 29,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 8",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 16
+          }
+        }
+      },
+      "sample_id": "bea1efc79b962cde6f16",
+      "replay_digest": "cc5674dc53ea0fc026133a3fa85c52e184d42fe15d837c02838c0df27f2a5d38"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 800,
+      "formatter": "mcq",
+      "question_text": "What is 1 × 4?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to multiply 1 group of 4.",
+        "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.",
+        "The product of 1 × 4 = 4."
+      ],
+      "sample_id": "ed3f6c86fcc7e06f60e2",
+      "replay_digest": "d430d7349b5e430ee94c8262c9e4ce7d15ffbc2498443f3a36ea7e7e269b7f3f"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 801,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 9×2 rectangle. How many squares did you shade in all?",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 18,
+      "hints": [
+        "We need to multiply 9 groups of 2.",
+        "Think of it as 2 groups of 9: 9 + 9.",
+        "The product of 9 × 2 = 18."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 9,
+        "cols": 2,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 18,
+        "grid_size": [
+          10,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "f9a341e7b0423faa3747b7fc97508dd786e0d65493fe2ee446c404894c719b50",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 31,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 9",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 18
+          }
+        }
+      },
+      "sample_id": "e3c9d5e93c989eb473d2",
+      "replay_digest": "e2c7dbd4f5e004ef8c363d138dbc7e7d43ad5cec8488de0bb4cd8c6b953ba60f"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 900,
+      "formatter": "cloze",
+      "question_text": "2 × 3 = ___",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to multiply 2 groups of 3.",
+        "Think of it as 3 groups of 2: 2 + 2 + 2.",
+        "The product of 2 × 3 = 6."
+      ],
+      "sample_id": "6f611bb71fea9ab81458",
+      "replay_digest": "ec4470f7a5fae2a5e3bf1946e781b6138f5185c391e0d849958c9b980f06c5ac"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "1 × 2 = 3. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to multiply 1 group of 2.",
+        "Think of it as 2 groups of 1: 1 + 1.",
+        "The product of 1 × 2 = 2."
+      ],
+      "sample_id": "945227770071d3aca008",
+      "replay_digest": "08d4dec5a0c5fd7f4435f33487ca36a8676cef8b7ab8f19458cae94f4d707eb3"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 1000,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"5 × 5 = ___\". Carlo says the missing number is 25. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 25
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 25
+      },
+      "hints": [
+        "We need to multiply 5 groups of 5.",
+        "Think of it as 5 groups of 5: 5 + 5 + 5 + 5 + 5.",
+        "The product of 5 × 5 = 25."
+      ],
+      "sample_id": "378c81139b177e5a2303",
+      "replay_digest": "7493eb319a71cf3862f786344210953024534fcf5fdf3501aef08afd413cec94"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 1001,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 5×2 rectangle. How many squares did you shade in all?",
+      "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": 10,
+      "hints": [
+        "We need to multiply 5 groups of 2.",
+        "Think of it as 2 groups of 5: 5 + 5.",
+        "The product of 5 × 2 = 10."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 2,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 10,
+        "grid_size": [
+          6,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "aaa9e238d34c86ef34cef54a12b50c99f6fdd26ca7c4c8d9abd1f11bbfbcff1f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 23,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 5",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 10
+          }
+        }
+      },
+      "sample_id": "862416298b29078603ba",
+      "replay_digest": "56a9051f13f62da2278c450a6654af389a4fba05f9353f9ab336b90590eb3830"
+    },
+    {
+      "node_id": "mat_g2_na_q3_2",
+      "seed": 1002,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 1×4 rectangle. How many squares did you shade in all?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": 4,
+      "hints": [
+        "We need to multiply 1 group of 4.",
+        "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.",
+        "The product of 1 × 4 = 4."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 1,
+        "cols": 4,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 4,
+        "grid_size": [
+          2,
+          5
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "6c79fb01621876c3693e74105bc0b927ff48b90b40ddec68c503a090693eadb9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 17,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "4 × 1",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 4
+          }
+        }
+      },
+      "sample_id": "b5106fa27b0338512cb6",
+      "replay_digest": "a7b396f15768195447e72ab969b12f5c7859b03f3dc6dddc74a06c088da1a44c"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "b02d8704eab7a2190f60",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents the statement three times three equals six with clear request for correctness judgment, providing no ambiguity about what cognitive task is required of the learner."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A direct false equation within the three-times table creates valid cognitive conflict; learners must recall or compute the correct product to make the judgment requested."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is minimalist and transparent: the equation is stated as a fact, and the question asks for straightforward true-or-false judgment that Grade 2 students have practiced routinely in multiplication instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three times three equals nine, not six. The answer False is mathematically correct and the hints verify the correct product as nine, maintaining mathematical soundness throughout the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "0891329721d5f57e429b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format clearly identifies Grace as the solver and asks whether her answer of 8 for four times 2 is correct, leaving no ambiguity about the peer-checking task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Presenting a named student's solution for verification is pedagogically sound, encouraging learners to evaluate peer work and develop critical mathematical thinking about multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt employs accessible language familiar to Grade 2 classrooms: identifying a peer, stating their proposed answer, and asking whether the peer is correct mirrors authentic peer-review routines."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times two equals eight, making Grace's answer correct; the response with has_error False and correct_value 8 is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "9e563bfb14a9f4208733",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade all squares in the one-times-two rectangle with subsequent counting request creates clear visual and numerical objectives with no ambiguous interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using grid shading to concretize multiplication through counting is logically sound pedagogy for Grade 2, grounding abstract facts in visual representation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task employs familiar Grade 2 vocabulary and actions: shade the specified rectangle boundary, count the resulting unit squares, report the total using language learners regularly encounter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A one-by-two rectangle contains exactly two unit squares; the expected answer of 2 is mathematically correct and consistent with the grid structure."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "59441b3c91dec6f51f17",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format presents three times four equals blank with four numerical options, making the product-selection task unambiguous and requiring only computational or recalled verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "This multiplication fact uses both three and four from the specified table set, creating a logically valid assessment item for table mastery within the defined scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is conventional for Grade 2: present a multiplication fact with a blank and provide four options, requiring selection and answer validation using standard classroom language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three times four equals twelve; the correct answer 12 appears in the option list 11/8/12/7, with plausible distractors supporting sound assessment design."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "738c3cfa0cd0b44c9a80",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read-MCQ prompt directs learners to examine a six-by-two array visual and count shaded squares, providing concrete visual anchoring that eliminates ambiguity about the counting task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using array visuals as the context for multiplication counting is logically valid and aligns with Grade 2 strategies for representing multiplication as equal groups."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is straightforward: examine the array and count total shaded squares; Grade 2 learners familiar with grid activities readily understand this action-based problem structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A six-by-two array contains 12 unit squares; the correct answer 12 appears in the options 15/12/9/16, with reasonable distractors that test careful counting."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "f7ede28a810f2fc9f238",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks directly for the product of eight times four with no conditional phrasing or qualifications, making the multiplication task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A straightforward multiplication question without additional context is logically valid for assessing multiplication fact recall and computation competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is direct and simple for Grade 2: asking for a product using standard multiplication language that learners encounter routinely in structured practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times four equals 32; the correct answer 32 appears in the options 32/12/4/28, with distractors representing common computational errors and adjacent facts."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "ee89d4affcac9332d5c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the product of eight times ten with direct language and no ambiguous phrasing, making the computational task clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times ten is a direct fact from the ten-times table specified in the competency, making this a logically valid item for assessing mastery of that specific table."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is simple and aligned with Grade 2 multiplication instruction language, asking for a product without additional contextual complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times ten equals 80; the correct answer 80 appears in the options 18/70/79/80, with the distractor 79 serving as a pedagogically useful near-miss test."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "c94b08657a2cb01644b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents the statement six times five equals one and asks for direct judgment, creating an unambiguous correctness-assessment task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A false equation using both factors from the five-times table creates valid cognitive conflict requiring learners to distinguish incorrect from correct multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement and question use simple, direct language standard for Grade 2 true/false assessment, asking for a judgment that learners make with minimal decoding burden."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times five equals 30, not one; the answer False is correct and hints explicitly confirm the correct product as 30."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "33fdd3e4ff0b113a86f2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade all squares in the nine-by-four rectangle with counting request provides clear visual and numerical objectives with no ambiguous interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a grid to visualize multiplication through shading and counting is logically sound for Grade 2 learners developing conceptual understanding of area and multiplication."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task employs standard Grade 2 grid-activity language: shade the rectangle and count how many squares were shaded, both familiar actions for visual learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A nine-by-four rectangle contains 36 unit squares; the expected answer 36 is mathematically correct and consistent with the grid dimensions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "02159b59f98063847b2d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents the equation five times four equals one and asks for direct judgment, leaving no ambiguity about the correctness-assessment task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A false statement using both five and four from the specified tables creates valid assessment of whether learners distinguish correct from incorrect multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is transparent and standard for Grade 2: state an equation and ask if it is true or false using language learners encounter regularly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five times four equals 20, not one; the answer False is mathematically correct and hints verify the correct product."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "3038fbf0bc637ae79c57",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The word problem clearly establishes that Moses places three baskets in each of six bags and asks for the total, making the multiplication structure and question unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The context describes a realistic, age-appropriate scenario involving equal grouping that Grade 2 learners can visualize and solve through multiplication strategies."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative employs concrete objects familiar to Grade 2 children—baskets and bags—with simple phrasing that makes the equal-groups structure accessible and understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six bags with three baskets each requires six times three, which equals 18; the expected answer 18 appears in the options and is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "e7ff2fca87c5851afa14",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks directly for the product of one times two with no conditional language or ambiguous phrasing, making the multiplication task clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Though one is not explicitly listed in the competency, one times two represents an entry in the two-times table and illustrates the identity property of multiplication."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is minimalist and standard for Grade 2 multiplication: asking for a product using language and structure familiar to learners in multiplication instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times two equals 2; the correct answer 2 appears in the options 3/4/1/2, with plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "2e226345c7bc1aee2300",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format clearly presents Ana's claim that four times three equals 15 and asks whether she is correct, making the verification task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Presenting a named student's incorrect solution for verification is pedagogically valid and encourages learners to identify errors and apply multiplication understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses language standard for peer-checking: identify the student solver, state her answer, and ask whether she is correct, mirroring classroom evaluation routines."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times three equals 12, not 15; Ana's answer is incorrect, and the response with has_error True and correct_value 12 is mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "45e3437218be17cbd6c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format presents six times two equals blank and offers four numerical options, making the product-selection task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication six times two uses the two-times table through commutativity, creating a logically valid assessment item within the specified table scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is conventional for Grade 2: present a multiplication fact with a blank and provide options, requiring computational or recalled verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times two equals 12; the correct answer 12 appears in the options 8/10/4/12, with reasonable distractors testing computational accuracy."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "7a54c99a60bf76da56bd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format clearly presents Carlo's claim that four times three equals 15 and asks for correctness judgment, leaving no ambiguity about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a named student's incorrect answer for peer verification is pedagogically sound, supporting learner development of critical evaluation and error-detection skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is clear: evaluate Carlo's solution to four times three using language and structure familiar to Grade 2 learners in mathematical peer review."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times three equals 12, not 15; Carlo's answer is incorrect, and the response has_error True with correct_value 12 is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "c82285bb0ca05a6902a5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the basketball-themed introduction, the core task—examining the three-by-four array visual and counting shaded squares—is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The array visual provides valid mathematical representation for multiplication; the thematic wrapper does not interfere with the logical structure of the counting task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic preamble is brief; the core instruction to look at the array and count shaded squares uses standard Grade 2 language and is clearly actionable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A three-by-four array contains 12 unit squares; the correct answer 12 appears in the options 11/12/15/14, making this mathematically accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "bea1efc79b962cde6f16",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade an eight-by-two rectangle and report the count provides clear visual and numerical objectives despite the basketball-themed context wrapper."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Grid shading for multiplication is logically sound pedagogy; the thematic context does not create logical inconsistencies in the mathematical task structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The playful preamble is brief; the core instruction using familiar Grade 2 grid-activity language—shade and count—is accessible and actionable for learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "An eight-by-two rectangle contains 16 unit squares; the expected answer 16 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "ed3f6c86fcc7e06f60e2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks directly for the product of one times four without modifiers or conditions, making the multiplication task clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Though one is not explicitly in the competency tables, one times four is a valid entry in the four-times table and represents the identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is direct and standard for Grade 2, asking for a product using language learners have practiced in multiplication instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times four equals 4; the correct answer 4 appears in the options 4/8/5/3, with plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "e3c9d5e93c989eb473d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade all squares in the nine-by-two rectangle and count them provides clear visual and numerical objectives with no ambiguous interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using grids to visualize and count multiplication is logically sound for Grade 2; the nine-by-two rectangle represents a valid fact to explore."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses simple Grade 2 language: shade the rectangle and count how many squares were shaded in all, both familiar and clear actions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A nine-by-two rectangle contains 18 unit squares; the expected answer 18 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "6f611bb71fea9ab81458",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze problem presents two times three equals blank with four options provided, making it unambiguous that the learner must select the correct product."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication two times three uses both two and three from the specified tables, creating a logically valid item for assessing mastery."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is familiar for Grade 2: present a multiplication fact with a blank and provide options to choose from using simple, accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times three equals 6; the correct answer 6 appears in the options 6/5/9/3, which are all mathematically plausible products."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "945227770071d3aca008",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents the statement one times two equals three and asks for direct judgment, leaving no ambiguity about the correctness-assessment task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A false statement using one and two creates valid cognitive conflict, requiring learners to distinguish between correct and incorrect multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement and question are phrased simply and directly, using language standard for Grade 2 true/false assessment without complex wording."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times two equals 2, not three; the answer False is correct and hints confirm the correct product as 2."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "378c81139b177e5a2303",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format clearly identifies Carlo's claim that five times five equals 25 and asks for correctness judgment, making the verification task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both factors are from the five-times table specified in the competency, making this a logically valid item using only factors from the same specified multiplication table."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt is clear: learners must evaluate whether Carlo's answer to five times five is correct using language and structure familiar from Grade 2 peer review."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five times five equals 25; Carlo is correct, and the response has_error False with correct_value 25 is mathematically sound."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "862416298b29078603ba",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade a five-by-two rectangle and count unit squares is clear and direct, leaving no ambiguity about the shading and counting objectives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The grid activity is logically sound for illustrating five times two, which uses both five and two from the specified tables."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task mirrors familiar Grade 2 grid activities: shade the rectangle and report the total number of squares using standard, accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A five-by-two rectangle contains 10 unit squares; the expected answer 10 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "sample_id": "b5106fa27b0338512cb6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade all squares in the one-by-four rectangle and count them is clear and direct, leaving no ambiguity about visual and counting objectives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The grid representation provides a valid visual model for one times four multiplication, supporting concrete understanding of this identity-property multiplication fact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt uses straightforward Grade 2 language: shade the rectangle and count the squares, both familiar and clear actions for visual learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A one-by-four rectangle contains 4 unit squares; the expected answer 4 is mathematically correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "multiply",
+      "clause": "Multiply",
+      "verdict": "PASS",
+      "reasoning": "All 24 samples require the learner to perform, recognize, or verify multiplication operations. Every sample involves computing or evaluating the product of two numbers as the primary mathematical task, directly fulfilling the multiplication action specified in the competency.",
+      "sample_ids": [
+        "b02d8704eab7a2190f60",
+        "0891329721d5f57e429b",
+        "9e563bfb14a9f4208733",
+        "59441b3c91dec6f51f17",
+        "738c3cfa0cd0b44c9a80",
+        "f7ede28a810f2fc9f238",
+        "ee89d4affcac9332d5c0",
+        "c94b08657a2cb01644b6",
+        "33fdd3e4ff0b113a86f2",
+        "02159b59f98063847b2d",
+        "3038fbf0bc637ae79c57",
+        "e7ff2fca87c5851afa14",
+        "2e226345c7bc1aee2300",
+        "45e3437218be17cbd6c1",
+        "7a54c99a60bf76da56bd",
+        "c82285bb0ca05a6902a5",
+        "bea1efc79b962cde6f16",
+        "ed3f6c86fcc7e06f60e2",
+        "e3c9d5e93c989eb473d2",
+        "6f611bb71fea9ab81458",
+        "945227770071d3aca008",
+        "378c81139b177e5a2303",
+        "862416298b29078603ba",
+        "b5106fa27b0338512cb6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "All 24 samples employ numerical quantities as operands and expected outcomes. Every sample uses whole numbers in meaningful contexts of multiplication facts and products, satisfying the core requirement to work with numbers as specified.",
+      "sample_ids": [
+        "b02d8704eab7a2190f60",
+        "0891329721d5f57e429b",
+        "9e563bfb14a9f4208733",
+        "59441b3c91dec6f51f17",
+        "738c3cfa0cd0b44c9a80",
+        "f7ede28a810f2fc9f238",
+        "ee89d4affcac9332d5c0",
+        "c94b08657a2cb01644b6",
+        "33fdd3e4ff0b113a86f2",
+        "02159b59f98063847b2d",
+        "3038fbf0bc637ae79c57",
+        "e7ff2fca87c5851afa14",
+        "2e226345c7bc1aee2300",
+        "45e3437218be17cbd6c1",
+        "7a54c99a60bf76da56bd",
+        "c82285bb0ca05a6902a5",
+        "bea1efc79b962cde6f16",
+        "ed3f6c86fcc7e06f60e2",
+        "e3c9d5e93c989eb473d2",
+        "6f611bb71fea9ab81458",
+        "945227770071d3aca008",
+        "378c81139b177e5a2303",
+        "862416298b29078603ba",
+        "b5106fa27b0338512cb6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    },
+    {
+      "requirement_id": "tables_2_3_4_5_10",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "CONCERN",
+      "reasoning": "Most samples demonstrate facts from the two-, three-, four-, and five-times tables across multiple problem types and contexts. However, the ten-times table appears in only one sample with eight times ten equals eighty. This minimal representation raises concerns about whether learners will develop balanced competency across all five specified multiplication tables, particularly the ten table which is typically critical for Grade 2 place-value understanding and serves as a bridge to multiplication strategies.",
+      "sample_ids": [
+        "ee89d4affcac9332d5c0"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "d384729164ebbd4ae2af4b0fd88b664678ea6359b4a49e26e391b896e409f7a4",
+      "clause_ids": [
+        "multiply",
+        "numbers",
+        "tables_2_3_4_5_10"
+      ],
+      "response_ref": ".responses/s5-phaseC-w6-haiku45-20260925.json",
+      "response_digest": "37b038b15998740510894879b5e4d569b66215a67b5ba08cf870ca3f536a3c33",
+      "prompt_ref": ".responses/s5-phaseC-w6-haiku45-20260925.prompt.txt",
+      "prompt_digest": "fb27bdc046b4f342e1977e7ddb86a4d7558d94b8df12636a979b5cfb679f7e33",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q3_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q3_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: tool uses per the harness (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sampled product has at least one factor drawn from the tables named, and the keys are correct throughout - I checked each, including the array item showing six rows of two and the shading item on a nine-by-four rectangle."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five named tables are reached: twos and fours through the bare facts, threes through a bags story and an error check, fives through a true-or-false, and tens through an eight-times-ten item."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Notation is introduced with an array or a bracketed sum alongside the bare symbol, factors never exceed ten, and the one story stem keeps to a single sentence about bags."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Rectangles to shade, an array to count, plain horizontal facts, a bags-and-baskets word problem and peer-error checks between them cover both pictorial and symbolic presentation of the same tables."
+      "rationale": "The problem set spans products from 2 to 36 with age-appropriate contexts like arrays and baskets. Visual representations support conceptual understanding, formats vary across true/false, error detection, and fill-in-blank styles matching Grade 2 cognitive development and foundational multiplication instruction."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Two true-or-false rungs each claim a two-digit product equals 1, and a further item asks for one times two. None of the three requires recall from any of the five tables, so the easy end of the ladder is not building this competency at all."
+      "rationale": "Most samples employ factors from specified tables, but five samples use 1 as the first factor, which is not explicitly listed in the competency statement. Factors like 6, 8, and 9 appear as multipliers, though they can be justified through commutativity with specified tables. The competency phrasing creates ambiguity about factor scope."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The three decomposed requirements—multiply, numbers, and use of 2, 3, 4, 5, and 10 multiplication tables—are substantially met. However, the ten-times table appears in only one sample with eight times ten. Across 24 samples, the 2, 3, and 4 tables dominate while the 5 and particularly the 10 table are under-represented, suggesting incomplete coverage.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The decomposition correctly identifies the action (multiply) and objects (numbers) but the table specification lacks clarity about whether inclusion of 1 as a factor aligns with the stated scope. The decomposition does not explicitly require balanced representation across all specified tables, yet the minimal presence of the 10 table suggests either incomplete implementation or ambiguous requirements interpretation.",
+        "requirement_ids": [
+          "multiply",
+          "numbers",
+          "tables_2_3_4_5_10"
+        ]
+      },
+      "clause_ids": [
+        "multiply",
+        "numbers",
+        "tables_2_3_4_5_10"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Samples demonstrate extensive use of the 2, 3, and 4 tables across multiple contexts and formats, with moderate coverage of the 5 table. However, the 10 multiplication table appears in only one sample, constituting approximately 4 percent of the packet. Comprehensive coverage of all five specified tables would typically require multiple samples per table to develop learner fluency across all required multiplication facts, particularly given the importance of tens in Grade 2 place value development.",
+      "clause_ids": [
+        "multiply",
+        "numbers",
+        "tables_2_3_4_5_10"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest factor pairs sit at nine-by-four and eight-by-ten, which is the natural top of the named tables and leaves products inside a hundred."
+      "rationale": "The difficulty and mathematical scale are well-calibrated for Grade 2 Quarter 3. Products remain within manageable ranges, visual supports effectively scaffold grid-based understanding, and problem formats maintain appropriate cognitive demand without exceeding learner capacity at this grade level and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples employ diverse formats including true/false judgments, error detection tasks, cloze fill-in-the-blank problems, multiple-choice selections, set-based interactive grid activities, and visual array counting. Contexts progress from abstract mathematical statements to realistic scenarios and briefly incorporate playful thematic elements, supporting varied engagement and multiple problem-solving approaches."
     }
   },
   "overall": "CONCERN"

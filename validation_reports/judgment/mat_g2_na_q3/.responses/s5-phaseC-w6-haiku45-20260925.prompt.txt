@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925
+  blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g2_na_q3_3/verdicts.json
+  local_only/scratch/phaseC/mat_g2_na_q3_4/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_3-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,135 +99,173 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g2_na_q3_3
-PACKET DIGEST: 309d6df780a898a0c1e4484eaaa16c6225057b67dea0a92b3e59be43aeab5e9c
+NODE: mat_g2_na_q3_4
+PACKET DIGEST: e864db13d3995c015affe0cae538b322d35654b43c70269e9883527a1258efc8
 COMPETENCY (Grade 2, Quarter 3, None):
-Solve multiplication problems using the 2, 3, 4, 5, and 10 multiplication tables, including problems involving money.
+Illustrate division through equal distribution of a number of objects into several groups.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  solve_multiplication_problems: Solve multiplication problems
-  tables_2_3_4_5_10: 2, 3, 4, 5, and 10 multiplication tables
-  money: money
+  illustrate_division: Illustrate division
+  equal_distribution: equal distribution
+  number_of: number of
+  objects: objects
+  several_groups: several groups
 
 SAMPLES (every one of these is real rendered output):
-  sample 765fa0deebe1346f125e  seed 42  [mcq]
-      stem:    Maico puts 3 costumes in each of 3 bags. How many costumes are in all the bags?
-      answer:  9
-      options: 12 / 8 / 9 / 6
-      hints:   ["We need to find the total of equal groups 3 groups of 3.", "Think of it as 3 groups of 3: 3 + 3 + 3.", "The product of 3 × 3 = 9."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample ecb360c522c62b017971  seed 43  [true_false]
-      stem:    Nanding wants to buy 4 water bowls that cost ₱2 each. How much does Nanding need to pay in all? The answer is 6. True or False?
-      answer:  False
-      hints:   ["We need to find the total of equal groups 4 groups of 2.", "Think of it as 2 groups of 4: 4 + 4.", "The product of 4 × 2 = 8."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample b1cbe375a9dca8131b41  seed 44  [error_detect]
-      stem:    Rico solved this problem: "Coach Nora wants to buy 1 shuttlecock that cost ₱2 each. How much does Coach Nora need to pay in all?" Rico says the answer is 2. Is Rico correct?
-      answer:  {'has_error': False, 'correct_value': 2}
-      hints:   ["We need to find the total of equal groups 1 group of 2.", "Think of it as 2 groups of 1: 1 + 1.", "The product of 1 × 2 = 2."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 3e6b95463dffb40cec86  seed 45  [mcq]
-      stem:    Ate Gab wants to buy 3 trophies that cost ₱4 each. How much does Ate Gab need to pay in all?
-      answer:  12
-      options: 11 / 7 / 8 / 12
-      hints:   ["We need to find the total of equal groups 3 groups of 4.", "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.", "The product of 3 × 4 = 12."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 67ed64aa79a5b1c51b7a  seed 46  [cloze]
-      stem:    Ate Joy puts 2 seeds in each of 6 bags. How many seeds are in all the bags?
-      answer:  12
-      options: 8 / 4 / 12 / 10
-      hints:   ["We need to find the total of equal groups 6 groups of 2.", "Think of it as 2 groups of 6: 6 + 6.", "The product of 6 × 2 = 12."]
+  sample a1196d98b579a3e81476  seed 42  [read_mcq]
+      stem:    This array has 3 squares split into 3 equal rows. How many squares are in each row?
+      answer:  1
+      options: 1 / 8 / 2 / 3
+      hints:   ["We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.", "Ask: how many times does 3 fit into 3? 3 × 1 = 3.", "The answer of 3 ÷ 3 = 1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 16, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "1 × 3", "rectangle", "3 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 45e9948d4474f00398b8  seed 43  [cloze]
+      stem:    10 ÷ 2 = ___
+      answer:  5
+      options: 2 / 6 / 5 / 8
+      hints:   ["We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.", "Ask: how many times does 2 fit into 10? 2 × 5 = 10.", "The answer of 10 ÷ 2 = 5."]
       response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 6299182b789ab9e06e92  seed 500  [true_false]
-      stem:    Kuya Ton puts 10 ribbons in each of 8 bags. How many ribbons are in all the bags? The answer is 90. True or False?
-      answer:  False
-      hints:   ["We need to find the total of equal groups 8 groups of 10.", "Use the 10 times table: 10 × 8.", "The product of 8 × 10 = 80."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 1961b9a1d8a6b3991aba  seed 501  [mcq]
-      stem:    Ate Sam puts 5 running shoes in each of 6 bags. How many running shoes are in all the bags?
-      answer:  30
-      options: 25 / 30 / 11 / 1
-      hints:   ["We need to find the total of equal groups 6 groups of 5.", "Think of it as 5 groups of 6: 6 + 6 + 6 + 6 + 6.", "The product of 6 × 5 = 30."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 4aa59c509c631337cd7c  seed 502  [error_detect]
-      stem:    Dante solved this problem: "Kuya Renz puts 4 paint tubes in each of 9 bags. How many paint tubes are in all the bags?" Dante says the answer is 36. Is Dante correct?
-      answer:  {'has_error': False, 'correct_value': 36}
-      hints:   ["We need to find the total of equal groups 9 groups of 4.", "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.", "The product of 9 × 4 = 36."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 48543a914928a02d4d71  seed 600  [true_false]
-      stem:    Kuya Tads puts 4 leashes in each of 5 bags. How many leashes are in all the bags? The answer is 20. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 5 groups of 4.", "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.", "The product of 5 × 4 = 20."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample d2eb5a9ca37e97127330  seed 601  [cloze]
-      stem:    Coach Roel wants to buy 6 score cards that cost ₱3 each. How much does Coach Roel need to pay in all?
-      answer:  18
-      options: 9 / 15 / 3 / 18
-      hints:   ["We need to find the total of equal groups 6 groups of 3.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 8b9caa5291278269dddf  seed 602  [mcq]
-      stem:    Sir Rez wants to buy 1 ribbon that cost ₱2 each. How much does Sir Rez need to pay in all?
-      answer:  2
-      options: 1 / 4 / 3 / 2
-      hints:   ["We need to find the total of equal groups 1 group of 2.", "Think of it as 2 groups of 1: 1 + 1.", "The product of 1 × 2 = 2."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 6b8067870eb44a14c4dc  seed 603  [true_false]
-      stem:    Ate Beng wants to buy 4 leashes that cost ₱3 each. How much does Ate Beng need to pay in all? The answer is 12. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 4 groups of 3.", "Think of it as 3 groups of 4: 4 + 4 + 4.", "The product of 4 × 3 = 12."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample b5c2ae9998727eb11276  seed 700  [true_false]
-      stem:    Boyong wants to buy 4 cat toys that cost ₱3 each. How much does Boyong need to pay in all? The answer is 12. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 4 groups of 3.", "Think of it as 3 groups of 4: 4 + 4 + 4.", "The product of 4 × 3 = 12."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 6e77d961f5733917ddf7  seed 701  [cloze]
-      stem:    Marco puts 4 sneakers in each of 3 bags. How many sneakers are in all the bags?
-      answer:  12
-      options: 11 / 8 / 12 / 7
-      hints:   ["We need to find the total of equal groups 3 groups of 4.", "Think of it as 4 groups of 3: 3 + 3 + 3 + 3.", "The product of 3 × 4 = 12."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 7eb8f3c31de82cedf153  seed 702  [error_detect]
-      stem:    Manny solved this problem: "Ate Alyssa puts 2 whistles in each of 8 bags. How many whistles are in all the bags?" Manny says the answer is 14. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 16}
-      hints:   ["We need to find the total of equal groups 8 groups of 2.", "Think of it as 2 groups of 8: 8 + 8.", "The product of 8 × 2 = 16."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 87594c686bd42e8e06b8  seed 800  [cloze]
-      stem:    Lola Caring puts 4 leashes in each of 1 bag. How many leashes are in all the bags?
+  sample cacc77f50cc13b637a68  seed 44  [mcq]
+      stem:    What is 40 ÷ 10?
       answer:  4
-      options: 8 / 3 / 4 / 5
-      hints:   ["We need to find the total of equal groups 1 group of 4.", "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.", "The product of 1 × 4 = 4."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample cbb96884c984a85f1767  seed 801  [error_detect]
-      stem:    Pia solved this problem: "Coach Roel wants to buy 9 basketballs that cost ₱2 each. How much does Coach Roel need to pay in all?" Pia says the answer is 18. Is Pia correct?
-      answer:  {'has_error': False, 'correct_value': 18}
-      hints:   ["We need to find the total of equal groups 9 groups of 2.", "Think of it as 2 groups of 9: 9 + 9.", "The product of 9 × 2 = 18."]
+      options: 30 / 5 / 10 / 4
+      hints:   ["We need to divide 40 by 10. The number being divided is 40; the number we divide by is 10.", "Ask: how many times does 10 fit into 40? 10 × 4 = 40.", "The answer of 40 ÷ 10 = 4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a0de95b7d7c7c1aa5f1a  seed 45  [error_detect]
+      stem:    Pia solved: "15 ÷ 5 = ___". Pia says the missing number is 3. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 3}
+      hints:   ["We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.", "Ask: how many times does 5 fit into 15? 5 × 3 = 15.", "The answer of 15 ÷ 5 = 3."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 93a011e890b910b5bb72  seed 900  [mcq]
-      stem:    Ate Liza puts 3 paint tubes in each of 2 bags. How many paint tubes are in all the bags?
-      answer:  6
-      options: 9 / 5 / 6 / 3
-      hints:   ["We need to find the total of equal groups 2 groups of 3.", "Think of it as 3 groups of 2: 2 + 2 + 2.", "The product of 2 × 3 = 6."]
+  sample f6c316aec6aef511f6e2  seed 46  [error_detect]
+      stem:    Dante solved: "12 ÷ 2 = ___". Dante says the missing number is 2. Is Dante correct?
+      answer:  {'has_error': True, 'correct_value': 6}
+      hints:   ["We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.", "Ask: how many times does 2 fit into 12? 2 × 6 = 12.", "The answer of 12 ÷ 2 = 6."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0bb15c39477e01be98e5  seed 48  [set_fill_in_blank]
+      stem:    Shade 90 squares into 10 equal rows. How many squares are in each row?
+      answer:  9
+      hints:   ["We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.", "Ask: how many times does 10 fit into 90? 10 × 9 = 90.", "The answer of 90 ÷ 10 = 9."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 103, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 90}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2b6addcb408afb8c346b  seed 68  [true_false]
+      stem:    50 ÷ 10 = 5. True or False?
+      answer:  True
+      hints:   ["We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.", "Ask: how many times does 10 fit into 50? 10 × 5 = 50.", "The answer of 50 ÷ 10 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f2257b7a38f49dd608dc  seed 500  [mcq]
+      stem:    What is 90 ÷ 10?
+      answer:  9
+      options: 8 / 9 / 10 / 80
+      hints:   ["We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.", "Ask: how many times does 10 fit into 90? 10 × 9 = 90.", "The answer of 90 ÷ 10 = 9."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 2790347ac7cca48beba5  seed 901  [mcq]
-      stem:    Jun wants to buy 1 jersey that cost ₱2 each. How much does Jun need to pay in all?
-      answer:  2
-      options: 4 / 2 / 3 / 1
-      hints:   ["We need to find the total of equal groups 1 group of 2.", "Think of it as 2 groups of 1: 1 + 1.", "The product of 1 × 2 = 2."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample e56da77e8c8af6e30024  seed 1000  [true_false]
-      stem:    Lola Ising puts 5 cupcakes in each of 5 bags. How many cupcakes are in all the bags? The answer is 10. True or False?
+  sample c2168cade24aac3293ef  seed 501  [true_false]
+      stem:    90 ÷ 10 = 80. True or False?
       answer:  False
-      hints:   ["We need to find the total of equal groups 5 groups of 5.", "Think of it as 5 groups of 5: 5 + 5 + 5 + 5 + 5.", "The product of 5 × 5 = 25."]
+      hints:   ["We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.", "Ask: how many times does 10 fit into 90? 10 × 9 = 90.", "The answer of 90 ÷ 10 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5c461c8c32a5a8133f5b  seed 502  [set_fill_in_blank]
+      stem:    Shade 90 squares into 10 equal rows. How many squares are in each row?
+      answer:  9
+      hints:   ["We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.", "Ask: how many times does 10 fit into 90? 10 × 9 = 90.", "The answer of 90 ÷ 10 = 9."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 103, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 90}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c7539da771db3166d306  seed 600  [cloze]
+      stem:    15 ÷ 5 = ___
+      answer:  3
+      options: 10 / 4 / 3 / 5
+      hints:   ["We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.", "Ask: how many times does 5 fit into 15? 5 × 3 = 15.", "The answer of 15 ÷ 5 = 3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f53c7a30815706616346  seed 601  [cloze]
+      stem:    Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?
+      answer:  5
+      options: 4 / 16 / 6 / 5
+      hints:   ["We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.", "Ask: how many times does 4 fit into 20? 4 × 5 = 20.", "The answer of 20 ÷ 4 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 71b8f44ca3a50987ea1f  seed 602  [set_fill_in_blank]
+      stem:    Shade 20 squares into 10 equal rows. How many squares are in each row?
+      answer:  2
+      hints:   ["We need to divide 20 by 10. The number being divided is 20; the number we divide by is 10.", "Ask: how many times does 10 fit into 20? 10 × 2 = 20.", "The answer of 20 ÷ 10 = 2."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 33, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "2 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 66b962324b57e29a944b  seed 603  [mcq]
+      stem:    What is 15 ÷ 3?
+      answer:  5
+      options: 3 / 12 / 5 / 6
+      hints:   ["We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.", "Ask: how many times does 3 fit into 15? 3 × 5 = 15.", "The answer of 15 ÷ 3 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 146ff64f3426b7670349  seed 604  [set_fill_in_blank]
+      stem:    Shade 12 squares into 2 equal rows. How many squares are in each row?
+      answer:  6
+      hints:   ["We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.", "Ask: how many times does 2 fit into 12? 2 × 6 = 12.", "The answer of 12 ÷ 2 = 6."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 25, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "6 × 2", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 12}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ce87a59c527b7a4e3c07  seed 700  [set_fill_in_blank]
+      stem:    Shade 15 squares into 3 equal rows. How many squares are in each row?
+      answer:  5
+      hints:   ["We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.", "Ask: how many times does 3 fit into 15? 3 × 5 = 15.", "The answer of 15 ÷ 3 = 5."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 28, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "5 × 3", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 15}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 14039b5bd4674b413236  seed 701  [error_detect]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Liza solved: "15 ÷ 5 = ___". Liza says the missing number is 10. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 3}
+      hints:   ["We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.", "Ask: how many times does 5 fit into 15? 5 × 3 = 15.", "The answer of 15 ÷ 5 = 3."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 11b73a80cd5336198f1c  seed 702  [set_fill_in_blank]
+      stem:    🏀 Isko has a math challenge about basketballs. Shade 3 squares into 3 equal rows. How many squares are in each row?
+      answer:  1
+      hints:   ["We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.", "Ask: how many times does 3 fit into 3? 3 × 1 = 3.", "The answer of 3 ÷ 3 = 1."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 16, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "1 × 3", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fe15569060a5844a0834  seed 800  [mcq]
+      stem:    What is 90 ÷ 10?
+      answer:  9
+      options: 8 / 80 / 9 / 10
+      hints:   ["We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.", "Ask: how many times does 10 fit into 90? 10 × 9 = 90.", "The answer of 90 ÷ 10 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 835e557308bf13175385  seed 900  [cloze]
+      stem:    5 ÷ 5 = ___
+      answer:  1
+      options: 2 / 1 / 0 / 5
+      hints:   ["We need to divide 5 by 5. The number being divided is 5; the number we divide by is 5.", "Ask: how many times does 5 fit into 5? 5 × 1 = 5.", "The answer of 5 ÷ 5 = 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 60715bdfd1a4d838e5de  seed 901  [true_false]
+      stem:    15 ÷ 3 = 12. True or False?
+      answer:  False
+      hints:   ["We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.", "Ask: how many times does 3 fit into 15? 3 × 5 = 15.", "The answer of 15 ÷ 3 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 93f6171b491e4c7384a5  seed 1000  [true_false]
+      stem:    40 ÷ 10 = 4. True or False?
+      answer:  True
+      hints:   ["We need to divide 40 by 10. The number being divided is 40; the number we divide by is 10.", "Ask: how many times does 10 fit into 40? 10 × 4 = 40.", "The answer of 40 ÷ 10 = 4."]
       response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
-  sample 8f12a69e8adfb5dd9f95  seed 1001  [error_detect]
-      stem:    Liza solved this problem: "Kuya Chad puts 2 helmets in each of 5 bags. How many helmets are in all the bags?" Liza says the answer is 12. Is Liza correct?
-      answer:  {'has_error': True, 'correct_value': 10}
-      hints:   ["We need to find the total of equal groups 5 groups of 2.", "Think of it as 2 groups of 5: 5 + 5.", "The product of 5 × 2 = 10."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
-  sample 9de3ee8e4b0a6e53507d  seed 1002  [error_detect]
-      stem:    Manny solved this problem: "Aling Rosa puts 4 wristbands in each of 1 bag. How many wristbands are in all the bags?" Manny says the answer is 5. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 4}
-      hints:   ["We need to find the total of equal groups 1 group of 4.", "Think of it as 4 groups of 1: 1 + 1 + 1 + 1.", "The product of 1 × 4 = 4."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+  sample 6eb3b9838efff49c050e  seed 1001  [set_fill_in_blank]
+      stem:    Shade 10 squares into 2 equal rows. How many squares are in each row?
+      answer:  5
+      hints:   ["We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.", "Ask: how many times does 2 fit into 10? 2 × 5 = 10.", "The answer of 10 ÷ 2 = 5."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 23, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "5 × 2", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 10}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 93428c5a46039a3e73dc  seed 1002  [set_fill_in_blank]
+      stem:    Shade 80 squares into 10 equal rows. How many squares are in each row?
+      answer:  8
+      hints:   ["We need to divide 80 by 10. The number being divided is 80; the number we divide by is 10.", "Ask: how many times does 10 fit into 80? 10 × 8 = 80.", "The answer of 80 ÷ 10 = 8."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 93, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "8 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 80}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
 

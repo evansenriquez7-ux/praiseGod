@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q4_2",
-  "reviewed_by": "reviewer-c4-pumice-lovage-6370",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Order unit fractions from smallest to largest, and vice versa.",
+    "grade": 2,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "order",
+      "clause": "Order"
+    },
+    {
+      "kind": "object",
+      "id": "unit_fractions",
+      "clause": "unit fractions"
+    },
+    {
+      "kind": "property",
+      "id": "smallest_to_largest",
+      "clause": "smallest to largest"
+    },
+    {
+      "kind": "property",
+      "id": "vice_versa",
+      "clause": "vice versa"
+    }
+  ],
+  "packet_digest": "30f1c2236030e3cb0f0cada168708f9f44af7cb912059c17228abe7fc1dbdb07",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,14 +45,60 @@
     502,
     600,
     601,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "cb5c4674ee6eba74018c",
+    "21b8718955135339eef6",
+    "8f85c08b3cf007c6bdd3",
+    "2fa321742622f16e3c6c",
+    "6be7e394b101b8c585df",
+    "0518ef2b2f3bed3ae64d",
+    "de746700c9cb3ffc8a15",
+    "7be7152fe61d6887d250",
+    "6c194dab47c4a2055a2c",
+    "f43fdda63ae7d8f8f01e",
+    "9dad3e5bac7044da99e5",
+    "c2feac20ad29babb6280",
+    "d8ebbd6722a28984af85",
+    "8cadda4b8292c234e0bd",
+    "0cbf8b8d67c1caac6c03",
+    "e1ba273142f07baa9a4a",
+    "823b59942915e3273884",
+    "1ee56aa8ad238b66f4da",
+    "a29cc0f4c84977667104",
+    "ce8534ab9f74481c4a44"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Order these fractions from largest to smallest: 1/4, 1/6, 1/8, 1/2.",
       "correct_answer": "1/2, 1/4, 1/6, 1/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -47,13 +124,37 @@
           "text": "1/2, 1/6, 1/4, 1/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2, 1/4, 1/6, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/8.",
+        "The answer is 1/8."
+      ],
+      "sample_id": "cb5c4674ee6eba74018c",
+      "replay_digest": "5b9d9146312af99605d6eb6875e61cac00410de9ff31ed8693c55f4efe520d4b"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 1/5, 1/3, 1/4, 1/2?",
       "correct_answer": "1/2, 1/3, 1/4, 1/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -75,13 +176,37 @@
           "value": "1/5, 1/4, 1/3, 1/2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2, 1/3, 1/4, 1/5",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/2.",
+        "The answer is 1/2."
+      ],
+      "sample_id": "21b8718955135339eef6",
+      "replay_digest": "cb36a9f49f64c08a66eeaee487b642081ec396489ff6046b04dca829d93f999e"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Order these fractions from largest to smallest: 1/2, 1/5, 1/8, 1/6.",
       "correct_answer": "1/2, 1/5, 1/6, 1/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -107,13 +232,37 @@
           "text": "1/2, 1/6, 1/8, 1/5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2, 1/5, 1/6, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "8f85c08b3cf007c6bdd3",
+      "replay_digest": "0af1bb6a332686ad054dd33fb07ddc7322bf7e69693abf2d61bce1741dd8814d"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Order these fractions from smallest to largest: 1/3, 1/4, 1/5, 1/6.",
       "correct_answer": "1/6, 1/5, 1/4, 1/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -135,13 +284,37 @@
           "value": "1/5, 1/4, 1/3, 1/6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/6, 1/5, 1/4, 1/3",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/4.",
+        "The answer is 1/4."
+      ],
+      "sample_id": "2fa321742622f16e3c6c",
+      "replay_digest": "50d5314e78690010cbe225e41dd8a3ea6e30add3a71acf9b7b302721833e7d45"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Order these fractions from smallest to largest: 1/4, 1/2, 1/8, 1/5.",
       "correct_answer": "1/8, 1/5, 1/4, 1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,13 +336,39 @@
           "value": "1/2, 1/5, 1/4, 1/8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/8, 1/5, 1/4, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/2.",
+        "The answer is 1/2."
+      ],
+      "sample_id": "6be7e394b101b8c585df",
+      "replay_digest": "b855bc51c7cfef12c62ff47339d1e9ab675f860555781ab06df2f9202710222d"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Arrange these fractions from greatest to least: 1/8, 1/3, 1/5, 1/6.",
       "correct_answer": "1/3, 1/5, 1/6, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -191,13 +390,39 @@
           "value": "1/3, 1/5, 1/6, 1/8",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1/3, 1/5, 1/6, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "0518ef2b2f3bed3ae64d",
+      "replay_digest": "d55459c82c0ce16a4bad1cbe5be23f5a4068080028fb1948aaedbce325bbc991"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 1/8, 1/4, 1/2, 1/6?",
       "correct_answer": "1/2, 1/4, 1/6, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -219,13 +444,39 @@
           "value": "1/8, 1/2, 1/4, 1/6",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2, 1/4, 1/6, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/8.",
+        "The answer is 1/8."
+      ],
+      "sample_id": "de746700c9cb3ffc8a15",
+      "replay_digest": "802a11e05ef0b2117bd9badea44d74ff26f43d97b747b7bfdc0cd3d1617f1695"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Order these fractions from largest to smallest: 1/3, 1/6, 1/8, 1/4.",
       "correct_answer": "1/3, 1/4, 1/6, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -251,13 +502,39 @@
           "text": "1/3, 1/4, 1/6, 1/8",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "1/3, 1/4, 1/6, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/6.",
+        "The answer is 1/6."
+      ],
+      "sample_id": "7be7152fe61d6887d250",
+      "replay_digest": "622a5f5318f821bc4bb69209395cabfb95b86b18fe1d78cdf44dce1c41de4f46"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Which list shows these fractions ordered from smallest to largest: 1/4, 1/5, 1/8, 1/2?",
       "correct_answer": "1/8, 1/5, 1/4, 1/2",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "area_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -279,13 +556,39 @@
           "value": "1/2, 1/8, 1/5, 1/4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/8, 1/5, 1/4, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/4.",
+        "The answer is 1/4."
+      ],
+      "sample_id": "6c194dab47c4a2055a2c",
+      "replay_digest": "57d618b72e89cd924147b8eafba77aa3d37cf9ff9515e10c77ce16184daec44d"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 1/2, 1/3, 1/6, 1/5?",
       "correct_answer": "1/2, 1/3, 1/5, 1/6",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "number_line"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -311,13 +614,39 @@
           "text": "1/6, 1/5, 1/3, 1/2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/2, 1/3, 1/5, 1/6",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/3.",
+        "The answer is 1/3."
+      ],
+      "sample_id": "f43fdda63ae7d8f8f01e",
+      "replay_digest": "812cf6fe4b29b6c6a0e3f16b767cdea262fde547a6e04ebc9668dd603044894a"
     },
     {
+      "node_id": "mat_g2_na_q4_2",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "Which list shows these fractions ordered from largest to smallest: 1/5, 1/3, 1/4, 1/8?",
       "correct_answer": "1/3, 1/4, 1/5, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "set_model"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -343,34 +672,1147 @@
           "text": "1/5, 1/8, 1/3, 1/4",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "1/3, 1/4, 1/5, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "9dad3e5bac7044da99e5",
+      "replay_digest": "21ed508e6ed0de26066d8d3feee1d3dcf6ca45855a7fc3e45db7112a5a4e8d05"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Arrange these fractions from least to greatest: 1/8, 1/4, 1/3, 1/5.",
+      "correct_answer": "1/8, 1/5, 1/4, 1/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/3, 1/4, 1/5, 1/8",
+          "text": "1/3, 1/4, 1/5, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/5, 1/4, 1/3, 1/8",
+          "text": "1/5, 1/4, 1/3, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8, 1/5, 1/4, 1/3",
+          "text": "1/8, 1/5, 1/4, 1/3",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1/4, 1/8, 1/3, 1/5",
+          "text": "1/4, 1/8, 1/3, 1/5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/8, 1/5, 1/4, 1/3",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/3.",
+        "The answer is 1/3."
+      ],
+      "sample_id": "c2feac20ad29babb6280",
+      "replay_digest": "c846e96431b44f5175fabcaf2fadffd1d7f992bef4ad7c023243e172f928bdbc"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Kuya Ton has a math challenge about trophies. Which list shows these fractions ordered from smallest to largest: 1/2, 1/8, 1/5, 1/4?",
+      "correct_answer": "1/8, 1/5, 1/4, 1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/4, 1/8, 1/5, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/4, 1/2, 1/8, 1/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8, 1/5, 1/4, 1/2",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1/2, 1/4, 1/5, 1/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/8, 1/5, 1/4, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/8.",
+        "The answer is 1/8."
+      ],
+      "sample_id": "d8ebbd6722a28984af85",
+      "replay_digest": "c9f35867a817cbba8e54f0fa71512832cd9c21186628ea50e15fafb1980fb65e"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Arrange these fractions from least to greatest: 1/2, 1/6, 1/3, 1/8.",
+      "correct_answer": "1/8, 1/6, 1/3, 1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/2, 1/3, 1/6, 1/8",
+          "text": "1/2, 1/3, 1/6, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/8, 1/2, 1/6, 1/3",
+          "text": "1/8, 1/2, 1/6, 1/3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/6, 1/8, 1/3, 1/2",
+          "text": "1/6, 1/8, 1/3, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/8, 1/6, 1/3, 1/2",
+          "text": "1/8, 1/6, 1/3, 1/2",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1/8, 1/6, 1/3, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/2.",
+        "The answer is 1/2."
+      ],
+      "sample_id": "8cadda4b8292c234e0bd",
+      "replay_digest": "b357dc9deaee4bae22899fec1b206bba46eda2b718e10cebcc735800dbd906d3"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Order these fractions from largest to smallest: 1/5, 1/8, 1/3, 1/2.",
+      "correct_answer": "1/2, 1/3, 1/5, 1/8",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/5, 1/3, 1/2, 1/8",
+          "text": "1/5, 1/3, 1/2, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/2, 1/3, 1/5, 1/8",
+          "text": "1/2, 1/3, 1/5, 1/8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/8, 1/5, 1/3, 1/2",
+          "text": "1/8, 1/5, 1/3, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/5, 1/2, 1/8, 1/3",
+          "text": "1/5, 1/2, 1/8, 1/3",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/2, 1/3, 1/5, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/8.",
+        "The answer is 1/8."
+      ],
+      "sample_id": "0cbf8b8d67c1caac6c03",
+      "replay_digest": "bb4fd4bb78f534ceb0d88ac4cf735dea42743e76b55096d3d1558c3bc0e3904d"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Order these fractions from smallest to largest: 1/6, 1/2, 1/4, 1/3.",
+      "correct_answer": "1/6, 1/4, 1/3, 1/2",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/2, 1/3, 1/4, 1/6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/4, 1/3, 1/2, 1/6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/6, 1/2, 1/4, 1/3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/6, 1/4, 1/3, 1/2",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1/6, 1/4, 1/3, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/6.",
+        "The answer is 1/6."
+      ],
+      "sample_id": "e1ba273142f07baa9a4a",
+      "replay_digest": "b5f51645494a112792169f96218a9443188005658593137a8cf4acda1894ec45"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Arrange these fractions from least to greatest: 1/5, 1/2, 1/4, 1/6.",
+      "correct_answer": "1/6, 1/5, 1/4, 1/2",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/5, 1/4, 1/6, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/6, 1/5, 1/4, 1/2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/2, 1/4, 1/5, 1/6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/5, 1/4, 1/2, 1/6",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/6, 1/5, 1/4, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "823b59942915e3273884",
+      "replay_digest": "5956ed6c0008b9c9fc3a224d609e08a9caebe26e28c33b7e9f550711ab1b250d"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Which list shows these fractions ordered from smallest to largest: 1/8, 1/2, 1/5, 1/3?",
+      "correct_answer": "1/8, 1/5, 1/3, 1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/8, 1/5, 1/3, 1/2",
+          "text": "1/8, 1/5, 1/3, 1/2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1/3, 1/8, 1/5, 1/2",
+          "text": "1/3, 1/8, 1/5, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/5, 1/2, 1/3, 1/8",
+          "text": "1/5, 1/2, 1/3, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/2, 1/3, 1/5, 1/8",
+          "text": "1/2, 1/3, 1/5, 1/8",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/8, 1/5, 1/3, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/5.",
+        "The answer is 1/5."
+      ],
+      "sample_id": "1ee56aa8ad238b66f4da",
+      "replay_digest": "6a0b3b62c15b20337a92244f1027e87735aed19cc8bee1efe6776fbefb0af617"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Order these fractions from largest to smallest: 1/2, 1/8, 1/4, 1/3.",
+      "correct_answer": "1/2, 1/3, 1/4, 1/8",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/2, 1/3, 1/4, 1/8",
+          "text": "1/2, 1/3, 1/4, 1/8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1/8, 1/4, 1/3, 1/2",
+          "text": "1/8, 1/4, 1/3, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8, 1/3, 1/4, 1/2",
+          "text": "1/8, 1/3, 1/4, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/3, 1/2, 1/8, 1/4",
+          "text": "1/3, 1/2, 1/8, 1/4",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "1/2, 1/3, 1/4, 1/8",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/2.",
+        "The answer is 1/2."
+      ],
+      "sample_id": "a29cc0f4c84977667104",
+      "replay_digest": "f3558f48ffbf94ba8b834ea0ddac86eb7de493e034d856678208aae9bc081017"
+    },
+    {
+      "node_id": "mat_g2_na_q4_2",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Order these fractions from smallest to largest: 1/6, 1/5, 1/2, 1/8.",
+      "correct_answer": "1/8, 1/6, 1/5, 1/2",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "1/2, 1/5, 1/6, 1/8",
+          "text": "1/2, 1/5, 1/6, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/2, 1/6, 1/5, 1/8",
+          "text": "1/2, 1/6, 1/5, 1/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8, 1/5, 1/6, 1/2",
+          "text": "1/8, 1/5, 1/6, 1/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/8, 1/6, 1/5, 1/2",
+          "text": "1/8, 1/6, 1/5, 1/2",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "1/8, 1/6, 1/5, 1/2",
+      "hints": [
+        "When adding fractions with the same denominator, keep the denominator the same.",
+        "Add only the numerators: 1 + 0 = 1.",
+        "Put the result over the same denominator: 1/6.",
+        "The answer is 1/6."
+      ],
+      "sample_id": "ce8534ab9f74481c4a44",
+      "replay_digest": "545ad91793f875a069ccd7112b698c0e18be8b19cc4a796aefcf5f8f7a35d3c2"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "cb5c4674ee6eba74018c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly directs ordering of 1/4, 1/6, 1/8, 1/2 from largest to smallest without ambiguity about the required direction or operation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints reference adding fractions with the same denominator and summing numerators, which directly contradicts the task of ordering. The stated answer 1/2, 1/4, 1/6, 1/8 requires magnitude comparison, not addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints would actively mislead a learner by directing attention to addition steps when the task requires comparing fraction sizes. A student following the hints would be confused about what operation to perform."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The ordering 1/2, 1/4, 1/6, 1/8 is mathematically correct for largest to smallest among unit fractions, as the denominator increases when the numerator is constant."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "21b8718955135339eef6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice stem asks which list shows 1/5, 1/3, 1/4, 1/2 ordered from largest to smallest, with clear directional intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe adding fractions and keeping denominators the same, which is unrelated to the task of identifying which ordering from largest to smallest is correct. The correct answer 1/2, 1/3, 1/4, 1/5 requires magnitude reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints focus on addition procedures and numerator sums rather than explaining how to compare fraction sizes or determine which ordering represents largest to smallest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/3, 1/4, 1/5 correctly represents the fractions ordered from largest to smallest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "8f85c08b3cf007c6bdd3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem unambiguously asks to order 1/2, 1/5, 1/8, 1/6 from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe adding fractions and placing results over denominators, which has no logical connection to ordering these four unit fractions by magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hint text would confuse a learner attempting to order 1/2, 1/5, 1/8, 1/6, as the instructions reference summing numerators rather than comparing fraction sizes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/5, 1/6, 1/8 correctly orders these fractions from largest to smallest based on denominator magnitudes."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "2fa321742622f16e3c6c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks which list shows 1/3, 1/4, 1/5, 1/6 ordered from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe adding fractions with matching denominators, contradicting the core task of identifying which arrangement represents ascending order of fraction values."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner reading hints about keeping denominators the same when adding numerators would not understand how to identify the correct ascending order from the provided options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/6, 1/5, 1/4, 1/3 correctly represents the four unit fractions ordered from smallest to largest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "6be7e394b101b8c585df",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice stem has clear directional intent, asking for the list showing 1/4, 1/2, 1/8, 1/5 ordered from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about fraction addition procedures have no logical validity for a task requiring identification of ascending magnitude order."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints reference adding numerators and maintaining denominators, creating cognitive dissonance with the task of selecting the correct ascending order."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/5, 1/4, 1/2 correctly orders these fractions from smallest to largest."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "0518ef2b2f3bed3ae64d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to arrange 1/8, 1/3, 1/5, 1/6 from greatest to least, with unambiguous directional instruction."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe addition operations, which do not apply to the task of arranging unit fractions by descending magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Instructions about adding only numerators would confuse students attempting to order 1/8, 1/3, 1/5, 1/6 from greatest to least."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/3, 1/5, 1/6, 1/8 correctly represents the fractions in descending order by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "de746700c9cb3ffc8a15",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks which list shows 1/8, 1/4, 1/2, 1/6 ordered from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe denominator management during addition, which is irrelevant to identifying the correct descending order among these four unit fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints about placing results over the same denominator would not help a learner identify which list correctly orders 1/8, 1/4, 1/2, 1/6 from largest to smallest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/4, 1/6, 1/8 correctly orders these fractions from largest to smallest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "7be7152fe61d6887d250",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem unambiguously instructs to order 1/3, 1/6, 1/8, 1/4 from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about adding fractions and managing denominators have no logical connection to the ordering task presented."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner following hints about numerator addition would be unable to determine the correct descending order for 1/3, 1/6, 1/8, 1/4."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/3, 1/4, 1/6, 1/8 correctly orders the fractions from largest to smallest by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "6c194dab47c4a2055a2c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice stem clearly asks which list shows 1/4, 1/5, 1/8, 1/2 ordered from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe addition procedures that contradict the ordering task, making the logical context invalid for ascending magnitude comparison."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Instructions about summing numerators while keeping denominators unchanged would confuse rather than guide a learner selecting the correct ascending sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/5, 1/4, 1/2 correctly represents the four fractions in ascending order by value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "f43fdda63ae7d8f8f01e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem asks which list shows 1/2, 1/3, 1/6, 1/5 ordered from largest to smallest with clear directional requirement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints reference adding fractions, which is not the operation required to identify the correct descending sequence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints about denominator handling during addition would mislead a learner trying to order 1/2, 1/3, 1/6, 1/5 from largest to smallest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/3, 1/5, 1/6 correctly orders the fractions from largest to smallest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "9dad3e5bac7044da99e5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem unambiguously asks which list shows 1/5, 1/3, 1/4, 1/8 ordered from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about placing results over the same denominator do not logically support identifying the correct descending order of these fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner reading hints about keeping denominators the same while adding would struggle to understand how to arrange 1/5, 1/3, 1/4, 1/8 correctly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/3, 1/4, 1/5, 1/8 correctly represents the fractions ordered from largest to smallest by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "c2feac20ad29babb6280",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly instructs to arrange 1/8, 1/4, 1/3, 1/5 from least to greatest with unambiguous directional intent."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe addition operations that are completely disconnected from the task of arranging fractions in ascending magnitude order."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Instructions about summing numerators and maintaining denominators would confuse a student attempting to identify the ascending order of these four fractions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/5, 1/4, 1/3 correctly orders the fractions from smallest to largest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "d8ebbd6722a28984af85",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the character and emoji introduction, the stem clearly asks which list shows 1/2, 1/8, 1/5, 1/4 ordered from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints reference addition procedures for same-denominator fractions, which have no connection to identifying ascending magnitude order."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints about keeping denominators constant while adding numerators contradict the core task of ordering 1/2, 1/8, 1/5, 1/4 by increasing value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/5, 1/4, 1/2 correctly represents the fractions in ascending order by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "8cadda4b8292c234e0bd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem, despite its emoji and character context, clearly instructs to arrange 1/2, 1/6, 1/3, 1/8 from least to greatest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about adding fractions with the same denominator have no logical connection to the task of identifying ascending order of magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner following hints about numerator addition would be misled when attempting to arrange 1/2, 1/6, 1/3, 1/8 from least to greatest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/6, 1/3, 1/2 correctly represents the fractions in ascending order by value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "0cbf8b8d67c1caac6c03",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem unambiguously asks to order 1/5, 1/8, 1/3, 1/2 from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about adding only numerators and maintaining denominators are logically irrelevant to the ordering task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Instructions about denominator handling during addition would not help a learner determine the correct descending sequence for these fractions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/3, 1/5, 1/8 correctly orders the fractions from largest to smallest by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "e1ba273142f07baa9a4a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice stem clearly asks to order 1/6, 1/2, 1/4, 1/3 from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about adding fractions with identical denominators are irrelevant to selecting the ascending order of these unit fractions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints about keeping denominators constant during addition would confuse a learner attempting to identify which order correctly represents 1/6, 1/2, 1/4, 1/3 from smallest to largest."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/6, 1/4, 1/3, 1/2 correctly represents the fractions in ascending order by value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "823b59942915e3273884",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice stem clearly instructs to arrange 1/5, 1/2, 1/4, 1/6 from least to greatest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints reference adding fractions, which contradicts the magnitude-comparison task being asked."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner reading hints about numerator addition and denominator constancy would be unable to correctly identify the ascending sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/6, 1/5, 1/4, 1/2 correctly represents the four fractions ordered from smallest to largest value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "1ee56aa8ad238b66f4da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem clearly asks which list shows 1/8, 1/2, 1/5, 1/3 ordered from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints describe addition procedures that are unrelated to the task of identifying ascending magnitude order."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Instructions about placing results over the same denominator would mislead a learner attempting to select the correct ascending sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/5, 1/3, 1/2 correctly orders the fractions from smallest to largest by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "a29cc0f4c84977667104",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem unambiguously asks to order 1/2, 1/8, 1/4, 1/3 from largest to smallest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about keeping denominators the same while adding numerators have no logical validity for a descending-order task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "A learner following hints about addition procedures would not understand how to arrange 1/2, 1/8, 1/4, 1/3 correctly in descending order."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2, 1/3, 1/4, 1/8 correctly represents the fractions in descending order by magnitude."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "sample_id": "ce8534ab9f74481c4a44",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem clearly instructs to order 1/6, 1/5, 1/2, 1/8 from smallest to largest."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The hints about adding fractions with matching denominators are entirely disconnected from the magnitude-comparison task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints focused on keeping denominators constant during addition would confuse a learner trying to determine the ascending order."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 1/8, 1/6, 1/5, 1/2 correctly represents the fractions ordered from smallest to largest by value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "order",
+      "clause": "Order",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples explicitly require learners to order or arrange unit fractions in a specified sequence, directly testing the foundational ordering skill. The stem phrasings consistently ask students to place fractions in sequence, whether through fill-in responses or multiple-choice selection.",
+      "sample_ids": [
+        "cb5c4674ee6eba74018c",
+        "21b8718955135339eef6",
+        "8f85c08b3cf007c6bdd3",
+        "2fa321742622f16e3c6c",
+        "6be7e394b101b8c585df",
+        "0518ef2b2f3bed3ae64d",
+        "de746700c9cb3ffc8a15",
+        "7be7152fe61d6887d250",
+        "6c194dab47c4a2055a2c",
+        "f43fdda63ae7d8f8f01e",
+        "9dad3e5bac7044da99e5",
+        "c2feac20ad29babb6280",
+        "d8ebbd6722a28984af85",
+        "8cadda4b8292c234e0bd",
+        "0cbf8b8d67c1caac6c03",
+        "e1ba273142f07baa9a4a",
+        "823b59942915e3273884",
+        "1ee56aa8ad238b66f4da",
+        "a29cc0f4c84977667104",
+        "ce8534ab9f74481c4a44"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "requirement_id": "unit_fractions",
+      "clause": "unit fractions",
+      "verdict": "PASS",
+      "reasoning": "Every sample uses exclusively unit fractions with numerator one and denominators between two and eight. No proper fractions, improper fractions, or mixed numbers appear in any stem, answer, option set, or hint across the packet.",
+      "sample_ids": [
+        "cb5c4674ee6eba74018c",
+        "21b8718955135339eef6",
+        "8f85c08b3cf007c6bdd3",
+        "2fa321742622f16e3c6c",
+        "6be7e394b101b8c585df",
+        "0518ef2b2f3bed3ae64d",
+        "de746700c9cb3ffc8a15",
+        "7be7152fe61d6887d250",
+        "6c194dab47c4a2055a2c",
+        "f43fdda63ae7d8f8f01e",
+        "9dad3e5bac7044da99e5",
+        "c2feac20ad29babb6280",
+        "d8ebbd6722a28984af85",
+        "8cadda4b8292c234e0bd",
+        "0cbf8b8d67c1caac6c03",
+        "e1ba273142f07baa9a4a",
+        "823b59942915e3273884",
+        "1ee56aa8ad238b66f4da",
+        "a29cc0f4c84977667104",
+        "ce8534ab9f74481c4a44"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "requirement_id": "smallest_to_largest",
+      "clause": "smallest to largest",
+      "verdict": "PASS",
+      "reasoning": "Samples with ascending-order requirements are well-represented across the packet with multiple formats and phrasings. Nine samples explicitly ask learners to order from smallest to largest or least to greatest, ensuring the ascending direction is thoroughly tested.",
+      "sample_ids": [
+        "2fa321742622f16e3c6c",
+        "6be7e394b101b8c585df",
+        "6c194dab47c4a2055a2c",
+        "c2feac20ad29babb6280",
+        "d8ebbd6722a28984af85",
+        "8cadda4b8292c234e0bd",
+        "e1ba273142f07baa9a4a",
+        "823b59942915e3273884",
+        "1ee56aa8ad238b66f4da",
+        "ce8534ab9f74481c4a44"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    },
+    {
+      "requirement_id": "vice_versa",
+      "clause": "vice versa",
+      "verdict": "PASS",
+      "reasoning": "The vice versa requirement, indicating that both directions must be tested, is satisfied through the presence of samples asking for largest-to-smallest ordering. Nine additional samples explicitly ask for descending order or largest-first sequencing, demonstrating balanced coverage of both directional variations.",
+      "sample_ids": [
+        "cb5c4674ee6eba74018c",
+        "8f85c08b3cf007c6bdd3",
+        "0518ef2b2f3bed3ae64d",
+        "de746700c9cb3ffc8a15",
+        "7be7152fe61d6887d250",
+        "f43fdda63ae7d8f8f01e",
+        "9dad3e5bac7044da99e5",
+        "0cbf8b8d67c1caac6c03",
+        "a29cc0f4c84977667104"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w8-haiku45-20260925:mat_g2_na_q4_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "30f1c2236030e3cb0f0cada168708f9f44af7cb912059c17228abe7fc1dbdb07",
+      "clause_ids": [
+        "order",
+        "unit_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ],
+      "response_ref": ".responses/s5-phaseC-w8-haiku45-20260925.json",
+      "response_digest": "1f331e37ff2f0179930f9131074975039fa87ed15080ed65f410c0efbfcda194",
+      "prompt_ref": ".responses/s5-phaseC-w8-haiku45-20260925.prompt.txt",
+      "prompt_digest": "785ecea3ee26ebab29087784723ef00c781dda02fd865dba14f9f33d36e27f3a",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q4_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q4_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: tool uses per the harness (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "I checked every ordering key in this node against the rule that a larger denominator names a smaller unit fraction, and all eleven are correct in the direction their stem requests - this is the counter-intuitive part of the competency and the generator gets it right consistently."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Both directions are present but badly imbalanced: only three of eleven samples ask smallest-to-largest, so the 'vice versa' clause is represented thinly relative to the descending direction that dominates."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Four unit fractions at a time is a reasonable load for this quarter, the denominators shown are ones the pupil has modelled, and each stem states the required direction explicitly before listing the fractions."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Although the wording alternates between ordering, arranging from greatest to least, and choosing the list that shows an order, the underlying item is always the same four-fraction permutation choice - never a two-fraction comparison, a placement on a number line, or a set of three."
+      "rationale": "All samples present unit fractions with denominators 2-8 and require ordering decisions appropriate for Grade 2 Quarter 4 learners. No complex reasoning or multi-step operations are imposed beyond identifying magnitude relationships."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The decoys are near-miss permutations that swap adjacent entries rather than obviously wrong lists, so the pupil must actually compare denominators, and the denominators shift across the quarter's set including the sixths."
+      "rationale": "The stems explicitly require ordering unit fractions in specified directions, directly aligning with the competency statement. Tasks consistently ask learners to arrange or identify correct orderings of four unit fractions each."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "While samples mathematically test the right skill, the presence of systematically incorrect hints across all twenty samples creates a critical pedagogical misalignment that undermines reliable competency demonstration. The hints describe addition rather than ordering.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four requirements fully decompose the competency: ordering is explicitly required, unit fractions form the content, smallest-to-largest is tested in multiple samples, and vice versa (largest-to-smallest) is equally tested throughout the set.",
+        "requirement_ids": [
+          "order",
+          "unit_fractions",
+          "smallest_to_largest",
+          "vice_versa"
+        ]
+      },
+      "clause_ids": [
+        "order",
+        "unit_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Both directional variations are represented across samples, with multiple question phrasings and formats included. However, the universal hint defect creates doubt about whether this packet can reliably differentiate student understanding of the competency.",
+      "clause_ids": [
+        "order",
+        "unit_fractions",
+        "smallest_to_largest",
+        "vice_versa"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Denominators stay between two and eight throughout with the numerator fixed at one, matching the unit-fraction range established earlier in the quarter."
+      "rationale": "Numerators are consistently 1, and denominators stay within 2-8, making the scale appropriate for Grade 2 learners who are building foundational understanding of unit fraction magnitude through denominators."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet includes two question formats (cloze with fill-in-blank and multiple-choice), varied stem phrasings (Order, Arrange, Which list shows), and multiple seeds that generate different sets of four fractions to order."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
