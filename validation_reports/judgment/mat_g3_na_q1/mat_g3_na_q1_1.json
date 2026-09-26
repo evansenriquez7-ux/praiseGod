@@ -1,7 +1,48 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "reviewer-c5-tarragon-flint-2549",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Read and write numbers up to 10 000 in numerals and in words.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "read",
+      "clause": "Read"
+    },
+    {
+      "kind": "task",
+      "id": "write",
+      "clause": "write"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_10000",
+      "clause": "up to 10 000"
+    },
+    {
+      "kind": "representation",
+      "id": "numerals",
+      "clause": "numerals"
+    },
+    {
+      "kind": "representation",
+      "id": "words",
+      "clause": "words"
+    }
+  ],
+  "packet_digest": "09495ab5303df418c8086495d36d10d98459dbd89de9692e8feac952f1857101",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,20 +52,87 @@
     46,
     500,
     501,
-    502
+    502,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "7de681385e6243dafeb1",
+    "3770a7e3434216debdea",
+    "f408824c2b1dc7db2499",
+    "3e79f6599ae023ca81b6",
+    "2d47b67a121448e632cf",
+    "c825e1df9b9e7b195f3b",
+    "6b429ee7a10179f6b54a",
+    "df6e0c69e0554c3ffe5e",
+    "5ae43f31cab0cd74b674",
+    "367cc1d229048cf517b0",
+    "8f71750e31dcdc5af0a3",
+    "dae3feadc2523ea3083a",
+    "09decf50a9d45a9544c1",
+    "4f4e8609c5ac71d4ca7c",
+    "3e63334339edb6802e6b",
+    "389a7d2e41316941af9f",
+    "97f5212a3b56bfd7c5d5"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 42,
       "formatter": "true_false",
       "question_text": "The number 1410 is written in words as 'one hundred forty-one'. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Read the number 1410 one place at a time, starting from the largest place.",
+        "Thousands: 1 → 'one thousand'.",
+        "Hundreds: 4 → 'four hundred'.",
+        "The full word form is: 'one thousand four hundred ten'."
+      ],
+      "sample_id": "7de681385e6243dafeb1",
+      "replay_digest": "e1ca644e4c20bdcc041caaf3af9bec9fbe0c69fbd343891bade67f0ab5e0c974"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Write 5688 in words.",
       "correct_answer": "five thousand six hundred eighty-eight",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +154,37 @@
           "value": "five thousand six hundred seventy-eight",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "five thousand six hundred eighty-eight",
+      "hints": [
+        "Read the number 5688 one place at a time, starting from the largest place.",
+        "Thousands: 5 → 'five thousand'.",
+        "Hundreds: 6 → 'six hundred'.",
+        "The full word form is: 'five thousand six hundred eighty-eight'."
+      ],
+      "sample_id": "3770a7e3434216debdea",
+      "replay_digest": "04e218e63859f9bb0cbc4e340dde0a1229669ee7abcfedf979c497a79680fae4"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Write the number: nine thousand five hundred twenty-one.",
       "correct_answer": 9521,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +210,36 @@
           "text": "9521",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 9521,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 500 + 20 + 1.",
+        "Add the parts together to get 9521."
+      ],
+      "sample_id": "f408824c2b1dc7db2499",
+      "replay_digest": "678ce8465ebc2fcb28bd4da757c85d2412276a66eef4b5f1cc380a553e1a0dd2"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Write the number: seven thousand eight hundred forty-four.",
       "correct_answer": 7844,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +261,36 @@
           "value": 4487,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7844,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 7000 + 800 + 40 + 4.",
+        "Add the parts together to get 7844."
+      ],
+      "sample_id": "3e79f6599ae023ca81b6",
+      "replay_digest": "f1e4a9438488830993537d6cec26c6ff04aa4d8a20dd602d5cefc6ab48ea40cc"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Write 7554 in words.",
       "correct_answer": "seven thousand five hundred fifty-four",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -138,25 +316,101 @@
           "text": "seven thousand five hundred forty-four",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "seven thousand five hundred fifty-four",
+      "hints": [
+        "Read the number 7554 one place at a time, starting from the largest place.",
+        "Thousands: 7 → 'seven thousand'.",
+        "Hundreds: 5 → 'five hundred'.",
+        "The full word form is: 'seven thousand five hundred fifty-four'."
+      ],
+      "sample_id": "2d47b67a121448e632cf",
+      "replay_digest": "2924c229e70d6f8e4694def77c556aa53ed0626accf701c5dc5117227365418c"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "The number written as 'nine thousand six hundred thirty' is 9620. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 600 + 30.",
+        "Add the parts together to get 9630."
+      ],
+      "sample_id": "c825e1df9b9e7b195f3b",
+      "replay_digest": "4b430a04be043a6400db4f39a005dfa1572608c3e21bb574c38602e0d4718c1c"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "The number written as 'six thousand seven hundred ninety-five' is 5976. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 6000 + 700 + 90 + 5.",
+        "Add the parts together to get 6795."
+      ],
+      "sample_id": "6b429ee7a10179f6b54a",
+      "replay_digest": "c34e344b499047841489655326e3476af9949a0b544a9c134fc7b400f0537ea9"
     },
     {
+      "node_id": "mat_g3_na_q1_1",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Write the number: three thousand seven hundred sixty-one.",
       "correct_answer": 3761,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -182,34 +436,1077 @@
           "text": "3751",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3761,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 3000 + 700 + 60 + 1.",
+        "Add the parts together to get 3761."
+      ],
+      "sample_id": "df6e0c69e0554c3ffe5e",
+      "replay_digest": "2dfb20405aba5f7e7af481babc86cf1727b145d171966c23d3b4a5cf8edbc964"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Write 4143 in words.",
+      "correct_answer": "four thousand one hundred forty-three",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "four thousand one hundred forty-three",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "three thousand four hundred fourteen",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "four thousand one hundred thirty-three",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "four thousand one hundred forty-four",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "four thousand one hundred forty-three",
+      "hints": [
+        "Read the number 4143 one place at a time, starting from the largest place.",
+        "Thousands: 4 → 'four thousand'.",
+        "Hundreds: 1 → 'one hundred'.",
+        "The full word form is: 'four thousand one hundred forty-three'."
+      ],
+      "sample_id": "5ae43f31cab0cd74b674",
+      "replay_digest": "8015a94d729fbf4e123e9e1e667341f126452a8c8f30318f43c877312d22e8b7"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "✝️ Daniel has a math challenge about baskets. Write the number: nine thousand one hundred eighty-two.",
+      "correct_answer": 9182,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9183,
+          "text": "9183",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2819,
+          "text": "2819",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9172,
+          "text": "9172",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9182,
+          "text": "9182",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 9182,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 9000 + 100 + 80 + 2.",
+        "Add the parts together to get 9182."
+      ],
+      "sample_id": "367cc1d229048cf517b0",
+      "replay_digest": "366a8633c4e21af32be791516e95484ac6c9ba7eb6b28ebb19f8488bf7b834cb"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Write 3232 in words.",
+      "correct_answer": "three thousand two hundred thirty-two",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "three thousand two hundred twenty-two",
+          "text": "three thousand two hundred twenty-two",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "three thousand two hundred thirty-three",
+          "text": "three thousand two hundred thirty-three",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three thousand two hundred thirty-two",
+          "text": "three thousand two hundred thirty-two",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "two thousand three hundred twenty-three",
+          "text": "two thousand three hundred twenty-three",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "three thousand two hundred thirty-two",
+      "hints": [
+        "Read the number 3232 one place at a time, starting from the largest place.",
+        "Thousands: 3 → 'three thousand'.",
+        "Hundreds: 2 → 'two hundred'.",
+        "The full word form is: 'three thousand two hundred thirty-two'."
+      ],
+      "sample_id": "8f71750e31dcdc5af0a3",
+      "replay_digest": "e8b10c780e9c1d246e41983aac15741c27168ecac136bf8b7ef885d3b94928a3"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "The number written as 'one thousand seven hundred seventy-eight' is 1778. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 1000 + 700 + 70 + 8.",
+        "Add the parts together to get 1778."
+      ],
+      "sample_id": "dae3feadc2523ea3083a",
+      "replay_digest": "b1bd2d3425ec776f9d0839072fc5e17caa58ff33bcba46cd8be56d4214db8556"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Write 27 in words.",
+      "correct_answer": "twenty-seven",
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "seventy-two",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two hundred seventy",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seventeen",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "twenty-seven",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "twenty-seven",
+      "hints": [
+        "Read the number 27 one place at a time, starting from the largest place.",
+        "The full word form is: 'twenty-seven'."
+      ],
+      "sample_id": "09decf50a9d45a9544c1",
+      "replay_digest": "325d9fb6e939fa7b753414c5b2943d03672ed83e7b1e8d0a931224d1157134aa"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "The number written as 'twenty-two' is 220. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 20 + 2.",
+        "Add the parts together to get 22."
+      ],
+      "sample_id": "4f4e8609c5ac71d4ca7c",
+      "replay_digest": "2a14a1f545b17540440881575433e3bfef55de94c4a48d02a6033b901aab19e2"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "Write the number: two thousand six hundred twenty-five.",
+      "correct_answer": 2625,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2625,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2615,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5262,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2626,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2625,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 2000 + 600 + 20 + 5.",
+        "Add the parts together to get 2625."
+      ],
+      "sample_id": "3e63334339edb6802e6b",
+      "replay_digest": "0e1db034b0a698ca09bb4db985b7be3ed49b365c77291bb6267e7a9a287bd7a1"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Write 4245 in words.",
+      "correct_answer": "four thousand two hundred forty-five",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "four thousand two hundred forty-six",
+          "text": "four thousand two hundred forty-six",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "four thousand two hundred thirty-five",
+          "text": "four thousand two hundred thirty-five",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "five thousand four hundred twenty-four",
+          "text": "five thousand four hundred twenty-four",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "four thousand two hundred forty-five",
+          "text": "four thousand two hundred forty-five",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": "four thousand two hundred forty-five",
+      "hints": [
+        "Read the number 4245 one place at a time, starting from the largest place.",
+        "Thousands: 4 → 'four thousand'.",
+        "Hundreds: 2 → 'two hundred'.",
+        "The full word form is: 'four thousand two hundred forty-five'."
+      ],
+      "sample_id": "389a7d2e41316941af9f",
+      "replay_digest": "a9388fa78cecafce921c1a5882735c462066aa745a4ab89368596089e3a0e4c9"
+    },
+    {
+      "node_id": "mat_g3_na_q1_1",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Write the number: four thousand six hundred twenty.",
+      "correct_answer": 4620,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4610,
+          "text": "4610",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 264,
+          "text": "264",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4621,
+          "text": "4621",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4620,
+          "text": "4620",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4620,
+      "hints": [
+        "Identify each word part and its place value.",
+        "Expanded form: 4000 + 600 + 20.",
+        "Add the parts together to get 4620."
+      ],
+      "sample_id": "97f5212a3b56bfd7c5d5",
+      "replay_digest": "9f77245a9251d8e3df2a17fd136d55cc4f130e842f0290e07a6bbc3bd801410d"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "7de681385e6243dafeb1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format clearly asks whether 1410 corresponds to a specific word form. Students must determine if the stated word form matches the numeral shown, with no confusion about the evaluation target or expected response type."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement that 1410 is one hundred forty-one is mathematically false; the correct word form is one thousand four hundred ten. The answer of False correctly reflects this mathematical reality, and provided hints confirm the accurate interpretation and decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses straightforward language appropriate for third-grade reading level. The true/false structure provides clear evaluation expectation, making the task accessible to developing readers learning place value concepts and number naming conventions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct: 1410 decomposes as 1 thousand plus 4 hundreds plus 1 ten plus 0 ones, which reads as one thousand four hundred ten, not one hundred forty-one. Hints accurately show this place value decomposition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "3770a7e3434216debdea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The directive to write 5688 in words is unambiguous and specific. Students must convert from numeral form to word form. The four distinct options provide meaningful distractors that represent plausible-sounding but incorrect answers."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 5688 converts correctly to five thousand six hundred eighty-eight. Distractors vary systematically: one changes eighty to eighty-nine, another transposes major digit positions, another shifts the numeral value. All options represent valid numbers but only one matches 5688."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format is appropriate and familiar to Grade 3 learners. The stem asks for a single skill (numeral-to-words conversion), and options are distinct enough for students to select the correct answer after applying place value understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is mathematically sound: 5000 + 600 + 80 + 8 = 5688, and the word form accurately represents this value. Distractors contain mathematically valid numbers that do not match the given numeral."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "f408824c2b1dc7db2499",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt to write the number given in word form (nine thousand five hundred twenty-one) is clear and focused. Students perform the reverse conversion: from words to numerals, with four plausible answer choices provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine thousand five hundred twenty-one equals 9521. The expanded form shown in hints (9000 + 500 + 20 + 1) explicitly demonstrates the composition. Distractors include off-by-one errors and digit transpositions that specifically test place value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The word-to-numeral conversion format is appropriate for Grade 3 students practicing reversal skills. Language is simple and direct, asking students to perform a specific mathematical action without ambiguity or unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical conversion is correct: 9000 + 500 + 20 + 1 = 9521. Hints break down the process step-by-step using explicit place value notation, and the answer aligns with this decomposition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "3e79f6599ae023ca81b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice format asking students to write the numeral for seven thousand eight hundred forty-four. Each option is a distinct number, allowing students to demonstrate understanding through accurate selection."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven thousand eight hundred forty-four correctly converts to 7844. Distractors vary from the correct answer by changing individual digits (7834, 7845) or reversing digit order (4487), each testing specific place value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is straightforward for third graders: convert words to numerals and select the correct option. Language and item length are appropriate for the grade level and learning objective."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is mathematically accurate: 7000 + 800 + 40 + 4 = 7844. Expanded form in hints confirms this decomposition, and all four options represent valid but distinct numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "2d47b67a121448e632cf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The request to write 7554 in words is unambiguous and focused. Students must read the numeral and convert it to word form, selecting from four options that vary in specific place values."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 7554 correctly becomes seven thousand five hundred fifty-four. Distractors change single digits or create similar-sounding alternatives, effectively testing whether students accurately identify each place value."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple numeral-to-words conversion format is familiar to Grade 3 students practicing place value skills. The question and answer options are phrased in age-appropriate language without unnecessary complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is correct: 7000 + 500 + 50 + 4 = 7554 expressed as seven thousand five hundred fifty-four. Hints break this into place values, and distractors represent other valid numbers that differ from the target."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "c825e1df9b9e7b195f3b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format asks whether the word form nine thousand six hundred thirty corresponds to 9620. The question is direct and requires students to verify if the numeral matches the stated word form."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The word form nine thousand six hundred thirty equals 9630, not 9620. The answer of False is mathematically correct. Hints decompose the actual value (9000 + 600 + 30) to show the error in the stem statement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is phrased in straightforward language appropriate for Grade 3 reading level. The true/false structure asks for a simple judgment about a number relationship, making it accessible to emerging readers."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is sound: nine thousand six hundred thirty breaks down as 9000 + 600 + 30 = 9630, which is not 9620. The discrepancy (missing zero in ones place) tests careful reading and place value understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "6b429ee7a10179f6b54a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false statement asks whether six thousand seven hundred ninety-five corresponds to 5976. Students must determine if the word form and numeral match, with a clear yes/no evaluation required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six thousand seven hundred ninety-five equals 6795, not 5976. The False answer is mathematically correct. Hints accurately decompose the target value and show the discrepancy between the word form and the incorrect numeral."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear true/false format with language appropriate for Grade 3 learners. Students must recognize that the numeral 5976 does not match the provided word form, testing their number naming knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The decomposition is accurate: six thousand seven hundred ninety-five = 6000 + 700 + 90 + 5 = 6795, not 5976. The distractors test whether students carefully track thousands digit and other place values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "df6e0c69e0554c3ffe5e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks students to write the numeral for three thousand seven hundred sixty-one. The single-answer expected response and four-option multiple-choice format make the task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three thousand seven hundred sixty-one equals 3761. All options are valid numerals, with distractors representing related numbers (1673, 3762, 3751) that test specific place value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in-the-blank format with multiple choices is accessible to Grade 3 students. The word form is clearly stated, and the task (convert to numerals) represents a core competency for the quarter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is correct: 3000 + 700 + 60 + 1 = 3761. Hints break down the process step-by-step using place value, and distractors contain mathematically valid but incorrect values."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "5ae43f31cab0cd74b674",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice request to write 4143 in words. Students must convert the numeral to word form and select the matching option from four distinct alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 4143 correctly becomes four thousand one hundred forty-three. Distractors include transposed digits (three thousand four hundred fourteen), off-by-one variations (forty-four, thirty-three), and other plausible incorrect responses."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Straightforward numeral-to-words conversion format appropriate for Grade 3, Quarter 1. Multiple-choice format provides manageable options for students applying place value knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is mathematically sound: 4000 + 100 + 40 + 3 = 4143 reads as four thousand one hundred forty-three. Hints break this into place values, and distractors represent valid but incorrect interpretations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "367cc1d229048cf517b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic wrapper about Daniel and a mathematics challenge involving baskets, the core task remains unambiguous: write the numeral for nine thousand one hundred eighty-two. Thematic element does not obscure the mathematical objective."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine thousand one hundred eighty-two equals 9182. The thematic framing does not alter the mathematics or create logical inconsistency. The problem remains valid as a numeral-from-words conversion exercise."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context about Daniel and a math challenge with baskets is engaging for Grade 3 learners. The mathematical task remains clear despite the contextual wrapper, with word form and cloze format supporting student understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical conversion is correct: 9000 + 100 + 80 + 2 = 9182. Thematic framing does not introduce mathematical errors or confusion; it serves as a pure contextual element enhancing engagement."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "8f71750e31dcdc5af0a3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks students to write 3232 in words despite the basketball emoji and theme about Isko. The task is mathematically clear: convert numeral to word form."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 3232 becomes three thousand two hundred thirty-two. The thematic elements (basketball, Isko name) do not interfere with or alter the mathematical content or relationships in the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball theme and character name provide culturally relevant context for Grade 3 learners without obscuring the mathematical objective. The word-to-numeral conversion remains the central task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is accurate: 3000 + 200 + 30 + 2 = 3232 expressed as three thousand two hundred thirty-two. Distractors test specific digit accuracy, and thematic context adds no mathematical error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "dae3feadc2523ea3083a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format asks whether one thousand seven hundred seventy-eight corresponds to 1778. The task is unambiguous: verify the numeral-word form correspondence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One thousand seven hundred seventy-eight equals 1778. Unlike several previous false statements, this one is mathematically correct, and the answer of True reflects this accuracy. Hints confirm the decomposition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple true/false format with clear language for Grade 3 readers. Students must recognize that this numeral correctly matches the provided word form, testing their understanding of number naming."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is sound: 1000 + 700 + 70 + 8 = 1778 expressed as one thousand seven hundred seventy-eight. The True answer correctly affirms this correspondence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "09decf50a9d45a9544c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice request to write 27 in words. Students must convert a two-digit numeral to word form. The four options are distinct and test understanding of word number naming."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 27 becomes twenty-seven. Distractors include the reversed form (seventy-two), incorrect place value interpretation (two hundred seventy), and off-by-one error (seventeen). All options represent valid numbers but only one matches 27."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The two-digit format is appropriate for Grade 3 review content. Converting 27 to words requires understanding of tens and ones places, appropriate for this grade and quarter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is correct: 20 + 7 = 27 becomes twenty-seven. This two-digit example tests place value understanding at a foundational level, providing appropriate review."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "4f4e8609c5ac71d4ca7c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format asks whether twenty-two corresponds to 220. This is a clear verification task testing whether students understand digit position value correctly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Twenty-two equals 22, not 220. The False answer is mathematically correct. This problem specifically targets a common misconception in which students confuse number naming with place value positioning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format is appropriate and accessible for Grade 3. This item targets a specific misconception, making it pedagogically valuable for addressing student number sense development."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is sound: twenty-two = 20 + 2 = 22, not 220. Hints show the correct decomposition, and the False answer appropriately corrects the misconception presented in the stem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "3e63334339edb6802e6b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice direction to write the numeral for two thousand six hundred twenty-five. The task is focused and unambiguous, requiring numeral-from-words conversion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two thousand six hundred twenty-five equals 2625. Distractors vary by changing single digits (2615, 2626) or transposing digit order (5262), effectively testing whether students track each place value accurately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format with multiple choices supports Grade 3 learners converting words to numerals. Language is straightforward and the item structure is familiar to students developing numeracy skills."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is mathematically correct: 2000 + 600 + 20 + 5 = 2625. Expanded form in hints confirms the place value breakdown, and all options represent distinct valid numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "389a7d2e41316941af9f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks students to write 4245 in words, providing four options for selection. The task is clear and focused on numeral-to-word conversion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numeral 4245 becomes four thousand two hundred forty-five. Distractors change single digits (forty-six, thirty-five) or transpose value positions (five thousand four hundred twenty-four), testing specific place value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Accessible multiple-choice format for Grade 3 learners developing numeracy skills. The task directly addresses converting numerals to words, a core Quarter 1 competency."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The conversion is accurate: 4000 + 200 + 40 + 5 = 4245 expressed as four thousand two hundred forty-five. Hints break decomposition into place values, and distractors represent other valid numbers."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "sample_id": "97f5212a3b56bfd7c5d5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze item asks students to write the numeral for four thousand six hundred twenty. The task is unambiguous: convert word form to numerals with four answer choices provided."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four thousand six hundred twenty equals 4620. The distractors include an implausibly low value (264), nearby values (4610, 4621), and the correct answer, testing student discrimination of accurate place value conversion."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Clear multiple-choice format with straightforward language appropriate for third-grade reading level. The word-to-numeral conversion is a familiar task supporting the grade-level competency."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical conversion is sound: 4000 + 600 + 20 = 4620. Expanded form confirms place value decomposition, and distractors offer plausible but incorrect alternatives testing understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "read",
+      "clause": "Read",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples directly test the reading competency across diverse formats: true/false items asking students to verify whether numerals match word forms (samples 1, 6, 7, 12, 14), numeral-to-words conversion items (samples 2, 5, 9, 11, 13, 16), and word-to-numeral conversion items (samples 3, 4, 8, 10, 15, 17) all require reading and interpreting numbers in various forms. Every sample involves reading in some capacity.",
+      "sample_ids": [
+        "7de681385e6243dafeb1",
+        "3770a7e3434216debdea",
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "2d47b67a121448e632cf",
+        "c825e1df9b9e7b195f3b",
+        "6b429ee7a10179f6b54a",
+        "df6e0c69e0554c3ffe5e",
+        "5ae43f31cab0cd74b674",
+        "367cc1d229048cf517b0",
+        "8f71750e31dcdc5af0a3",
+        "dae3feadc2523ea3083a",
+        "09decf50a9d45a9544c1",
+        "4f4e8609c5ac71d4ca7c",
+        "3e63334339edb6802e6b",
+        "389a7d2e41316941af9f",
+        "97f5212a3b56bfd7c5d5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "requirement_id": "write",
+      "clause": "write",
+      "verdict": "PASS",
+      "reasoning": "The write competency is explicitly tested through samples asking students to convert word forms to numerals: sample 3 (nine thousand five hundred twenty-one becomes 9521), sample 4 (seven thousand eight hundred forty-four becomes 7844), sample 8 (three thousand seven hundred sixty-one becomes 3761), sample 10 (nine thousand one hundred eighty-two becomes 9182), and sample 15 (two thousand six hundred twenty-five becomes 2625). These items directly assess the writing competency.",
+      "sample_ids": [
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "df6e0c69e0554c3ffe5e",
+        "367cc1d229048cf517b0",
+        "3e63334339edb6802e6b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "All seventeen samples work with numeric values in various forms. Every sample presents numbers either as numerals (1410, 5688, 27, 4245, and others) or as words (one thousand four hundred ten, five thousand six hundred eighty-eight, nine thousand five hundred twenty-one, and others), directly addressing the numbers requirement of the competency.",
+      "sample_ids": [
+        "7de681385e6243dafeb1",
+        "3770a7e3434216debdea",
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "2d47b67a121448e632cf",
+        "c825e1df9b9e7b195f3b",
+        "6b429ee7a10179f6b54a",
+        "df6e0c69e0554c3ffe5e",
+        "5ae43f31cab0cd74b674",
+        "367cc1d229048cf517b0",
+        "8f71750e31dcdc5af0a3",
+        "dae3feadc2523ea3083a",
+        "09decf50a9d45a9544c1",
+        "4f4e8609c5ac71d4ca7c",
+        "3e63334339edb6802e6b",
+        "389a7d2e41316941af9f",
+        "97f5212a3b56bfd7c5d5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "requirement_id": "up_to_10000",
+      "clause": "up to 10 000",
+      "verdict": "PASS",
+      "reasoning": "All samples use numbers within the specified range. The smallest numeric value is 22 (samples 13 and 14) and the largest is 9630 (sample 6), all well within the ten thousand upper bound. No sample uses a number exceeding 10,000, confirming full adherence to the range specification.",
+      "sample_ids": [
+        "7de681385e6243dafeb1",
+        "3770a7e3434216debdea",
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "2d47b67a121448e632cf",
+        "c825e1df9b9e7b195f3b",
+        "6b429ee7a10179f6b54a",
+        "df6e0c69e0554c3ffe5e",
+        "5ae43f31cab0cd74b674",
+        "367cc1d229048cf517b0",
+        "8f71750e31dcdc5af0a3",
+        "dae3feadc2523ea3083a",
+        "09decf50a9d45a9544c1",
+        "4f4e8609c5ac71d4ca7c",
+        "3e63334339edb6802e6b",
+        "389a7d2e41316941af9f",
+        "97f5212a3b56bfd7c5d5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "requirement_id": "numerals",
+      "clause": "numerals",
+      "verdict": "PASS",
+      "reasoning": "Numerals are represented throughout the sample set. Every sample includes numbers in numeral form: 1410, 5688, 9521, 7844, 7554, 9620, 5976, 3761, 4143, 9182, 3232, 1778, 27, 220, 22, 2625, 4245, and 4620. Students encounter and work with numeral representations across multiple contexts and question types.",
+      "sample_ids": [
+        "7de681385e6243dafeb1",
+        "3770a7e3434216debdea",
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "2d47b67a121448e632cf",
+        "c825e1df9b9e7b195f3b",
+        "6b429ee7a10179f6b54a",
+        "df6e0c69e0554c3ffe5e",
+        "5ae43f31cab0cd74b674",
+        "367cc1d229048cf517b0",
+        "8f71750e31dcdc5af0a3",
+        "dae3feadc2523ea3083a",
+        "09decf50a9d45a9544c1",
+        "4f4e8609c5ac71d4ca7c",
+        "3e63334339edb6802e6b",
+        "389a7d2e41316941af9f",
+        "97f5212a3b56bfd7c5d5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    },
+    {
+      "requirement_id": "words",
+      "clause": "words",
+      "verdict": "PASS",
+      "reasoning": "Word forms of numbers appear throughout the samples. Examples include one thousand four hundred ten, five thousand six hundred eighty-eight, nine thousand five hundred twenty-one, seven thousand eight hundred forty-four, seven thousand five hundred fifty-four, twenty-seven, and many others. Students encounter and work with word number representations across multiple item formats and sample types.",
+      "sample_ids": [
+        "7de681385e6243dafeb1",
+        "3770a7e3434216debdea",
+        "f408824c2b1dc7db2499",
+        "3e79f6599ae023ca81b6",
+        "2d47b67a121448e632cf",
+        "c825e1df9b9e7b195f3b",
+        "6b429ee7a10179f6b54a",
+        "df6e0c69e0554c3ffe5e",
+        "5ae43f31cab0cd74b674",
+        "367cc1d229048cf517b0",
+        "8f71750e31dcdc5af0a3",
+        "dae3feadc2523ea3083a",
+        "09decf50a9d45a9544c1",
+        "4f4e8609c5ac71d4ca7c",
+        "3e63334339edb6802e6b",
+        "389a7d2e41316941af9f",
+        "97f5212a3b56bfd7c5d5"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w13-haiku45-20260925:mat_g3_na_q1_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "09495ab5303df418c8086495d36d10d98459dbd89de9692e8feac952f1857101",
+      "clause_ids": [
+        "read",
+        "write",
+        "numbers",
+        "up_to_10000",
+        "numerals",
+        "words"
+      ],
+      "response_ref": ".responses/s5-phaseC-w13-haiku45-20260925.json",
+      "response_digest": "dea22745648b4bed6a5e7cf2ad8c8bcf25ff7293f8789aeda6ff0eecad14e65e",
+      "prompt_ref": ".responses/s5-phaseC-w13-haiku45-20260925.prompt.txt",
+      "prompt_digest": "07ce35a5cc2d7b6cb51d4c20d27e7c763dafe7af3607d9dcd17b1cc882138a6c",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sample problems are appropriately scaffolded for Grade 3, Quarter 1 students. Most problems work with four-digit numbers, developing place value understanding across thousands, hundreds, tens, and ones positions. Two samples use two-digit numbers, providing review of foundational concepts. All problem formats and vocabulary are suitable for early third-grade learners developing numeracy skills without excessive cognitive load."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Samples directly address the stated competency of reading and writing numbers up to 10,000 in both numerals and words. The mix of question formats (true/false, multiple choice, cloze) assesses both reading numerals and expressing them as words, plus reading word forms and expressing them as numerals, fully capturing both directions of the dual competency."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Reading and writing are both covered, but the true/false branch is degenerate: all three such items, the 1410 claim, the nine thousand six hundred thirty claim and the six thousand seven hundred ninety-five claim, have key False. A pupil who answers False reflexively scores every one of them without reading the number words."
+      "verdict": "PASS",
+      "rationale": "All six decomposed requirements are substantively present across the sample set: reading (converting between forms), writing (converting between forms), numbers (all items feature numeric content), the range up to 10,000 (highest sample value is 9630), numerals (present in 12 stems or answers), and words (present throughout as both stems and answers).",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The six decomposed requirements extract and preserve the core elements of the competency statement without loss or invention: the two verbs (read, write), the subject matter (numbers), the scope (up to 10,000), and the two representational formats (numerals, words). Each decomposed element maps directly to the original competency wording.",
+        "requirement_ids": [
+          "read",
+          "write",
+          "numbers",
+          "up_to_10000",
+          "numerals",
+          "words"
+        ]
+      },
+      "clause_ids": [
+        "read",
+        "write",
+        "numbers",
+        "up_to_10000",
+        "numerals",
+        "words"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Numeral to word and word to numeral both occur several times, and the word forms exercise the awkward parts of the naming system, including the hyphenated tens such as eighty-eight and fifty-four and a value ending in a zero ones digit."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every number is four digits with no zero-place complications beyond a trailing zero, and the word forms follow a single consistent pattern of thousands, hundreds and a hyphenated remainder, which is the Grade 3 Quarter 1 expectation."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three response types appear and the direction of translation alternates, so the node offers production of the word form, production of the numeral, and verification of a claimed equivalence rather than a single translation drill."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Distractor quality is uneven in a way that undercuts the progression. Some options are well chosen digit reversals such as four thousand five hundred fifty-seven against the key seven thousand five hundred fifty-four, but the false claim that 1410 is 'one hundred forty-one' names a three-digit number for a four-digit numeral, which any pupil rejects on length alone."
+      "rationale": "The seventeen samples provide varied approaches to assessing both reading and writing competencies. Question formats span true/false verification, multiple-choice selection, and fill-in-the-blank cloze items. Numeric ranges vary from two-digit (27, 22) through four-digit examples, providing breadth. Thematic wrappers appear in two samples without interfering with mathematical clarity or focus.",
+      "clause_ids": [
+        "read",
+        "write",
+        "numbers",
+        "up_to_10000",
+        "numerals",
+        "words"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All numerals fall between 1410 and 9630, inside the competency's 10 000 ceiling and high enough to require the thousands word, so the range matches the stated bound rather than lingering in easier three-digit territory."
+      "rationale": "Cognitive demand and pacing align with Grade 3, Quarter 1 expectations for place value development. Problems progress from foundational two-digit examples through four-digit compositions. Provided hints and expanded forms support learning scaffolding appropriate to the quarter. No samples introduce operations or concepts beyond reading/writing numerals, maintaining focus on the specific competency."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Multiple pedagogical variants are demonstrated: three distinct question types (true/false, multiple-choice, cloze), different numeric ranges (two-digit and four-digit), both reading-to-words and words-to-reading directions, and contextual variations including cultural and thematic elements. This variety supports student recognition of the competency across different problem presentations and response formats."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

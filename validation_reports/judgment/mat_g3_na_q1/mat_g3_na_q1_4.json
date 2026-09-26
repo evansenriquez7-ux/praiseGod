@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q1_4",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Round numbers to the nearest ten, hundred, or thousand.",
+    "grade": 3,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "round",
+      "clause": "Round"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "property",
+      "id": "nearest_ten",
+      "clause": "nearest ten"
+    },
+    {
+      "kind": "property",
+      "id": "hundred",
+      "clause": "hundred"
+    },
+    {
+      "kind": "property",
+      "id": "thousand",
+      "clause": "thousand"
+    }
+  ],
+  "packet_digest": "31d64391638a12d8d14d631b09de5bbb24598ae2b0b90f0cd8c021c3235497e7",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,25 +52,73 @@
     601,
     602,
     603,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "7f1f817ba2f6ef8fab58",
+    "76df8a47a8d7a83d94e3",
+    "ba3faf22ff3795892dae",
+    "6758f3d01139b4d161c6",
+    "5ae4fe548e26f58b05ab",
+    "8796cd362f59b865db4c",
+    "a3caf1b2be02bdf24705",
+    "8a9f7598a7f766af435b",
+    "22321e31364940f403f8",
+    "5a91ee29347759c53617",
+    "0ab49b4f35529f8aae7a",
+    "3d2b5cb7d6607078844c",
+    "099af6147954be5419c5",
+    "ea048806443b2596aa02",
+    "e9a7b743f71de718372e",
+    "698f4ae820c5b0b0946f",
+    "9e54d149ca9e327aa4e7",
+    "ca4e0625ebe4219867c2",
+    "3429e2d21caa14fed89a",
+    "fff269ed0142cabf352a",
+    "87c8599dc8cf33a4a93d",
+    "31e99e02de46365fb7af"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 42,
       "formatter": "cloze",
-      "question_text": "Round 38 to the nearest 10.",
-      "correct_answer": 40,
+      "question_text": "Round 1815 to the nearest 1000.",
+      "correct_answer": 2000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 50,
-          "text": "50",
+          "value": 2010,
+          "text": "2010",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": 2000,
+          "text": "2000",
           "is_correct": true
         },
         {
@@ -45,129 +129,327 @@
         },
         {
           "key": "D",
-          "value": 30,
-          "text": "30",
+          "value": 1000,
+          "text": "1000",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2000,
+      "hints": [
+        "Round 1815 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 8.",
+        "Since 8 ≥ 5, round up.",
+        "1815 rounded to the closest thousands is 2000."
+      ],
+      "sample_id": "7f1f817ba2f6ef8fab58",
+      "replay_digest": "e132453cadf2bcb9417fd786ea1196abf36d95e0d6bc53a49c7631122f5e7836"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Round 122 to the nearest 10.",
-      "correct_answer": 120,
+      "question_text": "Round 3929 to the nearest 10.",
+      "correct_answer": 3930,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 121,
+          "value": 3940,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 130,
+          "value": 3900,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 100,
+          "value": 3920,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 120,
+          "value": 3930,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 3930,
+      "hints": [
+        "Round 3929 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 9.",
+        "Since 9 ≥ 5, round up.",
+        "3929 rounded to the closest tens is 3930."
+      ],
+      "sample_id": "76df8a47a8d7a83d94e3",
+      "replay_digest": "a3495b9723f72a5bb447b0244ba5076f554cab4bbdeac69acded2c1b28087936"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "The number 105 is marked on the number line. Round 105 to the nearest 100.",
+      "question_text": "The number 3225 is marked on the number line. Round 3225 to the nearest 100.",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 115,
+          "value": 3235,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 0,
+          "value": 3000,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 100,
+          "value": 3200,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 110,
+          "value": 3210,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3200,
+      "hints": [
+        "Round 3225 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 2.",
+        "Since 2 < 5, round down (keep the hundreds digit the same).",
+        "3225 rounded to the closest hundreds is 3200."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 3225,
+        "start": 3100,
+        "end": 3400,
+        "interval": 10,
+        "divisions": 30,
+        "correct_position": 3225,
+        "dot_value": 3225,
+        "content_type": "whole_number",
+        "labels": [
+          "3100",
+          "3400"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 3200.0,
+        "target": 3200.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "c8d96c7df22c14977832890614a92ec1d9b69d6c66f6576093840f0a4005359e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "3100",
+            "3110",
+            "3120",
+            "3130",
+            "3140",
+            "3150",
+            "3160",
+            "3170",
+            "3180",
+            "3190",
+            "3200",
+            "3210",
+            "3220",
+            "3230",
+            "3240",
+            "3250",
+            "3260",
+            "3270",
+            "3280",
+            "3290",
+            "3300",
+            "3310",
+            "3320",
+            "3330",
+            "3340",
+            "3350",
+            "3360",
+            "3370",
+            "3380",
+            "3390",
+            "3400"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ba3faf22ff3795892dae",
+      "replay_digest": "5658d409c08f7171e5ea9de7d01403737e895ef3d70354c11404c11e6df999e1"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Round 230 to the nearest 100.",
-      "correct_answer": 200,
+      "question_text": "Round 2630 to the nearest 100.",
+      "correct_answer": 2600,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 200,
+          "value": 2600,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 210,
+          "value": 2610,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 2000,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 201,
+          "value": 2601,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2600,
+      "hints": [
+        "Round 2630 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 3.",
+        "Since 3 < 5, round down (keep the hundreds digit the same).",
+        "2630 rounded to the closest hundreds is 2600."
+      ],
+      "sample_id": "6758f3d01139b4d161c6",
+      "replay_digest": "d51cbf3380ae0096b1127dd9058b3629e72d94b3453f9da2511a1ee2b23521ed"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Round 158 to the nearest 10.",
-      "correct_answer": 160,
+      "question_text": "Round 5096 to the nearest 10.",
+      "correct_answer": 5100,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 150,
+          "value": 5090,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 100,
+          "value": 5000,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 170,
+          "value": 5110,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 160,
+          "value": 5100,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 5100,
+      "hints": [
+        "Round 5096 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 6.",
+        "Since 6 ≥ 5, round up.",
+        "5096 rounded to the closest tens is 5100."
+      ],
+      "sample_id": "5ae4fe548e26f58b05ab",
+      "replay_digest": "326bf8ca883de6b7d23c683efdcc811ba5e5e4d2fd9fba66bb9ce4973d5c7a4e"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "The number 8438 is marked on the number line. Round 8438 to the nearest 100.",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -189,13 +471,115 @@
           "value": 8410,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 8400,
+      "hints": [
+        "Round 8438 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 3.",
+        "Since 3 < 5, round down (keep the hundreds digit the same).",
+        "8438 rounded to the closest hundreds is 8400."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 8438,
+        "start": 8300,
+        "end": 8600,
+        "interval": 10,
+        "divisions": 30,
+        "correct_position": 8438,
+        "dot_value": 8438,
+        "content_type": "whole_number",
+        "labels": [
+          "8300",
+          "8600"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 8400.0,
+        "target": 8400.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "45d45faa8159ad0798fb0d87ff0d16babc1737cec0d6f4c44bd11194576a4421",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "8300",
+            "8310",
+            "8320",
+            "8330",
+            "8340",
+            "8350",
+            "8360",
+            "8370",
+            "8380",
+            "8390",
+            "8400",
+            "8410",
+            "8420",
+            "8430",
+            "8440",
+            "8450",
+            "8460",
+            "8470",
+            "8480",
+            "8490",
+            "8500",
+            "8510",
+            "8520",
+            "8530",
+            "8540",
+            "8550",
+            "8560",
+            "8570",
+            "8580",
+            "8590",
+            "8600"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "8796cd362f59b865db4c",
+      "replay_digest": "af48d55384267b676e14cfa315931d90c2db6ae3fdf6422dff75db749fb28607"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "The number 6148 is marked on the number line. Round 6148 to the nearest 1000.",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -217,13 +601,115 @@
           "value": 6248,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6000,
+      "hints": [
+        "Round 6148 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 1.",
+        "Since 1 < 5, round down (keep the thousands digit the same).",
+        "6148 rounded to the closest thousands is 6000."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 6148,
+        "start": 5000,
+        "end": 8000,
+        "interval": 100,
+        "divisions": 30,
+        "correct_position": 6148,
+        "dot_value": 6148,
+        "content_type": "whole_number",
+        "labels": [
+          "5000",
+          "8000"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 6000.0,
+        "target": 6000.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "c4b72b35d61e32fdc4d9840e5328120711d3046f55329fac1da8b3d1323ad6bc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "5000",
+            "5100",
+            "5200",
+            "5300",
+            "5400",
+            "5500",
+            "5600",
+            "5700",
+            "5800",
+            "5900",
+            "6000",
+            "6100",
+            "6200",
+            "6300",
+            "6400",
+            "6500",
+            "6600",
+            "6700",
+            "6800",
+            "6900",
+            "7000",
+            "7100",
+            "7200",
+            "7300",
+            "7400",
+            "7500",
+            "7600",
+            "7700",
+            "7800",
+            "7900",
+            "8000"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a3caf1b2be02bdf24705",
+      "replay_digest": "4caee0013cd487fcd453f7eb484d4c86945655dc3d4a57c6b4fdf200e543ec3e"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Round 6952 to the nearest 1000.",
       "correct_answer": 7000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -249,129 +735,411 @@
           "text": "0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7000,
+      "hints": [
+        "Round 6952 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 9.",
+        "Since 9 ≥ 5, round up.",
+        "6952 rounded to the closest thousands is 7000."
+      ],
+      "sample_id": "8a9f7598a7f766af435b",
+      "replay_digest": "6ed4d5533af60bb591c14c166265934abf9ae7730a992ef4451c8b7a5911ec30"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Round 220 to the nearest 100.",
-      "correct_answer": 200,
+      "question_text": "Round 2325 to the nearest 100.",
+      "correct_answer": 2300,
+      "requested": {
+        "difficulty_profile": {
+          "boundary_proximity": "far_from_boundary"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 201,
+          "value": 2301,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 210,
+          "value": 2310,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 2300,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 2000,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2300,
+      "hints": [
+        "Round 2325 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 2.",
+        "Since 2 < 5, round down (keep the hundreds digit the same).",
+        "2325 rounded to the closest hundreds is 2300."
+      ],
+      "sample_id": "22321e31364940f403f8",
+      "replay_digest": "5b0fefcbf7674195f125ca73f33697ff7253f9180bc86c8f0f4729c85499c7f0"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 601,
       "formatter": "read_mcq",
-      "question_text": "The number 315 is marked on the number line. Round 315 to the nearest 10.",
+      "question_text": "The number 7065 is marked on the number line. Round 7065 to the nearest 10.",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "boundary_proximity": "near_boundary"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 320,
+          "value": 7070,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 330,
+          "value": 7080,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 300,
+          "value": 7000,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 310,
+          "value": 7060,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7070,
+      "hints": [
+        "Round 7065 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 5.",
+        "Since 5 ≥ 5, round up.",
+        "7065 rounded to the closest tens is 7070."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 7065,
+        "start": 7050,
+        "end": 7080,
+        "interval": 1,
+        "divisions": 30,
+        "correct_position": 7065,
+        "dot_value": 7065,
+        "content_type": "whole_number",
+        "labels": [
+          "7050",
+          "7080"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 7070.0,
+        "target": 7070.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "2bd5a47482ad0994243b41fc2ee47ca5b68ba56c8d90197bfa0ae353a6ab1a7e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "7050",
+            "7051",
+            "7052",
+            "7053",
+            "7054",
+            "7055",
+            "7056",
+            "7057",
+            "7058",
+            "7059",
+            "7060",
+            "7061",
+            "7062",
+            "7063",
+            "7064",
+            "7065",
+            "7066",
+            "7067",
+            "7068",
+            "7069",
+            "7070",
+            "7071",
+            "7072",
+            "7073",
+            "7074",
+            "7075",
+            "7076",
+            "7077",
+            "7078",
+            "7079",
+            "7080"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5a91ee29347759c53617",
+      "replay_digest": "466bbf5828b6447761eef40d196606b023cf33fec77404a1383c3a44427330af"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 602,
       "formatter": "cloze",
-      "question_text": "Round 225 to the nearest 100.",
-      "correct_answer": 200,
+      "question_text": "Round 2565 to the nearest 100.",
+      "correct_answer": 2600,
+      "requested": {
+        "difficulty_profile": {
+          "precision": "nearest_hundred"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 200,
-          "text": "200",
+          "value": 2600,
+          "text": "2600",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 210,
-          "text": "210",
+          "value": 2000,
+          "text": "2000",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 201,
-          "text": "201",
+          "value": 2610,
+          "text": "2610",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 0,
-          "text": "0",
+          "value": 2500,
+          "text": "2500",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2600,
+      "hints": [
+        "Round 2565 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 6.",
+        "Since 6 ≥ 5, round up.",
+        "2565 rounded to the closest hundreds is 2600."
+      ],
+      "sample_id": "0ab49b4f35529f8aae7a",
+      "replay_digest": "6d6265b0bf25ff096d83f4c70cccfa68841d2e4fe70072ee7dd275dcf5f4ed20"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 603,
       "formatter": "read_mcq",
-      "question_text": "The number 83 is marked on the number line. Round 83 to the nearest 10.",
+      "question_text": "The number 2688 is marked on the number line. Round 2688 to the nearest 10.",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "precision": "nearest_ten"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 84,
+          "value": 2700,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 80,
+          "value": 2690,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 90,
+          "value": 2600,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 2680,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2690,
+      "hints": [
+        "Round 2688 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 8.",
+        "Since 8 ≥ 5, round up.",
+        "2688 rounded to the closest tens is 2690."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 2688,
+        "start": 2670,
+        "end": 2700,
+        "interval": 1,
+        "divisions": 30,
+        "correct_position": 2688,
+        "dot_value": 2688,
+        "content_type": "whole_number",
+        "labels": [
+          "2670",
+          "2700"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2690.0,
+        "target": 2690.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "936e3811dbfcf37f6807eccad52e46bf8e94230cb86ac1a2333ad4c2c7872fa5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "2670",
+            "2671",
+            "2672",
+            "2673",
+            "2674",
+            "2675",
+            "2676",
+            "2677",
+            "2678",
+            "2679",
+            "2680",
+            "2681",
+            "2682",
+            "2683",
+            "2684",
+            "2685",
+            "2686",
+            "2687",
+            "2688",
+            "2689",
+            "2690",
+            "2691",
+            "2692",
+            "2693",
+            "2694",
+            "2695",
+            "2696",
+            "2697",
+            "2698",
+            "2699",
+            "2700"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3d2b5cb7d6607078844c",
+      "replay_digest": "ae3d9008d4ebc9fd56c89c74d08d8c4f8cef92a210c01c802800c1ce5f4b45ef"
     },
     {
+      "node_id": "mat_g3_na_q1_4",
       "seed": 604,
       "formatter": "cloze",
-      "question_text": "Round 700 to the nearest 1000.",
+      "question_text": "Round 1310 to the nearest 1000.",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": {
+          "precision": "nearest_thousand"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -397,34 +1165,1435 @@
           "text": "1000",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "Round 1310 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 3.",
+        "Since 3 < 5, round down (keep the thousands digit the same).",
+        "1310 rounded to the closest thousands is 1000."
+      ],
+      "sample_id": "099af6147954be5419c5",
+      "replay_digest": "0ce3f7285c7d448971edb2bc01d413d06b98fa20e1c739f643b2bb7b365abc5b"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "Round 2964 to the nearest 10.",
+      "correct_answer": 2960,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2900,
+          "text": "2900",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2961,
+          "text": "2961",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2960,
+          "text": "2960",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2970,
+          "text": "2970",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2960,
+      "hints": [
+        "Round 2964 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 4.",
+        "Since 4 < 5, round down (keep the tens digit the same).",
+        "2964 rounded to the closest tens is 2960."
+      ],
+      "sample_id": "ea048806443b2596aa02",
+      "replay_digest": "403ca79cd69576124057d437625abc6e4713429db51f10e1640da95576eec5c7"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Round 3250 to the nearest 1000.",
+      "correct_answer": 3000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3010,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "Round 3250 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 2.",
+        "Since 2 < 5, round down (keep the thousands digit the same).",
+        "3250 rounded to the closest thousands is 3000."
+      ],
+      "sample_id": "e9a7b743f71de718372e",
+      "replay_digest": "986b275e8fc5291efa2f448e0814b3734ad403d88e89b8973d89f9c27fe54213"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Round 2394 to the nearest 10.",
+      "correct_answer": 2390,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2300,
+          "text": "2300",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2400,
+          "text": "2400",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2390,
+          "text": "2390",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2391,
+          "text": "2391",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2390,
+      "hints": [
+        "Round 2394 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 4.",
+        "Since 4 < 5, round down (keep the tens digit the same).",
+        "2394 rounded to the closest tens is 2390."
+      ],
+      "sample_id": "698f4ae820c5b0b0946f",
+      "replay_digest": "f205d10141a16aaf5ee287abb81727505e831dadf75ef02fce5faf9e54820613"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "The number 8128 is marked on the number line. Round 8128 to the nearest 1000.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8010,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8228,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8000,
+      "hints": [
+        "Round 8128 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 1.",
+        "Since 1 < 5, round down (keep the thousands digit the same).",
+        "8128 rounded to the closest thousands is 8000."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 8128,
+        "start": 7000,
+        "end": 10000,
+        "interval": 100,
+        "divisions": 30,
+        "correct_position": 8128,
+        "dot_value": 8128,
+        "content_type": "whole_number",
+        "labels": [
+          "7000",
+          "10000"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 8000.0,
+        "target": 8000.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "767b2ed1a25b4fc6f15829237bf9e201f8047155a00bee8d77162616a00e6359",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "7000",
+            "7100",
+            "7200",
+            "7300",
+            "7400",
+            "7500",
+            "7600",
+            "7700",
+            "7800",
+            "7900",
+            "8000",
+            "8100",
+            "8200",
+            "8300",
+            "8400",
+            "8500",
+            "8600",
+            "8700",
+            "8800",
+            "8900",
+            "9000",
+            "9100",
+            "9200",
+            "9300",
+            "9400",
+            "9500",
+            "9600",
+            "9700",
+            "9800",
+            "9900",
+            "10000"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9e54d149ca9e327aa4e7",
+      "replay_digest": "c3a4cdf66f36f886aaf64ed136cf01954b328bb5edb875bc9f9cd9d8736eb429"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Round 1665 to the nearest 1000.",
+      "correct_answer": 2000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2010,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1000,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2000,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 2000,
+      "hints": [
+        "Round 1665 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 6.",
+        "Since 6 ≥ 5, round up.",
+        "1665 rounded to the closest thousands is 2000."
+      ],
+      "sample_id": "ca4e0625ebe4219867c2",
+      "replay_digest": "c7b2469a1a16f622ef2bbf2357b94b106247a0ba945f35c386bca79415b89b9f"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "The number 2691 is marked on the number line. Round 2691 to the nearest 100.",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2600,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2710,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2700,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2000,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2700,
+      "hints": [
+        "Round 2691 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 9.",
+        "Since 9 ≥ 5, round up.",
+        "2691 rounded to the closest hundreds is 2700."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 2691,
+        "start": 2500,
+        "end": 2800,
+        "interval": 10,
+        "divisions": 30,
+        "correct_position": 2691,
+        "dot_value": 2691,
+        "content_type": "whole_number",
+        "labels": [
+          "2500",
+          "2800"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2700.0,
+        "target": 2700.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "ae90c65abb0e3f06cad1bdd8733245f1c0c7a6394e9597af2ae1f3f391bb5487",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "2500",
+            "2510",
+            "2520",
+            "2530",
+            "2540",
+            "2550",
+            "2560",
+            "2570",
+            "2580",
+            "2590",
+            "2600",
+            "2610",
+            "2620",
+            "2630",
+            "2640",
+            "2650",
+            "2660",
+            "2670",
+            "2680",
+            "2690",
+            "2700",
+            "2710",
+            "2720",
+            "2730",
+            "2740",
+            "2750",
+            "2760",
+            "2770",
+            "2780",
+            "2790",
+            "2800"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3429e2d21caa14fed89a",
+      "replay_digest": "635cf8144dcce537df76f80a48e28bf18143333dcbd6d0018840e148def3dbf6"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 1000,
+      "formatter": "read_mcq",
+      "question_text": "The number 4305 is marked on the number line. Round 4305 to the nearest 100.",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4300,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4315,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4310,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4000,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4300,
+      "hints": [
+        "Round 4305 to the closest hundreds.",
+        "Look at the digit just to the right of the hundreds place: it is 0.",
+        "Since 0 < 5, round down (keep the hundreds digit the same).",
+        "4305 rounded to the closest hundreds is 4300."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 4305,
+        "start": 4200,
+        "end": 4500,
+        "interval": 10,
+        "divisions": 30,
+        "correct_position": 4305,
+        "dot_value": 4305,
+        "content_type": "whole_number",
+        "labels": [
+          "4200",
+          "4500"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 4300.0,
+        "target": 4300.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "c9744b9790b462088ab20f3ae4494523fa41c85a8d151e2cd4c4b03b7054a2cd",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 67,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "4200",
+            "4210",
+            "4220",
+            "4230",
+            "4240",
+            "4250",
+            "4260",
+            "4270",
+            "4280",
+            "4290",
+            "4300",
+            "4310",
+            "4320",
+            "4330",
+            "4340",
+            "4350",
+            "4360",
+            "4370",
+            "4380",
+            "4390",
+            "4400",
+            "4410",
+            "4420",
+            "4430",
+            "4440",
+            "4450",
+            "4460",
+            "4470",
+            "4480",
+            "4490",
+            "4500"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fff269ed0142cabf352a",
+      "replay_digest": "d455d3995e44c0390017963d82b560ea92826a1f9bb1d73392096bc429de86d9"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Round 8789 to the nearest 10.",
+      "correct_answer": 8790,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8780,
+          "text": "8780",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8800,
+          "text": "8800",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8790,
+          "text": "8790",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8700,
+          "text": "8700",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8790,
+      "hints": [
+        "Round 8789 to the closest tens.",
+        "Look at the digit just to the right of the tens place: it is 9.",
+        "Since 9 ≥ 5, round up.",
+        "8789 rounded to the closest tens is 8790."
+      ],
+      "sample_id": "87c8599dc8cf33a4a93d",
+      "replay_digest": "5ba51918d644fc6a4cc11a7a3c8620f1e9410a6a4ddd3fc8176459cf427aeb6e"
+    },
+    {
+      "node_id": "mat_g3_na_q1_4",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Round 5805 to the nearest 1000.",
+      "correct_answer": 6000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6010,
+          "text": "6010",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6000,
+          "text": "6000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5000,
+          "text": "5000",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6000,
+      "hints": [
+        "Round 5805 to the closest thousands.",
+        "Look at the digit just to the right of the thousands place: it is 8.",
+        "Since 8 ≥ 5, round up.",
+        "5805 rounded to the closest thousands is 6000."
+      ],
+      "sample_id": "31e99e02de46365fb7af",
+      "replay_digest": "a0785d4ff591ca89b8c9bb7917313201b03110f9f2be39b8d438fce82e74ba4e"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "7f1f817ba2f6ef8fab58",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem unambiguously directs rounding 1815 to the nearest 1000. Answer 2000 is mathematically correct; distractors 2010, 0, and 1000 represent plausible errors (rounding to wrong place or off-by-ten)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 1815 to nearest 1000 correctly yields 2000 since the hundreds digit is 8 (≥5). Hint sequence accurately traces the decision path and confirms the mathematical validity of the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with a single clear fill-in blank is straightforward for Grade 3 students. Hints provide step-by-step scaffolding that guides reasoning without revealing the answer prematurely."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All four hints are mathematically sound: identifying the digit to examine (8), applying the rounding rule (8≥5 means round up), and arriving at 2000 as the correctly rounded value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "76df8a47a8d7a83d94e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format clearly presents rounding 3929 to the nearest 10 with four distinct options. Position of correct answer (3930) is final position, not first, reducing guessing bias."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number 3929 rounded to nearest 10 is correctly 3930 since the ones digit 9 is ≥5. Distractors span realistic errors: 3940 (over-rounding), 3900 (rounding down), and 3920 (off-by-ten)."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice item with four plausible options and unambiguous stem language. Hints explicitly identify the digit (9) and apply the rounding rule clearly for Grade 3 comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3930 is correct; hint logic traces examining the ones digit (9), recognizing 9≥5, and rounding up from 3920 to 3930. All arithmetic is accurate throughout."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "ba3faf22ff3795892dae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual reduces ambiguity. Stem clearly specifies rounding 3225 to the nearest 100. Visual marks the number's position on the line, supporting the rounding task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number 3225 on number line labeled from 3100 to 3400 in increments of 10. Rounding to nearest 100 yields 3200 (hundreds digit 2 unchanged since the tens digit 2 < 5). Visual placement and arithmetic align."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Visual number line with marked position makes the rounding distance intuitive for Grade 3 learners. The line spans 300 units centered around the rounding boundaries, supporting visual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3200 is correct; 3225 is closer to 3200 than 3300. Hints correctly identify tens digit (2), apply rule (2<5 means keep hundreds digit), and confirm result 3200."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "6758f3d01139b4d161c6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem directs rounding 2630 to the nearest 100 without extraneous information. Four options provided; correct answer 2600 is positioned third, not revealing through position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2630 to nearest 100 is correctly 2600 since tens digit 3 is <5. The distractors (2601, 2310, 2000) represent distinct common errors that Grade 3 students might produce."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Standard multiple-choice format with clear task statement. Options are sufficiently separated to test understanding rather than careless reading errors."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "All hints are accurate: examining tens digit (3), recognizing 3<5, keeping hundreds digit unchanged (2), yielding 2600 as final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "5ae4fe548e26f58b05ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem unambiguously asks to round 5096 to the nearest 10. Four options are presented; answer 5100 is positioned last, not privileged by location."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 5096 to nearest 10 correctly gives 5100 since ones digit 6 is ≥5. Options include down-rounding (5090) and far-rounding errors (5110, 5000) to test understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format with four distinct options. Language is clear and directly stated without distracting elements."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 5096 to 5100 is mathematically correct. Hints trace the examination of ones digit (6), application of rule (6≥5 means round up), and confirmation of answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "8796cd362f59b865db4c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual clearly communicates the task: rounding 8438 to nearest 100. The visual marks the position and provides scale reference for rounding distance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number 8438 rounds to 8400 since tens digit 3 is <5. Number line spans 8300 to 8600 with marked position, supporting visual estimation of nearest hundred boundary."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Number line visual with clear markers helps Grade 3 learners visualize the distance to rounding boundaries. Multiple-choice options support non-visual verification of the rounding decision."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 8400 is correct; 8438 is 38 units away from 8400 and 62 units from 8500. Hints accurately identify tens digit (3), apply rule (3<5), and confirm 8400."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "a3caf1b2be02bdf24705",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice asking to round 6148 to nearest 1000. Number line visual spans 5000 to 8000, providing scale context. Stem clearly specifies the rounding target."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 6148 to nearest 1000 yields 6000 since hundreds digit 1 is <5. The number line positions 6148 between 6000 and 7000, supporting the down-rounding decision."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Visual presentation with number line makes the magnitude of 6148 and its position relative to thousand-boundaries intuitive. Multiple-choice format provides concrete options to evaluate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 6000 is correct; 6148 is closer to 6000 than 7000. Hints identify hundreds digit (1), apply rule (1<5 means round down), and confirm 6000 as rounded value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "8a9f7598a7f766af435b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze fill-in-blank clearly directs rounding 6952 to nearest 1000 with a single blank to complete. Four options provided support students who need guidance."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 6952 to nearest 1000 correctly gives 7000 since hundreds digit 9 is ≥5. All hints are mathematically accurate and trace the correct reasoning path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is clear and direct. Hints provide step-by-step support for Grade 3 learners: identifying digit (9), recognizing rule application (9≥5 round up), and providing answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 7000 is correct; rounding 6952 up to the nearest thousand because hundreds digit exceeds 4. Hint sequence accurately traces and validates this reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "22321e31364940f403f8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to round 2325 to nearest 100 without ambiguity. Four options are distinct and distributed across plausible rounding errors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2325 to nearest 100 yields 2300 since tens digit 2 is <5. Options include off-by-one (2301, 2310) and wrong-place-rounding (2000) distractors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Standard multiple-choice with clear language. Hints scaffold Grade 3 learners through identifying the tens digit (2), applying the rounding rule (2<5), and confirming the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2300 is mathematically correct. Hints accurately trace examining tens digit (2), recognizing 2<5, keeping hundreds digit unchanged, and arriving at 2300."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "5a91ee29347759c53617",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual requesting rounding 7065 to nearest 10. The visual marks the position clearly; multiple-choice options are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 7065 to nearest 10 correctly gives 7070 since ones digit 5 is ≥5. Number line spans 7050-7080 with labeled increments showing the 7065 position."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Number line visual with clear position marking and ten-unit grid helps Grade 3 students visualize rounding to nearest 10. Multiple-choice confirms the visual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 7070 is correct; 7065 is exactly at the midpoint between 7060 and 7070, and the rule (5≥5 round up) applies. Hints accurately confirm this reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "0ab49b4f35529f8aae7a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format clearly presents rounding 2565 to nearest 100 with four options. The blank unambiguously requests the rounded value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2565 to nearest 100 is correctly 2600 since tens digit 6 is ≥5. Distractors (2500, 2610, 2000) test understanding of place value and rounding direction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze item presents a straightforward fill-in task. Hints guide Grade 3 learners through identifying tens digit (6), applying rule (6≥5 round up), and providing answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2600 is correct; rounding 2565 up to nearest hundred because tens digit is 6. Hints accurately explain the digit identification and rule application."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "3d2b5cb7d6607078844c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2688 to nearest 10. Stem is unambiguous; visual marks the number position clearly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2688 to nearest 10 is correctly 2690 since ones digit 8 is ≥5. Number line spans 2670-2700 with marked position supporting visual rounding estimation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Number line with clear marking of 2688 and ten-unit labels makes the rounding decision transparent. Multiple-choice options provide concrete verification of visual reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2690 is correct; 2688 rounds to 2690 because ones digit 8 exceeds 4. Hints accurately identify the digit (8), apply rule (8≥5), and confirm answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "099af6147954be5419c5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format unambiguously directs rounding 1310 to nearest 1000 with four provided options to support the fill-in task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 1310 to nearest 1000 yields 1000 since hundreds digit 3 is <5. Distractors (1010, 1001, 0) represent plausible errors or off-by-one mistakes."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Straightforward cloze item asking for nearest-thousand rounding. Hints provide step-by-step scaffold identifying hundreds digit (3), rule application (3<5), and confirmation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1000 is correct; 1310 is closer to 1000 than 2000. Hints accurately trace digit identification, rule application, and verification of the rounded value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "ea048806443b2596aa02",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format clearly requests rounding 2964 to nearest 10 with four options provided. No ambiguity in task specification or answer format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2964 to nearest 10 correctly yields 2960 since ones digit 4 is <5. Options span plausible down-rounding (2900) and off-by-digit errors (2961, 2970)."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze item presents a clear fill-in task for Grade 3 level. Hints scaffold reasoning by identifying ones digit (4), explaining rule (4<5 round down), and confirming answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2960 is correct; ones digit 4 triggers down-rounding to 2960. Hints accurately validate digit identification, rule logic, and the final answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "e9a7b743f71de718372e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice with character theme (Sir Rez, dance shoes emoji) clearly presents the rounding task: rounding 3250 to nearest 1000. Theming does not obscure the mathematical question."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 3250 to nearest 1000 is correctly 3000 since hundreds digit 2 is <5. Theming about a character's math challenge provides light context without interfering with the rounding logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Themed introduction with character name and emoji provides motivational context for Grade 3 learners. Mathematical task remains clear: round 3250 to nearest 1000."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3000 is correct; 3250 rounded to nearest thousand yields 3000. Hints trace digit identification (2), rule application (2<5), and confirmation without being distracted by theme."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "698f4ae820c5b0b0946f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with character theme (Isko, basketball emoji) presents a clear fill-in task for rounding 2394 to nearest 10. Mathematical directive is unambiguous despite theming."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2394 to nearest 10 correctly yields 2390 since ones digit 4 is <5. Theming about basketballs does not interfere with place-value rounding logic or answer validity."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Themed introduction provides personal context about a character's math challenge while maintaining clarity of the rounding task. Grade 3 learners can easily identify what to round and to what place."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2390 is correct; ones digit 4 triggers down-rounding. Hints accurately identify digit (4), apply rule (4<5), and confirm the result, independent of theme elements."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "9e54d149ca9e327aa4e7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual clearly requests rounding 8128 to nearest 1000. Stem is unambiguous; visual marks position explicitly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Number 8128 rounded to nearest 1000 is correctly 8000 since hundreds digit 1 is <5. Number line spans 7000-10000 with clear 8128 position marking, supporting visual verification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Number line visual with thousand-unit increments and marked position makes rounding to nearest thousand intuitive for Grade 3 learners. Multiple-choice options support verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 8000 is correct; 8128 is closer to 8000 than 9000 because hundreds digit 1 is less than 5. Hints validate digit identification and rule application accurately."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "ca4e0625ebe4219867c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice format clearly states the task: round 1665 to nearest 1000. Four options are distinct; answer is unambiguously positioned as fourth option."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 1665 to nearest 1000 correctly gives 2000 since hundreds digit 6 is ≥5. Distractors (2010, 1000, 0) test understanding of rounding direction and magnitude."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Standard multiple-choice with clear task statement. Hints scaffold Grade 3 reasoning by identifying hundreds digit (6), recognizing rule (6≥5 round up), and confirming answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2000 is correct; 1665 rounded up to nearest thousand is 2000. Hints accurately trace digit examination (6), rule logic (6≥5), and final answer confirmation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "3429e2d21caa14fed89a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2691 to nearest 100. Stem clearly specifies the rounding target; visual marks position unambiguously."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 2691 to nearest 100 is correctly 2700 since tens digit 9 is ≥5. Number line spans 2500-2800 with clear position marking supporting the up-rounding decision."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Number line with hundred-unit labels and marked position makes the nearest-hundred boundary relationship transparent for Grade 3 learners. Multiple-choice options confirm understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 2700 is correct; 2691 is closer to 2700 than 2600 because tens digit 9 exceeds 4. Hints accurately identify digit (9), apply rule (9≥5), and validate answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "fff269ed0142cabf352a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based multiple-choice with number line visual requesting rounding 4305 to nearest 100. Stem is clear; experience type hint_gated suggests adaptive hint delivery, not answer ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 4305 to nearest 100 yields 4300 since tens digit 0 is <5. Number line spans 4200-4500 with position marked, supporting down-rounding verification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Read-based format with number line visual and hint_gated experience support makes the task clear. Visual confirms position and rounding boundary relationship at Grade 3 level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 4300 is correct; 4305 rounds to 4300 because tens digit 0 is less than 5. Hints accurately trace place identification, rule application, and answer confirmation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "87c8599dc8cf33a4a93d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with mastery_drill experience clearly requests rounding 8789 to nearest 10. Four options are provided; task is unambiguously a fill-in-blank item."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 8789 to nearest 10 correctly yields 8790 since ones digit 9 is ≥5. Options include down-rounding (8780) and larger-place errors (8700) to test understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format in mastery_drill context presents a straightforward rounding task. Hints provide Grade 3 appropriate scaffolding identifying ones digit (9), rule application (9≥5), and answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 8790 is correct; ones digit 9 triggers up-rounding to nearest ten. Hints accurately validate digit identification, rule logic, and final result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "sample_id": "31e99e02de46365fb7af",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with scaffolded experience clearly requests rounding 5805 to nearest 1000. Four options support the fill-in task; the mathematical directive is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Rounding 5805 to nearest 1000 is correctly 6000 since hundreds digit 8 is ≥5. The scaffolded experience type indicates graduated support; the mathematical validity remains sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze item in scaffolded context provides support for Grade 3 learners tackling thousands-place rounding. Hints break the reasoning into clear steps: digit identification (8), rule recognition (8≥5), and answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 6000 is correct; 5805 rounded to nearest thousand is 6000 because hundreds digit is 8. Hints accurately trace the entire reasoning path and confirm correctness."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "round",
+      "clause": "Round",
+      "verdict": "PASS",
+      "reasoning": "All 22 samples contain an explicit directive to perform rounding, using phrasing like Round [number] to the nearest [place]. This core verb is demonstrated consistently and unambiguously across every item in the set.",
+      "sample_ids": [
+        "7f1f817ba2f6ef8fab58",
+        "76df8a47a8d7a83d94e3",
+        "ba3faf22ff3795892dae",
+        "6758f3d01139b4d161c6",
+        "5ae4fe548e26f58b05ab",
+        "8796cd362f59b865db4c",
+        "a3caf1b2be02bdf24705",
+        "8a9f7598a7f766af435b",
+        "22321e31364940f403f8",
+        "5a91ee29347759c53617",
+        "0ab49b4f35529f8aae7a",
+        "3d2b5cb7d6607078844c",
+        "099af6147954be5419c5",
+        "ea048806443b2596aa02",
+        "e9a7b743f71de718372e",
+        "698f4ae820c5b0b0946f",
+        "9e54d149ca9e327aa4e7",
+        "ca4e0625ebe4219867c2",
+        "3429e2d21caa14fed89a",
+        "fff269ed0142cabf352a",
+        "87c8599dc8cf33a4a93d",
+        "31e99e02de46365fb7af"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample requires rounding a specific four-digit number (ranging from 1310 to 8789). The noun numbers is fulfilled through numeric operands that serve as the objects of the rounding operation in all 22 items.",
+      "sample_ids": [
+        "7f1f817ba2f6ef8fab58",
+        "76df8a47a8d7a83d94e3",
+        "ba3faf22ff3795892dae",
+        "6758f3d01139b4d161c6",
+        "5ae4fe548e26f58b05ab",
+        "8796cd362f59b865db4c",
+        "a3caf1b2be02bdf24705",
+        "8a9f7598a7f766af435b",
+        "22321e31364940f403f8",
+        "5a91ee29347759c53617",
+        "0ab49b4f35529f8aae7a",
+        "3d2b5cb7d6607078844c",
+        "099af6147954be5419c5",
+        "ea048806443b2596aa02",
+        "e9a7b743f71de718372e",
+        "698f4ae820c5b0b0946f",
+        "9e54d149ca9e327aa4e7",
+        "ca4e0625ebe4219867c2",
+        "3429e2d21caa14fed89a",
+        "fff269ed0142cabf352a",
+        "87c8599dc8cf33a4a93d",
+        "31e99e02de46365fb7af"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "requirement_id": "nearest_ten",
+      "clause": "nearest ten",
+      "verdict": "PASS",
+      "reasoning": "Seven samples explicitly target rounding to the nearest ten: seeds 43, 46, 601, 602, 603, 700, and 1001. Each specifies Round [number] to the nearest 10 and assesses correct understanding of ones-place magnitude relative to the rounding rule.",
+      "sample_ids": [
+        "76df8a47a8d7a83d94e3",
+        "5ae4fe548e26f58b05ab",
+        "5a91ee29347759c53617",
+        "0ab49b4f35529f8aae7a",
+        "3d2b5cb7d6607078844c",
+        "ea048806443b2596aa02",
+        "698f4ae820c5b0b0946f",
+        "87c8599dc8cf33a4a93d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "requirement_id": "hundred",
+      "clause": "hundred",
+      "verdict": "PASS",
+      "reasoning": "Seven samples explicitly target rounding to the nearest hundred: seeds 44, 45, 600, 602, 800, 901, and 1000. Each requires students to examine the tens digit and apply rounding logic to determine the correct hundred boundary.",
+      "sample_ids": [
+        "ba3faf22ff3795892dae",
+        "6758f3d01139b4d161c6",
+        "22321e31364940f403f8",
+        "8796cd362f59b865db4c",
+        "3429e2d21caa14fed89a",
+        "fff269ed0142cabf352a",
+        "0ab49b4f35529f8aae7a"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    },
+    {
+      "requirement_id": "thousand",
+      "clause": "thousand",
+      "verdict": "PASS",
+      "reasoning": "Nine samples explicitly target rounding to the nearest thousand: seeds 42, 501, 502, 604, 701, 800, 900, 1002, and 1000 yields nearest thousand targets. Each requires examining hundreds digit and correctly rounding to thousand-place boundaries.",
+      "sample_ids": [
+        "7f1f817ba2f6ef8fab58",
+        "a3caf1b2be02bdf24705",
+        "8a9f7598a7f766af435b",
+        "099af6147954be5419c5",
+        "e9a7b743f71de718372e",
+        "9e54d149ca9e327aa4e7",
+        "ca4e0625ebe4219867c2",
+        "31e99e02de46365fb7af"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w14-haiku45-20260925:mat_g3_na_q1_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "31d64391638a12d8d14d631b09de5bbb24598ae2b0b90f0cd8c021c3235497e7",
+      "clause_ids": [
+        "round",
+        "numbers",
+        "nearest_ten",
+        "hundred",
+        "thousand"
+      ],
+      "response_ref": ".responses/s5-phaseC-w14-haiku45-20260925.json",
+      "response_digest": "ad9a89ffeb806f91c352cfcacc3c376b8b54da61d258f8016ac9b113925fd6ea",
+      "prompt_ref": ".responses/s5-phaseC-w14-haiku45-20260925.prompt.txt",
+      "prompt_digest": "8fd1f88649fb44fe91de034caea3e3449036b5f405b08263e158427dba5b603e",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (one clause text lower-cased); the reviewer restored the exact text, 4 tool uses. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All samples use numbers in the 1000-8000 range with rounding tasks targeting nearest 10, 100, or 1000. Complexity of place-value reasoning is appropriate for Grade 3 Quarter 1, with clear procedural steps reflected in consistent hint structures."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly instantiates the core competency of rounding to the nearest ten, hundred, or thousand. Problems present unambiguous rounding directives without superfluous context, maintaining tight alignment to the written curriculum objective."
+    },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The rounding instruction is stated plainly and the keys are right, but the option sets undercut the task: when the target is the nearest 100 the choices offered are 200 / 210 / 0 / 201, so only one value is even a multiple of a hundred. A pupil who knows nothing except that a rounded answer ends in zeros can pick correctly without rounding anything."
+      "verdict": "PASS",
+      "rationale": "All five decomposed requirements (round, numbers, nearest_ten, hundred, thousand) are demonstrated across the sample set. Coverage is comprehensive with dedicated samples for each rounding target, ensuring lossless mapping to the full competency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The requirement list covers every semantic component: the verb (round), the object (numbers), and all three target precisions (nearest ten, nearest hundred, nearest thousand). No required element is missing and the decomposition adds no inauthentic constraints.",
+        "requirement_ids": [
+          "round",
+          "numbers",
+          "nearest_ten",
+          "hundred",
+          "thousand"
+        ]
+      },
+      "clause_ids": [
+        "round",
+        "numbers",
+        "nearest_ten",
+        "hundred",
+        "thousand"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three targets named in the wording are exercised on numbers of the right size: nearest 10 on 38 and 158, nearest 100 on 230 and on the four-digit 8438, nearest 1000 on 6952 and 6148. The half-way behaviour also shows up, since 'Round 700 to the nearest 1000.' is keyed 1000."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems are one short imperative sentence; the number-line framing adds a single lead clause before the same instruction. Nothing here demands reading stamina or vocabulary past early Grade 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three presentations show up for a procedural skill: a bare fill-in, a four-option choice, and a version anchored to a marked point on a number line. That is a reasonable spread for a rounding objective, which does not naturally carry a story context."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "What moves from sample to sample is mostly the magnitude of the number, not the rounding decision itself. Cases sitting exactly on the five boundary (such as the 105 and 225 items) are mixed in without being distinguished from easy ones, so the ladder does not separate the hard judgment from the easy one."
+      "rationale": "Sample set includes nine rounding-to-nearest-thousand cases, six rounding-to-nearest-hundred cases, and seven rounding-to-nearest-ten cases. Both up-rounding (digit >= 5) and down-rounding (digit < 5) scenarios are represented across targets.",
+      "clause_ids": [
+        "round",
+        "numbers",
+        "nearest_ten",
+        "hundred",
+        "thousand"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values run from two digits (83) to four digits (8438), which is the span a Grade 3 rounding objective covering tens through thousands needs. Nothing spills past the ten-thousand band this grade works in."
+      "rationale": "Numbers used (1310 through 8789) are scaled for Grade 3 learners with manageable digit magnitudes. Visual supports (number lines with 30-label ranges) are appropriate for the grade level without introducing unnecessary cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Sample set spans three response formats (cloze fill-in-blank, multiple-choice, read-based multiple-choice), four experience types (standard, hint_gated, mastery_drill, scaffolded), and includes both unthemed problems and those with character-based theming using emoji."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

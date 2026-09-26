@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925
+  blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_na_q1_0/verdicts.json
+  local_only/scratch/phaseC/mat_g3_na_q1_1/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_0-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_1-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,161 +99,115 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_na_q1_0
-PACKET DIGEST: 633bae883a8fa9b4d19bdc24e40439b8b69669196fdcdf06fa8737deda483f95
+NODE: mat_g3_na_q1_1
+PACKET DIGEST: 09495ab5303df418c8086495d36d10d98459dbd89de9692e8feac952f1857101
 COMPETENCY (Grade 3, Quarter 1, None):
-Represent numbers up to 10 000 using pictorial models and numerals.
+Read and write numbers up to 10 000 in numerals and in words.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  represent: Represent
+  read: Read
+  write: write
   numbers: numbers
   up_to_10000: up to 10 000
-  pictorial_models: pictorial models
   numerals: numerals
+  words: words
 
 SAMPLES (every one of these is real rendered output):
-  sample 760c0f936742081411e4  seed 42  [set_fill_in_blank]
-      stem:    Use base-10 blocks to show the number 1410.
-      answer:  1410
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 4 blocks.", "Tens: 1 block.", "Add the value of every block together to get the total, 1410."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["■ = 1000", "■ = 100", "▮ = 10", "• = 1", "Your blocks: None = 0", "1000s", "-", "0", "+", "100s", "10s", "1s"], "distinct_colours": ["#a78bfa", "#10b981", "#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#a78bfa20", "#10b98120", "#3b82f620", "#b91c5c20"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample e5a045ec98d406f86058  seed 43  [set_fill_in_blank]
-      stem:    Use base-10 blocks to show the number 5688.
-      answer:  5688
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 6 blocks.", "Tens: 8 blocks.", "Ones: 8 blocks.", "Add the value of every block together to get the total, 5688."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["■ = 1000", "■ = 100", "▮ = 10", "• = 1", "Your blocks: None = 0", "1000s", "-", "0", "+", "100s", "10s", "1s"], "distinct_colours": ["#a78bfa", "#10b981", "#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#a78bfa20", "#10b98120", "#3b82f620", "#b91c5c20"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample f646b3942b453c5b376b  seed 44  [read_mcq]
-      stem:    What number is marked on the number line?
+  sample 7de681385e6243dafeb1  seed 42  [true_false]
+      stem:    The number 1410 is written in words as 'one hundred forty-one'. True or False?
+      answer:  False
+      hints:   ["Read the number 1410 one place at a time, starting from the largest place.", "Thousands: 1 → 'one thousand'.", "Hundreds: 4 → 'four hundred'.", "The full word form is: 'one thousand four hundred ten'."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3770a7e3434216debdea  seed 43  [mcq]
+      stem:    Write 5688 in words.
+      answer:  five thousand six hundred eighty-eight
+      options: five thousand six hundred eighty-eight / five thousand six hundred eighty-nine / eight thousand eight hundred sixty-five / five thousand six hundred seventy-eight
+      hints:   ["Read the number 5688 one place at a time, starting from the largest place.", "Thousands: 5 → 'five thousand'.", "Hundreds: 6 → 'six hundred'.", "The full word form is: 'five thousand six hundred eighty-eight'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f408824c2b1dc7db2499  seed 44  [cloze]
+      stem:    Write the number: nine thousand five hundred twenty-one.
       answer:  9521
-      options: 9522 / 9520 / 9523 / 9521
+      options: 1259 / 9522 / 9511 / 9521
       hints:   ["Identify each word part and its place value.", "Expanded form: 9000 + 500 + 20 + 1.", "Add the parts together to get 9521."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["9520", "9521", "9522", "9523", "9524", "9525", "9526", "9527", "9528", "9529", "9530"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 2b0391c16e34f4b8cd55  seed 45  [set_fill_in_blank]
-      stem:    Move the dot to show 7844 on the number line.
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3e79f6599ae023ca81b6  seed 45  [mcq]
+      stem:    Write the number: seven thousand eight hundred forty-four.
       answer:  7844
+      options: 7844 / 7834 / 7845 / 4487
       hints:   ["Identify each word part and its place value.", "Expanded form: 7000 + 800 + 40 + 4.", "Add the parts together to get 7844."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["7840", "7841", "7842", "7843", "7844", "7845", "7846", "7847", "7848", "7849", "7850", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample d975f0e5c5d4dcb31d5b  seed 46  [read_mcq]
-      stem:    What number do the blocks show?
-      answer:  7554
-      options: 21 / 7544 / 7454 / 7554
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 5 blocks.", "Tens: 5 blocks.", "Ones: 4 blocks.", "Add the value of every block together to get the total, 7554."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample ce0fb97320f43a5fa24a  seed 500  [set_fill_in_blank]
-      stem:    Move the dot to show 9630 on the number line.
-      answer:  9630
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2d47b67a121448e632cf  seed 46  [cloze]
+      stem:    Write 7554 in words.
+      answer:  seven thousand five hundred fifty-four
+      options: four thousand five hundred fifty-seven / seven thousand five hundred fifty-four / seven thousand five hundred fifty-five / seven thousand five hundred forty-four
+      hints:   ["Read the number 7554 one place at a time, starting from the largest place.", "Thousands: 7 → 'seven thousand'.", "Hundreds: 5 → 'five hundred'.", "The full word form is: 'seven thousand five hundred fifty-four'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c825e1df9b9e7b195f3b  seed 500  [true_false]
+      stem:    The number written as 'nine thousand six hundred thirty' is 9620. True or False?
+      answer:  False
       hints:   ["Identify each word part and its place value.", "Expanded form: 9000 + 600 + 30.", "Add the parts together to get 9630."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["9620", "9621", "9622", "9623", "9624", "9625", "9626", "9627", "9628", "9629", "9630", "9631", "9632", "9633", "9634", "9635", "9636", "9637", "9638", "9639", "9640", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample c3f5929066426b08f995  seed 501  [set_fill_in_blank]
-      stem:    Move the dot to show 6795 on the number line.
-      answer:  6795
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6b429ee7a10179f6b54a  seed 501  [true_false]
+      stem:    The number written as 'six thousand seven hundred ninety-five' is 5976. True or False?
+      answer:  False
       hints:   ["Identify each word part and its place value.", "Expanded form: 6000 + 700 + 90 + 5.", "Add the parts together to get 6795."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["6790", "6791", "6792", "6793", "6794", "6795", "6796", "6797", "6798", "6799", "6800", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample e3de35d3e3c403545b2f  seed 502  [read_mcq]
-      stem:    What number is marked on the number line?
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample df6e0c69e0554c3ffe5e  seed 502  [cloze]
+      stem:    Write the number: three thousand seven hundred sixty-one.
       answer:  3761
-      options: 3763 / 3762 / 3761 / 3760
+      options: 1673 / 3761 / 3762 / 3751
       hints:   ["Identify each word part and its place value.", "Expanded form: 3000 + 700 + 60 + 1.", "Add the parts together to get 3761."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["3760", "3761", "3762", "3763", "3764", "3765", "3766", "3767", "3768", "3769", "3770"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 033e818e53434e85cd98  seed 700  [set_fill_in_blank]
-      stem:    Use base-10 blocks to show the number 4143.
-      answer:  4143
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 1 block.", "Tens: 4 blocks.", "Ones: 3 blocks.", "Add the value of every block together to get the total, 4143."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 8, "input_count": 0, "text_labels": ["■ = 1000", "■ = 100", "▮ = 10", "• = 1", "Your blocks: None = 0", "1000s", "-", "0", "+", "100s", "10s", "1s"], "distinct_colours": ["#a78bfa", "#10b981", "#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#a78bfa20", "#10b98120", "#3b82f620", "#b91c5c20"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 764a3c066b5ae708dd3a  seed 701  [read_mcq]
-      stem:    💃 Sir Rez has a math challenge about dance shoes. What number is marked on the number line?
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5ae43f31cab0cd74b674  seed 700  [mcq]
+      stem:    Write 4143 in words.
+      answer:  four thousand one hundred forty-three
+      options: four thousand one hundred forty-three / three thousand four hundred fourteen / four thousand one hundred thirty-three / four thousand one hundred forty-four
+      hints:   ["Read the number 4143 one place at a time, starting from the largest place.", "Thousands: 4 → 'four thousand'.", "Hundreds: 1 → 'one hundred'.", "The full word form is: 'four thousand one hundred forty-three'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 367cc1d229048cf517b0  seed 701  [cloze]
+      stem:    ✝️ Daniel has a math challenge about baskets. Write the number: nine thousand one hundred eighty-two.
       answer:  9182
-      options: 9181 / 9182 / 9184 / 9183
+      options: 9183 / 2819 / 9172 / 9182
       hints:   ["Identify each word part and its place value.", "Expanded form: 9000 + 100 + 80 + 2.", "Add the parts together to get 9182."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["9180", "9181", "9182", "9183", "9184", "9185", "9186", "9187", "9188", "9189", "9190"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 7aa57ae1453c2f664982  seed 702  [read_mcq]
-      stem:    🏀 Isko has a math challenge about basketballs. What number do the blocks show?
-      answer:  3232
-      options: 3223 / 3132 / 3222 / 3232
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 2 blocks.", "Tens: 3 blocks.", "Ones: 2 blocks.", "Add the value of every block together to get the total, 3232."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 4c43fdaf6cb5fec69e5f  seed 800  [read_mcq]
-      stem:    What number is marked on the number line?
-      answer:  1778
-      options: 1778 / 1780 / 1777 / 1779
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8f71750e31dcdc5af0a3  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Write 3232 in words.
+      answer:  three thousand two hundred thirty-two
+      options: three thousand two hundred twenty-two / three thousand two hundred thirty-three / three thousand two hundred thirty-two / two thousand three hundred twenty-three
+      hints:   ["Read the number 3232 one place at a time, starting from the largest place.", "Thousands: 3 → 'three thousand'.", "Hundreds: 2 → 'two hundred'.", "The full word form is: 'three thousand two hundred thirty-two'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dae3feadc2523ea3083a  seed 800  [true_false]
+      stem:    The number written as 'one thousand seven hundred seventy-eight' is 1778. True or False?
+      answer:  True
       hints:   ["Identify each word part and its place value.", "Expanded form: 1000 + 700 + 70 + 8.", "Add the parts together to get 1778."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["1770", "1771", "1772", "1773", "1774", "1775", "1776", "1777", "1778", "1779", "1780"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 9e8c86256c08d8892152  seed 900  [set_fill_in_blank]
-      stem:    Use base-10 blocks to show the number 27.
-      answer:  27
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Tens: 2 blocks.", "Ones: 7 blocks.", "Add the value of every block together to get the total, 27."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 46a11e147f67ea9c5424  seed 901  [set_fill_in_blank]
-      stem:    Move the dot to show 22 on the number line.
-      answer:  22
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 09decf50a9d45a9544c1  seed 900  [mcq]
+      stem:    Write 27 in words.
+      answer:  twenty-seven
+      options: seventy-two / two hundred seventy / seventeen / twenty-seven
+      hints:   ["Read the number 27 one place at a time, starting from the largest place.", "The full word form is: 'twenty-seven'."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4f4e8609c5ac71d4ca7c  seed 901  [true_false]
+      stem:    The number written as 'twenty-two' is 220. True or False?
+      answer:  False
       hints:   ["Identify each word part and its place value.", "Expanded form: 20 + 2.", "Add the parts together to get 22."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample f5b57459ad534626a263  seed 1000  [set_fill_in_blank]
-      stem:    Move the dot to show 2625 on the number line.
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3e63334339edb6802e6b  seed 1000  [mcq]
+      stem:    Write the number: two thousand six hundred twenty-five.
       answer:  2625
+      options: 2625 / 2615 / 5262 / 2626
       hints:   ["Identify each word part and its place value.", "Expanded form: 2000 + 600 + 20 + 5.", "Add the parts together to get 2625."]
-      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2620", "2621", "2622", "2623", "2624", "2625", "2626", "2627", "2628", "2629", "2630", "Your answer: Position", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 9ae3dfe7dd5cfb4090ad  seed 1001  [read_mcq]
-      stem:    What number do the blocks show?
-      answer:  4245
-      options: 15 / 4254 / 4245 / 4235
-      hints:   ["Count how many of each size of block there are.", "Multiply each block's own value by how many there are, then add all the totals together.", "Hundreds: 2 blocks.", "Tens: 4 blocks.", "Ones: 5 blocks.", "Add the value of every block together to get the total, 4245."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
-      visual:  PlaceValueBlocks
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
-  sample 178035fe2930dca05b55  seed 1002  [read_mcq]
-      stem:    What number is marked on the number line?
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 389a7d2e41316941af9f  seed 1001  [cloze]
+      stem:    Write 4245 in words.
+      answer:  four thousand two hundred forty-five
+      options: four thousand two hundred forty-six / four thousand two hundred thirty-five / five thousand four hundred twenty-four / four thousand two hundred forty-five
+      hints:   ["Read the number 4245 one place at a time, starting from the largest place.", "Thousands: 4 → 'four thousand'.", "Hundreds: 2 → 'two hundred'.", "The full word form is: 'four thousand two hundred forty-five'."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 97f5212a3b56bfd7c5d5  seed 1002  [cloze]
+      stem:    Write the number: four thousand six hundred twenty.
       answer:  4620
-      options: 4619 / 4621 / 4622 / 4620
+      options: 4610 / 264 / 4621 / 4620
       hints:   ["Identify each word part and its place value.", "Expanded form: 4000 + 600 + 20.", "Add the parts together to get 4620."]
-      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
-      visual:  NumberLine
-      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["4610", "4611", "4612", "4613", "4614", "4615", "4616", "4617", "4618", "4619", "4620", "4621", "4622", "4623", "4624", "4625", "4626", "4627", "4628", "4629", "4630"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
-      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
 

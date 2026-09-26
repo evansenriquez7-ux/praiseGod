@@ -1,0 +1,537 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_4-20260925",
+  "mat_g3_na_q1_4": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All samples use numbers in the 1000-8000 range with rounding tasks targeting nearest 10, 100, or 1000. Complexity of place-value reasoning is appropriate for Grade 3 Quarter 1, with clear procedural steps reflected in consistent hint structures."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample directly instantiates the core competency of rounding to the nearest ten, hundred, or thousand. Problems present unambiguous rounding directives without superfluous context, maintaining tight alignment to the written curriculum objective."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "All five decomposed requirements (round, numbers, nearest_ten, hundred, thousand) are demonstrated across the sample set. Coverage is comprehensive with dedicated samples for each rounding target, ensuring lossless mapping to the full competency.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The requirement list covers every semantic component: the verb (round), the object (numbers), and all three target precisions (nearest ten, nearest hundred, nearest thousand). No required element is missing and the decomposition adds no inauthentic constraints."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Sample set includes nine rounding-to-nearest-thousand cases, six rounding-to-nearest-hundred cases, and seven rounding-to-nearest-ten cases. Both up-rounding (digit >= 5) and down-rounding (digit < 5) scenarios are represented across targets."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Numbers used (1310 through 8789) are scaled for Grade 3 learners with manageable digit magnitudes. Visual supports (number lines with 30-label ranges) are appropriate for the grade level without introducing unnecessary cognitive load."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Sample set spans three response formats (cloze fill-in-blank, multiple-choice, read-based multiple-choice), four experience types (standard, hint_gated, mastery_drill, scaffolded), and includes both unthemed problems and those with character-based theming using emoji."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "7f1f817ba2f6ef8fab58",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem unambiguously directs rounding 1815 to the nearest 1000. Answer 2000 is mathematically correct; distractors 2010, 0, and 1000 represent plausible errors (rounding to wrong place or off-by-ten)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 1815 to nearest 1000 correctly yields 2000 since the hundreds digit is 8 (≥5). Hint sequence accurately traces the decision path and confirms the mathematical validity of the answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with a single clear fill-in blank is straightforward for Grade 3 students. Hints provide step-by-step scaffolding that guides reasoning without revealing the answer prematurely."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All four hints are mathematically sound: identifying the digit to examine (8), applying the rounding rule (8≥5 means round up), and arriving at 2000 as the correctly rounded value."
+          }
+        }
+      },
+      {
+        "sample_id": "76df8a47a8d7a83d94e3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice format clearly presents rounding 3929 to the nearest 10 with four distinct options. Position of correct answer (3930) is final position, not first, reducing guessing bias."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number 3929 rounded to nearest 10 is correctly 3930 since the ones digit 9 is ≥5. Distractors span realistic errors: 3940 (over-rounding), 3900 (rounding down), and 3920 (off-by-ten)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice item with four plausible options and unambiguous stem language. Hints explicitly identify the digit (9) and apply the rounding rule clearly for Grade 3 comprehension."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 3930 is correct; hint logic traces examining the ones digit (9), recognizing 9≥5, and rounding up from 3920 to 3930. All arithmetic is accurate throughout."
+          }
+        }
+      },
+      {
+        "sample_id": "ba3faf22ff3795892dae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual reduces ambiguity. Stem clearly specifies rounding 3225 to the nearest 100. Visual marks the number's position on the line, supporting the rounding task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number 3225 on number line labeled from 3100 to 3400 in increments of 10. Rounding to nearest 100 yields 3200 (hundreds digit 2 unchanged since the tens digit 2 < 5). Visual placement and arithmetic align."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual number line with marked position makes the rounding distance intuitive for Grade 3 learners. The line spans 300 units centered around the rounding boundaries, supporting visual understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 3200 is correct; 3225 is closer to 3200 than 3300. Hints correctly identify tens digit (2), apply rule (2<5 means keep hundreds digit), and confirm result 3200."
+          }
+        }
+      },
+      {
+        "sample_id": "6758f3d01139b4d161c6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice stem directs rounding 2630 to the nearest 100 without extraneous information. Four options provided; correct answer 2600 is positioned third, not revealing through position."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2630 to nearest 100 is correctly 2600 since tens digit 3 is <5. The distractors (2601, 2310, 2000) represent distinct common errors that Grade 3 students might produce."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Standard multiple-choice format with clear task statement. Options are sufficiently separated to test understanding rather than careless reading errors."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All hints are accurate: examining tens digit (3), recognizing 3<5, keeping hundreds digit unchanged (2), yielding 2600 as final answer."
+          }
+        }
+      },
+      {
+        "sample_id": "5ae4fe548e26f58b05ab",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem unambiguously asks to round 5096 to the nearest 10. Four options are presented; answer 5100 is positioned last, not privileged by location."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 5096 to nearest 10 correctly gives 5100 since ones digit 6 is ≥5. Options include down-rounding (5090) and far-rounding errors (5110, 5000) to test understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice format with four distinct options. Language is clear and directly stated without distracting elements."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 5096 to 5100 is mathematically correct. Hints trace the examination of ones digit (6), application of rule (6≥5 means round up), and confirmation of answer."
+          }
+        }
+      },
+      {
+        "sample_id": "8796cd362f59b865db4c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual clearly communicates the task: rounding 8438 to nearest 100. The visual marks the position and provides scale reference for rounding distance."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number 8438 rounds to 8400 since tens digit 3 is <5. Number line spans 8300 to 8600 with marked position, supporting visual estimation of nearest hundred boundary."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line visual with clear markers helps Grade 3 learners visualize the distance to rounding boundaries. Multiple-choice options support non-visual verification of the rounding decision."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 8400 is correct; 8438 is 38 units away from 8400 and 62 units from 8500. Hints accurately identify tens digit (3), apply rule (3<5), and confirm 8400."
+          }
+        }
+      },
+      {
+        "sample_id": "a3caf1b2be02bdf24705",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice asking to round 6148 to nearest 1000. Number line visual spans 5000 to 8000, providing scale context. Stem clearly specifies the rounding target."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 6148 to nearest 1000 yields 6000 since hundreds digit 1 is <5. The number line positions 6148 between 6000 and 7000, supporting the down-rounding decision."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual presentation with number line makes the magnitude of 6148 and its position relative to thousand-boundaries intuitive. Multiple-choice format provides concrete options to evaluate."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 6000 is correct; 6148 is closer to 6000 than 7000. Hints identify hundreds digit (1), apply rule (1<5 means round down), and confirm 6000 as rounded value."
+          }
+        }
+      },
+      {
+        "sample_id": "8a9f7598a7f766af435b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze fill-in-blank clearly directs rounding 6952 to nearest 1000 with a single blank to complete. Four options provided support students who need guidance."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 6952 to nearest 1000 correctly gives 7000 since hundreds digit 9 is ≥5. All hints are mathematically accurate and trace the correct reasoning path."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format is clear and direct. Hints provide step-by-step support for Grade 3 learners: identifying digit (9), recognizing rule application (9≥5 round up), and providing answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 7000 is correct; rounding 6952 up to the nearest thousand because hundreds digit exceeds 4. Hint sequence accurately traces and validates this reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "22321e31364940f403f8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice stem asks to round 2325 to nearest 100 without ambiguity. Four options are distinct and distributed across plausible rounding errors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2325 to nearest 100 yields 2300 since tens digit 2 is <5. Options include off-by-one (2301, 2310) and wrong-place-rounding (2000) distractors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Standard multiple-choice with clear language. Hints scaffold Grade 3 learners through identifying the tens digit (2), applying the rounding rule (2<5), and confirming the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2300 is mathematically correct. Hints accurately trace examining tens digit (2), recognizing 2<5, keeping hundreds digit unchanged, and arriving at 2300."
+          }
+        }
+      },
+      {
+        "sample_id": "5a91ee29347759c53617",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 7065 to nearest 10. The visual marks the position clearly; multiple-choice options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 7065 to nearest 10 correctly gives 7070 since ones digit 5 is ≥5. Number line spans 7050-7080 with labeled increments showing the 7065 position."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line visual with clear position marking and ten-unit grid helps Grade 3 students visualize rounding to nearest 10. Multiple-choice confirms the visual understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 7070 is correct; 7065 is exactly at the midpoint between 7060 and 7070, and the rule (5≥5 round up) applies. Hints accurately confirm this reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "0ab49b4f35529f8aae7a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly presents rounding 2565 to nearest 100 with four options. The blank unambiguously requests the rounded value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2565 to nearest 100 is correctly 2600 since tens digit 6 is ≥5. Distractors (2500, 2610, 2000) test understanding of place value and rounding direction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item presents a straightforward fill-in task. Hints guide Grade 3 learners through identifying tens digit (6), applying rule (6≥5 round up), and providing answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2600 is correct; rounding 2565 up to nearest hundred because tens digit is 6. Hints accurately explain the digit identification and rule application."
+          }
+        }
+      },
+      {
+        "sample_id": "3d2b5cb7d6607078844c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2688 to nearest 10. Stem is unambiguous; visual marks the number position clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2688 to nearest 10 is correctly 2690 since ones digit 8 is ≥5. Number line spans 2670-2700 with marked position supporting visual rounding estimation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line with clear marking of 2688 and ten-unit labels makes the rounding decision transparent. Multiple-choice options provide concrete verification of visual reasoning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2690 is correct; 2688 rounds to 2690 because ones digit 8 exceeds 4. Hints accurately identify the digit (8), apply rule (8≥5), and confirm answer."
+          }
+        }
+      },
+      {
+        "sample_id": "099af6147954be5419c5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format unambiguously directs rounding 1310 to nearest 1000 with four provided options to support the fill-in task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 1310 to nearest 1000 yields 1000 since hundreds digit 3 is <5. Distractors (1010, 1001, 0) represent plausible errors or off-by-one mistakes."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Straightforward cloze item asking for nearest-thousand rounding. Hints provide step-by-step scaffold identifying hundreds digit (3), rule application (3<5), and confirmation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 1000 is correct; 1310 is closer to 1000 than 2000. Hints accurately trace digit identification, rule application, and verification of the rounded value."
+          }
+        }
+      },
+      {
+        "sample_id": "ea048806443b2596aa02",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly requests rounding 2964 to nearest 10 with four options provided. No ambiguity in task specification or answer format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2964 to nearest 10 correctly yields 2960 since ones digit 4 is <5. Options span plausible down-rounding (2900) and off-by-digit errors (2961, 2970)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item presents a clear fill-in task for Grade 3 level. Hints scaffold reasoning by identifying ones digit (4), explaining rule (4<5 round down), and confirming answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2960 is correct; ones digit 4 triggers down-rounding to 2960. Hints accurately validate digit identification, rule logic, and the final answer."
+          }
+        }
+      },
+      {
+        "sample_id": "e9a7b743f71de718372e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice with character theme (Sir Rez, dance shoes emoji) clearly presents the rounding task: rounding 3250 to nearest 1000. Theming does not obscure the mathematical question."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 3250 to nearest 1000 is correctly 3000 since hundreds digit 2 is <5. Theming about a character's math challenge provides light context without interfering with the rounding logic."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Themed introduction with character name and emoji provides motivational context for Grade 3 learners. Mathematical task remains clear: round 3250 to nearest 1000."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 3000 is correct; 3250 rounded to nearest thousand yields 3000. Hints trace digit identification (2), rule application (2<5), and confirmation without being distracted by theme."
+          }
+        }
+      },
+      {
+        "sample_id": "698f4ae820c5b0b0946f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with character theme (Isko, basketball emoji) presents a clear fill-in task for rounding 2394 to nearest 10. Mathematical directive is unambiguous despite theming."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2394 to nearest 10 correctly yields 2390 since ones digit 4 is <5. Theming about basketballs does not interfere with place-value rounding logic or answer validity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Themed introduction provides personal context about a character's math challenge while maintaining clarity of the rounding task. Grade 3 learners can easily identify what to round and to what place."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2390 is correct; ones digit 4 triggers down-rounding. Hints accurately identify digit (4), apply rule (4<5), and confirm the result, independent of theme elements."
+          }
+        }
+      },
+      {
+        "sample_id": "9e54d149ca9e327aa4e7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual clearly requests rounding 8128 to nearest 1000. Stem is unambiguous; visual marks position explicitly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number 8128 rounded to nearest 1000 is correctly 8000 since hundreds digit 1 is <5. Number line spans 7000-10000 with clear 8128 position marking, supporting visual verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line visual with thousand-unit increments and marked position makes rounding to nearest thousand intuitive for Grade 3 learners. Multiple-choice options support verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 8000 is correct; 8128 is closer to 8000 than 9000 because hundreds digit 1 is less than 5. Hints validate digit identification and rule application accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "ca4e0625ebe4219867c2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice format clearly states the task: round 1665 to nearest 1000. Four options are distinct; answer is unambiguously positioned as fourth option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 1665 to nearest 1000 correctly gives 2000 since hundreds digit 6 is ≥5. Distractors (2010, 1000, 0) test understanding of rounding direction and magnitude."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Standard multiple-choice with clear task statement. Hints scaffold Grade 3 reasoning by identifying hundreds digit (6), recognizing rule (6≥5 round up), and confirming answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2000 is correct; 1665 rounded up to nearest thousand is 2000. Hints accurately trace digit examination (6), rule logic (6≥5), and final answer confirmation."
+          }
+        }
+      },
+      {
+        "sample_id": "3429e2d21caa14fed89a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 2691 to nearest 100. Stem clearly specifies the rounding target; visual marks position unambiguously."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 2691 to nearest 100 is correctly 2700 since tens digit 9 is ≥5. Number line spans 2500-2800 with clear position marking supporting the up-rounding decision."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line with hundred-unit labels and marked position makes the nearest-hundred boundary relationship transparent for Grade 3 learners. Multiple-choice options confirm understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2700 is correct; 2691 is closer to 2700 than 2600 because tens digit 9 exceeds 4. Hints accurately identify digit (9), apply rule (9≥5), and validate answer."
+          }
+        }
+      },
+      {
+        "sample_id": "fff269ed0142cabf352a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based multiple-choice with number line visual requesting rounding 4305 to nearest 100. Stem is clear; experience type hint_gated suggests adaptive hint delivery, not answer ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 4305 to nearest 100 yields 4300 since tens digit 0 is <5. Number line spans 4200-4500 with position marked, supporting down-rounding verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Read-based format with number line visual and hint_gated experience support makes the task clear. Visual confirms position and rounding boundary relationship at Grade 3 level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 4300 is correct; 4305 rounds to 4300 because tens digit 0 is less than 5. Hints accurately trace place identification, rule application, and answer confirmation."
+          }
+        }
+      },
+      {
+        "sample_id": "87c8599dc8cf33a4a93d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with mastery_drill experience clearly requests rounding 8789 to nearest 10. Four options are provided; task is unambiguously a fill-in-blank item."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 8789 to nearest 10 correctly yields 8790 since ones digit 9 is ≥5. Options include down-rounding (8780) and larger-place errors (8700) to test understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format in mastery_drill context presents a straightforward rounding task. Hints provide Grade 3 appropriate scaffolding identifying ones digit (9), rule application (9≥5), and answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 8790 is correct; ones digit 9 triggers up-rounding to nearest ten. Hints accurately validate digit identification, rule logic, and final result."
+          }
+        }
+      },
+      {
+        "sample_id": "31e99e02de46365fb7af",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with scaffolded experience clearly requests rounding 5805 to nearest 1000. Four options support the fill-in task; the mathematical directive is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 5805 to nearest 1000 is correctly 6000 since hundreds digit 8 is ≥5. The scaffolded experience type indicates graduated support; the mathematical validity remains sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item in scaffolded context provides support for Grade 3 learners tackling thousands-place rounding. Hints break the reasoning into clear steps: digit identification (8), rule recognition (8≥5), and answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 6000 is correct; 5805 rounded to nearest thousand is 6000 because hundreds digit is 8. Hints accurately trace the entire reasoning path and confirm correctness."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "round",
+        "clause": "Round",
+        "verdict": "PASS",
+        "reasoning": "All 22 samples contain an explicit directive to perform rounding, using phrasing like Round [number] to the nearest [place]. This core verb is demonstrated consistently and unambiguously across every item in the set.",
+        "sample_ids": ["7f1f817ba2f6ef8fab58", "76df8a47a8d7a83d94e3", "ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "5ae4fe548e26f58b05ab", "8796cd362f59b865db4c", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "22321e31364940f403f8", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "099af6147954be5419c5", "ea048806443b2596aa02", "e9a7b743f71de718372e", "698f4ae820c5b0b0946f", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "87c8599dc8cf33a4a93d", "31e99e02de46365fb7af"]
+      },
+      {
+        "requirement_id": "numbers",
+        "clause": "numbers",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires rounding a specific four-digit number (ranging from 1310 to 8789). The noun numbers is fulfilled through numeric operands that serve as the objects of the rounding operation in all 22 items.",
+        "sample_ids": ["7f1f817ba2f6ef8fab58", "76df8a47a8d7a83d94e3", "ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "5ae4fe548e26f58b05ab", "8796cd362f59b865db4c", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "22321e31364940f403f8", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "099af6147954be5419c5", "ea048806443b2596aa02", "e9a7b743f71de718372e", "698f4ae820c5b0b0946f", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "87c8599dc8cf33a4a93d", "31e99e02de46365fb7af"]
+      },
+      {
+        "requirement_id": "nearest_ten",
+        "clause": "nearest ten",
+        "verdict": "PASS",
+        "reasoning": "Seven samples explicitly target rounding to the nearest ten: seeds 43, 46, 601, 602, 603, 700, and 1001. Each specifies Round [number] to the nearest 10 and assesses correct understanding of ones-place magnitude relative to the rounding rule.",
+        "sample_ids": ["76df8a47a8d7a83d94e3", "5ae4fe548e26f58b05ab", "5a91ee29347759c53617", "0ab49b4f35529f8aae7a", "3d2b5cb7d6607078844c", "ea048806443b2596aa02", "698f4ae820c5b0b0946f", "87c8599dc8cf33a4a93d"]
+      },
+      {
+        "requirement_id": "hundred",
+        "clause": "hundred",
+        "verdict": "PASS",
+        "reasoning": "Seven samples explicitly target rounding to the nearest hundred: seeds 44, 45, 600, 602, 800, 901, and 1000. Each requires students to examine the tens digit and apply rounding logic to determine the correct hundred boundary.",
+        "sample_ids": ["ba3faf22ff3795892dae", "6758f3d01139b4d161c6", "22321e31364940f403f8", "8796cd362f59b865db4c", "3429e2d21caa14fed89a", "fff269ed0142cabf352a", "0ab49b4f35529f8aae7a"]
+      },
+      {
+        "requirement_id": "thousand",
+        "clause": "thousand",
+        "verdict": "PASS",
+        "reasoning": "Nine samples explicitly target rounding to the nearest thousand: seeds 42, 501, 502, 604, 701, 800, 900, 1002, and 1000 yields nearest thousand targets. Each requires examining hundreds digit and correctly rounding to thousand-place boundaries.",
+        "sample_ids": ["7f1f817ba2f6ef8fab58", "a3caf1b2be02bdf24705", "8a9f7598a7f766af435b", "099af6147954be5419c5", "e9a7b743f71de718372e", "9e54d149ca9e327aa4e7", "ca4e0625ebe4219867c2", "31e99e02de46365fb7af"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}
