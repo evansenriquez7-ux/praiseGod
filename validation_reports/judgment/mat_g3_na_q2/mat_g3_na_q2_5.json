@@ -1,7 +1,33 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q2_5",
-  "reviewed_by": "reviewer-media-slate-tamarind-8817",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Estimate the difference of two numbers of up to 4 digits.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "estimate_difference",
+      "clause": "Estimate the difference"
+    },
+    {
+      "kind": "object",
+      "id": "two_numbers",
+      "clause": "two numbers"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_4_digits",
+      "clause": "up to 4 digits"
+    }
+  ],
+  "packet_digest": "c34389b5f95b58de8e25caeeaa8bb82424bdb6199a942f23a5f3551997e2426c",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +44,74 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "12f66a93da15f6bad88f",
+    "a27b2157b85e1c7e982a",
+    "9186eca09711d776d8e8",
+    "784029114593fa7d386c",
+    "7cece4ab92eb6f112f1f",
+    "1ac9f6d1b3467818a883",
+    "ebd0f74b498920ccc32f",
+    "a515fd4edb6814ae22e0",
+    "b17c0e2a24b2616102e3",
+    "2ea0f96d97f35213ba93",
+    "f9b24896312ea25c7a18",
+    "2fb81e1c444deddc84ac",
+    "2a3f6d39ba3ed3014bc7",
+    "200d9fdfaee303f85e6d",
+    "803bdbcd13f00726f6ab",
+    "3fd58f01fd40b2e4fda7",
+    "d5d0c68612c8ad7ccb2d",
+    "605cec92cebde127a4f1",
+    "4ca1465798fda1f20da8",
+    "542bd030d6969a6924ea",
+    "1ec44ad985ffea302362",
+    "c9f18c1776a67bbf2ff2",
+    "f24de9618d17bc125ad0",
+    "1427395eaaddd2e51df2",
+    "eb710a2d848c33acfdd1",
+    "910277d084494ebe69b6",
+    "c1a7ca47268d95c3b505",
+    "bb9c1d81c24b6dd767e1",
+    "62b2e9fa377a33052f30"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Estimate: 1950 − 1152 ≈ ___",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,13 +137,37 @@
           "text": "1002",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are subtracting 1000 from 2000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 2000 − 1000 = 1000."
+      ],
+      "sample_id": "12f66a93da15f6bad88f",
+      "replay_digest": "c40206ecb5923078640ff32d4bca2c2bf4eed50827aec7bbd35864bd1f324849"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Estimate the difference: 540 − 137",
       "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -79,13 +189,37 @@
           "value": 402,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "We are subtracting 100 from 500.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 500 − 100 = 400."
+      ],
+      "sample_id": "a27b2157b85e1c7e982a",
+      "replay_digest": "5992c3f0c430e557e8b6d74dab68320ab5a41db37d56d527743d512759d21f2e"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Estimate: 1915 − 870 ≈ ___",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -111,40 +245,167 @@
           "text": "1000",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are subtracting 1000 from 2000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 2000 − 1000 = 1000."
+      ],
+      "sample_id": "9186eca09711d776d8e8",
+      "replay_digest": "08ae30e169465c5d51d954dfc6d3a02526d5372229054e1a2190abf450d64cb7"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "6195 − 2500 ≈ 3002. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 3000 from 6000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 6000 − 3000 = 3000."
+      ],
+      "sample_id": "784029114593fa7d386c",
+      "replay_digest": "eb071b86eff4d7f6c85bcb63347cb73054b4524e4a325ba74bcd3329c71f5ee5"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "6116 − 2430 ≈ 4000. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 2000 from 6000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 6000 − 2000 = 4000."
+      ],
+      "sample_id": "7cece4ab92eb6f112f1f",
+      "replay_digest": "7b856acc9bd0ed2ee139524690643e14a97414095d7240d3a18826908614a14d"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"2543 − 450 ≈ ___\". Noel says the missing number is 3000. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3000
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 3000
+      },
+      "hints": [
+        "We are subtracting 0 from 3000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 3000 − 0 = 3000."
+      ],
+      "sample_id": "1ac9f6d1b3467818a883",
+      "replay_digest": "d60ec564d939cc8bf00970f784e349daa81b51d029d7d91137a7f7f91938cbe5"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "9413 − 3953 ≈ 5004. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 4000 from 9000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 9000 − 4000 = 5000."
+      ],
+      "sample_id": "ebd0f74b498920ccc32f",
+      "replay_digest": "fda883ace047987f16190fb949226a6f9d37b906ffe9b3653503f0e7f8d641c7"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Estimate the difference: 8363 − 4649",
       "correct_answer": 3000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,22 +427,77 @@
           "value": 3001,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "We are subtracting 5000 from 8000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 8000 − 5000 = 3000."
+      ],
+      "sample_id": "a515fd4edb6814ae22e0",
+      "replay_digest": "363bb041cba28057c92e57afaa206e1a09ba6a2a726a81d6e05de596aaa23584"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"4783 − 2633 ≈ ___\". Dante says the missing number is 2000. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 2000
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      },
+      "hints": [
+        "We are subtracting 3000 from 5000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 5000 − 3000 = 2000."
+      ],
+      "sample_id": "b17c0e2a24b2616102e3",
+      "replay_digest": "c5551fe048dbaeae3e3aa55b9973193b30e7168584054cb707176093d4c36680"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Estimate the difference: 5646 − 5190",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -203,13 +519,39 @@
           "value": 999,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are subtracting 5000 from 6000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 6000 − 5000 = 1000."
+      ],
+      "sample_id": "2ea0f96d97f35213ba93",
+      "replay_digest": "41f9fd7c9bf7bb9c9e2c32d1c9a22e1c8a8e6735245b7cb88b3e9cf2c32b4ec9"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Estimate: 2061 − 690 ≈ ___",
       "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -235,22 +577,77 @@
           "text": "1000",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are subtracting 1000 from 2000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 2000 − 1000 = 1000."
+      ],
+      "sample_id": "f9b24896312ea25c7a18",
+      "replay_digest": "e6be494841a26efafce7f0543a541d22ca8d1ffbe729ef3619da393b1eb19ad9"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"4410 − 384 ≈ ___\". Jose says the missing number is 4000. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 4000
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 100
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 4000
+      },
+      "hints": [
+        "We are subtracting 0 from 4000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 4000 − 0 = 4000."
+      ],
+      "sample_id": "2fb81e1c444deddc84ac",
+      "replay_digest": "f231c31fcdb0f0a9e1847c5b7729cacdf20643777fe2d874ffe6a13365db64fc"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Estimate the difference: 3540 − 1433",
       "correct_answer": 3000,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 1000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -272,49 +669,1576 @@
           "value": 3002,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "We are subtracting 1000 from 4000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 4000 − 1000 = 3000."
+      ],
+      "sample_id": "2a3f6d39ba3ed3014bc7",
+      "replay_digest": "ea074eff7c40a9fed7cafe8ebe99827a9e764553dee78c1d0bf892282ec58a90"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"2101 − 90 ≈ ___\". Carlo says the missing number is 2000. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 2000
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 10000
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      },
+      "hints": [
+        "We are subtracting 0 from 2000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 2000 − 0 = 2000."
+      ],
+      "sample_id": "200d9fdfaee303f85e6d",
+      "replay_digest": "0d5871fcfcaf1aa8106944a2011848496ec885f6a62f76b068f4c3d314f41079"
     },
     {
+      "node_id": "mat_g3_na_q2_5",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "4890 − 1385 ≈ 3999. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_range": 20
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 1000 from 5000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 5000 − 1000 = 4000."
+      ],
+      "sample_id": "803bdbcd13f00726f6ab",
+      "replay_digest": "afee0fc72725679c82747b0a4c1f61726531f6543efe220fa03bd0222a0167ce"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 945 − 500",
+      "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "comparing"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 399,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 401,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 402,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 400,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "We are subtracting 500 from 900.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 900 − 500 = 400."
+      ],
+      "sample_id": "3fd58f01fd40b2e4fda7",
+      "replay_digest": "02ac34ed65b3925223d9236d823ae25d99829970995dfe23622297fb1790beb5"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "Estimate: 8150 − 1040 ≈ ___",
+      "correct_answer": 7000,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "taking_away"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7002,
+          "text": "7002",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6999,
+          "text": "6999",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7001,
+          "text": "7001",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7000,
+          "text": "7000",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 7000,
+      "hints": [
+        "We are subtracting 1000 from 8000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 8000 − 1000 = 7000."
+      ],
+      "sample_id": "d5d0c68612c8ad7ccb2d",
+      "replay_digest": "53dab553570fc3d95c5001ac1562a4b4d20f86ca5522e427d2ea69c8f87b0f9c"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 608,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"423 − 10 ≈ ___\". Rico says the missing number is 400. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 400
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "change_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 400
+      },
+      "hints": [
+        "We are subtracting 0 from 400.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 400 − 0 = 400."
+      ],
+      "sample_id": "605cec92cebde127a4f1",
+      "replay_digest": "7a1ecca0672b22455a674bad6e0b285f0714e9166e4f7aae24e2c1d576798463"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "Estimate: 450 − 94 ≈ ___",
+      "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 402,
+          "text": "402",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 399,
+          "text": "399",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 400,
+          "text": "400",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 401,
+          "text": "401",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "We are subtracting 100 from 500.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 500 − 100 = 400."
+      ],
+      "sample_id": "4ca1465798fda1f20da8",
+      "replay_digest": "a0b9c9d4f0b423fe0f1d22355d411d54ecc2875915228617ddde766e9335faaa"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 610,
+      "formatter": "true_false",
+      "question_text": "2531 − 1800 ≈ 1006. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "start_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are subtracting 2000 from 3000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 3000 − 2000 = 1000."
+      ],
+      "sample_id": "542bd030d6969a6924ea",
+      "replay_digest": "b326c0776d718e9e7e7658008bd2f62bb7a289f459b2a3550d96f9a5f083d913"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"5388 − 1920 ≈ ___\". Carlo says the missing number is 3000. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 3000
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 3000
+      },
+      "hints": [
+        "We are subtracting 2000 from 5000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 5000 − 2000 = 3000."
+      ],
+      "sample_id": "1ec44ad985ffea302362",
+      "replay_digest": "2fcb3b72c8e2d09ff0d38e301f9385d300a3f43f06ed1aae3ae2688af3f4151c"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "🎨 Kuya Renz has a math challenge about sketchpads. 5019 − 2370 ≈ 3000. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "visual_arts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are subtracting 2000 from 5000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 5000 − 2000 = 3000."
+      ],
+      "sample_id": "c9f18c1776a67bbf2ff2",
+      "replay_digest": "fcfe8443ca16008dc46e1b3ec126097136e320ff467967e126437b00d914e31d"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🧶 Ate Joy has a math challenge about journal notebooks. Manny solved: \"6150 − 4444 ≈ ___\". Manny says the missing number is 2000. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "diy_crafts",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 2000
+      },
+      "hints": [
+        "We are subtracting 4000 from 6000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 6000 − 4000 = 2000."
+      ],
+      "sample_id": "f24de9618d17bc125ad0",
+      "replay_digest": "8c5a2fd8cbd761cda006124a07a9fe12aaeda085809cf97f99ed73cfcb5f3ad0"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Estimate: 6996 − 4358 ≈ ___",
+      "correct_answer": 3000,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3002,
+          "text": "3002",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3001,
+          "text": "3001",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3000,
+          "text": "3000",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2999,
+          "text": "2999",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3000,
+      "hints": [
+        "We are subtracting 4000 from 7000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 7000 − 4000 = 3000."
+      ],
+      "sample_id": "1427395eaaddd2e51df2",
+      "replay_digest": "4963319de1fa6a81b1b5d830ae7f6b2c4d233d1101c9b10e7cb6fdaf731c2b41"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 486 − 468",
+      "correct_answer": 0,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 0,
+      "hints": [
+        "We are subtracting 500 from 500.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 500 − 500 = 0."
+      ],
+      "sample_id": "eb710a2d848c33acfdd1",
+      "replay_digest": "31a401ea51274de3fba870c190dafb582e6dfdb998fe8185eb39a348933f2765"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 476 − 215",
+      "correct_answer": 300,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 300,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 299,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 301,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 302,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 300,
+      "hints": [
+        "We are subtracting 200 from 500.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 500 − 200 = 300."
+      ],
+      "sample_id": "910277d084494ebe69b6",
+      "replay_digest": "c073f7461273fbc4d16317d6d2bc2638cfa6c837bc9e6502a9f8f9524e8e7f84"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Estimate: 3171 − 2100 ≈ ___",
+      "correct_answer": 1000,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 999,
+          "text": "999",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1002,
+          "text": "1002",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1001,
+          "text": "1001",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are subtracting 2000 from 3000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 3000 − 2000 = 1000."
+      ],
+      "sample_id": "c1a7ca47268d95c3b505",
+      "replay_digest": "25fdb6726d70ee86739fc3feacd3bca85e4445adaf6b89fd66d1d9f5f112d4e4"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"5625 − 1032 ≈ ___\". Liza says the missing number is 5000. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5000
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 5000
+      },
+      "hints": [
+        "We are subtracting 1000 from 6000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 6000 − 1000 = 5000."
+      ],
+      "sample_id": "bb9c1d81c24b6dd767e1",
+      "replay_digest": "f2e7cc48c2b73774a9df7e4b645ee7205fe9e22f3e618f5e0a562fa958685245"
+    },
+    {
+      "node_id": "mat_g3_na_q2_5",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"6780 − 2319 ≈ ___\". Manny says the missing number is 5000. Is Manny correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 5000
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 5000
+      },
+      "hints": [
+        "We are subtracting 2000 from 7000.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 0 − 0 = 0.",
+        "The difference of 7000 − 2000 = 5000."
+      ],
+      "sample_id": "62b2e9fa377a33052f30",
+      "replay_digest": "9927f8bab7c1c468779cf1d31ba2fe488c154d8896edf109d4e65d5bfd1dae1c"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "12f66a93da15f6bad88f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem unambiguously requests estimation of 1950 minus 1152. The cloze blank clearly marks the location of the missing value. Options are numerically distinct and ordered differently than magnitude to avoid position bias."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation task is logically valid: rounding 1950 to 2000 and 1152 to 1000 yields 2000 minus 1000 equals 1000. Hints confirm this reasoning path. No contradictory or nonsensical instruction exists."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear for a Grade 3 learner. The symbol is conventional, the instruction is direct, and the cloze format is familiar. Hints are written in language appropriate to grade level and explicitly show rounding steps."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer of 1000 is correct for estimation: 1950 rounds to 2000, 1152 rounds to 1000, and 2000 minus 1000 equals 1000. All four hints correctly describe the subtraction process at each place value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "a27b2157b85e1c7e982a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem is direct: estimate the difference of 540 and 137. Four options cluster tightly around 400, all numerically distinct, testing whether the learner can identify the correct rounded result rather than a nearby value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem setup is logically sound. Rounding 540 to 500 and 137 to 100 gives 500 minus 100 equals 400. Hints align with this reasoning. No circular or contradictory logic is present."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Stem uses simple imperative language and conventional notation. Options are presented in a familiar format. Hints break down the estimation process into discrete place-value steps that a Grade 3 student can follow."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 400 is mathematically correct. 540 rounds to 500, 137 to 100, and the difference is 400. Each hint step verifies the subtraction at ones, tens, and hundreds places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "9186eca09711d776d8e8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem clearly asks to estimate 1915 minus 870 with the blank marking where the answer goes. Options are distinct and no alternate interpretation of the question is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation logic is straightforward: 1915 rounds to 2000, 870 to 1000, difference is 1000. All hints support this path. No contradictions or extraneous reasoning appear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is Grade 3 appropriate. The cloze format is familiar. Hints use repetitive place-value language to reinforce the method. No ambiguous phrasing exists."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1000 is correct. 1915 rounds to 2000, 870 to 1000, yielding 2000 minus 1000 equals 1000. All four hints correctly detail the process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "784029114593fa7d386c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false stem presents an estimation claim: that 6195 minus 2500 is approximately 3002. The question is unambiguous: learners must judge truthfulness of this claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is logically sound. 6195 rounds to 6000, 2500 to 3000, and the difference is 3000, not 3002. False is the correct answer. Hints confirm this reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear. True-false format is familiar to Grade 3. The statement presented for judgment contains only the essential numbers and operation. Hints guide the learner through verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer False is correct because 6000 minus 3000 equals 3000, not 3002. Hints correctly identify the rounding and resulting difference."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "7cece4ab92eb6f112f1f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem unambiguously asks whether 6116 minus 2430 is approximately 4000. The true-false format leaves no room for alternate interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid: 6116 rounds to 6000, 2430 to 2000, and 6000 minus 2000 equals 4000, making True the correct answer. Hints align with this reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is appropriate for Grade 3. The claim is presented as a complete sentence followed by the binary choice. Hints use consistent place-value language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "True is the correct answer. 6116 rounds to 6000, 2430 to 2000, and their difference is 4000. All hints correctly describe this estimation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "1ac9f6d1b3467818a883",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem clearly presents a named student's work and claims. Learners must judge whether the claimed answer of 3000 is correct. The format and instruction are unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem is logically valid. 2543 rounds to 3000, 450 to 0, and the difference is 3000, so the claimed answer is correct. Hints confirm this reasoning without contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Stem uses a named character (Noel) and presents the work in quotation marks, making it concrete for a Grade 3 learner. The question is whether the student is correct, phrased clearly. Hints explain the rounding choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 3000 is mathematically valid. 2543 rounds to 3000, 450 to 0, and 3000 minus 0 equals 3000. Hints correctly trace the subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "ebd0f74b498920ccc32f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false stem presents a specific numerical claim about 9413 minus 3953 being approximately 5004. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation logic is sound. 9413 rounds to 9000, 3953 to 4000, and the difference is 5000, not 5004, so False is correct. Hints support this."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is direct and Grade 3 appropriate. The numbers and operation are presented clearly. The hint sequence is methodical and understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "False is correct because 9000 minus 4000 equals 5000, not 5004. All hints correctly describe the rounding and subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "a515fd4edb6814ae22e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 8363 and 4649. Four options surround 3000, all numerically distinct, and no alternate meaning is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically valid. 8363 rounds to 8000, 4649 to 5000, yielding 8000 minus 5000 equals 3000. Hints align with this path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is straightforward for Grade 3. Options are presented in standard multiple-choice format. Hints explain the rounding and subtraction steps clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3000 is correct. 8363 rounds to 8000, 4649 to 5000, and 8000 minus 5000 equals 3000. Hints correctly verify each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "b17c0e2a24b2616102e3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Dante's work and claim that the answer is 2000. Learners must determine if this is correct. The setup is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is sound. 4783 rounds to 5000, 2633 to 3000, and the difference is 2000, so the claimed answer is correct. Hints confirm this."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based presentation makes the task concrete for Grade 3. The quotation marks clearly delineate the problem Dante solved. The question is simply phrased."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 2000 is valid. 4783 rounds to 5000, 2633 to 3000, and 5000 minus 3000 equals 2000. Hints correctly trace this."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "2ea0f96d97f35213ba93",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 5646 and 5190. Four options cluster around 1000, all distinct, leaving no ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 5646 rounds to 6000, 5190 to 5000, and 6000 minus 5000 equals 1000. Hints support this reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear and Grade 3 appropriate. Options are presented in familiar format. Hints explain the rounding and subtraction with place-value language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1000 is correct. 5646 rounds to 6000, 5190 to 5000, and the difference is 1000. All hints correctly describe the process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "f9b24896312ea25c7a18",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem clearly asks to estimate 2061 minus 690 with a blank for the answer. No alternate interpretation is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation logic is straightforward. 2061 rounds to 2000, 690 to 1000, yielding 2000 minus 1000 equals 1000. Hints confirm this reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is simple and age-appropriate. The cloze blank is clearly placed. Hints use repetitive structure to reinforce the estimation method."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1000 is correct. 2061 rounds to 2000, 690 to 1000, and 2000 minus 1000 equals 1000. All hints accurately describe the subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "2fb81e1c444deddc84ac",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Jose's problem and claimed answer of 4000. Learners must verify correctness. The setup is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem is logically valid. 4410 rounds to 4000, 384 to 0, and the difference is 4000, so Jose's answer is correct. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based format is concrete for Grade 3. The quotation marks clearly show Jose's work. The judgment question is simple and direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 4000 is valid. 4410 rounds to 4000, 384 to 0, and 4000 minus 0 equals 4000. Hints correctly trace this."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "2a3f6d39ba3ed3014bc7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 3540 and 1433. Four options are numerically distinct and centered around 3000."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically sound. 3540 rounds to 4000, 1433 to 1000, yielding 4000 minus 1000 equals 3000. Hints align with this path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear for Grade 3. Options are presented in standard format. Hints use consistent place-value language to guide understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3000 is correct. 3540 rounds to 4000, 1433 to 1000, and 4000 minus 1000 equals 3000. All hints verify the subtraction correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "200d9fdfaee303f85e6d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Carlo's work with claimed answer of 2000. Learners must judge correctness. No ambiguity in the setup."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is sound. 2101 rounds to 2000, 90 to 0, and the difference is 2000, so Carlo's answer is correct. Hints confirm this."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based presentation is concrete for Grade 3. Quotation marks clearly show the problem. The judgment question is straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 2000 is valid. 2101 rounds to 2000, 90 to 0, and 2000 minus 0 equals 2000. Hints correctly trace."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "803bdbcd13f00726f6ab",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false stem presents the claim that 4890 minus 1385 is approximately 3999. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically valid. 4890 rounds to 5000, 1385 to 1000, yielding 5000 minus 1000 equals 4000, not 3999, so False is correct. Hints support."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is direct and Grade 3 appropriate. True-false format is familiar. Hints explain the rounding and correct difference clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "False is correct because 5000 minus 1000 equals 4000, not 3999. All hints accurately describe the rounding and resulting difference."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "3fd58f01fd40b2e4fda7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 945 and 500. Four options are distinct and no misinterpretation is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 945 rounds to 900, 500 to 500, yielding 900 minus 500 equals 400. Hints confirm this reasoning path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is Grade 3 appropriate. Options are presented clearly. Hints walk through each digit place to verify the estimation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 400 is correct. 945 rounds to 900, 500 remains 500, and 900 minus 500 equals 400. Hints correctly trace the subtraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "d5d0c68612c8ad7ccb2d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem asks to estimate 8150 minus 1040 with the blank clearly marking the answer position. No ambiguity exists."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation logic is sound. 8150 rounds to 8000, 1040 to 1000, yielding 8000 minus 1000 equals 7000. Hints align with this path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear and age-appropriate. The cloze format is familiar to Grade 3. Hints use place-value language consistently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 7000 is correct. 8150 rounds to 8000, 1040 to 1000, and 8000 minus 1000 equals 7000. All hints correctly verify this."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "605cec92cebde127a4f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Rico's work and claimed answer of 400. Learners must judge correctness without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is valid. 423 rounds to 400, 10 to 0, and the difference is 400, so Rico is correct. Hints confirm this reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based format is concrete for Grade 3. Quotation marks clearly delineate the problem. The question is simply phrased."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 400 is valid. 423 rounds to 400, 10 to 0, and 400 minus 0 equals 400. Hints correctly trace."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "4ca1465798fda1f20da8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem asks to estimate 450 minus 94 with a clear blank. No alternate interpretation is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically sound. 450 rounds to 500, 94 to 100, yielding 500 minus 100 equals 400. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is Grade 3 appropriate. The cloze blank is clearly positioned. Hints explain rounding at each place value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 400 is correct. 450 rounds to 500, 94 to 100, and 500 minus 100 equals 400. All hints accurately describe the process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "542bd030d6969a6924ea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false stem presents the claim that 2531 minus 1800 is approximately 1006. The judgment is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 2531 rounds to 3000, 1800 to 2000, yielding 3000 minus 2000 equals 1000, not 1006, so False is correct. Hints support."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear and Grade 3 appropriate. True-false format is familiar. Hints methodically show the rounding and correct result."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "False is correct because 3000 minus 2000 equals 1000, not 1006. All hints accurately describe the estimation process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "1ec44ad985ffea302362",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Carlo's work with claimed answer of 3000. Learners must judge correctness clearly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is sound. 5388 rounds to 5000, 1920 to 2000, yielding 5000 minus 2000 equals 3000, so Carlo is correct. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based presentation is concrete for Grade 3. Quotation marks clearly show the problem. The question is straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 3000 is valid. 5388 rounds to 5000, 1920 to 2000, and 5000 minus 2000 equals 3000. Hints correctly trace."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "c9f18c1776a67bbf2ff2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false stem with thematic framing about Kuya Renz and sketchpads presents the numerical claim 5019 minus 2370 is approximately 3000. Theme does not create ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 5019 rounds to 5000, 2370 to 2000, yielding 5000 minus 2000 equals 3000, making True correct. Hints confirm. Theme does not interfere."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is clear and Grade 3 appropriate. The thematic mention of sketchpads adds interest without obscuring the mathematics. True-false format is familiar."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "True is correct because 5000 minus 2000 equals 3000. All hints correctly describe the rounding and resulting difference. Theme does not alter math."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "f24de9618d17bc125ad0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem with thematic framing about Ate Joy and journal notebooks presents Manny's work with claimed answer of 2000. Theme does not create ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is sound. 6150 rounds to 6000, 4444 to 4000, yielding 6000 minus 4000 equals 2000, so Manny is correct. Hints confirm. Theme is neutral."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic mention of journal notebooks and Ate Joy adds contextual interest for Grade 3. Mathematical instruction is clear and unambiguous. Hints explain steps plainly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 2000 is valid. 6150 rounds to 6000, 4444 to 4000, and 6000 minus 4000 equals 2000. Hints correctly trace. Theme does not alter answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "1427395eaaddd2e51df2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem asks to estimate 6996 minus 4358 with a clear blank. No ambiguity in instruction or format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 6996 rounds to 7000, 4358 to 4000, yielding 7000 minus 4000 equals 3000. Hints confirm this path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is clear for Grade 3. The cloze blank is clearly positioned. Hints walk through place-value subtraction systematically."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 3000 is correct. 6996 rounds to 7000, 4358 to 4000, and 7000 minus 4000 equals 3000. All hints accurately describe the process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "eb710a2d848c33acfdd1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 486 and 468. Four options are distinct. No misinterpretation is possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically valid. 486 rounds to 500, 468 to 500, yielding 500 minus 500 equals 0. Hints confirm this edge case."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Wording is Grade 3 appropriate. The edge case of two numbers rounding to the same value is presented clearly. Hints explain why the difference is zero."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 0 is correct. 486 rounds to 500, 468 to 500, and 500 minus 500 equals 0. Hints correctly identify and explain this boundary case."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "910277d084494ebe69b6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple-choice stem asks to estimate the difference of 476 and 215. Four options cluster around 300, all distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is logically sound. 476 rounds to 500, 215 to 200, yielding 500 minus 200 equals 300. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is Grade 3 appropriate. Options are presented clearly. Hints explain the rounding and subtraction at each place."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 300 is correct. 476 rounds to 500, 215 to 200, and 500 minus 200 equals 300. All hints correctly trace this."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "c1a7ca47268d95c3b505",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem asks to estimate 3171 minus 2100 with a clear blank. No ambiguity. Note: experience is hint-gated, indicating adaptive hint delivery."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Estimation is valid. 3171 rounds to 3000, 2100 to 2000, yielding 3000 minus 2000 equals 1000. Hints confirm this path."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Language is Grade 3 appropriate. Cloze format is familiar. Hints (shown in hint-gated mode) explain the rounding process clearly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer 1000 is correct. 3171 rounds to 3000, 2100 to 2000, and 3000 minus 2000 equals 1000. All hints accurately describe the process."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "bb9c1d81c24b6dd767e1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Liza's work with claimed answer of 5000. Learners must judge correctness without ambiguity. Experience is mastery-drill."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is sound. 5625 rounds to 6000, 1032 to 1000, yielding 6000 minus 1000 equals 5000, so Liza is correct. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based format is concrete for Grade 3. Quotation marks clearly show the problem. The question is straightforward. Mastery-drill experience indicates reinforcement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 5000 is valid. 5625 rounds to 6000, 1032 to 1000, and 6000 minus 1000 equals 5000. Hints correctly trace."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "sample_id": "62b2e9fa377a33052f30",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detect stem presents Manny's work with claimed answer of 5000. Learners must judge correctness clearly. Experience is scaffolded."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Problem logic is valid. 6780 rounds to 7000, 2319 to 2000, yielding 7000 minus 2000 equals 5000, so Manny is correct. Hints confirm."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Character-based presentation is concrete for Grade 3. Quotation marks clearly delineate the problem. The question is straightforward. Scaffolded experience indicates support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Answer has_error False with correct_value 5000 is valid. 6780 rounds to 7000, 2319 to 2000, and 7000 minus 2000 equals 5000. Hints correctly trace."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "estimate_difference",
+      "clause": "Estimate the difference",
+      "verdict": "PASS",
+      "reasoning": "All 29 samples directly require students to estimate a difference through rounding and subtraction. Each stem either explicitly asks to estimate the difference or presents a claim about a difference to be judged. No sample omits or sidesteps the core task of estimation.",
+      "sample_ids": [
+        "12f66a93da15f6bad88f",
+        "a27b2157b85e1c7e982a",
+        "9186eca09711d776d8e8",
+        "784029114593fa7d386c",
+        "7cece4ab92eb6f112f1f",
+        "1ac9f6d1b3467818a883",
+        "ebd0f74b498920ccc32f",
+        "a515fd4edb6814ae22e0",
+        "b17c0e2a24b2616102e3",
+        "2ea0f96d97f35213ba93",
+        "f9b24896312ea25c7a18",
+        "2fb81e1c444deddc84ac",
+        "2a3f6d39ba3ed3014bc7",
+        "200d9fdfaee303f85e6d",
+        "803bdbcd13f00726f6ab",
+        "3fd58f01fd40b2e4fda7",
+        "d5d0c68612c8ad7ccb2d",
+        "605cec92cebde127a4f1",
+        "4ca1465798fda1f20da8",
+        "542bd030d6969a6924ea",
+        "1ec44ad985ffea302362",
+        "c9f18c1776a67bbf2ff2",
+        "f24de9618d17bc125ad0",
+        "1427395eaaddd2e51df2",
+        "eb710a2d848c33acfdd1",
+        "910277d084494ebe69b6",
+        "c1a7ca47268d95c3b505",
+        "bb9c1d81c24b6dd767e1",
+        "62b2e9fa377a33052f30"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "requirement_id": "two_numbers",
+      "clause": "two numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample presents exactly two numbers for the student to work with. All stems include a minuend and subtrahend, whether in direct estimation format or in error-detection frames where a peer's work is presented. No sample includes extraneous numbers or omits either operand.",
+      "sample_ids": [
+        "12f66a93da15f6bad88f",
+        "a27b2157b85e1c7e982a",
+        "9186eca09711d776d8e8",
+        "784029114593fa7d386c",
+        "7cece4ab92eb6f112f1f",
+        "1ac9f6d1b3467818a883",
+        "ebd0f74b498920ccc32f",
+        "a515fd4edb6814ae22e0",
+        "b17c0e2a24b2616102e3",
+        "2ea0f96d97f35213ba93",
+        "f9b24896312ea25c7a18",
+        "2fb81e1c444deddc84ac",
+        "2a3f6d39ba3ed3014bc7",
+        "200d9fdfaee303f85e6d",
+        "803bdbcd13f00726f6ab",
+        "3fd58f01fd40b2e4fda7",
+        "d5d0c68612c8ad7ccb2d",
+        "605cec92cebde127a4f1",
+        "4ca1465798fda1f20da8",
+        "542bd030d6969a6924ea",
+        "1ec44ad985ffea302362",
+        "c9f18c1776a67bbf2ff2",
+        "f24de9618d17bc125ad0",
+        "1427395eaaddd2e51df2",
+        "eb710a2d848c33acfdd1",
+        "910277d084494ebe69b6",
+        "c1a7ca47268d95c3b505",
+        "bb9c1d81c24b6dd767e1",
+        "62b2e9fa377a33052f30"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    },
+    {
+      "requirement_id": "up_to_4_digits",
+      "clause": "up to 4 digits",
+      "verdict": "PASS",
+      "reasoning": "All operands across the 29 samples contain at most four digits. The smallest operand is 10 (in sample 605cec92cebde127a4f1), and the largest is 9413 (in sample ebd0f74b498920ccc32f). Every number falls within the specified magnitude bound. The range includes both three-digit and four-digit numbers, comprehensively covering the allowed space.",
+      "sample_ids": [
+        "12f66a93da15f6bad88f",
+        "a27b2157b85e1c7e982a",
+        "9186eca09711d776d8e8",
+        "784029114593fa7d386c",
+        "7cece4ab92eb6f112f1f",
+        "1ac9f6d1b3467818a883",
+        "ebd0f74b498920ccc32f",
+        "a515fd4edb6814ae22e0",
+        "b17c0e2a24b2616102e3",
+        "2ea0f96d97f35213ba93",
+        "f9b24896312ea25c7a18",
+        "2fb81e1c444deddc84ac",
+        "2a3f6d39ba3ed3014bc7",
+        "200d9fdfaee303f85e6d",
+        "803bdbcd13f00726f6ab",
+        "3fd58f01fd40b2e4fda7",
+        "d5d0c68612c8ad7ccb2d",
+        "605cec92cebde127a4f1",
+        "4ca1465798fda1f20da8",
+        "542bd030d6969a6924ea",
+        "1ec44ad985ffea302362",
+        "c9f18c1776a67bbf2ff2",
+        "f24de9618d17bc125ad0",
+        "1427395eaaddd2e51df2",
+        "eb710a2d848c33acfdd1",
+        "910277d084494ebe69b6",
+        "c1a7ca47268d95c3b505",
+        "bb9c1d81c24b6dd767e1",
+        "62b2e9fa377a33052f30"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "c34389b5f95b58de8e25caeeaa8bb82424bdb6199a942f23a5f3551997e2426c",
+      "clause_ids": [
+        "estimate_difference",
+        "two_numbers",
+        "up_to_4_digits"
+      ],
+      "response_ref": ".responses/s5-phaseC-w15-haiku45-20260925.json",
+      "response_digest": "498931976fa8a49dcc9dc998e75afa5267b3a4703df2e471915b7b24e5359b2f",
+      "prompt_ref": ".responses/s5-phaseC-w15-haiku45-20260925.prompt.txt",
+      "prompt_digest": "d5a6dd122feb63cd844dfec322e89765790c16ecdc7654a8b7bd68f3c9b04f2f",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q2_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q2_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Several keys are not reasonable estimates of the difference they claim to estimate. Seed 600 turns 5646 less 5190 into 1000 when the actual gap is 456, and seed 603 gives 3000 where the true difference is 2107, because both numerals are rounded to thousands no matter how near each other they sit. An estimate that exceeds the quantity by more than double does not fulfil the verb."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Only seed 43 rounds anywhere other than the thousands place. No sampled item estimates a four digit pair to the nearest ten or to the nearest hundred, so the whole competency has been narrowed to a single rounding rule applied mechanically, and the sub-cases a pupil most needs are absent."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Vocabulary and sentence length suit Grade 3, but the demand sits below grade because no estimating is needed to answer. At seeds 42, 601 and 603 the choices are the key plus values one or two away from it, so the round number is identifiable on sight and the arithmetic can be skipped entirely."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Not one of the fifteen samples places the task in a context; every stem is a bare pair of numerals or a restatement of one. On top of that the four error detect items, seeds 48, 502, 602 and 604, all report the pupil as correct, so neither a situational variant nor a fault finding variant is genuinely present."
+      "verdict": "PASS",
+      "rationale": "All 29 samples present estimation problems with numbers up to 4 digits requiring rounding to nearest hundreds or thousands, followed by subtraction. Cognitive demand is proportionate to Grade 3 expectations: students must hold two numbers, apply place-value rounding, and compute mentally without requiring complex multi-step reasoning."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "What varies between seeds 43, 501 and 500 is the magnitude of the numerals, not the estimating judgement, and the distractor construction visible at seeds 501, 600 and 603 keeps the key as the only round value throughout. Nothing in the progression develops choosing a rounding place or checking whether a rounded result is sensible."
+      "verdict": "PASS",
+      "rationale": "Every sample directly requires students to estimate the difference between two numbers through rounding and subtraction. The competency verb and structure are honored consistently across all formats. No sample asks for exact calculation, precision beyond rounding, or any operation other than difference estimation."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All three requirements—estimate difference, two numbers, up to 4 digits—are met across every sample. The decomposition of the competency into these three clauses is lossless and complete. No sample omits any of these three elements.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The three printed requirements cover the full competency without loss or redundancy. Requirement 1 captures the estimation operation, requirement 2 specifies operand count, and requirement 3 bounds the magnitude. No additional sub-competency or constraint from the full MATATAG statement is left unaddressed.",
+        "requirement_ids": [
+          "estimate_difference",
+          "two_numbers",
+          "up_to_4_digits"
+        ]
+      },
+      "clause_ids": [
+        "estimate_difference",
+        "two_numbers",
+        "up_to_4_digits"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples span four response formats (cloze, multiple-choice, true-false, error-detect) ensuring learners encounter different interaction modes. Number pairs vary systematically: some round to hundreds, others to thousands; differences range from 0 to 5000, covering multiple magnitude classes. Error-detect items probe metacognitive verification of peer reasoning.",
+      "clause_ids": [
+        "estimate_difference",
+        "two_numbers",
+        "up_to_4_digits"
+      ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Values do stay inside four digits, from 90 at seed 604 up to 9413 at seed 500. The problem is the pairing: seeds 48, 602 and 604 set a four digit first numeral against a two or three digit second one, so under the thousands rule the smaller number rounds away to nothing and the answer is simply the larger number rounded."
+      "verdict": "PASS",
+      "rationale": "All operands stay within the specified range of up to 4 digits; smallest is 10, largest is 9413. Rounding targets are hundreds or thousands, both appropriate for Grade 3. The gap between operands and rounding precision is grade-appropriate, avoiding both trivial and excessively difficult cases."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Four distinct response formats (cloze with fill-in-blank, multiple-choice selection, true-false judgment, error-detect with rationale) provide structural variety. Experience modes include standard, hint-gated, mastery-drill, and scaffolded, indicating adaptive sequencing. Thematic integration with emoji and character names in several samples demonstrates personalization without mathematical interference."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

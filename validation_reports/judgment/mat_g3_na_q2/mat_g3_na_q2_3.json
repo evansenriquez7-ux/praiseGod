@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q2_3",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve problems involving addition of numbers with sums up to 10 000, including problems involving money.",
+    "grade": 3,
+    "quarter": 2,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_problems",
+      "clause": "Solve problems"
+    },
+    {
+      "kind": "property",
+      "id": "addition",
+      "clause": "addition"
+    },
+    {
+      "kind": "object",
+      "id": "numbers",
+      "clause": "numbers"
+    },
+    {
+      "kind": "range",
+      "id": "sums_up_to_10000",
+      "clause": "sums up to 10 000"
+    },
+    {
+      "kind": "context",
+      "id": "problems_involving_money",
+      "clause": "problems involving money"
+    }
+  ],
+  "packet_digest": "40be94884db0a62337acd621e0accf8ad0c848102cdbe27da060d1d2822cf35d",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +53,89 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614,
+    615,
+    616,
+    617,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "76746e9501193b85f467",
+    "68b27b230563a95bd74e",
+    "424abec334619d741437",
+    "b82c85267a191aacd5de",
+    "417fdf192c781899c2c2",
+    "bee6bbc7ded2f4221bea",
+    "10077090464f76349e2f",
+    "d191c8b548398020fbb0",
+    "cf99ea80b8b6f3d35a1b",
+    "1b7dfa03cfd7a1ac4bfd",
+    "4500efc0700f118c6821",
+    "2436e14eb8e8274e24f7",
+    "680855ab13377a606e15",
+    "cbd6e542a2fd05d41f50",
+    "1688f380c35dd4e0d987",
+    "a5449892e0c3c478d657",
+    "0950517b3521d3315046",
+    "6683b69b493d409a1095",
+    "7c5ad980128aa23ad03a",
+    "46370cb71c700e28d78c",
+    "65c82b235680fb28b3a9",
+    "51b51bfeaf7ea7c70630",
+    "1587405555063e16894f",
+    "275cc6cf0031824947dd",
+    "6b2db98d0c6848b0a116",
+    "56534050e4814562fb62",
+    "da3c411eeaaead636acb",
+    "2fb8fc1493e1169ed02e",
+    "1f4cf12237eec657a54e",
+    "1b27c945ccdda3c1d0dc",
+    "7668376476e3b8b26a69",
+    "76e45a77885864a78c74",
+    "89c8937fa9873de05308",
+    "ad651b5ef4355b72387c",
+    "31ead9cd6644d1f191c1",
+    "7f5824c32442c158fe8e"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "One basket has 1086 costumes. Another basket has 2067 costumes. If you put all the costumes together, how many costumes are there?",
       "correct_answer": 3153,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,28 +157,103 @@
           "value": 3152,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3153,
+      "hints": [
+        "We are adding two numbers: 1086 and 2067.",
+        "Add the ones: 6 + 7 = 13. Keep 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 8 + 6 + 1 (carried) = 15.",
+        "The sum is 1086 + 2067 = 3153."
+      ],
+      "sample_id": "76746e9501193b85f467",
+      "replay_digest": "4d5a2fb1f955bbfc56bf0e74d45183106c7448ba95705a8f31783206f561efb0"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "Nikka bought a pencil for ₱1620 and an eraser for ₱2356. How much did Nikka spend in all? The answer is 3986. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 1620 and 2356.",
+        "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.",
+        "Add the tens: 2 + 5 = 7.",
+        "The sum is 1620 + 2356 = 3976."
+      ],
+      "sample_id": "68b27b230563a95bd74e",
+      "replay_digest": "a6952e5ff1141541586711437ec5bef09298cf9c4c49be0a62509fc532768290"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved this problem: \"Coach Nora had ₱1640 and received ₱3900 more from Nanay. How much money does Coach Nora have in all?\" Rico says the answer is 5540. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 5540
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 5540
+      },
+      "hints": [
+        "We are adding two numbers: 1640 and 3900.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 4 + 0 = 4.",
+        "The sum is 1640 + 3900 = 5540."
+      ],
+      "sample_id": "424abec334619d741437",
+      "replay_digest": "6d5a408d083b81be00d69b66b8c021c55ef6a528a6361629a4d5b738c98269b4"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Ate Gab has ₱720 in one pocket and ₱310 in another pocket. How much money does Ate Gab have in total?",
       "correct_answer": 1030,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -89,13 +275,37 @@
           "value": 410,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 1030,
+      "hints": [
+        "We are adding two numbers: 720 and 310.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 2 + 1 = 3.",
+        "The sum is 720 + 310 = 1030."
+      ],
+      "sample_id": "b82c85267a191aacd5de",
+      "replay_digest": "362139aa03e2581e85ef3766881bce185221fa20b8ae65567067651761efce86"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "There are 9997 seeds in one basket and 2 seeds in another basket. How many seeds are there in all?",
       "correct_answer": 9999,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -121,19 +331,73 @@
           "text": "10009",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9999,
+      "hints": [
+        "We are adding two numbers: 9997 and 2.",
+        "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.",
+        "Add the tens: 9 + 0 = 9.",
+        "The sum is 9997 + 2 = 9999."
+      ],
+      "sample_id": "417fdf192c781899c2c2",
+      "replay_digest": "c9972747546f0227d58415d7e11d834833291608e0e34b86129da93f11b9cca3"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "Lola Caring collected 3622 cat toy and 5280 water bowl at the veterinary clinic. How many items did Lola Caring collect in total? The answer is 3622. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 3622 and 5280.",
+        "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.",
+        "Add the tens: 2 + 8 = 10.",
+        "The sum is 3622 + 5280 = 8902."
+      ],
+      "sample_id": "bee6bbc7ded2f4221bea",
+      "replay_digest": "65e5b4e87533f605936dce7652757a67f26489619dac9ff86c121d9ceb6c8749"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Ate Sam had 3583 running shoes. Then Ate Sam got 586 more. How many running shoes does Ate Sam have now?",
       "correct_answer": 4169,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -155,28 +419,110 @@
           "value": 4179,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 4169,
+      "hints": [
+        "We are adding two numbers: 3583 and 586.",
+        "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.",
+        "Add the tens: 8 + 8 = 16.",
+        "The sum is 3583 + 586 = 4169."
+      ],
+      "sample_id": "10077090464f76349e2f",
+      "replay_digest": "38beb386a45f25581024261bf4f625aa6c99c8cbe70c6328c009478c71005035"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 502,
       "formatter": "error_detect",
-      "question_text": "Dante solved this problem: \"Kuya Renz has 6338 canvases. A friend has 1914 canvases. If they put all their canvases together, how many canvases do they have in all?\" Dante says the answer is 8252. Is Dante correct?",
+      "question_text": "Dante solved this problem: \"Kuya Renz has 6338 paint tubes. A friend has 1914 paint tubes. If they put all their paint tubes together, how many paint tubes do they have in all?\" Dante says the answer is 8252. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8252
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8252
+      },
+      "hints": [
+        "We are adding two numbers: 6338 and 1914.",
+        "Add the ones: 8 + 4 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 3 + 1 + 1 (carried) = 5.",
+        "The sum is 6338 + 1914 = 8252."
+      ],
+      "sample_id": "d191c8b548398020fbb0",
+      "replay_digest": "732cf61d1038d56d4348dd2f321c1ab27634ef281aeb7f48de7bc2f1320f82ef"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 600,
       "formatter": "true_false",
       "question_text": "Lena had 8506 washi tape rolls. Then Lena got 218 more. How many washi tape rolls does Lena have now? The answer is 8724. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 8506 and 218.",
+        "Add the ones: 6 + 8 = 14. Keep 4 in the ones place and carry over 1 ten.",
+        "Add the tens: 0 + 1 + 1 (carried) = 2.",
+        "The sum is 8506 + 218 = 8724."
+      ],
+      "sample_id": "cf99ea80b8b6f3d35a1b",
+      "replay_digest": "bb1a14775ea03d0dd41e2303faab5ec04dcbf24d87718e67712d67fc0302263b"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Coach Roel had ₱3321 and received ₱6679 more from Nanay. How much money does Coach Roel have in all?",
       "correct_answer": 10000,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "four_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,13 +548,39 @@
           "text": "9999",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10000,
+      "hints": [
+        "We are adding two numbers: 3321 and 6679.",
+        "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 2 + 7 + 1 (carried) = 10.",
+        "The sum is 3321 + 6679 = 10000."
+      ],
+      "sample_id": "1b7dfa03cfd7a1ac4bfd",
+      "replay_digest": "a7354389825e0c5ca8a102a9dd77d921e434baecaaf79bf5db9197a719186d6e"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Boboy saved ₱9525 on Monday and ₱360 on Tuesday. How much money did Boboy save altogether?",
       "correct_answer": 9885,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -230,19 +602,71 @@
           "value": 9895,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9885,
+      "hints": [
+        "We are adding two numbers: 9525 and 360.",
+        "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.",
+        "Add the tens: 2 + 6 = 8.",
+        "The sum is 9525 + 360 = 9885."
+      ],
+      "sample_id": "4500efc0700f118c6821",
+      "replay_digest": "b1568dceac662be845ff94a15e5e56faca2e50736f32a72b04cb5aabc87f0935"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 603,
       "formatter": "true_false",
       "question_text": "Ate Joy saved ₱8757 on Monday and ₱61 on Tuesday. How much money did Ate Joy save altogether? The answer is 8818. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 8757 and 61.",
+        "Add the ones: 7 + 1 = 8. Keep 8 in the ones place.",
+        "Add the tens: 5 + 6 = 11.",
+        "The sum is 8757 + 61 = 8818."
+      ],
+      "sample_id": "2436e14eb8e8274e24f7",
+      "replay_digest": "c46fb2791463e22d88090c75f656087e112768cf09f1aef4b2c2c9d5aa09fb43"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Kuya Renz has ₱2599 in one pocket and ₱1968 in another pocket. How much money does Kuya Renz have in total?",
       "correct_answer": 4567,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "three_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -264,39 +688,2083 @@
           "value": 4567,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 4567,
+      "hints": [
+        "We are adding two numbers: 2599 and 1968.",
+        "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.",
+        "Add the tens: 9 + 6 + 1 (carried) = 16.",
+        "The sum is 2599 + 1968 = 4567."
+      ],
+      "sample_id": "680855ab13377a606e15",
+      "replay_digest": "5647b7694bfdf8233ecf63ec76c2f71a71909c7bead9aaacee63f8d1f8fdd7fd"
     },
     {
+      "node_id": "mat_g3_na_q2_3",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "Chef Demi has ₱9286 in one pocket and ₱135 in another pocket. How much money does Chef Demi have in total? The answer is 9421. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 9286 and 135.",
+        "Add the ones: 6 + 5 = 11. Keep 1 in the ones place and carry over 1 ten.",
+        "Add the tens: 8 + 3 + 1 (carried) = 12.",
+        "The sum is 9286 + 135 = 9421."
+      ],
+      "sample_id": "cbd6e542a2fd05d41f50",
+      "replay_digest": "7898216ceeb693c3c6fc7cc75c12cf2277e5a89309d95c9d357560d0467cedb6"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "One basket has 634 colored pencils. Another basket has 4166 colored pencils. If you put all the colored pencils together, how many colored pencils are there?",
+      "correct_answer": 4800,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4810,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4800,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4799,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4801,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 4800,
+      "hints": [
+        "We are adding two numbers: 634 and 4166.",
+        "Add the ones: 4 + 6 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 3 + 6 + 1 (carried) = 10.",
+        "The sum is 634 + 4166 = 4800."
+      ],
+      "sample_id": "1688f380c35dd4e0d987",
+      "replay_digest": "42fe734fc7f09f26e8842c2d968adaea6619d70832b7d7bf32c7edbc08ccb52b"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 607,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"One basket has 168 volleyballs. Another basket has 9175 volleyballs. If you put all the volleyballs together, how many volleyballs are there?\" Grace says the answer is 9343. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9343
+      },
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9343
+      },
+      "hints": [
+        "We are adding two numbers: 168 and 9175.",
+        "Add the ones: 8 + 5 = 13. Keep 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 6 + 7 + 1 (carried) = 14.",
+        "The sum is 168 + 9175 = 9343."
+      ],
+      "sample_id": "a5449892e0c3c478d657",
+      "replay_digest": "5fc4d822e5f7f6ea37a42c3278390b6ece17bddb5fff9af3f7bc596b7555e61c"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "Marco bought a pencil for ₱5515 and an eraser for ₱3431. How much did Marco spend in all? The answer is 5515. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 5515 and 3431.",
+        "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.",
+        "Add the tens: 1 + 3 = 4.",
+        "The sum is 5515 + 3431 = 8946."
+      ],
+      "sample_id": "0950517b3521d3315046",
+      "replay_digest": "dc069155d7a7affb06048b91c630e951981dc39b221b2c49083a3f54f72804f1"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "Ruth had 712 coins. Then Ruth got 1695 more. How many coins does Ruth have now?",
+      "correct_answer": 2407,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2408,
+          "text": "2408",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2417,
+          "text": "2417",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2407,
+          "text": "2407",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2406,
+          "text": "2406",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2407,
+      "hints": [
+        "We are adding two numbers: 712 and 1695.",
+        "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.",
+        "Add the tens: 1 + 9 = 10.",
+        "The sum is 712 + 1695 = 2407."
+      ],
+      "sample_id": "6683b69b493d409a1095",
+      "replay_digest": "cf7e64d7b1a44d3cc2c2f97aacd92a50bb67309a397a81f0ebb6359dea4b4733"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "Bianca saved ₱2470 on Monday and ₱6450 on Tuesday. How much money did Bianca save altogether?",
+      "correct_answer": 8920,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8921,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8930,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8919,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8920,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 8920,
+      "hints": [
+        "We are adding two numbers: 2470 and 6450.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 7 + 5 = 12.",
+        "The sum is 2470 + 6450 = 8920."
+      ],
+      "sample_id": "7c5ad980128aa23ad03a",
+      "replay_digest": "85827ebaa6c4ffb5bfc9d1bf400f5d9ef65f0b4df6e49da8bd6b0cf3888b57fa"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 611,
+      "formatter": "mcq",
+      "question_text": "Is (383 + 302) + 113 the same as 383 + (302 + 113)?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "associative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides add the same three numbers, 383, 302 and 113, grouped differently.",
+        "(383 + 302) + 113 = 798 and 383 + (302 + 113) = 798.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "46370cb71c700e28d78c",
+      "replay_digest": "c62fb42429e10da0aba0c606de11b5f5bffd571259f3f4e80ebb56c90c5417f7"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 612,
+      "formatter": "mcq",
+      "question_text": "Is 194 + 505 the same as 505 + 235?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "commutative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side adds 194 and 505. The right side adds 505 and 235.",
+        "194 + 505 = 699 and 505 + 235 = 740.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "65c82b235680fb28b3a9",
+      "replay_digest": "194ecfe9091e888a617a913ddb4e109c8a1a6d2a3b1fe492669e3667fa37bbd9"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 613,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 4858 + 2861 on the number line.",
+      "correct_answer": 7719,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 7719,
+      "hints": [
+        "We are adding two numbers: 4858 and 2861.",
+        "Add the ones: 8 + 1 = 9. Keep 9 in the ones place.",
+        "Add the tens: 5 + 6 = 11.",
+        "The sum is 4858 + 2861 = 7719."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 4000,
+        "end": 8000,
+        "major_interval": 500,
+        "minor_interval": 100,
+        "interval": 100,
+        "dot_value": 4000,
+        "move_by": 2861,
+        "content_type": "whole_number",
+        "value": 7719,
+        "correct_position": 7719,
+        "divisions": 40,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 7719.0,
+        "target": 7719.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "41370b07acc0406e05845ea99906c6b10f45aee253c76779eb5d021c851a4f50",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 58,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "4000",
+            "4500",
+            "5000",
+            "5500",
+            "6000",
+            "6500",
+            "7000",
+            "7500",
+            "8000",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "51b51bfeaf7ea7c70630",
+      "replay_digest": "6c2ee17eed44ab25a4e386486153ea73a31a3c95c5bc5e973dc852f57b21196b"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 614,
+      "formatter": "cloze",
+      "question_text": "3425 is 34 hundreds, 2 tens, and 5 ones. 2967 is 29 hundreds, 6 tens, and 7 ones. Add the place values, then find the total: 3425 + 2967 = ___",
+      "correct_answer": 6392,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6402,
+          "text": "6402",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 458,
+          "text": "458",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6392,
+          "text": "6392",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6391,
+          "text": "6391",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6392,
+      "hints": [
+        "We are adding two numbers: 3425 and 2967.",
+        "Add the ones: 5 + 7 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 2 + 6 + 1 (carried) = 9.",
+        "The sum is 3425 + 2967 = 6392."
+      ],
+      "sample_id": "1587405555063e16894f",
+      "replay_digest": "bc0ac20ba91ae11a14783593a646eb4e94468309b681657272e8d4fabf0c33cf"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 615,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"4410 + 4920 = ___\". Ana says the missing number is 9331. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 9330
+      },
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "models_strategies"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 9330
+      },
+      "hints": [
+        "We are adding two numbers: 4410 and 4920.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 1 + 2 = 3.",
+        "The sum is 4410 + 4920 = 9330."
+      ],
+      "sample_id": "275cc6cf0031824947dd",
+      "replay_digest": "a232f2459f91c376df027482f1c97e12a4d9fb1eb14f876a970b18bef6067399"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 616,
+      "formatter": "true_false",
+      "question_text": "One group has 6597 items and another group has 1255 items. Putting them together makes 7852 items in all. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 6597 and 1255.",
+        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 9 + 5 + 1 (carried) = 15.",
+        "The sum is 6597 + 1255 = 7852."
+      ],
+      "sample_id": "6b2db98d0c6848b0a116",
+      "replay_digest": "a16e21319aa1fddc05e1ade618f5521e62ad0427deea7d4879ea1ca41ef2a88c"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 617,
+      "formatter": "mcq",
+      "question_text": "What is 7760 + 0?",
+      "correct_answer": 7760,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "zero_identity"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7761,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7759,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7760,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7770,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7760,
+      "hints": [
+        "We are adding two numbers: 7760 and 0.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 7760 + 0 = 7760."
+      ],
+      "sample_id": "56534050e4814562fb62",
+      "replay_digest": "3e12e78d662f22a75a9988ebf26e748146fb393111f30716417e36376ed94a20"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 700,
+      "formatter": "true_false",
+      "question_text": "Marco bought a pencil for ₱2107 and an eraser for ₱5172. How much did Marco spend in all? The answer is 7279. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 2107 and 5172.",
+        "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.",
+        "Add the tens: 0 + 7 = 7.",
+        "The sum is 2107 + 5172 = 7279."
+      ],
+      "sample_id": "da3c411eeaaead636acb",
+      "replay_digest": "0744c67bd371af25a2c62e22900eaf651f68830137ec0e4853f8dc564aa2b954"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "There are 137 dog treats in one basket and 8284 dog treats in another basket. How many dog treats are there in all?",
+      "correct_answer": 8421,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8420,
+          "text": "8420",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8421,
+          "text": "8421",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8422,
+          "text": "8422",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8431,
+          "text": "8431",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8421,
+      "hints": [
+        "We are adding two numbers: 137 and 8284.",
+        "Add the ones: 7 + 4 = 11. Keep 1 in the ones place and carry over 1 ten.",
+        "Add the tens: 3 + 8 + 1 (carried) = 12.",
+        "The sum is 137 + 8284 = 8421."
+      ],
+      "sample_id": "2fb8fc1493e1169ed02e",
+      "replay_digest": "bf1a7ee4ae7065a6ddfee9dab31549bd7f1beb7bf044cabbfa56e1b7af7017bf"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"One basket has 2025 whistles. Another basket has 6964 whistles. If you put all the whistles together, how many whistles are there?\" Manny says the answer is 8990. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8989
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 8989
+      },
+      "hints": [
+        "We are adding two numbers: 2025 and 6964.",
+        "Add the ones: 5 + 4 = 9. Keep 9 in the ones place.",
+        "Add the tens: 2 + 6 = 8.",
+        "The sum is 2025 + 6964 = 8989."
+      ],
+      "sample_id": "1f4cf12237eec657a54e",
+      "replay_digest": "08d2986556db3ffe29ce8ffd96b1fa1d56eccdabf459485dcf039b28b3e66802"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Paul collected 3870 bookmark and 4746 sticker set at the house. How many items did Paul collect in total?",
+      "correct_answer": 8616,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8617,
+          "text": "8617",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8616,
+          "text": "8616",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8626,
+          "text": "8626",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8615,
+          "text": "8615",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8616,
+      "hints": [
+        "We are adding two numbers: 3870 and 4746.",
+        "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.",
+        "Add the tens: 7 + 4 = 11.",
+        "The sum is 3870 + 4746 = 8616."
+      ],
+      "sample_id": "1b27c945ccdda3c1d0dc",
+      "replay_digest": "6517701be291fc1286d09cd091ae8e4e69b04c6408a0dcb368223e19d32deb4d"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved this problem: \"Coach Roel saved ₱9602 on Monday and ₱43 on Tuesday. How much money did Coach Roel save altogether?\" Pia says the answer is 9645. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9645
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9645
+      },
+      "hints": [
+        "We are adding two numbers: 9602 and 43.",
+        "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.",
+        "Add the tens: 0 + 4 = 4.",
+        "The sum is 9602 + 43 = 9645."
+      ],
+      "sample_id": "7668376476e3b8b26a69",
+      "replay_digest": "faafe8ee8d622526ec35ad95bc362760c237b06211a6ee57d1a170ac9842f0ae"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ate Liza has 0 paint tubes. A friend has 1 paint tube. If they put all their paint tubes together, how many paint tubes do they have in all?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "sample_id": "76e45a77885864a78c74",
+      "replay_digest": "08b99d0dab7764810b23f709ab2b216d38e2c3b4c08f45d5e94ff7463cd84de4"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Jun saved ₱0 on Monday and ₱1 on Tuesday. How much money did Jun save altogether?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "sample_id": "89c8937fa9873de05308",
+      "replay_digest": "83b21dd708e7d5a5286ab4018ea1e1ecc7df4b07d123439c0b37009634874a8e"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "One basket has 2566 guitar picks. Another basket has 3612 guitar picks. If you put all the guitar picks together, how many guitar picks are there? The answer is 6188. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 2566 and 3612.",
+        "Add the ones: 6 + 2 = 8. Keep 8 in the ones place.",
+        "Add the tens: 6 + 1 = 7.",
+        "The sum is 2566 + 3612 = 6178."
+      ],
+      "sample_id": "ad651b5ef4355b72387c",
+      "replay_digest": "d8800740e0a1d9ede445195f6b395f4fa4574108dfdf8e31ad78ff29c0bbf8b7"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"One basket has 7256 helmets. Another basket has 1600 helmets. If you put all the helmets together, how many helmets are there?\" Liza says the answer is 7256. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8856
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 8856
+      },
+      "hints": [
+        "We are adding two numbers: 7256 and 1600.",
+        "Add the ones: 6 + 0 = 6. Keep 6 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 7256 + 1600 = 8856."
+      ],
+      "sample_id": "31ead9cd6644d1f191c1",
+      "replay_digest": "30a8d3b1f214a525b46c586b72aa86c97963005e91ecee59e2f8d9a4f326ddb7"
+    },
+    {
+      "node_id": "mat_g3_na_q2_3",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"There are 7950 wristbands in one basket and 164 wristbands in another basket. How many wristbands are there in all?\" Manny says the answer is 8124. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8114
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 8114
+      },
+      "hints": [
+        "We are adding two numbers: 7950 and 164.",
+        "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.",
+        "Add the tens: 5 + 6 = 11.",
+        "The sum is 7950 + 164 = 8114."
+      ],
+      "sample_id": "7f5824c32442c158fe8e",
+      "replay_digest": "0091d8a652ecd2e3c92898e81436c5736887d5e7f780a37f19d840f72851f264"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "76746e9501193b85f467",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks how many costumes result from combining two specific baskets, and the answer choice layout unambiguously identifies 3153 as the correct sum from 1086 plus 2067 with no competing interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining costume collections from two baskets represents a realistic scenario where addition solves the problem, and the magnitudes and context are proportionate and sensible for third-grade mathematics instruction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is structured clearly as a straightforward combining problem, the hints systematically show column addition steps with carry notation, and the language avoids ambiguous phrasing that might confuse Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The arithmetic is correct: 1086 plus 2067 equals 3153; all four hints accurately demonstrate the addition process including proper carry handling, and distractors represent plausible computational errors like 3163 or 3154 that test careful calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "68b27b230563a95bd74e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format unambiguously presents a claim to evaluate, asking whether spending 1620 pesos plus 2356 pesos equals 3986, with no interpretive confusion about what is being assessed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A purchase scenario where Nikka buys items and must calculate total spending is a contextually valid application of addition for third-grade learners in a monetary context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a purchase scenario with stated amounts and claimed total, making it clear that the learner must verify whether the assertion is true or false through addition verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct answer is False because 1620 plus 2356 equals 3976 not 3986, and the hints accurately show that the stated answer of 3986 is incorrect, properly supporting the false verdict."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "424abec334619d741437",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format clearly asks whether Rico's claimed answer is correct, with an unambiguous true-false structure about the validity of the stated solution."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Coach Nora receiving monetary gifts and calculating total holdings represents a realistic addition scenario where verification of correctness is appropriate and logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents a solved problem with a claimed answer, and asks learners to determine whether Rico's answer is correct, which is clearly structured for error detection practice."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct solution is 1640 plus 3900 equals 5540, Rico's stated answer matches the correct value, and the hints accurately verify this result, properly confirming the no-error verdict."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "b82c85267a191aacd5de",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the total money amount from two pocket holdings in a straightforward manner with four distinct answer choices that prevent ambiguous interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money distributed across two pockets that must be combined is a realistic and age-appropriate scenario for Grade 3 learners applying addition to monetary contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses accessible language to describe the scenario and clearly asks for the total money amount, with the multiple choice format providing four distinct alternatives."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 720 pesos plus 310 pesos equals 1030 pesos, the correct answer choice is properly positioned, and distractors like 410 represent the smaller amount or nearby miscalculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "417fdf192c781899c2c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly presents the addition of 9997 plus 2 seeds and asks for the total in a blank-fill structure with no competing interpretations of what must be found."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining seed collections from two baskets tests addition at high range values while maintaining logical coherence in the problem scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains the scenario, presents the two quantities to combine, and uses a fill-in-blank format that clearly signals where the answer must go."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 9997 plus 2 correctly yields 9999, which reaches near the upper boundary of the specified range, and the hint options provide nearby distractors like 9998 and 10009 that test careful computation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "bee6bbc7ded2f4221bea",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim about the total items collected and requires clear evaluation of whether the stated answer is accurate, with no ambiguity in the assertion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The context describes collecting both cat toy and water bowl items, but the phrasing uses singular form for toy and plural set for bowl, creating grammatical inconsistency that may slightly confuse the item-counting aspect even though the addition is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario explains what was collected and what total is claimed, using a true/false structure that learners can readily understand despite the grammatical mixing of singular and plural forms."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 3622 plus 5280 correctly equals 8902 not 3622, and the hints accurately show this calculation, properly supporting the false verdict despite the stated incorrect answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "10077090464f76349e2f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks how many running shoes Ate Sam has after accumulating additional items, and the multiple choice format provides four distinct values without interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A scenario of accumulating possessions over time and calculating the new total is a realistic and grade-appropriate context for addition application."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample uses accessible language to describe starting amount and additional acquisition, then clearly asks for the total with straightforward answer choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 3583 plus 586 correctly equals 4169, the correct answer is positioned appropriately, and distractors include 2997 which omits one addend entirely and 4179 which contains an off-by-one error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "d191c8b548398020fbb0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format unambiguously presents Dante's claim and asks whether his answer is correct, with clear structure for verification of the mathematical assertion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two people combining paint tube collections and verifying the total is a contextually valid scenario for addition practice with error detection."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents the scenario, shows Dante's claimed solution, and asks learners to verify correctness in language that is accessible to Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 6338 plus 1914 is 8252, matching Dante's claimed answer, and the hints accurately verify this result step-by-step with proper carry notation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "cf99ea80b8b6f3d35a1b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a clear claim that Lena now has 8724 washi tape rolls after accumulation, with unambiguous structure for evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating possessions over time and calculating new totals is a realistic scenario where addition solves the problem in an age-appropriate context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains what Lena had and what she acquired, then presents a stated total for evaluation, using clear language appropriate for third-grade comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 8506 plus 218 correctly equals 8724, supporting the true verdict, and the hints accurately demonstrate the addition including carry handling at the tens place."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "1b7dfa03cfd7a1ac4bfd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks for the total money Coach Roel has after receiving monetary gifts, with a clear blank-fill structure and no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Receiving monetary gifts and calculating total holdings is a realistic and contextually valid scenario for testing addition at the critical upper boundary sum of 10000."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample explains the monetary amounts and asks clearly for the total in a fill-in-blank structure, with nearby distractors that require careful computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 3321 plus 6679 correctly equals exactly 10000, the specified maximum sum, and the hints accurately demonstrate this critical boundary case with proper carry operations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "4500efc0700f118c6821",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for the total money saved across two days in a straightforward manner, and the multiple choice options are distinct without competing interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating savings over multiple days and calculating total held amount is a realistic and appropriate money-context scenario for Grade 3 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample clearly describes two days of savings with specific amounts and asks for the total, using multiple choice format that learners can readily understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 9525 plus 360 equals 9885, which appears correctly positioned, and the hint options provide plausible distractors including 9165 and 9895 that test careful place value understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "2436e14eb8e8274e24f7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim about total savings amount across two days, with clear structure that requires evaluation of the stated mathematical assertion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating monetary savings over consecutive days and verifying totals is a realistic and age-appropriate context for addition with money."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains savings amounts for Monday and Tuesday, presents a stated total for verification, and uses language accessible to Grade 3 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 8757 plus 61 correctly equals 8818, supporting the true verdict, and the hints accurately show the carries required in both the tens and hundreds places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "680855ab13377a606e15",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for total money in pockets with clear language and four distinct multiple choice options, presenting no ambiguity about what must be calculated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money in separate locations that must be combined to find total holdings is a realistic and grade-appropriate scenario for addition with money."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample explains two pocket amounts clearly and asks for total, using multiple choice format with options that require careful addition to distinguish."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 2599 plus 1968 correctly equals 4567, and the hints show carries in both the ones and tens places, with distractors like 631 representing incomplete partial computations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "cbd6e542a2fd05d41f50",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a specific claim about total money held in pockets, with clear structure requiring verification of the stated sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining money from separate pocket locations and verifying the total is a realistic scenario appropriate for Grade 3 money mathematics."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states two pocket amounts and presents a total to evaluate, using straightforward language for learner understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 9286 plus 135 correctly equals 9421, supporting the true verdict, and the hints accurately demonstrate carries in both the ones and tens positions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "1688f380c35dd4e0d987",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly asks how many colored pencils result from combining two baskets, with four distinct multiple choice options presenting no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining art supply inventories across containers and calculating total is a realistic and contextually valid scenario for addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample explains two basket amounts and asks for total, using multiple choice format that clearly presents answer options for selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 634 plus 4166 correctly equals 4800, requiring carries in both the ones and tens places, and the distractors like 4799 and 4801 test precise calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "a5449892e0c3c478d657",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Grace's claimed solution and unambiguously asks whether her answer is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining sports equipment across containers and verifying calculations is a realistic scenario appropriate for error detection practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents a problem scenario, shows Grace's claimed answer, and asks whether it is correct in language accessible to third-grade learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 168 plus 9175 is 9343, matching Grace's answer, and the hints accurately verify this with carries in both ones and tens places."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "0950517b3521d3315046",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim that Marco spent 5515 pesos total on two purchases, with clear structure for verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Calculating total purchase amounts for multiple items is a realistic money scenario appropriate for Grade 3 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes purchase amounts and presents a stated total, asking learners to determine whether the claim is accurate using accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 5515 plus 3431 is 8946 not 5515, making the statement false, and the hints accurately show the correct calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "6683b69b493d409a1095",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format presents accumulating coin quantities and asks for the total in a clear fill-in-blank structure with no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating coins over time and calculating total amount is a realistic scenario where addition determines the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample explains starting coins and additional acquisition, then clearly indicates where the total answer should be filled in."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 712 plus 1695 correctly equals 2407, and the hints demonstrate the addition including the carry from ones to tens place."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "7c5ad980128aa23ad03a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks for total money saved across Monday and Tuesday in straightforward language, with four distinct multiple choice options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating savings across two days and calculating totals is a realistic and age-appropriate scenario for money-based addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample clearly describes savings on each day and asks for the total, using multiple choice options that require careful selection."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 2470 plus 6450 correctly equals 8920 with no carry operations needed in the ones place, and distractors like 8921 and 8919 test precise calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "46370cb71c700e28d78c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks whether two expressions yield the same result with clear yes/no alternative answers, and the associative grouping is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "This sample tests mathematical properties of addition through abstract comparison rather than solving a contextual problem, making it deviate from the core competency of solving problems involving addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents two grouped addition expressions and clearly asks whether they yield identical results, using language appropriate for learner understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Both expressions correctly compute to 798, demonstrating that order of grouping does not change the sum, and the hints accurately verify this equality."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "65c82b235680fb28b3a9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks whether two different addition expressions yield the same result, with multiple choice options providing four distinct alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "This sample focuses on comparing two mathematical expressions rather than solving an addition problem in context, representing abstract property testing rather than problem-solving application."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents two expressions to compare and asks whether they produce the same answer, using clear language and accessible alternative choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 194 plus 505 equals 699 while the right side 505 plus 235 equals 740, correctly making the answer false with no ambiguity."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "51b51bfeaf7ea7c70630",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to show the sum of 4858 plus 2861 on a number line, with clear instruction that a visual representation must be created."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a number line to visualize addition extends understanding beyond symbolic computation to spatial representation, which is a valid pedagogical approach."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample clearly asks for visualization on a number line with labeled track and arrow key interaction, guiding learners toward creating the visual representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 4858 plus 2861 correctly equals 7719, the number line range spans appropriately from 4000 to 8000 with readable tick marks, and hints support the calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "1587405555063e16894f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks to add the place values and find the total in a fill-in-blank format, with clear instructions about decomposing then combining."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Explicitly decomposing numbers into place value components before adding reinforces understanding of the structure underlying addition computation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample breaks down both numbers into hundreds-tens-ones structure, then asks learners to add, using clear language about what decomposition means."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The decomposition of 3425 and 2967 is accurate, adding place values correctly yields 6392, and the hints verify each place value sum including carries."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "275cc6cf0031824947dd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Ana's claim that 4410 plus 4920 equals 9331, with clear structure asking whether this answer is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A scenario where a student must verify another's calculation and identify errors is contextually valid for practicing addition accuracy."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents the problem, states Ana's claimed answer, and asks whether it is correct, using clear language for learner understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 4410 plus 4920 is 9330 not 9331, making Ana's answer incorrect by one, and the hints accurately show the correct calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "6b2db98d0c6848b0a116",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim that combining two groups of items produces a specific total, with unambiguous structure for verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining items from separate groups and calculating totals is a realistic scenario where addition determines the answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes group sizes and asks whether combining them yields a specific total, using language appropriate for third-grade comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 6597 plus 1255 correctly equals 7852 with carries in both ones and tens places, supporting the true verdict."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "56534050e4814562fb62",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what 7760 plus 0 equals, with four distinct multiple choice options that present no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding zero and observing that the addend remains unchanged tests the identity property of addition, which is a valid mathematical concept for this grade."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents a simple addition expression and asks for the result in multiple choice format with options that require attention."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 7760 plus 0 correctly equals 7760, demonstrating the additive identity, and the distractors test whether learners might make off-by-one errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "da3c411eeaaead636acb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim about total money spent on two purchases, with clear structure for verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Calculating total purchase amounts across multiple items is a realistic money scenario appropriate for Grade 3 learners."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample describes two purchase amounts and presents a total for evaluation, using straightforward language marked for hint-gated experience."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 2107 plus 5172 correctly equals 7279, supporting the true verdict, and the hints accurately demonstrate the calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "2fb8fc1493e1169ed02e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks for total dog treats in a fill-in-blank structure, with clear presentation of two basket quantities requiring combination."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining items stored in separate locations and calculating totals is a realistic scenario where addition solves the problem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample clearly describes treats in two baskets and asks for the total, indicating where the answer should be entered."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 137 plus 8284 correctly equals 8421 with carries in both ones and tens places, and the distractors test careful computation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "1f4cf12237eec657a54e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Manny's claimed answer to a combining problem, with unambiguous structure asking whether the solution is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verifying whether someone has correctly combined items and calculated totals is a realistic scenario for addition practice with error identification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents a problem, shows Manny's claimed solution, and asks whether it is correct, using language appropriate for learner understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 2025 plus 6964 is 8989 not 8990, making Manny's answer off by one, and the hints accurately show the correct calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "1b27c945ccdda3c1d0dc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format asks for total items collected in a fill-in-blank structure, with clear presentation that two quantities must be combined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "The stem describes collecting both bookmarks and sticker sets but uses singular form for bookmark and plural set for the second item, creating grammatical inconsistency in noun form."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite grammatical mixing of singular and plural forms, the sample makes clear that two quantities must be combined to find total items collected."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Adding 3870 plus 4746 correctly equals 8616, and the hints demonstrate the addition with no carries required in the ones place."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "7668376476e3b8b26a69",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Pia's claimed answer to a money accumulation problem, with clear structure asking whether the solution is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Accumulating money savings across two days and verifying totals is a realistic scenario appropriate for money-based addition practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents the scenario, shows Pia's claimed answer, and asks whether it is correct, using accessible language for learner comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 9602 plus 43 is 9645, matching Pia's answer, and the hints accurately verify this result with proper place value addition."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "76e45a77885864a78c74",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice format asks what results from combining zero paint tubes with one paint tube, with four distinct alternatives."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A scenario where one person has nothing and another has one item, requiring calculation of the total, tests the additive identity with zero."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample describes the situation clearly and asks for the total, using straightforward language and clear answer choices."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sum of 0 plus 1 correctly equals 1, demonstrating that any number plus zero equals that number, and distractors like 11 test careful calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "89c8937fa9873de05308",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice format asks for total savings from two days where Monday has zero pesos and Tuesday has one peso, with four distinct options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A money scenario testing addition with zero as one addend is contextually valid for understanding how zero works in monetary calculations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample clearly describes savings on each day and asks for the total, using multiple choice format with options that require attention."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of 0 pesos plus 1 peso correctly equals 1 peso, demonstrating the identity property in monetary context, with distractors like 11 pesos."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "ad651b5ef4355b72387c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format presents a claim that 2566 guitar picks plus 3612 guitar picks equals 6188, with clear structure for verification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining collections of items and calculating totals is a realistic scenario where addition determines whether a claimed total is accurate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem describes quantities to be combined and presents a stated total for evaluation, using straightforward language marked for hint-gated support."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 2566 plus 3612 is 6178 not 6188, making the statement false, and the hints accurately show the correct calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "31ead9cd6644d1f191c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Liza's claimed answer to a combining problem, with unambiguous structure asking whether the solution is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verifying whether someone has correctly combined helmet collections is a realistic scenario for practicing addition verification and error detection."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents the problem, shows Liza's claimed answer, and asks whether it is correct, using language appropriate for learner understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 7256 plus 1600 is 8856 not 7256, and the hints accurately show this significant difference, making Liza's answer clearly incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "sample_id": "7f5824c32442c158fe8e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format presents Manny's claimed answer to a wristband combining problem, with clear structure asking whether the solution is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Combining items across multiple containers and verifying calculation accuracy is a realistic scenario for addition practice with error detection."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents the problem scenario, shows Manny's claimed answer, and asks whether it is correct, using accessible language for learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The correct sum of 7950 plus 164 is 8114 not 8124, requiring carries in both tens and hundreds places, and hints accurately show this calculation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_problems",
+      "clause": "Solve problems",
+      "verdict": "PASS",
+      "reasoning": "The vast majority of samples present realistic problem-solving contexts where learners must apply addition to determine answers in varied scenarios including purchasing, accumulation, verification, and combining collections across numerous thematic settings.",
+      "sample_ids": [
+        "76746e9501193b85f467",
+        "68b27b230563a95bd74e",
+        "424abec334619d741437",
+        "b82c85267a191aacd5de",
+        "417fdf192c781899c2c2",
+        "bee6bbc7ded2f4221bea",
+        "10077090464f76349e2f",
+        "d191c8b548398020fbb0",
+        "cf99ea80b8b6f3d35a1b",
+        "1b7dfa03cfd7a1ac4bfd",
+        "4500efc0700f118c6821",
+        "2436e14eb8e8274e24f7",
+        "680855ab13377a606e15",
+        "cbd6e542a2fd05d41f50",
+        "1688f380c35dd4e0d987",
+        "a5449892e0c3c478d657",
+        "0950517b3521d3315046",
+        "6683b69b493d409a1095",
+        "7c5ad980128aa23ad03a",
+        "51b51bfeaf7ea7c70630",
+        "1587405555063e16894f",
+        "275cc6cf0031824947dd",
+        "6b2db98d0c6848b0a116",
+        "56534050e4814562fb62",
+        "da3c411eeaaead636acb",
+        "2fb8fc1493e1169ed02e",
+        "1f4cf12237eec657a54e",
+        "1b27c945ccdda3c1d0dc",
+        "7668376476e3b8b26a69",
+        "76e45a77885864a78c74",
+        "89c8937fa9873de05308",
+        "ad651b5ef4355b72387c",
+        "31ead9cd6644d1f191c1",
+        "7f5824c32442c158fe8e"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "requirement_id": "addition",
+      "clause": "addition",
+      "verdict": "PASS",
+      "reasoning": "All samples consistently demonstrate the addition operation as the core mathematical process, with every hint explicitly showing additive steps and every answer representing an additive result across the full range of problem types.",
+      "sample_ids": [
+        "76746e9501193b85f467"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "requirement_id": "numbers",
+      "clause": "numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample uses numerical values as operands and results, with numbers functioning as the primary mathematical objects across all problem contexts from single-digit to five-digit magnitudes.",
+      "sample_ids": [
+        "76746e9501193b85f467"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "requirement_id": "sums_up_to_10000",
+      "clause": "sums up to 10 000",
+      "verdict": "PASS",
+      "reasoning": "The samples comprehensively test sums across the entire specified range from minimal values approaching zero through the exact boundary maximum, including critical endpoints like zero-plus-one equaling one and three-thousand-three-hundred-twenty-one plus six-thousand-six-hundred-seventy-nine totaling exactly ten thousand.",
+      "sample_ids": [
+        "76e45a77885864a78c74",
+        "1b7dfa03cfd7a1ac4bfd",
+        "4500efc0700f118c6821"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    },
+    {
+      "requirement_id": "problems_involving_money",
+      "clause": "problems involving money",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples explicitly use Philippine peso currency in realistic financial scenarios such as purchasing, savings accumulation, and gift receipt, demonstrating that money problems are substantively included within the competency coverage as specified by the inclusive language.",
+      "sample_ids": [
+        "68b27b230563a95bd74e",
+        "b82c85267a191aacd5de",
+        "cf99ea80b8b6f3d35a1b",
+        "1b7dfa03cfd7a1ac4bfd"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w15-haiku45-20260925:mat_g3_na_q2_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "40be94884db0a62337acd621e0accf8ad0c848102cdbe27da060d1d2822cf35d",
+      "clause_ids": [
+        "solve_problems",
+        "addition",
+        "numbers",
+        "sums_up_to_10000",
+        "problems_involving_money"
+      ],
+      "response_ref": ".responses/s5-phaseC-w15-haiku45-20260925.json",
+      "response_digest": "1602d16a18d72b39d91d8a0245b96274038eb340bea0bdf698d798faf22679ad",
+      "prompt_ref": ".responses/s5-phaseC-w15-haiku45-20260925.prompt.txt",
+      "prompt_digest": "36052e58eb9e54a8ae3ed92fbeeae0463797f7264f3dde6c8231a60a1fa2a5f5",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q2_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problems are structurally appropriate for Grade 3, Quarter 2, using standard column addition algorithms with carries that match the grade level's typical computational complexity and problem presentation formats."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Most problems directly align with solving addition problems in real-world contexts, but samples 46370cb71c700e28d78c and 65c82b235680fb28b3a9 test mathematical properties such as associative grouping and equality comparison rather than solving problems, creating slight deviation from core competency scope."
+    },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "These are worded situations resolved by one addition, and the money strand the competency calls out is genuinely present, with peso amounts in pockets, savings across two days, and money received from Nanay."
+      "rationale": "All five required decomposition elements are present: problems present contextual scenarios requiring solutions, addition is the consistent operation, numbers serve as operands throughout, sums range from 1 to 10000, and money-based problems are included within broader coverage.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The five requirements (solve_problems, addition, numbers, sums_up_to_10000, problems_involving_money) are all substantively demonstrated across the 36 samples without gaps or omissions, establishing a lossless decomposition of the stated competency.",
+        "requirement_ids": [
+          "solve_problems",
+          "addition",
+          "numbers",
+          "sums_up_to_10000",
+          "problems_involving_money"
+        ]
+      },
+      "clause_ids": [
+        "solve_problems",
+        "addition",
+        "numbers",
+        "sums_up_to_10000",
+        "problems_involving_money"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Several distinct addition situations appear rather than one: combining two containers, adding to a starting amount, totalling two days of saving, and pooling two people's holdings. Both money and non-money versions are keyed."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Language quality gets in the way in places. One stem has a collection of '3622 cat toy and 5280 water bowl' with singular nouns after plural counts, and the realism slips badly where 'Nikka bought a pencil for ₱1620' and where a person owns 3583 running shoes, which forces a child to suspend sense to reach the arithmetic."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four shells carry the stories: open answer, four-option choice, a stated answer to accept or reject, and a check on another child's solution, and the truth judgments are genuinely mixed between True and False keys."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Progression runs on addend size and on whether the situation is money or count, both of which are the competency's own dimensions, and the harder samples are the ones approaching four digits in both addends."
+      "rationale": "The samples cover multiple response formats including multiple choice, true/false, error detection, cloze fill-in-blank, and interactive number line visualization; numeric ranges span single digits through five-digit numbers; contexts include both money and non-money scenarios across varied real-world applications.",
+      "clause_ids": [
+        "solve_problems",
+        "addition",
+        "numbers",
+        "sums_up_to_10000",
+        "problems_involving_money"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The ₱3321 plus ₱6679 item lands on exactly 10 000, the stated limit, and nothing crosses it, while three-digit money amounts give the lower end."
+      "rationale": "The samples demonstrate appropriate scaffolding progression from simpler direct addition problems toward increasingly complex scenarios involving multiple carries, error identification tasks requiring verification, edge cases such as addition with zero, and critical boundary testing at exactly 10000 sum."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Problems span multiple types including contextual word problems with diverse real-world scenarios, property-testing problems examining mathematical relationships, direct computation exercises, error identification and correction tasks, and visualization work on number lines extending beyond symbolic representation."
     }
   },
   "overall": "CONCERN"
