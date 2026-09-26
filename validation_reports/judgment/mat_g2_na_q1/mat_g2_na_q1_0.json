@@ -1,7 +1,28 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q1_0",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Count up to 1000.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "count",
+      "clause": "Count"
+    },
+    {
+      "kind": "range",
+      "id": "up_to_1000",
+      "clause": "up to 1000"
+    }
+  ],
+  "packet_digest": "da31deae766d44cafc587dc9a14301867ac81be4675b71db66e104450a5188fe",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +38,65 @@
     604,
     606,
     607,
-    609
+    609,
+    610,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "070820a075dad57f85a9",
+    "a47fbb87226b0b58f01b",
+    "9925a2d4d68145152200",
+    "a283625fe55dae6adb24",
+    "382d3c19b52157110fbc",
+    "44a7d8918397f80c49f8",
+    "a2710e3e5084848da22d",
+    "3cb8f13889f862f88c35",
+    "28396e68637d8c7a2a68",
+    "25aa92a4c395b77205cf",
+    "7c9d236852c0f48cf661",
+    "a8a6807743b8a5943d96",
+    "87c7bcd0e089f8d5cab9",
+    "88b544465ef8e7f8c349",
+    "f291466bd9b34a892c84",
+    "84a2d3c7a4dd78d1bf05",
+    "13b87d07be8e43feda7d",
+    "b5ea447f7f66eb63d766",
+    "bead6a218102f8d7e28f",
+    "bff4088ac79374d871d1",
+    "34575cd19d45f0d8d887",
+    "937537ddfd89843636e1",
+    "1419dad457a0b0888c59",
+    "604ed4d5de90e57a9cf8"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -46,13 +118,93 @@
           "value": 706,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 706,
+      "hints": [
+        "Look at the list of numbers: 702, 703, 704, 705, ___",
+        "Find the rule by comparing neighbours: 703 − 702 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 705: 705 + 1 = 706."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 706,
+        "start": 700,
+        "end": 710,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 706,
+        "dot_value": 706,
+        "content_type": "whole_number",
+        "labels": [
+          "700",
+          "710"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 706.0,
+        "target": 706.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "3b6b97c2574aa600890b2b3fc14394fa3d5c4b8a15ad90f99c346d7a4da9bcf7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "700",
+            "701",
+            "702",
+            "703",
+            "704",
+            "705",
+            "706",
+            "707",
+            "708",
+            "709",
+            "710"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "070820a075dad57f85a9",
+      "replay_digest": "b59b85184adfcbe5bff66e4a7f4c3a34f2be47d9d54a187b7b01e0606110ff31"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 42, 43, 44, 45, ___?",
       "correct_answer": 46,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -74,13 +226,37 @@
           "value": 47,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 46,
+      "hints": [
+        "Look at the list of numbers: 42, 43, 44, 45, ___",
+        "Find the rule by comparing neighbours: 43 − 42 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 45: 45 + 1 = 46."
+      ],
+      "sample_id": "a47fbb87226b0b58f01b",
+      "replay_digest": "d2625ed240bd01a96f63596495c0170080d3f2e48386ccff6e72e5f3f38179fd"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Find the missing number: 437, 438, 439, 440, ___",
       "correct_answer": 441,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -106,13 +282,37 @@
           "text": "439",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 441,
+      "hints": [
+        "Look at the list of numbers: 437, 438, 439, 440, ___",
+        "Find the rule by comparing neighbours: 438 − 437 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 440: 440 + 1 = 441."
+      ],
+      "sample_id": "9925a2d4d68145152200",
+      "replay_digest": "481dd91eb8472343f1790040594f996224aa4aa9dcb3a1ef8539e3b29e3836bc"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 289, 290, 291, 292, ___?",
       "correct_answer": 293,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -134,13 +334,37 @@
           "value": 293,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 293,
+      "hints": [
+        "Look at the list of numbers: 289, 290, 291, 292, ___",
+        "Find the rule by comparing neighbours: 290 − 289 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 292: 292 + 1 = 293."
+      ],
+      "sample_id": "a283625fe55dae6adb24",
+      "replay_digest": "9824f5ab1f4cc644cee725031a7e557f5ec40c1a8f2a75ee2137c078c33316a6"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "Find the missing number: 195, 196, 197, 198, ___",
       "correct_answer": 199,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,13 +390,39 @@
           "text": "199",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 199,
+      "hints": [
+        "Look at the list of numbers: 195, 196, 197, 198, ___",
+        "Find the rule by comparing neighbours: 196 − 195 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 198: 198 + 1 = 199."
+      ],
+      "sample_id": "382d3c19b52157110fbc",
+      "replay_digest": "05563482b9c1159ff0811873d91718570fe4d0fe797a14c17354a7b5eeb2fdf6"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -194,13 +444,95 @@
           "value": 848,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 848,
+      "hints": [
+        "Look at the list of numbers: 844, 845, 846, 847, ___",
+        "Find the rule by comparing neighbours: 845 − 844 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 847: 847 + 1 = 848."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 848,
+        "start": 840,
+        "end": 850,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 848,
+        "dot_value": 848,
+        "content_type": "whole_number",
+        "labels": [
+          "840",
+          "850"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 848.0,
+        "target": 848.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b367f8979d808e1b8d14b43b36fd98b00563abdbc6e8263e6c13816ee13ad1a5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "840",
+            "841",
+            "842",
+            "843",
+            "844",
+            "845",
+            "846",
+            "847",
+            "848",
+            "849",
+            "850"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "44a7d8918397f80c49f8",
+      "replay_digest": "0546ac7732d467e884c2503918b336ffd095370660a497ea717c12814c509132"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 501,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
       "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -222,13 +554,95 @@
           "value": 685,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 686,
+      "hints": [
+        "Look at the list of numbers: 682, 683, 684, 685, ___",
+        "Find the rule by comparing neighbours: 683 − 682 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 685: 685 + 1 = 686."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 686,
+        "start": 680,
+        "end": 690,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 686,
+        "dot_value": 686,
+        "content_type": "whole_number",
+        "labels": [
+          "680",
+          "690"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 686.0,
+        "target": 686.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "335450da601dbe9f722f8294e46ca91cb34314a4b7c08b268ffec632377585d3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "680",
+            "681",
+            "682",
+            "683",
+            "684",
+            "685",
+            "686",
+            "687",
+            "688",
+            "689",
+            "690"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a2710e3e5084848da22d",
+      "replay_digest": "c9796a4bb9744983677da4143f9e6c99b9f41312ee7347022525b7597eb02fd7"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "Find the missing number: 545, 546, 547, 548, ___",
       "correct_answer": 549,
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -254,13 +668,39 @@
           "text": "546",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 549,
+      "hints": [
+        "Look at the list of numbers: 545, 546, 547, 548, ___",
+        "Find the rule by comparing neighbours: 546 − 545 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 548: 548 + 1 = 549."
+      ],
+      "sample_id": "3cb8f13889f862f88c35",
+      "replay_digest": "ffb6abdf20c61902f0851048004db03873df7a9e3a77478f6d9ef5e3516151c7"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses is counting forward by 1 starting from 204. The count is: 204, 205, 206, 207. What is the next number Moses should say?",
       "correct_answer": 208,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -286,13 +726,39 @@
           "text": "206",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 208,
+      "hints": [
+        "Look at the list of numbers: 204, 205, 206, 207, ___",
+        "Find the rule by comparing neighbours: 205 − 204 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 207: 207 + 1 = 208."
+      ],
+      "sample_id": "28396e68637d8c7a2a68",
+      "replay_digest": "74966aa96ae08afbf66d636358aab5aafe570e807ecc3b40498568a5d273fe60"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 174, 175, 176, 177, ___?",
       "correct_answer": 178,
+      "requested": {
+        "difficulty_profile": {
+          "direction": "forward"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -314,13 +780,39 @@
           "value": 175,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 178,
+      "hints": [
+        "Look at the list of numbers: 174, 175, 176, 177, ___",
+        "Find the rule by comparing neighbours: 175 − 174 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 177: 177 + 1 = 178."
+      ],
+      "sample_id": "25aa92a4c395b77205cf",
+      "replay_digest": "b81c673f524067dbee1ef230fc25712ed99ecb8a4f8cbd96fe7791d4a0a06cf6"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 206, 208, 210, 212, ___?",
       "correct_answer": 214,
+      "requested": {
+        "difficulty_profile": {
+          "skip_interval": "1"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -342,13 +834,39 @@
           "value": 210,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 214,
+      "hints": [
+        "Look at the list of numbers: 206, 208, 210, 212, ___",
+        "Find the rule by comparing neighbours: 208 − 206 = 2.",
+        "This list of numbers shows jumping by 2s (add 2 each time).",
+        "Add 2 to 212: 212 + 2 = 214."
+      ],
+      "sample_id": "7c9d236852c0f48cf661",
+      "replay_digest": "78ffbea374c58fad8e6fe06dd540e886541ab39e5012ea91230629b58dde5950"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 606,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?",
       "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": {
+          "skip_interval": "100"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -370,13 +888,39 @@
           "value": 100,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "Look at the list of numbers: 0, 100, 200, 300, ___",
+        "Find the rule by comparing neighbours: 100 − 0 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 300: 300 + 100 = 400."
+      ],
+      "sample_id": "a8a6807743b8a5943d96",
+      "replay_digest": "551930395ab58fd74452d6b9be95122e97700c8218488734ea2d445326208da1"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 607,
       "formatter": "cloze",
       "question_text": "Find the missing number: 0, 100, 200, 300, ___",
       "correct_answer": 400,
+      "requested": {
+        "difficulty_profile": {
+          "skip_interval": "2"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -402,13 +946,39 @@
           "text": "100",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 400,
+      "hints": [
+        "Look at the list of numbers: 0, 100, 200, 300, ___",
+        "Find the rule by comparing neighbours: 100 − 0 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 300: 300 + 100 = 400."
+      ],
+      "sample_id": "87c7bcd0e089f8d5cab9",
+      "replay_digest": "ec4d017b39f63e05d2fab93660b92bae41d3919b434c0b42314a15e01579b1cf"
     },
     {
+      "node_id": "mat_g2_na_q1_0",
       "seed": 609,
       "formatter": "cloze",
       "question_text": "Find the missing number: 400, 500, 600, 700, ___",
       "correct_answer": 800,
+      "requested": {
+        "difficulty_profile": {
+          "skip_interval": "5"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -434,34 +1004,1358 @@
           "text": "701",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 800,
+      "hints": [
+        "Look at the list of numbers: 400, 500, 600, 700, ___",
+        "Find the rule by comparing neighbours: 500 − 400 = 100.",
+        "This list of numbers shows jumping by 100s (add 100 each time).",
+        "Add 100 to 700: 700 + 100 = 800."
+      ],
+      "sample_id": "88b544465ef8e7f8c349",
+      "replay_digest": "6919644b8d4220e3307777e76c4adb729a97c326f5324e0b7675c8d4d75c9137"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 520, 540, 560, 580, ___?",
+      "correct_answer": 600,
+      "requested": {
+        "difficulty_profile": {
+          "skip_interval": "50"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 581,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 560,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 540,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 600,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 600,
+      "hints": [
+        "Look at the list of numbers: 520, 540, 560, 580, ___",
+        "Find the rule by comparing neighbours: 540 − 520 = 20.",
+        "This list of numbers shows jumping by 20s (add 20 each time).",
+        "Add 20 to 580: 580 + 20 = 600."
+      ],
+      "sample_id": "f291466bd9b34a892c84",
+      "replay_digest": "daf8e6a28c5a583010dec1d27bdba0f06386628d0390e8f7bbcc6121ef98d16e"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 176, 177, 178, 179, ___?",
+      "correct_answer": 180,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 181,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 177,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 180,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 178,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 180,
+      "hints": [
+        "Look at the list of numbers: 176, 177, 178, 179, ___",
+        "Find the rule by comparing neighbours: 177 − 176 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 179: 179 + 1 = 180."
+      ],
+      "sample_id": "84a2d3c7a4dd78d1bf05",
+      "replay_digest": "1514bf526f5eb305eb9562e01697469c69a431fb629bad60bd6b70d9c4c17a0e"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "🐕 Boyong has a math challenge about fish food packets. Find the missing number: 836, 837, 838, 839, ___",
+      "correct_answer": 840,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "pets",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 838,
+          "text": "838",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 841,
+          "text": "841",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 840,
+          "text": "840",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 837,
+          "text": "837",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 840,
+      "hints": [
+        "Look at the list of numbers: 836, 837, 838, 839, ___",
+        "Find the rule by comparing neighbours: 837 − 836 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 839: 839 + 1 = 840."
+      ],
+      "sample_id": "13b87d07be8e43feda7d",
+      "replay_digest": "f522403eb0dd874f8eebafb200086d0da19de4e0652f01ced21c23536f6822e4"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Find the missing number: 859, 860, 861, 862, ___",
+      "correct_answer": 863,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "casual_puzzle_games",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 861,
+          "text": "861",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 860,
+          "text": "860",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 864,
+          "text": "864",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 863,
+          "text": "863",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 863,
+      "hints": [
+        "Look at the list of numbers: 859, 860, 861, 862, ___",
+        "Find the rule by comparing neighbours: 860 − 859 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 862: 862 + 1 = 863."
+      ],
+      "sample_id": "b5ea447f7f66eb63d766",
+      "replay_digest": "84b8b8d8d8fded84f055e6aad539ffc43f457c245f358822293742c923ac8fba"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "range": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 718,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 720,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 719,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 721,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 719,
+      "hints": [
+        "Look at the list of numbers: 715, 716, 717, 718, ___",
+        "Find the rule by comparing neighbours: 716 − 715 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 718: 718 + 1 = 719."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 719,
+        "start": 710,
+        "end": 720,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 719,
+        "dot_value": 719,
+        "content_type": "whole_number",
+        "labels": [
+          "710",
+          "720"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 719.0,
+        "target": 719.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "f7d38a919cda656973747d2f3bfc8b784cbb62b7fbb7ab4759826260ff8e4f44",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "710",
+            "711",
+            "712",
+            "713",
+            "714",
+            "715",
+            "716",
+            "717",
+            "718",
+            "719",
+            "720"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "bead6a218102f8d7e28f",
+      "replay_digest": "c7bbc5e4d71ed704d1fff96cc9a390ca441c5411515cd163c0d2927949f294c2"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 11, 12, 13, 14, ___?",
+      "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "Look at the list of numbers: 11, 12, 13, 14, ___",
+        "Find the rule by comparing neighbours: 12 − 11 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 14: 14 + 1 = 15."
+      ],
+      "sample_id": "bff4088ac79374d871d1",
+      "replay_digest": "28d026147d85f92e678d307fcf9e9f2bb4ce847a2f9298c57f433df7dc6a6e93"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "range": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 21,
+      "hints": [
+        "Look at the list of numbers: 17, 18, 19, 20, ___",
+        "Find the rule by comparing neighbours: 18 − 17 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 20: 20 + 1 = 21."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "value": 21,
+        "start": 20,
+        "end": 30,
+        "interval": 1,
+        "divisions": 10,
+        "correct_position": 21,
+        "dot_value": 21,
+        "content_type": "whole_number",
+        "labels": [
+          "20",
+          "30"
+        ],
+        "marked_points": [],
+        "question_mark_at": null,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 21.0,
+        "target": 21.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "18e71b1570e8c668970f21463d4e4387cdcac352ab523a06859b20048f76e8ef",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 27,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "34575cd19d45f0d8d887",
+      "replay_digest": "a4814fafc3219ea8c9c488cd41869f35fe92bc3cbf0e6801a0dbfa0997b63cee"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 1000,
+      "formatter": "mcq",
+      "question_text": "What number comes next when counting: 875, 876, 877, 878, ___?",
+      "correct_answer": 879,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 879,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 880,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 876,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 877,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 879,
+      "hints": [
+        "Look at the list of numbers: 875, 876, 877, 878, ___",
+        "Find the rule by comparing neighbours: 876 − 875 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 878: 878 + 1 = 879."
+      ],
+      "sample_id": "937537ddfd89843636e1",
+      "replay_digest": "0249907829dfb87a65f4c3d5f5cc96e7ba160561ac3a172f6b32540c27b953f4"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 900, 901, 902, 903, ___",
+      "correct_answer": 904,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 905,
+          "text": "905",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 901,
+          "text": "901",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 904,
+          "text": "904",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 902,
+          "text": "902",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 904,
+      "hints": [
+        "Look at the list of numbers: 900, 901, 902, 903, ___",
+        "Find the rule by comparing neighbours: 901 − 900 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 903: 903 + 1 = 904."
+      ],
+      "sample_id": "1419dad457a0b0888c59",
+      "replay_digest": "e8ff2efd0a8e009de668f549581ed13c15f5b498c6b4c2881e2818a1c4bc2a45"
+    },
+    {
+      "node_id": "mat_g2_na_q1_0",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "Find the missing number: 563, 564, 565, 566, ___",
+      "correct_answer": 567,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 568,
+          "text": "568",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 565,
+          "text": "565",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 567,
+          "text": "567",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 564,
+          "text": "564",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 567,
+      "hints": [
+        "Look at the list of numbers: 563, 564, 565, 566, ___",
+        "Find the rule by comparing neighbours: 564 − 563 = 1.",
+        "This list of numbers shows jumping by 1s (add 1 each time).",
+        "Add 1 to 566: 566 + 1 = 567."
+      ],
+      "sample_id": "604ed4d5de90e57a9cf8",
+      "replay_digest": "2f0a6e22d890d48c2e7ef965042de6f0e11113d75ce1942e77ca33492acedbcc"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "070820a075dad57f85a9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously requests identification of the number marked on the visual number line. The task is clear: identify where 706 falls within the displayed range from 700 to 710."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line appropriately shows a sequence from 700 through 710, and the marked position logically corresponds to a location within this range. The mathematical context of consecutive integers is sensible and consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual number line presentation is clear and the question asks a straightforward task without confusing language or unnecessary complexity. A Grade 2 student would understand what is being asked and how to identify the answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The marked number is mathematically correct as 706, which represents the next number after 705 in a sequence increasing by one. The hints accurately decompose the counting pattern."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "a47fbb87226b0b58f01b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt clearly states a counting sequence and explicitly asks for the next number in that sequence. The blank line indicates precisely where the missing element should be supplied."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence of 42, 43, 44, 45 naturally continues the pattern established, and the answer 46 logically follows. The context is straightforward numerical progression."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses simple language and presents the sequence in an easily understood format. The request to identify the next number is explicit and accessible to Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number 46 is mathematically correct as the successor to 45 in a sequence where each number is one more than the previous number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "9925a2d4d68145152200",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The item clearly requests identification of the missing number in a presented sequence, with the blank position indicating exactly where an answer should be placed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 437, 438, 439, 440 follows a clear ascending pattern, and the task of completing this series is mathematically sensible."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is direct and comprehensible to second graders. The format immediately conveys what is expected: finding and supplying the next element in the series."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 441 is correct; it represents the number that comes after 440 when counting by ones."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "a283625fe55dae6adb24",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks specifically for the number that comes next in a clearly presented counting sequence, leaving no doubt about what response is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 289, 290, 291, 292 represents a valid counting progression, and continuing this sequence is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and age-appropriate. The sequence is presented in a familiar format that Grade 2 students would readily understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 293 correctly follows 292 in the counting sequence where each number exceeds the prior by exactly one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "382d3c19b52157110fbc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The task is unambiguous: locate the missing number in the presented sequence and supply it in the blank position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 195, 196, 197, 198 follows standard ascending order by ones, providing a mathematically valid context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses direct language asking students to find the missing number in a number series, a task type familiar to second graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 199 is mathematically correct as the successor to 198 in a sequence where numbers increase by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "44a7d8918397f80c49f8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The visual number line clearly indicates which number is marked, and the question directly asks students to identify that specific number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line spans from 840 to 850 in a logical ascending progression, and marking a specific position within this range is contextually appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line visual is clean and the question is straightforward. Students can easily see which number is marked and understand they should identify it."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The marked number 848 is correctly positioned as two increments after 846 in a sequence where numbers increase by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "a2710e3e5084848da22d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The number line clearly shows which position is marked, and the question asks unambiguously for identification of that marked value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line from 680 to 690 presents numbers in proper sequence, and the marked point corresponds appropriately to the value 686."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual representation is clear and the task is simple: identify the marked number. This is easily understood by Grade 2 students."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number 686 is correctly positioned as four places after 682 in a sequence incrementing by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "3cb8f13889f862f88c35",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence with a blank clearly indicates where the missing number should be identified and supplied by the student."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The numbers 545, 546, 547, 548 form a logical ascending sequence with a clear pattern, making the completion task meaningful."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is straightforward and uses language appropriate for second grade, making the task's purpose immediately clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 549 is correct as the number that immediately follows 548 in a sequence incrementing by one each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "28396e68637d8c7a2a68",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks for the next number in a counting sequence that is explicitly stated and begins with named context. The task requirement is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative context of a person counting forward by ones is logically sound and does not create confusion about the counting pattern or the task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "While the sample includes narrative context with a character name, the counting task itself remains clear and accessible. The story element does not obscure what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 208 is mathematically correct as the number immediately following 207 when counting by ones."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "25aa92a4c395b77205cf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the next number in a counting sequence, with the blank position clearly indicating where the answer should appear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 174, 175, 176, 177 presents a valid progression, and asking for the successor is a contextually appropriate task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing and format are accessible to second graders who are familiar with identifying the next element in a number sequence."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 178 is correct, representing the natural successor to 177 in a sequence where each number exceeds the prior by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "7c9d236852c0f48cf661",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly identifies a counting sequence and asks for the next number with no ambiguity about the response required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 206, 208, 210, 212 demonstrates a valid counting pattern with increments of two, representing a mathematically coherent progression."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task is stated simply and the number sequence is presented in a format that second graders can comprehend."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 214 is correct, as it follows 212 when continuing a sequence where each number is twenty more than the previous number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "a8a6807743b8a5943d96",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the next number in a counting sequence with clear formatting that indicates the position where the answer belongs."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 0, 100, 200, 300 represents a valid counting progression with a consistent pattern, making the completion task meaningful."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated and the sequence is presented in an easily understood format that Grade 2 students would recognize."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 400 is mathematically correct, representing the next number in a sequence where numbers increase by one hundred each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "87c7bcd0e089f8d5cab9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt requests identification of the missing number in a sequence, with the blank clearly marking the position requiring completion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 0, 100, 200, 300 forms a logical ascending progression by hundreds, and completing it is a meaningful mathematical task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language used is simple and direct, asking students to find the missing number in a series using familiar vocabulary."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 400 is correct as the successor to 300 in a sequence incrementing by one hundred each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "88b544465ef8e7f8c349",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question explicitly asks for the missing number in a presented sequence, with unambiguous indication of what response is needed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 400, 500, 600, 700 represents a mathematically sound progression, and determining the next element is contextually valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format and language are appropriate for second grade students, making clear what is being requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 800 is mathematically correct, representing the number that follows 700 when counting by hundreds."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "f291466bd9b34a892c84",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks straightforwardly for the next number in a counting sequence, leaving no doubt about the task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 520, 540, 560, 580 demonstrates a consistent pattern with increments of twenty, providing a valid mathematical context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is clear and accessible, and the sequence format is one that Grade 2 students would understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 600 is correct as the next number in a sequence where each value exceeds the prior by exactly twenty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "84a2d3c7a4dd78d1bf05",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly requests identification of the next number in an explicitly stated counting sequence."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 176, 177, 178, 179 forms a logical progression, and asking for its continuation is mathematically appropriate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The task uses straightforward language and presents numbers in a familiar sequence pattern that second graders can readily comprehend."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 180 is correct as the number that immediately follows 179 in a sequence where numbers increase by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "13b87d07be8e43feda7d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks for the missing number in a counting sequence, despite the presence of a thematic element."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic narrative does not interfere with the mathematical task. The counting sequence remains valid and clear regardless of the contextual wrapper."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematical task is clearly expressed and the thematic element serves as context without creating confusion about what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 840 is mathematically correct as the number following 839 in a sequence where each number increments by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "b5ea447f7f66eb63d766",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt clearly indicates a counting sequence and requests identification of the missing element without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic framing does not alter the mathematical validity of the sequence. The numbers form a logical progression independent of the narrative element."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is clearly stated in language appropriate for Grade 2, and the mathematical task is distinct and understandable despite thematic context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 863 is correct as the successor to 862 in a sequence where numbers progress by increments of one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "bead6a218102f8d7e28f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The number line visual unambiguously marks a specific position and the question asks students to identify that marked number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line from 710 to 720 presents a valid counting progression, and the marked position corresponds appropriately to the value 719."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual is clear and simple, and the question asks for a straightforward identification task that Grade 2 students can perform."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number 719 is correctly positioned as representing a point four increments after 715 in a sequence advancing by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "bff4088ac79374d871d1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the next number in a counting sequence with clear indication of the answer position."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 11, 12, 13, 14 represents a valid progression and requesting the successor is contextually sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is simple and the format is familiar to second graders who encounter such number sequence tasks regularly."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 15 is mathematically correct as the number immediately following 14 in a sequence where numbers increase by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "34575cd19d45f0d8d887",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The number line clearly shows which position is marked and the question unambiguously asks for identification of that number."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number line spans from 20 to 30 in logical ascending order and the marked point is appropriately positioned."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The visual number line is clear and easy to interpret, and the task of identifying a marked value is straightforward for Grade 2 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number 21 is correctly identified as the successor to 20 in a sequence incrementing by one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "937537ddfd89843636e1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks for the next number in a stated counting sequence without any confusing elements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 875, 876, 877, 878 follows a logical ascending pattern and determining its continuation is mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing is clear and the format is familiar to students, making the task immediately understandable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 879 is correct as the number that follows 878 when counting forward by ones."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "1419dad457a0b0888c59",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt explicitly requests the missing number in a sequence and clearly marks where that missing element should be supplied."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 900, 901, 902, 903 represents a valid counting progression and completing it is a mathematically appropriate task."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses accessible language and the sequence format is one that Grade 2 students encounter and understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 904 is mathematically correct as the successor to 903 in a sequence where numbers increase by one each step."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "sample_id": "604ed4d5de90e57a9cf8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the missing number in a sequence with unambiguous formatting that indicates where the answer belongs."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The sequence 563, 564, 565, 566 forms a logical ascending progression and the completion task is contextually valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language is direct and appropriate for Grade 2 students, and the task is clearly stated."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The answer 567 is correct as the number that follows 566 in a sequence where each number is one more than its predecessor."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "count",
+      "clause": "Count",
+      "verdict": "PASS",
+      "reasoning": "All twenty-four samples require students to engage in counting activities by identifying patterns in numerical sequences or determining missing values. Every item tests the fundamental skill of counting whether through recognizing progression patterns or continuing established sequences. The action of counting is the central cognitive demand across the entire packet.",
+      "sample_ids": [
+        "070820a075dad57f85a9",
+        "a47fbb87226b0b58f01b",
+        "9925a2d4d68145152200",
+        "a283625fe55dae6adb24",
+        "382d3c19b52157110fbc",
+        "44a7d8918397f80c49f8",
+        "a2710e3e5084848da22d",
+        "3cb8f13889f862f88c35",
+        "28396e68637d8c7a2a68",
+        "25aa92a4c395b77205cf",
+        "7c9d236852c0f48cf661",
+        "a8a6807743b8a5943d96",
+        "87c7bcd0e089f8d5cab9",
+        "88b544465ef8e7f8c349",
+        "f291466bd9b34a892c84",
+        "84a2d3c7a4dd78d1bf05",
+        "13b87d07be8e43feda7d",
+        "b5ea447f7f66eb63d766",
+        "bead6a218102f8d7e28f",
+        "bff4088ac79374d871d1",
+        "34575cd19d45f0d8d887",
+        "937537ddfd89843636e1",
+        "1419dad457a0b0888c59",
+        "604ed4d5de90e57a9cf8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    },
+    {
+      "requirement_id": "up_to_1000",
+      "clause": "up to 1000",
+      "verdict": "PASS",
+      "reasoning": "The number values present across all samples remain within the boundary specified by the requirement. Numbers range from small values like 11 and 15 in early samples through larger values reaching 904 in later samples, all staying strictly below the thousand limit. No sample presents any number exceeding 1000 or requires students to work with values outside this range.",
+      "sample_ids": [
+        "070820a075dad57f85a9",
+        "a47fbb87226b0b58f01b",
+        "9925a2d4d68145152200",
+        "a283625fe55dae6adb24",
+        "382d3c19b52157110fbc",
+        "44a7d8918397f80c49f8",
+        "a2710e3e5084848da22d",
+        "3cb8f13889f862f88c35",
+        "28396e68637d8c7a2a68",
+        "25aa92a4c395b77205cf",
+        "7c9d236852c0f48cf661",
+        "a8a6807743b8a5943d96",
+        "87c7bcd0e089f8d5cab9",
+        "88b544465ef8e7f8c349",
+        "f291466bd9b34a892c84",
+        "84a2d3c7a4dd78d1bf05",
+        "13b87d07be8e43feda7d",
+        "b5ea447f7f66eb63d766",
+        "bead6a218102f8d7e28f",
+        "bff4088ac79374d871d1",
+        "34575cd19d45f0d8d887",
+        "937537ddfd89843636e1",
+        "1419dad457a0b0888c59",
+        "604ed4d5de90e57a9cf8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w1-haiku45-20260925:mat_g2_na_q1_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc1-mat_g2_na_q1_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "da31deae766d44cafc587dc9a14301867ac81be4675b71db66e104450a5188fe",
+      "clause_ids": [
+        "count",
+        "up_to_1000"
+      ],
+      "response_ref": ".responses/s5-phaseC-w1-haiku45-20260925.json",
+      "response_digest": "968e6859414fd1fa8871ed652656f20582f8e58efb9c1a34a78680c248e91272",
+      "prompt_ref": ".responses/s5-phaseC-w1-haiku45-20260925.prompt.txt",
+      "prompt_digest": "57d4b544975952d22c28bacd956fe1e596f3c1c441bc6a76c3eefd825a90f4cd",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q1_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q1_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Counting by ones is what this competency names, and several samples do not do it. Two items step by hundreds and one steps by twos, which is a different skill wearing the same what comes next wrapper."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Only forward counting is ever produced. Nothing counts backward, nothing counts on from a stated number toward a stated stop, and no item asks for a number that precedes the given run rather than follows it."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Four-term runs with one blank, in three-digit numbers, are well matched to the opening quarter of Grade 2, and the narrated version naming a child counting forward adds context without adding reading burden."
+      "rationale": "The problem structure across all samples is developmentally appropriate for Grade 2 students. Tasks require identifying or completing sequences through pattern recognition, which aligns with early elementary reasoning capabilities. Number ranges and sequence variations progress logically from small numbers under 50 to larger numbers near 1000, with increments ranging from ones to hundreds, matching grade-level expectations."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly assesses the stated competency by presenting sequences that students must continue or identify within. The sequences uniformly test the core skill of recognizing counting patterns and determining the next or marked number in a progression, which constitutes the fundamental act of counting required by the competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The twenty-four samples collectively demonstrate that the competency components are fully addressed through diverse examples. Students must engage in the act of counting by identifying and extending numerical sequences across multiple contexts and number ranges.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The two stated requirements, identifying the counting action and applying it to numbers up to 1000, are losslessly represented across all samples. No aspect of the competency is omitted, and the samples do not require knowledge or skills beyond what the competency explicitly states.",
+        "requirement_ids": [
+          "count",
+          "up_to_1000"
+        ]
+      },
+      "clause_ids": [
+        "count",
+        "up_to_1000"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set covers a comprehensive range of number magnitudes from small sequences starting at 11 through those reaching 900, ensuring the full span of numbers up to 1000 is adequately represented. Multiple interaction formats including number line visuals, multiple choice selections, and fill-in-the-blank responses provide varied assessment modes. Counting patterns range from single-step increments to hundred-step progressions.",
+      "clause_ids": [
+        "count",
+        "up_to_1000"
+      ]
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical range demonstrated across samples spans from low tens through upper hundreds, effectively covering the stated range of up to 1000 without requiring students to work with numbers consistently at or near the thousand threshold. The distribution of samples at different magnitude levels ensures balanced assessment across the full counting range without overloading students with extreme upper values."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four presentations occur across the seeds: a marked number line, a sequence with a trailing blank, a sequence introduced as a missing number, and a short narrative about someone counting aloud."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Four of the fourteen samples are skip-counting sequences, including one running 0, 100, 200, 300 and another running 400, 500, 600, 700. Skip counting is the subject of a separate competency in this same quarter, so a substantial share of this node's difficulty is being varied on a neighbouring node's axis."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency's ceiling is a thousand, yet the counting-by-ones items peak in the five hundreds; only the skip-counting intruders reach the upper hundreds, so the by-ones skill is never taken near the stated top of range."
+      "rationale": "The samples employ three distinct presentation formats: number line visual representations with read-only multiple choice interaction, text-based multiple choice options, and fill-in-the-blank cloze formats. This variety ensures that students encounter the counting competency through multiple modalities and response mechanisms, reducing reliance on any single item type and providing comprehensive assessment of the skill."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

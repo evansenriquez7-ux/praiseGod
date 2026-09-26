@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Add numbers with sums up to 1000, with or without regrouping.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "add_numbers",
+      "clause": "Add numbers"
+    },
+    {
+      "kind": "range",
+      "id": "sums_up_to_1000",
+      "clause": "sums up to 1000"
+    },
+    {
+      "kind": "property",
+      "id": "with_regrouping",
+      "clause": "with"
+    },
+    {
+      "kind": "property",
+      "id": "without_regrouping",
+      "clause": "without regrouping"
+    }
+  ],
+  "packet_digest": "475b6efd7685c26b233ddb8af985b019de7d754976a4d9dabbe756004cccfa66",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,35 +50,268 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614,
+    615,
+    616,
+    617,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "d107845e6eec65e4f418",
+    "a71f063a0535eb8a6e94",
+    "7eb6acdae7f28847fecf",
+    "add821196821f4a68dd1",
+    "c69731d268ee1569d31f",
+    "9ed5315d9b6daac1f148",
+    "8ae929c93f44aac7ddfd",
+    "a37023caa2c77c7ca08c",
+    "3493245c328254fb24eb",
+    "82db0e971db815dc7e63",
+    "dccd4b467e9fc4dce410",
+    "afb379775e77e1d4ef66",
+    "dc455884b82f3b92585d",
+    "9a882e95d499bfbdc0d2",
+    "1cbb08befb3b2614b05d",
+    "d2e1da93cc7a562debfe",
+    "23379b549384243eb876",
+    "7427043c9a86b08d1690",
+    "7cd868285f834dce6d4d",
+    "bde8ee3cfd8f3909e96b",
+    "e905269dcd849ba051c0",
+    "db2831c1bdbf5c3da352",
+    "16aeb9dd78160180aaca",
+    "d08f08fca73a71f9d58e",
+    "695642ccb65edf757c8b",
+    "eacf4145f0ef3166c2b3",
+    "897bc2021052aa7945aa",
+    "ef5487e459180db13727",
+    "cefe8867e62ce4bf0e66",
+    "5f7e9b2d2f838c2472e4",
+    "55a5ad4f3c685a5bc3a6",
+    "b67e1ca7011e19b88fb6",
+    "f284b620a80daf03d608",
+    "c641a6dc88d8c468f9a6",
+    "3a18b2179da212ded253",
+    "474801db92b90fd6ee72",
+    "ef7ee57317cc4acef2b9",
+    "c9a804626d584ccbc5d8"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 42,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 57 + 345 on the number line.",
-      "correct_answer": 402
+      "correct_answer": 402,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 402,
+      "hints": [
+        "We are adding two numbers: 57 and 345.",
+        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 5 + 4 + 1 (carried) = 10.",
+        "The sum is 57 + 345 = 402."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 500,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 0,
+        "move_by": 345,
+        "content_type": "whole_number",
+        "value": 402,
+        "correct_position": 402,
+        "divisions": 10,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 402.0,
+        "target": 402.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9c66ac3fddcf12b485b84c136e135bbed360ecde503856a5b55dedc0ed5c3eab",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "Your answer: Position",
+            "250",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d107845e6eec65e4f418",
+      "replay_digest": "10382c194a6539d84ff08e7ecf180ceca33a8ee2e61259fea55f89c27592d949"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 43,
       "formatter": "read_fill_in_blank",
       "question_text": "The two parts are 784 and 112. What is the sum?",
-      "correct_answer": 896
+      "correct_answer": 896,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 896,
+      "hints": [
+        "We are adding two numbers: 784 and 112.",
+        "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.",
+        "Add the tens: 8 + 1 = 9.",
+        "The sum is 784 + 112 = 896."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 784,
+        "part2": 112,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "62ec7647d1975666171d5e7f4bc05cfede9bfd3223f99c017c801bd8242dae5b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "784",
+            "112"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a71f063a0535eb8a6e94",
+      "replay_digest": "c5ae436c3979c900636ce384821fd69bdcb67088a37918b6781a3bb641698e67"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved: \"144 + 480 = ___\". Rico says the missing number is 624. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 624
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 624
+      },
+      "hints": [
+        "We are adding two numbers: 144 and 480.",
+        "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.",
+        "Add the tens: 4 + 8 = 12.",
+        "The sum is 144 + 480 = 624."
+      ],
+      "sample_id": "7eb6acdae7f28847fecf",
+      "replay_digest": "40d8055eae7de47b496a73a6effad3a9569b45f964e8e096efa93a4585df79a4"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is 60 + 570?",
       "correct_answer": 630,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -69,13 +333,37 @@
           "value": 629,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 630,
+      "hints": [
+        "We are adding two numbers: 60 and 570.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 6 + 7 = 13.",
+        "The sum is 60 + 570 = 630."
+      ],
+      "sample_id": "add821196821f4a68dd1",
+      "replay_digest": "2586c6ba48b6d1aca48e8d1eec64b8afc4ad4a54e3a124e307b14151e1a61812"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 46,
       "formatter": "cloze",
       "question_text": "244 + 335 = ___",
       "correct_answer": 579,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -101,13 +389,37 @@
           "text": "579",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 579,
+      "hints": [
+        "We are adding two numbers: 244 and 335.",
+        "Add the ones: 4 + 5 = 9. Keep 9 in the ones place.",
+        "Add the tens: 4 + 3 = 7.",
+        "The sum is 244 + 335 = 579."
+      ],
+      "sample_id": "c69731d268ee1569d31f",
+      "replay_digest": "38ac17d167f113d3702c156f591ea01c89009d85b8a6d5be5da295931ef7ed9e"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 47,
       "formatter": "read_mcq",
       "question_text": "The dot is at 260 and it moves forward 240 numbers. Starting from 260, just count up 240 numbers. Which number will the dot land on?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -129,19 +441,118 @@
           "value": 510,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 500,
+      "hints": [
+        "We are adding two numbers: 260 and 240.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 6 + 4 = 10.",
+        "The sum is 260 + 240 = 500."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 100,
+        "end": 600,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 260,
+        "move_by": 240,
+        "content_type": "whole_number",
+        "value": 500,
+        "correct_position": 500,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 500.0,
+        "target": 500.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "edda96a5eb7ce3709729be577a29ebd9bb32e2f35f1cf60f06fac64d3da99fa5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9ed5315d9b6daac1f148",
+      "replay_digest": "085a6a86a7b23720640a9904818566ffa6d1091e0e5496e804a0e219fd0cac4d"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 61,
       "formatter": "true_false",
       "question_text": "345 + 160 = 504. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 345 and 160.",
+        "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.",
+        "Add the tens: 4 + 6 = 10.",
+        "The sum is 345 + 160 = 505."
+      ],
+      "sample_id": "8ae929c93f44aac7ddfd",
+      "replay_digest": "ef250537accd1625407baf0a8d2495826bc72995d1cc04fb12bbed3ce213bbc9"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "The dot is at 727 and it moves forward 59 numbers. Starting from 727, just count up 59 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -163,34 +574,302 @@
           "value": 668,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 786,
+      "hints": [
+        "We are adding two numbers: 727 and 59.",
+        "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and carry over 1 ten.",
+        "Add the tens: 2 + 5 + 1 (carried) = 8.",
+        "The sum is 727 + 59 = 786."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 710,
+        "end": 790,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 727,
+        "move_by": 59,
+        "content_type": "whole_number",
+        "value": 786,
+        "correct_position": 786,
+        "divisions": 16,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 786.0,
+        "target": 786.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "7aeefb0ef7cbd2f150b6102cb85d5bc7203dff925ebbf7486effbca1e11fe40e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "710",
+            "720",
+            "730",
+            "740",
+            "750",
+            "760",
+            "770",
+            "780",
+            "790"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a37023caa2c77c7ca08c",
+      "replay_digest": "1e7f43a8f1c39c8001eb10bbddaae6dec573d2f2d8090833b08acaf6af199678"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 501,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 748 + 95 on the number line.",
-      "correct_answer": 843
+      "correct_answer": 843,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 843,
+      "hints": [
+        "We are adding two numbers: 748 and 95.",
+        "Add the ones: 8 + 5 = 13. Keep 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 9 + 1 (carried) = 14.",
+        "The sum is 748 + 95 = 843."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 730,
+        "end": 850,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 730,
+        "move_by": 95,
+        "content_type": "whole_number",
+        "value": 843,
+        "correct_position": 843,
+        "divisions": 24,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 843.0,
+        "target": 843.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "13fce2d51df980e61a7454d34f4eb02c2bd88ba969e2e3050c0fedb334de7ab9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 46,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "730",
+            "740",
+            "750",
+            "760",
+            "770",
+            "780",
+            "790",
+            "800",
+            "810",
+            "820",
+            "830",
+            "840",
+            "850",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3493245c328254fb24eb",
+      "replay_digest": "de35ef3331d42a607f9ee7b6d277d944a29941efdc424559055e90d933d60b84"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"689 + 158 = ___\". Dante says the missing number is 847. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 847
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 847
+      },
+      "hints": [
+        "We are adding two numbers: 689 and 158.",
+        "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.",
+        "Add the tens: 8 + 5 + 1 (carried) = 14.",
+        "The sum is 689 + 158 = 847."
+      ],
+      "sample_id": "82db0e971db815dc7e63",
+      "replay_digest": "5a2ecfabcfbd16352f0091cb53d97fdcd124b1715b0e62c35ae698873bfd08fb"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 600,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 874 + 32 on the number line.",
-      "correct_answer": 906
+      "correct_answer": 906,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 906,
+      "hints": [
+        "We are adding two numbers: 874 and 32.",
+        "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.",
+        "Add the tens: 7 + 3 = 10.",
+        "The sum is 874 + 32 = 906."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 860,
+        "end": 910,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 860,
+        "move_by": 32,
+        "content_type": "whole_number",
+        "value": 906,
+        "correct_position": 906,
+        "divisions": 10,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 906.0,
+        "target": 906.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "5c596f8c61ffe1c19fcadbfbe3e7db2562757a90b782988df01e8a8977d13c09",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "860",
+            "870",
+            "880",
+            "890",
+            "900",
+            "910",
+            "Your answer: Position",
+            "885",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dccd4b467e9fc4dce410",
+      "replay_digest": "30633de37e92600a6518e1a2d16c2c0fee3abcf0bbf18a4b3e3e60991ba261f7"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses is on step 750. Moses climbs up 0 more steps. What step is Moses on now?",
       "correct_answer": 750,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -216,13 +895,39 @@
           "text": "760",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 750,
+      "hints": [
+        "We are adding two numbers: 750 and 0.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 5 + 0 = 5.",
+        "The sum is 750 + 0 = 750."
+      ],
+      "sample_id": "afb379775e77e1d4ef66",
+      "replay_digest": "2ab67ef1ea5cf4024dcfad65b3ee318f05deb2c2dc2b0ae305617dca646c4950"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 602,
       "formatter": "read_mcq",
       "question_text": "The dot is at 501 and it moves forward 150 numbers. Starting from 501, just count up 150 numbers. Which number will the dot land on?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -244,25 +949,179 @@
           "value": 650,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 651,
+      "hints": [
+        "We are adding two numbers: 501 and 150.",
+        "Add the ones: 1 + 0 = 1. Keep 1 in the ones place.",
+        "Add the tens: 0 + 5 = 5.",
+        "The sum is 501 + 150 = 651."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 400,
+        "end": 700,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 501,
+        "move_by": 150,
+        "content_type": "whole_number",
+        "value": 651,
+        "correct_position": 651,
+        "divisions": 6,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 651.0,
+        "target": 651.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "afc22cd441484ad1f8f6168d7c5f153de94f0e1a204d7e89cd339cfe06eb2a46",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "400",
+            "500",
+            "600",
+            "700"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "dc455884b82f3b92585d",
+      "replay_digest": "2d39d33a96d03460aff1ce5f5f4e02b8ba58460d16f5ce33f0257a0e555f8c3e"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 603,
       "formatter": "read_fill_in_blank",
       "question_text": "The two parts are 848 and 102. What is the sum?",
-      "correct_answer": 950
+      "correct_answer": 950,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 950,
+      "hints": [
+        "We are adding two numbers: 848 and 102.",
+        "Add the ones: 8 + 2 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 0 + 1 (carried) = 5.",
+        "The sum is 848 + 102 = 950."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 848,
+        "part2": 102,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "72a265de3fada512b0ac2d15e2b10a97ec81f848017a1cf5a487d492f742cd2b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "848",
+            "102"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "9a882e95d499bfbdc0d2",
+      "replay_digest": "51fe9859a2abd64e516ddcacc86b6835efdda03bed25c9d8a86f80b006451cdb"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 604,
       "formatter": "true_false",
       "question_text": "633 + 367 = 633. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "three_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 633 and 367.",
+        "Add the ones: 3 + 7 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 3 + 6 + 1 (carried) = 10.",
+        "The sum is 633 + 367 = 1000."
+      ],
+      "sample_id": "1cbb08befb3b2614b05d",
+      "replay_digest": "4251e47b7c41476074c8973dc82d980f391d6dd8bb6df0cf51af9367b8e380fd"
     },
     {
+      "node_id": "mat_g2_na_q1_9",
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "The dot is at 634 and it moves forward 297 numbers. Starting from 634, just count up 297 numbers. Which number will the dot land on?",
       "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "two_places"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -284,33 +1143,2366 @@
           "value": 931,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 931,
+      "hints": [
+        "We are adding two numbers: 634 and 297.",
+        "Add the ones: 4 + 7 = 11. Keep 1 in the ones place and carry over 1 ten.",
+        "Add the tens: 3 + 9 + 1 (carried) = 13.",
+        "The sum is 634 + 297 = 931."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 500,
+        "end": 1000,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 634,
+        "move_by": 297,
+        "content_type": "whole_number",
+        "value": 931,
+        "correct_position": 931,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 931.0,
+        "target": 931.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "cca7e9ed21df80e577b5416862817077c70f4f33a92c9741db0bf7776f23284d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d2e1da93cc7a562debfe",
+      "replay_digest": "16501465823f90d0eabd9ffb822bff5db977eb484a723b9507cc6f85e287c8b8"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What is 877 + 45?",
+      "correct_answer": 922,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 922,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 832,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 932,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 921,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 922,
+      "hints": [
+        "We are adding two numbers: 877 and 45.",
+        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 7 + 4 + 1 (carried) = 12.",
+        "The sum is 877 + 45 = 922."
+      ],
+      "sample_id": "23379b549384243eb876",
+      "replay_digest": "6fea6e313441dfc0cc549598c9a4c4c2518637c647e155eec34c9034386da4b1"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 607,
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"318 + 392 = ___\". Grace says the missing number is 710. Is Grace correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 710
+      },
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 710
+      },
+      "hints": [
+        "We are adding two numbers: 318 and 392.",
+        "Add the ones: 8 + 2 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 1 + 9 + 1 (carried) = 11.",
+        "The sum is 318 + 392 = 710."
+      ],
+      "sample_id": "7427043c9a86b08d1690",
+      "replay_digest": "e27373d4c3998ac6d7a5137bc7c74946acbd9ed01ec1a23fd3777246c896a572"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 608,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 300 + 180 on the number line.",
+      "correct_answer": 480,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 480,
+      "hints": [
+        "We are adding two numbers: 300 and 180.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 0 + 8 = 8.",
+        "The sum is 300 + 180 = 480."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 200,
+        "end": 500,
+        "major_interval": 100,
+        "minor_interval": 50,
+        "interval": 50,
+        "dot_value": 200,
+        "move_by": 180,
+        "content_type": "whole_number",
+        "value": 480,
+        "correct_position": 480,
+        "divisions": 6,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 480.0,
+        "target": 480.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "f1c1781ab2488a6c6e885ac2329858a36616b80287228705cb2124622b311e21",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "200",
+            "300",
+            "400",
+            "500",
+            "Your answer: Position",
+            "350",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "7cd868285f834dce6d4d",
+      "replay_digest": "27ab0366f1dc0ae1ad9ce8aadde3059ba10395dc1614f8dc1714f2ec49205f96"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 609,
+      "formatter": "cloze",
+      "question_text": "185 + 18 = ___",
+      "correct_answer": 203,
+      "requested": {
+        "difficulty_profile": {
+          "strategy": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 203,
+          "text": "203",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 167,
+          "text": "167",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 202,
+          "text": "202",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 213,
+          "text": "213",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 203,
+      "hints": [
+        "We are adding two numbers: 185 and 18.",
+        "Add the ones: 5 + 8 = 13. Keep 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 8 + 1 + 1 (carried) = 10.",
+        "The sum is 185 + 18 = 203."
+      ],
+      "sample_id": "bde8ee3cfd8f3909e96b",
+      "replay_digest": "2ada8ee60c8c90a3beb4b5d4465ee2a3f616a9675511480448c7e8a73cd855e5"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "What is 294 + 30?",
+      "correct_answer": 324,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 324,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 334,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 323,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 264,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 324,
+      "hints": [
+        "We are adding two numbers: 294 and 30.",
+        "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.",
+        "Add the tens: 9 + 3 = 12.",
+        "The sum is 294 + 30 = 324."
+      ],
+      "sample_id": "e905269dcd849ba051c0",
+      "replay_digest": "00cd6d0a111359ddf6b2a80279ecaf9d759f098007a4e54fe321b1560457ee2d"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 611,
+      "formatter": "mcq",
+      "question_text": "Is (383 + 302) + 113 the same as 383 + (302 + 113)?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "associative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides add the same three numbers, 383, 302 and 113, grouped differently.",
+        "(383 + 302) + 113 = 798 and 383 + (302 + 113) = 798.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "db2831c1bdbf5c3da352",
+      "replay_digest": "d77b9e6b602c2c16e635123543006ee6611bc1184c0e6de97031e4098078c0ee"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 612,
+      "formatter": "mcq",
+      "question_text": "Is 194 + 505 the same as 505 + 235?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "commutative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side adds 194 and 505. The right side adds 505 and 235.",
+        "194 + 505 = 699 and 505 + 235 = 740.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "16aeb9dd78160180aaca",
+      "replay_digest": "5136707274b35dfda0d863821d04cc89ca4cb988de599dd88975782e6f3d7e92"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 613,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 930 + 10 on the number line.",
+      "correct_answer": 940,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 940,
+      "hints": [
+        "We are adding two numbers: 930 and 10.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 3 + 1 = 4.",
+        "The sum is 930 + 10 = 940."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 920,
+        "end": 950,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 920,
+        "move_by": 10,
+        "content_type": "whole_number",
+        "value": 940,
+        "correct_position": 940,
+        "divisions": 6,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 940.0,
+        "target": 940.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "50e10a4d3c4abb869029de0c3b3a14ddd4adcf1fa00da6788178b5c4cb2ad0e8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "920",
+            "930",
+            "940",
+            "950",
+            "Your answer: Position",
+            "935",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "d08f08fca73a71f9d58e",
+      "replay_digest": "99e98a1fa7181b145c0fc78d4f36e14b8853e3f760684f4c7de6e2150203476e"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 614,
+      "formatter": "cloze",
+      "question_text": "278 is 2 hundreds, 7 tens, and 8 ones. 175 is 1 hundred, 7 tens, and 5 ones. Add the place values, then find the total: 278 + 175 = ___",
+      "correct_answer": 453,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 103,
+          "text": "103",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 453,
+          "text": "453",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 452,
+          "text": "452",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 463,
+          "text": "463",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 453,
+      "hints": [
+        "We are adding two numbers: 278 and 175.",
+        "Add the ones: 8 + 5 = 13. Keep 3 in the ones place and carry over 1 ten.",
+        "Add the tens: 7 + 7 + 1 (carried) = 15.",
+        "The sum is 278 + 175 = 453."
+      ],
+      "sample_id": "695642ccb65edf757c8b",
+      "replay_digest": "8e544e8b40c6d8d56702987f8c02a5680779a83891d22e9ec3357ac6750c6204"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 615,
+      "formatter": "error_detect",
+      "question_text": "Ana solved: \"240 + 105 = ___\". Ana says the missing number is 344. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 345
+      },
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "models_strategies"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 345
+      },
+      "hints": [
+        "We are adding two numbers: 240 and 105.",
+        "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.",
+        "Add the tens: 4 + 0 = 4.",
+        "The sum is 240 + 105 = 345."
+      ],
+      "sample_id": "eacf4145f0ef3166c2b3",
+      "replay_digest": "fd4ac59f78663d2b5263e958868524bfa697e65710fa8b728a12d0c606be8f7c"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 616,
+      "formatter": "true_false",
+      "question_text": "One group has 30 items and another group has 270 items. Putting them together makes 300 items in all. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "putting_together"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 30 and 270.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 3 + 7 = 10.",
+        "The sum is 30 + 270 = 300."
+      ],
+      "sample_id": "897bc2021052aa7945aa",
+      "replay_digest": "554313501d8a590cc94f13c0aedef81dda4831cd119894781883d1f2e44046bd"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 617,
+      "formatter": "mcq",
+      "question_text": "What is 485 + 0?",
+      "correct_answer": 485,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "zero_identity"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 484,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 485,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 486,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 495,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 485,
+      "hints": [
+        "We are adding two numbers: 485 and 0.",
+        "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.",
+        "Add the tens: 8 + 0 = 8.",
+        "The sum is 485 + 0 = 485."
+      ],
+      "sample_id": "ef5487e459180db13727",
+      "replay_digest": "130c64fb668bd75166d27dccbdf9f3198f5222840477e6272eaaee374ccce03f"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 700,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 630 and 150. What is the sum?",
+      "correct_answer": 780,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 780,
+      "hints": [
+        "We are adding two numbers: 630 and 150.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 3 + 5 = 8.",
+        "The sum is 630 + 150 = 780."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 630,
+        "part2": 150,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "09ed98650e8858baf0de14ad9fb18098b31ad4811b807f17a00224bb59e8c074",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "630",
+            "150"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "cefe8867e62ce4bf0e66",
+      "replay_digest": "aa41e23f176924e2f1dfd0d5be7b384000def5e9825b627f7773a6f5bab4cf51"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 701,
+      "formatter": "cloze",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. 396 + 236 = ___",
+      "correct_answer": 632,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "meme_streaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 632,
+          "text": "632",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 631,
+          "text": "631",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 160,
+          "text": "160",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 642,
+          "text": "642",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 632,
+      "hints": [
+        "We are adding two numbers: 396 and 236.",
+        "Add the ones: 6 + 6 = 12. Keep 2 in the ones place and carry over 1 ten.",
+        "Add the tens: 9 + 3 + 1 (carried) = 13.",
+        "The sum is 396 + 236 = 632."
+      ],
+      "sample_id": "5f7e9b2d2f838c2472e4",
+      "replay_digest": "92e7030eb78766effa79b44c20cdc85cc99bc98216ef3e5b36ddb7589bfe9179"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "✝️ Moses has a math challenge about olives. Manny solved: \"362 + 403 = ___\". Manny says the missing number is 766. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 765
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "bible",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 765
+      },
+      "hints": [
+        "We are adding two numbers: 362 and 403.",
+        "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 362 + 403 = 765."
+      ],
+      "sample_id": "55a5ad4f3c685a5bc3a6",
+      "replay_digest": "36180ea06c9ebc7b79546784f9719642ac5a441c9f08bde3a23ec7839abacdb0"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 800,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 940 and it moves forward 60 numbers. Starting from 940, just count up 60 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 880,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 999,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1010,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1000,
+      "hints": [
+        "We are adding two numbers: 940 and 60.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 4 + 6 = 10.",
+        "The sum is 940 + 60 = 1000."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 930,
+        "end": 1010,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 940,
+        "move_by": 60,
+        "content_type": "whole_number",
+        "value": 1000,
+        "correct_position": 1000,
+        "divisions": 16,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 1000.0,
+        "target": 1000.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a205118bd30f565a5a61df6607c8a03f74e8b3fe3be6a6852d7af32d99f16eec",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "930",
+            "940",
+            "950",
+            "960",
+            "970",
+            "980",
+            "990",
+            "1000",
+            "1010"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b67e1ca7011e19b88fb6",
+      "replay_digest": "815535d301c6aee5384184b69df9ce2367e6e153417a1f3deae711c92b2b3517"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 801,
+      "formatter": "error_detect",
+      "question_text": "Pia solved: \"823 + 140 = ___\". Pia says the missing number is 963. Is Pia correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 963
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 963
+      },
+      "hints": [
+        "We are adding two numbers: 823 and 140.",
+        "Add the ones: 3 + 0 = 3. Keep 3 in the ones place.",
+        "Add the tens: 2 + 4 = 6.",
+        "The sum is 823 + 140 = 963."
+      ],
+      "sample_id": "f284b620a80daf03d608",
+      "replay_digest": "efbc943727b0ed2a6d09851fbe5d8036a1a043dd11069f086161e3278ac7a24a"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 1?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "sample_id": "c641a6dc88d8c468f9a6",
+      "replay_digest": "e44f9e66192e97bcabf7ecbf4b870443c4c4fda8ca844fc29b4521257278867c"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 901,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 0 + 1 on the number line.",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 1,
+      "hints": [
+        "We are adding two numbers: 0 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "The sum is 0 + 1 = 1."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 1,
+        "correct_position": 1,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 1.0,
+        "target": 1.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6d680bd05b3a2f1440d173b830a1d3438ae4569393b1be7ec2b2190cc26e4a6a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3a18b2179da212ded253",
+      "replay_digest": "52d8bea9c72caeb8dbe2a35df848eeda9af067a46d96d0f39ff52ebd1e14ca2d"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 1000,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 807 and 59. What is the sum?",
+      "correct_answer": 866,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": 866,
+      "hints": [
+        "We are adding two numbers: 807 and 59.",
+        "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and carry over 1 ten.",
+        "Add the tens: 0 + 5 + 1 (carried) = 6.",
+        "The sum is 807 + 59 = 866."
+      ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 807,
+        "part2": 59,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "326c184c67c9c3675544a6ed36139e2759371c303ea7ce6765f6d1a7b45d7657",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "807",
+            "59"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "474801db92b90fd6ee72",
+      "replay_digest": "931013b242d490ad84a998a12403d6be31bcdd7fdffbbf2c43870937eaa113e1"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 1001,
+      "formatter": "true_false",
+      "question_text": "805 + 141 = 946. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 805 and 141.",
+        "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.",
+        "Add the tens: 0 + 4 = 4.",
+        "The sum is 805 + 141 = 946."
+      ],
+      "sample_id": "ef7ee57317cc4acef2b9",
+      "replay_digest": "9f87b69e0b23f50a37f1139f4d9b041e47a0b3c6a13cbc3b1500ae07641f06f1"
+    },
+    {
+      "node_id": "mat_g2_na_q1_9",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"830 + 170 = ___\". Manny says the missing number is 1010. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 1000
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 1000
+      },
+      "hints": [
+        "We are adding two numbers: 830 and 170.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 3 + 7 = 10.",
+        "The sum is 830 + 170 = 1000."
+      ],
+      "sample_id": "c9a804626d584ccbc5d8",
+      "replay_digest": "5fa8350c7e6a012d99bd66f898b4d2d1f322ccbd6fd361efac6c5920ca2b1d25"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "d107845e6eec65e4f418",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly directs the student to show 57 + 345 on the number line using an interactive visual tool. The instruction is unambiguous about the task: position a dot at the sum location."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task logically connects to the competency by requiring students to locate the correct sum on a number-line representation, combining computational accuracy with spatial reasoning about the magnitude relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 student familiar with number lines would understand the concrete request to drag or position a dot. The visual scaffold and step-by-step hints make the regrouping process transparent and followable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "57 + 345 correctly yields 402. The hint sequence accurately shows ones place 7+5=12 keeping 2 and carrying 1, tens place 5+4+1=10 keeping 0 and carrying 1, and the implicit hundreds result 3+1=4, confirming the correct sum."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "a71f063a0535eb8a6e94",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states two parts are 784 and 112, asking for the sum. The question What is the sum is direct and leaves no room for misinterpretation about the operation required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number bond visual appropriately decomposes the whole into two parts, reinforcing the conceptual meaning of addition as combining quantities. The context aligns with Grade 2 part-whole understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The read-only interaction presents two component numbers clearly labeled in a number-bond diagram, making it transparent which values must be combined to find the answer blank."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "784 + 112 = 896 is correct, confirmed by the hint breakdown: ones 4+2=6, tens 8+1=9, hundreds 7+1=8. All place-value sums are accurate and the final answer matches."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "7eb6acdae7f28847fecf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format asks a binary question: Is Rico correct? This unambiguously requires students to verify whether the claimed sum 624 for 144+480 is true or false."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Presenting a student-named character with a claimed answer creates relatable context and requires students to engage in computational thinking and verification, which strengthens mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students can recognize the name Rico and understand the yes-or-no question format. The hints walk through the addition steps, making it clear what correct computation should yield."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "144 + 480 = 624 is correct. The hints show ones 4+0=4, tens 4+8=12 keeping 2 and carrying 1, and hundreds 1+4+1=6, which correctly sum to 624. Rico is indeed correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "add821196821f4a68dd1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks directly for the result of 60 + 570. The four numerical options are presented in a standard multiple-choice format with no overlapping or confusing answer text."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format presents one correct answer and three plausible distractors that might result from computational errors, making it a valid assessment of accurate addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students must compute 60 + 570 and select the matching option from the list 631, 640, 630, 629. The task is straightforward and aligned with Grade 2 multiple-choice item experience."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "60 + 570 = 630 is correct. The hints accurately show ones 0+0=0, tens 6+7=13 keeping 3 and carrying 1, and hundreds place 0+5+1=6, yielding 630 as the unique correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "c69731d268ee1569d31f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents a simple equation blank format. Students must enter the missing number resulting from 244 + 335. The task structure leaves no ambiguity about what is expected."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation setup provides four multiple-choice options for the blank, allowing verification of computational accuracy while maintaining a familiar fill-in-the-blank format."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The equation format with a single blank clearly indicates where the sum should go. Offered options are plausible enough to require genuine computation rather than elimination."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "244 + 335 = 579 is correct. The hints show ones 4+5=9, tens 4+3=7, and hundreds 2+3=5, producing 579. This is the listed correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "9ed5315d9b6daac1f148",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem narrates that a dot starts at 260 and moves forward 240 numbers, then asks which number the dot lands on. The narrative context makes clear that addition is the operation, and the question is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line context provides concrete semantic meaning to addition as forward movement. The counting-up language aligns with Grade 2 mental-math strategies for solving addition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 student accustomed to counting on a number line understands the forward movement narrative. The visual representation on the number line makes the context concrete and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "260 + 240 = 500 is correct. The hints show ones 0+0=0, tens 6+4=10 keeping 0 and carrying 1, and hundreds 2+2+1=5, yielding 500."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "8ae929c93f44aac7ddfd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true_false stem presents an equation with a claim: 345 + 160 = 504. Students must determine whether this statement is true or false, which requires no clarification."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Evaluating the truth of a proposed equation is a valid way to assess whether students can perform addition accurately and recognize when a sum is incorrect."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The binary true-or-false format is developmentally familiar and the incorrect sum 504 in the stem is distinct enough that students must calculate to verify."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "345 + 160 = 505, not 504. The hints correctly show ones 5+0=5, tens 4+6=10 keeping 0 and carrying 1, and hundreds 3+1+1=5, yielding 505. The statement is false as shown."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "a37023caa2c77c7ca08c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq narrates that a dot at 727 moves forward 59 numbers and asks where it lands. The question is direct: Which number will the dot land on, with four options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative of movement along a number line provides concrete, semantically valid context for addition. Students see visually where the dot must end up after the jump."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand physical movement on a number line as a model for addition. The visual representation with labeled markings supports the mental computation required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "727 + 59 = 786 is correct. The hints show ones 7+9=16 keeping 6 and carrying 1, tens 2+5+1=8, and hundreds 7 unchanged, yielding 786."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "3493245c328254fb24eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs students to show 748 + 95 on a number line. The task is unambiguous: position the result point at the correct sum location using the interactive visual."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Using a number line to represent addition results grounds the computation in spatial magnitude relationships, reinforcing both accuracy and number sense."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The interactive number-line interface with labeled tick marks and clear positioning instructions makes it obvious where the dot should land. Hints guide the calculation steps."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "748 + 95 = 843 is correct. The hints show ones 8+5=13 keeping 3 and carrying 1, tens 4+9+1=14 keeping 4 and carrying 1, and hundreds 7+1=8, yielding 843."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "82db0e971db815dc7e63",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem presents Dante's claimed answer 847 for 689 + 158. The binary question Is Dante correct is unambiguously asking for truth-value judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative of a student making a calculation claim creates authentic verification context. Students must compute independently to check whether Dante's answer is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format with a named character and yes-or-no outcome is developmentally appropriate. Hints show each step so students can verify along with the computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "689 + 158 = 847 is correct. The hints show ones 9+8=17 keeping 7 and carrying 1, tens 8+5+1=14 keeping 4 and carrying 1, and hundreds 6+1+1=8, yielding 847."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "dccd4b467e9fc4dce410",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem requests showing 874 + 32 on a number line. The instruction is clear and the interactive tool response format unambiguously specifies positioning the answer dot."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line representation provides visual grounding for the magnitude of the sum, supporting Grade 2 students in understanding both the computation and the relative size of the result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students accustomed to number-line activities understand how to use the visual to locate the sum. The labeled scale and positioning interface make the task straightforward."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "874 + 32 = 906 is correct. The hints show ones 4+2=6, tens 7+3=10 keeping 0 and carrying 1, and hundreds 8+1=9, yielding 906."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "afb379775e77e1d4ef66",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents a narrative context with Moses on step 750 climbing 0 more steps, then asks What step is Moses on now. The blank clearly indicates where the answer goes."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The step-climbing narrative provides concrete context for addition, making it meaningful that adding zero to a number yields the same number. The context reinforces the identity property."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative about climbing steps is concrete and understandable. Grade 2 students can grasp that climbing zero more steps means staying in the same place."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "750 + 0 = 750 is correct. The hints show ones 0+0=0, tens 5+0=5, and hundreds 7 unchanged, yielding 750. This demonstrates the additive identity property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "dc455884b82f3b92585d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq narrative describes a dot moving forward 150 numbers from 501. The question Which number will the dot land on is unambiguous, with four distinct numerical options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line movement narrative provides valid semantic grounding for addition as forward displacement, with visual representation supporting the computation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students familiar with number lines understand forward jumps as addition. The labeled tick marks and visual context make the task accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "501 + 150 = 651 is correct. The hints show ones 1+0=1, tens 0+5=5, and hundreds 5+1=6, yielding 651."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "9a882e95d499bfbdc0d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_fill_in_blank stem identifies two parts 848 and 102, asking What is the sum. The question is direct and the number-bond visual clearly shows the part-whole relationship."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond diagram appropriately represents the part-whole decomposition of addition, reinforcing the conceptual understanding that combining parts yields the whole."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond structure makes it visually transparent which values must be combined. Students can see the whole circle waiting to be filled with the sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "848 + 102 = 950 is correct. The hints show ones 8+2=10 keeping 0 and carrying 1, tens 4+0+1=5, and hundreds 8+1=9, yielding 950."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "1cbb08befb3b2614b05d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true_false stem presents the equation 633 + 367 = 633. Students must evaluate whether this statement is true or false using straightforward logical reasoning."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The false equation tests whether students recognize that adding a non-zero quantity to a number changes the result. This is a valid and instructive false statement to evaluate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students can compute or reason that adding 367 to 633 produces a sum greater than 633, making the statement false. The binary choice format is developmentally appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "633 + 367 = 1000, not 633. The hints show ones 3+7=10 keeping 0 and carrying 1, tens 3+6+1=10 keeping 0 and carrying 1, and hundreds 6+3+1=10, yielding 1000."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "d2e1da93cc7a562debfe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem describes a dot at 634 moving forward 297 numbers and asks Which number will the dot land on. The question is unambiguous with four provided options."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line narrative provides concrete semantic meaning for addition as forward movement. The visual representation supports verification of the computed result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The movement narrative is concrete and understandable for Grade 2 learners. The visual number line with labeled intervals makes it easy to verify where 297 units forward lands."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "634 + 297 = 931 is correct. The hints show ones 4+7=11 keeping 1 and carrying 1, tens 3+9+1=13 keeping 3 and carrying 1, and hundreds 6+2+1=9, yielding 931."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "23379b549384243eb876",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks What is 877 + 45. The question is direct and unambiguous, with four numerical choices presented in standard multiple-choice format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The straightforward addition question tests direct computational skill. The multiple-choice options include the correct answer and plausible distractors from common regrouping errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the basic arithmetic question format. The four options are sufficiently distinct to require actual computation rather than guessing."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "877 + 45 = 922 is correct. The hints show ones 7+5=12 keeping 2 and carrying 1, tens 7+4+1=12 keeping 2 and carrying 1, and hundreds 8+1=9, yielding 922."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "7427043c9a86b08d1690",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem presents Grace's claimed answer 710 for 318 + 392. The question Is Grace correct is binary and unambiguous in its request for judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative of a character's computational claim creates an authentic verification scenario where students must independently check the mathematics."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The character-based error-detection format is familiar and motivating for Grade 2 learners. Hints provided allow students to trace through each calculation step."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "318 + 392 = 710 is correct. The hints show ones 8+2=10 keeping 0 and carrying 1, tens 1+9+1=11 keeping 1 and carrying 1, and hundreds 3+3+1=7, yielding 710."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "7cd868285f834dce6d4d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs students to show 300 + 180 on a number line. The instruction clearly specifies the operation and response format expected."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line representation provides visual grounding for a sum without regrouping, supporting students in understanding that sums can be found by counting on or analyzing magnitude relationships."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students experienced with number lines understand the positioning task. The labeled scale clearly shows hundreds boundaries, making 300 + 180 = 480 transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "300 + 180 = 480 is correct. The hints show ones 0+0=0, tens 0+8=8, and hundreds 3+1=4, yielding 480. No regrouping is required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "bde8ee3cfd8f3909e96b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents the equation 185 + 18 = ___ with four choices. The blank location is clear and unambiguous as the position for the sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation format with multiple-choice answers creates a valid assessment of whether students can find the correct sum among plausible distractors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the fill-in-the-blank format. The four answer choices require genuine computation to distinguish the correct sum from the incorrect options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "185 + 18 = 203 is correct. The hints show ones 5+8=13 keeping 3 and carrying 1, tens 8+1+1=10 keeping 0 and carrying 1, and hundreds 1+1=2, yielding 203."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "e905269dcd849ba051c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks What is 294 + 30. The question format is straightforward and unambiguous, requesting computation of a specific sum."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The basic arithmetic question is a valid assessment of addition skill. The four answer choices include the correct result and three plausible computational errors."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the direct arithmetic question format. The numerical choices are sufficiently distinct to require actual calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "294 + 30 = 324 is correct. The hints show ones 4+0=4, tens 9+3=12 keeping 2 and carrying 1, and hundreds 2+1=3, yielding 324."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "db2831c1bdbf5c3da352",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks whether two grouped-addition expressions produce equal results. The question is unambiguous but requires understanding parenthetical grouping notation beyond basic two-number addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While the problem is mathematically valid, it requires understanding the associative property with three addends and parenthetical notation, extending significantly beyond the competency of basic two-number addition with sums up to 1000."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Grade 2 Quarter 1 learners typically have not encountered parenthetical grouping notation or conceptual reasoning about associativity. The multiple-step computation and abstract grouping notion exceed typical cognitive readiness for this quarter."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The mathematics is correct: 383+302=685, 685+113=798, and 302+113=415, 383+415=798. The associative property holds, making both grouped expressions equivalent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "16aeb9dd78160180aaca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks whether 194 + 505 and 505 + 235 are the same. The question is clearly stated and the binary comparison is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "CONCERN",
+          "reasoning": "While comparing two sums is mathematically valid, this problem diverges from the expected context of assessing basic two-number addition by introducing relational comparison reasoning that exceeds the scope of the competency. The context shifts from straightforward addition to requiring students to distinguish between different addition problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question format is clear and students understand they must compute or reason about two separate sums and compare them."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "194 + 505 = 699 and 505 + 235 = 740 are both mathematically correct. The statement is false since 699 does not equal 740."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "d08f08fca73a71f9d58e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs students to show 930 + 10 on a number line. The instruction is unambiguous about both the operation and the response format required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line representation contextualizes addition as magnitude change, supporting Grade 2 students in visually verifying that 930 + 10 = 940."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students accustomed to number-line tasks understand how to position a result point. The labeled tens and ones markings make the positioning concrete."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "930 + 10 = 940 is correct. The hints show ones 0+0=0, tens 3+1=4, and hundreds 9 unchanged, yielding 940."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "695642ccb65edf757c8b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem decomposes the two numbers by place values, instructs to add place values, and asks for the total. The instruction is explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The explicit place-value decomposition supports student understanding by scaffolding the addition algorithm. Students see how hundreds, tens, and ones are added separately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students familiar with place-value language understand the decomposition. The scaffolded process of adding place values separately supports clear reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "278 + 175 = 453 is correct. The hints show ones 8+5=13 keeping 3 and carrying 1, tens 7+7+1=15 keeping 5 and carrying 1, and hundreds 2+1+1=4, yielding 453."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "eacf4145f0ef3166c2b3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem presents Ana's claimed answer 344 for 240 + 105. The binary question Is Ana correct is direct and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative of a character's incorrect claim creates an authentic verification scenario. This sample notably represents cases where regrouping in the ones place is required but the answer provided is wrong."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students can understand the character-based error-detection task. The hints guide computation of the correct sum 345."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "240 + 105 = 345, not 344 as Ana claimed. The hints show ones 0+5=5, tens 4+0=4, and hundreds 2+1=3, yielding 345. Ana's answer is incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "897bc2021052aa7945aa",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true_false stem states that one group of 30 items combined with another group of 270 items makes 300 items. Students must evaluate the truth of this statement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The real-world context of combining groups of items provides semantic grounding for addition. Students use the context to verify that the result is correctly stated."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand combining groups of objects as addition. The concrete context makes the mathematical meaning transparent and accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "30 + 270 = 300 is correct. The hints show ones 0+0=0, tens 3+7=10 keeping 0 and carrying 1, and hundreds 0+2+1=3, yielding 300. The statement is true."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "ef5487e459180db13727",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks What is 485 + 0. The question is straightforward and unambiguous, addressing the identity property of addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The addition of zero is a valid and important case that demonstrates the additive identity. This is appropriate to include within the range of addition problems."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the direct arithmetic question. The concept that adding zero leaves a number unchanged is developmentally appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "485 + 0 = 485 is correct. The hints show ones 5+0=5, tens 8+0=8, and hundreds 4 unchanged, yielding 485."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "cefe8867e62ce4bf0e66",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_fill_in_blank stem identifies two parts 630 and 150, asking What is the sum. The question is direct and the number-bond visual makes clear which values must be combined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond representation appropriately shows the part-whole relationship, contextualizing addition as combining quantities to form a whole."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students familiar with number bonds understand the visual structure showing two parts and the whole to be determined. The task is transparent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "630 + 150 = 780 is correct. The hints show ones 0+0=0, tens 3+5=8, and hundreds 6+1=7, yielding 780. No regrouping is required."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "5f7e9b2d2f838c2472e4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem includes an emoji and character name as thematic elements but clearly presents the core task: completing the equation 396 + 236 = ___."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic reference to dance shoes does not interfere with the mathematical task. The addition computation remains the focus and the theme provides optional interest context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the equation format and blank. The emoji and character name add engagement without obscuring the mathematical task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "396 + 236 = 632 is correct. The hints show ones 6+6=12 keeping 2 and carrying 1, tens 9+3+1=13 keeping 3 and carrying 1, and hundreds 3+2+1=6, yielding 632."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "55a5ad4f3c685a5bc3a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem includes thematic elements with an emoji and character but clearly presents the question: Is Manny correct that 362 + 403 = 766?"
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context with an emoji and the name Moses do not interfere with the mathematical verification task. The core computation task remains clear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the error-detection format. The thematic elements add engagement without obscuring that students must verify whether 766 is the correct sum."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "362 + 403 = 765, not 766 as Manny claimed. The hints show ones 2+3=5, tens 6+0=6, and hundreds 3+4=7, yielding 765. Manny is incorrect."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "b67e1ca7011e19b88fb6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_mcq stem narrates that a dot at 940 moves forward 60 numbers. The question Which number will the dot land on is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line narrative provides concrete context for addition. This sample reaches the boundary of the sum constraint: 940 + 60 = 1000."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students accustomed to number-line counting understand forward movement as addition. The visual representation with labeled intervals supports locating 1000."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "940 + 60 = 1000 is correct. The hints show ones 0+0=0, tens 4+6=10 keeping 0 and carrying 1, and hundreds 9+1=10, yielding 1000."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "f284b620a80daf03d608",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem presents Pia's claimed answer 963 for 823 + 140. The binary question Is Pia correct is unambiguous in its request for judgment."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative creates an authentic context for checking computational accuracy. The character-based presentation makes error-detection engaging and meaningful."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the character-based verification task format. Hints provided allow students to trace the computation step-by-step."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "823 + 140 = 963 is correct. The hints show ones 3+0=3, tens 2+4=6, and hundreds 8+1=9, yielding 963. Pia is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "c641a6dc88d8c468f9a6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The mcq stem asks What is 0 + 1. The question is straightforward and unambiguous, assessing the simplest cases of addition."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Presenting addition with zero and one is valid, testing the foundational understanding of addition with minimal numbers. This serves as an important reference case."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students readily understand single-digit addition and the direct question format. The four numerical options are clearly distinct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "0 + 1 = 1 is correct. The hints show ones 0+1=1, yielding 1. No place-value carrying is involved."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "3a18b2179da212ded253",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directs students to show 0 + 1 on a number line. The instruction is unambiguous about the operation and the visual-response format required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-line representation of a simple sum like 0 + 1 = 1 provides foundational visual grounding for understanding addition as movement on the number line."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand placing a dot on a number line. The minimal numbers involved make this task accessible as a baseline example."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "0 + 1 = 1 is correct. The hints show ones 0+1=1, yielding 1. This is the simplest addition case with no regrouping."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "474801db92b90fd6ee72",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The read_fill_in_blank stem identifies two parts 807 and 59, asking What is the sum. The number-bond visual unambiguously shows which values must be combined."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The number-bond representation supports part-whole understanding of addition. The structure makes clear that the whole must be found by combining the two parts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students familiar with number-bond diagrams understand the visual structure. The blank in the whole region clearly indicates where the sum should go."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "807 + 59 = 866 is correct. The hints show ones 7+9=16 keeping 6 and carrying 1, tens 0+5+1=6, and hundreds 8 unchanged, yielding 866."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "ef7ee57317cc4acef2b9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true_false stem presents an equation 805 + 141 = 946. Students must evaluate the truth of this statement, which is unambiguous in its request."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The true statement tests accurate computation. Students must verify that the claimed sum is indeed correct, reinforcing computational accuracy."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students recognize the true-or-false format and understand the question asks whether the equation is correct. The binary response is developmentally appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "805 + 141 = 946 is correct. The hints show ones 5+1=6, tens 0+4=4, and hundreds 8+1=9, yielding 946. The statement is true."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "sample_id": "c9a804626d584ccbc5d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection stem presents Manny's claimed answer 1010 for 830 + 170. The question Is Manny correct is unambiguous about the verification task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The narrative provides context for verifying computation that results in 1000, which is the upper boundary of the competency. This tests accuracy at the constraint boundary."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 2 students understand the character-based error-detection task. Hints walk through the computation showing that the correct sum is 1000, not 1010."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "830 + 170 = 1000, not 1010 as Manny claimed. The hints show ones 0+0=0, tens 3+7=10 keeping 0 and carrying 1, and hundreds 8+1+1=10, yielding 1000."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "add_numbers",
+      "clause": "Add numbers",
+      "verdict": "PASS",
+      "reasoning": "All samples except sample 612 require performing addition computations to find sums. Sample 612 compares two different sums rather than performing basic addition. The overwhelming majority of samples directly assess the core addition operation for two addends, demonstrating comprehensive coverage of the fundamental requirement.",
+      "sample_ids": [
+        "d107845e6eec65e4f418",
+        "a71f063a0535eb8a6e94",
+        "7eb6acdae7f28847fecf",
+        "add821196821f4a68dd1",
+        "c69731d268ee1569d31f",
+        "9ed5315d9b6daac1f148",
+        "8ae929c93f44aac7ddfd",
+        "a37023caa2c77c7ca08c",
+        "3493245c328254fb24eb",
+        "82db0e971db815dc7e63",
+        "dccd4b467e9fc4dce410",
+        "afb379775e77e1d4ef66",
+        "dc455884b82f3b92585d",
+        "9a882e95d499bfbdc0d2",
+        "1cbb08befb3b2614b05d",
+        "d2e1da93cc7a562debfe",
+        "23379b549384243eb876",
+        "7427043c9a86b08d1690",
+        "7cd868285f834dce6d4d",
+        "bde8ee3cfd8f3909e96b",
+        "e905269dcd849ba051c0",
+        "db2831c1bdbf5c3da352",
+        "d08f08fca73a71f9d58e",
+        "695642ccb65edf757c8b",
+        "eacf4145f0ef3166c2b3",
+        "897bc2021052aa7945aa",
+        "ef5487e459180db13727",
+        "cefe8867e62ce4bf0e66",
+        "5f7e9b2d2f838c2472e4",
+        "55a5ad4f3c685a5bc3a6",
+        "b67e1ca7011e19b88fb6",
+        "f284b620a80daf03d608",
+        "c641a6dc88d8c468f9a6",
+        "3a18b2179da212ded253",
+        "474801db92b90fd6ee72",
+        "ef7ee57317cc4acef2b9",
+        "c9a804626d584ccbc5d8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "requirement_id": "sums_up_to_1000",
+      "clause": "sums up to 1000",
+      "verdict": "PASS",
+      "reasoning": "All sample sums remain within the specified constraint. The range extends from 0+1=1 to 940+60=1000 and 830+170=1000 and 633+367=1000, with most sums falling between 203 and 963. The upper boundary of 1000 is reached in three samples, demonstrating coverage across the full permitted range without exceeding it.",
+      "sample_ids": [
+        "d107845e6eec65e4f418",
+        "a71f063a0535eb8a6e94",
+        "7eb6acdae7f28847fecf",
+        "add821196821f4a68dd1",
+        "c69731d268ee1569d31f",
+        "9ed5315d9b6daac1f148",
+        "8ae929c93f44aac7ddfd",
+        "a37023caa2c77c7ca08c",
+        "3493245c328254fb24eb",
+        "82db0e971db815dc7e63",
+        "dccd4b467e9fc4dce410",
+        "afb379775e77e1d4ef66",
+        "dc455884b82f3b92585d",
+        "9a882e95d499bfbdc0d2",
+        "1cbb08befb3b2614b05d",
+        "d2e1da93cc7a562debfe",
+        "23379b549384243eb876",
+        "7427043c9a86b08d1690",
+        "7cd868285f834dce6d4d",
+        "bde8ee3cfd8f3909e96b",
+        "e905269dcd849ba051c0",
+        "db2831c1bdbf5c3da352",
+        "16aeb9dd78160180aaca",
+        "d08f08fca73a71f9d58e",
+        "695642ccb65edf757c8b",
+        "eacf4145f0ef3166c2b3",
+        "897bc2021052aa7945aa",
+        "ef5487e459180db13727",
+        "cefe8867e62ce4bf0e66",
+        "5f7e9b2d2f838c2472e4",
+        "55a5ad4f3c685a5bc3a6",
+        "b67e1ca7011e19b88fb6",
+        "f284b620a80daf03d608",
+        "c641a6dc88d8c468f9a6",
+        "3a18b2179da212ded253",
+        "474801db92b90fd6ee72",
+        "ef7ee57317cc4acef2b9",
+        "c9a804626d584ccbc5d8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "requirement_id": "with_regrouping",
+      "clause": "with",
+      "verdict": "CONCERN",
+      "reasoning": "Many samples demonstrate addition requiring regrouping (carrying) in ones and/or tens places. Approximately 18 samples show problems where place-value sums exceed nine, requiring explicit carrying operations. However, the requirement itself is stated incompletely as only the word with, lacking the substantive modifier that parallel wording with the without_regrouping clause would require.",
+      "sample_ids": [
+        "d107845e6eec65e4f418",
+        "c69731d268ee1569d31f",
+        "9ed5315d9b6daac1f148",
+        "8ae929c93f44aac7ddfd",
+        "a37023caa2c77c7ca08c",
+        "3493245c328254fb24eb",
+        "82db0e971db815dc7e63",
+        "bde8ee3cfd8f3909e96b",
+        "e905269dcd849ba051c0",
+        "d2e1da93cc7a562debfe",
+        "23379b549384243eb876",
+        "7427043c9a86b08d1690",
+        "695642ccb65edf757c8b",
+        "eacf4145f0ef3166c2b3",
+        "897bc2021052aa7945aa",
+        "5f7e9b2d2f838c2472e4",
+        "55a5ad4f3c685a5bc3a6",
+        "b67e1ca7011e19b88fb6",
+        "c9a804626d584ccbc5d8",
+        "1cbb08befb3b2614b05d",
+        "d08f08fca73a71f9d58e",
+        "474801db92b90fd6ee72"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    },
+    {
+      "requirement_id": "without_regrouping",
+      "clause": "without regrouping",
+      "verdict": "PASS",
+      "reasoning": "Eight samples present addition problems where no place-value carrying is required. These include problems such as 784+112, 750+0, 501+150, 300+180, 485+0, 630+150, 0+1, and single-digit combinations. The inclusion of these cases demonstrates explicit coverage of addition without regrouping as required.",
+      "sample_ids": [
+        "a71f063a0535eb8a6e94",
+        "afb379775e77e1d4ef66",
+        "dc455884b82f3b92585d",
+        "7cd868285f834dce6d4d",
+        "ef5487e459180db13727",
+        "cefe8867e62ce4bf0e66",
+        "c641a6dc88d8c468f9a6",
+        "3a18b2179da212ded253"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_9",
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_9-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "475b6efd7685c26b233ddb8af985b019de7d754976a4d9dabbe756004cccfa66",
+      "clause_ids": [
+        "add_numbers",
+        "sums_up_to_1000",
+        "with_regrouping",
+        "without_regrouping"
+      ],
+      "response_ref": ".responses/s5-phaseC-w3-haiku45-20260925.json",
+      "response_digest": "d2c0de8d7432830b3df43e8d41f98f0667112b6c8ba664f60f106aaf117d2b24",
+      "prompt_ref": ".responses/s5-phaseC-w3-haiku45-20260925.prompt.txt",
+      "prompt_digest": "cd25a0bfc84c9885b88b656e15ea216d9ca3bcb0a032f89fda6563d57e8a22b4",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q1_9/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q1_9/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (overall CONCERN beside a FAIL sample check). The dispatcher asked the reviewer to reconcile by its own judgment; in 7 tool uses the REVIEWER changed sample 16aeb9dd contextual_logical_validity FAIL -> CONCERN (its stated reason: mathematically valid but diverts into relational comparison) and kept overall CONCERN. VERDICT CHANGE DISCLOSED; the original FAIL reasoning is preserved in verdicts.v1.json and the evidence log. The dispatcher edited no verdict."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples are addition with totals at or below a thousand and the arithmetic is sound throughout, including the pair reaching exactly a thousand and the several pairs that require carrying across two columns."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The with or without regrouping clause is honoured on both sides: pairs like 244 and 335 need no carrying while pairs like 689 and 158 need it twice, and two-digit plus three-digit combinations appear alongside three-digit pairs."
-    },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Several items tell the pupil to count up a large number of single steps on a number line, in one case moving forward 297 numbers from 634. Counting up by ones is not a usable method at that magnitude, so the instruction misdescribes what the pupil must actually do."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The presentations are genuinely diverse here: a number-line placement, a part-and-whole framing, an error-detection narrative, a true-or-false statement, a step-climbing story, and bare computation."
+      "rationale": "Most samples present Grade 2 Quarter 1 appropriate problems with two and three-digit addition. However, samples 611 and 612 introduce associative and comparative reasoning beyond basic addition, requiring students to track grouped operations or distinguish between distinct sums with different addends."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Two samples sit outside the regrouping skill this node builds. One adds zero, which belongs to the properties competency, and the true-or-false item asserting that 633 plus 367 equals 633 is rejectable at a glance because the claimed total equals one addend."
+      "rationale": "Core competency requires students to add two numbers finding their sum. Samples 611 and 612 deviate: sample 611 compares whether two groupings of three numbers yield equal results, while sample 612 asks whether two completely different addition pairs produce identical sums. These extend beyond direct two-number addition."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The node addresses addition operations, magnitude constraints, and regrouping scenarios. However, the requirement phrasing shows inconsistency: three requirements are clearly stated while with_regrouping reads only as the word with, lacking the modifier regrouping that would parallel the completeness of without_regrouping.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The decomposition nominally covers essential elements: performing addition, maintaining the sum-up-to-1000 bound, including regrouping cases, and excluding regrouping cases. The stated requirement with_regrouping consists of only the word with rather than a complete descriptor like with regrouping or with carrying, creating ambiguity about what aspect is intended.",
+        "requirement_ids": [
+          "add_numbers",
+          "sums_up_to_1000",
+          "with_regrouping",
+          "without_regrouping"
+        ]
+      },
+      "clause_ids": [
+        "add_numbers",
+        "sums_up_to_1000",
+        "with_regrouping",
+        "without_regrouping"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The node demonstrates addition across wide number ranges from 0+1 through 940+60, includes 18 samples with regrouping and 8 without, features six distinct item formats spanning interactive number-line based tasks through multiple-choice and error-detection scenarios, and explores boundary conditions at 1000.",
+      "clause_ids": [
+        "add_numbers",
+        "sums_up_to_1000",
+        "with_regrouping",
+        "without_regrouping"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every total stays at or under a thousand, with the largest results at 950, 931 and 906, so the ceiling is worked right up to without being crossed."
+      "rationale": "Addend magnitudes range appropriately from single digits through hundreds, all sums remain at or below the specified 1000 ceiling, and problem complexity scales sensibly for Grade 2 Quarter 1 learners with supportive number lines and numbered-step hints throughout."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Seven item types appear across the sample set: set_fill_in_blank occurs five times, read_fill_in_blank four times, error_detect six times, mcq five times, cloze four times, true_false four times, and read_mcq six times. This distribution provides substantial variety in response modalities without extreme overrepresentation."
     }
   },
   "overall": "CONCERN"

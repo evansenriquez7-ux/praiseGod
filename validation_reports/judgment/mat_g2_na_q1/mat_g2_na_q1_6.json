@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g2_na_q1_6",
-  "reviewed_by": "reviewer-c3-nimbus-sorrel-4825",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Determine the place value of a digit in a 3-digit number, the value of a digit, and the digit of a number, given its place value.",
+    "grade": 2,
+    "quarter": 1,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "determine_place_value",
+      "clause": "Determine the place value"
+    },
+    {
+      "kind": "object",
+      "id": "digit_in_3_digit_number",
+      "clause": "digit in a 3-digit number"
+    },
+    {
+      "kind": "task",
+      "id": "determine_value_of_digit",
+      "clause": "the value of a digit"
+    },
+    {
+      "kind": "task",
+      "id": "determine_digit_given_place_value",
+      "clause": "the digit of a number, given its place value"
+    }
+  ],
+  "packet_digest": "d289e849ea6a826bb06b1eda733ea95601f96af7f2faf79c82bc3cdaf376505a",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,14 +45,60 @@
     502,
     600,
     601,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "6a50fab65f397e71da74",
+    "f73617a57e4c076b7a3a",
+    "2b8f4b29e82ad4417796",
+    "0f6cfb8db0d982f3d58c",
+    "f0b7fd75bf7bebef3f78",
+    "3e82e7b9862e81ba20da",
+    "ee3a40fead53c3baa1de",
+    "327cf2134d24d25738b4",
+    "5b561df7714411a1b342",
+    "f040f8ab03dd4bd82c23",
+    "cc23db471092bdc545fe",
+    "fcdba5202b4b74dc769b",
+    "f032d0c090ece509f845",
+    "00ccbf2b1f07cf4bf99e",
+    "ad659910f7add2fc172c",
+    "2f362d05d5cbda706eee",
+    "b3bc4154fc12eefeec1c",
+    "c546a56ce327dd73d06d",
+    "7dec58b8d182ef01a99d",
+    "2ce81348c44861721cc9"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "In 135, what digit is in the ones place?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -47,25 +124,95 @@
           "text": "8",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Look at the digits of 135 from the right: ones.",
+        "Find the ones place value.",
+        "The digit in the ones place is 5."
+      ],
+      "sample_id": "6a50fab65f397e71da74",
+      "replay_digest": "c4e340c1c8901e028550762c8aac884c88ab0f57fc18b392138baa140a913c04"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 43,
       "formatter": "true_false",
       "question_text": "What place is the digit 1 in, in the number 195? The answer is hundreds. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Put each digit of 195 in its own column.",
+        "Count from the right: ones, tens, hundreds.",
+        "The digit in the hundreds column is 1."
+      ],
+      "sample_id": "f73617a57e4c076b7a3a",
+      "replay_digest": "bc866ed8262e1899bbe191bb8a749d59c416cf3a7a295335a852e516f7db0c05"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 44,
       "formatter": "true_false",
       "question_text": "In the number 320, the value of the digit 3 in the hundreds place is 300. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Find the digit in the hundreds place value of 320.",
+        "That digit is 3.",
+        "Multiply it by its place: 3 × 100 = 300.",
+        "The worth of 3 in 320 is 300."
+      ],
+      "sample_id": "2b8f4b29e82ad4417796",
+      "replay_digest": "9c1f783c0f3bf2f4e38be10d444282288d40c7ce5fbc2279cdd4625b968b3884"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 8 in 285?",
       "correct_answer": 80,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -87,31 +234,131 @@
           "value": 285,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 80,
+      "hints": [
+        "Find the digit in the tens place value of 285.",
+        "That digit is 8.",
+        "Multiply it by its place: 8 × 10 = 80.",
+        "The worth of 8 in 285 is 80."
+      ],
+      "sample_id": "0f6cfb8db0d982f3d58c",
+      "replay_digest": "9038572260e911fed39272b9005740dfffb5603ef95786cc5898c3df8d1211a3"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "What place is the digit 0 in, in the number 260? The answer is ones. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Put each digit of 260 in its own column.",
+        "Count from the right: ones.",
+        "The digit in the ones column is 0."
+      ],
+      "sample_id": "f0b7fd75bf7bebef3f78",
+      "replay_digest": "ba1e39b2630ff757c609f02f0854c7b3c3a83b973543877aa6fec8d6681306a6"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "In the number 831, the value of the digit 8 in the hundreds place is 18. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Find the digit in the hundreds place value of 831.",
+        "That digit is 8.",
+        "Multiply it by its place: 8 × 100 = 800.",
+        "The worth of 8 in 831 is 800."
+      ],
+      "sample_id": "3e82e7b9862e81ba20da",
+      "replay_digest": "4b014fbc2980e6ebeffe220f50dae101266b60a4787dfcfd49d2b322af3f5581"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 501,
       "formatter": "true_false",
       "question_text": "In 752, what digit is in the hundreds place? The answer is 1. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Look at the digits of 752 from the right: ones, tens, hundreds.",
+        "Find the hundreds place value.",
+        "The digit in the hundreds place is 7."
+      ],
+      "sample_id": "ee3a40fead53c3baa1de",
+      "replay_digest": "a9ac3d973e808af57ce950eb407006179d2dd4f02dc8ee884cf191b176a7e226"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 502,
       "formatter": "cloze",
       "question_text": "In 847, what digit is in the ones place?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -137,13 +384,38 @@
           "text": "7",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "Look at the digits of 847 from the right: ones.",
+        "Find the ones place value.",
+        "The digit in the ones place is 7."
+      ],
+      "sample_id": "327cf2134d24d25738b4",
+      "replay_digest": "ed8444b13ca8646ae16b97861c38fc1cf0020e559ce656d1135e64b3ff49f1d7"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 2 in 250?",
       "correct_answer": 200,
+      "requested": {
+        "difficulty_profile": {
+          "digit_count": "3_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -165,13 +437,39 @@
           "value": 2,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 200,
+      "hints": [
+        "Find the digit in the hundreds place value of 250.",
+        "That digit is 2.",
+        "Multiply it by its place: 2 × 100 = 200.",
+        "The worth of 2 in 250 is 200."
+      ],
+      "sample_id": "5b561df7714411a1b342",
+      "replay_digest": "b4cff3ed05192389566ce1ab9f9f1efdbc65cc092e8414f61b76273519c54148"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "What place is the digit 4 in, in the number 405?",
       "correct_answer": "hundreds",
+      "requested": {
+        "difficulty_profile": {
+          "include_zeros": "no"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -191,13 +489,38 @@
           "text": "ones",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": "hundreds",
+      "hints": [
+        "Put each digit of 405 in its own column.",
+        "Count from the right: ones, tens, hundreds.",
+        "The digit in the hundreds column is 4."
+      ],
+      "sample_id": "f040f8ab03dd4bd82c23",
+      "replay_digest": "857889f4840a9dc341de655874ed0641ce6b664c47e607722bec1f80dba01f52"
     },
     {
+      "node_id": "mat_g2_na_q1_6",
       "seed": 602,
       "formatter": "cloze",
       "question_text": "What is the place value of the digit 6 in 160?",
       "correct_answer": 60,
+      "requested": {
+        "difficulty_profile": {
+          "include_zeros": "yes"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -223,34 +546,1021 @@
           "text": "16",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 60,
+      "hints": [
+        "Find the digit in the tens place value of 160.",
+        "That digit is 6.",
+        "Multiply it by its place: 6 × 10 = 60.",
+        "The worth of 6 in 160 is 60."
+      ],
+      "sample_id": "cc23db471092bdc545fe",
+      "replay_digest": "d90712afa9ba2e8be31865f72a59063e091a3903b208aa6c2df05c0cfab18822"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "What place is the digit 5 in, in the number 615?",
+      "correct_answer": "ones",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ones",
+      "hints": [
+        "Put each digit of 615 in its own column.",
+        "Count from the right: ones.",
+        "The digit in the ones column is 5."
+      ],
+      "sample_id": "fcdba5202b4b74dc769b",
+      "replay_digest": "e25a13ca5b831b2ade509010f9d47cdf54ebf0bef764eeae068b734b5a3d1bba"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. In 190, what digit is in the tens place?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "music_performance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "Look at the digits of 190 from the right: ones, tens.",
+        "Find the tens place value.",
+        "The digit in the tens place is 9."
+      ],
+      "sample_id": "f032d0c090ece509f845",
+      "replay_digest": "666599a1851e6d280de61af2c3d86c71b6555e3ecc66154b6cefe4282d45e486"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. What place is the digit 0 in, in the number 140?",
+      "correct_answer": "ones",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "business_money",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ones",
+      "hints": [
+        "Put each digit of 140 in its own column.",
+        "Count from the right: ones.",
+        "The digit in the ones column is 0."
+      ],
+      "sample_id": "00ccbf2b1f07cf4bf99e",
+      "replay_digest": "6730ae52ad98ba89e414c5e3c7cc0462059c2f2753fee600aeec1ffc78e74fd8"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "In 981, what digit is in the hundreds place? The answer is 9. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Look at the digits of 981 from the right: ones, tens, hundreds.",
+        "Find the hundreds place value.",
+        "The digit in the hundreds place is 9."
+      ],
+      "sample_id": "ad659910f7add2fc172c",
+      "replay_digest": "f40e558cd59505e2a25c3fc7ca005cd2dd1658dfa77b9261b6df03c24c669639"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "In 182, what digit is in the tens place?",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "Look at the digits of 182 from the right: ones, tens.",
+        "Find the tens place value.",
+        "The digit in the tens place is 8."
+      ],
+      "sample_id": "2f362d05d5cbda706eee",
+      "replay_digest": "c089db7aef8b928dd3d35d44964045aaaa793b87b68af5165ce7b4f841c48a90"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 901,
+      "formatter": "true_false",
+      "question_text": "In the number 204, the value of the digit 4 in the ones place is 40. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "Find the digit in the ones place value of 204.",
+        "That digit is 4.",
+        "Multiply it by its place: 4 × 1 = 4.",
+        "The worth of 4 in 204 is 4."
+      ],
+      "sample_id": "b3bc4154fc12eefeec1c",
+      "replay_digest": "8bbcb8a6b4103cc72b59e6a91633983ca9ddf2cb55d3c3d8716ea23c22c94bc5"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "In the number 405, the value of the digit 5 in the ones place is 5. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "Find the digit in the ones place value of 405.",
+        "That digit is 5.",
+        "Multiply it by its place: 5 × 1 = 5.",
+        "The worth of 5 in 405 is 5."
+      ],
+      "sample_id": "c546a56ce327dd73d06d",
+      "replay_digest": "a7d59ba45c8cce67f6de94fb4583eec8d1beedda73ab722ad52e68980e828946"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "What place is the digit 5 in, in the number 435?",
+      "correct_answer": "ones",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "hundreds",
+          "text": "hundreds",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "ones",
+          "text": "ones",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "tens",
+          "text": "tens",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": "ones",
+      "hints": [
+        "Put each digit of 435 in its own column.",
+        "Count from the right: ones.",
+        "The digit in the ones column is 5."
+      ],
+      "sample_id": "7dec58b8d182ef01a99d",
+      "replay_digest": "4a3b4981177d674cf29c7de7e964794bdb380d626f3a100084c43376f8cd6106"
+    },
+    {
+      "node_id": "mat_g2_na_q1_6",
+      "seed": 1002,
+      "formatter": "cloze",
+      "question_text": "In 350, what digit is in the tens place?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "scaffolded"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "Look at the digits of 350 from the right: ones, tens.",
+        "Find the tens place value.",
+        "The digit in the tens place is 5."
+      ],
+      "sample_id": "2ce81348c44861721cc9",
+      "replay_digest": "8e41e605e034cc21dd466781391b36cff51c1cc61b8ece038d6ee6ed5eb3dc45"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "6a50fab65f397e71da74",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly specifies which digit position (ones place) within a specific number (135), making the task unambiguous. The answer 5 is the only correct digit occupying the ones position, eliminating any interpretation ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question logically asks for identification of a digit in the ones position of 135. The context is mathematically sound with no contradictions or invalid logical structures within the question stem."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 2 student can readily understand this direct question structure. The language is simple, the task is single-step (locate and identify the ones place digit), and the options are clearly distinct numbers making selection straightforward for young learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically correct: 135 has digits 1, 3, and 5 from left to right, making 5 the correct digit in the ones place. Distractors are other digits appearing elsewhere or similar-looking values, all mathematically sensible choices."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "f73617a57e4c076b7a3a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false format clearly establishes that students must verify whether the digit 1 in 195 occupies the hundreds position. The stem removes ambiguity by explicitly stating the proposed answer, requiring only validation or refutation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The logical structure is valid: evaluating a place value claim about a specific digit in a given number is mathematically coherent and requires appropriate reasoning about column positions and place organization."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses accessible language describing digit placement using column organization concepts. Hints scaffold understanding by directing students to arrange digits and count positions, making the process transparent to young learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is True: the digit 1 in 195 is indeed in the hundreds place. The mathematical reasoning is sound, and hints confirm by showing that counting from right yields the correct sequence of ones, tens, hundreds."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "2b8f4b29e82ad4417796",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement clearly identifies both the digit (3), its position (hundreds), its claimed value (300), and the number (320) being evaluated. The true/false format eliminates interpretive ambiguity about what calculation or determination is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The scenario is logically sound: determining whether digit value equals digit multiplied by its place value is a core competency task. The relationship between digit position and multiplication follows valid mathematical principles."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Although more complex than simple digit identification, the statement is clear about what must be verified. Hints explicitly model the calculation using accessible language regarding multiplication and the worth of a digit in context."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically valid: in 320, the digit 3 occupies the hundreds place, and 3 multiplied by 100 equals 300. The statement correctly represents the value of that digit in its position."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "0f6cfb8db0d982f3d58c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice format with four distinct options eliminates ambiguity. The question specifically asks for the place value of a named digit (8) in a specific number (285), with each option representing a different plausible magnitude."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task is logically valid: determining the place value of a digit in a 3-digit number is directly aligned with the competency. The number 285 and digit 8 create a mathematically sound scenario requiring multiplication of digit by place."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks what is the place value using standard mathematical terminology. Options include plausible misconceptions, helping the item distinguish understanding. Hints guide students through the systematic process of identification and multiplication."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 80: the digit 8 in the tens position of 285 has place value of 8 times 10 equals 80. Distractors represent common errors including misidentifying the digit, using digit alone, or selecting the entire number."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "f0b7fd75bf7bebef3f78",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question unambiguously asks to identify the position of digit 0 in 260, with a proposed answer to evaluate. The true/false format and explicit placement claim remove any uncertainty about the task requirements."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound: evaluating whether 0 appears in the ones position of 260 requires understanding digit position. The scenario is mathematically valid though it involves zero, which requires careful attention to counting conventions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Despite involving zero which can confuse early learners, the question structure is clear. The hint sequence scaffolds understanding by showing digit arrangement and position counting, making the zero-in-ones-place concept explicit and concrete."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is True: the digit 0 in 260 is indeed in the ones place. This tests an important edge case since zero appears in one of the place value positions, requiring students to count position correctly without being distracted."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "3e82e7b9862e81ba20da",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement clearly specifies the number (831), the digit in question (8), its position (hundreds place), and proposes an incorrect value (18). Students must evaluate whether this value claim is true or false with no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The logical structure is valid: testing whether students can correctly calculate digit value by identifying both the digit and its place. The false statement represents a plausible misconception students might hold."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is clear in its structure despite presenting a misconception. Students must actively verify the calculation, which engages their understanding. Hints model the correct calculation alongside the incorrect claim for contrast."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False: the digit 8 in the hundreds position of 831 has value 800, not 18. The error in the stem represents a common mistake combining the digit with single-digit place values rather than applying the hundred place correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "ee3a40fead53c3baa1de",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question structure is clear: identify the digit in the hundreds position of 752 and evaluate whether it equals the proposed answer of 1. No ambiguity exists about which position, which number, or what comparison is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound: evaluating digit position in a 3-digit number is a valid competency task. The scenario creates a meaningful learning opportunity by testing whether students correctly identify hundreds-place digits."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses straightforward language asking for digit identification with a specific position reference. While the proposed answer is incorrect, students can verify this by counting positions and identifying the actual digit present."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False: in 752, the hundreds-place digit is 7, not 1. This tests whether students attend to position carefully and understand that place value position determines which digit occupies which column."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "327cf2134d24d25738b4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly specifies finding the ones-place digit in 847. The four options are distinct digit values, leaving no ambiguity about what is being asked or what constitutes a valid response."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The task is mathematically and logically coherent: identifying a specific digit in a named position within a 3-digit number requires direct application of place value understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and accessible to Grade 2 students. The four options are reasonable digit candidates. Hints progressively scaffold the process of identifying digits and locating the ones position accurately."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 7: the ones-place digit in 847 is indeed 7. The distractors (1, 4, 8) represent other digits in the number or plausible wrong answers, supporting item discrimination quality."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "5b561df7714411a1b342",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice format makes clear that students must calculate the place value of digit 2 in 250. The four option values (200, 20, 12, 2) represent distinct magnitudes with no overlapping ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The question validly asks students to determine place value by multiplying a digit by its positional multiplier. The number 250 and digit 2 create a straightforward scenario testing this core competency."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks for place value using standard mathematical language. Hints guide students through identifying the hundreds place and performing the multiplication needed to find digit worth."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 200: digit 2 in the hundreds position of 250 has place value of 2 times 100 equals 200. Distractors represent common errors including tens confusion, digit errors, and using digit alone."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "f040f8ab03dd4bd82c23",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze question asks for the place value name of digit 4 in 405. The three options (tens, hundreds, ones) are distinct and mutually exclusive place value labels with no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: determining the position name of a specific digit in a 3-digit number is a core place value competency. The number 405 with digit 4 presents a valid scenario for testing position identification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for place value position clearly. The three options representing the three place positions in a 3-digit number are at grade-appropriate vocabulary level. Hints scaffold by showing digit arrangement and counting position."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is hundreds: the digit 4 in 405 occupies the hundreds position. This is mathematically correct and requires no miscalculation, testing pure position understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "cc23db471092bdc545fe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks for the place value of digit 6 in 160. The four options (6, 60, 160, 16) represent distinct numerical values with no ambiguity about what calculation is being assessed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound: calculating the place value of a digit in a specified position is a fundamental competency task. The number 160 with its tens-place 6 creates a meaningful scenario for assessment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses clear language asking for place value of a specific digit. Hints model the step-by-step process of identifying the tens place, recognizing digit 6, and multiplying by 10 to determine value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 60: digit 6 in the tens position of 160 has place value of 6 times 10 equals 60. Distractors represent progressively mixed-up calculations including digit alone, full number, and incorrect products."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "fcdba5202b4b74dc769b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze question asks to identify the place position of digit 5 in 615. The three options (ones, hundreds, tens) are distinct place value labels presented without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: determining the position name of a specific digit in a 3-digit number is a direct competency application. The scenario with 615 and digit 5 is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and age-appropriate for Grade 2. Students must identify which place value position contains digit 5. Hints scaffold by showing digit arrangement and systematic position counting from right to left."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is ones: the digit 5 in 615 occupies the ones position. This requires accurate place value understanding and tests whether students can identify position without distraction from other digits."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "f032d0c090ece509f845",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the thematic wrapper about dance shoes, the mathematical question is clear: identify the tens-place digit in 190. The four digit options (9, 3, 0, 2) are distinct with no ambiguity about the mathematical task."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic context about dance shoes does not interfere with mathematical validity. The core question about digit position in 190 remains logically sound and mathematically coherent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic introduction is engaging without creating confusion. The mathematical question itself is clear and direct. Options are distinct digits, making student selection straightforward. Hints focus on the mathematical structure."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 9: the tens-place digit in 190 is 9. The theme wrapper with dance shoes reference does not affect the mathematical validity of the problem."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "00ccbf2b1f07cf4bf99e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Despite the basketball thematic wrapper, the mathematical question is unambiguous: identify the place position of digit 0 in 140. The three options represent distinct place positions with no overlapping possibilities."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic basketball context does not interfere with logical validity. The underlying mathematical scenario requires identifying position of a specific digit, which is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic frame about basketballs provides engagement without obscuring the mathematical task. The three place-position options use grade-appropriate vocabulary. The question asks students to locate digit 0 with helpful scaffolding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is ones: the digit 0 in 140 occupies the ones position. This requires careful attention to position when dealing with zero, testing important edge-case understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "ad659910f7add2fc172c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false question clearly asks whether the hundreds-place digit in 981 is 9. The question structure unambiguously specifies the number, position, and proposed digit value to verify."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound: verifying whether a specific digit occupies a given position is a core competency task. The scenario with 981 is mathematically coherent and creates meaningful practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses straightforward language asking students to verify a position-digit relationship. The true/false format is accessible to early learners. Hints scaffold by showing digit arrangement and counting positions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is True: the hundreds-place digit in 981 is indeed 9. This is mathematically correct and represents accurate place value understanding."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "2f362d05d5cbda706eee",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple choice format clearly asks for the tens-place digit in 182. The four options (6, 4, 8, 3) are distinct digit values with no overlapping possibilities or interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: identifying a digit in a specified position is a straightforward competency task. The number 182 and position designation create a clear mathematical scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and grade-appropriate for Grade 2. Students must identify the tens-place digit. Options are plausible including digits from within the number and alternative values, supporting clear assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 8: the tens-place digit in 182 is 8. Mathematical correctness is straightforward, and distractors represent other digits or position-related confusions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "b3bc4154fc12eefeec1c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement clearly specifies the number (204), digit (4), position (ones place), and proposes a specific value (40). The true/false format unambiguously requires evaluation of this value claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: testing whether students correctly calculate digit values is a core competency. The false statement in the stem represents a plausible misconception students might hold."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is clear about what must be verified. Students must evaluate whether the digit 4 in the ones place of 204 has value 40 (incorrect). Hints model the correct multiplication steps for clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is False: the digit 4 in the ones position of 204 has value 4 (not 40), calculated as 4 times 1. The stem error represents a common misconception confusing position multiplier."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "c546a56ce327dd73d06d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The statement clearly identifies the number (405), digit (5), position (ones), and claims a specific value (5). The true/false format leaves no ambiguity about what verification is required."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: testing digit value calculation in a specific position is directly aligned with the competency. The statement presents a correct mathematical relationship worth confirming."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is clear in structure. Students must verify whether the claimed calculation is accurate. Hints walk through identifying the ones-place digit and multiplying by 1 to find its value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is True: the digit 5 in the ones position of 405 has value 5, correctly calculated as 5 times 1. The mathematical relationship stated is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "7dec58b8d182ef01a99d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze question asks for the place position of digit 5 in 435. The three options (hundreds, ones, tens) are distinct place value labels with clear, unambiguous meanings."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically sound: identifying the position of a specific digit in a 3-digit number is a core competency task. The scenario with 435 is mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question uses clear language asking for place position of digit 5. Options use grade-appropriate place value vocabulary. Hints scaffold by showing digit arrangement and systematic counting procedures."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is ones: the digit 5 in 435 occupies the ones position. This requires accurate place value understanding without being distracted by other digits."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "sample_id": "2ce81348c44861721cc9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze question clearly asks for the tens-place digit in 350. The four digit options (0, 4, 6, 5) are distinct values with no overlap or interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logically valid: identifying a digit in a specified position tests core place value understanding. The number 350 creates a meaningful scenario for assessing tens-place digit identification."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The question is direct and accessible to Grade 2 students. Students must identify the tens-place digit. Options include the correct answer, other digits from the number, and alternatives supporting clear discrimination of understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Correct answer is 5: the tens-place digit in 350 is 5. Mathematical correctness is straightforward, with distractors representing other digits or position confusions."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "determine_place_value",
+      "clause": "Determine the place value",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples require students to determine place values (numerical values associated with digit positions). Sample 0f6cfb8db0d982f3d58c asks for place value of 8 in 285 (80). Sample 5b561df7714411a1b342 asks for place value of 2 in 250 (200). Sample cc23db471092bdc545fe asks for place value of 6 in 160 (60). These demonstrate direct competency application across varied digit positions.",
+      "sample_ids": [
+        "0f6cfb8db0d982f3d58c",
+        "5b561df7714411a1b342",
+        "cc23db471092bdc545fe"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "requirement_id": "digit_in_3_digit_number",
+      "clause": "digit in a 3-digit number",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples exclusively operate within the 3-digit number constraint ranging from 100 to 999 including 135, 195, 320, 285, 260, 831, 752, 847, 250, 405, 160, 615, 190, 140, 981, 182, 204, 405, 435, and 350. This consistent constraint across the entire sample set demonstrates thorough coverage of the 3-digit number requirement throughout the competency assessment.",
+      "sample_ids": [
+        "6a50fab65f397e71da74",
+        "f73617a57e4c076b7a3a",
+        "2b8f4b29e82ad4417796",
+        "0f6cfb8db0d982f3d58c",
+        "f0b7fd75bf7bebef3f78",
+        "3e82e7b9862e81ba20da",
+        "ee3a40fead53c3baa1de",
+        "327cf2134d24d25738b4",
+        "5b561df7714411a1b342",
+        "f040f8ab03dd4bd82c23",
+        "cc23db471092bdc545fe",
+        "fcdba5202b4b74dc769b",
+        "f032d0c090ece509f845",
+        "00ccbf2b1f07cf4bf99e",
+        "ad659910f7add2fc172c",
+        "2f362d05d5cbda706eee",
+        "b3bc4154fc12eefeec1c",
+        "c546a56ce327dd73d06d",
+        "7dec58b8d182ef01a99d",
+        "2ce81348c44861721cc9"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "requirement_id": "determine_value_of_digit",
+      "clause": "the value of a digit",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples require determining digit values through multiplication of digit by its place multiplier. Sample 2b8f4b29e82ad4417796 tests whether 3 in hundreds position of 320 has value 300. Sample 3e82e7b9862e81ba20da tests whether 8 in hundreds position of 831 has value 800 (not 18). Sample b3bc4154fc12eefeec1c evaluates whether 4 in ones position of 204 has value 4 (not 40). Sample c546a56ce327dd73d06d confirms 5 in ones position of 405 has value 5. These samples comprehensively test digit value understanding.",
+      "sample_ids": [
+        "2b8f4b29e82ad4417796",
+        "3e82e7b9862e81ba20da",
+        "b3bc4154fc12eefeec1c",
+        "c546a56ce327dd73d06d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    },
+    {
+      "requirement_id": "determine_digit_given_place_value",
+      "clause": "the digit of a number, given its place value",
+      "verdict": "PASS",
+      "reasoning": "Several samples require identifying a digit when its place value position is specified in the question. Sample 6a50fab65f397e71da74 asks for the ones-place digit in 135 (answer 5). Sample 327cf2134d24d25738b4 asks for the ones-place digit in 847 (answer 7). Sample f032d0c090ece509f845 asks for the tens-place digit in 190 (answer 9). Sample 2f362d05d5cbda706eee asks for the tens-place digit in 182 (answer 8). Sample 2ce81348c44861721cc9 asks for the tens-place digit in 350 (answer 5). These samples demonstrate competency in identifying digits from specified positions.",
+      "sample_ids": [
+        "6a50fab65f397e71da74",
+        "327cf2134d24d25738b4",
+        "f032d0c090ece509f845",
+        "2f362d05d5cbda706eee",
+        "2ce81348c44861721cc9"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w3-haiku45-20260925:mat_g2_na_q1_6",
+      "reviewer_identity": "blind-reviewer-haiku45-pc3-mat_g2_na_q1_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "d289e849ea6a826bb06b1eda733ea95601f96af7f2faf79c82bc3cdaf376505a",
+      "clause_ids": [
+        "determine_place_value",
+        "digit_in_3_digit_number",
+        "determine_value_of_digit",
+        "determine_digit_given_place_value"
+      ],
+      "response_ref": ".responses/s5-phaseC-w3-haiku45-20260925.json",
+      "response_digest": "399b50b6c69abfcefc6090d0a4c6209058154d85bf2a61fa81fb7f772b3e9363",
+      "prompt_ref": ".responses/s5-phaseC-w3-haiku45-20260925.prompt.txt",
+      "prompt_digest": "32679a6a9d7fd383df48315576dcfe7937b519f3aa96057ecd12e9604e23a51a",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q1_6/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q1_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The items present straightforward tasks requiring only foundational place value understanding appropriate for Grade 2 Quarter 1, without requiring multiple steps, advanced operations, or complex contextual reasoning that would exceed grade-level cognitive capacity."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples directly address the core competencies: identifying digits in specific positions, determining place values, and calculating digit values. The items are tightly aligned with the MATATAG grade 2 quarter 1 place value competency without scope creep beyond the curriculum."
+    },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "This competency deliberately separates the place value of a digit from the value of a digit, and the generator collapses them. Three items ask what the place value of a digit is and then key a quantity: 80 for the 8 in 285, 200 for the 2 in 250, 60 for the 6 in 160. The stem asks for one thing and the key answers another, in the exact node where the distinction is being introduced."
+      "verdict": "CONCERN",
+      "rationale": "While most decomposition requirements appear in the sample set, the distribution is uneven. The requirement to determine digit given place value appears in only five samples, whereas determining place given digit appears in eight samples, suggesting potential underrepresentation of one critical direction of the competency.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The four requirements decompose the competency logically: place value identification, work with 3-digit numbers, digit value calculation, and digit identification from place values. However, samples show imbalance across two directions of the competency: determining place from a specified digit receives substantial coverage while determining digit from a specified place receives noticeably less coverage, which may not fully develop bidirectional understanding equally.",
+        "requirement_ids": [
+          "determine_place_value",
+          "digit_in_3_digit_number",
+          "determine_value_of_digit",
+          "determine_digit_given_place_value"
+        ]
+      },
+      "clause_ids": [
+        "determine_place_value",
+        "digit_in_3_digit_number",
+        "determine_value_of_digit",
+        "determine_digit_given_place_value"
+      ]
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three sub-cases the wording lists do get generated somewhere: naming the place a digit occupies, giving the quantity a digit stands for, and returning the digit that sits in a stated place."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Three-digit numbers with one digit probed per item, including the harder zero cases in 260 and 405, is the right level; no stem asks about more than one digit at a time."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Five of the eleven samples are true-or-false items that simply restate a candidate answer and ask for a verdict, which converts an open place-value question into a yes-or-no check and removes the need to generate the answer."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because the term used in the stem does not stay fixed to the term the key answers, a pupil working through the harder seeds cannot extract a stable rule; the progression varies which digit is probed but leaves the vocabulary unreliable."
+      "rationale": "The sample set demonstrates breadth across response formats including cloze, true/false, and multiple choice. Digit positions (ones, tens, hundreds) are represented throughout. Numbers containing zeros in different positions (260, 405, 140, 190, 350) test specific edge cases. Both affirmative and false statements requiring error detection appear multiple times, providing reasonable comprehensive coverage.",
+      "clause_ids": [
+        "determine_place_value",
+        "digit_in_3_digit_number",
+        "determine_value_of_digit",
+        "determine_digit_given_place_value"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every number used is three digits, as the competency specifies, with none padded out to four or reduced to two."
+      "rationale": "All twenty items operate within the 3-digit number range of 100 to 999 appropriate for Grade 2 Quarter 1. Question complexity remains straightforward without layered reasoning, making the cognitive demands properly aligned with early grade 2 expectations for place value mastery and foundation-building."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples explore meaningful variations: multiple response formats reduce format bias and test different competency expressions. Numbers with zeros in different positions test specific digit position understanding. True/false options with both correct and incorrect statements encourage critical evaluation. Themed items provide contextual variation without interference with the mathematics."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
