@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q4_6",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Represent fractions that are equal to one and greater than one using models.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "represent",
+      "clause": "Represent"
+    },
+    {
+      "kind": "object",
+      "id": "fractions",
+      "clause": "fractions"
+    },
+    {
+      "kind": "property",
+      "id": "equal_to_one",
+      "clause": "equal to one"
+    },
+    {
+      "kind": "property",
+      "id": "greater_than_one",
+      "clause": "greater than one"
+    },
+    {
+      "kind": "representation",
+      "id": "models",
+      "clause": "models"
+    }
+  ],
+  "packet_digest": "8251cae5df9ac4021d3f3394afccfc8c5560834f889fe794c647ac47fbf34abc",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,363 +50,1925 @@
     502,
     600,
     601,
-    602
+    602,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "19ed202063831584043d",
+    "85dea5642b0d0a5e2612",
+    "4992348729658c8bf9b5",
+    "ef631199568733b7284e",
+    "df8e1d156fff886f69d4",
+    "6ef78fb5bf0e1ef7404c",
+    "c846665098fbbfb6982d",
+    "3e9fe228f89206ed3a3b",
+    "d316f45d4ecd6fb8189d",
+    "20440b11cbfd5e55110e",
+    "ea2c866bc86890d8f69b",
+    "7401d9cf5172eb5074bb",
+    "cfa2a89ef388722fd100",
+    "c79e69273b3bafb3730d",
+    "67c958bc0558dd80bd0c",
+    "88f09fc2b9b7b94c884a",
+    "e5de06f1b4214c49c581",
+    "5f13a30503d80dff0f75",
+    "9108becb382fcec4e310",
+    "6668adf9e89360163842"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "A shape is divided into 3 equal parts with 5 parts shaded. The fraction shaded is ___.",
+      "formatter": "set_click",
+      "question_text": "Shade 5/3 using 2 identical shapes, each divided into 3 equal parts.",
       "correct_answer": "5/3",
-      "options": [
-        {
-          "key": "A",
-          "value": "5/3",
-          "text": "5/3",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/3",
-          "text": "1/3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "7/6",
-          "text": "7/6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3/5",
-          "text": "3/5",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "5/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 5.",
+        "So the fraction is 5/3."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "rectangle",
+        "total_parts": 3,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "21bca47f91b3e511fed0a6272044b045d3c31afbc7e6b9fdec2b0c1435e21eb3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 10,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 6
+          }
         }
-      ]
+      },
+      "sample_id": "19ed202063831584043d",
+      "replay_digest": "ed0c39335486a843dab6e5ddc3748ea73e5c62eefc5f56d47fbc6cce66092d63"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 8 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 8/8 of the shape.",
       "correct_answer": "8/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "1/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/8",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "15/9",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "15/16",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "8/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 8.",
+        "So the fraction is 8/8."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "rectangle",
+        "total_parts": 8,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 1
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "0c905429e996e76479e03ce6c16cb63f62f8f9be6d4e7a42400b19b48cafa8a7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 11,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 8
+          }
         }
-      ]
+      },
+      "sample_id": "85dea5642b0d0a5e2612",
+      "replay_digest": "017824bf5bc9c1b27ab5df17c1a18fffe1bb5b8029e331bf039971bbc0273165"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "A shape is divided into 5 equal parts with 9 parts shaded. The fraction shaded is ___.",
+      "formatter": "set_click",
+      "question_text": "Shade 9/5 using 2 identical shapes, each divided into 5 equal parts.",
       "correct_answer": "9/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "13/10",
-          "text": "13/10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1/5",
-          "text": "1/5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "9/5",
-          "text": "9/5",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "5/9",
-          "text": "5/9",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "9/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 9.",
+        "So the fraction is 9/5."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 5,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "f77c23acb9d4162e9c6f8c7283b91866ddd2e960baaae8e90f78af6dd3a20476",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 10
+          }
         }
-      ]
+      },
+      "sample_id": "4992348729658c8bf9b5",
+      "replay_digest": "a8c3d16429c8133c2f21a1c476221d72b51b13f593c9aa9ed35448e04487129e"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 5 equal parts. 5 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 5/5 of the shape.",
       "correct_answer": "5/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "9/6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "9/10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "5/5",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1/5",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "5/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 5.",
+        "So the fraction is 5/5."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 5,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 1
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "deee6b8153d34598b19ea7ea5ddbfb412080f2f4de0abc1d79807f204640962c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 5
+          }
         }
-      ]
+      },
+      "sample_id": "ef631199568733b7284e",
+      "replay_digest": "3a98d0d0f288a8c697197fbae431c081fccb4225c068405ef05419bc08936501"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 3 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 8/3 using 3 identical shapes, each divided into 3 equal parts.",
       "correct_answer": "8/3",
-      "options": [
-        {
-          "key": "A",
-          "value": "10/6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "3/8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "8/3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1/3",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "8/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 8.",
+        "So the fraction is 8/3."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 3,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 3
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "ddd1fe436d57f77156702827be56cae8d1c4d6e78f30f7bb6b8aabdf17664432",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 9
+          }
         }
-      ]
+      },
+      "sample_id": "df8e1d156fff886f69d4",
+      "replay_digest": "13240343df6132e01e18f84515ae3fe95433a681206f0bd83fa142197295df57"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 500,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 6 equal parts. 14 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 14/6 using 3 identical shapes, each divided into 6 equal parts.",
       "correct_answer": "14/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "6/14",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
         },
-        {
-          "key": "B",
-          "value": "1/6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "14/6",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "19/12",
-          "is_correct": false
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "14/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 14.",
+        "So the fraction is 14/6."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 6,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 3
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "d26439afba3b2c78328cb14bb0d523c811bca2134173cc8c5de6ae3aa72753df",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 23,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 18
+          }
         }
-      ]
+      },
+      "sample_id": "6ef78fb5bf0e1ef7404c",
+      "replay_digest": "ced319336ab6cbeaf6faa48c0a88351acc5381a2bd264b8b16fa7720793f55a0"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 501,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 8 equal parts. 18 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 18/8 using 3 identical shapes, each divided into 8 equal parts.",
       "correct_answer": "18/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "8/18",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
         },
-        {
-          "key": "B",
-          "value": "25/16",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "18/8",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1/8",
-          "is_correct": false
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "18/8",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 8.",
+        "The numerator (top number) tells how many parts are taken: 18.",
+        "So the fraction is 18/8."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 8,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 3
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "61194fce1f99b9389c172dfc4f56fa5a482d7b1a7ec5cb946c299769d5313041",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 29,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 24
+          }
         }
-      ]
+      },
+      "sample_id": "c846665098fbbfb6982d",
+      "replay_digest": "963e906231981de573fce21b80774d286c79e45141f62ac8f901fb7363378794"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 502,
-      "formatter": "cloze",
-      "question_text": "A shape is divided into 4 equal parts with 8 parts shaded. The fraction shaded is ___.",
+      "formatter": "set_click",
+      "question_text": "Shade 8/4 using 2 identical shapes, each divided into 4 equal parts.",
       "correct_answer": "8/4",
-      "options": [
-        {
-          "key": "A",
-          "value": "8/4",
-          "text": "8/4",
-          "is_correct": true
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
         },
-        {
-          "key": "B",
-          "value": "11/8",
-          "text": "11/8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "4/8",
-          "text": "4/8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1/4",
-          "text": "1/4",
-          "is_correct": false
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "8/4",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 8.",
+        "So the fraction is 8/4."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "rectangle",
+        "total_parts": 4,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "a05225405236ce204afd2b863309bd07591133b298c34f373368c011a07ae565",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 12,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 8
+          }
         }
-      ]
+      },
+      "sample_id": "3e9fe228f89206ed3a3b",
+      "replay_digest": "71edac63e54fac5786bba31ef1f6e42905619443b6f4d6221ad5075332810990"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "A shape is divided into 6 equal parts. 11 parts are shaded. What fraction of the shape is shaded?",
+      "formatter": "set_click",
+      "question_text": "Shade 11/6 using 2 identical shapes, each divided into 6 equal parts.",
       "correct_answer": "11/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "6/11",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "area_model"
         },
-        {
-          "key": "B",
-          "value": "1/6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "11/6",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "16/12",
-          "is_correct": false
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "11/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 11.",
+        "So the fraction is 11/6."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "rectangle",
+        "total_parts": 6,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "ba1a99ec17ed38be6d988afd50fc95e6feb9897dc969a52f985a7b4f538b9843",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 12
+          }
         }
-      ]
+      },
+      "sample_id": "d316f45d4ecd6fb8189d",
+      "replay_digest": "499e538ff6a13916544061d9c45a2036a149f9b693d09e288e1c8d434a61b5c4"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "A shape is divided into 6 equal parts with 6 parts shaded. The fraction shaded is ___.",
+      "formatter": "set_click",
+      "question_text": "Shade 6/6 of the shape.",
       "correct_answer": "6/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "1/6",
-          "text": "1/6",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "number_line"
         },
-        {
-          "key": "B",
-          "value": "11/7",
-          "text": "11/7",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "11/12",
-          "text": "11/12",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "6/6",
-          "text": "6/6",
-          "is_correct": true
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "6/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 6.",
+        "So the fraction is 6/6."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 6,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 1
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "264f3a155b8397a5e4a8ffdd87b873ee8efef03eea095f0d956e430c8632c2d4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 9,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 6
+          }
         }
-      ]
+      },
+      "sample_id": "20440b11cbfd5e55110e",
+      "replay_digest": "e6abdbcb64cf622717206b9b26162ae0a2b8ca237902b3cc10073506408a9de7"
     },
     {
+      "node_id": "mat_g3_na_q4_6",
       "seed": 602,
-      "formatter": "cloze",
-      "question_text": "A shape is divided into 2 equal parts with 3 parts shaded. The fraction shaded is ___.",
+      "formatter": "set_click",
+      "question_text": "Shade 3/2 using 2 identical shapes, each divided into 2 equal parts.",
       "correct_answer": "3/2",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/3",
-          "text": "2/3",
-          "is_correct": false
+      "requested": {
+        "difficulty_profile": {
+          "fraction_model": "set_model"
         },
-        {
-          "key": "B",
-          "value": "3/2",
-          "text": "3/2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "1/2",
-          "text": "1/2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "4/4",
-          "text": "4/4",
-          "is_correct": false
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "3/2",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 2.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/2."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 2,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "ffdba0bdfe54a0a843f58ba9dbe8f1910a8ccc229a172305fa7414978d451096",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 4
+          }
         }
-      ]
+      },
+      "sample_id": "ea2c866bc86890d8f69b",
+      "replay_digest": "3ba2c4ec61465b3a52366cbd12df693371b72085a138383ae4f16fdebca80ef4"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 700,
+      "formatter": "set_click",
+      "question_text": "Shade 3/3 of the shape.",
+      "correct_answer": "3/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "3/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 3.",
+        "So the fraction is 3/3."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 3,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 1
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "caa5e72fb6a042c3f9a8c8237fc321de7701fcbe03b606c33876e552b1416998",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 3
+          }
+        }
+      },
+      "sample_id": "7401d9cf5172eb5074bb",
+      "replay_digest": "ac22215bcd74431f41bd100ad456e80e65d769138c40c7f6806dc877a25112e0"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 701,
+      "formatter": "set_click",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Shade 11/3 using 4 identical shapes, each divided into 3 equal parts.",
+      "correct_answer": "11/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "science_tech",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "11/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 11.",
+        "So the fraction is 11/3."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 3,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 4
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "bebfe0865d9d585dc51a93a0a3084446193682291914a37791bf50f79ef9149b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 18,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 12
+          }
+        }
+      },
+      "sample_id": "cfa2a89ef388722fd100",
+      "replay_digest": "fb28cfcacb51665864cb6a18effb3a84ebd8310c63b615d993d5574e61bbd9de"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 702,
+      "formatter": "set_click",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Shade 19/6 using 4 identical shapes, each divided into 6 equal parts.",
+      "correct_answer": "19/6",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "creative_writing",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "19/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 19.",
+        "So the fraction is 19/6."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 6,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 4
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "50cf9532876632de94bb253209580f95ce4dc000dbe5a16f04ba91fd8d22f18d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 24
+          }
+        }
+      },
+      "sample_id": "c79e69273b3bafb3730d",
+      "replay_digest": "ab76589977611a09e8866e4fce33d12a48e3ea84a19a2badfcb162794297f916"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 800,
+      "formatter": "set_click",
+      "question_text": "Shade 17/10 using 2 identical shapes, each divided into 10 equal parts.",
+      "correct_answer": "17/10",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "17/10",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 10.",
+        "The numerator (top number) tells how many parts are taken: 17.",
+        "So the fraction is 17/10."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 10,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "3b0e53b90de0cedea05fa45a322a3125ac129dc97a9d4886381dedfe7c07a77e",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 20
+          }
+        }
+      },
+      "sample_id": "67c958bc0558dd80bd0c",
+      "replay_digest": "3e4774d5a6f9dfa4103a139fa73aea9d52437df0d477ede62a8cfc5c4c247f9e"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 900,
+      "formatter": "set_click",
+      "question_text": "Shade 16/10 using 2 identical shapes, each divided into 10 equal parts.",
+      "correct_answer": "16/10",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "16/10",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 10.",
+        "The numerator (top number) tells how many parts are taken: 16.",
+        "So the fraction is 16/10."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 10,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "5b7e29e242e303caefb5b9d5424d3c00f01d7adc21af1cc772fb3cc3b9a11edb",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 20
+          }
+        }
+      },
+      "sample_id": "88f09fc2b9b7b94c884a",
+      "replay_digest": "e3c0a35bd21bd4e6c95328a57433a4d476bf292f9152008ba21644a748259d72"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 901,
+      "formatter": "set_click",
+      "question_text": "Shade 4/4 of the shape.",
+      "correct_answer": "4/4",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "standard"
+      },
+      "resolved_answer": "4/4",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 4.",
+        "The numerator (top number) tells how many parts are taken: 4.",
+        "So the fraction is 4/4."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 4,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 1
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "33aafd13012dba2ec51ff1d95a0d14f05a844c726b66d1b444e621785f147e61",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 4
+          }
+        }
+      },
+      "sample_id": "e5de06f1b4214c49c581",
+      "replay_digest": "11ff6a209c04bf4ffc937a1ccca2ccbb6716c7fff904413c92556ed7e0d34e05"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 1000,
+      "formatter": "set_click",
+      "question_text": "Shade 19/6 using 4 identical shapes, each divided into 6 equal parts.",
+      "correct_answer": "19/6",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": "19/6",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 6.",
+        "The numerator (top number) tells how many parts are taken: 19.",
+        "So the fraction is 19/6."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "circle",
+        "total_parts": 6,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 4
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "48e8a3e18634cc8b2d64c118aa7b557c63f0dabfd9d34ec9478e46f99f8d39f7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 24
+          }
+        }
+      },
+      "sample_id": "5f13a30503d80dff0f75",
+      "replay_digest": "65187ff567cbab1949d50235848df345f9c5ed7d4fe04c21694854b71263e47b"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 1001,
+      "formatter": "set_click",
+      "question_text": "Shade 7/3 using 3 identical shapes, each divided into 3 equal parts.",
+      "correct_answer": "7/3",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": "7/3",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 3.",
+        "The numerator (top number) tells how many parts are taken: 7.",
+        "So the fraction is 7/3."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 3,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 3
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "ddd1fe436d57f77156702827be56cae8d1c4d6e78f30f7bb6b8aabdf17664432",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 9
+          }
+        }
+      },
+      "sample_id": "9108becb382fcec4e310",
+      "replay_digest": "b8bd05b50e65dda5340885a7a7de37ebbf11dea3e0756c9d84b3d6b281279ecf"
+    },
+    {
+      "node_id": "mat_g3_na_q4_6",
+      "seed": 1002,
+      "formatter": "set_click",
+      "question_text": "Shade 6/5 using 2 identical shapes, each divided into 5 equal parts.",
+      "correct_answer": "6/5",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_click",
+        "is_visual": true,
+        "visual_type": "FractionShade",
+        "interaction_mode": "set",
+        "answer_collection": "click",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": "6/5",
+      "hints": [
+        "A fraction shows how many equal parts are shaded out of the total.",
+        "The denominator (bottom number) tells the total equal parts: 5.",
+        "The numerator (top number) tells how many parts are taken: 6.",
+        "So the fraction is 6/5."
+      ],
+      "visual_type": "FractionShade",
+      "visual_payload": {
+        "shape": "bar",
+        "total_parts": 5,
+        "ask_type": "shade_this_fraction",
+        "interaction_mode": "set",
+        "is_read_only": false,
+        "total_wholes": 2
+      },
+      "visual_render": {
+        "visual_type": "FractionShade",
+        "renderer_input_digest": "f77c23acb9d4162e9c6f8c7283b91866ddd2e960baaae8e90f78af6dd3a20476",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "FractionShade",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [],
+          "distinct_colours": [
+            "hsl(var(--primary)"
+          ],
+          "role_counts": {
+            "fraction-part": 10
+          }
+        }
+      },
+      "sample_id": "6668adf9e89360163842",
+      "replay_digest": "b3f4d2cdc3d1d5bf0de058ed685f2b29a63d062ab7059a56a5716ded382d3294"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "19ed202063831584043d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade 5/3 using two identical shapes divided into three equal parts is unambiguous. The stem and answer align without competing interpretations of which parts to shade or how the shapes relate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 5 parts out of 6 total parts across two shapes, each with 3 parts, correctly represents 5/3, which exceeds one. The mathematical structure is sound: two shapes with three parts each provide six total parts, and selecting five satisfies the fraction target."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "A Grade 3 learner can understand the instruction to shade 5/3 using the two-shape visual model. The stem language is direct and accessible, and the hints reinforce numerator and denominator meaning without extraneous complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 5/3 is correctly greater than one. Hints accurately identify denominator as three and numerator as five, establishing the proper fractional value and fulfilling the mathematical requirement of the competency."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "85dea5642b0d0a5e2612",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 8/8 of the shape is unambiguous—all parts of a single shape divided into eight parts must be shaded. The task is clear and admits only one interpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading all eight parts of a shape with eight equal sections correctly represents the fraction 8/8, which equals one. The logical structure is internally consistent and mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The language shade 8/8 of the shape is straightforward for Grade 3 learners. The single-shape presentation is simpler than multi-shape fractions and aligns with how learners typically encounter equal-to-one fractions in visual form."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 8/8 equals one, satisfying the competency requirement to represent fractions equal to one. Hints correctly state denominator as eight and numerator as eight, reinforcing this equivalence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "4992348729658c8bf9b5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 9/5 using two identical shapes each divided into five equal parts presents a clear, unambiguous task. Learners have a definite set of parts from which to select nine for shading."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with five parts each provide ten total parts. Shading nine of these ten parts correctly represents 9/5, which is greater than one. The relationship between the visual model and the fractional value is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can follow the instruction to shade nine parts across two five-part shapes. The two-shape structure helps learners see that numerator can exceed denominator and that a fraction can span across multiple unit pieces."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 9/5 is mathematically correct as greater than one. Hints correctly identify denominator five and numerator nine, accurately representing the target fraction within the competency scope."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "ef631199568733b7284e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 5/5 of the shape is entirely unambiguous. One shape with five equal parts requires all five to be shaded, leaving no room for alternate interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading all five parts of a five-part shape correctly and definitively represents 5/5, which equals one. The mathematical relationship between the visual and the fraction is exact and complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction shade 5/5 of the shape is maximally clear for third-graders. Seeing all parts of a single shape shaded reinforces the concept that a fraction equaling one represents a complete whole unit."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 5/5 equals one, directly fulfilling the competency requirement to represent fractions equal to one. Hints properly name denominator five and numerator five, establishing this equivalence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "df8e1d156fff886f69d4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 8/3 using three identical shapes each divided into three equal parts is a clear, well-defined task. Learners know they must select and shade eight parts from the total nine available."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three shapes with three parts each provide nine total parts. Shading eight of these nine parts correctly represents 8/3, which exceeds one. The structure logically supports the fractional representation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can grasp the instruction to shade eight parts when three three-part shapes are presented. The three-shape arrangement demonstrates that fractions greater than one require multiple unit pieces and extends learner comfort with multi-shape models."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 8/3 is correctly greater than one. Hints accurately state denominator three and numerator eight, properly representing this improper fraction within the competency requirement scope."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "6ef78fb5bf0e1ef7404c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 14/6 using three identical shapes each divided into six equal parts provides a definite, unambiguous instruction. The task specifies exactly how many parts to shade from a known total."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three shapes with six parts each provide eighteen total parts. Shading fourteen of these eighteen parts correctly represents 14/6, which is greater than one. The logical structure is mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Third-graders can follow the instruction to shade fourteen parts from three six-part shapes. The larger denominator and numerator introduce realistic variation in fraction complexity while remaining within Grade 3 cognitive reach."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 14/6 is mathematically sound as greater than one. Hints correctly identify denominator six and numerator fourteen, accurately establishing the target fraction value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "c846665098fbbfb6982d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 18/8 using three identical shapes each divided into eight equal parts is unambiguous. Learners have a clear set of twenty-four parts from which to select eighteen for shading."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three shapes with eight parts each provide twenty-four total parts. Shading eighteen of these twenty-four parts correctly represents 18/8, which exceeds one. The mathematical relationship is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade eighteen parts from three eight-part shapes is clear to Grade 3 learners, even as denominators and numerators reach higher values. The visual model supports understanding without excessive cognitive load."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 18/8 is correctly greater than one. Hints accurately state denominator eight and numerator eighteen, properly representing this fraction within the competency framework."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "3e9fe228f89206ed3a3b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 8/4 using two identical shapes each divided into four equal parts is an unambiguous task. Eight parts must be shaded from the eight total parts available, which is clearly specified."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with four parts each provide eight total parts. Shading all eight parts correctly represents 8/4, which equals two and is greater than one. The logical structure supports the competency requirement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction to shade all parts of two four-part shapes is accessible to third-graders. This variant where numerator equals total part count offers a clear and familiar model for understanding fractions greater than one."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 8/4 is mathematically correct as greater than one, equaling two. Hints correctly identify denominator four and numerator eight, establishing this proper fractional representation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "d316f45d4ecd6fb8189d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 11/6 using two identical shapes each divided into six equal parts is clear and unambiguous. Learners understand they must shade eleven parts from the twelve available."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with six parts each provide twelve total parts. Shading eleven of these twelve parts correctly represents 11/6, which exceeds one. The structure is logically sound and mathematically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can readily interpret the instruction to shade eleven parts from two six-part shapes. The nearly-complete shading of the second shape reinforces the concept of fractions spanning beyond one unit."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 11/6 is correctly greater than one. Hints accurately state denominator six and numerator eleven, properly representing this improper fraction within the learning competency scope."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "20440b11cbfd5e55110e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 6/6 of the shape leaves no room for ambiguity. A single shape with six equal parts requires all six to be shaded, and the task is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading all six parts of a six-part shape correctly and definitively represents 6/6, which equals one. The mathematical relationship is exact and logically complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction shade 6/6 of the shape is maximally accessible to third-graders. Seeing a completely shaded unit reinforces that a fraction equal to one represents a whole and is a foundational concept."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 6/6 equals one, directly addressing the competency requirement to represent fractions equal to one. Hints correctly identify denominator six and numerator six, establishing this equivalence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "ea2c866bc86890d8f69b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 3/2 using two identical shapes each divided into two equal parts is unambiguous. Learners must shade three parts from the four available parts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with two parts each provide four total parts. Shading three of these four parts correctly represents 3/2, which exceeds one. The logical structure is internally consistent and mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can follow the instruction to shade three parts from two halves. The two-part denomination is among the simplest for visual fraction representation and supports conceptual clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 3/2 is mathematically correct as greater than one. Hints accurately state denominator two and numerator three, properly representing this improper fraction value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "7401d9cf5172eb5074bb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 3/3 of the shape is entirely unambiguous. One shape divided into three equal parts requires all three to be shaded, leaving no interpretive room."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading all three parts of a three-part shape correctly and definitively represents 3/3, which equals one. The mathematical relationship between the visual model and the fraction is exact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction shade 3/3 of the shape is entirely clear to third-graders. The single-shape, completely-shaded model is among the most intuitive ways to represent a fraction equal to one."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 3/3 equals one, directly fulfilling the competency requirement to represent fractions equal to one. Hints correctly identify denominator three and numerator three, establishing this mathematical equivalence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "cfa2a89ef388722fd100",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a character theme reference and an instruction to shade 11/3 using four identical shapes each divided into three equal parts. The core shading task remains unambiguous despite the thematic context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four shapes with three parts each provide twelve total parts. Shading eleven of these twelve parts correctly represents 11/3, which is greater than one. The theme about dance shoes does not interfere with the mathematical logic."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can process both the character theme and the mathematical instruction. The dance-shoes theme contextualizes the problem without obscuring or complicating the core shading task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 11/3 is mathematically correct as greater than one. Hints accurately state denominator three and numerator eleven without referencing the theme, confirming the proper fractional value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "c79e69273b3bafb3730d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem includes a character theme reference and instructs learners to shade 19/6 using four identical shapes each divided into six equal parts. The shading task is unambiguous despite the basketball context."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four shapes with six parts each provide twenty-four total parts. Shading nineteen of these twenty-four parts correctly represents 19/6, which exceeds one. The theme does not disrupt the mathematical structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Third-graders can parse both the basketball theme and the mathematical task. The thematic wrapper adds interest without impeding comprehension of the core shading instruction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 19/6 is mathematically sound as greater than one. Hints correctly identify denominator six and numerator nineteen, accurately representing this improper fraction value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "67c958bc0558dd80bd0c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 17/10 using two identical shapes each divided into ten equal parts is a clear task. Learners must shade seventeen parts from the twenty available parts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with ten parts each provide twenty total parts. Shading seventeen of these twenty parts correctly represents 17/10, which is greater than one. The structure is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can follow the instruction to shade seventeen parts from two ten-part shapes. The ten-part denomination introduces larger numerators and denominators while remaining within Grade 3 scope."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 17/10 is correctly greater than one. Hints accurately state denominator ten and numerator seventeen, properly representing this improper fraction."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "88f09fc2b9b7b94c884a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 16/10 using two identical shapes each divided into ten equal parts presents a clear, unambiguous task. Learners know they must shade sixteen parts from the twenty total available."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with ten parts each provide twenty total parts. Shading sixteen of these twenty parts correctly represents 16/10, which exceeds one. The logical relationship is mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Third-graders can understand the instruction to shade sixteen parts from two ten-part shapes. The two-shape, ten-part model extends learner familiarity with larger denominators in the context of visual representation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 16/10 is mathematically correct as greater than one. Hints accurately identify denominator ten and numerator sixteen, establishing this proper improper fraction value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "e5de06f1b4214c49c581",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 4/4 of the shape is entirely unambiguous. One shape with four equal parts requires all four to be shaded, leaving no room for alternative interpretations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Shading all four parts of a four-part shape correctly and definitively represents 4/4, which equals one. The mathematical relationship between the visual and the fraction is exact and logically complete."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The instruction shade 4/4 of the shape is maximally clear to Grade 3 learners. Completely shading a single unit is an intuitive and foundational model for understanding fractions equal to one."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 4/4 equals one, directly fulfilling the competency requirement to represent fractions equal to one. Hints correctly identify denominator four and numerator four, confirming this equivalence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "5f13a30503d80dff0f75",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 19/6 using four identical shapes each divided into six equal parts is a clear, well-defined task. Learners must shade nineteen parts from the twenty-four available parts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four shapes with six parts each provide twenty-four total parts. Shading nineteen of these twenty-four parts correctly represents 19/6, which exceeds one. The structure is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can grasp the instruction to shade nineteen parts when four six-part shapes are presented. The larger model demonstrates fractions substantially greater than one while remaining visually manageable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 19/6 is correctly greater than one. Hints accurately state denominator six and numerator nineteen, properly representing this improper fraction within the learning competency."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "9108becb382fcec4e310",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 7/3 using three identical shapes each divided into three equal parts is unambiguous. Learners must shade seven parts from the nine available parts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three shapes with three parts each provide nine total parts. Shading seven of these nine parts correctly represents 7/3, which is greater than one. The logical structure is mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Third-graders can follow the instruction to shade seven parts from three three-part shapes. The three-shape model reinforces that fractions greater than one span multiple unit pieces and is appropriately pitched for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 7/3 is mathematically sound as greater than one. Hints correctly identify denominator three and numerator seven, accurately establishing this improper fraction value."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "sample_id": "6668adf9e89360163842",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Shading 6/5 using two identical shapes each divided into five equal parts is unambiguous. Learners know they must shade six parts from the ten available parts."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two shapes with five parts each provide ten total parts. Shading six of these ten parts correctly represents 6/5, which exceeds one. The mathematical structure is sound and logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 learners can comprehend the instruction to shade six parts from two five-part shapes. The two-shape, five-part model extends learner exposure to various denominations while maintaining clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The fraction 6/5 is correctly greater than one. Hints accurately identify denominator five and numerator six, properly representing this improper fraction within the competency framework."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "represent",
+      "clause": "Represent",
+      "verdict": "PASS",
+      "reasoning": "Every one of the twenty samples explicitly asks learners to represent a specific fraction by shading parts of a visual model. The core action of representing—naming, identifying, and depicting—runs throughout all samples without exception or incompleteness.",
+      "sample_ids": [
+        "19ed202063831584043d",
+        "85dea5642b0d0a5e2612",
+        "4992348729658c8bf9b5",
+        "ef631199568733b7284e",
+        "df8e1d156fff886f69d4",
+        "6ef78fb5bf0e1ef7404c",
+        "c846665098fbbfb6982d",
+        "3e9fe228f89206ed3a3b",
+        "d316f45d4ecd6fb8189d",
+        "20440b11cbfd5e55110e",
+        "ea2c866bc86890d8f69b",
+        "7401d9cf5172eb5074bb",
+        "cfa2a89ef388722fd100",
+        "c79e69273b3bafb3730d",
+        "67c958bc0558dd80bd0c",
+        "88f09fc2b9b7b94c884a",
+        "e5de06f1b4214c49c581",
+        "5f13a30503d80dff0f75",
+        "9108becb382fcec4e310",
+        "6668adf9e89360163842"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "requirement_id": "fractions",
+      "clause": "fractions",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples center on fractional representation, explicitly naming numerators and denominators in stems, answers, and hint text. Each sample presents a fraction in the form of a numerator over a denominator, demonstrating the full scope of fractional notation required at this grade level.",
+      "sample_ids": [
+        "19ed202063831584043d",
+        "85dea5642b0d0a5e2612",
+        "4992348729658c8bf9b5",
+        "ef631199568733b7284e",
+        "df8e1d156fff886f69d4",
+        "6ef78fb5bf0e1ef7404c",
+        "c846665098fbbfb6982d",
+        "3e9fe228f89206ed3a3b",
+        "d316f45d4ecd6fb8189d",
+        "20440b11cbfd5e55110e",
+        "ea2c866bc86890d8f69b",
+        "7401d9cf5172eb5074bb",
+        "cfa2a89ef388722fd100",
+        "c79e69273b3bafb3730d",
+        "67c958bc0558dd80bd0c",
+        "88f09fc2b9b7b94c884a",
+        "e5de06f1b4214c49c581",
+        "5f13a30503d80dff0f75",
+        "9108becb382fcec4e310",
+        "6668adf9e89360163842"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "requirement_id": "equal_to_one",
+      "clause": "equal to one",
+      "verdict": "PASS",
+      "reasoning": "Five samples explicitly represent fractions equal to one: 8/8 (seed 43), 5/5 (seed 45), 6/6 (seed 601), 3/3 (seed 700), and 4/4 (seed 901). In each, the numerator equals the denominator, and the shading of all parts of each unit shape demonstrates that one whole is represented, fulfilling this competency requirement without gaps.",
+      "sample_ids": [
+        "85dea5642b0d0a5e2612",
+        "ef631199568733b7284e",
+        "20440b11cbfd5e55110e",
+        "7401d9cf5172eb5074bb",
+        "e5de06f1b4214c49c581"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "requirement_id": "greater_than_one",
+      "clause": "greater than one",
+      "verdict": "PASS",
+      "reasoning": "Fifteen samples represent fractions greater than one: 5/3 (seed 42), 9/5 (seed 44), 8/3 (seed 46), 14/6 (seed 500), 18/8 (seed 501), 8/4 (seed 502), 11/6 (seed 600), 3/2 (seed 602), 11/3 (seed 701), 19/6 (seed 702), 17/10 (seed 800), 16/10 (seed 900), 19/6 (seed 1000), 7/3 (seed 1001), and 6/5 (seed 1002). In all cases, the numerator exceeds the denominator, and visual models using multiple divided shapes demonstrate this concept, fully satisfying the competency requirement.",
+      "sample_ids": [
+        "19ed202063831584043d",
+        "4992348729658c8bf9b5",
+        "df8e1d156fff886f69d4",
+        "6ef78fb5bf0e1ef7404c",
+        "c846665098fbbfb6982d",
+        "3e9fe228f89206ed3a3b",
+        "d316f45d4ecd6fb8189d",
+        "ea2c866bc86890d8f69b",
+        "cfa2a89ef388722fd100",
+        "c79e69273b3bafb3730d",
+        "67c958bc0558dd80bd0c",
+        "88f09fc2b9b7b94c884a",
+        "5f13a30503d80dff0f75",
+        "9108becb382fcec4e310",
+        "6668adf9e89360163842"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    },
+    {
+      "requirement_id": "models",
+      "clause": "models",
+      "verdict": "PASS",
+      "reasoning": "All twenty samples use the FractionShade visual model, which provides identical divided shapes for learners to shade in order to represent the target fraction. This model-based approach is consistent across every sample, enabling learners to develop visual intuition for fractional quantity and fulfilling the competency requirement to use models.",
+      "sample_ids": [
+        "19ed202063831584043d",
+        "85dea5642b0d0a5e2612",
+        "4992348729658c8bf9b5",
+        "ef631199568733b7284e",
+        "df8e1d156fff886f69d4",
+        "6ef78fb5bf0e1ef7404c",
+        "c846665098fbbfb6982d",
+        "3e9fe228f89206ed3a3b",
+        "d316f45d4ecd6fb8189d",
+        "20440b11cbfd5e55110e",
+        "ea2c866bc86890d8f69b",
+        "7401d9cf5172eb5074bb",
+        "cfa2a89ef388722fd100",
+        "c79e69273b3bafb3730d",
+        "67c958bc0558dd80bd0c",
+        "88f09fc2b9b7b94c884a",
+        "e5de06f1b4214c49c581",
+        "5f13a30503d80dff0f75",
+        "9108becb382fcec4e310",
+        "6668adf9e89360163842"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w19-haiku45-20260925:mat_g3_na_q4_6",
+      "reviewer_identity": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "8251cae5df9ac4021d3f3394afccfc8c5560834f889fe794c647ac47fbf34abc",
+      "clause_ids": [
+        "represent",
+        "fractions",
+        "equal_to_one",
+        "greater_than_one",
+        "models"
+      ],
+      "response_ref": ".responses/s5-phaseC-w19-haiku45-20260925.json",
+      "response_digest": "fd16f89adbdb058bb14839319d3a38bf9f8a258416d8e0202aa89c70aa27e5fc",
+      "prompt_ref": ".responses/s5-phaseC-w19-haiku45-20260925.prompt.txt",
+      "prompt_digest": "9e96c9b77fdb3259cd520781a4779679fc27c53650199e02dde308758e6b9184",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_6/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Tool use measured from the reviewer transcript (no harness usage record: the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The descriptions are impossible as models. A stem stating that a shape is divided into 3 equal parts with 5 parts shaded asks a pupil to picture more shaded parts than the shape contains; a fraction greater than one needs more than one whole, and none of these items ever supplies a second shape. The wording of the competency is about representing such fractions with models, and no coherent model is described here."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both cases the wording distinguishes are generated and keyed, fractions equal to one such as the eight-eighths and six-sixths items, and fractions greater than one across a range of denominators from halves to eighths."
-    },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Beyond the impossibility, some samples push past two whole units, as where a shape is divided into 8 equal parts and 18 parts are shaded. Holding more than two wholes in an unillustrated description is heavier than a first encounter with improper fractions should be."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two phrasings occur, one stating the shading inside the sentence and one splitting it into a second sentence, and neither is accompanied by a drawn region or a sharing situation such as pizzas or cakes that would make a fraction above one meaningful."
+      "verdict": "PASS",
+      "rationale": "All 20 samples employ fraction-shading tasks with visual models that align with Grade 3 cognitive demands. The visual FractionShade representation and guided shade-and-identify format are appropriately pitched for third-grade learners without excessive context or abstract reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What varies across samples is the denominator and how far the numerator exceeds it, including the exactly-equal case, which is the right dimension for an objective about fractions at and above one."
+      "rationale": "Every sample directly addresses the competency clause to represent fractions. Samples consistently ask learners to shade specific fractions using identical divided shapes, which is the core representation skill required by the MATATAG curriculum for this learning competency."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The five-part requirement decomposition—Represent, fractions, equal to one, greater than one, models—covers all essential aspects of the stated competency without gaps or redundancy.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "Each requirement clause directly maps to the competency text. Samples demonstrate representation of both equal-to-one fractions (seeds 43, 45, 601, 700, 901) and greater-than-one fractions (seeds 42, 44, 46, 500, 501, 502, 600, 602, 701, 702, 800, 900, 1000, 1001, 1002) using visual models, covering all specified decomposition elements losslessly.",
+        "requirement_ids": [
+          "represent",
+          "fractions",
+          "equal_to_one",
+          "greater_than_one",
+          "models"
+        ]
+      },
+      "clause_ids": [
+        "represent",
+        "fractions",
+        "equal_to_one",
+        "greater_than_one",
+        "models"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The 20 samples demonstrate sufficient breadth across the competency domain. Coverage includes fractions equal to one (5/5, 6/6, 3/3, 4/4, 8/8) and fractions greater than one ranging from 3/2 to 19/6, with denominators spanning 2 through 10, ensuring learners encounter diverse fractional representations across the target range.",
+      "clause_ids": [
+        "represent",
+        "fractions",
+        "equal_to_one",
+        "greater_than_one",
+        "models"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Denominators stay between two and eight, which is the range of unit fractions a Grade 3 pupil has met, and no sample asks for simplification or conversion beyond naming the fraction."
+      "rationale": "Denominators range from 2 to 10 and numerators from 3 to 19, which is appropriate for Grade 3 Quarter 4. No denominators exceed reasonable limits for manual visual representation, and the fraction values stay within the bounds implied by the competency without introducing unnecessary complexity or requiring prior knowledge of equivalence simplification."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Samples demonstrate variability in denomination choice, number of shapes required to represent the fraction, and experiential framing (standard, hint_gated, mastery_drill, scaffolded experiences; themed samples with emoji and character names versus unthemed). This variation supports robust mastery across learner contexts and learning paths."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

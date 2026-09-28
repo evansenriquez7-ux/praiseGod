@@ -1,0 +1,275 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q4_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc19-mat_g3_na_q4_6-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_6
+PACKET DIGEST: 8251cae5df9ac4021d3f3394afccfc8c5560834f889fe794c647ac47fbf34abc
+COMPETENCY (Grade 3, Quarter 4, None):
+Represent fractions that are equal to one and greater than one using models.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  represent: Represent
+  fractions: fractions
+  equal_to_one: equal to one
+  greater_than_one: greater than one
+  models: models
+
+SAMPLES (every one of these is real rendered output):
+  sample 19ed202063831584043d  seed 42  [set_click]
+      stem:    Shade 5/3 using 2 identical shapes, each divided into 3 equal parts.
+      answer:  5/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 5.", "So the fraction is 5/3."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 10, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 6}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 85dea5642b0d0a5e2612  seed 43  [set_click]
+      stem:    Shade 8/8 of the shape.
+      answer:  8/8
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 8.", "So the fraction is 8/8."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4992348729658c8bf9b5  seed 44  [set_click]
+      stem:    Shade 9/5 using 2 identical shapes, each divided into 5 equal parts.
+      answer:  9/5
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 9.", "So the fraction is 9/5."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 10}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ef631199568733b7284e  seed 45  [set_click]
+      stem:    Shade 5/5 of the shape.
+      answer:  5/5
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 5.", "So the fraction is 5/5."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 5}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample df8e1d156fff886f69d4  seed 46  [set_click]
+      stem:    Shade 8/3 using 3 identical shapes, each divided into 3 equal parts.
+      answer:  8/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 8.", "So the fraction is 8/3."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 9}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6ef78fb5bf0e1ef7404c  seed 500  [set_click]
+      stem:    Shade 14/6 using 3 identical shapes, each divided into 6 equal parts.
+      answer:  14/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 14.", "So the fraction is 14/6."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 23, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 18}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c846665098fbbfb6982d  seed 501  [set_click]
+      stem:    Shade 18/8 using 3 identical shapes, each divided into 8 equal parts.
+      answer:  18/8
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 8.", "The numerator (top number) tells how many parts are taken: 18.", "So the fraction is 18/8."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 24}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3e9fe228f89206ed3a3b  seed 502  [set_click]
+      stem:    Shade 8/4 using 2 identical shapes, each divided into 4 equal parts.
+      answer:  8/4
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 8.", "So the fraction is 8/4."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 12, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 8}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d316f45d4ecd6fb8189d  seed 600  [set_click]
+      stem:    Shade 11/6 using 2 identical shapes, each divided into 6 equal parts.
+      answer:  11/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 11.", "So the fraction is 11/6."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 12}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 20440b11cbfd5e55110e  seed 601  [set_click]
+      stem:    Shade 6/6 of the shape.
+      answer:  6/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 6.", "So the fraction is 6/6."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 6}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ea2c866bc86890d8f69b  seed 602  [set_click]
+      stem:    Shade 3/2 using 2 identical shapes, each divided into 2 equal parts.
+      answer:  3/2
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 2.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/2."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7401d9cf5172eb5074bb  seed 700  [set_click]
+      stem:    Shade 3/3 of the shape.
+      answer:  3/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 3.", "So the fraction is 3/3."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cfa2a89ef388722fd100  seed 701  [set_click]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Shade 11/3 using 4 identical shapes, each divided into 3 equal parts.
+      answer:  11/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 11.", "So the fraction is 11/3."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 18, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 12}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c79e69273b3bafb3730d  seed 702  [set_click]
+      stem:    🏀 Isko has a math challenge about basketballs. Shade 19/6 using 4 identical shapes, each divided into 6 equal parts.
+      answer:  19/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 19.", "So the fraction is 19/6."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 24}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 67c958bc0558dd80bd0c  seed 800  [set_click]
+      stem:    Shade 17/10 using 2 identical shapes, each divided into 10 equal parts.
+      answer:  17/10
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 10.", "The numerator (top number) tells how many parts are taken: 17.", "So the fraction is 17/10."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 88f09fc2b9b7b94c884a  seed 900  [set_click]
+      stem:    Shade 16/10 using 2 identical shapes, each divided into 10 equal parts.
+      answer:  16/10
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 10.", "The numerator (top number) tells how many parts are taken: 16.", "So the fraction is 16/10."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e5de06f1b4214c49c581  seed 901  [set_click]
+      stem:    Shade 4/4 of the shape.
+      answer:  4/4
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 4.", "The numerator (top number) tells how many parts are taken: 4.", "So the fraction is 4/4."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "standard"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 4}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5f13a30503d80dff0f75  seed 1000  [set_click]
+      stem:    Shade 19/6 using 4 identical shapes, each divided into 6 equal parts.
+      answer:  19/6
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 6.", "The numerator (top number) tells how many parts are taken: 19.", "So the fraction is 19/6."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "hint_gated"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 24}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9108becb382fcec4e310  seed 1001  [set_click]
+      stem:    Shade 7/3 using 3 identical shapes, each divided into 3 equal parts.
+      answer:  7/3
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 3.", "The numerator (top number) tells how many parts are taken: 7.", "So the fraction is 7/3."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "mastery_drill"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 9}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6668adf9e89360163842  seed 1002  [set_click]
+      stem:    Shade 6/5 using 2 identical shapes, each divided into 5 equal parts.
+      answer:  6/5
+      hints:   ["A fraction shows how many equal parts are shaded out of the total.", "The denominator (bottom number) tells the total equal parts: 5.", "The numerator (top number) tells how many parts are taken: 6.", "So the fraction is 6/5."]
+      response: {"format": "set_click", "is_visual": true, "visual_type": "FractionShade", "interaction_mode": "set", "answer_collection": "click", "experience": "scaffolded"}
+      visual:  FractionShade
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FractionShade", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {"fraction-part": 10}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

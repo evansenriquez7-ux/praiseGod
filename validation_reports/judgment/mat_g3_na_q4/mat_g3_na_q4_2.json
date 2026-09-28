@@ -1,7 +1,43 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q4_2",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Find the missing number in a number sentence involving multiplication or division by 6, 7, 8, and 9.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "find_missing_number",
+      "clause": "Find the missing number"
+    },
+    {
+      "kind": "object",
+      "id": "number_sentence",
+      "clause": "number sentence"
+    },
+    {
+      "kind": "operation",
+      "id": "multiplication",
+      "clause": "multiplication"
+    },
+    {
+      "kind": "operation",
+      "id": "division",
+      "clause": "division"
+    },
+    {
+      "kind": "range",
+      "id": "6_7_8_9",
+      "clause": "6, 7, 8, and 9"
+    }
+  ],
+  "packet_digest": "12adef2fe3abb069c814fe70ca81dc70c72ac14eab78f6bfbcfbe105415d8b38",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,18 +54,74 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "c9f822fff971a49a3c36",
+    "a054ad37fa446ab227d8",
+    "45f64fe1952df54a847a",
+    "c7348da74456b0a9244d",
+    "2b7cbe3b60076fc09491",
+    "134e47dfc22fddd59e17",
+    "69a7c3f646b2d412fc05",
+    "7407ce2065bb4e4a9275",
+    "e6b7759a987b5967964a",
+    "f96ab31d1e970e8ad786",
+    "ba8a0f6871b7a9854452",
+    "185e227891d2ba0596e0",
+    "8b1a5d02951764759f4b",
+    "c7f090be1a3331bf95f1",
+    "a409139fc83a20a16e69",
+    "4e1edc7d989eaf0a4bf0",
+    "055358d9d84300daff53",
+    "eba8bc03054f2b7fa91c",
+    "e2a10c6b5b82e2bf1214",
+    "7fa1cf4209b86eadf47f",
+    "c8d0bfc0a57d52437191",
+    "6dc264d1010848427d1b",
+    "da34b95b8b603609a47a",
+    "862eb6c668c42b305b45",
+    "8a8bdcf387e3bafc71a8",
+    "2b1aa51d4128c5d45813",
+    "f95d14cc2d33478688de"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 42,
       "formatter": "read_mcq",
-      "question_text": "Both sides balance evenly. 2 × ? = 12. What is the missing value?",
+      "question_text": "Both sides balance evenly. ? × 6 = 12. What is the missing value?",
       "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "BalanceScale",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 2,
           "is_correct": true
         },
         {
@@ -39,21 +131,77 @@
         },
         {
           "key": "C",
-          "value": 7,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 1,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "The number statement is: ___ × 6 = 12",
+        "Use division to undo the operation.",
+        "12 ÷ 6 = 2.",
+        "Check: 2 × 6 = 12. ✓"
+      ],
+      "visual_type": "BalanceScale",
+      "visual_payload": {
+        "left_side": "? × 6",
+        "right_side": "12",
+        "blank_side": "left",
+        "is_balanced": true
+      },
+      "visual_render": {
+        "visual_type": "BalanceScale",
+        "renderer_input_digest": "984ba5223289ba3f083b84354e334654d5f5861219f545dd7a6cb9ffd53219ee",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "BalanceScale",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "? × 6",
+            "12"
+          ],
+          "distinct_colours": [
+            "#94a3b8",
+            "#3b82f6",
+            "#fff",
+            "#64748b"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "c9f822fff971a49a3c36",
+      "replay_digest": "c7e13332385c832151c05f386d834e396363a68925eb57bc4d166d73e47e1799"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number goes in the blank: 60 ÷ 6 = ___?",
       "correct_answer": 10,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -75,13 +223,36 @@
           "value": 16,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 10,
+      "hints": [
+        "The number statement is: 60 ÷ 6 = ___",
+        "We need to find what 60 ÷ 6 equals.",
+        "Calculate: 60 ÷ 6 = 10."
+      ],
+      "sample_id": "a054ad37fa446ab227d8",
+      "replay_digest": "dc588ed92f9b40a876bead5377dbde391603fb581cc7b2dfb44fdab956f10063"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "___ ÷ 9 = 7",
       "correct_answer": 63,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -107,40 +278,162 @@
           "text": "54",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 63,
+      "hints": [
+        "We need to divide 63 by 9. The number being divided is 63; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 63? 9 × 7 = 63.",
+        "The quotient of 63 ÷ 9 = 7."
+      ],
+      "sample_id": "45f64fe1952df54a847a",
+      "replay_digest": "f663fccefc525ab7b0bb21f1feede935e7b8cce2fa60759b49888956b0e4d43c"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "72 ÷ 8 = 9. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 72? 8 × 9 = 72.",
+        "The quotient of 72 ÷ 8 = 9."
+      ],
+      "sample_id": "c7348da74456b0a9244d",
+      "replay_digest": "bc5a1f0c3882020396c7f6008cdd52bd689932d2a8de154ed11054de92cb7a3e"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "In 18 ÷ 6 = ___, the missing number is 3. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "The number statement is: 18 ÷ 6 = ___",
+        "We need to find what 18 ÷ 6 equals.",
+        "Calculate: 18 ÷ 6 = 3."
+      ],
+      "sample_id": "2b7cbe3b60076fc09491",
+      "replay_digest": "164885b73facdd0033b51aa36f756f58e506d6d974770d2479357cc771ef1202"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"___ ÷ 6 = 9\". Noel says the missing number is 54. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 54
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 54
+      },
+      "hints": [
+        "We need to divide 54 by 6. The number being divided is 54; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 54? 6 × 9 = 54.",
+        "The quotient of 54 ÷ 6 = 9."
+      ],
+      "sample_id": "134e47dfc22fddd59e17",
+      "replay_digest": "cf7ab5fe909aa205af09a6c2fa851ffd2538446ed89f564627fedc940bd179f1"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "27 ÷ 4 = 3. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 27? 9 × 3 = 27.",
+        "The quotient of 27 ÷ 9 = 3."
+      ],
+      "sample_id": "69a7c3f646b2d412fc05",
+      "replay_digest": "21037714c08cc0d8928e377a735487385fa2b5f26965567cded303e9c9d34e13"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What divided by 9 equals 9?",
       "correct_answer": 81,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -162,22 +455,75 @@
           "value": 9,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 81,
+      "hints": [
+        "We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 81? 9 × 9 = 81.",
+        "The quotient of 81 ÷ 9 = 9."
+      ],
+      "sample_id": "7407ce2065bb4e4a9275",
+      "replay_digest": "5c6b0793fd02bdcfada6ac187f93fbc61c76ae3b368f9e5d0aa8c20c0e82ce2a"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"___ ÷ 7 = 8\". Dante says the missing number is 56. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 56
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 56
+      },
+      "hints": [
+        "We need to divide 56 by 7. The number being divided is 56; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 56? 7 × 8 = 56.",
+        "The quotient of 56 ÷ 7 = 8."
+      ],
+      "sample_id": "e6b7759a987b5967964a",
+      "replay_digest": "26854fc4d8a9bacdc3109cec0e0f7b6d430c75681be203f51b6aa7406bf14879"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What divided by 8 equals 5?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "end"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -199,13 +545,38 @@
           "value": 8,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "We need to divide 40 by 8. The number being divided is 40; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 40? 8 × 5 = 40.",
+        "The quotient of 40 ÷ 8 = 5."
+      ],
+      "sample_id": "f96ab31d1e970e8ad786",
+      "replay_digest": "6bb6ac3192565c62095475a1e0bd6ed64da407c21b23bd8d6de2aa53b4306900"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 601,
       "formatter": "read_mcq",
       "question_text": "Both sides balance evenly. 9 × ? = 63. What is the missing value?",
       "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "middle"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "BalanceScale",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -227,22 +598,108 @@
           "value": 63,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "The number statement is: 9 × ___ = 63",
+        "To find the missing number, use the opposite operation (division).",
+        "63 ÷ 9 = 7.",
+        "Check: 9 × 7 = 63. ✓"
+      ],
+      "visual_type": "BalanceScale",
+      "visual_payload": {
+        "left_side": "9 × ?",
+        "right_side": "63",
+        "blank_side": "left",
+        "is_balanced": true
+      },
+      "visual_render": {
+        "visual_type": "BalanceScale",
+        "renderer_input_digest": "bce2305612591079f1826f6c57940b8e8fb52652c2a32ed7869eb073eeec4985",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "BalanceScale",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "9 × ?",
+            "63"
+          ],
+          "distinct_colours": [
+            "#94a3b8",
+            "#3b82f6",
+            "#fff",
+            "#64748b"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ba8a0f6871b7a9854452",
+      "replay_digest": "ac2bb09b5218e18304dbc76ff4420ec2c88def1b0dde013759a8091c6bcaae5a"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"___ ÷ 7 = 3\". Jose says the missing number is 21. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 21
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "blank_position": "start"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 21
+      },
+      "hints": [
+        "We need to divide 21 by 7. The number being divided is 21; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 21? 7 × 3 = 21.",
+        "The quotient of 21 ÷ 7 = 3."
+      ],
+      "sample_id": "185e227891d2ba0596e0",
+      "replay_digest": "a0977a3199c0982795353e74e8caf91ffc30613dcbe37376523f33cd871cbc24"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What number goes in the blank: 72 ÷ 8 = ___?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -264,13 +721,38 @@
           "value": 10,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "The number statement is: 72 ÷ 8 = ___",
+        "We need to find what 72 ÷ 8 equals.",
+        "Calculate: 72 ÷ 8 = 9."
+      ],
+      "sample_id": "8b1a5d02951764759f4b",
+      "replay_digest": "58194c6f8c1ad4b8b960c50b6afee4219f57c57c6a15ed0e9239a575e65e801e"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 604,
       "formatter": "cloze",
       "question_text": "8 × 5 = ___. What is the missing number?",
       "correct_answer": 40,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -296,39 +778,1456 @@
           "text": "41",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 40,
+      "hints": [
+        "The number statement is: 8 × 5 = ___",
+        "We need to find what 8 × 5 equals.",
+        "Calculate: 8 × 5 = 40."
+      ],
+      "sample_id": "c7f090be1a3331bf95f1",
+      "replay_digest": "e9d92576237755775827ae33ba243b0060bc9e43b833f0c8b5dc1ac229ea43eb"
     },
     {
+      "node_id": "mat_g3_na_q4_2",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "In 45 ÷ 9 = ___, the missing number is 50. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "equation_type": "non_standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "The number statement is: 45 ÷ 9 = ___",
+        "We need to find what 45 ÷ 9 equals.",
+        "Calculate: 45 ÷ 9 = 5."
+      ],
+      "sample_id": "a409139fc83a20a16e69",
+      "replay_digest": "489536ab7329dfa594a987bfc8dab253d09410f2122f8ea29acf943811cb112e"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What number goes in the blank: ___ × 8 = 32?",
+      "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": {
+          "equation_type": "standard"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "The number statement is: ___ × 8 = 32",
+        "Use division to undo the operation.",
+        "32 ÷ 8 = 4.",
+        "Check: 4 × 8 = 32. ✓"
+      ],
+      "sample_id": "4e1edc7d989eaf0a4bf0",
+      "replay_digest": "c29c2e27ce308d29e504ea6e9244b8b92807ea7df08418860411591e08977d73"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "Both sides balance evenly. ? × 6 = 48. What is the missing value?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "BalanceScale",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 48,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "The number statement is: ___ × 6 = 48",
+        "Use division to undo the operation.",
+        "48 ÷ 6 = 8.",
+        "Check: 8 × 6 = 48. ✓"
+      ],
+      "visual_type": "BalanceScale",
+      "visual_payload": {
+        "left_side": "? × 6",
+        "right_side": "48",
+        "blank_side": "left",
+        "is_balanced": true
+      },
+      "visual_render": {
+        "visual_type": "BalanceScale",
+        "renderer_input_digest": "29d5ff0a48cab8f9e294691ad8f798ba233e6fa40e4fbf19a132ff93d97e1ef8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "BalanceScale",
+          "element_count": 6,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "? × 6",
+            "48"
+          ],
+          "distinct_colours": [
+            "#94a3b8",
+            "#3b82f6",
+            "#fff",
+            "#64748b"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "055358d9d84300daff53",
+      "replay_digest": "9f793555bfe5082cad521e8e56054ae3c0bd53cf2bf4ed124ed247eaec688a27"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 608,
+      "formatter": "cloze",
+      "question_text": "9 × 2 = ___",
+      "correct_answer": 18,
+      "requested": {
+        "difficulty_profile": {
+          "table": "6_7_8_9"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 18,
+      "hints": [
+        "The number statement is: 9 × 2 = ___",
+        "We need to find what 9 × 2 equals.",
+        "Calculate: 9 × 2 = 18."
+      ],
+      "sample_id": "eba8bc03054f2b7fa91c",
+      "replay_digest": "1367937a476f5f0f8f9baf5650f1eaef248c0d59caa082483458b245557f57ea"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 700,
+      "formatter": "cloze",
+      "question_text": "8 × 9 = ___",
+      "correct_answer": 72,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 73,
+          "text": "73",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "text": "72",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "The number statement is: 8 × 9 = ___",
+        "We need to find what 8 × 9 equals.",
+        "Calculate: 8 × 9 = 72."
+      ],
+      "sample_id": "e2a10c6b5b82e2bf1214",
+      "replay_digest": "4b77e58a5092d31d4d190840a58845bb8f79bb63a003fdbe19225c9fd6a18c5a"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. 45 ÷ 45 = 5. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "competitive_gaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 45 by 9. The number being divided is 45; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 45? 9 × 5 = 45.",
+        "The quotient of 45 ÷ 9 = 5."
+      ],
+      "sample_id": "7fa1cf4209b86eadf47f",
+      "replay_digest": "6bb21953fe55f4eb1da91b2e726c8cae2885ed1a93125cdba5727f2b9843e1d9"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 702,
+      "formatter": "cloze",
+      "question_text": "🏀 Isko has a math challenge about basketballs. 6 × 2 = ___",
+      "correct_answer": 12,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "ppop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "The number statement is: 6 × 2 = ___",
+        "We need to find what 6 × 2 equals.",
+        "Calculate: 6 × 2 = 12."
+      ],
+      "sample_id": "c8d0bfc0a57d52437191",
+      "replay_digest": "d11468492ca419e827a7363afdfcdf6d7941fc0dfe357215211af2895ac16ffc"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "___ ÷ 9 = 7",
+      "correct_answer": 63,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 63,
+          "text": "63",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 63,
+      "hints": [
+        "We need to divide 63 by 9. The number being divided is 63; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 63? 9 × 7 = 63.",
+        "The quotient of 63 ÷ 9 = 7."
+      ],
+      "sample_id": "6dc264d1010848427d1b",
+      "replay_digest": "4d13a13f15b7cd7a125d54d32c04d6b18addb3eca9ef131b9a3bfc777c258766"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What number goes in the blank: ___ × 7 = 7?",
+      "correct_answer": 1,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 1,
+      "hints": [
+        "The number statement is: ___ × 7 = 7",
+        "Use division to undo the operation.",
+        "7 ÷ 7 = 1.",
+        "Check: 1 × 7 = 7. ✓"
+      ],
+      "sample_id": "da34b95b8b603609a47a",
+      "replay_digest": "f933fe2bbdc8bf3a9d282b810ce9e530a0ff22d4dfaac4511f489f72812c89e2"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What divided by 7 equals 2?",
+      "correct_answer": 14,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 14,
+      "hints": [
+        "We need to divide 14 by 7. The number being divided is 14; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 14? 7 × 2 = 14.",
+        "The quotient of 14 ÷ 7 = 2."
+      ],
+      "sample_id": "862eb6c668c42b305b45",
+      "replay_digest": "80b761687e90c09264bf8664a2c77a10cb6ad88e82510f612c111edeaf32fec0"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "___ ÷ 6 = 7",
+      "correct_answer": 42,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "text": "36",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 42,
+          "text": "42",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 42,
+      "hints": [
+        "We need to divide 42 by 6. The number being divided is 42; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 42? 6 × 7 = 42.",
+        "The quotient of 42 ÷ 6 = 7."
+      ],
+      "sample_id": "8a8bdcf387e3bafc71a8",
+      "replay_digest": "daef06ed79332a11efcc3c60bef505b786e60b70c3e3211bd120a585a8473091"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 1001,
+      "formatter": "cloze",
+      "question_text": "6 × 6 = ___",
+      "correct_answer": 36,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 36,
+          "text": "36",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 36,
+      "hints": [
+        "The number statement is: 6 × 6 = ___",
+        "We need to find what 6 × 6 equals.",
+        "Calculate: 6 × 6 = 36."
+      ],
+      "sample_id": "2b1aa51d4128c5d45813",
+      "replay_digest": "686a560500431765cd1be8d53339d8990e22c2793e599f56c8e78dba8956ab93"
+    },
+    {
+      "node_id": "mat_g3_na_q4_2",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"___ ÷ 7 = 6\". Manny says the missing number is 6. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 42
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 42
+      },
+      "hints": [
+        "We need to divide 42 by 7. The number being divided is 42; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 42? 7 × 6 = 42.",
+        "The quotient of 42 ÷ 7 = 6."
+      ],
+      "sample_id": "f95d14cc2d33478688de",
+      "replay_digest": "f978b31dcf75e80f4daaac72c1c8acb2bd241ab9b8e9d8f281350f9d0085656f"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "c9f822fff971a49a3c36",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is clear: a balance scale visual frames a missing-first-operand multiplication. The question asks for the value that makes both sides equal. Distractors are plausible but distinct from correct answer 2."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The balance-scale context establishes a logical framework for equality. The operation and missing position are unambiguous. Visual and text align without contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Read_mcq format allows learners to view all information at once. The stem directly names the visual context and the operation. Hints systematically guide toward the inverse operation and verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation 2 × 6 = 12 is correct. Hints accurately state the number statement, name division as the inverse, calculate 12 ÷ 6 = 2, and verify the result. No contradictions between stem, answer, and hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "a054ad37fa446ab227d8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem directly presents a missing-second-operand division with clear question phrasing. The correct answer 10 and distractors 11, 70, 16 are sufficiently separated to avoid ambiguity about correct choice."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A straightforward division problem with no misleading context. The stem names the operation explicitly and the question asks for the result directly."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The text-only MCQ format presents the equation and question clearly. Hints echo the statement, name what must be found, and show the calculation step. Language is direct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "60 ÷ 6 = 10 is arithmetically correct. Hints repeat the statement, note that the result must be found, and compute 60 ÷ 6 = 10 without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "45f64fe1952df54a847a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a cloze format with a missing first operand in division. The question position is clear. Distractors 7, 9, 54 are operand-related but distinct from correct answer 63."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The equation structure is standard. No contextual confusion or logical contradiction in the problem statement."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format with blank clearly marked. Hints identify what needs to be divided and by what, then show the relationship and final result."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "63 ÷ 9 = 7 is correct. Hints appropriately describe the equation, note the division needed, and verify 9 × 7 = 63 and 63 ÷ 9 = 7."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "c7348da74456b0a9244d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a declarative statement in true/false format with clear true/false options. No ambiguity in how learners should respond."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The statement 72 ÷ 8 = 9 is arithmetically true; 8 × 9 = 72. However, the sample marks the answer as False while the hints confirm the calculation yields 9. This internal contradiction between the expected answer and the hint sequence destroys logical coherence."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The learner reads that 72 ÷ 8 = 9 is false, but then the hints state step-by-step that 8 × 9 = 72 and the quotient of 72 ÷ 8 = 9. The hints affirm exactly what the stem asks to reject, creating deep learner confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The arithmetic statement 72 ÷ 8 = 9 is mathematically correct. The answer key marks it False when it should be True. The hints compound the error by explicitly confirming the correct value 9. This is a fundamental mathematical contradiction within the sample."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "2b7cbe3b60076fc09491",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false stem clearly presents a missing-second-operand division with a candidate value. No ambiguity in the claim or response format."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement 18 ÷ 6 = 3 is logically sound and correctly evaluates to true. No contradictions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem is a complete statement. Hints repeat the equation, clarify what must be found, and show the calculation without ambiguity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "18 ÷ 6 = 3 is correct. Hints accurately describe the statement and compute the result. Answer True aligns with mathematical truth."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "134e47dfc22fddd59e17",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect format presents Noel's proposed solution and asks whether it is correct. The claim is explicit: the missing number is 54."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement and proposed solution are logically coherent. The hints confirm the relationship 54 ÷ 6 = 9 and 6 × 9 = 54."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect frame is clear: a named student made a claim and learners judge correctness. Hints support the judgment by deriving the correct value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "54 ÷ 6 = 9 is arithmetically correct. Noel's answer of 54 is correct; the sample correctly marks has_error=False with correct_value=54."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "69a7c3f646b2d412fc05",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks to evaluate the truth of 27 ÷ 4 = 3. The divisor 4 is not in the specified set (6, 7, 8, 9). However, the hints refer exclusively to 27 ÷ 9 = 3, discussing a completely different divisor. Learners encounter a stem-hints mismatch that creates profound confusion about which operation is being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem and hints describe different operations. The stem uses divisor 4; the hints use divisor 9. This is a fatal logical contradiction. A learner following the stem solves one problem while the hints guide a different problem entirely."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "Learners reading the stem see 27 ÷ 4, but the hint sequence pivots to 27 ÷ 9. The hints do not explain or justify this switch. Clarity is severely compromised by the unannounced substitution of the divisor."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem uses divisor 4, which is outside the Grade 3 Q4 competency scope (6, 7, 8, 9). Additionally, 27 ÷ 4 ≠ 3 (the result is 6.75). The hints correctly compute 27 ÷ 9 = 3, confirming a substitution. The sample violates both competency constraint and mathematical coherence."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "7407ce2065bb4e4a9275",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what number divided by 9 equals 9. This is a clear missing-first-operand division question. Options are distinct and reasonable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is coherent. The relationship between operands and quotient is logical and unambiguous."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The text-only MCQ presents the question in direct language. Hints identify what must be found and guide the learner through the inverse relationship and verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "81 ÷ 9 = 9 is correct. Hints accurately describe the division, confirm the relationship 9 × 9 = 81, and state the quotient without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "e6b7759a987b5967964a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect format is clear: Dante made a claim that the missing number is 56. The question is whether Dante is correct. No ambiguity in the structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement and proposed solution are coherent. The hints verify the calculation and confirm Dante's answer."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named-student error_detect frame is direct. Hints step through the division and verify the result without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "56 ÷ 7 = 8 is arithmetically correct. Dante's answer of 56 is correct; the sample correctly marks has_error=False with correct_value=56."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "f96ab31d1e970e8ad786",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what number divided by 8 equals 5. This is an unambiguous missing-first-operand division. Options are plausible and distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is logically sound. The operands and result form a valid division relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ format presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "40 ÷ 8 = 5 is correct. Hints describe the division accurately, verify 8 × 5 = 40, and state the quotient without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "ba8a0f6871b7a9854452",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The balance-scale stem frames a missing-second-operand multiplication. The visual and text clearly establish which number is missing and what the equation represents."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The balance visual and equation are logically aligned. The context reinforces the equality relationship without contradiction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Read_mcq allows simultaneous view of all information. The stem names the visual and operation clearly. Hints guide through the inverse operation and verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "9 × 7 = 63 is arithmetically correct. Hints appropriately use division to find the missing factor, calculate 63 ÷ 9 = 7, and verify the result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "185e227891d2ba0596e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect stem presents Jose's proposed solution clearly. Jose claims the missing number is 21. No ambiguity in the claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement and proposed solution are logically consistent. Hints confirm the calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named-student frame is direct and familiar to Grade 3 learners. Hints systematically verify the calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "21 ÷ 7 = 3 is correct. Jose's answer of 21 is correct; the sample correctly marks has_error=False with correct_value=21."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "8b1a5d02951764759f4b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a missing-second-operand division with clear cloze format. The question asks for the result directly. No ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is straightforward. The operation and missing position are logically clear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ presents the equation and question clearly. Hints repeat the statement, clarify what must be found, and show the calculation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "72 ÷ 8 = 9 is arithmetically correct. Hints accurately state the division, note the result needed, and compute 72 ÷ 8 = 9 without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "c7f090be1a3331bf95f1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. Options are plausible but distinct from correct answer 40."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication problem is logically sound. No contextual confusion in the problem structure."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the multiplication."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "8 × 5 = 40 is arithmetically correct. Hints accurately name the statement, note the result must be found, and compute 8 × 5 = 40."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "a409139fc83a20a16e69",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true/false stem presents a candidate answer for a missing-second-operand division. The claim is explicit and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement is logically coherent. The incorrect candidate (50) and correct answer (5) are distinct, supporting the false judgment."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a complete claim. Hints repeat the equation, show what result must be found, and calculate the correct value 5."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "45 ÷ 9 = 5 is arithmetically correct. The candidate answer 50 is wrong; the sample correctly marks the statement False."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "4e1edc7d989eaf0a4bf0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what number times 8 equals 32, with a missing first operand. Options are plausible but clearly distinguished."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is logically coherent. The inverse relationship is clear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ presents the equation directly. Hints name the statement, note that division undoes multiplication, calculate 32 ÷ 8 = 4, and verify."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "4 × 8 = 32 is arithmetically correct. Hints accurately use division to find the factor, compute 32 ÷ 8 = 4, and verify 4 × 8 = 32."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "055358d9d84300daff53",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The balance-scale stem presents a missing first operand in multiplication. The visual and text align to establish which value is missing."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The balance visual reinforces the equality concept. The stem and equation are logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Read_mcq format shows all information at once. The stem references the visual and operation clearly. Hints guide through the inverse operation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "8 × 6 = 48 is arithmetically correct. Hints name the equation, use division to solve, calculate 48 ÷ 6 = 8, and verify the result."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "eba8bc03054f2b7fa91c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem presents a multiplication by 2, which is not in the competency scope (6, 7, 8, 9). This introduces an undeclared operand that violates the problem's mandate, creating ambiguity about whether Grade 3 Q4 learners should use strategies designed for multiplying by 6, 7, 8, or 9."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The operand 2 falls outside the competency constraint. While the multiplication itself is logically valid, the use of an out-of-scope multiplier contradicts the sample's responsibility to respect the MATATAG curriculum bounds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The cloze format is clear and the question is direct. However, learners expecting practice with operands 6, 7, 8, or 9 encounter 2 without explanation, potentially disrupting their mental model of the lesson scope."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "9 × 2 = 18 is arithmetically correct. Hints accurately compute the result. However, mathematical correctness does not excuse the scope violation at the competency level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "e2a10c6b5b82e2bf1214",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. The cloze blank is clear. Options are plausible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication problem is logically sound. Operands 8 and 9 are both in the specified set, supporting valid competency practice."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, note the result needed, and show the computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "8 × 9 = 72 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 8 × 9 = 72."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "7fa1cf4209b86eadf47f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem asks about the truth of 45 ÷ 45 = 5, but the hints discuss 45 ÷ 9 = 5. The divisor in the stem (45) is vastly out of scope and differs from the divisor in the hints (9). This is an extreme stem-hints mismatch that creates profound confusion about what operation learners should evaluate."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem and hints describe different operations entirely. The stem uses divisor 45; the hints use divisor 9. A learner following the stem is solving an impossible problem (what does it mean to divide a number by itself and get something other than 1?) while hints discuss a completely different division."
+        },
+        "learner_facing_clarity": {
+          "verdict": "FAIL",
+          "reasoning": "The thematic wrapper about dance shoes does not interfere with the core problem (per the guidelines), but the unannounced substitution of the divisor from 45 to 9 is a fundamental clarity failure. Learners cannot understand whether they should evaluate the stem or follow the hints."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "45 ÷ 45 = 1, not 5. The stem's statement is false, supporting answer True only if the intended operation is 45 ÷ 9 = 5. The divisor 45 is far outside the competency scope (6, 7, 8, 9). The hints reveal the generator intended 45 ÷ 9, confirming a substitution error at the output level."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "c8d0bfc0a57d52437191",
+      "checks": {
+        "ambiguity": {
+          "verdict": "FAIL",
+          "reasoning": "The stem presents 6 × 2 = ___, where the multiplier 2 is not in the competency scope. This introduces an undeclared operand without explanation, creating ambiguity about whether the sample is testing the right skill set for this competency node."
+        },
+        "contextual_logical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "The use of multiplier 2 violates the MATATAG constraint that operands be from the set 6, 7, 8, 9. While the multiplication itself is logically valid, the scope violation contradicts the competency definition."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "The thematic wrapper about basketballs and the named character are familiar elements to Grade 3 learners. However, the multiplication by 2 diverges from the expected operand set without explanation, potentially confusing learners about the lesson scope."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "6 × 2 = 12 is arithmetically correct. Hints accurately compute the result. However, this does not excuse the competency scope violation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "6dc264d1010848427d1b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents a missing first operand in division. The blank position is clear. Options include operand-related choices but are distinguishable."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division problem is logically coherent. The operands are in the correct scope and the relationship is valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly marks the missing position. Hints identify what must be divided and by what, then verify the relationship."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "63 ÷ 9 = 7 is arithmetically correct. Hints accurately describe the equation and relationship without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "da34b95b8b603609a47a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what number times 7 equals 7, with a missing first operand. Options are distinct. No ambiguity in the problem structure."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is logically sound. The inverse relationship between multiplication and division is clear."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ presents the equation and question directly. Hints name the statement, note division as the inverse, calculate 7 ÷ 7 = 1, and verify."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "1 × 7 = 7 is arithmetically correct. Hints accurately use division to find the factor, compute 7 ÷ 7 = 1, and verify 1 × 7 = 7."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "862eb6c668c42b305b45",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem asks what number divided by 7 equals 2. This is a clear missing first operand division. Options are plausible but distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement is logically coherent. The operands and result form a valid division relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The MCQ presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "14 ÷ 7 = 2 is arithmetically correct. Hints describe the division, verify 7 × 2 = 14, and state the quotient without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "8a8bdcf387e3bafc71a8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents a missing first operand in division. The blank is clearly marked. Options are operand-related but distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division problem is logically valid. The operands are in scope and the relationship holds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format is clear. Hints identify what must be divided and by what, then verify the relationship through multiplication."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "42 ÷ 6 = 7 is arithmetically correct. Hints accurately describe the equation and verify 6 × 7 = 42."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "2b1aa51d4128c5d45813",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze stem presents 6 × 6 = ___ with a missing result. The blank position is clear. Options are plausible but distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication problem is logically sound. Both operands are in the allowed scope."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the computation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "6 × 6 = 36 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 6 × 6 = 36."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "sample_id": "f95d14cc2d33478688de",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error_detect stem presents Manny's proposed solution clearly. Manny claims 6 is the missing number, which is incorrect. No ambiguity in the claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement and proposed error are logically coherent. The hints demonstrate why the claim is wrong."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The named-student error_detect frame is direct. Hints step through the correct calculation and show the correct answer 42."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "42 ÷ 7 = 6 is correct, so Manny's answer is wrong. The sample correctly marks has_error=True with correct_value=42."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "find_missing_number",
+      "clause": "Find the missing number",
+      "verdict": "PASS",
+      "reasoning": "All 26 samples require learners to identify a missing value in an equation. The missing number appears in three positions: first operand (dividend or multiplicand), second operand (divisor or multiplier), and result (product or quotient). Sample c9f822fff971a49a3c36 requires finding first operand 2; sample a054ad37fa446ab227d8 requires finding result 10; sample ba8a0f6871b7a9854452 requires finding second operand 7. Every sample directly addresses this core requirement.",
+      "sample_ids": [
+        "c9f822fff971a49a3c36",
+        "a054ad37fa446ab227d8",
+        "ba8a0f6871b7a9854452"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "requirement_id": "number_sentence",
+      "clause": "number sentence",
+      "verdict": "PASS",
+      "reasoning": "All samples present arithmetic equations in standard format: multiplication (like 8 × 5 = ___ in c7f090be1a3331bf95f1) or division (like 60 ÷ 6 = ___ in a054ad37fa446ab227d8). Stems clearly state the relationship between numbers. Error_detect samples name the equation explicitly; balance-scale samples show equation components in the visual. Every sample centers a number sentence as the primary learning object.",
+      "sample_ids": [
+        "c7f090be1a3331bf95f1",
+        "a054ad37fa446ab227d8"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "requirement_id": "multiplication",
+      "clause": "multiplication",
+      "verdict": "CONCERN",
+      "reasoning": "Multiplication is covered across samples: c9f822fff971a49a3c36 uses 2 × 6 = 12; ba8a0f6871b7a9854452 uses 9 × 7 = 63; 8 × 5 in c7f090be1a3331bf95f1; 9 × 2 in eba8bc03054f2b7fa91c; 6 × 2 in c8d0bfc0a57d52437191; 8 × 9 in e2a10c6b5b82e2bf1214; 6 × 6 in 2b1aa51d4128c5d45813; 1 × 7 in da34b95b8b603609a47a; 6 × 2 in c8d0bfc0a57d52437191. However, samples eba8bc03054f2b7fa91c and c8d0bfc0a57d52437191 use multiplier 2, which is outside the scope (6, 7, 8, 9), violating the competency constraint.",
+      "sample_ids": [
+        "c9f822fff971a49a3c36",
+        "eba8bc03054f2b7fa91c",
+        "c8d0bfc0a57d52437191"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "requirement_id": "division",
+      "clause": "division",
+      "verdict": "CONCERN",
+      "reasoning": "Division is extensively covered: a054ad37fa446ab227d8 uses 60 ÷ 6 = 10; 45f64fe1952df54a847a uses ___ ÷ 9 = 7; 2b7cbe3b60076fc09491 uses 18 ÷ 6 = 3; 8b1a5d02951764759f4b uses 72 ÷ 8 = 9. However, samples present systematic errors: sample c7348da74456b0a9244d marks 72 ÷ 8 = 9 as False when it is True; sample 69a7c3f646b2d412fc05 uses divisor 4, outside scope; sample 7fa1cf4209b86eadf47f uses divisor 45, far outside scope. These violations compromise the division requirement's integrity.",
+      "sample_ids": [
+        "a054ad37fa446ab227d8",
+        "c7348da74456b0a9244d",
+        "69a7c3f646b2d412fc05",
+        "7fa1cf4209b86eadf47f"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    },
+    {
+      "requirement_id": "6_7_8_9",
+      "clause": "6, 7, 8, and 9",
+      "verdict": "FAIL",
+      "reasoning": "The competency requires operations using only operands from the set 6, 7, 8, 9. Five samples violate this constraint: sample 69a7c3f646b2d412fc05 uses divisor 4 in the stem (hints correct to 9, but stem violates); sample eba8bc03054f2b7fa91c uses multiplier 2; sample c8d0bfc0a57d52437191 uses multiplier 2; sample 7fa1cf4209b86eadf47f uses divisor 45 in the stem (hints correct to 9, but stem violates). These are not marginal violations; they represent a systematic failure to enforce the curriculum constraint. Sample 8b1a5d02951764759f4b correctly uses 72 ÷ 8 = 9 within scope; sample ba8a0f6871b7a9854452 correctly uses 9 × 7 within scope. The node fails to consistently restrict operands to 6, 7, 8, 9.",
+      "sample_ids": [
+        "69a7c3f646b2d412fc05",
+        "eba8bc03054f2b7fa91c",
+        "c8d0bfc0a57d52437191",
+        "7fa1cf4209b86eadf47f",
+        "8b1a5d02951764759f4b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "12adef2fe3abb069c814fe70ca81dc70c72ac14eab78f6bfbcfbe105415d8b38",
+      "clause_ids": [
+        "find_missing_number",
+        "number_sentence",
+        "multiplication",
+        "division",
+        "6_7_8_9"
+      ],
+      "response_ref": ".responses/s5-phaseC-w18-haiku45-20260925.json",
+      "response_digest": "a0a62f3ff6f27cd5efd0e788754f3e194ae340da71482d91a91a87d2a15f0eb1",
+      "prompt_ref": ".responses/s5-phaseC-w18-haiku45-20260925.prompt.txt",
+      "prompt_digest": "6215f9f3658773cbc6a2179d0f1e3961c33f0ab56bd9e9a1746d0a97abebdf2a",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision."
     }
   ],
   "findings": {
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "Most samples are calibrated to Grade 3 learners, but systematic errors undermine appropriateness. Several samples use arithmetic operations with operands outside the competency scope (multiplier 2 in samples 18 and 21; divisor 4 in sample 7; divisor 45 in sample 20), introducing confusion beyond cognitive demand."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The competency specifies operations by 6, 7, 8, and 9. Five samples violate this explicit constraint. Sample 7 uses divisor 4; sample 18 uses multiplier 2; sample 20 uses divisor 45; sample 21 uses multiplier 2. These operands are not in the mandated set and represent scope violations that misalign the content from the MATATAG curriculum requirement."
+    },
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "One sample keys a true statement as false: '72 ÷ 8 = 9. True or False?' is answered False, while another sample in this same node, 'What number goes in the blank: 72 ÷ 8 = ___?', is keyed 9. The node contradicts itself on identical arithmetic, and a pupil answering correctly would be marked wrong."
+      "rationale": "The competency addresses finding missing numbers in sentences with multiplication and division by 6, 7, 8, 9. While the node attempts to cover all required components, execution failures prevent fulfillment. Five samples violate the operand constraint, and one sample contains a mathematical error that contradicts its own hints.",
+      "decomposition": {
+        "verdict": "FAIL",
+        "reasoning": "The requirement decomposition is lossless in principle: find_missing_number, number_sentence, multiplication, division, and 6_7_8_9 together specify the full competency. However, the generator fails to enforce the 6_7_8_9 constraint in five rendered samples. Sample 7 and sample 20 also exhibit stem-hints mismatches where the stem names an out-of-scope operand while hints correct it, suggesting the generator knows the rule but does not validate it at output. These failures are blockers.",
+        "requirement_ids": [
+          "find_missing_number",
+          "number_sentence",
+          "multiplication",
+          "division",
+          "6_7_8_9"
+        ]
+      },
+      "clause_ids": [
+        "find_missing_number",
+        "number_sentence",
+        "multiplication",
+        "division",
+        "6_7_8_9"
+      ]
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The unknown is placed in several positions rather than one: in the dividend, in the quotient, and in the factor slot of a multiplication, and both operations the wording allows are represented."
+      "verdict": "CONCERN",
+      "rationale": "The set of 26 samples covers multiplication and division across multiple formats (MCQ, true/false, cloze, error_detect, read_mcq). Missing numbers appear in different positions: as first operand (dividend or multiplicand), second operand (divisor or multiplier), and product/quotient. Visual representations appear in three samples. However, the presence of out-of-scope operands and mathematical errors reduces the utility of comprehensive coverage by contaminating the sample pool.",
+      "clause_ids": [
+        "find_missing_number",
+        "number_sentence",
+        "multiplication",
+        "division",
+        "6_7_8_9"
+      ]
     },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The balance framing and the plain prose version asking what divided by eight equals five both stay short, and all the facts involved are single-digit results within this grade's tables."
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Twenty-one of the 26 samples are appropriately scaled for Grade 3, Quarter 4 learners with single-digit and two-digit operands in the correct range. However, five samples introduce operands outside the competency definition, creating inconsistency in difficulty and scope. This uneven scaling raises ambiguity about which samples represent the intended grade-level expectation."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "A balance model, a symbolic blank, a prose question, a claim about a missing number to judge, and another child's answer to check all appear, so the same missing-number idea is met from several angles."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Two samples step outside the tables the competency names, one built on 2 × ? = 12 and one on '27 ÷ 4 = 3. True or False?', which is not even a whole-number division. Those items exercise something other than the six, seven, eight and nine facts this node is for."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values stay within table products, reaching eighty-one at the top, so the numbers themselves are pitched correctly for this quarter."
+      "rationale": "The sample set demonstrates format variety: six read_mcq (with BalanceScale visual), nine MCQ, five cloze, four true_false, and two error_detect formats. This range of interaction patterns supports learner engagement across multiple cognitive entry points. All operand positions (missing first operand, second operand, result) appear across formats, supporting comprehensive practice structure despite the operand violations."
     }
   },
   "overall": "FAIL"

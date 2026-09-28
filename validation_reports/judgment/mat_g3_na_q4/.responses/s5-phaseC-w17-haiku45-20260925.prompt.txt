@@ -1,0 +1,251 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q4_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_0
+PACKET DIGEST: 3c2e09fc750972f4529ef3bbc6e312aa63efd5cca3d78a0ffff69f1eb8683f0e
+COMPETENCY (Grade 3, Quarter 4, None):
+Illustrate division through equal jumps on the number line and as inverse of multiplication.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_division: Illustrate division
+  equal_jumps: equal jumps
+  number_line: number line
+  inverse_of_multiplication: inverse of multiplication
+
+SAMPLES (every one of these is real rendered output):
+  sample f30c77005315c6b54e18  seed 42  [cloze]
+      stem:    Start at 12 on a number line and take equal jumps back of 2 to reach 0: 12 ÷ 2 = ___
+      answer:  6
+      options: 7 / 10 / 2 / 6
+      hints:   ["We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.", "Ask: how many times does 2 fit into 12? 2 × 6 = 12.", "The quotient of 12 ÷ 2 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7d0ec1d018c52998711f  seed 43  [mcq]
+      stem:    Start at 24 on a number line and take equal jumps back of 6 to reach 0. How many jumps did you make? 24 ÷ 6 = ___
+      answer:  4
+      options: 18 / 6 / 5 / 4
+      hints:   ["We need to divide 24 by 6. The number being divided is 24; the number we divide by is 6.", "Ask: how many times does 6 fit into 24? 6 × 4 = 24.", "The quotient of 24 ÷ 6 = 4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f8af4a5a23a2d859def6  seed 44  [cloze]
+      stem:    Since 3 × 4 = 12, 12 ÷ 3 = ___
+      answer:  4
+      options: 5 / 9 / 3 / 4
+      hints:   ["We need to divide 12 by 3. The number being divided is 12; the number we divide by is 3.", "Ask: how many times does 3 fit into 12? 3 × 4 = 12.", "The quotient of 12 ÷ 3 = 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3bd622d10020d8eafe82  seed 45  [true_false]
+      stem:    Since 8 × 9 = 72, then 72 ÷ 8 = 8. True or False?
+      answer:  False
+      hints:   ["We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.", "Ask: how many times does 8 fit into 72? 8 × 9 = 72.", "The quotient of 72 ÷ 8 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 43e40ddf4e57c1633a7e  seed 46  [true_false]
+      stem:    Starting at 16 on a number line, taking 2 equal jumps back of 8 lands on 0. True or False?
+      answer:  True
+      hints:   ["We need to divide 16 by 8. The number being divided is 16; the number we divide by is 8.", "Ask: how many times does 8 fit into 16? 8 × 2 = 16.", "The quotient of 16 ÷ 8 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample a9511ecf61ed73c31bbe  seed 48  [error_detect]
+      stem:    Noel solved: "Since 4 × 6 = 24, then 24 ÷ 4 = ___". Noel says the missing number is 6. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 6}
+      hints:   ["We need to divide 24 by 4. The number being divided is 24; the number we divide by is 4.", "Ask: how many times does 4 fit into 24? 4 × 6 = 24.", "The quotient of 24 ÷ 4 = 6."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 94c5af5eb1c9a6904602  seed 500  [true_false]
+      stem:    Since 9 × 6 = 54, then 54 ÷ 9 = 5. True or False?
+      answer:  False
+      hints:   ["We need to divide 54 by 9. The number being divided is 54; the number we divide by is 9.", "Ask: how many times does 9 fit into 54? 9 × 6 = 54.", "The quotient of 54 ÷ 9 = 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 7e033d69104990f4cc76  seed 501  [mcq]
+      stem:    Since 7 × 5 = 35, what is 35 ÷ 7?
+      answer:  5
+      options: 28 / 5 / 7 / 6
+      hints:   ["We need to divide 35 by 7. The number being divided is 35; the number we divide by is 7.", "Ask: how many times does 7 fit into 35? 7 × 5 = 35.", "The quotient of 35 ÷ 7 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23b4a063e6573b715225  seed 502  [error_detect]
+      stem:    Dante solved: "Since 4 × 7 = 28, then 28 ÷ 4 = ___". Dante says the missing number is 7. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 7}
+      hints:   ["We need to divide 28 by 4. The number being divided is 28; the number we divide by is 4.", "Ask: how many times does 4 fit into 28? 4 × 7 = 28.", "The quotient of 28 ÷ 4 = 7."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample ca8490fd5eeade2988c0  seed 600  [mcq]
+      stem:    Since 7 × 9 = 63, what is 63 ÷ 7?
+      answer:  9
+      options: 56 / 10 / 7 / 9
+      hints:   ["We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.", "Ask: how many times does 7 fit into 63? 7 × 9 = 63.", "The quotient of 63 ÷ 7 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b96e41b36e87e7a2e5b4  seed 601  [cloze]
+      stem:    Start at 6 on a number line and take equal jumps back of 2 to reach 0: 6 ÷ 2 = ___
+      answer:  3
+      options: 3 / 4 / 2 / 5
+      hints:   ["We need to divide 6 by 2. The number being divided is 6; the number we divide by is 2.", "Ask: how many times does 2 fit into 6? 2 × 3 = 6.", "The quotient of 6 ÷ 2 = 3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bf756ebe385496b67c31  seed 602  [error_detect]
+      stem:    Jose solved: "Since 4 × 7 = 28, then 28 ÷ 4 = ___". Jose says the missing number is 7. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 7}
+      hints:   ["We need to divide 28 by 4. The number being divided is 28; the number we divide by is 4.", "Ask: how many times does 4 fit into 28? 4 × 7 = 28.", "The quotient of 28 ÷ 4 = 7."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 562babbbceb78bcab3f3  seed 603  [mcq]
+      stem:    Start at 63 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 63 ÷ 7 = ___
+      answer:  9
+      options: 7 / 9 / 56 / 10
+      hints:   ["We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.", "Ask: how many times does 7 fit into 63? 7 × 9 = 63.", "The quotient of 63 ÷ 7 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b19085f771b4de1c4e78  seed 604  [error_detect]
+      stem:    Carlo solved: "Starting at 40 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0". Carlo says the missing number is 8. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 8}
+      hints:   ["We need to divide 40 by 5. The number being divided is 40; the number we divide by is 5.", "Ask: how many times does 5 fit into 40? 5 × 8 = 40.", "The quotient of 40 ÷ 5 = 8."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 5ad26bd59a5502b4a3e8  seed 605  [true_false]
+      stem:    Starting at 72 on a number line, taking 64 equal jumps back of 8 lands on 0. True or False?
+      answer:  False
+      hints:   ["We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.", "Ask: how many times does 8 fit into 72? 8 × 9 = 72.", "The quotient of 72 ÷ 8 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample afc218962ea044c1fa7e  seed 606  [mcq]
+      stem:    Start at 56 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 56 ÷ 7 = ___
+      answer:  8
+      options: 7 / 8 / 9 / 49
+      hints:   ["We need to divide 56 by 7. The number being divided is 56; the number we divide by is 7.", "Ask: how many times does 7 fit into 56? 7 × 8 = 56.", "The quotient of 56 ÷ 7 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8dacd3b0343d2e5e5bf9  seed 700  [error_detect]
+      stem:    Carlo solved: "Starting at 45 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0". Carlo says the missing number is 9. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 9}
+      hints:   ["We need to divide 45 by 5. The number being divided is 45; the number we divide by is 5.", "Ask: how many times does 5 fit into 45? 5 × 9 = 45.", "The quotient of 45 ÷ 5 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fabc9dbce2325981af7b  seed 701  [true_false]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Since 9 × 3 = 27, then 27 ÷ 9 = 3. True or False?
+      answer:  True
+      hints:   ["We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.", "Ask: how many times does 9 fit into 27? 9 × 3 = 27.", "The quotient of 27 ÷ 9 = 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0fecd0de4cd532664174  seed 702  [error_detect]
+      stem:    🏀 Isko has a math challenge about basketballs. Manny solved: "Starting at 8 on a number line, taking equal jumps back of 4 takes ___ jumps to reach 0". Manny says the missing number is 3. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 2}
+      hints:   ["We need to divide 8 by 4. The number being divided is 8; the number we divide by is 4.", "Ask: how many times does 4 fit into 8? 4 × 2 = 8.", "The quotient of 8 ÷ 4 = 2."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 2a6a065bac51315fa944  seed 800  [cloze]
+      stem:    Since 2 × 9 = 18, 18 ÷ 2 = ___
+      answer:  9
+      options: 16 / 2 / 10 / 9
+      hints:   ["We need to divide 18 by 2. The number being divided is 18; the number we divide by is 2.", "Ask: how many times does 2 fit into 18? 2 × 9 = 18.", "The quotient of 18 ÷ 2 = 9."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fb217f47e3b5637b7fda  seed 900  [mcq]
+      stem:    Start at 21 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 21 ÷ 7 = ___
+      answer:  3
+      options: 3 / 7 / 4 / 14
+      hints:   ["We need to divide 21 by 7. The number being divided is 21; the number we divide by is 7.", "Ask: how many times does 7 fit into 21? 7 × 3 = 21.", "The quotient of 21 ÷ 7 = 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4e179f8e1657b71ba278  seed 901  [mcq]
+      stem:    Since 6 × 3 = 18, what is 18 ÷ 6?
+      answer:  3
+      options: 3 / 6 / 12 / 4
+      hints:   ["We need to divide 18 by 6. The number being divided is 18; the number we divide by is 6.", "Ask: how many times does 6 fit into 18? 6 × 3 = 18.", "The quotient of 18 ÷ 6 = 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 238eed350b318385cf48  seed 1000  [cloze]
+      stem:    Since 3 × 8 = 24, 24 ÷ 3 = ___
+      answer:  8
+      options: 3 / 9 / 21 / 8
+      hints:   ["We need to divide 24 by 3. The number being divided is 24; the number we divide by is 3.", "Ask: how many times does 3 fit into 24? 3 × 8 = 24.", "The quotient of 24 ÷ 3 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 31091cc04b4c792c1870  seed 1001  [error_detect]
+      stem:    Liza solved: "Starting at 15 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0". Liza says the missing number is 2. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 3}
+      hints:   ["We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.", "Ask: how many times does 5 fit into 15? 5 × 3 = 15.", "The quotient of 15 ÷ 5 = 3."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 8beb493bbb6228166465  seed 1002  [error_detect]
+      stem:    Manny solved: "Since 5 × 4 = 20, then 20 ÷ 5 = ___". Manny says the missing number is 15. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 4}
+      hints:   ["We need to divide 20 by 5. The number being divided is 20; the number we divide by is 5.", "Ask: how many times does 5 fit into 20? 5 × 4 = 20.", "The quotient of 20 ÷ 5 = 4."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

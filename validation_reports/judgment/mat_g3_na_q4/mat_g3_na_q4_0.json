@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q4_0",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Illustrate division through equal jumps on the number line and as inverse of multiplication.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "illustrate_division",
+      "clause": "Illustrate division"
+    },
+    {
+      "kind": "representation",
+      "id": "equal_jumps",
+      "clause": "equal jumps"
+    },
+    {
+      "kind": "representation",
+      "id": "number_line",
+      "clause": "number line"
+    },
+    {
+      "kind": "property",
+      "id": "inverse_of_multiplication",
+      "clause": "inverse of multiplication"
+    }
+  ],
+  "packet_digest": "3c2e09fc750972f4529ef3bbc6e312aa63efd5cca3d78a0ffff69f1eb8683f0e",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,14 +49,66 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "f30c77005315c6b54e18",
+    "7d0ec1d018c52998711f",
+    "f8af4a5a23a2d859def6",
+    "3bd622d10020d8eafe82",
+    "43e40ddf4e57c1633a7e",
+    "a9511ecf61ed73c31bbe",
+    "94c5af5eb1c9a6904602",
+    "7e033d69104990f4cc76",
+    "23b4a063e6573b715225",
+    "ca8490fd5eeade2988c0",
+    "b96e41b36e87e7a2e5b4",
+    "bf756ebe385496b67c31",
+    "562babbbceb78bcab3f3",
+    "b19085f771b4de1c4e78",
+    "5ad26bd59a5502b4a3e8",
+    "afc218962ea044c1fa7e",
+    "8dacd3b0343d2e5e5bf9",
+    "fabc9dbce2325981af7b",
+    "0fecd0de4cd532664174",
+    "2a6a065bac51315fa944",
+    "fb217f47e3b5637b7fda",
+    "4e179f8e1657b71ba278",
+    "238eed350b318385cf48",
+    "31091cc04b4c792c1870",
+    "8beb493bbb6228166465"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Start at 12 on a number line and take equal jumps back of 2 to reach 0: 12 ÷ 2 = ___",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -51,13 +134,36 @@
           "text": "6",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+        "The quotient of 12 ÷ 2 = 6."
+      ],
+      "sample_id": "f30c77005315c6b54e18",
+      "replay_digest": "3da7cfebeb0a9644e56c2dd803ed87a22ef0ea9021347aeb4dc9a413bdb59d75"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Start at 24 on a number line and take equal jumps back of 6 to reach 0. How many jumps did you make? 24 ÷ 6 = ___",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -79,13 +185,36 @@
           "value": 4,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to divide 24 by 6. The number being divided is 24; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 24? 6 × 4 = 24.",
+        "The quotient of 24 ÷ 6 = 4."
+      ],
+      "sample_id": "7d0ec1d018c52998711f",
+      "replay_digest": "907fa95491c233ab16cca70dc2b3678f65420fbb7ef94936ce3da9b1f78776a6"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Since 3 × 4 = 12, 12 ÷ 3 = ___",
       "correct_answer": 4,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -111,40 +240,162 @@
           "text": "4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 4,
+      "hints": [
+        "We need to divide 12 by 3. The number being divided is 12; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 12? 3 × 4 = 12.",
+        "The quotient of 12 ÷ 3 = 4."
+      ],
+      "sample_id": "f8af4a5a23a2d859def6",
+      "replay_digest": "fcd6fee9b6a5e0beaa8863fe2712af4a3c5dba4a4542d625d5163602c724d689"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "Since 8 × 9 = 72, then 72 ÷ 8 = 8. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 72? 8 × 9 = 72.",
+        "The quotient of 72 ÷ 8 = 9."
+      ],
+      "sample_id": "3bd622d10020d8eafe82",
+      "replay_digest": "05428f08566b317e331fb9e70616a3f4b3fc90e8a45c84156ac3116484bc5052"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "Starting at 16 on a number line, taking 2 equal jumps back of 8 lands on 0. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 16 by 8. The number being divided is 16; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 16? 8 × 2 = 16.",
+        "The quotient of 16 ÷ 8 = 2."
+      ],
+      "sample_id": "43e40ddf4e57c1633a7e",
+      "replay_digest": "1965d49f04ef1c0562013c7c43f63eefac7f4f08b047ecca4bf6cdca0459f936"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"Since 4 × 6 = 24, then 24 ÷ 4 = ___\". Noel says the missing number is 6. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 6
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 6
+      },
+      "hints": [
+        "We need to divide 24 by 4. The number being divided is 24; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 24? 4 × 6 = 24.",
+        "The quotient of 24 ÷ 4 = 6."
+      ],
+      "sample_id": "a9511ecf61ed73c31bbe",
+      "replay_digest": "918d4aff44d913d3f44a2e94ebe45c8c51f48bde5254da84fb2ed98adf55ef32"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "Since 9 × 6 = 54, then 54 ÷ 9 = 5. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 54 by 9. The number being divided is 54; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 54? 9 × 6 = 54.",
+        "The quotient of 54 ÷ 9 = 6."
+      ],
+      "sample_id": "94c5af5eb1c9a6904602",
+      "replay_digest": "0ff16195871d1cd22106a1736b4924aa5a6c1e4fb49ec6e50db0718dd0ce7212"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Since 7 × 5 = 35, what is 35 ÷ 7?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -166,22 +417,75 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 35 by 7. The number being divided is 35; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 35? 7 × 5 = 35.",
+        "The quotient of 35 ÷ 7 = 5."
+      ],
+      "sample_id": "7e033d69104990f4cc76",
+      "replay_digest": "117d9a342f4608fd7362761664fcf5bec19333a2029f9f97691ac43d0a386ac5"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"Since 4 × 7 = 28, then 28 ÷ 4 = ___\". Dante says the missing number is 7. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 7
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "hints": [
+        "We need to divide 28 by 4. The number being divided is 28; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 28? 4 × 7 = 28.",
+        "The quotient of 28 ÷ 4 = 7."
+      ],
+      "sample_id": "23b4a063e6573b715225",
+      "replay_digest": "ee0d2454a0bfb4ea3da06b2f4e776979bb16258e534437392b945f1df6397e35"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Since 7 × 9 = 63, what is 63 ÷ 7?",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -203,13 +507,38 @@
           "value": 9,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 63? 7 × 9 = 63.",
+        "The quotient of 63 ÷ 7 = 9."
+      ],
+      "sample_id": "ca8490fd5eeade2988c0",
+      "replay_digest": "d80aa1c4b01d9d8b1be3f605dda0b9f0c8677c20f88e46f1c3aadd3ef5fb5abc"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Start at 6 on a number line and take equal jumps back of 2 to reach 0: 6 ÷ 2 = ___",
       "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -235,22 +564,75 @@
           "text": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We need to divide 6 by 2. The number being divided is 6; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 6? 2 × 3 = 6.",
+        "The quotient of 6 ÷ 2 = 3."
+      ],
+      "sample_id": "b96e41b36e87e7a2e5b4",
+      "replay_digest": "96132a154664d5b2138a9cf70401dbdc1ec50a14d1f5d951023785bd1a0ab8f0"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"Since 4 × 7 = 28, then 28 ÷ 4 = ___\". Jose says the missing number is 7. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 7
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "hints": [
+        "We need to divide 28 by 4. The number being divided is 28; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 28? 4 × 7 = 28.",
+        "The quotient of 28 ÷ 4 = 7."
+      ],
+      "sample_id": "bf756ebe385496b67c31",
+      "replay_digest": "c307dee7523d41990bb523bde0a424b5cc3ebdf30dabb30e99b9efcaa88f848f"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Start at 63 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 63 ÷ 7 = ___",
       "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "table": "2_3_4_5_10"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -272,48 +654,1276 @@
           "value": 10,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 63? 7 × 9 = 63.",
+        "The quotient of 63 ÷ 7 = 9."
+      ],
+      "sample_id": "562babbbceb78bcab3f3",
+      "replay_digest": "2122471a7120e51ec62d19af0bb63839891b02daf991ce01cbcc33a27b35ac87"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"Starting at 40 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0\". Carlo says the missing number is 8. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "table": "6_7_8_9"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 8
+      },
+      "hints": [
+        "We need to divide 40 by 5. The number being divided is 40; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 40? 5 × 8 = 40.",
+        "The quotient of 40 ÷ 5 = 8."
+      ],
+      "sample_id": "b19085f771b4de1c4e78",
+      "replay_digest": "1ae65f94d0b02db8f4b027fc7e15accc701669c36ef8cc5c14773fbb5333f2b8"
     },
     {
+      "node_id": "mat_g3_na_q4_0",
       "seed": 605,
       "formatter": "true_false",
       "question_text": "Starting at 72 on a number line, taking 64 equal jumps back of 8 lands on 0. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "table": "one_digit_2_9"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 72? 8 × 9 = 72.",
+        "The quotient of 72 ÷ 8 = 9."
+      ],
+      "sample_id": "5ad26bd59a5502b4a3e8",
+      "replay_digest": "999e12fa3480c2947bb31df836da5b5bd6071159eeead32b6d5297d368eda5ad"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Start at 56 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 56 ÷ 7 = ___",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "table": "one_digit_mixed_or_power_of_ten"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 49,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We need to divide 56 by 7. The number being divided is 56; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 56? 7 × 8 = 56.",
+        "The quotient of 56 ÷ 7 = 8."
+      ],
+      "sample_id": "afc218962ea044c1fa7e",
+      "replay_digest": "b627554434159913a46d24ccc5e230754e52e786ab177b240e7765ea23c17ad5"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"Starting at 45 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0\". Carlo says the missing number is 9. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 9
+      },
+      "hints": [
+        "We need to divide 45 by 5. The number being divided is 45; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 45? 5 × 9 = 45.",
+        "The quotient of 45 ÷ 5 = 9."
+      ],
+      "sample_id": "8dacd3b0343d2e5e5bf9",
+      "replay_digest": "a3ce9bb402522dd4e61aac8c3f178102dede4b156e44a9d7885c89fd117b7251"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Since 9 × 3 = 27, then 27 ÷ 9 = 3. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_manga",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 27? 9 × 3 = 27.",
+        "The quotient of 27 ÷ 9 = 3."
+      ],
+      "sample_id": "fabc9dbce2325981af7b",
+      "replay_digest": "6ff54c85a1523f628b4e955f4e032821af5d98e723cdb19afdfa9d193c10eea5"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Manny solved: \"Starting at 8 on a number line, taking equal jumps back of 4 takes ___ jumps to reach 0\". Manny says the missing number is 3. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "graphic_design",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 2
+      },
+      "hints": [
+        "We need to divide 8 by 4. The number being divided is 8; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 8? 4 × 2 = 8.",
+        "The quotient of 8 ÷ 4 = 2."
+      ],
+      "sample_id": "0fecd0de4cd532664174",
+      "replay_digest": "d8610126e446a4bd43e8257c7825ad72a184e6fe8b4fdd06261ffd003c7e7902"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Since 2 × 9 = 18, 18 ÷ 2 = ___",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 18 by 2. The number being divided is 18; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 18? 2 × 9 = 18.",
+        "The quotient of 18 ÷ 2 = 9."
+      ],
+      "sample_id": "2a6a065bac51315fa944",
+      "replay_digest": "f93ff115ecafdccecf9ffb4792a7e8fcb94087614c4aafe0cfcfb0766fbe0373"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Start at 21 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 21 ÷ 7 = ___",
+      "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We need to divide 21 by 7. The number being divided is 21; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 21? 7 × 3 = 21.",
+        "The quotient of 21 ÷ 7 = 3."
+      ],
+      "sample_id": "fb217f47e3b5637b7fda",
+      "replay_digest": "0f0d734ab94b5435fbc69b0eef7e3eacf6af334547f7ff1a7c722a126711c854"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Since 6 × 3 = 18, what is 18 ÷ 6?",
+      "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
+      "hints": [
+        "We need to divide 18 by 6. The number being divided is 18; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 18? 6 × 3 = 18.",
+        "The quotient of 18 ÷ 6 = 3."
+      ],
+      "sample_id": "4e179f8e1657b71ba278",
+      "replay_digest": "5a9eb6b38496b774442155213ea50e662021dbfafa1b86f64807c530aef32a73"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Since 3 × 8 = 24, 24 ÷ 3 = ___",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We need to divide 24 by 3. The number being divided is 24; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 24? 3 × 8 = 24.",
+        "The quotient of 24 ÷ 3 = 8."
+      ],
+      "sample_id": "238eed350b318385cf48",
+      "replay_digest": "5edddfcd5641190f5463971f69b5de4403e1978d7a2f8d1ff67a0cc679d79769"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"Starting at 15 on a number line, taking equal jumps back of 5 takes ___ jumps to reach 0\". Liza says the missing number is 2. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "hints": [
+        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
+        "The quotient of 15 ÷ 5 = 3."
+      ],
+      "sample_id": "31091cc04b4c792c1870",
+      "replay_digest": "06ffc8e4bf4967dab9ac861fc9d02981e9f6247249deab94ca00adb75f2365ca"
+    },
+    {
+      "node_id": "mat_g3_na_q4_0",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"Since 5 × 4 = 20, then 20 ÷ 5 = ___\". Manny says the missing number is 15. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 4
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 4
+      },
+      "hints": [
+        "We need to divide 20 by 5. The number being divided is 20; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 20? 5 × 4 = 20.",
+        "The quotient of 20 ÷ 5 = 4."
+      ],
+      "sample_id": "8beb493bbb6228166465",
+      "replay_digest": "aa23d805fd1548fb169199829c9fd433cf66a8c823ec3587fe4398116e32c29e"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "f30c77005315c6b54e18",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem explicitly states start point 12, jump value 2, direction backward toward 0, and asks for the quotient. Division setup is unambiguous and directly connects number line representation to the division equation. Correct answer 6 is clearly supported by the scenario."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Scenario logically describes equal backward jumps of 2 from 12, which must land exactly on 0 when jumped 6 times, making the mathematics internally consistent. Hints correctly identify quotient and validate the multiplication inverse relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Grade 3 students have encountered number line models in earlier quarters. The language of starting at a point and making equal backward jumps is concrete and supports visual mental modeling. The blank in the equation clearly indicates the missing quotient value."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically accurate: starting at 12, taking 6 backward jumps of 2 reaches exactly 0. Division fact 12 ÷ 2 = 6 is correct. Multiplication inverse relationship is verified in the hints without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "7d0ec1d018c52998711f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question clearly asks how many jumps are needed starting from 24, jumping backward by 6s to reach 0. Both the stem and the equation 24 ÷ 6 = ___ unambiguously specify what is being asked. Answer 4 correctly identifies the jump count."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 4 backward jumps of 6 from position 24 reaches position 0: 24 minus 4 times 6 equals 0. The hints verify this through multiplication: 6 × 4 = 24. Logical flow from scenario to computation to answer is intact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The phrasing directly asks for a countable quantity (number of jumps), which is concrete for Grade 3 learners. The progression from scenario description to the division equation to the blank supports understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division fact 24 ÷ 6 = 4 is correct. Inverse relationship verified: 6 × 4 = 24. Scenario accurately reflects the mathematical operation without error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "f8af4a5a23a2d859def6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem states a known multiplication fact and directly asks for the quotient with a blank. The connection between the multiplication and the division is clear, with answer 4 unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The inverse multiplication relationship is logically sound: if 3 × 4 = 12, then 12 ÷ 3 = 4. Hints reinforce this logical chain. The problem itself is mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is straightforward for Grade 3: given a multiplication fact, find the related division quotient. This format builds on prerequisite multiplication knowledge students should have acquired earlier in the year."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication fact 3 × 4 = 12 is correct. Division quotient 12 ÷ 3 = 4 is accurate. Hints correctly apply the inverse relationship without mathematical error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "3bd622d10020d8eafe82",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True/false statement clearly presents a division claim that can be evaluated: 72 ÷ 8 = 8. Students must verify if 8 × 8 equals 72 (it does not), making the answer False unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement relies on the multiplication inverse relationship. Testing whether 72 ÷ 8 = 8 requires checking if 8 × 8 = 72, which is false (8 × 9 = 72). Logic is sound and answer is correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format requires evaluation of a claimed division fact rather than computation, which develops critical reasoning skills. The structure is familiar for Grade 3: accept or reject a mathematical statement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division claim 72 ÷ 8 = 8 is mathematically false; the correct quotient is 9 since 8 × 9 = 72. Answer False is correct. Hints verify the correct inverse: 8 × 9 = 72."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "43e40ddf4e57c1633a7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement specifies starting position 16, jump count 2, and jump size 8, asking whether this lands on 0. The scenario components are precisely defined, and the true/false question has only two possible evaluations."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 2 backward jumps of 8 from 16 reaches exactly 0: 16 minus 2 times 8 equals 0. Hints verify through inverse: 8 × 2 = 16. The scenario and its mathematical result are logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line scenario is concrete and visual. Specifying both the number of jumps and the jump size makes the scenario deterministic, allowing students to reason about the landing point."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 16, taking 2 jumps backward of 8 each reaches 0. Multiplication inverse 8 × 2 = 16 is verified in hints. All mathematics is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "a9511ecf61ed73c31bbe",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The sample presents a student solution claiming 24 ÷ 4 = 6 and asks whether this is correct. The evaluation is unambiguous: checking 4 × 6 = 24 confirms correctness without doubt."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The presented multiplication fact 4 × 6 = 24 is accurate, and the corresponding division quotient 24 ÷ 4 = 6 is therefore correct. The error detection task has valid reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is clear: students evaluate another child's work, which is a familiar pedagogical approach in Grade 3. The task scaffold includes both the multiplication foundation and the division statement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication fact 4 × 6 = 24 is correct. Division quotient 24 ÷ 4 = 6 correctly applies the inverse. Answer confirms no error exists, which is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "94c5af5eb1c9a6904602",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement claims 54 ÷ 9 = 5 and requests true/false evaluation. Checking the inverse (9 × 5 = 45, not 54) yields an unambiguous False answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The statement's claim is mathematically false. The correct division is 54 ÷ 9 = 6 (since 9 × 6 = 54). Hints correctly identify the error and the right quotient."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Testing whether a stated quotient is correct is a direct application of division knowledge. Students with multiplication fluency can verify the answer efficiently."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The claim 54 ÷ 9 = 5 is false. The correct quotient is 6 (verified by 9 × 6 = 54). Answer False is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "7e033d69104990f4cc76",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question directly asks for the quotient 35 ÷ 7 given the multiplication fact 7 × 5 = 35. The blank and multiple choice options make the question unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 7 × 5 = 35 is correct, and the inverse division 35 ÷ 7 = 5 is therefore correct. Options include plausible but incorrect values that test understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is direct: given a multiplication fact, apply division. Multiple choice provides response options appropriate for Grade 3 assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication fact 7 × 5 = 35 is correct. Division 35 ÷ 7 = 5 is accurate. Answer 5 is correct among the options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "23b4a063e6573b715225",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Student solution states 28 ÷ 4 = 7 following from 4 × 7 = 28. The evaluation is unambiguous: verifying the multiplication confirms Dante's answer is correct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 4 × 7 = 28 is accurate. The division quotient 28 ÷ 4 = 7 correctly applies the inverse relationship. No error exists."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded error detection format provides both the multiplication fact and the division claim, supporting Grade 3 students in reasoning through the problem."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 4 × 7 = 28 is correct. Division 28 ÷ 4 = 7 is the correct quotient. Error status is False (no error), which is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "ca8490fd5eeade2988c0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks for quotient 63 ÷ 7 given the multiplication fact 7 × 9 = 63. The phrasing is direct and options are distinct."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication fact 7 × 9 = 63 is correct, making the inverse division 63 ÷ 7 = 9 logically sound. Answer 9 is supported by the given multiplication relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The structure follows a clear pattern: multiplication fact provided, then division quotient requested. This format supports application of prerequisite multiplication knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 7 × 9 = 63 is correct. Division 63 ÷ 7 = 9 is the accurate quotient. Answer is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "b96e41b36e87e7a2e5b4",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem clearly specifies starting point 6, backward jump size 2, landing point 0, and asks for the quotient. The division expression 6 ÷ 2 = ___ is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 6 and taking 3 backward jumps of 2 reaches exactly 0. Multiplication inverse 2 × 3 = 6 confirms the logic. Scenario and mathematics align."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line scenario is concrete and accessible to Grade 3 students. The jump model is familiar from earlier instruction in counting and skip-counting."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three backward jumps of 2 from 6 reaches 0. Division 6 ÷ 2 = 3 is correct. Inverse 2 × 3 = 6 is verified in hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "bf756ebe385496b67c31",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem states Jose's solution 28 ÷ 4 = 7 derived from 4 × 7 = 28, with a clear yes/no evaluation required. The claim is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 4 × 7 = 28 is correct, making Jose's division quotient 28 ÷ 4 = 7 logically valid. The inverse relationship is correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection scaffolding provides both the multiplication foundation and the division claim, making reasoning transparent for Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 4 × 7 = 28 is correct. Division 28 ÷ 4 = 7 is accurate. No error exists, and the answer False (for has_error) is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "562babbbceb78bcab3f3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks how many equal jumps of 7 from 63 are needed to reach 0. This is clearly specified, and the division expression 63 ÷ 7 = ___ reflects it directly."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 9 backward jumps of 7 from position 63 reaches 0. Inverse multiplication 7 × 9 = 63 confirms the calculation. Scenario and result are logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Students are asked to count and describe equal jumps, reinforcing the equal groups model for division. The multiple choice format supports responding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division 63 ÷ 7 = 9 is correct. Taking 9 jumps of 7 from 63 lands exactly on 0. Inverse 7 × 9 = 63 is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "b19085f771b4de1c4e78",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem presents Carlo's scenario involving number line jumps and asks whether his answer of 8 jumps is correct. The evaluation is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Starting at 40 and taking 8 equal jumps backward of 5 reaches 0: 40 minus 8 times 5 equals 0. Inverse multiplication 5 × 8 = 40 confirms this. Logic is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format scaffolds the scenario with the multiplication foundation, supporting Grade 3 students in working through the jump count."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "To go from 40 to 0 in jumps of 5 requires 8 jumps. Multiplication 5 × 8 = 40 confirms this. Answer confirms no error, which is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "5ad26bd59a5502b4a3e8",
+      "checks": {
+        "ambiguity": {
+          "verdict": "CONCERN",
+          "reasoning": "The statement specifies 64 equal jumps of 8 backward from 72, which creates confusion because the correct number of jumps needed is 9, not 64. The large discrepancy between the proposed 64 and the actual 9 makes this unnecessarily complex for evaluating a true/false claim."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically, 64 jumps of 8 from 72 would not land on 0 (would go negative), so False is correct. The hints clarify the correct jump count is 9."
+        },
+        "learner_facing_clarity": {
+          "verdict": "CONCERN",
+          "reasoning": "Introducing a large incorrect number (64) alongside a small correct one (9) may confuse Grade 3 learners evaluating the scenario. The cognitive load of processing two disparate jump counts exceeds typical Grade 3 reasoning demands for division fact assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Mathematically accurate: 64 jumps of 8 from 72 does not land on 0, so the statement is false. Correct jump count is 9 per hints, verified by 8 × 9 = 72."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "afc218962ea044c1fa7e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question asks how many equal backward jumps of 7 from position 56 are needed to reach 0. The division 56 ÷ 7 = ___ directly represents this request."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 8 backward jumps of 7 from 56 reaches 0. Multiplication inverse 7 × 8 = 56 verifies the result. Scenario and calculation are logically aligned."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The explicit number line context with jump count as the unknown quantity supports concrete thinking in Grade 3. Multiple choice provides accessible response options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division 56 ÷ 7 = 8 is correct. Eight jumps of 7 from 56 reach 0. Inverse 7 × 8 = 56 is verified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "8dacd3b0343d2e5e5bf9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Carlo's error detection problem presents a number line scenario with starting point 45, jump size 5, and proposed answer 9 jumps. The yes/no evaluation is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 9 backward jumps of 5 from 45 reaches 0: 45 minus 9 times 5 equals 0. Multiplication inverse 5 × 9 = 45 confirms this. Carlo's answer is logically correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded format provides both the number line description and the proposed answer, allowing students to verify the claim through familiar inverse operations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "To travel from 45 to 0 in jumps of 5 requires exactly 9 jumps. Inverse multiplication 5 × 9 = 45 is correct. Answer confirms no error, which is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "fabc9dbce2325981af7b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Statement presents a multiplication fact and corresponding division claim requesting true/false evaluation. The claim that since 9 × 3 = 27, then 27 ÷ 9 = 3 is clear and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 9 × 3 = 27 is correct, making the division quotient 27 ÷ 9 = 3 logically valid. The inverse relationship holds."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic element (dance shoes and Sir Rez) is present but does not interfere with the mathematical content. The structure is direct: verify a division claim from a known multiplication fact."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 9 × 3 = 27 is correct. Division 27 ÷ 9 = 3 is accurate. The statement is true, and the answer True is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "0fecd0de4cd532664174",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's number line scenario specifies starting at 8, jumping backward by 4, and reaching 0 in some number of jumps. His claim of 3 jumps is evaluated as correct or incorrect. The evaluation is clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's answer of 3 jumps is incorrect; the correct answer is 2 jumps (since 4 × 2 = 8). The hints correctly identify the error and provide the right calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The thematic basketball context does not interfere with understanding the problem. The error detection structure provides a concrete scenario and incorrect proposed answer for verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From 8, taking 2 jumps of 4 reaches 0, not 3 jumps. Multiplication 4 × 2 = 8 confirms 2 is correct. Manny's answer of 3 is wrong, and the answer shows error exists (True), which is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "2a6a065bac51315fa944",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a known multiplication fact and directly asks for the corresponding division quotient with a blank. The division 18 ÷ 2 = ___ is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 2 × 9 = 18 is correct, making the inverse division 18 ÷ 2 = 9 logically sound. The relationship is correctly applied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The format is straightforward: given a known multiplication fact, find the division quotient. This applies prerequisite multiplication knowledge and supports skill transfer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 2 × 9 = 18 is correct. Division 18 ÷ 2 = 9 is accurate. All mathematical relationships are valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "fb217f47e3b5637b7fda",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question specifies a number line starting at 21 with equal backward jumps of 7 to reach 0, asking how many jumps. Division 21 ÷ 7 = ___ directly represents this request."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Taking 3 backward jumps of 7 from 21 reaches 0. Inverse multiplication 7 × 3 = 21 confirms this. Scenario logic is intact."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The number line scenario with jump count as the unknown is concrete and aligned with Grade 3 skip-counting and division understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division 21 ÷ 7 = 3 is correct. Three jumps of 7 from 21 reach 0. Inverse 7 × 3 = 21 is verified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "4e179f8e1657b71ba278",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Given multiplication fact 6 × 3 = 18, the question asks for the quotient 18 ÷ 6 in multiple choice format. The response options are distinct and unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 6 × 3 = 18 is correct, making the inverse division 18 ÷ 6 = 3 logically valid. Answer 3 follows from the given relationship."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The prompt follows a clear pattern: multiplication fact provided, division quotient requested. Format and options are appropriate for Grade 3."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 6 × 3 = 18 is correct. Division 18 ÷ 6 = 3 is accurate. Answer 3 is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "238eed350b318385cf48",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents a known multiplication fact and asks for the corresponding quotient with a blank. The division expression 24 ÷ 3 = ___ directly represents what is requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 3 × 8 = 24 is correct, making the inverse division 24 ÷ 3 = 8 logically sound. The mathematical relationships are consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The structure is clear and familiar: given a multiplication fact, apply the inverse to find the division quotient. This supports building connections between operations."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Multiplication 3 × 8 = 24 is correct. Division 24 ÷ 3 = 8 is accurate. All mathematics is valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "31091cc04b4c792c1870",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Liza's error detection problem describes a number line scenario from 15 with backward jumps of 5 and proposes an answer of 2 jumps. The evaluation is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Liza's answer of 2 jumps is incorrect; the correct answer is 3 jumps (since 5 × 3 = 15). Hints correctly identify the error and provide the correct calculation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The scaffolded error detection format provides a clear scenario and incorrect proposed answer, supporting Grade 3 learners in identifying and correcting mistakes."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "From 15, taking 3 jumps of 5 reaches 0, not 2 jumps. Multiplication 5 × 3 = 15 confirms 3 is correct. Liza's answer of 2 is wrong, and the answer indicates error exists (True), which is correct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "sample_id": "8beb493bbb6228166465",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's solution presents a multiplication fact and proposes a quotient of 15 for 20 ÷ 5. The evaluation is clear: checking if 5 × 15 = 20 determines correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Manny's answer of 15 is incorrect; the correct quotient is 4 (since 5 × 4 = 20). Hints correctly identify the error and provide the accurate result."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format scaffolds the task by providing both the multiplication fact and the incorrect proposed quotient, helping students reason through verification."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The multiplication fact 5 × 4 = 20 is correct; therefore 20 ÷ 5 = 4, not 15. Manny's answer is wrong, and the response correctly identifies an error (True), which is accurate."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "illustrate_division",
+      "clause": "Illustrate division",
+      "verdict": "PASS",
+      "reasoning": "Every sample either depicts division through concrete number line scenarios with backward jumps or presents division as a quotient derived from multiplication. Samples range from direct computation to error detection tasks. The variety of formats (cloze, mcq, true_false, error_detect) all represent division in different contexts appropriate for Grade 3.",
+      "sample_ids": [
+        "f30c77005315c6b54e18",
+        "7d0ec1d018c52998711f",
+        "f8af4a5a23a2d859def6",
+        "3bd622d10020d8eafe82",
+        "43e40ddf4e57c1633a7e",
+        "a9511ecf61ed73c31bbe",
+        "94c5af5eb1c9a6904602",
+        "7e033d69104990f4cc76",
+        "23b4a063e6573b715225",
+        "ca8490fd5eeade2988c0",
+        "b96e41b36e87e7a2e5b4",
+        "bf756ebe385496b67c31",
+        "562babbbceb78bcab3f3",
+        "b19085f771b4de1c4e78",
+        "5ad26bd59a5502b4a3e8",
+        "afc218962ea044c1fa7e",
+        "8dacd3b0343d2e5e5bf9",
+        "fabc9dbce2325981af7b",
+        "0fecd0de4cd532664174",
+        "2a6a065bac51315fa944",
+        "fb217f47e3b5637b7fda",
+        "4e179f8e1657b71ba278",
+        "238eed350b318385cf48",
+        "31091cc04b4c792c1870",
+        "8beb493bbb6228166465"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "requirement_id": "equal_jumps",
+      "clause": "equal jumps",
+      "verdict": "PASS",
+      "reasoning": "Samples explicitly referencing equal backward jumps on a number line appear throughout the set. Jump language is consistent and clear in each occurrence. Examples include starting at a position and taking a specified count of equal-size jumps toward 0, with answers indicating the final position or number of jumps required.",
+      "sample_ids": [
+        "f30c77005315c6b54e18",
+        "7d0ec1d018c52998711f",
+        "43e40ddf4e57c1633a7e",
+        "b96e41b36e87e7a2e5b4",
+        "562babbbceb78bcab3f3",
+        "b19085f771b4de1c4e78",
+        "5ad26bd59a5502b4a3e8",
+        "afc218962ea044c1fa7e",
+        "8dacd3b0343d2e5e5bf9",
+        "0fecd0de4cd532664174",
+        "fb217f47e3b5637b7fda",
+        "31091cc04b4c792c1870"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "requirement_id": "number_line",
+      "clause": "number line",
+      "verdict": "PASS",
+      "reasoning": "Samples using the term number line or describing movement from a starting position toward 0 are distributed across the sample set. The number line concept is referenced both as an explicit model and as an implicit organizing principle (starting at X, moving toward 0). All such items correctly represent division as movement or position change.",
+      "sample_ids": [
+        "f30c77005315c6b54e18",
+        "7d0ec1d018c52998711f",
+        "43e40ddf4e57c1633a7e",
+        "b96e41b36e87e7a2e5b4",
+        "562babbbceb78bcab3f3",
+        "b19085f771b4de1c4e78",
+        "5ad26bd59a5502b4a3e8",
+        "afc218962ea044c1fa7e",
+        "8dacd3b0343d2e5e5bf9",
+        "0fecd0de4cd532664174",
+        "fb217f47e3b5637b7fda",
+        "31091cc04b4c792c1870"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    },
+    {
+      "requirement_id": "inverse_of_multiplication",
+      "clause": "inverse of multiplication",
+      "verdict": "PASS",
+      "reasoning": "The inverse relationship between multiplication and division is demonstrated throughout the samples. Many items provide a multiplication fact and ask for the corresponding quotient or verify that a quotient correctly relates to a given product. Hints consistently reinforce this relationship by stating how many times a number fits into another through multiplication.",
+      "sample_ids": [
+        "f30c77005315c6b54e18",
+        "7d0ec1d018c52998711f",
+        "f8af4a5a23a2d859def6",
+        "3bd622d10020d8eafe82",
+        "a9511ecf61ed73c31bbe",
+        "94c5af5eb1c9a6904602",
+        "7e033d69104990f4cc76",
+        "23b4a063e6573b715225",
+        "ca8490fd5eeade2988c0",
+        "b19085f771b4de1c4e78",
+        "8dacd3b0343d2e5e5bf9",
+        "fabc9dbce2325981af7b",
+        "2a6a065bac51315fa944",
+        "4e179f8e1657b71ba278",
+        "238eed350b318385cf48",
+        "8beb493bbb6228166465"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "3c2e09fc750972f4529ef3bbc6e312aa63efd5cca3d78a0ffff69f1eb8683f0e",
+      "clause_ids": [
+        "illustrate_division",
+        "equal_jumps",
+        "number_line",
+        "inverse_of_multiplication"
+      ],
+      "response_ref": ".responses/s5-phaseC-w17-haiku45-20260925.json",
+      "response_digest": "3746d754b71bd6ccac0a5ca83c94966fd9c4d271c6048565b5df736a094494e1",
+      "prompt_ref": ".responses/s5-phaseC-w17-haiku45-20260925.prompt.txt",
+      "prompt_digest": "961963316ad1b203ff70434f3b65d8907989d54d497f109f95dc624e6b1da4e1",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Tool use measured from the reviewer transcript (no harness usage record: the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both representations the wording names are built out: equal jumps back along a number line to reach zero, and division recovered from a known product, as in the items that begin from a multiplication fact and ask for the related quotient."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The jump form appears with the count of jumps unknown and with the jump size given, and the inverse form appears in both directions, sometimes dividing by the first factor and sometimes by the second, so neither sub-case is a token."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Starting values stay at or below seventy-two and jump sizes are single digits, so the number line can actually be imagined, which is what an illustrating objective needs at this grade."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The number line exists only as a sentence to picture; nothing in the set presents an actual model, an array, or a grouping the pupil manipulates, which sits awkwardly under a competency whose first verb is to illustrate. Two seeds also return the same item 'Since 4 × 7 = 28, then 28 ÷ 4 = ___' with only the classmate's name changed."
+      "rationale": "The sample set employs multiple formats (cloze, mcq, true_false, error_detect) with appropriate complexity for Grade 3. Most items involve single-digit divisors and dividends within the range 6-72, suitable for student proficiency level. Format progression from direct division to error detection supports cognitive scaffolding."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Divisors range from two through nine and the samples alternate between recovering a quotient and checking a claimed number of jumps, so the difficulty moves along this objective's own axis."
+      "rationale": "All samples directly address the stated competency components. Items either present division illustrated through number line jumps or as inverse multiplication relationships, or frequently both. The variety of presentation modes ensures alignment with learning standard."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The rendered samples collectively demonstrate all four competency components: illustrating division, showing equal jumps, depicting number lines, and demonstrating inverse of multiplication. The approach bridges conceptual understanding and procedural fluency.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The four stated requirements comprehensively and losslessly capture the full competency. Illustrate division serves as the overarching concept; equal jumps and number line are specific methods for illustration; inverse of multiplication is the conceptual foundation. Together they address every aspect of the learning target.",
+        "requirement_ids": [
+          "illustrate_division",
+          "equal_jumps",
+          "number_line",
+          "inverse_of_multiplication"
+        ]
+      },
+      "clause_ids": [
+        "illustrate_division",
+        "equal_jumps",
+        "number_line",
+        "inverse_of_multiplication"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The 25-sample set covers both primary instructional approaches: number line visualization (present in samples involving starting points and jumps) and multiplication inverse framing (samples stating multiplication facts before division). This dual approach ensures learners encounter diverse methods for understanding division.",
+      "clause_ids": [
+        "illustrate_division",
+        "equal_jumps",
+        "number_line",
+        "inverse_of_multiplication"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends stay within the multiplication facts of this grade, from twelve up to seventy-two, which is the right band for a first encounter with division."
+      "rationale": "Divisors range from 2 through 9 and dividends from 6 through 72, which aligns with Grade 3, Quarter 4 expectations. The progression allows mastery of smaller facts before larger ones. Factor combinations (2×3, 3×4, up to 9×9) match standard Grade 3 multiplication fluency benchmarks."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Items span cloze blanks, multiple choice selection, true/false evaluation, and error detection tasks. Both correct and incorrect statements test student reasoning. Number line contexts vary (different starting numbers and jump sizes), and thematic decorations appear without interfering with mathematical content."
     }
   },
   "overall": "CONCERN"

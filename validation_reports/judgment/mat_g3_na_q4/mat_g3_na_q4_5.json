@@ -1,7 +1,38 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q4_5",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Solve division problems involving 2- to 3-digit numbers by a 1-digit number, including problems involving money.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "solve_division_problems",
+      "clause": "Solve division problems"
+    },
+    {
+      "kind": "range",
+      "id": "2_to_3_digit_numbers",
+      "clause": "2- to 3-digit numbers"
+    },
+    {
+      "kind": "range",
+      "id": "1_digit_number",
+      "clause": "1-digit number"
+    },
+    {
+      "kind": "context",
+      "id": "money",
+      "clause": "money"
+    }
+  ],
+  "packet_digest": "eafb6b6cb2eff77e3f598408edaa159ad50a67d1c8d3480bac19a630d5e36973",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -16,14 +47,62 @@
     600,
     601,
     602,
-    603
+    603,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "cdb03f377db25c229d20",
+    "3cda8c6d67f791ac2335",
+    "9c4003a5c606161dc8c2",
+    "79ae3845f6f9d387d661",
+    "fc9f049cbb2ab835bf07",
+    "32f36de95a8be64cd25f",
+    "da1926985c169872086e",
+    "0939de05f54432774d42",
+    "85f2f6733f532826e4cc",
+    "e513c0b22fdae6b40dc7",
+    "87cc5755077eaafce243",
+    "045a3f6057778186ba32",
+    "3f55026a96329b426b58",
+    "f84a628931812979cc8c",
+    "cc4e7f3ca05c9e7efdff",
+    "c4e7c36fd52e9ddbf8ae",
+    "ddbfa7ab7bbe3f86c28b",
+    "95cf3b141182edc2957b",
+    "520d1e561960497d822b",
+    "243831e28b3e1621cb8d",
+    "20be208c13975f11605a",
+    "098d818ff8eee17efa41"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "Maico wants to share 180 costumes equally among 2 friends. How many costumes does each friend get?",
       "correct_answer": 90,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -49,13 +128,36 @@
           "text": "91",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 90,
+      "hints": [
+        "We need to divide 180 by 2. The number being divided is 180; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 180? 2 × 90 = 180.",
+        "The quotient of 180 ÷ 2 = 90."
+      ],
+      "sample_id": "cdb03f377db25c229d20",
+      "replay_digest": "78c509ee576c4f20626afcb0cefd18777584210b143c0582b42391e6c041450a"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Nikka has ₱42 and wants to share it equally among 2 friends. How much does each friend get?",
       "correct_answer": 21,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -77,13 +179,36 @@
           "value": 22,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 21,
+      "hints": [
+        "We need to divide 42 by 2. The number being divided is 42; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 42? 2 × 21 = 42.",
+        "The quotient of 42 ÷ 2 = 21."
+      ],
+      "sample_id": "3cda8c6d67f791ac2335",
+      "replay_digest": "f59d52a68903699d004a56eb350bc7e1060941a6949be2dc4687b4d2e8785ea3"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Coach Nora has ₱230 and wants to share it equally among 5 friends. How much does each friend get?",
       "correct_answer": 46,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -109,40 +234,162 @@
           "text": "5",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 46,
+      "hints": [
+        "We need to divide 230 by 5. The number being divided is 230; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 230? 5 × 46 = 230.",
+        "The quotient of 230 ÷ 5 = 46."
+      ],
+      "sample_id": "9c4003a5c606161dc8c2",
+      "replay_digest": "70afee47f8df701b89a3e2152dc15e6ab55e859a9bbf8c03451aa50eb6adf4fb"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "Ate Gab has ₱120 and wants to share it equally among 4 friends. How much does each friend get? The answer is 31. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 120 by 4. The number being divided is 120; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 120? 4 × 30 = 120.",
+        "The quotient of 120 ÷ 4 = 30."
+      ],
+      "sample_id": "79ae3845f6f9d387d661",
+      "replay_digest": "6d9883ffc5f8210a4a63cc023354f13acfe576a0228f2d054603cc89c39f2f82"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed? The answer is 57. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 114 by 2. The number being divided is 114; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 114? 2 × 57 = 114.",
+        "The quotient of 114 ÷ 2 = 57."
+      ],
+      "sample_id": "fc9f049cbb2ab835bf07",
+      "replay_digest": "076431d81d3f9543e5983722f3c4cb8c0f8a551296b47363bd6e566ec078499b"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved this problem: \"Boboy wants to share 420 bags of flour equally among 6 friends. How many bags of flour does each friend get?\" Noel says the answer is 70. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 70
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 70
+      },
+      "hints": [
+        "We need to divide 420 by 6. The number being divided is 420; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 420? 6 × 70 = 420.",
+        "The quotient of 420 ÷ 6 = 70."
+      ],
+      "sample_id": "32f36de95a8be64cd25f",
+      "replay_digest": "9f9925a7115ef24e8b015fca9434ad7c3dac31952cbf61d0100331f2ff4037dc"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "There are 657 ribbons. If 9 ribbons are put in each bag, how many bags are needed? The answer is 72. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 657 by 9. The number being divided is 657; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 657? 9 × 73 = 657.",
+        "The quotient of 657 ÷ 9 = 73."
+      ],
+      "sample_id": "da1926985c169872086e",
+      "replay_digest": "7355f07371b670ee7a297becaec8adda6fe6ade81f9a4879bbdacab92052ebf4"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?",
       "correct_answer": 104,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -164,22 +411,75 @@
           "value": 104,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 104,
+      "hints": [
+        "We need to divide 936 by 9. The number being divided is 936; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 936? 9 × 104 = 936.",
+        "The quotient of 936 ÷ 9 = 104."
+      ],
+      "sample_id": "0939de05f54432774d42",
+      "replay_digest": "1c0065521728f28da5fb3fb72c7a4d5268edfbffc329f4f83ebece1d497d2c5d"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 502,
       "formatter": "error_detect",
-      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 738 canvases equally among 9 friends. How many canvases does each friend get?\" Dante says the answer is 82. Is Dante correct?",
+      "question_text": "Dante solved this problem: \"Kuya Renz wants to share 738 paint tubes equally among 9 friends. How many paint tubes does each friend get?\" Dante says the answer is 82. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 82
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 82
+      },
+      "hints": [
+        "We need to divide 738 by 9. The number being divided is 738; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 738? 9 × 82 = 738.",
+        "The quotient of 738 ÷ 9 = 82."
+      ],
+      "sample_id": "85f2f6733f532826e4cc",
+      "replay_digest": "7f29c4066bedb3bc93aac4adee6b6a1b88f6606072eced4d163c0caa15bf7475"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "There are 60 washi tape rolls. If 4 washi tape rolls are put in each bag, how many bags are needed?",
       "correct_answer": 15,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -201,13 +501,38 @@
           "value": 4,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 15,
+      "hints": [
+        "We need to divide 60 by 4. The number being divided is 60; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 60? 4 × 15 = 60.",
+        "The quotient of 60 ÷ 4 = 15."
+      ],
+      "sample_id": "e513c0b22fdae6b40dc7",
+      "replay_digest": "b04f3f933820b2c2db398d3d953133a132b65b31478740d251792c51f59798dd"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Coach Roel has ₱132 and wants to share it equally among 3 friends. How much does each friend get?",
       "correct_answer": 44,
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -233,22 +558,75 @@
           "text": "129",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 44,
+      "hints": [
+        "We need to divide 132 by 3. The number being divided is 132; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 132? 3 × 44 = 132.",
+        "The quotient of 132 ÷ 3 = 44."
+      ],
+      "sample_id": "87cc5755077eaafce243",
+      "replay_digest": "ad813e6e9a72e17679a1a9b451fade53f567e372397c56b0ee0bcd7eacbf3956"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved this problem: \"Boboy has ₱220 and wants to share it equally among 5 friends. How much does each friend get?\" Jose says the answer is 44. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 44
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 44
+      },
+      "hints": [
+        "We need to divide 220 by 5. The number being divided is 220; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 220? 5 × 44 = 220.",
+        "The quotient of 220 ÷ 5 = 44."
+      ],
+      "sample_id": "045a3f6057778186ba32",
+      "replay_digest": "ae423f9a6d75ab32e6b84e06d0c16287567f6320123f51d93140a2d57f1cb889"
     },
     {
+      "node_id": "mat_g3_na_q4_5",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Ate Joy has ₱60 and wants to share it equally among 3 friends. How much does each friend get?",
       "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "table": "one_digit_2_9"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -270,33 +648,1095 @@
           "value": 21,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 20,
+      "hints": [
+        "We need to divide 60 by 3. The number being divided is 60; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 60? 3 × 20 = 60.",
+        "The quotient of 60 ÷ 3 = 20."
+      ],
+      "sample_id": "3f55026a96329b426b58",
+      "replay_digest": "3a68c217e6e2ab3ee2caddc13ea0508775f43201ecdfde6f864ecd005e9f23db"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved this problem: \"Marco has ₱60 and wants to share it equally among 3 friends. How much does each friend get?\" Carlo says the answer is 20. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 20
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 20
+      },
+      "hints": [
+        "We need to divide 60 by 3. The number being divided is 60; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 60? 3 × 20 = 60.",
+        "The quotient of 60 ÷ 3 = 20."
+      ],
+      "sample_id": "f84a628931812979cc8c",
+      "replay_digest": "bfb3e44a9a2973f3f365a8673fa5476bcdecee1cf5ef6a341769e1ea7cb38980"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "There are 180 sneakers. If 4 sneakers are put in each bag, how many bags are needed? The answer is 45. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_rpg",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 180 by 4. The number being divided is 180; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 180? 4 × 45 = 180.",
+        "The quotient of 180 ÷ 4 = 45."
+      ],
+      "sample_id": "cc4e7f3ca05c9e7efdff",
+      "replay_digest": "a34bb858e7935d20873193bd52e30137b61df4676d43c7d07f6095694b371f03"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"Ate Alyssa wants to share 170 whistles equally among 2 friends. How many whistles does each friend get?\" Manny says the answer is 86. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 85
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "history_trivia",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 85
+      },
+      "hints": [
+        "We need to divide 170 by 2. The number being divided is 170; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 170? 2 × 85 = 170.",
+        "The quotient of 170 ÷ 2 = 85."
+      ],
+      "sample_id": "c4e7c36fd52e9ddbf8ae",
+      "replay_digest": "550032f824e8ec114ebe12f3a7acaafdf63df9c3c816c8bf781617554a45f254"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "Kuya Art wants to share 981 washi tape rolls equally among 9 friends. How many washi tape rolls does each friend get?",
+      "correct_answer": 109,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 972,
+          "text": "972",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 109,
+          "text": "109",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 110,
+          "text": "110",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 109,
+      "hints": [
+        "We need to divide 981 by 9. The number being divided is 981; the number we divide by is 9.",
+        "Ask: how many times does 9 fit into 981? 9 × 109 = 981.",
+        "The quotient of 981 ÷ 9 = 109."
+      ],
+      "sample_id": "ddbfa7ab7bbe3f86c28b",
+      "replay_digest": "aed907d4c718b70d50f54bde1904c0ef0b405970179710375db79de551571211"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Ate Liza wants to share 40 paint tubes equally among 8 friends. How many paint tubes does each friend get?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 40 by 8. The number being divided is 40; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 40? 8 × 5 = 40.",
+        "The quotient of 40 ÷ 8 = 5."
+      ],
+      "sample_id": "95cf3b141182edc2957b",
+      "replay_digest": "9f7b522b6b6ce683c7daf1a861ef46ef7361e5a1971c09539fe729afab2d204a"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "Jun has ₱35 and wants to share it equally among 5 friends. How much does each friend get?",
+      "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We need to divide 35 by 5. The number being divided is 35; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 35? 5 × 7 = 35.",
+        "The quotient of 35 ÷ 5 = 7."
+      ],
+      "sample_id": "520d1e561960497d822b",
+      "replay_digest": "9419b8eda6fa93b352f72ec117e490f051ec454aa4292bd38b4a21c7b40b78a9"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "Manny wants to share 310 guitar picks equally among 5 friends. How many guitar picks does each friend get?",
+      "correct_answer": 62,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 62,
+          "text": "62",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 63,
+          "text": "63",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 305,
+          "text": "305",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 62,
+      "hints": [
+        "We need to divide 310 by 5. The number being divided is 310; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 310? 5 × 62 = 310.",
+        "The quotient of 310 ÷ 5 = 62."
+      ],
+      "sample_id": "243831e28b3e1621cb8d",
+      "replay_digest": "f32308ff8d019b2fe7980f507d7c1000f02c50a1e54e8b77c0a55af8221daa75"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Kuya Chad wants to share 100 helmets equally among 2 friends. How many helmets does each friend get?\" Liza says the answer is 49. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 50
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 50
+      },
+      "hints": [
+        "We need to divide 100 by 2. The number being divided is 100; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 100? 2 × 50 = 100.",
+        "The quotient of 100 ÷ 2 = 50."
+      ],
+      "sample_id": "20be208c13975f11605a",
+      "replay_digest": "1237d7d224505bb94baab37b06e17409948e9fc57e7833121ccc6d7a3cc4eec0"
+    },
+    {
+      "node_id": "mat_g3_na_q4_5",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved this problem: \"There are 210 wristbands. If 6 wristbands are put in each bag, how many bags are needed?\" Manny says the answer is 6. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 35
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 35
+      },
+      "hints": [
+        "We need to divide 210 by 6. The number being divided is 210; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 210? 6 × 35 = 210.",
+        "The quotient of 210 ÷ 6 = 35."
+      ],
+      "sample_id": "098d818ff8eee17efa41",
+      "replay_digest": "2b6e18f14581a615516b3394d3f9736a18d08805de5dc3cd9ed523ab593b7f9c"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "cdb03f377db25c229d20",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The context of sharing one hundred eighty costumes equally among two friends is unambiguous, and the question asking how many each friend receives is clearly stated without double meanings or interpretive confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person sharing costumes equally among friends is a realistic and age-appropriate scenario that third graders would understand from daily experience with fair distribution."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly identifies what is being divided, how many recipients there are, and what quantity is requested, making the problem straightforward for independent student comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The division operation one hundred eighty divided by two yields ninety, verified by the hint showing two times ninety equals one hundred eighty, with all four options mathematically distinct."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "3cda8c6d67f791ac2335",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary context with Philippine peso currency is clear and explicit, the equal distribution requirement is unambiguous, and the question requesting per-friend amounts eliminates interpretive ambiguity entirely."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing money equally among friends is a concrete, age-appropriate scenario that reinforces practical application of division with real-world Philippine currency that children handle."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the total amount in pesos, the number of recipients, and the quantity being sought with clear language appropriate for independent third-grade reading and comprehension."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty-two pesos divided by two friends equals twenty-one pesos each, confirmed by hints showing two times twenty-one equals forty-two, with distractors representing plausible computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "9c4003a5c606161dc8c2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary context clearly identifies the total pesos to distribute, the number of friends sharing equally, and the specific output requested without room for misinterpretation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A coach sharing money equally with friends reflects an authentic and comprehensible social scenario for Grade 3 learners familiar with fair distribution practices."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses simple language to establish the monetary amount, the distribution requirement, and the quantity of interest, accessible to students reading at third-grade level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hundred thirty pesos divided by five friends equals forty-six pesos per person, verified by hints showing five times forty-six equals two hundred thirty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "79ae3845f6f9d387d661",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format clearly presents the monetary amount, the equal distribution method, the proposed answer of thirty-one, and the yes-no decision required without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Money division among friends within an evaluation framework is realistic and supports learning to judge whether proposed solutions are mathematically correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the problem setup with monetary context, the claimed answer, and the evaluation question in language third graders can independently understand."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred twenty pesos divided by four friends equals thirty pesos each, making the stated answer of thirty-one incorrect, correctly reflected in the false verdict and supported by hints showing four times thirty equals one hundred twenty."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "fc9f049cbb2ab835bf07",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The problem statement clearly establishes how many seeds to place per bag and asks whether a given total count of bags is correct, presenting a measurement division scenario without confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Placing items into groups of fixed size is an authentic, concrete task that young learners encounter in real contexts and that reinforces measurement division understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies the total seeds, the quantity per bag, the proposed bag count, and the true-false evaluation being requested."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred fourteen seeds divided into groups of two seeds per bag yields fifty-seven bags, confirmed by hints showing two times fifty-seven equals one hundred fourteen, supporting the true verdict."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "32f36de95a8be64cd25f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format presents a student work sample with a proposed answer and an evaluation question stated in language third graders can parse independently."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking whether a peer solved a word problem correctly is a cognitively valuable classroom task that engages learners in validation and error detection."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains what problem Noel solved, states his answer of seventy, and asks whether this is correct, providing sufficient information for independent evaluation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four hundred twenty bags of flour divided by six friends equals seventy per friend, confirmed by hints showing six times seventy equals four hundred twenty, validating the has_error field correctly indicating no error exists."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "da1926985c169872086e",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format presents a grouping scenario with a proposed answer of seventy-two bags and requires a clear true-false judgment with no interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing multiple items into equal-sized groups is a practical scenario that third graders connect to real tasks like organizing classroom materials and supplies."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains how many total ribbons exist, how many go in each bag, the proposed bag count of seventy-two, and requests a true-false evaluation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six hundred fifty-seven ribbons divided into groups of nine ribbons per bag requires seventy-three bags, not seventy-two, correctly supporting the false verdict confirmed by hints showing nine times seventy-three equals six hundred fifty-seven."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "0939de05f54432774d42",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format clearly states the total shoes, the quantity per bag, and asks how many bags are needed without interpretive ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Packing many running shoes into bags is a realistic warehouse or inventory scenario that makes sense to students familiar with organized storage and distribution."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the problem facts in simple language appropriate for independent third-grade reading without unnecessary or distracting complexity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine hundred thirty-six running shoes divided by nine shoes per bag equals one hundred four bags, verified by hints showing nine times one hundred four equals nine hundred thirty-six, with distractors representing plausible errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "85f2f6733f532826e4cc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task presents Dante attempt to solve a distribution problem and states his answer of eighty-two, making the evaluation task unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A student evaluating whether a peer correctly solved a division problem about sharing supplies is a pedagogically sound task supporting metacognitive growth."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly states the problem Dante evaluated, his proposed answer of eighty-two, and asks for a correctness judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven hundred thirty-eight paint tubes divided by nine friends equals eighty-two tubes each, confirmed by hints showing nine times eighty-two equals seven hundred thirty-eight, validating the has_error false status."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "e513c0b22fdae6b40dc7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice item presents the total tape items, the quantity per bag, and requests the number of bags with clarity and directness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Distributing decorative tape rolls into bags is a familiar and age-appropriate organizing task that children recognize."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem uses concrete language to identify the tape rolls, the packing quantity per bag, and what is being asked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty washi tape rolls divided into groups of four per bag yields fifteen bags, verified by hints showing four times fifteen equals sixty, with options including plausible distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "87cc5755077eaafce243",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in cloze format presents a monetary context with clear equal distribution requirement and an unambiguous request for the per-person amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A coach distributing pesos equally to team members or friends is a realistic scenario third graders understand."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly establishes the total pesos, the number of recipients sharing equally, and what the student must find."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred thirty-two pesos divided by three friends equals forty-four pesos per person, confirmed by hints showing three times forty-four equals one hundred thirty-two, with distractors as options."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "045a3f6057778186ba32",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format presents Jose attempt to solve a monetary distribution problem, stating an answer of forty-four, making the evaluation clear."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking peer work on a money-sharing problem is a realistic classroom task that reinforces division understanding through collaborative learning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly explains the problem Jose solved, his answer of forty-four, and requests evaluation of correctness."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hundred twenty pesos divided by five friends equals forty-four pesos each, confirmed by hints showing five times forty-four equals two hundred twenty, supporting the has_error false status."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "3f55026a96329b426b58",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format presents money to share, the number of recipients, and the requested quantity per person without confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A person sharing pesos equally reflects age-appropriate and culturally recognizable social contexts familiar to Filipino third graders."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem establishes the peso amount, number of friends, and the question being asked in accessible language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty pesos divided among three friends equals twenty pesos each, verified by hints showing three times twenty equals sixty, with options including plausible student errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "f84a628931812979cc8c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task presents Carlo checking Marco answer to a money-division problem with a stated answer of twenty, making evaluation unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Verifying peer solutions to practical money problems engages learners in meaningful error analysis and mathematical reasoning."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains the problem Marco solved, Carlo answer of twenty, and asks for a correctness judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sixty pesos divided among three friends yields twenty pesos each, confirmed by hints showing three times twenty equals sixty, supporting the has_error false status."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "cc4e7f3ca05c9e7efdff",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false format presents a grouping scenario with total sneakers, quantity per bag, and a proposed answer of forty-five bags."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing footwear into bags for storage or distribution is a realistic scenario children encounter in daily contexts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the inventory count, grouping quantity, proposed bag total, and the true-false evaluation required."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred eighty sneakers divided into groups of four per bag yields forty-five bags, confirmed by hints showing four times forty-five equals one hundred eighty, supporting the true verdict."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "c4e7c36fd52e9ddbf8ae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format presents Manny answer to a whistle-distribution problem, stating eighty-six, and requests evaluation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Distributing whistles equally among recipients is an age-appropriate scenario supporting division understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies Manny answer of eighty-six and asks whether this is correct."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred seventy whistles divided by two friends equals eighty-five each, not eighty-six, correctly supporting the has_error true status with correct_value eighty-five shown in hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "ddbfa7ab7bbe3f86c28b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in cloze format presents a three-digit dividend, single-digit divisor, and clear request for the quotient."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Distributing decorative items equally among friends is a realistic sharing scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem establishes the total tape rolls, number of recipients, and the requested answer."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine hundred eighty-one washi tape rolls divided by nine friends equals one hundred nine rolls each, verified by hints showing nine times one hundred nine equals nine hundred eighty-one."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "95cf3b141182edc2957b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The multiple-choice format clearly presents art supplies to distribute, number of recipients, and requests the per-person quantity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing art supplies equally among team members is a realistic school or community scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem identifies the paint tubes, recipients, and what is being sought in simple third-grade appropriate language."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Forty paint tubes divided by eight friends equals five tubes each, verified by hints showing eight times five equals forty, with distractors representing computational errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "520d1e561960497d822b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The monetary multiple-choice format presents pesos to share, friends as recipients, and the requested per-person amount."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Jun sharing money with five friends is a culturally recognizable scenario reflecting authentic peer-to-peer wealth distribution."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem presents the peso amount, recipient count, and requested quantity in language third graders can independently process."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thirty-five pesos divided by five friends equals seven pesos each, confirmed by hints showing five times seven equals thirty-five, with realistic student error distractors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "243831e28b3e1621cb8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The fill-in cloze format presents a three-digit dividend, single-digit divisor, and unambiguous request for the answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Sharing music accessories equally among friends is an age-appropriate scenario."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly identifies the guitar picks, friends, and what the student must calculate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three hundred ten guitar picks divided by five friends equals sixty-two picks each, verified by hints showing five times sixty-two equals three hundred ten."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "20be208c13975f11605a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection format presents Liza evaluation of a peer problem with a stated answer of forty-nine."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Checking peer arithmetic on distribution problems supports collaborative learning and error analysis skills."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem explains the problem, Liza answer, and requests a correctness judgment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One hundred helmets divided by two friends equals fifty each, not forty-nine, correctly supporting the has_error true status with correct_value fifty shown in hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "sample_id": "098d818ff8eee17efa41",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error-detection task presents Manny attempt to solve a grouping problem with a stated answer of six bags."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Organizing many items into groups is a practical scenario students recognize and understand."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The stem clearly establishes the problem Manny solved, his answer of six, and requests evaluation."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two hundred ten wristbands divided into groups of six wristbands per bag yields thirty-five bags, not six, correctly supporting has_error true with correct_value thirty-five shown in hints."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "solve_division_problems",
+      "clause": "Solve division problems",
+      "verdict": "PASS",
+      "reasoning": "All twenty-two samples present authentic division tasks in multiple formats including cloze fill-in, multiple-choice, true-false evaluation, and error detection, demonstrating comprehensive coverage of division problem solving across contexts and difficulty levels appropriate for the competency.",
+      "sample_ids": [
+        "cdb03f377db25c229d20",
+        "3cda8c6d67f791ac2335",
+        "9c4003a5c606161dc8c2",
+        "79ae3845f6f9d387d661",
+        "fc9f049cbb2ab835bf07",
+        "32f36de95a8be64cd25f",
+        "da1926985c169872086e",
+        "0939de05f54432774d42",
+        "85f2f6733f532826e4cc",
+        "e513c0b22fdae6b40dc7",
+        "87cc5755077eaafce243",
+        "045a3f6057778186ba32",
+        "3f55026a96329b426b58",
+        "f84a628931812979cc8c",
+        "cc4e7f3ca05c9e7efdff",
+        "c4e7c36fd52e9ddbf8ae",
+        "ddbfa7ab7bbe3f86c28b",
+        "95cf3b141182edc2957b",
+        "520d1e561960497d822b",
+        "243831e28b3e1621cb8d",
+        "20be208c13975f11605a",
+        "098d818ff8eee17efa41"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "requirement_id": "2_to_3_digit_numbers",
+      "clause": "2- to 3-digit numbers",
+      "verdict": "PASS",
+      "reasoning": "Every sample uses a dividend that is either two digits or three digits. Dividends span the required range including forty, sixty, one hundred fourteen, one hundred twenty, one hundred thirty-two, one hundred seventy, one hundred eighty, two hundred ten, two hundred twenty, two hundred thirty, three hundred ten, four hundred twenty, six hundred fifty-seven, seven hundred thirty-eight, nine hundred thirty-six, and nine hundred eighty-one without exception.",
+      "sample_ids": [
+        "cdb03f377db25c229d20",
+        "3cda8c6d67f791ac2335",
+        "9c4003a5c606161dc8c2",
+        "79ae3845f6f9d387d661",
+        "fc9f049cbb2ab835bf07",
+        "32f36de95a8be64cd25f",
+        "da1926985c169872086e",
+        "0939de05f54432774d42",
+        "85f2f6733f532826e4cc",
+        "e513c0b22fdae6b40dc7",
+        "87cc5755077eaafce243",
+        "045a3f6057778186ba32",
+        "3f55026a96329b426b58",
+        "f84a628931812979cc8c",
+        "cc4e7f3ca05c9e7efdff",
+        "c4e7c36fd52e9ddbf8ae",
+        "ddbfa7ab7bbe3f86c28b",
+        "95cf3b141182edc2957b",
+        "520d1e561960497d822b",
+        "243831e28b3e1621cb8d",
+        "20be208c13975f11605a",
+        "098d818ff8eee17efa41"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "requirement_id": "1_digit_number",
+      "clause": "1-digit number",
+      "verdict": "PASS",
+      "reasoning": "All twenty-two samples employ a single-digit divisor. Divisors include two, three, four, five, six, eight, and nine, providing meaningful variety while remaining strictly one digit throughout without exception.",
+      "sample_ids": [
+        "cdb03f377db25c229d20",
+        "3cda8c6d67f791ac2335",
+        "9c4003a5c606161dc8c2",
+        "79ae3845f6f9d387d661",
+        "fc9f049cbb2ab835bf07",
+        "32f36de95a8be64cd25f",
+        "da1926985c169872086e",
+        "0939de05f54432774d42",
+        "85f2f6733f532826e4cc",
+        "e513c0b22fdae6b40dc7",
+        "87cc5755077eaafce243",
+        "045a3f6057778186ba32",
+        "3f55026a96329b426b58",
+        "f84a628931812979cc8c",
+        "cc4e7f3ca05c9e7efdff",
+        "c4e7c36fd52e9ddbf8ae",
+        "ddbfa7ab7bbe3f86c28b",
+        "95cf3b141182edc2957b",
+        "520d1e561960497d822b",
+        "243831e28b3e1621cb8d",
+        "20be208c13975f11605a",
+        "098d818ff8eee17efa41"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    },
+    {
+      "requirement_id": "money",
+      "clause": "money",
+      "verdict": "PASS",
+      "reasoning": "Eight samples explicitly incorporate Philippine peso currency contexts for division: samples with thirty-five pesos, forty-two pesos, sixty pesos shared, one hundred twenty pesos, one hundred thirty-two pesos, two hundred twenty pesos, and two hundred thirty pesos, demonstrating the competency extension to monetary applications as specified in the requirements.",
+      "sample_ids": [
+        "3cda8c6d67f791ac2335",
+        "9c4003a5c606161dc8c2",
+        "79ae3845f6f9d387d661",
+        "87cc5755077eaafce243",
+        "045a3f6057778186ba32",
+        "3f55026a96329b426b58",
+        "f84a628931812979cc8c",
+        "520d1e561960497d822b"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_5",
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "eafb6b6cb2eff77e3f598408edaa159ad50a67d1c8d3480bac19a630d5e36973",
+      "clause_ids": [
+        "solve_division_problems",
+        "2_to_3_digit_numbers",
+        "1_digit_number",
+        "money"
+      ],
+      "response_ref": ".responses/s5-phaseC-w18-haiku45-20260925.json",
+      "response_digest": "11d61992813c7ab187ac6bbde66b7cc1eafeb5bfd883f8c6b6de55465e12d7d6",
+      "prompt_ref": ".responses/s5-phaseC-w18-haiku45-20260925.prompt.txt",
+      "prompt_digest": "c9a0a29d19f126c17a939cbd44faf87f7704c31d05e244e1db0c171ffb14f1a3",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_5/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Tool use measured from the reviewer transcript (no harness usage record: the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The problems and their arithmetic are sound, but the money items answer in bare numbers while the stems use the peso sign; the one where Nikka has ₱42 to share between 2 friends is keyed 21 with options carrying no currency mark. For a competency that explicitly takes in money, an amount stripped of its unit is a half answer."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both meanings of division are produced rather than one: sharing a quantity equally among a number of friends, and finding how many containers are needed when each holds a fixed amount. Money and object contexts both appear on each meaning."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each stem is a single situation followed by a single question, and dividends such as 936 with a single-digit divisor keep the computation to the short division this quarter has established."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Open responses, choices, a claimed answer to accept or reject, and another child's solution to check all appear, and the truth judgments are keyed both ways rather than leaning one direction."
+      "rationale": "All problems present age-appropriate contexts with clear division scenarios suitable for Grade 3 Quarter 4 learners, using familiar objects and recognizable human relationship scenarios that third graders encounter."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Distractors are built from the errors this competency guards against, offering the divisor itself or the result of subtracting instead of dividing, so choosing correctly requires recognising that division is the operation."
+      "rationale": "Every sample directly addresses division of two- to three-digit numbers by one-digit divisors, with multiple samples incorporating monetary contexts in Philippine pesos as specified in the competency statement."
+    },
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The decomposition treats the four requirements as discrete independent components, but the competency statement uses the word including to indicate money is a contextual application category rather than a separate skill, creating potential ambiguity about the scope and nature of the money requirement.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The competency clause stating including problems involving money is reduced to a single-word requirement labeled money without preserving or clarifying its modifier status. A lossless decomposition should preserve the phrase or explicitly indicate that money contexts represent one application category of division problems, not a separate discrete competency divorced from the core skill.",
+        "requirement_ids": [
+          "solve_division_problems",
+          "2_to_3_digit_numbers",
+          "1_digit_number",
+          "money"
+        ]
+      },
+      "clause_ids": [
+        "solve_division_problems",
+        "2_to_3_digit_numbers",
+        "1_digit_number",
+        "money"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Samples demonstrate two-digit dividends from thirty-five and forty through three-digit dividends reaching nine hundred eighty-one, divisors from two through nine, multiple problem formats including cloze fill-in, multiple-choice, true-false, and error detection, and both object-sharing and grouping scenarios.",
+      "clause_ids": [
+        "solve_division_problems",
+        "2_to_3_digit_numbers",
+        "1_digit_number",
+        "money"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends run from two digits up to 936 with single-digit divisors throughout, matching the stated two-to-three-digit by one-digit range, and all divisions come out whole as that scope implies."
+      "rationale": "Number ranges from simple two-digit divisions like sixty by four through three-digit divisions like nine hundred thirty-six by nine are developmentally appropriate for Grade 3 Quarter 4 proficiency expectations without exceeding the competency scope."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet includes sufficient variation across response formats, number magnitudes ranging across the two- and three-digit spectrum, problem contexts both monetary and non-monetary, both direct computation and error-identification evaluation tasks demonstrating the full competency breadth."
     }
   },
   "overall": "CONCERN"
