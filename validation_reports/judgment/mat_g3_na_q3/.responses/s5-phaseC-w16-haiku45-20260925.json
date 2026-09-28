@@ -1,537 +1,698 @@
 {
-  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
-  "mat_g3_na_q3_2": {
+  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+  "mat_g3_na_q3_1": {
     "findings": {
       "cognitive_capacity": {
         "verdict": "PASS",
-        "rationale": "All 22 samples employ Grade 3-appropriate cognitive load: simple fact recall for single-digit and low two-digit multipliers, structured decomposition strategies visible across the hints, and conceptual scaffolding through equal-groups language and place-value breakdown that matches expected Grade 3 reasoning."
+        "rationale": "The items employ Grade 3 appropriate numerical ranges with products reaching 81, accessible problem structures combining identity, zero, commutative, associative, and distributive properties at Quarter 3 mastery level expectations without overwhelming learner cognitive load or requiring pre-Grade 3 knowledge beyond basic counting."
       },
       "competency_alignment": {
-        "verdict": "PASS",
-        "rationale": "Every sample targets the stated Grade 3 Quarter 3 competency without deviation. The bank demonstrates systematic coverage of the declared digit ranges and multiplier types. No competency-irrelevant content or extraneous conceptual prerequisites appear in the samples or their hints."
+        "verdict": "CONCERN",
+        "rationale": "The competency specifies focus on 6, 7, 8, 9 multiplication tables but samples include numerous problems with 1 (identity) and 0 (zero property) factors alongside 2, 3, 4, 5 comparisons. While mathematically necessary for demonstrating identity and zero properties, this broader number range dilutes the stated table-specific curriculum focus and creates ambiguity about scope boundaries."
       },
       "competency_fulfillment": {
         "verdict": "PASS",
-        "rationale": "All five requirement categories are substantively represented across the 22 samples with non-trivial examples in each. The samples collectively satisfy the lossless decomposition without gaps or overlaps in the requirement structure.",
+        "rationale": "All five required properties appear substantively: identity multiplication by 1, zero property, commutative order invariance, associative regrouping invariance, and distributive expansion across addends. Both affirming and negating instances are presented, allowing learners to understand when properties apply and their mathematical boundaries.",
         "decomposition": {
-          "verdict": "PASS",
-          "reasoning": "The five requirements (multiply_numbers, with_and_without_regrouping, 2_to_3_digit_by_1_digit, 2_to_4_digit_by_leading_non_zero, products_up_to_10_000) partition the competency statement exactly: multiplication operation is named, regrouping variants are listed, digit-range cases are separated, the leading-non-zero multiplier constraint is isolated, and the product ceiling is bounded. No redundancy or uncovered ground exists between them."
+          "verdict": "CONCERN",
+          "reasoning": "The requirement decomposition separates 6-7-8-9 tables from identity and zero properties despite those properties requiring 1 and 0 factors respectively. This structural separation suggests the five properties cannot be fully illustrated using only the 6-9 range, indicating the decomposition does not losslessly capture the full competency scope and creates logical overlap across requirement categories."
         }
       },
       "comprehensive_coverage": {
         "verdict": "PASS",
-        "rationale": "The node samples cover all five decomposed requirements. Digit ranges span from two-digit operands through four-digit operands. Leading-digit-only multipliers appear (10, 20, 50, 80, 200, 300). Products range from 60 to the exact maximum of 10000. Both regrouping and non-regrouping cases are demonstrated. Format diversity includes MCQ, true/false, cloze, and error-detection items."
+        "rationale": "The sample set spans five problem formats (multiple-choice, true-false, cloze fill-in-blank, error detection) across all five mathematical properties with both confirming and negating examples. Seeds range from 42 to 1002 and thematic elements vary, demonstrating broad generation capacity and format diversity appropriate for Grade 3 practice."
       },
       "scale_appropriateness": {
         "verdict": "PASS",
-        "rationale": "The difficulty progression is suitable for Grade 3 mastery expectations. Early samples (10×6, 12×5) establish foundational two-digit single-digit cases. Middle samples introduce larger operands (108×80, 573×4). Later samples reach the product ceiling of 10000 without overstepping. No problem structure demands metacognitive abstraction beyond Grade 3 expectation."
+        "rationale": "Numerical complexity remains within Grade 3 Quarter 3 mental math capacity, with products scaling to 81 and addend sums to 13. Nested operation depth is limited, problem structures avoid extraneous complexity, and cognitive scaffolding through multiple formats supports learners at this developmental stage without introducing operations or magnitudes beyond curriculum scope."
       },
       "variant_comprehensiveness": {
-        "verdict": "PASS",
-        "rationale": "Sufficient variety is present: regrouping is demonstrated in 21 samples (e.g., 41×6 decomposed as 40×6 + 1×6) and non-regrouping in one sample (10×6 decomposed as 10×6 + 0×6). Response formats span four types: multiple-choice, true/false, fill-in-blank/cloze, and error-detection. Thematic variations appear in two samples without mathematical interference. Experience modes vary (standard, hint_gated, mastery_drill, scaffolded)."
+        "verdict": "CONCERN",
+        "rationale": "Samples 19 (seed 608) and 20 (seed 700) present textually identical stems asking if (3×7)×3 equals 3×(7×2) with identical hints and answer, differing only in seed value. This duplication provides no cognitive variant and reduces effective sample diversity, suggesting limited generation variation when encountering mathematically identical scenarios across seed ranges."
       }
     },
     "sample_assessments": [
       {
-        "sample_id": "c8b530fe3e9caa6eee68",
+        "sample_id": "5d4ec93aab52e32d040d",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem clearly requests the product of 41 and 6 with no alternative interpretation. Options are distinct numeric values eliminating confusion. Hints confirm the question intent through explicit equal-groups language."
+            "reasoning": "The question clearly asks whether two expressions using the same factors in different order yield identical results, with no linguistic or mathematical ambiguity in the comparison requested."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups framing (41 groups of 6) is contextually appropriate and logically sound. The decomposition into 40+1 and application of the 6 times table follow standard Grade 3 strategies. The calculation sequence matches expected mental math progression."
+            "reasoning": "Direct comparison of commutative pairs is a standard pedagogical approach to teaching multiplication properties at Grade 3, with the mathematical logic following from learners' foundational multiplication experience."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is phrased in clear, unambiguous language suitable for independent Grade 3 learners. The hint progression moves naturally from concrete grouping to abstract symbolic decomposition without logical jumps. Vocabulary is within Grade 3 reach."
+            "reasoning": "The true-false response options with language indicating certainty and the straightforward comparison format make the question accessible to Grade 3 learners without requiring inference or unstated assumptions."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 41×6=246 is correct. The hint equations are all mathematically sound: 40×6=240, 1×6=6, 240+6=246. The 6 times table reference is accurate. No computational or notational errors appear anywhere in the sample."
+            "reasoning": "Five times 6 equals 30 and 6 times 5 equals 30, verified through hints showing both multiplication facts and the logical conclusion that the two sides are identical, with no mathematical errors or inconsistencies present."
           }
         }
       },
       {
-        "sample_id": "22c5cf9838aa32f5ee25",
+        "sample_id": "39af49088687ab791bb1",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is unambiguous. The stem declares 573×4=577 and asks for truth judgment. No parsing ambiguity or alternative readings exist."
+            "reasoning": "The question asks whether 4×8 and 8×9 are equivalent, clearly stated without linguistic confusion or double interpretation of the mathematical expressions being compared."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups and decomposition language in hints is logically coherent. The false statement is pedagogically sound because it tests whether learners compute the actual product rather than recognizing surface similarity between 573 and 577. The error is plausible at Grade 3 level."
+            "reasoning": "Testing whether products with one shared factor but different other factors yield the same result is a valid multiplication comprehension task that reinforces understanding of factor-product relationships."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question format is straightforward for Grade 3 true/false assessment. The hint chain explicitly shows why the statement is false by calculating the correct product 2292. The progression from grouping language through decomposition to final answer is clear."
+            "reasoning": "Multiple choice format with four distinct options provides a clear response mechanism, and the comparison structure presents the mathematical situation in an accessible manner for Grade 3 learners."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 573×4=2292 is correct. All hint equations check: 570×4=2280, 3×4=12, 2280+12=2292. The false statement 573×4=577 correctly identifies an error. No arithmetic or logic errors in any hint line."
+            "reasoning": "Four times 8 yields 32 while 8 times 9 yields 72, correctly differentiated in hints and answer, with all arithmetic calculations verified and the false answer choice correctly justified."
           }
         }
       },
       {
-        "sample_id": "54036ffa8aca22c50258",
+        "sample_id": "e4202712b5d1fc203c40",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is clear: Rico proposes an answer, and the question asks whether he is correct. The mathematical claim is unambiguous. No parsing or interpretation uncertainty."
+            "reasoning": "The error detection format unambiguously asks whether the student's proposed answer to 6×0 is correct, with clear expectation for judgment of correctness."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The context of Rico solving 1000×10 and claiming 10000 is Grade 3-appropriate. The decomposition strategy in hints follows standard practice. Designating this as a correct answer (no error) is logically sound because 1000×10 does equal 10000."
+            "reasoning": "A student solving 6×0 with an answer proposal is a realistic scenario, and the error detection format aligns with Grade 3 scaffolded learning where identifying correct and incorrect answers supports concept development."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hint progression moves from grouping interpretation through decomposition to verification. The conclusion that Rico is correct is directly supported by the calculated product."
+            "reasoning": "The error detection context with named student and explicit question about correctness is clear and accessible to Grade 3 learners navigating guided problem-solving exercises with feedback."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. The answer key correctly marks Rico as having no error because the answer is exact."
+            "reasoning": "Six times 0 correctly equals 0, the student answer of 0 is mathematically correct, and hints explain the reasoning through equal groups perspective and reference to the zero property of multiplication."
           }
         }
       },
       {
-        "sample_id": "d6730a6716c2db78c0d2",
+        "sample_id": "fe30f5b185b960024365",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ stem directly requests the product of 108 and 80. All four options are numerically distinct. No alternative interpretation of the question exists."
+            "reasoning": "The question asks whether multiplying the sum 7+2 by 8 yields the same product as separately multiplying each addend by 8 and summing results, presented clearly without ambiguity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups language and decomposition strategy are appropriate for Grade 3. The hint moves logically from concrete grouping to place-value decomposition to final calculation. The distractors (8560, 28, 188) are plausible errors that Grade 3 learners might make."
+            "reasoning": "Comparing grouped-differently expressions to test distributive property is pedagogically sound and aligns with Grade 3 multiplication property exploration standards."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly stated and suitable for independent completion by Grade 3 students. The hint progression is explicit and sequential. Option formatting is standard and unambiguous."
+            "reasoning": "Multiple choice options with clear answer selections support learner comprehension, and the expression comparison is structured in a manner accessible to Grade 3 students learning properties."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 108×80=8640 is correct. The decomposition 100×80 + 8×80 = 8000+640 = 8640 is accurate. All arithmetic in the hints is sound. The distractors do not represent valid alternative answers."
+            "reasoning": "The left side 8×9 yields 72, the right side 56+16 also yields 72, and all intermediate calculations in the hints are verified with logical explanation of the distributive principle applying correctly."
           }
         }
       },
       {
-        "sample_id": "efb811b9c11decd2ef07",
+        "sample_id": "2e140b767ffbf1061d8d",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The cloze stem requests the product of 702 and 2 with a blank fill. The question intent is unambiguous. Four distinct options are provided for the fill."
+            "reasoning": "The question directly asks whether 2×9 and 9×8 produce identical results without linguistic or mathematical ambiguity in the comparison statement."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups context (2 groups of 702 or 702+702) and place-value decomposition (700+2) align with Grade 3 computational strategies. The hints show both additive repetition and decomposition approaches."
+            "reasoning": "Comparing products from non-matching factor pairs is a valid assessment where one factor differs in each position, testing multiplication understanding and factor-product relationships appropriately."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The fill-in-blank format is standard for Grade 3 assessment. The hint sequence is transparent: it first frames the problem conceptually, then shows the decomposition clearly, then provides the final numerical answer."
+            "reasoning": "Multiple choice options and clear comparison language make this question understandable to Grade 3 learners, with response options arranged to support decision-making without confusion."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 702×2=1404 is correct. The decomposition 700×2 + 2×2 = 1400+4 = 1404 is sound. The alternative hint showing 702+702 is also correct. All arithmetic is accurate."
+            "reasoning": "Two times 9 produces 18 while 9 times 8 produces 72, the false answer is correct, and hints verify both calculations with clear explanation that the two sides are not equivalent."
           }
         }
       },
       {
-        "sample_id": "2ececb4dcf84f585e9cb",
+        "sample_id": "5b8b118252437966d2ec",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is clear: the stem declares 1000×10=9999 and asks for truth judgment. No ambiguity in parsing or intent."
+            "reasoning": "Cloze fill-in-the-blank format clearly requests the product of 1×6 with no linguistic ambiguity about what calculation is being asked."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "Testing whether learners know the product is 10000 and not 9999 is pedagogically sound at the boundary of the competency range. The decomposition in hints correctly shows 1000×10 + 0×10 = 10000+0 = 10000, making the false claim transparent."
+            "reasoning": "Direct application of the identity property through computational fill-in format is standard Grade 3 practice for assessing multiplication fact knowledge and property understanding."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The false statement is stated clearly for Grade 3 learners. The hint progression unambiguously establishes that the actual product is 10000, not 9999, so the answer is straightforward."
+            "reasoning": "The simple numerical fill format with provided options removes potential ambiguity and creates an accessible response method for Grade 3 learners demonstrating the identity property."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The correct product is 1000×10=10000. The false claim in the stem (9999) correctly identifies an incorrect value. The hint calculations are all accurate: 1000×10 = 10000 exactly."
+            "reasoning": "One times 6 correctly equals 6, hints explain the reasoning through equal groups interpretation, and all arithmetic aligns with the identity property for Grade 3 multiplication facts."
           }
         }
       },
       {
-        "sample_id": "e8f22f71c2888fd38497",
+        "sample_id": "c70c45f751375250074a",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ stem requests the product of 1000 and 10. Options are four distinct numbers. The question is unambiguous."
+            "reasoning": "True-false statement format presents the assertion 1×9=9 with unambiguous judgment requested, allowing no confusion about what proposition is being evaluated."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups interpretation and place-value decomposition are standard Grade 3 approaches. The distractors (9990, 1010, 990) represent common computational errors or misreadings that Grade 3 learners might produce."
+            "reasoning": "Affirming the identity property through a declarative statement followed by truth value judgment is aligned with Grade 3 expectations for assessing multiplication property comprehension."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly phrased. The hint sequence moves from grouping language through explicit decomposition to the final answer. All vocabulary and mathematical notation are within Grade 3 reach."
+            "reasoning": "The direct statement with binary true-false response option is clear and appropriately matched to Grade 3 learner cognitive development and assessment format familiarity."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. All arithmetic in all hint lines is accurate."
+            "reasoning": "One times 9 truly equals 9, the true answer is correct, and hints verify this calculation through equal groups interpretation aligned with the identity property."
           }
         }
       },
       {
-        "sample_id": "78fada99efc04c162d02",
+        "sample_id": "da6de8210c1253480926",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection frame is transparent: Dante proposes 9900 as the product of 33×300, and the question asks if he is correct. No ambiguity in the mathematical claim or question intent."
+            "reasoning": "The false equation 9×1=8 is presented clearly in true-false format with unambiguous request for judgment of the statement's truth value."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The context of Dante solving 33×300 is pedagogically sound for testing the leading-non-zero multiplier category. The answer key correctly identifies no error because 33×300 does equal 9900. The hints support this conclusion unambiguously."
+            "reasoning": "Testing identity property through negation with a false mathematical statement is a valid pedagogical approach to assessing whether learners distinguish correct from incorrect multiplication facts."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is suitable for Grade 3 assessment. The hint progression is clear: it establishes the problem conceptually, decomposes the calculation, and verifies the product. The conclusion that Dante is correct follows directly."
+            "reasoning": "The simple false equation with binary true-false response format is comprehensible to Grade 3 learners, presented in a clear manner supporting learner response construction."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 33×300=9900 is correct. The decomposition 30×300 + 3×300 = 9000+900 = 9900 is accurate. The answer key correctly indicates no error. All arithmetic in the hints is sound."
+            "reasoning": "Nine times 1 equals 9 not 8, making the statement correctly false, and hints verify this fact through equal groups reasoning and identity property explanation."
           }
         }
       },
       {
-        "sample_id": "c9464b9d292f04c1b715",
+        "sample_id": "8d0d9b667d41657859e0",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is clear: the stem declares 104×80=8320 and asks for truth judgment. No parsing ambiguity."
+            "reasoning": "The question asks whether 8×(7+4) equals (8×7)+4, presenting a clear contrast between complete and incomplete distributive property application without ambiguity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The statement is mathematically correct, and the question appropriately tests whether learners can verify a true product claim. The decomposition in hints is logically sound and supports the true answer."
+            "reasoning": "Demonstrating what happens when the distributive property is incorrectly applied by multiplying only one addend is pedagogically sound for showing property boundaries and common misconceptions."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is phrased clearly for Grade 3 learners. The hint sequence shows the decomposition explicitly and concludes with verification of the product, making the answer transparent."
+            "reasoning": "Multiple choice options and the structured comparison of left and right expressions make this scenario comprehensible to Grade 3 learners learning distributive property boundaries."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 104×80=8320 is correct. The decomposition 100×80 + 4×80 = 8000+320 = 8320 is sound. All arithmetic in every hint line is accurate."
+            "reasoning": "The left side 8×11 yields 88 while the right side 56+4 yields 60, the false answer is correct, and hints specifically note that only 7 was multiplied by 8 on the right."
           }
         }
       },
       {
-        "sample_id": "12798b888e6857483124",
+        "sample_id": "8aba33ece3353b6ef714",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The cloze stem requests the product of 69 and 3 with blank fill. The intent is unambiguous. Four numerically distinct options are provided."
+            "reasoning": "The question asks whether 7×(8+4) equals (7×8)+4, clearly presenting incomplete versus complete distributive application without linguistic confusion."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups language and place-value decomposition are appropriate Grade 3 strategies. The hints provide both concrete additive (69+69+69) and symbolic decomposition (60×3 + 9×3) approaches."
+            "reasoning": "Testing incomplete distributive property application through direct comparison is a valid assessment demonstrating whether learners understand that both addends must be multiplied."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The fill-in-blank format is standard for Grade 3. The hint progression is explicit and logical, moving from grouping interpretation through decomposition to final answer."
+            "reasoning": "Multiple choice format with clear options and standard expression comparison structure supports Grade 3 learner comprehension of the distributive property scenario presented."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 69×3=207 is correct. The decomposition 60×3 + 9×3 = 180+27 = 207 is sound. The additive approach 69+69+69=207 is also correct. All arithmetic is accurate."
+            "reasoning": "The left side 7×12 yields 84 while the right side 56+4 yields 60, the false answer is correct, and hints explain that only 8 was multiplied by 7 on the right side."
           }
         }
       },
       {
-        "sample_id": "6df3ecedd3bb0efbd334",
+        "sample_id": "11a43011b2860cd4b0bd",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ stem requests the product of 43 and 200. Options are four distinct numbers with no parsing ambiguity."
+            "reasoning": "The question asks whether 6×(8+5) equals (6×8)+(6×5), clearly presenting complete distributive property application with no ambiguity about the mathematical comparison."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups and 200-times-table references are cognitively appropriate for Grade 3. The decomposition strategy (40+3)×200 is standard. The distractors represent plausible computational errors."
+            "reasoning": "Testing the full distributive property where both addends are multiplied is standard Grade 3 multiplication property introduction and is pedagogically appropriate for this learner level."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly stated for Grade 3 learners. The hint sequence is transparent: it establishes the problem, applies the times-table concept, decomposes, and calculates."
+            "reasoning": "Multiple choice options with clear answer selections provide an accessible response method for Grade 3 learners assessing distributive property understanding through the expression comparison."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 43×200=8600 is correct. The decomposition 40×200 + 3×200 = 8000+600 = 8600 is accurate. All arithmetic in the hints is sound."
+            "reasoning": "The left side 6×13 yields 78 and the right side 48+30 also yields 78, the true answer is correct, and hints verify all intermediate multiplication and addition calculations."
           }
         }
       },
       {
-        "sample_id": "b144737d63a20e13a6c3",
+        "sample_id": "8fd1b205b5cf2beb7cf3",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is unambiguous: the stem declares 108×9=972 and requests truth judgment. No alternative interpretation exists."
+            "reasoning": "The question asks whether regrouping three factors via parentheses produces the same product, presenting the associative property test clearly without mathematical or linguistic ambiguity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The statement is mathematically correct, and the question appropriately tests verification of a true product claim. The hints support the true answer through explicit decomposition."
+            "reasoning": "Testing associative property with three factors by comparing different groupings is pedagogically valid for Grade 3 multiplication property exploration and aligns with curriculum expectations."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question format is suitable for Grade 3 true/false assessment. The hint progression unambiguously establishes that the claimed product is accurate."
+            "reasoning": "Multiple choice format provides clear response options, and the expression comparison with parentheses is structured in a manner accessible to Grade 3 students learning multiplication properties."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 108×9=972 is correct. The decomposition 100×9 + 8×9 = 900+72 = 972 is accurate. All arithmetic in the hints is sound."
+            "reasoning": "The left side 12×3 yields 36 and the right side 2×18 also yields 36, the true answer is correct, and hints show all step-by-step calculations verifying the associative principle."
           }
         }
       },
       {
-        "sample_id": "f1cc24ce074d28baa645",
+        "sample_id": "2d786d09c3678da854f7",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is clear: the stem declares 99×9=891 and asks for truth judgment. No ambiguity in parsing or intent."
+            "reasoning": "The question asks for the product of 7×1 in multiple-choice format, with no ambiguity about what multiplication computation is requested."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The statement is mathematically correct, and testing verification of this product is pedagogically sound. The decomposition in hints is logically coherent and supports the true answer."
+            "reasoning": "Direct application of the identity property through straightforward multiplication computation is standard Grade 3 content aligned with multiplication fact mastery expectations."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly phrased for Grade 3 learners. The hint sequence establishes the problem conceptually and then verifies it through explicit decomposition."
+            "reasoning": "Simple multiplication question with distractor options provides an accessible and clear assessment mechanism for Grade 3 learners demonstrating identity property knowledge."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 99×9=891 is correct. The decomposition 90×9 + 9×9 = 810+81 = 891 is accurate. All arithmetic in every hint is sound."
+            "reasoning": "Seven times 1 correctly equals 7, hints explain reasoning through equal groups interpretation, and option distractors represent plausible learner misconceptions without invalidating the correct answer."
           }
         }
       },
       {
-        "sample_id": "fc2cfdfca1bcdd7cd225",
+        "sample_id": "0b1874000cd2c107037c",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The cloze stem requests the product of 156 and 20 with blank fill. The thematic wrapper about running shoes does not introduce parsing ambiguity. The mathematical question remains clear."
+            "reasoning": "The question asks whether regrouping three given factors in different ways produces the same result, with clear presentation of the associative property test."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The thematic context (Ate Sam's math challenge about running shoes) is light and does not interfere with mathematical content. The decomposition and hints remain mathematically coherent. The theme does not mislead or redirect attention from the computation."
+            "reasoning": "Three-factor multiplication with varying grouping is appropriate Grade 3 depth for associative property instruction and extends learner understanding beyond two-factor products."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly structured for Grade 3 completion. The thematic wrapper is brief and does not obscure the mathematical request. The hint progression is explicit and unambiguous."
+            "reasoning": "Multiple choice presentation with distinct options supports Grade 3 learner decision making and response construction for the associative property comparison scenario."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 156×20=3120 is correct. The decomposition 150×20 + 6×20 = 3000+120 = 3120 is sound. All arithmetic in the hints is accurate."
+            "reasoning": "The left side 24×2 yields 48 and the right side 3×16 also yields 48, the true answer is correct, and hints verify all intermediate step calculations in proper order."
           }
         }
       },
       {
-        "sample_id": "1969462a895889a84c60",
+        "sample_id": "6b93f6c3ea2b48c79ff2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is clear: Manny proposes 86 as the product of 44×2, and the question asks if he is correct. The thematic context (Ate Alyssa's challenge about shuttlecocks) does not introduce ambiguity. The mathematical claim is unambiguous."
+            "reasoning": "The question asks whether 8×7 equals 7×4 without linguistic or mathematical ambiguity, presenting a clear comparison of two products."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The thematic wrapper is light and does not interfere with the error-detection task. The hints correctly identify the error: 44×2 equals 88, not 86. The plausibility of the incorrect answer (86 vs. 88) makes this pedagogically sound for Grade 3 error detection."
+            "reasoning": "Comparing two products where only one factor is shared and the other differs is a valid multiplication comprehension task testing understanding of factor-product relationships."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection question is clearly structured despite the thematic wrapper. The context does not confuse learners because the mathematical problem is isolated and explicit. The hints unambiguously show the correct calculation and why Manny is wrong."
+            "reasoning": "Multiple choice format with standard answer options provides an accessible response method for Grade 3 learners evaluating this multiplication comparison scenario."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 44×2=88 is correct. The decomposition 40×2 + 4×2 = 80+8 = 88 is sound. The answer key correctly identifies Manny as having an error (claiming 86 instead of 88). All arithmetic is accurate."
+            "reasoning": "Eight times 7 yields 56 while 7 times 4 yields 28, correctly differentiated in the false answer choice, and hints verify both calculations with explanation of their difference."
           }
         }
       },
       {
-        "sample_id": "5487bab0c85a168b5fcd",
+        "sample_id": "28e1bfd1e9876af574eb",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The cloze stem requests the product of 1000 and 10 with blank fill. The intent is unambiguous. Four numerically distinct options are provided."
+            "reasoning": "The question asks whether associative regrouping with three factors (3×9)×3 versus 3×(9×3) preserves the product, presented without mathematical ambiguity."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equal-groups language and decomposition strategy are appropriate for Grade 3. The hints progress logically from conceptual interpretation to place-value breakdown to final calculation."
+            "reasoning": "Testing associative property with larger factors that produce intermediate products within Grade 3 mental math capacity is pedagogically appropriate for this learner level."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The fill-in-blank format is standard for Grade 3. The hint sequence is explicit and sequential, making the expected answer transparent."
+            "reasoning": "Multiple choice options and expression comparison structure are clear and accessible to Grade 3 learners demonstrating understanding of associative property boundaries."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 1000×10=10000 is correct. The decomposition 1000×10 + 0×10 = 10000+0 = 10000 is sound. All arithmetic in the hints is accurate."
+            "reasoning": "The left side 27×3 yields 81 and the right side 3×27 also yields 81, the true answer is correct, and hints show all step-by-step intermediate products verifying associativity."
           }
         }
       },
       {
-        "sample_id": "d9912518f4bfcfd07b8b",
+        "sample_id": "c230bc5337e92c168eae",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is clear: Pia proposes 168 as the product of 24×7, and the question asks if she is correct. No ambiguity in the mathematical claim or question structure."
+            "reasoning": "The question asks whether 7×8 equals 8×3, presenting a direct comparison of two products without ambiguity in mathematical or linguistic meaning."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The context of Pia solving 24×7 and claiming 168 is appropriate for Grade 3 assessment. The answer key correctly identifies no error because 24×7 does equal 168. The hints support this conclusion."
+            "reasoning": "Comparing unrelated multiplication problems reinforces that changing values produces different products, a fundamental multiplication understanding supporting multiplication fact mastery."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hint progression clearly shows why Pia is correct: the decomposition explicitly verifies the product 168."
+            "reasoning": "Multiple choice format with unambiguous binary-style response structure provides a clear assessment mechanism for Grade 3 learners evaluating this multiplication comparison."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 24×7=168 is correct. The decomposition 20×7 + 4×7 = 140+28 = 168 is sound. The answer key correctly marks Pia as having no error. All arithmetic is accurate."
+            "reasoning": "Seven times 8 yields 56 while 8 times 3 yields 24, correctly identified as different in the false answer choice, with hints verifying both calculations."
           }
         }
       },
       {
-        "sample_id": "0d8f2a0f353e8ca2bf7a",
+        "sample_id": "c179de215e0f4c8cbf05",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ stem requests the product of 10 and 6. Options are four distinct numbers. No parsing ambiguity exists."
+            "reasoning": "The question asks whether swapping the factors in 4×6 versus 6×4 produces the same product, presented clearly without ambiguity in the commutative property test."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "This sample demonstrates the without-regrouping variant of the competency because 10×6 produces 60+0 in the decomposition. The equal-groups interpretation is logical and age-appropriate."
+            "reasoning": "Direct commutative property test with the same pair in different order is a standard pedagogical approach for teaching that factor order does not affect multiplication results."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly phrased for Grade 3 learners. The hints explicitly show the decomposition where the tens digit contributes 60 and the units digit contributes 0."
+            "reasoning": "Simple multiple choice format with factual certainty options provides accessible response method for Grade 3 learners assessing commutative property understanding."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 10×6=60 is correct. The decomposition 10×6 + 0×6 = 60+0 = 60 demonstrates the without-regrouping case. All arithmetic is accurate."
+            "reasoning": "Four times 6 yields 24 and 6 times 4 also yields 24, the true answer is correct, and hints explain the commutative principle through same factors in different order."
           }
         }
       },
       {
-        "sample_id": "99bcbb42e5fffa6f36e1",
+        "sample_id": "93d86f5edc6690af21d2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ stem requests the product of 12 and 5. Options are four numerically distinct values. No ambiguity in question parsing or intent."
+            "reasoning": "The question asks whether (3×7)×3 equals 3×(7×2), presenting a clear test of what happens when grouping changes and the third factor also differs."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The hints provide both additive (5 groups of 12) and decomposition (10+2 times 5) interpretations, both appropriate for Grade 3. The distractors represent plausible computational errors."
+            "reasoning": "Demonstrating that grouping changes only preserve products when all factors match is pedagogically valid for showing associative property boundaries and misconception correction."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question is clearly stated for Grade 3 independent work. The hints offer multiple valid reasoning paths and conclude with the explicit product."
+            "reasoning": "Multiple choice structure with options helps Grade 3 learners identify when associative property applies versus when different factors make expressions non-equivalent."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 12×5=60 is correct. The decomposition 10×5 + 2×5 = 50+10 = 60 is sound. The additive form 12+12+12+12+12=60 is also correct. All arithmetic is accurate."
+            "reasoning": "The left side 21×3 yields 63 while the right side 3×14 yields 42, correctly identified as non-equivalent in the false answer, with hints verifying all calculations."
           }
         }
       },
       {
-        "sample_id": "0220807f2b2118bb005e",
+        "sample_id": "4f66b23a8aca3ce1fd9c",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false statement is clear: the stem declares 1000×10=1010 and requests truth judgment. No ambiguity in parsing or intent."
+            "reasoning": "The question asks whether (3×7)×3 equals 3×(7×2) using different seed value, testing the same associative property scenario with clear mathematical presentation."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The false statement is pedagogically sound because it tests whether learners actually compute the product and recognize that 10000 is not 1010. The hints unambiguously establish the correct product."
+            "reasoning": "Repetition of the grouping property test demonstrates consistent assessment across multiple seeds and confirms that the generator reproduces the same mathematical logic reliably."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The question format is suitable for Grade 3 assessment. The hint progression explicitly shows the correct product is 10000, making the false claim transparent."
+            "reasoning": "Multiple choice options with standard Grade 3 comprehension aids support learner understanding of this associative property boundary demonstration."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 1000×10=10000 is correct. The false claim in the stem (1010) is clearly incorrect. All arithmetic in the hints is accurate and supports the true answer."
+            "reasoning": "The left side 21×3 yields 63 and the right side 3×14 yields 42, correctly identified as non-equivalent, with hints showing identical step-by-step verification."
           }
         }
       },
       {
-        "sample_id": "5c051afdcc7f90b3b289",
+        "sample_id": "804957634e25e00a734d",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is clear: Liza proposes 246 as the product of 81×3, and the question asks if she is correct. No ambiguity in the mathematical claim or question structure."
+            "reasoning": "The question asks whether 7×(5+7) equals (7×5)+(7×7) with thematic dance wrapper that does not obscure the mathematical comparison being made."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The plausibility of Liza's error (246 vs. the correct 243) makes this a sound error-detection item for Grade 3 learners. The hints correctly identify the error and show the correct computation."
+            "reasoning": "Thematic elements add engagement to the distributive property assessment, and the character context does not interfere with mathematical logic or create confusion about the computation."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection frame is transparent for Grade 3 learners. The hints clearly show the correct calculation and why Liza's answer is incorrect by three units."
+            "reasoning": "Theme contextualizes the content while keeping the mathematical comparison clear and accessible to Grade 3 learners, providing interest without compromising clarity."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 81×3=243 is correct. The decomposition 80×3 + 1×3 = 240+3 = 243 is sound. The answer key correctly identifies Liza as having an error (claiming 246 instead of 243). All arithmetic is accurate."
+            "reasoning": "The left side 7×12 yields 84 and the right side 35+49 also yields 84, the true answer is correct, and hints verify all intermediate calculations of the distributive principle."
           }
         }
       },
       {
-        "sample_id": "597b81db1a63e40b2df8",
+        "sample_id": "1085aab7a3a0c3112e79",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection format is clear: Manny proposes 1250 as the product of 26×50, and the question asks if he is correct. No ambiguity in the mathematical claim or question intent."
+            "reasoning": "The basketball-themed question asks whether 2×7 equals 7×8 without the theme obscuring the mathematical comparison being evaluated."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The plausibility of Manny's error (1250 vs. the correct 1300) makes this a sound error-detection item. The hints correctly identify the error and show the correct computation through decomposition."
+            "reasoning": "Thematic element introduces character interest while keeping the mathematical question well-defined, testing whether students understand factor changes produce different products."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error-detection question is clearly structured for Grade 3 learners. The hints unambiguously show the correct calculation and explain why Manny's answer is incorrect by 50 units."
+            "reasoning": "Theme adds contextual engagement without creating confusion about what multiplication comparison is being requested or how to respond in the multiple choice format."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The product 26×50=1300 is correct. The decomposition 20×50 + 6×50 = 1000+300 = 1300 is sound. The answer key correctly identifies Manny as having an error (claiming 1250 instead of 1300). All arithmetic is accurate."
+            "reasoning": "Two times 7 yields 14 and 7 times 8 yields 56, correctly identified as different in the false answer, with hints verifying both product calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "f4631e266939c8a9ade9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly requests the product of 6×1 with provided numerical options, presenting no ambiguity about what multiplication fact is being assessed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Identity property application through fill-in-the-blank format is standard Grade 3 practice for assessing multiplication facts and property understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Simple fill-in format with provided options removes ambiguity and creates an accessible response method for Grade 3 learners demonstrating identity property knowledge."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six times 1 correctly equals 6, hints explain equal groups reasoning, and all arithmetic aligns with identity property for Grade 3 multiplication facts taught."
+          }
+        }
+      },
+      {
+        "sample_id": "64e13483d716c8408dfb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether 6×7 equals 7×6 without ambiguity, presenting a direct commutative property test."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Commutative property tested with multiplication table facts where factor order is swapped is standard Grade 3 curriculum for property demonstration."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Binary certainty options in multiple choice format support Grade 3 learner responses to this commutative property assessment."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six times 7 yields 42 and 7 times 6 also yields 42, the true answer is correct, and hints verify both multiplication facts and commutative principle."
+          }
+        }
+      },
+      {
+        "sample_id": "43dbaeb16587bef14da3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether (2×8)×2 equals 2×(8×3), presenting clear contrast between different factors in the third position and associative regrouping."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Testing that property changes only work when factors match is pedagogically sound for demonstrating associative property boundaries and preventing learner misconceptions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice options aid Grade 3 learners in identifying when associative regrouping does or does not preserve the product."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The left side 16×2 yields 32 while the right side 2×24 yields 48, correctly identified as non-equivalent, with hints showing all intermediate calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "9b9ba42a8a3f8c5b0a7b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice asks for the product of 0×8 with clear numerical options provided, presenting no ambiguity about what calculation is requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero property application through direct multiplication is foundational Grade 3 content supporting multiplication fact mastery and property understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Simple multiplication question with distractor options designed for learner misconceptions provides accessible assessment of zero property knowledge."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero times 8 correctly equals 0, hints explain equal groups reasoning for zero property, and option distractors represent plausible learner errors."
+          }
+        }
+      },
+      {
+        "sample_id": "329eddc897e5fdea7e59",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 6×1=7 for judgment, with clear false equation testing identity property understanding."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Testing identity property through negation with false statement is pedagogically valid for assessing whether learners distinguish correct multiplication facts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct declarative statement with binary true-false response format supports Grade 3 learner assessment of multiplication fact knowledge and reasoning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Six times 1 equals 6 not 7, making the statement correctly false, and hints verify the identity property through equal groups interpretation."
+          }
+        }
+      },
+      {
+        "sample_id": "1e44f7476d0b3de0584f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether 3×7 equals 7×5 using multiple choice format, with clear comparison of two products."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing products from modified factor pairs tests multiplication understanding where changing factors produces different results."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice with standard answer options supports Grade 3 learner response construction for this multiplication comparison assessment."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three times 7 yields 21 while 7 times 5 yields 35, correctly identified as non-equivalent, with hints verifying both product calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "4c5ff4a7f9a66667cac6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection format asks whether student assertion about 0×7 product is correct, with clear question about the validity of the student's answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Realistic error scenario where student incorrectly states 0×7=7 is pedagogically sound for scaffolded Grade 3 learning with guided correction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection scaffolded format with named student supports Grade 3 guided learning experiences where identifying errors develops conceptual understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero times 7 correctly equals 0 not 7, the student error is realistic and correctly identified as an error, with hints explaining zero property reasoning."
           }
         }
       }
     ],
     "clause_evidence": [
       {
-        "requirement_id": "multiply_numbers",
-        "clause": "Multiply numbers",
+        "requirement_id": "illustrate_and_apply_properties_of_multiplication",
+        "clause": "Illustrate and apply properties of multiplication",
         "verdict": "PASS",
-        "reasoning": "All 22 samples require learners to multiply two numbers and produce a product. The core operation is present in every item across all response formats (MCQ, true/false, cloze, error-detection). No sample omits or trivializes the multiplication task.",
-        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "54036ffa8aca22c50258", "d6730a6716c2db78c0d2", "efb811b9c11decd2ef07", "2ececb4dcf84f585e9cb", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "12798b888e6857483124", "6df3ecedd3bb0efbd334", "b144737d63a20e13a6c3", "f1cc24ce074d28baa645", "fc2cfdfca1bcdd7cd225", "1969462a895889a84c60", "5487bab0c85a168b5fcd", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "0220807f2b2118bb005e", "5c051afdcc7f90b3b289", "597b81db1a63e40b2df8"]
+        "reasoning": "Every sample demonstrates application of multiplication properties through problem-solving formats where learners apply identity, zero, commutative, associative, or distributive properties. Samples span multiple formats and true-false cases, showing that properties are both illustrated and applied across the packet.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "39af49088687ab791bb1", "e4202712b5d1fc203c40", "fe30f5b185b960024365", "2e140b767ffbf1061d8d", "5b8b118252437966d2ec", "c70c45f751375250074a", "da6de8210c1253480926", "8d0d9b667d41657859e0", "8aba33ece3353b6ef714", "11a43011b2860cd4b0bd", "8fd1b205b5cf2beb7cf3", "2d786d09c3678da854f7", "0b1874000cd2c107037c", "6b93f6c3ea2b48c79ff2", "28e1bfd1e9876af574eb", "c230bc5337e92c168eae", "c179de215e0f4c8cbf05", "93d86f5edc6690af21d2", "4f66b23a8aca3ce1fd9c", "804957634e25e00a734d", "1085aab7a3a0c3112e79", "f4631e266939c8a9ade9", "64e13483d716c8408dfb", "43dbaeb16587bef14da3", "9b9ba42a8a3f8c5b0a7b", "329eddc897e5fdea7e59", "1e44f7476d0b3de0584f", "4c5ff4a7f9a66667cac6"]
       },
       {
-        "requirement_id": "with_and_without_regrouping",
-        "clause": "with and without regrouping",
+        "requirement_id": "6_7_8_and_9_multiplication_tables",
+        "clause": "6, 7, 8, and 9 multiplication tables",
         "verdict": "PASS",
-        "reasoning": "The sample bank demonstrates both regrouping and non-regrouping cases explicitly in the hints. Sample 0d8f2a0f (10×6) shows non-regrouping because the tens digit produces no carrying to a higher place. Samples like c8b530fe (41×6), 22c5cf98 (573×4), efb811b9 (702×2), and others show regrouping where intermediate products must be combined across place values. The variant is substantively represented.",
-        "sample_ids": ["c8b530fe3e9caa6eee68", "efb811b9c11decd2ef07", "22c5cf9838aa32f5ee25", "78fada99efc04c162d02", "fc2cfdfca1bcdd7cd225", "0d8f2a0f353e8ca2bf7a", "b144737d63a20e13a6c3", "12798b888e6857483124"]
+        "reasoning": "The samples include multiplication facts involving 6, 7, 8, and 9 throughout the packet. While some samples also include other numbers such as 1, 0, 2, 3, 4, 5 for property demonstration, every sample incorporates at least one multiplication using 6, 7, 8, or 9 as demonstrated across the diverse problem set.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "39af49088687ab791bb1", "e4202712b5d1fc203c40", "fe30f5b185b960024365", "2e140b767ffbf1061d8d", "5b8b118252437966d2ec", "c70c45f751375250074a", "da6de8210c1253480926", "8d0d9b667d41657859e0", "8aba33ece3353b6ef714", "11a43011b2860cd4b0bd", "8fd1b205b5cf2beb7cf3", "2d786d09c3678da854f7", "0b1874000cd2c107037c", "6b93f6c3ea2b48c79ff2", "28e1bfd1e9876af574eb", "c230bc5337e92c168eae", "c179de215e0f4c8cbf05", "93d86f5edc6690af21d2", "4f66b23a8aca3ce1fd9c", "804957634e25e00a734d", "1085aab7a3a0c3112e79", "f4631e266939c8a9ade9", "64e13483d716c8408dfb", "43dbaeb16587bef14da3", "9b9ba42a8a3f8c5b0a7b", "329eddc897e5fdea7e59", "1e44f7476d0b3de0584f", "4c5ff4a7f9a66667cac6"]
       },
       {
-        "requirement_id": "2_to_3_digit_by_1_digit",
-        "clause": "2- to 3-digit numbers by a 1-digit number",
+        "requirement_id": "one_multiplied_by_any_number",
+        "clause": "one multiplied by any number is equal to the number",
         "verdict": "PASS",
-        "reasoning": "Eleven samples exemplify this category. The operand ranges span two-digit (12, 41, 69, 81, 99) and three-digit (108, 573, 702, 108) cases. The single-digit multipliers range from 2 through 9. The products (60, 207, 246, 243, 891, 972, 2292, 1404, 168, 88, 207) are all within the product ceiling and demonstrate varied regrouping and error-detection contexts.",
-        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "efb811b9c11decd2ef07", "12798b888e6857483124", "b144737d63a20e13a6c3", "f1cc24ce074d28baa645", "1969462a895889a84c60", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "5c051afdcc7f90b3b289"]
+        "reasoning": "The identity property appears in six dedicated samples testing the principle that multiplying by 1 yields the original number. These samples include true cases like 1×6=6, 1×9=9, 7×1=7, 6×1=6, and false cases like 9×1≠8 and 6×1≠7, demonstrating comprehensive coverage of identity property across different multiplier and multiplicand values.",
+        "sample_ids": ["5b8b118252437966d2ec", "c70c45f751375250074a", "da6de8210c1253480926", "2d786d09c3678da854f7", "f4631e266939c8a9ade9", "329eddc897e5fdea7e59"]
       },
       {
-        "requirement_id": "2_to_4_digit_by_leading_non_zero",
-        "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit",
+        "requirement_id": "zero_multiplied_by_any_number",
+        "clause": "zero multiplied by any number is zero",
         "verdict": "PASS",
-        "reasoning": "Ten samples exemplify this category. The multipliers are 10, 20, 50, 80, 200, 300 — each with a single leading non-zero digit and no other non-zero digits in other positions. The first operands range from two-digit (26, 33, 43, 104) to four-digit (1000). The products (10000, 9900, 8640, 8320, 8600, 3120, 1300) all satisfy the product ceiling and appear across multiple response formats including true/false, MCQ, error-detection, and cloze.",
-        "sample_ids": ["54036ffa8aca22c50258", "d6730a6716c2db78c0d2", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "6df3ecedd3bb0efbd334", "fc2cfdfca1bcdd7cd225", "2ececb4dcf84f585e9cb", "0220807f2b2118bb005e", "597b81db1a63e40b2df8"]
+        "reasoning": "Three samples explicitly test the zero property showing that zero times any number equals zero. Sample showing 6×0=0 correct, sample showing 0×8=0 correct, and sample showing 0×7 cannot equal 7 when student incorrectly asserts it. All three samples demonstrate the zero property consistently across different factor orders and error-detection formats.",
+        "sample_ids": ["e4202712b5d1fc203c40", "9b9ba42a8a3f8c5b0a7b", "4c5ff4a7f9a66667cac6"]
       },
       {
-        "requirement_id": "products_up_to_10_000",
-        "clause": "products up to 10 000",
+        "requirement_id": "changing_the_order",
+        "clause": "changing the order of the numbers being multiplied does not change the product",
+        "verdict": "CONCERN",
+        "reasoning": "Three samples directly test commutative property by comparing the same factor pair in different order: 5×6 versus 6×5, 4×6 versus 6×4, and 6×7 versus 7×6. However, multiple other samples present comparisons like 4×8 versus 8×9 or 2×9 versus 9×8 where not only order changes but other factors also differ, so these do not isolate the commutative property. The explicit commutative tests are limited to only three samples.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "c179de215e0f4c8cbf05", "64e13483d716c8408dfb"]
+      },
+      {
+        "requirement_id": "changing_the_grouping",
+        "clause": "changing the grouping of the numbers being multiplied does not change the product",
         "verdict": "PASS",
-        "reasoning": "All 22 samples produce products within or at the boundary of the 10000 ceiling. The products range from 60 (10×6) at the low end to 10000 (1000×10) at the exact maximum. No product exceeds the specified ceiling in any sample, including in error-detection items where incorrect answers are proposed and evaluated.",
-        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "54036ffa8aca22c50258", "d6730a6716c2db78c0d2", "efb811b9c11decd2ef07", "2ececb4dcf84f585e9cb", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "12798b888e6857483124", "6df3ecedd3bb0efbd334", "b144737d63a20e13a6c3", "f1cc24ce074d28baa645", "fc2cfdfca1bcdd7cd225", "1969462a895889a84c60", "5487bab0c85a168b5fcd", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "0220807f2b2118bb005e", "5c051afdcc7f90b3b289", "597b81db1a63e40b2df8"]
+        "reasoning": "Six samples explicitly test associative property by comparing expressions with different parenthetical groupings: (2×6)×3 versus 2×(6×3), (3×8)×2 versus 3×(8×2), (3×9)×3 versus 3×(9×3), and (3×7)×3 versus 3×(7×2) appearing twice. Both affirming cases where grouping preserves the product and negating cases where other factors differ are included, demonstrating comprehensive associative property coverage.",
+        "sample_ids": ["8fd1b205b5cf2beb7cf3", "0b1874000cd2c107037c", "28e1bfd1e9876af574eb", "93d86f5edc6690af21d2", "4f66b23a8aca3ce1fd9c", "43dbaeb16587bef14da3"]
+      },
+      {
+        "requirement_id": "multiplying_the_sum_of_two_addends",
+        "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+        "verdict": "PASS",
+        "reasoning": "Five samples test distributive property where 8×(7+2) equals (8×7)+(8×2), 6×(8+5) equals (6×8)+(6×5), and 7×(5+7) equals (7×5)+(7×7) showing correct application. Two additional samples show incorrect application where only one addend is multiplied: 8×(7+4) versus (8×7)+4 and 7×(8+4) versus (7×8)+4, demonstrating both correct and incorrect boundary cases of the distributive property.",
+        "sample_ids": ["fe30f5b185b960024365", "8d0d9b667d41657859e0", "8aba33ece3353b6ef714", "11a43011b2860cd4b0bd", "804957634e25e00a734d"]
       }
     ],
-    "overall": "PASS"
+    "overall": "CONCERN"
   }
 }

@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925
+  blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_na_q3_2/verdicts.json
+  local_only/scratch/phaseC/mat_g3_na_q3_1/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_2-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,137 +99,188 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_na_q3_2
-PACKET DIGEST: 1fdd70975c334287976adfe9e00c013cf9848c2e346f1fb4116c389f31946f9f
+NODE: mat_g3_na_q3_1
+PACKET DIGEST: b30bcc73d73a24fd66cceecfa888d3c379c490be31e312dc65d9df0e6650195f
 COMPETENCY (Grade 3, Quarter 3, None):
-Multiply numbers with and without regrouping: 2- to 3-digit numbers by a 1-digit number, and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit, with products up to 10 000.
+Illustrate and apply properties of multiplication for the 6, 7, 8, and 9 multiplication tables: one multiplied by any number is equal to the number; zero multiplied by any number is zero; changing the order of the numbers being multiplied does not change the product; changing the grouping of the numbers being multiplied does not change the product; and multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  multiply_numbers: Multiply numbers
-  with_and_without_regrouping: with and without regrouping
-  2_to_3_digit_by_1_digit: 2- to 3-digit numbers by a 1-digit number
-  2_to_4_digit_by_leading_non_zero: 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit
-  products_up_to_10_000: products up to 10 000
+  illustrate_and_apply_properties_of_multiplication: Illustrate and apply properties of multiplication
+  6_7_8_and_9_multiplication_tables: 6, 7, 8, and 9 multiplication tables
+  one_multiplied_by_any_number: one multiplied by any number is equal to the number
+  zero_multiplied_by_any_number: zero multiplied by any number is zero
+  changing_the_order: changing the order of the numbers being multiplied does not change the product
+  changing_the_grouping: changing the grouping of the numbers being multiplied does not change the product
+  multiplying_the_sum_of_two_addends: multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend
 
 SAMPLES (every one of these is real rendered output):
-  sample c8b530fe3e9caa6eee68  seed 42  [mcq]
-      stem:    What is 41 × 6?
-      answer:  246
-      options: 246 / 47 / 240 / 35
-      hints:   ["We need to find the total of equal groups 41 groups of 6.", "Use the 6 times table: 6 × 41.", "Break 41 into 40 + 1: (40 × 6) + (1 × 6) = 240 + 6 = 246.", "The product of 41 × 6 = 246."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 22c5cf9838aa32f5ee25  seed 43  [true_false]
-      stem:    573 × 4 = 577. True or False?
-      answer:  False
-      hints:   ["We need to find the total of equal groups 573 groups of 4.", "Think of it as 4 groups of 573: 573 + 573 + 573 + 573.", "Break 573 into 570 + 3: (570 × 4) + (3 × 4) = 2280 + 12 = 2292.", "The product of 573 × 4 = 2292."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 54036ffa8aca22c50258  seed 44  [error_detect]
-      stem:    Rico solved: "1000 × 10 = ___". Rico says the missing number is 10000. Is Rico correct?
-      answer:  {'has_error': False, 'correct_value': 10000}
-      hints:   ["We need to find the total of equal groups 1000 groups of 10.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample d6730a6716c2db78c0d2  seed 45  [mcq]
-      stem:    What is 108 × 80?
-      answer:  8640
-      options: 8640 / 8560 / 28 / 188
-      hints:   ["We need to find the total of equal groups 108 groups of 80.", "Use the 80 times table: 80 × 108.", "Break 108 into 100 + 8: (100 × 80) + (8 × 80) = 8000 + 640 = 8640.", "The product of 108 × 80 = 8640."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample efb811b9c11decd2ef07  seed 46  [cloze]
-      stem:    702 × 2 = ___
-      answer:  1404
-      options: 1402 / 704 / 700 / 1404
-      hints:   ["We need to find the total of equal groups 702 groups of 2.", "Think of it as 2 groups of 702: 702 + 702.", "Break 702 into 700 + 2: (700 × 2) + (2 × 2) = 1400 + 4 = 1404.", "The product of 702 × 2 = 1404."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 2ececb4dcf84f585e9cb  seed 500  [true_false]
-      stem:    1000 × 10 = 9999. True or False?
-      answer:  False
-      hints:   ["We need to find the total of equal groups 1000 groups of 10.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample e8f22f71c2888fd38497  seed 501  [mcq]
-      stem:    What is 1000 × 10?
-      answer:  10000
-      options: 9990 / 1010 / 990 / 10000
-      hints:   ["We need to find the total of equal groups 1000 groups of 10.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 78fada99efc04c162d02  seed 502  [error_detect]
-      stem:    Dante solved: "33 × 300 = ___". Dante says the missing number is 9900. Is Dante correct?
-      answer:  {'has_error': False, 'correct_value': 9900}
-      hints:   ["We need to find the total of equal groups 33 groups of 300.", "Use the 300 times table: 300 × 33.", "Break 33 into 30 + 3: (30 × 300) + (3 × 300) = 9000 + 900 = 9900.", "The product of 33 × 300 = 9900."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample c9464b9d292f04c1b715  seed 600  [true_false]
-      stem:    104 × 80 = 8320. True or False?
+  sample 5d4ec93aab52e32d040d  seed 42  [mcq]
+      stem:    Is 5 × 6 the same as 6 × 5?
       answer:  True
-      hints:   ["We need to find the total of equal groups 104 groups of 80.", "Use the 80 times table: 80 × 104.", "Break 104 into 100 + 4: (100 × 80) + (4 × 80) = 8000 + 320 = 8320.", "The product of 104 × 80 = 8320."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 12798b888e6857483124  seed 601  [cloze]
-      stem:    69 × 3 = ___
-      answer:  207
-      options: 207 / 204 / 66 / 72
-      hints:   ["We need to find the total of equal groups 69 groups of 3.", "Think of it as 3 groups of 69: 69 + 69 + 69.", "Break 69 into 60 + 9: (60 × 3) + (9 × 3) = 180 + 27 = 207.", "The product of 69 × 3 = 207."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 6df3ecedd3bb0efbd334  seed 602  [mcq]
-      stem:    What is 43 × 200?
-      answer:  8600
-      options: 8400 / 243 / 8600 / 8599
-      hints:   ["We need to find the total of equal groups 43 groups of 200.", "Use the 200 times table: 200 × 43.", "Break 43 into 40 + 3: (40 × 200) + (3 × 200) = 8000 + 600 = 8600.", "The product of 43 × 200 = 8600."]
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["Both sides multiply the same two numbers, 5 and 6, in a different order.", "5 × 6 = 30 and 6 × 5 = 30.", "So the two sides are the same."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample b144737d63a20e13a6c3  seed 603  [true_false]
-      stem:    108 × 9 = 972. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 108 groups of 9.", "Use the 9 times table: 9 × 108.", "Break 108 into 100 + 8: (100 × 9) + (8 × 9) = 900 + 72 = 972.", "The product of 108 × 9 = 972."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample f1cc24ce074d28baa645  seed 700  [true_false]
-      stem:    99 × 9 = 891. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 99 groups of 9.", "Use the 9 times table: 9 × 99.", "Break 99 into 90 + 9: (90 × 9) + (9 × 9) = 810 + 81 = 891.", "The product of 99 × 9 = 891."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample fc2cfdfca1bcdd7cd225  seed 701  [cloze]
-      stem:    🚴 Ate Sam has a math challenge about running shoes. 156 × 20 = ___
-      answer:  3120
-      options: 3120 / 136 / 176 / 3100
-      hints:   ["We need to find the total of equal groups 156 groups of 20.", "Use the 20 times table: 20 × 156.", "Break 156 into 150 + 6: (150 × 20) + (6 × 20) = 3000 + 120 = 3120.", "The product of 156 × 20 = 3120."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 1969462a895889a84c60  seed 702  [error_detect]
-      stem:    🏐 Ate Alyssa has a math challenge about shuttlecocks. Manny solved: "44 × 2 = ___". Manny says the missing number is 86. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 88}
-      hints:   ["We need to find the total of equal groups 44 groups of 2.", "Think of it as 2 groups of 44: 44 + 44.", "Break 44 into 40 + 4: (40 × 2) + (4 × 2) = 80 + 8 = 88.", "The product of 44 × 2 = 88."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 5487bab0c85a168b5fcd  seed 800  [cloze]
-      stem:    1000 × 10 = ___
-      answer:  10000
-      options: 9990 / 10000 / 990 / 1010
-      hints:   ["We need to find the total of equal groups 1000 groups of 10.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample d9912518f4bfcfd07b8b  seed 801  [error_detect]
-      stem:    Pia solved: "24 × 7 = ___". Pia says the missing number is 168. Is Pia correct?
-      answer:  {'has_error': False, 'correct_value': 168}
-      hints:   ["We need to find the total of equal groups 24 groups of 7.", "Use the 7 times table: 7 × 24.", "Break 24 into 20 + 4: (20 × 7) + (4 × 7) = 140 + 28 = 168.", "The product of 24 × 7 = 168."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 0d8f2a0f353e8ca2bf7a  seed 900  [mcq]
-      stem:    What is 10 × 6?
-      answer:  60
-      options: 16 / 60 / 54 / 4
-      hints:   ["We need to find the total of equal groups 10 groups of 6.", "Use the 6 times table: 6 × 10.", "Break 10 into 10 + 0: (10 × 6) + (0 × 6) = 60 + 0 = 60.", "The product of 10 × 6 = 60."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 99bcbb42e5fffa6f36e1  seed 901  [mcq]
-      stem:    What is 12 × 5?
-      answer:  60
-      options: 55 / 17 / 60 / 7
-      hints:   ["We need to find the total of equal groups 12 groups of 5.", "Think of it as 5 groups of 12: 12 + 12 + 12 + 12 + 12.", "Break 12 into 10 + 2: (10 × 5) + (2 × 5) = 50 + 10 = 60.", "The product of 12 × 5 = 60."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 0220807f2b2118bb005e  seed 1000  [true_false]
-      stem:    1000 × 10 = 1010. True or False?
+  sample 39af49088687ab791bb1  seed 43  [mcq]
+      stem:    Is 4 × 8 the same as 8 × 9?
       answer:  False
-      hints:   ["We need to find the total of equal groups 1000 groups of 10.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      options: False / True / Cannot be determined / Only when both are 0
+      hints:   ["The left side multiplies 4 and 8. The right side multiplies 8 and 9.", "4 × 8 = 32 and 8 × 9 = 72.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e4202712b5d1fc203c40  seed 44  [error_detect]
+      stem:    Rico solved: "6 × 0 = ___". Rico says the missing number is 0. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 0}
+      hints:   ["We need to find the total of equal groups 6 groups of 0.", "Think of it as 0 groups of 6: there are no groups, so there is nothing to add.", "The product of 6 × 0 = 0."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fe30f5b185b960024365  seed 45  [mcq]
+      stem:    Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?
+      answer:  True
+      options: Cannot be determined / False / True / Only when both are 0
+      hints:   ["Left side: 7 + 2 = 9, then 8 × 9 = 72.", "Right side: 8 × 7 = 56 and 8 × 2 = 16; 56 + 16 = 72.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2e140b767ffbf1061d8d  seed 46  [mcq]
+      stem:    Is 2 × 9 the same as 9 × 8?
+      answer:  False
+      options: False / Only when both are 0 / Cannot be determined / True
+      hints:   ["The left side multiplies 2 and 9. The right side multiplies 9 and 8.", "2 × 9 = 18 and 9 × 8 = 72.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5b8b118252437966d2ec  seed 64  [cloze]
+      stem:    1 × 6 = ___
+      answer:  6
+      options: 5 / 6 / 7 / 12
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Use the 6 times table: 6 × 1.", "The product of 1 × 6 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c70c45f751375250074a  seed 75  [true_false]
+      stem:    1 × 9 = 9. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 1 group of 9.", "Use the 9 times table: 9 × 1.", "The product of 1 × 9 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample da6de8210c1253480926  seed 500  [true_false]
+      stem:    9 × 1 = 8. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 9 groups of 1.", "Think of it as 1 group of 9: 9.", "The product of 9 × 1 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 8d0d9b667d41657859e0  seed 501  [mcq]
+      stem:    Is 8 × (7 + 4) the same as (8 × 7) + 4?
+      answer:  False
+      options: Cannot be determined / Only when both are 0 / True / False
+      hints:   ["Left side: 7 + 4 = 11, then 8 × 11 = 88.", "Right side: 8 × 7 = 56, then 56 + 4 = 60. Only 7 was multiplied by 8.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8aba33ece3353b6ef714  seed 502  [mcq]
+      stem:    Is 7 × (8 + 4) the same as (7 × 8) + 4?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["Left side: 8 + 4 = 12, then 7 × 12 = 84.", "Right side: 7 × 8 = 56, then 56 + 4 = 60. Only 8 was multiplied by 7.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 11a43011b2860cd4b0bd  seed 600  [mcq]
+      stem:    Is 6 × (8 + 5) the same as (6 × 8) + (6 × 5)?
+      answer:  True
+      options: True / Only when both are 0 / Cannot be determined / False
+      hints:   ["Left side: 8 + 5 = 13, then 6 × 13 = 78.", "Right side: 6 × 8 = 48 and 6 × 5 = 30; 48 + 30 = 78.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8fd1b205b5cf2beb7cf3  seed 601  [mcq]
+      stem:    Is (2 × 6) × 3 the same as 2 × (6 × 3)?
+      answer:  True
+      options: False / Only when both are 0 / Cannot be determined / True
+      hints:   ["Left side: first 2 × 6 = 12, then 12 × 3 = 36.", "Right side: first 6 × 3 = 18, then 2 × 18 = 36.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2d786d09c3678da854f7  seed 602  [mcq]
+      stem:    What is 7 × 1?
+      answer:  7
+      options: 6 / 8 / 7 / 9
+      hints:   ["We need to find the total of equal groups 7 groups of 1.", "Think of it as 1 group of 7: 7.", "The product of 7 × 1 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0b1874000cd2c107037c  seed 603  [mcq]
+      stem:    Is (3 × 8) × 2 the same as 3 × (8 × 2)?
+      answer:  True
+      options: Cannot be determined / True / Only when both are 0 / False
+      hints:   ["Left side: first 3 × 8 = 24, then 24 × 2 = 48.", "Right side: first 8 × 2 = 16, then 3 × 16 = 48.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6b93f6c3ea2b48c79ff2  seed 604  [mcq]
+      stem:    Is 8 × 7 the same as 7 × 4?
+      answer:  False
+      options: Only when both are 0 / True / Cannot be determined / False
+      hints:   ["The left side multiplies 8 and 7. The right side multiplies 7 and 4.", "8 × 7 = 56 and 7 × 4 = 28.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 28e1bfd1e9876af574eb  seed 605  [mcq]
+      stem:    Is (3 × 9) × 3 the same as 3 × (9 × 3)?
+      answer:  True
+      options: Cannot be determined / True / Only when both are 0 / False
+      hints:   ["Left side: first 3 × 9 = 27, then 27 × 3 = 81.", "Right side: first 9 × 3 = 27, then 3 × 27 = 81.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c230bc5337e92c168eae  seed 606  [mcq]
+      stem:    Is 7 × 8 the same as 8 × 3?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["The left side multiplies 7 and 8. The right side multiplies 8 and 3.", "7 × 8 = 56 and 8 × 3 = 24.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c179de215e0f4c8cbf05  seed 607  [mcq]
+      stem:    Is 4 × 6 the same as 6 × 4?
+      answer:  True
+      options: Only when both are 0 / False / True / Cannot be determined
+      hints:   ["Both sides multiply the same two numbers, 4 and 6, in a different order.", "4 × 6 = 24 and 6 × 4 = 24.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 93d86f5edc6690af21d2  seed 608  [mcq]
+      stem:    Is (3 × 7) × 3 the same as 3 × (7 × 2)?
+      answer:  False
+      options: Cannot be determined / False / Only when both are 0 / True
+      hints:   ["Left side: first 3 × 7 = 21, then 21 × 3 = 63.", "Right side: first 7 × 2 = 14, then 3 × 14 = 42.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4f66b23a8aca3ce1fd9c  seed 700  [mcq]
+      stem:    Is (3 × 7) × 3 the same as 3 × (7 × 2)?
+      answer:  False
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Left side: first 3 × 7 = 21, then 21 × 3 = 63.", "Right side: first 7 × 2 = 14, then 3 × 14 = 42.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 804957634e25e00a734d  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Is 7 × (5 + 7) the same as (7 × 5) + (7 × 7)?
+      answer:  True
+      options: Cannot be determined / True / False / Only when both are 0
+      hints:   ["Left side: 5 + 7 = 12, then 7 × 12 = 84.", "Right side: 7 × 5 = 35 and 7 × 7 = 49; 35 + 49 = 84.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1085aab7a3a0c3112e79  seed 702  [mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. Is 2 × 7 the same as 7 × 8?
+      answer:  False
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["The left side multiplies 2 and 7. The right side multiplies 7 and 8.", "2 × 7 = 14 and 7 × 8 = 56.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f4631e266939c8a9ade9  seed 800  [cloze]
+      stem:    6 × 1 = ___
+      answer:  6
+      options: 7 / 8 / 6 / 5
+      hints:   ["We need to find the total of equal groups 6 groups of 1.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 64e13483d716c8408dfb  seed 801  [mcq]
+      stem:    Is 6 × 7 the same as 7 × 6?
+      answer:  True
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Both sides multiply the same two numbers, 6 and 7, in a different order.", "6 × 7 = 42 and 7 × 6 = 42.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 43dbaeb16587bef14da3  seed 900  [mcq]
+      stem:    Is (2 × 8) × 2 the same as 2 × (8 × 3)?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["Left side: first 2 × 8 = 16, then 16 × 2 = 32.", "Right side: first 8 × 3 = 24, then 2 × 24 = 48.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9b9ba42a8a3f8c5b0a7b  seed 901  [mcq]
+      stem:    What is 0 × 8?
+      answer:  0
+      options: 2 / 8 / 1 / 0
+      hints:   ["We need to find the total of equal groups 0 groups of 8.", "Use the 8 times table: 8 × 0.", "The product of 0 × 8 = 0."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 329eddc897e5fdea7e59  seed 1000  [true_false]
+      stem:    6 × 1 = 7. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 6 groups of 1.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
       response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
-  sample 5c051afdcc7f90b3b289  seed 1001  [error_detect]
-      stem:    Liza solved: "81 × 3 = ___". Liza says the missing number is 246. Is Liza correct?
-      answer:  {'has_error': True, 'correct_value': 243}
-      hints:   ["We need to find the total of equal groups 81 groups of 3.", "Think of it as 3 groups of 81: 81 + 81 + 81.", "Break 81 into 80 + 1: (80 × 3) + (1 × 3) = 240 + 3 = 243.", "The product of 81 × 3 = 243."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
-  sample 597b81db1a63e40b2df8  seed 1002  [error_detect]
-      stem:    Manny solved: "26 × 50 = ___". Manny says the missing number is 1250. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 1300}
-      hints:   ["We need to find the total of equal groups 26 groups of 50.", "Use the 50 times table: 50 × 26.", "Break 26 into 20 + 6: (20 × 50) + (6 × 50) = 1000 + 300 = 1300.", "The product of 26 × 50 = 1300."]
+  sample 1e44f7476d0b3de0584f  seed 1001  [mcq]
+      stem:    Is 3 × 7 the same as 7 × 5?
+      answer:  False
+      options: True / Cannot be determined / Only when both are 0 / False
+      hints:   ["The left side multiplies 3 and 7. The right side multiplies 7 and 5.", "3 × 7 = 21 and 7 × 5 = 35.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 4c5ff4a7f9a66667cac6  seed 1002  [error_detect]
+      stem:    Manny solved: "0 × 7 = ___". Manny says the missing number is 7. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 0}
+      hints:   ["We need to find the total of equal groups 0 groups of 7.", "Use the 7 times table: 7 × 0.", "The product of 0 × 7 = 0."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
 

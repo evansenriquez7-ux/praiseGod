@@ -5,10 +5,10 @@ generator source. Do not inspect repository source, existing reviews, answer key
 rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
 
 ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
-  blind-reviewer-haiku45-pc17-mat_g3_na_q3_4-20260925
+  blind-reviewer-haiku45-pc17-mat_g3_na_q3_3-20260925
 
 Write one JSON object to:
-  local_only/scratch/phaseC/mat_g3_na_q3_4/verdicts.json
+  local_only/scratch/phaseC/mat_g3_na_q3_3/verdicts.json
 
 For every node, author all of the following:
 
@@ -35,7 +35,7 @@ rejected as templating.
 
 Response shape:
 {
-  "reviewer": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_4-20260925",
+  "reviewer": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_3-20260925",
   "<node_id>": {
     "findings": {
       "competency_fulfillment": {
@@ -99,196 +99,186 @@ other file.
 == BLIND PACKET ==
 
 ==========================================================================
-NODE: mat_g3_na_q3_4
-PACKET DIGEST: 2ffc88a5286bffc356239ece1b299224823d87fc650e3a44b9fd6f7705eb7fec
+NODE: mat_g3_na_q3_3
+PACKET DIGEST: 86dc66ba2d878bb0fe7a4c9e3117939246c040df2bada29a3c4b15c9f0dd7265
 COMPETENCY (Grade 3, Quarter 3, None):
-Solve 1-to 2-step multiplication problems, including problems involving money.
+Estimate the product of 2- to 3-digit numbers by 1- to 2-digit numbers by estimating the factors using multiples of 10.
 
 REQUIREMENTS (confirm this is a lossless decomposition of the competency):
-  solve_multiplication_problems: Solve
-  1_to_2_step: 1-to 2-step
-  multiplication_problems: multiplication problems
-  problems_involving_money: problems involving money
+  estimate_product: Estimate the product
+  2_to_3_digit_factors: 2- to 3-digit numbers
+  1_to_2_digit_factors: 1- to 2-digit numbers
+  estimate_factors: estimating the factors
+  multiples_of_10: multiples of 10
 
 SAMPLES (every one of these is real rendered output):
-  sample 47146116610712068df9  seed 42  [mcq]
-      stem:    Maico puts 2 costumes in each of 16 bags. How many costumes are in all the bags?
-      answer:  32
-      options: 18 / 30 / 14 / 32
-      hints:   ["We need to find the total of equal groups 16 groups of 2.", "Think of it as 2 groups of 16: 16 + 16.", "Break 16 into 10 + 6: (10 × 2) + (6 × 2) = 20 + 12 = 32.", "The product of 16 × 2 = 32."]
+  sample 2acd847b0e5c169865e5  seed 42  [mcq]
+      stem:    Estimate the product: 43 × 32
+      answer:  1200
+      options: 1199 / 1201 / 1200 / 1202
+      hints:   ["We need to find the total of equal groups 40 groups of 30.", "Use the 30 times table: 30 × 40.", "Break 40 into 40 + 0: (40 × 30) + (0 × 30) = 1200 + 0 = 1200.", "The product of 40 × 30 = 1200."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample eb472c7aacadce7b1ee2  seed 43  [true_false]
-      stem:    Nikka wants to buy 98 sticker sheets that cost ₱4 each. How much does Nikka need to pay in all? The answer is 102. True or False?
+  sample cabafb3f18117813f57b  seed 43  [true_false]
+      stem:    99 × 21 ≈ 1992. True or False?
       answer:  False
-      hints:   ["We need to find the total of equal groups 98 groups of 4.", "Think of it as 4 groups of 98: 98 + 98 + 98 + 98.", "Break 98 into 90 + 8: (90 × 4) + (8 × 4) = 360 + 32 = 392.", "The product of 98 × 4 = 392."]
+      hints:   ["We need to find the total of equal groups 100 groups of 20.", "Use the 20 times table: 20 × 100.", "Break 100 into 100 + 0: (100 × 20) + (0 × 20) = 2000 + 0 = 2000.", "The product of 100 × 20 = 2000."]
       response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample f422e00b47fb9083f7d0  seed 44  [error_detect]
-      stem:    Rico solved this problem: "Coach Nora wants to buy 36 shuttlecocks that cost ₱15 each. How much does Coach Nora need to pay in all?" Rico says the answer is 540. Is Rico correct?
-      answer:  {'has_error': False, 'correct_value': 540}
-      hints:   ["Step 1: First find the total items in the groups: 6 × 6 = 36.", "Step 2: Multiply the total items by 15: 36 × 15 = 540."]
+  sample 6bfd635c0c6baf56bee6  seed 44  [error_detect]
+      stem:    Rico solved: "345 × 15 ≈ ___". Rico says the missing number is 7000. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 7000}
+      hints:   ["We need to find the total of equal groups 350 groups of 20.", "Use the 20 times table: 20 × 350.", "Break 350 into 350 + 0: (350 × 20) + (0 × 20) = 7000 + 0 = 7000.", "The product of 350 × 20 = 7000."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample d30cf69cc38f58bb1996  seed 45  [mcq]
-      stem:    Ate Gab wants to buy 25 trophies that cost ₱4 each. How much does Ate Gab need to pay in all?
+  sample b9a292deadaf899f8e1a  seed 45  [mcq]
+      stem:    Estimate the product: 450 × 10
+      answer:  4500
+      options: 4499 / 4501 / 4502 / 4500
+      hints:   ["We need to find the total of equal groups 450 groups of 10.", "Use the 10 times table: 10 × 450.", "Break 450 into 450 + 0: (450 × 10) + (0 × 10) = 4500 + 0 = 4500.", "The product of 450 × 10 = 4500."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 24555203aa07b649540f  seed 46  [cloze]
+      stem:    Estimate: 295 × 17 ≈ ___
+      answer:  6000
+      options: 6001 / 6002 / 6000 / 5999
+      hints:   ["We need to find the total of equal groups 300 groups of 20.", "Use the 20 times table: 20 × 300.", "Break 300 into 300 + 0: (300 × 20) + (0 × 20) = 6000 + 0 = 6000.", "The product of 300 × 20 = 6000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e4193f5aa284b3eb16fa  seed 500  [true_false]
+      stem:    67 × 76 ≈ 5604. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 70 groups of 80.", "Use the 80 times table: 80 × 70.", "Break 70 into 70 + 0: (70 × 80) + (0 × 80) = 5600 + 0 = 5600.", "The product of 70 × 80 = 5600."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4ff8abc06a02fad5d4c9  seed 501  [mcq]
+      stem:    Estimate the product: 930 × 13
+      answer:  9300
+      options: 9301 / 9302 / 9300 / 9299
+      hints:   ["We need to find the total of equal groups 930 groups of 10.", "Use the 10 times table: 10 × 930.", "Break 930 into 930 + 0: (930 × 10) + (0 × 10) = 9300 + 0 = 9300.", "The product of 930 × 10 = 9300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dda65905327afad620f0  seed 502  [error_detect]
+      stem:    Dante solved: "853 × 12 ≈ ___". Dante says the missing number is 8500. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 8500}
+      hints:   ["We need to find the total of equal groups 850 groups of 10.", "Use the 10 times table: 10 × 850.", "Break 850 into 850 + 0: (850 × 10) + (0 × 10) = 8500 + 0 = 8500.", "The product of 850 × 10 = 8500."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 2ff0664cf037a909f9d3  seed 600  [true_false]
+      stem:    92 × 98 ≈ 9000. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 90 groups of 100.", "Use the 100 times table: 100 × 90.", "Break 90 into 90 + 0: (90 × 100) + (0 × 100) = 9000 + 0 = 9000.", "The product of 90 × 100 = 9000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e575468f6aebe18b3154  seed 601  [cloze]
+      stem:    Estimate: 28 × 27 ≈ ___
+      answer:  900
+      options: 902 / 899 / 900 / 901
+      hints:   ["We need to find the total of equal groups 30 groups of 30.", "Use the 30 times table: 30 × 30.", "Break 30 into 30 + 0: (30 × 30) + (0 × 30) = 900 + 0 = 900.", "The product of 30 × 30 = 900."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 84c205866b7843943c43  seed 602  [mcq]
+      stem:    Estimate the product: 330 × 14
+      answer:  3300
+      options: 3300 / 3302 / 3299 / 3301
+      hints:   ["We need to find the total of equal groups 330 groups of 10.", "Use the 10 times table: 10 × 330.", "Break 330 into 330 + 0: (330 × 10) + (0 × 10) = 3300 + 0 = 3300.", "The product of 330 × 10 = 3300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a08a964ca70511cf7f39  seed 603  [true_false]
+      stem:    50 × 91 ≈ 4500. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 50 groups of 90.", "Use the 90 times table: 90 × 50.", "Break 50 into 50 + 0: (50 × 90) + (0 × 90) = 4500 + 0 = 4500.", "The product of 50 × 90 = 4500."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4f68300ce9dedfc3f839  seed 604  [mcq]
+      stem:    Estimate the product: 262 × 18
+      answer:  5200
+      options: 5201 / 5200 / 5199 / 5202
+      hints:   ["We need to find the total of equal groups 260 groups of 20.", "Use the 20 times table: 20 × 260.", "Break 260 into 260 + 0: (260 × 20) + (0 × 20) = 5200 + 0 = 5200.", "The product of 260 × 20 = 5200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 58a5b445d9d938e8cf4e  seed 605  [true_false]
+      stem:    503 × 20 ≈ 10000. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 500 groups of 20.", "Use the 20 times table: 20 × 500.", "Break 500 into 500 + 0: (500 × 20) + (0 × 20) = 10000 + 0 = 10000.", "The product of 500 × 20 = 10000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample d2cd8dab7de1ab7a6ca5  seed 606  [mcq]
+      stem:    Estimate the product: 118 × 49
+      answer:  6000
+      options: 6002 / 6001 / 5999 / 6000
+      hints:   ["We need to find the total of equal groups 120 groups of 50.", "Use the 50 times table: 50 × 120.", "Break 120 into 120 + 0: (120 × 50) + (0 × 50) = 6000 + 0 = 6000.", "The product of 120 × 50 = 6000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5c61feca0192e8d04951  seed 607  [error_detect]
+      stem:    Grace solved: "83 × 20 ≈ ___". Grace says the missing number is 1600. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 1600}
+      hints:   ["We need to find the total of equal groups 80 groups of 20.", "Use the 20 times table: 20 × 80.", "Break 80 into 80 + 0: (80 × 20) + (0 × 20) = 1600 + 0 = 1600.", "The product of 80 × 20 = 1600."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 18164fd70d2ca1cf743b  seed 608  [true_false]
+      stem:    30 × 41 ≈ 1203. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 30 groups of 40.", "Use the 40 times table: 40 × 30.", "Break 30 into 30 + 0: (30 × 40) + (0 × 40) = 1200 + 0 = 1200.", "The product of 30 × 40 = 1200."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5f07360d65da5b50f77a  seed 609  [cloze]
+      stem:    Estimate: 279 × 15 ≈ ___
+      answer:  5600
+      options: 5601 / 5600 / 5602 / 5599
+      hints:   ["We need to find the total of equal groups 280 groups of 20.", "Use the 20 times table: 20 × 280.", "Break 280 into 280 + 0: (280 × 20) + (0 × 20) = 5600 + 0 = 5600.", "The product of 280 × 20 = 5600."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 96550d0aba56165f59e1  seed 610  [mcq]
+      stem:    Estimate the product: 180 × 54
+      answer:  9000
+      options: 9002 / 8999 / 9001 / 9000
+      hints:   ["We need to find the total of equal groups 180 groups of 50.", "Use the 50 times table: 50 × 180.", "Break 180 into 180 + 0: (180 × 50) + (0 × 50) = 9000 + 0 = 9000.", "The product of 180 × 50 = 9000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aa5284570ce4c7e79498  seed 611  [error_detect]
+      stem:    Rosa solved: "150 × 63 ≈ ___". Rosa says the missing number is 9000. Is Rosa correct?
+      answer:  {'has_error': False, 'correct_value': 9000}
+      hints:   ["We need to find the total of equal groups 150 groups of 60.", "Use the 60 times table: 60 × 150.", "Break 150 into 150 + 0: (150 × 60) + (0 × 60) = 9000 + 0 = 9000.", "The product of 150 × 60 = 9000."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 63280211c6574e2868c7  seed 612  [error_detect]
+      stem:    Noel solved: "331 × 14 ≈ ___". Noel says the missing number is 3300. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 3300}
+      hints:   ["We need to find the total of equal groups 330 groups of 10.", "Use the 10 times table: 10 × 330.", "Break 330 into 330 + 0: (330 × 10) + (0 × 10) = 3300 + 0 = 3300.", "The product of 330 × 10 = 3300."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 68c8cea2c95b10f19e1a  seed 700  [true_false]
+      stem:    67 × 85 ≈ 6300. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 70 groups of 90.", "Use the 90 times table: 90 × 70.", "Break 70 into 70 + 0: (70 × 90) + (0 × 90) = 6300 + 0 = 6300.", "The product of 70 × 90 = 6300."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 9ef709267e54195c4dbf  seed 701  [cloze]
+      stem:    ✝️ Daniel has a math challenge about baskets. Estimate: 471 × 11 ≈ ___
+      answer:  4700
+      options: 4700 / 4702 / 4701 / 4699
+      hints:   ["We need to find the total of equal groups 470 groups of 10.", "Use the 10 times table: 10 × 470.", "Break 470 into 470 + 0: (470 × 10) + (0 × 10) = 4700 + 0 = 4700.", "The product of 470 × 10 = 4700."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0663bf39ce2cb2c855d4  seed 702  [error_detect]
+      stem:    🏀 Isko has a math challenge about basketballs. Manny solved: "132 × 19 ≈ ___". Manny says the missing number is 2600. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 2600}
+      hints:   ["We need to find the total of equal groups 130 groups of 20.", "Use the 20 times table: 20 × 130.", "Break 130 into 130 + 0: (130 × 20) + (0 × 20) = 2600 + 0 = 2600.", "The product of 130 × 20 = 2600."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b651f9d5dfb687bec877  seed 800  [cloze]
+      stem:    Estimate: 34 × 10 ≈ ___
+      answer:  300
+      options: 300 / 299 / 301 / 302
+      hints:   ["We need to find the total of equal groups 30 groups of 10.", "Use the 10 times table: 10 × 30.", "Break 30 into 30 + 0: (30 × 10) + (0 × 10) = 300 + 0 = 300.", "The product of 30 × 10 = 300."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample efef751bb38a2a2d78c5  seed 801  [error_detect]
+      stem:    Pia solved: "835 × 11 ≈ ___". Pia says the missing number is 8400. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 8400}
+      hints:   ["We need to find the total of equal groups 840 groups of 10.", "Use the 10 times table: 10 × 840.", "Break 840 into 840 + 0: (840 × 10) + (0 × 10) = 8400 + 0 = 8400.", "The product of 840 × 10 = 8400."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 2fb8fb0a69c8e6e2a383  seed 900  [mcq]
+      stem:    Estimate the product: 10 × 14
       answer:  100
-      options: 96 / 100 / 21 / 29
-      hints:   ["Step 1: First find the total items in the groups: 5 × 5 = 25.", "Step 2: Multiply the total items by 4: 25 × 4 = 100."]
+      options: 99 / 100 / 102 / 101
+      hints:   ["We need to find the total of equal groups 10 groups of 10.", "Use the 10 times table: 10 × 10.", "Break 10 into 10 + 0: (10 × 10) + (0 × 10) = 100 + 0 = 100.", "The product of 10 × 10 = 100."]
       response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 9ddb584699264a1650e2  seed 46  [cloze]
-      stem:    Ate Joy puts 4 seeds in each of 85 bags. How many seeds are in all the bags?
-      answer:  340
-      options: 89 / 336 / 81 / 340
-      hints:   ["We need to find the total of equal groups 85 groups of 4.", "Think of it as 4 groups of 85: 85 + 85 + 85 + 85.", "Break 85 into 80 + 5: (80 × 4) + (5 × 4) = 320 + 20 = 340.", "The product of 85 × 4 = 340."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample a81f02ffea91dd1bb71f  seed 500  [true_false]
-      stem:    Kuya Ton puts 5 ribbons in each of 36 bags. How many ribbons are in all the bags? The answer is 179. True or False?
+  sample 92079ed897345a9e053b  seed 901  [mcq]
+      stem:    Estimate the product: 16 × 12
+      answer:  200
+      options: 199 / 200 / 202 / 201
+      hints:   ["We need to find the total of equal groups 20 groups of 10.", "Use the 10 times table: 10 × 20.", "Break 20 into 20 + 0: (20 × 10) + (0 × 10) = 200 + 0 = 200.", "The product of 20 × 10 = 200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 312f3b83ac5d62a13ff9  seed 1000  [true_false]
+      stem:    149 × 21 ≈ 2992. True or False?
       answer:  False
-      hints:   ["Step 1: First find the total items in the groups: 6 × 6 = 36.", "Step 2: Multiply the total items by 5: 36 × 5 = 180."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 63056ada7becc98466cf  seed 501  [mcq]
-      stem:    Ate Sam puts 15 running shoes in each of 12 bags. How many running shoes are in all the bags?
-      answer:  180
-      options: 180 / 27 / 179 / 165
-      hints:   ["Step 1: First find the total items in the groups: 4 × 3 = 12.", "Step 2: Multiply the total items by 15: 12 × 15 = 180."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 1ad10108a98082113d2c  seed 502  [error_detect]
-      stem:    Dante solved this problem: "Kuya Renz puts 4 paint tubes in each of 21 bags. How many paint tubes are in all the bags?" Dante says the answer is 84. Is Dante correct?
-      answer:  {'has_error': False, 'correct_value': 84}
-      hints:   ["Step 1: First find the total items in the groups: 3 × 7 = 21.", "Step 2: Multiply the total items by 4: 21 × 4 = 84."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample e60a43e33b4f31bc049f  seed 600  [true_false]
-      stem:    Lena puts 5 washi tape rolls in each of 28 bags. How many washi tape rolls are in all the bags? The answer is 140. True or False?
-      answer:  True
-      hints:   ["Step 1: First find the total items in the groups: 4 × 7 = 28.", "Step 2: Multiply the total items by 5: 28 × 5 = 140."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 9eb848a1e8866ec73845  seed 601  [cloze]
-      stem:    Coach Roel wants to buy 75 score cards that cost ₱1 each. How much does Coach Roel need to pay in all?
-      answer:  75
-      options: 75 / 76 / 77 / 74
-      hints:   ["We need to find the total of equal groups 75 groups of 1.", "Think of it as 1 group of 75: 75.", "Break 75 into 70 + 5: (70 × 1) + (5 × 1) = 70 + 5 = 75.", "The product of 75 × 1 = 75."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 0d9c829f4c4357c09e5f  seed 602  [mcq]
-      stem:    Boboy wants to buy 12 cookies that cost ₱10 each. How much does Boboy need to pay in all?
-      answer:  120
-      options: 2 / 110 / 120 / 22
-      hints:   ["Step 1: First find the total items in the groups: 3 × 4 = 12.", "Step 2: Multiply the total items by 10: 12 × 10 = 120."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 3070da877ec5ed1db00e  seed 603  [true_false]
-      stem:    Ate Joy wants to buy 18 washi tape rolls that cost ₱40 each. How much does Ate Joy need to pay in all? The answer is 720. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 18 groups of 40.", "Use the 40 times table: 40 × 18.", "Break 18 into 10 + 8: (10 × 40) + (8 × 40) = 400 + 320 = 720.", "The product of 18 × 40 = 720."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 8445750e28c45368a74f  seed 604  [mcq]
-      stem:    Kuya Renz wants to buy 6 watercolor sets that cost ₱3 each. How much does Kuya Renz need to pay in all?
-      answer:  18
-      options: 9 / 18 / 3 / 15
-      hints:   ["We need to find the total of equal groups 6 groups of 3.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample b2856dae9f2a5f81bdca  seed 605  [true_false]
-      stem:    Chef Demi wants to buy 6 cupcakes that cost ₱10 each. How much does Chef Demi need to pay in all? The answer is 60. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 6 groups of 10.", "Use the 10 times table: 10 × 6.", "The product of 6 × 10 = 60."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample aa1a060097f21e693941  seed 606  [mcq]
-      stem:    Kuya Renz puts 5 colored pencils in each of 5 bags. How many colored pencils are in all the bags?
-      answer:  25
-      options: 25 / 20 / 24 / 10
-      hints:   ["We need to find the total of equal groups 5 groups of 5.", "Think of it as 5 groups of 5: 5 + 5 + 5 + 5 + 5.", "The product of 5 × 5 = 25."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample d849a64463b23d6a4802  seed 607  [error_detect]
-      stem:    Grace solved this problem: "Des puts 10 volleyballs in each of 5 bags. How many volleyballs are in all the bags?" Grace says the answer is 50. Is Grace correct?
-      answer:  {'has_error': False, 'correct_value': 50}
-      hints:   ["We need to find the total of equal groups 5 groups of 10.", "Use the 10 times table: 10 × 5.", "The product of 5 × 10 = 50."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample e30d3a97fbdec3c8713e  seed 608  [true_false]
-      stem:    Marco wants to buy 3 washi tape rolls that cost ₱5 each. How much does Marco need to pay in all? The answer is 14. True or False?
-      answer:  False
-      hints:   ["We need to find the total of equal groups 3 groups of 5.", "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.", "The product of 3 × 5 = 15."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample c522a051f6d20bfef93e  seed 609  [cloze]
-      stem:    Ruth puts 15 coins in each of 6 bags. How many coins are in all the bags?
-      answer:  90
-      options: 90 / 21 / 89 / 75
-      hints:   ["Step 1: First find the total items in the groups: 2 × 3 = 6.", "Step 2: Multiply the total items by 15: 6 × 15 = 90."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample cb6166020db508328e79  seed 610  [mcq]
-      stem:    Bianca wants to buy 20 trophies that cost ₱4 each. How much does Bianca need to pay in all?
-      answer:  80
-      options: 76 / 24 / 16 / 80
-      hints:   ["Step 1: First find the total items in the groups: 5 × 4 = 20.", "Step 2: Multiply the total items by 4: 20 × 4 = 80."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 339ae812aab3f153f0d4  seed 611  [error_detect]
-      stem:    Rosa solved this problem: "Romel puts 4 whistles in each of 21 bags. How many whistles are in all the bags?" Rosa says the answer is 84. Is Rosa correct?
-      answer:  {'has_error': False, 'correct_value': 84}
-      hints:   ["Step 1: First find the total items in the groups: 3 × 7 = 21.", "Step 2: Multiply the total items by 4: 21 × 4 = 84."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 9a58b0400a294dc819db  seed 612  [error_detect]
-      stem:    Noel solved this problem: "Arnel puts 3 helmets in each of 6 bags. How many helmets are in all the bags?" Noel says the answer is 9. Is Noel correct?
-      answer:  {'has_error': True, 'correct_value': 18}
-      hints:   ["We need to find the total of equal groups 6 groups of 3.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 6aa7d89638b0e69d8ad9  seed 613  [true_false]
-      stem:    Chef Demi wants to buy 24 milk tea cups that cost ₱2 each. How much does Chef Demi need to pay in all? The answer is 47. True or False?
-      answer:  False
-      hints:   ["Step 1: First find the total items in the groups: 3 × 8 = 24.", "Step 2: Multiply the total items by 2: 24 × 2 = 48."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample 70e91dcb88c96d83db1f  seed 614  [cloze]
-      stem:    Jun wants to buy 18 basketballs that cost ₱15 each. How much does Jun need to pay in all?
-      answer:  270
-      options: 255 / 3 / 33 / 270
-      hints:   ["Step 1: First find the total items in the groups: 3 × 6 = 18.", "Step 2: Multiply the total items by 15: 18 × 15 = 270."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample c4d11bbf7be921d28e5c  seed 700  [true_false]
-      stem:    Marco wants to buy 2 journal notebooks that cost ₱4 each. How much does Marco need to pay in all? The answer is 8. True or False?
-      answer:  True
-      hints:   ["We need to find the total of equal groups 2 groups of 4.", "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.", "The product of 2 × 4 = 8."]
-      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
-  sample e36fcbe2e61fc7146a6d  seed 701  [cloze]
-      stem:    Marco puts 2 basketballs in each of 10 bags. How many basketballs are in all the bags?
-      answer:  20
-      options: 18 / 20 / 8 / 12
-      hints:   ["Step 1: First find the total items in the groups: 5 × 2 = 10.", "Step 2: Multiply the total items by 2: 10 × 2 = 20."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample 28b142fa657a0f49e965  seed 702  [error_detect]
-      stem:    Manny solved this problem: "Ate Alyssa puts 2 whistles in each of 93 bags. How many whistles are in all the bags?" Manny says the answer is 184. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 186}
-      hints:   ["We need to find the total of equal groups 93 groups of 2.", "Think of it as 2 groups of 93: 93 + 93.", "Break 93 into 90 + 3: (90 × 2) + (3 × 2) = 180 + 6 = 186.", "The product of 93 × 2 = 186."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample b8dc3594bba6c105f6d8  seed 800  [cloze]
-      stem:    Kuya Art puts 5 washi tape rolls in each of 12 bags. How many washi tape rolls are in all the bags?
-      answer:  60
-      options: 60 / 17 / 7 / 55
-      hints:   ["Step 1: First find the total items in the groups: 6 × 2 = 12.", "Step 2: Multiply the total items by 5: 12 × 5 = 60."]
-      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
-  sample b6a3edda4cb2871c835d  seed 801  [error_detect]
-      stem:    Pia solved this problem: "Coach Roel wants to buy 86 basketballs that cost ₱3 each. How much does Coach Roel need to pay in all?" Pia says the answer is 258. Is Pia correct?
-      answer:  {'has_error': False, 'correct_value': 258}
-      hints:   ["We need to find the total of equal groups 86 groups of 3.", "Think of it as 3 groups of 86: 86 + 86 + 86.", "Break 86 into 80 + 6: (80 × 3) + (6 × 3) = 240 + 18 = 258.", "The product of 86 × 3 = 258."]
-      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
-  sample 6a5a6d6cd1736f7ab7ac  seed 900  [mcq]
-      stem:    Ate Liza puts 1 paint tube in each of 1 bag. How many paint tubes are in all the bags?
-      answer:  1
-      options: 1 / 3 / 2 / 0
-      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The product of 1 × 1 = 1."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 9acc5d9cb36a6b3622e7  seed 901  [mcq]
-      stem:    Jun wants to buy 8 jerseys that cost ₱2 each. How much does Jun need to pay in all?
-      answer:  16
-      options: 6 / 10 / 14 / 16
-      hints:   ["Step 1: First find the total items in the groups: 4 × 2 = 8.", "Step 2: Multiply the total items by 2: 8 × 2 = 16."]
-      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
-  sample 8f865812e6fa604a6278  seed 1000  [true_false]
-      stem:    Manny puts 4 guitar picks in each of 10 bags. How many guitar picks are in all the bags? The answer is 14. True or False?
-      answer:  False
-      hints:   ["Step 1: First find the total items in the groups: 2 × 5 = 10.", "Step 2: Multiply the total items by 4: 10 × 4 = 40."]
+      hints:   ["We need to find the total of equal groups 150 groups of 20.", "Use the 20 times table: 20 × 150.", "Break 150 into 150 + 0: (150 × 20) + (0 × 20) = 3000 + 0 = 3000.", "The product of 150 × 20 = 3000."]
       response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
-  sample 339ef10a8f7ba4a1211e  seed 1001  [error_detect]
-      stem:    Liza solved this problem: "Kuya Chad puts 1 helmet in each of 19 bags. How many helmets are in all the bags?" Liza says the answer is 18. Is Liza correct?
-      answer:  {'has_error': True, 'correct_value': 19}
-      hints:   ["We need to find the total of equal groups 19 groups of 1.", "Think of it as 1 group of 19: 19.", "Break 19 into 10 + 9: (10 × 1) + (9 × 1) = 10 + 9 = 19.", "The product of 19 × 1 = 19."]
+  sample 28252cedb4e3dfab3613  seed 1001  [error_detect]
+      stem:    Liza solved: "297 × 25 ≈ ___". Liza says the missing number is 9000. Is Liza correct?
+      answer:  {'has_error': False, 'correct_value': 9000}
+      hints:   ["We need to find the total of equal groups 300 groups of 30.", "Use the 30 times table: 30 × 300.", "Break 300 into 300 + 0: (300 × 30) + (0 × 30) = 9000 + 0 = 9000.", "The product of 300 × 30 = 9000."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
-  sample 8c4fd1137517689d4a20  seed 1002  [error_detect]
-      stem:    Manny solved this problem: "Aling Rosa puts 3 wristbands in each of 9 bags. How many wristbands are in all the bags?" Manny says the answer is 6. Is Manny correct?
-      answer:  {'has_error': True, 'correct_value': 27}
-      hints:   ["Step 1: First find the total items in the groups: 3 × 3 = 9.", "Step 2: Multiply the total items by 3: 9 × 3 = 27."]
+  sample d2a3da843ea5f87908ba  seed 1002  [error_detect]
+      stem:    Manny solved: "430 × 22 ≈ ___". Manny says the missing number is 8600. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 8600}
+      hints:   ["We need to find the total of equal groups 430 groups of 20.", "Use the 20 times table: 20 × 430.", "Break 430 into 430 + 0: (430 × 20) + (0 × 20) = 8600 + 0 = 8600.", "The product of 430 × 20 = 8600."]
       response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
 

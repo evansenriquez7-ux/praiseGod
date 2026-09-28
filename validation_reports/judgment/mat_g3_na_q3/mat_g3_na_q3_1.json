@@ -1,7 +1,53 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q3_1",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Illustrate and apply properties of multiplication for the 6, 7, 8, and 9 multiplication tables: one multiplied by any number is equal to the number; zero multiplied by any number is zero; changing the order of the numbers being multiplied does not change the product; changing the grouping of the numbers being multiplied does not change the product; and multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend.",
+    "grade": 3,
+    "quarter": 3,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "illustrate_and_apply_properties_of_multiplication",
+      "clause": "Illustrate and apply properties of multiplication"
+    },
+    {
+      "kind": "representation",
+      "id": "6_7_8_and_9_multiplication_tables",
+      "clause": "6, 7, 8, and 9 multiplication tables"
+    },
+    {
+      "kind": "property",
+      "id": "one_multiplied_by_any_number",
+      "clause": "one multiplied by any number is equal to the number"
+    },
+    {
+      "kind": "property",
+      "id": "zero_multiplied_by_any_number",
+      "clause": "zero multiplied by any number is zero"
+    },
+    {
+      "kind": "property",
+      "id": "changing_the_order",
+      "clause": "changing the order of the numbers being multiplied does not change the product"
+    },
+    {
+      "kind": "property",
+      "id": "changing_the_grouping",
+      "clause": "changing the grouping of the numbers being multiplied does not change the product"
+    },
+    {
+      "kind": "property",
+      "id": "multiplying_the_sum_of_two_addends",
+      "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend"
+    }
+  ],
+  "packet_digest": "b30bcc73d73a24fd66cceecfa888d3c379c490be31e312dc65d9df0e6650195f",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,14 +65,73 @@
     602,
     603,
     604,
-    605
+    605,
+    606,
+    607,
+    608,
+    700,
+    701,
+    702,
+    800,
+    801,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "5d4ec93aab52e32d040d",
+    "39af49088687ab791bb1",
+    "e4202712b5d1fc203c40",
+    "fe30f5b185b960024365",
+    "2e140b767ffbf1061d8d",
+    "5b8b118252437966d2ec",
+    "c70c45f751375250074a",
+    "da6de8210c1253480926",
+    "8d0d9b667d41657859e0",
+    "8aba33ece3353b6ef714",
+    "11a43011b2860cd4b0bd",
+    "8fd1b205b5cf2beb7cf3",
+    "2d786d09c3678da854f7",
+    "0b1874000cd2c107037c",
+    "6b93f6c3ea2b48c79ff2",
+    "28e1bfd1e9876af574eb",
+    "c230bc5337e92c168eae",
+    "c179de215e0f4c8cbf05",
+    "93d86f5edc6690af21d2",
+    "4f66b23a8aca3ce1fd9c",
+    "804957634e25e00a734d",
+    "1085aab7a3a0c3112e79",
+    "f4631e266939c8a9ade9",
+    "64e13483d716c8408dfb",
+    "43dbaeb16587bef14da3",
+    "9b9ba42a8a3f8c5b0a7b",
+    "329eddc897e5fdea7e59",
+    "1e44f7476d0b3de0584f",
+    "4c5ff4a7f9a66667cac6"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Is 5 × 6 the same as 6 × 5?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -48,13 +153,36 @@
           "value": true,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides multiply the same two numbers, 5 and 6, in a different order.",
+        "5 × 6 = 30 and 6 × 5 = 30.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "5d4ec93aab52e32d040d",
+      "replay_digest": "c1330f2a6324dd180c1fc4d509fb3f65d41601ca14587ce4aff133ad5aefcda1"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Is 4 × 8 the same as 8 × 9?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -76,22 +204,71 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 4 and 8. The right side multiplies 8 and 9.",
+        "4 × 8 = 32 and 8 × 9 = 72.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "39af49088687ab791bb1",
+      "replay_digest": "60e10c03c6062a32a1ff45e72e11f9b617baa0b34ab1ca5fe97f5e9e36a80dc4"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 44,
       "formatter": "error_detect",
       "question_text": "Rico solved: \"6 × 0 = ___\". Rico says the missing number is 0. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 0
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 0
+      },
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 0.",
+        "Think of it as 0 groups of 6: there are no groups, so there is nothing to add.",
+        "The product of 6 × 0 = 0."
+      ],
+      "sample_id": "e4202712b5d1fc203c40",
+      "replay_digest": "257a3e31fdd6e79976a9bd7e454c100de626bebe6bd87aa86e4624a096ab9799"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -113,13 +290,36 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: 7 + 2 = 9, then 8 × 9 = 72.",
+        "Right side: 8 × 7 = 56 and 8 × 2 = 16; 56 + 16 = 72.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "fe30f5b185b960024365",
+      "replay_digest": "970bfb25571bf4aa74dd4a7182d9e3600325d918c7ade365ad5fbe30d5f753fe"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Is 2 × 9 the same as 9 × 8?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -141,13 +341,36 @@
           "value": true,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 2 and 9. The right side multiplies 9 and 8.",
+        "2 × 9 = 18 and 9 × 8 = 72.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "2e140b767ffbf1061d8d",
+      "replay_digest": "e17a57c7c1ad261be6a9b89f8ebb6df64f4005fcbd10e48be0318ccd5429397e"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 64,
       "formatter": "cloze",
       "question_text": "1 × 6 = ___",
       "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -173,25 +396,100 @@
           "text": "12",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 6.",
+        "Use the 6 times table: 6 × 1.",
+        "The product of 1 × 6 = 6."
+      ],
+      "sample_id": "5b8b118252437966d2ec",
+      "replay_digest": "06f5dc061de6290608c78b6867279e1f135fb21f5962e233ed534e58ce8d7cf1"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 75,
       "formatter": "true_false",
       "question_text": "1 × 9 = 9. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to find the total of equal groups 1 group of 9.",
+        "Use the 9 times table: 9 × 1.",
+        "The product of 1 × 9 = 9."
+      ],
+      "sample_id": "c70c45f751375250074a",
+      "replay_digest": "acb0a5c42c0e076eaee440be344e498a1ba1f07338603d129b27f4209ffcc1a2"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "9 × 1 = 8. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 9 groups of 1.",
+        "Think of it as 1 group of 9: 9.",
+        "The product of 9 × 1 = 9."
+      ],
+      "sample_id": "da6de8210c1253480926",
+      "replay_digest": "e76e869594ad53386fc8acab078a4d21bd0d9c749fbfe9bde186bb8b991a7795"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Is 8 × (7 + 4) the same as (8 × 7) + 4?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -213,13 +511,39 @@
           "value": false,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "Left side: 7 + 4 = 11, then 8 × 11 = 88.",
+        "Right side: 8 × 7 = 56, then 56 + 4 = 60. Only 7 was multiplied by 8.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "8d0d9b667d41657859e0",
+      "replay_digest": "2cdb06c2258a64b785272c8fbd56d7d35826fe03ebbebd24b7a2ef8fc58fa238"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Is 7 × (8 + 4) the same as (7 × 8) + 4?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -241,13 +565,38 @@
           "value": "Only when both are 0",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "Left side: 8 + 4 = 12, then 7 × 12 = 84.",
+        "Right side: 7 × 8 = 56, then 56 + 4 = 60. Only 8 was multiplied by 7.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "8aba33ece3353b6ef714",
+      "replay_digest": "6e270ff359bf9deebb0e2f977de32b1109b64195cd0609ade92188f8ee15fa7a"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Is 6 × (8 + 5) the same as (6 × 8) + (6 × 5)?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -269,13 +618,38 @@
           "value": false,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: 8 + 5 = 13, then 6 × 13 = 78.",
+        "Right side: 6 × 8 = 48 and 6 × 5 = 30; 48 + 30 = 78.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "11a43011b2860cd4b0bd",
+      "replay_digest": "0ba1545d0fac6cb374cd4cfad7dbbdbfa4c1bdd52f2b18ff01909c04b1f8146a"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 601,
       "formatter": "mcq",
       "question_text": "Is (2 × 6) × 3 the same as 2 × (6 × 3)?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -297,13 +671,38 @@
           "value": true,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: first 2 × 6 = 12, then 12 × 3 = 36.",
+        "Right side: first 6 × 3 = 18, then 2 × 18 = 36.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "8fd1b205b5cf2beb7cf3",
+      "replay_digest": "42273212ae1937b580b9544dc7b97ac0f24781765a91edfe33b4649931f000d4"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is 7 × 1?",
       "correct_answer": 7,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "multi_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -325,13 +724,38 @@
           "value": 9,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We need to find the total of equal groups 7 groups of 1.",
+        "Think of it as 1 group of 7: 7.",
+        "The product of 7 × 1 = 7."
+      ],
+      "sample_id": "2d786d09c3678da854f7",
+      "replay_digest": "52b13b4c9a46599f2e5bbe77e035062be138c8ceac306bbdeffd9ec5955449b2"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "Is (3 × 8) × 2 the same as 3 × (8 × 2)?",
       "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_type": "single_digit"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -353,13 +777,38 @@
           "value": false,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: first 3 × 8 = 24, then 24 × 2 = 48.",
+        "Right side: first 8 × 2 = 16, then 3 × 16 = 48.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "0b1874000cd2c107037c",
+      "replay_digest": "ff8258dbfe1119f4fdb80fdbee83824cb1e27a18f35898f5d6eab68cfb9edf9d"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Is 8 × 7 the same as 7 × 4?",
       "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -381,13 +830,38 @@
           "value": false,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 8 and 7. The right side multiplies 7 and 4.",
+        "8 × 7 = 56 and 7 × 4 = 28.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "6b93f6c3ea2b48c79ff2",
+      "replay_digest": "689a2b7ca088adaf020c2819b30cd6b327d389174d787edf8b250e4ef42b521c"
     },
     {
+      "node_id": "mat_g3_na_q3_1",
       "seed": 605,
       "formatter": "mcq",
-      "question_text": "Is (3 × 7) × 2 the same as 3 × (7 × 3)?",
-      "correct_answer": false,
+      "question_text": "Is (3 × 9) × 3 the same as 3 × (9 × 3)?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "associative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -397,6 +871,616 @@
         {
           "key": "B",
           "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: first 3 × 9 = 27, then 27 × 3 = 81.",
+        "Right side: first 9 × 3 = 27, then 3 × 27 = 81.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "28e1bfd1e9876af574eb",
+      "replay_digest": "b8e94c0019635a0d71fc2f759b2f6f34c9eaf1d74598480d125cdb69e1292b39"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Is 7 × 8 the same as 8 × 3?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "commutative"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 7 and 8. The right side multiplies 8 and 3.",
+        "7 × 8 = 56 and 8 × 3 = 24.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "c230bc5337e92c168eae",
+      "replay_digest": "97d1998a56f53a449b7a96fcc0f8092f27a8fb63071d2c1c9d0524294f2dbbae"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 607,
+      "formatter": "mcq",
+      "question_text": "Is 4 × 6 the same as 6 × 4?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "distributive"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides multiply the same two numbers, 4 and 6, in a different order.",
+        "4 × 6 = 24 and 6 × 4 = 24.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "c179de215e0f4c8cbf05",
+      "replay_digest": "cd20b4293b41ef5af75238f66db9f14414b7746b33083db5c6b74494a13896d7"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 608,
+      "formatter": "mcq",
+      "question_text": "Is (3 × 7) × 3 the same as 3 × (7 × 2)?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "zero_identity"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "Left side: first 3 × 7 = 21, then 21 × 3 = 63.",
+        "Right side: first 7 × 2 = 14, then 3 × 14 = 42.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "93d86f5edc6690af21d2",
+      "replay_digest": "4b1f7595c60ca0d9b93479c3efd5a0bcb089376796705f0298244a1cbf0d2d0d"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 700,
+      "formatter": "mcq",
+      "question_text": "Is (3 × 7) × 3 the same as 3 × (7 × 2)?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "Left side: first 3 × 7 = 21, then 21 × 3 = 63.",
+        "Right side: first 7 × 2 = 14, then 3 × 14 = 42.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "4f66b23a8aca3ce1fd9c",
+      "replay_digest": "a842568a8a4e2948098483a4a7341dc28e645a8a9b1726d34881e60cc2f504aa"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 701,
+      "formatter": "mcq",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Is 7 × (5 + 7) the same as (7 × 5) + (7 × 7)?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "ppop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Left side: 5 + 7 = 12, then 7 × 12 = 84.",
+        "Right side: 7 × 5 = 35 and 7 × 7 = 49; 35 + 49 = 84.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "804957634e25e00a734d",
+      "replay_digest": "1d0b70230acdb24514418e08a34ebded5af5844cfd4defceebc08525be4ee1ee"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 702,
+      "formatter": "mcq",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Is 2 × 7 the same as 7 × 8?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "competitive_gaming",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 2 and 7. The right side multiplies 7 and 8.",
+        "2 × 7 = 14 and 7 × 8 = 56.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "1085aab7a3a0c3112e79",
+      "replay_digest": "6f35b6b997e3b41848f114ef187f3c152f9168ee5dcf0c4f7f3d9037879093d7"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "6 × 1 = ___",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 1.",
+        "Think of it as 1 group of 6: 6.",
+        "The product of 6 × 1 = 6."
+      ],
+      "sample_id": "f4631e266939c8a9ade9",
+      "replay_digest": "389dd5171c05ffa3178b9ee32bac9ad428950d5542f38071201d61533c8baf6a"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 801,
+      "formatter": "mcq",
+      "question_text": "Is 6 × 7 the same as 7 × 6?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": true,
+      "hints": [
+        "Both sides multiply the same two numbers, 6 and 7, in a different order.",
+        "6 × 7 = 42 and 7 × 6 = 42.",
+        "So the two sides are the same."
+      ],
+      "sample_id": "64e13483d716c8408dfb",
+      "replay_digest": "cffad9d38ce033be210bafd50bb8e9296949308ffef495e168a7ff394e68666d"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "Is (2 × 8) × 2 the same as 2 × (8 × 3)?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "Left side: first 2 × 8 = 16, then 16 × 2 = 32.",
+        "Right side: first 8 × 3 = 24, then 2 × 24 = 48.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "43dbaeb16587bef14da3",
+      "replay_digest": "59ee10ec3c5096e538521b2bcfdc4441ff62c9861583507f8354463380c80dee"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What is 0 × 8?",
+      "correct_answer": 0,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 0,
+      "hints": [
+        "We need to find the total of equal groups 0 groups of 8.",
+        "Use the 8 times table: 8 × 0.",
+        "The product of 0 × 8 = 0."
+      ],
+      "sample_id": "9b9ba42a8a3f8c5b0a7b",
+      "replay_digest": "4d4d3a45ac9fdc0d8bcc1fe979ed644515d03d13b2592c52714842a777d5d72d"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 1000,
+      "formatter": "true_false",
+      "question_text": "6 × 1 = 7. True or False?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "hint_gated"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to find the total of equal groups 6 groups of 1.",
+        "Think of it as 1 group of 6: 6.",
+        "The product of 6 × 1 = 6."
+      ],
+      "sample_id": "329eddc897e5fdea7e59",
+      "replay_digest": "fb5643936575129e02bd72d9dcb0bced45d2656a853fa4985ae7a8e51e0962c4"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 1001,
+      "formatter": "mcq",
+      "question_text": "Is 3 × 7 the same as 7 × 5?",
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "mastery_drill"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
           "is_correct": false
         },
         {
@@ -409,33 +1493,953 @@
           "value": false,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": false,
+      "hints": [
+        "The left side multiplies 3 and 7. The right side multiplies 7 and 5.",
+        "3 × 7 = 21 and 7 × 5 = 35.",
+        "So the two sides are not the same."
+      ],
+      "sample_id": "1e44f7476d0b3de0584f",
+      "replay_digest": "fdbbaf11b5f72e9299db0dbd6694936e9c9ccf7f07cd22e3d287dd9ea5e782f8"
+    },
+    {
+      "node_id": "mat_g3_na_q3_1",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"0 × 7 = ___\". Manny says the missing number is 7. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 0
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 0
+      },
+      "hints": [
+        "We need to find the total of equal groups 0 groups of 7.",
+        "Use the 7 times table: 7 × 0.",
+        "The product of 0 × 7 = 0."
+      ],
+      "sample_id": "4c5ff4a7f9a66667cac6",
+      "replay_digest": "7b6a36983d4880fe275e437970e4d3b761f7106f755a29b75f433172661e1443"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "5d4ec93aab52e32d040d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question clearly asks whether two expressions using the same factors in different order yield identical results, with no linguistic or mathematical ambiguity in the comparison requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Direct comparison of commutative pairs is a standard pedagogical approach to teaching multiplication properties at Grade 3, with the mathematical logic following from learners' foundational multiplication experience."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The true-false response options with language indicating certainty and the straightforward comparison format make the question accessible to Grade 3 learners without requiring inference or unstated assumptions."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Five times 6 equals 30 and 6 times 5 equals 30, verified through hints showing both multiplication facts and the logical conclusion that the two sides are identical, with no mathematical errors or inconsistencies present."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "39af49088687ab791bb1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 4×8 and 8×9 are equivalent, clearly stated without linguistic confusion or double interpretation of the mathematical expressions being compared."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing whether products with one shared factor but different other factors yield the same result is a valid multiplication comprehension task that reinforces understanding of factor-product relationships."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with four distinct options provides a clear response mechanism, and the comparison structure presents the mathematical situation in an accessible manner for Grade 3 learners."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times 8 yields 32 while 8 times 9 yields 72, correctly differentiated in hints and answer, with all arithmetic calculations verified and the false answer choice correctly justified."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "e4202712b5d1fc203c40",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection format unambiguously asks whether the student's proposed answer to 6×0 is correct, with clear expectation for judgment of correctness."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "A student solving 6×0 with an answer proposal is a realistic scenario, and the error detection format aligns with Grade 3 scaffolded learning where identifying correct and incorrect answers supports concept development."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The error detection context with named student and explicit question about correctness is clear and accessible to Grade 3 learners navigating guided problem-solving exercises with feedback."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times 0 correctly equals 0, the student answer of 0 is mathematically correct, and hints explain the reasoning through equal groups perspective and reference to the zero property of multiplication."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "fe30f5b185b960024365",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether multiplying the sum 7+2 by 8 yields the same product as separately multiplying each addend by 8 and summing results, presented clearly without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing grouped-differently expressions to test distributive property is pedagogically sound and aligns with Grade 3 multiplication property exploration standards."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options with clear answer selections support learner comprehension, and the expression comparison is structured in a manner accessible to Grade 3 students learning properties."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 8×9 yields 72, the right side 56+16 also yields 72, and all intermediate calculations in the hints are verified with logical explanation of the distributive principle applying correctly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "2e140b767ffbf1061d8d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question directly asks whether 2×9 and 9×8 produce identical results without linguistic or mathematical ambiguity in the comparison statement."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing products from non-matching factor pairs is a valid assessment where one factor differs in each position, testing multiplication understanding and factor-product relationships appropriately."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options and clear comparison language make this question understandable to Grade 3 learners, with response options arranged to support decision-making without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times 9 produces 18 while 9 times 8 produces 72, the false answer is correct, and hints verify both calculations with clear explanation that the two sides are not equivalent."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "5b8b118252437966d2ec",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze fill-in-the-blank format clearly requests the product of 1×6 with no linguistic ambiguity about what calculation is being asked."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Direct application of the identity property through computational fill-in format is standard Grade 3 practice for assessing multiplication fact knowledge and property understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple numerical fill format with provided options removes potential ambiguity and creates an accessible response method for Grade 3 learners demonstrating the identity property."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times 6 correctly equals 6, hints explain the reasoning through equal groups interpretation, and all arithmetic aligns with the identity property for Grade 3 multiplication facts."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "c70c45f751375250074a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false statement format presents the assertion 1×9=9 with unambiguous judgment requested, allowing no confusion about what proposition is being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Affirming the identity property through a declarative statement followed by truth value judgment is aligned with Grade 3 expectations for assessing multiplication property comprehension."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The direct statement with binary true-false response option is clear and appropriately matched to Grade 3 learner cognitive development and assessment format familiarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "One times 9 truly equals 9, the true answer is correct, and hints verify this calculation through equal groups interpretation aligned with the identity property."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "da6de8210c1253480926",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The false equation 9×1=8 is presented clearly in true-false format with unambiguous request for judgment of the statement's truth value."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing identity property through negation with a false mathematical statement is a valid pedagogical approach to assessing whether learners distinguish correct from incorrect multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "The simple false equation with binary true-false response format is comprehensible to Grade 3 learners, presented in a clear manner supporting learner response construction."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Nine times 1 equals 9 not 8, making the statement correctly false, and hints verify this fact through equal groups reasoning and identity property explanation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "8d0d9b667d41657859e0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 8×(7+4) equals (8×7)+4, presenting a clear contrast between complete and incomplete distributive property application without ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Demonstrating what happens when the distributive property is incorrectly applied by multiplying only one addend is pedagogically sound for showing property boundaries and common misconceptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options and the structured comparison of left and right expressions make this scenario comprehensible to Grade 3 learners learning distributive property boundaries."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 8×11 yields 88 while the right side 56+4 yields 60, the false answer is correct, and hints specifically note that only 7 was multiplied by 8 on the right."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "8aba33ece3353b6ef714",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 7×(8+4) equals (7×8)+4, clearly presenting incomplete versus complete distributive application without linguistic confusion."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing incomplete distributive property application through direct comparison is a valid assessment demonstrating whether learners understand that both addends must be multiplied."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with clear options and standard expression comparison structure supports Grade 3 learner comprehension of the distributive property scenario presented."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 7×12 yields 84 while the right side 56+4 yields 60, the false answer is correct, and hints explain that only 8 was multiplied by 7 on the right side."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "11a43011b2860cd4b0bd",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 6×(8+5) equals (6×8)+(6×5), clearly presenting complete distributive property application with no ambiguity about the mathematical comparison."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing the full distributive property where both addends are multiplied is standard Grade 3 multiplication property introduction and is pedagogically appropriate for this learner level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options with clear answer selections provide an accessible response method for Grade 3 learners assessing distributive property understanding through the expression comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 6×13 yields 78 and the right side 48+30 also yields 78, the true answer is correct, and hints verify all intermediate multiplication and addition calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "8fd1b205b5cf2beb7cf3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether regrouping three factors via parentheses produces the same product, presenting the associative property test clearly without mathematical or linguistic ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing associative property with three factors by comparing different groupings is pedagogically valid for Grade 3 multiplication property exploration and aligns with curriculum expectations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format provides clear response options, and the expression comparison with parentheses is structured in a manner accessible to Grade 3 students learning multiplication properties."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 12×3 yields 36 and the right side 2×18 also yields 36, the true answer is correct, and hints show all step-by-step calculations verifying the associative principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "2d786d09c3678da854f7",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks for the product of 7×1 in multiple-choice format, with no ambiguity about what multiplication computation is requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Direct application of the identity property through straightforward multiplication computation is standard Grade 3 content aligned with multiplication fact mastery expectations."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple multiplication question with distractor options provides an accessible and clear assessment mechanism for Grade 3 learners demonstrating identity property knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven times 1 correctly equals 7, hints explain reasoning through equal groups interpretation, and option distractors represent plausible learner misconceptions without invalidating the correct answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "0b1874000cd2c107037c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether regrouping three given factors in different ways produces the same result, with clear presentation of the associative property test."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three-factor multiplication with varying grouping is appropriate Grade 3 depth for associative property instruction and extends learner understanding beyond two-factor products."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice presentation with distinct options supports Grade 3 learner decision making and response construction for the associative property comparison scenario."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 24×2 yields 48 and the right side 3×16 also yields 48, the true answer is correct, and hints verify all intermediate step calculations in proper order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "6b93f6c3ea2b48c79ff2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 8×7 equals 7×4 without linguistic or mathematical ambiguity, presenting a clear comparison of two products."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing two products where only one factor is shared and the other differs is a valid multiplication comprehension task testing understanding of factor-product relationships."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with standard answer options provides an accessible response method for Grade 3 learners evaluating this multiplication comparison scenario."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Eight times 7 yields 56 while 7 times 4 yields 28, correctly differentiated in the false answer choice, and hints verify both calculations with explanation of their difference."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "28e1bfd1e9876af574eb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether associative regrouping with three factors (3×9)×3 versus 3×(9×3) preserves the product, presented without mathematical ambiguity."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing associative property with larger factors that produce intermediate products within Grade 3 mental math capacity is pedagogically appropriate for this learner level."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options and expression comparison structure are clear and accessible to Grade 3 learners demonstrating understanding of associative property boundaries."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 27×3 yields 81 and the right side 3×27 also yields 81, the true answer is correct, and hints show all step-by-step intermediate products verifying associativity."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "c230bc5337e92c168eae",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 7×8 equals 8×3, presenting a direct comparison of two products without ambiguity in mathematical or linguistic meaning."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing unrelated multiplication problems reinforces that changing values produces different products, a fundamental multiplication understanding supporting multiplication fact mastery."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice format with unambiguous binary-style response structure provides a clear assessment mechanism for Grade 3 learners evaluating this multiplication comparison."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Seven times 8 yields 56 while 8 times 3 yields 24, correctly identified as different in the false answer choice, with hints verifying both calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "c179de215e0f4c8cbf05",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether swapping the factors in 4×6 versus 6×4 produces the same product, presented clearly without ambiguity in the commutative property test."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Direct commutative property test with the same pair in different order is a standard pedagogical approach for teaching that factor order does not affect multiplication results."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple multiple choice format with factual certainty options provides accessible response method for Grade 3 learners assessing commutative property understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Four times 6 yields 24 and 6 times 4 also yields 24, the true answer is correct, and hints explain the commutative principle through same factors in different order."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "93d86f5edc6690af21d2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether (3×7)×3 equals 3×(7×2), presenting a clear test of what happens when grouping changes and the third factor also differs."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Demonstrating that grouping changes only preserve products when all factors match is pedagogically valid for showing associative property boundaries and misconception correction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice structure with options helps Grade 3 learners identify when associative property applies versus when different factors make expressions non-equivalent."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 21×3 yields 63 while the right side 3×14 yields 42, correctly identified as non-equivalent in the false answer, with hints verifying all calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "4f66b23a8aca3ce1fd9c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether (3×7)×3 equals 3×(7×2) using different seed value, testing the same associative property scenario with clear mathematical presentation."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Repetition of the grouping property test demonstrates consistent assessment across multiple seeds and confirms that the generator reproduces the same mathematical logic reliably."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options with standard Grade 3 comprehension aids support learner understanding of this associative property boundary demonstration."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 21×3 yields 63 and the right side 3×14 yields 42, correctly identified as non-equivalent, with hints showing identical step-by-step verification."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "804957634e25e00a734d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 7×(5+7) equals (7×5)+(7×7) with thematic dance wrapper that does not obscure the mathematical comparison being made."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic elements add engagement to the distributive property assessment, and the character context does not interfere with mathematical logic or create confusion about the computation."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Theme contextualizes the content while keeping the mathematical comparison clear and accessible to Grade 3 learners, providing interest without compromising clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 7×12 yields 84 and the right side 35+49 also yields 84, the true answer is correct, and hints verify all intermediate calculations of the distributive principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "1085aab7a3a0c3112e79",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The basketball-themed question asks whether 2×7 equals 7×8 without the theme obscuring the mathematical comparison being evaluated."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic element introduces character interest while keeping the mathematical question well-defined, testing whether students understand factor changes produce different products."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Theme adds contextual engagement without creating confusion about what multiplication comparison is being requested or how to respond in the multiple choice format."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Two times 7 yields 14 and 7 times 8 yields 56, correctly identified as different in the false answer, with hints verifying both product calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "f4631e266939c8a9ade9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format clearly requests the product of 6×1 with provided numerical options, presenting no ambiguity about what multiplication fact is being assessed."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Identity property application through fill-in-the-blank format is standard Grade 3 practice for assessing multiplication facts and property understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple fill-in format with provided options removes ambiguity and creates an accessible response method for Grade 3 learners demonstrating identity property knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times 1 correctly equals 6, hints explain equal groups reasoning, and all arithmetic aligns with identity property for Grade 3 multiplication facts taught."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "64e13483d716c8408dfb",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 6×7 equals 7×6 without ambiguity, presenting a direct commutative property test."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Commutative property tested with multiplication table facts where factor order is swapped is standard Grade 3 curriculum for property demonstration."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Binary certainty options in multiple choice format support Grade 3 learner responses to this commutative property assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times 7 yields 42 and 7 times 6 also yields 42, the true answer is correct, and hints verify both multiplication facts and commutative principle."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "43dbaeb16587bef14da3",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether (2×8)×2 equals 2×(8×3), presenting clear contrast between different factors in the third position and associative regrouping."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing that property changes only work when factors match is pedagogically sound for demonstrating associative property boundaries and preventing learner misconceptions."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice options aid Grade 3 learners in identifying when associative regrouping does or does not preserve the product."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "The left side 16×2 yields 32 while the right side 2×24 yields 48, correctly identified as non-equivalent, with hints showing all intermediate calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "9b9ba42a8a3f8c5b0a7b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice asks for the product of 0×8 with clear numerical options provided, presenting no ambiguity about what calculation is requested."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero property application through direct multiplication is foundational Grade 3 content supporting multiplication fact mastery and property understanding."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Simple multiplication question with distractor options designed for learner misconceptions provides accessible assessment of zero property knowledge."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero times 8 correctly equals 0, hints explain equal groups reasoning for zero property, and option distractors represent plausible learner errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "329eddc897e5fdea7e59",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True-false statement presents 6×1=7 for judgment, with clear false equation testing identity property understanding."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Testing identity property through negation with false statement is pedagogically valid for assessing whether learners distinguish correct multiplication facts."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Direct declarative statement with binary true-false response format supports Grade 3 learner assessment of multiplication fact knowledge and reasoning."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Six times 1 equals 6 not 7, making the statement correctly false, and hints verify the identity property through equal groups interpretation."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "1e44f7476d0b3de0584f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "The question asks whether 3×7 equals 7×5 using multiple choice format, with clear comparison of two products."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Comparing products from modified factor pairs tests multiplication understanding where changing factors produces different results."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Multiple choice with standard answer options supports Grade 3 learner response construction for this multiplication comparison assessment."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Three times 7 yields 21 while 7 times 5 yields 35, correctly identified as non-equivalent, with hints verifying both product calculations."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "sample_id": "4c5ff4a7f9a66667cac6",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error detection format asks whether student assertion about 0×7 product is correct, with clear question about the validity of the student's answer."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Realistic error scenario where student incorrectly states 0×7=7 is pedagogically sound for scaffolded Grade 3 learning with guided correction."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection scaffolded format with named student supports Grade 3 guided learning experiences where identifying errors develops conceptual understanding."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Zero times 7 correctly equals 0 not 7, the student error is realistic and correctly identified as an error, with hints explaining zero property reasoning."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "illustrate_and_apply_properties_of_multiplication",
+      "clause": "Illustrate and apply properties of multiplication",
+      "verdict": "PASS",
+      "reasoning": "Every sample demonstrates application of multiplication properties through problem-solving formats where learners apply identity, zero, commutative, associative, or distributive properties. Samples span multiple formats and true-false cases, showing that properties are both illustrated and applied across the packet.",
+      "sample_ids": [
+        "5d4ec93aab52e32d040d",
+        "39af49088687ab791bb1",
+        "e4202712b5d1fc203c40",
+        "fe30f5b185b960024365",
+        "2e140b767ffbf1061d8d",
+        "5b8b118252437966d2ec",
+        "c70c45f751375250074a",
+        "da6de8210c1253480926",
+        "8d0d9b667d41657859e0",
+        "8aba33ece3353b6ef714",
+        "11a43011b2860cd4b0bd",
+        "8fd1b205b5cf2beb7cf3",
+        "2d786d09c3678da854f7",
+        "0b1874000cd2c107037c",
+        "6b93f6c3ea2b48c79ff2",
+        "28e1bfd1e9876af574eb",
+        "c230bc5337e92c168eae",
+        "c179de215e0f4c8cbf05",
+        "93d86f5edc6690af21d2",
+        "4f66b23a8aca3ce1fd9c",
+        "804957634e25e00a734d",
+        "1085aab7a3a0c3112e79",
+        "f4631e266939c8a9ade9",
+        "64e13483d716c8408dfb",
+        "43dbaeb16587bef14da3",
+        "9b9ba42a8a3f8c5b0a7b",
+        "329eddc897e5fdea7e59",
+        "1e44f7476d0b3de0584f",
+        "4c5ff4a7f9a66667cac6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "6_7_8_and_9_multiplication_tables",
+      "clause": "6, 7, 8, and 9 multiplication tables",
+      "verdict": "PASS",
+      "reasoning": "The samples include multiplication facts involving 6, 7, 8, and 9 throughout the packet. While some samples also include other numbers such as 1, 0, 2, 3, 4, 5 for property demonstration, every sample incorporates at least one multiplication using 6, 7, 8, or 9 as demonstrated across the diverse problem set.",
+      "sample_ids": [
+        "5d4ec93aab52e32d040d",
+        "39af49088687ab791bb1",
+        "e4202712b5d1fc203c40",
+        "fe30f5b185b960024365",
+        "2e140b767ffbf1061d8d",
+        "5b8b118252437966d2ec",
+        "c70c45f751375250074a",
+        "da6de8210c1253480926",
+        "8d0d9b667d41657859e0",
+        "8aba33ece3353b6ef714",
+        "11a43011b2860cd4b0bd",
+        "8fd1b205b5cf2beb7cf3",
+        "2d786d09c3678da854f7",
+        "0b1874000cd2c107037c",
+        "6b93f6c3ea2b48c79ff2",
+        "28e1bfd1e9876af574eb",
+        "c230bc5337e92c168eae",
+        "c179de215e0f4c8cbf05",
+        "93d86f5edc6690af21d2",
+        "4f66b23a8aca3ce1fd9c",
+        "804957634e25e00a734d",
+        "1085aab7a3a0c3112e79",
+        "f4631e266939c8a9ade9",
+        "64e13483d716c8408dfb",
+        "43dbaeb16587bef14da3",
+        "9b9ba42a8a3f8c5b0a7b",
+        "329eddc897e5fdea7e59",
+        "1e44f7476d0b3de0584f",
+        "4c5ff4a7f9a66667cac6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "one_multiplied_by_any_number",
+      "clause": "one multiplied by any number is equal to the number",
+      "verdict": "PASS",
+      "reasoning": "The identity property appears in six dedicated samples testing the principle that multiplying by 1 yields the original number. These samples include true cases like 1×6=6, 1×9=9, 7×1=7, 6×1=6, and false cases like 9×1≠8 and 6×1≠7, demonstrating comprehensive coverage of identity property across different multiplier and multiplicand values.",
+      "sample_ids": [
+        "5b8b118252437966d2ec",
+        "c70c45f751375250074a",
+        "da6de8210c1253480926",
+        "2d786d09c3678da854f7",
+        "f4631e266939c8a9ade9",
+        "329eddc897e5fdea7e59"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "zero_multiplied_by_any_number",
+      "clause": "zero multiplied by any number is zero",
+      "verdict": "PASS",
+      "reasoning": "Three samples explicitly test the zero property showing that zero times any number equals zero. Sample showing 6×0=0 correct, sample showing 0×8=0 correct, and sample showing 0×7 cannot equal 7 when student incorrectly asserts it. All three samples demonstrate the zero property consistently across different factor orders and error-detection formats.",
+      "sample_ids": [
+        "e4202712b5d1fc203c40",
+        "9b9ba42a8a3f8c5b0a7b",
+        "4c5ff4a7f9a66667cac6"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "changing_the_order",
+      "clause": "changing the order of the numbers being multiplied does not change the product",
+      "verdict": "CONCERN",
+      "reasoning": "Three samples directly test commutative property by comparing the same factor pair in different order: 5×6 versus 6×5, 4×6 versus 6×4, and 6×7 versus 7×6. However, multiple other samples present comparisons like 4×8 versus 8×9 or 2×9 versus 9×8 where not only order changes but other factors also differ, so these do not isolate the commutative property. The explicit commutative tests are limited to only three samples.",
+      "sample_ids": [
+        "5d4ec93aab52e32d040d",
+        "c179de215e0f4c8cbf05",
+        "64e13483d716c8408dfb"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "changing_the_grouping",
+      "clause": "changing the grouping of the numbers being multiplied does not change the product",
+      "verdict": "PASS",
+      "reasoning": "Six samples explicitly test associative property by comparing expressions with different parenthetical groupings: (2×6)×3 versus 2×(6×3), (3×8)×2 versus 3×(8×2), (3×9)×3 versus 3×(9×3), and (3×7)×3 versus 3×(7×2) appearing twice. Both affirming cases where grouping preserves the product and negating cases where other factors differ are included, demonstrating comprehensive associative property coverage.",
+      "sample_ids": [
+        "8fd1b205b5cf2beb7cf3",
+        "0b1874000cd2c107037c",
+        "28e1bfd1e9876af574eb",
+        "93d86f5edc6690af21d2",
+        "4f66b23a8aca3ce1fd9c",
+        "43dbaeb16587bef14da3"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    },
+    {
+      "requirement_id": "multiplying_the_sum_of_two_addends",
+      "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+      "verdict": "PASS",
+      "reasoning": "Five samples test distributive property where 8×(7+2) equals (8×7)+(8×2), 6×(8+5) equals (6×8)+(6×5), and 7×(5+7) equals (7×5)+(7×7) showing correct application. Two additional samples show incorrect application where only one addend is multiplied: 8×(7+4) versus (8×7)+4 and 7×(8+4) versus (7×8)+4, demonstrating both correct and incorrect boundary cases of the distributive property.",
+      "sample_ids": [
+        "fe30f5b185b960024365",
+        "8d0d9b667d41657859e0",
+        "8aba33ece3353b6ef714",
+        "11a43011b2860cd4b0bd",
+        "804957634e25e00a734d"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w16-haiku45-20260925:mat_g3_na_q3_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pc16-mat_g3_na_q3_1-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "b30bcc73d73a24fd66cceecfa888d3c379c490be31e312dc65d9df0e6650195f",
+      "clause_ids": [
+        "illustrate_and_apply_properties_of_multiplication",
+        "6_7_8_and_9_multiplication_tables",
+        "one_multiplied_by_any_number",
+        "zero_multiplied_by_any_number",
+        "changing_the_order",
+        "changing_the_grouping",
+        "multiplying_the_sum_of_two_addends"
+      ],
+      "response_ref": ".responses/s5-phaseC-w16-haiku45-20260925.json",
+      "response_digest": "10aebbe8ac9c9d1b698244415e98b6449d48dd52c434c00fd078cd6d5e878152",
+      "prompt_ref": ".responses/s5-phaseC-w16-haiku45-20260925.prompt.txt",
+      "prompt_digest": "5794c9c4aa6a61ac3afc276280424a285f60de09d60a9593401db2b637433e1c",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q3_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q3_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (findings.competency_fulfillment had no verdict or rationale); the REVIEWER supplied that one missing verdict and rationale itself (4 tool uses). Every other verdict and the overall byte-compared unchanged; the dispatcher authored nothing."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The applying half of the objective is well served, but the illustrating half is missing entirely. Nothing in the set shows a property through an array, a grouping picture or any model; even the distributive item 'Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?' is settled by computing both sides rather than by seeing why they agree."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five clauses the wording enumerates do get generated: multiplying by one, multiplying by zero, reordering two factors, regrouping three factors, and distributing over a sum. The zero clause rests on a single sample, which is thin, but it is present."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Parenthesised expressions are used here because the competency itself describes grouping and distribution, so the notation is earned rather than imported, and the yes-or-no decision keeps the response demand light."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Ten of the sixteen samples are the same are-these-the-same comparison of two expressions. Only a couple ask for a product outright, and no property is ever named, described, or demonstrated by the pupil."
+      "rationale": "The items employ Grade 3 appropriate numerical ranges with products reaching 81, accessible problem structures combining identity, zero, commutative, associative, and distributive properties at Quarter 3 mastery level expectations without overwhelming learner cognitive load or requiring pre-Grade 3 knowledge beyond basic counting."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The filler option 'Only when both are 0' appears in every choice list without ever being right, reducing a four-way decision to a coin flip between True and False. One item also pairs a genuine regrouping with a quietly altered factor, which risks teaching doubt about associativity rather than confidence in it."
+      "rationale": "The competency specifies focus on 6, 7, 8, 9 multiplication tables but samples include numerous problems with 1 (identity) and 0 (zero property) factors alongside 2, 3, 4, 5 comparisons. While mathematically necessary for demonstrating identity and zero properties, this broader number range dilutes the stated table-specific curriculum focus and creates ambiguity about scope boundaries."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All five required properties appear substantively: identity multiplication by 1, zero property, commutative order invariance, associative regrouping invariance, and distributive expansion across addends. Both affirming and negating instances are presented, allowing learners to understand when properties apply and their mathematical boundaries.",
+      "decomposition": {
+        "verdict": "CONCERN",
+        "reasoning": "The requirement decomposition separates 6-7-8-9 tables from identity and zero properties despite those properties requiring 1 and 0 factors respectively. This structural separation suggests the five properties cannot be fully illustrated using only the 6-9 range, indicating the decomposition does not losslessly capture the full competency scope and creates logical overlap across requirement categories.",
+        "requirement_ids": [
+          "illustrate_and_apply_properties_of_multiplication",
+          "6_7_8_and_9_multiplication_tables",
+          "one_multiplied_by_any_number",
+          "zero_multiplied_by_any_number",
+          "changing_the_order",
+          "changing_the_grouping",
+          "multiplying_the_sum_of_two_addends"
+        ]
+      },
+      "clause_ids": [
+        "illustrate_and_apply_properties_of_multiplication",
+        "6_7_8_and_9_multiplication_tables",
+        "one_multiplied_by_any_number",
+        "zero_multiplied_by_any_number",
+        "changing_the_order",
+        "changing_the_grouping",
+        "multiplying_the_sum_of_two_addends"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set spans five problem formats (multiple-choice, true-false, cloze fill-in-blank, error detection) across all five mathematical properties with both confirming and negating examples. Seeds range from 42 to 1002 and thematic elements vary, demonstrating broad generation capacity and format diversity appropriate for Grade 3 practice.",
+      "clause_ids": [
+        "illustrate_and_apply_properties_of_multiplication",
+        "6_7_8_and_9_multiplication_tables",
+        "one_multiplied_by_any_number",
+        "zero_multiplied_by_any_number",
+        "changing_the_order",
+        "changing_the_grouping",
+        "multiplying_the_sum_of_two_addends"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Factors stay single-digit and the intermediate sums inside the distributive items stay small, so the arithmetic never distracts from the property being examined."
+      "rationale": "Numerical complexity remains within Grade 3 Quarter 3 mental math capacity, with products scaling to 81 and addend sums to 13. Nested operation depth is limited, problem structures avoid extraneous complexity, and cognitive scaffolding through multiple formats supports learners at this developmental stage without introducing operations or magnitudes beyond curriculum scope."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Samples 19 (seed 608) and 20 (seed 700) present textually identical stems asking if (3×7)×3 equals 3×(7×2) with identical hints and answer, differing only in seed value. This duplication provides no cognitive variant and reduces effective sample diversity, suggesting limited generation variation when encountering mathematically identical scenarios across seed ranges."
     }
   },
   "overall": "CONCERN"
