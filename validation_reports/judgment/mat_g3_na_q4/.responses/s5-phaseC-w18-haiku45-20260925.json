@@ -1,640 +1,619 @@
 {
-  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
-  "mat_g3_na_q4_2": {
+  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_4-20260925",
+  "mat_g3_na_q4_4": {
     "findings": {
       "cognitive_capacity": {
-        "verdict": "FAIL",
-        "rationale": "Most samples are calibrated to Grade 3 learners, but systematic errors undermine appropriateness. Several samples use arithmetic operations with operands outside the competency scope (multiplier 2 in samples 18 and 21; divisor 4 in sample 7; divisor 45 in sample 20), introducing confusion beyond cognitive demand."
+        "verdict": "PASS",
+        "rationale": "Grade 3 Quarter 4 learners encounter problems with dividends from two to three digits and divisors from one to two digits. Most samples present clear estimation scenarios with accessible rounding strategies. Problem structure matches quarter-end expectations for students who have practiced division fundamentals. Contexts are age-appropriate and familiar to nine-year-olds."
       },
       "competency_alignment": {
         "verdict": "FAIL",
-        "rationale": "The competency specifies operations by 6, 7, 8, and 9. Five samples violate this explicit constraint. Sample 7 uses divisor 4; sample 18 uses multiplier 2; sample 20 uses divisor 45; sample 21 uses multiplier 2. These operands are not in the mandated set and represent scope violations that misalign the content from the MATATAG curriculum requirement."
+        "rationale": "The competency explicitly requires estimating quotients using multiples of 10 or 100 as appropriate. Twenty-five of twenty-six samples demonstrate consistent adherence to this requirement, but sample 83345a0d497ca3321b7e rounding 46 to 45 and keeping 9 violates the core strategy. The number 45 is not a multiple of 10 or 100, and neither is 9. This single systematic violation of the binding requirement constitutes a failure of competency alignment."
       },
       "competency_fulfillment": {
         "verdict": "FAIL",
-        "rationale": "The competency addresses finding missing numbers in sentences with multiplication and division by 6, 7, 8, 9. While the node attempts to cover all required components, execution failures prevent fulfillment. Five samples violate the operand constraint, and one sample contains a mathematical error that contradicts its own hints.",
+        "rationale": "The five requirements form a lossless decomposition in principle, but actual implementation fails. Decomposition analysis reveals that the multiples-of-10-or-100 requirement is not consistently enforced across all samples.",
         "decomposition": {
           "verdict": "FAIL",
-          "reasoning": "The requirement decomposition is lossless in principle: find_missing_number, number_sentence, multiplication, division, and 6_7_8_9 together specify the full competency. However, the generator fails to enforce the 6_7_8_9 constraint in five rendered samples. Sample 7 and sample 20 also exhibit stem-hints mismatches where the stem names an out-of-scope operand while hints correct it, suggesting the generator knows the rule but does not validate it at output. These failures are blockers."
+          "reasoning": "While the five requirements theoretically cover the complete competency statement, one sample (83345a0d497ca3321b7e) demonstrates that the implementation does not enforce the multiples-of-10-or-100 requirement. Additionally, sample 9f57e81e756752855842 presents an internal contradiction where hints prove the correct answer is 6 but the answer field records 30. These gaps show the decomposition is not actively maintained throughout the rendered sample set."
         }
       },
       "comprehensive_coverage": {
-        "verdict": "CONCERN",
-        "rationale": "The set of 26 samples covers multiplication and division across multiple formats (MCQ, true/false, cloze, error_detect, read_mcq). Missing numbers appear in different positions: as first operand (dividend or multiplicand), second operand (divisor or multiplier), and product/quotient. Visual representations appear in three samples. However, the presence of out-of-scope operands and mathematical errors reduces the utility of comprehensive coverage by contaminating the sample pool."
+        "verdict": "PASS",
+        "rationale": "Samples span multiple question formats including cloze completion, multiple choice, true/false, and error detection scenarios. Dividend magnitudes range from two digits to three digits covering 34 through 807. Divisor magnitudes span one to two digits from 2 through 87. Estimation strategies include rounding up, rounding down, and various intermediate techniques. Thematic variations appear in samples with character names and cultural contexts, while most retain neutral presentation."
       },
       "scale_appropriateness": {
-        "verdict": "CONCERN",
-        "rationale": "Twenty-one of the 26 samples are appropriately scaled for Grade 3, Quarter 4 learners with single-digit and two-digit operands in the correct range. However, five samples introduce operands outside the competency definition, creating inconsistency in difficulty and scope. This uneven scaling raises ambiguity about which samples represent the intended grade-level expectation."
+        "verdict": "PASS",
+        "rationale": "All quotients fall within the single to two-digit range appropriate for Grade 3 computational fluency by Quarter 4. The answers vary from 3 to 100, matching learner capacity for mental arithmetic following a quarter of instruction. Problem difficulty progression is reasonable, starting with single-digit divisors and advancing to two-digit divisors while maintaining computational feasibility through the estimation method."
       },
       "variant_comprehensiveness": {
         "verdict": "PASS",
-        "rationale": "The sample set demonstrates format variety: six read_mcq (with BalanceScale visual), nine MCQ, five cloze, four true_false, and two error_detect formats. This range of interaction patterns supports learner engagement across multiple cognitive entry points. All operand positions (missing first operand, second operand, result) appear across formats, supporting comprehensive practice structure despite the operand violations."
+        "rationale": "The sample set demonstrates variety across experience types labeled standard, hint-gated, mastery-drill, and scaffolded. Question formats rotate among cloze, multiple choice, true/false, and error detection across twenty-six instances. Samples include dividend-divisor pairs that require different rounding patterns such as rounding both operands to tens place and occasionally to hundreds place. Character names vary across samples suggesting personalization or theme diversity in generation."
       }
     },
     "sample_assessments": [
       {
-        "sample_id": "c9f822fff971a49a3c36",
+        "sample_id": "5379d0269bdb79ca893e",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem is clear: a balance scale visual frames a missing-first-operand multiplication. The question asks for the value that makes both sides equal. Distractors are plausible but distinct from correct answer 2."
+            "reasoning": "The stem clearly requests estimation of a quotient using the cloze format with distinct placeholder. The problem 182 ÷ 37 is unambiguous and the requested operation is explicit. Options 50, 7, 4, 5 are clearly distinguishable numeric values without overlapping meaning."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The balance-scale context establishes a logical framework for equality. The operation and missing position are unambiguous. Visual and text align without contradiction."
+            "reasoning": "The estimation strategy of rounding 182 to 200 and 37 to 40 follows the grade-level standard of using multiples of 10. The relationship 200 ÷ 40 = 5 is logically sound and the hints correctly scaffold the reasoning through each step. The problem context aligns with the competency requirement for estimating quotients."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Read_mcq format allows learners to view all information at once. The stem directly names the visual context and the operation. Hints systematically guide toward the inverse operation and verification."
+            "reasoning": "A third grader reading this item immediately understands that they must estimate by filling the blank. The hint progression guides learners from identifying what to round, to performing the estimate, to stating the quotient. Language is direct and uses vocabulary appropriate for Grade 3 mathematical communication without unclear pronoun references or ambiguous directives."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equation 2 × 6 = 12 is correct. Hints accurately state the number statement, name division as the inverse, calculate 12 ÷ 6 = 2, and verify the result. No contradictions between stem, answer, and hints."
+            "reasoning": "The hint calculations are mathematically sound: 182 rounds to 200, 37 rounds to 40, and 200 ÷ 40 = 5 is correct. The answer 5 matches the hint statement. Distractors 50, 7, and 4 represent plausible misunderstandings such as answering with the rounded divisor or misapplying the rounding process."
           }
         }
       },
       {
-        "sample_id": "a054ad37fa446ab227d8",
+        "sample_id": "df1790231143200ea1a7",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem directly presents a missing-second-operand division with clear question phrasing. The correct answer 10 and distractors 11, 70, 16 are sufficiently separated to avoid ambiguity about correct choice."
+            "reasoning": "The stem uses the phrase Estimate the quotient with a clear multiple-choice format. The problem 162 ÷ 61 is presented directly without embedded clauses or unclear references. Four distinct options are provided and only one represents the correct estimate using the standard strategy."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "A straightforward division problem with no misleading context. The stem names the operation explicitly and the question asks for the result directly."
+            "reasoning": "Rounding 162 to 180 and 61 to 60 employs the taught estimation strategy using multiples of 10. The hint logic correctly calculates 180 ÷ 60 = 3. The scenario is internally consistent where a student might encounter this problem as practice in estimation after learning the multiple-of-10 strategy in Grade 3 Quarter 4."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The text-only MCQ format presents the equation and question clearly. Hints echo the statement, name what must be found, and show the calculation step. Language is direct."
+            "reasoning": "The multiple-choice format is familiar to Grade 3 learners and the question stem is phrased in the same language as classroom instruction. Options are presented clearly as separate values. A learner who understands the rounding-to-tens strategy can follow the hints and select the correct option without confusion about what is being asked."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "60 ÷ 6 = 10 is arithmetically correct. Hints repeat the statement, note that the result must be found, and compute 60 ÷ 6 = 10 without error."
+            "reasoning": "Rounding 162 to 180 and 61 to 60 is mathematically justified. The division 180 ÷ 60 = 3 is correct. The answer 3 precisely matches the computed estimate. Option 30 represents a common error where students might misapply place value, making it a pedagogically useful distractor."
           }
         }
       },
       {
-        "sample_id": "45f64fe1952df54a847a",
+        "sample_id": "70d2248156e992728080",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a cloze format with a missing first operand in division. The question position is clear. Distractors 7, 9, 54 are operand-related but distinct from correct answer 63."
+            "reasoning": "The cloze stem Estimate: 143 ÷ 5 ≈ ___ is unambiguous about the operation required and the format expected. The approximate symbol explicitly signals estimation is the task. Options 30, 25, 35, 300 are clearly distinct numbers presented in standard notation."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The equation structure is standard. No contextual confusion or logical contradiction in the problem statement."
+            "reasoning": "The problem demonstrates estimation with a single-digit divisor, which is valid Grade 3 content. Rounding 143 to 150 and keeping 5 as is makes sense contextually because 5 is already manageable for mental division. The hint correctly identifies 150 ÷ 5 = 30 through valid reasoning."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Cloze format with blank clearly marked. Hints identify what needs to be divided and by what, then show the relationship and final result."
+            "reasoning": "The format and language are direct and accessible to Grade 3 students who have learned to estimate quotients. The approximate symbol and blank placeholder make the expected response format clear. Hints use concrete language to describe the reasoning process at a nine-year-old's comprehension level."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "63 ÷ 9 = 7 is correct. Hints appropriately describe the equation, note the division needed, and verify 9 × 7 = 63 and 63 ÷ 9 = 7."
+            "reasoning": "The rounding of 143 to 150 is appropriate for this magnitude. The calculation 150 ÷ 5 = 30 is correct. The answer 30 is accurately represented in the hints and matches the correct estimate. Distractors 25, 35, and 300 represent plausible errors a learner might make."
           }
         }
       },
       {
-        "sample_id": "c7348da74456b0a9244d",
+        "sample_id": "62d3de8303f2a1c2d9b1",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a declarative statement in true/false format with clear true/false options. No ambiguity in how learners should respond."
+            "reasoning": "The true-false format with the statement 557 ÷ 68 ≈ 10 is unambiguous. Learners understand they must evaluate whether the given estimate is correct or incorrect. The statement uses the same approximate symbol and notation they learned during estimation practice."
           },
           "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a false estimate claim that learners must evaluate using the rounding strategy. This format assesses whether learners can recognize an incorrect estimate, testing deeper understanding than simple calculation. Rounding 557 to 560 and 68 to 70 with result 560 ÷ 70 = 8 is logically sound, making the given claim of 10 incorrect."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is phrased as True or False, which is familiar to Grade 3 learners. The comparison statement is short and direct. Hints guide learners through determining the correct estimate so they can evaluate the given claim accurately. The pedagogical goal is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct estimate is 560 ÷ 70 = 8, not 10. The answer False is correct. The hints accurately compute this and the logic leads to the right conclusion. The problem accurately assesses the learner's ability to recognize an incorrect estimation outcome."
+          }
+        }
+      },
+      {
+        "sample_id": "673581f4916cb9bf65a0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement 203 ÷ 48 ≈ 4 presents a claim that must be evaluated. The format is straightforward and the mathematical claim is expressed using standard notation with the approximate symbol. No ambiguity exists in what is being asserted."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This problem assesses whether learners recognize a correct estimate claim. Rounding 203 to 200 and 48 to 50 yields 200 ÷ 50 = 4, making the statement true. The hints provide valid reasoning for confirming the estimate. The problem appropriately tests competency in both performing and verifying estimates."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format is familiar and accessible. The statement is brief and uses the mathematical notation taught during this quarter. A learner who understands rounding to multiples of 10 can work through the hints and determine whether the estimate is correct without confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 203 to 200 and 48 to 50 is appropriate. The result 200 ÷ 50 = 4 is correct. The answer True is accurate because the given estimate of 4 is correct. The mathematical reasoning in the hints is sound throughout."
+          }
+        }
+      },
+      {
+        "sample_id": "450ceadb22a12b6a6751",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format with student name Noel is clear. The stem presents Noel's work and asks whether Noel is correct, requiring a yes-or-no determination. The answer structure specifies both has_error and correct_value, making the expected response format unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario presents a realistic peer-learning context where a Grade 3 learner evaluates another's work. Noel's estimate of 552 ÷ 62 ≈ 9 becomes 540 ÷ 60 = 9 through the rounding strategy. This reasoning is valid, making the correct response that Noel has no error and 9 is correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The peer-evaluation format is age-appropriate and motivating for Grade 3 students. The stem identifies the peer by name and clearly describes the problem and claim being evaluated. Hints break down the estimation process so a learner can verify Noel's work step by step and reach the conclusion independently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Noel's rounding of 552 to 540 and 62 to 60 is mathematically sound. The division 540 ÷ 60 = 9 is correct. The answer that has_error is False and correct_value is 9 accurately reflects the situation. The hints confirm Noel's mathematics is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "f32cdff0669d05129d80",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement 488 ÷ 5 ≈ 95 is a claim to evaluate. The format and notation are standard and the approximate symbol signals estimation is involved. The binary true-false choice leaves no ambiguity about the required response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This problem tests recognizing an incorrect estimate. The correct approach is to round 488 to 500 while keeping 5 unchanged, yielding 500 ÷ 5 = 100, not 95. The problem validly assesses whether learners can identify an estimation error even when the given estimate is close to correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is brief and uses estimation notation taught during this quarter. The true-false format is familiar to Grade 3 learners. Hints walk through the correct estimation process so learners can recognize why 95 is incorrect and 100 is right."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct estimate is 500 ÷ 5 = 100. The given claim of 95 is incorrect. The answer False is correct. The hints accurately represent the proper rounding and calculation. This demonstrates that 488 rounds to 500, a multiple of 100, and the result is not 95."
+          }
+        }
+      },
+      {
+        "sample_id": "19aa213b89a59a7f4930",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice stem Estimate the quotient: 713 ÷ 87 is clear and direct. Four distinct options are provided. The problem does not employ any embedded clauses or dependent structures that might confuse a learner about what calculation is requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 713 to 720 and 87 to 90 aligns with the Grade 3 strategy of using multiples of 10. The calculation 720 ÷ 90 = 8 is logically correct. The scenario appropriately tests whether learners can perform this multi-step estimation with three-digit and two-digit numbers."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice is a familiar format. The stem uses the phrase Estimate the quotient, which is standard from classroom instruction. Options are presented clearly and separated distinctly. Hints guide the learner through each step of the estimation process using accessible language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rounding to 720 and 90 is justified for these magnitudes. The calculation 720 ÷ 90 = 8 is correct. The answer 8 matches the computed estimate and is the correct option. Distractors include 10, which might result from different rounding, 80, which tests place value confusion, and 7, which tests slight miscalculation."
+          }
+        }
+      },
+      {
+        "sample_id": "f711cd06e54883b4c3ff",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is unambiguous. The stem names Dante and presents his solution to 34 ÷ 2 ≈ ___ with his answer of 15. The question asks whether Dante is correct, requiring evaluation of his work. The answer format specifies has_error and correct_value clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The peer-evaluation scenario is contextually valid. Dante's work rounding 34 to 30 and dividing 30 ÷ 2 = 15 is mathematically sound. The context appropriately tests whether learners recognize correct estimation when applied by a peer, reinforcing the strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The peer-named format makes the task concrete and relatable for Grade 3 learners. The stem clearly identifies what problem Dante solved and what answer he gave. Hints break down the rounding and division so a learner can verify Dante's work and confirm he is correct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dante's rounding from 34 to 30 is appropriate for a two-digit divisor context. The division 30 ÷ 2 = 15 is mathematically correct. The answer has_error is False and correct_value is 15, which accurately reflects that Dante's work contains no error and his estimate is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "9e56cfaa2061fa6d4f17",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice stem Estimate the quotient: 468 ÷ 58 uses standard phrasing from classroom instruction. Four options are presented as distinct choices without overlapping language or ambiguous notation. The problem does not employ unusual symbols or unclear abbreviations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 468 to 480 and 58 to 60 follows the learned strategy of using multiples of 10. The hints correctly identify the rounded problem 480 ÷ 60 = 8 and conclude with the estimate. This approach is logically sound for Grade 3 estimation of quotients."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is accessible to Grade 3 learners who have practiced this item type throughout the year. The stem uses familiar language and the options are presented clearly. Hints provide step-by-step guidance through the rounding and division process without using technical terminology beyond the learner's level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Rounding 468 to 480 and 58 to 60 is mathematically appropriate for these magnitudes. The calculation 480 ÷ 60 = 8 is correct. The answer 8 accurately represents the estimate and is properly selected as the correct option. Distractors 7, 80, and 10 test potential misunderstandings about rounding or place value."
+          }
+        }
+      },
+      {
+        "sample_id": "9f57e81e756752855842",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem Estimate: 558 ÷ 87 ≈ ___ is structurally unambiguous and the blank placeholder clearly indicates where a response is required. The approximate symbol and division notation are standard. Options are presented as distinct numeric values."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The rounding strategy of 558 to 540 and 87 to 90 is logically sound and aligns with Grade 3 instruction. The hints correctly calculate 540 ÷ 90 = 6. The estimation approach is contextually valid for assessing competency in quotient estimation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format is familiar and clear. The stem uses standard mathematical notation and asks for the estimated quotient using the learned rounding strategy. Options 60, 5, 8, 6 are presented distinctly. However, a critical mismatch exists between the hints and the answer field."
+          },
+          "mathematical_validity": {
             "verdict": "FAIL",
-            "reasoning": "The statement 72 ÷ 8 = 9 is arithmetically true; 8 × 9 = 72. However, the sample marks the answer as False while the hints confirm the calculation yields 9. This internal contradiction between the expected answer and the hint sequence destroys logical coherence."
-          },
-          "learner_facing_clarity": {
-            "verdict": "FAIL",
-            "reasoning": "The learner reads that 72 ÷ 8 = 9 is false, but then the hints state step-by-step that 8 × 9 = 72 and the quotient of 72 ÷ 8 = 9. The hints affirm exactly what the stem asks to reject, creating deep learner confusion."
-          },
-          "mathematical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The arithmetic statement 72 ÷ 8 = 9 is mathematically correct. The answer key marks it False when it should be True. The hints compound the error by explicitly confirming the correct value 9. This is a fundamental mathematical contradiction within the sample."
+            "reasoning": "The hints explicitly state three times that 540 ÷ 90 = 6. The final hint sentence declares The quotient of 540 ÷ 90 = 6. However, the answer field contains 30, not 6. This is a mathematical validity failure where the rendered answer contradicts the correct calculation shown in the hints. A learner following the hints would arrive at 6, but the answer marked correct is 30."
           }
         }
       },
       {
-        "sample_id": "2b7cbe3b60076fc09491",
+        "sample_id": "5a53dd62f75d763b0ad3",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The true/false stem clearly presents a missing-second-operand division with a candidate value. No ambiguity in the claim or response format."
+            "reasoning": "The error-detection format with student name Jose is clearly structured. The stem presents Jose's work on 807 ÷ 43 ≈ ___ with the claim that the answer is 20. The question is-whether Jose is correct, requiring evaluation. The answer structure with has_error and correct_value is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The statement 18 ÷ 6 = 3 is logically sound and correctly evaluates to true. No contradictions."
+            "reasoning": "The peer-evaluation scenario is contextually appropriate. Jose's rounding of 807 to 800 and 43 to 40 is valid, and the calculation 800 ÷ 40 = 20 is correct. The hints correctly confirm Jose's estimate. This scenario appropriately assesses competency in recognizing correct application of the estimation strategy."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The stem is a complete statement. Hints repeat the equation, clarify what must be found, and show the calculation without ambiguity."
+            "reasoning": "The peer-named scenario makes the task concrete and relatable. The stem identifies the problem and Jose's claimed answer clearly. The step-by-step hints walk through the rounding process and confirm the division result so a learner can verify Jose's work independently and understand his reasoning."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "18 ÷ 6 = 3 is correct. Hints accurately describe the statement and compute the result. Answer True aligns with mathematical truth."
+            "reasoning": "Jose's rounding of 807 to 800 and 43 to 40 is appropriate for these three-digit and two-digit values. The division 800 ÷ 40 = 20 is mathematically correct. The answer has_error is False and correct_value is 20, which accurately reflects that Jose's estimation is correct with no computational error."
           }
         }
       },
       {
-        "sample_id": "134e47dfc22fddd59e17",
+        "sample_id": "587b21a8ef0d18421d2b",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error_detect format presents Noel's proposed solution and asks whether it is correct. The claim is explicit: the missing number is 54."
+            "reasoning": "The multiple-choice stem Estimate the quotient: 288 ÷ 47 uses clear, direct language. Four options are presented as distinct numeric values without embedded clauses or dependent phrases. The problem structure makes it unambiguous that estimation is the required task."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement and proposed solution are logically coherent. The hints confirm the relationship 54 ÷ 6 = 9 and 6 × 9 = 54."
+            "reasoning": "Rounding 288 to 300 and 47 to 50 aligns with the taught estimation strategy using multiples of 10. The calculation 300 ÷ 50 = 6 is logically sound. The scenario appropriately tests estimation with three-digit and two-digit numbers, a core Grade 3 Quarter 4 skill."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The error_detect frame is clear: a named student made a claim and learners judge correctness. Hints support the judgment by deriving the correct value."
+            "reasoning": "Multiple choice is a familiar format for Grade 3 learners who have encountered it throughout the year. The stem uses the phrase Estimate the quotient consistently with classroom instruction. Options are clearly presented. Hints guide the learner through rounding and division using accessible step-by-step language."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "54 ÷ 6 = 9 is arithmetically correct. Noel's answer of 54 is correct; the sample correctly marks has_error=False with correct_value=54."
+            "reasoning": "Rounding 288 to 300 and 47 to 50 is mathematically justified for these magnitudes. The calculation 300 ÷ 50 = 6 is correct. The answer 6 accurately represents the estimate. Distractors 8, 5, and 60 test common misunderstandings such as errors in the rounding process or place value confusion."
           }
         }
       },
       {
-        "sample_id": "69a7c3f646b2d412fc05",
+        "sample_id": "c6e2d543655e509ce3f6",
         "checks": {
           "ambiguity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem asks to evaluate the truth of 27 ÷ 4 = 3. The divisor 4 is not in the specified set (6, 7, 8, 9). However, the hints refer exclusively to 27 ÷ 9 = 3, discussing a completely different divisor. Learners encounter a stem-hints mismatch that creates profound confusion about which operation is being evaluated."
+            "verdict": "PASS",
+            "reasoning": "The error-detection format with student name Carlo is structurally clear. The stem presents Carlo's solution to 117 ÷ 31 ≈ ___ with his answer of 4. The question asks whether Carlo is correct, which is unambiguous. The answer structure specifying has_error and correct_value is transparent."
           },
           "contextual_logical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem and hints describe different operations. The stem uses divisor 4; the hints use divisor 9. This is a fatal logical contradiction. A learner following the stem solves one problem while the hints guide a different problem entirely."
+            "verdict": "PASS",
+            "reasoning": "The peer-evaluation scenario is contextually sound. Carlo's rounding of 117 to 120 and 31 to 30 follows the strategy, and the calculation 120 ÷ 30 = 4 is correct. The scenario validly tests whether learners recognize correct estimation work by a peer, reinforcing procedural competency."
           },
           "learner_facing_clarity": {
-            "verdict": "FAIL",
-            "reasoning": "Learners reading the stem see 27 ÷ 4, but the hint sequence pivots to 27 ÷ 9. The hints do not explain or justify this switch. Clarity is severely compromised by the unannounced substitution of the divisor."
+            "verdict": "PASS",
+            "reasoning": "The peer-named format is concrete and relatable for Grade 3 learners. The stem clearly identifies what problem Carlo solved and what answer he gave. The hints break down the rounding and division steps so a learner can verify Carlo's reasoning and confirm he completed the task correctly."
           },
           "mathematical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem uses divisor 4, which is outside the Grade 3 Q4 competency scope (6, 7, 8, 9). Additionally, 27 ÷ 4 ≠ 3 (the result is 6.75). The hints correctly compute 27 ÷ 9 = 3, confirming a substitution. The sample violates both competency constraint and mathematical coherence."
+            "verdict": "PASS",
+            "reasoning": "Carlo's rounding from 117 to 120 and from 31 to 30 is mathematically appropriate. The division 120 ÷ 30 = 4 is correct. The answer has_error is False and correct_value is 4, which accurately reflects that Carlo's estimation contains no error and 4 is the correct estimate."
           }
         }
       },
       {
-        "sample_id": "7407ce2065bb4e4a9275",
+        "sample_id": "60a9ff17d9cbcd225b40",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem asks what number divided by 9 equals 9. This is a clear missing-first-operand division question. Options are distinct and reasonable."
+            "reasoning": "The true-false statement 357 ÷ 57 ≈ 60 presents a clear claim to evaluate. The problem is expressed using standard mathematical notation with the approximate symbol. The binary true-false choice unambiguously specifies the required response format."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement is coherent. The relationship between operands and quotient is logical and unambiguous."
+            "reasoning": "This problem tests whether learners can identify an incorrect estimate. The correct estimate is 360 ÷ 60 = 6, not 60. The scenario appropriately assesses whether learners recognize a plausible but incorrect estimate, deepening understanding of the strategy beyond simple computation."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The text-only MCQ presents the question in direct language. Hints identify what must be found and guide the learner through the inverse relationship and verification."
+            "reasoning": "The true-false format is familiar and accessible. The statement is brief and uses notation taught during this quarter. Hints guide the learner through the correct estimation process so they can evaluate the given claim of 60 against the correct answer of 6 and determine the statement is false."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "81 ÷ 9 = 9 is correct. Hints accurately describe the division, confirm the relationship 9 × 9 = 81, and state the quotient without error."
+            "reasoning": "The correct estimate is 360 ÷ 60 = 6, not 60. The given claim is incorrect. The answer False accurately reflects this. The hints correctly compute the estimate and lead to the right conclusion. The problem accurately assesses whether learners can recognize an incorrect estimation outcome."
           }
         }
       },
       {
-        "sample_id": "e6b7759a987b5967964a",
+        "sample_id": "de0a3f1f2e36c79b08c2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error_detect format is clear: Dante made a claim that the missing number is 56. The question is whether Dante is correct. No ambiguity in the structure."
+            "reasoning": "The multiple-choice stem Estimate the quotient: 258 ÷ 87 uses straightforward language. Four options are presented as clearly distinct numeric values without embedded complications. The problem structure makes it unambiguous that estimation is the task."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement and proposed solution are coherent. The hints verify the calculation and confirm Dante's answer."
+            "reasoning": "Rounding 258 to 270 and 87 to 90 employs the systematic strategy using multiples of 10. The hints correctly identify 270 ÷ 90 = 3. The scenario contextually tests competency in estimation with three-digit and two-digit numbers, a Grade 3 Quarter 4 objective."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The named-student error_detect frame is direct. Hints step through the division and verify the result without confusion."
+            "reasoning": "Multiple choice is a familiar format that Grade 3 learners have practiced frequently. The stem uses the phrase Estimate the quotient consistently with classroom language. Options are clearly presented and separated. Hints provide step-by-step scaffolding through the rounding and division process."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "56 ÷ 7 = 8 is arithmetically correct. Dante's answer of 56 is correct; the sample correctly marks has_error=False with correct_value=56."
+            "reasoning": "Rounding 258 to 270 and 87 to 90 is mathematically justified. The calculation 270 ÷ 90 = 3 is correct. The answer 3 accurately represents the estimate. Distractors 5, 30, and 2 test common errors such as place value confusion or incorrect rounding application."
           }
         }
       },
       {
-        "sample_id": "f96ab31d1e970e8ad786",
+        "sample_id": "924554111f51bd31ffdc",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem asks what number divided by 8 equals 5. This is an unambiguous missing-first-operand division. Options are plausible and distinct."
+            "reasoning": "The cloze stem Estimate: 212 ÷ 52 ≈ ___ clearly indicates that an estimate is required by using the approximate symbol. The blank placeholder shows where a response belongs. Options 4, 3, 40, 6 are presented as distinct values without overlapping meanings or confusing notation."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement is logically sound. The operands and result form a valid division relationship."
+            "reasoning": "The rounding of 212 to 200 and 52 to 50 aligns with the Grade 3 strategy of using multiples of 10. The hints correctly compute 200 ÷ 50 = 4. The scenario appropriately tests application of the estimation strategy with three-digit and two-digit numbers."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ format presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
+            "reasoning": "The cloze format is familiar to Grade 3 learners who have encountered this item type. The stem uses standard mathematical notation with the approximate symbol. The step-by-step hints walk through the rounding process and division calculation using language accessible to nine-year-olds."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "40 ÷ 8 = 5 is correct. Hints describe the division accurately, verify 8 × 5 = 40, and state the quotient without error."
+            "reasoning": "Rounding 212 to 200 and 52 to 50 is mathematically appropriate. The calculation 200 ÷ 50 = 4 is correct. The answer 4 matches the computed estimate. Distractors 3, 40, and 6 represent plausible errors such as misapplying the rounding or confusing place value."
           }
         }
       },
       {
-        "sample_id": "ba8a0f6871b7a9854452",
+        "sample_id": "df0efdbe77b358a7fc95",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The balance-scale stem frames a missing-second-operand multiplication. The visual and text clearly establish which number is missing and what the equation represents."
+            "reasoning": "The error-detection format with student name Carlo is clearly structured. The stem presents Carlo's work on 293 ÷ 53 ≈ ___ with his claim that the answer is 6. The question asks whether Carlo is correct, requiring straightforward evaluation. The answer structure is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The balance visual and equation are logically aligned. The context reinforces the equality relationship without contradiction."
+            "reasoning": "The peer-evaluation scenario is contextually appropriate. Carlo's rounding of 293 to 300 and 53 to 50 is valid, and the calculation 300 ÷ 50 = 6 is correct. The hints correctly confirm Carlo's estimate. This scenario appropriately assesses whether learners recognize correct application of estimation."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "Read_mcq allows simultaneous view of all information. The stem names the visual and operation clearly. Hints guide through the inverse operation and verification."
+            "reasoning": "The peer-named scenario makes the task concrete and relatable for Grade 3 learners. The stem identifies the problem and Carlo's claimed answer clearly. Hints guide a learner through the rounding and division steps to verify Carlo's work and confirm his estimate is correct."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "9 × 7 = 63 is arithmetically correct. Hints appropriately use division to find the missing factor, calculate 63 ÷ 9 = 7, and verify the result."
+            "reasoning": "Carlo's rounding of 293 to 300 and 53 to 50 is mathematically appropriate. The division 300 ÷ 50 = 6 is correct. The answer has_error is False and correct_value is 6, which accurately reflects that Carlo's estimation work is correct with no error."
           }
         }
       },
       {
-        "sample_id": "185e227891d2ba0596e0",
+        "sample_id": "eb75220a7f3b7003f2e2",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The error_detect stem presents Jose's proposed solution clearly. Jose claims the missing number is 21. No ambiguity in the claim."
+            "reasoning": "The true-false statement includes a thematic introduction about Sir Rez and a math challenge about dance shoes, followed by the numerical claim 647 ÷ 82 ≈ 8. Despite the thematic wrapper, the mathematical claim itself is unambiguous and the true-false format is clear."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement and proposed solution are logically consistent. Hints confirm the calculation."
+            "reasoning": "The thematic context about dance shoes does not interfere with the mathematical content. The rounding of 647 to 640 and 82 to 80 follows the learned strategy. The calculation 640 ÷ 80 = 8 is logically correct and the estimate claim is valid. The context enhances engagement without disrupting mathematical reasoning."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The named-student frame is direct and familiar to Grade 3 learners. Hints systematically verify the calculation."
+            "reasoning": "The thematic introduction personalizes the problem but the mathematical content remains clear. The true-false format is familiar to Grade 3 learners. The numerical statement is concise and uses standard notation. Hints break down the estimation without requiring understanding of the thematic wrapper."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "21 ÷ 7 = 3 is correct. Jose's answer of 21 is correct; the sample correctly marks has_error=False with correct_value=21."
+            "reasoning": "The rounding to 640 and 80 is justified. The calculation 640 ÷ 80 = 8 is mathematically correct. The given estimate of 8 is accurate. The answer True correctly reflects that the estimate statement is valid. The mathematics is sound regardless of the thematic context."
           }
         }
       },
       {
-        "sample_id": "8b1a5d02951764759f4b",
+        "sample_id": "d55c63f426b96fca49cb",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a missing-second-operand division with clear cloze format. The question asks for the result directly. No ambiguity."
+            "reasoning": "The error-detection format includes a thematic introduction about Marco and a math challenge about jerseys, followed by Manny's work. The stem clearly states the problem 147 ÷ 32 ≈ ___ and Manny's answer of 7. The question asks whether Manny is correct. Despite the thematic context, the mathematical task is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement is straightforward. The operation and missing position are logically clear."
+            "reasoning": "The basketball-themed wrapper does not interfere with the mathematical content. Manny's estimate of 7 for 147 ÷ 32 is incorrect because the proper rounding gives 150 ÷ 30 = 5. The scenario appropriately tests whether learners recognize an incorrect estimate from a peer, even within a thematic context."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ presents the equation and question clearly. Hints repeat the statement, clarify what must be found, and show the calculation."
+            "reasoning": "The thematic introduction about jerseys and basketball personalizes the problem without obscuring the mathematics. The peer name Manny and the error-detection format are familiar. The stem clearly identifies the problem and Manny's incorrect answer. Hints guide the learner through finding the correct estimate."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "72 ÷ 8 = 9 is arithmetically correct. Hints accurately state the division, note the result needed, and compute 72 ÷ 8 = 9 without error."
+            "reasoning": "The correct estimate is 150 ÷ 30 = 5, not 7 as Manny claimed. The answer has_error is True and correct_value is 5, which accurately reflects that Manny made an error. The hints correctly compute the proper estimate and confirm that Manny's answer of 7 is incorrect."
           }
         }
       },
       {
-        "sample_id": "c7f090be1a3331bf95f1",
+        "sample_id": "83345a0d497ca3321b7e",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. Options are plausible but distinct from correct answer 40."
+            "reasoning": "The cloze stem Estimate: 46 ÷ 9 ≈ ___ uses clear language and the blank placeholder indicates where a response is required. Options 5, 4, 50, 7 are distinct numeric values. The format and notation are standard for estimation problems."
           },
           "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The multiplication problem is logically sound. No contextual confusion in the problem structure."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the multiplication."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "8 × 5 = 40 is arithmetically correct. Hints accurately name the statement, note the result must be found, and compute 8 × 5 = 40."
-          }
-        }
-      },
-      {
-        "sample_id": "a409139fc83a20a16e69",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The true/false stem presents a candidate answer for a missing-second-operand division. The claim is explicit and unambiguous."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The statement is logically coherent. The incorrect candidate (50) and correct answer (5) are distinct, supporting the false judgment."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The stem presents a complete claim. Hints repeat the equation, show what result must be found, and calculate the correct value 5."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "45 ÷ 9 = 5 is arithmetically correct. The candidate answer 50 is wrong; the sample correctly marks the statement False."
-          }
-        }
-      },
-      {
-        "sample_id": "4e1edc7d989eaf0a4bf0",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The stem asks what number times 8 equals 32, with a missing first operand. Options are plausible but clearly distinguished."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The problem statement is logically coherent. The inverse relationship is clear."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The MCQ presents the equation directly. Hints name the statement, note that division undoes multiplication, calculate 32 ÷ 8 = 4, and verify."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "4 × 8 = 32 is arithmetically correct. Hints accurately use division to find the factor, compute 32 ÷ 8 = 4, and verify 4 × 8 = 32."
-          }
-        }
-      },
-      {
-        "sample_id": "055358d9d84300daff53",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The balance-scale stem presents a missing first operand in multiplication. The visual and text align to establish which value is missing."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The balance visual reinforces the equality concept. The stem and equation are logically consistent."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "Read_mcq format shows all information at once. The stem references the visual and operation clearly. Hints guide through the inverse operation."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "8 × 6 = 48 is arithmetically correct. Hints name the equation, use division to solve, calculate 48 ÷ 6 = 8, and verify the result."
-          }
-        }
-      },
-      {
-        "sample_id": "eba8bc03054f2b7fa91c",
-        "checks": {
-          "ambiguity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem presents a multiplication by 2, which is not in the competency scope (6, 7, 8, 9). This introduces an undeclared operand that violates the problem's mandate, creating ambiguity about whether Grade 3 Q4 learners should use strategies designed for multiplying by 6, 7, 8, or 9."
-          },
-          "contextual_logical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The operand 2 falls outside the competency constraint. While the multiplication itself is logically valid, the use of an out-of-scope multiplier contradicts the sample's responsibility to respect the MATATAG curriculum bounds."
-          },
-          "learner_facing_clarity": {
             "verdict": "CONCERN",
-            "reasoning": "The cloze format is clear and the question is direct. However, learners expecting practice with operands 6, 7, 8, or 9 encounter 2 without explanation, potentially disrupting their mental model of the lesson scope."
+            "reasoning": "The problem rounds 46 to 45 and leaves 9 unchanged. While the calculation 45 ÷ 9 = 5 is arithmetically correct, this approach deviates from the Grade 3 strategy of using multiples of 10 or 100. The competency explicitly requires using multiples of 10 or 100 as appropriate. Neither 45 nor 9 is a multiple of 10 or 100, making this strategy inconsistent with the learned approach demonstrated in all other samples."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format and the problem statement are clear and accessible. A learner understands they must estimate the quotient. The hints explain the rounding choice step by step. However, a learner who learned the multiples-of-10 strategy from other samples might find this approach confusing or unexpected."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "9 × 2 = 18 is arithmetically correct. Hints accurately compute the result. However, mathematical correctness does not excuse the scope violation at the competency level."
+            "reasoning": "The calculation 45 ÷ 9 = 5 is mathematically correct and the answer 5 is accurate for the chosen rounding strategy. The arithmetic is sound. However, the rounding strategy itself violates the competency requirement to use multiples of 10 or 100, making this a competency issue rather than a mathematical-validity issue."
           }
         }
       },
       {
-        "sample_id": "e2a10c6b5b82e2bf1214",
+        "sample_id": "503edd8223993eb5af55",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. The cloze blank is clear. Options are plausible."
+            "reasoning": "The multiple-choice stem Estimate the quotient: 508 ÷ 72 uses clear language consistent with classroom instruction. Four options are presented as distinct numeric values without overlapping notation or confusing phrasing. The problem unambiguously requests estimation."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The multiplication problem is logically sound. Operands 8 and 9 are both in the specified set, supporting valid competency practice."
+            "reasoning": "The rounding of 508 to 490 and 72 to 70 aligns with the Grade 3 strategy using multiples of 10. The hints correctly identify 490 ÷ 70 = 7. The scenario appropriately tests competency in estimation with three-digit and two-digit numbers using the learned approach."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, note the result needed, and show the computation."
+            "reasoning": "Multiple choice is familiar to Grade 3 learners who have practiced this format throughout the year. The stem uses the phrase Estimate the quotient consistently with classroom language. Options are clearly presented and separated. Hints provide step-by-step guidance through the rounding and division process."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "8 × 9 = 72 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 8 × 9 = 72."
+            "reasoning": "Rounding 508 to 490 and 72 to 70 is mathematically justified. The calculation 490 ÷ 70 = 7 is correct. The answer 7 accurately represents the estimate. Distractors 70, 9, and 6 test common misunderstandings such as confusing the quotient with a rounded operand or miscalculating division."
           }
         }
       },
       {
-        "sample_id": "7fa1cf4209b86eadf47f",
+        "sample_id": "14db4a099c93324e8712",
         "checks": {
           "ambiguity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem asks about the truth of 45 ÷ 45 = 5, but the hints discuss 45 ÷ 9 = 5. The divisor in the stem (45) is vastly out of scope and differs from the divisor in the hints (9). This is an extreme stem-hints mismatch that creates profound confusion about what operation learners should evaluate."
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice stem Estimate the quotient: 342 ÷ 6 is direct and unambiguous. Four options are presented as distinct numeric values without embedded complications. The problem clearly requests the estimated quotient and the multiple-choice format is standard."
           },
           "contextual_logical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem and hints describe different operations entirely. The stem uses divisor 45; the hints use divisor 9. A learner following the stem is solving an impossible problem (what does it mean to divide a number by itself and get something other than 1?) while hints discuss a completely different division."
+            "verdict": "PASS",
+            "reasoning": "The rounding of 342 to 360 and keeping 6 unchanged is mathematically sound because 6 is already manageable for mental division. The hints correctly identify 360 ÷ 6 = 60. This scenario appropriately tests estimation with a three-digit dividend and single-digit divisor."
           },
           "learner_facing_clarity": {
-            "verdict": "FAIL",
-            "reasoning": "The thematic wrapper about dance shoes does not interfere with the core problem (per the guidelines), but the unannounced substitution of the divisor from 45 to 9 is a fundamental clarity failure. Learners cannot understand whether they should evaluate the stem or follow the hints."
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is familiar to Grade 3 learners. The stem uses the phrase Estimate the quotient consistently with classroom instruction. Options are clearly presented. Hints walk through the rounding to 360 and the division 360 ÷ 6 = 60 using accessible language for nine-year-olds."
           },
           "mathematical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "45 ÷ 45 = 1, not 5. The stem's statement is false, supporting answer True only if the intended operation is 45 ÷ 9 = 5. The divisor 45 is far outside the competency scope (6, 7, 8, 9). The hints reveal the generator intended 45 ÷ 9, confirming a substitution error at the output level."
+            "verdict": "PASS",
+            "reasoning": "Rounding 342 to 360 is appropriate for this magnitude and makes mental division easier. The calculation 360 ÷ 6 = 60 is correct. The answer 60 accurately represents the estimate. Distractors 65, 6, and 55 test common errors such as misunderstanding place value or misapplying the rounding strategy."
           }
         }
       },
       {
-        "sample_id": "c8d0bfc0a57d52437191",
+        "sample_id": "6d36a2922ba3c3e04122",
         "checks": {
           "ambiguity": {
-            "verdict": "FAIL",
-            "reasoning": "The stem presents 6 × 2 = ___, where the multiplier 2 is not in the competency scope. This introduces an undeclared operand without explanation, creating ambiguity about whether the sample is testing the right skill set for this competency node."
+            "verdict": "PASS",
+            "reasoning": "The cloze stem Estimate: 192 ÷ 3 ≈ ___ clearly signals that estimation is required using the approximate symbol. The blank placeholder indicates where a response should be placed. Options 55, 6, 60, 65 are presented as distinct numeric values without ambiguous notation."
           },
           "contextual_logical_validity": {
-            "verdict": "FAIL",
-            "reasoning": "The use of multiplier 2 violates the MATATAG constraint that operands be from the set 6, 7, 8, 9. While the multiplication itself is logically valid, the scope violation contradicts the competency definition."
+            "verdict": "PASS",
+            "reasoning": "The rounding of 192 to 180 and keeping 3 unchanged is appropriate because 3 is manageable for mental division. The hints correctly calculate 180 ÷ 3 = 60. This scenario appropriately tests estimation with a three-digit dividend and single-digit divisor, demonstrating competency with varied problem types."
           },
           "learner_facing_clarity": {
-            "verdict": "CONCERN",
-            "reasoning": "The thematic wrapper about basketballs and the named character are familiar elements to Grade 3 learners. However, the multiplication by 2 diverges from the expected operand set without explanation, potentially confusing learners about the lesson scope."
+            "verdict": "PASS",
+            "reasoning": "The cloze format is familiar and the stem is brief and direct. The approximate symbol and blank clearly communicate the task. The experience labeled as hint-gated might indicate that hints are shown conditionally, but the hints themselves guide learners through rounding and division using accessible Grade 3 language."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "6 × 2 = 12 is arithmetically correct. Hints accurately compute the result. However, this does not excuse the competency scope violation."
+            "reasoning": "Rounding 192 to 180 is appropriate and 3 remains manageable. The calculation 180 ÷ 3 = 60 is correct. The answer 60 accurately represents the estimate. Distractors 55, 6, and 65 test common misunderstandings about rounding magnitude and place value understanding."
           }
         }
       },
       {
-        "sample_id": "6dc264d1010848427d1b",
+        "sample_id": "5b728a01b32aadde376c",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The cloze stem presents a missing first operand in division. The blank position is clear. Options include operand-related choices but are distinguishable."
+            "reasoning": "The error-detection format with student name Liza is clearly structured. The stem presents Liza's work on 273 ÷ 87 ≈ ___ with her claim that the answer is 2. The question asks whether Liza is correct, requiring evaluation. The answer structure is unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The division problem is logically coherent. The operands are in the correct scope and the relationship is valid."
+            "reasoning": "The peer-evaluation scenario is contextually appropriate. Liza's answer of 2 for 273 ÷ 87 is incorrect because the proper estimate is 270 ÷ 90 = 3. The scenario appropriately tests whether learners recognize an incorrect estimate, deepening their understanding beyond mere calculation. The mastery-drill experience label suggests this is for reinforcement."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The cloze format clearly marks the missing position. Hints identify what must be divided and by what, then verify the relationship."
+            "reasoning": "The peer-named scenario is concrete and motivating. The stem identifies the problem and Liza's incorrect answer clearly. Hints guide the learner through the correct estimation process so they can recognize why Liza's answer of 2 is wrong and understand the correct answer is 3."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "63 ÷ 9 = 7 is arithmetically correct. Hints accurately describe the equation and relationship without error."
+            "reasoning": "The correct estimate is 270 ÷ 90 = 3, not 2 as Liza claimed. The answer has_error is True and correct_value is 3, which accurately reflects that Liza made an error. The hints correctly compute the proper estimate and confirm that Liza's answer of 2 is incorrect."
           }
         }
       },
       {
-        "sample_id": "da34b95b8b603609a47a",
+        "sample_id": "572fc6b059fc98024532",
         "checks": {
           "ambiguity": {
             "verdict": "PASS",
-            "reasoning": "The stem asks what number times 7 equals 7, with a missing first operand. Options are distinct. No ambiguity in the problem structure."
+            "reasoning": "The error-detection format with student name Manny is clearly structured. The stem presents Manny's work on 162 ÷ 3 ≈ ___ with his claim that the answer is 5. The question asks whether Manny is correct. The answer structure specifying has_error and correct_value is transparent and unambiguous."
           },
           "contextual_logical_validity": {
             "verdict": "PASS",
-            "reasoning": "The problem statement is logically sound. The inverse relationship between multiplication and division is clear."
+            "reasoning": "The peer-evaluation scenario is contextually sound. Manny's answer of 5 for 162 ÷ 3 is incorrect because the proper estimate is 150 ÷ 3 = 50. The problem assesses whether learners recognize a place-value error in a peer's work, reinforcing the importance of attending to magnitudes. The scaffolded experience label suggests this provides additional support."
           },
           "learner_facing_clarity": {
             "verdict": "PASS",
-            "reasoning": "The MCQ presents the equation and question directly. Hints name the statement, note division as the inverse, calculate 7 ÷ 7 = 1, and verify."
+            "reasoning": "The peer-named format is concrete and relatable for Grade 3 learners. The stem clearly identifies what problem Manny solved and his incorrect answer. The hints provide step-by-step scaffolding through the rounding process and division, helping a learner see that Manny confused 50 with 5, a critical place-value distinction."
           },
           "mathematical_validity": {
             "verdict": "PASS",
-            "reasoning": "1 × 7 = 7 is arithmetically correct. Hints accurately use division to find the factor, compute 7 ÷ 7 = 1, and verify 1 × 7 = 7."
-          }
-        }
-      },
-      {
-        "sample_id": "862eb6c668c42b305b45",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The stem asks what number divided by 7 equals 2. This is a clear missing first operand division. Options are plausible but distinct."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The problem statement is logically coherent. The operands and result form a valid division relationship."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The MCQ presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "14 ÷ 7 = 2 is arithmetically correct. Hints describe the division, verify 7 × 2 = 14, and state the quotient without error."
-          }
-        }
-      },
-      {
-        "sample_id": "8a8bdcf387e3bafc71a8",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The cloze stem presents a missing first operand in division. The blank is clearly marked. Options are operand-related but distinct."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The division problem is logically valid. The operands are in scope and the relationship holds."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The cloze format is clear. Hints identify what must be divided and by what, then verify the relationship through multiplication."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "42 ÷ 6 = 7 is arithmetically correct. Hints accurately describe the equation and verify 6 × 7 = 42."
-          }
-        }
-      },
-      {
-        "sample_id": "2b1aa51d4128c5d45813",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The cloze stem presents 6 × 6 = ___ with a missing result. The blank position is clear. Options are plausible but distinct."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The multiplication problem is logically sound. Both operands are in the allowed scope."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the computation."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "6 × 6 = 36 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 6 × 6 = 36."
-          }
-        }
-      },
-      {
-        "sample_id": "f95d14cc2d33478688de",
-        "checks": {
-          "ambiguity": {
-            "verdict": "PASS",
-            "reasoning": "The error_detect stem presents Manny's proposed solution clearly. Manny claims 6 is the missing number, which is incorrect. No ambiguity in the claim."
-          },
-          "contextual_logical_validity": {
-            "verdict": "PASS",
-            "reasoning": "The problem statement and proposed error are logically coherent. The hints demonstrate why the claim is wrong."
-          },
-          "learner_facing_clarity": {
-            "verdict": "PASS",
-            "reasoning": "The named-student error_detect frame is direct. Hints step through the correct calculation and show the correct answer 42."
-          },
-          "mathematical_validity": {
-            "verdict": "PASS",
-            "reasoning": "42 ÷ 7 = 6 is correct, so Manny's answer is wrong. The sample correctly marks has_error=True with correct_value=42."
+            "reasoning": "The correct estimate is 150 ÷ 3 = 50, not 5 as Manny claimed. The answer has_error is True and correct_value is 50, which accurately reflects that Manny made an error. The hints correctly demonstrate the proper estimation and highlight the place-value confusion in Manny's answer."
           }
         }
       }
     ],
     "clause_evidence": [
       {
-        "requirement_id": "find_missing_number",
-        "clause": "Find the missing number",
+        "requirement_id": "estimate_quotient",
+        "clause": "Estimate the quotient",
         "verdict": "PASS",
-        "reasoning": "All 26 samples require learners to identify a missing value in an equation. The missing number appears in three positions: first operand (dividend or multiplicand), second operand (divisor or multiplier), and result (product or quotient). Sample c9f822fff971a49a3c36 requires finding first operand 2; sample a054ad37fa446ab227d8 requires finding result 10; sample ba8a0f6871b7a9854452 requires finding second operand 7. Every sample directly addresses this core requirement.",
-        "sample_ids": ["c9f822fff971a49a3c36", "a054ad37fa446ab227d8", "ba8a0f6871b7a9854452"]
+        "reasoning": "Every sample in this set explicitly requires the learner to estimate a quotient. Cloze samples use the approximate symbol and ask for the value. Multiple-choice samples use the phrase Estimate the quotient. True-false samples present an estimated quotient claim to evaluate. Error-detection samples ask learners to evaluate whether a peer's estimated quotient is correct. All twenty-six samples demand quotient estimation as their core task.",
+        "sample_ids": ["5379d0269bdb79ca893e", "df1790231143200ea1a7", "70d2248156e992728080", "62d3de8303f2a1c2d9b1", "673581f4916cb9bf65a0", "450ceadb22a12b6a6751", "f32cdff0669d05129d80", "19aa213b89a59a7f4930", "f711cd06e54883b4c3ff", "9e56cfaa2061fa6d4f17", "9f57e81e756752855842", "5a53dd62f75d763b0ad3", "587b21a8ef0d18421d2b", "c6e2d543655e509ce3f6", "60a9ff17d9cbcd225b40", "de0a3f1f2e36c79b08c2", "924554111f51bd31ffdc", "df0efdbe77b358a7fc95", "eb75220a7f3b7003f2e2", "d55c63f426b96fca49cb", "83345a0d497ca3321b7e", "503edd8223993eb5af55", "14db4a099c93324e8712", "6d36a2922ba3c3e04122", "5b728a01b32aadde376c", "572fc6b059fc98024532"]
       },
       {
-        "requirement_id": "number_sentence",
-        "clause": "number sentence",
+        "requirement_id": "divided_by",
+        "clause": "divided by",
         "verdict": "PASS",
-        "reasoning": "All samples present arithmetic equations in standard format: multiplication (like 8 × 5 = ___ in c7f090be1a3331bf95f1) or division (like 60 ÷ 6 = ___ in a054ad37fa446ab227d8). Stems clearly state the relationship between numbers. Error_detect samples name the equation explicitly; balance-scale samples show equation components in the visual. Every sample centers a number sentence as the primary learning object.",
-        "sample_ids": ["c7f090be1a3331bf95f1", "a054ad37fa446ab227d8"]
+        "reasoning": "The division operation is the fundamental arithmetic operation in every sample. Every item presents a division problem explicitly using the division symbol (÷). Stems, hints, and student work all reference dividing one number by another. The operation of division structures every single problem without exception.",
+        "sample_ids": ["5379d0269bdb79ca893e", "df1790231143200ea1a7", "70d2248156e992728080", "62d3de8303f2a1c2d9b1", "673581f4916cb9bf65a0", "450ceadb22a12b6a6751", "f32cdff0669d05129d80", "19aa213b89a59a7f4930", "f711cd06e54883b4c3ff", "9e56cfaa2061fa6d4f17", "9f57e81e756752855842", "5a53dd62f75d763b0ad3", "587b21a8ef0d18421d2b", "c6e2d543655e509ce3f6", "60a9ff17d9cbcd225b40", "de0a3f1f2e36c79b08c2", "924554111f51bd31ffdc", "df0efdbe77b358a7fc95", "eb75220a7f3b7003f2e2", "d55c63f426b96fca49cb", "83345a0d497ca3321b7e", "503edd8223993eb5af55", "14db4a099c93324e8712", "6d36a2922ba3c3e04122", "5b728a01b32aadde376c", "572fc6b059fc98024532"]
       },
       {
-        "requirement_id": "multiplication",
-        "clause": "multiplication",
-        "verdict": "CONCERN",
-        "reasoning": "Multiplication is covered across samples: c9f822fff971a49a3c36 uses 2 × 6 = 12; ba8a0f6871b7a9854452 uses 9 × 7 = 63; 8 × 5 in c7f090be1a3331bf95f1; 9 × 2 in eba8bc03054f2b7fa91c; 6 × 2 in c8d0bfc0a57d52437191; 8 × 9 in e2a10c6b5b82e2bf1214; 6 × 6 in 2b1aa51d4128c5d45813; 1 × 7 in da34b95b8b603609a47a; 6 × 2 in c8d0bfc0a57d52437191. However, samples eba8bc03054f2b7fa91c and c8d0bfc0a57d52437191 use multiplier 2, which is outside the scope (6, 7, 8, 9), violating the competency constraint.",
-        "sample_ids": ["c9f822fff971a49a3c36", "eba8bc03054f2b7fa91c", "c8d0bfc0a57d52437191"]
+        "requirement_id": "2_to_3_digit_numbers",
+        "clause": "2- to 3-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "The dividends across cited samples span the full two-digit to three-digit range specified. Sample f711cd06e54883b4c3ff shows 34 at the lower bound of two digits, sample 83345a0d497ca3321b7e shows 46 in the two-digit range, sample 5379d0269bdb79ca893e demonstrates 182 in three digits, and sample 5a53dd62f75d763b0ad3 shows 807 at the upper end. All cited samples verify that dividends fall exclusively within two or three digits with no single-digit dividends.",
+        "sample_ids": ["f711cd06e54883b4c3ff", "83345a0d497ca3321b7e", "5379d0269bdb79ca893e", "5a53dd62f75d763b0ad3"]
       },
       {
-        "requirement_id": "division",
-        "clause": "division",
-        "verdict": "CONCERN",
-        "reasoning": "Division is extensively covered: a054ad37fa446ab227d8 uses 60 ÷ 6 = 10; 45f64fe1952df54a847a uses ___ ÷ 9 = 7; 2b7cbe3b60076fc09491 uses 18 ÷ 6 = 3; 8b1a5d02951764759f4b uses 72 ÷ 8 = 9. However, samples present systematic errors: sample c7348da74456b0a9244d marks 72 ÷ 8 = 9 as False when it is True; sample 69a7c3f646b2d412fc05 uses divisor 4, outside scope; sample 7fa1cf4209b86eadf47f uses divisor 45, far outside scope. These violations compromise the division requirement's integrity.",
-        "sample_ids": ["a054ad37fa446ab227d8", "c7348da74456b0a9244d", "69a7c3f646b2d412fc05", "7fa1cf4209b86eadf47f"]
+        "requirement_id": "1_to_2_digit_numbers",
+        "clause": "1- to 2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "The divisors across all twenty-six samples fall within the one-digit to two-digit range specified. Examples include 2, 3, 5, 6, 9, 31, 32, 37, 43, 47, 48, 52, 53, 57, 58, 61, 62, 68, 72, 82, 87. All divisors are either single-digit or two-digit numbers. No divisors exceed two digits. This requirement is met across the entire sample set.",
+        "sample_ids": ["5379d0269bdb79ca893e", "df1790231143200ea1a7", "70d2248156e992728080", "62d3de8303f2a1c2d9b1", "673581f4916cb9bf65a0", "450ceadb22a12b6a6751", "f32cdff0669d05129d80", "19aa213b89a59a7f4930", "f711cd06e54883b4c3ff", "9e56cfaa2061fa6d4f17", "9f57e81e756752855842", "5a53dd62f75d763b0ad3", "587b21a8ef0d18421d2b", "c6e2d543655e509ce3f6", "60a9ff17d9cbcd225b40", "de0a3f1f2e36c79b08c2", "924554111f51bd31ffdc", "df0efdbe77b358a7fc95", "eb75220a7f3b7003f2e2", "d55c63f426b96fca49cb", "83345a0d497ca3321b7e", "503edd8223993eb5af55", "14db4a099c93324e8712", "6d36a2922ba3c3e04122", "5b728a01b32aadde376c", "572fc6b059fc98024532"]
       },
       {
-        "requirement_id": "6_7_8_9",
-        "clause": "6, 7, 8, and 9",
+        "requirement_id": "multiples_of_10_or_100",
+        "clause": "multiples of 10 or 100",
         "verdict": "FAIL",
-        "reasoning": "The competency requires operations using only operands from the set 6, 7, 8, 9. Five samples violate this constraint: sample 69a7c3f646b2d412fc05 uses divisor 4 in the stem (hints correct to 9, but stem violates); sample eba8bc03054f2b7fa91c uses multiplier 2; sample c8d0bfc0a57d52437191 uses multiplier 2; sample 7fa1cf4209b86eadf47f uses divisor 45 in the stem (hints correct to 9, but stem violates). These are not marginal violations; they represent a systematic failure to enforce the curriculum constraint. Sample 8b1a5d02951764759f4b correctly uses 72 ÷ 8 = 9 within scope; sample ba8a0f6871b7a9854452 correctly uses 9 × 7 within scope. The node fails to consistently restrict operands to 6, 7, 8, 9.",
-        "sample_ids": ["69a7c3f646b2d412fc05", "eba8bc03054f2b7fa91c", "c8d0bfc0a57d52437191", "7fa1cf4209b86eadf47f", "8b1a5d02951764759f4b"]
+        "reasoning": "Twenty-five of the twenty-six samples consistently round both operands to multiples of 10 or 100. Examples include 182 to 200, 37 to 40, 143 to 150, 488 to 500. However, sample 83345a0d497ca3321b7e rounding 46 to 45 and leaving 9 unchanged violates this requirement. The number 45 is not a multiple of 10 or 100. The number 9 is not a multiple of 10 or 100. This sample demonstrates that the core estimation strategy required by the competency is not universally enforced.",
+        "sample_ids": ["83345a0d497ca3321b7e"]
       }
     ],
     "overall": "FAIL"

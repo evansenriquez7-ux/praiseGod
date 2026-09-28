@@ -1,7 +1,58 @@
 {
+  "schema_version": 2,
   "node_id": "mat_g3_na_q4_3",
-  "reviewed_by": "reviewer-c6-mistral-comfrey-8916",
-  "review_date": "2026-09-11",
+  "competency_snapshot": {
+    "text": "Divide numbers with and without remainder: 2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10,100, and 1000.",
+    "grade": 3,
+    "quarter": 4,
+    "subdomain": null
+  },
+  "requirements_snapshot": [
+    {
+      "kind": "task",
+      "id": "divide_numbers",
+      "clause": "Divide numbers"
+    },
+    {
+      "kind": "property",
+      "id": "with_and_without_remainder",
+      "clause": "with and without remainder"
+    },
+    {
+      "kind": "range",
+      "id": "2_to_3_digit_numbers",
+      "clause": "2- to 3-digit numbers"
+    },
+    {
+      "kind": "range",
+      "id": "1_digit_number_without_remainder",
+      "clause": "1-digit number without remainder"
+    },
+    {
+      "kind": "range",
+      "id": "2_digit_numbers",
+      "clause": "2-digit numbers"
+    },
+    {
+      "kind": "range",
+      "id": "1_digit_number_with_remainder",
+      "clause": "1-digit number with remainder"
+    },
+    {
+      "kind": "range",
+      "id": "2_to_4_digit_numbers",
+      "clause": "2- to 4-digit numbers"
+    },
+    {
+      "kind": "range",
+      "id": "10_100_1000",
+      "clause": "10,100, and 1000"
+    }
+  ],
+  "packet_digest": "90b4f980e0adef2bd3683839bd5dc6166ce8c0f7c9205ca9c19deeafbb424c8e",
+  "sampling_version": "phase2-stratified-v2-rendered-visual",
+  "reviewed_by": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+  "review_date": "2026-09-25",
   "blind": true,
   "sample_seeds": [
     42,
@@ -17,14 +68,63 @@
     601,
     602,
     603,
-    604
+    604,
+    700,
+    701,
+    702,
+    800,
+    900,
+    901,
+    1000,
+    1001,
+    1002
+  ],
+  "sample_ids": [
+    "70d1b4d574c36827ad22",
+    "ee500eea4aedc17554c1",
+    "dfe83cad1a376d98eda2",
+    "8dfa5824649def578f11",
+    "9e60e7ad5d87fea47081",
+    "5e078a1084e6cf63a066",
+    "d7fec7e732e25703731d",
+    "0cbcba7968524f48d760",
+    "bf278a6d269076e4dd50",
+    "e99e400248fdadbcee74",
+    "0d2e37cc03c2ddcf2ef9",
+    "dde50f2b4265aac7c8bc",
+    "178a283ca2e434cdc49b",
+    "b9ca052222d67cac86b0",
+    "4f10acbe30bd4fa69284",
+    "ad99b169f5f5ff640fe0",
+    "de07d1892952811eaa54",
+    "0738b76694dfccafbabf",
+    "64847f546901f5052736",
+    "69cdcd990e5c8a2d663d",
+    "e6c772b3269df259a2b0",
+    "1f28b60c150061fa8745",
+    "ed148c9abba49a739429"
   ],
   "samples_reviewed": [
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 42,
       "formatter": "cloze",
       "question_text": "2000 ÷ 1000 = ___",
       "correct_answer": 2,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -50,13 +150,36 @@
           "text": "1000",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We need to divide 2000 by 1000. The number being divided is 2000; the number we divide by is 1000.",
+        "Ask: how many times does 1000 fit into 2000? 1000 × 2 = 2000.",
+        "The quotient of 2000 ÷ 1000 = 2."
+      ],
+      "sample_id": "70d1b4d574c36827ad22",
+      "replay_digest": "dd136228ff73065b144c23f73108b1873399365fd7ccccd3f08ed74925cbd535"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What is 78 ÷ 6?",
       "correct_answer": 13,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -78,13 +201,36 @@
           "value": 72,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "We need to divide 78 by 6. The number being divided is 78; the number we divide by is 6.",
+        "Ask: how many times does 6 fit into 78? 6 × 13 = 78.",
+        "The quotient of 78 ÷ 6 = 13."
+      ],
+      "sample_id": "ee500eea4aedc17554c1",
+      "replay_digest": "2f056a0b271591234842c1f8f695c0dfee03c05ed7ae50802aedc4bf24ed6d6d"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 44,
       "formatter": "cloze",
       "question_text": "6540 ÷ 10 = ___",
       "correct_answer": 654,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -110,40 +256,163 @@
           "text": "655",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 654,
+      "hints": [
+        "We need to divide 6540 by 10. The number being divided is 6540; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 6540? 10 × 654 = 6540.",
+        "The quotient of 6540 ÷ 10 = 654."
+      ],
+      "sample_id": "dfe83cad1a376d98eda2",
+      "replay_digest": "29a46b4dad6dd08517091a54f9638238af8463fab09f9ec6fa09b1b1d44e77e6"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 45,
       "formatter": "true_false",
       "question_text": "51 ÷ 8 = 7 R 3. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 51 by 8. The number being divided is 51; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 51? 8 × 6 R 3 = 6 R 36 R 36 R 36 R 36 R 36 R 36 R 36 R 3.",
+        "51 − 6 R 36 R 36 R 36 R 36 R 36 R 36 R 36 R 3 = 3. The remainder is 3.",
+        "The quotient is 6 R 3 remainder 3 (written as 6 R 3 R3)."
+      ],
+      "sample_id": "8dfa5824649def578f11",
+      "replay_digest": "6a09346343e0e44dc7b5f21970207553625d853afdfc320029f6ae51d244eec9"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 46,
       "formatter": "true_false",
       "question_text": "16 ÷ 8 = 2. True or False?",
-      "correct_answer": true
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 16 by 8. The number being divided is 16; the number we divide by is 8.",
+        "Ask: how many times does 8 fit into 16? 8 × 2 = 16.",
+        "The quotient of 16 ÷ 8 = 2."
+      ],
+      "sample_id": "9e60e7ad5d87fea47081",
+      "replay_digest": "fde64dbc63dcebbfcd298022cf0dc490b68c7a82f7bac04b1f2cc9a5e1593af7"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 48,
       "formatter": "error_detect",
       "question_text": "Noel solved: \"2600 ÷ 100 = ___\". Noel says the missing number is 26. Is Noel correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 26
-      }
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 26
+      },
+      "hints": [
+        "We need to divide 2600 by 100. The number being divided is 2600; the number we divide by is 100.",
+        "Ask: how many times does 100 fit into 2600? 100 × 26 = 2600.",
+        "The quotient of 2600 ÷ 100 = 26."
+      ],
+      "sample_id": "5e078a1084e6cf63a066",
+      "replay_digest": "b6cf016aba174025fbc59088522169a958fec85e78e493b7a7362b8cee007e1c"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 500,
       "formatter": "true_false",
       "question_text": "6920 ÷ 10 = 691. True or False?",
-      "correct_answer": false
+      "correct_answer": false,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We need to divide 6920 by 10. The number being divided is 6920; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 6920? 10 × 692 = 6920.",
+        "The quotient of 6920 ÷ 10 = 692."
+      ],
+      "sample_id": "d7fec7e732e25703731d",
+      "replay_digest": "d9b0634a52b8de1b5e8c5e1e26cf5c2c0e9395dbe1a1e9d21862ed139f3bc952"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 501,
       "formatter": "mcq",
       "question_text": "What is 5000 ÷ 1000?",
       "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -165,22 +434,75 @@
           "value": 6,
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 5000 by 1000. The number being divided is 5000; the number we divide by is 1000.",
+        "Ask: how many times does 1000 fit into 5000? 1000 × 5 = 5000.",
+        "The quotient of 5000 ÷ 1000 = 5."
+      ],
+      "sample_id": "0cbcba7968524f48d760",
+      "replay_digest": "77d127aa435355e701e8c0dc138771ab29211ab9b5a6d66c2cc7d64a6ef3a803"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 502,
       "formatter": "error_detect",
       "question_text": "Dante solved: \"3100 ÷ 100 = ___\". Dante says the missing number is 31. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 31
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 31
+      },
+      "hints": [
+        "We need to divide 3100 by 100. The number being divided is 3100; the number we divide by is 100.",
+        "Ask: how many times does 100 fit into 3100? 100 × 31 = 3100.",
+        "The quotient of 3100 ÷ 100 = 31."
+      ],
+      "sample_id": "bf278a6d269076e4dd50",
+      "replay_digest": "6b5cae34a3c3753a6d7e202630f75362437b83c78e5002f1ebfa057e1d1ee6ab"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is 60 ÷ 7?",
       "correct_answer": "8 R 4",
+      "requested": {
+        "difficulty_profile": {
+          "context": "pure"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -202,13 +524,39 @@
           "value": "8 R 4",
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": "8 R 4",
+      "hints": [
+        "We need to divide 60 by 7. The number being divided is 60; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 60? 7 × 8 R 4 = 8 R 48 R 48 R 48 R 48 R 48 R 48 R 4.",
+        "60 − 8 R 48 R 48 R 48 R 48 R 48 R 48 R 4 = 4. The remainder is 4.",
+        "The quotient is 8 R 4 remainder 4 (written as 8 R 4 R4)."
+      ],
+      "sample_id": "e99e400248fdadbcee74",
+      "replay_digest": "daac16519192fb986dfe5f2120e1b6d81d3fbd3d9b897c84b63dc51db331dab0"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 601,
       "formatter": "cloze",
       "question_text": "158 ÷ 2 = ___",
       "correct_answer": 79,
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -234,22 +582,75 @@
           "text": "2",
           "is_correct": false
         }
-      ]
+      ],
+      "resolved_answer": 79,
+      "hints": [
+        "We need to divide 158 by 2. The number being divided is 158; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 158? 2 × 79 = 158.",
+        "The quotient of 158 ÷ 2 = 79."
+      ],
+      "sample_id": "0d2e37cc03c2ddcf2ef9",
+      "replay_digest": "f58f93d802c7ca39dadf299c861896eff1e4372f73ddb796a9725ffdc702fd13"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 602,
       "formatter": "error_detect",
       "question_text": "Jose solved: \"70 ÷ 10 = ___\". Jose says the missing number is 7. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 7
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "with_remainder"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 7
+      },
+      "hints": [
+        "We need to divide 70 by 10. The number being divided is 70; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 70? 10 × 7 = 70.",
+        "The quotient of 70 ÷ 10 = 7."
+      ],
+      "sample_id": "dde50f2b4265aac7c8bc",
+      "replay_digest": "d6281396cee44ad2170c1261d02fff59d1d60c4ccc0a003d32bedf064d43953b"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What is 448 ÷ 7?",
       "correct_answer": 64,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
       "options": [
         {
           "key": "A",
@@ -271,43 +672,1212 @@
           "value": 64,
           "is_correct": true
         }
-      ]
+      ],
+      "resolved_answer": 64,
+      "hints": [
+        "We need to divide 448 by 7. The number being divided is 448; the number we divide by is 7.",
+        "Ask: how many times does 7 fit into 448? 7 × 64 = 448.",
+        "The quotient of 448 ÷ 7 = 64."
+      ],
+      "sample_id": "178a283ca2e434cdc49b",
+      "replay_digest": "78a47cb5ce3d07222fcb3c6382fe59db0a242f4174a1a75282f75a8f4e499d80"
     },
     {
+      "node_id": "mat_g3_na_q4_3",
       "seed": 604,
       "formatter": "error_detect",
       "question_text": "Carlo solved: \"75 ÷ 5 = ___\". Carlo says the missing number is 15. Is Carlo correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 15
-      }
+      },
+      "requested": {
+        "difficulty_profile": {
+          "table": "one_digit_mixed_or_power_of_ten"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 15
+      },
+      "hints": [
+        "We need to divide 75 by 5. The number being divided is 75; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 75? 5 × 15 = 75.",
+        "The quotient of 75 ÷ 5 = 15."
+      ],
+      "sample_id": "b9ca052222d67cac86b0",
+      "replay_digest": "9cfb686468d183582d56444588b30d8c1c5977aa57915af8cf7ae395125f83cc"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 700,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"335 ÷ 5 = ___\". Carlo says the missing number is 67. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 67
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": false,
+        "correct_value": 67
+      },
+      "hints": [
+        "We need to divide 335 by 5. The number being divided is 335; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 335? 5 × 67 = 335.",
+        "The quotient of 335 ÷ 5 = 67."
+      ],
+      "sample_id": "4f10acbe30bd4fa69284",
+      "replay_digest": "a1a349cb50c0ddb40cc6d466aaf739aa76e78a31790194155c32d5aa39359cca"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 701,
+      "formatter": "true_false",
+      "question_text": "💃 Sir Rez has a math challenge about dance shoes. 5000 ÷ 1000 = 5. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "anime_manga",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We need to divide 5000 by 1000. The number being divided is 5000; the number we divide by is 1000.",
+        "Ask: how many times does 1000 fit into 5000? 1000 × 5 = 5000.",
+        "The quotient of 5000 ÷ 1000 = 5."
+      ],
+      "sample_id": "ad99b169f5f5ff640fe0",
+      "replay_digest": "bc4e16e073133aa70c0ff3ba050d4b80741d833a0fd2ee9724a5abfd06fe02db"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 702,
+      "formatter": "error_detect",
+      "question_text": "🏀 Isko has a math challenge about basketballs. Manny solved: \"12 ÷ 4 = ___\". Manny says the missing number is 4. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "graphic_design",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "standard"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 3
+      },
+      "hints": [
+        "We need to divide 12 by 4. The number being divided is 12; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 12? 4 × 3 = 12.",
+        "The quotient of 12 ÷ 4 = 3."
+      ],
+      "sample_id": "de07d1892952811eaa54",
+      "replay_digest": "8592aec35729446e28888b5c046f62534b113c3097b54e2f1548eba7f4653cb8"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 800,
+      "formatter": "cloze",
+      "question_text": "8000 ÷ 1000 = ___",
+      "correct_answer": 8,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7000,
+          "text": "7000",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We need to divide 8000 by 1000. The number being divided is 8000; the number we divide by is 1000.",
+        "Ask: how many times does 1000 fit into 8000? 1000 × 8 = 8000.",
+        "The quotient of 8000 ÷ 1000 = 8."
+      ],
+      "sample_id": "0738b76694dfccafbabf",
+      "replay_digest": "7d3f19f990c44e49c0b244b191c9c2573a2a159381bc10ab99e2241d2e7b36ae"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 900,
+      "formatter": "mcq",
+      "question_text": "What is 600 ÷ 100?",
+      "correct_answer": 6,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 500,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to divide 600 by 100. The number being divided is 600; the number we divide by is 100.",
+        "Ask: how many times does 100 fit into 600? 100 × 6 = 600.",
+        "The quotient of 600 ÷ 100 = 6."
+      ],
+      "sample_id": "64847f546901f5052736",
+      "replay_digest": "2765d187d5b084f6660b206ecd53c29c0b40315d839a6d795a51bcb392cb8f9b"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 901,
+      "formatter": "mcq",
+      "question_text": "What is 4010 ÷ 10?",
+      "correct_answer": 401,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4000,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 402,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 401,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 401,
+      "hints": [
+        "We need to divide 4010 by 10. The number being divided is 4010; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 4010? 10 × 401 = 4010.",
+        "The quotient of 4010 ÷ 10 = 401."
+      ],
+      "sample_id": "69cdcd990e5c8a2d663d",
+      "replay_digest": "5fda49076638969037b31ff17127a4a29ca3f969e3c7f5bc3d82bf5f30d499f8"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 1000,
+      "formatter": "cloze",
+      "question_text": "8780 ÷ 10 = ___",
+      "correct_answer": 878,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "hint_gated"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "hint_gated"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 878,
+          "text": "878",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 879,
+          "text": "879",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8770,
+          "text": "8770",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 878,
+      "hints": [
+        "We need to divide 8780 by 10. The number being divided is 8780; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 8780? 10 × 878 = 8780.",
+        "The quotient of 8780 ÷ 10 = 878."
+      ],
+      "sample_id": "e6c772b3269df259a2b0",
+      "replay_digest": "8a2590c2d8687a667179af661e63c508bb1022a72e89c5c3a31aa9e34ffd15a2"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 1001,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"25 ÷ 5 = ___\". Liza says the missing number is 4. Is Liza correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "mastery_drill"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "mastery_drill"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 5
+      },
+      "hints": [
+        "We need to divide 25 by 5. The number being divided is 25; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 25? 5 × 5 = 25.",
+        "The quotient of 25 ÷ 5 = 5."
+      ],
+      "sample_id": "1f28b60c150061fa8745",
+      "replay_digest": "16a65a839d16bac8a65baa1511fa4f89b0a813a51604561e87722f8a222a8ece"
+    },
+    {
+      "node_id": "mat_g3_na_q4_3",
+      "seed": 1002,
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"3800 ÷ 100 = ___\". Manny says the missing number is 100. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 38
+      },
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "scaffolded"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "error_detect",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "error_detect",
+        "experience": "scaffolded"
+      },
+      "resolved_answer": {
+        "has_error": true,
+        "correct_value": 38
+      },
+      "hints": [
+        "We need to divide 3800 by 100. The number being divided is 3800; the number we divide by is 100.",
+        "Ask: how many times does 100 fit into 3800? 100 × 38 = 3800.",
+        "The quotient of 3800 ÷ 100 = 38."
+      ],
+      "sample_id": "ed148c9abba49a739429",
+      "replay_digest": "054523cc97141fba796ca75878ffdc68bc5f1c11cc1e86e5dc8aac1db7d99499"
+    }
+  ],
+  "sample_assessments": [
+    {
+      "sample_id": "70d1b4d574c36827ad22",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Stem is unambiguous: divide 2000 by 1000 and fill the blank. Expected answer 2 is the unique correct quotient. No alternative interpretations possible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No context wrapper; pure arithmetic. The division statement is logically sound and mathematically valid. Seed 42 ensures reproducibility."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is standard for Grade 3. Blank notation (___) is clear. Dividend 2000, divisor 1000, and correct answer 2 are all appropriate in scale and presentation for the learner's grade level."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "2000 ÷ 1000 = 2 is mathematically correct. All hints accurately state this fact: hints confirm the operation, verify the division relationship, and state the quotient explicitly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "ee500eea4aedc17554c1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Question format is clear: What is 78 ÷ 6? Answer 13 is unambiguous. Four multiple-choice options include correct answer and plausible distractors (14, 6, 72)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No problematic context. Pure arithmetic division. The operation and answer are logically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is appropriate for Grade 3. Divisor 6 and dividend 78 are readable. Options are clearly separated. Student can identify that 13 is the correct quotient."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "78 ÷ 6 = 13 is correct. Hints confirm 6 × 13 = 78 and state the quotient 13. No mathematical errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "dfe83cad1a376d98eda2",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem is unambiguous: divide 6540 by 10 and supply the quotient. Correct answer 654 is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "No context; pure division. Relationship 10 × 654 = 6540 is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is standard. Dividend 6540 and divisor 10 are appropriately scaled. Blank position is clear."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "6540 ÷ 10 = 654 is correct. Hints verify this: second hint states 10 × 654 = 6540; third confirms quotient."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "8dfa5824649def578f11",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True/False stem is clear: Is 51 ÷ 8 = 7 R 3? False is the correct answer (the true quotient is 6 R 3)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Format is logically sound: presenting an incorrect division statement for learners to evaluate."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "True/False format is appropriate for Grade 3. Dividend 51 and divisor 8 are readable. The claim in the stem is testable."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints contain corrupted text with impossible repeated remainder patterns: second hint states 8 × 6 R 3 = 6 R 36 R 36 R 36 R 36 R 36 R 36 R 36 R 3, which is mathematically nonsensical. Similar corruption in hints 3 and 4. Hints should verify 8 × 6 R 3 means 8 × 6 = 48, and 51 − 48 = 3, so quotient is 6 R 3. The corrupted notation makes these hints unreadable and mathematically invalid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "9e60e7ad5d87fea47081",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True/False stem clearly states: Is 16 ÷ 8 = 2? Answer True is unambiguous (16 ÷ 8 equals exactly 2)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logical statement: 16 divided by 8 yields 2. Relationship is sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "True/False format is accessible. Dividend 16 and divisor 8 are small, grade-appropriate numbers. Learner can verify the statement."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "16 ÷ 8 = 2 is mathematically correct. Hints confirm 8 × 2 = 16 and state the quotient 2. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "5e078a1084e6cf63a066",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection format is clear: evaluate whether Noel's solution is correct. Answer indicates no error; correct value is 26."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context (Noel) provides logical wrapper. The division 2600 ÷ 100 = 26 is correctly worked."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format frames the task clearly: is the student's work right? Noel's stated answer 26 matches the correct quotient. Learner can follow the logic."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "2600 ÷ 100 = 26 is correct. Hints confirm 100 × 26 = 2600 and state the quotient 26. No error."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "d7fec7e732e25703731d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True/False stem is clear: Is 6920 ÷ 10 = 691? Answer False (actual quotient is 692) is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Logical to test a plausibly incorrect claim (off by one). Learner is tested on precision."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "True/False format is clear. Dividend 6920 and divisor 10 are appropriate. The false claim 691 is close to the true answer 692, making it a good discriminator."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "6920 ÷ 10 = 692, not 691. Hints correctly state 10 × 692 = 6920, so False is the right answer."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "0cbcba7968524f48d760",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ stem is clear: What is 5000 ÷ 1000? Answer 5 is unique. Options include correct answer and distractors."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Dividing by 1000 is logically sound; the magnitude relationship between 5000 and 1000 is clear and mathematically consistent with quotient 5."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is standard for Grade 3. Dividend 5000 and divisor 1000 are readable magnitudes. Answer 5 stands out from distractors 4000, 1000, 6."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "5000 ÷ 1000 = 5 is correct. Hints confirm 1000 × 5 = 5000 and state quotient 5. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "bf278a6d269076e4dd50",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Dante's solution to 3100 ÷ 100. Answer indicates no error; correct value 31."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Dante's answer 31 is correct. Learner evaluates the work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format frames the assessment clearly. Dividend 3100, divisor 100, and answer 31 are all appropriately scaled and readable."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "3100 ÷ 100 = 31 is correct. Hints confirm 100 × 31 = 3100. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "e99e400248fdadbcee74",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ stem is clear: What is 60 ÷ 7? Answer 8 R 4 is unambiguous (quotient 8 with remainder 4)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division with remainder is a valid logical operation. The result 8 R 4 is correctly derived."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is appropriate. Dividend 60 and divisor 7 are readable. Options include the correct answer 8 R 4 and plausible distractors."
+        },
+        "mathematical_validity": {
+          "verdict": "FAIL",
+          "reasoning": "Hints contain corrupted text with impossible repeated remainder patterns: second hint states 7 × 8 R 4 = 8 R 48 R 48 R 48 R 48 R 48 R 48 R 4, which is mathematically nonsensical. Third hint repeats this corruption. Correct hints should state: 7 × 8 = 56, and 60 − 56 = 4, so quotient is 8 R 4. The corrupted notation renders the hints unreadable and pedagogically invalid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "0d2e37cc03c2ddcf2ef9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem is clear: divide 158 by 2 and fill the blank. Correct answer 79 is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pure arithmetic division. Relationship 2 × 79 = 158 is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is standard. Dividend 158 and divisor 2 are appropriately scaled for Grade 3. Blank is clearly marked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "158 ÷ 2 = 79 is correct. Hints verify 2 × 79 = 158 and state the quotient. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "dde50f2b4265aac7c8bc",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Jose's answer to 70 ÷ 10. Answer indicates no error; correct value 7."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Jose's answer 7 is correct. Learner assesses the solution."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is clear. Dividend 70, divisor 10, and answer 7 are grade-appropriate."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "70 ÷ 10 = 7 is correct. Hints confirm 10 × 7 = 70. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "178a283ca2e434cdc49b",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ stem is unambiguous: What is 448 ÷ 7? Answer 64 is unique and correct. Distractors (7, 65, 441) are plausible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division of three-digit dividend 448 by single-digit divisor 7 to yield 64 is logically valid; the relationship 7 × 64 = 448 is mathematically consistent."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is appropriate for Grade 3. Dividend 448 and divisor 7 are readable. Answer 64 is distinct from distractors."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "448 ÷ 7 = 64 is correct. Hints confirm 7 × 64 = 448 and state the quotient. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "b9ca052222d67cac86b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Carlo's solution to 75 ÷ 5. Answer indicates no error; correct value 15."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Carlo's answer 15 is correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is clear and appropriate. Dividend 75, divisor 5, and answer 15 are all accessible."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "75 ÷ 5 = 15 is correct. Hints verify 5 × 15 = 75. No errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "4f10acbe30bd4fa69284",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Carlo's solution to 335 ÷ 5. Answer indicates no error; correct value 67."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Carlo's answer 67 is correct."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is standard. Dividend 335, divisor 5, and answer 67 are appropriately scaled."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "335 ÷ 5 = 67 is correct. Hints confirm 5 × 67 = 335. No mathematical errors."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "ad99b169f5f5ff640fe0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "True/False stem with thematic wrapper is clear: Is 5000 ÷ 1000 = 5? Answer True is unambiguous."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic wrapper (dance shoes reference with emoji) does not interfere with the mathematical claim. Dividend and divisor are correctly related."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "True/False format is clear despite thematic wrapper. The mathematical statement is easily parsed. Emoji adds engagement without confusion."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "5000 ÷ 1000 = 5 is correct. Hints verify 1000 × 5 = 5000 and confirm the quotient."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "de07d1892952811eaa54",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem with thematic wrapper is clear: Manny solved 12 ÷ 4 = 4; is he correct? Answer indicates error; correct value 3."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Thematic wrapper (basketball reference with emoji) does not interfere. Manny's incorrect answer 4 is testable against the correct quotient 3."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is appropriate. Emoji and character name add context without obscuring the mathematical task. Learner can evaluate the claim."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "12 ÷ 4 = 3, not 4. Answer correctly identifies has_error: True. Hints confirm 4 × 3 = 12, so correct value is 3."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "0738b76694dfccafbabf",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem is unambiguous: divide 8000 by 1000 and fill the blank. Correct answer 8 is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pure arithmetic division. Relationship 1000 × 8 = 8000 is logically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is standard. Dividend 8000 and divisor 1000 are readable. Blank is clearly marked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "8000 ÷ 1000 = 8 is correct. Hints verify the relationship and state the quotient clearly."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "64847f546901f5052736",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ stem is unambiguous: What is 600 ÷ 100? Answer 6 is unique and correct. Distractors (100, 500, 7) are plausible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Dividing 600 by 100 follows a clear logical pattern with power-of-ten divisors; the relationship is that 100 × 6 = 600, which is mathematically sound."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is appropriate. Dividend 600 and divisor 100 are appropriately scaled. Answer 6 is clearly distinct from options."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "600 ÷ 100 = 6 is correct. Hints confirm 100 × 6 = 600 and state the quotient 6."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "69cdcd990e5c8a2d663d",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ stem is clear: What is 4010 ÷ 10? Answer 401 is unique. Distractors (4000, 10, 402) are plausible."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Division is logically sound. The quotient 401 correctly relates to dividend 4010 and divisor 10."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "MCQ format is appropriate. Dividend 4010 and divisor 10 are readable. Answer 401 is distinct from close distractor 402."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "4010 ÷ 10 = 401 is correct. Hints verify 10 × 401 = 4010 and confirm the quotient."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "e6c772b3269df259a2b0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze stem is clear: divide 8780 by 10 and supply the quotient. Correct answer 878 is unique."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Pure arithmetic division. Relationship 10 × 878 = 8780 is logically valid."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Cloze format is standard. Dividend 8780 and divisor 10 are appropriately scaled. Blank is clearly marked."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "8780 ÷ 10 = 878 is correct. Hints verify 10 × 878 = 8780 and state the quotient."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "1f28b60c150061fa8745",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Liza's solution to 25 ÷ 5. Answer indicates error; correct value 5 (not 4)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Liza's claimed answer 4 is incorrect; the true quotient is 5. Learner can verify this."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is appropriate. Dividend 25, divisor 5, and the incorrect claim of 4 are all grade-appropriate in scale and clarity."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "25 ÷ 5 = 5, not 4. Answer correctly identifies has_error: True. Hints confirm 5 × 5 = 25, so correct value is 5."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "sample_id": "ed148c9abba49a739429",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Error-detection stem is clear: evaluate Manny's solution to 3800 ÷ 100. Answer indicates error; correct value 38 (not 100)."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Student-named context is logical. Manny's claimed answer 100 is incorrect; true quotient is 38. Learner assesses the work."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Error_detect format is standard. Dividend 3800, divisor 100, and incorrect claim 100 are all grade-appropriately scaled."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "3800 ÷ 100 = 38, not 100. Answer correctly identifies has_error: True. Hints verify 100 × 38 = 3800, so correct value is 38."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    }
+  ],
+  "clause_evidence": [
+    {
+      "requirement_id": "divide_numbers",
+      "clause": "Divide numbers",
+      "verdict": "PASS",
+      "reasoning": "All 23 samples require learners to perform division as the primary mathematical operation. Samples span cloze, mcq, true_false, and error_detect formats, consistently testing the core competency of dividing one number by another to find a quotient or evaluate a division claim.",
+      "sample_ids": [
+        "70d1b4d574c36827ad22",
+        "ee500eea4aedc17554c1",
+        "dfe83cad1a376d98eda2",
+        "8dfa5824649def578f11",
+        "9e60e7ad5d87fea47081",
+        "5e078a1084e6cf63a066",
+        "d7fec7e732e25703731d",
+        "0cbcba7968524f48d760",
+        "bf278a6d269076e4dd50",
+        "e99e400248fdadbcee74",
+        "0d2e37cc03c2ddcf2ef9",
+        "dde50f2b4265aac7c8bc",
+        "178a283ca2e434cdc49b",
+        "b9ca052222d67cac86b0",
+        "4f10acbe30bd4fa69284",
+        "ad99b169f5f5ff640fe0",
+        "de07d1892952811eaa54",
+        "0738b76694dfccafbabf",
+        "64847f546901f5052736",
+        "69cdcd990e5c8a2d663d",
+        "e6c772b3269df259a2b0",
+        "1f28b60c150061fa8745",
+        "ed148c9abba49a739429"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "with_and_without_remainder",
+      "clause": "with and without remainder",
+      "verdict": "PASS",
+      "reasoning": "Samples adequately represent both remainder cases. Samples without remainder (e.g., 2000 ÷ 1000 = 2, 78 ÷ 6 = 13) demonstrate exact division. Samples with remainder (e.g., 51 ÷ 8 = 6 R 3 in sample 8dfa5824649def578f11, 60 ÷ 7 = 8 R 4 in sample e99e400248fdadbcee74) demonstrate division with a remaining amount. However, only two samples explicitly test the with-remainder case, giving lighter coverage to that sub-competency.",
+      "sample_ids": [
+        "70d1b4d574c36827ad22",
+        "8dfa5824649def578f11",
+        "e99e400248fdadbcee74",
+        "9e60e7ad5d87fea47081",
+        "0d2e37cc03c2ddcf2ef9"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "2_to_3_digit_numbers",
+      "clause": "2- to 3-digit numbers",
+      "verdict": "PASS",
+      "reasoning": "Eight samples test dividends in the 2- to 3-digit range: 78 (2-digit), 16 (2-digit), 158 (3-digit), 448 (3-digit), 75 (2-digit), 335 (3-digit), 12 (2-digit), 25 (2-digit). These represent the full specified range with both 2-digit and 3-digit examples, appropriate for the first competency category (2- to 3-digit by 1-digit without remainder).",
+      "sample_ids": [
+        "ee500eea4aedc17554c1",
+        "9e60e7ad5d87fea47081",
+        "0d2e37cc03c2ddcf2ef9",
+        "178a283ca2e434cdc49b",
+        "b9ca052222d67cac86b0",
+        "4f10acbe30bd4fa69284",
+        "de07d1892952811eaa54",
+        "1f28b60c150061fa8745"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "1_digit_number_without_remainder",
+      "clause": "1-digit number without remainder",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples divide 2- to 3-digit numbers by single-digit divisors with no remainder: 78 ÷ 6 = 13, 16 ÷ 8 = 2, 158 ÷ 2 = 79, 448 ÷ 7 = 64, 75 ÷ 5 = 15, 335 ÷ 5 = 67, 12 ÷ 4 = 3, 25 ÷ 5 = 5. All results are exact quotients with no remainder, satisfying this category.",
+      "sample_ids": [
+        "ee500eea4aedc17554c1",
+        "9e60e7ad5d87fea47081",
+        "0d2e37cc03c2ddcf2ef9",
+        "178a283ca2e434cdc49b",
+        "b9ca052222d67cac86b0",
+        "4f10acbe30bd4fa69284",
+        "de07d1892952811eaa54",
+        "1f28b60c150061fa8745"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "2_digit_numbers",
+      "clause": "2-digit numbers",
+      "verdict": "PASS",
+      "reasoning": "Samples with 2-digit dividends in the with-remainder category are tested: sample 8dfa5824649def578f11 (51 ÷ 8 = 6 R 3) and sample e99e400248fdadbcee74 (60 ÷ 7 = 8 R 4). Both examples have 2-digit dividends and 1-digit divisors that produce remainders, aligning with the second competency category.",
+      "sample_ids": [
+        "8dfa5824649def578f11",
+        "e99e400248fdadbcee74"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "1_digit_number_with_remainder",
+      "clause": "1-digit number with remainder",
+      "verdict": "PASS",
+      "reasoning": "Two samples directly test division by 1-digit divisors that yield remainders: 51 ÷ 8 produces remainder 3, and 60 ÷ 7 produces remainder 4. Both require learners to find or evaluate a quotient-and-remainder pair, directly addressing the with-remainder division by 1-digit divisor requirement.",
+      "sample_ids": [
+        "8dfa5824649def578f11",
+        "e99e400248fdadbcee74"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "2_to_4_digit_numbers",
+      "clause": "2- to 4-digit numbers",
+      "verdict": "PASS",
+      "reasoning": "Dividends span the 2- to 4-digit range in the power-of-ten category: 70 (2-digit), 600 (3-digit), 2000, 6540, 5000, 3100, 6920, 8000, 4010, 8780, 3800 (all 4-digit). Samples cover the full specified range, testing division of 2-digit, 3-digit, and 4-digit numbers by powers of ten.",
+      "sample_ids": [
+        "70d1b4d574c36827ad22",
+        "dfe83cad1a376d98eda2",
+        "5e078a1084e6cf63a066",
+        "d7fec7e732e25703731d",
+        "0cbcba7968524f48d760",
+        "bf278a6d269076e4dd50",
+        "dde50f2b4265aac7c8bc",
+        "ad99b169f5f5ff640fe0",
+        "0738b76694dfccafbabf",
+        "64847f546901f5052736",
+        "69cdcd990e5c8a2d663d",
+        "e6c772b3269df259a2b0",
+        "ed148c9abba49a739429"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    },
+    {
+      "requirement_id": "10_100_1000",
+      "clause": "10,100, and 1000",
+      "verdict": "PASS",
+      "reasoning": "Samples test all three specified divisors. Division by 10 is tested in samples with dividends 6540, 6920, 70, 4010, 8780. Division by 100 is tested in samples with dividends 2600, 3100, 600, 3800. Division by 1000 is tested in samples with dividends 2000, 5000, 8000. All three power-of-ten divisors are represented, meeting the competency requirement.",
+      "sample_ids": [
+        "70d1b4d574c36827ad22",
+        "dfe83cad1a376d98eda2",
+        "5e078a1084e6cf63a066",
+        "d7fec7e732e25703731d",
+        "0cbcba7968524f48d760",
+        "bf278a6d269076e4dd50",
+        "dde50f2b4265aac7c8bc",
+        "ad99b169f5f5ff640fe0",
+        "0738b76694dfccafbabf",
+        "64847f546901f5052736",
+        "69cdcd990e5c8a2d663d",
+        "e6c772b3269df259a2b0",
+        "ed148c9abba49a739429"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3"
+    }
+  ],
+  "dispatch_provenance": [
+    {
+      "dispatch_id": "s5-phaseC-w18-haiku45-20260925:mat_g3_na_q4_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_3-20260925",
+      "review_date": "2026-09-25",
+      "blind": true,
+      "packet_digest": "90b4f980e0adef2bd3683839bd5dc6166ce8c0f7c9205ca9c19deeafbb424c8e",
+      "clause_ids": [
+        "divide_numbers",
+        "with_and_without_remainder",
+        "2_to_3_digit_numbers",
+        "1_digit_number_without_remainder",
+        "2_digit_numbers",
+        "1_digit_number_with_remainder",
+        "2_to_4_digit_numbers",
+        "10_100_1000"
+      ],
+      "response_ref": ".responses/s5-phaseC-w18-haiku45-20260925.json",
+      "response_digest": "299aa3262ef5d38c049d8bd7127e1ceabccc8bf44f8362e118b6cf003882bf49",
+      "prompt_ref": ".responses/s5-phaseC-w18-haiku45-20260925.prompt.txt",
+      "prompt_digest": "88c56f4fd9537c838a05f3c89b1b6e0449e54aa266dc64e7461d4594a2c098a9",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Tool use measured from the reviewer transcript (the harness returned no usage record because the agent was ended by an API session limit after writing its reply): 3 Edit, 2 Read, 1 Write; paths outside this node's own prompt/reply: none. Revision after the filer refused word-for-word repeated contextual_logical_validity reasoning across three different items; the reviewer rewrote the three reasonings. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All three divisor families the wording sets out are actually divided: single-digit divisors on two and three-digit dividends, a remainder case, and division by ten, by one hundred and by one thousand, each of which appears with a correct key."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The with-remainder clause is the thinnest by far. Only one sample keys a remainder answer, 8 R 4, with one further statement to judge in the form '51 ÷ 8 = 7 R 3. True or False?'; the other twelve divide exactly, so a clause given equal weight in the wording gets a twelfth of the output."
-    },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Dividing by powers of ten by dropping zeros, and short division such as 158 by 2, are both fourth-quarter methods, and the remainder notation is introduced consistently in the items that use it."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Open blanks, choices, statements to verify and classmate checks all appear, and the choice list for the remainder item offers rival remainders rather than unrelated numbers, which is the right way to present that case."
+      "rationale": "Sample dividends (12 to 8780) and divisors (1-digit, 10, 100, 1000) are appropriately scaled for Grade 3, Quarter 4. Problem structures avoid excessive cognitive load; contexts are simple and direct without extraneous complexity."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The samples move between structurally different divisions, place-value shifts on one hand and genuine short division on the other, which is precisely the contrast this competency is built from."
+      "rationale": "Samples thoroughly address all three stated competency categories: 2- to 3-digit dividends with 1-digit divisors and no remainder, 2-digit dividends with 1-digit divisors and remainder, and 2- to 4-digit dividends with 10/100/1000 divisors."
+    },
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All eight requirements are present and addressed across the sample set. Samples cover division as the primary operation, both remainder conditions, appropriate dividend ranges for each context, and all specified divisor types.",
+      "decomposition": {
+        "verdict": "PASS",
+        "reasoning": "The eight requirements losslessly partition the competency: requirement 1 names the operation; requirement 2 covers remainder status; requirements 3–4 address 2- to 3-digit by 1-digit without remainder; requirements 5–6 address 2-digit by 1-digit with remainder; requirements 7–8 address 2- to 4-digit by 10/100/1000. No competency clause is left uncovered, and no requirement exceeds the competency scope.",
+        "requirement_ids": [
+          "divide_numbers",
+          "with_and_without_remainder",
+          "2_to_3_digit_numbers",
+          "1_digit_number_without_remainder",
+          "2_digit_numbers",
+          "1_digit_number_with_remainder",
+          "2_to_4_digit_numbers",
+          "10_100_1000"
+        ]
+      },
+      "clause_ids": [
+        "divide_numbers",
+        "with_and_without_remainder",
+        "2_to_3_digit_numbers",
+        "1_digit_number_without_remainder",
+        "2_digit_numbers",
+        "1_digit_number_with_remainder",
+        "2_to_4_digit_numbers",
+        "10_100_1000"
+      ]
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Two samples (8dfa5824649def578f11 and e99e400248fdadbcee74) contain mathematically corrupted hints with impossible repeated remainder notations (e.g., 8 × 6 R 3 = 6 R 36 R 36...), violating mathematical validity and pedagogical soundness.",
+      "clause_ids": [
+        "divide_numbers",
+        "with_and_without_remainder",
+        "2_to_3_digit_numbers",
+        "1_digit_number_without_remainder",
+        "2_digit_numbers",
+        "1_digit_number_with_remainder",
+        "2_to_4_digit_numbers",
+        "10_100_1000"
+      ]
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends span two digits up to the four-digit 6920 and 6540, matching the two-to-four-digit range stated, and quotients stay comfortably within Grade 3."
+      "rationale": "Dividend magnitudes range from 12 to 8780; divisors from 2 to 1000. All values are within appropriate range for Grade 3 Quarter 4 without reaching unwieldy magnitudes or requiring advanced computational strategies."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Samples employ five question formats (cloze, mcq, true_false, error_detect, and contextual error_detect), and two samples include thematic wrappers. However, only two samples test division with remainder (category 2 of the competency), underrepresenting this required skill."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
