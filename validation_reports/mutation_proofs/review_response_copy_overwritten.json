@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "review_response_copy_not_overwritten"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_file_one_refuses_to_overwrite_another_replys_raw_response && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_file_reviews.py::test_file_one_refuses_to_overwrite_another_replys_raw_response",
+  "-q"
+ ],
+ "definition_digest": "85d2f767819ac476c115257612a1b75d57797a660d5cb04168ce5dfc9c26e7bb",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_file_one_refuses_to_overwrite_another_replys_raw_response",
+  "failed"
+ ],
+ "expected_check": "§5 filing (review_response_copy_not_overwritten)",
+ "finished_at": "2026-09-28T12:46:46+08:00",
+ "input_digest": "ca9886114d09ec1cd507f8f1528e203e3f64e69765b382bb1aa5077fe942015f",
+ "mutated_paths": [
+  "tests/file_reviews.py"
+ ],
+ "mutation": "review_response_copy_overwritten",
+ "observed_markers": {
+  "failed": true,
+  "test_file_one_refuses_to_overwrite_another_replys_raw_response": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-28T12:46:44+08:00"
+}
