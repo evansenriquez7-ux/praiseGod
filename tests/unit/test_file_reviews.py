@@ -18,7 +18,7 @@ REASON = "This reviewer-authored explanation is specific and longer than forty c
 
 def _skeleton(root: Path) -> Path:
     skeleton_dir = root / "skeletons"
-    skeleton_dir.mkdir()
+    skeleton_dir.mkdir(exist_ok=True)
     record = {
         "schema_version": 2,
         "node_id": NODE,
@@ -194,3 +194,25 @@ def test_file_one_accepts_an_overall_that_follows_from_its_findings(tmp_path, mo
     reply["clause_evidence"][1]["verdict"] = "FAIL"
     reply["overall"] = "FAIL"
     assert json.loads(_file(tmp_path, monkeypatch, reply).read_text())["overall"] == "FAIL"
+
+
+def test_file_one_refuses_to_overwrite_another_replys_raw_response(tmp_path, monkeypatch):
+    # review_response_copy_not_overwritten: one dispatch prefix per reply. Filing a second,
+    # different reply under the same prefix used to overwrite the first record's raw
+    # response, silently breaking the digest that record binds.
+    first = _file(tmp_path, monkeypatch, _reply())
+    provenance = json.loads(first.read_text())["dispatch_provenance"][0]
+    response = first.parent / provenance["response_ref"]
+    before = response.read_bytes()
+    second = _reply()
+    second["sample_assessments"][0]["checks"]["ambiguity"]["reasoning"] = (
+        REASON + " A different reply filed under the same dispatch prefix."
+    )
+    with pytest.raises(ValueError, match="already holds a DIFFERENT dispatch's bytes"):
+        _file(tmp_path, monkeypatch, second)
+    assert response.read_bytes() == before
+
+
+def test_file_one_allows_refiling_the_same_reply(tmp_path, monkeypatch):
+    _file(tmp_path, monkeypatch, _reply())
+    _file(tmp_path, monkeypatch, _reply())

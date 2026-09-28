@@ -2366,6 +2366,25 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["test_file_one_rejects_an_overall_its_findings_contradict && failed"],
     ),
     Mutation(
+        name="review_response_copy_overwritten",
+        asserts=["review_response_copy_not_overwritten"],
+        description=(
+            "Let file_reviews overwrite an existing .responses copy with a different reply "
+            "again -- how 76 Phase B/C records, filed one node per call under a wave-level "
+            "dispatch prefix, lost the raw response their digest binds."
+        ),
+        edits={
+            "tests/file_reviews.py": (
+                '        if stored.exists() and stored.read_bytes() != Path(source).read_bytes():\n',
+                '        if False:  # planted mutation\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_file_reviews.py::test_file_one_refuses_to_overwrite_another_replys_raw_response", "-q"],
+        expected_check="§5 filing (review_response_copy_not_overwritten)",
+        expect_output_contains=["test_file_one_refuses_to_overwrite_another_replys_raw_response", "failed"],
+        baseline_must_not_contain=["test_file_one_refuses_to_overwrite_another_replys_raw_response && failed"],
+    ),
+    Mutation(
         name="renderer_case_id_omits_node_id",
         asserts=["renderer_invocation_isolation"],
         description=(

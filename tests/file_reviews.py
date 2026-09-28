@@ -233,6 +233,17 @@ def file_one(node_id: str, verdict_block: Dict[str, Any], reviewed_by: str,
     response_dir.mkdir(parents=True, exist_ok=True)
     response_copy = response_dir / f"{dispatch_prefix}.json"
     prompt_copy = response_dir / f"{dispatch_prefix}.prompt.txt"
+    # A dispatch prefix names ONE reply. Re-using it for a different reply overwrites the
+    # bytes an earlier record's digest binds, and that record fails §5 only later, far from
+    # the cause (76 Phase B/C records, 2026-09-28, filed one node per call under a
+    # wave-level prefix). Refilling the same reply is harmless and stays allowed.
+    for source, stored in ((raw_response, response_copy), (prompt_path, prompt_copy)):
+        if stored.exists() and stored.read_bytes() != Path(source).read_bytes():
+            raise ValueError(
+                f"{node_id}: {stored} already holds a DIFFERENT dispatch's bytes; filing "
+                f"{source} under prefix {dispatch_prefix!r} would break the digest every "
+                "record citing it binds. Use a dispatch prefix unique to this reply."
+            )
     shutil.copyfile(raw_response, response_copy)
     shutil.copyfile(prompt_path, prompt_copy)
     review["dispatch_provenance"] = [{

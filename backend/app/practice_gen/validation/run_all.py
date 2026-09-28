@@ -158,6 +158,9 @@ ASSERTIONS = (
     # A filed review's `overall` follows from its own verdicts (2026-09-25). The filer is
     # tests-side tooling, but the stored field feeds `legacy_review_queue.json`'s census.
     "review_overall_matches_findings",      # tests/unit/test_file_reviews.py
+    # One dispatch prefix, one reply: the filer refuses to overwrite a .responses copy
+    # another record's digest binds (76 Phase B/C records broken that way, 2026-09-28).
+    "review_response_copy_not_overwritten",  # tests/unit/test_file_reviews.py
     "contract_doc_matches_registry",
     "operator_doc_covers_registry",
     "two_direction_contract_match",
