@@ -46,6 +46,13 @@ FRONTEND = ROOT / "frontend"
 REPORT = ROOT / "validation_reports" / "phase2_hardening" / "frontend_static_render.json"
 SCRATCH = ROOT / "local_only" / "scratch" / "frontend_static_render"
 
+# Conditional-key presence is enough for structural branches such as NumberLine
+# jumps. ClockSet's period is different: both values select learner-visible and
+# grade-relevant behavior, so a.m. and p.m. must each execute in React.
+_VALUE_SENSITIVE_CONDITIONALS = {
+    "ClockSet": {"period": ("a.m.", "p.m.")},
+}
+
 
 def _seed(key: str) -> int:
     return int.from_bytes(hashlib.sha256(key.encode("utf-8")).digest()[:4], "big") & 0x7FFFFFFF
@@ -73,18 +80,10 @@ def build_corpus() -> Dict[str, Any]:
 
     contract = _visual_contract()
     by_payload_class: Dict[Tuple[Any, ...], Dict[str, Any]] = {}
-    for obligation in triples.values():
-        seed = _seed(obligation.key())
-        problem = run(
-            obligation.node_id,
-            difficulty_profile=dict(obligation.assignment),
-            formatter=obligation.formatter,
-            seed=seed,
-            is_student_path=True,
-            forced_dna=obligation.dna,
-        )
+
+    def record_case(obligation: Any, seed: int, problem: Dict[str, Any]) -> None:
         if not problem.get("is_visual"):
-            continue
+            return
         visual_type = problem.get("visual_type")
         visual_params = problem.get("visual_params")
         if not visual_type or not isinstance(visual_params, dict):
@@ -96,10 +95,16 @@ def build_corpus() -> Dict[str, Any]:
             key for key in contract.get(visual_type, {}).get("conditional", ())
             if key in visual_params
         )
+        conditional_values = tuple(
+            (key, visual_params[key])
+            for key in _VALUE_SENSITIVE_CONDITIONALS.get(visual_type, {})
+            if key in visual_params
+        )
         payload_class = (
             obligation.formatter,
             visual_type,
             conditional_present,
+            conditional_values,
             problem.get("answer_collection"),
             problem.get("interaction_mode"),
         )
@@ -118,6 +123,49 @@ def build_corpus() -> Dict[str, Any]:
                 "interaction_mode": problem.get("interaction_mode"),
             },
         )
+
+    for obligation in triples.values():
+        seed = _seed(obligation.key())
+        problem = run(
+            obligation.node_id,
+            difficulty_profile=dict(obligation.assignment),
+            formatter=obligation.formatter,
+            seed=seed,
+            is_student_path=True,
+            forced_dna=obligation.dna,
+        )
+        record_case(obligation, seed, problem)
+
+        visual_type = problem.get("visual_type")
+        if visual_type in _VALUE_SENSITIVE_CONDITIONALS:
+            # One obligation seed cannot prove both arms of a value-sensitive
+            # branch. Try a bounded deterministic series on the SAME production
+            # route and retain only new payload classes.
+            for attempt in range(1, 17):
+                alternate_seed = _seed(f"{obligation.key()}:value-branch:{attempt}")
+                alternate = run(
+                    obligation.node_id,
+                    difficulty_profile=dict(obligation.assignment),
+                    formatter=obligation.formatter,
+                    seed=alternate_seed,
+                    is_student_path=True,
+                    forced_dna=obligation.dna,
+                )
+                record_case(obligation, alternate_seed, alternate)
+
+    for visual_type, fields in _VALUE_SENSITIVE_CONDITIONALS.items():
+        for field, expected_values in fields.items():
+            observed = {
+                row["visual_params"].get(field)
+                for row in by_payload_class.values()
+                if row["visual_type"] == visual_type and field in row["visual_params"]
+            }
+            missing = set(expected_values) - observed
+            if missing:
+                raise RuntimeError(
+                    f"frontend corpus did not reach {visual_type}.{field} values "
+                    f"{sorted(missing)} after bounded production-path sampling"
+                )
 
     cases = sorted(by_payload_class.values(), key=lambda row: row["case_id"])
     produced = sorted({row["visual_type"] for row in cases})
@@ -223,7 +271,7 @@ def run_suite(report_path: Path = REPORT) -> Dict[str, Any]:
         "unreachable_renderer_registrations": corpus["unreachable_renderer_registrations"],
         "corpus_rule": (
             "one real forced-student-path payload per reachable formatter x conditional-key "
-            "presence x interaction/answer mode class"
+            "presence/value class x interaction/answer mode class"
         ),
         "answer_roundtrips": emissions,
     }

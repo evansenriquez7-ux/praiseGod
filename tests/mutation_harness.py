@@ -1832,6 +1832,25 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["equal jumps but rendered 0"],
     ),
     Mutation(
+        name="frontend_clock_period_ignored",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Force ClockSet's selected period to a.m. even for a read-only p.m. "
+            "production payload. The clock still renders and its schema remains valid, "
+            "so only value-sensitive rendered evidence can detect the wrong half of day."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "    isReadOnly && params.period ? params.period : 'a.m.'\n",
+                "    'a.m.'  // planted mutation: ignore the payload's period\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (ClockSet renders the a.m./p.m. value supplied by its payload)",
+        expect_output_contains=["FAIL frontend_static_render_12", "ClockSet period PM is absent"],
+        baseline_must_not_contain=["ClockSet period PM is absent"],
+    ),
+    Mutation(
         name="frontend_description_omits_drawn_element",
         asserts=["rendered_visual_description_12"],
         description=(
@@ -2142,6 +2161,84 @@ MUTATIONS: List[Mutation] = [
         expected_check='§0 hint contract (hint_contract_direction)',
         expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0]', "failed", *['[direction]']],
         baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0] && failed'],
+    ),
+    Mutation(
+        name='hint_fraction_order_gets_addition_chain',
+        asserts=['hint_contract_operation'],
+        description=(
+            "Disable fractions.generate_hints' ordering branch, restoring the live "
+            "defect where every fraction-ordering item taught addition instead. The "
+            "addition equations remain arithmetically true and their intermediate "
+            "fraction agrees with their own final line, so only the operation "
+            "dimension detects that the hints teach a different task from the stem."
+        ),
+        edits={
+            'backend/app/practice_gen/dna/na/fractions.py': (
+                '    if operation == "order":\n        sequence = values.get("sequence") or []\n',
+                '    if False:  # planted mutation: ordering falls into addition hints\n        sequence = values.get("sequence") or []\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]', "-q"],
+        expected_check='§0 hint contract (hint_contract_operation)',
+        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]', "failed", '[operation]'],
+        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5] && failed'],
+    ),
+    Mutation(
+        name='time_options_follow_hash_seed',
+        asserts=['packet_cross_process_determinism'],
+        description=(
+            "Restore unordered set iteration while building time-string distractors. "
+            "The mathematical options stay identical, but their order changes between "
+            "Python processes, making judgment packet digests and review freshness flap."
+        ),
+        edits={
+            'backend/app/practice_gen/dna/mg/time_reading.py': (
+                '                distractors = sorted(\n                    s for s in {\n                        _fmt_time(off_hour1, 0, end_period if use_ampm else None),\n',
+                '                distractors = list(  # planted mutation: hash-order leaks\n                    s for s in {\n                        _fmt_time(off_hour1, 0, end_period if use_ampm else None),\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_phase_d_regressions.py::test_time_options_are_stable_across_python_hash_seeds', "-q"],
+        expected_check='packet determinism (packet_cross_process_determinism)',
+        expect_output_contains=['test_time_options_are_stable_across_python_hash_seeds', "failed"],
+        baseline_must_not_contain=['test_time_options_are_stable_across_python_hash_seeds && failed'],
+    ),
+    Mutation(
+        name='clock_payload_drops_period',
+        asserts=['visual_payload'],
+        description=(
+            "Drop the a.m./p.m. period from ClockSet's payload. The answer options and "
+            "hint still say p.m., but the React clock has no fact from which to render "
+            "that half of day; §1G must reject the picture/key disagreement."
+        ),
+        edits={
+            'backend/app/practice_gen/formatters/visual/fmt_clock.py': (
+                '    if period is not None:\n        visual_params["period"] = period\n',
+                '    if False:  # planted mutation: period omitted from the visual\n        visual_params["period"] = period\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_phase_d_regressions.py::test_clock_period_is_in_the_payload_and_checked_by_visual_invariant', "-q"],
+        expected_check='§1G visual payload (ClockSet period agrees with its key)',
+        expect_output_contains=['test_clock_period_is_in_the_payload_and_checked_by_visual_invariant', "failed"],
+        baseline_must_not_contain=['test_clock_period_is_in_the_payload_and_checked_by_visual_invariant && failed'],
+    ),
+    Mutation(
+        name='calendar_draws_unrelated_month',
+        asserts=['visual_payload'],
+        description=(
+            "Stop aligning a month-word-problem payload to the first month named in its "
+            "stem. The arithmetic key stays correct while the calendar draws a different "
+            "month, a picture/text contradiction only §1G can see."
+        ),
+        edits={
+            'backend/app/practice_gen/dna/mg/calendar.py': (
+                '            vp["month"] = idx + 1\n',
+                '            pass  # planted mutation: keep unrelated random month\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_phase_d_regressions.py::test_calendar_problem_draws_the_month_named_in_its_stem[44-3]', "-q"],
+        expected_check='§1G visual payload (Calendar month agrees with its stem)',
+        expect_output_contains=['test_calendar_problem_draws_the_month_named_in_its_stem[44-3]', "failed"],
+        baseline_must_not_contain=['test_calendar_problem_draws_the_month_named_in_its_stem[44-3] && failed'],
     ),
     Mutation(
         name='hint_length_compare_always_longer',

@@ -324,34 +324,17 @@ def format_bar_chart(
                     distractor_vals.append(cat)
                     seen.add(cat)
             
-            # Find a bank of categories to draw extra distractors from
-            flat_bank = []
-            for grade_list in _CATEGORY_BANKS.values():
-                for sublist in grade_list:
-                    flat_bank.extend(sublist)
-            # Add English names as well just in case they are used
-            flat_bank.extend(["cats", "dogs", "birds", "fish", "rabbits", "turtles", "apples", "bananas", "mangoes", "grapes", "oranges", "strawberries"])
-            
-            # De-duplicate flat_bank while preserving order
-            clean_bank = []
-            for item in flat_bank:
-                if item not in clean_bank:
-                    clean_bank.append(item)
-            
-            # Shuffle to draw randomly
-            shuffled_bank = clean_bank[:]
-            rng.shuffle(shuffled_bank)
-            
-            for item in shuffled_bank:
-                if len(distractor_vals) >= 3:
-                    break
-                if item not in seen and item.lower() != correct_value.lower():
-                    distractor_vals.append(item)
-                    seen.add(item)
-
+            # Category distractors come ONLY from the displayed data. Until 2026-09-29
+            # a short category list was topped up from every grade's category bank,
+            # which offered the year "2023" beside flower names (mat_g3_dp_q3_2,
+            # seed 900). A category MCQ needs >= 4 displayed categories; the DNA
+            # guarantees that for its category-valued tasks, and anything else
+            # is a named failure, not a silent top-up.
             if len(distractor_vals) < 3:
                 raise ValueError(
-                    f"Bar chart MCQ formatter requires 3 distractors, but only found {len(distractor_vals)} for correct_value={correct_value}."
+                    f"{ctx.node_id} seed={ctx.seed}: bar chart category MCQ needs 3 wrong "
+                    f"categories from the displayed data, but the chart shows only "
+                    f"{len(categories)} categories ({categories!r}) for correct_value={correct_value!r}."
                 )
         else:
             for t in traps.values():
@@ -396,7 +379,20 @@ def format_bar_chart(
     else:
         correct_answer = correct_value
 
-    format_data: dict = {"visual_params": vp}
+    render_visual_type = "BarChart"
+    render_vp = vp
+    if orientation == "table":
+        render_visual_type = "FillInTable"
+        render_vp = {
+            "columns": ["Category", "Value"],
+            "rows": [
+                [category, value if interaction_mode == "read" else None]
+                for category, value in zip(categories, values)
+            ],
+            "is_read_mode": interaction_mode == "read",
+        }
+
+    format_data: dict = {"visual_params": render_vp}
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
@@ -415,8 +411,8 @@ def format_bar_chart(
         format=fmt,
         format_data=format_data,
         is_visual=True,
-        visual_type="BarChart",
-        visual_params=vp,
+        visual_type=render_visual_type,
+        visual_params=render_vp,
         interaction_mode=interaction_mode,
         answer_collection=answer_collection,
         difficulty_profile=ctx.difficulty_profile or {},

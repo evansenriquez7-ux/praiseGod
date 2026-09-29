@@ -367,6 +367,35 @@ def _visual_payload_defects(p: dict) -> List[str]:
                     f"of length {len(seq)}"
                 )
 
+    elif vt == "ClockSet":
+        target_time = str(v.get("target_time") or "")
+        period_match = re.search(r"\b([ap]\.m\.)$", target_time, re.I)
+        if period_match and v.get("period") != period_match.group(1).lower():
+            out.append(
+                f"ClockSet target_time={target_time!r} requires period="
+                f"{period_match.group(1).lower()!r}, but the payload carries "
+                f"period={v.get('period')!r}; the clock display labels a different half of day"
+            )
+
+    elif vt == "Calendar":
+        month_names = (
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December",
+        )
+        stem = str(p.get("question_text") or "")
+        named = re.search(r"\b(" + "|".join(month_names) + r")\b", stem, re.I)
+        if named and isinstance(v.get("month"), int):
+            expected_month = next(
+                i for i, name in enumerate(month_names, 1)
+                if name.lower() == named.group(1).lower()
+            )
+            if v["month"] != expected_month:
+                out.append(
+                    f"Calendar stem first names {named.group(1)} but the payload draws "
+                    f"month={v['month']} ({month_names[v['month'] - 1] if 1 <= v['month'] <= 12 else 'invalid'}); "
+                    "the picture and the problem describe different months"
+                )
+
     return out
 
 

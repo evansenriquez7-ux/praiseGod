@@ -140,10 +140,12 @@ ASSERTIONS = (
     "hint_contract_stated_result",         # tests/unit/test_hint_contract.py
     "hint_contract_stated_answer",         # tests/unit/test_hint_contract.py
     "hint_contract_open_equation",         # tests/unit/test_hint_contract.py
+    "hint_contract_operation",             # tests/unit/test_hint_contract.py
     "hint_contract_direction",             # tests/unit/test_hint_contract.py
     "hint_contract_unit",                  # tests/unit/test_hint_contract.py
     "hint_contract_medium",                # tests/unit/test_hint_contract.py
     "hint_contract_response",              # tests/unit/test_hint_contract.py
+    "packet_cross_process_determinism",     # tests/unit/test_phase_d_regressions.py
     # Every visual schema is classified as a medium or unmediated -- the direction
     # that fails on a NEW visual type rather than silently not covering it.
     "hint_contract_visuals_classified",    # tests/unit/test_hint_contract.py

@@ -614,6 +614,28 @@ def generate_hints(
             f"{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.",
         ]
 
+    if operation == "order":
+        sequence = values.get("sequence") or []
+        direction = values.get("direction")
+        if direction not in ("ascending", "descending"):
+            raise ValueError(
+                "fractions.generate_hints: an order item must declare ascending or "
+                f"descending, got {direction!r}; values={values!r}"
+            )
+        direction_words = (
+            "smallest to largest" if direction == "ascending" else "largest to smallest"
+        )
+        comparison = (
+            f"For equal bottom numbers, compare the {num_lbl}s."
+            if len({str(item).split("/", 1)[1] for item in sequence if "/" in str(item)}) <= 1
+            else "For fractions with 1 on top, a larger bottom number means a smaller part."
+        )
+        return [
+            f"Read the requested order: {direction_words}.",
+            comparison,
+            f"Place all the {frac_lbl}s from {direction_words}: {values.get('answer', '?')}.",
+        ]
+
     # add_subtract -- ONE branch served BOTH operations until 2026-09-23 and
     # hardcoded addition, so every SUBTRACTION item was walked through
     # "Add only the numerators: a + b" to an intermediate the final line then

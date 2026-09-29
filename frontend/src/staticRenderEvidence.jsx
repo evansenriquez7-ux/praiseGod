@@ -60,6 +60,7 @@ export function renderVisualEvidence(sample, disabled = false) {
     </section>,
   );
   return {
+    disabled,
     markup,
     markup_bytes: Buffer.byteLength(markup),
     description: describeStaticMarkup(sample.visual_type, markup),
@@ -77,6 +78,24 @@ export function assertVisualEvidence(sample, evidence) {
       findings.push(
         `declared ${sample.visual_params.jump_count} equal jumps but rendered ${rendered}`,
       );
+    }
+  }
+  if (sample.visual_type === 'ClockSet' && sample.visual_params.period) {
+    // Decide set vs read from the payload the component itself reads
+    // (ClockSetInteractive keys on params.interaction_mode / params.is_read_only).
+    // Packet-render corpora carry no top-level interaction_mode, so reading
+    // sample.interaction_mode misclassified every set-mode clock there as read.
+    const params = sample.visual_params;
+    const setMode = params.interaction_mode === 'set' && !params.is_read_only;
+    if (setMode) {
+      if (!evidence.disabled && !evidence.markup.includes('title="Toggle AM PM"')) {
+        findings.push('ClockSet period control is absent from set-mode markup');
+      }
+    } else {
+      const expected = sample.visual_params.period === 'p.m.' ? 'PM' : 'AM';
+      if (!evidence.description.text_labels.includes(expected)) {
+        findings.push(`ClockSet period ${expected} is absent from rendered labels`);
+      }
     }
   }
   return findings;

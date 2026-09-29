@@ -62,6 +62,11 @@ DIMENSIONS COVERED -- and, as importantly, NOT covered (Scaling Mandate 6)
                  a whole number (fractions, times, expressions, True/False), an
                  equation with more than one distinct unknown, and parenthesised
                  expressions, which neither this nor `arithmetic` parses.
+  operation      A hint may not teach a different operation from the one the
+                 stem asks the pupil to perform. Currently recognises explicit
+                 ordering stems and addition/subtraction hint instructions.
+                 NOT covered: implicit operations, synonyms outside the closed
+                 patterns below, or a hint that names no operation at all.
   direction      (a) An ordering hint may not name the opposite direction to the
                  stem's ("least to greatest" on a "largest to smallest" item).
                  (b) A numeric comparison a hint states ("15 is more than 10")
@@ -113,7 +118,7 @@ __all__ = [
     "enforce_hint_contract",
 ]
 
-DIMENSIONS = ("arithmetic", "stated_result", "stated_answer", "open_equation", "direction", "unit", "medium", "response")
+DIMENSIONS = ("arithmetic", "stated_result", "stated_answer", "open_equation", "operation", "direction", "unit", "medium", "response")
 
 
 class HintContractError(ValueError):
@@ -256,6 +261,32 @@ def _open_equation(hints: Sequence[str], answer: Any) -> List[str]:
                 found.append(
                     f"states the open equation {equation.strip()!r}, which the item's own "
                     f"answer {filled} does not satisfy -- in {hint!r}")
+    return found
+
+
+# ── operation (wording-specific; see module docstring) ──────────────────────
+_ORDER_STEM_RE = re.compile(
+    r"\b(?:arrange|order)\b.*\b(?:least|smallest|greatest|largest)\b"
+    r"|\bordered from (?:least|smallest|greatest|largest)\b",
+    re.I,
+)
+_ADD_HINT_RE = re.compile(r"\b(?:when adding|add only|adding fractions?)\b", re.I)
+_SUBTRACT_HINT_RE = re.compile(r"\b(?:when subtracting|subtract only|subtracting fractions?)\b", re.I)
+
+
+def _operation(hints: Sequence[str], stem: str) -> List[str]:
+    """Catch an explicitly named hint operation that contradicts the stem's task."""
+    if not _ORDER_STEM_RE.search(stem):
+        return []
+    found = []
+    for hint in hints:
+        named = "addition" if _ADD_HINT_RE.search(hint) else (
+            "subtraction" if _SUBTRACT_HINT_RE.search(hint) else None
+        )
+        if named:
+            found.append(
+                f"an ordering item is taught as {named} -- in {hint!r}"
+            )
     return found
 
 
@@ -464,6 +495,7 @@ def hint_chain_violations(
     answer = _answer_value(correct_answer, options)
     out += [("stated_answer", m) for m in _stated_answer(hints, answer)]
     out += [("open_equation", m) for m in _open_equation(hints, answer)]
+    out += [("operation", m) for m in _operation(hints, stem or "")]
     out += [("direction", m) for m in _direction(hints, stem or "")]
     out += [("unit", m) for m in _unit(hints, visible)]
     out += [("medium", m) for m in _medium(hints, stem or "", visual_type)]

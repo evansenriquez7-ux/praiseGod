@@ -141,6 +141,12 @@ def generate_params(
     # Number of categories
     num_cats = int(profile.get("num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (bounds["num_categories_max"] - bounds["num_categories_min"]) + bounds["num_categories_min"]))
     num_cats = max(3, min(num_cats, 6))
+    if task_type in ("compare_bars", "find_most_least"):
+        # A category-valued MCQ needs three wrong categories from the same
+        # displayed data set. With only three rows the formatter reached into a
+        # generic category bank and could offer nonsense such as the year 2023
+        # beside flower names.
+        num_cats = max(4, num_cats)
 
     cat_set  = rng.choice(_CATEGORY_SETS)
     categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]
@@ -304,25 +310,40 @@ def generate_hints(
     else:
         axis = f"vertical {vocab_axis}" if orientation == "vertical" else f"horizontal {vocab_axis}"
 
-    hints = [
-        f"Look at the {bg_label} carefully.",
-        f"The {scale_label} on the {axis} goes up by {scale}.",
-    ]
+    if orientation == "table":
+        hints = ["Look at the table carefully."]
+    else:
+        hints = [
+            f"Look at the {bg_label} carefully.",
+            f"The {scale_label} on the {axis} goes up by {scale}.",
+        ]
 
     if task_type == "read_value":
         cat = values.get("question_category", "the category")
-        hints.append(f"Find the bar for '{cat}' and read across to the scale.")
+        hints.append(
+            f"Find the row for '{cat}' and read its value."
+            if orientation == "table"
+            else f"Find the bar for '{cat}' and read across to the scale."
+        )
         hints.append(f"Answer: {values.get('answer', '?')}")
     elif task_type == "find_total":
         hints.append("Read each bar's value, then add them all together.")
     elif task_type in ("compare_bars", "find_difference"):
         a = values.get("compare_a", "A")
         b = values.get("compare_b", "B")
-        hints.append(f"Read the bar for '{a}' and the bar for '{b}'.")
+        hints.append(
+            f"Read the rows for '{a}' and '{b}'."
+            if orientation == "table"
+            else f"Read the bar for '{a}' and the bar for '{b}'."
+        )
         if task_type == "find_difference":
             hints.append("Subtract the smaller value from the larger value.")
         else:
-            hints.append("Compare: which bar is taller (or longer)?")
+            hints.append(
+                "Compare the two values."
+                if orientation == "table"
+                else "Compare: which bar is taller (or longer)?"
+            )
     elif task_type == "find_most_least":
         direction = values.get("direction", "most")
         if orientation == "vertical":

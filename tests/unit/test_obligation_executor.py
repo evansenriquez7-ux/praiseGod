@@ -72,11 +72,21 @@ def test_current_finite_product_is_the_corrected_reachable_count():
     # and REMOVES the mcq/cloze ones (a competency that says "using models" may not be
     # served as bare notation), and `fraction_shade` gained `improper` so q4_6 has any
     # model route at all.
-    assert len(_base_obligations()) == 4306
+    #
+    # 4306 -> 4249 on 2026-09-29, a DECREASE of 57, all on mat_g2_na_q2_2's money_peso
+    # routes (every other node's obligation set is byte-identical, diffed against HEAD).
+    # Its competency is addition only ("Solve problems involving addition with sums up
+    # to 1000, including problems involving money"), but `registry` bound no money
+    # operation, so the axis swept add/subtract/find_change/add_or_subtract and seed 605
+    # served change-making. `operation` is now bound to add_amounts: mcq/cloze 18 -> 9
+    # each, peso_money_read 6 -> 3, number_line_read 45 -> 9 (add_amounts). Every removed
+    # route was subtraction on an addition-only node or a duplicate label for addition;
+    # no addition route was lost.
+    assert len(_base_obligations()) == 4249
     assert len(interest_request_values()) == 27
     assert len(experience_values()) == 4
-    assert finite_obligation_count() == 465_048
-    assert represented_execution_count() == 2_325_240
+    assert finite_obligation_count() == 458_892
+    assert represented_execution_count() == 2_294_460
 
 
 def test_seed_slots_cover_boundaries_and_extra_interiors():

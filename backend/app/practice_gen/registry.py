@@ -1268,6 +1268,12 @@ def _parse_competency_bounds(
     elif dna_name == "money_peso" and "addition" in text and "subtraction" in text:
         bounds["operation"] = "add_or_subtract"
 
+    elif dna_name == "money_peso" and "addition" in text:
+        bounds["operation"] = "add_amounts"
+
+    elif dna_name == "money_peso" and "subtraction" in text:
+        bounds["operation"] = "find_change"
+
     # "Compare different denominations of peso coins..." (mat_g1_na_q4_5,
     # mat_g2_na_q2_1) -- money_peso.py already implements a real
     # operation="compare" (asks "which has a greater value", built from

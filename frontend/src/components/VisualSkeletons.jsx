@@ -397,6 +397,9 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
     }
     return 0; // In set mode, start at 12:00 to prevent answer leak
   });
+  const [selectedPeriod, setSelectedPeriod] = useState(() => (
+    isReadOnly && params.period ? params.period : 'a.m.'
+  ));
   const [selectedHand, setSelectedHand] = useState('minute'); // 'hour' or 'minute'
   const canvasRef = useRef(null);
   const [isDraggingHour, setIsDraggingHour] = useState(false);
@@ -414,9 +417,10 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
       // "09:45" made the correct hand positions fail the shared exact comparator.
       const hourStr = String(hours);
       const minStr = String(minutes).padStart(2, '0');
-      onAnswer(`${hourStr}:${minStr}`);
+      const suffix = params.period ? ` ${selectedPeriod}` : '';
+      onAnswer(`${hourStr}:${minStr}${suffix}`);
     }
-  }, [hours, minutes]);
+  }, [hours, minutes, selectedPeriod]);
 
   useEffect(() => {
     drawClock();
@@ -670,9 +674,9 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
             (24h)
           </span>
         )}
-        {!use_24_hour && (
+        {!use_24_hour && params.period && (
           <span style={{ fontSize: '16px', marginLeft: '8px', opacity: 0.6 }}>
-            {hours >= 12 ? 'PM' : 'AM'}
+            {selectedPeriod === 'p.m.' ? 'PM' : 'AM'}
           </span>
         )}
       </div>
@@ -680,6 +684,18 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
       {/* Button controls - 1 minute increments */}
       {!disabled && (
         <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+          {params.period && (
+            <button
+              className="btn-secondary"
+              title="Toggle AM PM"
+              onClick={() => {
+                hasInteractedRef.current = true;
+                setSelectedPeriod((current) => current === 'a.m.' ? 'p.m.' : 'a.m.');
+              }}
+            >
+              {selectedPeriod === 'p.m.' ? 'PM' : 'AM'}
+            </button>
+          )}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
             <span style={{ fontSize: '12px', fontWeight: 600, color: '#06b6d4' }}>HOURS</span>
             <div style={{ display: 'flex', gap: '8px' }}>

@@ -144,25 +144,25 @@ def generate_params(
                 answer = end_str
                 off_hour1 = 12 if end_hour == 11 else (end_hour % 12) + 1
                 off_hour2 = 12 if end_hour == 1 else end_hour - 1
-                distractors = [
+                distractors = sorted(
                     s for s in {
                         _fmt_time(off_hour1, 0, end_period if use_ampm else None),
                         _fmt_time(off_hour2, 0, end_period if use_ampm else None),
                         _fmt_time(start_hour, 0, start_period if use_ampm else None),
                     } if s != end_str
-                ]
+                )
             else:
                 question = f"The {activity} ended at {end_str} after running for {duration_hours} hours. What time did it start?"
                 answer = start_str
                 off_start1 = 12 if start_hour == 1 else start_hour - 1
                 off_start2 = (start_hour % 12) + 1
-                distractors = [
+                distractors = sorted(
                     s for s in {
                         _fmt_time(off_start1, 0, start_period if use_ampm else None),
                         _fmt_time(off_start2, 0, start_period if use_ampm else None),
                         _fmt_time(end_hour, 0, end_period if use_ampm else None),
                     } if s != start_str
-                ]
+                )
 
             return {
                 "blank_target": "answer",
@@ -382,13 +382,13 @@ def generate_params(
                 off_hour = 12 if end_hour == 11 else (end_hour % 12) + 1
                 off_hour = 12 if off_hour == 0 else off_hour
                 off_minute = (end_minute + 10) % 60
-                distractors = [
+                distractors = sorted(
                     s for s in {
                         _fmt_time(off_hour, end_minute, end_period),
                         _fmt_time(end_hour, off_minute, end_period),
                         _fmt_time(start_hour, start_minute, start_period),
                     } if s != end_str
-                ]
+                )
 
             return {
                 "blank_target": "answer",

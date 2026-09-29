@@ -293,6 +293,8 @@ def format_clock(
         "show_labels": True,
         "precision": "5min" if minutes % 5 == 0 else "1min",
     }
+    if period is not None:
+        visual_params["period"] = period
 
     # ── 5. format_data ────────────────────────────────────────────────────────
     format_data: dict = {

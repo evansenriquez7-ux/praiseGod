@@ -735,6 +735,16 @@ def generate_params(
     pair_d = 3 if table_level == "2_3_4_5_10_named" else 5
     a, b = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=pair_d, rng=rng)
 
+    # A competency that names a table should show that table as the leading
+    # factor in the learner-facing fact. The candidate pool historically kept
+    # the named table in `b`, so mat_g3_na_q3_0 could ask "5 × 7" even though
+    # the clause explicitly names the 6, 7, 8 and 9 tables. Commutativity makes
+    # the product equal, but it does not make the presented table register the
+    # same. Canonicalise only explicit named-table sentinels; unbound/general
+    # multiplication keeps its existing factor order.
+    if table_level in ("6_7_8_9", "2_3_4_5_10_named") and b in allowed_tables:
+        a, b = b, a
+
     blank_target = {
         "result_unknown": "result",
         "factor_unknown": "b",

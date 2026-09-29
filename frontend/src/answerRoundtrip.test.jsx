@@ -38,13 +38,19 @@ async function driveCorrect(sample, root) {
       for (let n = 0; n < value / scale; n += 1) fireEvent.click(plus[idx]);
     });
   } else if (sample.visual_type === 'ClockSet') {
-    const [hours, minutes] = String(correct).split(':').map(Number);
+    const match = String(correct).match(/^(\d{1,2}):(\d{2})(?:\s+([ap]\.m\.))?$/);
+    if (!match) throw new Error(`unsupported ClockSet key ${correct}`);
+    const hours = Number(match[1]);
+    const minutes = Number(match[2]);
     const hourDelta = ((hours - 12) % 12 + 12) % 12;
     for (let i = 0; i < hourDelta; i += 1) {
       fireEvent.click(root.querySelector('[title="Increase hours"]'));
     }
     for (let i = 0; i < minutes; i += 1) {
       fireEvent.click(root.querySelector('[title="Increase 1 minute"]'));
+    }
+    if (match[3] === 'p.m.') {
+      fireEvent.click(root.querySelector('[title="Toggle AM PM"]'));
     }
   } else if (sample.visual_type === 'FillInTable') {
     const inputs = root.querySelectorAll('input');

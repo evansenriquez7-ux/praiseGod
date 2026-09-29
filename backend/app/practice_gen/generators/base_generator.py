@@ -407,8 +407,8 @@ def generate_context(
         emoji = get_interest_emoji(resolved_theme, grade)
         interest_visible_terms.append(emoji)
         interest_cue = (
-            f"{emoji} {slots['actor']} has a math challenge about "
-            f"{slots['objects']}."
+            f"{emoji} {slots['actor']} enjoys {slots['objects']}. "
+            "Here is a math challenge."
         )
 
     # ── f. Question text ──────────────────────────────────────────────────────

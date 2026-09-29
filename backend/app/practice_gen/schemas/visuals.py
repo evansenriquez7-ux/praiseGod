@@ -29,6 +29,7 @@ class ClockParams(BaseVisualParams):
     minutes: int
     use_24: bool = False
     interaction_mode: str = Field(..., pattern="^(read|set)$")
+    period: Optional[str] = Field(default=None, pattern="^(a\\.m\\.|p\\.m\\.)$")
 
 class NumberBondParams(BaseVisualParams):
     whole: Optional[int] = None

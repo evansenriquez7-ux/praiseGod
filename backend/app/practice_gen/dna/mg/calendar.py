@@ -179,12 +179,14 @@ def generate_params(
         mode = rng.choice(["after_months", "month_diff"])
         if mode == "after_months":
             idx = rng.randint(0, 11)
+            vp["month"] = idx + 1
             m_name = MONTHS_OF_YEAR[idx]
             add_m = rng.randint(1, 3)
             ans = MONTHS_OF_YEAR[(idx + add_m) % 12]
             q = f"This month is {m_name}. What month will it be in {add_m} {'month' if add_m == 1 else 'months'}?"
         else:
             m1_idx = rng.randint(0, 7)
+            vp["month"] = m1_idx + 1
             diff = rng.randint(2, 4)
             m2_idx = m1_idx + diff
             m1_name = MONTHS_OF_YEAR[m1_idx]
@@ -437,6 +439,16 @@ def generate_hints(
                 f"{'is' if answer == 1 else 'are'} {answer} {count_noun(answer, 'weeks')}."
             )
         return hints
+    if task_type == "problem_days":
+        return [
+            f"Use the order of the {days_label}: Sunday through Saturday.",
+            "Count forward or backward one day at a time as the question asks.",
+        ]
+    if task_type == "problem_months":
+        return [
+            f"Use the order of the {months_label}: January through December.",
+            "Count forward one month at a time from the first month named in the problem.",
+        ]
     return [
         f"Use the {cal_label} to find the answer.",
         f"The {elapsed_label} is the number of days or weeks that have passed.",
