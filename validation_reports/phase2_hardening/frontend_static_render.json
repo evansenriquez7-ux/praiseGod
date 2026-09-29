@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "assertion": "frontend_static_render_12",
-  "cases_executed": 30,
-  "renders_executed": 60,
+  "cases_executed": 34,
+  "renders_executed": 68,
   "production_visual_types": [
     "BarChart",
     "Calendar",
@@ -279,93 +279,75 @@
     },
     {
       "case_id": "bar_chart_set:mat_g3_dp_q3_1:743554187",
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "formatter": "bar_chart_set",
       "node_id": "mat_g3_dp_q3_1",
       "seed": 743554187,
       "interaction_mode": "set",
       "answer_collection": "fill_in_blank",
       "mode": "active",
-      "markup_bytes": 10827,
+      "markup_bytes": 2683,
       "description": {
         "source": "rendered_static_markup",
-        "visual_type": "BarChart",
-        "element_count": 64,
+        "visual_type": "FillInTable",
+        "element_count": 25,
         "svg_count": 0,
-        "table_row_count": 0,
-        "table_cell_count": 0,
-        "button_count": 8,
-        "input_count": 0,
+        "table_row_count": 5,
+        "table_cell_count": 10,
+        "button_count": 0,
+        "input_count": 4,
         "text_labels": [
-          "Drag bars or use +/- to match the data",
-          "0",
-          "10",
-          "20",
-          "30",
-          "40",
-          "50",
-          "60",
-          "70",
-          "80",
-          "\u2212",
-          "+",
+          "Category",
+          "Value",
           "Monday",
           "Tuesday",
           "Wednesday",
           "Thursday",
-          "Click on chart or use +/- buttons to adjust bar heights"
+          "Fill in the missing values in the table"
         ],
         "distinct_colours": [
-          "hsl(var(--text-muted)",
           "hsl(var(--card-bg)",
           "hsl(var(--border-color)",
+          "hsl(var(--text)",
           "hsl(var(--primary)",
-          "hsl(var(--text)"
+          "hsl(var(--input-bg)",
+          "hsl(var(--text-muted)"
         ],
         "role_counts": {}
       }
     },
     {
       "case_id": "bar_chart_set:mat_g3_dp_q3_1:743554187",
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "formatter": "bar_chart_set",
       "node_id": "mat_g3_dp_q3_1",
       "seed": 743554187,
       "interaction_mode": "set",
       "answer_collection": "fill_in_blank",
       "mode": "disabled",
-      "markup_bytes": 8779,
+      "markup_bytes": 2591,
       "description": {
         "source": "rendered_static_markup",
-        "visual_type": "BarChart",
-        "element_count": 47,
+        "visual_type": "FillInTable",
+        "element_count": 24,
         "svg_count": 0,
-        "table_row_count": 0,
-        "table_cell_count": 0,
+        "table_row_count": 5,
+        "table_cell_count": 10,
         "button_count": 0,
-        "input_count": 0,
+        "input_count": 4,
         "text_labels": [
-          "Drag bars or use +/- to match the data",
-          "0",
-          "10",
-          "20",
-          "30",
-          "40",
-          "50",
-          "60",
-          "70",
-          "80",
+          "Category",
+          "Value",
           "Monday",
           "Tuesday",
           "Wednesday",
           "Thursday"
         ],
         "distinct_colours": [
-          "hsl(var(--text-muted)",
           "hsl(var(--card-bg)",
           "hsl(var(--border-color)",
-          "hsl(var(--primary)",
-          "hsl(var(--text)"
+          "hsl(var(--text)",
+          "hsl(var(--primary)"
         ],
         "role_counts": {}
       }
@@ -573,11 +555,11 @@
       "interaction_mode": "read",
       "answer_collection": "mcq",
       "mode": "active",
-      "markup_bytes": 3661,
+      "markup_bytes": 3595,
       "description": {
         "source": "rendered_static_markup",
         "visual_type": "ClockSet",
-        "element_count": 37,
+        "element_count": 36,
         "svg_count": 4,
         "table_row_count": 0,
         "table_cell_count": 0,
@@ -589,7 +571,6 @@
           "Hour (short)",
           "Minute (long)",
           "08:45",
-          "AM",
           "HOURS",
           "MINUTES",
           "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
@@ -613,6 +594,78 @@
       "interaction_mode": "read",
       "answer_collection": "mcq",
       "mode": "disabled",
+      "markup_bytes": 894,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 11,
+        "svg_count": 0,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "Hour (short)",
+          "Minute (long)",
+          "08:45"
+        ],
+        "distinct_colours": [
+          "#06b6d4",
+          "#8b5cf6",
+          "hsl(var(--text)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_read:mat_g2_mg_q4_1:36717050",
+      "visual_type": "ClockSet",
+      "formatter": "clock_read",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 36717050,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "active",
+      "markup_bytes": 3723,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 38,
+        "svg_count": 4,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 7,
+        "input_count": 0,
+        "text_labels": [
+          "\ud83d\udd50 Hour Hand",
+          "\ud83d\udd50 Minute Hand",
+          "Hour (short)",
+          "Minute (long)",
+          "09:20",
+          "PM",
+          "HOURS",
+          "MINUTES",
+          "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
+        ],
+        "distinct_colours": [
+          "#8891a8",
+          "#8b5cf6",
+          "#06b6d4",
+          "hsl(var(--text)",
+          "hsl(var(--text-muted)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_read:mat_g2_mg_q4_1:36717050",
+      "visual_type": "ClockSet",
+      "formatter": "clock_read",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 36717050,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "disabled",
       "markup_bytes": 960,
       "description": {
         "source": "rendered_static_markup",
@@ -626,7 +679,80 @@
         "text_labels": [
           "Hour (short)",
           "Minute (long)",
-          "08:45",
+          "09:20",
+          "PM"
+        ],
+        "distinct_colours": [
+          "#06b6d4",
+          "#8b5cf6",
+          "hsl(var(--text)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_read:mat_g2_mg_q4_1:969186201",
+      "visual_type": "ClockSet",
+      "formatter": "clock_read",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 969186201,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "active",
+      "markup_bytes": 3723,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 38,
+        "svg_count": 4,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 7,
+        "input_count": 0,
+        "text_labels": [
+          "\ud83d\udd50 Hour Hand",
+          "\ud83d\udd50 Minute Hand",
+          "Hour (short)",
+          "Minute (long)",
+          "07:00",
+          "AM",
+          "HOURS",
+          "MINUTES",
+          "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
+        ],
+        "distinct_colours": [
+          "#8891a8",
+          "#8b5cf6",
+          "#06b6d4",
+          "hsl(var(--text)",
+          "hsl(var(--text-muted)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_read:mat_g2_mg_q4_1:969186201",
+      "visual_type": "ClockSet",
+      "formatter": "clock_read",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 969186201,
+      "interaction_mode": "read",
+      "answer_collection": "mcq",
+      "mode": "disabled",
+      "markup_bytes": 960,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 12,
+        "svg_count": 0,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "Hour (short)",
+          "Minute (long)",
+          "07:00",
           "AM"
         ],
         "distinct_colours": [
@@ -646,11 +772,11 @@
       "interaction_mode": "set",
       "answer_collection": "fill_in_blank",
       "mode": "active",
-      "markup_bytes": 3661,
+      "markup_bytes": 3595,
       "description": {
         "source": "rendered_static_markup",
         "visual_type": "ClockSet",
-        "element_count": 37,
+        "element_count": 36,
         "svg_count": 4,
         "table_row_count": 0,
         "table_cell_count": 0,
@@ -662,7 +788,6 @@
           "Hour (short)",
           "Minute (long)",
           "12:00",
-          "PM",
           "HOURS",
           "MINUTES",
           "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
@@ -686,6 +811,78 @@
       "interaction_mode": "set",
       "answer_collection": "fill_in_blank",
       "mode": "disabled",
+      "markup_bytes": 894,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 11,
+        "svg_count": 0,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "Hour (short)",
+          "Minute (long)",
+          "12:00"
+        ],
+        "distinct_colours": [
+          "#06b6d4",
+          "#8b5cf6",
+          "hsl(var(--text)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1612680610",
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1612680610,
+      "interaction_mode": "set",
+      "answer_collection": "fill_in_blank",
+      "mode": "active",
+      "markup_bytes": 3723,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 38,
+        "svg_count": 4,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 7,
+        "input_count": 0,
+        "text_labels": [
+          "\ud83d\udd50 Hour Hand",
+          "\ud83d\udd50 Minute Hand",
+          "Hour (short)",
+          "Minute (long)",
+          "12:00",
+          "AM",
+          "HOURS",
+          "MINUTES",
+          "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
+        ],
+        "distinct_colours": [
+          "#8891a8",
+          "#8b5cf6",
+          "#06b6d4",
+          "hsl(var(--text)",
+          "hsl(var(--text-muted)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1612680610",
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1612680610,
+      "interaction_mode": "set",
+      "answer_collection": "fill_in_blank",
+      "mode": "disabled",
       "markup_bytes": 960,
       "description": {
         "source": "rendered_static_markup",
@@ -700,7 +897,80 @@
           "Hour (short)",
           "Minute (long)",
           "12:00",
-          "PM"
+          "AM"
+        ],
+        "distinct_colours": [
+          "#06b6d4",
+          "#8b5cf6",
+          "hsl(var(--text)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1660553959",
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1660553959,
+      "interaction_mode": "set",
+      "answer_collection": "fill_in_blank",
+      "mode": "active",
+      "markup_bytes": 3723,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 38,
+        "svg_count": 4,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 7,
+        "input_count": 0,
+        "text_labels": [
+          "\ud83d\udd50 Hour Hand",
+          "\ud83d\udd50 Minute Hand",
+          "Hour (short)",
+          "Minute (long)",
+          "12:00",
+          "AM",
+          "HOURS",
+          "MINUTES",
+          "Choose a hand above, then click the clock to set time \u2022 Use +/- for precision"
+        ],
+        "distinct_colours": [
+          "#8891a8",
+          "#8b5cf6",
+          "#06b6d4",
+          "hsl(var(--text)",
+          "hsl(var(--text-muted)"
+        ],
+        "role_counts": {}
+      }
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1660553959",
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1660553959,
+      "interaction_mode": "set",
+      "answer_collection": "fill_in_blank",
+      "mode": "disabled",
+      "markup_bytes": 960,
+      "description": {
+        "source": "rendered_static_markup",
+        "visual_type": "ClockSet",
+        "element_count": 12,
+        "svg_count": 0,
+        "table_row_count": 0,
+        "table_cell_count": 0,
+        "button_count": 0,
+        "input_count": 0,
+        "text_labels": [
+          "Hour (short)",
+          "Minute (long)",
+          "12:00",
+          "AM"
         ],
         "distinct_colours": [
           "#06b6d4",
@@ -2299,7 +2569,7 @@
     "jsdom has no layout engine: NumberLine and BarChart pointer-drag geometry is unproven",
     "static markup cannot prove crowding, overlap, colour contrast, or touch-target size"
   ],
-  "source_input_digest": "618c217d74edb6f5cff58d8fc84b5b847d5e41baec5399ce1c214bd4d0767e9b",
+  "source_input_digest": "7253f2a3e89f1566cd550c6602375353a354e9ecab116ff7f03db09cb271743b",
   "registered_visual_types": [
     "BalanceScale",
     "BarChart",
@@ -2332,7 +2602,7 @@
     "SortOrder",
     "TenFrame"
   ],
-  "corpus_rule": "one real forced-student-path payload per reachable formatter x conditional-key presence x interaction/answer mode class",
+  "corpus_rule": "one real forced-student-path payload per reachable formatter x conditional-key presence/value class x interaction/answer mode class",
   "answer_roundtrips": [
     {
       "case_id": "array_grid_set:mat_g2_na_q3_0:884667713",
@@ -2347,7 +2617,7 @@
       "case_id": "bar_chart_set:mat_g3_dp_q3_1:743554187",
       "node_id": "mat_g3_dp_q3_1",
       "seed": 743554187,
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "formatter": "bar_chart_set",
       "correct_answer": [
         60,
@@ -2370,6 +2640,24 @@
       "formatter": "clock_set",
       "correct_answer": "9:45",
       "emitted_answer": "9:45"
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1612680610",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1612680610,
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "correct_answer": "1:10 p.m.",
+      "emitted_answer": "1:10 p.m."
+    },
+    {
+      "case_id": "clock_set:mat_g2_mg_q4_1:1660553959",
+      "node_id": "mat_g2_mg_q4_1",
+      "seed": 1660553959,
+      "visual_type": "ClockSet",
+      "formatter": "clock_set",
+      "correct_answer": "1:35 a.m.",
+      "emitted_answer": "1:35 a.m."
     },
     {
       "case_id": "fill_in_table:mat_g1_dp_q3_3:1388834596",

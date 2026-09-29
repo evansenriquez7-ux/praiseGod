@@ -17471,3 +17471,100 @@ Every other scheduled stage passed, including all Phase 1 content checks, render
 operator/contract matching, and the complete obligation manifest. Phase C therefore closes with no
 silent or accidental gate failure. The three red stages are the explicitly deferred Phase D content and
 attestation work; they were not weakened or relabelled green.
+
+## 2026-09-29/30 — PHASE D source batch: the content defects confirmed in Phase C review
+
+**Sessions:** begun by `codex-h06-phaseD-2026-09-29` (GPT-5 Codex), which claimed the batch and left 21
+files uncommitted when it was rate-limited. The owner then directed Claude to finish it as
+`claude-h06-phaseD-2026-09-30`. Every source change below was reviewed against its competency clause
+before landing. The 173 CONTRADICTED `capability_phase2` findings are **not** part of this batch.
+
+### What landed (`c1366b94`, floors in `ac614688`)
+
+Each change conforms to the MATATAG clause quoted:
+
+* **`mat_g2_na_q2_2`** — *"Solve problems involving **addition** with sums up to 1000, including problems
+  involving money"*. `registry` bound no `money_peso` operation, so the axis swept subtraction and
+  change-making (seed 605). It is now bound to `add_amounts`. Only this node's operation changed; the
+  other seven money nodes were checked.
+* **`mat_g3_na_q3_0`** — *"Multiply numbers using the 6, 7, 8, and 9 multiplication tables"*: the named
+  table is now the leading factor (seed 605 asked `5 × 7`; it now asks `7 × 5`).
+* **`mat_g3_dp_q3_1` / `_2`** — *"… in **tables** and bar graphs"*: the table orientation now renders a
+  `FillInTable` with table-worded hints instead of a `BarChart` under a stem that says "table".
+* **`mat_g3_dp_q3_2`** — category options come only from the displayed data. The agent's DNA change
+  forces at least 4 categories for category-valued tasks. Claude additionally replaced the root cause:
+  `fmt_bar_chart` silently topped up distractors from **every grade's** category bank (that is how
+  "2023" was offered beside flower names, seed 900). It now raises a named `ValueError` carrying node
+  and seed. Proven by execution: with the DNA clamp removed, the seed-900 test fails with
+  `ValueError: mat_g3_dp_q3_2 seed=900: … only 3 categories (['roses', 'sunflowers', 'tulips'])`;
+  restored, it passes.
+* **Fraction ordering (`mat_g2_na_q4_2` / `_5`)** — `fractions.generate_hints` gains an ordering branch.
+  The hint contract gains a ninth dimension, `operation`, proven by mutation
+  `hint_fraction_order_gets_addition_chain`. The comparison sentence is true for both generated
+  families: unit fractions have distinct denominators; similar fractions share one.
+* **Determinism** — `time_reading` distractors no longer inherit hash-randomised set order. Registry id
+  `packet_cross_process_determinism`, mutation `time_options_follow_hash_seed`.
+* **§1G ClockSet / Calendar** — a ClockSet whose key carries a.m./p.m. passes `period` to the renderer,
+  which gains a period control. A Calendar draws the month its stem names. Mutations:
+  `clock_payload_drops_period`, `calendar_draws_unrelated_month`, `frontend_clock_period_ignored`.
+* **Interest cue** — "*X has a math challenge about Y*" became "*X enjoys Y. Here is a math challenge.*",
+  so the wrapper no longer claims the task is about an unrelated object (seeds 701/702).
+
+### Defects found while finishing, and how each was settled
+
+* **The new frontend ClockSet evidence check read the wrong field.** It classified set vs read mode from
+  `sample.interaction_mode`. The capability-freshness packet-render corpus has no top-level field, so
+  every set-mode p.m. clock there was judged as read mode. Three `test_capability_contract` tests failed
+  on `mat_g2_mg_q4_1` seed 11. The check now reads `visual_params`, the fields `ClockSetInteractive`
+  itself reads, and the three tests pass.
+* **Obligation product 4306 → 4249 (−57), all on `mat_g2_na_q2_2`.** A full diff against HEAD shows
+  every other node's obligation set is byte-identical. Removed on that node: subtraction, change-making
+  and add-or-subtract routes, plus duplicate addition labels. No addition route was lost. The pinned
+  counts in `test_obligation_executor.py` were updated **after** this was established.
+* **Five mutations came back INVALID in the first corpus run** (`shrinking_node_registry`,
+  `variant_coverage_silently_narrowed`, `obligation_derivations_diverge`,
+  `dead_formatter_route_ignored`, `obligation_interest_dimension_dropped`). Their unmutated baselines
+  were red because two floors were breached by the same correction:
+  * `variant_candidates` 975 → 973. Diffed tree-wide, the only removals are
+    `mat_g2_na_q2_2 ('operation','add')` and `('operation','subtract')`.
+  * Obligations, measured against `c1366b94~1`: discrete 4306 → 4249, continuous crossings
+    18909 → 18567, finite 465048 → 458892.
+
+  Each floor was lowered by **exactly** its measured delta (census 973; base 4212; continuous 18420;
+  finite 454896), with the node id and clause in the code comment and the contract row (Protocol 5
+  ground-truth correction). On the re-run all five are DETECTED.
+
+### Re-proof chain, run alone at `ac614688` (live digest `7253f2a3e89f1566`)
+
+```
+pytest tests/unit -m "not slow" -q                     999 passed, 1 skipped, 2 deselected (before the source commit)
+scripts.regen_formatter_exclusions                     275 exclusions across 111 nodes (file unchanged)
+obligation_executor --tier benchmark                   cache_keys=1000 failures=0 recommended_shards=4
+frontend_suite.py                                      PASS frontend_static_render_12: 34 real payloads; 18 production visual types
+mutation_harness.py                                    187/190 detected (FAIL only contradicted_attestation,
+                                                       attestation_drops_options, attestation_leaks_into_phase1: the §6F cluster)
+release shards 0-5                                     rc=0 each; failures=0; 573,615 cache keys / 2,294,460 executions;
+                                                       elapsed 1462.7-1657.0s
+obligation_executor --tier verify-release              release_status=complete receipts=6 complete=True
+run_all                                                EXIT 1, scheduled=17 completed=14 failed=3 crashed=0
+  FAIL judgment_reviews_5     2020 problems
+  FAIL capability_phase2      188: 173 CONTRADICTED, 15 STALE
+  FAIL assertion_coverage_8   3 (the §6F cluster)
+```
+
+Every Phase 1 content stage passed. The failing set is the same three stages as Phase C's closeout.
+
+### The cost this batch leaves behind: 143 of 151 reviews are STALE
+
+Staleness is by packet digest and was not waived. The interest-cue rewording changes seeds 701/702 on
+every node, so **136 nodes are stale only because of that wrapper sentence**, established seed by seed
+from `validate_judgment --all`. Seven carry real content changes from this batch: `mat_g2_na_q2_2`,
+`mat_g2_na_q3_2`, `mat_g2_na_q3_3`, `mat_g3_dp_q3_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`,
+`mat_g3_na_q3_0`. §5 rose 1441 → 2020 and §6F STALE rose 7 → 15. Re-reviewing them is a separate,
+owner-gated campaign; no verdict was authored or carried forward.
+
+NAMED LIMITS:
+* The fraction-ordering hint states the full answer in its last line, as other DNAs' final hints do.
+* The `operation` dimension recognises only explicit ordering stems and addition/subtraction hint
+  instructions.
+* The category-bank fail-fast is proven by a hand-planted clamp removal, not by a registered mutation.

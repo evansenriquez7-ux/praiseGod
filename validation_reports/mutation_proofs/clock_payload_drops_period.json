@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "visual_payload"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_clock_period_is_in_the_payload_and_checked_by_visual_invariant && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_phase_d_regressions.py::test_clock_period_is_in_the_payload_and_checked_by_visual_invariant",
+  "-q"
+ ],
+ "definition_digest": "a31044175dcf01f3aee484db370440893159a17a230beb4e03481f3e2e7bc579",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_clock_period_is_in_the_payload_and_checked_by_visual_invariant",
+  "failed"
+ ],
+ "expected_check": "§1G visual payload (ClockSet period agrees with its key)",
+ "finished_at": "2026-09-30T01:34:25+08:00",
+ "input_digest": "7253f2a3e89f1566cd550c6602375353a354e9ecab116ff7f03db09cb271743b",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/visual/fmt_clock.py"
+ ],
+ "mutation": "clock_payload_drops_period",
+ "observed_markers": {
+  "failed": true,
+  "test_clock_period_is_in_the_payload_and_checked_by_visual_invariant": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-30T01:34:22+08:00"
+}

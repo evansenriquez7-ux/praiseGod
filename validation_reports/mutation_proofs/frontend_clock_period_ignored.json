@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "rendered_visual_description_12"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "ClockSet period PM is absent"
+ ],
+ "command": [
+  "tests.frontend_suite"
+ ],
+ "definition_digest": "4c22f7c223d7145b6a41fad15051ceca0ea1d7bd90bf41aec82288776f2e3bfd",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL frontend_static_render_12: 2 finding(s)",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL frontend_static_render_12",
+  "ClockSet period PM is absent"
+ ],
+ "expected_check": "§12 (ClockSet renders the a.m./p.m. value supplied by its payload)",
+ "finished_at": "2026-09-30T01:32:32+08:00",
+ "input_digest": "7253f2a3e89f1566cd550c6602375353a354e9ecab116ff7f03db09cb271743b",
+ "mutated_paths": [
+  "frontend/src/components/VisualSkeletons.jsx"
+ ],
+ "mutation": "frontend_clock_period_ignored",
+ "observed_markers": {
+  "ClockSet period PM is absent": true,
+  "FAIL frontend_static_render_12": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-30T01:32:13+08:00"
+}

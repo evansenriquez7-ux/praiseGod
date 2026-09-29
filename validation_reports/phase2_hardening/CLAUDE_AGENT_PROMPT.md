@@ -77,24 +77,24 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-run_all (2026-09-29) EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
+run_all (2026-09-30) EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
 stage ledger          scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-§5 (module)           1440 findings; 1 STALE review (mat_g2_mg_q4_2, known set-order defect)
-§5 (run_all stage)    1441 findings
-§6F                   180: 173 CONTRADICTED + 7 STALE attestations
-v2 corpus             151/151: 56 PASS / 55 CONCERN / 40 FAIL
-                       120 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
-legacy queue          COMPLETE: 0 v1 reviews on disk
-proof artifacts       185 mutation proofs, 6 release shards, benchmark and frontend all fresh
-live input digest     618c217d74edb6f5
+§5 (run_all stage)    2020 findings; 143 of 151 reviews STALE (see below)
+§6F                   188: 173 CONTRADICTED + 15 STALE attestations
+obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions
+proof artifacts       190 mutation proofs (187 DETECTED + the 3 §6F INVALID), 6 release shards,
+                      benchmark and frontend all fresh
+live input digest     7253f2a3e89f1566 (HEAD ac614688 plus the closeout commit)
 ```
 
-Phase C is complete. The 91 formerly owed nodes were independently reviewed on Claude Haiku 4.5; 76
-Phase B/C provenance references were rebuilt from digest-verified original scratch replies without
-changing verdict content. The filer now refuses cross-node raw-response overwrites, and its mutation is
-DETECTED. H-06 remains open only for Phase D capability/content work and the named source batch. At this
-checkpoint the campaign intent is being closed and the lock released in a separate follow-up commit.
-If an executed command disagrees with this section, believe the command.
+Phases A, B and C are done. **The Phase D SOURCE BATCH is done** (`c1366b94`, `ac614688`). It fixed every
+content defect Phase C confirmed; the list is in `HARDENING_EVIDENCE.md`'s Phase D entry. Its cost:
+**143 of 151 reviews went STALE.** 136 are stale only because the interest-cue sentence at seeds 701/702
+was reworded. Seven carry real content change: `mat_g2_na_q2_2`, `mat_g2_na_q3_2`, `mat_g2_na_q3_3`,
+`mat_g3_dp_q3_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`, `mat_g3_na_q3_0`. Re-reviewing them is a
+Phase-C-sized blind Haiku campaign and **needs the owner's go-ahead**, as do the 173 CONTRADICTED (§6
+below). Sections 5 and 6's "START HERE" wording is historical. If an executed command disagrees with this
+section, believe the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 

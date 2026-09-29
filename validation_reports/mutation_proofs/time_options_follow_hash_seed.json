@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "packet_cross_process_determinism"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_time_options_are_stable_across_python_hash_seeds && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_phase_d_regressions.py::test_time_options_are_stable_across_python_hash_seeds",
+  "-q"
+ ],
+ "definition_digest": "37516daac3548b2a8f2269d7c53c536f539d5e698237c85905551f968ea19e1f",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_time_options_are_stable_across_python_hash_seeds",
+  "failed"
+ ],
+ "expected_check": "packet determinism (packet_cross_process_determinism)",
+ "finished_at": "2026-09-30T01:34:22+08:00",
+ "input_digest": "7253f2a3e89f1566cd550c6602375353a354e9ecab116ff7f03db09cb271743b",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/time_reading.py"
+ ],
+ "mutation": "time_options_follow_hash_seed",
+ "observed_markers": {
+  "failed": true,
+  "test_time_options_are_stable_across_python_hash_seeds": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-30T01:34:18+08:00"
+}

@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "hint_contract_operation"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5] && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]",
+  "-q"
+ ],
+ "definition_digest": "a8d664d146eef02319e46e8b1efc3497f1235b652ef5820ebcab59c34c7a206e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]",
+  "failed",
+  "[operation]"
+ ],
+ "expected_check": "§0 hint contract (hint_contract_operation)",
+ "finished_at": "2026-09-30T01:34:18+08:00",
+ "input_digest": "7253f2a3e89f1566cd550c6602375353a354e9ecab116ff7f03db09cb271743b",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/fractions.py"
+ ],
+ "mutation": "hint_fraction_order_gets_addition_chain",
+ "observed_markers": {
+  "[operation]": true,
+  "failed": true,
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-09-30T01:34:15+08:00"
+}
