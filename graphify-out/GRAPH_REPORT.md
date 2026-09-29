@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-09-30)
 
 ## Corpus Check
-- 1410 files · ~4,653,629 words
+- 1410 files · ~4,653,883 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8550140d`
+- Built from commit: `c1366b94`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -732,7 +732,7 @@ Cohesion: 0.50
 Nodes (4): 7. Mini-Lesson Grouping, Grouping Algorithm, Mini-Lesson Structure, Slide Count Estimates
 
 ### Community 54 - "Community 54"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (14): Best Practices for Agents, Calling Operations, Client-Side Caching, Data Type Mapping Reference, Initialization, Installation, Resilient Enum Handling, Subscriptions (Realtime) (+6 more)
 
 ### Community 55 - "Community 55"
@@ -808,7 +808,7 @@ Cohesion: 0.17
 Nodes (11): 1. Re-running `flutterfire configure` Upon Renaming, 2. Platform-Specific Build Requirements, 3. Web CORS Best Practices, 4. Elaborating on `WidgetsFlutterBinding.ensureInitialized()`, Flutter & Firebase Setup Guide, Prerequisites, Step 1: Create a Flutter Project, Step 2: Configure Firebase (+3 more)
 
 ### Community 73 - "Community 73"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (12): Basic Query, Best Practices for Agents, Calling Operations, Client-Side Caching, Data Type Mapping Reference, Flutter SDK, Imports, Initialization (+4 more)
 
 ### Community 74 - "Community 74"
@@ -928,8 +928,8 @@ Cohesion: 0.09
 Nodes (29): _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes(), _get_introduction() (+21 more)
 
 ### Community 103 - "Community 103"
-Cohesion: 0.03
-Nodes (59): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-21 (tick 17) — §2B was guarding one direction only, 2026-08-23 — §6G: an attestation must show its work, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361, 2026-08-24 — tick 26 — 361 clauses attested across 89 nodes; §6F UNATTESTED backlog completely cleared (361 -> 0) (+51 more)
+Cohesion: 0.04
+Nodes (56): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 1. `phase1_hermetic` — the guard now runs around every Phase 1 stage, 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+48 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.36
@@ -1893,7 +1893,7 @@ Nodes (7): Co-mapped secondary DNA bleed: a concrete triage proposal, Fixed (Ite
 
 ### Community 390 - "test_bounds_length_is_never_the_discriminator"
 Cohesion: 0.40
-Nodes (5): 1. `phase1_hermetic` — the guard now runs around every Phase 1 stage, 2. The unclaimed-artifact check could not see a subdirectory, 3. A row I opened and then withdrew, because a check said not to, The Phase-1-wide hermeticity gate, and a hole my own last commit left (2026-09-16), Verification, all on frozen digest `922b182a1356cb9fb0eec7dc1463b6bd6ec9cccf547b8ab1debb93fabdd810ec`
+Nodes (5): 2026-08-21 (tick 17) — §2B was guarding one direction only, Fixed and proved, The 33 single-formatter nodes, surveyed, The gap I shipped, Why I did not broaden them this tick
 
 ### Community 391 - "2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)"
 Cohesion: 0.33
@@ -1952,8 +1952,8 @@ Cohesion: 0.50
 Nodes (3): Answer, Q: Does CODEX SUPERVISOR GOAL COMMAND COMPLETED exit code 0 prove Phase 2 hardening completed or weakened standards?, Source Nodes
 
 ### Community 405 - "2026-09-16 — owner decision: the harness pins its own database URL"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, Defect 1 — `Convert 4 m to cm.` is invention, Defect 2 — a 500 cm ceiling, Left deliberately: `"Measure the object. Its length is ___ cm."`, Verification
+Cohesion: 0.50
+Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
 
 ### Community 406 - "answerRoundtrip.test.jsx"
 Cohesion: 0.29
@@ -2104,8 +2104,8 @@ Cohesion: 0.40
 Nodes (5): 2026-08-13 — "less than N" was parsed as "up to N", PROTOCOL 5 CORRECTION — two assertions modified, reported here as required, Root cause, The failing rationales, Verification — operands, across ~1300 items
 
 ### Community 446 - "2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one"
-Cohesion: 0.40
-Nodes (5): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, I nearly shipped the wrong fix, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick, What shipped
+Cohesion: 0.19
+Nodes (9): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, A wrong hypothesis, withdrawn rather than shipped, I nearly shipped the wrong fix, The sweep, Then reproduced properly, by replaying the matrix's own sweep, Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick (+1 more)
 
 ### Community 447 - "test_mutation_runner.py"
 Cohesion: 0.33
@@ -2113,7 +2113,7 @@ Nodes (6): 2026-09-25/29 — PHASE C: the remaining 91 nodes reviewed, provenanc
 
 ### Community 448 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
 Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
+Nodes (4): 2026-08-28 — D0 (§6H) and the first D1 blind re-review batch, §6H — Attester identity and plurality (the blocker before any Attester campaign), Carried forward, D1 batch 1 — three nodes re-reviewed blind
 
 ### Community 449 - "TestExperienceIsVaried"
 Cohesion: 0.15
@@ -2157,7 +2157,7 @@ Nodes (9): One scheduled harness stage and what became of it., StageResult, The 
 
 ### Community 461 - "test_phase1_runs_with_the_attestation_corpus_absent"
 Cohesion: 0.50
-Nodes (4): 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, batch023 → batch028: a verdict moved without being edited, Tooling, and the honesty problem it forced, What the blind verdicts found — the pattern is a medium, not a node
+Nodes (4): 2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found, Chain re-run after the review's two corrections — executed, nothing else running, What it missed, and why the fault is in the PROMPT, not the agent, What the closeout got right, verified by execution rather than by reading its report
 
 ### Community 462 - "2026-08-20 — §5 worker death: a silent unbounded wait in the last gate"
 Cohesion: 0.50
@@ -2165,7 +2165,7 @@ Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last 
 
 ### Community 463 - "2026-08-20 (tick 7) — The harness now runs its own tests"
 Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 7) — The harness now runs its own tests, Proved, not assumed, What shipped, Why
+Nodes (4): 2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof, Blind dispatch outcome and named limitation, Re-proof and interruption-safe recovery, Root cause and repair
 
 ## Knowledge Gaps
 - **2313 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2308 more)

@@ -214,7 +214,12 @@ CENSUS_FLOORS = {
     # values to the four its templates actually implement plus the new
     # `describe_position`. Every one of those is a variant the review packets can now
     # demonstrate and could not before.
-    "variant_candidates": 975,
+    # 975 -> 973 on 2026-09-29, lowered by exactly the measured 2: mat_g2_na_q2_2
+    # ("Solve problems involving ADDITION ... including problems involving money") lost
+    # ('operation', 'add') and ('operation', 'subtract') when registry bound its money
+    # operation to add_amounts -- the unbound axis had served change-making (seed 605).
+    # Diffed tree-wide against c1366b94~1: no other (variant, value) pair moved.
+    "variant_candidates": 973,
 }
 
 # §8 inventory: the assertions this module can independently fail on. Derived from the

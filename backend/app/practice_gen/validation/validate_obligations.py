@@ -90,9 +90,19 @@ UNREACHABLE_ROUTE_FLOOR = 5
 
 # Measured after the executor exposed and the manifest fixed a DNA-keyed curriculum-gate
 # argument bug. Floors may only rise; a legitimate shrink is a ground-truth change.
-BASE_OBLIGATION_FLOOR = 4269
-FINITE_OBLIGATION_FLOOR = 461_052
-CONTINUOUS_CROSSING_FLOOR = 18_762
+#
+# LOWERED 2026-09-29 by exactly the measured shrink, a ground-truth change on ONE node:
+# mat_g2_na_q2_2 reads "Solve problems involving ADDITION with sums up to 1000,
+# including problems involving money", but registry bound no money_peso operation, so
+# its obligations swept add/subtract/find_change/add_or_subtract and seed 605 served
+# change-making. Binding operation=add_amounts removed only subtraction routes and
+# duplicate addition labels on that node; every other node's obligation set is
+# byte-identical (diffed against c1366b94~1). Measured before -> after: discrete
+# 4306 -> 4249 (-57), continuous crossings 18909 -> 18567 (-342), finite
+# 465048 -> 458892 (-6156). Each floor moved by that delta, keeping its prior slack.
+BASE_OBLIGATION_FLOOR = 4212       # 4269 - 57
+FINITE_OBLIGATION_FLOOR = 454_896  # 461_052 - 6_156
+CONTINUOUS_CROSSING_FLOOR = 18_420  # 18_762 - 342
 REQUIRED_RESPONSE_MODES = {
     "click", "drag", "error_detect", "fill_in_blank", "mcq", "true_false",
 }
