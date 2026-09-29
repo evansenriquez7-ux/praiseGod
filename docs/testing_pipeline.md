@@ -190,6 +190,11 @@ does not run the table. So the order is: run the mutation table, then `run_all`.
 any file under `mutation_proof.INPUT_ROOTS` invalidates every proof, and §8 says so in one
 line rather than 140.
 
+The filing-side `review_response_copy_not_overwritten` proof plants a second, different raw
+review under an already-used dispatch prefix and requires `tests/file_reviews.py` to refuse
+the overwrite. The later §5 digest check remains the independent detector for provenance
+copies changed outside the filer.
+
 ### Floors
 
 Several checks carry a **floor** rather than a hard zero, because their baseline was red

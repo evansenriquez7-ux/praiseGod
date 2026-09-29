@@ -1,0 +1,241 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc1-mat_g2_mg_q4_6-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_mg_q4_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_6-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_6
+PACKET DIGEST: 5d93d98024c528e977b6242d6af1f766b649f37f640bc23dba1f8c4d0afa73ae
+COMPETENCY (Grade 2, Quarter 4, None):
+Solve problems involving perimeter of triangles, squares, and rectangles.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  perimeter: perimeter
+  triangles: triangles
+  squares: squares
+  rectangles: rectangles
+
+SAMPLES (every one of these is real rendered output):
+  sample 80e756b93a9cd24a6c6c  seed 42  [cloze]
+      stem:    A triangular flower bed has sides 2 m, 1 m, and 2 m. How much edging is needed to go all the way around it?
+      answer:  5
+      options: 6 / 7 / 4 / 5
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 2 + 1 + 2 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2394d7b4224eaf65230f  seed 43  [mcq]
+      stem:    A rectangular garden is 6 m long and 2 m wide. How much fencing is needed to go all the way around it?
+      answer:  16
+      options: 17 / 18 / 16 / 15
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 6 and two sides of width 2.", "Perimeter = 2 × (6 + 2) = 2 × 8 = 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e155fba9760341e0f367  seed 44  [cloze]
+      stem:    A square garden has a side of 9 m. How much fencing is needed to go all the way around it?
+      answer:  36
+      options: 36 / 37 / 38 / 35
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 9 units long.", "Perimeter = 4 × 9 = 36."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 02da1111c73f0cf738c1  seed 45  [mcq]
+      stem:    A square garden has a side of 7 m. How much fencing is needed to go all the way around it?
+      answer:  28
+      options: 27 / 28 / 29 / 30
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 7 units long.", "Perimeter = 4 × 7 = 28."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fb92e0258132b8bf471e  seed 46  [mcq]
+      stem:    A rectangular garden is 8 m long and 1 m wide. How much fencing is needed to go all the way around it?
+      answer:  18
+      options: 17 / 19 / 18 / 20
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 8 and two sides of width 1.", "Perimeter = 2 × (8 + 1) = 2 × 9 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 07a249b322e9b70781af  seed 500  [mcq]
+      stem:    A square garden has a side of 17 m. How much fencing is needed to go all the way around it?
+      answer:  68
+      options: 70 / 67 / 69 / 68
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 17 units long.", "Perimeter = 4 × 17 = 68."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0b1727d344da537072e4  seed 501  [mcq]
+      stem:    A triangular flower bed has sides 10 m, 21 m, and 17 m. How much edging is needed to go all the way around it?
+      answer:  48
+      options: 47 / 50 / 49 / 48
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 21 + 17 = 48."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3c59d6efef914b4dd32e  seed 502  [cloze]
+      stem:    A triangular flower bed has sides 12 m, 6 m, and 17 m. How much edging is needed to go all the way around it?
+      answer:  35
+      options: 34 / 36 / 35 / 37
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 12 + 6 + 17 = 35."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 39cd9aa28f29bc11a44b  seed 600  [mcq]
+      stem:    A square garden has a side of 6 m. How much fencing is needed to go all the way around it?
+      answer:  24
+      options: 26 / 25 / 24 / 23
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 6 units long.", "Perimeter = 4 × 6 = 24."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 90fee1c4ee9ce68ce455  seed 601  [cloze]
+      stem:    A rectangular garden is 5 m long and 1 m wide. How much fencing is needed to go all the way around it?
+      answer:  12
+      options: 11 / 12 / 14 / 13
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 1.", "Perimeter = 2 × (5 + 1) = 2 × 6 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample af73070257587d71823a  seed 603  [mcq]
+      stem:    A triangular flower bed has sides 3 m, 9 m, and 11 m. How much edging is needed to go all the way around it?
+      answer:  23
+      options: 24 / 23 / 25 / 22
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 3 + 9 + 11 = 23."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 336b2f72405588a83a09  seed 604  [cloze]
+      stem:    A rectangular garden is 5 m long and 4 m wide. How much fencing is needed to go all the way around it?
+      answer:  18
+      options: 17 / 18 / 19 / 20
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 4.", "Perimeter = 2 × (5 + 4) = 2 × 9 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 652044206e41a65ce042  seed 700  [cloze]
+      stem:    A rectangular garden is 5 m long and 4 m wide. How much fencing is needed to go all the way around it?
+      answer:  18
+      options: 17 / 19 / 18 / 20
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 4.", "Perimeter = 2 × (5 + 4) = 2 × 9 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 699d98b5e138bf169dc8  seed 701  [mcq]
+      stem:    🏀 Coach Roel has a math challenge about basketballs. A triangular flower bed has sides 5 m, 8 m, and 5 m. How much edging is needed to go all the way around it?
+      answer:  18
+      options: 17 / 19 / 18 / 20
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 5 + 8 + 5 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0e9dadf3a39f93c2450d  seed 702  [cloze]
+      stem:    🏐 Ate Alyssa has a math challenge about whistles. A rectangular garden is 4 m long and 1 m wide. How much fencing is needed to go all the way around it?
+      answer:  10
+      options: 10 / 9 / 11 / 12
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 4 and two sides of width 1.", "Perimeter = 2 × (4 + 1) = 2 × 5 = 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 31c366bd6d8a9cb0f7d7  seed 800  [cloze]
+      stem:    A triangular flower bed has sides 16 m, 19 m, and 5 m. How much edging is needed to go all the way around it?
+      answer:  40
+      options: 40 / 39 / 42 / 41
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 16 + 19 + 5 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 38d92bdf04ef8d0dbdbb  seed 900  [mcq]
+      stem:    A triangular flower bed has sides 1 m, 2 m, and 2 m. How much edging is needed to go all the way around it?
+      answer:  5
+      options: 7 / 4 / 5 / 6
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 1 + 2 + 2 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 24483887406779f3e775  seed 901  [mcq]
+      stem:    A square garden has a side of 2 m. How much fencing is needed to go all the way around it?
+      answer:  8
+      options: 7 / 8 / 10 / 9
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 2 units long.", "Perimeter = 4 × 2 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f97b726eb749bedf9d67  seed 1000  [cloze]
+      stem:    A square garden has a side of 11 m. How much fencing is needed to go all the way around it?
+      answer:  44
+      options: 43 / 44 / 46 / 45
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 11 units long.", "Perimeter = 4 × 11 = 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 84db8c4e152d9b2e35a2  seed 1001  [cloze]
+      stem:    A rectangular garden is 5 m long and 1 m wide. How much fencing is needed to go all the way around it?
+      answer:  12
+      options: 13 / 11 / 14 / 12
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 1.", "Perimeter = 2 × (5 + 1) = 2 × 6 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 44f19057b319cacac133  seed 1002  [cloze]
+      stem:    A triangular flower bed has sides 10 m, 7 m, and 7 m. How much edging is needed to go all the way around it?
+      answer:  24
+      options: 23 / 24 / 26 / 25
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 7 + 7 = 24."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

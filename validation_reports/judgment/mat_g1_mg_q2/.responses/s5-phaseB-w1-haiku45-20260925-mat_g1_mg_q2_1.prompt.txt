@@ -1,0 +1,213 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g1_mg_q2_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q2_1
+PACKET DIGEST: 832785d29f6edd40b3ff763279c2628ada26cd2c67301d59d4e6b76737755dc5
+COMPETENCY (Grade 1, Quarter 2, None):
+Compare lengths and distances using non-standard units.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare: Compare
+  lengths: lengths
+  distances: distances
+  non_standard_units: non-standard units
+
+SAMPLES (every one of these is real rendered output):
+  sample 97a1399803c183295456  seed 42  [cloze]
+      stem:    Which is shorter: 2 paperclips or 6 paperclips?
+      answer:  2
+      options: 2 / 6 / 1 / 3
+      hints:   ["Compare 2 paperclips and 6 paperclips.", "6 is more than 2.", "The shorter length is 2 paperclips."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ecadea911a55979903cc  seed 43  [mcq]
+      stem:    Which is longer: 6 paperclips or 4 paperclips?
+      answer:  6
+      options: 4 / 5 / 6 / 7
+      hints:   ["Compare 6 paperclips and 4 paperclips.", "6 is more than 4.", "The longer length is 6 paperclips."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9156c40c5378ea3902ba  seed 44  [cloze]
+      stem:    The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 4 blocks. Which distance is shorter?
+      answer:  3
+      options: 4 / 5 / 3 / 2
+      hints:   ["Compare 3 blocks and 4 blocks.", "4 is more than 3.", "The shorter distance is 3 blocks."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4b18da8ed44aa5b52cb0  seed 45  [mcq]
+      stem:    The distance from the bench to the tree is 8 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?
+      answer:  8
+      options: 8 / 10 / 9 / 7
+      hints:   ["Compare 8 blocks and 9 blocks.", "9 is more than 8.", "The shorter distance is 8 blocks."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c38736a55d295c692458  seed 46  [mcq]
+      stem:    Which is longer: 8 paperclips or 2 paperclips?
+      answer:  8
+      options: 8 / 9 / 7 / 2
+      hints:   ["Compare 8 paperclips and 2 paperclips.", "8 is more than 2.", "The longer length is 8 paperclips."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a5010a662d4bed396cea  seed 500  [mcq]
+      stem:    The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?
+      answer:  9
+      options: 6 / 9 / 10 / 8
+      hints:   ["Compare 9 blocks and 6 blocks.", "9 is more than 6.", "The longer distance is 9 blocks."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2fed3365c1ced6f43025  seed 501  [mcq]
+      stem:    The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 7 hands. Which distance is shorter?
+      answer:  6
+      options: 6 / 7 / 5 / 8
+      hints:   ["Compare 6 hands and 7 hands.", "7 is more than 6.", "The shorter distance is 6 hands."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample bb72fb08b00892848f5c  seed 502  [cloze]
+      stem:    The distance from the bench to the tree is 7 hands. The distance from the gate to the tree is 4 hands. Which distance is longer?
+      answer:  7
+      options: 6 / 7 / 8 / 4
+      hints:   ["Compare 7 hands and 4 hands.", "7 is more than 4.", "The longer distance is 7 hands."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ee914c1a7e49478126d7  seed 600  [mcq]
+      stem:    The distance from the bench to the tree is 7 blocks. The distance from the gate to the tree is 9 blocks. Which distance is shorter?
+      answer:  7
+      options: 7 / 9 / 8 / 6
+      hints:   ["Compare 7 blocks and 9 blocks.", "9 is more than 7.", "The shorter distance is 7 blocks."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f27e0a6f9959db6b9a0b  seed 700  [cloze]
+      stem:    Which is longer: 5 hands or 9 hands?
+      answer:  9
+      options: 9 / 10 / 5 / 8
+      hints:   ["Compare 5 hands and 9 hands.", "9 is more than 5.", "The longer length is 9 hands."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f214bd72057844cf4873  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 9 hands. Which distance is shorter?
+      answer:  6
+      options: 6 / 5 / 9 / 7
+      hints:   ["Compare 6 hands and 9 hands.", "9 is more than 6.", "The shorter distance is 6 hands."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b02eaf9bbda0aa7e781b  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Which is longer: 4 paperclips or 2 paperclips?
+      answer:  4
+      options: 3 / 2 / 4 / 5
+      hints:   ["Compare 4 paperclips and 2 paperclips.", "4 is more than 2.", "The longer length is 4 paperclips."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5a80e89e5811a7dd9a9c  seed 800  [cloze]
+      stem:    The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 2 hands. Which distance is shorter?
+      answer:  2
+      options: 9 / 2 / 1 / 3
+      hints:   ["Compare 9 hands and 2 hands.", "9 is more than 2.", "The shorter distance is 2 hands."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 51c87571556e3b844569  seed 900  [mcq]
+      stem:    Which is longer: 5 crayons or 7 crayons?
+      answer:  7
+      options: 6 / 5 / 8 / 7
+      hints:   ["Compare 5 crayons and 7 crayons.", "7 is more than 5.", "The longer length is 7 crayons."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0329435e90a7fbe67e5d  seed 901  [mcq]
+      stem:    The distance from the bench to the tree is 6 blocks. The distance from the gate to the tree is 3 blocks. Which distance is longer?
+      answer:  6
+      options: 5 / 7 / 3 / 6
+      hints:   ["Compare 6 blocks and 3 blocks.", "6 is more than 3.", "The longer distance is 6 blocks."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 323502ab74cdb0ad5744  seed 1000  [cloze]
+      stem:    The distance from the bench to the tree is 3 blocks. The distance from the gate to the tree is 8 blocks. Which distance is shorter?
+      answer:  3
+      options: 4 / 2 / 8 / 3
+      hints:   ["Compare 3 blocks and 8 blocks.", "8 is more than 3.", "The shorter distance is 3 blocks."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample c6e2deab738c40f3b8c9  seed 1001  [cloze]
+      stem:    Which is longer: 5 paperclips or 3 paperclips?
+      answer:  5
+      options: 3 / 5 / 4 / 6
+      hints:   ["Compare 5 paperclips and 3 paperclips.", "5 is more than 3.", "The longer length is 5 paperclips."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 6c93eec33123c961e097  seed 1002  [cloze]
+      stem:    The distance from the bench to the tree is 8 hands. The distance from the gate to the tree is 5 hands. Which distance is shorter?
+      answer:  5
+      options: 6 / 5 / 8 / 4
+      hints:   ["Compare 8 hands and 5 hands.", "8 is more than 5.", "The shorter distance is 5 hands."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

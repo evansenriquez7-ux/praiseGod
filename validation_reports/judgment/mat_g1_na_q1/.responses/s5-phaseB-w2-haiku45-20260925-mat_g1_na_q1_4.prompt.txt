@@ -1,0 +1,233 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb2-mat_g1_na_q1_4-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g1_na_q1_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb2-mat_g1_na_q1_4-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_4
+PACKET DIGEST: 94b74b8c6a169c1149ad6bcf4882e55ba1ea2851ae347c61f88ca3350275651d
+COMPETENCY (Grade 1, Quarter 1, None):
+Order numbers up to 20 from smallest to largest, and vice versa.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  order: Order
+  numbers: numbers
+  up_to_20: up to 20
+  smallest_to_largest: smallest to largest
+  vice_versa: vice versa
+
+SAMPLES (every one of these is real rendered output):
+  sample b91eeaaf418cc501bfd7  seed 42  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 9, 10, 8
+      answer:  [10, 9, 8]
+      hints:   ["Numbers to order: 8, 9, 10.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10, 9, 8."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 8bcb15adaa92921f22b0  seed 43  [sort_order]
+      stem:    Ana counted marbles collected by 3 friends: 1, 4, 15. Arrange the counts from smallest to largest.
+      answer:  [1, 4, 15]
+      hints:   ["Numbers to order: 1, 4, 15.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 4, 15."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample c73c3a01e162753330d0  seed 44  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 5, 3, 1, 10
+      answer:  [1, 3, 5, 10]
+      hints:   ["Numbers to order: 1, 3, 5, 10.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 3, 5, 10."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 4528d5bce60528a30ceb  seed 45  [sort_order]
+      stem:    Ana counted seashells collected by 3 friends: 1, 3, 4. Arrange the counts from largest to smallest.
+      answer:  [4, 3, 1]
+      hints:   ["Numbers to order: 1, 3, 4.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 4, 3, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 6d41b4c876c757656d94  seed 46  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 17, 8, 20
+      answer:  [8, 17, 20]
+      hints:   ["Numbers to order: 8, 17, 20.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 8, 17, 20."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample ac9fa94f67e0177608a1  seed 500  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 13, 20, 18
+      answer:  [13, 18, 20]
+      hints:   ["Numbers to order: 13, 18, 20.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 13, 18, 20."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 5ca4fdcd62fb64ad020a  seed 501  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 20, 11, 17
+      answer:  [20, 17, 11]
+      hints:   ["Numbers to order: 11, 17, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 17, 11."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 15ff5e9b0e7dbda4ae15  seed 502  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 6, 14, 20
+      answer:  [20, 14, 6]
+      hints:   ["Numbers to order: 6, 14, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 14, 6."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 783ac5df4d5208e0fca2  seed 600  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 19, 20, 5
+      answer:  [20, 19, 5]
+      hints:   ["Numbers to order: 5, 19, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 19, 5."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample cb3c708535dfc2ee9fce  seed 601  [ordering]
+      stem:    Ben counted storybooks collected by 3 friends: 2, 10, 11. Arrange the counts from smallest to largest.
+      answer:  [2, 10, 11]
+      hints:   ["Numbers to order: 2, 10, 11.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 2, 10, 11."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 83d68354aba5baf9ac50  seed 602  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 7, 14, 12
+      answer:  [7, 12, 14]
+      hints:   ["Numbers to order: 7, 12, 14.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 7, 12, 14."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 88736eb0fb0f29664594  seed 603  [sort_order]
+      stem:    Kuya Pat counted stickers collected by 4 friends: 1, 3, 7, 11. Arrange the counts from largest to smallest.
+      answer:  [11, 7, 3, 1]
+      hints:   ["Numbers to order: 1, 3, 7, 11.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 11, 7, 3, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample e9af5a27b588bc9d299e  seed 604  [sort_order]
+      stem:    Maria counted seashells collected by 3 friends: 3, 5, 6. Arrange the counts from smallest to largest.
+      answer:  [3, 5, 6]
+      hints:   ["Numbers to order: 3, 5, 6.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 3, 5, 6."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 93d6185fbbb19e378ac0  seed 605  [sort_order]
+      stem:    Ana counted marbles collected by 4 friends: 1, 6, 8, 10. Arrange the counts from largest to smallest.
+      answer:  [10, 8, 6, 1]
+      hints:   ["Numbers to order: 1, 6, 8, 10.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 10, 8, 6, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample a5acc1de4f227afbdaf6  seed 606  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 12, 15, 17
+      answer:  [17, 15, 12]
+      hints:   ["Numbers to order: 12, 15, 17.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 17, 15, 12."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample a4f20e21a4e3e640da4a  seed 700  [sort_order]
+      stem:    Liza counted seashells collected by 3 friends: 1, 7, 17. Arrange the counts from smallest to largest.
+      answer:  [1, 7, 17]
+      hints:   ["Numbers to order: 1, 7, 17.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 7, 17."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 0294d5111445cade8127  seed 701  [ordering]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Arrange these numbers from largest to smallest: 19, 20, 8
+      answer:  [20, 19, 8]
+      hints:   ["Numbers to order: 8, 19, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 19, 8."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 348d2e2ba3c9ddb549e0  seed 702  [ordering]
+      stem:    🏀 Isko has a math challenge about basketballs. Arrange these numbers from largest to smallest: 5, 7, 9
+      answer:  [9, 7, 5]
+      hints:   ["Numbers to order: 5, 7, 9.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 9, 7, 5."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 053f6aa01bf7a1f947c0  seed 800  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 1, 15, 14, 16
+      answer:  [1, 14, 15, 16]
+      hints:   ["Numbers to order: 1, 14, 15, 16.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 14, 15, 16."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 896cdc42d5cb28888826  seed 801  [ordering]
+      stem:    Kuya Pat counted pencils collected by 3 friends: 13, 16, 20. Arrange the counts from largest to smallest.
+      answer:  [20, 16, 13]
+      hints:   ["Numbers to order: 13, 16, 20.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 20, 16, 13."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 12cc42a6c7b83dec140d  seed 900  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 2, 3, 1
+      answer:  [3, 2, 1]
+      hints:   ["Numbers to order: 1, 2, 3.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 3, 2, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 62a31f3e41a9618aa3c6  seed 901  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 2, 3, 1
+      answer:  [1, 2, 3]
+      hints:   ["Numbers to order: 1, 2, 3.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 2, 3."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample f6701b82ec93b19b1001  seed 1000  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 17, 8, 7, 16
+      answer:  [17, 16, 8, 7]
+      hints:   ["Numbers to order: 7, 8, 16, 17.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 17, 16, 8, 7."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "hint_gated"}
+  sample b3e23904b97a4e55ea41  seed 1001  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 8, 12, 18
+      answer:  [18, 12, 8]
+      hints:   ["Numbers to order: 8, 12, 18.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 18, 12, 8."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "mastery_drill"}
+  sample 5a0baf5ce1cbad27aba7  seed 1002  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 7, 9, 4
+      answer:  [9, 7, 4]
+      hints:   ["Numbers to order: 4, 7, 9.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 9, 7, 4."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "scaffolded"}
+

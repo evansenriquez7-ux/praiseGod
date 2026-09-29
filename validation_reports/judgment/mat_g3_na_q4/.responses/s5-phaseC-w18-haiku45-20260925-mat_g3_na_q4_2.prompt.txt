@@ -1,0 +1,277 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q4_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_2
+PACKET DIGEST: 12adef2fe3abb069c814fe70ca81dc70c72ac14eab78f6bfbcfbe105415d8b38
+COMPETENCY (Grade 3, Quarter 4, None):
+Find the missing number in a number sentence involving multiplication or division by 6, 7, 8, and 9.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  find_missing_number: Find the missing number
+  number_sentence: number sentence
+  multiplication: multiplication
+  division: division
+  6_7_8_9: 6, 7, 8, and 9
+
+SAMPLES (every one of these is real rendered output):
+  sample c9f822fff971a49a3c36  seed 42  [read_mcq]
+      stem:    Both sides balance evenly. ? × 6 = 12. What is the missing value?
+      answer:  2
+      options: 2 / 12 / 3 / 1
+      hints:   ["The number statement is: ___ × 6 = 12", "Use division to undo the operation.", "12 ÷ 6 = 2.", "Check: 2 × 6 = 12. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["? × 6", "12"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a054ad37fa446ab227d8  seed 43  [mcq]
+      stem:    What number goes in the blank: 60 ÷ 6 = ___?
+      answer:  10
+      options: 10 / 11 / 70 / 16
+      hints:   ["The number statement is: 60 ÷ 6 = ___", "We need to find what 60 ÷ 6 equals.", "Calculate: 60 ÷ 6 = 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 45f64fe1952df54a847a  seed 44  [cloze]
+      stem:    ___ ÷ 9 = 7
+      answer:  63
+      options: 7 / 9 / 63 / 54
+      hints:   ["We need to divide 63 by 9. The number being divided is 63; the number we divide by is 9.", "Ask: how many times does 9 fit into 63? 9 × 7 = 63.", "The quotient of 63 ÷ 9 = 7."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c7348da74456b0a9244d  seed 45  [true_false]
+      stem:    72 ÷ 8 = 9. True or False?
+      answer:  False
+      hints:   ["We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.", "Ask: how many times does 8 fit into 72? 8 × 9 = 72.", "The quotient of 72 ÷ 8 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2b7cbe3b60076fc09491  seed 46  [true_false]
+      stem:    In 18 ÷ 6 = ___, the missing number is 3. True or False?
+      answer:  True
+      hints:   ["The number statement is: 18 ÷ 6 = ___", "We need to find what 18 ÷ 6 equals.", "Calculate: 18 ÷ 6 = 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 134e47dfc22fddd59e17  seed 48  [error_detect]
+      stem:    Noel solved: "___ ÷ 6 = 9". Noel says the missing number is 54. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 54}
+      hints:   ["We need to divide 54 by 6. The number being divided is 54; the number we divide by is 6.", "Ask: how many times does 6 fit into 54? 6 × 9 = 54.", "The quotient of 54 ÷ 6 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 69a7c3f646b2d412fc05  seed 500  [true_false]
+      stem:    27 ÷ 4 = 3. True or False?
+      answer:  False
+      hints:   ["We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.", "Ask: how many times does 9 fit into 27? 9 × 3 = 27.", "The quotient of 27 ÷ 9 = 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 7407ce2065bb4e4a9275  seed 501  [mcq]
+      stem:    What divided by 9 equals 9?
+      answer:  81
+      options: 10 / 81 / 72 / 9
+      hints:   ["We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.", "Ask: how many times does 9 fit into 81? 9 × 9 = 81.", "The quotient of 81 ÷ 9 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e6b7759a987b5967964a  seed 502  [error_detect]
+      stem:    Dante solved: "___ ÷ 7 = 8". Dante says the missing number is 56. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 56}
+      hints:   ["We need to divide 56 by 7. The number being divided is 56; the number we divide by is 7.", "Ask: how many times does 7 fit into 56? 7 × 8 = 56.", "The quotient of 56 ÷ 7 = 8."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f96ab31d1e970e8ad786  seed 600  [mcq]
+      stem:    What divided by 8 equals 5?
+      answer:  40
+      options: 32 / 5 / 40 / 8
+      hints:   ["We need to divide 40 by 8. The number being divided is 40; the number we divide by is 8.", "Ask: how many times does 8 fit into 40? 8 × 5 = 40.", "The quotient of 40 ÷ 8 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ba8a0f6871b7a9854452  seed 601  [read_mcq]
+      stem:    Both sides balance evenly. 9 × ? = 63. What is the missing value?
+      answer:  7
+      options: 6 / 7 / 16 / 63
+      hints:   ["The number statement is: 9 × ___ = 63", "To find the missing number, use the opposite operation (division).", "63 ÷ 9 = 7.", "Check: 9 × 7 = 63. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["9 × ?", "63"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 185e227891d2ba0596e0  seed 602  [error_detect]
+      stem:    Jose solved: "___ ÷ 7 = 3". Jose says the missing number is 21. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 21}
+      hints:   ["We need to divide 21 by 7. The number being divided is 21; the number we divide by is 7.", "Ask: how many times does 7 fit into 21? 7 × 3 = 21.", "The quotient of 21 ÷ 7 = 3."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 8b1a5d02951764759f4b  seed 603  [mcq]
+      stem:    What number goes in the blank: 72 ÷ 8 = ___?
+      answer:  9
+      options: 9 / 17 / 81 / 10
+      hints:   ["The number statement is: 72 ÷ 8 = ___", "We need to find what 72 ÷ 8 equals.", "Calculate: 72 ÷ 8 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c7f090be1a3331bf95f1  seed 604  [cloze]
+      stem:    8 × 5 = ___. What is the missing number?
+      answer:  40
+      options: 48 / 40 / 45 / 41
+      hints:   ["The number statement is: 8 × 5 = ___", "We need to find what 8 × 5 equals.", "Calculate: 8 × 5 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a409139fc83a20a16e69  seed 605  [true_false]
+      stem:    In 45 ÷ 9 = ___, the missing number is 50. True or False?
+      answer:  False
+      hints:   ["The number statement is: 45 ÷ 9 = ___", "We need to find what 45 ÷ 9 equals.", "Calculate: 45 ÷ 9 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4e1edc7d989eaf0a4bf0  seed 606  [mcq]
+      stem:    What number goes in the blank: ___ × 8 = 32?
+      answer:  4
+      options: 5 / 40 / 36 / 4
+      hints:   ["The number statement is: ___ × 8 = 32", "Use division to undo the operation.", "32 ÷ 8 = 4.", "Check: 4 × 8 = 32. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 055358d9d84300daff53  seed 607  [read_mcq]
+      stem:    Both sides balance evenly. ? × 6 = 48. What is the missing value?
+      answer:  8
+      options: 8 / 14 / 9 / 48
+      hints:   ["The number statement is: ___ × 6 = 48", "Use division to undo the operation.", "48 ÷ 6 = 8.", "Check: 8 × 6 = 48. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["? × 6", "48"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample eba8bc03054f2b7fa91c  seed 608  [cloze]
+      stem:    9 × 2 = ___
+      answer:  18
+      options: 19 / 27 / 20 / 18
+      hints:   ["The number statement is: 9 × 2 = ___", "We need to find what 9 × 2 equals.", "Calculate: 9 × 2 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e2a10c6b5b82e2bf1214  seed 700  [cloze]
+      stem:    8 × 9 = ___
+      answer:  72
+      options: 80 / 73 / 81 / 72
+      hints:   ["The number statement is: 8 × 9 = ___", "We need to find what 8 × 9 equals.", "Calculate: 8 × 9 = 72."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7fa1cf4209b86eadf47f  seed 701  [true_false]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. 45 ÷ 45 = 5. True or False?
+      answer:  True
+      hints:   ["We need to divide 45 by 9. The number being divided is 45; the number we divide by is 9.", "Ask: how many times does 9 fit into 45? 9 × 5 = 45.", "The quotient of 45 ÷ 9 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c8d0bfc0a57d52437191  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. 6 × 2 = ___
+      answer:  12
+      options: 14 / 18 / 12 / 13
+      hints:   ["The number statement is: 6 × 2 = ___", "We need to find what 6 × 2 equals.", "Calculate: 6 × 2 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6dc264d1010848427d1b  seed 800  [cloze]
+      stem:    ___ ÷ 9 = 7
+      answer:  63
+      options: 7 / 54 / 63 / 9
+      hints:   ["We need to divide 63 by 9. The number being divided is 63; the number we divide by is 9.", "Ask: how many times does 9 fit into 63? 9 × 7 = 63.", "The quotient of 63 ÷ 9 = 7."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample da34b95b8b603609a47a  seed 900  [mcq]
+      stem:    What number goes in the blank: ___ × 7 = 7?
+      answer:  1
+      options: 1 / 8 / 2 / 14
+      hints:   ["The number statement is: ___ × 7 = 7", "Use division to undo the operation.", "7 ÷ 7 = 1.", "Check: 1 × 7 = 7. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 862eb6c668c42b305b45  seed 901  [mcq]
+      stem:    What divided by 7 equals 2?
+      answer:  14
+      options: 14 / 3 / 2 / 7
+      hints:   ["We need to divide 14 by 7. The number being divided is 14; the number we divide by is 7.", "Ask: how many times does 7 fit into 14? 7 × 2 = 14.", "The quotient of 14 ÷ 7 = 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8a8bdcf387e3bafc71a8  seed 1000  [cloze]
+      stem:    ___ ÷ 6 = 7
+      answer:  42
+      options: 6 / 36 / 7 / 42
+      hints:   ["We need to divide 42 by 6. The number being divided is 42; the number we divide by is 6.", "Ask: how many times does 6 fit into 42? 6 × 7 = 42.", "The quotient of 42 ÷ 6 = 7."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 2b1aa51d4128c5d45813  seed 1001  [cloze]
+      stem:    6 × 6 = ___
+      answer:  36
+      options: 36 / 42 / 35 / 37
+      hints:   ["The number statement is: 6 × 6 = ___", "We need to find what 6 × 6 equals.", "Calculate: 6 × 6 = 36."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample f95d14cc2d33478688de  seed 1002  [error_detect]
+      stem:    Manny solved: "___ ÷ 7 = 6". Manny says the missing number is 6. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 42}
+      hints:   ["We need to divide 42 by 7. The number being divided is 42; the number we divide by is 7.", "Ask: how many times does 7 fit into 42? 7 × 6 = 42.", "The quotient of 42 ÷ 7 = 6."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

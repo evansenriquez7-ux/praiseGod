@@ -77,16 +77,24 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-run_all (2026-09-25, before Phase B filings)   EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
-§5 (module)          2016 (start of day) -> 2050 (Phase A staled 27 reviews) -> 1553 (after Phase B)
-§6F                  180: 173 CONTRADICTED + 7 STALE attestations
-v2 corpus            60 reviews: 20 PASS / 21 CONCERN / 19 FAIL -- 29 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
-owed (Phase C)       91 nodes with no schema-v2 review
+run_all (2026-09-29) EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
+stage ledger          scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+§5 (module)           1440 findings; 1 STALE review (mat_g2_mg_q4_2, known set-order defect)
+§5 (run_all stage)    1441 findings
+§6F                   180: 173 CONTRADICTED + 7 STALE attestations
+v2 corpus             151/151: 56 PASS / 55 CONCERN / 40 FAIL
+                       120 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
+legacy queue          COMPLETE: 0 v1 reviews on disk
+proof artifacts       185 mutation proofs, 6 release shards, benchmark and frontend all fresh
+live input digest     618c217d74edb6f5
 ```
 
-The tree was left CERTIFIED at digest `35171c2cf3c5c288` with H-06 released. **Confirm both by execution**
-(`tests/tree_state.py`, `tests/hardening_status.py`). If a command disagrees with this file, believe the
-command.
+Phase C is complete. The 91 formerly owed nodes were independently reviewed on Claude Haiku 4.5; 76
+Phase B/C provenance references were rebuilt from digest-verified original scratch replies without
+changing verdict content. The filer now refuses cross-node raw-response overwrites, and its mutation is
+DETECTED. H-06 remains open only for Phase D capability/content work and the named source batch. At this
+checkpoint the campaign intent is being closed and the lock released in a separate follow-up commit.
+If an executed command disagrees with this section, believe the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 

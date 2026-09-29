@@ -1,0 +1,331 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc9-mat_g3_dp_q3_3-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_dp_q3_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_3-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_dp_q3_3
+PACKET DIGEST: d3bdfbefa30261559e5ca8019e0878bfe52515f8bfdd8761eb347693e28202aa
+COMPETENCY (Grade 3, Quarter 3, None):
+Solve problems using data presented in a single bar graph (horizontal and vertical).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  data_presented: data presented
+  single_bar_graph: single bar graph
+  horizontal: horizontal
+  vertical: vertical
+
+SAMPLES (every one of these is real rendered output):
+  sample ef9d4e07442f1993c00e  seed 42  [read_mcq]
+      stem:    Look at the vertical bar graph. How many total items were recorded for apples and mangoes together?
+      answer:  80
+      options: 80 / 59 / 60 / 31
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 72, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "apples", "bananas", "mangoes", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1b183f30c98015247b3f  seed 43  [read_mcq]
+      stem:    Look at the vertical bar graph. If each item for basketball costs ₱10, what is the total cost for basketball?
+      answer:  600
+      options: 60 / 45 / 61 / 600
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 74, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "basketball", "volleyball", "swimming", "running", "Your answers:", "basketball:", "volleyball:", "swimming:", "running:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 98dba30c7a1e98a67a4d  seed 44  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many more items were recorded for dogs than for cats?
+      answer:  20
+      options: 20 / 23 / 35 / 14
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "cats", "dogs", "birds", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 974c4e2c92e4e4eaf827  seed 45  [read_mcq]
+      stem:    Look at the horizontal bar graph. If each item for Grade 1 costs ₱10, what is the total cost for Grade 1?
+      answer:  400
+      options: 400 / 25 / 40 / 39
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9a6522e01270ef2d1740  seed 46  [read_mcq]
+      stem:    Look at the vertical bar graph. How many total items were recorded for Grade 2 and Grade 3 together?
+      answer:  100
+      options: 100 / 6 / 50 / 43
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 792ddc73b40d3e969d1d  seed 500  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many more items were recorded for February than for January?
+      answer:  20
+      options: 52 / 20 / 44 / 45
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 104, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "January", "February", "March", "April", "May", "June", "Your answers:", "January:", "February:", "March:", "April:", "May:", "June:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 545527fa4412fee556ac  seed 501  [read_mcq]
+      stem:    Look at the horizontal bar graph. If each item for tulips costs ₱10, what is the total cost for tulips?
+      answer:  550
+      options: 40 / 54 / 39 / 550
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 100, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "roses", "sunflowers", "tulips", "daisies", "lilies", "orchids", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:", "lilies:", "orchids:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ce08637ce1cd48ea0dcb  seed 502  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many more items were recorded for English than for Science?
+      answer:  40
+      options: 53 / 61 / 60 / 40
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 100, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "Math", "Science", "English", "Art", "PE", "Music", "Your answers:", "Math:", "Science:", "English:", "Art:", "PE:", "Music:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7bd0f4fbee077e915be4  seed 600  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many more items were recorded for daisies than for sunflowers?
+      answer:  10
+      options: 55 / 40 / 10 / 54
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 70, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "roses", "sunflowers", "tulips", "daisies", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6116a4be4f14a25ea30c  seed 601  [read_mcq]
+      stem:    Look at the vertical bar graph. If 15 more items are added to apples, what will be the new total for apples?
+      answer:  25
+      options: 36 / 25 / 9 / 40
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 72, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "apples", "bananas", "mangoes", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 59310d9f637ad9bc24f9  seed 602  [read_mcq]
+      stem:    Look at the horizontal bar graph. If 5 more items are added to Art, what will be the new total for Art?
+      answer:  35
+      options: 42 / 35 / 30 / 29
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "50", "60", "70", "Math", "Science", "English", "Art", "Your answers:", "Math:", "Science:", "English:", "Art:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2e438390408c6f19fd2c  seed 603  [read_mcq]
+      stem:    Look at the vertical bar graph. How many more items were recorded for roses than for sunflowers?
+      answer:  20
+      options: 41 / 40 / 20 / 45
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 54, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "20", "40", "60", "80", "roses", "sunflowers", "tulips", "daisies", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 905ff5ec9ffef22afbc2  seed 604  [read_mcq]
+      stem:    Look at the vertical bar graph. If each item for Thursday costs ₱5, what is the total cost for Thursday?
+      answer:  325
+      options: 48 / 34 / 325 / 35
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 74, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "Monday", "Tuesday", "Wednesday", "Thursday", "Your answers:", "Monday:", "Tuesday:", "Wednesday:", "Thursday:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 88161a46aff54f2c91d9  seed 605  [read_mcq]
+      stem:    Look at the vertical bar graph. If each item for Grade 2 costs ₱3, what is the total cost for Grade 2?
+      answer:  120
+      options: 44 / 120 / 25 / 45
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 66, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1b19633086056d557c46  seed 700  [read_mcq]
+      stem:    Look at the vertical bar graph. If each item for Monday costs ₱2, what is the total cost for Monday?
+      answer:  80
+      options: 41 / 80 / 40 / 47
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "Monday", "Tuesday", "Wednesday", "Thursday", "Your answers:", "Monday:", "Tuesday:", "Wednesday:", "Thursday:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a6c97e6b43226e804cc4  seed 701  [read_mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Look at the horizontal bar graph. How many total items were recorded for February and April together?
+      answer:  55
+      options: 55 / 10 / 32 / 11
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 74, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "January", "February", "March", "April", "Your answers:", "January:", "February:", "March:", "April:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 373b3d16ffa795085c1f  seed 702  [read_mcq]
+      stem:    🐕 Ate Beng has a math challenge about cat toys. Look at the vertical bar graph. How many total items were recorded for English and Science together?
+      answer:  135
+      options: 41 / 65 / 135 / 4
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "Math", "Science", "English", "Art", "Your answers:", "Math:", "Science:", "English:", "Art:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 05985e451710aa81a354  seed 800  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many more items were recorded for grapes than for bananas?
+      answer:  5
+      options: 5 / 39 / 40 / 46
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 92, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "apples", "bananas", "mangoes", "grapes", "oranges", "strawberries", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:", "oranges:", "strawberries:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a9f405c693a51abf1e78  seed 801  [read_mcq]
+      stem:    Look at the vertical bar graph. If 15 more items are added to Monday, what will be the new total for Monday?
+      answer:  75
+      options: 60 / 61 / 45 / 75
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 80, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "Monday", "Tuesday", "Wednesday", "Thursday", "Your answers:", "Monday:", "Tuesday:", "Wednesday:", "Thursday:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c5b504d3eaf7aca37608  seed 900  [read_mcq]
+      stem:    Look at the vertical bar graph. If each item for roses costs ₱10, what is the total cost for roses?
+      answer:  100
+      options: 13 / 11 / 100 / 10
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 3, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "roses", "sunflowers", "tulips", "Your answers:", "roses:", "sunflowers:", "tulips:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c3b409eb66494aa36fbc  seed 901  [read_mcq]
+      stem:    Look at the horizontal bar graph. If 20 more items are added to volleyball, what will be the new total for volleyball?
+      answer:  35
+      options: 35 / 20 / 15 / 11
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 53, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 3, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "basketball", "volleyball", "swimming", "Your answers:", "basketball:", "volleyball:", "swimming:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c3d5bf644450c20b3e36  seed 1000  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many total items were recorded for fish and cats together?
+      answer:  75
+      options: 75 / 35 / 28 / 34
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "cats", "dogs", "birds", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fd528c8487842c44c127  seed 1001  [read_mcq]
+      stem:    Look at the vertical bar graph. How many total items were recorded for Thursday and Wednesday together?
+      answer:  80
+      options: 40 / 10 / 69 / 80
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "Monday", "Tuesday", "Wednesday", "Thursday", "Your answers:", "Monday:", "Tuesday:", "Wednesday:", "Thursday:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4543f554683a93e1a142  seed 1002  [read_mcq]
+      stem:    Look at the horizontal bar graph. How many total items were recorded for Monday and Wednesday together?
+      answer:  40
+      options: 15 / 40 / 16 / 23
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "Monday", "Tuesday", "Wednesday", "Thursday", "Your answers:", "Monday:", "Tuesday:", "Wednesday:", "Thursday:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

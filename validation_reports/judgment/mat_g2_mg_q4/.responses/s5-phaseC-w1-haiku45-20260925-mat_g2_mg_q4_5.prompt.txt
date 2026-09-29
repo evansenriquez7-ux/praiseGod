@@ -1,0 +1,253 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc1-mat_g2_mg_q4_5-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_mg_q4_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_5-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_5
+PACKET DIGEST: d43ccd284f4902021d866ad8fc0796b648fad91f62bdfeab2ab4e01c3814f3c1
+COMPETENCY (Grade 2, Quarter 4, None):
+Find the perimeter of triangles, squares, and rectangles.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  find: Find
+  perimeter: perimeter
+  triangles: triangles
+  squares: squares
+  rectangles: rectangles
+
+SAMPLES (every one of these is real rendered output):
+  sample 999256693c02304ae08c  seed 42  [cloze]
+      stem:    A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?
+      answer:  5
+      options: 4 / 5 / 6 / 7
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 2 + 1 + 2 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 98cb2d2b556c71efa3e6  seed 43  [mcq]
+      stem:    A rectangle has sides 6 cm and 2 cm. What is its perimeter?
+      answer:  16
+      options: 15 / 17 / 18 / 16
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 6 and two sides of width 2.", "Perimeter = 2 × (6 + 2) = 2 × 8 = 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2334ba8faa4b334a08fe  seed 44  [cloze]
+      stem:    A square has a side of 9 cm. What is its perimeter?
+      answer:  36
+      options: 35 / 38 / 37 / 36
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 9 units long.", "Perimeter = 4 × 9 = 36."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 738b70cd4faa889c4ff6  seed 45  [mcq]
+      stem:    A square has a side of 7 cm. What is its perimeter?
+      answer:  28
+      options: 28 / 29 / 30 / 27
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 7 units long.", "Perimeter = 4 × 7 = 28."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 190873c02dddb72e0038  seed 46  [mcq]
+      stem:    A rectangle has sides 8 cm and 1 cm. What is its perimeter?
+      answer:  18
+      options: 20 / 18 / 17 / 19
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 8 and two sides of width 1.", "Perimeter = 2 × (8 + 1) = 2 × 9 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 629aaa2b27d3390891b9  seed 500  [mcq]
+      stem:    A square has a side of 17 cm. What is its perimeter?
+      answer:  68
+      options: 68 / 69 / 67 / 70
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 17 units long.", "Perimeter = 4 × 17 = 68."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 92582a1402d24ad007bd  seed 501  [mcq]
+      stem:    A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?
+      answer:  48
+      options: 49 / 48 / 50 / 47
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 21 + 17 = 48."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 279be2b28eb004822bc3  seed 502  [cloze]
+      stem:    A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?
+      answer:  35
+      options: 37 / 36 / 35 / 34
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 12 + 6 + 17 = 35."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e312a032c182d02b5486  seed 600  [mcq]
+      stem:    A square has a side of 6 cm. What is its perimeter?
+      answer:  24
+      options: 25 / 24 / 26 / 23
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 6 units long.", "Perimeter = 4 × 6 = 24."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fd9b06a5d05b1f256856  seed 601  [cloze]
+      stem:    A rectangular garden is 12 m long and 10 m wide. How much fencing is needed to go all the way around it?
+      answer:  44
+      options: 43 / 45 / 44 / 46
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 12 and two sides of width 10.", "Perimeter = 2 × (12 + 10) = 2 × 22 = 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8bc2a33c9bb8629b76f7  seed 602  [cloze]
+      stem:    A rectangle has sides 8 cm and 2 cm. What is its perimeter?
+      answer:  20
+      options: 21 / 20 / 22 / 19
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 8 and two sides of width 2.", "Perimeter = 2 × (8 + 2) = 2 × 10 = 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d72c13fabb68209ef734  seed 603  [mcq]
+      stem:    A square has a side of 3 cm. What is its perimeter?
+      answer:  12
+      options: 13 / 12 / 11 / 14
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 3 units long.", "Perimeter = 4 × 3 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2e3b2b4ba049031c3e44  seed 604  [cloze]
+      stem:    A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?
+      answer:  10
+      options: 12 / 9 / 11 / 10
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 2 + 4 + 4 = 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b84e4000bf6fe706de4b  seed 605  [mcq]
+      stem:    A rectangle has sides 11 cm and 7 cm. What is its perimeter?
+      answer:  36
+      options: 35 / 37 / 38 / 36
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 11 and two sides of width 7.", "Perimeter = 2 × (11 + 7) = 2 × 18 = 36."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample af65249d3e082ac88a4e  seed 700  [cloze]
+      stem:    A rectangle has sides 5 cm and 4 cm. What is its perimeter?
+      answer:  18
+      options: 18 / 20 / 17 / 19
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 4.", "Perimeter = 2 × (5 + 4) = 2 × 9 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 347f37d1c0c28f18d85c  seed 701  [mcq]
+      stem:    🏐 Romel has a math challenge about whistles. A triangle has sides 5 cm, 8 cm, and 5 cm. What is its perimeter?
+      answer:  18
+      options: 20 / 18 / 19 / 17
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 5 + 8 + 5 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c6fd65d177d1e6e0f72e  seed 702  [cloze]
+      stem:    🚴 Kuya Chad has a math challenge about wristbands. A rectangle has sides 4 cm and 1 cm. What is its perimeter?
+      answer:  10
+      options: 11 / 10 / 12 / 9
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 4 and two sides of width 1.", "Perimeter = 2 × (4 + 1) = 2 × 5 = 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b6cbee5c8595a090f859  seed 800  [cloze]
+      stem:    A triangle has sides 16 cm, 19 cm, and 5 cm. What is its perimeter?
+      answer:  40
+      options: 42 / 41 / 39 / 40
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 16 + 19 + 5 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 891b5bbc0a428e2ad5c1  seed 900  [mcq]
+      stem:    A triangle has sides 1 cm, 2 cm, and 2 cm. What is its perimeter?
+      answer:  5
+      options: 4 / 6 / 5 / 7
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 1 + 2 + 2 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4e82e446f0454cc1689b  seed 901  [mcq]
+      stem:    A square has a side of 2 cm. What is its perimeter?
+      answer:  8
+      options: 8 / 9 / 10 / 7
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 2 units long.", "Perimeter = 4 × 2 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 96b95e8be9fa3b713ddf  seed 1000  [cloze]
+      stem:    A square has a side of 11 cm. What is its perimeter?
+      answer:  44
+      options: 45 / 46 / 44 / 43
+      hints:   ["The perimeter is the total distance around the square.", "A square has 4 equal sides, each 11 units long.", "Perimeter = 4 × 11 = 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample e8804a053d6e698b9828  seed 1001  [cloze]
+      stem:    A rectangle has sides 5 cm and 1 cm. What is its perimeter?
+      answer:  12
+      options: 14 / 13 / 12 / 11
+      hints:   ["The perimeter is the total distance around the rectangle.", "A rectangle has two sides of length 5 and two sides of width 1.", "Perimeter = 2 × (5 + 1) = 2 × 6 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 2b0d84c00855fa046a03  seed 1002  [cloze]
+      stem:    A triangle has sides 10 cm, 7 cm, and 7 cm. What is its perimeter?
+      answer:  24
+      options: 26 / 24 / 25 / 23
+      hints:   ["The perimeter is the total distance around the triangle.", "Add all three sides: 10 + 7 + 7 = 24."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

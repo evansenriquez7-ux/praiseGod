@@ -1,0 +1,407 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q2_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q2_2
+PACKET DIGEST: 6abe1a0642ca213580b5da0fd00c0f40cfec9a55c17b893d1fcc4ac721d7073b
+COMPETENCY (Grade 2, Quarter 2, None):
+Solve problems involving addition with sums up to 1000, including problems involving money, with and without regrouping.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  involving: involving
+  addition: addition
+  sums_up_to_1000: sums up to 1000
+  problems: problems
+  money: money
+  regrouping: with and without regrouping
+
+SAMPLES (every one of these is real rendered output):
+  sample 3959b6d9583b84187a4b  seed 42  [mcq]
+      stem:    Start at 57. Count up 345 more. What number do you land on?
+      answer:  402
+      options: 402 / 401 / 403 / 412
+      hints:   ["We are adding two numbers: 57 and 345.", "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.", "Add the tens: 5 + 4 + 1 (carried) = 10.", "The sum is 57 + 345 = 402."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 56e12b0991185b848085  seed 43  [true_false]
+      stem:    Nanding bought a pencil for ₱784 and an eraser for ₱112. How much did Nanding spend in all? The answer is 672. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 784 and 112.", "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.", "Add the tens: 8 + 1 = 9.", "The sum is 784 + 112 = 896."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 84ae88c250ce97224e79  seed 44  [error_detect]
+      stem:    Rico solved this problem: "Coach Nora had ₱144 and received ₱480 more from Nanay. How much money does Coach Nora have in all?" Rico says the answer is 624. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 624}
+      hints:   ["We are adding two numbers: 144 and 480.", "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.", "Add the tens: 4 + 8 = 12.", "The sum is 144 + 480 = 624."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 375e9a674b43afda036b  seed 45  [read_mcq]
+      stem:    Ate Gab has ₱20 in one pocket and ₱20 in another pocket. How much money does Ate Gab have in total?
+      answer:  40
+      options: 35 / 45 / 39 / 40
+      hints:   ["You have these amounts: ['peso20', 'peso20'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso20 → running total = peso40.", "The total is peso40."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f3178a63e822dccf4618  seed 46  [cloze]
+      stem:    Ate Joy has ₱100 in one pocket and ₱556 in another pocket. How much money does Ate Joy have in total?
+      answer:  656
+      options: 6560 / 646 / 657 / 656
+      hints:   ["You have these amounts: ['peso100', 'peso556'].", "Step 1: Add peso100 → running total = peso100.", "Step 2: Add peso556 → running total = peso656.", "The total is peso656."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9cf332415aafab808ad9  seed 500  [read_mcq]
+      stem:    Kuya Ton has ₱100 in one pocket and ₱670 in another pocket. How much money does Kuya Ton have in total?
+      answer:  770
+      options: 775 / 790 / 760 / 770
+      hints:   ["You have these amounts: ['peso100', 'peso670'].", "Step 1: Add peso100 → running total = peso100.", "Step 2: Add peso670 → running total = peso770.", "The total is peso770."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 41, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "REPUBLIKA NG PILIPINAS", "₱50", "₱100", "₱200"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#fda4af,", "#dc2626)", "#c084fc,", "#7c3aed)", "#86efac,", "#16a34a)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 38f437260b42defd6d98  seed 501  [read_mcq]
+      stem:    Ate Sam saved ₱200 on Monday and ₱705 on Tuesday. How much money did Ate Sam save altogether?
+      answer:  905
+      options: 904 / 955 / 855 / 905
+      hints:   ["You have these amounts: ['peso200', 'peso705'].", "Step 1: Add peso200 → running total = peso200.", "Step 2: Add peso705 → running total = peso905.", "The total is peso905."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 913c95ff90bba3f9caf5  seed 502  [mcq]
+      stem:    Kuya Renz bought a pencil for ₱500 and an eraser for ₱500. How much did Kuya Renz spend in all?
+      answer:  1000
+      options: 10000 / 990 / 1000 / 1001
+      hints:   ["You have these amounts: ['peso500', 'peso500'].", "Step 1: Add peso500 → running total = peso500.", "Step 2: Add peso500 → running total = peso1000.", "The total is peso1000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2426c8ef66a8b152145c  seed 600  [read_mcq]
+      stem:    Kuya Tads saved ₱50 on Monday and ₱61 on Tuesday. How much money did Kuya Tads save altogether?
+      answer:  111
+      options: 131 / 101 / 112 / 111
+      hints:   ["You have these amounts: ['peso50', 'peso61'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso61 → running total = peso111.", "The total is peso111."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#fef08a 60%,", "#cbd5e1 60%)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b325620cc5d05fda1c0d  seed 601  [cloze]
+      stem:    Coach Roel had ₱750 and received ₱0 more from Nanay. How much money does Coach Roel have in all?
+      answer:  750
+      options: 751 / 750 / 760 / 749
+      hints:   ["We are adding two numbers: 750 and 0.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 750 + 0 = 750."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c8c2d4d390abd0b4784b  seed 602  [read_mcq]
+      stem:    Sir Rez saved ₱20 on Monday and ₱30 on Tuesday. How much money did Sir Rez save altogether?
+      answer:  50
+      options: 49 / 55 / 50 / 45
+      hints:   ["You have these amounts: ['peso20', 'peso30'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso30 → running total = peso50.", "The total is peso50."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8b5d4f3b20c1197ad4b3  seed 603  [read_mcq]
+      stem:    Ate Beng saved ₱10 on Monday and ₱500 on Tuesday. How much money did Ate Beng save altogether?
+      answer:  510
+      options: 511 / 530 / 510 / 500
+      hints:   ["You have these amounts: ['peso10', 'peso500'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso500 → running total = peso510.", "The total is peso510."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱100", "REPUBLIKA NG PILIPINAS", "₱200", "COINS", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#c084fc,", "#7c3aed)", "#fff", "#86efac,", "#16a34a)", "#fef08a 60%,", "#cbd5e1 60%)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 13de79b34be8a958fcb7  seed 604  [read_mcq]
+      stem:    Kuya Renz has ₱10 in one pocket and ₱500 in another pocket. How much money does Kuya Renz have in total?
+      answer:  510
+      options: 560 / 460 / 510 / 509
+      hints:   ["You have these amounts: ['peso10', 'peso500'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso500 → running total = peso510.", "The total is peso510."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200", "300", "400", "500", "600"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0597c020b5a38e7b62b6  seed 605  [read_mcq]
+      stem:    Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?
+      answer:  150
+      options: 199 / 201 / 220 / 150
+      hints:   ["You have these amounts: ['peso200', 'peso50'].", "You paid peso200 for an item that costs peso50.", "Money back = peso200 − peso50 = peso150."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱200", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#86efac,", "#16a34a)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fda639badbc187d7da30  seed 606  [mcq]
+      stem:    Start at 744. Count up 10 more. What number do you land on?
+      answer:  754
+      options: 764 / 754 / 734 / 753
+      hints:   ["We are adding two numbers: 744 and 10.", "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.", "Add the tens: 4 + 1 = 5.", "The sum is 744 + 10 = 754."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 875f02d69c91f46b0a19  seed 607  [error_detect]
+      stem:    Grace solved this problem: "Isko collected 260 jersey and 669 sports towel at the barangay court. How many items did Isko collect in total?" Grace says the answer is 929. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 929}
+      hints:   ["We are adding two numbers: 260 and 669.", "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.", "Add the tens: 6 + 6 = 12.", "The sum is 260 + 669 = 929."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample ef46408a0a1bf5caf632  seed 608  [true_false]
+      stem:    Boyong bought a pencil for ₱641 and an eraser for ₱359. How much did Boyong spend in all? The answer is 641. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 641 and 359.", "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and carry over 1 ten.", "Add the tens: 4 + 5 + 1 (carried) = 10.", "The sum is 641 + 359 = 1000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 04e55c4e9c62c4b3a249  seed 609  [cloze]
+      stem:    Ruth saved ₱200 on Monday and ₱551 on Tuesday. How much money did Ruth save altogether?
+      answer:  751
+      options: 741 / 752 / 7510 / 751
+      hints:   ["You have these amounts: ['peso200', 'peso551'].", "Step 1: Add peso200 → running total = peso200.", "Step 2: Add peso551 → running total = peso751.", "The total is peso751."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ef00a636add9a38b923f  seed 610  [read_mcq]
+      stem:    Bianca saved ₱5 on Monday and ₱180 on Tuesday. How much money did Bianca save altogether?
+      answer:  185
+      options: 135 / 184 / 235 / 185
+      hints:   ["You have these amounts: ['peso5', 'peso180'].", "Step 1: Add peso5 → running total = peso5.", "Step 2: Add peso180 → running total = peso185.", "The total is peso185."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f62032c244789f7d37ff  seed 611  [mcq]
+      stem:    Romel saved ₱500 on Monday and ₱131 on Tuesday. How much money did Romel save altogether?
+      answer:  631
+      options: 631 / 6310 / 632 / 621
+      hints:   ["You have these amounts: ['peso500', 'peso131'].", "Step 1: Add peso500 → running total = peso500.", "Step 2: Add peso131 → running total = peso631.", "The total is peso631."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e3fe2246411978c69bc0  seed 612  [error_detect]
+      stem:    Noel solved this problem: "Arnel is on step 991. Arnel climbs up 6 more steps. What step is Arnel on now?" Noel says the answer is 985. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 997}
+      hints:   ["We are adding two numbers: 991 and 6.", "Add the ones: 1 + 6 = 7. Keep 7 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 991 + 6 = 997."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 9142d191d86fe37497f1  seed 613  [true_false]
+      stem:    Lola Caring had ₱290 and received ₱142 more from Nanay. How much money does Lola Caring have in all? The answer is 433. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 290 and 142.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 9 + 4 = 13.", "The sum is 290 + 142 = 432."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 14dd0ee67b650e0dd185  seed 614  [cloze]
+      stem:    Jun bought a pencil for ₱360 and an eraser for ₱570. How much did Jun spend in all?
+      answer:  930
+      options: 931 / 940 / 930 / 929
+      hints:   ["We are adding two numbers: 360 and 570.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 7 = 13.", "The sum is 360 + 570 = 930."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 56345c34e903ec1264a9  seed 615  [mcq]
+      stem:    Is (624 + 41) + 22 the same as 624 + (41 + 23)?
+      answer:  False
+      options: Only when both are 0 / False / True / Cannot be determined
+      hints:   ["The left side adds 624, 41 and 22. The right side adds 624, 41 and 23.", "(624 + 41) + 22 = 687 and 624 + (41 + 23) = 688.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ba4e6e861fc90e7969d4  seed 616  [mcq]
+      stem:    Is 258 + 341 the same as 341 + 258?
+      answer:  True
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Both sides add the same two numbers, 258 and 341, in a different order.", "258 + 341 = 599 and 341 + 258 = 599.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cbe83cc21ba5ce7088a2  seed 617  [read_mcq]
+      stem:    Bianca has ₱20 in one pocket and ₱531 in another pocket. How much money does Bianca have in total?
+      answer:  551
+      options: 550 / 601 / 551 / 501
+      hints:   ["You have these amounts: ['peso20', 'peso531'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso531 → running total = peso551.", "The total is peso551."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200", "300", "400", "500", "600"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b9685160470c50f5cc04  seed 618  [read_mcq]
+      stem:    The dot is at 630 and it moves forward 51 numbers. Starting from 630, just count up 51 numbers. Which number will the dot land on?
+      answer:  681
+      options: 691 / 681 / 579 / 680
+      hints:   ["We are adding two numbers: 630 and 51.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "Add the tens: 3 + 5 = 8.", "The sum is 630 + 51 = 681."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["620", "630", "640", "650", "660", "670", "680", "690"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 33b019494a2648258365  seed 619  [error_detect]
+      stem:    Grace solved: "242 is 2 hundreds, 4 tens, and 2 ones. 120 is 1 hundred, 2 tens, and 0 ones. Add the place values, then find the total: 242 + 120 = ___". Grace says the missing number is 362. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 362}
+      hints:   ["We are adding two numbers: 242 and 120.", "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.", "Add the tens: 4 + 2 = 6.", "The sum is 242 + 120 = 362."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 18129883b440a176c855  seed 620  [read_mcq]
+      stem:    Gab has ₱5 in one pocket and ₱5 in another pocket. How much money does Gab have in total?
+      answer:  10
+      options: 9 / 10 / 11 / 12
+      hints:   ["You have these amounts: ['peso5', 'peso5'].", "Step 1: Add peso5 → running total = peso5.", "Step 2: Add peso5 → running total = peso10.", "The total is peso10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 806cbfcc612dc7d04615  seed 621  [mcq]
+      stem:    Sir Ben saved ₱1 on Monday and ₱20 on Tuesday. How much money did Sir Ben save altogether?
+      answer:  21
+      options: 210 / 22 / 21 / 11
+      hints:   ["You have these amounts: ['peso1', 'peso20'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso20 → running total = peso21.", "The total is peso21."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 915549e4fb4c243c83ef  seed 622  [true_false]
+      stem:    Start at 693. Count up 156 more. You land on 537. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 693 and 156.", "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.", "Add the tens: 9 + 5 = 14.", "The sum is 693 + 156 = 849."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5113ce832f38a079b5c1  seed 623  [cloze]
+      stem:    One group has 150 items and another group has 300 items. Putting them together makes ___ items in all.
+      answer:  450
+      options: 449 / 460 / 450 / 451
+      hints:   ["We are adding two numbers: 150 and 300.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 150 + 300 = 450."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bb00895389faf45fe53e  seed 624  [error_detect]
+      stem:    Noel solved: "0 + 923 = ___". Noel says the missing number is 924. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 923}
+      hints:   ["We are adding two numbers: 0 and 923.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 0 + 2 = 2.", "The sum is 0 + 923 = 923."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 718e19dfcad2114a1e46  seed 700  [true_false]
+      stem:    Boyong bought a pencil for ₱630 and an eraser for ₱150. How much did Boyong spend in all? The answer is 780. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 630 and 150.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 3 + 5 = 8.", "The sum is 630 + 150 = 780."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ddd31c57a5b07a10b02a  seed 701  [cloze]
+      stem:    Marco has ₱100 in one pocket and ₱500 in another pocket. How much money does Marco have in total?
+      answer:  600
+      options: 600 / 6000 / 590 / 601
+      hints:   ["You have these amounts: ['peso100', 'peso500'].", "Step 1: Add peso100 → running total = peso100.", "Step 2: Add peso500 → running total = peso600.", "The total is peso600."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0551058c181a7bf417ac  seed 702  [error_detect]
+      stem:    Manny solved this problem: "Isko collected 362 jersey and 403 cap at the covered court. How many items did Isko collect in total?" Manny says the answer is 766. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 765}
+      hints:   ["We are adding two numbers: 362 and 403.", "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 362 + 403 = 765."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e3218b889a3b45315ebf  seed 800  [cloze]
+      stem:    Lola Caring had ₱20 and received ₱711 more from Nanay. How much money does Lola Caring have in all?
+      answer:  731
+      options: 732 / 731 / 721 / 7310
+      hints:   ["You have these amounts: ['peso20', 'peso711'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso711 → running total = peso731.", "The total is peso731."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3712f5c370c91ca274bf  seed 801  [cloze]
+      stem:    Coach Roel saved ₱50 on Monday and ₱700 on Tuesday. How much money did Coach Roel save altogether?
+      answer:  750
+      options: 750 / 740 / 751 / 7500
+      hints:   ["You have these amounts: ['peso50', 'peso700'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso700 → running total = peso750.", "The total is peso750."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 33000d837ba225c3ea4b  seed 802  [mcq]
+      stem:    Mika had 679 sketchpads. Then Mika got 258 more. How many sketchpads does Mika have now?
+      answer:  937
+      options: 936 / 421 / 937 / 947
+      hints:   ["We are adding two numbers: 679 and 258.", "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.", "Add the tens: 7 + 5 + 1 (carried) = 13.", "The sum is 679 + 258 = 937."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f9d575b28f09f92f6327  seed 900  [mcq]
+      stem:    Ate Liza is on step 0. Ate Liza climbs up 1 more step. What step is Ate Liza on now?
+      answer:  1
+      options: 1 / 0 / 11 / 2
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "The sum is 0 + 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f61e23d0f386d8f93234  seed 901  [read_mcq]
+      stem:    Jun saved ₱1 on Monday and ₱1 on Tuesday. How much money did Jun save altogether?
+      answer:  2
+      options: 1 / 3 / 4 / 2
+      hints:   ["You have these amounts: ['peso1', 'peso1'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso1 → running total = peso2.", "The total is peso2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 982c8a1dc5e455a78729  seed 1000  [true_false]
+      stem:    There are 807 water bottles in one basket and 59 water bottles in another basket. How many water bottles are there in all? The answer is 748. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 807 and 59.", "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and carry over 1 ten.", "Add the tens: 0 + 5 + 1 (carried) = 6.", "The sum is 807 + 59 = 866."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 52cfd9783ff822e12376  seed 1001  [error_detect]
+      stem:    Liza solved this problem: "Start at 805. Count up 141 more. What number do you land on?" Liza says the answer is 805. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 946}
+      hints:   ["We are adding two numbers: 805 and 141.", "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.", "Add the tens: 0 + 4 = 4.", "The sum is 805 + 141 = 946."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 38b94049a344cde85f71  seed 1002  [mcq]
+      stem:    Aling Rosa has ₱100 in one pocket and ₱12 in another pocket. How much money does Aling Rosa have in total?
+      answer:  112
+      options: 112 / 102 / 1120 / 113
+      hints:   ["You have these amounts: ['peso100', 'peso12'].", "Step 1: Add peso100 → running total = peso100.", "Step 2: Add peso12 → running total = peso112.", "The total is peso112."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

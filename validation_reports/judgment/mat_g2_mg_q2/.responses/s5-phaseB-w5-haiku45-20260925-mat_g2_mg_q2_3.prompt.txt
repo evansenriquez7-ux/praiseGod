@@ -1,0 +1,232 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb5-mat_g2_mg_q2_3-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g2_mg_q2_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb5-mat_g2_mg_q2_3-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q2_3
+PACKET DIGEST: 50285b95387cccfb803274fcc75dc9e69fb5b293251284193a6a47cf0fcf3073
+COMPETENCY (Grade 2, Quarter 2, None):
+Solve problems involving length and distance.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  length: length
+  distance: distance
+
+SAMPLES (every one of these is real rendered output):
+  sample 1a79b526e7e7a65bfd28  seed 42  [cloze]
+      stem:    A book is 18 cm long. A shoe is 20 cm long. If they are placed end to end, what is their combined length in cm?
+      answer:  38
+      options: 43 / 48 / 38 / 33
+      hints:   ["The two lengths join together, so add them.", "18 + 20 = 38.", "The total length is 38 centimeter (cm)."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample da6227e0012bfae4389f  seed 43  [mcq]
+      stem:    Ben walked 16 m from the school gate to the playground, and then walked 39 m from the playground to the classroom. What is the total distance Ben walked in meters?
+      answer:  55
+      options: 60 / 50 / 65 / 55
+      hints:   ["The two distances join together, so add them.", "16 + 39 = 55.", "The total distance is 55 meter (m)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e0ab6eb7598d6b11c7dd  seed 44  [cloze]
+      stem:    A crayon is 11 cm long. A pencil is 10 cm long. If they are placed end to end, what is their combined length in cm?
+      answer:  21
+      options: 16 / 31 / 21 / 26
+      hints:   ["The two lengths join together, so add them.", "11 + 10 = 21.", "The total length is 21 centimeter (cm)."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0e3c8833ecf1b5e967f8  seed 45  [mcq]
+      stem:    The distance from the school gate to the classroom is 31 m. The distance from the school gate to the playground is 11 m. How many meters farther is the classroom than the playground?
+      answer:  20
+      options: 20 / 15 / 25 / 30
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "31 - 11 = 20.", "So one is 20 meter (m) farther than the other."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aaf6c693aaff918a6634  seed 46  [mcq]
+      stem:    The distance from the school gate to the gym is 43 m. The distance from the school gate to the garden is 19 m. How many meters farther is the gym than the garden?
+      answer:  24
+      options: 29 / 34 / 19 / 24
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "43 - 19 = 24.", "So one is 24 meter (m) farther than the other."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2d25cee638eb74d6ddfc  seed 500  [mcq]
+      stem:    The distance from the school gate to the garden is 34 m. The distance from the school gate to the classroom is 23 m. How many meters farther is the garden than the classroom?
+      answer:  11
+      options: 6 / 21 / 11 / 16
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "34 - 23 = 11.", "So one is 11 meter (m) farther than the other."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9e271f50aa604f53467b  seed 501  [mcq]
+      stem:    Elena walked 30 m from the school gate to the canteen, and then walked 31 m from the canteen to the library. What is the total distance Elena walked in meters?
+      answer:  61
+      options: 71 / 61 / 56 / 66
+      hints:   ["The two distances join together, so add them.", "30 + 31 = 61.", "The total distance is 61 meter (m)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f035a2afaabd7b9c2a90  seed 502  [cloze]
+      stem:    Liza walked 12 m from the school gate to the classroom, and then walked 34 m from the classroom to the library. What is the total distance Liza walked in meters?
+      answer:  46
+      options: 51 / 41 / 46 / 56
+      hints:   ["The two distances join together, so add them.", "12 + 34 = 46.", "The total distance is 46 meter (m)."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0f4761cf36e68a67507e  seed 600  [mcq]
+      stem:    Dan walked 16 m from the playground to the gym, and then walked 34 m from the gym to the school gate. What is the total distance Dan walked in meters?
+      answer:  50
+      options: 45 / 50 / 55 / 60
+      hints:   ["The two distances join together, so add them.", "16 + 34 = 50.", "The total distance is 50 meter (m)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 356c40d2077c38a122b3  seed 601  [cloze]
+      stem:    A book is 18 cm long. A pencil is 11 cm long. If they are placed end to end, what is their combined length in cm?
+      answer:  29
+      options: 34 / 24 / 29 / 39
+      hints:   ["The two lengths join together, so add them.", "18 + 11 = 29.", "The total length is 29 centimeter (cm)."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 901aca2498a4da4b44b8  seed 602  [cloze]
+      stem:    A notebook is 20 cm long. A ruler is 15 cm long. How many cm longer is a notebook than a ruler?
+      answer:  5
+      options: 1 / 10 / 5 / 15
+      hints:   ["To find how much longer one is, take the smaller length away from the bigger one.", "20 - 15 = 5.", "So one is 5 centimeter (cm) longer than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1127a96266a911fd0089  seed 603  [mcq]
+      stem:    Elena walked 14 m from the classroom to the school gate, and then walked 39 m from the school gate to the playground. What is the total distance Elena walked in meters?
+      answer:  53
+      options: 58 / 48 / 53 / 63
+      hints:   ["The two distances join together, so add them.", "14 + 39 = 53.", "The total distance is 53 meter (m)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0b61bf6a8f63c487f99e  seed 700  [cloze]
+      stem:    A shoe is 20 cm long. A pencil is 10 cm long. How many cm longer is a shoe than a pencil?
+      answer:  10
+      options: 20 / 10 / 5 / 15
+      hints:   ["To find how much longer one is, take the smaller length away from the bigger one.", "20 - 10 = 10.", "So one is 10 centimeter (cm) longer than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7f7acb65c2683a520aa6  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. The distance from the school gate to the gym is 40 m. The distance from the school gate to the garden is 24 m. How many meters farther is the gym than the garden?
+      answer:  16
+      options: 21 / 11 / 26 / 16
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "40 - 24 = 16.", "So one is 16 meter (m) farther than the other."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 389ff66277bd047d1afd  seed 702  [cloze]
+      stem:    🏀 Marco has a math challenge about jerseys. A notebook is 20 cm long. A book is 18 cm long. How many cm longer is a notebook than a book?
+      answer:  2
+      options: 7 / 1 / 2 / 12
+      hints:   ["To find how much longer one is, take the smaller length away from the bigger one.", "20 - 18 = 2.", "So one is 2 centimeter (cm) longer than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample eb3b078360f0f44debe8  seed 800  [cloze]
+      stem:    The distance from the school gate to the science lab is 42 m. The distance from the school gate to the classroom is 30 m. How many meters farther is the science lab than the classroom?
+      answer:  12
+      options: 12 / 7 / 17 / 22
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "42 - 30 = 12.", "So one is 12 meter (m) farther than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3419676e3bd9ebaf1bc6  seed 900  [mcq]
+      stem:    A notebook is 20 cm long. A book is 18 cm long. How many cm longer is a notebook than a book?
+      answer:  2
+      options: 2 / 7 / 1 / 12
+      hints:   ["To find how much longer one is, take the smaller length away from the bigger one.", "20 - 18 = 2.", "So one is 2 centimeter (cm) longer than the other."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6cec7149a25781cde785  seed 901  [mcq]
+      stem:    Liza walked 41 m from the gym to the canteen, and then walked 27 m from the canteen to the playground. What is the total distance Liza walked in meters?
+      answer:  68
+      options: 68 / 63 / 73 / 78
+      hints:   ["The two distances join together, so add them.", "41 + 27 = 68.", "The total distance is 68 meter (m)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23185151e00ecd76fc79  seed 1000  [cloze]
+      stem:    A pencil is 11 cm long. A notebook is 20 cm long. If they are placed end to end, what is their combined length in cm?
+      answer:  31
+      options: 36 / 31 / 26 / 41
+      hints:   ["The two lengths join together, so add them.", "11 + 20 = 31.", "The total length is 31 centimeter (cm)."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 733b735e172db8bbc0c6  seed 1001  [cloze]
+      stem:    A book is 18 cm long. A spoon is 12 cm long. How many cm longer is a book than a spoon?
+      answer:  6
+      options: 11 / 6 / 16 / 1
+      hints:   ["To find how much longer one is, take the smaller length away from the bigger one.", "18 - 12 = 6.", "So one is 6 centimeter (cm) longer than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 164ab55336da0442fa51  seed 1002  [cloze]
+      stem:    The distance from the school gate to the science lab is 40 m. The distance from the school gate to the gym is 18 m. How many meters farther is the science lab than the gym?
+      answer:  22
+      options: 17 / 27 / 32 / 22
+      hints:   ["To find how much farther one is, take the smaller distance away from the bigger one.", "40 - 18 = 22.", "So one is 22 meter (m) farther than the other."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

@@ -1,0 +1,323 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q2_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc15-mat_g3_na_q2_4-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_4
+PACKET DIGEST: 4efa34cb9ad6e6cf21c3abc106ec596393b2f5a41c5bd9f7f0211f85c7a53b66
+COMPETENCY (Grade 3, Quarter 2, None):
+Subtract numbers, where both numbers are less than 10 000, with and without regrouping.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  subtract_numbers: Subtract numbers
+  less_than_10_000: less than 10 000
+  with_and_without_regrouping: with and without regrouping
+
+SAMPLES (every one of these is real rendered output):
+  sample 47565ef0b60751688f4f  seed 42  [cloze]
+      stem:    1830 − 1744 = ___
+      answer:  86
+      options: 87 / 86 / 3574 / 85
+      hints:   ["We are subtracting 1744 from 1830.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 2 − 4 = -2. (after borrowing)", "The difference of 1830 − 1744 = 86."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8b52fa68d0198ab7e884  seed 43  [mcq]
+      stem:    What is 8413 − 4110?
+      answer:  4303
+      options: 4302 / 4303 / 4304 / 12523
+      hints:   ["We are subtracting 4110 from 8413.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 1 − 1 = 0.", "The difference of 8413 − 4110 = 4303."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ee1a2aec4d1f4953de85  seed 44  [read_mcq]
+      stem:    The dot is at 7222 and it moves backward 810 numbers. Starting from 7222, just count back 810 numbers. Which number will the dot land on?
+      answer:  6412
+      options: 6412 / 6413 / 8032 / 6411
+      hints:   ["We are subtracting 810 from 7222.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 2 − 1 = 1.", "The difference of 7222 − 810 = 6412."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 37, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["6300", "6400", "6500", "6600", "6700", "6800", "6900", "7000", "7100", "7200", "7300"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ce2a46e0b29fa377a163  seed 45  [read_fill_in_blank]
+      stem:    The total is 880 and one part is 102. What is the other part?
+      answer:  778
+      hints:   ["We are subtracting 102 from 880.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 7 − 0 = 7. (after borrowing)", "The difference of 880 − 102 = 778."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["880", "102"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 705493e7b1284e61df89  seed 46  [read_fill_in_blank]
+      stem:    The total is 3463 and one part is 60. What is the other part?
+      answer:  3403
+      hints:   ["We are subtracting 60 from 3463.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 6 − 6 = 0.", "The difference of 3463 − 60 = 3403."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["3463", "60"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7c46139efef749050cf0  seed 48  [error_detect]
+      stem:    Noel solved: "9120 − 1093 = ___". Noel says the missing number is 8027. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 8027}
+      hints:   ["We are subtracting 1093 from 9120.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 1 − 9 = -8. (after borrowing)", "The difference of 9120 − 1093 = 8027."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f7905df14c6eb32cbedd  seed 68  [true_false]
+      stem:    660 − 376 = 284. True or False?
+      answer:  True
+      hints:   ["We are subtracting 376 from 660.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 5 − 7 = -2. (after borrowing)", "The difference of 660 − 376 = 284."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ec69810e482a66ede2d2  seed 500  [read_mcq]
+      stem:    The dot is at 6398 and it moves backward 3715 numbers. Starting from 6398, just count back 3715 numbers. Which number will the dot land on?
+      answer:  2683
+      options: 2682 / 2684 / 10113 / 2683
+      hints:   ["We are subtracting 3715 from 6398.", "Subtract the ones: 8 − 5 = 3.", "Subtract the tens: 9 − 1 = 8.", "The difference of 6398 − 3715 = 2683."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 61, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2000", "2500", "3000", "3500", "4000", "4500", "5000", "5500", "6000", "6500"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 62924b897bb2863572b8  seed 501  [true_false]
+      stem:    3418 − 3379 = 6797. True or False?
+      answer:  False
+      hints:   ["We are subtracting 3379 from 3418.", "The ones digit 8 is less than 9, so we need to borrow. Borrow 1 ten: 18 − 9 = 9.", "Subtract the tens: 0 − 7 = -7. (after borrowing)", "The difference of 3418 − 3379 = 39."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2a3e264710a5c09f3288  seed 502  [error_detect]
+      stem:    Dante solved: "5609 − 1839 = ___". Dante says the missing number is 3770. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 3770}
+      hints:   ["We are subtracting 1839 from 5609.", "Subtract the ones: 9 − 9 = 0.", "Subtract the tens: 0 − 3 = -3.", "The difference of 5609 − 1839 = 3770."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 3ec0ff78d22ce2c111db  seed 600  [mcq]
+      stem:    What is 5252 − 1800?
+      answer:  3452
+      options: 7052 / 3451 / 3453 / 3452
+      hints:   ["We are subtracting 1800 from 5252.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 5 − 0 = 5.", "The difference of 5252 − 1800 = 3452."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3f1ca6090736c9479ca0  seed 601  [cloze]
+      stem:    Pia has 18 water bowls. A friend has 10 water bowls. How many more water bowls does Pia have than the friend?
+      answer:  8
+      options: 7 / 8 / 9 / 28
+      hints:   ["We are subtracting 10 from 18.", "Subtract the ones: 8 − 0 = 8.", "Subtract the tens: 1 − 1 = 0.", "The difference of 18 − 10 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c9c9b21f593d337c57d6  seed 602  [error_detect]
+      stem:    Jose solved: "912 − 570 = ___". Jose says the missing number is 342. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 342}
+      hints:   ["We are subtracting 570 from 912.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 1 − 7 = -6.", "The difference of 912 − 570 = 342."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample db2e741f81efaee321f4  seed 603  [read_mcq]
+      stem:    The dot is at 3377 and it moves backward 210 numbers. Starting from 3377, just count back 210 numbers. Which number will the dot land on?
+      answer:  3167
+      options: 3167 / 3168 / 3587 / 3166
+      hints:   ["We are subtracting 210 from 3377.", "Subtract the ones: 7 − 0 = 7.", "Subtract the tens: 7 − 1 = 6.", "The difference of 3377 − 210 = 3167."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["3000", "3100", "3200", "3300", "3400"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0965a4c5c515b84a59b3  seed 604  [error_detect]
+      stem:    Carlo solved: "5325 − 4220 = ___". Carlo says the missing number is 1105. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 1105}
+      hints:   ["We are subtracting 4220 from 5325.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 2 − 2 = 0.", "The difference of 5325 − 4220 = 1105."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample c8ff037f3c3112ae2dd1  seed 605  [read_mcq]
+      stem:    The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?
+      answer:  42
+      options: 262 / 42 / 41 / 43
+      hints:   ["We are subtracting 110 from 152.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 5 − 1 = 4.", "The difference of 152 − 110 = 42."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 16bf9f28e6fa5500a8c1  seed 606  [mcq]
+      stem:    What is 246 − 20?
+      answer:  226
+      options: 225 / 226 / 266 / 227
+      hints:   ["We are subtracting 20 from 246.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 4 − 2 = 2.", "The difference of 246 − 20 = 226."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 431a8a87074151db39cc  seed 607  [cloze]
+      stem:    3826 − 330 = ___
+      answer:  3496
+      options: 3496 / 3497 / 3495 / 4156
+      hints:   ["We are subtracting 330 from 3826.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 2 − 3 = -1.", "The difference of 3826 − 330 = 3496."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cd5ad35832314d9c9b84  seed 608  [true_false]
+      stem:    9120 − 6385 = 2735. True or False?
+      answer:  True
+      hints:   ["We are subtracting 6385 from 9120.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 1 − 8 = -7. (after borrowing)", "The difference of 9120 − 6385 = 2735."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5170be44081272512b4e  seed 609  [cloze]
+      stem:    4005 − 1044 = ___
+      answer:  2961
+      options: 2960 / 5049 / 2961 / 2962
+      hints:   ["We are subtracting 1044 from 4005.", "Subtract the ones: 5 − 4 = 1.", "Subtract the tens: 0 − 4 = -4.", "The difference of 4005 − 1044 = 2961."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 725c99a218e7ea4beab0  seed 610  [read_fill_in_blank]
+      stem:    The total is 5910 and one part is 2840. What is the other part?
+      answer:  3070
+      hints:   ["We are subtracting 2840 from 5910.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 1 − 4 = -3.", "The difference of 5910 − 2840 = 3070."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["5910", "2840"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 96a2dbbedfa809695716  seed 611  [true_false]
+      stem:    540 − 385 = 155. True or False?
+      answer:  True
+      hints:   ["We are subtracting 385 from 540.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 3 − 8 = -5. (after borrowing)", "The difference of 540 − 385 = 155."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f239fa04d32dac258ca2  seed 612  [error_detect]
+      stem:    Noel solved: "1965 − ___ = 1165". Noel says the missing number is 2765. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 800}
+      hints:   ["We are subtracting 800 from 1965.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 6 − 0 = 6.", "The difference of 1965 − 800 = 1165."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample a9bdd2b79aca8cf7556a  seed 613  [error_detect]
+      stem:    Maria solved: "516 − 345 = ___". Maria says the missing number is 172. Is Maria correct?
+      answer:  {'has_error': True, 'correct_value': 171}
+      hints:   ["We are subtracting 345 from 516.", "Subtract the ones: 6 − 5 = 1.", "Subtract the tens: 1 − 4 = -3.", "The difference of 516 − 345 = 171."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 6e63c0d6339006639e1a  seed 614  [error_detect]
+      stem:    Jose solved: "___ − 840 = 805". Jose says the missing number is 2485. Is Jose correct?
+      answer:  {'has_error': True, 'correct_value': 1645}
+      hints:   ["We are subtracting 840 from 1645.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 4 − 4 = 0.", "The difference of 1645 − 840 = 805."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 318ca70771af00e09632  seed 700  [error_detect]
+      stem:    Carlo solved: "1862 − 0 = ___". Carlo says the missing number is 1862. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 1862}
+      hints:   ["We are subtracting 0 from 1862.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 6 − 0 = 6.", "The difference of 1862 − 0 = 1862."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 7eb7912ae3235d838530  seed 701  [read_fill_in_blank]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. The total is 7350 and one part is 2424. What is the other part?
+      answer:  4926
+      hints:   ["We are subtracting 2424 from 7350.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 4 − 2 = 2. (after borrowing)", "The difference of 7350 − 2424 = 4926."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["7350", "2424"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fd77d1a619bee5daf27f  seed 702  [error_detect]
+      stem:    🐕 Ate Beng has a math challenge about cat toys. Manny solved: "3123 − 0 = ___". Manny says the missing number is 3124. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 3123}
+      hints:   ["We are subtracting 0 from 3123.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 2 − 0 = 2.", "The difference of 3123 − 0 = 3123."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample edffcfda55b1abfbdb0c  seed 800  [read_mcq]
+      stem:    The dot is at 992 and it moves backward 799 numbers. Starting from 992, just count back 799 numbers. Which number will the dot land on?
+      answer:  193
+      options: 193 / 194 / 192 / 1791
+      hints:   ["We are subtracting 799 from 992.", "The ones digit 2 is less than 9, so we need to borrow. Borrow 1 ten: 12 − 9 = 3.", "Subtract the tens: 8 − 9 = -1. (after borrowing)", "The difference of 992 − 799 = 193."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 37, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a5080006a678d19f95c7  seed 900  [mcq]
+      stem:    What is 512 − 137?
+      answer:  375
+      options: 649 / 374 / 376 / 375
+      hints:   ["We are subtracting 137 from 512.", "The ones digit 2 is less than 7, so we need to borrow. Borrow 1 ten: 12 − 7 = 5.", "Subtract the tens: 0 − 3 = -3. (after borrowing)", "The difference of 512 − 137 = 375."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8fd90f30c3bed8268a10  seed 901  [true_false]
+      stem:    1553 − 126 = 1679. True or False?
+      answer:  False
+      hints:   ["We are subtracting 126 from 1553.", "The ones digit 3 is less than 6, so we need to borrow. Borrow 1 ten: 13 − 6 = 7.", "Subtract the tens: 4 − 2 = 2. (after borrowing)", "The difference of 1553 − 126 = 1427."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b4b1df23b63e4ca5c25f  seed 1000  [true_false]
+      stem:    6870 − 4054 = 2816. True or False?
+      answer:  True
+      hints:   ["We are subtracting 4054 from 6870.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 6 − 5 = 1. (after borrowing)", "The difference of 6870 − 4054 = 2816."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample e08ddda1bd242a9519e6  seed 1001  [error_detect]
+      stem:    Liza solved: "7835 − 5310 = ___". Liza says the missing number is 2526. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 2525}
+      hints:   ["We are subtracting 5310 from 7835.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 3 − 1 = 2.", "The difference of 7835 − 5310 = 2525."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 245deef0e0c1830f2d98  seed 1002  [error_detect]
+      stem:    Manny solved: "7356 − 6480 = ___". Manny says the missing number is 13836. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 876}
+      hints:   ["We are subtracting 6480 from 7356.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 5 − 8 = -3.", "The difference of 7356 − 6480 = 876."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

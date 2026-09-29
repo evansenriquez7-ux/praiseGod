@@ -1,0 +1,230 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc9-mat_g3_dp_q3_0-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_dp_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_0-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_dp_q3_0
+PACKET DIGEST: ba5607493859ba6e94a36a04a212751b5d7bae7669dc694c5942abc03850cdf7
+COMPETENCY (Grade 3, Quarter 3, None):
+Collect data from experiments with a small number of possible outcomes (e.g., rolling a die or tossing a coin).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  collect_data: Collect data
+  experiments: experiments
+  small_number_of_possible_outcomes: small number of possible outcomes
+  rolling_die: rolling a die
+  tossing_coin: tossing a coin
+
+SAMPLES (every one of these is real rendered output):
+  sample 4b70c6b0788397c0fb5b  seed 42  [cloze]
+      stem:    A coin toss experiment was conducted with 15 tosses. The results are: Heads: 5, Tails: 10. How many times did the coin land on Heads?
+      answer:  5
+      options: 6 / 10 / 5 / 15
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c788f516ccbad5e8815c  seed 43  [mcq]
+      stem:    A coin toss experiment was conducted with 12 tosses. The results are: Heads: 9, Tails: 3. How many times did the coin land on Tails?
+      answer:  3
+      options: 4 / 12 / 3 / 9
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 444f45b8ce9e4cb36eb8  seed 44  [cloze]
+      stem:    In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 6, Blue tile: 3, Green tile: 1. How many times was a Green tile drawn?
+      answer:  1
+      options: 6 / 1 / 3 / 2
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 077f5d179d8e7472c2ed  seed 45  [true_false]
+      stem:    A student spun a spinner 24 times and recorded: Red: 10, Blue: 4, Green: 6, Yellow: 4. How many times did the spinner land on Blue? The answer is 6. True or False?
+      answer:  False
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b903e6ba72a1dbace074  seed 46  [true_false]
+      stem:    A coin was tossed 10 times. Heads occurred 6 times and Tails occurred 4 times. How many more times did Heads land than Tails? The answer is 2. True or False?
+      answer:  True
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b35b9b2c51159fefc786  seed 48  [error_detect]
+      stem:    Noel solved this problem: "A spinner experiment recorded these outcomes: Red: 5, Blue: 8, Green: 1, Yellow: 6. What is the total number of spins in the experiment?" Noel says the answer is 20. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 54d2e37db727887b8d6b  seed 500  [true_false]
+      stem:    In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 9, Blue tile: 10, Green tile: 6. How many times was a Blue tile drawn? The answer is 11. True or False?
+      answer:  False
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample febc6193e97db12f0b06  seed 501  [mcq]
+      stem:    A spinner with colored sections was spun 24 times. The outcomes recorded are: Red: 7, Blue: 12, Green: 5. Which color was landed on most often?
+      answer:  Blue
+      options: Green / Orange / Blue / Red
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 57c093194e6f507acde3  seed 502  [error_detect]
+      stem:    Dante solved this problem: "A spinner experiment recorded these outcomes: Red: 8, Blue: 6, Green: 3, Yellow: 3. What is the total number of spins in the experiment?" Dante says the answer is 20. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample df496d510894498059f0  seed 600  [mcq]
+      stem:    A coin toss experiment was conducted with 15 tosses. The results are: Heads: 12, Tails: 3. How many times did the coin land on Tails?
+      answer:  3
+      options: 4 / 15 / 12 / 3
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9c2437a033f87704343e  seed 601  [cloze]
+      stem:    In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 4, Blue tile: 4, Green tile: 2. How many times was a Blue tile drawn?
+      answer:  4
+      options: 4 / 7 / 2 / 5
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 31a68c4a0770e7e81e86  seed 602  [error_detect]
+      stem:    Jose solved this problem: "In a die rolling experiment of 18 rolls, the results are: Face 1: 2, Face 2: 1, Face 3: 3, Face 4: 4, Face 5: 5, Face 6: 3. How many times did Face 1 appear?" Jose says the answer is 2. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 2}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 3c6e21f706b72dd96f96  seed 603  [mcq]
+      stem:    A spinner experiment recorded these outcomes: Red: 12, Blue: 7, Green: 5, Yellow: 6. What is the total number of spins in the experiment?
+      answer:  30
+      options: 27 / 35 / 30 / 32
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 05235af227180984f9a7  seed 700  [error_detect]
+      stem:    Carlo solved this problem: "The results of a rolling die experiment are recorded: Face 1: 3, Face 2: 5, Face 3: 4, Face 4: 1, Face 5: 8, Face 6: 3. How many total rolls were made in the experiment?" Carlo says the answer is 24. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 24}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 568c39042563d993db2d  seed 701  [true_false]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. A student spun a spinner 15 times and recorded: Red: 5, Blue: 3, Green: 7. How many times did the spinner land on Red? The answer is 5. True or False?
+      answer:  True
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e876ccc32ccf15be2b78  seed 702  [error_detect]
+      stem:    Manny solved this problem: "🏀 Isko has a math challenge about basketballs. A student recorded coin toss results in a table: Heads (8), Tails (2). How many total tosses were recorded in the experiment?" Manny says the answer is 2. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 10}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b7992b1ac04c4e9ba65c  seed 900  [mcq]
+      stem:    A 6-sided die was rolled 12 times. The recorded tally is: Face 1: 2, Face 2: 2, Face 3: 2, Face 4: 1, Face 5: 1, Face 6: 4. Which face was rolled most frequently?
+      answer:  Face 6
+      options: Face 3 / Face 6 / Face 2 / Face 1
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 95afb162d59d60015224  seed 901  [mcq]
+      stem:    In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 2, Blue tile: 4, Green tile: 4. How many times was a Blue tile drawn?
+      answer:  4
+      options: 5 / 4 / 7 / 2
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d43fa3bbcb27b5567cde  seed 1000  [cloze]
+      stem:    In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 10, Blue tile: 8, Green tile: 7. How many times was a Green tile drawn?
+      answer:  7
+      options: 8 / 6 / 7 / 10
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample f1c9f8c3ca177ee7f564  seed 1001  [error_detect]
+      stem:    Liza solved this problem: "A student recorded coin toss results in a table: Heads (6), Tails (4). How many total tosses were recorded in the experiment?" Liza says the answer is 12. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 10}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 59728e1bfa3ad22fd10f  seed 1002  [error_detect]
+      stem:    Manny solved this problem: "In a probability experiment, a tile was picked from a bag and replaced 15 times. Results: Red tile: 5, Blue tile: 4, Green tile: 6. How many times was a Red tile drawn?" Manny says the answer is 4. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["Look at the recorded data from the experiment.", "Each tally or count represents an outcome.", "Find the requested value in the recorded data."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

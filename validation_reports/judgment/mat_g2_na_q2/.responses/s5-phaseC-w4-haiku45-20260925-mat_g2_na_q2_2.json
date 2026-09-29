@@ -1,0 +1,1013 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
+  "mat_g2_na_q2_2": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The problem set appropriately matches Grade 2 Quarter 2 cognitive demands, with single-digit and two-digit addition problems requiring varying levels of regrouping complexity, progressing from simple sums like 0+1 and 5+5 to three-digit sums requiring carrying. The mix of direct computation, error detection, and property reasoning challenges students at an age-appropriate level without excessive cognitive load."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "One sample (seed 605) explicitly describes a subtraction scenario rather than an addition problem. The student is asked about money remaining after a purchase, with hints stating money back equals 200 minus 50. The competency specifies solving problems involving addition, not subtraction. This represents a fundamental misalignment with the stated learning objective that undermines the validity of the entire sample set."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The printed requirements claim to cover addition, money contexts, and both with and without regrouping. However, the inclusion of a subtraction sample violates the core requirement of the competency. Two additional samples (seeds 615 and 616) test properties of addition rather than problem-solving with addition. The decomposition is incomplete because the actual rendered samples do not losslessly map to the stated competency.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The decomposed requirements list solve_problems, involving, addition, sums_up_to_1000, problems, money, and regrouping. However, sample 0597c020b5a38e7b62b6 directly violates the addition requirement by presenting a subtraction calculation. The requirements fail to exclude property-testing items that appear in seeds 615 and 616. The decomposition purports to cover the full competency, but the evidence shows at least one critical violation where a subtraction operation is rendered despite the requirement explicitly naming addition."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The sample set demonstrates coverage across multiple dimensions: a variety of monetary and non-monetary problem contexts, problems both with and without regrouping, multiple response formats including multiple-choice, true-false, error-detection, and fill-in-blank formats, and a broad range of addend magnitudes spanning from 0 to 991 in the first addend and 0 to 670 in the second addend, all within the specified ceiling of 1000."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All sums fall within or at the boundary of the required range up to 1000, with the maximum sum reaching exactly 1000 when adding 500 plus 500. No sums exceed the stated ceiling, and the progression of magnitude challenges is gradual and appropriate, testing student mastery across the full allowed range without exceeding specified competency boundaries."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "The sample set demonstrates strong variation in contexts and response formats. However, two samples present property-based reasoning about addition rather than problem-solving with addition. Seeds 615 and 616 ask whether expressions are equivalent under associativity and commutativity rather than asking students to compute or apply addition within a realistic scenario. This variant type extends beyond the core competency of solving addition problems."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "3959b6d9583b84187a4b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt is clear: starting at 57 and counting up 345 more yields a single unambiguous answer of 402. The language is direct and the task is transparently addition with no competing interpretations possible."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The counting-up framing is contextually sound for Grade 2 students learning addition. The scenario of starting at a number and counting forward is a developmentally appropriate model for understanding addition as forward movement along a number line."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "For a Grade 2 reader, the stem employs clear and familiar language with the action verb count and directional indicator up. The numerical values 57 and 345 are presented plainly without unnecessary decoration."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 57 plus 345 equals 402. The hint steps accurately trace through the standard algorithm showing ones addition of 7 plus 5 equaling 12 with regrouping to tens, then tens addition with the carried 1, and finally hundreds addition, reaching the correct sum."
+          }
+        }
+      },
+      {
+        "sample_id": "56e12b0991185b848085",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format removes ambiguity about what answer is expected. The student must evaluate whether the claimed answer of 672 is correct for the sum of 784 and 112, with only two possible verdicts."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of purchasing two items and finding the total spending is contextually valid and represents real-world application of addition within the money domain appropriate for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies named persons purchasing items with prices given in Philippine peso currency, a familiar monetary context for the target learner population. The true-false judgment is clearly stated at the end."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct sum of 784 plus 112 is 896. The sample correctly identifies 672 as false. The hint steps accurately decompose the addition: ones place adds to 6, tens place requires carrying, and hundreds place completes the sum of 896."
+          }
+        }
+      },
+      {
+        "sample_id": "84ae88c250ce97224e79",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is unambiguous: students must judge whether the proposed answer of 624 is correct. The yes-or-no judgment framework leaves no room for interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A coach receiving money as a transfer and needing to calculate total holdings is a realistic scenario. The addition context of receiving more money aligns with the competency requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative presents named characters and a clear action, with amounts expressed in Philippine peso. The question asks students to verify a solution rather than generate one, reducing cognitive load."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Coach Nora has 144 plus receives 480, totaling 644 plus 480, which equals... wait, let me recalculate: 144 plus 480 equals 624. The sample correctly states no error and accepts 624. The hint decomposition is accurate: ones add to 4, tens add to 12 with carrying, hundreds add to 6, final sum 624."
+          }
+        }
+      },
+      {
+        "sample_id": "375e9a674b43afda036b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A money amount in each pocket with a total to find is unambiguous. The four numeric choices are distinct, and only one is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A child finding the total money available in two separate pockets is a familiar and contextually reasonable scenario for a Grade 2 student learning to manage money and combine amounts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses simple language with named person and clear monetary context. The visual display of a number line with labels at intervals of 10 supports understanding for students not yet fluent with pure symbolic addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 20 plus 20 yields 40, which is presented as the correct answer. The visual number line increments from 0 to 60 and clearly marks the endpoint at 40. The hints accurately track the running total through two steps of 20 each."
+          }
+        }
+      },
+      {
+        "sample_id": "f3178a63e822dccf4618",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank question with four distinct numeric options leaves no ambiguity about the expected response format or the correctness criterion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person combining money from two separate locations is contextually valid. The scenario requires addition to combine amounts, aligning with the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question stem is direct: one pocket has 100 peso, another has 556 peso, total in pesos is unknown. The blank is clearly indicated. Distractor options include a multi-digit error of 6560 which tests whether students understand place value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 100 plus 556 yields 656 as the correct sum. The hint traces addition of ones to 6, tens to 5, and hundreds to 6. The option 6560 serves as a plausible distractor for students who may mistakenly concatenate digits instead of combining place values."
+          }
+        }
+      },
+      {
+        "sample_id": "9cf332415aafab808ad9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four distinct options clearly signals that students must select one correct answer from alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person with money in one pocket and more money in another pocket combining the amounts is a realistic Grade 2 scenario requiring addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a person, specifies the money amounts, and asks for the total. The visual representation as currency bills and coins provides a familiar representation of peso value. The monetary context is explicit and relevant."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 100 peso plus 670 peso equals 770 peso, which is the marked correct answer. The hints show the running total after each addition step, confirming 770 as the correct result."
+          }
+        }
+      },
+      {
+        "sample_id": "38f437260b42defd6d98",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with a defined correct answer among four options is unambiguous regarding the task and expected response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on different days being combined into a total is a contextually valid scenario that reflects real money-management situations for a student."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem mentions a named person, specifies amounts saved on named days, and asks for the total. The time sequence adds context without creating cognitive complexity. The number line visual with scale from 100 to 1000 supports computation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 200 plus 705 correctly yields 905. The hints accurately trace both the conceptual running total and the numerical result, confirming the correct sum."
+          }
+        }
+      },
+      {
+        "sample_id": "913c95ff90bba3f9caf5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for a single total, with four distinct numeric options provided as choices. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Purchasing two items with prices in peso and computing the total spending is a valid and grade-appropriate scenario for understanding addition in monetary contexts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a purchaser, item names, prices in familiar Philippine currency, and asks for total spending. The language is straightforward and the task is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 500 plus 500 yields 1000, which is the correct answer and reaches the stated upper boundary for the competency. The problem tests whether students can perform addition that reaches the ceiling of the specified range."
+          }
+        }
+      },
+      {
+        "sample_id": "2426c8ef66a8b152145c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question requests a single total amount, with options provided and only one correct. The ambiguity level is minimal."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on separate days being combined to find total savings is a realistic and developmentally appropriate scenario for a Grade 2 learner."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A named person saves specific amounts in peso on two named days, and the question asks for the total. The daily sequence provides context. The peso money visual representation supports understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 50 plus 61 equals 111. The regrouping occurs at the tens place: 5 tens plus 6 tens yields 11 tens, which becomes 1 hundred and 1 ten. The hints correctly trace this algorithm."
+          }
+        }
+      },
+      {
+        "sample_id": "b325620cc5d05fda1c0d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in-the-blank format with four options clearly requests a single numeric answer for the total."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While money is the context, the phrase and received 0 more is unusual. Adding zero is a valid edge case, but the phrasing may confuse learners about whether anything is being added at all. The semantic validity is present but pedagogically awkward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a coach, specifies an initial amount and an additional amount, and asks for the total. The facts are stated clearly, though the receipt of zero may momentarily confuse a young reader."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 750 plus 0 correctly yields 750. This tests the identity property of addition. The hints correctly decompose the calculation showing that adding zero to any number returns that number."
+          }
+        }
+      },
+      {
+        "sample_id": "c8c2d4d390abd0b4784b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four numeric options presents a clear task requiring identification of the correct sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on two separate days being combined to find total savings is a valid and realistic scenario aligned with Grade 2 student experience."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a named saver, specifies amounts in peso for two named days, and directly asks for the total. The language is clear and the time sequence provides context. The number line visual spans appropriate values."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 20 plus 30 equals 50. The calculation involves no regrouping and is straightforward. The running total hints correctly show the progression to the sum."
+          }
+        }
+      },
+      {
+        "sample_id": "8b5d4f3b20c1197ad4b3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four options clearly indicates the task of finding and selecting the correct total."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on consecutive days being totaled is contextually sound and reflects realistic financial scenarios appropriate for a Grade 2 student."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses named person, specific day names, explicit peso amounts, and clear question asking for the combined total. The visual representation of currency supports learner comprehension."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 10 plus 500 yields 510. No regrouping occurs as 0 plus 0 stays 0 in the ones and 1 plus 5 equals 6 in the... wait: ones are 0+0=0, tens are 1+0=1, hundreds are 0+5=5, so the sum reads as 510. The hints correctly show the running total after each addition."
+          }
+        }
+      },
+      {
+        "sample_id": "13de79b34be8a958fcb7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four options gives clear direction for the student to identify the total amount of money."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person with money divided across two pockets finding the combined amount is realistic and contextually appropriate for Grade 2 money-management learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem states a named person has specific peso amounts in each of two pockets and asks for the total in clear language. The number line visual provides support for the addition task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 10 plus 500 equals 510. The visual number line appropriately scales from 0 to 600 in increments of 100, supporting student estimation and verification of the sum."
+          }
+        }
+      },
+      {
+        "sample_id": "0597c020b5a38e7b62b6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for a single amount of money remaining, which is unambiguous in format despite the problematic nature of the operation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample presents a subtraction scenario, not an addition scenario. A person had money and used some to buy an item, then the question asks how much is left. The operation explicitly shown in the hints is subtraction: 200 minus 50 equals 150. This directly violates the competency requirement to solve problems involving addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is clearly stated with a named person, a starting amount in peso, an item purchased with a price in peso, and a question about remaining money. The language and logic flow coherently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic shown in the hints is correct for the described scenario: 200 minus 50 does equal 150. However, the operation is subtraction, which is not the operation specified in the node competency. The mathematical validity of the individual calculation does not redeem the fundamental misalignment."
+          }
+        }
+      },
+      {
+        "sample_id": "fda639badbc187d7da30",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks what number a dot lands on after counting forward a specified amount, with four options provided. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The counting-up model is a valid representation of addition for Grade 2 students. Starting at a number and advancing by another number models the addition operation appropriately."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses a concrete visual model of a dot at a starting position moving forward by a stated number of units. The language is direct and the task is clearly explained."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 744 plus 10 yields 754. The calculation is straightforward with no regrouping. The hints correctly trace ones addition staying at 4 and tens addition becoming 5, with hundreds unchanged at 7."
+          }
+        }
+      },
+      {
+        "sample_id": "875f02d69c91f46b0a19",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format presents a yes-or-no judgment about whether a stated answer is correct. The format is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Collecting items of different types and finding the total count is a realistic scenario appropriate for Grade 2. Addition is the correct operation for combining quantities of different categories."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem describes collecting jerseys and sports towels at a barangay court, specifies quantities for each type, and asks whether a proposed total is correct. The scenario and numbers are clearly presented."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 260 plus 669 yields 929. The addition requires regrouping: ones add to 9, tens add to 12 with carrying, hundreds add to 9. The error-detect format correctly identifies that the stated answer of 929 is indeed correct."
+          }
+        }
+      },
+      {
+        "sample_id": "ef46408a0a1bf5caf632",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format requires the student to evaluate whether a stated answer to an addition problem is correct. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Purchasing two items with prices in currency and determining total spending is a realistic money scenario appropriate for Grade 2 learners."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a named purchaser, item names, prices in peso, and asks students to judge a proposed total. The scenario and question are clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 641 plus 359 yields 1000, not 641. The sample correctly identifies the proposed answer of 641 as false. The addition requires regrouping at both the ones and tens places, and the hints correctly trace the computation to reach 1000."
+          }
+        }
+      },
+      {
+        "sample_id": "04e55c4e9c62c4b3a249",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank question with four distinct numeric options has no ambiguity about the expected response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on two separate days being combined to find total savings is a valid real-world scenario appropriate for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a saver, specifies amounts saved on two named days, and asks for the total in pesos. The question is direct and the task is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 200 plus 551 yields 751. The calculation requires regrouping at the tens place: 0 plus 5 gives 5 in the ones, 0 plus 5 gives 5 in the tens... actually: ones are 0+1=1, tens are 0+5=5, hundreds are 2+5=7, yielding 751. The distractor 7510 tests whether students place the digits correctly."
+          }
+        }
+      },
+      {
+        "sample_id": "ef00a636add9a38b923f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four options clearly specifies the task of identifying the correct total amount saved."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on consecutive days being totaled is a contextually appropriate scenario for Grade 2 students developing money-handling skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a named person, states peso amounts saved on two named days, and asks for the total. The language is simple and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 5 plus 180 yields 185. The calculation is straightforward: ones add to 5, tens add to 8, hundreds add to 1, yielding 185. The number line visual appropriately spans from 0 to 200."
+          }
+        }
+      },
+      {
+        "sample_id": "f62032c244789f7d37ff",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four options presents an unambiguous task to identify the total amount saved."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on separate days being combined is a realistic and appropriate scenario for Grade 2 student learning about money and addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a saver, specifies amounts in peso saved on two named days, and asks for the total. No visual support is provided, but the language is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 500 plus 131 yields 631. The addition is straightforward: ones add to 1, tens add to 3, hundreds add to 6, yielding 631. The distractor 6310 may appeal to students who concatenate instead of place-add."
+          }
+        }
+      },
+      {
+        "sample_id": "e3fe2246411978c69bc0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format asks students to judge whether a proposed answer to a clearly stated addition problem is correct. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person climbing steps and advancing by additional steps is a valid scenario for modeling addition. The context does not involve money but remains appropriate for practicing addition skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem states a starting step position, an upward movement by a number of steps, and asks whether a proposed final position is correct. The scenario and numbers are clearly presented."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 991 plus 6 yields 997, not 985. The error-detect sample correctly identifies that the proposed answer is wrong. The addition requires regrouping: 1 plus 6 gives 7 in the ones, 9 plus 0 gives 9 in the tens, 9 plus 0 gives 9 in the hundreds, yielding 997."
+          }
+        }
+      },
+      {
+        "sample_id": "9142d191d86fe37497f1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format requires a binary judgment about whether the proposed total is correct. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Receiving money as a transfer and combining it with existing money to find total holdings is a realistic and appropriate money scenario for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a person receiving money from a relative and asks students to judge a proposed total. The scenario, amounts in peso, and question are clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 290 plus 142 yields 432, not 433. The sample correctly identifies the proposed answer as false. Regrouping at the tens place: 0 plus 2 gives 2 ones, 9 plus 4 equals 13 tens requiring a carry, resulting in 432."
+          }
+        }
+      },
+      {
+        "sample_id": "14dd0ee67b650e0dd185",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank with four numeric options clearly requests the total spending with no ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Purchasing two items with prices in currency and calculating total spending is contextually valid for Grade 2 money-mathematics learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a purchaser, item names, prices in peso, and asks for the total. The language is direct and the scenario is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 360 plus 570 yields 930. The calculation requires regrouping at the tens place: 0 plus 0 gives 0 ones, 6 plus 7 equals 13 tens requiring a carry, resulting in 930. The distractor 940 may appeal to students who miscalculate the tens regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "56345c34e903ec1264a9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format asking whether two expressions are the same has an unambiguous format with clearly distinct options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "This sample tests properties of addition rather than problem-solving with addition. Students must judge whether grouping affects the result, but the expressions compared actually involve different numbers on the right side of the parentheses, testing numerical comparison rather than associativity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The symbolic expressions are presented clearly. The stem asks a binary comparison question that is understandable, though the conceptual demand exceeds typical Grade 2 problem-solving."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The left side adds 624, 41, and 22 yielding 687. The right side adds 624, 41, and 23 yielding 688. The two sides differ not only in grouping but in the actual numbers being summed, making them correctly identified as unequal."
+          }
+        }
+      },
+      {
+        "sample_id": "ba4e6e861fc90e7969d4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two expressions yield the same result, with four options provided. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "This sample tests the commutative property of addition rather than problem-solving involving addition. Students judge whether changing the order of addends affects the sum, which extends beyond the core competency of solving addition problems."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Two symbolic expressions are presented in parallel, asking whether they are the same. The format is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both 258 plus 341 and 341 plus 258 correctly yield 599. The sample accurately demonstrates the commutative property, and the correct answer of true is appropriate."
+          }
+        }
+      },
+      {
+        "sample_id": "cbe83cc21ba5ce7088a2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A read-mcq format with four options clearly specifies the task of identifying the total amount of money."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money in separate pockets being combined to find the total is a realistic scenario appropriate for Grade 2 students developing money skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a person with specific peso amounts in each pocket and asks for the total. The number line visual spans appropriate values and supports student calculation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 20 plus 531 yields 551. The calculation requires regrouping at the tens place: 0 plus 1 gives 1 one, 2 plus 3 gives 5 tens, 0 plus 5 gives 5 hundreds, yielding 551."
+          }
+        }
+      },
+      {
+        "sample_id": "b9685160470c50f5cc04",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four options presents a clear task to identify where the dot lands after moving forward."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A dot moving forward on a number line models addition appropriately. The scenario provides concrete representation of the addition operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a dot at a starting position moving forward by a stated number of steps, asking which number it lands on. The language is clear and the visual support with a number line aids comprehension."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 630 plus 51 yields 681. The calculation: 0 plus 1 gives 1 one, 3 plus 5 gives 8 tens, 6 plus 0 gives 6 hundreds, yielding 681. The number line visual appropriately marks the relevant scale."
+          }
+        }
+      },
+      {
+        "sample_id": "33b019494a2648258365",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format asks students to evaluate whether a proposed answer is correct. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A scenario where numbers are decomposed by place value and then summed is contextually valid for Grade 2 place-value and addition instruction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem explicitly states place-value decompositions for each number, then asks whether the sum is correct. The step-by-step breakdown supports student understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 242 plus 120 yields 362. The addition: 2 plus 0 gives 2 ones, 4 plus 2 gives 6 tens, 2 plus 1 gives 3 hundreds, yielding 362. The error-detect sample correctly accepts 362 as the right answer."
+          }
+        }
+      },
+      {
+        "sample_id": "18129883b440a176c855",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four options presents an unambiguous task to identify the total money."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem states a person has equal amounts in two pockets and asks for the total. The number line visual spans a small scale appropriate for the small numbers involved."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 5 plus 5 yields 10. This simple calculation with identical addends tests basic addition. The visual and hints correctly show the progression to the answer."
+          }
+        }
+      },
+      {
+        "sample_id": "806cbfcc612dc7d04615",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four numeric options is unambiguous about the expected response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved across two days being combined is a realistic and appropriate scenario for Grade 2 learning about money and addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a saver, states amounts in peso saved on two named days, and asks for the total. The scenario is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 1 plus 20 yields 21. The calculation is straightforward: 1 plus 0 gives 1 one, 0 plus 2 gives 2 tens, yielding 21. The distractor 210 may appeal to students who concatenate instead of place-add."
+          }
+        }
+      },
+      {
+        "sample_id": "915549e4fb4c243c83ef",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format requires judging whether a stated endpoint after counting is correct. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting forward from a start position models addition appropriately. The scenario is contextually sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem states a starting number, the amount to count up, and proposes an endpoint, asking for a true-false judgment. The language is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 693 plus 156 yields 849, not 537. The sample correctly identifies the proposed endpoint of 537 as false. The regrouping: 3 plus 6 gives 9 ones, 9 plus 5 equals 14 tens with carry, 6 plus 1 plus 1 carried equals 8 hundreds, yielding 849."
+          }
+        }
+      },
+      {
+        "sample_id": "5113ce832f38a079b5c1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Combining two groups of items is a valid scenario for addition. The non-monetary context tests whether students can apply addition beyond money problems."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem describes two groups of items, specifies quantities, and asks for the combined total. The scenario is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 150 plus 300 yields 450. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 1 plus 3 gives 4 hundreds, yielding 450."
+          }
+        }
+      },
+      {
+        "sample_id": "bb00895389faf45fe53e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format testing the identity property with zero as an addend presents a clear yes-or-no judgment framework about whether adding zero to 923 yields 924, leaving no room for ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding zero as one of two addends is a valid edge case for testing student understanding of addition identity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem states an addition with zero as one addend and proposes an answer, asking for verification. The scenario and question are clearly presented."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 0 plus 923 yields 923, not 924. The sample correctly identifies the proposed answer of 924 as incorrect. The identity property of zero is tested here."
+          }
+        }
+      },
+      {
+        "sample_id": "718e19dfcad2114a1e46",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format asks whether a stated total for a purchase is correct. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Purchasing two items with prices in currency and calculating total spending is appropriate for Grade 2 money learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a purchaser, items with prices in peso, and proposes a total for judgment. The scenario is clear and the question is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 630 plus 150 yields 780. The sample correctly identifies 780 as the true answer. The calculation: 0 plus 0 gives 0 ones, 3 plus 5 gives 8 tens, 6 plus 1 gives 7 hundreds, yielding 780."
+          }
+        }
+      },
+      {
+        "sample_id": "ddd31c57a5b07a10b02a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank with four options is unambiguous about the response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money in separate pockets being combined is contextually valid for Grade 2 money scenarios."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a person with amounts in separate pockets and asks for the total. The scenario is clear. The distractor 6000 tests whether students understand place value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 100 plus 500 yields 600, not 6000. The calculation: 0 plus 0 gives 0 ones, 0 plus 0 gives 0 tens, 1 plus 5 gives 6 hundreds, yielding 600. The distractor 6000 may appeal to students confusing place values."
+          }
+        }
+      },
+      {
+        "sample_id": "0551058c181a7bf417ac",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario evaluating the total collected items of 362 jerseys plus 403 caps with a proposed sum of 766 presents a clear yes-or-no judgment with no competing interpretations possible."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Collecting different types of items and finding the total count is a valid scenario for practicing addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem describes collecting two types of items, specifies quantities, and asks whether a proposed total is correct. The scenario and question are clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 362 plus 403 yields 765, not 766. The sample correctly identifies 766 as an incorrect answer. The addition: 2 plus 3 gives 5 ones, 6 plus 0 gives 6 tens, 3 plus 4 gives 7 hundreds, yielding 765."
+          }
+        }
+      },
+      {
+        "sample_id": "e3218b889a3b45315ebf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Receiving money as a transfer and combining with existing money is a valid money scenario appropriate for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a person receiving money from a relative and asks for the total in pesos. The scenario and question are clearly presented."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 20 plus 711 yields 731. The calculation: 0 plus 1 gives 1 one, 2 plus 1 gives 3 tens, 0 plus 7 gives 7 hundreds, yielding 731. The distractor 7310 tests place-value understanding."
+          }
+        }
+      },
+      {
+        "sample_id": "3712f5c370c91ca274bf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "A fill-in-the-blank with four options is unambiguous about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on consecutive days being combined is a realistic scenario for Grade 2 money learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a saver with amounts saved on named days and asks for the total. The scenario is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 50 plus 700 yields 750. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 0 plus 7 gives 7 hundreds, yielding 750. The distractor 7500 tests place-value confusion."
+          }
+        }
+      },
+      {
+        "sample_id": "33000d837ba225c3ea4b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four options presents a clear task to identify the total number of items."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person receiving additional items and finding the total count is a valid scenario for practicing addition in non-monetary contexts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a person with an initial quantity who receives more items, and asks for the new total. The language is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 679 plus 258 yields 937. The calculation requires regrouping: 9 plus 8 equals 17 ones with carry, 7 plus 5 plus 1 carried equals 13 tens with carry, 6 plus 2 plus 1 carried equals 9 hundreds, yielding 937."
+          }
+        }
+      },
+      {
+        "sample_id": "f9d575b28f09f92f6327",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format asking about Ate Liza climbing from step 0 to step 1 with four numeric options clearly signals selecting one answer regarding the new step position."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A person climbing steps and advancing by additional steps models addition appropriately for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a person at a starting step position who climbs additional steps, and asks for the new position. The language is clear and the task is simple."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 0 plus 1 yields 1. This trivial calculation tests basic understanding that adding any number to zero yields that number. The visual and hints correctly show the result."
+          }
+        }
+      },
+      {
+        "sample_id": "f61e23d0f386d8f93234",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The read-mcq format with four options is unambiguous about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money saved on consecutive days being combined is a valid scenario for Grade 2 money and addition learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a saver with equal amounts saved on two named days and asks for the total. The scenario is clear. The number line visual spans appropriate values."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 1 plus 1 yields 2. This simple calculation tests basic addition with identical small addends. The hints correctly trace the progression to the answer."
+          }
+        }
+      },
+      {
+        "sample_id": "982c8a1dc5e455a78729",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format asks whether a stated total for combining two quantities is correct. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting items in multiple containers and finding the total is a valid and realistic scenario for practicing addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes items in two separate baskets with specific quantities and proposes a total for judgment. The scenario is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 807 plus 59 yields 866, not 748. The sample correctly identifies the proposed total as false. The addition requires regrouping: 7 plus 9 equals 16 ones with carry, 0 plus 5 plus 1 carried equals 6 tens, 8 plus 0 equals 8 hundreds, yielding 866."
+          }
+        }
+      },
+      {
+        "sample_id": "52cfd9783ff822e12376",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format asks students to verify whether a proposed endpoint is correct. The judgment is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting forward from a starting position models addition appropriately. The scenario provides a concrete model for the addition operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem describes a starting position and an upward movement, then proposes an endpoint for verification. The scenario and question are clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 805 plus 141 yields 946, not 805. The sample correctly identifies the proposed answer as incorrect. The addition: 5 plus 1 gives 6 ones, 0 plus 4 gives 4 tens, 8 plus 1 gives 9 hundreds, yielding 946."
+          }
+        }
+      },
+      {
+        "sample_id": "38b94049a344cde85f71",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format with four options for combining 100 pesos and 12 pesos in Aling Rosa's pockets presents an unambiguous task requiring selection of the correct total."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 money and addition learning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem identifies a person with amounts in two separate pockets and asks for the total. The scenario is clear and the task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding 100 plus 12 yields 112. The calculation: 0 plus 2 gives 2 ones, 0 plus 1 gives 1 ten, 1 plus 0 gives 1 hundred, yielding 112. The distractor 1120 tests place-value understanding."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "solve_problems",
+        "clause": "Solve problems",
+        "verdict": "CONCERN",
+        "reasoning": "Most samples present problems for students to solve through calculation or error verification. However, two samples test properties of addition rather than solving problems with addition. Samples testing properties represent an extension beyond the core competency scope and should be evaluated separately from direct problem-solving items.",
+        "sample_ids": ["3959b6d9583b84187a4b", "56e12b0991185b848085", "84ae88c250ce97224e79", "375e9a674b43afda036b", "f3178a63e822dccf4618"]
+      },
+      {
+        "requirement_id": "involving",
+        "clause": "involving",
+        "verdict": "PASS",
+        "reasoning": "Every sample involves some context or scenario. Problems reference money, items, people in named situations, or numerical contexts. No item presents bare abstract calculation without contextual framing. The involving requirement is met across all samples.",
+        "sample_ids": ["3959b6d9583b84187a4b", "56e12b0991185b848085", "84ae88c250ce97224e79", "375e9a674b43afda036b", "f3178a63e822dccf4618"]
+      },
+      {
+        "requirement_id": "addition",
+        "clause": "addition",
+        "verdict": "FAIL",
+        "reasoning": "One sample explicitly violates the addition requirement. Sample 0597c020b5a38e7b62b6 presents a subtraction scenario where a person used money to buy an item and the question asks about money remaining. The hints confirm the operation is subtraction with the calculation shown as 200 minus 50 equals 150. This directly contradicts the competency requirement for addition problems.",
+        "sample_ids": ["0597c020b5a38e7b62b6"]
+      },
+      {
+        "requirement_id": "sums_up_to_1000",
+        "clause": "sums up to 1000",
+        "verdict": "PASS",
+        "reasoning": "All computed sums remain within or at the specified ceiling. The maximum sum reaches exactly 1000 when adding 500 plus 500 in sample 913c95ff90bba3f9caf5. No sum exceeds the stated upper bound. Sums range from minimal like 1 or 2 to the boundary of 1000.",
+        "sample_ids": ["3959b6d9583b84187a4b", "56e12b0991185b848085", "84ae88c250ce97224e79", "375e9a674b43afda036b", "f3178a63e822dccf4618"]
+      },
+      {
+        "requirement_id": "problems",
+        "clause": "problems",
+        "verdict": "CONCERN",
+        "reasoning": "Most samples present well-defined problems requiring computation or verification. However, some samples testing properties of addition shift the cognitive task from problem-solving to abstract reasoning about mathematical properties. The property-based samples remain tangential to core problem-solving instruction.",
+        "sample_ids": ["3959b6d9583b84187a4b", "56e12b0991185b848085", "84ae88c250ce97224e79", "56345c34e903ec1264a9", "ba4e6e861fc90e7969d4"]
+      },
+      {
+        "requirement_id": "money",
+        "clause": "money",
+        "verdict": "PASS",
+        "reasoning": "A substantial portion of the sample set explicitly involves money in the Philippine peso currency. Problems reference purchases, savings, money in pockets, money transfers, and money counts. The money context is well-represented across monetary problem types including multiple-choice, true-false, cloze, and visual reading tasks.",
+        "sample_ids": ["56e12b0991185b848085", "84ae88c250ce97224e79", "375e9a674b43afda036b", "f3178a63e822dccf4618", "9cf332415aafab808ad9"]
+      },
+      {
+        "requirement_id": "regrouping",
+        "clause": "with and without regrouping",
+        "verdict": "PASS",
+        "reasoning": "The sample set demonstrates both types of addition. Problems without regrouping include simple sums like 57 plus 20 or 0 plus 1. Problems with regrouping require carrying across place values, such as adding 50 plus 61 or 784 plus 112. Both scenarios are adequately represented.",
+        "sample_ids": ["3959b6d9583b84187a4b", "56e12b0991185b848085", "84ae88c250ce97224e79", "2426c8ef66a8b152145c", "f3178a63e822dccf4618"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

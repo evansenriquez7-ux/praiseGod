@@ -1,0 +1,293 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc12-mat_g3_mg_q2_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_mg_q2_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q2_2
+PACKET DIGEST: f2a3f630341ce3891b053a47c3339e73961e2a859f4f883a3e637fa1898fe41e
+COMPETENCY (Grade 3, Quarter 2, None):
+Compare masses of objects including the use of a balance scale.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare_masses: Compare masses
+  objects: objects
+  balance_scale: balance scale
+
+SAMPLES (every one of these is real rendered output):
+  sample 58d53330e694f02873ce  seed 42  [cloze]
+      stem:    Which is heavier: 19 g or 51 g?
+      answer:  51
+      options: 50 / 53 / 51 / 52
+      hints:   ["Compare the two measurements: 19 g and 51 g.", "The larger number is heavier: 51 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ced3b2fd668edec33d6d  seed 43  [mcq]
+      stem:    Which is heavier: 2 g or 22 g?
+      answer:  22
+      options: 22 / 21 / 24 / 23
+      hints:   ["Compare the two measurements: 2 g and 22 g.", "The larger number is heavier: 22 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b5b86916fb51e1d7d7e4  seed 44  [cloze]
+      stem:    Which is heavier: 15 kg or 16 kg?
+      answer:  16
+      options: 15 / 18 / 16 / 17
+      hints:   ["Compare the two measurements: 15 kg and 16 kg.", "The larger number is heavier: 16 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bf614cba1218a7545714  seed 45  [mcq]
+      stem:    Which is heavier: 15 kg or 3 kg?
+      answer:  15
+      options: 14 / 16 / 17 / 15
+      hints:   ["Compare the two measurements: 15 kg and 3 kg.", "The larger number is heavier: 15 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e63f2facb8ab7e5e06be  seed 46  [mcq]
+      stem:    Which is heavier: 64 mg or 11 mg?
+      answer:  64
+      options: 65 / 66 / 63 / 64
+      hints:   ["Compare the two measurements: 64 mg and 11 mg.", "The larger number is heavier: 64 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 87ad5f1ac6d294f84c1e  seed 500  [mcq]
+      stem:    Which is heavier: 420 kg or 434 kg?
+      answer:  434
+      options: 433 / 434 / 435 / 436
+      hints:   ["Compare the two measurements: 420 kg and 434 kg.", "The larger number is heavier: 434 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2a6e332f3300418e8cda  seed 501  [mcq]
+      stem:    Which is heavier: 3200 mg or 4228 mg?
+      answer:  4228
+      options: 4227 / 4229 / 4230 / 4228
+      hints:   ["Compare the two measurements: 3200 mg and 4228 mg.", "The larger number is heavier: 4228 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aed8d5b229d9e5c30b09  seed 502  [cloze]
+      stem:    Which is heavier: 2351 mg or 2593 mg?
+      answer:  2593
+      options: 2593 / 2592 / 2595 / 2594
+      hints:   ["Compare the two measurements: 2351 mg and 2593 mg.", "The larger number is heavier: 2593 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample eea6857805036db42d6d  seed 600  [mcq]
+      stem:    Which is heavier: 4 mg or 6 mg?
+      answer:  6
+      options: 8 / 6 / 5 / 7
+      hints:   ["Compare the two measurements: 4 mg and 6 mg.", "The larger number is heavier: 6 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6f136eb0bfcdc51d23ad  seed 601  [cloze]
+      stem:    Which is heavier: 2 kg or 19 kg?
+      answer:  19
+      options: 18 / 21 / 19 / 20
+      hints:   ["Compare the two measurements: 2 kg and 19 kg.", "The larger number is heavier: 19 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d0945204db08c01f7fa6  seed 602  [cloze]
+      stem:    Which is heavier: 20 mg or 30 mg?
+      answer:  30
+      options: 30 / 29 / 31 / 32
+      hints:   ["Compare the two measurements: 20 mg and 30 mg.", "The larger number is heavier: 30 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 335e231a4e66babd1e96  seed 603  [mcq]
+      stem:    Which is heavier: 2 kg or 3 kg?
+      answer:  3
+      options: 5 / 4 / 2 / 3
+      hints:   ["Compare the two measurements: 2 kg and 3 kg.", "The larger number is heavier: 3 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e263f5824988f609a74c  seed 604  [cloze]
+      stem:    Which is heavier: 4 kg or 13 kg?
+      answer:  13
+      options: 12 / 13 / 15 / 14
+      hints:   ["Compare the two measurements: 4 kg and 13 kg.", "The larger number is heavier: 13 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dbd4e5d7102f5fe81b02  seed 605  [mcq]
+      stem:    Which is heavier: 4 g or 28 g?
+      answer:  28
+      options: 27 / 28 / 30 / 29
+      hints:   ["Compare the two measurements: 4 g and 28 g.", "The larger number is heavier: 28 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c73c9c3042cffbfc80b6  seed 606  [mcq]
+      stem:    Which is heavier: 20 kg or 15 kg?
+      answer:  20
+      options: 22 / 20 / 21 / 19
+      hints:   ["Compare the two measurements: 20 kg and 15 kg.", "The larger number is heavier: 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 896906596500208dc6d6  seed 607  [cloze]
+      stem:    Which is heavier: 22 kg or 6 kg?
+      answer:  22
+      options: 23 / 24 / 22 / 21
+      hints:   ["Compare the two measurements: 22 kg and 6 kg.", "The larger number is heavier: 22 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ae56de6701d93b636a5f  seed 608  [cloze]
+      stem:    Which is heavier: 14 mg or 68 mg?
+      answer:  68
+      options: 67 / 70 / 68 / 69
+      hints:   ["Compare the two measurements: 14 mg and 68 mg.", "The larger number is heavier: 68 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b61f23c106a96ea0029f  seed 609  [cloze]
+      stem:    Which is heavier: 25 mg or 49 mg?
+      answer:  49
+      options: 51 / 50 / 48 / 49
+      hints:   ["Compare the two measurements: 25 mg and 49 mg.", "The larger number is heavier: 49 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c80c38f292bef9e2b51d  seed 610  [mcq]
+      stem:    Which is heavier: 43 mg or 61 mg?
+      answer:  61
+      options: 62 / 60 / 63 / 61
+      hints:   ["Compare the two measurements: 43 mg and 61 mg.", "The larger number is heavier: 61 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c5a66ea9429976299183  seed 611  [cloze]
+      stem:    Which is heavier: 59 g or 25 g?
+      answer:  59
+      options: 60 / 61 / 59 / 58
+      hints:   ["Compare the two measurements: 59 g and 25 g.", "The larger number is heavier: 59 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ddb5fa524a716dc41a7f  seed 700  [cloze]
+      stem:    Which is heavier: 19 kg or 20 kg?
+      answer:  20
+      options: 22 / 21 / 19 / 20
+      hints:   ["Compare the two measurements: 19 kg and 20 kg.", "The larger number is heavier: 20 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f60a172c997dabb528b3  seed 701  [mcq]
+      stem:    🏀 Gab has a math challenge about water bottles. Which is heavier: 20 kg or 15 kg?
+      answer:  20
+      options: 22 / 20 / 21 / 19
+      hints:   ["Compare the two measurements: 20 kg and 15 kg.", "The larger number is heavier: 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 863b2b4293455c9b8611  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Which is heavier: 5 kg or 14 kg?
+      answer:  14
+      options: 13 / 14 / 15 / 16
+      hints:   ["Compare the two measurements: 5 kg and 14 kg.", "The larger number is heavier: 14 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample cae45883e03bb0818b41  seed 800  [cloze]
+      stem:    Which is heavier: 3 kg or 5 kg?
+      answer:  5
+      options: 5 / 7 / 4 / 6
+      hints:   ["Compare the two measurements: 3 kg and 5 kg.", "The larger number is heavier: 5 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 47126da8e11a636f092b  seed 801  [cloze]
+      stem:    Which is heavier: 4895 mg or 2131 mg?
+      answer:  4895
+      options: 4894 / 4897 / 4896 / 4895
+      hints:   ["Compare the two measurements: 4895 mg and 2131 mg.", "The larger number is heavier: 4895 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6078a40f3804d1d754da  seed 900  [mcq]
+      stem:    Which is heavier: 2 kg or 1 kg?
+      answer:  2
+      options: 4 / 2 / 1 / 3
+      hints:   ["Compare the two measurements: 2 kg and 1 kg.", "The larger number is heavier: 2 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d4ce7fcfa5553157ce02  seed 901  [mcq]
+      stem:    Which is heavier: 2 kg or 1 kg?
+      answer:  2
+      options: 1 / 2 / 4 / 3
+      hints:   ["Compare the two measurements: 2 kg and 1 kg.", "The larger number is heavier: 2 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5ca94736b8318b65b573  seed 1000  [cloze]
+      stem:    Which is heavier: 60 g or 26 g?
+      answer:  60
+      options: 62 / 61 / 59 / 60
+      hints:   ["Compare the two measurements: 60 g and 26 g.", "The larger number is heavier: 60 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample b494b49c8a108f954e9c  seed 1001  [cloze]
+      stem:    Which is heavier: 24 mg or 4 mg?
+      answer:  24
+      options: 26 / 24 / 25 / 23
+      hints:   ["Compare the two measurements: 24 mg and 4 mg.", "The larger number is heavier: 24 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample cd6716cd504724b1e9c0  seed 1002  [cloze]
+      stem:    Which is heavier: 42 g or 55 g?
+      answer:  55
+      options: 56 / 57 / 55 / 54
+      hints:   ["Compare the two measurements: 42 g and 55 g.", "The larger number is heavier: 55 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

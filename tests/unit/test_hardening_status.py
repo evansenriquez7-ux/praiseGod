@@ -280,6 +280,7 @@ def test_the_ledger_s_own_bookkeeping_is_not_demanded_as_evidence():
     joined = " ".join(errors)
     assert "hardening_status.json" not in joined
     assert "HANDOFF_PROMPT.md" not in joined
+    assert "GPT_HANDOFF_PROMPT.md" not in joined
 
 
 def test_the_live_ledger_claims_every_artifact_on_disk():

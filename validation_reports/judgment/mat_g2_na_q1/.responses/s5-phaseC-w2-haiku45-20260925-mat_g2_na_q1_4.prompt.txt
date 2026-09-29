@@ -1,0 +1,239 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc2-mat_g2_na_q1_4-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q1_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_4-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_4
+PACKET DIGEST: d8b6ef8c6bf9371b872693b1203b04c0766fca21dfda6acd891dc9aeb7d1767e
+COMPETENCY (Grade 2, Quarter 1, None):
+Order numbers up to 1000 from smallest to largest, and vice versa.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  order_numbers: Order numbers
+  up_to_1000: up to 1000
+  smallest_to_largest: smallest to largest
+  largest_to_smallest: vice versa
+
+SAMPLES (every one of these is real rendered output):
+  sample aa0c52233d1cc4ecbfdd  seed 42  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 637, 638, 229
+      answer:  [638, 637, 229]
+      hints:   ["Numbers to order: 229, 637, 638.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 638, 637, 229."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 0f907323862ad2ba45df  seed 43  [sort_order]
+      stem:    Maria counted seashells collected by 3 friends: 33, 41, 44. Arrange the counts from largest to smallest.
+      answer:  [44, 41, 33]
+      hints:   ["Numbers to order: 33, 41, 44.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 44, 41, 33."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 75d9b51b7414facef9f0  seed 44  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 412, 231, 405
+      answer:  [231, 405, 412]
+      hints:   ["Numbers to order: 231, 405, 412.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 231, 405, 412."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample a6f7649cfbb4b0c94938  seed 45  [sort_order]
+      stem:    Ben counted seashells collected by 5 friends: 260, 262, 268, 269, 270. Arrange the counts from smallest to largest.
+      answer:  [260, 262, 268, 269, 270]
+      hints:   ["Numbers to order: 260, 262, 268, 269, 270.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 260, 262, 268, 269, 270."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 5f80327970ee41fe7867  seed 46  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 900, 881, 898, 887
+      answer:  [881, 887, 898, 900]
+      hints:   ["Numbers to order: 881, 887, 898, 900.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 881, 887, 898, 900."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample ffeb3a5194d2acd5e3fe  seed 500  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 993, 996, 1000, 998
+      answer:  [993, 996, 998, 1000]
+      hints:   ["Numbers to order: 993, 996, 998, 1000.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 993, 996, 998, 1000."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 25dd82623e3c46f08d78  seed 501  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 1000, 544, 997
+      answer:  [1000, 997, 544]
+      hints:   ["Numbers to order: 544, 997, 1000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 1000, 997, 544."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 0098f0d3cba93bd0bb55  seed 502  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 995, 982, 1000
+      answer:  [982, 995, 1000]
+      hints:   ["Numbers to order: 982, 995, 1000.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 982, 995, 1000."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 6aa98fd71faae20c878b  seed 600  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 950, 934, 944, 941
+      answer:  [950, 944, 941, 934]
+      hints:   ["Numbers to order: 934, 941, 944, 950.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 950, 944, 941, 934."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample de4c258403eb3ce67716  seed 601  [ordering]
+      stem:    Ben counted storybooks collected by 3 friends: 181, 197, 198. Arrange the counts from smallest to largest.
+      answer:  [181, 197, 198]
+      hints:   ["Numbers to order: 181, 197, 198.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 181, 197, 198."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 9458d0e6bdfff4da0c9d  seed 602  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 404, 406, 399, 409
+      answer:  [399, 404, 406, 409]
+      hints:   ["Numbers to order: 399, 404, 406, 409.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 399, 404, 406, 409."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 011fef1d9f07a4cfbf1c  seed 603  [sort_order]
+      stem:    Kuya Pat counted stickers collected by 4 friends: 150, 164, 166, 168. Arrange the counts from largest to smallest.
+      answer:  [168, 166, 164, 150]
+      hints:   ["Numbers to order: 150, 164, 166, 168.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 168, 166, 164, 150."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 96000c9a9f863c831696  seed 604  [sort_order]
+      stem:    Liza counted seashells collected by 4 friends: 60, 61, 62, 63. Arrange the counts from largest to smallest.
+      answer:  [63, 62, 61, 60]
+      hints:   ["Numbers to order: 60, 61, 62, 63.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 63, 62, 61, 60."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample d3b3b186f74d250080f5  seed 605  [sort_order]
+      stem:    Ana counted marbles collected by 5 friends: 161, 163, 171, 175, 177. Arrange the counts from largest to smallest.
+      answer:  [177, 175, 171, 163, 161]
+      hints:   ["Numbers to order: 161, 163, 171, 175, 177.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 177, 175, 171, 163, 161."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample bfcb210da121320629f0  seed 606  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 676, 741, 743
+      answer:  [743, 741, 676]
+      hints:   ["Numbers to order: 676, 741, 743.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 743, 741, 676."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 78738b7197c9b7ce087e  seed 700  [sort_order]
+      stem:    Liza counted seashells collected by 3 friends: 166, 174, 176. Arrange the counts from smallest to largest.
+      answer:  [166, 174, 176]
+      hints:   ["Numbers to order: 166, 174, 176.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 166, 174, 176."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample b417de5f97411c49da60  seed 701  [ordering]
+      stem:    🎨 Kuya Renz has a math challenge about sketchpads. Arrange these numbers from smallest to largest: 747, 758, 757, 743
+      answer:  [743, 747, 757, 758]
+      hints:   ["Numbers to order: 743, 747, 757, 758.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 743, 747, 757, 758."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 692334bbb44054d9263d  seed 702  [ordering]
+      stem:    🏀 Isko has a math challenge about basketballs. Arrange these numbers from smallest to largest: 915, 764, 760
+      answer:  [760, 764, 915]
+      hints:   ["Numbers to order: 760, 764, 915.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 760, 764, 915."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 3e859544fcba2dcca7f0  seed 800  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 504, 796, 505
+      answer:  [504, 505, 796]
+      hints:   ["Numbers to order: 504, 505, 796.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 504, 505, 796."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 9c39e6674329832975cb  seed 801  [ordering]
+      stem:    Ben counted seashells collected by 3 friends: 637, 993, 1000. Arrange the counts from largest to smallest.
+      answer:  [1000, 993, 637]
+      hints:   ["Numbers to order: 637, 993, 1000.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 1000, 993, 637."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 410c9cc6f1a1284119e1  seed 900  [sort_order]
+      stem:    Arrange these numbers from largest to smallest: 2, 3, 1
+      answer:  [3, 2, 1]
+      hints:   ["Numbers to order: 1, 2, 3.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 3, 2, 1."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 69a3dd8c2ebe0049a599  seed 901  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 2, 3, 1
+      answer:  [1, 2, 3]
+      hints:   ["Numbers to order: 1, 2, 3.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 1, 2, 3."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "standard"}
+  sample 2e22cef864b61656ef07  seed 1000  [sort_order]
+      stem:    Arrange these numbers from smallest to largest: 782, 65, 781
+      answer:  [65, 781, 782]
+      hints:   ["Numbers to order: 65, 781, 782.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 65, 781, 782."]
+      response: {"format": "sort_order", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "hint_gated"}
+  sample 5c315c6f1bbd88a4e536  seed 1001  [ordering]
+      stem:    Arrange these numbers from largest to smallest: 569, 792, 796
+      answer:  [796, 792, 569]
+      hints:   ["Numbers to order: 569, 792, 796.", "Find the largest number first, then the next largest.", "Ordered from greatest to least: 796, 792, 569."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "mastery_drill"}
+  sample 60ba4f7b9650334799a5  seed 1002  [ordering]
+      stem:    Arrange these numbers from smallest to largest: 518, 525, 514, 517
+      answer:  [514, 517, 518, 525]
+      hints:   ["Numbers to order: 514, 517, 518, 525.", "Find the smallest number first, then the next smallest.", "Ordered from least to greatest: 514, 517, 518, 525."]
+      response: {"format": "ordering", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "drag", "experience": "scaffolded"}
+

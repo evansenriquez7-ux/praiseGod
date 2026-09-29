@@ -1,0 +1,642 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_2-20260925",
+  "mat_g3_na_q4_2": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "FAIL",
+        "rationale": "Most samples are calibrated to Grade 3 learners, but systematic errors undermine appropriateness. Several samples use arithmetic operations with operands outside the competency scope (multiplier 2 in samples 18 and 21; divisor 4 in sample 7; divisor 45 in sample 20), introducing confusion beyond cognitive demand."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "The competency specifies operations by 6, 7, 8, and 9. Five samples violate this explicit constraint. Sample 7 uses divisor 4; sample 18 uses multiplier 2; sample 20 uses divisor 45; sample 21 uses multiplier 2. These operands are not in the mandated set and represent scope violations that misalign the content from the MATATAG curriculum requirement."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The competency addresses finding missing numbers in sentences with multiplication and division by 6, 7, 8, 9. While the node attempts to cover all required components, execution failures prevent fulfillment. Five samples violate the operand constraint, and one sample contains a mathematical error that contradicts its own hints.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The requirement decomposition is lossless in principle: find_missing_number, number_sentence, multiplication, division, and 6_7_8_9 together specify the full competency. However, the generator fails to enforce the 6_7_8_9 constraint in five rendered samples. Sample 7 and sample 20 also exhibit stem-hints mismatches where the stem names an out-of-scope operand while hints correct it, suggesting the generator knows the rule but does not validate it at output. These failures are blockers."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "The set of 26 samples covers multiplication and division across multiple formats (MCQ, true/false, cloze, error_detect, read_mcq). Missing numbers appear in different positions: as first operand (dividend or multiplicand), second operand (divisor or multiplier), and product/quotient. Visual representations appear in three samples. However, the presence of out-of-scope operands and mathematical errors reduces the utility of comprehensive coverage by contaminating the sample pool."
+      },
+      "scale_appropriateness": {
+        "verdict": "CONCERN",
+        "rationale": "Twenty-one of the 26 samples are appropriately scaled for Grade 3, Quarter 4 learners with single-digit and two-digit operands in the correct range. However, five samples introduce operands outside the competency definition, creating inconsistency in difficulty and scope. This uneven scaling raises ambiguity about which samples represent the intended grade-level expectation."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The sample set demonstrates format variety: six read_mcq (with BalanceScale visual), nine MCQ, five cloze, four true_false, and two error_detect formats. This range of interaction patterns supports learner engagement across multiple cognitive entry points. All operand positions (missing first operand, second operand, result) appear across formats, supporting comprehensive practice structure despite the operand violations."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "c9f822fff971a49a3c36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is clear: a balance scale visual frames a missing-first-operand multiplication. The question asks for the value that makes both sides equal. Distractors are plausible but distinct from correct answer 2."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The balance-scale context establishes a logical framework for equality. The operation and missing position are unambiguous. Visual and text align without contradiction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Read_mcq format allows learners to view all information at once. The stem directly names the visual context and the operation. Hints systematically guide toward the inverse operation and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The equation 2 × 6 = 12 is correct. Hints accurately state the number statement, name division as the inverse, calculate 12 ÷ 6 = 2, and verify the result. No contradictions between stem, answer, and hints."
+          }
+        }
+      },
+      {
+        "sample_id": "a054ad37fa446ab227d8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem directly presents a missing-second-operand division with clear question phrasing. The correct answer 10 and distractors 11, 70, 16 are sufficiently separated to avoid ambiguity about correct choice."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward division problem with no misleading context. The stem names the operation explicitly and the question asks for the result directly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The text-only MCQ format presents the equation and question clearly. Hints echo the statement, name what must be found, and show the calculation step. Language is direct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "60 ÷ 6 = 10 is arithmetically correct. Hints repeat the statement, note that the result must be found, and compute 60 ÷ 6 = 10 without error."
+          }
+        }
+      },
+      {
+        "sample_id": "45f64fe1952df54a847a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a cloze format with a missing first operand in division. The question position is clear. Distractors 7, 9, 54 are operand-related but distinct from correct answer 63."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The equation structure is standard. No contextual confusion or logical contradiction in the problem statement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with blank clearly marked. Hints identify what needs to be divided and by what, then show the relationship and final result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "63 ÷ 9 = 7 is correct. Hints appropriately describe the equation, note the division needed, and verify 9 × 7 = 63 and 63 ÷ 9 = 7."
+          }
+        }
+      },
+      {
+        "sample_id": "c7348da74456b0a9244d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a declarative statement in true/false format with clear true/false options. No ambiguity in how learners should respond."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The statement 72 ÷ 8 = 9 is arithmetically true; 8 × 9 = 72. However, the sample marks the answer as False while the hints confirm the calculation yields 9. This internal contradiction between the expected answer and the hint sequence destroys logical coherence."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The learner reads that 72 ÷ 8 = 9 is false, but then the hints state step-by-step that 8 × 9 = 72 and the quotient of 72 ÷ 8 = 9. The hints affirm exactly what the stem asks to reject, creating deep learner confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The arithmetic statement 72 ÷ 8 = 9 is mathematically correct. The answer key marks it False when it should be True. The hints compound the error by explicitly confirming the correct value 9. This is a fundamental mathematical contradiction within the sample."
+          }
+        }
+      },
+      {
+        "sample_id": "2b7cbe3b60076fc09491",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false stem clearly presents a missing-second-operand division with a candidate value. No ambiguity in the claim or response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement 18 ÷ 6 = 3 is logically sound and correctly evaluates to true. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a complete statement. Hints repeat the equation, clarify what must be found, and show the calculation without ambiguity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "18 ÷ 6 = 3 is correct. Hints accurately describe the statement and compute the result. Answer True aligns with mathematical truth."
+          }
+        }
+      },
+      {
+        "sample_id": "134e47dfc22fddd59e17",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error_detect format presents Noel's proposed solution and asks whether it is correct. The claim is explicit: the missing number is 54."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement and proposed solution are logically coherent. The hints confirm the relationship 54 ÷ 6 = 9 and 6 × 9 = 54."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The error_detect frame is clear: a named student made a claim and learners judge correctness. Hints support the judgment by deriving the correct value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "54 ÷ 6 = 9 is arithmetically correct. Noel's answer of 54 is correct; the sample correctly marks has_error=False with correct_value=54."
+          }
+        }
+      },
+      {
+        "sample_id": "69a7c3f646b2d412fc05",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks to evaluate the truth of 27 ÷ 4 = 3. The divisor 4 is not in the specified set (6, 7, 8, 9). However, the hints refer exclusively to 27 ÷ 9 = 3, discussing a completely different divisor. Learners encounter a stem-hints mismatch that creates profound confusion about which operation is being evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem and hints describe different operations. The stem uses divisor 4; the hints use divisor 9. This is a fatal logical contradiction. A learner following the stem solves one problem while the hints guide a different problem entirely."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Learners reading the stem see 27 ÷ 4, but the hint sequence pivots to 27 ÷ 9. The hints do not explain or justify this switch. Clarity is severely compromised by the unannounced substitution of the divisor."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem uses divisor 4, which is outside the Grade 3 Q4 competency scope (6, 7, 8, 9). Additionally, 27 ÷ 4 ≠ 3 (the result is 6.75). The hints correctly compute 27 ÷ 9 = 3, confirming a substitution. The sample violates both competency constraint and mathematical coherence."
+          }
+        }
+      },
+      {
+        "sample_id": "7407ce2065bb4e4a9275",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks what number divided by 9 equals 9. This is a clear missing-first-operand division question. Options are distinct and reasonable."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is coherent. The relationship between operands and quotient is logical and unambiguous."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The text-only MCQ presents the question in direct language. Hints identify what must be found and guide the learner through the inverse relationship and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "81 ÷ 9 = 9 is correct. Hints accurately describe the division, confirm the relationship 9 × 9 = 81, and state the quotient without error."
+          }
+        }
+      },
+      {
+        "sample_id": "e6b7759a987b5967964a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error_detect format is clear: Dante made a claim that the missing number is 56. The question is whether Dante is correct. No ambiguity in the structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement and proposed solution are coherent. The hints verify the calculation and confirm Dante's answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The named-student error_detect frame is direct. Hints step through the division and verify the result without confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "56 ÷ 7 = 8 is arithmetically correct. Dante's answer of 56 is correct; the sample correctly marks has_error=False with correct_value=56."
+          }
+        }
+      },
+      {
+        "sample_id": "f96ab31d1e970e8ad786",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks what number divided by 8 equals 5. This is an unambiguous missing-first-operand division. Options are plausible and distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is logically sound. The operands and result form a valid division relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The MCQ format presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "40 ÷ 8 = 5 is correct. Hints describe the division accurately, verify 8 × 5 = 40, and state the quotient without error."
+          }
+        }
+      },
+      {
+        "sample_id": "ba8a0f6871b7a9854452",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The balance-scale stem frames a missing-second-operand multiplication. The visual and text clearly establish which number is missing and what the equation represents."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The balance visual and equation are logically aligned. The context reinforces the equality relationship without contradiction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Read_mcq allows simultaneous view of all information. The stem names the visual and operation clearly. Hints guide through the inverse operation and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9 × 7 = 63 is arithmetically correct. Hints appropriately use division to find the missing factor, calculate 63 ÷ 9 = 7, and verify the result."
+          }
+        }
+      },
+      {
+        "sample_id": "185e227891d2ba0596e0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error_detect stem presents Jose's proposed solution clearly. Jose claims the missing number is 21. No ambiguity in the claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement and proposed solution are logically consistent. Hints confirm the calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The named-student frame is direct and familiar to Grade 3 learners. Hints systematically verify the calculation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "21 ÷ 7 = 3 is correct. Jose's answer of 21 is correct; the sample correctly marks has_error=False with correct_value=21."
+          }
+        }
+      },
+      {
+        "sample_id": "8b1a5d02951764759f4b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a missing-second-operand division with clear cloze format. The question asks for the result directly. No ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is straightforward. The operation and missing position are logically clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The MCQ presents the equation and question clearly. Hints repeat the statement, clarify what must be found, and show the calculation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "72 ÷ 8 = 9 is arithmetically correct. Hints accurately state the division, note the result needed, and compute 72 ÷ 8 = 9 without error."
+          }
+        }
+      },
+      {
+        "sample_id": "c7f090be1a3331bf95f1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. Options are plausible but distinct from correct answer 40."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication problem is logically sound. No contextual confusion in the problem structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8 × 5 = 40 is arithmetically correct. Hints accurately name the statement, note the result must be found, and compute 8 × 5 = 40."
+          }
+        }
+      },
+      {
+        "sample_id": "a409139fc83a20a16e69",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false stem presents a candidate answer for a missing-second-operand division. The claim is explicit and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is logically coherent. The incorrect candidate (50) and correct answer (5) are distinct, supporting the false judgment."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a complete claim. Hints repeat the equation, show what result must be found, and calculate the correct value 5."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "45 ÷ 9 = 5 is arithmetically correct. The candidate answer 50 is wrong; the sample correctly marks the statement False."
+          }
+        }
+      },
+      {
+        "sample_id": "4e1edc7d989eaf0a4bf0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks what number times 8 equals 32, with a missing first operand. Options are plausible but clearly distinguished."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is logically coherent. The inverse relationship is clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The MCQ presents the equation directly. Hints name the statement, note that division undoes multiplication, calculate 32 ÷ 8 = 4, and verify."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "4 × 8 = 32 is arithmetically correct. Hints accurately use division to find the factor, compute 32 ÷ 8 = 4, and verify 4 × 8 = 32."
+          }
+        }
+      },
+      {
+        "sample_id": "055358d9d84300daff53",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The balance-scale stem presents a missing first operand in multiplication. The visual and text align to establish which value is missing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The balance visual reinforces the equality concept. The stem and equation are logically consistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Read_mcq format shows all information at once. The stem references the visual and operation clearly. Hints guide through the inverse operation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8 × 6 = 48 is arithmetically correct. Hints name the equation, use division to solve, calculate 48 ÷ 6 = 8, and verify the result."
+          }
+        }
+      },
+      {
+        "sample_id": "eba8bc03054f2b7fa91c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem presents a multiplication by 2, which is not in the competency scope (6, 7, 8, 9). This introduces an undeclared operand that violates the problem's mandate, creating ambiguity about whether Grade 3 Q4 learners should use strategies designed for multiplying by 6, 7, 8, or 9."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The operand 2 falls outside the competency constraint. While the multiplication itself is logically valid, the use of an out-of-scope multiplier contradicts the sample's responsibility to respect the MATATAG curriculum bounds."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The cloze format is clear and the question is direct. However, learners expecting practice with operands 6, 7, 8, or 9 encounter 2 without explanation, potentially disrupting their mental model of the lesson scope."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9 × 2 = 18 is arithmetically correct. Hints accurately compute the result. However, mathematical correctness does not excuse the scope violation at the competency level."
+          }
+        }
+      },
+      {
+        "sample_id": "e2a10c6b5b82e2bf1214",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a missing-second-operand multiplication with direct question phrasing. The cloze blank is clear. Options are plausible."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication problem is logically sound. Operands 8 and 9 are both in the specified set, supporting valid competency practice."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, note the result needed, and show the computation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8 × 9 = 72 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 8 × 9 = 72."
+          }
+        }
+      },
+      {
+        "sample_id": "7fa1cf4209b86eadf47f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks about the truth of 45 ÷ 45 = 5, but the hints discuss 45 ÷ 9 = 5. The divisor in the stem (45) is vastly out of scope and differs from the divisor in the hints (9). This is an extreme stem-hints mismatch that creates profound confusion about what operation learners should evaluate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem and hints describe different operations entirely. The stem uses divisor 45; the hints use divisor 9. A learner following the stem is solving an impossible problem (what does it mean to divide a number by itself and get something other than 1?) while hints discuss a completely different division."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The thematic wrapper about dance shoes does not interfere with the core problem (per the guidelines), but the unannounced substitution of the divisor from 45 to 9 is a fundamental clarity failure. Learners cannot understand whether they should evaluate the stem or follow the hints."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "45 ÷ 45 = 1, not 5. The stem's statement is false, supporting answer True only if the intended operation is 45 ÷ 9 = 5. The divisor 45 is far outside the competency scope (6, 7, 8, 9). The hints reveal the generator intended 45 ÷ 9, confirming a substitution error at the output level."
+          }
+        }
+      },
+      {
+        "sample_id": "c8d0bfc0a57d52437191",
+        "checks": {
+          "ambiguity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem presents 6 × 2 = ___, where the multiplier 2 is not in the competency scope. This introduces an undeclared operand without explanation, creating ambiguity about whether the sample is testing the right skill set for this competency node."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The use of multiplier 2 violates the MATATAG constraint that operands be from the set 6, 7, 8, 9. While the multiplication itself is logically valid, the scope violation contradicts the competency definition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "CONCERN",
+            "reasoning": "The thematic wrapper about basketballs and the named character are familiar elements to Grade 3 learners. However, the multiplication by 2 diverges from the expected operand set without explanation, potentially confusing learners about the lesson scope."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6 × 2 = 12 is arithmetically correct. Hints accurately compute the result. However, this does not excuse the competency scope violation."
+          }
+        }
+      },
+      {
+        "sample_id": "6dc264d1010848427d1b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem presents a missing first operand in division. The blank position is clear. Options include operand-related choices but are distinguishable."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division problem is logically coherent. The operands are in the correct scope and the relationship is valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format clearly marks the missing position. Hints identify what must be divided and by what, then verify the relationship."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "63 ÷ 9 = 7 is arithmetically correct. Hints accurately describe the equation and relationship without error."
+          }
+        }
+      },
+      {
+        "sample_id": "da34b95b8b603609a47a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks what number times 7 equals 7, with a missing first operand. Options are distinct. No ambiguity in the problem structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is logically sound. The inverse relationship between multiplication and division is clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The MCQ presents the equation and question directly. Hints name the statement, note division as the inverse, calculate 7 ÷ 7 = 1, and verify."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1 × 7 = 7 is arithmetically correct. Hints accurately use division to find the factor, compute 7 ÷ 7 = 1, and verify 1 × 7 = 7."
+          }
+        }
+      },
+      {
+        "sample_id": "862eb6c668c42b305b45",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks what number divided by 7 equals 2. This is a clear missing first operand division. Options are plausible but distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is logically coherent. The operands and result form a valid division relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The MCQ presents the question directly. Hints identify what must be found and guide through the inverse operation and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "14 ÷ 7 = 2 is arithmetically correct. Hints describe the division, verify 7 × 2 = 14, and state the quotient without error."
+          }
+        }
+      },
+      {
+        "sample_id": "8a8bdcf387e3bafc71a8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem presents a missing first operand in division. The blank is clearly marked. Options are operand-related but distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division problem is logically valid. The operands are in scope and the relationship holds."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format is clear. Hints identify what must be divided and by what, then verify the relationship through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "42 ÷ 6 = 7 is arithmetically correct. Hints accurately describe the equation and verify 6 × 7 = 42."
+          }
+        }
+      },
+      {
+        "sample_id": "2b1aa51d4128c5d45813",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem presents 6 × 6 = ___ with a missing result. The blank position is clear. Options are plausible but distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication problem is logically sound. Both operands are in the allowed scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format clearly marks the missing position. Hints repeat the statement, clarify what result is needed, and show the computation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6 × 6 = 36 is arithmetically correct. Hints accurately name the statement, note the result to find, and compute 6 × 6 = 36."
+          }
+        }
+      },
+      {
+        "sample_id": "f95d14cc2d33478688de",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error_detect stem presents Manny's proposed solution clearly. Manny claims 6 is the missing number, which is incorrect. No ambiguity in the claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement and proposed error are logically coherent. The hints demonstrate why the claim is wrong."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The named-student error_detect frame is direct. Hints step through the correct calculation and show the correct answer 42."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "42 ÷ 7 = 6 is correct, so Manny's answer is wrong. The sample correctly marks has_error=True with correct_value=42."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "find_missing_number",
+        "clause": "Find the missing number",
+        "verdict": "PASS",
+        "reasoning": "All 26 samples require learners to identify a missing value in an equation. The missing number appears in three positions: first operand (dividend or multiplicand), second operand (divisor or multiplier), and result (product or quotient). Sample c9f822fff971a49a3c36 requires finding first operand 2; sample a054ad37fa446ab227d8 requires finding result 10; sample ba8a0f6871b7a9854452 requires finding second operand 7. Every sample directly addresses this core requirement.",
+        "sample_ids": ["c9f822fff971a49a3c36", "a054ad37fa446ab227d8", "ba8a0f6871b7a9854452"]
+      },
+      {
+        "requirement_id": "number_sentence",
+        "clause": "number sentence",
+        "verdict": "PASS",
+        "reasoning": "All samples present arithmetic equations in standard format: multiplication (like 8 × 5 = ___ in c7f090be1a3331bf95f1) or division (like 60 ÷ 6 = ___ in a054ad37fa446ab227d8). Stems clearly state the relationship between numbers. Error_detect samples name the equation explicitly; balance-scale samples show equation components in the visual. Every sample centers a number sentence as the primary learning object.",
+        "sample_ids": ["c7f090be1a3331bf95f1", "a054ad37fa446ab227d8"]
+      },
+      {
+        "requirement_id": "multiplication",
+        "clause": "multiplication",
+        "verdict": "CONCERN",
+        "reasoning": "Multiplication is covered across samples: c9f822fff971a49a3c36 uses 2 × 6 = 12; ba8a0f6871b7a9854452 uses 9 × 7 = 63; 8 × 5 in c7f090be1a3331bf95f1; 9 × 2 in eba8bc03054f2b7fa91c; 6 × 2 in c8d0bfc0a57d52437191; 8 × 9 in e2a10c6b5b82e2bf1214; 6 × 6 in 2b1aa51d4128c5d45813; 1 × 7 in da34b95b8b603609a47a; 6 × 2 in c8d0bfc0a57d52437191. However, samples eba8bc03054f2b7fa91c and c8d0bfc0a57d52437191 use multiplier 2, which is outside the scope (6, 7, 8, 9), violating the competency constraint.",
+        "sample_ids": ["c9f822fff971a49a3c36", "eba8bc03054f2b7fa91c", "c8d0bfc0a57d52437191"]
+      },
+      {
+        "requirement_id": "division",
+        "clause": "division",
+        "verdict": "CONCERN",
+        "reasoning": "Division is extensively covered: a054ad37fa446ab227d8 uses 60 ÷ 6 = 10; 45f64fe1952df54a847a uses ___ ÷ 9 = 7; 2b7cbe3b60076fc09491 uses 18 ÷ 6 = 3; 8b1a5d02951764759f4b uses 72 ÷ 8 = 9. However, samples present systematic errors: sample c7348da74456b0a9244d marks 72 ÷ 8 = 9 as False when it is True; sample 69a7c3f646b2d412fc05 uses divisor 4, outside scope; sample 7fa1cf4209b86eadf47f uses divisor 45, far outside scope. These violations compromise the division requirement's integrity.",
+        "sample_ids": ["a054ad37fa446ab227d8", "c7348da74456b0a9244d", "69a7c3f646b2d412fc05", "7fa1cf4209b86eadf47f"]
+      },
+      {
+        "requirement_id": "6_7_8_9",
+        "clause": "6, 7, 8, and 9",
+        "verdict": "FAIL",
+        "reasoning": "The competency requires operations using only operands from the set 6, 7, 8, 9. Five samples violate this constraint: sample 69a7c3f646b2d412fc05 uses divisor 4 in the stem (hints correct to 9, but stem violates); sample eba8bc03054f2b7fa91c uses multiplier 2; sample c8d0bfc0a57d52437191 uses multiplier 2; sample 7fa1cf4209b86eadf47f uses divisor 45 in the stem (hints correct to 9, but stem violates). These are not marginal violations; they represent a systematic failure to enforce the curriculum constraint. Sample 8b1a5d02951764759f4b correctly uses 72 ÷ 8 = 9 within scope; sample ba8a0f6871b7a9854452 correctly uses 9 × 7 within scope. The node fails to consistently restrict operands to 6, 7, 8, 9.",
+        "sample_ids": ["69a7c3f646b2d412fc05", "eba8bc03054f2b7fa91c", "c8d0bfc0a57d52437191", "7fa1cf4209b86eadf47f", "8b1a5d02951764759f4b"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

@@ -17322,3 +17322,152 @@ double dispatch, and the corpus should say so wherever it quotes these numbers.
   finds no other unordered string-set iteration in `dna/` or `formatters/`. Fix: `sorted(...)` at the three
   sites plus a cross-process determinism test. A SOURCE change, so it is NAMED here and owed to the next
   source batch (with the §1G clock work), not paid for with its own ~5h chain.
+
+## 2026-09-25/29 — PHASE C: the remaining 91 nodes reviewed, provenance repaired, campaign closeout
+
+**Session:** `claude-h06-phaseC-queue-2026-09-25`, continued after two rate-limit interruptions.
+**Row:** `H-06`. **Model that judged every Phase C packet:** Claude Haiku 4.5 (Claude Code Agent tool,
+`model: "haiku"`, `subagent_type: general-purpose`, default thinking). The dispatcher authored no
+verdict, sample id, clause citation or `overall`. Phase C filed all 91 nodes that lacked schema-v2
+evidence. The live 151-record corpus now reads **56 PASS / 55 CONCERN / 40 FAIL** and contains 120
+Haiku, 17 truthful `gpt-5.6-luna`, and 14 truthful `gpt-6-luna` records. No Luna identity was renamed.
+
+### Review method and the leniency finding
+
+Each reviewer received one node's dispatch-time packet and was told to read only that node's
+`prompt.txt` and write only its `verdicts.json`. The same audit discipline as Phase B ran before filing:
+the real filer and validator functions, exact sample/clause coverage, the 60-character floor, quote
+provenance, anti-template checks, and a structural comparison after every revision. A reply rejected on
+form had its substantive claims harvested before it was set aside.
+
+Five reviewers were asked to reconcile an `overall` that contradicted their own verdicts. Four of the
+five softened verdicts instead of changing the overall: `mat_g1_na_q1_8` changed three CONCERN checks to
+PASS; `mat_g2_na_q1_9` changed FAIL to CONCERN; `mat_g2_na_q2_3` changed three FAIL checks to PASS; and
+the first `mat_g2_na_q4_0` reviewer changed two CONCERN findings to PASS. Only `mat_g2_na_q1_2` preserved
+every underlying verdict and changed `overall` PASS to CONCERN. This is an observed **leniency-pressure
+pattern (4/5)**, not proof that any individual changed verdict is substantively wrong. From that point,
+a contradicted reply was preserved under `set_aside/`, its claims were harvested, and the node was sent
+to a fresh blind reviewer who saw none of the prior exchange. Fresh redispatches are named in
+`local_only/scratch/phaseC/agents.txt`; the accepted record discloses the discarded reply and why.
+
+The 91 filed records' `tool_uses_by_reviewer` fields were scanned together. None names Bash, Glob, Grep,
+WebFetch, WebSearch, an absolute path, `../`, or a path outside its own node. Twenty records explicitly
+say paths outside the node were `none`; the rest record only reading their prompt and writing/editing
+their reply. This is recorded reviewer conduct, not filesystem sandbox enforcement: blindness remains a
+prompt contract.
+
+### Two records that must not be simplified in a later handoff
+
+* **`mat_g3_na_q2_1` used three fresh reviewers.** The first reply remained invalid JSON after two
+  reviewer repairs. The second had `overall: PASS` beside its own CONCERN verdicts and was set aside.
+  The third omitted one closing brace: the preserved before/after character diff is exactly one `}`
+  insertion. It then placed `decomposition` beside `competency_fulfillment`; the reviewer moved that
+  unchanged object under `competency_fulfillment`. A structural replay of only that move equals the final
+  reply exactly, so every sample check, clause verdict, finding verdict and `overall` is unchanged.
+* **`mat_g3_na_q4_4` citation quality is disclosed, not silently repaired.** The filer required citations
+  for `2_to_3_digit_numbers`, and the reviewer added four. It was also asked to narrow the other broad
+  citations but did not: `estimate_quotient`, `divided_by`, and `1_to_2_digit_numbers` each still cite all
+  **26** samples. This is a reviewer-quality note, not a schema violation, and is preserved in
+  `tool_uses_by_reviewer`.
+
+### Content defects harvested before set-aside
+
+The full claims list is `local_only/scratch/phaseC/harvested_claims.txt`. The following were confirmed by
+executing the dispatched samples and are owed to the next source batch, not altered during review filing:
+
+* `mat_g2_na_q2_2`, seed 605, serves a subtraction money problem on an addition-only competency.
+* `mat_g2_na_q4_2` and `mat_g2_na_q4_5` serve fraction-ordering tasks with the fraction-addition hint
+  chain. `fractions.generate_hints` has no ordering branch, exposing the Phase A hint contract's missing
+  general **operation** dimension.
+* `mat_g3_dp_q3_1` (eight enumerated seeds) and `mat_g3_dp_q3_2` say “table” while rendering only a
+  `BarChart`; `mat_g3_dp_q3_2` seed 900 also offers the year `2023` as a category distractor.
+* `mat_g3_na_q3_0` seed 605 asks `5 × 7` on the competency restricted to the 6, 7, 8 and 9 tables;
+  seed 702 also exhibits the previously localised interest-wrapper/task-noun mismatch.
+
+Reviewer findings not independently confirmed here remain claims, not engineering conclusions:
+`mat_g2_mg_q4_4` may omit identify/tool-use variants; `mat_g2_na_q3_0` may reverse groups and group size
+between stem and hint; `mat_g2_na_q3_1` seed 701 may be ambiguous; and the set-aside
+`mat_g3_mg_q2_3` / `_q2_5` capacity-context complaints remain for Phase D triage. The audit also caught
+`mat_g3_dp_q3_3` copying one neighbouring sample's entire reasoning block; a paraphrased copy remains a
+named blind spot of the mechanical anti-template gate.
+
+### The 76-record provenance defect and repair
+
+The Phase B/C scratch filers supplied one wave-level `--dispatch-id` to every node. Since
+`file_reviews.file_one` derives `.responses/<prefix>.json` and `.prompt.txt` from that prefix, each later
+node in a wave overwrote the earlier node's raw copies. The validator correctly reported 76 raw-response
+digest mismatches: 13 Phase B and 63 Phase C. The filing hole was fixed in `855645fd`: an existing copy
+with different bytes is now a named refusal. Focused tests report `9 passed`, mutation
+`review_response_copy_overwritten` is DETECTED, and the operator guide now names registry id
+`review_response_copy_not_overwritten`.
+
+Both ignored scratch `file.sh` scripts now include the node in the prefix. Before re-filing, every one of
+the 76 original scratch `verdicts.json` and `prompt.txt` files was SHA-256-compared with the digests stored
+in its live record. All 76 matched. Re-filing reused the exact old `tool_uses_by_reviewer` and appended one
+provenance sentence. A recursive old/new comparison produced 76 rows and permits only
+`dispatch_id`, `response_ref`, `prompt_ref`, and `tool_uses_by_reviewer`; all other nested fields are
+identical. The old wave-level copies remain because the last node in each wave still references them.
+The follow-up digest scan reports zero mismatches, and `validate_judgment --all` reaches the real content
+baseline rather than provenance noise: **56 PASS / 55 CONCERN / 40 FAIL; 1,440 findings**.
+
+### Closeout proof at input digest `618c217d74edb6f5`
+
+The first full runner exposed four bookkeeping/artifact failures in addition to the three known content
+gates: the new registry id was missing from the operator guide, a zero-v1 legacy queue was incorrectly
+treated as an error, the GPT handoff was incorrectly demanded as a proof artifact, and digest-bound
+artifacts were stale. The fixes preserve enforcement: the operator guide names the id; the queue writes
+and accepts an empty completed census; and the handoff is explicitly classified as documentation, not
+proof. Focused closeout tests on final bytes:
+
+```
+PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_file_reviews.py tests/unit/test_hardening_status.py tests/unit/test_legacy_review_queue.py tests/unit/test_stage_ledger.py -q
+........................................................................ [ 69%]
+...............................                                          [100%]
+103 passed in 1.35s
+
+PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+
+PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py
+legacy_review_queue: no v1 reviews on disk — queue is complete.
+```
+
+The full mutation run reported **181/185 DETECTED**. Three INVALID results are the known §6F baseline-red
+cluster (`contradicted_attestation`, `attestation_drops_options`, `attestation_leaks_into_phase1`). The
+fourth was `obligation_benchmark_outlives_source`, invalid only because its unmutated benchmark baseline
+was stale. After refreshing the benchmark (`cache_keys=1000`, `represented_executions=4000`,
+`failures=0`, `recommended_shards=4`), the targeted rerun reported:
+
+```
+PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only obligation_benchmark_outlives_source
+1/1 mutations detected. Praise God — the verifier verifies.
+```
+
+Thus all 185 proof files are current; exactly the three Phase D §6F proofs remain INVALID, never described
+as detections. `review_response_copy_overwritten` and the independent validator-side
+`judgment_accepts_changed_raw_response` both DETECTED. Frontend proof is current with 2 test files / 41
+tests passing and 18 production visual types covered. Six sequential release receipts each cover 96,885
+cache keys / 387,540 represented executions with zero failures; elapsed seconds were 1520.963, 1536.385,
+1590.965, 1524.538, 1549.106 and 1572.745. The aggregate verifier prints:
+
+```
+PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+```
+
+The final full runner completed before the session was rate-limited; its log includes its own exit line:
+
+```
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+PASS unit_tests (985 passed, 1 skipped, 2 deselected, 4 warnings in 1067.96s (0:17:47))
+FAIL judgment_reviews (1441 problem(s) — non-PASS verdicts or incomplete reviews)
+FAIL capability_contract (Phase 2, 180 problem(s): 173 CONTRADICTED, 0 UNATTESTED, 7 STALE (§6F), 0 UNADJUDICABLE (no recorded options))
+PASS obligation_manifest_11
+scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+RUN_ALL FINAL EXIT CODE: 1
+```
+
+Every other scheduled stage passed, including all Phase 1 content checks, render contract, grading,
+operator/contract matching, and the complete obligation manifest. Phase C therefore closes with no
+silent or accidental gate failure. The three red stages are the explicitly deferred Phase D content and
+attestation work; they were not weakened or relabelled green.

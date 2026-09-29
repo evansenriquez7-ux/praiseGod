@@ -1,0 +1,656 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_10-20260925",
+  "mat_g2_na_q1_10": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "CONCERN",
+        "rationale": "The packet uses numbers up to 976 in three-digit addition problems for Grade 2, Quarter 1. While the competency permits sums up to 1000, the cognitive load of manipulating such large numbers early in the year, combined with the absence of visual scaffolding or place-value diagrams, may exceed typical developmental readiness for this quarter. Most items rely on mental arithmetic without representational aids."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "Multiple samples fail to test the properties they appear to claim. Samples comparing expressions with different operands (be71538c, e498f4dc, 841504958, 0ef3528f, a41ab1c9, cd49dd4ef, 5fddfe88, c6b98e6f) do not illustrate or apply the stated properties. Sample 3c7706e1 compares 5 plus 1 against 1 plus 1 with different first operands, which conflates distinct sums rather than testing commutativity. This mismatch between competency claim and item design is a significant alignment issue."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The packet nominally addresses identity, commutative, and associative properties, but execution is flawed. The associative property is particularly poorly served: only samples 6eb5b90e, b3e2c5bd, and 0e0e812a validly test this property with identical operands grouped differently. Samples claiming to test associativity instead use different numbers in grouped positions, teaching learners a false equivalence or non-equivalence unrelated to the property itself.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The seven REQUIREMENTS (illustrate_properties, apply_properties, properties_of_addition, sums_up_to_1000, identity_property, commutative_property, associative_property) are lossless as a decomposition checklist, but the packet's implementation fails several. Identity property receives robust coverage through 11 samples. Commutative property has good true cases (d9b7b2, e3522ff, 12e0417) but is undermined by false negatives using mismatched operands (samples 7, 12, 24, 25). Associative property has only three valid exemplars and six flawed ones using operand differences to trigger false answers, conflating unrelated mathematical concepts. The competency cannot be fairly assessed with such corrupted exemplars."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "Identity property is well covered with cloze, true/false, error-detection, and multiple-choice items across a range of numbers. Commutative property has multiple valid true cases and false cases, though some false cases are mathematically misleading. Associative property coverage is severely compromised: the packet includes eight samples nominally testing it, but only three (samples 8, 9, 23) use identical operands in different groupings as required. The remaining five use operand differences, which teaches conflation rather than property understanding. This imbalance violates balanced curriculum representation."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All sums generated remain within the specified range of 1000 or less. The largest sums observed are 998 and 897, confirming adherence to the quantitative boundary. The variety of number magnitudes (single digits to high three-digit numbers) provides adequate range coverage within the constraint."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The packet includes multiple item formats: multiple-choice, true/false, cloze, and error-detection tasks. Problems test both true and false cases, employ different number ranges, and include thematic elements (emoji, cultural names) in a subset of samples. Hint structures are present for all samples and attempt to walk through place-value reasoning, though hints are incomplete in many cases."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "be71538c23749f501c31",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly asks whether two grouped expressions are equal. The options are unambiguous. However, the stem's mathematical structure is problematic: left side sums 241, 111, and 516, while right side sums 241, 111, and 431. The design uses different third operands, which prevents this sample from testing the associative property as intended."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The item purports to test whether changing grouping preserves equivalence, but it simultaneously changes one operand. A learner cannot distinguish whether the two sides differ due to regrouping or due to the operand change (516 versus 431). This conflates two separate mathematical concepts and renders the item unsuitable for assessing the associative property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is straightforward. A Grade 2 learner can understand the question format and the four response options presented. Calculations are worked through in the hints without confusing phrasing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 241 plus 111 plus 516 equals 868, and 241 plus 111 plus 431 equals 783. The answer False is mathematically accurate for these specific numbers, though the sample fails to isolate the property being tested."
+          }
+        }
+      },
+      {
+        "sample_id": "f597c1cec10ba4da88d5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is unambiguous. The statement zero plus 293 equals 303 is presented clearly, and learners are asked to evaluate its truth value without linguistic or mathematical ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample correctly tests the identity property: adding zero to any number yields the original number. The false statement (303 instead of 293) makes this a valid false case to assess learner understanding of the identity principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and age-appropriate. The number 293 is presented in an equation format familiar to Grade 2 students practicing addition, and the prompt asks directly whether the statement is true or false."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 293 correctly equals 293, not 303. The answer False is mathematically accurate. Hint explanations work through the addition by place value, correctly showing ones, tens, and hundreds components, though the hundreds digit is listed implicitly."
+          }
+        }
+      },
+      {
+        "sample_id": "d9b7b223025ae1e27eb5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is clear: the question asks whether 462 plus 12 equals 12 plus 462, and four distinct options are provided without overlapping meanings."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample directly tests the commutative property by asking whether changing the order of two addends preserves the sum. The true answer correctly demonstrates that 462 plus 12 and 12 plus 462 both equal 474, validly illustrating commutativity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased clearly, asking learners to judge whether two ordered additions are equivalent. The multiple-choice options provide a manageable set of plausible responses for this grade level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 462 plus 12 equals 474, and 12 plus 462 equals 474. The answer True is mathematically accurate and appropriately demonstrates the commutative property with two three-digit addends."
+          }
+        }
+      },
+      {
+        "sample_id": "e3522ff45953858835fe",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks whether the sum of 447 plus 202 equals the sum of 202 plus 447. The four options are distinct and unambiguous, providing a standard multiple-choice assessment format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a valid test of the commutative property: two identical numbers are added in reversed order, and the sample asks whether the results are the same. The true answer correctly confirms that order does not affect the sum in this case."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and direct. A Grade 2 student can easily parse the comparison between the two expressions and select a response. The option labels (True, Cannot be determined, False, Only when both are 0) are age-appropriate."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 447 plus 202 equals 649, and 202 plus 447 also equals 649. The answer True is mathematically accurate and properly demonstrates the commutative property of addition."
+          }
+        }
+      },
+      {
+        "sample_id": "f481ea168b05a6736b7e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format is unambiguous: students are asked to fill in the missing value in a simple addition sentence involving zero and 410. The four options are distinct numbers without overlapping meanings."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item tests the identity property of addition. Adding zero to 410 should yield 410, and the distractors (411, 420, 409) are plausible errors that might result from common computational mistakes. The sample is valid for assessing this concept."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The blank-filling format is age-appropriate and commonly used in Grade 2 mathematics instruction. Students understand that they must determine what number makes the equation true."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 410 correctly equals 410. The hints correctly walk through the place-value addition of ones and tens; however, the hints omit explicit mention of the hundreds digit, which is a minor completeness issue but does not alter the mathematical correctness of the answer."
+          }
+        }
+      },
+      {
+        "sample_id": "1d85111b4cc311e424db",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear: Ana made an error in solving zero plus 859, and learners must evaluate whether her answer (860) is correct. The error field and correct value are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests learners' ability to identify mistakes when applying the identity property. Ana incorrectly computed zero plus 859 as 860; the sample validly assesses whether students can spot such errors and provide the correct answer of 859."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The item presents a student error in a narrative context, asking learners to evaluate the work. The phrasing is straightforward and appropriate for Grade 2 students who have been introduced to error-checking tasks."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 859 correctly equals 859, not 860. Ana's error is a common off-by-one mistake. The hints work through place-value addition correctly, confirming the correct answer; however, the hints omit explicit treatment of the hundreds digit, leaving a minor gap in pedagogical completeness."
+          }
+        }
+      },
+      {
+        "sample_id": "e498f4dc99db203bd6db",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is unambiguous: learners are asked whether the sum of 168 plus 511 equals the sum of 511 plus 137. The four multiple-choice options are distinct and clearly differentiated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "While the question is technically clear, it does not test any property of addition as intended by the competency. The left side (168 plus 511) and right side (511 plus 137) contain different first operands (168 versus 137), so the two expressions are unrelated sums. This is a comparison of unrelated values rather than an illustration of any property, violating the competency's demand to apply properties of addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is straightforward and age-appropriate. Learners can understand that they must add both sides and compare the results to determine the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 168 plus 511 equals 679, and 511 plus 137 equals 648. The answer False is mathematically accurate for these particular operands, though the sample fails to assess understanding of addition properties."
+          }
+        }
+      },
+      {
+        "sample_id": "6eb5b90e6e4ba79e6674",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear and unambiguous: learners are asked whether two grouped expressions involving three identical numbers are equal. The four options are distinct and mutually exclusive."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a valid test of the associative property of addition. The sample uses three identical numbers (553, 123, 221) grouped differently, and asks whether the sum remains the same regardless of grouping. The true answer correctly demonstrates the associative property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly presents two grouped addition problems side by side for comparison. The language is accessible to Grade 2 students working with multi-digit addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculations are correct: 553 plus 123 plus 221 equals 897 regardless of how the addends are grouped. The answer True accurately reflects the mathematical correctness of the associative property with these operands."
+          }
+        }
+      },
+      {
+        "sample_id": "b3e2c5bd46926dea3aa5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is clear and unambiguous. Learners are asked to judge whether two grouped expressions are equal, with four distinct response options provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample validly tests the associative property. The three numbers (623, 62, 103) are identical in both expressions; only the grouping differs. The true answer correctly demonstrates that regrouping does not change the sum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased clearly and is accessible to Grade 2 learners. The presentation of grouped additions side by side facilitates comparison and understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both 623 plus 62 plus 103 equal 788 regardless of grouping. The answer True is mathematically correct and properly illustrates the associative property of addition."
+          }
+        }
+      },
+      {
+        "sample_id": "12e04174d5cbe7d9afb6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks whether 976 plus 3 equals 3 plus 976. The four response options are distinct and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the commutative property with two three-digit addends and a single-digit addend. The true answer correctly demonstrates that changing the order of addends preserves the sum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is simple and age-appropriate. Learners can easily understand the comparison being made between the two ordered additions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both 976 plus 3 and 3 plus 976 correctly equal 979. The answer True is mathematically accurate and appropriately demonstrates the commutative property."
+          }
+        }
+      },
+      {
+        "sample_id": "ef4b356452fca0a79dde",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze question is unambiguous: learners must provide the sum of zero plus 702. The four numeric options are distinct without overlapping values."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property by asking learners to complete an addition sentence where zero is one addend. The distractors represent plausible computational errors, making this a valid assessment of the property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The blank-filling format is appropriate and familiar to Grade 2 students. The question structure is direct and easy to understand."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 702 correctly equals 702. The hints work through the place-value addition but omit explicit mention of the hundreds digit, which is a minor pedagogical gap that does not affect mathematical accuracy."
+          }
+        }
+      },
+      {
+        "sample_id": "841504958f2d752128e2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear: learners are asked whether 783 plus 213 equals 213 plus 685. The four options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample fails to test any property of addition as described in the competency. The left side sums 783 and 213, while the right side sums 213 and 685. The first operands differ (783 versus 685), making these two unrelated sums. The sample tests arithmetic comparison rather than application of addition properties."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased clearly and understandably, asking learners to compare two sums."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 783 plus 213 equals 996, and 213 plus 685 equals 898. The answer False is mathematically accurate for these values, though the sample does not serve the competency's property-assessment goals."
+          }
+        }
+      },
+      {
+        "sample_id": "adca5a37e1cec2e44c66",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is unambiguous. The statement that 565 plus zero equals 565 is presented clearly for evaluation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property by presenting a true statement where zero is the second addend. The property holds: any number plus zero equals that number, making this a valid assessment."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and direct. Grade 2 students can easily understand the statement and determine its truth value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "565 plus zero correctly equals 565. The hints work through the place-value addition by ones and tens but omit explicit mention of the hundreds digit, which is a minor pedagogical gap."
+          }
+        }
+      },
+      {
+        "sample_id": "f24ae7f1598e758f9a93",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is clear and unambiguous. Learners are asked to find the sum of 208 plus zero with four distinct numeric options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property by asking learners to compute a sum where zero is one addend. The correct answer (208) demonstrates the property that adding zero does not change a number."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is straightforward and age-appropriate. The four response options are plausible and clearly differentiated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "208 plus zero correctly equals 208. The hints work through place-value addition accurately; however, the hundreds digit is treated implicitly rather than explicitly stated in the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "15c6f6db0633492073ae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is clear and unambiguous. The statement that 905 plus zero equals 905 is presented plainly for learners to evaluate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample validates the identity property: adding zero to 905 yields 905. The true answer confirms this property, providing a valid assessment item."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and age-appropriate for Grade 2 students learning about the properties of addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "905 plus zero correctly equals 905. The hints explain the place-value addition by ones and tens, though the hundreds digit is treated implicitly, representing a minor pedagogical incompleteness."
+          }
+        }
+      },
+      {
+        "sample_id": "0ef3528f5e94965d0568",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear: learners are asked whether two grouped expressions are equal. The four options are distinct and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample claims to test the associative property but uses different third operands: the left side groups 751, 113, and 34, while the right side groups 751, 113, and 31. Since 34 does not equal 31, the two expressions differ due to operand change, not due to regrouping. This conflates the concept of the associative property and prevents valid assessment of learner understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is clear and understandable for Grade 2 students. The grouped expressions are presented in a manner that learners can readily parse."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 751 plus 113 plus 34 equals 898, and 751 plus 113 plus 31 equals 895. The answer False is mathematically accurate, but the false result stems from different operands rather than from any principle of associativity."
+          }
+        }
+      },
+      {
+        "sample_id": "a41ab1c98be137fd5f55",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format is clear. Learners are asked to compare two grouped expressions with the intent of determining if they are equal."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample fails to properly test the associative property because it uses different third operands. The left side groups 221, 357, and 1, while the right side groups 221, 357, and zero. The difference in the sums (579 versus 578) results from the operand change (1 versus 0), not from the principle of associativity. This design conflates two distinct mathematical concepts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is stated clearly and the grouped expressions are easy for learners to parse and understand in written form."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculations are correct: 221 plus 357 plus 1 equals 579, and 221 plus 357 plus zero equals 578. The answer False is mathematically accurate for these operands."
+          }
+        }
+      },
+      {
+        "sample_id": "de7419dff9d785127f4e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is clear and unambiguous. The statement that zero plus 925 equals 925 is presented straightforwardly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property: zero plus 925 correctly equals 925. The true answer validates this property, making it a proper assessment item."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is simple and accessible. Grade 2 students can understand the addition statement and determine its truth value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 925 correctly equals 925. The hints explain the place-value addition by ones and tens; however, the hundreds digit is not explicitly mentioned, creating a minor gap in pedagogical completeness."
+          }
+        }
+      },
+      {
+        "sample_id": "423f2e5e6d50761ebda2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear despite the thematic framing about running shoes and an emoji. Learners are asked to compare two grouped expressions with distinct options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample uses different third operands in its grouped expressions: the left side groups 813, 84, and 101, while the right side groups 813, 84, and 77. The false result stems from the operand difference (101 versus 77) rather than from any principle of associativity. The thematic wrapper about running shoes does not interfere with mathematics, but the item's design fails to test the claimed property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic language about Ate Sam and a math challenge involving running shoes is clear and engaging. The mathematical question itself is easy to understand."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 813 plus 84 plus 101 equals 998, and 813 plus 84 plus 77 equals 974. The answer False is mathematically accurate for these operands."
+          }
+        }
+      },
+      {
+        "sample_id": "87178580e3ba877e9230",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear. Despite the thematic framing about shuttlecocks and an emoji, the mathematical question about whether Manny's answer is correct is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property through error detection. Manny claims that zero plus 140 equals 141, which is incorrect. The sample validly assesses whether learners can identify this error and provide the correct answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic narrative about Ate Alyssa and shuttlecocks provides context without confusing the mathematical task. Learners can easily understand that they must evaluate Manny's work and identify whether he made an error."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 140 correctly equals 140, not 141. Manny's error is identified correctly. The hints explain place-value addition by ones and tens but omit explicit treatment of the hundreds digit."
+          }
+        }
+      },
+      {
+        "sample_id": "cd49dd4ef1878dbb355a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear and unambiguous. Learners are asked to determine whether two grouped expressions are equal, with four distinct options provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample uses different third operands (4 on the left versus 3 on the right), preventing it from validly testing the associative property. The false result arises from the operand difference rather than from regrouping alone, conflating two distinct mathematical concepts and failing to assess pure understanding of associativity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is straightforward and accessible to Grade 2 learners. The grouped expressions are presented clearly for comparison."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 74 plus 721 plus 4 equals 799, and 74 plus 721 plus 3 equals 798. The answer False is mathematically accurate for these operands."
+          }
+        }
+      },
+      {
+        "sample_id": "1d1adb34f76a7ea5574d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear. Learners are presented with Pia's solution to zero plus 211 and must evaluate whether her answer (211) is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property by asking learners to validate Pia's work. Pia correctly computed zero plus 211 as 211, and learners must recognize that her error detection value correctly indicates no error occurred."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative about Pia's solution is clear and age-appropriate. Learners understand that they must evaluate the correctness of her work."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 211 correctly equals 211. Pia's answer is accurate, and the error field correctly indicates no error. The hints work through place-value addition but omit explicit mention of the hundreds digit."
+          }
+        }
+      },
+      {
+        "sample_id": "0e0e812a18a6bfed59b0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear and unambiguous. Learners are asked whether two grouped expressions with small single-digit numbers are equal, with four distinct options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample validly tests the associative property using small single-digit numbers (2, 3, 1). Both 2 plus 3 plus 1 and 2 plus (3 plus 1) equal 6, regardless of grouping, making this a proper assessment of the property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is appropriately phrased for Grade 2. The use of small numbers makes the grouped expressions easy for learners to understand and compute."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both 2 plus 3 plus 1 and 2 plus (3 plus 1) correctly equal 6. The answer True is mathematically accurate and properly demonstrates the associative property."
+          }
+        }
+      },
+      {
+        "sample_id": "3c7706e1ea68d61affc3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks whether 5 plus 1 is the same as 1 plus 1. The four options are distinct and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample does not test the commutative property as its structure suggests. The commutative property requires the same addends in different orders (e.g., 5 plus 1 versus 1 plus 5). Instead, this sample compares 5 plus 1 with 1 plus 1, which involves different first operands (5 versus 1). The item tests arithmetic comparison of unrelated sums rather than property comprehension."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is straightforward and easy for Grade 2 learners to understand. The comparison format is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5 plus 1 correctly equals 6, and 1 plus 1 correctly equals 2. The answer False is mathematically accurate for these particular operands."
+          }
+        }
+      },
+      {
+        "sample_id": "5fddfe88c7a096182558",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is clear and unambiguous, asking whether 752 plus 4 equals 4 plus 788 with four distinct options. The response field indicates this sample uses a hint-gated experience format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample does not test any property of addition as required by the competency. The left side sums 752 and 4, while the right side sums 4 and 788. The first operands are different (752 versus 788), making these two completely unrelated sums. No property of addition is demonstrated or tested by this comparison."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is clear and understandable. Learners can readily understand that they are comparing two sums."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 752 plus 4 equals 756, and 4 plus 788 equals 792. The answer False is mathematically accurate for these operands."
+          }
+        }
+      },
+      {
+        "sample_id": "7a0297dbbbb72164f79b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear. Learners are asked to evaluate whether Liza's answer to zero plus 779 is correct. The response indicates this sample uses a mastery-drill experience level."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This sample tests the identity property through error detection. Liza claims zero plus 779 equals zero, which is incorrect. The sample validly assesses whether learners can identify this error and recognize that zero plus 779 should equal 779."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative about Liza's work is clear and appropriate for Grade 2. Learners easily understand that they must evaluate the correctness of her solution."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Zero plus 779 correctly equals 779, not zero. Liza's error is properly identified. The hints work through place-value addition but omit explicit mention of the hundreds digit."
+          }
+        }
+      },
+      {
+        "sample_id": "c6b98e6f7bdbfdf7c8d3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear: learners are asked whether two grouped expressions are equal. The four options are distinct. The response indicates this sample uses a scaffolded experience format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "This sample fails to properly test the associative property because it uses different third operands. The left side groups 725, 22, and 221, while the right side groups 725, 22, and 177. The false result occurs due to the operand difference (221 versus 177), not due to regrouping principles. This design conflates distinct mathematical concepts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is clear and accessible to Grade 2 learners. The grouped expressions are presented straightforwardly for comparison."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 725 plus 22 plus 221 equals 968, and 725 plus 22 plus 177 equals 924. The answer False is mathematically accurate for these operands."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "illustrate_properties",
+        "clause": "Illustrate",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples explicitly show the three properties of addition side by side, allowing learners to see the mathematical relationships. Samples like 6eb5b90e, b3e2c5bd, 0e0e812a illustrate the associative property by displaying both sides of grouped expressions. Samples like d9b7b2, e3522ff, 12e0417 illustrate the commutative property by showing operand order. Samples testing identity property (f597c1c, f481ea1) demonstrate the effect of adding zero.",
+        "sample_ids": ["6eb5b90e6e4ba79e6674", "b3e2c5bd46926dea3aa5", "0e0e812a18a6bfed59b0", "d9b7b223025ae1e27eb5", "e3522ff45953858835fe", "12e04174d5cbe7d9afb6", "f481ea168b05a6736b7e"]
+      },
+      {
+        "requirement_id": "apply_properties",
+        "clause": "apply",
+        "verdict": "PASS",
+        "reasoning": "Learners are required to apply the properties to solve problems, evaluate statements, and identify errors. Cloze items (f481ea1, ef4b356) require students to apply identity knowledge to fill in blanks. True/false items (f597c1c, adca5a3, de7419d) require applying property understanding to judge statements. Error-detection items (1d85111, 1d1adb3) require applying properties to identify computational mistakes.",
+        "sample_ids": ["f481ea168b05a6736b7e", "ef4b356452fca0a79dde", "f597c1cec10ba4da88d5", "adca5a37e1cec2e44c66", "de7419dff9d785127f4e", "1d85111b4cc311e424db", "1d1adb34f76a7ea5574d"]
+      },
+      {
+        "requirement_id": "properties_of_addition",
+        "clause": "properties of addition",
+        "verdict": "CONCERN",
+        "reasoning": "While the packet nominally addresses the three properties of addition (identity, commutative, associative), many samples are designed in ways that do not cleanly test these properties. Samples be71538c, e498f4dc, 841504958, 0ef3528f, a41ab1c9, cd49dd4ef, 5fddfe88, c6b98e6f use operand mismatches that prevent clean assessment. Samples 3c7706e1 compares unrelated sums rather than testing the commutative property. These design flaws undermine the packet's pedagogical effectiveness for teaching properties.",
+        "sample_ids": ["be71538c23749f501c31", "e498f4dc99db203bd6db", "841504958f2d752128e2", "0ef3528f5e94965d0568", "a41ab1c98be137fd5f55", "cd49dd4ef1878dbb355a", "5fddfe88c7a096182558", "c6b98e6f7bdbfdf7c8d3", "3c7706e1ea68d61affc3"]
+      },
+      {
+        "requirement_id": "sums_up_to_1000",
+        "clause": "sums up to 1000",
+        "verdict": "PASS",
+        "reasoning": "All sums in the packet remain within the specified range. The largest sums observed are 998 (sample 423f2e5e) and 968 (sample c6b98e6f), both well below the 1000 threshold. The packet includes sums ranging from small single-digit values (sample 0e0e812a with 6) to high three-digit values (sample 423f2e5e with 998), providing appropriate coverage within the required range.",
+        "sample_ids": ["423f2e5e6d50761ebda2", "c6b98e6f7bdbfdf7c8d3", "0e0e812a18a6bfed59b0", "6eb5b90e6e4ba79e6674", "b3e2c5bd46926dea3aa5"]
+      },
+      {
+        "requirement_id": "identity_property",
+        "clause": "sum of zero and any number is equal to the number",
+        "verdict": "PASS",
+        "reasoning": "The identity property (adding zero leaves a number unchanged) is thoroughly tested through eleven samples. True cases include f597c1c, f481ea1, adca5a3, de7419d, 15c6f6d with true statements. False cases include 1d85111 (zero plus 859 not equal to 860), 1d1adb3 (zero plus 211 correctly identified), 87178580, 7a0297d (errors detected in student work). This provides robust coverage of both true and false instances with varied number magnitudes.",
+        "sample_ids": ["f597c1cec10ba4da88d5", "f481ea168b05a6736b7e", "1d85111b4cc311e424db", "adca5a37e1cec2e44c66", "f24ae7f1598e758f9a93", "15c6f6db0633492073ae", "de7419dff9d785127f4e", "87178580e3ba877e9230", "1d1adb34f76a7ea5574d", "7a0297dbbbb72164f79b"]
+      },
+      {
+        "requirement_id": "commutative_property",
+        "clause": "changing the order of the addends does not change the sum",
+        "verdict": "CONCERN",
+        "reasoning": "Valid tests of the commutative property include d9b7b2, e3522ff, 12e0417, which correctly use two identical operands in reversed order and produce equal sums. However, the packet contains misleading samples that use different operands: e498f4dc compares 168 plus 511 with 511 plus 137 (mismatched first operand); 841504958 compares 783 plus 213 with 213 plus 685 (mismatched operands); 3c7706e1 compares 5 plus 1 with 1 plus 1 (completely different first operand); 5fddfe88 compares 752 plus 4 with 4 plus 788 (mismatched operand). These conflate unrelated arithmetic comparisons with the commutative property.",
+        "sample_ids": ["d9b7b223025ae1e27eb5", "e3522ff45953858835fe", "12e04174d5cbe7d9afb6", "e498f4dc99db203bd6db", "841504958f2d752128e2", "3c7706e1ea68d61affc3", "5fddfe88c7a096182558"]
+      },
+      {
+        "requirement_id": "associative_property",
+        "clause": "changing the grouping of the addends does not change the sum",
+        "verdict": "FAIL",
+        "reasoning": "Only three samples (6eb5b90e, b3e2c5bd, 0e0e812a) validly test the associative property by using three identical operands grouped differently while producing equal sums. However, six samples (be71538c, 0ef3528f, a41ab1c9, cd49dd4ef, 423f2e5e, c6b98e6f) claim to test this property but use different operands in the grouped positions, causing the false results to stem from operand differences rather than from regrouping principles alone. This conflation is pedagogically harmful, as learners cannot reliably distinguish whether differences in sums reflect properties of grouping or simply different numbers. With only three valid exemplars out of nine associative attempts, the requirement is severely under-served.",
+        "sample_ids": ["6eb5b90e6e4ba79e6674", "b3e2c5bd46926dea3aa5", "0e0e812a18a6bfed59b0", "be71538c23749f501c31", "0ef3528f5e94965d0568", "a41ab1c98be137fd5f55", "cd49dd4ef1878dbb355a", "423f2e5e6d50761ebda2", "c6b98e6f7bdbfdf7c8d3"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

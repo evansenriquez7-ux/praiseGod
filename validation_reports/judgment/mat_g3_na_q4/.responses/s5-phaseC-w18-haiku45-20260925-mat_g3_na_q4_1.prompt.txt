@@ -1,0 +1,269 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc18-mat_g3_na_q4_1-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q4_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_1-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_1
+PACKET DIGEST: 0cce873096c76a463ab97b6a225b5caa4111da308a4fe2b153c03aa65a4f08fb
+COMPETENCY (Grade 3, Quarter 4, None):
+Divide numbers using the 6, 7, 8, and 9 multiplication tables.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  divide_numbers: Divide numbers
+  6_7_8_9: 6, 7, 8, and 9
+  multiplication_tables: multiplication tables
+
+SAMPLES (every one of these is real rendered output):
+  sample 9e9a0149c962d6301808  seed 42  [read_mcq]
+      stem:    This array has 48 squares split into 6 equal rows. How many squares are in each row?
+      answer:  8
+      options: 28 / 5 / 10 / 8
+      hints:   ["We need to divide 48 by 6. The number being divided is 48; the number we divide by is 6.", "Ask: how many times does 6 fit into 48? 6 × 8 = 48.", "The quotient of 48 ÷ 6 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 61, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "8 × 6", "rectangle", "48 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 48}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 036217709e607d349397  seed 43  [cloze]
+      stem:    18 ÷ 6 = ___
+      answer:  3
+      options: 6 / 12 / 3 / 4
+      hints:   ["We need to divide 18 by 6. The number being divided is 18; the number we divide by is 6.", "Ask: how many times does 6 fit into 18? 6 × 3 = 18.", "The quotient of 18 ÷ 6 = 3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 228ead11e2f1b920ce67  seed 44  [mcq]
+      stem:    What is 72 ÷ 8?
+      answer:  9
+      options: 8 / 64 / 9 / 10
+      hints:   ["We need to divide 72 by 8. The number being divided is 72; the number we divide by is 8.", "Ask: how many times does 8 fit into 72? 8 × 9 = 72.", "The quotient of 72 ÷ 8 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23a45c59a5b710580090  seed 45  [error_detect]
+      stem:    Pia solved: "63 ÷ 7 = ___". Pia says the missing number is 9. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 9}
+      hints:   ["We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.", "Ask: how many times does 7 fit into 63? 7 × 9 = 63.", "The quotient of 63 ÷ 7 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 48d288fb62a37f5c9456  seed 46  [error_detect]
+      stem:    Dante solved: "30 ÷ 6 = ___". Dante says the missing number is 4. Is Dante correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["We need to divide 30 by 6. The number being divided is 30; the number we divide by is 6.", "Ask: how many times does 6 fit into 30? 6 × 5 = 30.", "The quotient of 30 ÷ 6 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 343d39c1ac313eb325e8  seed 48  [set_fill_in_blank]
+      stem:    Shade 81 squares into 9 equal rows. How many squares are in each row?
+      answer:  9
+      hints:   ["We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.", "Ask: how many times does 9 fit into 81? 9 × 9 = 81.", "The quotient of 81 ÷ 9 = 9."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 94, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 9", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 81}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cfa66082d85db97a55b3  seed 68  [true_false]
+      stem:    27 ÷ 9 = 3. True or False?
+      answer:  True
+      hints:   ["We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.", "Ask: how many times does 9 fit into 27? 9 × 3 = 27.", "The quotient of 27 ÷ 9 = 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 92f73040c8dcd77ac21d  seed 500  [mcq]
+      stem:    What is 72 ÷ 9?
+      answer:  8
+      options: 8 / 9 / 7 / 63
+      hints:   ["We need to divide 72 by 9. The number being divided is 72; the number we divide by is 9.", "Ask: how many times does 9 fit into 72? 9 × 8 = 72.", "The quotient of 72 ÷ 9 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 11715c52fdbb69451bb4  seed 501  [true_false]
+      stem:    81 ÷ 9 = 72. True or False?
+      answer:  False
+      hints:   ["We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.", "Ask: how many times does 9 fit into 81? 9 × 9 = 81.", "The quotient of 81 ÷ 9 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0174af15ad7c3f9dd26f  seed 502  [set_fill_in_blank]
+      stem:    Shade 27 squares into 9 equal rows. How many squares are in each row?
+      answer:  3
+      hints:   ["We need to divide 27 by 9. The number being divided is 27; the number we divide by is 9.", "Ask: how many times does 9 fit into 27? 9 × 3 = 27.", "The quotient of 27 ÷ 9 = 3."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 40, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "3 × 9", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 27}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a7f31cd7e84666774893  seed 600  [cloze]
+      stem:    56 ÷ 7 = ___
+      answer:  8
+      options: 8 / 9 / 7 / 49
+      hints:   ["We need to divide 56 by 7. The number being divided is 56; the number we divide by is 7.", "Ask: how many times does 7 fit into 56? 7 × 8 = 56.", "The quotient of 56 ÷ 7 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0a140040d7f37c5761ba  seed 601  [cloze]
+      stem:    Pia wants to share 28 water bowls equally among 7 friends. How many water bowls does each friend get?
+      answer:  4
+      options: 5 / 4 / 21 / 7
+      hints:   ["We need to divide 28 by 7. The number being divided is 28; the number we divide by is 7.", "Ask: how many times does 7 fit into 28? 7 × 4 = 28.", "The quotient of 28 ÷ 7 = 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 39c177b80fa8c1b62ef3  seed 602  [set_fill_in_blank]
+      stem:    Shade 64 squares into 8 equal rows. How many squares are in each row?
+      answer:  8
+      hints:   ["We need to divide 64 by 8. The number being divided is 64; the number we divide by is 8.", "Ask: how many times does 8 fit into 64? 8 × 8 = 64.", "The quotient of 64 ÷ 8 = 8."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 77, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "8 × 8", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 64}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1e08fe8316b8eadc627d  seed 603  [mcq]
+      stem:    What is 14 ÷ 7?
+      answer:  2
+      options: 2 / 1 / 3 / 7
+      hints:   ["We need to divide 14 by 7. The number being divided is 14; the number we divide by is 7.", "Ask: how many times does 7 fit into 14? 7 × 2 = 14.", "The quotient of 14 ÷ 7 = 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2f1868bde22065cb9038  seed 604  [set_fill_in_blank]
+      stem:    Shade 30 squares into 6 equal rows. How many squares are in each row?
+      answer:  5
+      hints:   ["We need to divide 30 by 6. The number being divided is 30; the number we divide by is 6.", "Ask: how many times does 6 fit into 30? 6 × 5 = 30.", "The quotient of 30 ÷ 6 = 5."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 43, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "5 × 6", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 30}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 23f226fe16322229b360  seed 700  [set_fill_in_blank]
+      stem:    Shade 14 squares into 7 equal rows. How many squares are in each row?
+      answer:  2
+      hints:   ["We need to divide 14 by 7. The number being divided is 14; the number we divide by is 7.", "Ask: how many times does 7 fit into 14? 7 × 2 = 14.", "The quotient of 14 ÷ 7 = 2."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 27, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "2 × 7", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 14}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cf45cf63bbb037bdcf88  seed 701  [error_detect]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Liza solved: "63 ÷ 7 = ___". Liza says the missing number is 56. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 9}
+      hints:   ["We need to divide 63 by 7. The number being divided is 63; the number we divide by is 7.", "Ask: how many times does 7 fit into 63? 7 × 9 = 63.", "The quotient of 63 ÷ 7 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fa2287922ff372baee2c  seed 702  [set_fill_in_blank]
+      stem:    🏀 Isko has a math challenge about basketballs. Shade 42 squares into 6 equal rows. How many squares are in each row?
+      answer:  7
+      hints:   ["We need to divide 42 by 6. The number being divided is 42; the number we divide by is 6.", "Ask: how many times does 6 fit into 42? 6 × 7 = 42.", "The quotient of 42 ÷ 6 = 7."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 55, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 6", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 42}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9e532caebb3b1b930b9d  seed 800  [mcq]
+      stem:    What is 81 ÷ 9?
+      answer:  9
+      options: 72 / 8 / 10 / 9
+      hints:   ["We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.", "Ask: how many times does 9 fit into 81? 9 × 9 = 81.", "The quotient of 81 ÷ 9 = 9."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6fa4313ed63a7aaa3e5f  seed 900  [cloze]
+      stem:    7 ÷ 7 = ___
+      answer:  1
+      options: 1 / 7 / 0 / 2
+      hints:   ["We need to divide 7 by 7. The number being divided is 7; the number we divide by is 7.", "Ask: how many times does 7 fit into 7? 7 × 1 = 7.", "The quotient of 7 ÷ 7 = 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9df7d49e6428af1a7c82  seed 901  [true_false]
+      stem:    16 ÷ 8 = 8. True or False?
+      answer:  False
+      hints:   ["We need to divide 16 by 8. The number being divided is 16; the number we divide by is 8.", "Ask: how many times does 8 fit into 16? 8 × 2 = 16.", "The quotient of 16 ÷ 8 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6f1f94297bedea5c4470  seed 1000  [true_false]
+      stem:    9 ÷ 9 = 1. True or False?
+      answer:  True
+      hints:   ["We need to divide 9 by 9. The number being divided is 9; the number we divide by is 9.", "Ask: how many times does 9 fit into 9? 9 × 1 = 9.", "The quotient of 9 ÷ 9 = 1."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 8d30be1a7437b09ee633  seed 1001  [set_fill_in_blank]
+      stem:    Shade 24 squares into 6 equal rows. How many squares are in each row?
+      answer:  4
+      hints:   ["We need to divide 24 by 6. The number being divided is 24; the number we divide by is 6.", "Ask: how many times does 6 fit into 24? 6 × 4 = 24.", "The quotient of 24 ÷ 6 = 4."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 37, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "4 × 6", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 24}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 26adff2c72c18b72bd17  seed 1002  [set_fill_in_blank]
+      stem:    Shade 63 squares into 9 equal rows. How many squares are in each row?
+      answer:  7
+      hints:   ["We need to divide 63 by 9. The number being divided is 63; the number we divide by is 9.", "Ask: how many times does 9 fit into 63? 9 × 7 = 63.", "The quotient of 63 ÷ 9 = 7."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 76, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 9", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 63}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

@@ -1,0 +1,226 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_mg_q4_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc1-mat_g2_mg_q4_3-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_3
+PACKET DIGEST: f154d4dd5206c6eeb7b210deb8fbf19c807d3b2bbbddb7fbe7ef23511450c7ce
+COMPETENCY (Grade 2, Quarter 4, None):
+Identify and explain the difference between straight and curved lines, and flat and curved surfaces of 3-dimensional objects.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  identify: Identify
+  explain: explain
+  difference_between: difference between
+  straight_lines: straight
+  curved_lines: curved lines
+  flat_surfaces: flat
+  curved_surfaces: curved surfaces
+  3_dimensional_objects: 3-dimensional objects
+
+SAMPLES (every one of these is real rendered output):
+  sample 1c4577b289627121fff7  seed 42  [mcq]
+      stem:    How is a straight line different from a curved line?
+      answer:  A straight line never bends, but a curved line bends smoothly.
+      options: A straight line is always longer than a curved line. / Both of them bend in the same way. / A straight line bends, but a curved line never bends. / A straight line never bends, but a curved line bends smoothly.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 149217ad52f4ed035f68  seed 43  [mcq]
+      stem:    A box has six faces that are each flat. What kind of surface does a box have?
+      answer:  flat surface
+      options: curved line / curved surface / straight line / flat surface
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a5e3ddf2cc495b19d5fa  seed 44  [mcq]
+      stem:    How is a flat surface different from a curved surface?
+      answer:  A flat surface has no bumps or curves, but a curved surface bends.
+      options: A flat surface bends, but a curved surface has no bumps. / A flat surface has no bumps or curves, but a curved surface bends. / A flat surface is always bigger than a curved surface. / Both of them bend in the same way.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 41f01a352f2e5e37dfdc  seed 45  [mcq]
+      stem:    The path of a winding river bends smoothly and changes direction. Which best describes it?
+      answer:  curved line
+      options: flat surface / curved surface / curved line / straight line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3b73873777054189871b  seed 46  [mcq]
+      stem:    Why is the edge of a ruler called a straight line?
+      answer:  Because it never bends or changes direction.
+      options: Because it is flat and wide. / Because it bends all the way around. / Because it never bends or changes direction. / Because it is very long.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 63cfff24032679104bd0  seed 500  [mcq]
+      stem:    The edge of a ruler never bends. Which best describes it?
+      answer:  straight line
+      options: flat surface / curved surface / curved line / straight line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 67d774d8ea1362145361  seed 501  [mcq]
+      stem:    The rim of a circle bends all the way around. Which best describes it?
+      answer:  curved line
+      options: straight line / curved surface / curved line / flat surface
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d0bc80b4fd36b6b36442  seed 502  [mcq]
+      stem:    A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?
+      answer:  curved surface
+      options: flat surface / curved surface / straight line / curved line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 35541313763df769f5e9  seed 601  [mcq]
+      stem:    Why is the rim of a plate called a curved line?
+      answer:  Because it bends smoothly and changes direction.
+      options: Because it has two ends. / Because it never bends. / Because it is a flat surface. / Because it bends smoothly and changes direction.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c41d29e6a3f8ee6f3af9  seed 700  [mcq]
+      stem:    The edge of a desk never bends or changes direction. Which best describes it?
+      answer:  straight line
+      options: flat surface / curved line / curved surface / straight line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c083de7b20b761c8e0b1  seed 701  [mcq]
+      stem:    ✝️ Daniel has a math challenge about baskets. A ball rolls smoothly but a box does not roll. Why?
+      answer:  A ball has a curved surface, but a box has flat surfaces.
+      options: A ball has flat surfaces, but a box has a curved surface. / Both of them have only flat surfaces. / A ball is always heavier than a box. / A ball has a curved surface, but a box has flat surfaces.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8429bd34503fed40cf53  seed 702  [mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. How is a straight line different from a curved line?
+      answer:  A straight line never bends, but a curved line bends smoothly.
+      options: A straight line bends, but a curved line never bends. / A straight line is always longer than a curved line. / A straight line never bends, but a curved line bends smoothly. / Both of them bend in the same way.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 809887bd40a844127ec9  seed 800  [mcq]
+      stem:    The edge of a ruler never bends. Which best describes it?
+      answer:  straight line
+      options: straight line / curved surface / flat surface / curved line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f6a893469eadac849183  seed 900  [mcq]
+      stem:    The path of a winding river bends smoothly and changes direction. Which best describes it?
+      answer:  curved line
+      options: flat surface / curved surface / straight line / curved line
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 550c99432a8a97fc998c  seed 901  [mcq]
+      stem:    Why is the edge of a ruler called a straight line?
+      answer:  Because it never bends or changes direction.
+      options: Because it is flat and wide. / Because it never bends or changes direction. / Because it is very long. / Because it bends all the way around.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8071b3487a15526ac29c  seed 1000  [mcq]
+      stem:    The edge of a desk never bends or changes direction. Which best describes it?
+      answer:  straight line
+      options: straight line / curved line / curved surface / flat surface
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 097438fa28f55c11b45a  seed 1001  [mcq]
+      stem:    A ball rolls smoothly but a box does not roll. Why?
+      answer:  A ball has a curved surface, but a box has flat surfaces.
+      options: A ball has a curved surface, but a box has flat surfaces. / Both of them have only flat surfaces. / A ball has flat surfaces, but a box has a curved surface. / A ball is always heavier than a box.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 40d42f4f9984c99bb061  seed 1002  [mcq]
+      stem:    How is a straight line different from a curved line?
+      answer:  A straight line never bends, but a curved line bends smoothly.
+      options: Both of them bend in the same way. / A straight line is always longer than a curved line. / A straight line bends, but a curved line never bends. / A straight line never bends, but a curved line bends smoothly.
+      hints:   ["A straight line never bends.", "A curved line bends smoothly.", "A flat surface has no bumps or curves, like a tabletop.", "A curved surface bends, like the outside of a ball or a can."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

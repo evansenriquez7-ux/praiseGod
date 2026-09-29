@@ -1,0 +1,611 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pb1-mat_g1_mg_q4_1-20260925",
+  "mat_g1_mg_q4_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All 20 samples present Grade 1 Quarter 4 appropriate tasks. The problems require reading analog clock displays and setting clock hands to specific times—foundational skills explicitly taught at this level. Cognitive load is appropriate: students identify hour hand position, interpret minute hand markers at 0, 15, 30, and 45-minute intervals, and translate these to digital notation. No extraneous complexity or vocabulary beyond the concepts of hours and quarter-hour intervals. The hint sequences scaffold students toward correct reasoning without overwhelming them."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample directly addresses the competency 'Read and write time by the hour, half hour, and quarter hour using an analog clock.' Read MCQ samples (9 instances) require students to interpret an analog clock and select the correct digital time. Set fill-in-blank samples (11 instances) require students to physically manipulate clock hands to represent a given time. The modality split ensures both directions of the competency—reading from visual to symbolic, and writing from symbolic to visual—are thoroughly exercised."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The printed requirements decompose the competency completely and losslessly. Read and write covers both input modalities. Time, hour, half_hour, and quarter_hour fully enumerate the time intervals and granularity. Analog clock specifies the representation form. No component of the competency is lost in the decomposition, and no requirement introduces content outside the competency's scope.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "All six printed requirements (read_and_write, time, hour, half_hour, quarter_hour, analog_clock) map directly to distinct clauses of the competency statement. The competency requires both reading and writing—the requirements name this explicitly as read_and_write. The competency specifies three time intervals—the requirements hour, half_hour, and quarter_hour appear as separate entries. The competency names analog clock as the tool—the requirement analog_clock addresses this precisely. No lossless decomposition can be more granular; no competency clause is left unmatched."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The 20 samples collectively exercise all required time intervals across both reading and writing modalities. On-the-hour times (5:00, 7:00, 9:00, 4:00, 3:00) appear in 5 samples. Half-hour times (9:30, 7:30, 6:30, 12:30, 11:30) appear in 6 samples. Quarter-past times (2:15, 6:15, 8:15) appear in 3 samples. Quarter-before times (5:45, 3:45, 4:45, 10:45) appear in 5 samples. Read MCQ format is used 9 times, set fill-in-blank format 11 times. No time category is underrepresented, and no interaction mode is neglected. Seed variation (42, 43, 44, 45, 46, 500, 501, 502, 600, 603, 605, 606, 700, 701, 702, 800, 900, 901, 1000, 1001, 1002) ensures diverse rendering across different random states."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The problem set aligns with Philippine MATATAG Grade 1 Quarter 4 expectations for time-telling proficiency. Students in this quarter have already learned number recognition, counting, and basic clock anatomy (hour and minute hands). This sample set assumes students can identify which hand is which (confirmed in every hint sequence), count to 60 by fives on a clock face, and map 12, 3, 6, 9 to familiar quarter-hour positions. The digital notation (e.g., 5:45) is not introduced as a novel learning target here but as a target to achieve—consistent with quarter 4 scaffolding in the MATATAG progression."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The samples include intentional variation along meaningful dimensions: (1) all four time intervals (hour, half-hour, quarter-past, quarter-before) are represented multiple times each; (2) both reading (9 MCQ) and writing (11 fill-in-blank) modes appear; (3) nine samples are unthemed while four include contextual framing with student names and activities such as volleyball (student Romel) and cycling (student Kuya Chad) that do not alter the mathematical task; (4) experience values vary (standard, hint_gated, mastery_drill, scaffolded), reflecting different instructional contexts. No time interval or mode is tested in only one or two instances, reducing risk of sampling luck."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "9714675d5ddab8bf013f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is unambiguous: 'What time does the clock show?' asks for a single, deterministic reading. Answer 2:15 is the sole correct time for a clock with short hand near 2 and long hand on 3. Distractors (3:15, 2:10, 1:15) each differ by one clock interval, minimizing confusion while maintaining challenge. No linguistic or visual ambiguity in the presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task presents a plausible scenario: 'What time does the clock show?' is a real-world activity Grade 1 students perform daily. The clock face, hands, and digital answer form a coherent context. No logical inconsistencies between stem, visual, answer, and options. Distractors are credible errors (off-by-one hour, off-by-five-minute) that test precise interpretation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simple and direct for a 6-year-old: identify the time shown. Vocabulary is minimal and age-appropriate, using only familiar words like clock and time. The four options are clearly presented. No jargon or complex framing obscures the task. Hints reinforce this clarity by naming the hands and their roles, then walking the learner to the answer step-by-step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically, a clock with hour hand near 2 and minute hand on 3 represents 2:15. This is universally correct. Distractors represent plausible misreadings (confusing hand roles, misidentifying the hour, off-by-five errors) and are mathematically distinct. Hints confirm the correct interpretation: short hand at 2 = hour 2; long hand at 3 = 15 minutes (quarter past); therefore 2:15. All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "7981041ed1e45e93b4c0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is clear and singular: 'Set the clock to show 5:00.' There is one correct configuration—hour hand at 5, minute hand at 12. The task is unambiguous; the answer 5:00 is objectively right or wrong. No linguistic ambiguity in the instruction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock is a valid, real-world task appropriate for Grade 1 learners. The context is coherent: given a target time, manipulate the visual representation to match. Hints confirm this logic by describing the steps to achieve 5:00 (position hour hand at 5, minute hand at 12). No contradictions between stem, visual interaction, answer, and hints."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 5:00' is direct and unambiguous for a 6-year-old. The target time is given in familiar digital notation. Hints are clear and sequential: explain the hands' roles, identify where to place each hand, name the resulting time. No confusing vocabulary or unstated assumptions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically, 5:00 is represented on an analog clock with the hour hand pointing at 5 and the minute hand pointing at 12 (0 minutes past). This is correct. Hints confirm the decomposition: hour hand = 5, minute hand = 12 (exactly on the hour) yields 5:00. All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "04b391c0c97500ec5737",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand near 9 and minute hand on 6 has exactly one correct reading: 9:30. Distractors (8:30, 9:25, 10:30) each differ by either one hour or five minutes, clearly distinct from 9:30. No ambiguity in presentation or interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock is a valid, authentic task. The visual and textual elements are coherent: the clock shows a state, the student reads it, the options provide feedback on interpretation. Hints support this narrative by explaining the hand roles and guiding the student to 9:30. No logical inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only high-frequency Grade 1 vocabulary such as what, time, clock, and show. Options are clearly separated into four distinct choices. Hints scaffold the interpretation by naming the hands, identifying their current positions, and stating the outcome. Clarity is high and appropriate for the grade level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand between 9 and 10 and the minute hand on 6 represents 9:30. This is correct. The minute hand on 6 = 30 minutes (half hour). Hints confirm this: 'The long hand points to 6 — that is half past the hour. The time is 9:30.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "6c04aa80f7746060dc3d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is direct and singular: 'Set the clock to show 7:30.' Only one configuration meets this requirement: hour hand between 7 and 8, minute hand on 6. The answer 7:30 is unambiguous. No linguistic confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a half-hour target is coherent and age-appropriate. The task is logically sound: given a digital time, construct its analog equivalent. Hints reinforce this logic by identifying the positions needed to represent 7:30. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 7:30' uses simple, direct language. 7:30 is given in the familiar digital format students have learned to recognize. Hints are step-by-step and clear: place the hour hand at 7, place the minute hand at 6, recognize the outcome as 7:30. No ambiguity for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 7:30 is correctly represented on an analog clock with the hour hand between 7 and 8 and the minute hand on 6 (30 minutes). Hints validate this: 'The short (hour) hand points near 7. The long hand points to 6 — that is half past the hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "19a18871d257fbe45be4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 7:00' is unambiguous. Exactly one configuration is correct: hour hand at 7, minute hand at 12. The answer 7:00 is deterministic. No linguistic ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to an on-the-hour time is valid and straightforward. The context is coherent: given a digital time, adjust the visual representation to match. Hints support this by naming the target positions (hour hand at 7, minute hand at 12). No logical inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is direct: 'Set the clock to show 7:00.' Target time is clear. Hints use simple language and follow a logical sequence. No confusion in framing or vocabulary for a Grade 1 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7:00 is correctly represented on an analog clock with the hour hand pointing at 7 and the minute hand pointing at 12 (0 minutes). Hints confirm this breakdown and conclude with 'The time is 7:00.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "435df4d818142af692f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 9:30' is clear and singular. One configuration represents 9:30: hour hand between 9 and 10, minute hand on 6. Answer is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task is coherent: set a clock to a half-hour time. This is a real-world skill Grade 1 students learn. Hints logically guide the student to the correct positions. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 9:30' is simple and direct. 9:30 is presented in the familiar digital format. Hints scaffold understanding through sequential steps. Language is age-appropriate and clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 9:30 is correctly represented with the hour hand between 9 and 10 and the minute hand on 6. Hints confirm this: 'The short (hour) hand points near 9. The long hand points to 6 — that is half past the hour.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "9d39c2847d5c618d047f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 5:45' is unambiguous. Exactly one configuration is correct: hour hand between 5 and 6, minute hand on 9. Answer 5:45 is deterministic. No linguistic confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a quarter-before time (45 minutes) is coherent and reinforces the learning objective. The context is valid: given a digital time, construct its analog representation. Hints support the logic by identifying hand positions. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 5:45' is direct and unambiguous. The target time is given in a familiar format. Hints use clear, step-by-step language to guide the learner. No confusing vocabulary or unstated assumptions for a Grade 1 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 5:45 is correctly represented on an analog clock with the hour hand between 5 and 6 and the minute hand on 9 (45 minutes). Hints validate this: 'The short (hour) hand points near 5. The long hand points to 9 — that is a quarter before the next hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "7397d274cd9bc9051785",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand near 6 and minute hand on 3 has one correct reading: 6:15. Distractors (7:15, 5:15, 6:10) each differ clearly. No ambiguity in presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock is a valid, authentic task. The visual representation, question, and options form a coherent context. Hints support the logical chain from visual observation to time naming. No inconsistencies between elements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by naming hand roles and guiding the student to 6:15 step-by-step. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand near 6 and the minute hand on 3 represents 6:15 (quarter past). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 6. The long hand points to 3 — that is a quarter past the hour.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "4f1d5ea31618ec7f5a9d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 6:30' is clear and singular. One configuration represents 6:30: hour hand between 6 and 7, minute hand on 6. Answer is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a half-hour time is coherent and age-appropriate. The task is logically sound: given a digital target, manipulate the analog display. Hints reinforce this logic. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 6:30' is direct and simple. 6:30 is given in the familiar digital format. Hints are sequential and clear. No confusing language or unstated assumptions for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 6:30 is correctly represented on an analog clock with the hour hand between 6 and 7 and the minute hand on 6. Hints confirm this: 'The short (hour) hand points near 6. The long hand points to 6 — that is half past the hour.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "d920dd9cc0b82216168b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 9:00' is unambiguous. Exactly one configuration is correct: hour hand at 9, minute hand at 12. Answer 9:00 is deterministic. No linguistic ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to an on-the-hour time is valid and straightforward. The task is coherent: adjust the visual representation to match the target time. Hints logically guide the learner. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is direct: 'Set the clock to show 9:00.' Target time is clear. Hints use simple, sequential language. No confusing vocabulary or framing for a Grade 1 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9:00 is correctly represented on an analog clock with the hour hand at 9 and the minute hand at 12 (0 minutes). Hints confirm this: 'The short (hour) hand points near 9. The long hand points to 12, so it is exactly on the hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "983c9dfe0d16705b0837",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 3:45' is clear and singular. One configuration represents 3:45: hour hand between 3 and 4, minute hand on 9. Answer is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a quarter-before time is coherent and reinforces the learning objective. The task is logically sound: given a digital time, adjust the analog display to match. Hints support this logic. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 3:45' is direct and unambiguous. Target time is clear. Hints use simple, sequential language to guide the learner to the correct configuration. No confusing vocabulary for a Grade 1 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 3:45 is correctly represented on an analog clock with the hour hand between 3 and 4 and the minute hand on 9. Hints validate this: 'The short (hour) hand points near 3. The long hand points to 9 — that is a quarter before the next hour.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "ee0d2c7397e11fb2c8a3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 12:30' is unambiguous. One configuration is correct: hour hand between 12 and 1, minute hand on 6. Answer 12:30 is deterministic. No linguistic ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a half-hour time on the 12 o'clock hour is valid and tests the learner's understanding of the full hour cycle. The task is coherent. Hints logically guide the learner. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 12:30' is direct and clear. Target time is given in the familiar digital format. Hints are sequential and use simple language. No confusing vocabulary for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 12:30 is correctly represented on an analog clock with the hour hand between 12 and 1 and the minute hand on 6. Hints confirm this: 'The short (hour) hand points near 12. The long hand points to 6 — that is half past the hour.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "edf0846128e302f6d2fc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand at 4 and minute hand at 12 has one correct reading: 4:00. Distractors (4:05, 5:00, 3:00) each differ clearly. No ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock is a valid, authentic task. Visual, question, and options form a coherent context. Hints logically support the reading process. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by naming hand roles and guiding the student step-by-step. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand at 4 and the minute hand at 12 represents 4:00 (on the hour). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 4. The long hand points to 12, so it is exactly on the hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "de0fa6efb7c8a3fcb177",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem '🏐 Romel has a math challenge about whistles. Set the clock to show 5:45' is clear. The thematic context (volleyball, whistles) frames the task but does not introduce ambiguity. The mathematical task is singular and unambiguous: set the clock to 5:45."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The theming (volleyball, a student named Romel) provides context without contradicting or confusing the mathematical task. Setting a clock to 5:45 remains logically coherent. The hint sequence supports the correct interpretation. No logical inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is clear: set the clock to 5:45. The theme adds mild contextualization but does not obscure the mathematical task. Hints use simple, sequential language. No confusing vocabulary or unstated assumptions for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 5:45 is correctly represented on an analog clock with the hour hand between 5 and 6 and the minute hand on 9. Hints validate this: 'The short (hour) hand points near 5. The long hand points to 9 — that is a quarter before the next hour.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "ee0239b06199a30ec955",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem '🚴 Kuya Chad has a math challenge about wristbands. What time does the clock show?' is unambiguous. The thematic context (cycling, wristbands) frames the task but does not introduce ambiguity. The mathematical reading is singular: 3:00. No linguistic confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The theming (cycling, a student named Kuya Chad) provides mild contextualization. The mathematical task remains coherent: read a clock showing 3:00 and select the correct answer. Distractors are plausible errors. No logical inconsistencies between theme and mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and clear: 'What time does the clock show?' The theme adds context without obscuring the task. Options are clearly presented. Hints scaffold the reading process step-by-step. No confusing vocabulary for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand at 3 and the minute hand at 12 represents 3:00. This is mathematically correct. Hints confirm: 'The short (hour) hand points near 3. The long hand points to 12, so it is exactly on the hour.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "26453ac3a2d3f5a08425",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand near 8 and minute hand on 3 has one correct reading: 8:15. Distractors (7:15, 9:15, 8:10) each differ clearly. No ambiguity in presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock is a valid, authentic task. Visual, question, and options form a coherent context. Hints logically support the reading process from observation to interpretation. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by identifying hand roles and positions, then concluding with 8:15. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand near 8 and the minute hand on 3 represents 8:15 (quarter past). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 8. The long hand points to 3 — that is a quarter past the hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "7fc5f740fc6fbc9c11cd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 4:45' is clear and singular. One configuration represents 4:45: hour hand between 4 and 5, minute hand on 9. Answer is unambiguous. No linguistic confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a quarter-before time is coherent and reinforces the learning objective. The task is logically sound: adjust the visual representation to match the target time. Hints logically guide the learner. No contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 4:45' is direct and unambiguous. Target time is clear. Hints use simple, sequential language to guide the learner. No confusing vocabulary for a Grade 1 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 4:45 is correctly represented on an analog clock with the hour hand between 4 and 5 and the minute hand on 9. Hints validate this: 'The short (hour) hand points near 4. The long hand points to 9 — that is a quarter before the next hour.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "bcd7fbdd53550272468e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'Set the clock to show 11:30' is unambiguous. One configuration represents 11:30: hour hand between 11 and 12, minute hand on 6. Answer is deterministic. No linguistic ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Setting a clock to a half-hour time on the 11 o'clock hour is valid and tests understanding of the full hour cycle. The task is coherent: adjust the visual to match the target. Hints support the logic. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction 'Set the clock to show 11:30' is direct and clear. Target time is given in the familiar digital format. Hints are sequential and use simple language. No confusing vocabulary for a Grade 1 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The time 11:30 is correctly represented on an analog clock with the hour hand between 11 and 12 and the minute hand on 6. Hints confirm this: 'The short (hour) hand points near 11. The long hand points to 6 — that is half past the hour.' All mathematics is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "dcdd063729b9fc3ada06",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand near 11 and minute hand on 6 has one correct reading: 11:30. Distractors (12:30, 10:30, 11:25) each differ clearly. No ambiguity in presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock showing a half-hour time is a valid, authentic task. The visual, question, and options form a coherent context where distractors test whether the learner can distinguish the correct hour from adjacent hours and identify the minute position accurately. Hints logically guide this process. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by identifying hand roles and positions, then concluding with 11:30. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand near 11 and the minute hand on 6 represents 11:30 (half hour). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 11. The long hand points to 6 — that is half past the hour.' All mathematics is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "2cfd29dfd0c1635ffb0a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand at 4 and minute hand at 12 has one correct reading: 4:00. Distractors (5:00, 3:00, 4:05) each differ clearly. No ambiguity in presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock is a valid, authentic task. Visual, question, and options form a coherent context. Hints logically support the reading process. No inconsistencies between elements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by identifying hand roles and guiding the student to the correct answer. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand at 4 and the minute hand at 12 represents 4:00 (on the hour). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 4. The long hand points to 12, so it is exactly on the hour.' All mathematics is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "a385211272fd2b916409",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem 'What time does the clock show?' is unambiguous. A clock with hour hand near 10 and minute hand on 9 has one correct reading: 10:45. Distractors (10:40, 11:45, 9:45) each differ clearly. No ambiguity in presentation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Reading a clock showing a quarter-before time is a valid, authentic task. The visual, question, and options form a coherent context where distractors represent common quarter-hour misreadings: 10:40 (off-by-five), 11:45 (minute correct but hour wrong), and 9:45 (off-by-one-hour). Hints logically guide the process. No inconsistencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct and uses only familiar Grade 1 vocabulary. Options are clearly presented. Hints scaffold the interpretation by identifying hand roles and positions, then concluding with 10:45. Clarity is high."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A clock with the hour hand near 10 and the minute hand on 9 represents 10:45 (quarter before). This is mathematically correct. Hints confirm: 'The short (hour) hand points near 10. The long hand points to 9 — that is a quarter before the next hour.' All mathematics is sound."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "read_and_write",
+        "clause": "Read and write",
+        "verdict": "PASS",
+        "reasoning": "Reading capability is demonstrated across 9 read_mcq samples (9714675d5ddab8bf013f, 04b391c0c97500ec5737, 7397d274cd9bc9051785, edf0846128e302f6d2fc, ee0239b06199a30ec955, 26453ac3a2d3f5a08425, dcdd063729b9fc3ada06, 2cfd29dfd0c1635ffb0a, a385211272fd2b916409). Writing capability is demonstrated across 11 set_fill_in_blank samples (7981041ed1e45e93b4c0, 6c04aa80f7746060dc3d, 19a18871d257fbe45be4, 435df4d818142af692f0, 9d39c2847d5c618d047f, 4f1d5ea31618ec7f5a9d, d920dd9cc0b82216168b, 983c9dfe0d16705b0837, ee0d2c7397e11fb2c8a3, de0fa6efb7c8a3fcb177, 7fc5f740fc6fbc9c11cd, bcd7fbdd53550272468e). Both modalities are explicitly tested and verified.",
+        "sample_ids": [
+          "9714675d5ddab8bf013f",
+          "04b391c0c97500ec5737",
+          "7397d274cd9bc9051785",
+          "edf0846128e302f6d2fc",
+          "ee0239b06199a30ec955",
+          "26453ac3a2d3f5a08425",
+          "dcdd063729b9fc3ada06",
+          "2cfd29dfd0c1635ffb0a",
+          "a385211272fd2b916409",
+          "7981041ed1e45e93b4c0",
+          "6c04aa80f7746060dc3d",
+          "19a18871d257fbe45be4",
+          "435df4d818142af692f0",
+          "9d39c2847d5c618d047f",
+          "4f1d5ea31618ec7f5a9d",
+          "d920dd9cc0b82216168b",
+          "983c9dfe0d16705b0837",
+          "ee0d2c7397e11fb2c8a3",
+          "de0fa6efb7c8a3fcb177",
+          "7fc5f740fc6fbc9c11cd",
+          "bcd7fbdd53550272468e"
+        ]
+      },
+      {
+        "requirement_id": "time",
+        "clause": "time",
+        "verdict": "PASS",
+        "reasoning": "All 20 samples directly assess time-reading or time-writing skills. Every sample includes a clock display and a digital time target or answer. The concept of time as an ordered, measurable quantity is central to every item. Samples comprehensively test the learner's understanding of time representation and interpretation using the analog clock as the tool.",
+        "sample_ids": [
+          "9714675d5ddab8bf013f",
+          "7981041ed1e45e93b4c0",
+          "04b391c0c97500ec5737",
+          "6c04aa80f7746060dc3d",
+          "19a18871d257fbe45be4",
+          "435df4d818142af692f0",
+          "9d39c2847d5c618d047f",
+          "7397d274cd9bc9051785",
+          "4f1d5ea31618ec7f5a9d",
+          "d920dd9cc0b82216168b",
+          "983c9dfe0d16705b0837",
+          "ee0d2c7397e11fb2c8a3",
+          "edf0846128e302f6d2fc",
+          "de0fa6efb7c8a3fcb177",
+          "ee0239b06199a30ec955",
+          "26453ac3a2d3f5a08425",
+          "7fc5f740fc6fbc9c11cd",
+          "bcd7fbdd53550272468e",
+          "dcdd063729b9fc3ada06",
+          "2cfd29dfd0c1635ffb0a",
+          "a385211272fd2b916409"
+        ]
+      },
+      {
+        "requirement_id": "hour",
+        "clause": "hour",
+        "verdict": "PASS",
+        "reasoning": "On-the-hour times (times ending in :00) are explicitly tested in 5 samples: 7981041ed1e45e93b4c0 (5:00), 19a18871d257fbe45be4 (7:00), d920dd9cc0b82216168b (9:00), edf0846128e302f6d2fc (4:00), ee0239b06199a30ec955 (3:00). Additionally, all set_fill_in_blank and read_mcq samples explicitly teach that the hour hand points to the hour number and that the minute hand at 12 indicates an exact hour. Hints consistently explain the hour hand's role. This requirement is fully satisfied.",
+        "sample_ids": [
+          "7981041ed1e45e93b4c0",
+          "19a18871d257fbe45be4",
+          "d920dd9cc0b82216168b",
+          "edf0846128e302f6d2fc",
+          "ee0239b06199a30ec955"
+        ]
+      },
+      {
+        "requirement_id": "half_hour",
+        "clause": "half hour",
+        "verdict": "PASS",
+        "reasoning": "Half-hour times (times ending in :30) are explicitly tested in 6 samples: 04b391c0c97500ec5737 (9:30), 6c04aa80f7746060dc3d (7:30), 4f1d5ea31618ec7f5a9d (6:30), ee0d2c7397e11fb2c8a3 (12:30), bcd7fbdd53550272468e (11:30), dcdd063729b9fc3ada06 (11:30). Hints consistently state that the minute hand on 6 represents half past the hour. All half-hour samples test both the visual (clock hand position) and symbolic (digital time) representations.",
+        "sample_ids": [
+          "04b391c0c97500ec5737",
+          "6c04aa80f7746060dc3d",
+          "4f1d5ea31618ec7f5a9d",
+          "ee0d2c7397e11fb2c8a3",
+          "bcd7fbdd53550272468e",
+          "dcdd063729b9fc3ada06"
+        ]
+      },
+      {
+        "requirement_id": "quarter_hour",
+        "clause": "quarter hour",
+        "verdict": "PASS",
+        "reasoning": "Quarter-hour times are tested in two subcases. Quarter-past times (ending in :15) appear in 3 samples: 9714675d5ddab8bf013f (2:15), 7397d274cd9bc9051785 (6:15), 26453ac3a2d3f5a08425 (8:15). Hints consistently state that the minute hand on 3 represents a quarter past the hour. Quarter-before times (ending in :45) appear in 5 samples: 9d39c2847d5c618d047f (5:45), 983c9dfe0d16705b0837 (3:45), de0fa6efb7c8a3fcb177 (5:45), 7fc5f740fc6fbc9c11cd (4:45), a385211272fd2b916409 (10:45). Hints consistently state that the minute hand on 9 represents a quarter before the next hour. Both quarter interpretations are explicitly taught and tested.",
+        "sample_ids": [
+          "9714675d5ddab8bf013f",
+          "7397d274cd9bc9051785",
+          "26453ac3a2d3f5a08425",
+          "9d39c2847d5c618d047f",
+          "983c9dfe0d16705b0837",
+          "de0fa6efb7c8a3fcb177",
+          "7fc5f740fc6fbc9c11cd",
+          "a385211272fd2b916409"
+        ]
+      },
+      {
+        "requirement_id": "analog_clock",
+        "clause": "analog clock",
+        "verdict": "PASS",
+        "reasoning": "Every one of the 20 samples uses an analog clock as the visual representation and interaction medium. The visual_type is consistently listed as ClockSet. Samples include elements such as hour hand, minute hand, clock face, and numeric labels (1–12, AM/PM). All tasks require learners to interpret or manipulate the analog representation. No samples rely on digital-only or non-analog representations, ensuring the analog clock requirement is fully met.",
+        "sample_ids": [
+          "9714675d5ddab8bf013f",
+          "7981041ed1e45e93b4c0",
+          "04b391c0c97500ec5737",
+          "6c04aa80f7746060dc3d",
+          "19a18871d257fbe45be4",
+          "435df4d818142af692f0",
+          "9d39c2847d5c618d047f",
+          "7397d274cd9bc9051785",
+          "4f1d5ea31618ec7f5a9d",
+          "d920dd9cc0b82216168b",
+          "983c9dfe0d16705b0837",
+          "ee0d2c7397e11fb2c8a3",
+          "edf0846128e302f6d2fc",
+          "de0fa6efb7c8a3fcb177",
+          "ee0239b06199a30ec955",
+          "26453ac3a2d3f5a08425",
+          "7fc5f740fc6fbc9c11cd",
+          "bcd7fbdd53550272468e",
+          "dcdd063729b9fc3ada06",
+          "2cfd29dfd0c1635ffb0a",
+          "a385211272fd2b916409"
+        ]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

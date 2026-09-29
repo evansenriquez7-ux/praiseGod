@@ -1,0 +1,607 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_7-20260925",
+  "mat_g2_na_q3_7": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Finding missing numbers in multiplication and division sentences is cognitively appropriate for Grade 2 learners. The problems use concrete number pairs and simple operations aligned with early elementary reasoning."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "Sample 81800b95cb388554ff81 presents the problem 2 times 1 equals blank, introducing factor 1 which is not listed in the specified factors 2, 3, 4, 5, and 10. This directly violates the stated competency scope."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The decomposition into find, missing number, number sentence, and specific factors appears lossless for the intended scope. However, one sample uses factor 1 outside the requirement bounds, creating a critical violation of the decomposed structure.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "While the six REQUIREMENTS logically decompose the competency, sample 81800b95 introduces factor 1 not addressed in the factors_2_3_4_5_10 requirement, proving the decomposition does not constrain the actual rendered output."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "All five specified factors (2, 3, 4, 5, 10) appear across multiple samples in both multiplication and division contexts, testing missing values in different positions. However, the intrusion of factor 1 in sample 81800b95 represents an out-of-scope extension that undermines the coverage guarantee."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Numerical magnitudes range from single digits to 100, staying within Grade 2 computational expectations. Products and quotients remain accessible without requiring multi-digit calculation strategies beyond early elementary scope."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples exercise multiple response formats including read_mcq with BalanceScale visuals, multiple-choice, true-false, and cloze fill-in-blank structures. Missing values appear in different sentence positions (first, middle, last operand), testing flexible understanding."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "344e1562f7f9c60a2397",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly indicates a balanced scale with one operand missing, using a question mark placeholder. The phrasing and visual representation leave no doubt about which value must be found."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The BalanceScale context makes logical sense for representing equality. Multiplying 1 by 2 to get 2 is mathematically sound and the hint sequence correctly demonstrates the inverse operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 learners can understand both the visual balance representation and the written sentence structure. The hints progressively reveal the answer using accessible language and concrete calculation steps."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All mathematical relationships hold: 1 times 2 equals 2, and the verification step confirms the solution. Hints correctly apply division as the inverse of multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "f467bedf26e38d244720",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The blank clearly marks the unknown quotient in a division sentence. The phrasing provides an unambiguous prompt to identify what number goes in the missing spot."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "No contextual wrapper is used, making this a pure arithmetic exercise. Dividing 100 by 10 to obtain 10 is logically valid and hints correctly explain the calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format asks what number goes in the blank with a straightforward stem. Hints use simple language to state the operation and demonstrate the arithmetic."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: 100 divided by 10 yields 10. Hints accurately state this calculation without error or misrepresentation."
+          }
+        }
+      },
+      {
+        "sample_id": "3474f44d116569de5ecf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The BalanceScale representation with a clear question mark placeholder and explicit prompt about missing value eliminates any ambiguity. Learners know exactly what must be found."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The balanced scale context correctly models the multiplication equation. Finding 10 as the multiplier when 2 times the unknown equals 20 is logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Both visual and text representations clearly indicate a missing multiplicand. The hint sequence uses accessible language to explain the division strategy for solving."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: 2 times 10 equals 20. Division as the inverse operation is properly applied in hints, and verification confirms the solution."
+          }
+        }
+      },
+      {
+        "sample_id": "0dceeda00d72781f85c3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format presents a specific claim about the missing value in the division statement. The structure leaves no room for misunderstanding what assertion must be evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The evaluation task is logically coherent: determining whether 6 correctly completes the division sentence. The correct answer is False because 50 divided by 5 equals 10, not when 6 is used."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 learners can follow the true-false evaluation format. Hints guide them through the calculation by first restating the operation, then showing the correct divisor and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is sound: 50 divided by 5 indeed equals 10, making the claim that 6 is correct mathematically false. All hint calculations are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "cb9c4b54390c6131dbda",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false prompt clearly asks whether 2 completes the division sentence. The format provides certainty about what claim needs evaluation without confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The assertion that the missing value is 2 in 4 divided by 2 is logically valid and mathematically true. Learners need to verify this claim as correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The straightforward true-false question is accessible to Grade 2 students. Hints confirm the equality through direct calculation without unnecessary complexity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: 4 divided by 2 produces 2. Hints accurately compute and verify this result."
+          }
+        }
+      },
+      {
+        "sample_id": "db31ac85c23a38f1ae1c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with a blank at the beginning of the division sentence clearly indicates which value must be provided. The phrasing leaves no ambiguity about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division sentence structure is logically coherent: an unknown dividend divided by 2 equals 5. Finding this dividend through multiplication is a valid inverse operation approach."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 learners can complete the written sentence with the missing number. Hints progressively explain the multiplication strategy and verify the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: 10 divided by 2 equals 5, and the verification 5 times 2 equals 10 confirms the solution accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "c6c9defc6604096aa921",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format clearly states whether 2 is the missing divisor in the equation 24 divided by unknown equals 8. No ambiguity exists about the evaluation target."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Evaluating whether 2 divides 24 to produce 8 is a valid logical exercise. The False answer is correct because 24 divided by 3, not 2, gives 8."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false question format and hints that guide through the calculation are clear for Grade 2 comprehension. The progression from restating the problem to computing and verifying is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is accurate: 24 divided by 3 equals 8, not with divisor 2. All hint calculations and the verification step are correct."
+          }
+        }
+      },
+      {
+        "sample_id": "64748173f754cc5d0f38",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question asks what number goes in the blank for the division expression. The structure and options provide clear guidance about the task without confusion."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division structure is logically sound: finding the dividend when 5 divides it to produce 6. Using multiplication as the inverse operation is a valid approach."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format asks learners to identify the correct number from provided options. Hints explain the inverse operation strategy using accessible language and step-by-step calculation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All mathematics is sound: 30 divided by 5 equals 6, and the verification 6 times 5 equals 30 confirms correctness. Hints accurately demonstrate the calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "dc1a2feed5ce2a2717e2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format plainly shows a missing dividend in the division equation. The blank position and accompanying sentence structure make the task unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division sentence where an unknown number divided by 3 equals 5 is logically coherent. Solving through multiplication is a valid and appropriate strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Filling in the blank to complete the number sentence is a familiar task for Grade 2. Hints use simple language and calculation steps to guide toward the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations hold: 15 divided by 3 equals 5, and the check 5 times 3 equals 15 is correct. Hints accurately represent the mathematical relationships."
+          }
+        }
+      },
+      {
+        "sample_id": "48fb1c4d0fd30d396c8b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question straightforwardly asks what number goes in the blank for the division problem. The options and phrasing remove any uncertainty about what must be found."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing 8 divided by 4 is a logically valid arithmetic problem. The operation and given values form a coherent mathematical relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 learners understand the task of selecting the correct quotient from multiple options. Hints explain the division calculation using straightforward language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: 8 divided by 4 yields 2. Hints accurately compute and confirm this result."
+          }
+        }
+      },
+      {
+        "sample_id": "c93b04641341faf39366",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The BalanceScale visual combined with the explicit question about the missing value creates a clear task. The placeholder and prompt ensure learners know exactly what must be determined."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The balanced scale context correctly represents multiplication equality. Finding 6 as the multiplier when 10 times the unknown equals 60 is logically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Both the visual representation and text format make the task accessible to Grade 2 students. Hints explain the inverse division operation using clear steps and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 10 times 6 equals 60, and the division verification 60 divided by 10 equals 6 is accurate. Hints represent calculations correctly."
+          }
+        }
+      },
+      {
+        "sample_id": "13cc48a95019cb6a3509",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item clearly positions the blank as the dividend in the division sentence. The structure unambiguously indicates which value learners must provide."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the dividend when an unknown number divided by 2 equals 10 is a logically sound problem. Using multiplication to solve is the appropriate inverse strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Completing the number sentence with the missing value is developmentally appropriate for Grade 2. Hints progressively reveal the multiplication solution."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are accurate: 20 divided by 2 equals 10, and the verification 10 times 2 equals 20 is correct. Hint sequence properly demonstrates the operations."
+          }
+        }
+      },
+      {
+        "sample_id": "179d20537b8c7e049fca",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format asks what number goes in the blank for the division problem. The phrasing and options provide unmistakable clarity about the assignment."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division of 10 by 5 is a valid arithmetic operation. Finding the quotient through computation is a logically coherent task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 students can easily follow the instruction to select the correct answer from the provided choices. Hints use simple calculation language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: 10 divided by 5 equals 2. Hints accurately represent this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "3cc174bba8f950913ffc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format shows a multiplication expression with the product missing. The question explicitly asks for the missing number, leaving no ambiguity about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing the product 4 times 10 is a logically valid multiplication problem. The mathematical relationship is clear and coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Learners can understand both the written sentence and the explicit question about finding the missing number. Hints provide straightforward calculation guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication is correct: 4 times 10 equals 40. Hints accurately compute and confirm this product."
+          }
+        }
+      },
+      {
+        "sample_id": "958a404043e2cc0abb02",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement clearly claims that 22 is the missing quotient in the division sentence. No ambiguity exists about what proposition must be evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Evaluating whether 22 is the correct quotient for 20 divided by 10 is logically valid. The False answer correctly reflects that 20 divided by 10 equals 2, not 22."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format is accessible to Grade 2 learners. Hints guide through the computation to show why the claim is incorrect."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematics is sound: 20 divided by 10 indeed equals 2, making the claim false. Hints accurately compute this division."
+          }
+        }
+      },
+      {
+        "sample_id": "c1abb2d22112531daffa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question clearly asks what number completes the multiplication equation. The blank and options provide unambiguous direction about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the multiplicand when an unknown times 4 equals 8 is a logically sound problem. Using division as the inverse operation is appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 students can select the correct answer from the options. Hints explain the inverse operation using accessible language and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 2 times 4 equals 8, and the division 8 divided by 4 equals 2 is accurate. Hints properly represent the calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "a5a87e8cc87b980234d0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format presents a multiplication expression with the product missing. The structure clearly indicates the blank value that must be provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing 5 times 2 is a valid multiplication problem. The mathematical relationship between factors and product is logically coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Completing the multiplication sentence is a familiar activity for Grade 2. Hints explain the computation using straightforward language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication is correct: 5 times 2 equals 10. Hints accurately compute and confirm this product."
+          }
+        }
+      },
+      {
+        "sample_id": "8425d3d396cd35deacf2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format with contextual framing asks whether 50 is the missing dividend in the division statement. The proposition is clearly stated despite the thematic wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical claim is logically valid: 50 divided by 5 does equal 10, making the assertion correct. The cultural and thematic context does not interfere with the mathematical relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic element with the cultural character and trophy reference provides context without obscuring the mathematical task. Grade 2 learners can understand both the wrapper and the division problem."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is sound: 50 divided by 5 equals 10, and the verification confirms this relationship. Hints accurately represent all calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "81800b95cb388554ff81",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with basketball-themed context clearly shows the multiplication expression with missing product. The blank position and question format remove ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem presents 2 times 1 equals blank, which tests multiplication by factor 1. The competency specification requires only factors 2, 3, 4, 5, and 10. Using factor 1 violates the stated scope and creates an out-of-bounds problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The basketball theme and mathematical phrasing are clear to Grade 2 learners. The structure makes the task understandable despite the scope violation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication 2 times 1 equals 2 is mathematically correct. Hints accurately demonstrate this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "dc00f4d7fa78e7d3ba17",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The BalanceScale visual with placeholder clearly indicates the missing dividend. The explicit question about the missing value removes any ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the dividend when an unknown divided by 10 equals 10 is logically valid. Using multiplication to solve is the appropriate inverse strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Both the visual representation and text are clear for Grade 2 students. Hints progressively explain the multiplication solution and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: 100 divided by 10 equals 10, and the verification 10 times 10 equals 100 is accurate. Hints properly represent operations."
+          }
+        }
+      },
+      {
+        "sample_id": "49d3dfd57aad785a41eb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question asks what number goes in the blank for the multiplication equation. The phrasing and options provide clear direction about the required task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the multiplicand when unknown times 4 equals 4 is a valid multiplication problem. The relationship between factors and product is logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 2 learners can select from the provided options based on understanding the multiplication relationship. Hints explain the inverse division operation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 1 times 4 equals 4, and the division 4 divided by 4 equals 1 is accurate. Hints properly demonstrate the calculations."
+          }
+        }
+      },
+      {
+        "sample_id": "7bd9acf9d399706e3b8f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format clearly asks what divisor makes the division equation true. The blank position and question structure leave no doubt about the target."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the divisor when 8 divided by unknown equals 4 is a logically valid problem. The mathematical relationships are coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Learners can follow the instruction to identify the divisor from provided choices. Hints guide through the reasoning process using accessible language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is sound: 8 divided by 2 equals 4, and the verification confirms this relationship. Hints accurately represent all operations."
+          }
+        }
+      },
+      {
+        "sample_id": "dc460a74502f4cd0c797",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The BalanceScale visual combined with clear question phrasing indicates the missing multiplier. The placeholder and explicit prompt ensure certainty about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the multiplier when 4 times unknown equals 40 is logically valid. Using division as the inverse operation is an appropriate solution strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual and textual representations are clear for Grade 2 learners. Hints explain the division strategy using accessible language and step-by-step verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: 4 times 10 equals 40, and the division 40 divided by 4 equals 10 is accurate. Hints properly demonstrate the operations."
+          }
+        }
+      },
+      {
+        "sample_id": "ccc263aec133a3b704e7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format shows the multiplication expression with product missing. The structure clearly indicates the blank value that students must determine."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computing 2 times 3 is a logically valid multiplication problem. The numerical relationship between factors and product is coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Completing the multiplication sentence is developmentally appropriate for Grade 2. Hints explain the computation using straightforward language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The multiplication is correct: 2 times 3 equals 6. Hints accurately compute and confirm this product."
+          }
+        }
+      },
+      {
+        "sample_id": "3a2cb8f4684a5bdb7d58",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item shows a division expression with dividend missing. The blank position and accompanying question clearly indicate what value must be provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the dividend when unknown divided by 3 equals 2 is a logically sound problem. Using multiplication to solve through inverse operations is valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Completing the division sentence with the missing value is accessible to Grade 2 students. Hints guide through the multiplication solution process."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations hold: 6 divided by 3 equals 2, and the verification 2 times 3 equals 6 is correct. Hints accurately represent the mathematical relationships."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "find",
+        "clause": "Find",
+        "verdict": "PASS",
+        "reasoning": "All 23 samples present a task where learners must locate a missing numerical value within a mathematical sentence. The verb and the actual task align perfectly: every item requires finding rather than generating, computing, or identifying relationships.",
+        "sample_ids": ["344e1562f7f9c60a2397", "f467bedf26e38d244720", "3474f44d116569de5ecf", "0dceeda00d72781f85c3"]
+      },
+      {
+        "requirement_id": "missing_number",
+        "clause": "missing number",
+        "verdict": "PASS",
+        "reasoning": "Every sample focuses on identifying or completing a single missing numerical value within the sentence structure. The missing numbers vary in position and context but are consistently the sole unknown element requiring determination.",
+        "sample_ids": ["cb9c4b54390c6131dbda", "db31ac85c23a38f1ae1c", "c6c9defc6604096aa921", "64748173f754cc5d0f38"]
+      },
+      {
+        "requirement_id": "number_sentence",
+        "clause": "number sentence",
+        "verdict": "PASS",
+        "reasoning": "All samples present equations using symbolic notation with numbers and operations arranged in standard mathematical sentence format. Whether displayed as fill-in-the-blank, multiple-choice, true-false, or visual balance, each item represents a complete number sentence structure.",
+        "sample_ids": ["dc1a2feed5ce2a2717e2", "48fb1c4d0fd30d396c8b", "c93b04641341faf39366", "13cc48a95019cb6a3509"]
+      },
+      {
+        "requirement_id": "multiplication",
+        "clause": "multiplication",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples explicitly test multiplication operations including 344e1562, 3474f44d, c93b04641, 3cc174bba, c1abb2d22, a5a87e8cc, ccc263aec, dc460a74, and others. Students must find missing multiplicands, multipliers, or products in these contexts.",
+        "sample_ids": ["344e1562f7f9c60a2397", "3474f44d116569de5ecf", "c93b04641341faf39366", "3cc174bba8f950913ffc", "c1abb2d22112531daffa"]
+      },
+      {
+        "requirement_id": "division",
+        "clause": "division",
+        "verdict": "CONCERN",
+        "reasoning": "Most samples test division with the specified factors in various configurations. However, the competency is to find missing numbers in sentences involving multiplication or division. While division is amply represented, sample 81800b95 uses factor 1 in a multiplication context, violating the stated factor constraint.",
+        "sample_ids": ["f467bedf26e38d244720", "0dceeda00d72781f85c3", "db31ac85c23a38f1ae1c", "c6c9defc6604096aa921", "64748173f754cc5d0f38"]
+      },
+      {
+        "requirement_id": "factors_2_3_4_5_10",
+        "clause": "2, 3, 4, 5, and 10",
+        "verdict": "FAIL",
+        "reasoning": "While samples extensively use the five specified factors across multiplication and division contexts, sample 81800b95cb388554ff81 violates this requirement by using factor 1 in the multiplication problem 2 times 1 equals blank. Factor 1 is not listed among the specified factors.",
+        "sample_ids": ["344e1562f7f9c60a2397", "f467bedf26e38d244720", "3474f44d116569de5ecf", "0dceeda00d72781f85c3", "81800b95cb388554ff81"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

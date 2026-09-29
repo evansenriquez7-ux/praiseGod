@@ -1,0 +1,240 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g1_na_q2_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q2_3
+PACKET DIGEST: 47827ce2879305ef6695c88107f7825f696801d97c50e2c0c04f50bbc7da3ddb
+COMPETENCY (Grade 1, Quarter 2, None):
+Decompose any 2-digit number into tens and ones.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  decompose: Decompose
+  domain_2_digit: 2-digit number
+  tens_ones: tens and ones
+
+SAMPLES (every one of these is real rendered output):
+  sample 4ae4f137f32f887c7641  seed 42  [cloze]
+      stem:    Write 45 as tens and ones, for example 45 = 40 + 5.
+      answer:  40 + 5
+      options: 50 + 4 / 4 + 5 / 10 + 5 / 40 + 5
+      hints:   ["Break 45 into parts by place value: 40 + 5.", "45 is 4 tens and 5 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample eef7bc0eece018e4287f  seed 43  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 10.
+      answer:  10
+      hints:   ["Break 10 into parts by place value: 10 + 0.", "10 is 1 ten and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8842fb027828f80ce25a  seed 44  [cloze]
+      stem:    Write 20 as tens and ones, for example 45 = 40 + 5.
+      answer:  20 + 0
+      options: 2 / 2 + 0 / 20 + 0 / 30 + 7
+      hints:   ["Break 20 into parts by place value: 20 + 0.", "20 is 2 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d260ac652d3ad59d3865  seed 45  [true_false]
+      stem:    Write 15 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 1. True or False?
+      answer:  False
+      hints:   ["Break 15 into parts by place value: 10 + 5.", "15 is 1 ten and 5 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample fe7d6d75785e9f5b2411  seed 46  [true_false]
+      stem:    Write 10 as tens and ones, for example 45 = 40 + 5. The answer is 10 + 0. True or False?
+      answer:  True
+      hints:   ["Break 10 into parts by place value: 10 + 0.", "10 is 1 ten and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 84f7a7465453055d3d89  seed 48  [mcq]
+      stem:    Write 40 as tens and ones, for example 45 = 40 + 5.
+      answer:  40 + 0
+      options: 4 + 0 / 4 / 40 + 0 / 30 + 9
+      hints:   ["Break 40 into parts by place value: 40 + 0.", "40 is 4 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 87cabcdfa767412387d5  seed 500  [true_false]
+      stem:    Write 91 as tens and ones, for example 45 = 40 + 5. The answer is 50 + 7. True or False?
+      answer:  False
+      hints:   ["Break 91 into parts by place value: 90 + 1.", "91 is 9 tens and 1 one.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 11e8d3fbe8c674cabf4a  seed 501  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 76.
+      answer:  76
+      hints:   ["Break 76 into parts by place value: 70 + 6.", "76 is 7 tens and 6 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b891e80c0045cb681340  seed 502  [mcq]
+      stem:    Write 94 as tens and ones, for example 45 = 40 + 5.
+      answer:  90 + 4
+      options: 90 + 4 / 30 + 6 / 40 + 9 / 9 + 4
+      hints:   ["Break 94 into parts by place value: 90 + 4.", "94 is 9 tens and 4 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ad2d66a5315e4766acc8  seed 600  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 15.
+      answer:  15
+      hints:   ["Break 15 into parts by place value: 10 + 5.", "15 is 1 ten and 5 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 32b329b6050d560d8a6e  seed 601  [cloze]
+      stem:    Write 12 as tens and ones, for example 45 = 40 + 5.
+      answer:  10 + 2
+      options: 20 + 8 / 10 + 2 / 1 + 2 / 20 + 1
+      hints:   ["Break 12 into parts by place value: 10 + 2.", "12 is 1 ten and 2 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 10bd8a85168ae74c30cc  seed 603  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 12.
+      answer:  12
+      hints:   ["Break 12 into parts by place value: 10 + 2.", "12 is 1 ten and 2 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 397175ecc22ad6de33aa  seed 700  [mcq]
+      stem:    Write 12 as tens and ones, for example 45 = 40 + 5.
+      answer:  10 + 2
+      options: 1 + 2 / 20 + 1 / 10 + 2 / 80 + 4
+      hints:   ["Break 12 into parts by place value: 10 + 2.", "12 is 1 ten and 2 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1217286e96db533d77f3  seed 701  [true_false]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Write 45 as tens and ones, for example 45 = 40 + 5. The answer is 40 + 5. True or False?
+      answer:  True
+      hints:   ["Break 45 into parts by place value: 40 + 5.", "45 is 4 tens and 5 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 375c73d03c965289f9c7  seed 702  [mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. Write 50 as tens and ones, for example 45 = 40 + 5.
+      answer:  50 + 0
+      options: 5 / 30 + 1 / 5 + 0 / 50 + 0
+      hints:   ["Break 50 into parts by place value: 50 + 0.", "50 is 5 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 136861a56acab2d5d262  seed 800  [cloze]
+      stem:    Write 93 as tens and ones, for example 45 = 40 + 5.
+      answer:  90 + 3
+      options: 9 + 3 / 80 + 8 / 90 + 3 / 30 + 9
+      hints:   ["Break 93 into parts by place value: 90 + 3.", "93 is 9 tens and 3 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9d281943e20c816cab2a  seed 900  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 16.
+      answer:  16
+      hints:   ["Break 16 into parts by place value: 10 + 6.", "16 is 1 ten and 6 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample daafb8d35f5405267a54  seed 901  [set_fill_in_blank]
+      stem:    Use base-10 blocks to show the number 22.
+      answer:  22
+      hints:   ["Break 22 into parts by place value: 20 + 2.", "22 is 2 tens and 2 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PlaceValueBlocks", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PlaceValueBlocks
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PlaceValueBlocks", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 4, "input_count": 0, "text_labels": ["▮ = 10", "• = 1", "Your blocks: None = 0", "10s", "-", "0", "+", "1s"], "distinct_colours": ["#3b82f6", "#b91c5c", "hsl(var(--text-muted)", "#3b82f620", "#b91c5c20"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 386f944c84594be1c197  seed 1000  [cloze]
+      stem:    Write 50 as tens and ones, for example 45 = 40 + 5.
+      answer:  50 + 0
+      options: 50 + 0 / 5 + 0 / 5 / 20 + 7
+      hints:   ["Break 50 into parts by place value: 50 + 0.", "50 is 5 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample c2a54489d9f59768dd17  seed 1001  [mcq]
+      stem:    Write 50 as tens and ones, for example 45 = 40 + 5.
+      answer:  50 + 0
+      options: 5 / 50 + 0 / 40 + 2 / 5 + 0
+      hints:   ["Break 50 into parts by place value: 50 + 0.", "50 is 5 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 2ffc0be469c7347dd2cd  seed 1002  [mcq]
+      stem:    Write 40 as tens and ones, for example 45 = 40 + 5.
+      answer:  40 + 0
+      options: 40 + 0 / 40 + 3 / 4 + 0 / 4
+      hints:   ["Break 40 into parts by place value: 40 + 0.", "40 is 4 tens and 0 ones.", "Each part shows how much that digit is worth in its position."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

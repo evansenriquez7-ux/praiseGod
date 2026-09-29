@@ -1,0 +1,256 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q1_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc14-mat_g3_na_q1_5-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q1_5
+PACKET DIGEST: 0e77fa1de85c25db0185fc3c9a2d3a10a1cabceed2a6c0869ab42ac1d65b8995
+COMPETENCY (Grade 3, Quarter 1, None):
+Compare numbers up to 10 000 using the symbols =, >, and <.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare: Compare
+  numbers: numbers
+  up_to_10000: up to 10 000
+  symbols: symbols =, >, and <
+
+SAMPLES (every one of these is real rendered output):
+  sample ca32100d045afb984072  seed 42  [true_false]
+      stem:    4507 > 4507. True or False?
+      answer:  False
+      hints:   ["Compare 4507 and 4507.", "Start from the largest place value and compare each digit.", "4507 is the same as 4507, so we write 4507 = 4507."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4913c6313ffabe4afce0  seed 43  [mcq]
+      stem:    Liza has 7481 marbles. Jose has 4926 marbles. Which statement is true?
+      answer:  7481 > 4926
+      options: 7481 = 4926 / 7481 < 4926 / 7481 > 4926 / 4926 > 7481
+      hints:   ["Compare 7481 and 4926.", "Start from the largest place value and compare each digit.", "7481 is bigger than 4926, so we write 7481 > 4926."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4d52f8ea95db1170d873  seed 44  [cloze]
+      stem:    Compare the numbers: 154 ___ 5700. Which sign is correct: >, <, or =?
+      answer:  <
+      options: = / > / <
+      hints:   ["Compare 154 and 5700.", "Start from the largest place value and compare each digit.", "154 is smaller than 5700, so we write 154 < 5700."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bf831ab6e60bc758842f  seed 45  [mcq]
+      stem:    Jose has 6427 storybooks. Ben has 9877 storybooks. Which statement is true?
+      answer:  6427 < 9877
+      options: 6427 = 9877 / 9877 < 6427 / 6427 > 9877 / 6427 < 9877
+      hints:   ["Compare 6427 and 9877.", "Start from the largest place value and compare each digit.", "6427 is smaller than 9877, so we write 6427 < 9877."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 72ffe312c33150c4149b  seed 46  [cloze]
+      stem:    Compare the numbers: 1523 ___ 6521. Which sign is correct: >, <, or =?
+      answer:  <
+      options: < / = / >
+      hints:   ["Compare 1523 and 6521.", "Start from the largest place value and compare each digit.", "1523 is smaller than 6521, so we write 1523 < 6521."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 11082403cf1010ab5b05  seed 500  [true_false]
+      stem:    5497 = 5956. True or False?
+      answer:  False
+      hints:   ["Compare 5497 and 5956.", "Start from the largest place value and compare each digit.", "5497 is smaller than 5956, so we write 5497 < 5956."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ced06642ad08bd8d1002  seed 501  [true_false]
+      stem:    3837 > 6709. True or False?
+      answer:  False
+      hints:   ["Compare 3837 and 6709.", "Start from the largest place value and compare each digit.", "3837 is smaller than 6709, so we write 3837 < 6709."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 7f2d9ddf9ce72add7f5b  seed 502  [cloze]
+      stem:    Compare the numbers: 5765 ___ 5765. Which sign is correct: >, <, or =?
+      answer:  =
+      options: = / < / >
+      hints:   ["Compare 5765 and 5765.", "Start from the largest place value and compare each digit.", "5765 is the same as 5765, so we write 5765 = 5765."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d37a726905fe804b39fc  seed 600  [true_false]
+      stem:    6281 > 7381. True or False?
+      answer:  False
+      hints:   ["Compare 6281 and 7381.", "Start from the largest place value and compare each digit.", "6281 is smaller than 7381, so we write 6281 < 7381."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 239e1bdd93973bff57c2  seed 601  [cloze]
+      stem:    Pia has 9294 water bowls. Another classmate has 9294 water bowls. Which comparison is correct: 9294 ___ 9294?
+      answer:  =
+      options: = / < / >
+      hints:   ["Compare 9294 and 9294.", "Start from the largest place value and compare each digit.", "9294 is the same as 9294, so we write 9294 = 9294."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a024407569e0b43a64e4  seed 602  [true_false]
+      stem:    5005 = 300. True or False?
+      answer:  False
+      hints:   ["Compare 5005 and 300.", "Start from the largest place value and compare each digit.", "5005 is bigger than 300, so we write 5005 > 300."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 238eb75e3ee3da6fbc23  seed 603  [mcq]
+      stem:    Ben has 1965 storybooks. Jose has 9573 storybooks. Which statement is true?
+      answer:  1965 < 9573
+      options: 1965 = 9573 / 9573 < 1965 / 1965 < 9573 / 1965 > 9573
+      hints:   ["Compare 1965 and 9573.", "Start from the largest place value and compare each digit.", "1965 is smaller than 9573, so we write 1965 < 9573."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 46dcdd1a2ed59b1bbd5e  seed 604  [mcq]
+      stem:    Ben has 3724 storybooks. Jose has 3744 storybooks. Which statement is true?
+      answer:  3724 < 3744
+      options: 3724 < 3744 / 3724 = 3744 / 3744 < 3724 / 3724 > 3744
+      hints:   ["Compare 3724 and 3744.", "Start from the largest place value and compare each digit.", "3724 is smaller than 3744, so we write 3724 < 3744."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7dfbe87649a088f29199  seed 605  [true_false]
+      stem:    Lola Caring has 1496 leashes. Another classmate has 624 leashes. Which comparison is correct: 1496 ___ 624? The answer is <. True or False?
+      answer:  False
+      hints:   ["Compare 1496 and 624.", "Start from the largest place value and compare each digit.", "1496 is bigger than 624, so we write 1496 > 624."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 7cacb260c641435d6501  seed 606  [mcq]
+      stem:    Which statement is true?
+      answer:  7114 = 7114
+      options: 7114 < 7114 / 7114 > 7115 / 7114 > 7114 / 7114 = 7114
+      hints:   ["Compare 7114 and 7114.", "Start from the largest place value and compare each digit.", "7114 is the same as 7114, so we write 7114 = 7114."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3f429cc79c2f2a1c4a6a  seed 700  [mcq]
+      stem:    Maria has 3522 pencils. Liza has 3522 pencils. Which statement is true?
+      answer:  3522 = 3522
+      options: 3522 < 3522 / 3522 > 3523 / 3522 = 3522 / 3522 > 3522
+      hints:   ["Compare 3522 and 3522.", "Start from the largest place value and compare each digit.", "3522 is the same as 3522, so we write 3522 = 3522."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 394943e7e80142b2e3ab  seed 701  [cloze]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Compare the numbers: 7854 ___ 2339. Which sign is correct: >, <, or =?
+      answer:  >
+      options: < / = / >
+      hints:   ["Compare 7854 and 2339.", "Start from the largest place value and compare each digit.", "7854 is bigger than 2339, so we write 7854 > 2339."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 81f6da248d6156b311ba  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Compare the numbers: 1982 ___ 449. Which sign is correct: >, <, or =?
+      answer:  >
+      options: = / > / <
+      hints:   ["Compare 1982 and 449.", "Start from the largest place value and compare each digit.", "1982 is bigger than 449, so we write 1982 > 449."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3616184c88c995500a31  seed 800  [true_false]
+      stem:    3660 > 2914. True or False?
+      answer:  True
+      hints:   ["Compare 3660 and 2914.", "Start from the largest place value and compare each digit.", "3660 is bigger than 2914, so we write 3660 > 2914."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3413312f6c7f4f4dfb9d  seed 801  [cloze]
+      stem:    Tito Bong has 739 jump ropes. Another classmate has 5467 jump ropes. Which comparison is correct: 739 ___ 5467?
+      answer:  <
+      options: > / = / <
+      hints:   ["Compare 739 and 5467.", "Start from the largest place value and compare each digit.", "739 is smaller than 5467, so we write 739 < 5467."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fe584165a41212f7e859  seed 900  [mcq]
+      stem:    Which statement is true?
+      answer:  1 < 3
+      options: 1 = 3 / 3 < 1 / 1 > 3 / 1 < 3
+      hints:   ["Compare 1 and 3.", "Start from the largest place value and compare each digit.", "1 is smaller than 3, so we write 1 < 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 775bf00071267a710917  seed 901  [true_false]
+      stem:    1 > 3. True or False?
+      answer:  False
+      hints:   ["Compare 1 and 3.", "Start from the largest place value and compare each digit.", "1 is smaller than 3, so we write 1 < 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1780afd73f8f075a40fc  seed 1000  [mcq]
+      stem:    Which statement is true?
+      answer:  8415 > 1763
+      options: 8415 = 1763 / 8415 < 1763 / 1763 > 8415 / 8415 > 1763
+      hints:   ["Compare 8415 and 1763.", "Start from the largest place value and compare each digit.", "8415 is bigger than 1763, so we write 8415 > 1763."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 90c67241441d0c5d0508  seed 1001  [cloze]
+      stem:    Compare the numbers: 3245 ___ 3245. Which sign is correct: >, <, or =?
+      answer:  =
+      options: < / > / =
+      hints:   ["Compare 3245 and 3245.", "Start from the largest place value and compare each digit.", "3245 is the same as 3245, so we write 3245 = 3245."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 252e9c1d4d3180fbac4b  seed 1002  [cloze]
+      stem:    Compare the numbers: 3300 ___ 1994. Which sign is correct: >, <, or =?
+      answer:  >
+      options: > / < / =
+      hints:   ["Compare 3300 and 1994.", "Start from the largest place value and compare each digit.", "3300 is bigger than 1994, so we write 3300 > 1994."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

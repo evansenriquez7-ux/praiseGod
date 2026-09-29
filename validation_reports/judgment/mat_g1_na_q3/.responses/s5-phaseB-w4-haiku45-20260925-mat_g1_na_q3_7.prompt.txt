@@ -1,0 +1,208 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pb4-mat_g1_na_q3_7-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseB/mat_g1_na_q3_7/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_7-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_7
+PACKET DIGEST: ece1099302826444990f9840a69af6835d753ef2d5d29db75993ccda3554ee75
+COMPETENCY (Grade 1, Quarter 3, None):
+Create repeating patterns using objects, images, or numbers.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  create: Create
+  repeating_patterns: repeating patterns
+  objects_images_or_numbers: objects, images, or numbers
+
+SAMPLES (every one of these is real rendered output):
+  sample a23ebb9642ac9547bfba  seed 42  [cloze]
+      stem:    You want to create a repeating pattern using: rectangle, triangle. Which sequence correctly creates it?
+      answer:  rectangle, triangle, rectangle, triangle, rectangle, triangle
+      options: rectangle, triangle, rectangle, triangle, rectangle, square / rectangle, triangle, square, triangle, rectangle, triangle / rectangle, triangle, rectangle, triangle, rectangle, rectangle / rectangle, triangle, rectangle, triangle, rectangle, triangle
+      hints:   ["The repeating group is rectangle, triangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is rectangle, triangle, rectangle, triangle, rectangle, triangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b900188fc62e3b604323  seed 43  [mcq]
+      stem:    Use the repeating unit 10, 1 to build a repeating pattern. Which sequence correctly creates it?
+      answer:  10, 1, 10, 1, 10, 1
+      options: 10, 1, 10, 1, 10, 2 / 10, 2, 10, 1, 10, 1 / 10, 1, 10, 1, 10, 1 / 10, 1, 10, 1, 9, 1
+      hints:   ["The repeating group is 10, 1.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 10, 1, 10, 1, 10, 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8aa2fd68c06decd2fddc  seed 44  [cloze]
+      stem:    Use the repeating unit square, triangle to build a repeating pattern. Which sequence correctly creates it?
+      answer:  square, triangle, square, triangle, square, triangle
+      options: square, triangle, rectangle, triangle, square, triangle / square, square, square, triangle, square, triangle / square, triangle, square, triangle, square, rectangle / square, triangle, square, triangle, square, triangle
+      hints:   ["The repeating group is square, triangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is square, triangle, square, triangle, square, triangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 69b0291510db59532099  seed 45  [mcq]
+      stem:    You want to create a repeating pattern using: 2, 3. Which sequence correctly creates it?
+      answer:  2, 3, 2, 3, 2, 3
+      options: 2, 3, 2, 3, 0, 3 / 2, 3, 2, 2, 2, 3 / 2, 0, 2, 3, 2, 3 / 2, 3, 2, 3, 2, 3
+      hints:   ["The repeating group is 2, 3.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 2, 3, 2, 3, 2, 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c3bb997343745a56fd04  seed 46  [mcq]
+      stem:    You want to create a repeating pattern using: 1, 10. Which sequence correctly creates it?
+      answer:  1, 10, 1, 10, 1, 10
+      options: 1, 10, 1, 10, 1, 10 / 1, 7, 1, 10, 1, 10 / 1, 10, 1, 10, 1, 8 / 1, 10, 1, 10, 1, 12
+      hints:   ["The repeating group is 1, 10.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 1, 10, 1, 10, 1, 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e6938b348702826be37f  seed 500  [mcq]
+      stem:    You want to create a repeating pattern using: 9, 18, 20. Which sequence correctly creates it?
+      answer:  9, 18, 20, 9, 18, 20
+      options: 9, 18, 20, 9, 16, 20 / 9, 17, 20, 9, 18, 20 / 9, 18, 20, 9, 18, 23 / 9, 18, 20, 9, 18, 20
+      hints:   ["The repeating group is 9, 18, 20.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 9, 18, 20, 9, 18, 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5271898da8b239d748ae  seed 501  [mcq]
+      stem:    Create a repeating pattern with the repeating group: 8, 18, 20. Which sequence shows this pattern?
+      answer:  8, 18, 20, 8, 18, 20
+      options: 8, 18, 23, 8, 18, 20 / 8, 18, 20, 8, 18, 20 / 8, 18, 20, 8, 18, 19 / 8, 18, 20, 7, 18, 20
+      hints:   ["The repeating group is 8, 18, 20.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 8, 18, 20, 8, 18, 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fb8e3fb33bf645abcb44  seed 502  [cloze]
+      stem:    Use the repeating unit rectangle, triangle, square to build a repeating pattern. Which sequence correctly creates it?
+      answer:  rectangle, triangle, square, rectangle, triangle, square
+      options: rectangle, triangle, square, rectangle, square, square / rectangle, triangle, rectangle, rectangle, triangle, square / rectangle, triangle, square, rectangle, triangle, square / rectangle, triangle, triangle, rectangle, triangle, square
+      hints:   ["The repeating group is rectangle, triangle, square.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is rectangle, triangle, square, rectangle, triangle, square."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dcab6f6f03265870d242  seed 700  [cloze]
+      stem:    You want to create a repeating pattern using: triangle, square. Which sequence correctly creates it?
+      answer:  triangle, square, triangle, square, triangle, square
+      options: triangle, square, triangle, square, triangle, rectangle / triangle, triangle, triangle, square, triangle, square / triangle, square, triangle, square, triangle, square / triangle, square, triangle, square, triangle, triangle
+      hints:   ["The repeating group is triangle, square.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is triangle, square, triangle, square, triangle, square."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c1fc3614113e3d8fc567  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Use the repeating unit 1, 14 to build a repeating pattern. Which sequence correctly creates it?
+      answer:  1, 14, 1, 14, 1, 14
+      options: 1, 14, 2, 14, 1, 14 / 1, 14, 1, 14, 1, 14 / 1, 14, 1, 14, 1, 16 / 1, 14, 3, 14, 1, 14
+      hints:   ["The repeating group is 1, 14.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 1, 14, 1, 14, 1, 14."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0e24d8143d29ccdce05d  seed 702  [cloze]
+      stem:    💃 Ate Gab has a math challenge about costumes. You want to create a repeating pattern using: square, triangle. Which sequence correctly creates it?
+      answer:  square, triangle, square, triangle, square, triangle
+      options: square, triangle, square, triangle, rectangle, triangle / square, rectangle, square, triangle, square, triangle / square, triangle, rectangle, triangle, square, triangle / square, triangle, square, triangle, square, triangle
+      hints:   ["The repeating group is square, triangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is square, triangle, square, triangle, square, triangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample baaaf9fc4988978dea24  seed 800  [cloze]
+      stem:    Use the repeating unit triangle, rectangle, square to build a repeating pattern. Which sequence correctly creates it?
+      answer:  triangle, rectangle, square, triangle, rectangle, square
+      options: triangle, rectangle, square, triangle, rectangle, square / triangle, triangle, square, triangle, rectangle, square / triangle, square, square, triangle, rectangle, square / triangle, rectangle, triangle, triangle, rectangle, square
+      hints:   ["The repeating group is triangle, rectangle, square.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is triangle, rectangle, square, triangle, rectangle, square."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3dc362bc7dce6ba175fa  seed 900  [mcq]
+      stem:    Create a repeating pattern with the repeating group: 1, 5. Which sequence shows this pattern?
+      answer:  1, 5, 1, 5, 1, 5
+      options: 1, 5, 3, 5, 1, 5 / 1, 5, 1, 2, 1, 5 / 1, 5, 1, 5, 1, 5 / 1, 5, 2, 5, 1, 5
+      hints:   ["The repeating group is 1, 5.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 1, 5, 1, 5, 1, 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 78af0205bd333299e1d4  seed 901  [mcq]
+      stem:    Use the repeating unit 1, 8 to build a repeating pattern. Which sequence correctly creates it?
+      answer:  1, 8, 1, 8, 1, 8
+      options: 1, 8, 1, 8, 0, 8 / 1, 8, 1, 8, 2, 8 / 1, 8, 1, 11, 1, 8 / 1, 8, 1, 8, 1, 8
+      hints:   ["The repeating group is 1, 8.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is 1, 8, 1, 8, 1, 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 773088d2e49c526b09ee  seed 1000  [cloze]
+      stem:    Use the repeating unit triangle, rectangle to build a repeating pattern. Which sequence correctly creates it?
+      answer:  triangle, rectangle, triangle, rectangle, triangle, rectangle
+      options: triangle, rectangle, square, rectangle, triangle, rectangle / triangle, rectangle, rectangle, rectangle, triangle, rectangle / triangle, triangle, triangle, rectangle, triangle, rectangle / triangle, rectangle, triangle, rectangle, triangle, rectangle
+      hints:   ["The repeating group is triangle, rectangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is triangle, rectangle, triangle, rectangle, triangle, rectangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 0b7e54656b40e1d2bd60  seed 1001  [cloze]
+      stem:    Use the repeating unit square, triangle to build a repeating pattern. Which sequence correctly creates it?
+      answer:  square, triangle, square, triangle, square, triangle
+      options: square, triangle, square, triangle, square, triangle / square, triangle, square, rectangle, square, triangle / square, triangle, square, triangle, square, square / square, triangle, rectangle, triangle, square, triangle
+      hints:   ["The repeating group is square, triangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is square, triangle, square, triangle, square, triangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 3952a76410428a3e113f  seed 1002  [cloze]
+      stem:    You want to create a repeating pattern using: square, rectangle. Which sequence correctly creates it?
+      answer:  square, rectangle, square, rectangle, square, rectangle
+      options: square, rectangle, square, rectangle, triangle, rectangle / square, rectangle, triangle, rectangle, square, rectangle / square, rectangle, square, rectangle, square, rectangle / square, rectangle, square, triangle, square, rectangle
+      hints:   ["The repeating group is square, rectangle.", "Check each choice: the group must repeat in the same order, with nothing out of place.", "The sequence that does this is square, rectangle, square, rectangle, square, rectangle."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

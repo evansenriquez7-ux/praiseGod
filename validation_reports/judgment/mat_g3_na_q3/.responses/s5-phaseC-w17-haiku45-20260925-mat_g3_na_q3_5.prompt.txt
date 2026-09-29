@@ -1,0 +1,234 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q3_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc17-mat_g3_na_q3_5-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q3_5
+PACKET DIGEST: 7af5f3a20bca97c084706dcf2ee59b79b9f233452d3f942e169893076c9c91e6
+COMPETENCY (Grade 3, Quarter 3, None):
+Determine the missing term/s in a pattern with repeating and increasing components or repeating and decreasing components (e.g., 1a, 1b, 1c, 2a, 2b, 2c, …).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  determine_missing_terms: Determine the missing term/s
+  pattern: pattern
+  repeating_and_increasing: repeating and increasing components
+  repeating_and_decreasing: repeating and decreasing components
+
+SAMPLES (every one of these is real rendered output):
+  sample 36df2e43b3d0f242b79b  seed 42  [cloze]
+      stem:    What number is missing in the pattern: 24, 24, 34, ___, 44?
+      answer:  34
+      options: 34 / 24 / 44 / 54
+      hints:   ["Look at the pattern: 24, 24, 34, ___, 44.", "A group of numbers repeats, and each new group goes up by 10.", "The missing number in the pattern is at position 4.", "Repeat the ones [4, 4] and add 10 every group. The answer is 34."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bd7859e000253c297ddd  seed 43  [mcq]
+      stem:    What number is missing in the pattern: 33, 38, 83, ___, 133?
+      answer:  88
+      options: 183 / 138 / 38 / 88
+      hints:   ["Look at the pattern: 33, 38, 83, ___, 133.", "A group of numbers repeats, and each new group goes up by 50.", "The missing number in the pattern is at position 4.", "Repeat the ones [3, 8] and add 50 every group. The answer is 88."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8bfd6583959a28972221  seed 44  [read_mcq]
+      stem:    What is the missing term (position 2) in the pattern?
+      answer:  45
+      options: 55 / 45 / 34 / 35
+      hints:   ["Look at the pattern: 44, ___, 41, 34, 35, 31, 24, 25.", "A group of numbers repeats, and each new group goes down by 10.", "The missing number in the pattern is at position 2.", "Repeat the ones [4, 5, 1] and subtract 10 every group. The answer is 45."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["44", "41", "34", "35", "31", "24", "25"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d53ddf9e967ceaf88c38  seed 45  [mcq]
+      stem:    What number is missing in the pattern: 212, ___, 216, 112, 115, 116, 12, 15?
+      answer:  215
+      options: 112 / 115 / 215 / 315
+      hints:   ["Look at the pattern: 212, ___, 216, 112, 115, 116, 12, 15.", "A group of numbers repeats, and each new group goes down by 100.", "The missing number in the pattern is at position 2.", "Repeat the ones [2, 5, 6] and subtract 100 every group. The answer is 215."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 80d8dd6089a363a2c07e  seed 46  [mcq]
+      stem:    What number is missing in the pattern: 224, 229, 124, ___, 24?
+      answer:  129
+      options: 129 / 130 / 229 / 29
+      hints:   ["Look at the pattern: 224, 229, 124, ___, 24.", "A group of numbers repeats, and each new group goes down by 100.", "The missing number in the pattern is at position 4.", "Repeat the ones [4, 9] and subtract 100 every group. The answer is 129."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3e1b214386fbba0d87fe  seed 500  [read_mcq]
+      stem:    What is the missing term (position 6) in the pattern?
+      answer:  132
+      options: 32 / 34 / 132 / 232
+      hints:   ["Look at the pattern: 237, 234, 232, 137, 134, ___, 37, 34.", "A group of numbers repeats, and each new group goes down by 100.", "The missing number in the pattern is at position 6.", "Repeat the ones [7, 4, 2] and subtract 100 every group. The answer is 132."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["237", "234", "232", "137", "134", "37", "34"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bd4afe983f8a3fc64f9e  seed 501  [read_mcq]
+      stem:    What is the missing term (position 3) in the pattern?
+      answer:  139
+      options: 89 / 86 / 139 / 189
+      hints:   ["Look at the pattern: 136, 136, ___, 86, 86, 89, 36, 36.", "A group of numbers repeats, and each new group goes down by 50.", "The missing number in the pattern is at position 3.", "Repeat the ones [6, 6, 9] and subtract 50 every group. The answer is 139."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["136", "86", "89", "36"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 607a8633575b000a483d  seed 502  [cloze]
+      stem:    What number is missing in the pattern: 43, 47, 41, 63, 67, ___, 83, 87?
+      answer:  61
+      options: 41 / 143 / 61 / 81
+      hints:   ["Look at the pattern: 43, 47, 41, 63, 67, ___, 83, 87.", "A group of numbers repeats, and each new group goes up by 20.", "The missing number in the pattern is at position 6.", "Repeat the ones [3, 7, 1] and add 20 every group. The answer is 61."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1aad41b1953f2eb25822  seed 700  [cloze]
+      stem:    What number is missing in the pattern: 94, 99, ___, 79, 54?
+      answer:  74
+      options: 94 / 54 / 75 / 74
+      hints:   ["Look at the pattern: 94, 99, ___, 79, 54.", "A group of numbers repeats, and each new group goes down by 20.", "The missing number in the pattern is at position 3.", "Repeat the ones [4, 9] and subtract 20 every group. The answer is 74."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6b65a8d3a01e861001e5  seed 701  [mcq]
+      stem:    🐕 Boyong has a math challenge about fish food packets. What number is missing in the pattern: 229, 224, 229, 129, ___, 129, 29, 24?
+      answer:  124
+      options: 24 / 125 / 124 / 224
+      hints:   ["Look at the pattern: 229, 224, 229, 129, ___, 129, 29, 24.", "A group of numbers repeats, and each new group goes down by 100.", "The missing number in the pattern is at position 5.", "Repeat the ones [9, 4, 9] and subtract 100 every group. The answer is 124."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 77140e76301f79c8e615  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. What number is missing in the pattern: 75, 74, ___, 54, 35?
+      answer:  55
+      options: 75 / 35 / 56 / 55
+      hints:   ["Look at the pattern: 75, 74, ___, 54, 35.", "A group of numbers repeats, and each new group goes down by 20.", "The missing number in the pattern is at position 3.", "Repeat the ones [5, 4] and subtract 20 every group. The answer is 55."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 46df087136798a548927  seed 800  [read_mcq]
+      stem:    What is the missing term (position 3) in the pattern?
+      answer:  61
+      options: 71 / 61 / 51 / 56
+      hints:   ["Look at the pattern: 69, 66, ___, 59, 56, 51, 49, 46.", "A group of numbers repeats, and each new group goes down by 10.", "The missing number in the pattern is at position 3.", "Repeat the ones [9, 6, 1] and subtract 10 every group. The answer is 61."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["69", "66", "59", "56", "51", "49", "46"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c01e699a9291e93d2f87  seed 900  [mcq]
+      stem:    What number is missing in the pattern: 32, ___, 82, 84, 132?
+      answer:  34
+      options: 82 / 84 / 35 / 34
+      hints:   ["Look at the pattern: 32, ___, 82, 84, 132.", "A group of numbers repeats, and each new group goes up by 50.", "The missing number in the pattern is at position 2.", "Repeat the ones [2, 4] and add 50 every group. The answer is 34."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5598d2db27cb00b7b1e5  seed 901  [read_mcq]
+      stem:    What is the missing term (position 7) in the pattern?
+      answer:  33
+      options: 33 / 83 / 88 / 38
+      hints:   ["Look at the pattern: 133, 137, 138, 83, 87, 88, ___, 37.", "A group of numbers repeats, and each new group goes down by 50.", "The missing number in the pattern is at position 7.", "Repeat the ones [3, 7, 8] and subtract 50 every group. The answer is 33."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["133", "137", "138", "83", "87", "88", "37"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0c132f1cecb97a043942  seed 1000  [read_mcq]
+      stem:    What is the missing term (position 5) in the pattern?
+      answer:  68
+      options: 68 / 52 / 78 / 58
+      hints:   ["Look at the pattern: 72, 78, 73, 62, ___, 63, 52, 58.", "A group of numbers repeats, and each new group goes down by 10.", "The missing number in the pattern is at position 5.", "Repeat the ones [2, 8, 3] and subtract 10 every group. The answer is 68."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PatternSequence", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  PatternSequence
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PatternSequence", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["72", "78", "73", "62", "63", "52", "58"], "distinct_colours": ["#f1f5f9", "hsl(var(--primary)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5a4da642ebd58d05a3e6  seed 1001  [cloze]
+      stem:    What number is missing in the pattern: 42, ___, 62, 69, 82?
+      answer:  49
+      options: 69 / 29 / 62 / 49
+      hints:   ["Look at the pattern: 42, ___, 62, 69, 82.", "A group of numbers repeats, and each new group goes up by 20.", "The missing number in the pattern is at position 2.", "Repeat the ones [2, 9] and add 20 every group. The answer is 49."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample c0b0f083553ab8d1369a  seed 1002  [cloze]
+      stem:    What number is missing in the pattern: 95, 98, 93, 75, 78, ___, 55, 58?
+      answer:  73
+      options: 53 / 74 / 93 / 73
+      hints:   ["Look at the pattern: 95, 98, 93, 75, 78, ___, 55, 58.", "A group of numbers repeats, and each new group goes down by 20.", "The missing number in the pattern is at position 6.", "Repeat the ones [5, 8, 3] and subtract 20 every group. The answer is 73."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

@@ -1,0 +1,635 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_1-20260925",
+  "mat_g2_na_q2_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Samples progress appropriately from simple two-coin comparisons (seed 900: comparing 2 one-peso coins to 1 ten-peso coin and 1 one-peso coin) to complex multi-denomination groupings (seed 46: five-item to three-item comparison). The three-part hint structure (find first total, find second total, compare) scaffolds cognitive load appropriately for Grade 2 learners managing addition and comparison skills."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "The competency requires students to compare values of different denominations of peso coins and bills up to 1000. Every sample directly addresses this: all present multiple denominations (coins from 1 peso to 500 pesos appearing across samples), all ask students to compare values, and all totals remain within the 1000-peso ceiling. The competency wording is fully embodied in the item set."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The seven decomposed requirements cover the full competency losslessly: compare action appears in all stems via which-has-greater or which-has-smaller questions; values are consistently the monetary totals being compared; different denominations are used throughout (mixing 1, 5, 10, 20, 50, 100, 200, 500 pesos); denominations are explicitly named; both peso coins and bills appear in the vast majority of items; and all amounts stay within the up-to-1000 bound.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The seven requirements (compare, values, different, denominations, peso_coins, bills, up_to_1000) form a lossless decomposition of the competency statement. No essential element of the competency is omitted, and each requirement maps directly to a clause in the original competency. The decomposition identifies the mandatory components without overspecifying constraints."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "While the sample set offers variety in format (read_mcq, mcq, cloze), complexity (simple two-item to complex five-item groups), and direction (both greater and smaller comparisons), a systematic error affects approximately 42 percent of samples: those with smaller-value questions consistently include hints stating compare-to-see-which-is-greater, creating directional contradiction in learner-facing guidance that undermines the coverage cohesion."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "For Grade 2 Quarter 2, the amounts and operations are developmentally appropriate. Totals require students to add two to five denominations before comparing; the largest totals in samples remain under 1000 pesos, and visual support (PesoMoney rendering) is provided for several read_mcq items, helping learners process multi-denomination representations at this grade level."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The sample set demonstrates variation across multiple dimensions: question direction (greater vs. smaller), format (visual read_mcq, text-only mcq, cloze fill-in), item complexity (ranging from 2-item to 5-item groups per side), and experiential framing (standard, hint_gated, mastery_drill, scaffolded), with thematic variants including character-named scenarios that do not interfere with mathematical content."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "8bf52c4db8370112f359",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly partitions two coin-and-bill groups and explicitly asks which has greater value. Groupings are unambiguous: first group specifies one 500-peso bill plus one 200-peso bill plus two 50-peso bills plus one 5-peso coin; second group specifies one 200-peso bill plus one 50-peso bill plus one 20-peso bill. No alternate interpretation of membership or operation is reasonable."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing monetary values across two arbitrary groupings of valid Philippine currency is a contextually sound task. The scenario requires no unusual assumptions or illogical setup; it is a straightforward value-comparison exercise appropriate for a mathematics learning context without relying on unrealistic premises."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses clear language and parallel structure to present both groups, making the comparison task transparent to learners. Hints progressively guide the student to find each group total then compare them. The read_mcq format with visual support (PesoMoney rendering) provides additional scaffolding for Grade 2 learners to parse the denominational composition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals to 805 pesos (500+200+50+50+5), second to 270 pesos (200+50+20). The answer that 805 greater than 270 is mathematically correct and properly identified in the answer field. All denominations and quantities match between stem and correct answer."
+          }
+        }
+      },
+      {
+        "sample_id": "7bcf1a55d7a53d115edf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has a smaller value and clearly delineates two monetary groups: the first containing two 50-peso bills plus one 10-peso coin plus two 5-peso coins, and the second containing one 200-peso bill plus one 100-peso bill plus one 50-peso bill plus one 1-peso coin. Both groups are well-defined without competing interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward comparison of two monetary groupings is contextually appropriate and logically sound for an elementary mathematics assessment. The scenario does not rely on unusual assumptions or unrealistic premises and aligns with authentic value-comparison tasks students might encounter."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks which group has a SMALLER value, but the final hint states compare the values to see which is GREATER. This directional contradiction contradicts the question asked and may confuse Grade 2 learners who rely on hints for explicit guidance. The hint should either state see-which-is-smaller or remain direction-neutral rather than inverting the question's direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group sums to 120 pesos (50+50+10+5+5), second group sums to 351 pesos (200+100+50+1). The indicated answer that 120 is smaller than 351 is mathematically correct and the correct answer field accurately reflects this relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "6bf3a5efe95a44b75ad6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question explicitly asks which group has greater value and presents two clearly defined monetary collections. The first consists of one 200-peso bill plus one 20-peso bill plus one 1-peso coin; the second is one 500-peso bill plus two 200-peso bills. The partition and comparison direction are both unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two groups of peso denominations for relative monetary value is a logically sound task with no embedded illogical premises or contradictions. The scenario is authentic and aligned with real-world currency understanding that Grade 2 learners might develop through classroom and marketplace exposure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses parallel structure to present both groups, and hints sequentially guide learners to calculate each total then compare. The cloze format (fill-in-blank with four options) makes the response task transparent. Learners can follow the step-by-step hint progression to reach the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 221 pesos (200+20+1), second group totals 900 pesos (500+200+200). The answer correctly identifies 900 as greater than 221. The correct answer field and mathematical calculations are accurate and consistent."
+          }
+        }
+      },
+      {
+        "sample_id": "82ecd24007f37e064b44",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has smaller value and clearly distinguishes two groups: one with two 20-peso bills and a second with two 200-peso bills plus one 100-peso bill. Both groups are precisely specified with no ambiguity in denomination or quantity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task of comparing two peso groupings for relative value is contextually appropriate and logically sound. No unrealistic assumptions are embedded; the scenario is a straightforward mathematical comparison exercise suitable for Grade 2 curriculum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Although the stem asks which group has a SMALLER value, the third hint directs learners to compare to see which is GREATER, stating the opposite comparison direction. This contradictory hint guidance could confuse Grade 2 students who need explicit, matching support rather than inverse directional cues."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group sums to 40 pesos (20+20), second group sums to 500 pesos (200+200+100). The correct answer properly identifies 40 as smaller than 500. All arithmetic is accurate and the answer field reflects the mathematically correct relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "6752ed94abb1339d1c44",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has greater value and presents two well-defined monetary collections with no ambiguity in composition. First group: one 500-peso bill plus one 100-peso bill plus one 50-peso bill plus one 5-peso coin plus one 1-peso coin. Second group: one 200-peso bill plus one 10-peso coin plus one 5-peso coin. Partitions are explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A comparison task involving multiple denominations of valid Philippine currency is logically sound and contextually appropriate for mathematics instruction. The scenario presents no contradictions or unrealistic premises and aligns with authentic value-judgment tasks."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints follow a logical progression: find the first total, find the second total, then compare to identify greater value. The question direction (greater) matches the comparison hint direction, ensuring learner guidance is aligned and supportive rather than contradictory for Grade 2 students completing a fill-in-blank response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group equals 656 pesos (500+100+50+5+1), second group equals 215 pesos (200+10+5). The answer correctly identifies 656 as greater than 215. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "b14ffbd342ffb41bfc9a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has smaller value and distinguishes two groups clearly: first contains one 500-peso bill plus two 100-peso bills plus one 50-peso bill plus one 20-peso bill; second contains one 500-peso bill plus one 200-peso bill plus one 50-peso bill plus one 1-peso coin. Both groups are precisely specified with transparent composition."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing monetary values across two peso groupings is a logically sound and contextually valid mathematical task for a Grade 2 curriculum. The scenario involves no illogical premises and represents an authentic value-comparison exercise aligned with real-world currency familiarity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks for which group has SMALLER value, yet the third hint instructs learners to compare and see which is GREATER, reversing the comparison direction that the question explicitly asks for. For Grade 2 learners relying on hints, this directional contradiction provides misleading guidance and reduces clarity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 670 pesos (500+100+100+50+20), second group totals 751 pesos (500+200+50+1). The answer correctly identifies 670 as smaller than 751. The arithmetic is accurate and the correct answer field properly reflects the mathematical relationship between the two groups."
+          }
+        }
+      },
+      {
+        "sample_id": "54704b87293ab01560fe",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has smaller value and presents two unambiguous monetary compositions. First group: one 500-peso bill plus two 200-peso bills plus one 5-peso coin. Second group: one 200-peso bill plus one 10-peso coin. Both groups are precisely delineated with no competing interpretations possible."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The task of comparing two peso groupings for relative value is contextually appropriate and logically consistent. No unrealistic assumptions underpin the scenario, and the comparison task aligns with authentic mathematical reasoning that Grade 2 learners should develop regarding monetary value."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks which group has SMALLER value, but the final hint states compare to see which is GREATER. This directional mismatch between question and hint creates confusing guidance for Grade 2 students. Hints should reinforce rather than contradict the question's stated comparison direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group equals 905 pesos (500+200+200+5), second group equals 210 pesos (200+10). The answer correctly identifies 210 as smaller than 905. All computations are accurate and the correct answer field accurately reflects this relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "aed4fc97a211eacd1509",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks which group has greater value and clearly presents two distinct monetary groupings: first contains two 500-peso bills; second contains one 200-peso bill plus two 5-peso coins plus one 1-peso coin. The composition of each group is unambiguous and leaves no room for alternate interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward comparison of monetary totals across two peso groupings is contextually sound and logically valid for mathematics instruction. The scenario requires no unrealistic assumptions and represents a straightforward value-judgment task appropriate for Grade 2 curriculum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints logically scaffold learners through the comparison process: find first group total, find second group total, then compare to identify greater value. The hint sequence aligns with the question direction (greater), providing coherent guidance for Grade 2 students solving a fill-in-blank cloze item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 1000 pesos (500+500), second group totals 211 pesos (200+5+5+1). The answer correctly identifies 1000 as greater than 211. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "be03528c771b55b61abd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has greater value and clearly delineates two monetary groups. First: two 50-peso bills plus one 10-peso coin plus one 1-peso coin. Second: one 20-peso bill plus two 5-peso coins plus one 1-peso coin. Each group composition is precisely specified with no ambiguity in interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative monetary value is a logically sound and contextually appropriate task for Grade 2 mathematics. The scenario presents no illogical premises and represents an authentic comparison exercise aligned with real-world currency understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents both groups in parallel structure, making the comparison task transparent. Hints guide learners step-by-step to calculate each total then compare for greater value. The read_mcq format with visual currency rendering (PesoMoney) provides appropriate scaffolding for Grade 2 learners to process multiple denominations."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group sums to 111 pesos (50+50+10+1), second group sums to 31 pesos (20+5+5+1). The answer correctly identifies 111 as greater than 31. All arithmetic is accurate and the correct answer field properly reflects this mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "4136feb67732bffa6a11",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has smaller value and presents two unambiguous monetary collections. First group: one 50-peso bill plus two 20-peso bills plus one 10-peso coin. Second group: two 200-peso bills plus one 50-peso bill plus one 20-peso bill. Both groups are precisely defined with transparent composition."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving two peso groupings is logically sound and contextually appropriate for mathematics curriculum. The scenario embeds no unrealistic assumptions and represents an authentic mathematical reasoning task aligned with Grade 2 learning objectives."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Although the stem asks which group has SMALLER value, the final hint directs learners to compare and see which is GREATER, reversing the comparison direction. This contradictory hint guidance undermines clarity for Grade 2 learners who rely on hints for explicit directional support in solving the item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 100 pesos (50+20+20+10), second group totals 470 pesos (200+200+50+20). The answer correctly identifies 100 as smaller than 470. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship between groups."
+          }
+        }
+      },
+      {
+        "sample_id": "1cad1ee5a09305b269bc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has smaller value and clearly specifies two monetary groups: first contains two 20-peso bills plus one 10-peso coin; second contains one 100-peso bill plus one 50-peso bill. The composition of each group is explicit with no ambiguity in denomination or count."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative value is a contextually sound mathematical task with no embedded illogical premises. The scenario represents a straightforward value-judgment exercise appropriate for Grade 2 instruction and aligns with authentic currency-understanding development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks which group has SMALLER value, but the third hint states compare to see which is GREATER, contradicting the question direction. For Grade 2 students, this directional mismatch in hint guidance is confusing and reduces the clarity that hints should provide."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group equals 50 pesos (20+20+10), second group equals 150 pesos (100+50). The answer correctly identifies 50 as smaller than 150. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "e759c9c55c249cb4f174",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has greater value and presents two well-defined monetary collections with no ambiguity. First group: one 500-peso bill plus one 10-peso coin. Second group: one 100-peso bill plus one 10-peso coin plus one 1-peso coin. Both groups are precisely specified and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A comparison of two peso groupings for relative monetary value is logically sound and contextually appropriate. The scenario embeds no unrealistic assumptions and represents an authentic mathematical reasoning task suitable for Grade 2 curriculum development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints provide a logical progression: calculate the first total, calculate the second total, then compare to determine greater value. The question direction (greater) aligns with the hint direction, ensuring coherent guidance for learners solving this mcq item without visual support."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 510 pesos (500+10), second group totals 111 pesos (100+10+1). The answer correctly identifies 510 as greater than 111. All arithmetic is accurate and the correct answer field properly reflects the mathematical relationship between the groups."
+          }
+        }
+      },
+      {
+        "sample_id": "e882e6ccfd11444e1b0b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has smaller value and clearly delineates two monetary groups. First: one 500-peso bill plus one 10-peso coin. Second: one 200-peso bill plus one 20-peso bill plus one 1-peso coin. Both groups are precisely specified without ambiguity in composition or meaning."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing monetary values across two peso groupings is contextually sound and logically appropriate. The scenario involves no unrealistic premises and represents an authentic value-comparison task aligned with real-world currency judgment that Grade 2 learners should develop."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks which group has SMALLER value, yet the final hint states compare to see which is GREATER. This directional contradiction between question and hint creates confusing guidance for Grade 2 learners solving an mcq item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group equals 510 pesos (500+10), second group equals 221 pesos (200+20+1). The answer correctly identifies 221 as smaller than 510. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "ba1cc84d4fb648d1eeaa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks which group has greater value and clearly presents two distinct monetary groupings with no ambiguity. First: one 200-peso bill plus two 50-peso bills. Second: one 500-peso bill plus one 200-peso bill plus one 50-peso bill plus one 10-peso coin plus one 5-peso coin. Each composition is precisely specified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative value is a logically sound and contextually appropriate mathematical task. The scenario presents no illogical premises and aligns with authentic value-comparison reasoning that Grade 2 learners should develop through mathematics instruction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints scaffold learners logically: find the first group total, find the second group total, then compare for greater value. The question direction (greater) matches the hint direction, providing aligned and supportive guidance. The read_mcq format with visual currency representation aids Grade 2 learner comprehension."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 300 pesos (200+50+50), second group totals 765 pesos (500+200+50+10+5). The answer correctly identifies 765 as greater than 300. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "1bda34f76d03c667a8c3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has smaller value and presents two unambiguous monetary collections. First: one 500-peso bill plus one 100-peso bill plus one 50-peso bill plus one 5-peso coin plus one 1-peso coin. Second: two 200-peso bills plus one 20-peso bill plus one 10-peso coin plus one 1-peso coin. Both groups are precisely specified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving two peso groupings is logically sound and contextually appropriate for Grade 2 mathematics. The scenario embeds no unrealistic assumptions and represents an authentic mathematical reasoning exercise aligned with curriculum objectives."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Although the stem asks which group has SMALLER value, the final hint directs learners to see which is GREATER, presenting a contradictory direction. This mismatch between question and hint reduces clarity for Grade 2 learners who rely on hints for explicit comparative guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group sums to 656 pesos (500+100+50+5+1), second group sums to 431 pesos (200+200+20+10+1). The answer correctly identifies 431 as smaller than 656. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "39f85632936767cbeaea",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has greater value and clearly delineates two monetary groupings with no competing interpretations. First: one 500-peso bill plus one 200-peso bill plus one 100-peso bill plus one 5-peso coin plus one 1-peso coin. Second: two 100-peso bills plus one 50-peso bill. Compositions are precise."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative monetary value is a contextually sound and logically appropriate mathematical task. The scenario presents no illogical premises and aligns with authentic value-judgment reasoning expected in Grade 2 mathematics curriculum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints follow a clear progression: find the first total, find the second total, then compare to identify greater value. The question direction (greater) aligns with the hint direction, ensuring consistent and supportive guidance for Grade 2 learners completing a fill-in-blank cloze response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 806 pesos (500+200+100+5+1), second group totals 250 pesos (100+100+50). The answer correctly identifies 806 as greater than 250. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "79cc34afb06c14f26930",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has smaller value and presents two distinct monetary groups with no ambiguity. First: one 500-peso bill plus one 100-peso bill plus one 50-peso bill plus one 10-peso coin. Second: two 1-peso coins. Each group is precisely specified and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving two peso groupings is contextually sound and logically appropriate. Although the magnitude difference is stark (660 pesos versus 2 pesos), this tests foundational understanding that values can vary dramatically, which is appropriate for Grade 2 mathematical reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The question asks which group has SMALLER value, but the third hint directs learners to compare and see which is GREATER. This directional reversal in hint guidance contradicts the question and creates confusing instruction for Grade 2 students relying on hint support."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 660 pesos (500+100+50+10), second group totals 2 pesos (1+1). The answer correctly identifies 2 as smaller than 660. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship between groups."
+          }
+        }
+      },
+      {
+        "sample_id": "0f6a77d332930876ea2b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has greater value despite thematic context mentioning Kuya Ton and trophies. Two groups are precisely specified: first contains one 500-peso bill plus one 100-peso bill; second contains one 5-peso coin plus one 1-peso coin. The mathematical comparison task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing peso groupings for relative value is logically valid despite thematic framing around a character and trophies. The thematic wrapper does not create illogical premises; it merely contextualizes the mathematical task. The comparison exercise remains sound and appropriate for Grade 2 curriculum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints guide learners through calculation of both totals then comparison for greater value. The question direction (greater) aligns with the hint direction. Although thematic elements are present, they do not obscure the mathematical task or confuse the learner-facing instructions for the cloze response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 600 pesos (500+100), second group totals 6 pesos (5+1). The answer correctly identifies 600 as greater than 6. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "3f5f8276107e54458516",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks which group has greater value despite thematic framing around Isko and basketballs. Two monetary groups are clearly delineated: first contains one 500-peso bill plus one 200-peso bill plus one 5-peso coin; second contains one 500-peso bill plus one 50-peso bill plus one 1-peso coin. Both groups are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for value is logically sound despite thematic context. The thematic elements (character name, sports reference) do not create illogical premises or contradict the mathematical task. The scenario remains a valid value-comparison exercise for Grade 2."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Hints progressively guide learners to calculate each group total then compare for greater value. The question direction matches the hint direction, ensuring aligned guidance. Thematic context does not obscure the mathematical task or confuse learner-facing instructions for this cloze item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 705 pesos (500+200+5), second group totals 551 pesos (500+50+1). The answer correctly identifies 705 as greater than 551. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "222f31aa520cb5fd214e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has smaller value and clearly specifies two monetary groups. First: one 500-peso bill plus one 200-peso bill plus one 20-peso bill plus one 10-peso coin plus one 1-peso coin. Second: two 200-peso bills plus one 20-peso bill plus one 1-peso coin. Both are precisely defined."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving two peso groupings is contextually sound and logically appropriate for mathematics instruction. The scenario embeds no unrealistic assumptions and represents an authentic mathematical reasoning exercise aligned with Grade 2 curriculum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem asks which group has SMALLER value, but the final hint states compare to see which is GREATER. This directional contradiction between question and hint guidance is confusing for Grade 2 learners, particularly those relying on hints for explicit comparative direction."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 731 pesos (500+200+20+10+1), second group totals 421 pesos (200+200+20+1). The answer correctly identifies 421 as smaller than 731. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "906e10411a1dba16c72a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has greater value and presents two distinct monetary collections with no ambiguity. First: one 500-peso bill plus two 200-peso bills. Second: one 200-peso bill plus one 100-peso bill plus two 5-peso coins plus one 1-peso coin. Both groups are precisely specified and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative value is logically sound and contextually appropriate. The scenario presents no illogical premises and represents an authentic mathematical reasoning task suitable for Grade 2 instruction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints scaffold learners logically: calculate the first total, calculate the second total, then compare to identify greater value. The question direction (greater) aligns with the hint direction, providing consistent guidance for Grade 2 learners solving this fill-in-blank cloze item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 900 pesos (500+200+200), second group totals 311 pesos (200+100+5+5+1). The answer correctly identifies 900 as greater than 311. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "43485cfe7a3815d891a5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has greater value and presents two simple monetary groups with no ambiguity. First: two 1-peso coins. Second: one 10-peso coin plus one 1-peso coin. Both groups are clearly defined and leave no room for competing interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving simple peso groupings is logically sound and contextually appropriate. The scenario is straightforward and aligns with authentic mathematical reasoning about relative currency value for Grade 2 learners."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints provide a clear progression: find each group total then compare to identify greater value. The question direction (greater) matches the hint direction, ensuring consistent and supportive guidance for learners solving this mcq item without visual embellishment."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group equals 2 pesos (1+1), second group equals 11 pesos (10+1). The answer correctly identifies 11 as greater than 2. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "ae6b074ae00e036caea2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has greater value and presents two distinct monetary groupings with no ambiguity. First: two 1-peso coins. Second: one 5-peso coin plus one 1-peso coin. Both groups are precisely specified without competing interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two simple peso groupings for relative value is logically sound and contextually appropriate. The scenario involves no unrealistic premises and represents an authentic mathematical reasoning task suitable for Grade 2 curriculum instruction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints guide learners through systematic comparison: find the first total, find the second total, then compare for greater value. The question direction (greater) aligns with the hint direction. Visual support (PesoMoney rendering) in the read_mcq format provides additional scaffolding for Grade 2 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 2 pesos (1+1), second group totals 6 pesos (5+1). The answer correctly identifies 6 as greater than 2. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "18ed087ea590d5994009",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has greater value and precisely specifies two monetary collections. First: one 500-peso bill plus one 50-peso bill plus one 10-peso coin plus one 1-peso coin. Second: two 200-peso bills plus one 50-peso bill plus two 20-peso bills. Both groups are clearly defined without ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for value is logically sound and contextually appropriate. The scenario embeds no unrealistic assumptions and represents a valid mathematical reasoning task aligned with Grade 2 curriculum, with hint-gated experience level providing additional scaffolding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints scaffold comparison logically: calculate each total then compare for greater value. The question direction (greater) aligns with the hint direction. The hint-gated experience indicates hints are available to support learners, ensuring clarity in the comparative task for Grade 2 students."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 561 pesos (500+50+10+1), second group totals 490 pesos (200+200+50+20+20). The answer correctly identifies 561 as greater than 490. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "94e1621241c635ff92b6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks which group has smaller value and presents two distinct monetary collections without ambiguity. First: one 500-peso bill plus one 50-peso bill plus one 20-peso bill plus one 10-peso coin. Second: one 500-peso bill plus one 20-peso bill plus one 1-peso coin. Both groups are precisely specified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A value-comparison task involving two peso groupings is contextually sound and logically appropriate. The scenario presents no illogical premises and represents a valid mathematical reasoning exercise with mastery-drill experience level supporting Grade 2 learner practice."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "Although the stem asks which group has SMALLER value, the final hint directs learners to compare and see which is GREATER, reversing the comparison direction. This directional contradiction in hint guidance is confusing for Grade 2 learners, particularly in a mastery-drill experience context where precision matters."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 580 pesos (500+50+20+10), second group totals 521 pesos (500+20+1). The answer correctly identifies 521 as smaller than 580. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      },
+      {
+        "sample_id": "3f69d7a492ed367322b9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question unambiguously asks which group has greater value and clearly delineates two monetary groupings without ambiguity. First: one 100-peso bill plus one 10-peso coin plus two 1-peso coins. Second: one 20-peso bill plus one 10-peso coin plus one 1-peso coin. Both groups are precisely specified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing two peso groupings for relative value is logically sound and contextually appropriate. The scenario embeds no unrealistic premises and represents a valid mathematical reasoning task suitable for Grade 2 instruction with scaffolded experience level providing enhanced support."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints provide clear guidance: find each group total then compare to identify greater value. The question direction (greater) aligns with the hint direction. The scaffolded experience level indicates enhanced structural support, ensuring coherent and transparent instruction for Grade 2 learners solving this cloze item."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "First group totals 112 pesos (100+10+1+1), second group totals 31 pesos (20+10+1). The answer correctly identifies 112 as greater than 31. All arithmetic is accurate and the correct answer field reflects the proper mathematical relationship."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "compare",
+        "clause": "Compare",
+        "verdict": "PASS",
+        "reasoning": "Every sample stem uses the verb compare implicitly or explicitly through question phrasing like which-has-greater-value or which-has-smaller-value. This competency component is universally instantiated across all 26 rendered samples without exception, directly addressing the requirement to compare monetary values.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "values",
+        "clause": "values",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires students to determine and compare monetary values by summing denominations within each group. The value-comparison task is central to all 26 samples, with students calculating totals of mixed coin and bill groupings before performing the comparison operation required by the stem.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "different",
+        "clause": "different",
+        "verdict": "PASS",
+        "reasoning": "Every sample uses different denominations within at least one group and typically both groups. Variation across samples includes combinations of multiple distinct peso values: 1, 5, 10, 20, 50, 100, 200, and 500 pesos. No sample uses only a single denomination, satisfying the requirement for different values to be compared.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "denominations",
+        "clause": "denominations",
+        "verdict": "PASS",
+        "reasoning": "All samples explicitly reference specific peso denominations: bills labeled as 500-peso, 200-peso, 100-peso, 50-peso, 20-peso values and coins labeled as 10-peso, 5-peso, 1-peso values. The language consistently uses the term denominations implicitly through explicit naming of individual peso amounts across all items in the sample set.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "peso_coins",
+        "clause": "peso coins",
+        "verdict": "PASS",
+        "reasoning": "The vast majority of samples include peso coins within their groupings. Coins appear consistently with denominations of 1-peso, 5-peso, and 10-peso coins present across many samples. For example, seed 42 includes 5-peso coin, seed 43 includes 10-peso coin and 5-peso coins, seed 46 includes 5-peso coin and 1-peso coin. The requirement for peso coins is well-satisfied.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "be03528c771b55b61abd", "4136feb67732bffa6a11", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "bills",
+        "clause": "bills",
+        "verdict": "PASS",
+        "reasoning": "All 26 samples include peso bills as required. Bills are universally present across the sample set with denominations of 500, 200, 100, 50, 20-peso bills appearing throughout. Every single sample contains at least one bill from the Philippine currency set, fully satisfying the requirement to include bills in the comparison items.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      },
+      {
+        "requirement_id": "up_to_1000",
+        "clause": "up to ₱1000",
+        "verdict": "PASS",
+        "reasoning": "All samples maintain monetary totals within the specified 1000-peso ceiling. Highest calculated values in the sample set include seed 42 at 805 pesos, seed 8 at 1000 pesos, and seed 801 at 900 pesos maximum. Every sample remains within or substantially below the up-to-1000 limit, satisfying the competency range constraint.",
+        "sample_ids": ["8bf52c4db8370112f359", "7bcf1a55d7a53d115edf", "6bf3a5efe95a44b75ad6", "82ecd24007f37e064b44", "6752ed94abb1339d1c44", "b14ffbd342ffb41bfc9a", "54704b87293ab01560fe", "aed4fc97a211eacd1509", "be03528c771b55b61abd", "4136feb67732bffa6a11", "1cad1ee5a09305b269bc", "e759c9c55c249cb4f174", "e882e6ccfd11444e1b0b", "ba1cc84d4fb648d1eeaa", "1bda34f76d03c667a8c3", "39f85632936767cbeaea", "79cc34afb06c14f26930", "0f6a77d332930876ea2b", "3f5f8276107e54458516", "222f31aa520cb5fd214e", "906e10411a1dba16c72a", "43485cfe7a3815d891a5", "ae6b074ae00e036caea2", "18ed087ea590d5994009", "94e1621241c635ff92b6", "3f69d7a492ed367322b9"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

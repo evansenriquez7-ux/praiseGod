@@ -264,17 +264,16 @@ def main() -> int:
     queue = build_queue()
     counts = queue["counts"]
     if not queue["nodes"]:
-        print("legacy_review_queue: no v1 reviews on disk — nothing to preserve.")
-        return 0
-
-    print(f"legacy_review_queue: {counts['legacy_nodes']} legacy review(s), "
-          f"NOT adjudicable evidence")
-    print(f"  overall verdicts        : {counts['by_overall_verdict']}")
-    print(f"  with a non-PASS facet   : {counts['nodes_with_a_non_pass_facet']}")
-    print(f"  non-PASS by facet       : {counts['non_pass_by_facet']}")
-    print(f"  missing a v1 facet      : {counts['records_missing_a_v1_facet']}")
-    print(f"  orphan (node undeclared): {counts['orphan_reviews_for_undeclared_nodes']}")
-    print(f"  re-reviews owed         : {counts['legacy_nodes']}")
+        print("legacy_review_queue: no v1 reviews on disk — queue is complete.")
+    else:
+        print(f"legacy_review_queue: {counts['legacy_nodes']} legacy review(s), "
+              f"NOT adjudicable evidence")
+        print(f"  overall verdicts        : {counts['by_overall_verdict']}")
+        print(f"  with a non-PASS facet   : {counts['nodes_with_a_non_pass_facet']}")
+        print(f"  non-PASS by facet       : {counts['non_pass_by_facet']}")
+        print(f"  missing a v1 facet      : {counts['records_missing_a_v1_facet']}")
+        print(f"  orphan (node undeclared): {counts['orphan_reviews_for_undeclared_nodes']}")
+        print(f"  re-reviews owed         : {counts['legacy_nodes']}")
 
     if args.write:
         QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)

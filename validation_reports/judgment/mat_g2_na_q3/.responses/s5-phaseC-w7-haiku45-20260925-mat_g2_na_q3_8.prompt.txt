@@ -1,0 +1,224 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc7-mat_g2_na_q3_8-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q3_8/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc7-mat_g2_na_q3_8-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q3_8
+PACKET DIGEST: 6dd316363cfbaad009cce684cdd139b3b443b14d08215fc084f8afd113dfb0db
+COMPETENCY (Grade 2, Quarter 3, None):
+Distinguish even and odd numbers using division by 2.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  distinguish: Distinguish
+  even_and_odd_numbers: even and odd numbers
+  division: division
+  divisor_2: 2
+
+SAMPLES (every one of these is real rendered output):
+  sample ee467ceec416b3e42f5e  seed 42  [true_false]
+      stem:    Dividing 82 by 2 does not give an exact whole number, so 82 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 82 by 2: how many 2s fit into 82?", "2 × 41 = 82, and 82 − 82 = 0.", "Nothing is left over, so 82 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 245f822fd17a65ffd3d8  seed 43  [true_false]
+      stem:    5 ÷ 2 does not come out exactly, so 5 is an odd number. True or False?
+      answer:  True
+      hints:   ["Divide 5 by 2: how many 2s fit into 5?", "2 × 2 = 4, and 5 − 4 = 1.", "1 is left over, so 5 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4066fc99a77b939373d7  seed 44  [true_false]
+      stem:    Dividing 53 by 2 does not give an exact whole number, so 53 is an odd number. True or False?
+      answer:  True
+      hints:   ["Divide 53 by 2: how many 2s fit into 53?", "2 × 26 = 52, and 53 − 52 = 1.", "1 is left over, so 53 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 31c837f2411ff074e69b  seed 45  [true_false]
+      stem:    35 can be divided into 2 equal parts, so 35 is an even number. True or False?
+      answer:  False
+      hints:   ["Divide 35 by 2: how many 2s fit into 35?", "2 × 17 = 34, and 35 − 34 = 1.", "1 is left over, so 35 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ed5dafbfb6aac5678e55  seed 46  [true_false]
+      stem:    10 can be divided into 2 equal parts, so 10 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 10 by 2: how many 2s fit into 10?", "2 × 5 = 10, and 10 − 10 = 0.", "Nothing is left over, so 10 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 36c2a0f39606e349253d  seed 500  [true_false]
+      stem:    60 cannot be divided into 2 equal whole parts, so 60 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 60 by 2: how many 2s fit into 60?", "2 × 30 = 60, and 60 − 60 = 0.", "Nothing is left over, so 60 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 134276eba90a7e2ea763  seed 501  [true_false]
+      stem:    Dividing 82 by 2 gives an exact whole number, so 82 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 82 by 2: how many 2s fit into 82?", "2 × 41 = 82, and 82 − 82 = 0.", "Nothing is left over, so 82 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 291f222128703163c186  seed 502  [true_false]
+      stem:    65 ÷ 2 comes out exactly, so 65 is an even number. True or False?
+      answer:  False
+      hints:   ["Divide 65 by 2: how many 2s fit into 65?", "2 × 32 = 64, and 65 − 64 = 1.", "1 is left over, so 65 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 683229527ac01a7fdc82  seed 600  [true_false]
+      stem:    Dividing 34 by 2 does not give an exact whole number, so 34 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 34 by 2: how many 2s fit into 34?", "2 × 17 = 34, and 34 − 34 = 0.", "Nothing is left over, so 34 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c442b0eb98dc38c52aed  seed 601  [true_false]
+      stem:    25 cannot be divided into 2 equal whole parts, so 25 is an odd number. True or False?
+      answer:  True
+      hints:   ["Divide 25 by 2: how many 2s fit into 25?", "2 × 12 = 24, and 25 − 24 = 1.", "1 is left over, so 25 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 43dc2fe2d06ceb1298fa  seed 602  [true_false]
+      stem:    52 ÷ 2 does not come out exactly, so 52 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 52 by 2: how many 2s fit into 52?", "2 × 26 = 52, and 52 − 52 = 0.", "Nothing is left over, so 52 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 760928df7da77b628c9e  seed 603  [true_false]
+      stem:    Dividing 22 by 2 does not give an exact whole number, so 22 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 22 by 2: how many 2s fit into 22?", "2 × 11 = 22, and 22 − 22 = 0.", "Nothing is left over, so 22 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample bfe2b34bf00a49e0959b  seed 604  [true_false]
+      stem:    Dividing 9 by 2 gives an exact whole number, so 9 is an even number. True or False?
+      answer:  False
+      hints:   ["Divide 9 by 2: how many 2s fit into 9?", "2 × 4 = 8, and 9 − 8 = 1.", "1 is left over, so 9 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 118f3fafd1d63b3ad3fc  seed 700  [true_false]
+      stem:    22 cannot be divided into 2 equal whole parts, so 22 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 22 by 2: how many 2s fit into 22?", "2 × 11 = 22, and 22 − 22 = 0.", "Nothing is left over, so 22 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 22d515900624d819a8c8  seed 701  [true_false]
+      stem:    🏀 Gab has a math challenge about water bottles. 36 can be divided into 2 equal parts, so 36 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 36 by 2: how many 2s fit into 36?", "2 × 18 = 36, and 36 − 36 = 0.", "Nothing is left over, so 36 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample fe46789577ab16d980e5  seed 702  [true_false]
+      stem:    🏀 Isko has a math challenge about basketballs. 14 can be divided into 2 equal parts, so 14 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 14 by 2: how many 2s fit into 14?", "2 × 7 = 14, and 14 − 14 = 0.", "Nothing is left over, so 14 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f2910216690382764bbb  seed 800  [true_false]
+      stem:    Dividing 86 by 2 does not give an exact whole number, so 86 is an odd number. True or False?
+      answer:  False
+      hints:   ["Divide 86 by 2: how many 2s fit into 86?", "2 × 43 = 86, and 86 − 86 = 0.", "Nothing is left over, so 86 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 57a2c23c1ea4967898f0  seed 900  [true_false]
+      stem:    80 can be divided into 2 equal parts, so 80 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 80 by 2: how many 2s fit into 80?", "2 × 40 = 80, and 80 − 80 = 0.", "Nothing is left over, so 80 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 06feaa6bce826d443c10  seed 901  [true_false]
+      stem:    56 ÷ 2 comes out exactly, so 56 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 56 by 2: how many 2s fit into 56?", "2 × 28 = 56, and 56 − 56 = 0.", "Nothing is left over, so 56 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 99221a23767e5387830b  seed 1000  [true_false]
+      stem:    55 can be divided into 2 equal parts, so 55 is an even number. True or False?
+      answer:  False
+      hints:   ["Divide 55 by 2: how many 2s fit into 55?", "2 × 27 = 54, and 55 − 54 = 1.", "1 is left over, so 55 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample cc8f938a39cf7ed51094  seed 1001  [true_false]
+      stem:    Dividing 8 by 2 gives an exact whole number, so 8 is an even number. True or False?
+      answer:  True
+      hints:   ["Divide 8 by 2: how many 2s fit into 8?", "2 × 4 = 8, and 8 − 8 = 0.", "Nothing is left over, so 8 is an even number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "mastery_drill"}
+  sample 87705d0eb9d414496b35  seed 1002  [true_false]
+      stem:    Dividing 67 by 2 does not give an exact whole number, so 67 is an odd number. True or False?
+      answer:  True
+      hints:   ["Divide 67 by 2: how many 2s fit into 67?", "2 × 33 = 66, and 67 − 66 = 1.", "1 is left over, so 67 is an odd number."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "scaffolded"}
+

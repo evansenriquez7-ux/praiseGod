@@ -1,0 +1,235 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_na_q4_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc18-mat_g3_na_q4_5-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_5
+PACKET DIGEST: eafb6b6cb2eff77e3f598408edaa159ad50a67d1c8d3480bac19a630d5e36973
+COMPETENCY (Grade 3, Quarter 4, None):
+Solve division problems involving 2- to 3-digit numbers by a 1-digit number, including problems involving money.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_division_problems: Solve division problems
+  2_to_3_digit_numbers: 2- to 3-digit numbers
+  1_digit_number: 1-digit number
+  money: money
+
+SAMPLES (every one of these is real rendered output):
+  sample cdb03f377db25c229d20  seed 42  [cloze]
+      stem:    Maico wants to share 180 costumes equally among 2 friends. How many costumes does each friend get?
+      answer:  90
+      options: 2 / 90 / 178 / 91
+      hints:   ["We need to divide 180 by 2. The number being divided is 180; the number we divide by is 2.", "Ask: how many times does 2 fit into 180? 2 × 90 = 180.", "The quotient of 180 ÷ 2 = 90."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3cda8c6d67f791ac2335  seed 43  [mcq]
+      stem:    Nikka has ₱42 and wants to share it equally among 2 friends. How much does each friend get?
+      answer:  21
+      options: 21 / 40 / 2 / 22
+      hints:   ["We need to divide 42 by 2. The number being divided is 42; the number we divide by is 2.", "Ask: how many times does 2 fit into 42? 2 × 21 = 42.", "The quotient of 42 ÷ 2 = 21."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9c4003a5c606161dc8c2  seed 44  [cloze]
+      stem:    Coach Nora has ₱230 and wants to share it equally among 5 friends. How much does each friend get?
+      answer:  46
+      options: 46 / 47 / 225 / 5
+      hints:   ["We need to divide 230 by 5. The number being divided is 230; the number we divide by is 5.", "Ask: how many times does 5 fit into 230? 5 × 46 = 230.", "The quotient of 230 ÷ 5 = 46."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 79ae3845f6f9d387d661  seed 45  [true_false]
+      stem:    Ate Gab has ₱120 and wants to share it equally among 4 friends. How much does each friend get? The answer is 31. True or False?
+      answer:  False
+      hints:   ["We need to divide 120 by 4. The number being divided is 120; the number we divide by is 4.", "Ask: how many times does 4 fit into 120? 4 × 30 = 120.", "The quotient of 120 ÷ 4 = 30."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample fc9f049cbb2ab835bf07  seed 46  [true_false]
+      stem:    There are 114 seeds. If 2 seeds are put in each bag, how many bags are needed? The answer is 57. True or False?
+      answer:  True
+      hints:   ["We need to divide 114 by 2. The number being divided is 114; the number we divide by is 2.", "Ask: how many times does 2 fit into 114? 2 × 57 = 114.", "The quotient of 114 ÷ 2 = 57."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 32f36de95a8be64cd25f  seed 48  [error_detect]
+      stem:    Noel solved this problem: "Boboy wants to share 420 bags of flour equally among 6 friends. How many bags of flour does each friend get?" Noel says the answer is 70. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 70}
+      hints:   ["We need to divide 420 by 6. The number being divided is 420; the number we divide by is 6.", "Ask: how many times does 6 fit into 420? 6 × 70 = 420.", "The quotient of 420 ÷ 6 = 70."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample da1926985c169872086e  seed 500  [true_false]
+      stem:    There are 657 ribbons. If 9 ribbons are put in each bag, how many bags are needed? The answer is 72. True or False?
+      answer:  False
+      hints:   ["We need to divide 657 by 9. The number being divided is 657; the number we divide by is 9.", "Ask: how many times does 9 fit into 657? 9 × 73 = 657.", "The quotient of 657 ÷ 9 = 73."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0939de05f54432774d42  seed 501  [mcq]
+      stem:    There are 936 running shoes. If 9 running shoes are put in each bag, how many bags are needed?
+      answer:  104
+      options: 927 / 105 / 9 / 104
+      hints:   ["We need to divide 936 by 9. The number being divided is 936; the number we divide by is 9.", "Ask: how many times does 9 fit into 936? 9 × 104 = 936.", "The quotient of 936 ÷ 9 = 104."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 85f2f6733f532826e4cc  seed 502  [error_detect]
+      stem:    Dante solved this problem: "Kuya Renz wants to share 738 paint tubes equally among 9 friends. How many paint tubes does each friend get?" Dante says the answer is 82. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 82}
+      hints:   ["We need to divide 738 by 9. The number being divided is 738; the number we divide by is 9.", "Ask: how many times does 9 fit into 738? 9 × 82 = 738.", "The quotient of 738 ÷ 9 = 82."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e513c0b22fdae6b40dc7  seed 600  [mcq]
+      stem:    There are 60 washi tape rolls. If 4 washi tape rolls are put in each bag, how many bags are needed?
+      answer:  15
+      options: 15 / 56 / 16 / 4
+      hints:   ["We need to divide 60 by 4. The number being divided is 60; the number we divide by is 4.", "Ask: how many times does 4 fit into 60? 4 × 15 = 60.", "The quotient of 60 ÷ 4 = 15."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 87cc5755077eaafce243  seed 601  [cloze]
+      stem:    Coach Roel has ₱132 and wants to share it equally among 3 friends. How much does each friend get?
+      answer:  44
+      options: 45 / 3 / 44 / 129
+      hints:   ["We need to divide 132 by 3. The number being divided is 132; the number we divide by is 3.", "Ask: how many times does 3 fit into 132? 3 × 44 = 132.", "The quotient of 132 ÷ 3 = 44."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 045a3f6057778186ba32  seed 602  [error_detect]
+      stem:    Jose solved this problem: "Boboy has ₱220 and wants to share it equally among 5 friends. How much does each friend get?" Jose says the answer is 44. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 44}
+      hints:   ["We need to divide 220 by 5. The number being divided is 220; the number we divide by is 5.", "Ask: how many times does 5 fit into 220? 5 × 44 = 220.", "The quotient of 220 ÷ 5 = 44."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 3f55026a96329b426b58  seed 603  [mcq]
+      stem:    Ate Joy has ₱60 and wants to share it equally among 3 friends. How much does each friend get?
+      answer:  20
+      options: 3 / 57 / 20 / 21
+      hints:   ["We need to divide 60 by 3. The number being divided is 60; the number we divide by is 3.", "Ask: how many times does 3 fit into 60? 3 × 20 = 60.", "The quotient of 60 ÷ 3 = 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f84a628931812979cc8c  seed 700  [error_detect]
+      stem:    Carlo solved this problem: "Marco has ₱60 and wants to share it equally among 3 friends. How much does each friend get?" Carlo says the answer is 20. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["We need to divide 60 by 3. The number being divided is 60; the number we divide by is 3.", "Ask: how many times does 3 fit into 60? 3 × 20 = 60.", "The quotient of 60 ÷ 3 = 20."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample cc4e7f3ca05c9e7efdff  seed 701  [true_false]
+      stem:    There are 180 sneakers. If 4 sneakers are put in each bag, how many bags are needed? The answer is 45. True or False?
+      answer:  True
+      hints:   ["We need to divide 180 by 4. The number being divided is 180; the number we divide by is 4.", "Ask: how many times does 4 fit into 180? 4 × 45 = 180.", "The quotient of 180 ÷ 4 = 45."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c4e7c36fd52e9ddbf8ae  seed 702  [error_detect]
+      stem:    Manny solved this problem: "Ate Alyssa wants to share 170 whistles equally among 2 friends. How many whistles does each friend get?" Manny says the answer is 86. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 85}
+      hints:   ["We need to divide 170 by 2. The number being divided is 170; the number we divide by is 2.", "Ask: how many times does 2 fit into 170? 2 × 85 = 170.", "The quotient of 170 ÷ 2 = 85."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample ddbfa7ab7bbe3f86c28b  seed 800  [cloze]
+      stem:    Kuya Art wants to share 981 washi tape rolls equally among 9 friends. How many washi tape rolls does each friend get?
+      answer:  109
+      options: 9 / 972 / 109 / 110
+      hints:   ["We need to divide 981 by 9. The number being divided is 981; the number we divide by is 9.", "Ask: how many times does 9 fit into 981? 9 × 109 = 981.", "The quotient of 981 ÷ 9 = 109."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 95cf3b141182edc2957b  seed 900  [mcq]
+      stem:    Ate Liza wants to share 40 paint tubes equally among 8 friends. How many paint tubes does each friend get?
+      answer:  5
+      options: 5 / 8 / 6 / 32
+      hints:   ["We need to divide 40 by 8. The number being divided is 40; the number we divide by is 8.", "Ask: how many times does 8 fit into 40? 8 × 5 = 40.", "The quotient of 40 ÷ 8 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 520d1e561960497d822b  seed 901  [mcq]
+      stem:    Jun has ₱35 and wants to share it equally among 5 friends. How much does each friend get?
+      answer:  7
+      options: 30 / 5 / 8 / 7
+      hints:   ["We need to divide 35 by 5. The number being divided is 35; the number we divide by is 5.", "Ask: how many times does 5 fit into 35? 5 × 7 = 35.", "The quotient of 35 ÷ 5 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 243831e28b3e1621cb8d  seed 1000  [cloze]
+      stem:    Manny wants to share 310 guitar picks equally among 5 friends. How many guitar picks does each friend get?
+      answer:  62
+      options: 5 / 62 / 63 / 305
+      hints:   ["We need to divide 310 by 5. The number being divided is 310; the number we divide by is 5.", "Ask: how many times does 5 fit into 310? 5 × 62 = 310.", "The quotient of 310 ÷ 5 = 62."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 20be208c13975f11605a  seed 1001  [error_detect]
+      stem:    Liza solved this problem: "Kuya Chad wants to share 100 helmets equally among 2 friends. How many helmets does each friend get?" Liza says the answer is 49. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 50}
+      hints:   ["We need to divide 100 by 2. The number being divided is 100; the number we divide by is 2.", "Ask: how many times does 2 fit into 100? 2 × 50 = 100.", "The quotient of 100 ÷ 2 = 50."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 098d818ff8eee17efa41  seed 1002  [error_detect]
+      stem:    Manny solved this problem: "There are 210 wristbands. If 6 wristbands are put in each bag, how many bags are needed?" Manny says the answer is 6. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 35}
+      hints:   ["We need to divide 210 by 6. The number being divided is 210; the number we divide by is 6.", "Ask: how many times does 6 fit into 210? 6 × 35 = 210.", "The quotient of 210 ÷ 6 = 35."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

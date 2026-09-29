@@ -1,0 +1,234 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q4_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc8-mat_g2_na_q4_2-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q4_2
+PACKET DIGEST: 30f1c2236030e3cb0f0cada168708f9f44af7cb912059c17228abe7fc1dbdb07
+COMPETENCY (Grade 2, Quarter 4, None):
+Order unit fractions from smallest to largest, and vice versa.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  order: Order
+  unit_fractions: unit fractions
+  smallest_to_largest: smallest to largest
+  vice_versa: vice versa
+
+SAMPLES (every one of these is real rendered output):
+  sample cb5c4674ee6eba74018c  seed 42  [cloze]
+      stem:    Order these fractions from largest to smallest: 1/4, 1/6, 1/8, 1/2.
+      answer:  1/2, 1/4, 1/6, 1/8
+      options: 1/8, 1/6, 1/4, 1/2 / 1/2, 1/6, 1/8, 1/4 / 1/2, 1/4, 1/6, 1/8 / 1/2, 1/6, 1/4, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/8.", "The answer is 1/8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 21b8718955135339eef6  seed 43  [mcq]
+      stem:    Which list shows these fractions ordered from largest to smallest: 1/5, 1/3, 1/4, 1/2?
+      answer:  1/2, 1/3, 1/4, 1/5
+      options: 1/2, 1/3, 1/4, 1/5 / 1/4, 1/3, 1/2, 1/5 / 1/2, 1/4, 1/5, 1/3 / 1/5, 1/4, 1/3, 1/2
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/2.", "The answer is 1/2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8f85c08b3cf007c6bdd3  seed 44  [cloze]
+      stem:    Order these fractions from largest to smallest: 1/2, 1/5, 1/8, 1/6.
+      answer:  1/2, 1/5, 1/6, 1/8
+      options: 1/8, 1/2, 1/5, 1/6 / 1/2, 1/5, 1/6, 1/8 / 1/8, 1/6, 1/5, 1/2 / 1/2, 1/6, 1/8, 1/5
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/5.", "The answer is 1/5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2fa321742622f16e3c6c  seed 45  [mcq]
+      stem:    Order these fractions from smallest to largest: 1/3, 1/4, 1/5, 1/6.
+      answer:  1/6, 1/5, 1/4, 1/3
+      options: 1/3, 1/4, 1/5, 1/6 / 1/6, 1/5, 1/4, 1/3 / 1/6, 1/3, 1/5, 1/4 / 1/5, 1/4, 1/3, 1/6
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/4.", "The answer is 1/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6be7e394b101b8c585df  seed 46  [mcq]
+      stem:    Order these fractions from smallest to largest: 1/4, 1/2, 1/8, 1/5.
+      answer:  1/8, 1/5, 1/4, 1/2
+      options: 1/2, 1/4, 1/5, 1/8 / 1/8, 1/5, 1/4, 1/2 / 1/5, 1/8, 1/4, 1/2 / 1/2, 1/5, 1/4, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/2.", "The answer is 1/2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0518ef2b2f3bed3ae64d  seed 500  [mcq]
+      stem:    Arrange these fractions from greatest to least: 1/8, 1/3, 1/5, 1/6.
+      answer:  1/3, 1/5, 1/6, 1/8
+      options: 1/6, 1/8, 1/3, 1/5 / 1/8, 1/6, 1/5, 1/3 / 1/3, 1/6, 1/5, 1/8 / 1/3, 1/5, 1/6, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/5.", "The answer is 1/5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample de746700c9cb3ffc8a15  seed 501  [mcq]
+      stem:    Which list shows these fractions ordered from largest to smallest: 1/8, 1/4, 1/2, 1/6?
+      answer:  1/2, 1/4, 1/6, 1/8
+      options: 1/8, 1/6, 1/4, 1/2 / 1/2, 1/4, 1/6, 1/8 / 1/8, 1/2, 1/6, 1/4 / 1/8, 1/2, 1/4, 1/6
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/8.", "The answer is 1/8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7be7152fe61d6887d250  seed 502  [cloze]
+      stem:    Order these fractions from largest to smallest: 1/3, 1/6, 1/8, 1/4.
+      answer:  1/3, 1/4, 1/6, 1/8
+      options: 1/4, 1/6, 1/3, 1/8 / 1/8, 1/6, 1/4, 1/3 / 1/3, 1/6, 1/8, 1/4 / 1/3, 1/4, 1/6, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/6.", "The answer is 1/6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6c194dab47c4a2055a2c  seed 600  [mcq]
+      stem:    Which list shows these fractions ordered from smallest to largest: 1/4, 1/5, 1/8, 1/2?
+      answer:  1/8, 1/5, 1/4, 1/2
+      options: 1/2, 1/4, 1/5, 1/8 / 1/2, 1/4, 1/8, 1/5 / 1/8, 1/5, 1/4, 1/2 / 1/2, 1/8, 1/5, 1/4
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/4.", "The answer is 1/4."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f43fdda63ae7d8f8f01e  seed 601  [cloze]
+      stem:    Which list shows these fractions ordered from largest to smallest: 1/2, 1/3, 1/6, 1/5?
+      answer:  1/2, 1/3, 1/5, 1/6
+      options: 1/5, 1/2, 1/6, 1/3 / 1/2, 1/3, 1/5, 1/6 / 1/6, 1/3, 1/5, 1/2 / 1/6, 1/5, 1/3, 1/2
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/3.", "The answer is 1/3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9dad3e5bac7044da99e5  seed 602  [cloze]
+      stem:    Which list shows these fractions ordered from largest to smallest: 1/5, 1/3, 1/4, 1/8?
+      answer:  1/3, 1/4, 1/5, 1/8
+      options: 1/5, 1/8, 1/4, 1/3 / 1/3, 1/4, 1/5, 1/8 / 1/8, 1/5, 1/4, 1/3 / 1/5, 1/8, 1/3, 1/4
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/5.", "The answer is 1/5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c2feac20ad29babb6280  seed 700  [cloze]
+      stem:    Arrange these fractions from least to greatest: 1/8, 1/4, 1/3, 1/5.
+      answer:  1/8, 1/5, 1/4, 1/3
+      options: 1/3, 1/4, 1/5, 1/8 / 1/5, 1/4, 1/3, 1/8 / 1/8, 1/5, 1/4, 1/3 / 1/4, 1/8, 1/3, 1/5
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/3.", "The answer is 1/3."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d8ebbd6722a28984af85  seed 701  [mcq]
+      stem:    💃 Kuya Ton has a math challenge about trophies. Which list shows these fractions ordered from smallest to largest: 1/2, 1/8, 1/5, 1/4?
+      answer:  1/8, 1/5, 1/4, 1/2
+      options: 1/4, 1/8, 1/5, 1/2 / 1/4, 1/2, 1/8, 1/5 / 1/8, 1/5, 1/4, 1/2 / 1/2, 1/4, 1/5, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/8.", "The answer is 1/8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8cadda4b8292c234e0bd  seed 702  [cloze]
+      stem:    🏀 Isko has a math challenge about basketballs. Arrange these fractions from least to greatest: 1/2, 1/6, 1/3, 1/8.
+      answer:  1/8, 1/6, 1/3, 1/2
+      options: 1/2, 1/3, 1/6, 1/8 / 1/8, 1/2, 1/6, 1/3 / 1/6, 1/8, 1/3, 1/2 / 1/8, 1/6, 1/3, 1/2
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/2.", "The answer is 1/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0cbf8b8d67c1caac6c03  seed 800  [cloze]
+      stem:    Order these fractions from largest to smallest: 1/5, 1/8, 1/3, 1/2.
+      answer:  1/2, 1/3, 1/5, 1/8
+      options: 1/5, 1/3, 1/2, 1/8 / 1/2, 1/3, 1/5, 1/8 / 1/8, 1/5, 1/3, 1/2 / 1/5, 1/2, 1/8, 1/3
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/8.", "The answer is 1/8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e1ba273142f07baa9a4a  seed 900  [mcq]
+      stem:    Order these fractions from smallest to largest: 1/6, 1/2, 1/4, 1/3.
+      answer:  1/6, 1/4, 1/3, 1/2
+      options: 1/2, 1/3, 1/4, 1/6 / 1/4, 1/3, 1/2, 1/6 / 1/6, 1/2, 1/4, 1/3 / 1/6, 1/4, 1/3, 1/2
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/6.", "The answer is 1/6."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 823b59942915e3273884  seed 901  [mcq]
+      stem:    Arrange these fractions from least to greatest: 1/5, 1/2, 1/4, 1/6.
+      answer:  1/6, 1/5, 1/4, 1/2
+      options: 1/5, 1/4, 1/6, 1/2 / 1/6, 1/5, 1/4, 1/2 / 1/2, 1/4, 1/5, 1/6 / 1/5, 1/4, 1/2, 1/6
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/5.", "The answer is 1/5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1ee56aa8ad238b66f4da  seed 1000  [cloze]
+      stem:    Which list shows these fractions ordered from smallest to largest: 1/8, 1/2, 1/5, 1/3?
+      answer:  1/8, 1/5, 1/3, 1/2
+      options: 1/8, 1/5, 1/3, 1/2 / 1/3, 1/8, 1/5, 1/2 / 1/5, 1/2, 1/3, 1/8 / 1/2, 1/3, 1/5, 1/8
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/5.", "The answer is 1/5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample a29cc0f4c84977667104  seed 1001  [cloze]
+      stem:    Order these fractions from largest to smallest: 1/2, 1/8, 1/4, 1/3.
+      answer:  1/2, 1/3, 1/4, 1/8
+      options: 1/2, 1/3, 1/4, 1/8 / 1/8, 1/4, 1/3, 1/2 / 1/8, 1/3, 1/4, 1/2 / 1/3, 1/2, 1/8, 1/4
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/2.", "The answer is 1/2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample ce8534ab9f74481c4a44  seed 1002  [cloze]
+      stem:    Order these fractions from smallest to largest: 1/6, 1/5, 1/2, 1/8.
+      answer:  1/8, 1/6, 1/5, 1/2
+      options: 1/2, 1/5, 1/6, 1/8 / 1/2, 1/6, 1/5, 1/8 / 1/8, 1/5, 1/6, 1/2 / 1/8, 1/6, 1/5, 1/2
+      hints:   ["When adding fractions with the same denominator, keep the denominator the same.", "Add only the numerators: 1 + 0 = 1.", "Put the result over the same denominator: 1/6.", "The answer is 1/6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

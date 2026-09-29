@@ -1,0 +1,232 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g3_mg_q2_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q2_4
+PACKET DIGEST: 8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf
+COMPETENCY (Grade 3, Quarter 2, None):
+Estimate capacity using liters and/or milliliters.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  estimate_capacity: Estimate capacity
+  liters_and_or_milliliters: liters and/or milliliters
+
+SAMPLES (every one of these is real rendered output):
+  sample 0b7a9fec29eb288d396e  seed 42  [cloze]
+      stem:    A container's capacity measures 27 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  30
+      options: 31 / 32 / 29 / 30
+      hints:   ["Count by 10s: 27 is between 20 and 30.", "27 is closer to 30.", "So 27 mL is about 30 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 85033b1167b27d4f7787  seed 43  [mcq]
+      stem:    A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?
+      answer:  20
+      options: 19 / 21 / 20 / 22
+      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 L is about 20 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0ea9223af9e78b4523e7  seed 44  [cloze]
+      stem:    A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 12 / 11 / 9
+      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 mL is about 10 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a42ab5d6515770274923  seed 45  [mcq]
+      stem:    A container's capacity measures 17 L. About how many L is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 19 / 22 / 20
+      hints:   ["Count by 10s: 17 is between 10 and 20.", "17 is closer to 20.", "So 17 L is about 20 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ed65d6d611bac1ed7182  seed 46  [mcq]
+      stem:    A container's capacity measures 7 L. About how many L is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 11 / 12 / 10
+      hints:   ["Count by 10s: 7 is between 0 and 10.", "7 is closer to 10.", "So 7 L is about 10 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d30ee69a9a29b363b83a  seed 500  [mcq]
+      stem:    A container's capacity measures 31 L. About how many L is that, rounded to the nearest 10?
+      answer:  30
+      options: 29 / 31 / 32 / 30
+      hints:   ["Count by 10s: 31 is between 30 and 40.", "31 is closer to 30.", "So 31 L is about 30 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f225db844ee8ee6a63db  seed 501  [mcq]
+      stem:    A container's capacity measures 12 L. About how many L is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 11 / 12 / 10
+      hints:   ["Count by 10s: 12 is between 10 and 20.", "12 is closer to 10.", "So 12 L is about 10 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fbd0268ef1757b5c496c  seed 502  [cloze]
+      stem:    A container's capacity measures 16 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  20
+      options: 22 / 19 / 21 / 20
+      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 mL is about 20 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 559ad62a600973c402e6  seed 600  [mcq]
+      stem:    A container's capacity measures 5 L. About how many L is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 11 / 12 / 9
+      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 L is about 10 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 707a80eec66219fd0e11  seed 602  [cloze]
+      stem:    A container's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  50
+      options: 51 / 50 / 52 / 49
+      hints:   ["Count by 10s: 53 is between 50 and 60.", "53 is closer to 50.", "So 53 mL is about 50 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ee4d518645ea6ebe3fcd  seed 604  [cloze]
+      stem:    A container's capacity measures 59 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  60
+      options: 61 / 59 / 60 / 62
+      hints:   ["Count by 10s: 59 is between 50 and 60.", "59 is closer to 60.", "So 59 mL is about 60 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 185cc3e14cd5d526de6f  seed 700  [cloze]
+      stem:    A container's capacity measures 16 L. About how many L is that, rounded to the nearest 10?
+      answer:  20
+      options: 22 / 19 / 21 / 20
+      hints:   ["Count by 10s: 16 is between 10 and 20.", "16 is closer to 20.", "So 16 L is about 20 L."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d2e47604947a4861e5eb  seed 701  [mcq]
+      stem:    💃 Kuya Ton has a math challenge about trophies. A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?
+      answer:  20
+      options: 20 / 22 / 19 / 21
+      hints:   ["Count by 10s: 15 is between 10 and 20.", "15 is exactly halfway, so it rounds up to 20.", "So 15 L is about 20 L."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 451e583d0af232923806  seed 702  [cloze]
+      stem:    A container's capacity measures 36 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  40
+      options: 41 / 40 / 39 / 42
+      hints:   ["Count by 10s: 36 is between 30 and 40.", "36 is closer to 40.", "So 36 mL is about 40 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1b4725e2f98243fc0e77  seed 800  [cloze]
+      stem:    A container's capacity measures 4136 mL. About how many mL is that, rounded to the nearest 1000?
+      answer:  4000
+      options: 3999 / 4000 / 4001 / 4002
+      hints:   ["Count by 1000s: 4136 is between 4000 and 5000.", "4136 is closer to 4000.", "So 4136 mL is about 4000 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c3dfdd9511508d1fdaf3  seed 900  [mcq]
+      stem:    A container's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 9 / 12 / 11
+      hints:   ["Count by 10s: 5 is between 0 and 10.", "5 is exactly halfway, so it rounds up to 10.", "So 5 mL is about 10 mL."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 07c48665d3dc4c822d5f  seed 901  [mcq]
+      stem:    A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 9 / 10 / 12
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 mL is about 10 mL."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d2916c08fb5b0fa9c824  seed 1000  [cloze]
+      stem:    A container's capacity measures 6 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 12 / 11 / 9
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 mL is about 10 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 87222b01f482ccea632c  seed 1001  [cloze]
+      stem:    A container's capacity measures 68 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  70
+      options: 69 / 70 / 71 / 72
+      hints:   ["Count by 10s: 68 is between 60 and 70.", "68 is closer to 70.", "So 68 mL is about 70 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 82aa74b41dba4d14beae  seed 1002  [cloze]
+      stem:    A container's capacity measures 33 mL. About how many mL is that, rounded to the nearest 10?
+      answer:  30
+      options: 32 / 30 / 29 / 31
+      hints:   ["Count by 10s: 33 is between 30 and 40.", "33 is closer to 30.", "So 33 mL is about 30 mL."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

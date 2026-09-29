@@ -95,6 +95,7 @@ ARTIFACT_DIR = REPO_ROOT / "validation_reports" / "phase2_hardening"
 _NOT_PROOF_ARTIFACTS = {
     "hardening_status.json",   # this ledger
     "HANDOFF_PROMPT.md",       # prose handoff, superseded every session
+    "GPT_HANDOFF_PROMPT.md",   # host-specific prose handoff, likewise not evidence
 }
 
 # 3. A lock is a temporal claim, so staleness is the only way to tell "someone is working

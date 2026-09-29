@@ -1,0 +1,628 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pb2-mat_g1_na_q1_8-20260925",
+  "mat_g1_na_q1_8": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All 26 samples use developmentally appropriate formats and number ranges for Grade 1 students. Problem structures employ true/false, multiple choice, fill-in-blank, and error-detection formats suitable for early learners; numeric operands remain within single and simple two-digit values, supporting early addition mastery without overwhelming cognitive load."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample directly addresses at least one of the two specified properties of addition: the identity property (zero plus any number equals that number) or the commutative property (changing addend order preserves the sum). Samples systematically test both positive cases confirming the properties hold and negative cases distinguishing when commutativity does not apply across different operand combinations."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The complete requirement decomposition is losslessly covered across the 26 samples. Illustrate: problems demonstrate properties through varied formats. Applying: students must apply properties to answer questions. Properties of addition: both identity and commutative are extensively represented. Sums up to 20: all computed sums remain within range (maximum observed is 20 from sample b60fe9a920b34c8275c4). Identity property: tested in 14 distinct samples. Commutative property: tested in 12 distinct samples with both confirming and disconfirming cases.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The printed requirements partition the competency into six measurable components without loss. Identity tests (0 + n = n and n + 0 = n) appear in samples with 0 as left or right operand. Commutative tests ask whether reordered sums match when operands are identical, or show they differ when operands change. All mathematical facts stated in hints are arithmetically correct; all sample answers align with their competency targets; no requirement remains untested by rendered samples."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The node demonstrates extensive coverage through 26 distinct samples addressing both key properties across multiple problem structures. Identity property appears in 14 samples (both 0 + n and n + 0 orientations, with fill-in, true/false, multiple choice, and error detection formats). Commutative property appears in 12 samples including positive cases where order does not change results and negative cases where different operands yield different sums. Coverage spans diverse seed values (42 through 1002) and includes thematic variations without mathematical interference."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All sums strictly observe the stated ceiling of 20: largest sums computed are 19 (appearing multiple times: 12+2, 17+2, 11+8, 16+3, 13+6) and 20 (from 6+14 in sample b60fe9a920b34c8275c4). Operands remain within Grade 1 appropriate ranges; no problems exceed the curriculum's explicit numerical boundary, maintaining consistent difficulty and conceptual focus on addition properties rather than magnitude complexity."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The collection demonstrates diversity across six problem format types: multiple-choice (15 samples), true/false (4 samples), fill-in-blank/cloze (2 samples), and error-detection (5 samples). Both positive and negative cases are represented; commutativity is tested with matched operands showing equivalence and mismatched operands showing non-equivalence. Two samples include decorative theming (sample 01022d44c047cfdb8bba with dance theme, sample a20b1055929ad0bed733 with basketball theme) that does not interfere with mathematical content or clarity."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "c6178e1d005833a600f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'What is 1 + 0?' is unambiguous and states a direct arithmetic task. The correct answer 1 is clearly distinguished in the option set (11, 1, 0, 2). No wording suggests multiple valid interpretations or competing mathematical readings."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem poses a straightforward arithmetic question requiring application of the identity property without extraneous context. The scenario is logically sound; a Grade 1 student would recognize this as a standard addition problem with no contradictory or confusing contextual elements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question wording is direct and age-appropriate for Grade 1. Hints progress logically: identifying the two addends (1 and 0), computing the single-digit sum, and restating the final sum. No unnecessary jargon obscures the task; a first-grade student can follow the reasoning steps."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 1 + 0 = 1. Hints accurately decompose the addition operation and state the result. The identity property is correctly illustrated with zero on the right; no mathematical errors or contradictions appear in stem, answer, options, or hint sequence."
+          }
+        }
+      },
+      {
+        "sample_id": "a7e182223123728b918c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement '0 + 10 = 20. True or False?' is unambiguous. The false answer is correct since 0 + 10 = 10, not 20. The student is asked to evaluate a specific claim with no competing interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem context is logical: presenting a false arithmetic claim for evaluation aligns with testing whether students understand the identity property. The scenario does not contain logical contradictions or invalid assumptions about student knowledge."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is clear with unambiguous wording. Hints follow explicit step-by-step logic: identifying two addends, computing each digit's contribution ('Add the last digits: 0 + 0 = 0. Add the first digits: 0 + 1 = 1'), and restating the sum. Though introducing place-value language, the structured progression allows Grade 1 students to follow the reasoning under teacher guidance, making the explanation accessible despite slight sophistication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The claimed sum 0 + 10 = 20 is false; the correct sum is 10. All hint calculations are arithmetically sound: 0 + 0 = 0 in ones place, 0 + 1 = 1 in tens place, yielding 10. The answer correctly identifies the error and states the true sum."
+          }
+        }
+      },
+      {
+        "sample_id": "0b588b134424672531db",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 12 + 2 the same as 2 + 12?' is clear and specific, asking students to compare two ordered sums. The True answer is unambiguous; both expressions equal 14."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a valid logical comparison of two addition expressions with identical operands in reversed order. The context directly tests whether reordering affects the sum, perfectly aligned with the commutative property objective without extraneous complications."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly worded for Grade 1 level. Hints explicitly state that both expressions add the same two numbers in different order, compute both sums to show equality (12 + 2 = 14 and 2 + 12 = 14), and conclude the sides are the same. The reasoning is transparent and developmentally appropriate."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 12 + 2 = 14 and 2 + 12 = 14. The hint sequence accurately demonstrates that swapping addend order does not change the sum, directly illustrating the commutative property with no mathematical errors or inconsistencies."
+          }
+        }
+      },
+      {
+        "sample_id": "2bbb44a400a30f2f2b66",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Is 17 + 2 the same as 2 + 17?' unambiguously compares two ordered sums, asking whether reordering affects equality. The True answer directly and clearly responds to this comparison."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem logically tests the commutative property by asking whether two expressions with identical operands in different order yield the same result. No contradictory or invalid premises undermine the scenario; the question follows sound mathematical reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is worded at appropriate complexity for Grade 1. Hints identify the shared operands (17 and 2), compute both ordered sums to show they equal 19, and conclude equivalence. The progression is logical and accessible to early learners demonstrating commutativity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct throughout: 17 + 2 = 19 and 2 + 17 = 19. Hints accurately reflect that reordering identical operands preserves the sum. The mathematical content contains no errors or contradictions; the commutativity property is correctly illustrated."
+          }
+        }
+      },
+      {
+        "sample_id": "6eab0232af3ed271e21f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in-blank stem '0 + 13 = ___' clearly asks for the sum of 0 and 13 with no ambiguous alternatives. The correct answer 13 directly answers the arithmetic question posed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a straightforward addition task where the blank must be filled with the correct sum. The scenario is logically valid; requesting completion of an identity-property addition is a standard and appropriate Grade 1 assessment format."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in-blank format is straightforward and age-appropriate. Hints progress logically through digit-by-digit computation ('Add the last digits: 0 + 3 = 3. Add the first digits: 0 + 1 = 1') and conclude with the sum. The step-by-step structure is explicit and transparent; even with place-value language, Grade 1 students can follow the procedural flow with teacher support, making the explanation accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sum 0 + 13 = 13 is arithmetically correct. All hint calculations are valid: 0 + 3 = 3 (ones), 0 + 1 = 1 (tens), yielding 13. The options include the correct answer; no mathematical contradictions or errors appear in the problem."
+          }
+        }
+      },
+      {
+        "sample_id": "d66568e124711a4f9817",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection stem clearly states Ana's claim (the blank is 18) and asks whether Ana is correct. The False answer with correct value 17 unambiguously indicates an error in Ana's reasoning."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario presents a named student (Ana) making a plausible but incorrect computation (0 + 17 = 18 instead of 17). This error-detection format is logically sound and appropriate for assessing whether students recognize identity-property violations."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is clearly presented: a student's attempted solution and claim are stated, followed by a question asking correctness. Hints walk through the correct computation (0 + 17 = 17) to show Ana's answer is wrong. The format and progression are accessible to Grade 1 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 0 + 17 = 17 is correct; Ana's claim of 18 is false. Hints accurately compute the correct sum through digit decomposition and identify the error. The format correctly specifies has_error: True and correct_value: 17 with no mathematical inconsistencies."
+          }
+        }
+      },
+      {
+        "sample_id": "87a47c60d74c5d7e5c68",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 18 + 1 the same as 1 + 14?' compares two expressions with different operands. The False answer is unambiguous since 18 + 1 = 19 and 1 + 14 = 15 are unequal."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem logically tests whether students recognize that the commutative property does not apply when operands differ. The scenario is valid: comparing two expressions that share one operand (1) but differ in the other demonstrates when commutativity fails."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly stated at Grade 1 level. Hints identify which numbers appear on each side ('The left side adds 18 and 1. The right side adds 1 and 14'), compute both sums (18 + 1 = 19 and 1 + 14 = 15), and conclude the sides are not the same. The logic is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 18 + 1 = 19 and 1 + 14 = 15. The conclusion that these sums differ is accurate. Hints correctly identify that while one operand matches (1), the other operands differ (18 vs 14), preventing the expressions from being equal."
+          }
+        }
+      },
+      {
+        "sample_id": "7b77af6651072af312c5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Is 16 + 1 the same as 1 + 14?' unambiguously asks whether two expressions with different operands yield equal sums. The False answer correctly indicates they do not."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents two expressions sharing the operand 1 but differing in the other operand (16 vs 14). This scenario validly tests whether students incorrectly apply commutativity when operands differ, a critical distinction in understanding the property's scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is appropriately worded for Grade 1. Hints clearly identify operands on each side ('The left side adds 16 and 1. The right side adds 1 and 14'), compute both sums (16 + 1 = 17 and 1 + 14 = 15), and state the conclusion that the sides are not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: 16 + 1 = 17 and 1 + 14 = 15. The conclusion that these unequal sums mean the expressions are not the same is mathematically sound. No errors or contradictions appear in hint sequence or reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "b60fe9a920b34c8275c4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 13 + 6 the same as 6 + 14?' asks whether two expressions are equivalent. The False answer is unambiguous since 13 + 6 = 19 and 6 + 14 = 20 are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem compares two expressions where the second operand matches (6) but the first differs (13 vs 14). This scenario validly demonstrates when the commutative property does not hold because operands are not identical."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear and grade-appropriate. Hints identify the operands on each side ('The left side adds 13 and 6. The right side adds 6 and 14'), compute both sums (13 + 6 = 19 and 6 + 14 = 20), and conclude the sides differ. The reasoning is straightforward."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 13 + 6 = 19 and 6 + 14 = 20. The conclusion that these unequal sums make the expressions non-equivalent is accurate. Note: this sample contains the maximum sum of 20 in the entire node, correctly respecting the curriculum ceiling."
+          }
+        }
+      },
+      {
+        "sample_id": "ce1cd5cd5935a7866b33",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Is 16 + 3 the same as 3 + 16?' directly compares two reordered expressions with identical operands. The True answer unambiguously indicates they are equivalent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a textbook commutative-property scenario: identical operands in different orders. The logical validity is clear; the question directly tests whether students recognize order-invariance in addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly stated at appropriate Grade 1 level. Hints explain that both sides add the same two numbers in different order, compute both sums to 19, and conclude equivalence. The progression is logical and easy to follow."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 16 + 3 = 19 and 3 + 16 = 19. Hints accurately demonstrate that reordering identical operands does not change the sum. No mathematical errors or inconsistencies appear in stem, answer, or hint sequence."
+          }
+        }
+      },
+      {
+        "sample_id": "37cfd4cb8175a3e647fb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in-blank '0 + 19 = ___' clearly asks for the sum of 0 and 19 with no ambiguity regarding what computation is required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem requests completion of an identity-property addition where zero is the left operand. The scenario is logically valid and appropriate for testing whether students apply the identity principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The fill-in-blank format is clear and direct. Hints employ explicit digit-by-digit decomposition ('Add the last digits: 0 + 9 = 9. Add the first digits: 0 + 1 = 1') followed by restating the complete sum, a transparent progression that Grade 1 students can follow sequentially. Though introducing place-value concepts, the structured step-by-step nature makes the reasoning accessible under instructional guidance."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 0 + 19 = 19 is arithmetically correct. All hint calculations are valid: 0 + 9 = 9 (ones place), 0 + 1 = 1 (tens place), yielding 19. No mathematical errors or contradictions appear; the correct answer is clearly identified."
+          }
+        }
+      },
+      {
+        "sample_id": "094700f9acbafcd442d6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 13 + 3 the same as 3 + 10?' unambiguously asks whether two expressions yield equal sums. The False answer correctly indicates they do not (16 vs 13)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem compares expressions where the second operand matches (3) but first operands differ (13 vs 10). This scenario logically tests whether students recognize that different operands yield different sums despite partial overlap."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly worded for Grade 1. Hints identify operands on each side ('The left side adds 13 and 3. The right side adds 3 and 10'), compute distinct sums (13 + 3 = 16 and 3 + 10 = 13), and conclude the sides are not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 13 + 3 = 16 and 3 + 10 = 13. These sums are unequal, supporting the False answer. Hints accurately trace the computation and identify the difference between the two expressions."
+          }
+        }
+      },
+      {
+        "sample_id": "577b3e14014182297d1d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement '18 + 0 = 18. True or False?' is unambiguous. The True answer is correct since 18 + 0 = 18, accurately reflecting the identity property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a true identity-property statement for verification. The scenario is logically sound; asking students to evaluate a correct addition fact tests their understanding of the principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is clear and grade-appropriate. Hints identify the two addends (18 and 0), verify the single-digit place (8 + 0 = 8), the tens place (1 + 0 = 1), and restate the true sum. The reasoning is transparent and easy to follow."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 18 + 0 = 18 is arithmetically correct. All hint calculations are valid: 8 + 0 = 8 (ones), 1 + 0 = 1 (tens), yielding 18. The statement is true; no mathematical errors appear."
+          }
+        }
+      },
+      {
+        "sample_id": "2377de6ba2279f373c93",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'What is 7 + 0?' directly asks for the sum with no ambiguity. The correct answer 7 is clearly identified among options (17, 8, 7, 6)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem poses a straightforward identity-property addition (n + 0 = n). The scenario is logically valid and directly assesses whether students can apply the principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simply worded at appropriate Grade 1 level. Hints identify the addends (7 and 0) and directly state the sum (7 + 0 = 7). The progression is brief and clear, ideal for early learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sum 7 + 0 = 7 is arithmetically correct. Hints accurately reflect this identity without error. The correct answer is properly distinguished from distractors (17, 8, 6)."
+          }
+        }
+      },
+      {
+        "sample_id": "dd7116441f0e6413cfae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement '19 + 0 = 19. True or False?' is unambiguous, asking for verification of an identity-property claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a true identity fact for evaluation. The scenario is logically valid and appropriate for assessing student understanding of the identity property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is appropriate for Grade 1. Hints identify the addends (19 and 0), verify the ones place (9 + 0 = 9), the tens place (1 + 0 = 1), and confirm the true sum. The explanation is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 19 + 0 = 19 is arithmetically correct. All hint calculations are valid: 9 + 0 = 9 and 1 + 0 = 1, yielding 19. The statement is true; no errors appear."
+          }
+        }
+      },
+      {
+        "sample_id": "1e46ce3f45957fd5ee6f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'What is 12 + 0?' directly asks for a sum with no ambiguity. The correct answer 12 is clearly distinguished in the option set (12, 22, 11, 13)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem requests calculation of an identity-property sum (12 + 0 = 12). The scenario is logically sound and appropriate for testing identity understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simply stated at appropriate Grade 1 level. Hints identify the addends (12 and 0), trace the digit computation (2 + 0 = 2 and 1 + 0 = 1), and state the sum 12. The progression is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sum 12 + 0 = 12 is arithmetically correct. All hint calculations are valid: 2 + 0 = 2 (ones) and 1 + 0 = 1 (tens), yielding 12. No mathematical errors or inconsistencies appear."
+          }
+        }
+      },
+      {
+        "sample_id": "b126d6cca94f865b34ad",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement '7 + 0 = 7. True or False?' unambiguously asks for verification of an identity claim. The True answer is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a true identity-property statement for evaluation. The scenario is logically valid and tests whether students can verify correct addition facts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format is clear and age-appropriate. Hints identify the addends (7 and 0) and directly compute the sum (7 + 0 = 7). The brief explanation is ideal for Grade 1 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 7 + 0 = 7 is arithmetically correct. Hints accurately reflect this without error. The statement is true; no mathematical inconsistencies appear."
+          }
+        }
+      },
+      {
+        "sample_id": "01022d44c047cfdb8bba",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem 'Is 8 + 1 the same as 1 + 6?' compares two expressions with different operands. The False answer is unambiguous since 8 + 1 = 9 and 1 + 6 = 7 are unequal."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem uses theming (dance/shoes reference and emoji) that is purely decorative and does not interfere with the mathematical task. The underlying question logically tests whether students recognize that different operands yield different sums."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the theme framing, the mathematical question is clear: comparing two expressions with different operands. Hints identify operands ('The left side adds 8 and 1. The right side adds 1 and 6'), compute sums (9 and 7), and conclude non-equivalence. Theme does not obscure mathematics."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 8 + 1 = 9 and 1 + 6 = 7. These sums are unequal, confirming the False answer. Hints accurately compute and compare the expressions without mathematical error."
+          }
+        }
+      },
+      {
+        "sample_id": "a20b1055929ad0bed733",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection stem clearly states Manny's claim (the blank is 6) and asks correctness. The answer unambiguously indicates an error with correct value 5."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem uses theming (basketball/jerseys reference and emoji) which is decorative and does not affect the mathematical scenario. The underlying logic is sound: presenting a named student's incorrect computation for error detection."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is clearly presented despite thematic framing. A student's attempted computation and claim are stated, followed by a correctness question. Hints trace the correct computation (0 + 5 = 5) to show the error. Theming does not obscure the mathematical reasoning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 0 + 5 = 5 is correct; Manny's claim of 6 is false. Hints accurately compute the correct sum. The format correctly specifies has_error: True and correct_value: 5 with no mathematical inconsistencies."
+          }
+        }
+      },
+      {
+        "sample_id": "d91e9fdc3d50fb75b53b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 11 + 8 the same as 8 + 11?' unambiguously compares two reordered expressions with identical operands. The True answer correctly indicates equivalence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a textbook commutative-property scenario: identical operands in different orders. The scenario is logically sound and directly tests understanding of order-invariance."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly stated at Grade 1 level. Hints explain that both sides add the same numbers in different order, compute both sums to 19, and conclude sameness. The progression is logical and accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 11 + 8 = 19 and 8 + 11 = 19. Hints accurately demonstrate that reordering identical operands preserves the sum. No mathematical errors or inconsistencies appear."
+          }
+        }
+      },
+      {
+        "sample_id": "3a2abf47d99d0894167a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection stem asks whether Pia's solution is correct. The answer unambiguously indicates no error (has_error: False) with the correct value 7."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a scenario where a student (Pia) makes a correct computation (7 + 0 = 7). This format tests whether students can verify correct identity-property applications, a crucial discrimination skill."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is clearly structured: Pia's computation and claim are stated, followed by a correctness question. Hints trace the correct computation to confirm Pia is right. The format is appropriate for Grade 1 error-detection assessment."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 7 + 0 = 7 is arithmetically correct; Pia's answer is indeed 7. Hints accurately verify this computation. The format correctly specifies has_error: False and correct_value: 7 with no mathematical errors."
+          }
+        }
+      },
+      {
+        "sample_id": "d31eb85f66adde656139",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'What is 0 + 1?' directly asks for a sum with no ambiguity. The correct answer 1 is clearly distinguished in options (11, 1, 2, 0)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem poses an identity-property addition (0 + n = n). The scenario is logically valid and tests whether students apply the identity principle with zero as the left operand."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simply worded for Grade 1. Hints identify the addends (0 and 1) and directly state the sum (0 + 1 = 1). The brief explanation is clear and accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sum 0 + 1 = 1 is arithmetically correct. Hints accurately reflect this identity without error. The correct answer is properly distinguished from distractors (11, 2, 0)."
+          }
+        }
+      },
+      {
+        "sample_id": "7c54bb9e037157cade52",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 5 + 1 the same as 1 + 1?' unambiguously compares two expressions with different operands. The False answer is correct since 5 + 1 = 6 and 1 + 1 = 2."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem compares expressions where only one operand matches (1) while the other differs (5 vs 1). This scenario logically tests whether students understand that commutativity does not apply when operands differ."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly stated at Grade 1 level. Hints identify operands on each side ('The left side adds 5 and 1. The right side adds 1 and 1'), compute sums (6 and 2), and conclude they are not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 5 + 1 = 6 and 1 + 1 = 2. These sums are unequal, supporting the False answer. Hints accurately compute and compare without error."
+          }
+        }
+      },
+      {
+        "sample_id": "d917be5bb8c988b98d9c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 12 + 4 the same as 4 + 13?' unambiguously compares two expressions with mostly different operands. The False answer correctly indicates non-equivalence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem compares expressions that share one operand (4) but differ in the other (12 vs 13). This scenario validly demonstrates when partial operand overlap does not preserve equality."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly worded at Grade 1 level. Hints identify the operands on each side, compute different sums (12 + 4 = 16 and 4 + 13 = 17), and conclude the sides are not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 12 + 4 = 16 and 4 + 13 = 17. These unequal sums support the False answer. Hints accurately trace both computations and identify the difference."
+          }
+        }
+      },
+      {
+        "sample_id": "62eb4b09f99b92273f4b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection stem clearly states Liza's claim (the blank is 0) and asks whether she is correct. The answer unambiguously indicates an error with correct value 7."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a named student (Liza) making an incorrect identity-property computation. The scenario logically tests whether students recognize violations of the identity property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is clearly structured: Liza's attempted solution and claim are stated, followed by a correctness question. Hints trace the correct computation (0 + 7 = 7) to show Liza's answer (0) is wrong."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity 0 + 7 = 7 is correct; Liza's claim of 0 is false. Hints accurately compute the correct sum. The format correctly specifies has_error: True and correct_value: 7 with no errors."
+          }
+        }
+      },
+      {
+        "sample_id": "fab949bad25c49033793",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question 'Is 4 + 12 the same as 12 + 3?' unambiguously compares two expressions with mostly different operands. The False answer correctly indicates they are not equivalent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem compares expressions where the second operand partially matches (12 in one) but differs substantially (4 vs 3 as first operands, 12 vs 3 overall). The scenario validly tests non-equivalence."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clearly worded at Grade 1 level. Hints identify operands on each side ('The left side adds 4 and 12. The right side adds 12 and 3'), compute sums (16 and 15), and conclude they are not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 4 + 12 = 16 and 12 + 3 = 15. These unequal sums support the False answer. Hints accurately compute both expressions and identify the difference."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "illustrate",
+        "clause": "Illustrate",
+        "verdict": "PASS",
+        "reasoning": "All 26 samples employ varied, concrete problem formats that illustrate the two target properties through direct mathematical demonstration. Multiple-choice, true/false, fill-in-blank, and error-detection formats provide multiple illustrative avenues; students must recognize patterns and apply conceptual understanding rather than follow rote procedures.",
+        "sample_ids": ["c6178e1d005833a600f0", "a7e182223123728b918c", "0b588b134424672531db", "2bbb44a400a30f2f2b66", "6eab0232af3ed271e21f", "d66568e124711a4f9817", "87a47c60d74c5d7e5c68", "7b77af6651072af312c5", "b60fe9a920b34c8275c4", "ce1cd5cd5935a7866b33", "37cfd4cb8175a3e647fb", "094700f9acbafcd442d6", "577b3e14014182297d1d", "2377de6ba2279f373c93", "dd7116441f0e6413cfae", "1e46ce3f45957fd5ee6f", "b126d6cca94f865b34ad", "01022d44c047cfdb8bba", "a20b1055929ad0bed733", "d91e9fdc3d50fb75b53b", "3a2abf47d99d0894167a", "d31eb85f66adde656139", "7c54bb9e037157cade52", "d917be5bb8c988b98d9c", "62eb4b09f99b92273f4b", "fab949bad25c49033793"]
+      },
+      {
+        "requirement_id": "applying",
+        "clause": "applying",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires students to actively apply one or both addition properties to reach correct answers. Students must apply the identity property by recognizing 0 + n = n, apply the commutative property by confirming that n + m = m + n when operands match, or distinguish when different operands prevent equivalence.",
+        "sample_ids": ["c6178e1d005833a600f0", "6eab0232af3ed271e21f", "0b588b134424672531db", "2bbb44a400a30f2f2b66", "87a47c60d74c5d7e5c68", "ce1cd5cd5935a7866b33", "d66568e124711a4f9817", "d91e9fdc3d50fb75b53b", "01022d44c047cfdb8bba", "a20b1055929ad0bed733"]
+      },
+      {
+        "requirement_id": "properties_of_addition",
+        "clause": "properties of addition",
+        "verdict": "PASS",
+        "reasoning": "The node systematically addresses both of the two specified properties of addition. The identity property (sum of zero and any number equals the number) is exemplified across 14 samples; the commutative property (changing addend order preserves sum) is exemplified across 12 samples with both positive cases confirming it holds and negative cases showing when it does not.",
+        "sample_ids": ["c6178e1d005833a600f0", "a7e182223123728b918c", "0b588b134424672531db", "2bbb44a400a30f2f2b66", "6eab0232af3ed271e21f", "d66568e124711a4f9817", "87a47c60d74c5d7e5c68", "7b77af6651072af312c5", "b60fe9a920b34c8275c4", "ce1cd5cd5935a7866b33", "37cfd4cb8175a3e647fb", "094700f9acbafcd442d6", "577b3e14014182297d1d", "2377de6ba2279f373c93", "dd7116441f0e6413cfae", "1e46ce3f45957fd5ee6f", "b126d6cca94f865b34ad", "01022d44c047cfdb8bba", "a20b1055929ad0bed733", "d91e9fdc3d50fb75b53b", "3a2abf47d99d0894167a", "d31eb85f66adde656139", "7c54bb9e037157cade52", "d917be5bb8c988b98d9c", "62eb4b09f99b92273f4b", "fab949bad25c49033793"]
+      },
+      {
+        "requirement_id": "sums_up_to_20",
+        "clause": "sums up to 20",
+        "verdict": "PASS",
+        "reasoning": "All 26 samples respect the numerical ceiling of 20. The largest sum appearing in the node is 20 (from 6 + 14 in sample b60fe9a920b34c8275c4); all other sums range from 1 to 19. No sample violates the specified range, ensuring content remains appropriately scaled for Grade 1 mastery.",
+        "sample_ids": ["c6178e1d005833a600f0", "a7e182223123728b918c", "0b588b134424672531db", "2bbb44a400a30f2f2b66", "6eab0232af3ed271e21f", "d66568e124711a4f9817", "87a47c60d74c5d7e5c68", "7b77af6651072af312c5", "b60fe9a920b34c8275c4", "ce1cd5cd5935a7866b33", "37cfd4cb8175a3e647fb", "094700f9acbafcd442d6", "577b3e14014182297d1d", "2377de6ba2279f373c93", "dd7116441f0e6413cfae", "1e46ce3f45957fd5ee6f", "b126d6cca94f865b34ad", "01022d44c047cfdb8bba", "a20b1055929ad0bed733", "d91e9fdc3d50fb75b53b", "3a2abf47d99d0894167a", "d31eb85f66adde656139", "7c54bb9e037157cade52", "d917be5bb8c988b98d9c", "62eb4b09f99b92273f4b", "fab949bad25c49033793"]
+      },
+      {
+        "requirement_id": "identity_property",
+        "clause": "the sum of zero and any number is equal to the number",
+        "verdict": "PASS",
+        "reasoning": "This property is thoroughly exemplified across 14 distinct samples covering both zero positions (left: 0 + n and right: n + 0) with diverse problem formats (multiple-choice, true/false, fill-in-blank, error-detection). Students encounter this principle with numerals ranging from 1 to 19, building flexible understanding while staying within grade-appropriate ranges.",
+        "sample_ids": ["c6178e1d005833a600f0", "a7e182223123728b918c", "6eab0232af3ed271e21f", "d66568e124711a4f9817", "37cfd4cb8175a3e647fb", "577b3e14014182297d1d", "2377de6ba2279f373c93", "dd7116441f0e6413cfae", "1e46ce3f45957fd5ee6f", "b126d6cca94f865b34ad", "a20b1055929ad0bed733", "3a2abf47d99d0894167a", "d31eb85f66adde656139", "62eb4b09f99b92273f4b"]
+      },
+      {
+        "requirement_id": "commutative_property",
+        "clause": "changing the order of the addends does not change the sum",
+        "verdict": "PASS",
+        "reasoning": "This property is thoroughly exemplified across 12 distinct samples using multiple-choice and comparison formats. Samples demonstrate positive cases where identical reordered operands yield equal sums (12+2=2+12, 17+2=2+17, 16+3=3+16, 11+8=8+11) and negative cases where different operands yield different sums, helping students distinguish when commutativity applies versus when it does not.",
+        "sample_ids": ["0b588b134424672531db", "2bbb44a400a30f2f2b66", "87a47c60d74c5d7e5c68", "7b77af6651072af312c5", "b60fe9a920b34c8275c4", "ce1cd5cd5935a7866b33", "094700f9acbafcd442d6", "01022d44c047cfdb8bba", "d91e9fdc3d50fb75b53b", "7c54bb9e037157cade52", "d917be5bb8c988b98d9c", "fab949bad25c49033793"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

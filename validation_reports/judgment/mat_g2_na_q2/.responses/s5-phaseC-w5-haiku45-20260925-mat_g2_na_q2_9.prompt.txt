@@ -1,0 +1,215 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc5-mat_g2_na_q2_9-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q2_9/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc5-mat_g2_na_q2_9-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q2_9
+PACKET DIGEST: 8520d5df06d86bdea526e43314eaec796b01b457abc729d19e1ac4b573dce51d
+COMPETENCY (Grade 2, Quarter 2, None):
+Create increasing or decreasing patterns.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  create: Create
+  increasing_decreasing: increasing or decreasing
+  patterns: patterns
+
+SAMPLES (every one of these is real rendered output):
+  sample 242e3f66f41763333c5d  seed 42  [cloze]
+      stem:    You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?
+      answer:  10, 9, 8, 7, 6, 5
+      options: 10, 9, 8, 5, 6, 5 / 10, 9, 6, 7, 6, 5 / 10, 9, 8, 7, 6, 5 / 10, 12, 8, 7, 6, 5
+      hints:   ["Start at 10 and use the rule: Subtract 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 10, 9, 8, 7, 6, 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c72a24c64f1a0217003f  seed 43  [mcq]
+      stem:    You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?
+      answer:  11, 12, 13, 14, 15, 16
+      options: 11, 12, 13, 14, 15, 16 / 11, 12, 13, 14, 14, 16 / 11, 12, 13, 14, 15, 17 / 11, 13, 13, 14, 15, 16
+      hints:   ["Start at 11 and use the rule: Add 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 11, 12, 13, 14, 15, 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 504bf5bb98ac2e8dc3f4  seed 44  [cloze]
+      stem:    You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?
+      answer:  10, 11, 12, 13, 14, 15
+      options: 10, 11, 13, 13, 14, 15 / 10, 9, 12, 13, 14, 15 / 10, 11, 12, 13, 14, 15 / 10, 11, 11, 13, 14, 15
+      hints:   ["Start at 10 and use the rule: Add 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 10, 11, 12, 13, 14, 15."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 24463d801568765c3632  seed 45  [mcq]
+      stem:    Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?
+      answer:  2, 5, 8, 11, 14, 17
+      options: 2, 5, 8, 10, 14, 17 / 2, 2, 8, 11, 14, 17 / 2, 5, 8, 8, 14, 17 / 2, 5, 8, 11, 14, 17
+      hints:   ["Start at 2 and use the rule: Add 3 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 2, 5, 8, 11, 14, 17."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2aa3b2ae492d4f2edf83  seed 46  [mcq]
+      stem:    You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?
+      answer:  15, 13, 11, 9, 7, 5
+      options: 15, 13, 11, 9, 7, 3 / 15, 15, 11, 9, 7, 5 / 15, 13, 11, 9, 7, 5 / 15, 13, 11, 9, 7, 7
+      hints:   ["Start at 15 and use the rule: Subtract 2 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 15, 13, 11, 9, 7, 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1a1ef67926ec3ac3cb17  seed 500  [mcq]
+      stem:    You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?
+      answer:  91, 90, 89, 88, 87, 86
+      options: 91, 90, 89, 88, 87, 86 / 91, 90, 89, 88, 87, 87 / 91, 90, 89, 88, 85, 86 / 91, 90, 89, 91, 87, 86
+      hints:   ["Start at 91 and use the rule: Subtract 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 91, 90, 89, 88, 87, 86."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d13985e31cffbb8d1571  seed 501  [mcq]
+      stem:    Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?
+      answer:  91, 88, 85, 82, 79, 76
+      options: 91, 88, 85, 82, 79, 76 / 91, 88, 85, 80, 79, 76 / 91, 88, 85, 82, 79, 75 / 91, 88, 85, 81, 79, 76
+      hints:   ["Start at 91 and use the rule: Subtract 3 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 91, 88, 85, 82, 79, 76."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7eb878cbb0619c0f63b2  seed 502  [cloze]
+      stem:    Create a pattern that starts at 89 and uses the rule: Subtract 7 each time. Which sequence shows this pattern?
+      answer:  89, 82, 75, 68, 61, 54
+      options: 89, 82, 76, 68, 61, 54 / 89, 82, 75, 71, 61, 54 / 89, 85, 75, 68, 61, 54 / 89, 82, 75, 68, 61, 54
+      hints:   ["Start at 89 and use the rule: Subtract 7 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 89, 82, 75, 68, 61, 54."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c8ea20d4ddae11a6b2c9  seed 700  [cloze]
+      stem:    You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?
+      answer:  15, 16, 17, 18, 19, 20
+      options: 15, 16, 17, 18, 19, 19 / 15, 16, 19, 18, 19, 20 / 15, 16, 17, 18, 22, 20 / 15, 16, 17, 18, 19, 20
+      hints:   ["Start at 15 and use the rule: Add 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 15, 16, 17, 18, 19, 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fe2864d44c2086f722df  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. Start at 20 and create a decreasing pattern with the rule: Subtract 2 each time. Which pattern did you create?
+      answer:  20, 18, 16, 14, 12, 10
+      options: 20, 18, 16, 14, 12, 12 / 20, 18, 18, 14, 12, 10 / 20, 18, 16, 14, 12, 10 / 20, 15, 16, 14, 12, 10
+      hints:   ["Start at 20 and use the rule: Subtract 2 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 20, 18, 16, 14, 12, 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4bd51e9f683e706cf4f2  seed 702  [cloze]
+      stem:    🐕 Ate Beng has a math challenge about cat toys. Create a pattern that starts at 11 and uses the rule: Subtract 1 each time. Which sequence shows this pattern?
+      answer:  11, 10, 9, 8, 7, 6
+      options: 11, 10, 9, 6, 7, 6 / 11, 10, 9, 9, 7, 6 / 11, 10, 9, 8, 7, 6 / 11, 10, 6, 8, 7, 6
+      hints:   ["Start at 11 and use the rule: Subtract 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 11, 10, 9, 8, 7, 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ccf0d4b32941d3238976  seed 800  [cloze]
+      stem:    You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?
+      answer:  95, 93, 91, 89, 87, 85
+      options: 95, 93, 91, 89, 89, 85 / 95, 94, 91, 89, 87, 85 / 95, 93, 91, 89, 87, 85 / 95, 93, 91, 92, 87, 85
+      hints:   ["Start at 95 and use the rule: Subtract 2 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 95, 93, 91, 89, 87, 85."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ce46a04226317eb60cfd  seed 900  [mcq]
+      stem:    Which sequence correctly shows a decreasing pattern starting at 7 and following the rule: Subtract 1 each time?
+      answer:  7, 6, 5, 4, 3, 2
+      options: 7, 6, 5, 1, 3, 2 / 7, 6, 5, 4, 3, 2 / 7, 9, 5, 4, 3, 2 / 7, 6, 8, 4, 3, 2
+      hints:   ["Start at 7 and use the rule: Subtract 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 7, 6, 5, 4, 3, 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 410a17707427fe7b5a0d  seed 901  [mcq]
+      stem:    Which sequence correctly shows an increasing pattern starting at 1 and following the rule: Add 1 each time?
+      answer:  1, 2, 3, 4, 5, 6
+      options: 1, 2, 3, 4, 5, 6 / 1, 2, 3, 4, 4, 6 / 1, 4, 3, 4, 5, 6 / 1, 2, 4, 4, 5, 6
+      hints:   ["Start at 1 and use the rule: Add 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 1, 2, 3, 4, 5, 6."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3a19406e30c4c30b88ae  seed 1000  [cloze]
+      stem:    Create a pattern that starts at 30 and uses the rule: Subtract 3 each time. Which sequence shows this pattern?
+      answer:  30, 27, 24, 21, 18, 15
+      options: 30, 27, 24, 18, 18, 15 / 30, 28, 24, 21, 18, 15 / 30, 27, 24, 21, 18, 15 / 30, 27, 24, 21, 16, 15
+      hints:   ["Start at 30 and use the rule: Subtract 3 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 30, 27, 24, 21, 18, 15."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample b5dab5ff6872d7704b00  seed 1001  [cloze]
+      stem:    Which sequence correctly shows a decreasing pattern starting at 10 and following the rule: Subtract 1 each time?
+      answer:  10, 9, 8, 7, 6, 5
+      options: 10, 9, 8, 7, 6, 5 / 10, 9, 8, 7, 6, 6 / 10, 9, 5, 7, 6, 5 / 10, 9, 9, 7, 6, 5
+      hints:   ["Start at 10 and use the rule: Subtract 1 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 10, 9, 8, 7, 6, 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 5b0f06f92bebddaf66fb  seed 1002  [cloze]
+      stem:    You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?
+      answer:  15, 13, 11, 9, 7, 5
+      options: 15, 13, 11, 9, 5, 5 / 15, 13, 10, 9, 7, 5 / 15, 13, 9, 9, 7, 5 / 15, 13, 11, 9, 7, 5
+      hints:   ["Start at 15 and use the rule: Subtract 2 each time.", "Check every step of each choice against the rule.", "The sequence that follows the rule at every step is 15, 13, 11, 9, 7, 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

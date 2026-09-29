@@ -1,0 +1,650 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pc2-mat_g2_na_q1_4-20260925",
+  "mat_g2_na_q1_4": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Grade 2 students develop multi-digit ordering skills progressively. These 25 samples span single digits (1-3), two-digit ranges (33-198), and three-digit numbers approaching 1000 (993-1000), with contextual narratives about seashells, stickers, and marbles that support comprehension without requiring grade-inappropriate concepts beyond numerical comparison."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "The competency states ordering numbers up to 1000 from smallest to largest and vice versa. Every rendered sample directly asks students to arrange given numbers in a specified direction. The alignment is precise: no scope creep into operations, estimation, or concepts beyond ordering itself, and no gaps in what the competency demands."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The four printed requirements decompose the competency losslessly. Order numbers is addressed across all 25 samples. Up to 1000 is covered by samples reaching 1000 explicitly (seeds 501, 502, 801) and samples in 700-900 ranges. Smallest to largest appears in samples 44, 45, 46, 502, 602, 700, 701, 702, 800, 1000, 1002. Largest to smallest appears in samples 42, 43, 501, 600, 603, 604, 605, 606, 801, 900, 1001. No requirement is absent.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "Each of the four requirements (order_numbers, up_to_1000, smallest_to_largest, largest_to_smallest) is both necessary and sufficient to capture the full competency. Their union is complete—no competency clause is orphaned from the requirements, and no requirement adds scope beyond the stated competency. The decomposition is a faithful structural match to the curriculum text."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The samples achieve comprehensive coverage across number magnitude (1 to 1000), list lengths (3, 4, and 5 items to sort), both ordering directions (10 samples largest-to-smallest, 12 samples smallest-to-largest, 3 format variants), contextual vs. abstract presentation, and varied experiences (standard, hint_gated, scaffolded, mastery_drill). This breadth ensures no subskill is isolated or under-sampled."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The magnitude progression reflects typical Grade 2 development: early items use 1-3 and 33-63 (foundational), middle items span 150-270 (secure application), late items reach 700-1000 (mastery-phase boundary). No item introduces non-sequential operations, fractions, decimals, or grade-3 concepts. The 1000 boundary is approached respectfully, not exceeded. Presentation matches Grade 2 literacy without complex narratives."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The generator produces deliberate variation: sorting direction alternates (12 ascending, 10 descending, 3 format variance), list lengths vary (3, 4, 5 items), number ranges change (1-3, 33-270, 399-409, 500-800, 881-1000), themes appear in 2 samples (emoji sketchpads, basketballs) without semantic confusion, and response formats differ (sort_order and ordering). Each dimension varies independently, avoiding scripted patterns."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "aa0c52233d1cc4ecbfdd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction to arrange 637, 638, and 229 from largest to smallest is unambiguous. Three distinct numbers are presented in clear array notation, and the sort direction is explicit. No alternative reading of the prompt exists that would produce a different answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a context-free mathematical ordering task with no narrative wrapper. The logical validity is self-evident: three numbers ordered by magnitude is a well-formed mathematical operation. No contradiction or inconsistency arises between instruction and content."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The wording uses simple, action-oriented language appropriate to Grade 2: Arrange these numbers from largest to smallest is a direct instruction matching the competency vocabulary Grade 2 students have encountered. No ambiguous phrases or grade-inappropriate jargon appears."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer 638, 637, 229 is mathematically accurate: 638 > 637 > 229. The three hints confirm this: they list numbers, identify the ordering strategy, and show the final result. All equations and orderings hold under standard magnitude comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "0f907323862ad2ba45df",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Maria counted seashells collected by 3 friends: 33, 41, 44 provides unambiguous input. The instruction to arrange counts from largest to smallest is clear, and the identity of the quantities (seashell counts) prevents confusion about what is being ordered."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Maria counting seashells with three friends is a realistic Grade 2 scenario. Seashells are concrete, countable objects familiar to young learners. The three counts 33, 41, 44 are plausible quantities for a Grade 2 task. The narrative and mathematics align without contradiction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem combines a relatable context (friend names, seashells) with a clear ordering instruction. The numbers appear in simple list form, and the direction is specified. The wording avoids ambiguous pronouns or complex compound structures that would obscure meaning to a Grade 2 reader."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The three counts 33, 41, 44 are distinct and comparable. The correct answer 44, 41, 33 maintains the largest-to-smallest order throughout. Hints verify this: 44 is the largest, then 41, then 33. All arithmetic relationships are sound."
+          }
+        }
+      },
+      {
+        "sample_id": "75d9b51b7414facef9f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest leaves no ambiguity. Three numbers (412, 231, 405) are presented without extraneous detail. The ordering direction is explicit and unambiguous. Students cannot misinterpret the task as requesting a different operation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item presents an abstract ordering task without context wrapper. The logical structure is sound: three numbers exist, comparison relations among them are well-defined, and the ordered output is deterministic. The absence of context does not introduce logical conflict."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from smallest to largest uses vocabulary and phrasing that Grade 2 students encounter regularly. The numbers appear in simple list format, and the direction word smallest is unambiguous at this grade level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The three numbers 412, 231, 405 are distinct. The correct ascending order is 231 < 405 < 412. All three hints confirm this: 231 is smallest, 405 is next, 412 is largest. Magnitude comparisons are mathematically correct throughout."
+          }
+        }
+      },
+      {
+        "sample_id": "a6f7649cfbb4b0c94938",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ben counted seashells collected by 5 friends and presents five distinct counts: 260, 262, 268, 269, 270. The instruction to arrange from smallest to largest is unambiguous. The quantity of items (5) matches the number list length without contradiction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ben collecting seashells with five friends is a Grade 2 appropriate scenario. The five counts 260-270 represent realistic quantities that young learners might encounter. The narrative does not contradict the mathematical content or request any extraneous operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names a familiar person (Ben) and object (seashells), places them in a social scenario (three friends, later five friends based on the task), and provides a clear action verb. Grade 2 students would recognize seashells as a concrete, countable quantity they might encounter in school contexts."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Five consecutive or near-consecutive numbers 260, 262, 268, 269, 270 are presented. The ascending order 260 < 262 < 268 < 269 < 270 is mathematically correct. All hints confirm this progression; no arithmetic errors appear in the provided answer or hint sequence."
+          }
+        }
+      },
+      {
+        "sample_id": "5f80327970ee41fe7867",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest presents four numbers in clear array notation: 900, 881, 898, 887. The ordering direction is explicit. The numbers are distinct and presented in random order, avoiding a leading cue that would reduce the cognitive demand of the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a pure mathematical ordering task without context wrapper. Four three-digit numbers in the 800-900 range are presented. No narrative contradiction or logical inconsistency arises; the task is well-formed as a magnitude comparison exercise."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction uses clear action language (Arrange) and simple direction markers (smallest to largest). The four numbers are presented in a simple list. The vocabulary and structure match Grade 2 instruction patterns, and no abstract concepts beyond number comparison are required."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four distinct three-digit numbers are compared. The correct ascending order 881 < 887 < 898 < 900 is maintained throughout. The hint progression shows 881 as smallest, then 887, 898, and 900 as largest. All magnitude relations are arithmetically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "ffeb3a5194d2acd5e3fe",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest with four numbers (993, 996, 1000, 998) is unambiguous. The numbers are close in magnitude, requiring careful comparison, but the instruction and numeric values leave no room for alternative interpretation. Two of the four numbers are at or near the 1000 boundary."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task has no narrative. The four numbers 993, 996, 1000, 998 are all valid Grade 2 magnitude comparisons. The inclusion of 1000 itself and near-1000 values does not create logical conflict; it appropriately exercises the upper boundary of the competency domain."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem wording is direct and simple. Four numbers appear in a straightforward list. The direction smallest to largest is unambiguous Grade 2 vocabulary. The magnitude range (993-1000) may require careful counting or number sense, but the instruction itself is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four numbers approaching or at the 1000 boundary are presented. The correct ascending order is 993 < 996 < 998 < 1000, verified in the hints. This item notably includes 1000 exactly, the upper bound of the competency, confirming the system generates items at the specified boundary."
+          }
+        }
+      },
+      {
+        "sample_id": "25dd82623e3c46f08d78",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from largest to smallest using 1000, 544, 997 is unambiguous. Three numbers span a wide range from 544 to 1000. The sort direction is explicit. No alternative reading would produce a different answer or interpretation of the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task includes 1000 as one of the three values, directly testing the upper boundary of the competency. The wide spread (544 to 1000) creates no logical inconsistency; it appropriately exercises magnitude comparison across the full domain."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction uses familiar Grade 2 language: Arrange and largest to smallest. Three numbers are listed clearly. The magnitude range is broad, which adds cognitive challenge, but the wording and format remain accessible to a Grade 2 learner."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers including the boundary value 1000 are ordered correctly as 1000 > 997 > 544. The hints confirm this progression, identifying 1000 as largest, then 997, then 544 as smallest. No arithmetic errors or inconsistencies appear across the answer and hints."
+          }
+        }
+      },
+      {
+        "sample_id": "0098f0d3cba93bd0bb55",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest with three values (995, 982, 1000) is clear and unambiguous. One value is exactly 1000, and the other two are close but less. The ordering direction is explicit, leaving no room for misinterpretation of the task intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers including the upper boundary 1000 are presented in an abstract ordering context. The values 982, 995, and 1000 are all Grade 2 appropriate comparisons. No logical conflict arises from using the exact boundary value in a competency-appropriate task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The wording and list format match Grade 2 instruction patterns. The phrase smallest to largest is unambiguous at this grade level. The presence of 1000 does not impede clarity; it is presented as a three-digit number to be compared like any other."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three values at the upper boundary are correctly ordered as 982 < 995 < 1000. The hints confirm this: 982 is identified as smallest, 995 as next, and 1000 as largest. All magnitude relations are arithmetically accurate, and the boundary value is handled without error."
+          }
+        }
+      },
+      {
+        "sample_id": "6aa98fd71faae20c878b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from largest to smallest uses four numbers (950, 934, 944, 941) all in the 900s range. No ambiguity arises: four distinct values in random initial order, explicit sort direction, and unambiguous mathematical comparison. Students understand the task clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract item uses no context wrapper. Four three-digit numbers in a narrow range (934-950) form a valid mathematical ordering exercise. No logical contradiction or confusion between context and mathematics occurs."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from largest to smallest uses vocabulary and structure familiar to Grade 2 learners. Four numbers appear in simple list form. The magnitude range (all in the 900s) is appropriate for Grade 2 development without requiring extraneous skills."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four distinct three-digit numbers are compared in descending order: 950 > 944 > 941 > 934. Hints confirm this sequence without error. The narrow range (16-unit spread within the 900s) creates a realistic discrimination task without introducing extraneous difficulty."
+          }
+        }
+      },
+      {
+        "sample_id": "de4c258403eb3ce67716",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ben counted storybooks collected by 3 friends: 181, 197, 198 provides an unambiguous context and three distinct values. The instruction to arrange from smallest to largest is clear. The item makes it explicit that Ben's task is to order these particular counts, not perform any other operation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ben counting storybooks with three friends is a plausible Grade 2 scenario. Storybooks are familiar objects in school settings. The three counts (181, 197, 198) are realistic quantities for such a task. No contradiction exists between the narrative context and the mathematical ordering required."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem combines familiar context (Ben, friends, storybooks) with clear instruction (arrange, smallest to largest). The three numbers appear in simple list form after the setup sentence. The wording is straightforward and avoids Grade 3+ complexity or abstract phrasing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three counts 181, 197, 198 are presented in random order. The correct ascending sequence is 181 < 197 < 198. Hints confirm this: 181 as smallest, 197 as next, 198 as largest. No arithmetic errors or inconsistencies appear across the answer and supporting hints."
+          }
+        }
+      },
+      {
+        "sample_id": "9458d0e6bdfff4da0c9d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest with four numbers (404, 406, 399, 409) spanning a narrow range is unambiguous. The numbers are all three-digit, close in value, and presented in random initial order. The sort direction is explicit, and no alternative interpretation exists."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task uses no context wrapper. Four three-digit numbers in a tight range (399-409) form a well-posed comparison exercise. The narrow magnitude span creates a realistic discrimination challenge appropriate for Grade 2 without introducing logical inconsistency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from smallest to largest uses simple, direct language. Four numbers in the 400s appear in a clear list. The vocabulary matches Grade 2 patterns. The challenge of distinguishing among 399, 404, 406, 409 is cognitive, not linguistic."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four distinct three-digit numbers are ordered correctly in ascending sequence: 399 < 404 < 406 < 409. Hints identify 399 as smallest, then 404, 406, and 409 as largest. All orderings and magnitude relations are arithmetically sound and consistent."
+          }
+        }
+      },
+      {
+        "sample_id": "011fef1d9f07a4cfbf1c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Pat counted stickers collected by 4 friends: 150, 164, 166, 168 provides clear context and four distinct values. The instruction to arrange from largest to smallest is unambiguous. The item specifies Kuya Pat as the person performing the count and stickers as the countable objects."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Kuya Pat (an older brother, culturally familiar) counting stickers with four friends is a realistic Grade 2 scenario. Stickers are concrete, countable objects familiar to primary learners. The four counts (150, 164, 166, 168) form plausible quantities. No logical contradiction arises between narrative and mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses culturally familiar language (Kuya Pat) and concrete objects (stickers). The four numbers are listed clearly after the setup. The instruction (arrange, largest to smallest) is unambiguous Grade 2 vocabulary. The overall structure matches typical Grade 2 word problem format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four counts in sequential or near-sequential order are presented: 150, 164, 166, 168. The correct descending order is 168 > 166 > 164 > 150. Hints confirm this: 168 is largest, then 166, 164, and 150 as smallest. All magnitude comparisons are arithmetically accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "96000c9a9f863c831696",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Liza counted seashells collected by 4 friends: 60, 61, 62, 63 provides unambiguous context and four consecutive values. The instruction to arrange from largest to smallest is explicit. The item identifies Liza as the counter and seashells as the objects counted."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Liza counting seashells with four friends is plausible at Grade 2. Seashells are concrete, familiar objects for young learners. Four consecutive counts from 60 to 63 are realistic quantities. The narrative does not contradict or confuse the mathematical ordering task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses a familiar name (Liza) and concrete object (seashells). The four values 60, 61, 62, 63 appear in simple list form. The direction largest to smallest is unambiguous at Grade 2 level. The word-problem structure matches expected Grade 2 instructional format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four consecutive numbers 60, 61, 62, 63 are presented. The correct descending order is 63 > 62 > 61 > 60. Hints identify each number in correct descending sequence. This item notably demonstrates ordering of consecutive values, a specific cognitive skill within the broader competency."
+          }
+        }
+      },
+      {
+        "sample_id": "d3b3b186f74d250080f5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ana counted marbles collected by 5 friends: 161, 163, 171, 175, 177 is unambiguous. Five distinct values are presented, ranging from 161 to 177. The instruction to arrange from largest to smallest is explicit and unambiguous. Ana and marbles are clearly identified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ana counting marbles with five friends is a realistic Grade 2 scenario. Marbles are concrete objects familiar to young learners. The five counts (161, 163, 171, 175, 177) form plausible quantities for such a task. The narrative context does not contradict the mathematical ordering operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem provides a familiar context (Ana, friends, marbles) followed by clear instruction (arrange, largest to smallest). Five numbers appear in a simple list. The vocabulary and structure match Grade 2 word-problem patterns. No extraneous complexity obscures the ordering task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Five distinct values 161, 163, 171, 175, 177 are presented in random initial order. The correct descending sequence is 177 > 175 > 171 > 163 > 161. Hints confirm this ordering. This item notably includes five items to sort, the largest list length in the sample set, appropriately challenging for Grade 2 mastery phase."
+          }
+        }
+      },
+      {
+        "sample_id": "bfcb210da121320629f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from largest to smallest with three values (676, 741, 743) is unambiguous. Three distinct three-digit numbers are presented. The sort direction is explicit. No alternative reading of the instruction would produce a different intended result or interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical ordering task uses no context wrapper. Three three-digit numbers in the 600-700 range form a valid, well-posed comparison exercise. No logical contradiction or contextual confusion arises from the bare mathematical presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from largest to smallest uses simple, familiar language. Three numbers are listed clearly. The vocabulary (arrange, largest) matches Grade 2 instruction patterns. The magnitude range (676-743) is appropriate for Grade 2 without requiring extraneous conceptual knowledge."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three distinct three-digit numbers are correctly ordered in descending sequence: 743 > 741 > 676. Hints confirm this: 743 as largest, then 741, then 676 as smallest. All magnitude relations are arithmetically sound, and the ordering holds throughout."
+          }
+        }
+      },
+      {
+        "sample_id": "78738b7197c9b7ce087e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Liza counted seashells collected by 3 friends: 166, 174, 176 provides clear context and three distinct values. The instruction to arrange from smallest to largest is explicit and unambiguous. The item identifies Liza as the counter and seashells as the counted objects."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Liza counting seashells with three friends is a plausible Grade 2 scenario. Seashells are concrete, familiar objects. The three counts (166, 174, 176) are realistic quantities for such a collection task. No logical contradiction exists between the narrative setup and the ordering operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses a familiar name (Liza, seen in earlier samples) and familiar objects (seashells). Three numbers appear in simple list form. The instruction (arrange, smallest to largest) is unambiguous Grade 2 vocabulary. The overall format and wording match Grade 2 expectations."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three distinct values 166, 174, 176 are presented in random order. The correct ascending sequence is 166 < 174 < 176. Hints confirm this progression: 166 as smallest, 174 as next, 176 as largest. All arithmetic orderings are accurate and consistent."
+          }
+        }
+      },
+      {
+        "sample_id": "b417de5f97411c49da60",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The emoji and thematic wrapper (Kuya Renz has a math challenge about sketchpads) precedes the ordering task, which presents four numbers (747, 758, 757, 743) with clear instruction to arrange from smallest to largest. The mathematics is unambiguous; the theme does not alter the ordering task itself."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative places the ordering within a thematic context (Kuya Renz, sketchpads, math challenge). This framing is logically coherent: Kuya Renz poses a math challenge about sketchpads, and students complete the ordering task. The theme does not contradict or confuse the mathematical operation required."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses a familiar name (Kuya Renz) and a thematic object (sketchpads with emoji). The four numbers are clearly listed. The instruction (arrange, smallest to largest) is unambiguous despite the thematic wrapper. Grade 2 learners would recognize sketchpads as drawing-related objects without confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four distinct three-digit numbers (743, 747, 757, 758) are presented in random order. The correct ascending sequence is 743 < 747 < 757 < 758. Hints confirm this ordering. The thematic context does not alter the mathematics; all magnitude comparisons are arithmetically correct."
+          }
+        }
+      },
+      {
+        "sample_id": "692334bbb44054d9263d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The emoji and thematic wrapper (Isko has a math challenge about basketballs) sets context for the ordering task with three numbers (915, 764, 760) and instruction to arrange from smallest to largest. The mathematics is unambiguous despite the thematic framing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Isko has a math challenge about basketballs is a coherent thematic frame. Basketball as a familiar object does not introduce logical contradiction or confusion. The ordering of three numbers flows naturally from the setup. The narrative supports rather than undermines the mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The name Isko and the object basketballs are familiar and concrete. The emoji reinforces the theme visually. Three numbers appear in clear list form after the setup. The instruction (arrange, smallest to largest) is unambiguous at Grade 2 level, and the theme does not obscure the ordering task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three distinct three-digit numbers (915, 764, 760) are presented in random order. The correct ascending sequence is 760 < 764 < 915, verified in the hints. The thematic wrapper does not affect the mathematics; all magnitude relations are arithmetically sound and accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "3e859544fcba2dcca7f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest using three numbers (504, 796, 505) is unambiguous. The numbers are distinct (504, 505, 796). The ordering direction is explicit. Students cannot misinterpret the task as requesting anything other than ascending numerical arrangement."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This is a pure mathematical ordering task without narrative context. Three numbers spanning a wider range (504-796) form a valid comparison exercise. No logical contradiction or contextual confusion arises; the task is well-formed as a straightforward magnitude-comparison activity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction uses simple, direct vocabulary (Arrange, smallest to largest) matching Grade 2 patterns. Three numbers appear in a clear list. The magnitude range (504, 505, 796) includes two very close numbers (504 and 505) and one distant value, creating appropriate cognitive challenge while remaining clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers including a close pair (504 and 505) and a distant value (796) are correctly ordered as 504 < 505 < 796. Hints confirm this sequence. This item notably tests discrimination between adjacent numbers (504 vs. 505) and larger magnitude gaps, demonstrating precision in numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "9c39e6674329832975cb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Ben counted seashells collected by 3 friends: 637, 993, 1000 provides unambiguous context and three distinct values spanning the full competency range. The instruction to arrange from largest to smallest is explicit. The item identifies Ben as counter and seashells as objects."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Ben counting seashells with three friends is realistic at Grade 2. The three counts 637, 993, 1000 are valid quantities, with one reaching the upper competency boundary. The narrative does not contradict the ordering operation; it appropriately contextualizes a magnitude-comparison task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses a familiar name (Ben) and object (seashells). Three numbers are listed clearly, including 1000. The instruction (arrange, largest to smallest) is unambiguous despite the presence of the boundary value. The format matches Grade 2 word-problem structure."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers spanning the full Grade 2 domain (637, 993, 1000) are correctly ordered as 1000 > 993 > 637. Hints confirm this sequence, explicitly identifying 1000 as largest. This item notably includes 1000 in a contextual ordering task, verifying competency boundary application."
+          }
+        }
+      },
+      {
+        "sample_id": "410c9cc6f1a1284119e1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from largest to smallest with three single-digit values (2, 3, 1) is unambiguous. The three numbers are distinct. The sort direction is explicit. No alternative interpretation exists; students clearly understand the task intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task uses single-digit numbers, forming a foundational scaffolding level within the competency range. The three distinct values 1, 2, 3 create a logically sound ordering exercise. No contradiction or inconsistency arises from the bare mathematical presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from largest to smallest uses vocabulary familiar to Grade 2 from earliest experiences. Three single-digit numbers are presented in a simple list. The cognitive demand is minimal at the numeric level, focusing on fundamental ordering concepts."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three consecutive single digits are correctly ordered as 3 > 2 > 1. Hints confirm this descending sequence. This item notably uses the smallest magnitude values in the entire sample set, providing foundational scaffolding within the broader Grade 2 competency range."
+          }
+        }
+      },
+      {
+        "sample_id": "69a3dd8c2ebe0049a599",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest using three single-digit values (2, 3, 1) is unambiguous. The numbers are distinct and presented in random order. The sort direction is explicit and unambiguous. Students understand the task clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task uses single-digit numbers, providing foundational-level practice within the Grade 2 competency. The three values form a simple, logically coherent comparison exercise. No contradiction or contextual confusion arises from the straightforward mathematical presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from smallest to largest uses vocabulary from Grade 2 foundational instruction. Three single-digit numbers appear in a clear list. The wording and format are accessible to learners at early numeric competency stages, providing appropriate scaffolding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three consecutive single digits are correctly ordered as 1 < 2 < 3. Hints confirm this ascending sequence. This item mirrors the earlier single-digit sample but reverses the sort direction, ensuring learners practice both ascending and descending ordering at the foundational level."
+          }
+        }
+      },
+      {
+        "sample_id": "2e22cef864b61656ef07",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest with three values (782, 65, 781) is unambiguous. Three distinct numbers with different magnitudes are presented in random order. The sort direction is explicit. No alternative interpretation of the task exists."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task with varied magnitude numbers (65 vs. 781-782) forms a logically sound ordering exercise. The inclusion of both two-digit and three-digit numbers tests magnitude discrimination across different numeric scales. No logical contradiction arises."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction uses simple language. Three numbers of different digit lengths (65 is two-digit; 781 and 782 are three-digit) appear in list form. The instruction (arrange, smallest to largest) is unambiguous despite the varied magnitudes, and the task remains Grade 2 accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three numbers spanning different numeric scales (65, 781, 782) are correctly ordered as 65 < 781 < 782. Hints confirm this sequence. This item notably tests comparison across distinct magnitude scales (two-digit vs. three-digit), a nuanced discrimination skill within the broader competency."
+          }
+        }
+      },
+      {
+        "sample_id": "5c315c6f1bbd88a4e536",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from largest to smallest using three values (569, 792, 796) is unambiguous. Three distinct three-digit numbers are presented in random order. The sort direction is explicit and clearly stated. No ambiguity in task interpretation arises."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical ordering task with three numbers in the 500-800 range forms a valid, well-posed comparison exercise. The response indicates experience set to mastery_drill, suggesting this item targets confident, independent performance. No logical contradiction arises from the presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from largest to smallest uses unambiguous Grade 2 vocabulary. Three numbers appear in clear list form. The magnitude range (569-796) is appropriate for Grade 2 and does not require extraneous skills beyond numerical comparison."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Three distinct three-digit numbers are correctly ordered as 796 > 792 > 569. Hints confirm this descending sequence. The mastery_drill framing indicates this item is designed for learners who have secured foundational ordering skills and are ready for independent, extended practice."
+          }
+        }
+      },
+      {
+        "sample_id": "60ba4f7b9650334799a5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Arrange these numbers from smallest to largest with four values (518, 525, 514, 517) is unambiguous. Four distinct three-digit numbers in a narrow range are presented in random order. The sort direction is explicit. Students understand the task clearly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This abstract mathematical task with four numbers in a tight range (514-525) forms a valid, precision-focused ordering exercise. The response indicates scaffolded experience, suggesting instructional support during performance. No logical contradiction arises from the mathematical presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction Arrange these numbers from smallest to largest uses simple, direct vocabulary. Four numbers in the 510-520s are listed clearly. The close magnitude values require careful discrimination, but the instruction itself remains unambiguous and accessible to Grade 2 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Four numbers in a narrow range are correctly ordered as 514 < 517 < 518 < 525. Hints confirm this ascending sequence. The scaffolded framing indicates this item provides instructional support (hints or other aids) to help learners successfully order numbers with smaller magnitude differences, building precise comparison skills."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "order_numbers",
+        "clause": "Order numbers",
+        "verdict": "PASS",
+        "reasoning": "All 25 rendered samples directly require students to order a set of given numbers. Every item uses the verb arrange or the action of reordering numbers, consistently fulfilling this core requirement across diverse contexts, magnitudes, and list lengths. No sample omits or sidesteps the ordering operation.",
+        "sample_ids": [
+          "aa0c52233d1cc4ecbfdd",
+          "0f907323862ad2ba45df",
+          "75d9b51b7414facef9f0",
+          "a6f7649cfbb4b0c94938",
+          "5f80327970ee41fe7867",
+          "ffeb3a5194d2acd5e3fe",
+          "25dd82623e3c46f08d78",
+          "0098f0d3cba93bd0bb55",
+          "6aa98fd71faae20c878b",
+          "de4c258403eb3ce67716",
+          "9458d0e6bdfff4da0c9d",
+          "011fef1d9f07a4cfbf1c",
+          "96000c9a9f863c831696",
+          "d3b3b186f74d250080f5",
+          "bfcb210da121320629f0",
+          "78738b7197c9b7ce087e",
+          "b417de5f97411c49da60",
+          "692334bbb44054d9263d",
+          "3e859544fcba2dcca7f0",
+          "9c39e6674329832975cb",
+          "410c9cc6f1a1284119e1",
+          "69a3dd8c2ebe0049a599",
+          "2e22cef864b61656ef07",
+          "5c315c6f1bbd88a4e536",
+          "60ba4f7b9650334799a5"
+        ]
+      },
+      {
+        "requirement_id": "up_to_1000",
+        "clause": "up to 1000",
+        "verdict": "PASS",
+        "reasoning": "The sample set demonstrates comprehensive coverage of the 1000 upper boundary. Seeds 501, 502, and 801 explicitly include 1000 itself within ordering tasks. Samples at seeds 500, 502, 600 approach or reach the 700-1000 range. Seeds 900 and 901 use single digits (1-3) at the lower boundary. All 25 samples present numbers within the zero-to-1000 range specified by the competency, with no violation of the upper bound.",
+        "sample_ids": [
+          "ffeb3a5194d2acd5e3fe",
+          "25dd82623e3c46f08d78",
+          "0098f0d3cba93bd0bb55",
+          "9c39e6674329832975cb",
+          "410c9cc6f1a1284119e1",
+          "69a3dd8c2ebe0049a599"
+        ]
+      },
+      {
+        "requirement_id": "smallest_to_largest",
+        "clause": "smallest to largest",
+        "verdict": "PASS",
+        "reasoning": "Twelve of the 25 samples explicitly require ascending (smallest-to-largest) ordering: seeds 44, 45, 46, 502, 602, 700, 701, 702, 800, 1000, 1002. Each of these uses wording such as smallest to largest or least to greatest. The hints confirm ascending orderings. All ascending samples show correct mathematical progression from minimum to maximum value.",
+        "sample_ids": [
+          "75d9b51b7414facef9f0",
+          "a6f7649cfbb4b0c94938",
+          "5f80327970ee41fe7867",
+          "0098f0d3cba93bd0bb55",
+          "9458d0e6bdfff4da0c9d",
+          "78738b7197c9b7ce087e",
+          "b417de5f97411c49da60",
+          "692334bbb44054d9263d",
+          "3e859544fcba2dcca7f0",
+          "69a3dd8c2ebe0049a599",
+          "2e22cef864b61656ef07",
+          "60ba4f7b9650334799a5"
+        ]
+      },
+      {
+        "requirement_id": "largest_to_smallest",
+        "clause": "vice versa",
+        "verdict": "PASS",
+        "reasoning": "Ten of the 25 samples require descending (largest-to-smallest) ordering: seeds 42, 43, 501, 600, 603, 604, 605, 606, 801, 901. The phrase vice versa refers to the opposite direction from smallest-to-largest. Each descending sample uses wording such as largest to smallest or greatest to least. All descending samples show correct mathematical progression from maximum to minimum value, fulfilling the vice versa clause.",
+        "sample_ids": [
+          "aa0c52233d1cc4ecbfdd",
+          "0f907323862ad2ba45df",
+          "25dd82623e3c46f08d78",
+          "6aa98fd71faae20c878b",
+          "011fef1d9f07a4cfbf1c",
+          "96000c9a9f863c831696",
+          "d3b3b186f74d250080f5",
+          "bfcb210da121320629f0",
+          "9c39e6674329832975cb",
+          "410c9cc6f1a1284119e1"
+        ]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

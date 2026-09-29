@@ -1,0 +1,344 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pc4-mat_g2_na_q2_4-20260925
+
+Write one JSON object to:
+  local_only/scratch/phaseC/mat_g2_na_q2_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_4-20260925",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q2_4
+PACKET DIGEST: 93e280b2766f7a24d4f9aeefeff73a241d5ec1fd80e858e4c6fbdb0ba6160173
+COMPETENCY (Grade 2, Quarter 2, None):
+Subtract numbers where both numbers are less than 100 with regrouping: 2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  subtract_numbers: Subtract numbers
+  less_than_100: both numbers are less than 100
+  with_regrouping: with regrouping
+  2_digit_minus_1_digit: 2-digit minus 1-digit numbers
+  2_digit_minus_2_digit: 2-digit minus 2-digit numbers
+
+SAMPLES (every one of these is real rendered output):
+  sample 2c3c4967d35f3a925870  seed 42  [cloze]
+      stem:    30 − 3 = ___
+      answer:  27
+      options: 27 / 33 / 28 / 26
+      hints:   ["We are subtracting 3 from 30.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 2 − 0 = 2. (after borrowing)", "The difference of 30 − 3 = 27."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d96467dd22ce852989f3  seed 43  [error_detect]
+      stem:    Grace solved: "20 − 1 = ___". Grace says the missing number is 18. Is Grace correct?
+      answer:  {'has_error': True, 'correct_value': 19}
+      hints:   ["We are subtracting 1 from 20.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 1 − 0 = 1. (after borrowing)", "The difference of 20 − 1 = 19."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 749c1c6247db8851399b  seed 44  [read_fill_in_blank]
+      stem:    The total is 60 and one part is 51. What is the other part?
+      answer:  9
+      hints:   ["We are subtracting 51 from 60.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 5 − 5 = 0. (after borrowing)", "The difference of 60 − 51 = 9."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["60", "51"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 867e60b770c3846f16b9  seed 45  [mcq]
+      stem:    What is 60 − 2?
+      answer:  58
+      options: 59 / 57 / 62 / 58
+      hints:   ["We are subtracting 2 from 60.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 5 − 0 = 5. (after borrowing)", "The difference of 60 − 2 = 58."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d3f58d9f490bf3f27e0d  seed 46  [mcq]
+      stem:    What is 20 − 15?
+      answer:  5
+      options: 4 / 6 / 35 / 5
+      hints:   ["We are subtracting 15 from 20.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 15 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d43c20b450a221f69738  seed 48  [read_mcq]
+      stem:    (Large group of 90 paints) — There are 90 paints.
+Taking away 36 paints.
+How many paints are left?
+      answer:  54
+      options: 53 / 36 / 54 / 90
+      hints:   ["We are subtracting 36 from 90.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 8 − 3 = 5. (after borrowing)", "The difference of 90 − 36 = 54."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 66, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🎨", "🎨", "1x 🎨"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d8efca3e3865bde07237  seed 50  [true_false]
+      stem:    90 − 18 = 71. True or False?
+      answer:  False
+      hints:   ["We are subtracting 18 from 90.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 8 − 1 = 7. (after borrowing)", "The difference of 90 − 18 = 72."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 52665e25348005ab5107  seed 500  [read_fill_in_blank]
+      stem:    The total is 92 and one part is 55. What is the other part?
+      answer:  37
+      hints:   ["We are subtracting 55 from 92.", "The ones digit 2 is less than 5, so we need to borrow. Borrow 1 ten: 12 − 5 = 7.", "Subtract the tens: 8 − 5 = 3. (after borrowing)", "The difference of 92 − 55 = 37."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["92", "55"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 34ace2430f7dd9b2f14f  seed 501  [read_mcq]
+      stem:    The dot is at 80 and it moves backward 78 numbers. Starting from 80, just count back 78 numbers. Which number will the dot land on?
+      answer:  2
+      options: 2 / 3 / 1 / 158
+      hints:   ["We are subtracting 78 from 80.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 7 − 7 = 0. (after borrowing)", "The difference of 80 − 78 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b116430d7d479d5c8921  seed 502  [read_mcq]
+      stem:    (Large group of 93 paints) — There are 93 paints.
+Taking away 65 paints.
+How many paints are left?
+      answer:  28
+      options: 158 / 28 / 65 / 29
+      hints:   ["We are subtracting 65 from 93.", "The ones digit 3 is less than 5, so we need to borrow. Borrow 1 ten: 13 − 5 = 8.", "Subtract the tens: 8 − 6 = 2. (after borrowing)", "The difference of 93 − 65 = 28."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 77, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🎨", "🎨", "1x 🎨"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1e2f1d73c340a25425c5  seed 600  [error_detect]
+      stem:    Noel solved: "50 − 45 = ___". Noel says the missing number is 5. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 5}
+      hints:   ["We are subtracting 45 from 50.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 4 − 4 = 0. (after borrowing)", "The difference of 50 − 45 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f2d880223ee2901a08e3  seed 601  [true_false]
+      stem:    There are 30 baskets on the table. Moses takes away 28 baskets. How many baskets are left on the table? The answer is 2. True or False?
+      answer:  True
+      hints:   ["We are subtracting 28 from 30.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 2 − 2 = 0. (after borrowing)", "The difference of 30 − 28 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 9c60b4be68d1cb115d21  seed 602  [read_mcq]
+      stem:    (Large group of 60 cupcakes) — There are 60 cupcakes.
+Taking away 46 cupcakes.
+How many cupcakes are left?
+      answer:  14
+      options: 106 / 15 / 14 / 13
+      hints:   ["We are subtracting 46 from 60.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 5 − 4 = 1. (after borrowing)", "The difference of 60 − 46 = 14."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 57, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🛍️", "10x 🧁", "1x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 38777f93e0bf34420158  seed 603  [read_fill_in_blank]
+      stem:    The total is 30 and one part is 21. What is the other part?
+      answer:  9
+      hints:   ["We are subtracting 21 from 30.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 2 − 2 = 0. (after borrowing)", "The difference of 30 − 21 = 9."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["30", "21"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8ffe2a227b2b7db99930  seed 604  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 20 items.
+Taking away 12 items.
+How many items are left?
+      answer:  8
+      options: 8 / 7 / 32 / 20
+      hints:   ["We are subtracting 12 from 20.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 12 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ed7d3317204b82a67e8e  seed 605  [read_fill_in_blank]
+      stem:    The total is 30 and one part is 23. What is the other part?
+      answer:  7
+      hints:   ["We are subtracting 23 from 30.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 2 − 2 = 0. (after borrowing)", "The difference of 30 − 23 = 7."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["30", "23"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4622f707067c04e3cc61  seed 606  [error_detect]
+      stem:    Manny solved: "20 − 6 = ___". Manny says the missing number is 14. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 14}
+      hints:   ["We are subtracting 6 from 20.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 1 − 0 = 1. (after borrowing)", "The difference of 20 − 6 = 14."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample ecbe11b5e0faca98279f  seed 607  [true_false]
+      stem:    20 − 18 = 2. True or False?
+      answer:  True
+      hints:   ["We are subtracting 18 from 20.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 18 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c9ac95e89f56173af74d  seed 608  [read_mcq]
+      stem:    The dot is at 30 and it moves backward 8 numbers. Starting from 30, just count back 8 numbers. Which number will the dot land on?
+      answer:  22
+      options: 21 / 23 / 22 / 38
+      hints:   ["We are subtracting 8 from 30.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 2 − 0 = 2. (after borrowing)", "The difference of 30 − 8 = 22."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d7b0879e36bdd264664e  seed 609  [cloze]
+      stem:    90 − 44 = ___
+      answer:  46
+      options: 134 / 45 / 47 / 46
+      hints:   ["We are subtracting 44 from 90.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 8 − 4 = 4. (after borrowing)", "The difference of 90 − 44 = 46."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7458f75d2f0f4b7eab7f  seed 610  [mcq]
+      stem:    What minus 15 equals 65?
+      answer:  80
+      options: 65 / 80 / 64 / 95
+      hints:   ["We are subtracting 15 from 80.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 7 − 1 = 6. (after borrowing)", "The difference of 80 − 15 = 65."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b77af87ad66eab8a1c4f  seed 700  [read_mcq]
+      stem:    (Large group of 30 items) — There are 30 items.
+Taking away 21 items.
+How many items are left?
+      answer:  9
+      options: 8 / 51 / 30 / 9
+      hints:   ["We are subtracting 21 from 30.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 2 − 2 = 0. (after borrowing)", "The difference of 30 − 21 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🛍️", "10x 🏐", "1x 🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fc2188455265a15621ee  seed 701  [mcq]
+      stem:    💃 Sir Rez has a math challenge about dance shoes. What is 60 − 4?
+      answer:  56
+      options: 56 / 64 / 57 / 55
+      hints:   ["We are subtracting 4 from 60.", "The ones digit 0 is less than 4, so we need to borrow. Borrow 1 ten: 10 − 4 = 6.", "Subtract the tens: 5 − 0 = 5. (after borrowing)", "The difference of 60 − 4 = 56."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 55fa21adfa60ca367de7  seed 702  [read_mcq]
+      stem:    🏀 Isko has a math challenge about basketballs. (Large group of 30 items) — There are 30 items.
+Taking away 2 items.
+How many items are left?
+      answer:  28
+      options: 28 / 29 / 2 / 30
+      hints:   ["We are subtracting 2 from 30.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 2 − 0 = 2. (after borrowing)", "The difference of 30 − 2 = 28."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 37, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🏀", "🏀", "1x 🏀"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ab02a4cca044e732034a  seed 800  [read_fill_in_blank]
+      stem:    The total is 91 and one part is 75. What is the other part?
+      answer:  16
+      hints:   ["We are subtracting 75 from 91.", "The ones digit 1 is less than 5, so we need to borrow. Borrow 1 ten: 11 − 5 = 6.", "Subtract the tens: 8 − 7 = 1. (after borrowing)", "The difference of 91 − 75 = 16."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["91", "75"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ebdcfa2801df016ed023  seed 900  [error_detect]
+      stem:    Noel solved: "31 − 14 = ___". Noel says the missing number is 18. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 17}
+      hints:   ["We are subtracting 14 from 31.", "The ones digit 1 is less than 4, so we need to borrow. Borrow 1 ten: 11 − 4 = 7.", "Subtract the tens: 2 − 1 = 1. (after borrowing)", "The difference of 31 − 14 = 17."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 700245b106de5c62ad33  seed 901  [read_mcq]
+      stem:    The dot is at 24 and it moves backward 15 numbers. Starting from 24, just count back 15 numbers. Which number will the dot land on?
+      answer:  9
+      options: 39 / 9 / 8 / 10
+      hints:   ["We are subtracting 15 from 24.", "The ones digit 4 is less than 5, so we need to borrow. Borrow 1 ten: 14 − 5 = 9.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 24 − 15 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 276369ff5fd8f7727669  seed 1000  [read_mcq]
+      stem:    The dot is at 70 and it moves backward 1 number. Starting from 70, just count back 1 number. Which number will the dot land on?
+      answer:  69
+      options: 71 / 69 / 70 / 68
+      hints:   ["We are subtracting 1 from 70.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 6 − 0 = 6. (after borrowing)", "The difference of 70 − 1 = 69."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f53bf28f182347d232e0  seed 1001  [true_false]
+      stem:    20 − 11 = 9. True or False?
+      answer:  True
+      hints:   ["We are subtracting 11 from 20.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 11 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "mastery_drill"}
+  sample a81de7c546c6486eeef8  seed 1002  [read_mcq]
+      stem:    (Large group of 90 cupcakes) — There are 90 cupcakes.
+Taking away 26 cupcakes.
+How many cupcakes are left?
+      answer:  64
+      options: 26 / 64 / 116 / 65
+      hints:   ["We are subtracting 26 from 90.", "The ones digit 0 is less than 6, so we need to borrow. Borrow 1 ten: 10 − 6 = 4.", "Subtract the tens: 8 − 2 = 6. (after borrowing)", "The difference of 90 − 26 = 64."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 65, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁", "🧁", "1x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

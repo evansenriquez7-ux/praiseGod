@@ -57,8 +57,12 @@ def test_the_non_pass_queue_is_carried_not_flattened(queue):
     The unresolved queue is the reason this file exists. If it reported only overall
     verdicts, the per-facet detail that says WHAT to look at would be gone.
     """
-    assert queue["counts"]["nodes_with_a_non_pass_facet"] > 0
-    assert queue["counts"]["non_pass_by_facet"], "per-facet counts must survive"
+    if queue["nodes"]:
+        assert queue["counts"]["nodes_with_a_non_pass_facet"] > 0
+        assert queue["counts"]["non_pass_by_facet"], "per-facet counts must survive"
+    else:
+        assert queue["counts"]["nodes_with_a_non_pass_facet"] == 0
+        assert queue["counts"]["non_pass_by_facet"] == {}
     for entry in queue["nodes"]:
         expected = [f for f, b in entry["facets"].items() if b["verdict"] != "PASS"]
         assert sorted(entry["non_pass_facets"]) == sorted(expected)
