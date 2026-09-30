@@ -34,10 +34,10 @@
       "clause": "vertical"
     }
   ],
-  "packet_digest": "e08c010f1720312c072530bd0f2098d4dabcef59c5472069eeaab447c9a40c31",
+  "packet_digest": "bbc9188a303545ff8b7a4d81a5b58afe6c5ece570d27413c5ec1c87c144b4a70",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -105,7 +105,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -134,85 +134,72 @@
       ],
       "resolved_answer": 25,
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
-        "Find the bar for 'bananas' and read across to the scale.",
+        "Look at the table carefully.",
+        "Find the row for 'bananas' and read its value.",
         "Answer: 25"
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "apples",
-          "bananas",
-          "mangoes",
-          "grapes"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          60,
-          25,
-          20,
-          20
+        "rows": [
+          [
+            "apples",
+            60
+          ],
+          [
+            "bananas",
+            25
+          ],
+          [
+            "mangoes",
+            20
+          ],
+          [
+            "grapes",
+            20
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "apples",
-          "bananas",
-          "mangoes",
-          "grapes"
-        ],
-        "max_y": 65,
-        "is_read_mode": true,
-        "ask_category": "bananas",
-        "ask_series": null
+        "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "79b6711b0c94cddf22d2e21268afa39f6d2edbba354decaabfe417dcd2259a05",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "6c0b315d8fff62fbc0de95b280b946f4d72cfbea49312fc8ae263ba2a8de45b5",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 62,
+          "visual_type": "FillInTable",
+          "element_count": 25,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 5,
+          "table_cell_count": 10,
           "button_count": 0,
-          "input_count": 1,
+          "input_count": 0,
           "text_labels": [
-            "Read the value for \"bananas\" from the graph and enter it below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
+            "Category",
+            "Value",
             "apples",
+            "60",
             "bananas",
+            "25",
             "mangoes",
+            "20",
             "grapes",
-            "Your answer:",
-            "bananas:"
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "eace5b3a23a84a85abf4",
-      "replay_digest": "aa144de861dec9974da38fe25e31304169858e1032fe3a29f08b841709afb0e9"
+      "replay_digest": "80e7a788090cf985079ae5618844880980d94d5c5e45a599dd4b8c76c06378db"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -865,7 +852,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -894,100 +881,83 @@
       ],
       "resolved_answer": 325,
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
+        "Look at the table carefully.",
         "Read each bar's value, then add them all together."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "roses",
-          "sunflowers",
-          "tulips",
-          "daisies",
-          "lilies",
-          "orchids"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          40,
-          55,
-          55,
-          85,
-          60,
-          30
+        "rows": [
+          [
+            "roses",
+            40
+          ],
+          [
+            "sunflowers",
+            55
+          ],
+          [
+            "tulips",
+            55
+          ],
+          [
+            "daisies",
+            85
+          ],
+          [
+            "lilies",
+            60
+          ],
+          [
+            "orchids",
+            30
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "roses",
-          "sunflowers",
-          "tulips",
-          "daisies",
-          "lilies",
-          "orchids"
-        ],
-        "max_y": 90,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "9a6098baea914b13868991a812d0348538a2e90d9c298b5fd8f661d0df93a4ba",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "9aa6ed2e9ce7b6942fca480ad0594b45bb4fa12cd0622cdf6ed2ccb0c9a0a515",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 100,
+          "visual_type": "FillInTable",
+          "element_count": 33,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 7,
+          "table_cell_count": 14,
           "button_count": 0,
-          "input_count": 6,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
+            "Category",
+            "Value",
             "roses",
+            "40",
             "sunflowers",
+            "55",
             "tulips",
             "daisies",
+            "85",
             "lilies",
+            "60",
             "orchids",
-            "Your answers:",
-            "roses:",
-            "sunflowers:",
-            "tulips:",
-            "daisies:",
-            "lilies:",
-            "orchids:"
+            "30",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "bf965ffce1f5136258b5",
-      "replay_digest": "700e6f24b9de5628a3da09821b091ec01930823bf958572f01ebeb2edd0e033f"
+      "replay_digest": "66ecec176da49da524f2383bebf723eba85c9b88d73e155e13191754228a3acf"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -1007,7 +977,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -1036,100 +1006,84 @@
       ],
       "resolved_answer": 320,
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
+        "Look at the table carefully.",
         "Read each bar's value, then add them all together."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "Math",
-          "Science",
-          "English",
-          "Art",
-          "PE",
-          "Music"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          60,
-          30,
-          70,
-          10,
-          65,
-          85
+        "rows": [
+          [
+            "Math",
+            60
+          ],
+          [
+            "Science",
+            30
+          ],
+          [
+            "English",
+            70
+          ],
+          [
+            "Art",
+            10
+          ],
+          [
+            "PE",
+            65
+          ],
+          [
+            "Music",
+            85
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "Math",
-          "Science",
-          "English",
-          "Art",
-          "PE",
-          "Music"
-        ],
-        "max_y": 90,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "718fa3b236189dc6f1a837ff8bf180ce60137c1b47fe8c82636cedce63c0f231",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "8df1d1d55cbf06723cd9cfc662129f368cb37829f3a3cc17c48e436ee312fc53",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 100,
+          "visual_type": "FillInTable",
+          "element_count": 33,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 7,
+          "table_cell_count": 14,
           "button_count": 0,
-          "input_count": 6,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
+            "Category",
+            "Value",
             "Math",
+            "60",
             "Science",
+            "30",
             "English",
+            "70",
             "Art",
+            "10",
             "PE",
+            "65",
             "Music",
-            "Your answers:",
-            "Math:",
-            "Science:",
-            "English:",
-            "Art:",
-            "PE:",
-            "Music:"
+            "85",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "2d0302140071c721d9ee",
-      "replay_digest": "143a320f4e9f564db50f51d4556841dac0a8d44f6d2c5849b07c2d85a3d9805e"
+      "replay_digest": "cb2c392e8998a1ee6e652f3ac2cf56dc1c5b4092ba488dc3580e56522699f081"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -1877,7 +1831,7 @@
       "node_id": "mat_g3_dp_q3_2",
       "seed": 701,
       "formatter": "read_mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the table. What is the total value of all categories?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the table. What is the total value of all categories?",
       "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
@@ -1888,7 +1842,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -1917,92 +1871,77 @@
       ],
       "resolved_answer": 130,
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
+        "Look at the table carefully.",
         "Read each bar's value, then add them all together."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "January",
-          "February",
-          "March",
-          "April"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          10,
-          10,
-          65,
-          45
+        "rows": [
+          [
+            "January",
+            10
+          ],
+          [
+            "February",
+            10
+          ],
+          [
+            "March",
+            65
+          ],
+          [
+            "April",
+            45
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "January",
-          "February",
-          "March",
-          "April"
-        ],
-        "max_y": 70,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "181ed9c41de71c7ae779400efcb5bfed571608200df2fc2b7146ab7792241cc9",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "cb966f165183d7b71013c0d469588353aa06c217bf6ea113c9c5cb91ee059112",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 74,
+          "visual_type": "FillInTable",
+          "element_count": 25,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 5,
+          "table_cell_count": 10,
           "button_count": 0,
-          "input_count": 4,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
+            "Category",
+            "Value",
             "January",
+            "10",
             "February",
             "March",
+            "65",
             "April",
-            "Your answers:",
-            "January:",
-            "February:",
-            "March:",
-            "April:"
+            "45",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "2ce79e54d55645909aa9",
-      "replay_digest": "e4e8088a7b88465406d49f664108c9e06ef4e65f6f86920d2ab9cf5eb447218b"
+      "replay_digest": "85c6c832fa5837d2f0bcbe6407f489f483b4b78991943991b8f3dbd1403eeaaf"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "🏀 Marco has a math challenge about jerseys. Look at the vertical bar graph. Which is greater: bananas or mangoes?",
+      "question_text": "🏀 Marco enjoys jerseys. Here is a math challenge. Look at the vertical bar graph. Which is greater: bananas or mangoes?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
@@ -2123,7 +2062,7 @@
         }
       },
       "sample_id": "19ef89b3ad9c66e49937",
-      "replay_digest": "1cb339fbb1976c67c67f61b895be07d9c23bd39bc8b2e63a2b2b82ba61e47984"
+      "replay_digest": "6d60789c3ce1cbea065c0d9767c64c24472bf1a8f45b1115a1a20c63da266477"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -2142,7 +2081,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -2171,97 +2110,84 @@
       ],
       "resolved_answer": 5,
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
-        "Read the bar for 'apples' and the bar for 'grapes'.",
+        "Look at the table carefully.",
+        "Read the rows for 'apples' and 'grapes'.",
         "Subtract the smaller value from the larger value."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "apples",
-          "bananas",
-          "mangoes",
-          "grapes",
-          "oranges",
-          "strawberries"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          40,
-          40,
-          65,
-          45,
-          30,
-          60
+        "rows": [
+          [
+            "apples",
+            40
+          ],
+          [
+            "bananas",
+            40
+          ],
+          [
+            "mangoes",
+            65
+          ],
+          [
+            "grapes",
+            45
+          ],
+          [
+            "oranges",
+            30
+          ],
+          [
+            "strawberries",
+            60
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "apples",
-          "bananas",
-          "mangoes",
-          "grapes",
-          "oranges",
-          "strawberries"
-        ],
-        "max_y": 70,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "c5e3150d26b2583cbd3c6b8b6515eae1428d7f34b1ab4026e98cef0915a4a366",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "723bd9ae912711fc3311da1838bb7d26bb5e7d38489aeaf2fb9b66196f2ed5c6",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 92,
+          "visual_type": "FillInTable",
+          "element_count": 33,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 7,
+          "table_cell_count": 14,
           "button_count": 0,
-          "input_count": 6,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
+            "Category",
+            "Value",
             "apples",
+            "40",
             "bananas",
             "mangoes",
+            "65",
             "grapes",
+            "45",
             "oranges",
+            "30",
             "strawberries",
-            "Your answers:",
-            "apples:",
-            "bananas:",
-            "mangoes:",
-            "grapes:",
-            "oranges:",
-            "strawberries:"
+            "60",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "dd4040cb5082b72dfd3b",
-      "replay_digest": "7c1015c9dcef54ef6493b8591401c0105214087df6c257f14eba47e649d8b004"
+      "replay_digest": "79cba81276b21d486ac14a3ba4bccb57bc82264660a603ec5af66f77d6cd3d51"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -2398,7 +2324,7 @@
       "node_id": "mat_g3_dp_q3_2",
       "seed": 900,
       "formatter": "read_mcq",
-      "question_text": "Look at the table. Which is greater: tulips or sunflowers?",
+      "question_text": "Look at the table. Which is greater: roses or daisies?",
       "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
@@ -2412,7 +2338,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -2420,7 +2346,7 @@
       "options": [
         {
           "key": "A",
-          "value": "2023",
+          "value": "tulips",
           "is_correct": false
         },
         {
@@ -2430,7 +2356,7 @@
         },
         {
           "key": "C",
-          "value": "tulips",
+          "value": "daisies",
           "is_correct": true
         },
         {
@@ -2439,75 +2365,74 @@
           "is_correct": false
         }
       ],
-      "resolved_answer": "tulips",
+      "resolved_answer": "daisies",
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
-        "Read the bar for 'tulips' and the bar for 'sunflowers'.",
-        "Compare: which bar is taller (or longer)?"
+        "Look at the table carefully.",
+        "Read the rows for 'roses' and 'daisies'.",
+        "Compare the two values."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "roses",
-          "sunflowers",
-          "tulips"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          10,
-          10,
-          20
+        "rows": [
+          [
+            "roses",
+            10
+          ],
+          [
+            "sunflowers",
+            10
+          ],
+          [
+            "tulips",
+            20
+          ],
+          [
+            "daisies",
+            30
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "roses",
-          "sunflowers",
-          "tulips"
-        ],
-        "max_y": 25,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "26a3f0507ca6b0a54b5f48c4be24f58866dad8f79a18d98ca3ccb7ac71b98c9b",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "2350ee0eae0d4034eac9c20a2740b3f9fccc652a4730ce39efc80cd2bc011ba2",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 47,
+          "visual_type": "FillInTable",
+          "element_count": 25,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 5,
+          "table_cell_count": 10,
           "button_count": 0,
-          "input_count": 3,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
+            "Category",
+            "Value",
             "roses",
+            "10",
             "sunflowers",
             "tulips",
-            "Your answers:",
-            "roses:",
-            "sunflowers:",
-            "tulips:"
+            "20",
+            "daisies",
+            "30",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "67adbf3dc3c5deb6bd26",
-      "replay_digest": "3407078fb533672820185a60f39e60597a63becf3d96d9b92c28c6c11e0b5ed7"
+      "replay_digest": "4e4cb14c906f00520f2f6b12f68a16a11e655aff8ebcac36b7597431a21e1606"
     },
     {
       "node_id": "mat_g3_dp_q3_2",
@@ -2888,7 +2813,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "BarChart",
+        "visual_type": "FillInTable",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "scaffolded"
@@ -2917,78 +2842,72 @@
       ],
       "resolved_answer": "Grade 2",
       "hints": [
-        "Look at the bar graph carefully.",
-        "The scale on the horizontal (x-axis) goes up by 5.",
+        "Look at the table carefully.",
         "Look for the shortest bar."
       ],
-      "visual_type": "BarChart",
+      "visual_type": "FillInTable",
       "visual_payload": {
-        "categories": [
-          "Grade 1",
-          "Grade 2",
-          "Grade 3",
-          "Grade 4"
+        "columns": [
+          "Category",
+          "Value"
         ],
-        "values": [
-          20,
-          10,
-          15,
-          25
+        "rows": [
+          [
+            "Grade 1",
+            20
+          ],
+          [
+            "Grade 2",
+            10
+          ],
+          [
+            "Grade 3",
+            15
+          ],
+          [
+            "Grade 4",
+            25
+          ]
         ],
-        "scale": 5,
-        "orientation": "table",
-        "labels": [
-          "Grade 1",
-          "Grade 2",
-          "Grade 3",
-          "Grade 4"
-        ],
-        "max_y": 30,
         "is_read_mode": true
       },
       "visual_render": {
-        "visual_type": "BarChart",
-        "renderer_input_digest": "efcac60906ad0a60a1aa70c6a9b05d030a39c4ff5413c8732543cf2daa877a8f",
+        "visual_type": "FillInTable",
+        "renderer_input_digest": "6a2931cf9d88f680e513c1a4a3dc62116153d4e33630fd04f98455226c66807f",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "BarChart",
-          "element_count": 58,
+          "visual_type": "FillInTable",
+          "element_count": 25,
           "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
+          "table_row_count": 5,
+          "table_cell_count": 10,
           "button_count": 0,
-          "input_count": 4,
+          "input_count": 0,
           "text_labels": [
-            "Read each value from the graph and enter them below.",
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
+            "Category",
+            "Value",
             "Grade 1",
+            "20",
             "Grade 2",
+            "10",
             "Grade 3",
+            "15",
             "Grade 4",
-            "Your answers:",
-            "Grade 1:",
-            "Grade 2:",
-            "Grade 3:",
-            "Grade 4:"
+            "25",
+            "Fill in the missing values in the table"
           ],
           "distinct_colours": [
-            "hsl(var(--text-muted)",
             "hsl(var(--card-bg)",
             "hsl(var(--border-color)",
+            "hsl(var(--text)",
             "hsl(var(--primary)",
-            "hsl(var(--text)"
+            "hsl(var(--text-muted)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "fc97f412ca314abf3458",
-      "replay_digest": "d58cd9980e22772cd8c83f5d5c2330e6c98c8eb69321f2ddce21b91212547878"
+      "replay_digest": "be280ef59435dfd961b37910665b36a76ea7280dc03da83f9cbd5ef54554f848"
     }
   ],
   "sample_assessments": [
@@ -2996,530 +2915,530 @@
       "sample_id": "eace5b3a23a84a85abf4",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem directs students to examine a table but the rendered visual is a horizontal bar chart. This language-visual mismatch creates ambiguity about which representation form to use for interpreting the data. The hints resolve ambiguity by referencing bar graph methodology, yet the stem instruction remains contradictory and potentially confusing for Grade 3 learners unfamiliar with recognizing these representational equivalences."
+          "verdict": "PASS",
+          "reasoning": "The question names bananas, the table labels bananas with 25, and exactly one option is 25, so the requested lookup is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task is sound: locating the data value for bananas from a bar chart where the scale increments by 5 and the answer of 25 appears between marked gridlines. The logical sequence is clear: identify category, read corresponding bar height, and state the value. The option set includes plausible distractors near the correct value."
+          "reasoning": "The table-reading context is internally coherent: the named category is present and its displayed value agrees with the stated answer."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "While the hints clearly explain bar graph reading methodology, the stem introduces confusion by requesting table examination when a bar graph is displayed. For third-graders developing formal understanding of data representations, this inconsistency between instruction and visual may impede comprehension and introduce uncertainty about the appropriate strategy."
+          "verdict": "PASS",
+          "reasoning": "The short stem and progressive hints clearly direct a Grade 3 learner to the bananas row and its value without irrelevant wording."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical content is accurate: the bar for bananas reaches precisely to 25 on a horizontal scale marked in five-unit increments. The answer aligns with the correct bar height and the distractors represent reasonable measurement errors a student might make."
+          "reasoning": "The visible table entry for bananas is 25, and the answer 25 appears among the four choices exactly once."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "056e58363276285af7df",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously directs students to a vertical bar graph. The instruction to determine the total value of all categories is explicit and straightforward. Hints progressively guide toward reading each individual bar value and then combining them through addition, supporting complete understanding."
+          "reasoning": "The stem specifies a vertical graph and a total, while the four subject categories and one answer choice identify a single intended sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task requires reading four vertical bar values from categories labeled Math, Science, English, and Art, then summing them. The logical sequence is valid for assessing Grade 3 data interpretation and basic addition. The answer of 185 represents the mathematical sum of the four displayed bar heights."
+          "reasoning": "The scale instruction and total-of-categories task are logically compatible with a single vertical bar graph and its four named categories."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions are clear and aligned with the visual presentation. Students must read four distinct bars and perform multi-step addition, an appropriate challenge for Grade 3. The hint sequence scaffolds understanding by first directing attention to scale, then to individual values, then to the summation process."
+          "reasoning": "The hints explain reading the scale and then adding every category, giving a clear sequence for the stated total question."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Each bar height in the vertical graph corresponds to an integer value on the vertical axis scaled by five-unit intervals. The sum of all bar values equals 185, and distractors represent common arithmetic errors such as miscounting bars or misreading a single value."
+          "reasoning": "The packet states one total answer and includes it as an option; no contradiction appears between the requested operation and the graph description."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "a9fd73b9055adbae60b3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly directs students to examine a horizontal bar graph and identify the category with the longest bar. The question is unambiguous: which category shows the greatest value. The visual categories are distinct and the correct answer, dogs, is clearly the longest bar."
+          "reasoning": "The stem asks for the category with the most, and the named horizontal-graph categories provide a single intended longest-bar comparison."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative task is logically valid for Grade 3: visual comparison of bar lengths to identify maximum value among four animal categories. The task directly assesses the competency of data interpretation through comparison of values."
+          "reasoning": "The horizontal scale and longest-bar hint directly support finding the maximum category without introducing a different task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions are direct and age-appropriate. Students need only visually compare bar lengths to identify the longest bar representing dogs. The hint structure reinforces the comparison strategy: look carefully, identify the longest bar. No extraneous complexity interferes with the core mathematical task."
+          "reasoning": "The wording is concise and the hint to look for the longest bar makes the comparison procedure understandable to a young learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The horizontal bar for dogs is visually longer than bars for cats, fish, or birds. The correct answer aligns with accurate visual measurement of relative bar lengths."
+          "reasoning": "Dogs is presented as the answer and as one unique option; the described maximum-category operation is mathematically appropriate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "df5dec15310f702d237d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly asks for the difference between two named categories in a horizontal bar graph. The requirement is unambiguous: read two bars, compare their values, and compute the difference. The instructional language matches the mathematical operation required."
+          "reasoning": "January and April are both named in the graph description, and the requested absolute difference has one listed answer of 5."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task structure is logically sound for Grade 3 mathematics: identify two bar values on a horizontal scale incremented by five, then calculate their difference. The comparison between January and April values is a straightforward subtraction problem grounded in data interpretation."
+          "reasoning": "The hints correctly connect the horizontal scale to reading January and April and subtracting the smaller value from the larger."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem statement is clear: locate two specific categories, read their values, and perform subtraction. Hints scaffold by directing attention to the scale, then to the two specific bars, then to the subtraction operation. Each guidance step supports learner comprehension."
+          "reasoning": "The item explicitly identifies both bars and states the subtraction direction, so the multi-step difference task is clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The January bar reads 10 and the April bar reads 15 on the horizontal scale. The difference of 5 is mathematically correct. Distractors represent plausible calculation errors."
+          "reasoning": "The answer 5 is an available option and matches the stated absolute-difference operation with no visible arithmetic contradiction."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "7c3e1f544315b7af1b2d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly directs to a vertical bar graph and asks for the difference between two fruit categories. The instruction is specific and unambiguous regarding which two values to compare and what operation to perform."
+          "reasoning": "Bananas and mangoes are distinct named bars, and the question asks for their absolute difference with one intended numeric choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative subtraction task is logically valid for assessing Grade 3 mastery of data interpretation combined with arithmetic reasoning. Reading bananas and mangoes values, then computing their difference represents a complete competency demonstration."
+          "reasoning": "The vertical scale hint, named bars, and instruction to subtract the smaller value form a coherent comparison procedure."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the operation clearly: find the difference between two named categories. The hint sequence progressively guides identification of the correct bars and the appropriate calculation strategy without introducing ambiguity."
+          "reasoning": "The hints tell learners exactly which two categories to read and how to calculate the requested difference."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The vertical bars for bananas and mangoes read approximately 50 and 30 respectively on the vertical axis incremented by five. The difference of 20 is mathematically accurate."
+          "reasoning": "The printed answer 20 is offered among the options and is consistent with the stated difference task as rendered."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "5ff400e79d7e238593fd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously asks students to examine a horizontal bar graph and identify the category with the largest value. The question structure is direct with no conflicting instructions. The visual clearly shows six month categories with June displaying the longest bar."
+          "reasoning": "The six named months and the maximum-category wording establish one intended answer, June, among the four choices."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The maximum-value identification task is logically appropriate for Grade 3 data interpretation. Comparing six categories and selecting the one with the greatest value requires careful visual analysis without complex calculations."
+          "reasoning": "The horizontal scale and longest-bar instruction are logically suitable for selecting the month with the greatest value."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem statement is clear and the hint progression effectively scaffolds the solution strategy by first directing visual attention to the graph, then to the scale information, then to the comparative evaluation of bar lengths."
+          "reasoning": "The learner receives a direct maximum question and a simple visual strategy, with no conflicting direction or terminology."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The June bar extends to approximately 100 on the horizontal scale, visually dominating the other five bars. The correct answer aligns with accurate measurement of relative bar lengths across all categories."
+          "reasoning": "June is supplied as the answer and as one unique option; selecting a maximum from bar values is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "bf965ffce1f5136258b5",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The stem instructs students to examine a table, but the rendered visual displays a horizontal bar chart representing flower data. The language-visual contradiction creates significant ambiguity about which representation to use. The hints reference bar graph methodology contradicting the stem instruction about table examination."
+          "reasoning": "The table text omits the value for tulips while the stem asks for the total of all categories, so the displayed packet does not determine one total."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The mathematical task of summing six flower category values is logically sound for Grade 3 data interpretation combined with multi-step addition. However, the logical validity of the mathematical task is compromised by the representational mismatch between stem and visual."
+          "verdict": "CONCERN",
+          "reasoning": "A total can be requested from a table, but the rendered labels show a missing tulips value and therefore do not fully support the claimed total computation."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Although the mathematical task is clear when the bar graph is examined, the stem-visual mismatch confuses learners about which representation form to access. For Grade 3 students, this creates unnecessary cognitive load when the appropriate strategy is already complex due to multi-step addition requirements."
+          "reasoning": "The stem is simple, yet a learner cannot know what value to add for tulips from the supplied table text, making the task incomplete."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Each bar for roses, sunflowers, tulips, daisies, lilies, and orchids represents specific values on the horizontal scale. The sum of 325 accurately represents the total of all six bar heights."
+          "verdict": "FAIL",
+          "reasoning": "The answer 325 cannot be independently derived from the visible entries because tulips has no displayed value; the total is underdetermined."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "2d0302140071c721d9ee",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem directs students to examine a table but the visual displays a horizontal bar chart representing academic subjects. This language-visual misalignment directly contradicts student instructions and creates ambiguity about which representation form contains the needed information."
+          "verdict": "PASS",
+          "reasoning": "All six categories have visible values, so the request for their total has a single determinable result and one matching option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task of summing six subject category values is logically appropriate for Grade 3. The arithmetic operation required represents a legitimate assessment of data interpretation combined with addition."
+          "reasoning": "The table, named categories, and addition hint describe a coherent total-of-values task without missing information."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The stem-visual mismatch impedes clarity despite the underlying task being mathematically straightforward. Grade 3 learners expecting tabular data may struggle to apply bar graph reading strategies when explicitly directed to examine a table instead."
+          "reasoning": "The hint calls each entry a bar value even though the displayed object is a table, a small but potentially confusing mismatch in wording."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Each bar for Math, Science, English, Art, PE, and Music represents specific values on the horizontal scale. The total of 320 accurately represents the sum of all displayed bar heights."
+          "reasoning": "The six visible values sum to 320, matching the stated answer and exactly one option in the list."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "801de3c3ebd86e9f0b69",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies a horizontal bar graph and asks students to determine the total value of all categories. The instruction is unambiguous and the visual representation matches the stem description exactly."
+          "reasoning": "The four categories and total wording define one intended addition task, with 110 supplied as a unique answer choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task of summing four bar values from a horizontal graph is logically valid for Grade 3 data interpretation and addition practice. The mathematical structure directly assesses reading data from visual representation and performing arithmetic."
+          "reasoning": "The horizontal scale and instruction to read each bar before adding all values logically fit the graph-based total question."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions align clearly with the visual. Students must read four bars for January, February, March, and April, then sum their values. The hint sequence provides appropriate scaffolding for this multi-step process without introducing ambiguity."
+          "reasoning": "The hints provide a clear read-then-add sequence and name the horizontal scale relevant to the four bars."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The four bars read approximately 25, 15, 30, and 40 on the horizontal scale incremented by five. The sum of 110 is mathematically accurate."
+          "reasoning": "The answer 110 is presented as the intended total and as a unique option, with no conflicting arithmetic information visible."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "6dc6987309d15f97fef7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously directs students to identify the category with the shortest bar in a vertical bar graph. The question is direct with clear criteria for the correct answer. The visual presentation of four fruit categories eliminates any instructional ambiguity."
+          "reasoning": "The four category names and least-category wording specify a single shortest-bar comparison, with apples identified as the answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The minimum-value identification task is logically appropriate for Grade 3. Identifying the shortest bar among four categories requires visual comparison and represents a valid assessment of data interpretation skills."
+          "reasoning": "The vertical scale and shortest-bar hint directly support selecting the minimum category in the described graph."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem statement is clear: find the shortest bar. The hint progression effectively guides by first directing attention to the graph, then to scale information, then to the specific visual feature of bar height, and finally to the comparative evaluation."
+          "reasoning": "The question and hint use straightforward language and tell learners exactly what visual feature to locate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The apples bar is visibly shorter than bars for bananas, mangoes, and grapes in the vertical representation. The correct answer aligns with accurate visual measurement of relative bar heights."
+          "reasoning": "Apples is one of the options and is stated as the least category; finding a minimum from bar heights is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "6b7f51af7977cc2ce863",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly asks students to compare two flower categories in a horizontal bar graph and determine which is greater. The question structure is unambiguous with clear criteria for selecting the correct answer."
+          "reasoning": "Daisies and sunflowers are distinct named categories, and the greater-than comparison has one intended answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative task is logically valid for Grade 3 data interpretation. Students must identify two specific bars and compare their values to determine which represents a greater quantity."
+          "reasoning": "The horizontal scale, named bars, and comparison hint align with deciding which of the two values is greater."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the two categories to compare explicitly. The hint sequence scaffolds the comparison process by directing attention to scale, then to the specific bars, then to the visual comparison strategy of bar length evaluation."
+          "reasoning": "The learner is told both categories to inspect and is given a visual comparison strategy in simple language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sunflowers bar extends longer than the daisies bar on the horizontal scale. The correct answer accurately reflects the comparison of bar lengths."
+          "reasoning": "Sunflowers is the stated answer and one unique option, and comparing two bar values is mathematically appropriate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "56f5c52ee9c469853f76",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly directs students to a vertical bar graph and asks which category has the most. The question is unambiguous and the visual clearly displays four flower categories with daisies showing the tallest bar."
+          "reasoning": "The vertical graph names four categories and asks for the unique maximum, with daisies supplied as one option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The maximum-value identification task is logically appropriate for Grade 3. Comparing four bars and identifying the tallest represents a straightforward assessment of visual data interpretation."
+          "reasoning": "The scale-by-ten instruction and tallest-bar hint are logically appropriate for identifying the maximum category."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem statement is clear and direct. The hint sequence appropriately guides students through visual location, scale identification, and bar comparison without introducing unnecessary complexity."
+          "reasoning": "The concise stem and tallest-bar direction make the visual comparison straightforward for the intended learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The daisies bar reaches approximately 75 on the vertical axis scaled by ten-unit increments, clearly exceeding the heights of roses, sunflowers, and tulips bars."
+          "reasoning": "Daisies is stated as the answer and appears once among the options; the maximum-category operation is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "bee443af049a976da67b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly asks students to compare two grade-level categories in a vertical bar graph. The comparative question is direct and unambiguous with clear specification of the two values to evaluate."
+          "reasoning": "Grade 4 and Grade 2 are explicitly named, so the pairwise greater-than comparison has a clear target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparison task is logically valid for Grade 3 data interpretation. Reading two bar values and determining their relative magnitude represents a fundamental data analysis skill appropriate for third graders."
+          "reasoning": "The vertical scale and instruction to compare the two named bars coherently address which grade has the larger value."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the exact values to compare. The hint progression scaffolds by first directing visual attention, then identifying the scale increment of twenty units, then locating the specific bars, then performing the comparison."
+          "reasoning": "The wording identifies both bars and explains the comparison in accessible terms, with no irrelevant thematic interference."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 bar reaches higher on the vertical axis than the Grade 4 bar. The correct answer accurately reflects the comparison of bar heights on the twenty-unit-increment scale."
+          "reasoning": "Grade 2 is stated as the answer and is one unique choice; the described comparison is mathematically well-formed."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "c04e98ae547d6ea7db92",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly asks students to compare March and January values from a vertical bar graph. The instruction unambiguously specifies which two month categories to evaluate and what comparison to perform."
+          "reasoning": "March and January are distinct graph categories, and the question asks one direct greater-than comparison."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative task is logically appropriate for Grade 3. Identifying which of two month values is greater represents a valid assessment of data interpretation combined with comparative reasoning."
+          "reasoning": "The vertical scale, named bars, and taller-bar hint all support the stated comparison without a contradictory operation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the categories and operation clearly. The hint progression effectively supports understanding by directing attention to the graph, scale information, specific bar identification, and finally the comparison strategy."
+          "reasoning": "The item tells learners which two months to read and how to compare their heights, using clear Grade 3 wording."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The March bar reaches higher than the January bar on the vertical axis scaled by five-unit increments. The correct answer accurately reflects the comparison of bar heights."
+          "reasoning": "March is the supplied answer and appears once among the options, consistent with selecting the larger displayed bar."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "2ce79e54d55645909aa9",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The stem mentions a character named Sir Rez with a math challenge about dance shoes and directs students to examine a table. However, the visual displays a horizontal bar chart showing month data without any reference to dance shoes or shoe-related categories. This disconnect between the thematic framing and the actual data creates substantial ambiguity about the real context of the problem."
+          "reasoning": "The table text omits February's value while the stem asks for the total, leaving multiple possible totals despite a single listed answer."
         },
         "contextual_logical_validity": {
           "verdict": "CONCERN",
-          "reasoning": "While the mathematical task of summing four month values is logically sound, the contextual framing is invalid. The problem presents a narrative about dance shoes but displays month categories, severing the mathematical context from its supposed real-world application."
+          "reasoning": "The table-total context is sensible in principle, but the rendered table does not expose February's value needed for the requested sum."
         },
         "learner_facing_clarity": {
-          "verdict": "FAIL",
-          "reasoning": "The mismatch between the problem stem describing dance shoes and the visual showing months creates severe clarity issues. Students may struggle to understand whether the theme is relevant or whether they should ignore the thematic narrative entirely and focus only on reading month values."
+          "verdict": "CONCERN",
+          "reasoning": "The theme does not interfere, but a learner cannot complete the total because one category value is absent from the visible table labels."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The four month bars sum to 130 on the horizontal scale. The mathematics is accurate, though disconnected from the stated context."
+          "verdict": "FAIL",
+          "reasoning": "The stated 130 is not derivable from the visible entries because February is blank or omitted, making the total mathematically underdetermined."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "19ef89b3ad9c66e49937",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Despite the thematic framing about Marco and jerseys, the actual mathematical instruction is clear: compare two fruit categories in a vertical bar graph. The explicit direction to identify which of bananas or mangoes is greater is unambiguous."
+          "reasoning": "Bananas and mangoes are clearly named in the vertical graph, and the greater-than question has one intended category answer."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The theme mentions jerseys but the data references fruit categories. While the mathematics remains logically sound, the narrative context disconnects from the actual problem structure, potentially confusing learners about whether the theme provides relevant information."
+          "verdict": "PASS",
+          "reasoning": "The scale and comparison hints correctly direct attention to the two named bars and their relative heights."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The thematic wrapper about jerseys creates unnecessary cognitive load since it provides no meaningful connection to the fruit data comparison task. Grade 3 students may wonder whether the theme should influence their solution strategy when it actually has no mathematical relevance."
+          "verdict": "PASS",
+          "reasoning": "The themed introduction is brief and does not alter the mathematics; the actual graph question and comparison steps remain clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The bananas bar reaches higher than the mangoes bar on the vertical axis. The correct answer accurately reflects the comparison of bar heights on the five-unit-increment scale."
+          "reasoning": "Bananas is the stated answer and one option, and selecting the greater of two graph values is a valid mathematical task."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "dd4040cb5082b72dfd3b",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem directs students to examine a table but the rendered visual displays a horizontal bar chart showing fruit data. This language-visual contradiction creates significant ambiguity about which representation form contains the data. Students following the table instruction would look for tabular organization while the visual requires bar graph reading."
+          "verdict": "PASS",
+          "reasoning": "Apples and grapes are both named in the table and the absolute-difference request has one intended numeric answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task of finding the difference between apples and grapes values is logically valid for Grade 3. The subtraction operation applied to two bar values represents a sound assessment of data interpretation with arithmetic."
+          "reasoning": "The hints correctly identify the two rows and instruct subtraction of the smaller value from the larger."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem-visual mismatch compromises clarity despite the underlying mathematical task being straightforward. Students expecting tabular data presentation may incorrectly apply table-reading strategies rather than bar graph interpretation."
+          "verdict": "PASS",
+          "reasoning": "The short stem and row-specific hints clearly describe how to obtain the requested difference."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The apples and grapes bars read 40 and 35 respectively on the horizontal scale incremented by five. The difference of 5 is mathematically accurate."
+          "reasoning": "The visible apples and grapes values are 40 and 45, whose difference is 5, matching the answer and an option."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "d9ecc6fee38fa759ed28",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies a vertical bar graph and asks students to compare two flower categories. The instruction unambiguously identifies which values to evaluate and what comparison to perform."
+          "reasoning": "Roses and daisies are distinct named bars, and the comparison asks for one greater category with a unique answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative task is logically appropriate for Grade 3. Identifying which of two flower values is greater represents a valid assessment of data interpretation skills combined with comparative reasoning."
+          "reasoning": "The vertical scale and taller-bar instruction are directly relevant to the greater-than comparison requested."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the categories clearly. The hint sequence effectively scaffolds by directing visual attention to the graph, then to scale information, then to specific bar identification, and finally to the comparison strategy."
+          "reasoning": "The item names both categories and provides a clear visual comparison method appropriate for Grade 3."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The daisies bar reaches higher than the roses bar on the vertical axis scaled by five-unit increments. The correct answer accurately reflects the comparison of bar heights."
+          "reasoning": "Daisies is the stated answer and a unique option, consistent with choosing the taller of the two described bars."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "67adbf3dc3c5deb6bd26",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem directs students to examine a table but the visual displays a horizontal bar chart showing flower data. This contradiction creates ambiguity about which representation type to use. The option set includes a nonsensical choice of 2023, further disrupting clarity about appropriate mathematical responses."
+          "verdict": "PASS",
+          "reasoning": "Roses and daisies have visible table values 10 and 30, so the greater-category question is fully determined."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "While the mathematical comparison task is sound, the inclusion of 2023 as a distractingly inappropriate option violates logical validity. The number lacks contextual meaning in a flower-value comparison problem and introduces confusion about whether all options represent actual data values."
+          "verdict": "PASS",
+          "reasoning": "The table rows named in the hints are present, and comparing their two values is the logical operation requested."
         },
         "learner_facing_clarity": {
-          "verdict": "FAIL",
-          "reasoning": "Multiple clarity issues compound here: the stem references a table while the visual is a bar chart, and the option set includes 2023 which has no mathematical connection to flower values, creating substantial confusion about the problem structure and valid responses."
+          "verdict": "PASS",
+          "reasoning": "The stem and row-specific hints plainly tell the learner to compare the two relevant table entries."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The tulips and sunflowers bar heights can be compared appropriately, yielding a valid difference. However, the inclusion of 2023 in the option set appears to be a data error rather than a legitimate distractors representing plausible student errors."
+          "verdict": "PASS",
+          "reasoning": "Daisies has 30 versus roses at 10 in the visible table, so the answer and comparison are mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "f5ef7148252188475a6a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly directs students to a horizontal bar graph and asks for the total value of all categories. The instruction is unambiguous and specifies the required operation without contradicting the visual representation."
+          "reasoning": "Three named categories and the total wording define one addition task, with 90 presented as the intended answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task of summing three animal category values is logically valid for Grade 3 data interpretation combined with addition. Reading bar values and performing summation represents an appropriate competency assessment."
+          "reasoning": "The horizontal scale and read-each-bar instruction logically support summing the three graph categories."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the required operation clearly: total all category values. The hint sequence appropriately scaffolds by directing visual attention, identifying scale information, and guiding toward the addition strategy."
+          "reasoning": "The hints identify the scale and the required read-then-add process without conflicting descriptions."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cats, dogs, and birds bars sum to 90 on the horizontal scale incremented by five. The mathematics is accurate and distractors represent plausible calculation errors."
+          "reasoning": "The answer 90 is included as a unique option and is consistent with the stated total-of-categories operation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "dc52751cb53e3b4f45e0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly asks students to read the value for a specific grade level from a horizontal bar graph. The instruction is unambiguous despite the different experience level of hint_gated suggesting modified hint presentation."
+          "reasoning": "The stem names Grade 4 and the graph includes a dedicated Grade 4 bar, with one direct numeric answer choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task of reading a single bar value from a horizontal graph is logically straightforward for Grade 3. Locating Grade 4 and reading its corresponding value represents a fundamental data interpretation skill."
+          "reasoning": "The horizontal scale and instruction to read across from Grade 4 appropriately describe the requested lookup."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions are direct and clear: find the specific grade level and read its value. The hint sequence provides direct guidance toward the correct reading strategy with explicit numerical answer support."
+          "reasoning": "The hint-gated wording repeats the target category and gives a clear direction for reading its value."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The Grade 4 bar reads 15 on the horizontal scale incremented by five. The correct answer aligns precisely with the bar height."
+          "reasoning": "The stated answer 15 is an available option and aligns with the graph-reading task as described."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "1e9f3edfc4ef33802022",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly asks students to compare fish and birds values from a vertical bar graph. The instruction is unambiguous with clear specification of which categories to evaluate despite the mastery_drill experience level."
+          "reasoning": "Fish and birds are distinct named categories, and the greater-than question specifies exactly the comparison to make."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparative task is logically appropriate for Grade 3. Comparing bird and fish values within a vertical bar representation requires visual analysis and provides valid competency assessment."
+          "reasoning": "The vertical scale and two-category comparison hint coherently support selecting the taller of fish and birds."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instructions specify the comparison task clearly. The hint progression effectively supports understanding by directing to the graph, identifying scale information, locating specific bars, and performing visual comparison."
+          "reasoning": "The stem and hints use direct language, while the mastery-drill presentation does not obscure the visual task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The birds bar reaches higher than the fish bar on the vertical axis scaled by five-unit increments. The correct answer accurately reflects the comparison of bar heights."
+          "reasoning": "Birds is the supplied answer and a unique option, consistent with the requested comparison of two bar values."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "sample_id": "fc97f412ca314abf3458",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The stem directs students to examine a table but the visual displays a horizontal bar chart showing grade level data. This language-visual contradiction creates significant ambiguity despite the scaffolded experience level. Students following table instructions would apply incorrect interpretation strategies."
+          "reasoning": "The question asks which table category is least, but the hint says to find a shortest bar even though the visual is a table."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The mathematical task of identifying the minimum value among four grade categories is logically sound for Grade 3 data interpretation. The comparative task represents a valid assessment of reading bar values and identifying the shortest representation."
+          "verdict": "CONCERN",
+          "reasoning": "The intended minimum-value operation is valid for a table, yet the hint misdescribes the shown representation as bars and can misdirect the learner."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The stem-visual mismatch creates clarity problems despite the scaffolded hint support. Students directed to find the shortest bar in a table representation face confusion when the visual is a bar chart, even with teacher support tools available."
+          "reasoning": "The stem identifies a table but the only strategy hint refers to a shortest bar, creating an avoidable representation conflict."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 bar is shortest among the four grade categories on the horizontal scale. The correct answer accurately reflects the minimum bar height."
+          "reasoning": "The visible values are 20, 10, 15, and 25, so Grade 2 is correctly the least category despite the hint wording defect."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     }
   ],
   "clause_evidence": [
@@ -3527,136 +3446,75 @@
       "requirement_id": "interpret_data",
       "clause": "Interpret data",
       "verdict": "PASS",
-      "reasoning": "Across virtually all twenty-one samples, students must interpret numerical values from bar graph representations and apply mathematical reasoning to those values. Whether reading single values, comparing multiple values, identifying extrema, calculating sums, or calculating differences, every sample requires learners to extract meaning from data visualization. The consistent presence of this requirement across diverse problem types confirms thorough coverage of data interpretation as a fundamental competency component.",
+      "reasoning": "Across the packet, learners read entries, compare categories, calculate differences, and find totals from displayed data representations.",
       "sample_ids": [
         "eace5b3a23a84a85abf4",
-        "056e58363276285af7df",
-        "a9fd73b9055adbae60b3",
         "df5dec15310f702d237d",
-        "7c3e1f544315b7af1b2d",
-        "5ff400e79d7e238593fd",
-        "bf965ffce1f5136258b5",
-        "2d0302140071c721d9ee",
-        "801de3c3ebd86e9f0b69",
-        "6dc6987309d15f97fef7",
-        "6b7f51af7977cc2ce863",
-        "56f5c52ee9c469853f76",
-        "bee443af049a976da67b",
-        "c04e98ae547d6ea7db92",
-        "2ce79e54d55645909aa9",
-        "19ef89b3ad9c66e49937",
-        "dd4040cb5082b72dfd3b",
-        "d9ecc6fee38fa759ed28",
-        "67adbf3dc3c5deb6bd26",
-        "f5ef7148252188475a6a",
-        "dc52751cb53e3b4f45e0",
-        "1e9f3edfc4ef33802022",
-        "fc97f412ca314abf3458"
+        "67adbf3dc3c5deb6bd26"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "requirement_id": "tables",
       "clause": "tables",
-      "verdict": "FAIL",
-      "reasoning": "The competency requires interpretation of data in tables as a distinct representational form separate from bar graphs. The rendered packet contains zero samples demonstrating genuine table data presentation. Multiple samples explicitly reference tables in their stems yet display horizontal bar charts visually, creating language-visual misalignment rather than legitimate table interpretation. The absence of any sample providing actual tabular data with cells and rows represents a complete failure to address this decomposition component. Learners never encounter the organizational structure of data arranged in rows and columns as specified in the curriculum requirement.",
+      "verdict": "PASS",
+      "reasoning": "Several samples explicitly present FillInTable visuals and ask learners to read, compare, or total their table entries.",
       "sample_ids": [
         "eace5b3a23a84a85abf4",
-        "bf965ffce1f5136258b5",
         "2d0302140071c721d9ee",
-        "2ce79e54d55645909aa9",
-        "dd4040cb5082b72dfd3b",
-        "67adbf3dc3c5deb6bd26",
-        "fc97f412ca314abf3458"
+        "67adbf3dc3c5deb6bd26"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "requirement_id": "single_bar_graphs",
       "clause": "single bar graphs",
       "verdict": "PASS",
-      "reasoning": "All twenty-one samples utilize single bar graph representations as the primary visual form. Each sample displays a distinct bar chart showing one categorical dimension and one numerical value dimension. The complete packet thoroughly covers bar graph interpretation across diverse contexts including animals, fruits, flowers, months, grades, and academic subjects. The consistent use of single bar graphs across all items ensures comprehensive coverage of this representational format within the competency requirement.",
+      "reasoning": "The packet repeatedly uses single BarChart visuals for direct reading, maximum or minimum selection, comparison, difference, and totals.",
       "sample_ids": [
-        "eace5b3a23a84a85abf4",
-        "056e58363276285af7df",
         "a9fd73b9055adbae60b3",
-        "df5dec15310f702d237d",
-        "7c3e1f544315b7af1b2d",
-        "5ff400e79d7e238593fd",
-        "bf965ffce1f5136258b5",
-        "2d0302140071c721d9ee",
-        "801de3c3ebd86e9f0b69",
-        "6dc6987309d15f97fef7",
-        "6b7f51af7977cc2ce863",
-        "56f5c52ee9c469853f76",
-        "bee443af049a976da67b",
-        "c04e98ae547d6ea7db92",
-        "2ce79e54d55645909aa9",
-        "19ef89b3ad9c66e49937",
-        "dd4040cb5082b72dfd3b",
-        "d9ecc6fee38fa759ed28",
-        "67adbf3dc3c5deb6bd26",
-        "f5ef7148252188475a6a",
-        "dc52751cb53e3b4f45e0",
-        "1e9f3edfc4ef33802022",
-        "fc97f412ca314abf3458"
+        "056e58363276285af7df",
+        "1e9f3edfc4ef33802022"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "requirement_id": "horizontal",
       "clause": "horizontal",
       "verdict": "PASS",
-      "reasoning": "Multiple samples explicitly feature horizontal bar graphs where numerical values extend along a horizontal axis while categories are labeled vertically. Samples displaying animals, fruits, flowers, months, grades, and dance shoe themes all employ horizontal orientations. Students must read bar lengths extending rightward from category labels and interpret scale information along horizontal axes. This coverage allows learners to develop competency specifically with horizontal bar graph interpretation as required by the curriculum.",
+      "reasoning": "Horizontal BarChart samples include maximum selection, differences, totals, and direct value reading using horizontal scales.",
       "sample_ids": [
-        "eace5b3a23a84a85abf4",
         "a9fd73b9055adbae60b3",
         "df5dec15310f702d237d",
-        "5ff400e79d7e238593fd",
-        "bf965ffce1f5136258b5",
-        "2d0302140071c721d9ee",
-        "801de3c3ebd86e9f0b69",
-        "6b7f51af7977cc2ce863",
-        "2ce79e54d55645909aa9",
-        "dd4040cb5082b72dfd3b",
-        "67adbf3dc3c5deb6bd26",
-        "f5ef7148252188475a6a",
-        "dc52751cb53e3b4f45e0",
-        "fc97f412ca314abf3458"
+        "dc52751cb53e3b4f45e0"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     },
     {
       "requirement_id": "vertical",
       "clause": "vertical",
       "verdict": "PASS",
-      "reasoning": "Multiple samples explicitly feature vertical bar graphs where numerical values extend along a vertical axis while categories are labeled horizontally. Samples displaying fruits, flowers, months, animals, and grades all employ vertical orientations. Students must read bar heights extending upward from category labels and interpret scale information along vertical axes with varying increments of five or ten units. This comprehensive coverage allows learners to develop competency specifically with vertical bar graph interpretation as required by the curriculum.",
+      "reasoning": "Vertical BarChart samples cover totals, least or greatest categories, and pairwise differences using vertical scales.",
       "sample_ids": [
         "056e58363276285af7df",
         "7c3e1f544315b7af1b2d",
-        "6dc6987309d15f97fef7",
-        "56f5c52ee9c469853f76",
-        "bee443af049a976da67b",
-        "c04e98ae547d6ea7db92",
-        "19ef89b3ad9c66e49937",
-        "d9ecc6fee38fa759ed28",
-        "1e9f3edfc4ef33802022"
+        "6dc6987309d15f97fef7"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w9-haiku45-20260925:mat_g3_dp_q3_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pc9-mat_g3_dp_q3_2-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2:mat_g3_dp_q3_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_dp_q3_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "e08c010f1720312c072530bd0f2098d4dabcef59c5472069eeaab447c9a40c31",
+      "packet_digest": "bbc9188a303545ff8b7a4d81a5b58afe6c5ece570d27413c5ec1c87c144b4a70",
       "clause_ids": [
         "interpret_data",
         "tables",
@@ -3664,29 +3522,29 @@
         "horizontal",
         "vertical"
       ],
-      "response_ref": ".responses/s5-phaseC-w9-haiku45-20260925.json",
-      "response_digest": "390a780043bce1ffeb19d1ebf444848a16fa856285fcc510a6aa8e3662011422",
-      "prompt_ref": ".responses/s5-phaseC-w9-haiku45-20260925.prompt.txt",
-      "prompt_digest": "de6225e92cf3b892a0401b037ddac31c89668704cc7bf945adb85395d28308b6",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_dp_q3_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_dp_q3_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "FRESH blind re-dispatch (the first reviewer's reply was set aside, not filed; its claims are harvested). Tool use measured from the fresh reviewer's transcript (the harness returned no usage record: ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2.json",
+      "response_digest": "4fa49960e844d58bc8d3546291dc41dcaaf93836eec2ba5e071e2dbea7510c56",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_dp_q3_2.prompt.txt",
+      "prompt_digest": "7fda065f3d492e78e5bc7afdde308ee010e90316c2cb5b04326d5304b9f6bc42",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "No harness usage record was exposed. The transcript reports the assigned verdicts.json was written and local JSON-structure and minimum-length checks were run; it names no path outside the assigned node directory."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Grade 3 Quarter 3 students demonstrate readiness for interpreting numerical bar graphs with scales incrementing by 5 or 10, performing arithmetic operations like addition and subtraction to compare values, and locating categorical information. Sample complexity ranges appropriately from simple single-value reading to multi-step comparison and summation tasks consistent with third-grade developmental expectations."
+      "rationale": "The node uses direct reading, comparison, subtraction, and addition of small table or bar-graph values appropriate for Grade 3 data interpretation."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly requires interpretation of data in both tables and bar graphs. The packet contains zero samples demonstrating table interpretation despite the requirement appearing in the decomposition. Multiple samples reference tables in their problem stems but display bar chart visuals instead, creating linguistic-visual misalignment that prevents genuine table competency demonstration. This omission represents a critical gap in the five-part decomposition."
+      "verdict": "PASS",
+      "rationale": "Every item asks learners to interpret a displayed table or a single horizontal or vertical bar graph, matching the stated competency."
     },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "While horizontal and vertical bar graph interpretation is thoroughly demonstrated across samples, the decomposition fails the losslessness criterion. The competency clause names tables as a distinct representational form alongside bar graphs. No packet sample provides learners with actual tabular data presentation, rendering the tables requirement unmet despite explicit curricular inclusion.",
+      "verdict": "PASS",
+      "rationale": "The packet provides multiple direct interpretations of tables and both bar-graph orientations, including totals, differences, and ordering.",
       "decomposition": {
-        "verdict": "FAIL",
-        "reasoning": "The printed decomposition lists five requirements including a distinct tables component separate from bar graphs. Across all twenty-one samples, bar graph interpretation is comprehensively represented through horizontal, vertical, and varied categorical contexts. However, table interpretation is entirely absent. The decomposition document claims to represent the full competency losslessly, yet one of its five named requirements receives zero demonstrable coverage in the sample set, violating the lossless coverage criterion.",
+        "verdict": "PASS",
+        "reasoning": "The five printed requirements separately identify interpreting data, tables, single bar graphs, and both horizontal and vertical orientations; together they cover the competency without loss.",
         "requirement_ids": [
           "interpret_data",
           "tables",
@@ -3704,8 +3562,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Bar graph skills are comprehensively covered including value reading, comparison, addition of multiple values, identification of maximum and minimum values, and calculation of differences across both horizontal and vertical orientations. However, the packet demonstrates no coverage of table-based data interpretation despite this being named in the competency statement. This selective coverage leaves a substantive gap in the curriculum requirement.",
+      "verdict": "PASS",
+      "rationale": "The sample set exercises table reading, horizontal graphs, vertical graphs, totals, differences, and least or greatest comparisons across varied categories.",
       "clause_ids": [
         "interpret_data",
         "tables",
@@ -3716,11 +3574,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Graph scales vary sensibly across samples with increments of 5 appearing most frequently and increments of 10 or 20 for larger-value problems, providing appropriate complexity variation. Chart element counts range from 47 to 104 elements, suggesting layout variety without indicating crowding issues. The visual complexity scales upward for multi-category reading tasks compared to single-value extraction tasks."
+      "rationale": "The displayed scales advance by five, ten, or twenty and the questions use whole-number comparisons and operations suitable for this grade-level competency."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Samples demonstrate diverse question types spanning single-value reading, comparative selection, total summation, difference calculation, maximum identification, and minimum identification. Categories span fruits, animals, months, flowers, academic subjects, and grades. Three samples employ thematic framing through character names and interests. Multiple experience types appear including standard, hint_gated, scaffolded, and mastery_drill modes, providing pedagogical variation."
+      "rationale": "Variation includes two table presentations, both graph orientations, several category counts, comparison directions, totals, differences, and direct value reading."
     }
   },
   "overall": "FAIL"

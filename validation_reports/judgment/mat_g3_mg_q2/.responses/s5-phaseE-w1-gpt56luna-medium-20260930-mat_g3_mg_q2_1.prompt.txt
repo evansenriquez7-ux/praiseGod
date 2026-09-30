@@ -1,0 +1,238 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g3_mg_q2_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q2_1
+PACKET DIGEST: 943f773003951b136282a04b20d78c1a74f764f0ad2c34db1ed1f4c025165d99
+COMPETENCY (Grade 3, Quarter 2, None):
+Estimate mass of an object using grams, kilograms, and/or milligrams.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  estimate_mass: Estimate mass
+  an_object: an object
+  grams_kilograms_and_or_milligrams: grams, kilograms, and/or milligrams
+
+SAMPLES (every one of these is real rendered output):
+  sample 709cc08190a77103c7fb  seed 42  [cloze]
+      stem:    An object's mass measures 23 g. About how many g is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 19 / 20 / 22
+      hints:   ["Count by 10s: 23 is between 20 and 30.", "23 is closer to 20.", "So 23 g is about 20 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample df5d61848dc9600290ef  seed 43  [mcq]
+      stem:    An object's mass measures 6 g. About how many g is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 12 / 11 / 10
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 g is about 10 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 18f2b16cd6ab9f425b4f  seed 44  [cloze]
+      stem:    An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 19 / 20 / 22
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample acf03a4ef29fc4bae88f  seed 45  [mcq]
+      stem:    An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 21 / 22 / 20 / 19
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b17c26c6337f2951af74  seed 46  [mcq]
+      stem:    An object's mass measures 68 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  70
+      options: 70 / 72 / 69 / 71
+      hints:   ["Count by 10s: 68 is between 60 and 70.", "68 is closer to 70.", "So 68 mg is about 70 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 22fc58d4a0eef049afde  seed 500  [mcq]
+      stem:    An object's mass measures 424 kg. About how many kg is that, rounded to the nearest 100?
+      answer:  400
+      options: 402 / 401 / 400 / 399
+      hints:   ["Count by 100s: 424 is between 400 and 500.", "424 is closer to 400.", "So 424 kg is about 400 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1b8ec6fc8f4272362d2f  seed 501  [mcq]
+      stem:    An object's mass measures 3204 mg. About how many mg is that, rounded to the nearest 1000?
+      answer:  3000
+      options: 2999 / 3002 / 3001 / 3000
+      hints:   ["Count by 1000s: 3204 is between 3000 and 4000.", "3204 is closer to 3000.", "So 3204 mg is about 3000 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ede7df9224e786e36ef2  seed 502  [cloze]
+      stem:    An object's mass measures 2355 mg. About how many mg is that, rounded to the nearest 1000?
+      answer:  2000
+      options: 2001 / 2002 / 1999 / 2000
+      hints:   ["Count by 1000s: 2355 is between 2000 and 3000.", "2355 is closer to 2000.", "So 2355 mg is about 2000 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d88d6f09c9a8e18bc58b  seed 600  [mcq]
+      stem:    An object's mass measures 8 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 12 / 9 / 10
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 mg is about 10 mg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0c200462eb55f9ebdcbb  seed 601  [cloze]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 10 / 12 / 9 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 089754926313bdb4ff49  seed 602  [cloze]
+      stem:    An object's mass measures 24 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  20
+      options: 19 / 22 / 21 / 20
+      hints:   ["Count by 10s: 24 is between 20 and 30.", "24 is closer to 20.", "So 24 mg is about 20 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ce9316ac321344edb8a2  seed 604  [cloze]
+      stem:    An object's mass measures 8 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 11 / 10 / 12
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ead470c6b327ae1062d8  seed 605  [mcq]
+      stem:    An object's mass measures 8 g. About how many g is that, rounded to the nearest 10?
+      answer:  10
+      options: 12 / 10 / 11 / 9
+      hints:   ["Count by 10s: 8 is between 0 and 10.", "8 is closer to 10.", "So 8 g is about 10 g."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 91a007a11e0dcf169159  seed 700  [cloze]
+      stem:    An object's mass measures 13 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 12 / 10 / 9
+      hints:   ["Count by 10s: 13 is between 10 and 20.", "13 is closer to 10.", "So 13 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7b4038dce8e1df563bbf  seed 701  [mcq]
+      stem:    🏐 Romel enjoys whistles. Here is a math challenge. An object's mass measures 19 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  20
+      options: 20 / 21 / 19 / 22
+      hints:   ["Count by 10s: 19 is between 10 and 20.", "19 is closer to 20.", "So 19 kg is about 20 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 42f804e3a99b1655d250  seed 702  [cloze]
+      stem:    🚴 Kuya Chad enjoys wristbands. Here is a math challenge. An object's mass measures 9 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 11 / 10 / 9 / 12
+      hints:   ["Count by 10s: 9 is between 0 and 10.", "9 is closer to 10.", "So 9 kg is about 10 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 77bb28a971b9af2c3c62  seed 800  [cloze]
+      stem:    An object's mass measures 46 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  50
+      options: 51 / 50 / 52 / 49
+      hints:   ["Count by 10s: 46 is between 40 and 50.", "46 is closer to 50.", "So 46 kg is about 50 kg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 34a2f24cbb11d0d527c5  seed 900  [mcq]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 9 / 12 / 10 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 619ce706e1086b941ed9  seed 901  [mcq]
+      stem:    An object's mass measures 6 kg. About how many kg is that, rounded to the nearest 10?
+      answer:  10
+      options: 12 / 10 / 9 / 11
+      hints:   ["Count by 10s: 6 is between 0 and 10.", "6 is closer to 10.", "So 6 kg is about 10 kg."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 40c66450762fb833b73a  seed 1000  [cloze]
+      stem:    An object's mass measures 64 g. About how many g is that, rounded to the nearest 10?
+      answer:  60
+      options: 60 / 62 / 61 / 59
+      hints:   ["Count by 10s: 64 is between 60 and 70.", "64 is closer to 60.", "So 64 g is about 60 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 5ccc6e8bd01bd3277ef7  seed 1001  [cloze]
+      stem:    An object's mass measures 28 mg. About how many mg is that, rounded to the nearest 10?
+      answer:  30
+      options: 30 / 31 / 29 / 32
+      hints:   ["Count by 10s: 28 is between 20 and 30.", "28 is closer to 30.", "So 28 mg is about 30 mg."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 4bf413fa2747d6296659  seed 1002  [cloze]
+      stem:    An object's mass measures 46 g. About how many g is that, rounded to the nearest 10?
+      answer:  50
+      options: 50 / 49 / 51 / 52
+      hints:   ["Count by 10s: 46 is between 40 and 50.", "46 is closer to 50.", "So 46 g is about 50 g."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

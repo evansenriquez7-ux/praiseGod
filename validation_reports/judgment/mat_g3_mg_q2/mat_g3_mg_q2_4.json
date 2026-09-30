@@ -19,10 +19,10 @@
       "clause": "liters and/or milliliters"
     }
   ],
-  "packet_digest": "8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf",
+  "packet_digest": "8e6c831e864327e84289c7de69a76031f4fcea526eb02b1bd0fc61c3633eb351",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -721,7 +721,7 @@
       "node_id": "mat_g3_mg_q2_4",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Kuya Ton has a math challenge about trophies. A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?",
+      "question_text": "💃 Kuya Ton enjoys trophies. Here is a math challenge. A container's capacity measures 15 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 20,
       "requested": {
         "difficulty_profile": null,
@@ -766,7 +766,7 @@
         "So 15 L is about 20 L."
       ],
       "sample_id": "d2e47604947a4861e5eb",
-      "replay_digest": "e4c895a52136945ef9e2b8f37fa97c35bc4e325442cc3d60ad93c8417d902cb9"
+      "replay_digest": "0d72c764544c6b5b617d9ce01a1695d5906b618458b0310224aa846ce68dd66a"
     },
     {
       "node_id": "mat_g3_mg_q2_4",
@@ -1158,460 +1158,460 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly states a single container capacity measurement and requests rounding to the nearest ten, with a single unambiguous correct answer of thirty milliliters."
+          "reasoning": "The requested nearest-ten estimate and milliliter unit are explicit, and the four choices include one unambiguous correct value."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A container capacity of twenty-seven milliliters is realistic and represents a plausible real-world container size that a student might encounter."
+          "reasoning": "The container-capacity statement is internally coherent, and every hint correctly places 27 between 20 and 30 before selecting 30."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct and appropriate for Grade 3. The request to round to the nearest ten is explicitly stated. The hints guide the learner through counting by tens, identifying the bracketing multiples, and selecting the closest value."
+          "reasoning": "The short sentence clearly asks how 27 mL rounds, with no distracting context or hidden interpretation required from the learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty-seven rounds to thirty when rounding to the nearest ten. All three hint statements are mathematically accurate and correctly describe the rounding process and its result."
+          "reasoning": "Twenty-seven rounded to the nearest ten is 30, matching the answer, option set, and all three explanatory hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "85033b1167b27d4f7787",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single measurement in liters and requests rounding to the nearest ten with no ambiguous language or multiple possible interpretations."
+          "reasoning": "The liter unit and nearest-ten instruction are plainly stated, while only 20 correctly represents the rounding of 16."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen liters is a realistic container capacity that a learner might reasonably encounter in real-world contexts."
+          "reasoning": "The capacity claim is coherent, and the hints consistently identify 16 as between 10 and 20 and closer to 20."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question structure matches the previous sample, using clear language to ask for rounding to the nearest ten. The hints progress logically from counting by tens through identifying the bracket and determining proximity."
+          "reasoning": "The wording is concise and readable, directly identifying the quantity, unit, rounding place, and requested estimate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen liters rounds to twenty liters when using nearest ten rounding. The hints correctly identify the bounds of ten and twenty, confirm that sixteen is closer to twenty, and state the final rounded value."
+          "reasoning": "Sixteen liters rounds to 20 liters to the nearest ten; the supplied answer, option, and hints all agree."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "0ea9223af9e78b4523e7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies rounding to the nearest ten with a single correct answer and no ambiguous phrasing."
+          "reasoning": "The nearest-ten target is explicit and the midpoint convention is stated in the hint, leaving 10 as the unique intended choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five milliliters represents a small but realistic container capacity, such as a medication bottle or small cosmetic container."
+          "reasoning": "A five-milliliter capacity is a coherent quantity, and the midpoint hint accurately explains why the estimate goes upward."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is clear. The hints address a specific challenge at this boundary case where five falls exactly at the midpoint between zero and ten, and the second hint explains the rounding rule for midpoint cases."
+          "reasoning": "The item plainly asks for an approximate milliliter amount and uses a short, accessible sentence structure."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five milliliters is exactly halfway between zero and ten, and the rounding convention rounds this up to ten. The hints correctly explain this boundary case and the rounding result."
+          "reasoning": "Under the stated round-half-up convention, 5 mL rounds to 10 mL, exactly matching the answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "a42ab5d6515770274923",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question presents a single capacity measurement and unambiguously requests rounding to the nearest ten liters."
+          "reasoning": "The unit, rounding place, and requested direction are explicit, and 20 is the only appropriate rounded result among the choices."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventeen liters is a typical container capacity within the range of realistic household or classroom items."
+          "reasoning": "The 17-liter statement is coherent, and each hint correctly locates 17 between 10 and 20 and nearer 20."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem follows a consistent format. The answer options are clearly presented as single values. The hints use age-appropriate language to scaffold the rounding process."
+          "reasoning": "Learners receive a direct capacity-estimation question with no unnecessary narrative or terminology that could obscure the task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventeen liters rounds to twenty liters to the nearest ten. The hints accurately identify seventeen as falling between ten and twenty and closer to twenty, leading to the correct answer."
+          "reasoning": "Seventeen liters rounds to 20 liters to the nearest ten, and the answer, option, and hints are consistent."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "ed65d6d611bac1ed7182",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem contains no ambiguous language and requests a single rounding action with a clear target interval."
+          "reasoning": "The item specifies liters and nearest tens clearly, with 10 serving as the unique correct estimate among nearby distractors."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seven liters represents a plausible small container capacity similar to a household bucket or kettle."
+          "reasoning": "The stated seven-liter capacity is sensible, and the hints correctly compare 7 with the surrounding multiples of ten."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is stated plainly. The stem-to-hints progression is logical and uses vocabulary appropriate for Grade 3 students learning rounding."
+          "reasoning": "The language is brief and direct, making the quantity, unit, and rounding request readily understandable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seven liters rounds to ten liters to the nearest ten. The hints correctly place seven in the interval from zero to ten and identify it as closer to ten."
+          "reasoning": "Seven liters rounds to 10 liters to the nearest ten, matching the printed answer, option, and explanatory sequence."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "d30ee69a9a29b363b83a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem specifies rounding to the nearest ten and presents a single correct answer with no confusing language."
+          "reasoning": "The nearest-ten instruction and liter unit are unambiguous, and 30 is the sole correct option for the stated value."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-one liters is a realistic medium-sized container capacity."
+          "reasoning": "The 31-liter capacity is coherent, while the hints correctly place it between 30 and 40 and nearer 30."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct and the hints follow a consistent scaffolding pattern that guides students through identifying the bounds and determining which bound the value is closer to."
+          "reasoning": "The question uses familiar wording and asks for exactly one estimate, without contextual wording that could change its meaning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-one liters falls between thirty and forty and is closer to thirty, rounding down to thirty. The hints accurately reflect this calculation and the correct answer."
+          "reasoning": "Thirty-one liters rounds to 30 liters to the nearest ten, consistently reflected in the answer, choices, and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "f225db844ee8ee6a63db",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single measurement and unambiguously asks for rounding to the nearest ten."
+          "reasoning": "The stem clearly requests nearest-ten rounding in liters, and 10 is uniquely correct among the listed values."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve liters is a realistic container capacity in the range of typical household storage containers."
+          "reasoning": "The 12-liter capacity is internally sensible, and the hints correctly identify 12 as nearer 10 than 20."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question format is consistent with previous items. The hints clearly walk through the rounding process from identifying bounds to determining proximity to selecting the closer value."
+          "reasoning": "The sentence is simple and explicit about both the measurement unit and the requested approximate value."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve liters falls between ten and twenty and is closer to ten, rounding down correctly to ten. All three hints support this conclusion accurately."
+          "reasoning": "Twelve liters rounds to 10 liters to the nearest ten, with no conflict among answer, options, or hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "fbd0268ef1757b5c496c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem is unambiguous and requests rounding a single measurement to the nearest ten milliliters."
+          "reasoning": "The milliliter unit and nearest-ten target are explicit, and 20 is the only correct rounded option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen milliliters is a realistic small container capacity such as for a liquid medication or eye drops."
+          "reasoning": "The capacity statement is coherent, and every hint accurately explains the position and rounding of 16."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is clear and uses the same sentence structure as other samples in this set, making it familiar to the learner."
+          "reasoning": "The item is compact and learner-facing, clearly asking for an approximate milliliter capacity without extra interpretation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen milliliters rounds to twenty milliliters to the nearest ten. The hints correctly identify the relevant bounds and that sixteen is closer to twenty."
+          "reasoning": "Sixteen milliliters rounds to 20 milliliters to the nearest ten, agreeing with the printed answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "559ad62a600973c402e6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question clearly requests rounding five liters to the nearest ten with no ambiguous phrasing or multiple interpretations possible."
+          "reasoning": "The prompt specifies nearest tens and liters, and the midpoint guidance makes 10 the unambiguous intended answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five liters is a realistic capacity for a medium household container or classroom pitcher."
+          "reasoning": "A five-liter capacity is coherent, and the hint correctly treats the exact midpoint as rounding upward."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct. The hints explicitly address the midpoint case, explaining that five is exactly halfway and therefore rounds up by convention."
+          "reasoning": "The request is plainly phrased and presents the approximation task without any confusing contextual wrapper."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five liters is exactly halfway between zero and ten, and rounding conventions require rounding up to ten. The hints accurately describe this special boundary case."
+          "reasoning": "Five liters rounds up to 10 liters under the stated midpoint convention, matching every printed component."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "707a80eec66219fd0e11",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously presents a single capacity measurement and requests rounding to the nearest ten milliliters."
+          "reasoning": "The measurement and nearest-ten place are explicit, with 50 clearly the only correct estimate for 53."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifty-three milliliters is a realistic container capacity comparable to a small drinking cup or medicine bottle."
+          "reasoning": "The 53-milliliter capacity is coherent, and the hints correctly identify the interval 50 to 60 and nearer endpoint."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is appropriate and consistent with other samples. The hints scaffold the student through the rounding process systematically."
+          "reasoning": "The wording is direct and age-appropriate, asking one clearly defined rounding question in milliliters."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifty-three milliliters falls between fifty and sixty and is closer to fifty, rounding down correctly. The hints accurately support this conclusion."
+          "reasoning": "Fifty-three milliliters rounds to 50 milliliters to the nearest ten, exactly matching the answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "ee4d518645ea6ebe3fcd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single measurement and explicitly requests rounding to the nearest ten with no ambiguous language."
+          "reasoning": "The unit and rounding place are unmistakable, and 60 is the unique valid result among the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifty-nine milliliters is a realistic capacity for a small container, such as a portion cup or shot glass."
+          "reasoning": "The 59-milliliter statement is internally consistent, while the hints correctly show it is close to 60."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question structure is familiar and clear. The hints progress logically through identifying bounds, determining proximity, and stating the result."
+          "reasoning": "The learner sees a concise, familiar estimation prompt with no ambiguous references or extraneous information."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifty-nine milliliters falls between fifty and sixty and is closer to sixty, rounding up correctly. All three hints accurately reflect this rounding."
+          "reasoning": "Fifty-nine milliliters rounds to 60 milliliters to the nearest ten, consistent across answer, choices, and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "185cc3e14cd5d526de6f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies rounding to the nearest ten liters with no ambiguous phrasing."
+          "reasoning": "The nearest-ten instruction in liters is explicit, and 20 is the sole choice that correctly rounds 16."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen liters is a typical medium container capacity in real-world contexts."
+          "reasoning": "The capacity and unit are coherent, and the hints correctly describe 16 as closer to 20 than 10."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct and uses the consistent format students have encountered in previous items."
+          "reasoning": "The short stem communicates the exact quantity and desired approximation plainly to a Grade 3 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen liters rounds to twenty liters to the nearest ten. The hints accurately identify the relevant bounds and determine that sixteen is closer to twenty."
+          "reasoning": "Sixteen liters rounds to 20 liters to the nearest ten; the printed answer and all hints agree."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "d2e47604947a4861e5eb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Despite the thematic wrapper mentioning a character and trophies, the core mathematical question is unambiguous and requests rounding to the nearest ten liters."
+          "reasoning": "The themed opening does not alter the explicit nearest-ten capacity question, and 20 is uniquely correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen liters is a realistic container capacity. The narrative context about a math challenge does not interfere with the logical validity of the capacity measurement or rounding task."
+          "reasoning": "The trophy-themed wrapper remains separate from the mathematics; 15 is correctly treated as a midpoint rounding up to 20."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical question is stated clearly despite the thematic embellishment. The hints are direct and focused on the rounding computation."
+          "reasoning": "Although decorative, the opening remains understandable and the actual rounding request is clearly stated afterward."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen liters is exactly halfway between ten and twenty, and rounding up by convention produces twenty. The hints correctly identify this midpoint case and explain the rounding rule."
+          "reasoning": "Fifteen liters rounds to 20 liters using the stated round-up midpoint rule, matching answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "451e583d0af232923806",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously requests rounding a single capacity measurement to the nearest ten."
+          "reasoning": "The stem clearly identifies milliliters and nearest tens, with 40 as the only valid rounded choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-six milliliters is a realistic container capacity for various small items."
+          "reasoning": "The 36-milliliter capacity is coherent, and the hints correctly place it between 30 and 40 and nearer 40."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is clear and follows the familiar question structure used throughout the sample set."
+          "reasoning": "The prompt is simple, direct, and free of wording that could make the target rounding operation uncertain."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-six milliliters falls between thirty and forty and is closer to forty, rounding up correctly. The hints accurately support this calculation."
+          "reasoning": "Thirty-six milliliters rounds to 40 milliliters to the nearest ten, matching the answer and all hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "1b4725e2f98243fc0e77",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem is unambiguous in requesting rounding to the nearest thousand milliliters."
+          "reasoning": "The stem explicitly requests nearest-thousand rounding in milliliters, and 4000 is the unique correct option."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "While the mathematics is valid, a container capacity of over four thousand milliliters is beyond the typical scale of container capacity estimation contexts for Grade 3 Quarter 2 learners, where most real-world references involve much smaller household items."
+          "verdict": "PASS",
+          "reasoning": "The 4136-milliliter quantity is coherent, and the hints correctly place it between 4000 and 5000 and nearer 4000."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language of the question is clear and the mathematical request is explicit, even though the numeric scale is atypical."
+          "reasoning": "The question clearly names the large-unit rounding target, while the concise wording remains understandable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Four thousand one hundred thirty-six rounds to four thousand when rounding to the nearest thousand, as it is closer to four thousand than to five thousand. The hints accurately describe this rounding."
+          "reasoning": "Four thousand one hundred thirty-six milliliters rounds to 4000 milliliters to the nearest thousand, as printed."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "c3dfdd9511508d1fdaf3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single measurement and unambiguously requests rounding to the nearest ten milliliters."
+          "reasoning": "The nearest-ten request is explicit and the midpoint hint removes any uncertainty about choosing 10."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five milliliters represents a small container capacity equivalent to a medication dose bottle or small beauty product dispenser."
+          "reasoning": "The five-milliliter capacity is coherent, and the hints consistently apply the stated round-up rule at halfway."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is clear and the hints explain the midpoint rounding rule that applies when a value falls exactly halfway between two multiples of ten."
+          "reasoning": "The stem is short and direct, clearly asking for an approximate milliliter amount from a given capacity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five milliliters is exactly halfway between zero and ten and rounds up to ten by convention. The hints correctly describe this boundary case."
+          "reasoning": "Five milliliters rounds to 10 milliliters under the supplied convention, agreeing with answer and options."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "07c48665d3dc4c822d5f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies rounding to the nearest ten milliliters with no ambiguous phrasing."
+          "reasoning": "The unit and nearest-ten target are explicit, and 10 is the only option that correctly rounds the given value."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six milliliters is a realistic small container capacity comparable to a portion cup or shot glass used in common environments."
+          "reasoning": "The six-milliliter capacity is coherent, and the hints correctly identify 6 as closer to 10 than 0."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is clearly stated and the hints guide the learner through determining which of the two bracketing multiples is closer."
+          "reasoning": "Learners receive a clear one-step estimate request with familiar vocabulary and no distracting context."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six milliliters falls between zero and ten and is closer to ten, rounding up correctly. The hints accurately describe this proximity."
+          "reasoning": "Six milliliters rounds to 10 milliliters to the nearest ten, consistently represented by answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "d2916c08fb5b0fa9c824",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously requests rounding a single measurement to the nearest ten."
+          "reasoning": "The question and its hint-gated presentation still identify a single nearest-ten estimate in milliliters."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six milliliters denotes a practical small container capacity similar to eye drop bottles or small cosmetic product containers."
+          "reasoning": "The six-milliliter capacity and all hint statements are coherent; hint-gated experience does not change the mathematics."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct and uses the consistent format across the sample set, with hints that scaffold the rounding reasoning."
+          "reasoning": "The stem and hints are plainly worded, and the interaction metadata does not introduce ambiguity into the requested result."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six milliliters is closer to ten than to zero, rounding up to ten correctly. The hints accurately reflect this calculation."
+          "reasoning": "Six milliliters correctly rounds to 10 milliliters, with the answer and every hint supporting that result."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "87222b01f482ccea632c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single measurement and unambiguously requests rounding to the nearest ten."
+          "reasoning": "The unit and nearest-ten instruction are clear, and 70 is uniquely correct for the stated 68-milliliter value."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-eight milliliters is a realistic container capacity for various small items."
+          "reasoning": "The capacity is coherent, and the hints correctly locate 68 between 60 and 70 and closer to 70."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is clear and the hints follow the established pattern of identifying bounds and determining proximity."
+          "reasoning": "The concise prompt directly asks for one milliliter estimate, with no unclear reference or extraneous narrative."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-eight milliliters falls between sixty and seventy and is closer to seventy, rounding up correctly. All hints accurately support this result."
+          "reasoning": "Sixty-eight milliliters rounds to 70 milliliters to the nearest ten, matching answer, option, and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "sample_id": "82aa74b41dba4d14beae",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly specifies rounding to the nearest ten with no ambiguous language."
+          "reasoning": "The requested rounding place and milliliter unit are explicit, making 30 the unique valid answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-three milliliters is a realistic small to medium container capacity."
+          "reasoning": "The 33-milliliter capacity is coherent, and the hints accurately establish that it is nearer 30 than 40."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question structure is consistent and clear, with hints that logically scaffold the rounding process."
+          "reasoning": "The wording is direct and accessible, stating the capacity and asking for its nearest-ten estimate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-three milliliters falls between thirty and forty and is closer to thirty, rounding down correctly. The hints accurately describe this proximity and result."
+          "reasoning": "Thirty-three milliliters rounds to 30 milliliters to the nearest ten, consistently reflected in all fields."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     }
   ],
   "clause_evidence": [
@@ -1619,97 +1619,62 @@
       "requirement_id": "estimate_capacity",
       "clause": "Estimate capacity",
       "verdict": "PASS",
-      "reasoning": "Every one of the eighteen samples presents a container with a stated capacity and requests that the learner estimate it by rounding to a specified interval. This directly tests the core competency action of estimating capacity.",
+      "reasoning": "Every examined sample asks the learner to round a stated container capacity to an approximate value, directly demonstrating estimation.",
       "sample_ids": [
         "0b7a9fec29eb288d396e",
-        "85033b1167b27d4f7787",
-        "0ea9223af9e78b4523e7",
-        "a42ab5d6515770274923",
-        "ed65d6d611bac1ed7182",
-        "d30ee69a9a29b363b83a",
-        "f225db844ee8ee6a63db",
-        "fbd0268ef1757b5c496c",
-        "559ad62a600973c402e6",
-        "707a80eec66219fd0e11",
-        "ee4d518645ea6ebe3fcd",
-        "185cc3e14cd5d526de6f",
-        "d2e47604947a4861e5eb",
-        "451e583d0af232923806",
-        "1b4725e2f98243fc0e77",
-        "c3dfdd9511508d1fdaf3",
-        "07c48665d3dc4c822d5f",
-        "d2916c08fb5b0fa9c824",
-        "87222b01f482ccea632c",
-        "82aa74b41dba4d14beae"
+        "1b4725e2f98243fc0e77"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     },
     {
       "requirement_id": "liters_and_or_milliliters",
       "clause": "liters and/or milliliters",
       "verdict": "PASS",
-      "reasoning": "The sample set comprehensively demonstrates both units of capacity measurement. Some samples use liters exclusively, others use milliliters exclusively, and across the full set both units are well-represented, supporting the competency requirement to estimate capacity using either unit.",
+      "reasoning": "The packet includes numerous liter-labelled capacities and numerous milliliter-labelled capacities, so both permitted units are represented.",
       "sample_ids": [
-        "0b7a9fec29eb288d396e",
         "85033b1167b27d4f7787",
-        "0ea9223af9e78b4523e7",
-        "a42ab5d6515770274923",
-        "ed65d6d611bac1ed7182",
-        "d30ee69a9a29b363b83a",
-        "f225db844ee8ee6a63db",
         "fbd0268ef1757b5c496c",
-        "559ad62a600973c402e6",
-        "707a80eec66219fd0e11",
-        "ee4d518645ea6ebe3fcd",
-        "185cc3e14cd5d526de6f",
-        "d2e47604947a4861e5eb",
-        "451e583d0af232923806",
-        "1b4725e2f98243fc0e77",
-        "c3dfdd9511508d1fdaf3",
-        "07c48665d3dc4c822d5f",
-        "d2916c08fb5b0fa9c824",
-        "87222b01f482ccea632c",
-        "82aa74b41dba4d14beae"
+        "d2e47604947a4861e5eb"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4:mat_g3_mg_q2_4",
-      "reviewer_identity": "blind-reviewer-haiku45-pc12-mat_g3_mg_q2_4-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4:mat_g3_mg_q2_4",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w12-mat_g3_mg_q2_4-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "8a6a876a4451a4ac1c4018975f06e255553657c381f020e1131a5e462756b3bf",
+      "packet_digest": "8e6c831e864327e84289c7de69a76031f4fcea526eb02b1bd0fc61c3633eb351",
       "clause_ids": [
         "estimate_capacity",
         "liters_and_or_milliliters"
       ],
-      "response_ref": ".responses/s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4.json",
-      "response_digest": "454f251d0e110319f732825a234c7675b1b6ec027eee73bb892d6644c790bc4d",
-      "prompt_ref": ".responses/s5-phaseC-w12-haiku45-20260925-mat_g3_mg_q2_4.prompt.txt",
-      "prompt_digest": "56a66f0d90cfe40d4204320c0d55ee9cb64de7002f04717d2d8a868406617e8a",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q2_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q2_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; one wording revision by the reviewer (3 strings under 60 chars, 1 repeat), 6 tool uses. Every verdict and the overall byte-compared unchanged. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4.json",
+      "response_digest": "2f173921ba899b301f65bf40083ffd79e1028532229d0c247d8cabea91faf55d",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g3_mg_q2_4.prompt.txt",
+      "prompt_digest": "8ca81de2bc20a5ee9e8128827b6d8107e7ea7cde8b72dc4e55008fbcd59d5814",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "No harness usage record was exposed. The reviewer transcript reported only that the complete verdicts.json was written in the assigned node directory; no other path or tool use was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Seventeen of eighteen samples present single or double-digit numbers rounded to the nearest ten, which is appropriate for Grade 3 cognitive demands. However, one sample uses 4136 milliliters rounded to the nearest thousand, introducing substantially larger magnitude numbers and a different rounding interval that exceeds typical Grade 3 cognitive expectations for this quarter."
+      "verdict": "PASS",
+      "rationale": "The tasks use straightforward rounding of stated capacity values, with simple comparisons suitable for Grade 3 learners and no unnecessary multi-step reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples directly address the competency of estimating capacity by asking learners to round container measurements to a specified interval. Every item explicitly focuses on the estimation task with liters or milliliters as the unit of capacity measurement, maintaining tight alignment with the stated competency."
+      "rationale": "Every stem asks learners to estimate a container capacity, directly matching the stated measurement-estimation competency without introducing an unrelated operation."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The competency describes estimating capacity using liters and/or milliliters. The printed requirements decompose this into two components: the action of estimating capacity and the units liters and/or milliliters. This decomposition is lossless and complete.",
+      "rationale": "The packet repeatedly requires an estimate and explicitly labels the capacity in liters or milliliters, covering both required aspects of the competency.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The requirement to estimate capacity covers the core action demanded by the competency. The requirement to use liters and or milliliters covers the unit specification. Together these requirements form a lossless decomposition that captures the complete meaning of the competency statement without addition or omission.",
+        "reasoning": "The two printed requirements losslessly decompose the competency: estimation is the action, while liters and/or milliliters specify the permitted capacity units.",
         "requirement_ids": [
           "estimate_capacity",
           "liters_and_or_milliliters"
@@ -1721,20 +1686,20 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set demonstrates diversity in rounding contexts including boundary cases where numbers land at the exact midpoint between rounding intervals, items requiring rounding down to the lower ten, and items requiring rounding up to the higher ten. Both liters and milliliters units are represented across multiple samples. Multiple experience types and item formats appear.",
+      "verdict": "CONCERN",
+      "rationale": "Both units appear many times, but nearly every item uses the same nearest-ten format; the single nearest-thousand item leaves limited breadth in estimation forms.",
       "clause_ids": [
         "estimate_capacity",
         "liters_and_or_milliliters"
       ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Most samples use numeric values within the range of five to seventy, which is age-appropriate for container capacity estimation in Grade 3. One sample presents a four-digit number of 4136 milliliters rounded to the nearest thousand, which exceeds the typical numeric scale and complexity for this grade level in practical capacity contexts."
+      "verdict": "PASS",
+      "rationale": "Values and rounding targets are readable and computationally manageable for Grade 3, including basic midpoint cases that clarify the rounding convention."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples show variation across multiple dimensions including units used (liters versus milliliters), response format (cloze versus multiple-choice), numeric magnitude, rounding interval direction (up or down), and whether numbers fall at midpoint rounding boundaries. This variety supports learners encountering estimation in multiple contexts."
+      "verdict": "CONCERN",
+      "rationale": "The packet varies liters versus milliliters and response modes, yet it provides little variation in task structure, rounding scale, or meaningful capacity context."
     }
   },
   "overall": "CONCERN"
