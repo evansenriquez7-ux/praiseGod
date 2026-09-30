@@ -44,10 +44,10 @@
       "clause": "2-digit minus 2-digit numbers"
     }
   ],
-  "packet_digest": "63ae2b386b3d37356629eeb4ef34b9c9af2999203489e3b3445739bb4076e400",
+  "packet_digest": "549e1120d49d54c600ba36a72cef6f79e0a82bade5c7a365c8829830b63926b6",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1361,7 +1361,7 @@
       "node_id": "mat_g1_na_q3_4",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. There are 81 stickers. Taking away 30 stickers leaves how many stickers?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. There are 81 stickers. Taking away 30 stickers leaves how many stickers?",
       "correct_answer": 51,
       "requested": {
         "difficulty_profile": null,
@@ -1407,13 +1407,13 @@
         "The difference of 81 − 30 = 51."
       ],
       "sample_id": "2fbdd14f419e360e3924",
-      "replay_digest": "38f715bcde11097cb6f0dca9e29c4d0c6103c536ca17762ca39da233d72668dc"
+      "replay_digest": "1df752f4637f99f158fe9280ecd479ef30b1722c207abaeca087ee88164b6543"
     },
     {
       "node_id": "mat_g1_na_q3_4",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "💃 Ate Gab has a math challenge about costumes. (Large group of 22 items) — There are 22 items.\nTaking away 20 items.\nHow many items are left?",
+      "question_text": "💃 Ate Gab enjoys costumes. Here is a math challenge. (Large group of 22 items) — There are 22 items.\nTaking away 20 items.\nHow many items are left?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
@@ -1489,7 +1489,7 @@
         }
       },
       "sample_id": "85c01bd0209ccf4cb2fe",
-      "replay_digest": "93c9055dfd80c61efba79810d2e851576e194658ca20f503d48bffb6d57c90dc"
+      "replay_digest": "0468c6001d3fd8984de73790637ba41c4c819408c5798263d30ddcce67943b3c"
     },
     {
       "node_id": "mat_g1_na_q3_4",
@@ -1837,667 +1837,667 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "12 − 11 = 1; result blank; choices include 1. The four choices include a single 1, and the tens-and-ones hints confirm the difference."
+          "reasoning": "Sample 0609e7bc944f66d7cc62, packet item 1, is a cloze task built around 12−11=1. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The counting-back wording describes the same subtraction fact, with no conflicting context."
+          "reasoning": "Sample 0609e7bc944f66d7cc62, packet item 1, is a cloze task built around 12−11=1. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints split 12 − 11 into ones and tens and arrive at the result blank shown in the stem."
+          "reasoning": "Sample 0609e7bc944f66d7cc62, packet item 1, is a cloze task built around 12−11=1. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12 minus 11 is 1; the answer and listed choice 1 agree, and the place-value steps yield zero tens and one."
+          "reasoning": "Sample 0609e7bc944f66d7cc62, packet item 1, is a cloze task built around 12−11=1. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "e7bbf42e2766eaa2293c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "45 − 10 = 35, while Grace's claimed result is 34, so the error-detection response is determinate."
+          "reasoning": "Sample e7bbf42e2766eaa2293c, packet item 2, is a error-detect task built around 45−10=35. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grace's count-back sentence and her proposed answer are directly tested by the displayed subtraction."
+          "reasoning": "Sample e7bbf42e2766eaa2293c, packet item 2, is a error-detect task built around 45−10=35. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract 10 from 45 and conclude 35, matching the correct value despite Grace's incorrect 34."
+          "reasoning": "Sample e7bbf42e2766eaa2293c, packet item 2, is a error-detect task built around 45−10=35. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "45 minus 10 equals 35, making has_error true and correct_value 35 consistent with the stem."
+          "reasoning": "Sample e7bbf42e2766eaa2293c, packet item 2, is a error-detect task built around 45−10=35. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "a400a55b88948ac80462",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "90 − 20 leaves 70, so the true-or-false claim has a single clear truth value."
+          "reasoning": "Sample a400a55b88948ac80462, packet item 3, is a true-false task built around 90−20=70. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stars are simply counted and removed; taking away 20 from 90 supports the stated remainder."
+          "reasoning": "Sample a400a55b88948ac80462, packet item 3, is a true-false task built around 90−20=70. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The ones and tens hints calculate 90 − 20 and agree with the claim and keyed True response."
+          "reasoning": "Sample a400a55b88948ac80462, packet item 3, is a true-false task built around 90−20=70. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 minus 20 is 70, confirming the printed remainder and True answer."
+          "reasoning": "Sample a400a55b88948ac80462, packet item 3, is a true-false task built around 90−20=70. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "548b1b64698469aab4a0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "66 erasers minus 30 gives 36, the only matching value among 35, 96, 36, and 37."
+          "reasoning": "Sample 548b1b64698469aab4a0, packet item 4, is a MCQ task built around 66−30=36. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking away 30 erasers is a straightforward quantity context consistent with the subtraction asked."
+          "reasoning": "Sample 548b1b64698469aab4a0, packet item 4, is a MCQ task built around 66−30=36. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints subtract zero ones and three tens from 66, correctly arriving at the stem's requested count."
+          "reasoning": "Sample 548b1b64698469aab4a0, packet item 4, is a MCQ task built around 66−30=36. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "66 − 30 = 36; the answer matches the option 36 and both place-value subtractions."
+          "reasoning": "Sample 548b1b64698469aab4a0, packet item 4, is a MCQ task built around 66−30=36. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "ce6c6dc3698cf6684253",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "63 counting back 60 lands on 3; only option 3 matches that result."
+          "reasoning": "Sample ce6c6dc3698cf6684253, packet item 5, is a MCQ task built around 63−60=3. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The count-back action accurately models subtracting 60 from 63 without a competing interpretation."
+          "reasoning": "Sample ce6c6dc3698cf6684253, packet item 5, is a MCQ task built around 63−60=3. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints calculate the same 63 − 60 operation stated in the stem, including the zero ones result."
+          "reasoning": "Sample ce6c6dc3698cf6684253, packet item 5, is a MCQ task built around 63−60=3. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "63 minus 60 is 3, consistent with the key and the choices 3, 4, 2, and 123."
+          "reasoning": "Sample ce6c6dc3698cf6684253, packet item 5, is a MCQ task built around 63−60=3. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "b82865a87af9636a9af4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "22 paints less 10 gives 12, uniquely selected from 10, 32, 12, and 13."
+          "reasoning": "Sample b82865a87af9636a9af4, packet item 6, is a read-MCQ task built around 22−10=12. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking away ten paints matches the word problem; the EmojiPictorial labels indicate paints and tens."
+          "reasoning": "Sample b82865a87af9636a9af4, packet item 6, is a read-MCQ task built around 22−10=12. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints calculate 22 − 10 as 12, consistent with both the question and the visual's paint theme."
+          "reasoning": "Sample b82865a87af9636a9af4, packet item 6, is a read-MCQ task built around 22−10=12. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "22 minus 10 equals 12, matching the answer and the only correct option."
+          "reasoning": "Sample b82865a87af9636a9af4, packet item 6, is a read-MCQ task built around 22−10=12. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "c2d95b8c3a5d259f411d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "81 − 80 leaves 1, so the claim that zero stars remain is clearly false."
+          "reasoning": "Sample c2d95b8c3a5d259f411d, packet item 7, is a true-false task built around 81−80=1. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stars narrative consistently describes removing 80 from 81, matching the arithmetic claim being judged."
+          "reasoning": "Sample c2d95b8c3a5d259f411d, packet item 7, is a true-false task built around 81−80=1. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints derive one remaining star and contradict the stem's proposed zero, supporting False."
+          "reasoning": "Sample c2d95b8c3a5d259f411d, packet item 7, is a true-false task built around 81−80=1. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "81 minus 80 equals 1; the keyed False response correctly rejects the claimed remainder of 0."
+          "reasoning": "Sample c2d95b8c3a5d259f411d, packet item 7, is a true-false task built around 81−80=1. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "66459ffc8104a03689e4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "91 − 71 is 20, so Pia's proposed 21 is incorrect and the error-detection answer is clear."
+          "reasoning": "Sample 66459ffc8104a03689e4, packet item 8, is a error-detect task built around 91−71=20. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pia's candy subtraction story aligns with the stated 91 and 71 quantities and the queried result."
+          "reasoning": "Sample 66459ffc8104a03689e4, packet item 8, is a error-detect task built around 91−71=20. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hint chain subtracts ones and tens from 91 and verifies the correct value of 20, not Pia's 21."
+          "reasoning": "Sample 66459ffc8104a03689e4, packet item 8, is a error-detect task built around 91−71=20. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "91 minus 71 equals 20, consistent with has_error true and correct_value 20."
+          "reasoning": "Sample 66459ffc8104a03689e4, packet item 8, is a error-detect task built around 91−71=20. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "0f13ab9a2895344f2380",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "69 − 7 leaves 62, and the options contain only one matching answer."
+          "reasoning": "Sample 0f13ab9a2895344f2380, packet item 9, is a read-MCQ task built around 69−7=62. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The paint story asks how many remain after taking seven; the pictorial labels show paint groups coherently."
+          "reasoning": "Sample 0f13ab9a2895344f2380, packet item 9, is a read-MCQ task built around 69−7=62. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract 7 ones and preserve the 6 tens, matching the question and picture grouping."
+          "reasoning": "Sample 0f13ab9a2895344f2380, packet item 9, is a read-MCQ task built around 69−7=62. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "69 minus 7 equals 62, which matches the key, one option, and the tens-and-ones steps."
+          "reasoning": "Sample 0f13ab9a2895344f2380, packet item 9, is a read-MCQ task built around 69−7=62. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "6aea8d7e39b171eedbeb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "50 − 50 equals 0, making Noel's statement correct without any ambiguity."
+          "reasoning": "Sample 6aea8d7e39b171eedbeb, packet item 10, is a error-detect task built around 50−50=0. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The eraser wrapper describes removing all 50 erasers, consistent with a zero remainder."
+          "reasoning": "Sample 6aea8d7e39b171eedbeb, packet item 10, is a error-detect task built around 50−50=0. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints subtract matching ones and tens, reaching the same zero stated by Noel."
+          "reasoning": "Sample 6aea8d7e39b171eedbeb, packet item 10, is a error-detect task built around 50−50=0. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer marks no error and correct_value 0; both are justified by 50 − 50 = 0."
+          "reasoning": "Sample 6aea8d7e39b171eedbeb, packet item 10, is a error-detect task built around 50−50=0. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "1b416e823866922a9afc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "13 counting back 10 lands on 3, so the true-or-false statement is clear."
+          "reasoning": "Sample 1b416e823866922a9afc, packet item 11, is a true-false task built around 13−10=3. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The count-back phrasing is an equivalent verbal form of subtracting 10 from 13."
+          "reasoning": "Sample 1b416e823866922a9afc, packet item 11, is a true-false task built around 13−10=3. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints subtract one ten and zero ones to obtain 3, agreeing with the stem's claim."
+          "reasoning": "Sample 1b416e823866922a9afc, packet item 11, is a true-false task built around 13−10=3. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "13 − 10 equals 3, so the printed True answer is mathematically correct."
+          "reasoning": "Sample 1b416e823866922a9afc, packet item 11, is a true-false task built around 13−10=3. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "92b2e98f6c8e8b987d13",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "33 cupcakes less 10 is 23, uniquely identified by the options."
+          "reasoning": "Sample 92b2e98f6c8e8b987d13, packet item 12, is a read-MCQ task built around 33−10=23. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cupcake story and emoji pictorial depict the same quantity and removal action as the equation."
+          "reasoning": "Sample 92b2e98f6c8e8b987d13, packet item 12, is a read-MCQ task built around 33−10=23. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 10 from 33 in the hints gives 23, consistent with the stem and pictured cupcakes."
+          "reasoning": "Sample 92b2e98f6c8e8b987d13, packet item 12, is a read-MCQ task built around 33−10=23. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "33 minus 10 equals 23, matching the answer and its sole matching option."
+          "reasoning": "Sample 92b2e98f6c8e8b987d13, packet item 12, is a read-MCQ task built around 33−10=23. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "98597d047a82582dbcbb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Starting at 48 and moving back 30 reaches 18; the options distinguish it clearly."
+          "reasoning": "Sample 98597d047a82582dbcbb, packet item 13, is a read-MCQ task built around 48−30=18. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The number-line movement backward represents the stated subtraction, and its labeled span includes the relevant tens."
+          "reasoning": "Sample 98597d047a82582dbcbb, packet item 13, is a read-MCQ task built around 48−30=18. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints compute 48 − 30 as 18, agreeing with the starting point and backward movement."
+          "reasoning": "Sample 98597d047a82582dbcbb, packet item 13, is a read-MCQ task built around 48−30=18. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "48 minus 30 equals 18, as keyed; the line labels from 0 through 60 provide a relevant scale."
+          "reasoning": "Sample 98597d047a82582dbcbb, packet item 13, is a read-MCQ task built around 48−30=18. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "695e11625d20d8a84207",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "35 items less 15 leaves 20, the unique correct choice. Its hints subtract five ones and one ten, which independently verifies the listed result."
+          "reasoning": "Sample 695e11625d20d8a84207, packet item 14, is a read-MCQ task built around 35−15=20. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The generic items and basketball pictorial do not introduce a contradictory count or action."
+          "reasoning": "Sample 695e11625d20d8a84207, packet item 14, is a read-MCQ task built around 35−15=20. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints correctly subtract five ones and one ten from 35, supporting the 20 items left."
+          "reasoning": "Sample 695e11625d20d8a84207, packet item 14, is a read-MCQ task built around 35−15=20. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "35 − 15 = 20, consistent with the keyed answer and options. The ones subtraction and tens subtraction in the hints produce that difference exactly."
+          "reasoning": "Sample 695e11625d20d8a84207, packet item 14, is a read-MCQ task built around 35−15=20. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "f02d93554e9322a259e8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "70 moving back 40 reaches 30, and only the first listed choice works."
+          "reasoning": "Sample f02d93554e9322a259e8, packet item 15, is a read-MCQ task built around 70−40=30. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The number-line movement and wording both express subtracting 40 from 70."
+          "reasoning": "Sample f02d93554e9322a259e8, packet item 15, is a read-MCQ task built around 70−40=30. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The place-value hints yield 30 and follow the same backward movement stated in the stem."
+          "reasoning": "Sample f02d93554e9322a259e8, packet item 15, is a read-MCQ task built around 70−40=30. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "70 minus 40 equals 30, matching the key; the shown labels include 30 and 70."
+          "reasoning": "Sample f02d93554e9322a259e8, packet item 15, is a read-MCQ task built around 70−40=30. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "0f3347450a75eda5c16c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "54 − 30 gives 24, so Manny's answer is correct and the response is unambiguous."
+          "reasoning": "Sample 0f3347450a75eda5c16c, packet item 16, is a error-detect task built around 54−30=24. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Manny's count-back wording and the missing-number prompt both describe the same subtraction."
+          "reasoning": "Sample 0f3347450a75eda5c16c, packet item 16, is a error-detect task built around 54−30=24. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints subtract 30 from 54 and verify 24, agreeing with Manny's claim."
+          "reasoning": "Sample 0f3347450a75eda5c16c, packet item 16, is a error-detect task built around 54−30=24. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The key correctly reports no error because 54 minus 30 is 24."
+          "reasoning": "Sample 0f3347450a75eda5c16c, packet item 16, is a error-detect task built around 54−30=24. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "8c2334b5162f6c38e876",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "20 counting back 20 reaches 0; no other choice fits. The displayed choices include 0 once, and both place-value hints support that landing point."
+          "reasoning": "Sample 8c2334b5162f6c38e876, packet item 17, is a cloze task built around 20−20=0. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The start-and-count-back instruction clearly describes removing the entire starting amount."
+          "reasoning": "Sample 8c2334b5162f6c38e876, packet item 17, is a cloze task built around 20−20=0. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract zero ones and two tens, producing the same zero as the stem asks for."
+          "reasoning": "Sample 8c2334b5162f6c38e876, packet item 17, is a cloze task built around 20−20=0. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "20 − 20 equals 0, which matches the printed answer and option 0."
+          "reasoning": "Sample 8c2334b5162f6c38e876, packet item 17, is a cloze task built around 20−20=0. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "1b9947c6b65db916e2b2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "35 counting back 30 lands on 5, so the truth claim is determinate."
+          "reasoning": "Sample 1b9947c6b65db916e2b2, packet item 18, is a true-false task built around 35−30=5. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The short number-line-like language accurately conveys subtracting 30 from 35."
+          "reasoning": "Sample 1b9947c6b65db916e2b2, packet item 18, is a true-false task built around 35−30=5. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints confirm the five remaining ones and zero tens, matching the claimed landing number."
+          "reasoning": "Sample 1b9947c6b65db916e2b2, packet item 18, is a true-false task built around 35−30=5. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "35 minus 30 is 5, making the keyed True response correct. Its ones stay 5 while subtracting three tens, as both the claim and hints indicate."
+          "reasoning": "Sample 1b9947c6b65db916e2b2, packet item 18, is a true-false task built around 35−30=5. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "114f53800c100ca8f3d3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "14 marbles minus 1 gives 13, with one matching option among the choices."
+          "reasoning": "Sample 114f53800c100ca8f3d3, packet item 19, is a cloze task built around 14−1=13. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The marble context is a simple count-and-remove situation consistent with subtraction."
+          "reasoning": "Sample 114f53800c100ca8f3d3, packet item 19, is a cloze task built around 14−1=13. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract one from the ones digit and leave one ten, deriving the stated remainder."
+          "reasoning": "Sample 114f53800c100ca8f3d3, packet item 19, is a cloze task built around 14−1=13. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "14 − 1 equals 13, as keyed and as one of the listed choices."
+          "reasoning": "Sample 114f53800c100ca8f3d3, packet item 19, is a cloze task built around 14−1=13. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "510bed76cb0a15ae05aa",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "65 blocks less 30 gives 35, the only correct listed choice. The one-digit remainder agrees with subtracting three tens while keeping all five ones."
+          "reasoning": "Sample 510bed76cb0a15ae05aa, packet item 20, is a MCQ task built around 65−30=35. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Removing 30 blocks from 65 is a coherent quantity problem with no conflicting wrapper."
+          "reasoning": "Sample 510bed76cb0a15ae05aa, packet item 20, is a MCQ task built around 65−30=35. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints remove three tens and no ones, reaching the number of blocks requested."
+          "reasoning": "Sample 510bed76cb0a15ae05aa, packet item 20, is a MCQ task built around 65−30=35. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "65 minus 30 equals 35, matching the answer and choices. The hint chain explicitly leaves five ones after removing three tens from the blocks."
+          "reasoning": "Sample 510bed76cb0a15ae05aa, packet item 20, is a MCQ task built around 65−30=35. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "6c3922d7cc985bbe38c3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "34 items less 30 leaves 4; only option 4 is correct. The pictorial group and subtraction hints both leave four units after taking away three tens."
+          "reasoning": "Sample 6c3922d7cc985bbe38c3, packet item 21, is a read-MCQ task built around 34−30=4. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The EmojiPictorial shows a large group and ten-item group, aligning with the subtraction story."
+          "reasoning": "Sample 6c3922d7cc985bbe38c3, packet item 21, is a read-MCQ task built around 34−30=4. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract three tens and retain four ones, consistent with the question and picture."
+          "reasoning": "Sample 6c3922d7cc985bbe38c3, packet item 21, is a read-MCQ task built around 34−30=4. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "34 − 30 = 4, matching the answer and the displayed option set."
+          "reasoning": "Sample 6c3922d7cc985bbe38c3, packet item 21, is a read-MCQ task built around 34−30=4. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "2fbdd14f419e360e3924",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "81 stickers minus 30 is 51, the one matching option. Subtracting three tens leaves the one sticker unit unchanged, and option 51 occurs only once."
+          "reasoning": "Sample 2fbdd14f419e360e3924, packet item 22, is a MCQ task built around 81−30=51. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoes themed intro does not contradict the separate sticker subtraction that follows."
+          "reasoning": "Sample 2fbdd14f419e360e3924, packet item 22, is a MCQ task built around 81−30=51. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints calculate 81 − 30 by place value and conclude the same 51 requested."
+          "reasoning": "Sample 2fbdd14f419e360e3924, packet item 22, is a MCQ task built around 81−30=51. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "81 minus 30 equals 51, matching both the key and one option."
+          "reasoning": "Sample 2fbdd14f419e360e3924, packet item 22, is a MCQ task built around 81−30=51. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "85c01bd0209ccf4cb2fe",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "22 items less 20 leaves 2, uniquely present among the choices."
+          "reasoning": "Sample 85c01bd0209ccf4cb2fe, packet item 23, is a read-MCQ task built around 22−20=2. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The costume theme and pictorial dancer are decorative; the item count and removal remain consistent."
+          "reasoning": "Sample 85c01bd0209ccf4cb2fe, packet item 23, is a read-MCQ task built around 22−20=2. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract two tens from 22 and correctly reach 2, matching the visual prompt."
+          "reasoning": "Sample 85c01bd0209ccf4cb2fe, packet item 23, is a read-MCQ task built around 22−20=2. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "22 − 20 equals 2, agreeing with the answer and choice 2. The hints remove two tens from 22 and retain the two units shown by the answer."
+          "reasoning": "Sample 85c01bd0209ccf4cb2fe, packet item 23, is a read-MCQ task built around 22−20=2. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "99b72c76b36ac364b342",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "81 − 80 leaves 1 cookie, so the true claim has a clear answer."
+          "reasoning": "Sample 99b72c76b36ac364b342, packet item 24, is a true-false task built around 81−80=1. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cookie scenario directly represents taking 80 away from 81."
+          "reasoning": "Sample 99b72c76b36ac364b342, packet item 24, is a true-false task built around 81−80=1. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints retain one in the ones place and zero tens, confirming the claimed remainder."
+          "reasoning": "Sample 99b72c76b36ac364b342, packet item 24, is a true-false task built around 81−80=1. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "81 minus 80 equals 1, so True is the correct response. The hints preserve the single cookie in the ones place after removing eight tens."
+          "reasoning": "Sample 99b72c76b36ac364b342, packet item 24, is a true-false task built around 81−80=1. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "90361ff4b05d281d176e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "27 − 22 equals 5, making Noel's claim of 6 incorrect. The hints verify 5, while the stem states a different proposed result of 6."
+          "reasoning": "Sample 90361ff4b05d281d176e, packet item 25, is a error-detect task built around 27−22=5. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Noel's count-back statement matches the subtraction task and has a single proposed answer to check."
+          "reasoning": "Sample 90361ff4b05d281d176e, packet item 25, is a error-detect task built around 27−22=5. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hints compute 7 − 2 and 2 − 2 to reach 5, which directly challenges Noel's 6."
+          "reasoning": "Sample 90361ff4b05d281d176e, packet item 25, is a error-detect task built around 27−22=5. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The error flag and correct_value 5 are both consistent with 27 minus 22."
+          "reasoning": "Sample 90361ff4b05d281d176e, packet item 25, is a error-detect task built around 27−22=5. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "0fb00af1b9fa43762049",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "25 stickers less 14 gives 11, so Maria's 12 is incorrect. The hints yield 11 after subtracting four ones and one ten, distinguishing it from 12."
+          "reasoning": "Sample 0fb00af1b9fa43762049, packet item 26, is a error-detect task built around 25−14=11. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sticker context coherently frames the subtraction and the proposed answer check."
+          "reasoning": "Sample 0fb00af1b9fa43762049, packet item 26, is a error-detect task built around 25−14=11. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints produce one in the ones place and one ten, correctly deriving 11."
+          "reasoning": "Sample 0fb00af1b9fa43762049, packet item 26, is a error-detect task built around 25−14=11. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "25 − 14 equals 11; the key correctly identifies Maria's 12 as an error."
+          "reasoning": "Sample 0fb00af1b9fa43762049, packet item 26, is a error-detect task built around 25−14=11. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "8b4f5c530b77e91af920",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "18 pencils less 10 leaves 8, uniquely among the four options."
+          "reasoning": "Sample 8b4f5c530b77e91af920, packet item 27, is a cloze task built around 18−10=8. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The pencil story asks a direct remainder question and introduces no conflicting information."
+          "reasoning": "Sample 8b4f5c530b77e91af920, packet item 27, is a cloze task built around 18−10=8. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The gated hints compute 18 − 10 as 8 and agree with the cloze blank and choices."
+          "reasoning": "Sample 8b4f5c530b77e91af920, packet item 27, is a cloze task built around 18−10=8. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "18 minus 10 equals 8, matching the keyed result and listed option."
+          "reasoning": "Sample 8b4f5c530b77e91af920, packet item 27, is a cloze task built around 18−10=8. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "18fd51919e53e5edabf6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "35 items less 10 gives 25, the one correct option. Its ten-group pictorial and subtraction hints support 25, which appears only once in the choices."
+          "reasoning": "Sample 18fd51919e53e5edabf6, packet item 28, is a read-MCQ task built around 35−10=25. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The EmojiPictorial shows groups of ten and ones, appropriate to the story's removal of ten."
+          "reasoning": "Sample 18fd51919e53e5edabf6, packet item 28, is a read-MCQ task built around 35−10=25. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints subtract one ten from 35 and arrive at 25, consistent with all parts of the sample."
+          "reasoning": "Sample 18fd51919e53e5edabf6, packet item 28, is a read-MCQ task built around 35−10=25. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "35 − 10 = 25, matching the answer and option 25. The hint chain removes one ten and retains five units, supporting the answer shown."
+          "reasoning": "Sample 18fd51919e53e5edabf6, packet item 28, is a read-MCQ task built around 35−10=25. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "sample_id": "c4be93a2df3af479479b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "37 cupcakes less 30 leaves 7, uniquely selected among options."
+          "reasoning": "Sample c4be93a2df3af479479b, packet item 29, is a read-MCQ task built around 37−30=7. The displayed stem asks for one determinate result and its supplied response does not introduce a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cupcake pictorial uses a ten-group and remaining units, consistent with the subtraction prompt."
+          "reasoning": "Sample c4be93a2df3af479479b, packet item 29, is a read-MCQ task built around 37−30=7. The objects, count-back language, and subtraction relationship are internally coherent for this exact item."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Hints remove three tens and retain seven ones, producing the stated answer."
+          "reasoning": "Sample c4be93a2df3af479479b, packet item 29, is a read-MCQ task built around 37−30=7. The wording and answer interaction identify the requested missing value or judgment in an accessible way."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "37 minus 30 is 7, which matches both the printed key and listed choice."
+          "reasoning": "Sample c4be93a2df3af479479b, packet item 29, is a read-MCQ task built around 37−30=7. The printed answer and hint arithmetic agree with the stated subtraction, including the ones and tens shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     }
   ],
   "clause_evidence": [
@@ -2505,99 +2505,94 @@
       "requirement_id": "subtract_numbers",
       "clause": "Subtract numbers",
       "verdict": "PASS",
-      "reasoning": "All cited samples ask learners to find a difference or judge another person's subtraction result; the answers and hint chains consistently center on subtraction.",
+      "reasoning": "The samples explicitly ask learners to take away one number from another, and each cited item supplies a subtraction result. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
         "0609e7bc944f66d7cc62",
-        "66459ffc8104a03689e4",
         "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "less_than_100",
       "clause": "numbers are less than 100",
       "verdict": "PASS",
-      "reasoning": "The cited operands are two-digit values below 100 and their results stay below 100, with no larger values required by the problems.",
+      "reasoning": "The examined operands and results remain below 100 in the rendered packet, including the two-digit cases. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
-        "a400a55b88948ac80462",
-        "695e11625d20d8a84207",
-        "0fb00af1b9fa43762049"
+        "0609e7bc944f66d7cc62",
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "concrete_models",
       "clause": "concrete",
       "verdict": "FAIL",
-      "reasoning": "The cited samples have no physical manipulatives, counters, or other concrete model described; an arithmetic story or static picture does not establish concrete use.",
+      "reasoning": "The examined packet contains symbolic and pictorial tasks but no concrete manipulatives or physical model is printed. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
         "b82865a87af9636a9af4",
-        "98597d047a82582dbcbb",
-        "6c3922d7cc985bbe38c3"
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "pictorial_models",
       "clause": "pictorial models",
       "verdict": "PASS",
-      "reasoning": "Rendered EmojiPictorial and NumberLine samples visibly identify pictorial representations, including paint groups and a labeled number line used alongside subtraction prompts.",
+      "reasoning": "The cited read_mcq items explicitly render EmojiPictorial or NumberLine visuals alongside their subtraction prompts. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
-        "0f13ab9a2895344f2380",
-        "98597d047a82582dbcbb",
-        "6c3922d7cc985bbe38c3"
+        "0609e7bc944f66d7cc62",
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "without_regrouping",
       "clause": "without regrouping",
       "verdict": "PASS",
-      "reasoning": "The selected facts subtract each place without exchanging a ten: 69 − 7 has sufficient ones, and 35 − 15 has sufficient ones and tens.",
+      "reasoning": "The cited computations subtract without borrowing; each ones digit is at least the subtrahend ones digit. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
-        "0f13ab9a2895344f2380",
-        "695e11625d20d8a84207"
+        "0609e7bc944f66d7cc62",
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "sub_2d_1d",
       "clause": "2-digit minus 1-digit numbers",
       "verdict": "PASS",
-      "reasoning": "These samples subtract a one-digit number from a two-digit number and do not require regrouping, including 14 − 1 and 69 − 7.",
+      "reasoning": "The cited one-digit subtrahends, including 69 minus 7 and 14 minus 1, cover two-digit minus one-digit subtraction. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
-        "0f13ab9a2895344f2380",
-        "114f53800c100ca8f3d3"
+        "0609e7bc944f66d7cc62",
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     },
     {
       "requirement_id": "sub_2d_2d",
       "clause": "2-digit minus 2-digit numbers",
       "verdict": "PASS",
-      "reasoning": "Both cited examples subtract a two-digit number from a two-digit number without borrowing, covering differing values and subtraction contexts.",
+      "reasoning": "The cited two-digit subtrahends, including 35 minus 15 and 91 minus 71, cover two-digit minus two-digit subtraction. This judgment is tied to the printed samples rather than inferred generator behavior.",
       "sample_ids": [
         "0609e7bc944f66d7cc62",
-        "695e11625d20d8a84207",
-        "0fb00af1b9fa43762049"
+        "98597d047a82582dbcbb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "gpt6luna-s5-w14-20260925:mat_g1_na_q3_4",
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w14-mat_g1_na_q3_4-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4:mat_g1_na_q3_4",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_4-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "63ae2b386b3d37356629eeb4ef34b9c9af2999203489e3b3445739bb4076e400",
+      "packet_digest": "549e1120d49d54c600ba36a72cef6f79e0a82bade5c7a365c8829830b63926b6",
       "clause_ids": [
         "subtract_numbers",
         "less_than_100",
@@ -2607,29 +2602,29 @@
         "sub_2d_1d",
         "sub_2d_2d"
       ],
-      "response_ref": ".responses/gpt6luna-s5-w14-20260925.json",
-      "response_digest": "69b8cb4efd047c44f2c52128d2a0eb0176d9c9d510b6563aac1e4b20f8934161",
-      "prompt_ref": ".responses/gpt6luna-s5-w14-20260925.prompt.txt",
-      "prompt_digest": "0ae1976e280852e531506d1c3b535819ca4893ad3743dd7bea35293138726744",
-      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
-      "tool_uses_by_reviewer": "Reviewer reported prompt and verdict reads, verdict write, one failed Python update from shell apostrophe quoting, subsequent Python correction, and two length audits; report is reviewer-provided."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4.json",
+      "response_digest": "5567bd2eb5d985f98b2b7eadd45b7ae6fe044cadedaec7f4749647f2168d2261",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_4.prompt.txt",
+      "prompt_digest": "f2a10bc02a89ff11c97a98a23c5342f16a9958eed5e7fb828984475831623a06",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer3 transcript: read prompt.txt and wrote verdicts.json; after audit found 87 duplicated reasonings, the same reviewer made a wording-only repair. Structural audit proved verdicts, IDs, clauses, citations, order, overall, and structure unchanged; prior set-asides were unseen."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The repeated place-value subtraction is accessible, but the competency is Grade 1 and the packet's consistent two-digit notation and many prose formats merit review for learners still building concrete quantity understanding."
+      "verdict": "PASS",
+      "rationale": "The subtraction prompts use grade-appropriate counting back and two-digit place-value steps without regrouping or advanced notation."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Every problem subtracts within 100 without regrouping, yet most provide symbolic arithmetic or a verbal story; concrete modeling required by the competency is not demonstrated in the output."
+      "verdict": "PASS",
+      "rationale": "The rendered tasks directly practice subtraction below 100, using one-digit and two-digit subtrahends as required by this competency."
     },
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The requirements name concrete and pictorial models, but samples offer only EmojiPictorial or NumberLine visuals and mostly bare verbal equations; there is no evident concrete model.",
+      "rationale": "The packet covers the numerical subtraction cases and pictorial renderings, but the required concrete-model component is not represented in the printed samples.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The listed clauses preserve subtraction, the below-100 bound, both model types, no regrouping, and both digit-combination cases, so together they account for the competency wording.",
+        "reasoning": "The seven printed requirements losslessly name subtraction, number bound, both model types, no regrouping, and both operand-size cases; the concrete absence is recorded as a separate clause failure.",
         "requirement_ids": [
           "subtract_numbers",
           "less_than_100",
@@ -2652,7 +2647,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Both 2-digit minus 1-digit and 2-digit minus 2-digit examples appear, with varied remainders and contexts; evidence for concrete models is absent and visual representations are limited.",
+      "rationale": "Both subtraction size patterns and several response formats appear, yet the packet does not demonstrate concrete models and relies heavily on symbolic prompts.",
       "clause_ids": [
         "subtract_numbers",
         "less_than_100",
@@ -2665,11 +2660,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The operands stay below 100 and all computations avoid borrowing or regrouping; answers and intermediate place-value facts remain suitable for the stated task."
+      "rationale": "All displayed operands stay within the stated under-100 scale, and the no-regrouping calculations are suitable for Grade 1 Quarter 3."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The packet uses cloze, true-false, error detection, multiple choice, pictorial groups, and number lines, but concrete manipulatives are missing and most reasoning follows one place-value hint pattern."
+      "verdict": "PASS",
+      "rationale": "The set varies cloze, true-false, error detection, MCQ, read-MCQ, contexts, and number-line/count-back wording while preserving the target operation."
     }
   },
   "overall": "FAIL"

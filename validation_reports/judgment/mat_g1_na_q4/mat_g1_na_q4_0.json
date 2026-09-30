@@ -29,10 +29,10 @@
       "clause": "parts of a whole"
     }
   ],
-  "packet_digest": "27d09db8575547a92b06a94c381974bb2fabe953f389d07542b61999b3d54602",
+  "packet_digest": "27332dbaa5376b40a63ab0555fe51cd7a095b02b2a46513d07e26eb7d5050327",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -723,7 +723,7 @@
       "node_id": "mat_g1_na_q4_0",
       "seed": 701,
       "formatter": "set_click",
-      "question_text": "🐕 Boyong has a math challenge about fish food packets. Shade 1/4 of the shape.",
+      "question_text": "🐕 Boyong enjoys fish food packets. Here is a math challenge. Shade 1/4 of the shape.",
       "correct_answer": "1/4",
       "requested": {
         "difficulty_profile": null,
@@ -777,13 +777,13 @@
         }
       },
       "sample_id": "cebee4a3d313fbeee314",
-      "replay_digest": "f278ea427d15b5e9a516d9c25a06e044cfb010bd92b67eb8e69a177557ac14d1"
+      "replay_digest": "f930af0056f5010c633e4c0bfc973067d74810b86d97849252025b8aaccb70e2"
     },
     {
       "node_id": "mat_g1_na_q4_0",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "🏀 Isko has a math challenge about basketballs. What fraction does the shaded picture show?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. What fraction does the shaded picture show?",
       "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
@@ -862,7 +862,7 @@
         }
       },
       "sample_id": "3e42647e0863a32629b1",
-      "replay_digest": "a1a04b3488eb208a5c3c0e28ab1b268788e9d7c5a1654afe3ba13f5a89b643ae"
+      "replay_digest": "697b770fb1eb6830c6f2d46e3553058fc046ad005a04aab9e4e90d3a7a34ce0d"
     },
     {
       "node_id": "mat_g1_na_q4_0",
@@ -1336,480 +1336,480 @@
       "sample_id": "ffc9e8dafa8d48cbe5b1",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) presents 3/2 / 2/2 / 1/2 / 2/1; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The question, fraction options, and two-part FractionModel together identify a single intended answer of one-half."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The visual fraction task is internally coherent, and its hints correctly connect one shaded part with two total equal parts."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) uses read_mcq and gives choices 3/2 / 2/2 / 1/2 / 2/1; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The short question and explicit fraction choices are readable for Grade 1, while the hints define numerator and denominator roles."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 1 (ffc9e8dafa8d48cbe5b1) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The answer 1/2 and the displayed two-part structure agree, and every hint equation describes one shaded part out of two."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "e8ebc005e41bf4f0e8b1",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The instruction names exactly one target, 1/2, and the two-part click model supplies a unique way to satisfy it."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "The click interaction asks for one-half and the hints consistently state two total parts and one selected part."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "Shade 1/2 of the shape is a direct, age-appropriate action prompt, supported by plain fraction-part hints."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 2 (e8ebc005e41bf4f0e8b1) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "For a two-part equal model, selecting one part represents exactly 1/2, matching the answer and every hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "4e375cb35ed5a32edd78",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 3 (4e375cb35ed5a32edd78) presents 4/1 / 4/4 / 3/4 / 1/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The four-part FractionModel and distinct fraction options make the intended one-quarter reading unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 3 (4e375cb35ed5a32edd78) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The hints state four total equal parts and one shaded part, which is consistent with the quarter model described."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 3 (4e375cb35ed5a32edd78) uses read_mcq and gives choices 4/1 / 4/4 / 3/4 / 1/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The repeated plain-language question is suitable for early learners, and the hints explain how to read the two fraction numbers."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 3 (4e375cb35ed5a32edd78) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "One shaded part among four equal parts is mathematically 1/4, exactly matching the answer and listed explanation."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "200117daea9113c73b25",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 4 (200117daea9113c73b25) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The named target 1/4 and four-part click model specify one clear shading outcome for the learner."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 4 (200117daea9113c73b25) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "The action, answer, four-part model, and hints all describe selecting one equal part out of four."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 4 (200117daea9113c73b25) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The direct shading instruction uses familiar wording and the hints explicitly explain total and selected parts."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 4 (200117daea9113c73b25) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "Selecting one of four equal parts produces 1/4, so the answer and denominator and numerator hints are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "32c128013138d7d8252a",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 5 (32c128013138d7d8252a) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "This two-part shading instruction gives one clear target and no competing interpretation for the learner."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 5 (32c128013138d7d8252a) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "The requested half, two-part model, answer, and hints are mutually consistent in this click task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 5 (32c128013138d7d8252a) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The short shading direction is understandable at Grade 1 level and is reinforced by the fraction hints."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 5 (32c128013138d7d8252a) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "One selected part of two equal parts is exactly one-half, agreeing with the stated answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "48728014541d6ad73df5",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 6 (48728014541d6ad73df5) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The two-part model and explicit one-half instruction determine a single intended click result."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 6 (48728014541d6ad73df5) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "Its hints correctly describe one selected part from two equal parts, matching this sample's task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 6 (48728014541d6ad73df5) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The direct command uses accessible language and the accompanying hints clarify what fraction parts mean."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 6 (48728014541d6ad73df5) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "The answer one-half is mathematically correct for one of two equal visual parts."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "5d31d80a5c5b783bafc9",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) requests shading 1/2, meaning one of 2 parts; FractionShade reports 2 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The named half and two-part FractionShade representation leave no ambiguity about the required selection."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) has a direct instruction to shade 1/2; that action is logically consistent with 2 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "The sample's action and explanatory hints consistently refer to one part out of two."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) uses a click response for 1/2; the hint sequence explains 2 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The instruction is concise and concrete for a beginning learner, with supportive fraction terminology."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 7 (5d31d80a5c5b783bafc9) has denominator hint 2, numerator hint one, and key 1/2, agreeing with the request; the 5-element description lists 2 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "One shaded equal part among two represents 1/2, matching the answer and model."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "18bd1a497164e6c6a068",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 8 (18bd1a497164e6c6a068) presents 2/2 / 1/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The answer options and two-part shaded picture provide one clearly intended fraction reading."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 8 (18bd1a497164e6c6a068) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The hints' denominator two and numerator one accurately describe this sample's visual task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 8 (18bd1a497164e6c6a068) uses read_mcq and gives choices 2/2 / 1/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The question is brief and familiar, and the hints explain the fraction notation in learner-friendly terms."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 8 (18bd1a497164e6c6a068) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The shown relationship of one shaded part to two total parts equals 1/2."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "aff0ae8ce4bb68d5cbe4",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) presents 1/2 / 2/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The two-part model and distinct options make the intended one-half answer unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "Every hint line agrees with this sample's shaded count and total equal parts."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) uses read_mcq and gives choices 1/2 / 2/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The visual-reading question is simple enough for Grade 1 and the hints offer appropriate support."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 9 (aff0ae8ce4bb68d5cbe4) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "One shaded piece out of two equal pieces is correctly represented as 1/2."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "cebee4a3d313fbeee314",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 10 (cebee4a3d313fbeee314) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The themed wrapper still states one precise target, 1/4, and the four-part click model clarifies it."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 10 (cebee4a3d313fbeee314) Boyong's fish food packets is a light wrapper for shading 1/4; it does not change the one-of-four instruction, though no fish-packet image or shape geometry appears in the visual description."
+          "reasoning": "The fish-food theme does not alter the fraction task, and all hints match one selected part of four."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 10 (cebee4a3d313fbeee314) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The friendly wrapper followed by a direct shading instruction remains understandable to a young learner."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 10 (cebee4a3d313fbeee314) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "Selecting one equal part from four correctly produces the stated fraction 1/4."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "3e42647e0863a32629b1",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 11 (3e42647e0863a32629b1) presents 2/1 / 1/2 / 2/2 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The basketball wrapper does not change the clear question, and the answer options contain one intended half."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 11 (3e42647e0863a32629b1) Isko's basketballs wrapper simply introduces the fraction question and adds no conflicting count; the remaining issue is that its two-part picture state is not described."
+          "reasoning": "The theme is logically neutral, while the two-part hints accurately explain this fraction picture."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 11 (3e42647e0863a32629b1) uses read_mcq and gives choices 2/1 / 1/2 / 2/2 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The short themed question and explicit options are accessible, with hints supporting fraction reading."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 11 (3e42647e0863a32629b1) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The visual's one-of-two relationship and answer 1/2 are mathematically consistent."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "25db00521e701aa44196",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 12 (25db00521e701aa44196) presents 2/2 / 2/1 / 1/2 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The shaded two-part picture and fraction options identify one unambiguous answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 12 (25db00521e701aa44196) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The sample's four hints correctly describe its pictured one-half relationship without contradiction."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 12 (25db00521e701aa44196) uses read_mcq and gives choices 2/2 / 2/1 / 1/2 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The plain question and simple options fit early fraction learning and are supported by clear hints."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 12 (25db00521e701aa44196) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The numerator one and denominator two correctly encode the pictured half."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "7a129f2f26d4e76eca9a",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "A four-part shape and the explicit quarter instruction make the click target unique."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "The hints for total four and selected one accurately describe the action in this sample."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The command is direct and age-appropriate, and the hints provide useful fraction structure."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 13 (7a129f2f26d4e76eca9a) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "One out of four equal parts is exactly 1/4, matching the requested answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "09681a79030e96ab1ff2",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 14 (09681a79030e96ab1ff2) requests shading 1/4, meaning one of 4 parts; FractionShade reports 4 part roles but no geometry, so equal partition and the selectable target cannot be confirmed."
+          "verdict": "PASS",
+          "reasoning": "The four-part shading model and named quarter specify one clear learner action."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 14 (09681a79030e96ab1ff2) has a direct instruction to shade 1/4; that action is logically consistent with 4 parts, while the structure does not expose their shape or click regions."
+          "reasoning": "This sample's hints consistently state four total parts and one selected part."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 14 (09681a79030e96ab1ff2) uses a click response for 1/4; the hint sequence explains 4 total pieces then one piece, but zero text labels and no rendered outline leave the learner's target region unspecified here."
+          "verdict": "PASS",
+          "reasoning": "The brief instruction is readily understood by Grade 1 learners and receives explicit hint support."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 14 (09681a79030e96ab1ff2) has denominator hint 4, numerator hint one, and key 1/4, agreeing with the request; the 7-element description lists 4 roles yet cannot confirm equal areas or the resulting selected fraction."
+          "verdict": "PASS",
+          "reasoning": "The fraction 1/4 correctly represents one of four equal parts in the model."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "e35272e0869c67298357",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 15 (e35272e0869c67298357) presents 1/4 / 4/4 / 4/1 / 3/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The four-part pictured model and four distinct options yield one intended quarter answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 15 (e35272e0869c67298357) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The hints accurately explain one selected part among four for this rendered picture."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 15 (e35272e0869c67298357) uses read_mcq and gives choices 1/4 / 4/4 / 4/1 / 3/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The question is concise, and the hint-gated mode still presents an understandable fraction explanation."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 15 (e35272e0869c67298357) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The answer 1/4 follows correctly from one shaded piece out of four equal pieces."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "de89099348791f454fab",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 16 (de89099348791f454fab) presents 2/2 / 1/2 / 2/1 / 3/2; although 1/2 is the keyed option for one of two parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The two-part FractionModel and options identify a single one-half interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 16 (de89099348791f454fab) asks for a fraction from a shaded two-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "Its hints agree with the model by stating one selected part and two total parts."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 16 (de89099348791f454fab) uses read_mcq and gives choices 2/2 / 1/2 / 2/1 / 3/2; the hints name two equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The wording is short and familiar, and mastery-drill presentation does not obscure the question."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 16 (de89099348791f454fab) has hints that set denominator 2 and numerator one, consistent with 1/2 and the listed key; its 5-element model reports 2 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "The displayed one-of-two relationship correctly yields the answer 1/2."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "sample_id": "ef0639506e28ce60c049",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 17 (ef0639506e28ce60c049) presents 4/1 / 4/4 / 3/4 / 1/4; although 1/4 is the keyed option for one of four parts, its FractionModel metadata never states which part is shaded."
+          "verdict": "PASS",
+          "reasoning": "The four-part model and options make the one-quarter reading definite for this sample."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sample 17 (ef0639506e28ce60c049) asks for a fraction from a shaded four-part picture, which is a coherent read task; the text representation omits the selected region needed to answer it."
+          "reasoning": "The scaffolded presentation's hints correctly match one shaded part and four total parts."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 17 (ef0639506e28ce60c049) uses read_mcq and gives choices 4/1 / 4/4 / 3/4 / 1/4; the hints name four equal parts and one selected part, but the visual has no text labels to show which region is colored."
+          "verdict": "PASS",
+          "reasoning": "The direct question and explanatory scaffolding are clear and suitable for an early learner."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Sample 17 (ef0639506e28ce60c049) has hints that set denominator 4 and numerator one, consistent with 1/4 and the listed key; its 7-element model reports 4 parts but no shading state to verify the picture-answer match."
+          "verdict": "PASS",
+          "reasoning": "One of four equal parts is 1/4, so the answer and hint numerators and denominators are valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "illustrate",
       "clause": "Illustrate",
-      "verdict": "CONCERN",
-      "reasoning": "Shade tasks request an illustration and read tasks assess one, but absent geometry in the printed models prevents confirming that the resulting pictures illustrate the fraction correctly.",
-      "sample_ids": [
-        "e8ebc005e41bf4f0e8b1",
-        "ffc9e8dafa8d48cbe5b1"
-      ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
-    },
-    {
-      "requirement_id": "half",
-      "clause": "1/2",
-      "verdict": "CONCERN",
-      "reasoning": "Two-part models and 1/2 answer choices appear repeatedly, yet none of the textual FractionModel summaries reveals whether precisely one equal part is shaded.",
+      "verdict": "PASS",
+      "reasoning": "Read_mcq and set_click samples visibly require identifying or producing the requested fraction representation, demonstrating the illustration action.",
       "sample_ids": [
         "ffc9e8dafa8d48cbe5b1",
         "e8ebc005e41bf4f0e8b1"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
+    },
+    {
+      "requirement_id": "half",
+      "clause": "1/2",
+      "verdict": "PASS",
+      "reasoning": "Multiple two-part models and shading prompts explicitly target 1/2, with matching answers and hints that identify one of two equal parts.",
+      "sample_ids": [
+        "ffc9e8dafa8d48cbe5b1",
+        "32c128013138d7d8252a"
+      ],
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "requirement_id": "quarter",
       "clause": "1/4",
-      "verdict": "CONCERN",
-      "reasoning": "Four-part shade prompts and reading options keyed 1/4 cover the quarter target, though the summaries do not show equal partitions or which quarter is marked.",
+      "verdict": "PASS",
+      "reasoning": "Four-part models and shading prompts explicitly target 1/4, and their answers and hints consistently identify one of four equal parts.",
       "sample_ids": [
         "4e375cb35ed5a32edd78",
         "200117daea9113c73b25"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     },
     {
       "requirement_id": "parts_of_whole",
       "clause": "parts of a whole",
-      "verdict": "CONCERN",
-      "reasoning": "Hints relate the denominator to the total and the numerator to selected pieces, while omitted shape geometry leaves the whole and its equal partition visually unconfirmed.",
+      "verdict": "PASS",
+      "reasoning": "Each FractionModel or FractionShade divides a whole into equal parts and links the selected portion to the total, directly evidencing this clause.",
       "sample_ids": [
-        "ffc9e8dafa8d48cbe5b1",
-        "4e375cb35ed5a32edd78"
+        "4e375cb35ed5a32edd78",
+        "200117daea9113c73b25"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "gpt6luna-s5-w18-20260925:mat_g1_na_q4_0",
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w18-mat_g1_na_q4_0-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0:mat_g1_na_q4_0",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_0-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "27d09db8575547a92b06a94c381974bb2fabe953f389d07542b61999b3d54602",
+      "packet_digest": "27332dbaa5376b40a63ab0555fe51cd7a095b02b2a46513d07e26eb7d5050327",
       "clause_ids": [
         "illustrate",
         "half",
         "quarter",
         "parts_of_whole"
       ],
-      "response_ref": ".responses/gpt6luna-s5-w18-20260925.json",
-      "response_digest": "8d810c92bf2f94af5e58fdaaaf70f6ce03b7583be9ef59ec33fbb16e88908707",
-      "prompt_ref": ".responses/gpt6luna-s5-w18-20260925.prompt.txt",
-      "prompt_digest": "c40bba6e3655b860842b73bb3cf4c4c4bc7ac28ab1ec81937bef9aff3e72ae3a",
-      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
-      "tool_uses_by_reviewer": "Reviewer reported prompt cat read, initial verdict write, then prompt read and revised verdict write with saved-file audit; report is reviewer-provided."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0.json",
+      "response_digest": "2b5fed7a5a7258304e2b2365f10a6d436aa0361cd52da21d74201a9d1dd48654",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_0.prompt.txt",
+      "prompt_digest": "e4af579e97cfdc0fe773731caab878b055d49007413c340c843053c5b68f6e1e",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON, sample-count, clause-count, and overall validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The task asks children to recognize or mark one of two equal parts or one of four, with short numerator and denominator hints and no calculation beyond counting."
+      "rationale": "The items use simple visual partitioning and one-step fraction identification or shading, an appropriate cognitive load for Grade 1 Quarter 4 learners."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every request engages a visual model to identify or illustrate one half or one quarter as parts within a whole, matching the stated Grade 1 competency."
+      "rationale": "Every stem and response concerns recognizing or making one-half or one-quarter of a visibly partitioned whole, directly matching the stated competency."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The examples target both unit fractions with read and shade actions, yet the packet's visual descriptions omit shading and geometry needed to verify the claimed illustrations.",
+      "verdict": "PASS",
+      "rationale": "Across read and click interactions, the packet asks learners both to identify pictured halves or quarters and to illustrate those fractions by shading.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The listed clauses capture the action to illustrate, both required fraction values, and their relation as parts of a whole; together these preserve the competency's full wording.",
+        "reasoning": "The four printed requirements separately capture the action Illustrate, the two required fraction values 1/2 and 1/4, and the required relation to parts of a whole; together they losslessly cover the competency.",
         "requirement_ids": [
           "illustrate",
           "half",
@@ -1825,8 +1825,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Both target fractions occur in reading and marking tasks, but all textual visual summaries omit the shaded region and shape geometry, preventing confirmation of valid whole-part models.",
+      "verdict": "PASS",
+      "rationale": "Samples include both required fractions and both directions of work: reading a shaded model and shading a model, with repeated opportunities for each value.",
       "clause_ids": [
         "illustrate",
         "half",
@@ -1836,12 +1836,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The examples stay with halves and quarters, short instructions, and simple part counting; their number concepts and response demands are suitable for the stated grade and quarter."
+      "rationale": "The models contain only two or four equal parts, and the prompts require no operations beyond counting shaded parts and matching the named fraction."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both reading a fraction model and clicking regions to create a shaded model are represented, providing recognition and illustration formats for each required value."
+      "rationale": "The packet varies read_mcq and set_click formats, visual model versus shading task, scaffolding modes, and themed wrappers while retaining the same Grade 1 target."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

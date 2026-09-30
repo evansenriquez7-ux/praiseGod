@@ -1,0 +1,274 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_4-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q4_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_4-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q4_4
+PACKET DIGEST: de4d0ee568d1110944267e396610e7065fbb32453e2e2bd5d53e5823391baa51
+COMPETENCY (Grade 1, Quarter 4, None):
+Determine the value of a number of bills and/or a number of coins (excluding centavo coins) up to ₱100.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  determine_value: Determine the value
+  number_of_bills: number of bills
+  number_of_coins: number of coins
+  excluding_centavo_coins: excluding centavo coins
+  up_to_100: up to ₱100
+
+SAMPLES (every one of these is real rendered output):
+  sample aae2bee699253491cd16  seed 42  [read_mcq]
+      stem:    The dot is at ₱10 and it moves forward ₱1. Which amount will the dot land on?
+      answer:  71
+      options: 70 / 71 / 76 / 66
+      hints:   ["You have these amounts: ['peso10', 'peso1', 'peso10', 'peso50'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso1 → running total = peso11.", "Step 3: Add peso10 → running total = peso21.", "Step 4: Add peso50 → running total = peso71.", "The total is peso71."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8eb568d8940ced0a4810  seed 43  [set_fill_in_blank]
+      stem:    Use coins and bills to make exactly ₱60. Use the fewest pieces possible.
+      answer:  60
+      hints:   ["You have these amounts: ['peso10', 'peso5', 'peso10', 'peso10', 'peso5', 'peso5', 'peso10', 'peso5'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso5 → running total = peso15.", "Step 3: Add peso10 → running total = peso25.", "Step 4: Add peso10 → running total = peso35.", "Step 5: Add peso5 → running total = peso40.", "Step 6: Add peso5 → running total = peso45.", "Step 7: Add peso10 → running total = peso55.", "Step 8: Add peso5 → running total = peso60.", "The total is peso60."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 9, "input_count": 0, "text_labels": ["Make exactly:", "₱60", "BILLS", "₱1000", "₱500", "₱200", "₱100", "₱50", "₱20", "COINS", "₱10", "₱5", "₱1"], "distinct_colours": ["hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)", "#10b981,", "#059669)", "#fff", "#f59e0b,", "#d97706)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e1ce9dd78e4d44839196  seed 44  [mcq]
+      stem:    How much is 1 ₱50 bill and 1 ₱20 bill altogether?
+      answer:  70
+      options: 71 / 60 / 70 / 700
+      hints:   ["You have these amounts: ['peso50', 'peso20'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso20 → running total = peso70.", "The total is peso70."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 50789ca296c62aa837a2  seed 45  [read_mcq]
+      stem:    The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on?
+      answer:  40
+      options: 39 / 45 / 40 / 35
+      hints:   ["You have these amounts: ['peso20', 'peso20'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso20 → running total = peso40.", "The total is peso40."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cac63138a0d3a6ede2aa  seed 46  [cloze]
+      stem:    What is the total value of 2 ₱10 coins?
+      answer:  20
+      options: 21 / 200 / 10 / 20
+      hints:   ["You have these amounts: ['peso10', 'peso10'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso10 → running total = peso20.", "The total is peso20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5f5f566d7cfc1cd7223c  seed 500  [read_mcq]
+      stem:    Use coins and bills to make exactly ₱100. Use the fewest pieces possible.
+      answer:  100
+      options: 110 / 120 / 100 / 95
+      hints:   ["You have these amounts: ['peso50', 'peso50'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso50 → running total = peso100.", "The total is peso100."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 649d4f59962c374ea942  seed 501  [read_mcq]
+      stem:    The dot is at ₱5 and it moves forward ₱10. Which amount will the dot land on?
+      answer:  85
+      options: 85 / 90 / 84 / 80
+      hints:   ["You have these amounts: ['peso5', 'peso10', 'peso50', 'peso20'].", "Step 1: Add peso5 → running total = peso5.", "Step 2: Add peso10 → running total = peso15.", "Step 3: Add peso50 → running total = peso65.", "Step 4: Add peso20 → running total = peso85.", "The total is peso85."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c005f10900cf39ed462b  seed 502  [mcq]
+      stem:    Find the total amount of 2 ₱50 bills:
+      answer:  100
+      options: 100 / 101 / 90 / 1000
+      hints:   ["You have these amounts: ['peso50', 'peso50'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso50 → running total = peso100.", "The total is peso100."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 688fe14c683843bc5a5e  seed 600  [set_fill_in_blank]
+      stem:    Use coins and bills to make exactly ₱90. Use the fewest pieces possible.
+      answer:  90
+      hints:   ["You have these amounts: ['peso20', 'peso20', 'peso50'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso20 → running total = peso40.", "Step 3: Add peso50 → running total = peso90.", "The total is peso90."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 9, "input_count": 0, "text_labels": ["Make exactly:", "₱90", "BILLS", "₱1000", "₱500", "₱200", "₱100", "₱50", "₱20", "COINS", "₱10", "₱5", "₱1"], "distinct_colours": ["hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)", "#10b981,", "#059669)", "#fff", "#f59e0b,", "#d97706)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 785860d330875a38fcfc  seed 601  [cloze]
+      stem:    What is the total value of 1 ₱10 coin and 2 ₱5 coins?
+      answer:  20
+      options: 200 / 10 / 21 / 20
+      hints:   ["You have these amounts: ['peso5', 'peso5', 'peso10'].", "Step 1: Add peso5 → running total = peso5.", "Step 2: Add peso5 → running total = peso10.", "Step 3: Add peso10 → running total = peso20.", "The total is peso20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b1805828055816b1ed5a  seed 602  [read_mcq]
+      stem:    The dot is at ₱20 and it moves forward ₱50. Which amount will the dot land on?
+      answer:  70
+      options: 70 / 65 / 75 / 69
+      hints:   ["You have these amounts: ['peso20', 'peso50'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso50 → running total = peso70.", "The total is peso70."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["10", "20", "30", "40", "50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8e5f2bfa3cfa563f960c  seed 603  [set_fill_in_blank]
+      stem:    Use coins and bills to make exactly ₱30. Use the fewest pieces possible.
+      answer:  30
+      hints:   ["You have these amounts: ['peso10', 'peso10', 'peso10'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso10 → running total = peso20.", "Step 3: Add peso10 → running total = peso30.", "The total is peso30."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 9, "input_count": 0, "text_labels": ["Make exactly:", "₱30", "BILLS", "₱1000", "₱500", "₱200", "₱100", "₱50", "₱20", "COINS", "₱10", "₱5", "₱1"], "distinct_colours": ["hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)", "#10b981,", "#059669)", "#fff", "#f59e0b,", "#d97706)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dae10b3ca3d1e9001a0a  seed 700  [set_fill_in_blank]
+      stem:    Use coins and bills to make exactly ₱30. Use the fewest pieces possible.
+      answer:  30
+      hints:   ["You have these amounts: ['peso1', 'peso1', 'peso1', 'peso5', 'peso1', 'peso10', 'peso10', 'peso1'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso1 → running total = peso2.", "Step 3: Add peso1 → running total = peso3.", "Step 4: Add peso5 → running total = peso8.", "Step 5: Add peso1 → running total = peso9.", "Step 6: Add peso10 → running total = peso19.", "Step 7: Add peso10 → running total = peso29.", "Step 8: Add peso1 → running total = peso30.", "The total is peso30."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 9, "input_count": 0, "text_labels": ["Make exactly:", "₱30", "BILLS", "₱1000", "₱500", "₱200", "₱100", "₱50", "₱20", "COINS", "₱10", "₱5", "₱1"], "distinct_colours": ["hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)", "#10b981,", "#059669)", "#fff", "#f59e0b,", "#d97706)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8296808b209cbf622ea1  seed 701  [cloze]
+      stem:    💃 Kuya Ton enjoys trophies. Here is a math challenge. Determine the total value of 1 ₱50 bill and 1 ₱1 coin:
+      answer:  51
+      options: 51 / 41 / 52 / 510
+      hints:   ["You have these amounts: ['peso50', 'peso1'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso1 → running total = peso51.", "The total is peso51."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 53464c29c9d42bc50dcd  seed 702  [mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. How much is 5 ₱10 coins, 1 ₱5 coin, and 4 ₱1 coins altogether?
+      answer:  59
+      options: 49 / 590 / 59 / 60
+      hints:   ["You have these amounts: ['peso10', 'peso1', 'peso10', 'peso1', 'peso1', 'peso10', 'peso10', 'peso10', 'peso5', 'peso1'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso1 → running total = peso11.", "Step 3: Add peso10 → running total = peso21.", "Step 4: Add peso1 → running total = peso22.", "Step 5: Add peso1 → running total = peso23.", "Step 6: Add peso10 → running total = peso33.", "Step 7: Add peso10 → running total = peso43.", "Step 8: Add peso10 → running total = peso53.", "Step 9: Add peso5 → running total = peso58.", "Step 10: Add peso1 → running total = peso59.", "The total is peso59."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 065319301c73cbd2c862  seed 800  [read_mcq]
+      stem:    Use coins and bills to make exactly ₱6. Use the fewest pieces possible.
+      answer:  6
+      options: 5 / 7 / 6 / 1
+      hints:   ["You have these amounts: ['peso1', 'peso5'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso5 → running total = peso6.", "The total is peso6."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱1", "₱5"], "distinct_colours": ["hsl(var(--text-muted)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#e2e8f0,", "#cbd5e1)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 18122ec44f412a306890  seed 801  [mcq]
+      stem:    How much is 10 ₱10 coins altogether?
+      answer:  100
+      options: 101 / 100 / 1000 / 90
+      hints:   ["You have these amounts: ['peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10', 'peso10'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso10 → running total = peso20.", "Step 3: Add peso10 → running total = peso30.", "Step 4: Add peso10 → running total = peso40.", "Step 5: Add peso10 → running total = peso50.", "Step 6: Add peso10 → running total = peso60.", "Step 7: Add peso10 → running total = peso70.", "Step 8: Add peso10 → running total = peso80.", "Step 9: Add peso10 → running total = peso90.", "Step 10: Add peso10 → running total = peso100.", "The total is peso100."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e5735db45f840810667a  seed 900  [read_mcq]
+      stem:    The dot is at ₱1 and it moves forward ₱1. Which amount will the dot land on?
+      answer:  2
+      options: 3 / 2 / 1 / 4
+      hints:   ["You have these amounts: ['peso1', 'peso1'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso1 → running total = peso2.", "The total is peso2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 578647b036a048dc077e  seed 901  [read_mcq]
+      stem:    The dot is at ₱20 and it moves forward ₱20. Which amount will the dot land on?
+      answer:  40
+      options: 35 / 45 / 40 / 39
+      hints:   ["You have these amounts: ['peso20', 'peso20'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso20 → running total = peso40.", "The total is peso40."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4b7ea6da5a987ccd785a  seed 1000  [set_fill_in_blank]
+      stem:    Use coins and bills to make exactly ₱60. Use the fewest pieces possible.
+      answer:  60
+      hints:   ["You have these amounts: ['peso20', 'peso20', 'peso20'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso20 → running total = peso40.", "Step 3: Add peso20 → running total = peso60.", "The total is peso60."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 9, "input_count": 0, "text_labels": ["Make exactly:", "₱60", "BILLS", "₱1000", "₱500", "₱200", "₱100", "₱50", "₱20", "COINS", "₱10", "₱5", "₱1"], "distinct_colours": ["hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)", "#10b981,", "#059669)", "#fff", "#f59e0b,", "#d97706)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 42818a359fd92cc2eebc  seed 1001  [mcq]
+      stem:    What is the total value of 4 ₱10 coins, 4 ₱5 coins, and 2 ₱1 coins?
+      answer:  62
+      options: 620 / 52 / 63 / 62
+      hints:   ["You have these amounts: ['peso1', 'peso5', 'peso1', 'peso10', 'peso5', 'peso10', 'peso10', 'peso10', 'peso5', 'peso5'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso5 → running total = peso6.", "Step 3: Add peso1 → running total = peso7.", "Step 4: Add peso10 → running total = peso17.", "Step 5: Add peso5 → running total = peso22.", "Step 6: Add peso10 → running total = peso32.", "Step 7: Add peso10 → running total = peso42.", "Step 8: Add peso10 → running total = peso52.", "Step 9: Add peso5 → running total = peso57.", "Step 10: Add peso5 → running total = peso62.", "The total is peso62."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 0006554c992c4df20d7f  seed 1002  [mcq]
+      stem:    Determine the total value of 1 ₱20 bill and 2 ₱1 coins:
+      answer:  22
+      options: 22 / 12 / 23 / 220
+      hints:   ["You have these amounts: ['peso1', 'peso20', 'peso1'].", "Step 1: Add peso1 → running total = peso1.", "Step 2: Add peso20 → running total = peso21.", "Step 3: Add peso1 → running total = peso22.", "The total is peso22."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

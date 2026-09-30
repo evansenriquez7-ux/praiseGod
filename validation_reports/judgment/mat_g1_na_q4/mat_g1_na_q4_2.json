@@ -24,10 +24,10 @@
       "clause": "quarters"
     }
   ],
-  "packet_digest": "b037124c2f76a2af48e3eea3676331801f256408209495f44caffc964f2c378c",
+  "packet_digest": "b3d5d09edc14573d2be0f01f5c6486ee649758316a658712d619d8ea3405fe41",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -682,7 +682,7 @@
       "node_id": "mat_g1_na_q4_2",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "🐕 Boyong has a math challenge about fish food packets. What comes next when counting by quarters: 2/4, 3/4, ___?",
+      "question_text": "🐕 Boyong enjoys fish food packets. Here is a math challenge. What comes next when counting by quarters: 2/4, 3/4, ___?",
       "correct_answer": "4/4",
       "requested": {
         "difficulty_profile": null,
@@ -728,13 +728,13 @@
         "The answer is 4/4."
       ],
       "sample_id": "656bf9ceaa8bf7f3040e",
-      "replay_digest": "5c79b8a75760d18303833e0b5ee3e259c14c4f07413f24236963ef2ab0772413"
+      "replay_digest": "5f926a0205000a03ebf0288d98344e896bf808e5e7a28dc92d011610d0eee9a0"
     },
     {
       "node_id": "mat_g1_na_q4_2",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🏀 Isko has a math challenge about basketballs. What comes next when counting by halves: 1/2, ___?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. What comes next when counting by halves: 1/2, ___?",
       "correct_answer": "2/2",
       "requested": {
         "difficulty_profile": null,
@@ -784,7 +784,7 @@
         "The answer is 2/2."
       ],
       "sample_id": "a82920fd4d36e813ae15",
-      "replay_digest": "912dd92ef74f5ea580d8e20af5befa0dd9cf8b66d4e05aa17bacae00341bec83"
+      "replay_digest": "890e3516873d4707f290370cd1b6ef328d4dd1589eb15105572ff026eee27910"
     },
     {
       "node_id": "mat_g1_na_q4_2",
@@ -1127,437 +1127,437 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem clearly asks for the next fraction in a counting-by-halves sequence. Blank position and expected answer format (a single fraction) are unambiguous. No alternative interpretations of the task exist for this sample."
+          "reasoning": "The single blank follows an unambiguous halves sequence, and exactly one listed option completes the visible progression."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting by halves from 1/2, the next value is 2/2. This progression is mathematically valid within sequential fraction counting. Distractors (2/4, 1/2, 3/2) represent plausible incorrect alternatives."
+          "reasoning": "This item has no distracting story context; its displayed sequence and requested next term are logically consistent."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "While the question is clear, hints state 'Add only the top numbers: 2 + 0 = 2' which does not correctly describe counting by increments of 1/2. This equation and explanation do not support Grade 1 comprehension of fraction counting sequences."
+          "reasoning": "The stem is clear, but the hints discuss adding fractions and an unexplained zero rather than clearly explaining the counting step."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is the mathematically correct next value when counting by 1/2 starting from 1/2. The arithmetic and fraction sequencing are sound."
+          "reasoning": "Advancing from one half to two halves makes the keyed answer mathematically correct, and all displayed hint equations are true."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "8531fb2d8e3617e37819",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ format clearly asks for the next fraction when counting by halves from 1/2. Options are distinct and unambiguous in meaning."
+          "reasoning": "The direct halves sequence has one natural continuation, and the options contain one matching answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 2/2 correctly follows 1/2 in a halves-counting sequence. Distractors include 1/2 (repeated), 2/4 (equivalent notation), 3/2 (too large), representing typical student errors."
+          "reasoning": "The wording asks for the next term and the displayed sequence supplies exactly the information needed to determine it."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints present 'Add only the top numbers: 2 + 0 = 2' which fails to explain the counting operation for a Grade 1 student. The equation does not clarify progression from 1/2 to 2/2."
+          "reasoning": "The question is understandable, yet its hints frame the task as fraction addition and do not clearly connect the stated arithmetic to counting."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is correct and all options are properly formed fractions."
+          "reasoning": "The next counted half is two halves, matching the answer and the sequence; the arithmetic statements printed in hints are valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "44798595784e8e3c4cb8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem clearly identifies a missing fraction in a quarters-counting sequence. The blank position and context are explicit and unambiguous."
+          "reasoning": "The quarter sequence has a uniquely determined missing numerator between one quarter and three quarters."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "In the sequence 1/4, ___, 3/4, 4/4, the missing value 2/4 is mathematically sound. The arithmetic progression is standard for Grade 1 fraction instruction."
+          "reasoning": "The missing-position wording agrees with the displayed ordered quarter sequence and does not introduce any irrelevant condition."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 2 + 0 = 2' which fails to explain how to identify a missing element in a sequence. This explanation is misaligned with the task."
+          "reasoning": "The stem is accessible, but the hints use an addition explanation that does not explicitly show why the missing quarter is the next count."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/4 is the correct missing value for the sequence 1/4, 2/4, 3/4, 4/4."
+          "reasoning": "Two quarters is the unique term between one quarter and three quarters, and the keyed fraction is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "a0499785465bdee37b2f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ clearly asks for the next fraction after 3/4 in a quarters-counting sequence. Format and expected answer type are unambiguous."
+          "reasoning": "The next quarter after two quarters and three quarters is unique, while the options include only one exact matching fraction."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "After 2/4 and 3/4, the next quarter-step is 4/4. Distractors include 3/4 (repeated), 5/4 (exceeds scope), 4/2 (incorrect denominator)."
+          "reasoning": "The requested next term follows the same denominator and increasing numerator pattern shown in the stem."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 4 + 0 = 4' which provides no meaningful support for understanding quarter-counting in Grade 1 terms."
+          "reasoning": "The sequence itself is clear, but the hints do not explain the one-quarter increment and instead present an opaque zero addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "4/4 is the mathematically correct next value in the sequence 2/4, 3/4, 4/4."
+          "reasoning": "Four quarters is the correct next counted quarter and the answer agrees with the sequence and denominator."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "d32584e423bd7c337896",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ clearly asks for the next fraction when counting by halves from 1/2. Format and expected response are unambiguous."
+          "reasoning": "Only two halves completes the shown one-half counting sequence, so the response is not ambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 correctly follows 1/2 when counting halves. Distractors (3/2, 1/2, 2/4) represent plausible alternatives that test understanding."
+          "reasoning": "There is no story wrapper; the sequence, requested term, and answer choice structure are mutually consistent."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 2 + 0 = 2' which obscures rather than clarifies the counting operation and lacks pedagogical value."
+          "reasoning": "The learner can read the stem, but the provided hints do not clearly articulate how counting changes one numerator at a time."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting from 1/2, adding 1/2 more yields 2/2, which is correct. The sequence progression 1/2 to 2/2 is mathematically sound."
+          "reasoning": "The keyed two halves correctly follows one half in the displayed counting pattern, and no mathematical contradiction appears."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "97197c11b8ead1d91ed3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ clearly asks for the missing fraction in 1/4, 2/4, ___, 4/4. Blank position and expected answer are explicit."
+          "reasoning": "The quarter sequence leaves exactly one missing term, three quarters, with no competing interpretation among the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "3/4 is the correct missing quarter-step. Distractors represent common sequence-finding errors."
+          "reasoning": "The missing-term prompt accurately describes the position between two quarters and four quarters."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 3 + 0 = 3' which does not meaningfully support finding a missing element in a counting sequence."
+          "reasoning": "The sequence is readable, though the hints' addition language does not directly explain the missing-position counting operation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "3/4 is the correct missing value when completing 1/4, 2/4, 3/4, 4/4."
+          "reasoning": "Three quarters is the correct ordered term and the hint arithmetic shown for the numerator is numerically true."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "e6dd48589586d66108ad",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ asks for the missing fraction in the sequence 1/4, 2/4, ___, 4/4. The question is clear and unambiguous."
+          "reasoning": "The same quarter pattern determines one and only one missing value, and the answer appears among the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "3/4 is the correct missing value. Distractors are distinct fractions representing typical misunderstandings."
+          "reasoning": "The displayed terms establish an orderly quarter count and the question asks for precisely its missing term."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Identical hint issue: 'Add only the top numbers: 3 + 0 = 3' does not explain how to locate a missing element. The explanation is ineffective for this task."
+          "reasoning": "The task wording is simple, but the hints may confuse learners because the stated addition does not model the preceding sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The missing quarter in the sequence 1/4, 2/4, ___, 4/4 is 3/4, which is mathematically correct."
+          "reasoning": "The keyed three quarters correctly fills the gap after two quarters and before four quarters."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "ff95bb2acf4e90873fa4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format clearly asks for the next fraction in the progression 1/4, 2/4, 3/4, ___. The blank position is explicit."
+          "reasoning": "The next term after one, two, and three quarters is uniquely four quarters."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "4/4 is the correct next quarter when counting from 3/4. Distractors include incorrect denominators and out-of-range values."
+          "reasoning": "The pattern prompt and consecutive quarter terms form a coherent, sufficient basis for selecting the next fraction."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 4 + 0 = 4' which remains misaligned with a counting-based task and provides minimal support."
+          "reasoning": "Although the pattern is clear, its hints focus on an unexplained addition statement rather than the visible counting rule."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "In the progression 1/4, 2/4, 3/4, the next value 4/4 is mathematically correct."
+          "reasoning": "Four quarters correctly continues the numerator-by-one pattern while preserving the denominator four."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "8e7efd0cbc49dd0b4b50",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the next fraction when counting by halves. The pattern 1/2, ___ is unambiguous."
+          "reasoning": "The halves sequence has a single obvious continuation, and the answer options do not create a second valid next term."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is the correct next halves-step. Distractors represent plausible incorrect responses."
+          "reasoning": "The short pattern question is internally coherent and contains all information needed to count to the next half."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hint 'Add only the top numbers: 2 + 0 = 2' persists across samples without meaningful pedagogical support for the counting task."
+          "reasoning": "The stem is concise, but the hints' numerator arithmetic is not an especially clear explanation of advancing by one half."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting by halves from 1/2 to the next increment yields 2/2, which is mathematically sound and correct."
+          "reasoning": "Two halves is the correct next term after one half in the stated counting pattern."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "f6db1806b8bda8c3d068",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the next fraction in the quarters sequence 1/4, 2/4, 3/4, ___. The question is explicit."
+          "reasoning": "The quarter pattern directly determines four quarters, with no ambiguity about the missing final term."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "4/4 is the correct next quarter. Distractors (3/4, 4/2, 5/4) represent common errors."
+          "reasoning": "The request for the next fraction matches the consecutive quarter values presented in the stem."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints provide 'Add only the top numbers: 4 + 0 = 4' which fails to support the counting operation required by this task."
+          "reasoning": "The pattern is accessible, while the hints remain somewhat mismatched because they do not explicitly represent the counting increment."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Following 1/4, 2/4, 3/4 in the sequence, the answer 4/4 is the mathematically correct next quarter value."
+          "reasoning": "Four quarters correctly follows three quarters and preserves the denominator required by the pattern."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "262a6fdcb9a8a8e5dcf6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the next halves value from 1/2. The question and expected response format are unambiguous."
+          "reasoning": "The halves continuation is uniquely determined and one option exactly matches the required next fraction."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is the correct next halves-step. Distractors are distinct fractions."
+          "reasoning": "The item contains a straightforward sequence and asks for its next value without conflicting context."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hint formulation 'Add only the top numbers: 2 + 0 = 2' remains misaligned with the counting task and provides limited guidance."
+          "reasoning": "Learners can identify the pattern, but the hints' zero-addition phrasing does not clearly teach why the numerator advances."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting by halves: from 1/2, the next value is 2/2. This arithmetic progression is mathematically correct."
+          "reasoning": "Two halves is the mathematically correct next counted value after one half."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "656bf9ceaa8bf7f3040e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem includes character name and theming (Boyong, dog, fish food packets) but the mathematical question remains clear: the question asks what comes next when counting by quarters starting at 2/4. Theming does not obscure the problem."
+          "reasoning": "The themed wrapper does not alter the clear quarter sequence, which has one correct next term."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "4/4 correctly follows 3/4 in a quarters sequence. The theming context is mathematically neutral and does not interfere with problem logic."
+          "reasoning": "The dog and fish-food wording is merely a wrapper; the mathematical question itself remains logically coherent."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "While theming with character name and emoji is clear, hints persist with 'Add only the top numbers: 4 + 0 = 4' which does not support understanding the counting operation."
+          "reasoning": "The stem remains readable, but the generic hints do not explain the counting operation as clearly as the quarter pattern could."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "In the sequence 2/4, 3/4, the next quarter value 4/4 is arithmetically and conceptually correct."
+          "reasoning": "Four quarters correctly follows two quarters and three quarters, regardless of the harmless thematic wrapper."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "a82920fd4d36e813ae15",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem includes theming (Isko, basketball, 🏀 emoji) but the mathematical question is clear: what comes next when counting by halves from 1/2. Theming does not introduce ambiguity."
+          "reasoning": "The basketball wrapper adds no competing interpretation, and the halves sequence has one valid continuation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 correctly follows 1/2 in a halves sequence. Theming context (basketballs) is irrelevant to the mathematics and does not interfere."
+          "reasoning": "The themed introduction does not change the requested mathematical action or conflict with the displayed sequence."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The mathematical question is clearly presented with theming, but hints state 'Add only the top numbers: 2 + 0 = 2' which fails to clarify the counting operation."
+          "reasoning": "The wording is understandable, but the hints use an addition framing that is not a direct explanation of counting halves."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting halves from 1/2 to 2/2 represents a correct arithmetic progression in fraction counting."
+          "reasoning": "Two halves is the correct next term after one half, and the thematic sentence has no mathematical effect."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "010f28f37111ee8f2603",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format clearly asks for the missing fraction in 1/4, ___, 3/4, 4/4. The blank position and sequence are explicit."
+          "reasoning": "The missing quarter is uniquely fixed by the surrounding one-quarter, three-quarter, and four-quarter terms."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/4 is the correct missing quarter-step. The progression is logically sound."
+          "reasoning": "The missing-position question is internally consistent and the ordered terms supply sufficient evidence."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints provide 'Add only the top numbers: 2 + 0 = 2' which does not meaningfully explain how to find a missing element in a sequence."
+          "reasoning": "The sequence is easy to parse, yet the hints do not explicitly connect their arithmetic to inserting the missing term."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The missing quarter 2/4 in the sequence 1/4, ___, 3/4, 4/4 is mathematically correct and completes the pattern."
+          "reasoning": "Two quarters is the unique mathematically correct value between one quarter and three quarters."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "777e2b5af7b3f0938da0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ asks for the next halves value from 1/2. The question is clear and unambiguous."
+          "reasoning": "The halves pattern and answer choices identify two halves as the only suitable next fraction."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is the correct next value when counting halves. Distractors represent plausible student errors."
+          "reasoning": "The concise question is logically complete and does not contain context that changes the sequence task."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints repeat 'Add only the top numbers: 2 + 0 = 2' which provides no meaningful pedagogical support for understanding fraction counting."
+          "reasoning": "The stem is plain, but the repeated hints leave the counting step less explicit than ideal for a beginning learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sequence progresses from 1/2 by adding 1/2 to reach 2/2, which is arithmetically and mathematically correct."
+          "reasoning": "Two halves correctly continues counting by halves from one half."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "5f14a307d76991143b21",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "MCQ clearly asks for the missing fraction in 1/4, 2/4, ___, 4/4. The blank position and expected answer are unambiguous."
+          "reasoning": "The missing term in the consecutive quarter pattern is uniquely three quarters."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "3/4 is the correct missing quarter-step. Distractors represent common sequence-completion errors."
+          "reasoning": "The sequence and missing-position wording agree, with no extraneous wrapper or logical conflict."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 3 + 0 = 3' which fails to support the task of finding a missing element in a fraction sequence."
+          "reasoning": "The displayed pattern is clear, though the hints' arithmetic does not visibly demonstrate the one-quarter step."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Finding the missing quarter 3/4 within the sequence 1/4, 2/4, ___, 4/4 is mathematically correct."
+          "reasoning": "Three quarters correctly fills the gap between two quarters and four quarters."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "0ec51e216f6fab17bf3d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the missing fraction in 1/4, ___, 3/4, 4/4, with experience set to hint_gated. The question format is unambiguous."
+          "reasoning": "The quarter sequence gives one determinate missing value, and the cloze response format is plainly indicated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/4 is the correct missing quarter. The sequence is logically sound. The hint_gated experience indicates hints may be presented before answer options."
+          "reasoning": "The item asks for the missing sequence term and presents a coherent ordered set of quarter fractions."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Even with hint-gated experience, hints state 'Add only the top numbers: 2 + 0 = 2' which does not provide clear support for finding a missing sequence element."
+          "reasoning": "The stem is understandable, but the hints still fail to explicitly explain the direction and increment of counting."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The missing quarter 2/4 in the sequence 1/4, ___, 3/4, 4/4 is mathematically correct and sound."
+          "reasoning": "Two quarters is the correct missing term, and the printed answer agrees with the surrounding sequence."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "ff8fca75fc1f71cdc2b5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the next halves value from 1/2, with mastery_drill experience type. The question is unambiguous."
+          "reasoning": "Only two halves can follow the displayed one-half term under the stated counting pattern."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2/2 is the correct next halves value. The progression is sound. Mastery_drill experience indicates this is for skill consolidation."
+          "reasoning": "The mastery-drill wrapper does not interfere with the simple, internally consistent halves question."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints provide 'Add only the top numbers: 2 + 0 = 2' which remains misaligned with the counting operation and provides minimal clarity in a mastery context."
+          "reasoning": "The question is short and readable, but its hints present a confusing addition explanation instead of counting guidance."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Progressing from 1/2 by adding 1/2 yields 2/2, which is the mathematically correct next halves value."
+          "reasoning": "The keyed answer two halves is the correct next term after one half."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "sample_id": "d7dfdc97ed7065a4308a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze clearly asks for the next quarters value in the sequence 1/4, 2/4, 3/4, ___, with scaffolded experience. The question is explicit."
+          "reasoning": "The consecutive quarter pattern determines four quarters without any competing answer interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "4/4 is the correct next quarter. The progression is sound. Scaffolded experience indicates additional support is provided within the interface."
+          "reasoning": "The scaffolded presentation does not alter the sequence, and the next-term request is logically supported."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "Hints state 'Add only the top numbers: 4 + 0 = 4' which persists as a non-explanatory formulation even in a scaffolded context designed for additional support."
+          "reasoning": "The sequence is accessible, but the hints do not directly show the quarter-by-quarter counting operation requested."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "In the quarter sequence 1/4, 2/4, 3/4, the answer 4/4 is mathematically correct as the next value."
+          "reasoning": "Four quarters correctly follows one, two, and three quarters in the displayed sequence."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     }
   ],
   "clause_evidence": [
@@ -1565,106 +1565,76 @@
       "requirement_id": "count",
       "clause": "Count",
       "verdict": "PASS",
-      "reasoning": "All 18 samples present fraction-counting tasks where students must identify the next element in a sequence or locate a missing element within a progression. The operation of counting through identifying successive or missing elements is uniformly present across every sample and represents the core cognitive demand.",
+      "reasoning": "Every sample requires identifying a next or missing term in an ordered fraction count, directly evidencing the counting action.",
       "sample_ids": [
         "df0a4314b8dec61b335e",
-        "8531fb2d8e3617e37819",
-        "44798595784e8e3c4cb8",
-        "a0499785465bdee37b2f",
-        "d32584e423bd7c337896",
-        "97197c11b8ead1d91ed3",
-        "e6dd48589586d66108ad",
-        "ff95bb2acf4e90873fa4",
-        "8e7efd0cbc49dd0b4b50",
-        "f6db1806b8bda8c3d068",
-        "262a6fdcb9a8a8e5dcf6",
-        "656bf9ceaa8bf7f3040e",
-        "a82920fd4d36e813ae15",
-        "010f28f37111ee8f2603",
-        "777e2b5af7b3f0938da0",
-        "5f14a307d76991143b21",
-        "0ec51e216f6fab17bf3d",
-        "ff8fca75fc1f71cdc2b5",
-        "d7dfdc97ed7065a4308a"
+        "44798595784e8e3c4cb8"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "requirement_id": "halves",
       "clause": "halves",
       "verdict": "PASS",
-      "reasoning": "Nine samples directly test counting by halves with sequences starting from 1/2 and progressing to 2/2. These samples demonstrate comprehensive coverage of the halves requirement across both cloze and mcq formats with varying contextual presentations and theming variations.",
+      "reasoning": "Multiple samples explicitly display and ask learners to continue sequences whose unit fraction is one half.",
       "sample_ids": [
-        "df0a4314b8dec61b335e",
         "8531fb2d8e3617e37819",
         "d32584e423bd7c337896",
-        "8e7efd0cbc49dd0b4b50",
-        "262a6fdcb9a8a8e5dcf6",
-        "656bf9ceaa8bf7f3040e",
-        "a82920fd4d36e813ae15",
-        "777e2b5af7b3f0938da0",
-        "ff8fca75fc1f71cdc2b5"
+        "a82920fd4d36e813ae15"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     },
     {
       "requirement_id": "quarters",
       "clause": "quarters",
       "verdict": "PASS",
-      "reasoning": "Ten samples explicitly test counting by quarters across the complete quarter-sequence from 1/4 through 4/4. Samples include both next-in-sequence and missing-middle blank positions, demonstrating full coverage of the quarters requirement across multiple presentation formats.",
+      "reasoning": "Multiple missing-term and next-term samples explicitly use quarter sequences, demonstrating the required quarter counting.",
       "sample_ids": [
         "44798595784e8e3c4cb8",
-        "a0499785465bdee37b2f",
         "97197c11b8ead1d91ed3",
-        "e6dd48589586d66108ad",
-        "ff95bb2acf4e90873fa4",
-        "f6db1806b8bda8c3d068",
-        "010f28f37111ee8f2603",
-        "5f14a307d76991143b21",
-        "0ec51e216f6fab17bf3d",
-        "d7dfdc97ed7065a4308a"
+        "f6db1806b8bda8c3d068"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925:mat_g1_na_q4_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q4_2-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2:mat_g1_na_q4_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "b037124c2f76a2af48e3eea3676331801f256408209495f44caffc964f2c378c",
+      "packet_digest": "b3d5d09edc14573d2be0f01f5c6486ee649758316a658712d619d8ea3405fe41",
       "clause_ids": [
         "count",
         "halves",
         "quarters"
       ],
-      "response_ref": ".responses/s5-phaseB-w4-haiku45-20260925.json",
-      "response_digest": "b1690edc368e911ef0b7b2b05595b737f944015033fecb78f12a3614dcdbeb91",
-      "prompt_ref": ".responses/s5-phaseB-w4-haiku45-20260925.prompt.txt",
-      "prompt_digest": "c9993055bd4499bc9d3ae9cf6f28b92f31b322b9e12a192850b6e0364b5ffd2c",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseB/mat_g1_na_q4_2/prompt.txt and Write only local_only/scratch/phaseB/mat_g1_na_q4_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (14 mathematical_validity strings under 60 chars, one under 40; 3 identical). Two wording-only revisions requested by the dispatcher (expand those 14; then move commas outside 16 quoted hints), 4 and 6 tool uses. Transcript scan: every tool call touched only this node's own prompt/reply. Verdicts, sample ids, clause citations and overall byte-compared unchanged across both revisions."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2.json",
+      "response_digest": "586f0ed1e16155e47be348e08bf47dc4bffcd112aa8dbab1d418b136499adfe2",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_2.prompt.txt",
+      "prompt_digest": "33df9e395dd6f7c344947ec168dc1a0e8fb7bf75d4535a13ad37b8f2423f78d1",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All samples present Grade 1 Quarter 4-appropriate sequencing tasks. Counting patterns using halves and quarters match cognitive demands for students mastering fraction concepts at this level. Neither mathematical structure nor visual presentation exceeds Grade 1 capacity."
+      "rationale": "The tasks use short, one-step fraction patterns with familiar halves and quarters, matching Grade 1 cognitive demands without unnecessary reading or calculation."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly targets the competency 'Count halves and quarters' through sequencing tasks. Samples ask students to identify next elements in halves-based sequences and missing elements in quarters-based sequences, directly measuring the printed competency."
+      "rationale": "Every stem directly asks learners to continue or complete a counting sequence in halves or quarters, exactly targeting the stated counting competency."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The printed REQUIREMENTS (count, halves, quarters) are present across samples, but hint language introduces 'adding fractions' terminology not mentioned in the competency. Hints reference 'adding fractions with the same bottom number' and use equations that complicate a counting-based competency.",
+      "verdict": "PASS",
+      "rationale": "Across the packet, both named fraction units are explicitly practiced through missing-term and next-term counting questions, covering the observable skill.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The three requirements losslessly decompose the competency: count represents the operation of identifying successive or missing elements in a sequence, halves specifies one fraction type to count, and quarters specifies the second fraction type. Samples collectively exercise all three across multiple contexts.",
+        "reasoning": "The printed requirements separately name counting, halves, and quarters; the samples visibly exercise counting with both denominators, so the decomposition covers the competency without loss.",
         "requirement_ids": [
           "count",
           "halves",
@@ -1678,8 +1648,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Samples cover halves-based sequences from 1/2 to 2/2 and quarters-based sequences spanning 1/4, 2/4, 3/4, 4/4. Blank placement varies: next-in-sequence (most samples) and missing-middle positions. Seeds range 42 to 1002, demonstrating substantial diversity in generation parameters.",
+      "verdict": "CONCERN",
+      "rationale": "The packet repeatedly uses only forward sequences beginning at one or two units and does not show broader counting contexts or alternate starting points.",
       "clause_ids": [
         "count",
         "halves",
@@ -1688,11 +1658,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Item complexity remains constant across all samples: simple arithmetic sequences with one missing element per item. Cognitive load is appropriate for Grade 1 students practicing fraction counting. Format variety (10 cloze, 8 mcq) supports multiple interaction styles."
+      "rationale": "Question length, fraction denominators, answer choices, and expected reasoning remain appropriately small and concrete for Grade 1 Quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Variants span multiple axes: sequence type (halves vs quarters), blank position (next vs middle), answer values (2/2, 3/4, 4/4, etc.), option ordering and distractors. Theming variations present (Boyong, Isko, dog emoji, basketball emoji). Both cloze and mcq formats distributed across variants consistently."
+      "verdict": "CONCERN",
+      "rationale": "There is useful cloze and multiple-choice variation, but the mathematical structure is highly repetitive and offers little variation in direction, range, or representation."
     }
   },
   "overall": "CONCERN"

@@ -29,10 +29,10 @@
       "clause": "models"
     }
   ],
-  "packet_digest": "3e9eaf275df357e1e992a19f762ec58228aafac1f23ffbf0978fb940948e5a2b",
+  "packet_digest": "89db59875aeb0a9df7199f6a3a0429d19a3b2f454d68e5cb212d243ce2733e28",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -927,7 +927,7 @@
       "node_id": "mat_g1_na_q4_1",
       "seed": 701,
       "formatter": "read_mcq",
-      "question_text": "🏀 Gab has a math challenge about water bottles. Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+      "question_text": "🏀 Gab enjoys water bottles. Here is a math challenge. Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
@@ -1005,13 +1005,13 @@
         }
       },
       "sample_id": "6902ecc966c0507b401f",
-      "replay_digest": "1bb88fa640a1a81fb07f92b81c4dd6e84dbef5237b2d407ca1e80b6d37c77ae3"
+      "replay_digest": "095eb4568ccc21ecdfb3e22f77f1a4bdd2f8dee0aca5ef739559788e653e1f45"
     },
     {
       "node_id": "mat_g1_na_q4_1",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
       "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
@@ -1089,7 +1089,7 @@
         }
       },
       "sample_id": "effb150a7dcdd4915e94",
-      "replay_digest": "c02057e65c85bd8254c4a3ff3c2a56a476fd83fe689dfb0652ebcb5fd36924e0"
+      "replay_digest": "1fddb5cd303fea55973de6093046868c5fcbaf020d5bb0cc33a81b7d4d7d8478"
     },
     {
       "node_id": "mat_g1_na_q4_1",
@@ -1608,414 +1608,414 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / = / <. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The displayed equation has one blank comparison position and four distinct sign options, so the intended response is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / = / <. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The prompt is a coherent direct comparison of the two named fractions, and its model-based context does not introduce an irrelevant condition."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / = / <. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The stem is readable, but the supplied hints mislead a learner by asserting equal denominators when the displayed fractions have denominators 2 and 4."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / = / <. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The answer sign is correct, but the hints contain an invalid comparison method because the denominators are not equal; the defect is mathematical, not merely stylistic."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "57b446b9c8befa6e84ea",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are < / + / = / >. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The shaded-parts comparison has a single blank and a complete set of distinct comparison or distractor signs, making the requested choice clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are < / + / = / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The shaded-model framing coherently asks which sign compares one-half with one-quarter and does not alter the mathematical task."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are < / + / = / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "Although the question is plainly worded, its hints tell learners to use a same-denominator rule that does not apply to the two displayed fractions."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are < / + / = / >. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The comparison answer is mathematically correct, but the hint sequence falsely treats denominators 2 and 4 as equal and therefore teaches an invalid justification."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "8362124a31822662bb78",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / < / > / +. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The reversed ordering is explicitly written on both sides of one blank, with one correct sign among distinct options, so no interpretation is needed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / < / > / +. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model context supports the direct comparison requested, and reversing the order consistently reverses the correct inequality."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / < / > / +. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The reverse-order stem is clear, but its hints still claim equal bottom numbers and can lead a learner to a wrong rule for this item."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / < / > / +. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The less-than answer is valid, yet the accompanying hint reasoning is false because one-quarter and one-half have different denominators."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "4984f350d47532866377",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / < / =. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The prompt identifies the two shaded fractions and one missing comparison sign; the four options are distinct and include exactly one correct answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / < / =. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The shaded-parts setting is logically consistent with comparing one-quarter and one-half, with no distracting condition affecting the result."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / < / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The wording is understandable, but the hints give a denominator-equality instruction that conflicts with the actual one-quarter and one-half comparison."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / < / =. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The answer is correct, while the hint explanation is mathematically unsound because its stated equal-denominator premise is not true for these fractions."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "072906be8985bc5121c3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / + / < / >. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The learner sees one explicit comparison blank and four different sign choices, so the requested operation and response are determinate."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / + / < / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The shaded-model description appropriately frames the same direct fraction comparison and introduces no contradictory contextual facts."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / + / < / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The stem is accessible, but the repeated hints misdescribe the denominators as equal and therefore undermine otherwise clear learner guidance."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / + / < / >. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The greater-than answer is right, but the hint rule is false for denominators 2 and 4, making the complete instructional item mathematically defective."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "d3ec23bc82ec2e005304",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / = / + / >. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The reversed fraction order and single blank make the requested sign clear, and the options contain distinct alternatives without duplicate answers."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / = / + / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model context logically supports comparing one-quarter to one-half, and the stated less-than answer matches that ordering."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / = / + / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The question itself is clear, yet its hints direct the learner to compare numerators only under a false claim that the denominators match."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / = / + / >. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The selected sign is valid, but the hints use an invalid same-denominator argument for fractions whose denominators are 4 and 2."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "a195bdbfaefa15f3d8fd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / = / <. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The comparison expression is explicit and the four listed signs are distinct, leaving one well-defined answer choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / = / <. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model prompt presents a coherent comparison of one-quarter and one-half, with no contextual wording that changes the operation."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / = / <. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "Despite clear wording, the hints provide misleading guidance by saying the bottom numbers are equal when the displayed denominators differ."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are + / > / = / <. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The less-than answer is mathematically correct, but the attached denominator-equality premise and resulting hint method are incorrect."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "189cc83ab6f99d055530",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The stem names both fractions, asks for one sign in one blank, and offers distinct options, so the response target is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model context is logically relevant to the direct comparison and the answer agrees with the ordering of the two unit fractions."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The main question is understandable, but the hints falsely instruct learners to use a same-denominator comparison for 1/4 and 1/2."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "Although the less-than answer is correct, the hint explanation is mathematically invalid because the two denominators are not equal."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "412f15149f2f92cd334b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The item has one explicit missing comparison sign and four distinct choices, so the learner can identify exactly what must be selected."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model framing coherently supports comparing one-half with one-quarter and does not add an incompatible contextual demand."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The stem is concise and clear, but its hints contradict the shown denominators and can teach an incorrect procedure."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The greater-than response is correct, yet the hints assert a false equal-denominator condition, so the instructional content is not wholly valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "dd3b59fcb87afe0db33c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / < / =. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The wording identifies the comparison and the blank sign precisely, while the options are distinct and include one determinate correct response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / < / =. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The static fraction-model context is relevant to the requested comparison, and no wrapper changes what the mathematical question asks."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / < / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The prompt reads clearly, but its hints give an inappropriate equal-denominator test for the displayed fractions 1/2 and 1/4."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / + / < / =. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The answer sign is correct, but the hint reasoning is false because the denominators differ, making the instructional guidance mathematically unsound."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "6902ecc966c0507b401f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / = / < / >. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The themed wrapper does not change the single comparison blank or the distinct sign options, so the mathematical response remains unambiguous."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / = / < / >. The themed challenge wrapper does not help explain the fraction models and feels disconnected from the requested comparison."
+          "verdict": "PASS",
+          "reasoning": "The basketball-themed introduction is merely a wrapper and does not interfere with the coherent comparison of one-half and one-quarter."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / = / < / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The theme is harmless, but the hints still misstate that the denominators are equal and thereby confuse the learner about the comparison method."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / = / < / >. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The greater-than answer is correct, while the hint sequence contains a false same-denominator premise for the two displayed fractions."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "effb150a7dcdd4915e94",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The themed sentence leaves one clear comparison blank and provides four distinct signs, so the expected response is fully determined."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The themed challenge wrapper does not help explain the fraction models and feels disconnected from the requested comparison."
+          "verdict": "PASS",
+          "reasoning": "The basketball theme does not alter the fraction task; the prompt remains a coherent direct comparison of the named values."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The stem is understandable, but the hints incorrectly say the bottom numbers match, which gives misleading guidance for this item."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are + / > / < / =. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The selected greater-than sign is valid, but the explanatory hint method is invalid because 2 and 4 are different denominators."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "9851a6e2b2d79a256080",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The shaded-model prompt specifies one missing sign and presents four distinct alternatives, yielding a single clear response target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The shaded models are a relevant representation for the requested comparison, and the context does not introduce a logical mismatch."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The direct question is clear, but the hints use a false equal-denominator premise and therefore can mislead a beginning learner."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The greater-than answer matches the fractions, but the hint justification is mathematically false for denominators 2 and 4."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "192623940be1412c2f13",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The item clearly asks for one comparison sign between two named fractions, and its distinct options do not create multiple possible responses."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The shaded-model setting is logically appropriate for comparing one-half and one-quarter and does not interfere with the mathematical meaning."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The wording is accessible, but the repeated hint says the bottom numbers are equal even though the shown denominators are different."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are > / < / + / =. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The answer is correct, yet the hints teach an invalid rule based on equal denominators that this comparison does not have."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "632dbcfe27b76649878d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / + / < / >. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The reversed fraction comparison has a single blank and distinct answer signs, so the learner can determine exactly which response is requested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / + / < / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model framing consistently supports comparing one-quarter with one-half, and the less-than answer follows that order."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / + / < / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The stem is clear, but its hints contradict the item by treating the unequal denominators as equal before comparing numerators."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are = / + / < / >. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The less-than result is correct, but the hint explanation is invalid because the denominators 4 and 2 are not the same."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "881300e5346b4a1f7baf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The question states the two fractions, gives one comparison blank, and offers distinct signs, making the required answer unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The fraction-model context is relevant and coherent for the reverse-order comparison, with no extraneous condition affecting the result."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The prompt is readable, but its hint sequence gives a false equal-denominator instruction and is especially problematic in a hint-gated experience."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are < / + / = / >. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The answer sign is correct, but the hints rely on a mathematically false claim that the denominators match."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "dfdd189d330e796e695f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / < / > / +. The written fraction order makes the requested comparison direction clear, and only > among the choices is correct."
+          "reasoning": "The item directly identifies the comparison blank and lists four distinct signs, so the learner has one determinate selection to make."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / < / > / +. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The mastery-drill wrapper leaves the fraction comparison logically intact and does not add any conflicting contextual requirement."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / < / > / +. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify >. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The comparison wording is clear, but the hints remain misleading because they claim equal denominators for 1/2 and 1/4."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/2 compared with 1/4; its key is >, and choices are = / < / > / +. The comparison result > is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The greater-than answer is correct, while the hint rule is invalid for unequal denominators and therefore fails mathematical correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "sample_id": "5c13847db32bcc69e8ab",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are > / + / = / <. The written fraction order makes the requested comparison direction clear, and only < among the choices is correct."
+          "reasoning": "The scaffolded item has one explicit comparison blank and distinct sign options, so the learner can identify the requested response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are > / + / = / <. The abstract model comparison is coherent and does not depend on an unstated real-world fact."
+          "reasoning": "The scaffolded presentation remains a coherent comparison of one-quarter and one-half, with no wrapper that changes the mathematics."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are > / + / = / <. Hints say denominators should be equal even though 2 and 4 differ, then compare equal numerators; that chain cannot justify <. The model description reports fraction parts but not enough detail to inspect their shading."
+          "reasoning": "The scaffold does not resolve the misleading hint: it still tells learners the bottom numbers match when the fractions have different denominators."
         },
         "mathematical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "This item asks students to compare 1/4 compared with 1/2; its key is <, and choices are > / + / = / <. The comparison result < is mathematically correct, and it is offered as a choice; however, the hint rule about equal denominators does not apply to denominators 2 and 4."
+          "verdict": "FAIL",
+          "reasoning": "The less-than answer is right, but the hint explanation uses a false equal-denominator premise and is mathematically unsound."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     }
   ],
   "clause_evidence": [
@@ -2023,91 +2023,87 @@
       "requirement_id": "compare",
       "clause": "Compare",
       "verdict": "PASS",
-      "reasoning": "Each stem asks for a comparison sign and offers the correct relation between the unit fractions in the given order.",
+      "reasoning": "Every reviewed sample explicitly asks the learner to compare the two named fractions by selecting a comparison sign, directly evidencing this action.",
       "sample_ids": [
         "72445794426d2f0407a8",
-        "8362124a31822662bb78",
-        "412f15149f2f92cd334b"
+        "8362124a31822662bb78"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "requirement_id": "half",
       "clause": "1/2",
       "verdict": "PASS",
-      "reasoning": "The half appears in every comparison, on either the left or right side, with the keyed relation matching the order.",
+      "reasoning": "The reviewed prompts repeatedly print one-half as one of the two quantities being compared, including both forward and reverse orderings.",
       "sample_ids": [
         "72445794426d2f0407a8",
-        "8362124a31822662bb78",
         "412f15149f2f92cd334b"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "requirement_id": "quarter",
       "clause": "1/4",
       "verdict": "PASS",
-      "reasoning": "The quarter is explicitly included in every stem, and its comparison with one half is the requested mathematical content.",
+      "reasoning": "The reviewed prompts repeatedly print one-quarter as the other quantity, including reverse-order items where it appears first.",
       "sample_ids": [
-        "72445794426d2f0407a8",
         "8362124a31822662bb78",
-        "412f15149f2f92cd334b"
+        "189cc83ab6f99d055530"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     },
     {
       "requirement_id": "models",
       "clause": "models",
       "verdict": "PASS",
-      "reasoning": "Every sample identifies fraction models or shaded models and renders a FractionModel visual, supporting the required model-based comparison.",
+      "reasoning": "Each reviewed sample declares a FractionModel visual and frames the comparison through fraction models or shaded models, supporting this requirement.",
       "sample_ids": [
-        "72445794426d2f0407a8",
-        "8362124a31822662bb78",
-        "412f15149f2f92cd334b"
+        "57b446b9c8befa6e84ea",
+        "9851a6e2b2d79a256080"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "gpt6luna-s5-w19-20260925:mat_g1_na_q4_1",
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w19-mat_g1_na_q4_1-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1:mat_g1_na_q4_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w112-mat_g1_na_q4_1-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "3e9eaf275df357e1e992a19f762ec58228aafac1f23ffbf0978fb940948e5a2b",
+      "packet_digest": "89db59875aeb0a9df7199f6a3a0429d19a3b2f454d68e5cb212d243ce2733e28",
       "clause_ids": [
         "compare",
         "half",
         "quarter",
         "models"
       ],
-      "response_ref": ".responses/gpt6luna-s5-w19-20260925.json",
-      "response_digest": "151c4a3ece5d2166c6e2ecf16e394e82b6e96af2c081a0d2e2957ad7d0e7e482",
-      "prompt_ref": ".responses/gpt6luna-s5-w19-20260925.prompt.txt",
-      "prompt_digest": "02a257e49c52f635cc4f3bcbc1499ef1694d12ad27012d22bc3e71a750846e88",
-      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
-      "tool_uses_by_reviewer": "Reviewer reported two calls: cat prompt read and python3 verdict write; report is reviewer-provided."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1.json",
+      "response_digest": "353eccd839513f7580c486d9b669fa87a0a273021ea427c44ec66cbe726fbe49",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_1.prompt.txt",
+      "prompt_digest": "82295b91c545ce3d6ea827ca1c8c4b4347ba01dccc0471feed7707c76ac08b16",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt and wrote verdicts.json; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The target fractions are simple unit fractions suitable for early comparison, but the supplied hints invoke a rule for equal denominators even though these denominators are 2 and 4."
+      "verdict": "PASS",
+      "rationale": "The task asks Grade 1 learners to compare two unit fractions using visual models and a familiar comparison sign, which is appropriately simple for this competency."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every stem directly asks learners to compare one half and one quarter, and every item presents a FractionModel as required by this competency."
+      "rationale": "Each stem directly asks learners to compare one-half and one-quarter, and the response is the comparison sign required by the stated Grade 1 competency."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All four listed requirements map directly to comparing the two named fractions with models, covering the competency wording without adding a separate skill.",
+      "rationale": "Across the packet, the printed prompts require comparing both orderings of one-half and one-quarter through fraction models, covering the stated action and objects.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The competency requires comparison of 1/2 and 1/4 using models. The requirements separately name comparing, each fraction, and the models, so their combined scope captures the full stated task.",
+        "reasoning": "The four printed requirements separately identify the comparison action, both named fractions, and models; together they losslessly represent the competency without adding an unrelated skill.",
         "requirement_ids": [
           "compare",
           "half",
@@ -2124,7 +2120,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet includes both comparison orders, varied stem phrasing, and model references throughout, with correct greater-than and less-than outcomes.",
+      "rationale": "The packet includes prompts with both one-half first and one-quarter first, and repeatedly presents the comparison through the specified fraction-model visual.",
       "clause_ids": [
         "compare",
         "half",
@@ -2133,12 +2129,12 @@
       ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Only unit fractions with denominators two and four are used, which fits the target, though hints about equal denominators may introduce an irrelevant comparison rule."
+      "verdict": "PASS",
+      "rationale": "The numerical scope stays at the explicitly named unit fractions 1/2 and 1/4, with no larger numbers, extra operations, or later-grade reasoning demanded."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Items vary wording and options while preserving the same visual model and fraction pair; there is limited variation in representations or contexts."
+      "rationale": "Both comparison directions and several wording wrappers appear, but the packet remains nearly identical in format and does not demonstrate broader model or response variation."
     }
   },
   "overall": "FAIL"
