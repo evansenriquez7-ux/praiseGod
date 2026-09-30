@@ -1,0 +1,219 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_2-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q2_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_2-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q2_2
+PACKET DIGEST: 66c59f473f164538fb40411946a1b7026a22648bcd44857b31912a03bccc6c82
+COMPETENCY (Grade 1, Quarter 2, None):
+Determine the place value of a digit in a 2-digit number, the value of a digit, and the digit of a number, given its place value.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  determine_place_value: Determine the place value of a digit
+  domain_2_digit: 2-digit number
+  determine_value: value of a digit
+  determine_digit: digit of a number
+
+SAMPLES (every one of these is real rendered output):
+  sample 12c6c34cbf51b98f5af9  seed 42  [cloze]
+      stem:    In 10, what digit is in the ones place?
+      answer:  0
+      options: 3 / 8 / 0 / 6
+      hints:   ["Look at the digits of 10 from the right: ones.", "Find the ones place value.", "The digit in the ones place is 0."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 00c55abcda21bacd6278  seed 43  [true_false]
+      stem:    What place is the digit 5 in, in the number 15? The answer is ones. True or False?
+      answer:  True
+      hints:   ["Put each digit of 15 in its own column.", "Count from the right: ones.", "The digit in the ones column is 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 8f6f6e39f17c0306b185  seed 44  [true_false]
+      stem:    In the number 40, the value of the digit 0 in the ones place is 0. True or False?
+      answer:  True
+      hints:   ["Find the digit in the ones place value of 40.", "That digit is 0.", "Multiply it by its place: 0 × 1 = 0.", "The worth of 0 in 40 is 0."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4a7dbd0856e877697739  seed 45  [mcq]
+      stem:    What is the place value of the digit 2 in 20?
+      answer:  20
+      options: 12 / 3 / 2 / 20
+      hints:   ["Find the digit in the tens place value of 20.", "That digit is 2.", "Multiply it by its place: 2 × 10 = 20.", "The worth of 2 in 20 is 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d6e64b7bbff2a1eaaf11  seed 46  [true_false]
+      stem:    What place is the digit 0 in, in the number 20? The answer is ones. True or False?
+      answer:  True
+      hints:   ["Put each digit of 20 in its own column.", "Count from the right: ones.", "The digit in the ones column is 0."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 37d20af09b621fe28c11  seed 500  [true_false]
+      stem:    In the number 97, the value of the digit 9 in the tens place is 97. True or False?
+      answer:  False
+      hints:   ["Find the digit in the tens place value of 97.", "That digit is 9.", "Multiply it by its place: 9 × 10 = 90.", "The worth of 9 in 97 is 90."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample acfffe7751c722650196  seed 501  [true_false]
+      stem:    In 76, what digit is in the tens place? The answer is 9. True or False?
+      answer:  False
+      hints:   ["Look at the digits of 76 from the right: ones, tens.", "Find the tens place value.", "The digit in the tens place is 7."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 127bd261906b508da9e4  seed 502  [cloze]
+      stem:    In 85, what digit is in the ones place?
+      answer:  5
+      options: 4 / 1 / 5 / 8
+      hints:   ["Look at the digits of 85 from the right: ones.", "Find the ones place value.", "The digit in the ones place is 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 16fbb988c8e09e70b724  seed 600  [mcq]
+      stem:    What is the place value of the digit 1 in 15?
+      answer:  10
+      options: 10 / 15 / 11 / 1
+      hints:   ["Find the digit in the tens place value of 15.", "That digit is 1.", "Multiply it by its place: 1 × 10 = 10.", "The worth of 1 in 15 is 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5dcd339009b9f85fae14  seed 601  [cloze]
+      stem:    What place is the digit 5 in, in the number 45?
+      answer:  ones
+      options: tens / ones
+      hints:   ["Put each digit of 45 in its own column.", "Count from the right: ones.", "The digit in the ones column is 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c5cddc90c1eab7877cdb  seed 602  [cloze]
+      stem:    What is the place value of the digit 1 in 12?
+      answer:  10
+      options: 1 / 10 / 11 / 12
+      hints:   ["Find the digit in the tens place value of 12.", "That digit is 1.", "Multiply it by its place: 1 × 10 = 10.", "The worth of 1 in 12 is 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7d4582a1b499745efa0a  seed 700  [cloze]
+      stem:    What place is the digit 1 in, in the number 12?
+      answer:  tens
+      options: tens / ones
+      hints:   ["Put each digit of 12 in its own column.", "Count from the right: ones, tens.", "The digit in the tens column is 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5ece635aa8a3221814f6  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. In 15, what digit is in the tens place?
+      answer:  1
+      options: 4 / 0 / 3 / 1
+      hints:   ["Look at the digits of 15 from the right: ones, tens.", "Find the tens place value.", "The digit in the tens place is 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5f49e18f8a7b60f117fc  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. What place is the digit 2 in, in the number 12?
+      answer:  ones
+      options: tens / ones
+      hints:   ["Put each digit of 12 in its own column.", "Count from the right: ones.", "The digit in the ones column is 2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9288b8bc5e39d7b60dc2  seed 800  [true_false]
+      stem:    In 95, what digit is in the ones place? The answer is 5. True or False?
+      answer:  True
+      hints:   ["Look at the digits of 95 from the right: ones.", "Find the ones place value.", "The digit in the ones place is 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 07bb7df932061dea8eed  seed 900  [mcq]
+      stem:    In 17, what digit is in the tens place?
+      answer:  1
+      options: 7 / 5 / 4 / 1
+      hints:   ["Look at the digits of 17 from the right: ones, tens.", "Find the tens place value.", "The digit in the tens place is 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 88e94416554a196fee7a  seed 901  [true_false]
+      stem:    In the number 19, the value of the digit 9 in the ones place is 90. True or False?
+      answer:  False
+      hints:   ["Find the digit in the ones place value of 19.", "That digit is 9.", "Multiply it by its place: 9 × 1 = 9.", "The worth of 9 in 19 is 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6ff6ddb555f81eeb3708  seed 1000  [true_false]
+      stem:    In the number 45, the value of the digit 5 in the ones place is 5. True or False?
+      answer:  True
+      hints:   ["Find the digit in the ones place value of 45.", "That digit is 5.", "Multiply it by its place: 5 × 1 = 5.", "The worth of 5 in 45 is 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 8af8397c5f4df7d7b9cf  seed 1001  [cloze]
+      stem:    What place is the digit 0 in, in the number 50?
+      answer:  ones
+      options: tens / ones
+      hints:   ["Put each digit of 50 in its own column.", "Count from the right: ones.", "The digit in the ones column is 0."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample bab053acd8496a2b6fe9  seed 1002  [cloze]
+      stem:    In 40, what digit is in the tens place?
+      answer:  4
+      options: 4 / 5 / 0 / 6
+      hints:   ["Look at the digits of 40 from the right: ones, tens.", "Find the tens place value.", "The digit in the tens place is 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

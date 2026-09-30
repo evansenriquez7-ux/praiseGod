@@ -24,10 +24,10 @@
       "clause": "tens and ones"
     }
   ],
-  "packet_digest": "47827ce2879305ef6695c88107f7825f696801d97c50e2c0c04f50bbc7da3ddb",
+  "packet_digest": "6fa065716111ce6665e7c9b4254515226e43a7f78ed58c195271e21da3656bef",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -785,7 +785,7 @@
       "node_id": "mat_g1_na_q2_3",
       "seed": 701,
       "formatter": "true_false",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Write 45 as tens and ones, for example 45 = 40 + 5. The answer is 40 + 5. True or False?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Write 45 as tens and ones, for example 45 = 40 + 5. The answer is 40 + 5. True or False?",
       "correct_answer": true,
       "requested": {
         "difficulty_profile": null,
@@ -808,13 +808,13 @@
         "Each part shows how much that digit is worth in its position."
       ],
       "sample_id": "1217286e96db533d77f3",
-      "replay_digest": "e3ad1210ddc16cabc6f68a907bff73d183e2b4e3e52d1176313e1145714a8cd8"
+      "replay_digest": "51d22b1f1fb4355ec99e33d7843137986fa5a8a2a6be579eda9ff6b832e95b47"
     },
     {
       "node_id": "mat_g1_na_q2_3",
       "seed": 702,
       "formatter": "mcq",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Write 50 as tens and ones, for example 45 = 40 + 5.",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Write 50 as tens and ones, for example 45 = 40 + 5.",
       "correct_answer": "50 + 0",
       "requested": {
         "difficulty_profile": null,
@@ -859,7 +859,7 @@
         "Each part shows how much that digit is worth in its position."
       ],
       "sample_id": "375c73d03c965289f9c7",
-      "replay_digest": "104866b826c91412af73f2a0162bc86dc78ccb5e11bb63944a5f4bfe3fc6f9c9"
+      "replay_digest": "ba52a7e249ce0fdd3a23aaf2a5a724aa684606ba8106e008d4747f6b9861f83e"
     },
     {
       "node_id": "mat_g1_na_q2_3",
@@ -1230,483 +1230,483 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously instructs students to write 45 as tens and ones using the provided model format, leaving no confusion about the operation required or the answer structure expected from learners."
+          "reasoning": "The requested decomposition of 45 is explicit, and only 40 + 5 matches the tens-and-ones interpretation among the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The worked example and the correct answer 40 + 5 are mathematically sound; the cloze task logically requires students to select or produce this decomposition from among valid alternatives."
+          "reasoning": "The example, answer, options, and all three hints consistently describe 45 as four tens and five ones."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt provides explicit instruction alongside a worked example, making it clear to a Grade 1 learner that they must separate the number into tens and ones using the shown format."
+          "reasoning": "The short imperative sentence clearly tells the learner to write 45 using tens and ones, with a directly relevant example."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 45 = 40 + 5 is mathematically correct (4 tens = 40, 5 ones = 5); the options provide plausible place-value misconceptions; the answer is accurate and appropriate."
+          "reasoning": "The answer 40 + 5 equals 45 and correctly assigns the tens value 40 and ones value 5."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "eef7bc0eece018e4287f",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 10, but the expected answer is '10' while the hints discuss decomposition as '10 + 0', creating ambiguity about whether students should enter the whole number or the decomposed form."
+          "verdict": "PASS",
+          "reasoning": "The block task names exactly one target number, 10, and the provided place-value controls distinguish tens from ones."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual task (showing blocks) and the verbal decomposition explanation are conceptually connected, but the answer format does not clearly align with the place-value separation discussed in hints."
+          "verdict": "PASS",
+          "reasoning": "The target 10 agrees with the hints stating 10 + 0 and one ten with zero ones; the visual type is appropriate."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "A Grade 1 learner may be uncertain whether the expected response is 10 (the whole number) or 10 + 0 (the decomposed form) given the mismatch between task description and hint guidance."
+          "verdict": "PASS",
+          "reasoning": "Use base-10 blocks to show 10 is a concise, understandable action for an early place-value learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 10 = 10 + 0 = 1 ten and 0 ones is mathematically correct; the base-10 block representation would correctly show one long block and no unit blocks."
+          "reasoning": "Ten is correctly represented as one ten and zero ones, and the hints express that decomposition accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "8842fb027828f80ce25a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem is explicit and unambiguous, clearly instructing students to write 20 as tens and ones following the example model format 45 = 40 + 5 with no confusion about the task."
+          "reasoning": "The prompt asks for the tens-and-ones form of 20, and the single matching option 20 + 0 is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically follows the example; 20 decomposes correctly as 20 + 0; the options include plausible misconceptions (2, 2 + 0, 30 + 7) that test place-value understanding."
+          "reasoning": "The answer and hints consistently represent 20 as two tens and zero ones, with no conflicting contextual information."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example provides a clear model for the expected decomposition format, making it straightforward for Grade 1 learners to understand the tens-and-ones structure required."
+          "reasoning": "The wording and example make the expected additive place-value form clear to a Grade 1 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 20 = 20 + 0 is mathematically correct (2 tens = 20, 0 ones = 0); distractors reflect common place-value errors; the answer is accurate."
+          "reasoning": "The equation 20 + 0 equals 20 and correctly gives the tens and ones values for this number."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "d260ac652d3ad59d3865",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false format is unambiguous, explicitly stating the claim (15 = 50 + 1) and asking for a binary judgment, providing clear instruction for the evaluation required."
+          "reasoning": "The true-or-false claim is explicit, and the learner can compare 50 + 1 directly with the requested decomposition of 15."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "False is the correct answer because 15 actually decomposes as 10 + 5, not 50 + 1, making this a valid logical test of place-value understanding."
+          "reasoning": "The false answer agrees with the hints showing 15 as 10 + 5; the claim 50 + 1 is plainly a different number."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "A Grade 1 learner can clearly understand the task: evaluate whether the given decomposition claim is correct by comparing it to the proper breakdown of 15 into tens and ones."
+          "reasoning": "The stem states the number, the proposed answer, and the True or False response format in a straightforward sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The statement 15 = 50 + 1 is mathematically false (correct is 15 = 10 + 5); False is the correct answer; the item validly tests place-value decomposition accuracy."
+          "reasoning": "15 is 10 + 5, so judging the proposed 50 + 1 decomposition false is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "fe7d6d75785e9f5b2411",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement is unambiguous and explicit: 10 = 10 + 0, which students must evaluate for correctness with a clear binary choice and worked example."
+          "reasoning": "The proposed decomposition is a single, clear statement about 10, requiring only a true-or-false judgment."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The statement 10 = 10 + 0 is mathematically correct, making True the correct answer; this validly tests whether learners can verify correct place-value decompositions."
+          "reasoning": "The true answer matches every hint: 10 consists of one ten and zero ones, represented by 10 + 0."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example and clear binary choice make it easy for Grade 1 learners to understand they must judge the correctness of a given tens-and-ones decomposition."
+          "reasoning": "The familiar True or False format and repeated number make the requested judgment easy to identify."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 10 = 10 + 0 (1 ten = 10, 0 ones = 0) is mathematically correct; True is the correct answer; the task validly tests place-value understanding."
+          "reasoning": "The equality 10 = 10 + 0 is valid and correctly decomposes the number into place-value parts."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "84f7a7465453055d3d89",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is unambiguous, clearly asking students to decompose 40 into tens and ones following the example model format provided in the stem."
+          "reasoning": "The multiple-choice options include one exact tens-and-ones decomposition of 40, making the intended response distinct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 40 + 0 is the correct answer; distractors (4 + 0, 4, 30 + 9) effectively test whether learners confuse digit values with place values."
+          "reasoning": "The answer and hints agree that 40 has four tens and zero ones; the distractors do not create a contradiction."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example is clearly modeled in the stem, and the MCQ options present the answer in the same format students are expected to produce."
+          "reasoning": "The imperative asks for a representation of 40 and supplies an example, so the expected option format is clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 40 = 40 + 0 is mathematically correct (4 tens = 40, 0 ones = 0); distractors are plausible place-value misconceptions; answer is accurate."
+          "reasoning": "40 + 0 equals 40 and correctly expresses its tens and ones, while the listed distractors do not."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "87cabcdfa767412387d5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement is explicit and unambiguous, asking students to evaluate whether 91 = 50 + 7 with no confusion about the claim to be assessed."
+          "reasoning": "The claim 50 + 7 is a definite proposed decomposition of 91, so the requested false judgment has no ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The statement is false because 91 actually decomposes as 90 + 1, not 50 + 7; this validly tests whether learners can identify incorrect place-value decompositions."
+          "reasoning": "The false response aligns with the hints 90 + 1 and nine tens plus one one for 91."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is straightforward for Grade 1 learners: determine if the given decomposition matches the correct way to break 91 into tens and ones."
+          "reasoning": "The sentence clearly presents the target number, candidate equation, and binary response required from the learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct decomposition 91 = 90 + 1 (9 tens = 90, 1 one = 1) makes the claim 91 = 50 + 7 false; False is the correct answer."
+          "reasoning": "50 + 7 equals 57 rather than 91, so False is the correct mathematical judgment."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "11e8d3fbe8c674cabf4a",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 76, but the expected answer is '76' while hints discuss decomposition as '70 + 6', creating ambiguity about whether students should provide the whole number or the decomposed form."
+          "verdict": "PASS",
+          "reasoning": "The block interaction has one named target, 76, and the place-value controls specify how tens and ones are represented."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual task and decomposition explanation are conceptually related, but the answer format does not clearly specify whether whole number or decomposed structure is expected."
+          "verdict": "PASS",
+          "reasoning": "The target 76 matches the hints of 70 + 6 and seven tens with six ones; the visual is a suitable block model."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "A Grade 1 learner may be confused about whether to enter 76 or provide the place-value decomposition structure mentioned in the hints."
+          "verdict": "PASS",
+          "reasoning": "The instruction to use base-10 blocks is brief and concrete, while the displayed labels identify the available place values."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 76 = 70 + 6 is mathematically correct (7 tens = 70, 6 ones = 6); base-10 blocks would correctly show 7 long blocks and 6 unit blocks."
+          "reasoning": "Seventy-six is correctly decomposed into 70 and 6, corresponding to seven tens and six ones."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "b891e80c0045cb681340",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is unambiguous and explicit, clearly asking students to decompose 94 into tens and ones following the example format provided."
+          "reasoning": "Only 90 + 4 represents 94 as tens and ones, so the multiple-choice task has a clear intended answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 90 + 4 is the correct answer; distractors (30 + 6, 40 + 9, 9 + 4) test whether learners correctly identify place values."
+          "reasoning": "The answer and all hints consistently identify 94 as nine tens plus four ones, without a thematic or wording conflict."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example clearly models the expected answer format, and the MCQ options maintain the familiar structure that Grade 1 learners can navigate."
+          "reasoning": "The standard decomposition instruction and concrete example make the expected additive response understandable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 94 = 90 + 4 is mathematically correct (9 tens = 90, 4 ones = 4); distractors are plausible place-value errors."
+          "reasoning": "The equation 90 + 4 equals 94 and correctly preserves the place value of both digits."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "ad2d66a5315e4766acc8",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 15, but the expected answer is '15' while hints reference decomposition as '10 + 5', creating a mismatch in expected response format."
+          "verdict": "PASS",
+          "reasoning": "The base-ten block prompt identifies one target, 15, and the available tens and ones controls support a definite representation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual task and decomposition guidance are conceptually aligned, but the answer format does not clearly specify whether students should provide the whole number or decomposed form."
+          "verdict": "PASS",
+          "reasoning": "The target and visual instruction agree with hints describing 15 as one ten and five ones."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The discrepancy between showing blocks (visual task) and the hints about decomposition may confuse Grade 1 learners about what answer format to produce."
+          "verdict": "PASS",
+          "reasoning": "The concrete direction to show 15 with blocks is appropriate and does not require interpreting extraneous context."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 15 = 10 + 5 is mathematically correct (1 ten = 10, 5 ones = 5); base-10 blocks would correctly show 1 long block and 5 unit blocks."
+          "reasoning": "Fifteen is correctly modeled by one group of ten and five individual ones, as stated in the hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "32b329b6050d560d8a6e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem is unambiguous, clearly directing students to write 12 as tens and ones using the provided example format 45 = 40 + 5 with no confusion."
+          "reasoning": "The options contain one correct tens-and-ones expression for 12, with the target and requested representation plainly stated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cloze task logically requires decomposition; 10 + 2 is mathematically correct; options (20 + 8, 1 + 2, 20 + 1) test place-value understanding."
+          "reasoning": "The answer 10 + 2 and every hint agree on one ten and two ones for 12."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example provides clear instruction, and Grade 1 learners can readily understand they must separate tens and ones using the stated format."
+          "reasoning": "The short prompt uses familiar place-value language and a helpful example without introducing a second task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 12 = 10 + 2 is mathematically correct (1 ten = 10, 2 ones = 2); distractors reflect common place-value misconceptions."
+          "reasoning": "10 + 2 equals 12, and the expression correctly gives the value of each digit by position."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "10bd8a85168ae74c30cc",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 12, but the expected answer is '12' while hints explain decomposition as '10 + 2', creating ambiguity about response format."
+          "verdict": "PASS",
+          "reasoning": "The visual task has a single target number, 12, and the named block model makes the intended construction specific."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual task and decomposition hints are conceptually related, but the answer format does not clearly specify whether whole number or decomposed structure is expected."
+          "verdict": "PASS",
+          "reasoning": "The hints correctly connect 12 with 10 + 2 and one ten plus two ones, matching the requested block display."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Grade 1 learners may be uncertain whether to enter 12 or provide the place-value decomposition structure mentioned in the hints."
+          "verdict": "PASS",
+          "reasoning": "The direct instruction to show 12 with base-10 blocks is accessible and supported by visible tens and ones labels."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 12 = 10 + 2 is mathematically correct (1 ten = 10, 2 ones = 2); base-10 blocks would correctly show 1 long block and 2 unit blocks."
+          "reasoning": "The mathematical representation of 12 as one ten and two ones is correct for the stated block task."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "397175ecc22ad6de33aa",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is unambiguous, clearly asking students to decompose 12 into tens and ones using the example model format provided."
+          "reasoning": "Among the four choices, 10 + 2 is the sole correct decomposition of 12 into place-value parts."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 10 + 2 is the correct answer; distractors (1 + 2, 20 + 1, 80 + 4) test place-value understanding and error patterns."
+          "reasoning": "The answer and hints consistently use 10 + 2 and one ten with two ones, so the item is internally coherent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ format and worked example make it clear to Grade 1 learners what tens-and-ones decomposition structure is expected."
+          "reasoning": "The learner receives a familiar decomposition instruction, an example, and a clearly formatted set of answer choices."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 12 = 10 + 2 is mathematically correct; distractors are plausible place-value errors."
+          "reasoning": "The selected expression 10 + 2 equals 12 and correctly reflects the tens digit and ones digit."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "1217286e96db533d77f3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement is explicit despite the themed introduction about dance shoes; students must evaluate whether 45 = 40 + 5 with clear binary choice."
+          "reasoning": "The dance-themed wrapper does not alter the explicit request, and the proposed equality for 45 is a clear true-or-false claim."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The themed wrapper about Sir Rez does not interfere with the mathematical task; the statement 45 = 40 + 5 is correct so True is the right answer."
+          "reasoning": "The theme is merely introductory; the answer and hints consistently verify 45 as 40 + 5."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The themed language adds engagement without obscuring the mathematical question; a Grade 1 learner can clearly identify the decomposition claim to evaluate."
+          "reasoning": "Although the wrapper adds a brief theme, the actual mathematical direction remains plainly visible and understandable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 45 = 40 + 5 is mathematically correct, so True is the correct answer; the theme does not alter the mathematical content."
+          "reasoning": "The statement that 45 equals 40 + 5 is true and correctly represents four tens and five ones."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "375c73d03c965289f9c7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is clear and unambiguous despite the themed introduction about basketballs; students must decompose 50 into tens and ones following the stated format."
+          "reasoning": "The basketball wrapper leaves one clear multiple-choice task, and 50 + 0 is the only option matching the target decomposition."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The theme about Isko and basketballs does not interfere with the mathematical task; 50 + 0 is the correct decomposition tested by this item."
+          "reasoning": "The thematic introduction does not change the task; the answer and hints agree that 50 is five tens and zero ones."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The themed framing provides contextual interest while maintaining clarity about the mathematical decomposition task for Grade 1 learners."
+          "reasoning": "The short themed lead-in is followed by a standard place-value instruction with clear answer choices."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ correctly decomposes 50 = 50 + 0 (5 tens = 50, 0 ones = 0); its distractors (5, 30 + 1, 5 + 0) specifically test whether learners confuse the digit with its place value or combine incorrect place values."
+          "reasoning": "50 + 0 equals 50 and correctly expresses the tens and ones values, while the alternatives do not."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "136861a56acab2d5d262",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem is unambiguous and explicit, clearly instructing students to decompose 93 into tens and ones using the provided example format."
+          "reasoning": "The cloze task asks for one exact decomposition of 93, and the options include a unique correct expression."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cloze task logically requires decomposition; 90 + 3 is mathematically correct; options include plausible place-value misconceptions."
+          "reasoning": "The answer 90 + 3 agrees with the hints identifying nine tens and three ones for 93."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example clearly instructs Grade 1 learners about the expected tens-and-ones decomposition format."
+          "reasoning": "The wording directly asks for tens and ones and supplies a familiar example, keeping the expected response clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 93 = 90 + 3 is mathematically correct (9 tens = 90, 3 ones = 3); distractors are plausible place-value errors."
+          "reasoning": "Ninety plus three equals 93 and correctly assigns the value of each digit in its place."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "9d281943e20c816cab2a",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 16, but the expected answer is '16' while hints reference decomposition as '10 + 6', creating ambiguity."
+          "verdict": "PASS",
+          "reasoning": "The block activity names 16 as its sole target and provides place-value controls appropriate to constructing it."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual task and decomposition hints are conceptually related, but the answer format does not clearly align with the place-value breakdown discussed."
+          "verdict": "PASS",
+          "reasoning": "The visual request and hints agree on 10 + 6, or one ten and six ones, for the number 16."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Grade 1 learners may be uncertain whether to provide the whole number or the decomposed form given the mismatch between task and hint guidance."
+          "verdict": "PASS",
+          "reasoning": "The concrete block instruction is readily actionable and the visual labels make the two place-value categories explicit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 16 = 10 + 6 is mathematically correct (1 ten = 10, 6 ones = 6); base-10 blocks would correctly show 1 long block and 6 unit blocks."
+          "reasoning": "Sixteen is correctly represented as one ten together with six ones, matching the provided hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "daafb8d35f5405267a54",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asks students to use base-10 blocks to show the number 22, but the expected answer is '22' while hints explain decomposition as '20 + 2', creating response-format ambiguity."
+          "verdict": "PASS",
+          "reasoning": "The prompt specifies one target, 22, and the block model gives a direct way to show its two place-value components."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The visual representation task and decomposition explanation are conceptually connected, but the answer format does not clearly specify expected response structure."
+          "verdict": "PASS",
+          "reasoning": "The answer target and hints consistently state 20 + 2 and two tens plus two ones for 22."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "A Grade 1 learner may be uncertain whether to enter 22 or provide the decomposition structure mentioned in the hints."
+          "verdict": "PASS",
+          "reasoning": "The instruction is concise, concrete, and supported by the displayed controls for tens and ones."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 22 = 20 + 2 is mathematically correct (2 tens = 20, 2 ones = 2); base-10 blocks would correctly show 2 long blocks and 2 unit blocks."
+          "reasoning": "Twenty-two is correctly decomposed as 20 plus 2, with both digits assigned their proper place values."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "386f944c84594be1c197",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem is unambiguous, clearly asking students to decompose 50 into tens and ones using the provided example format."
+          "reasoning": "The cloze item asks for the unique tens-and-ones form of 50, and the supplied options include exactly 50 + 0."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 50 + 0 is mathematically correct; options provide plausible distractors testing place-value understanding."
+          "reasoning": "The answer and hints all agree that 50 consists of five tens and zero ones."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example makes the expected response format clear to Grade 1 learners."
+          "reasoning": "The standard wording is direct, and the example gives a clear model for the requested additive notation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cloze decomposition 50 = 50 + 0 is mathematically correct (5 tens = 50, 0 ones = 0); its options (50 + 0, 5 + 0, 5, 20 + 7) test whether learners recognize correct decomposition and avoid magnitude or place-value errors."
+          "reasoning": "The equation 50 + 0 equals 50 and correctly records the value of each digit by place."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "c2a54489d9f59768dd17",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is unambiguous, clearly asking students to decompose 50 into tens and ones using the example format provided."
+          "reasoning": "The multiple-choice prompt has one exact decomposition of 50, with distractors that differ in place-value interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 50 + 0 is mathematically correct; the options test place-value mastery through plausible misconceptions."
+          "reasoning": "The mastery-drill context does not alter the task, and the answer and hints consistently describe 50 as 50 + 0."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ format and worked example make it clear to Grade 1 learners what tens-and-ones decomposition is expected."
+          "reasoning": "The place-value instruction is concise and the choices are presented in a form suitable for a quick practice item."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 50 = 50 + 0 is mathematically correct (5 tens = 50, 0 ones = 0); the options test accurate place-value understanding."
+          "reasoning": "50 + 0 is mathematically equal to 50 and accurately represents five tens and no ones."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "sample_id": "2ffc0be469c7347dd2cd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem is explicit and unambiguous, clearly asking students to decompose 40 into tens and ones following the provided example format."
+          "reasoning": "The scaffolded multiple-choice item offers one correct tens-and-ones expression for 40 and clear distractors."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically requires decomposition; 40 + 0 is mathematically correct; the options test place-value understanding through plausible errors."
+          "reasoning": "The answer 40 + 0 agrees with all hints, and the scaffolded experience does not introduce conflicting information."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The worked example provides clear instruction to Grade 1 learners about the tens-and-ones decomposition format required."
+          "reasoning": "The direct command and worked example clearly signal that the learner should select the place-value sum for 40."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The decomposition 40 = 40 + 0 is mathematically correct (4 tens = 40, 0 ones = 0); distractors are plausible place-value errors."
+          "reasoning": "Forty equals 40 + 0, representing four tens and zero ones exactly as required."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     }
   ],
   "clause_evidence": [
@@ -1714,131 +1714,74 @@
       "requirement_id": "decompose",
       "clause": "Decompose",
       "verdict": "PASS",
-      "reasoning": "Every sample requires students to perform a decomposition action, whether by writing the tens-and-ones form in cloze format, evaluating true/false statements about decompositions, selecting correct decompositions in MCQ format, or using base-10 blocks to represent place-value components. The decomposition verb is enacted uniformly across all 21 task formats without exception.",
+      "reasoning": "The packet repeatedly requires learners to split a named number into additive place-value parts or construct those parts with blocks.",
       "sample_ids": [
         "4ae4f137f32f887c7641",
-        "eef7bc0eece018e4287f",
-        "8842fb027828f80ce25a",
-        "d260ac652d3ad59d3865",
-        "fe7d6d75785e9f5b2411",
-        "84f7a7465453055d3d89",
-        "87cabcdfa767412387d5",
-        "11e8d3fbe8c674cabf4a",
-        "b891e80c0045cb681340",
-        "ad2d66a5315e4766acc8",
-        "32b329b6050d560d8a6e",
-        "10bd8a85168ae74c30cc",
-        "397175ecc22ad6de33aa",
-        "1217286e96db533d77f3",
-        "375c73d03c965289f9c7",
-        "136861a56acab2d5d262",
-        "9d281943e20c816cab2a",
-        "daafb8d35f5405267a54",
-        "386f944c84594be1c197",
-        "c2a54489d9f59768dd17",
-        "2ffc0be469c7347dd2cd"
+        "eef7bc0eece018e4287f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "requirement_id": "domain_2_digit",
       "clause": "2-digit number",
       "verdict": "PASS",
-      "reasoning": "All 21 samples use exclusively 2-digit numbers (10, 12, 15, 16, 20, 22, 40, 45, 50, 76, 91, 93, 94), with no 1-digit or 3-digit numbers appearing in stems or tasks. The domain is consistently and completely applied across the full range of samples without exception.",
+      "reasoning": "Every numerical target shown is a two-digit number, including teen values, multiples of ten, and larger values such as 91 and 94.",
       "sample_ids": [
-        "4ae4f137f32f887c7641",
-        "eef7bc0eece018e4287f",
-        "8842fb027828f80ce25a",
-        "d260ac652d3ad59d3865",
-        "fe7d6d75785e9f5b2411",
-        "84f7a7465453055d3d89",
         "87cabcdfa767412387d5",
-        "11e8d3fbe8c674cabf4a",
-        "b891e80c0045cb681340",
-        "ad2d66a5315e4766acc8",
-        "32b329b6050d560d8a6e",
-        "10bd8a85168ae74c30cc",
-        "397175ecc22ad6de33aa",
-        "1217286e96db533d77f3",
-        "375c73d03c965289f9c7",
-        "136861a56acab2d5d262",
-        "9d281943e20c816cab2a",
-        "daafb8d35f5405267a54",
-        "386f944c84594be1c197",
-        "c2a54489d9f59768dd17",
-        "2ffc0be469c7347dd2cd"
+        "b891e80c0045cb681340"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     },
     {
       "requirement_id": "tens_ones",
       "clause": "tens and ones",
       "verdict": "PASS",
-      "reasoning": "Every sample explicitly decomposes numbers into tens and ones, using consistent mathematical language such as X is Y tens and Z ones or the algorithmic format Y + Z where the first addend represents the tens value and the second represents the ones value. This component is comprehensively covered across all samples with no missing elements.",
+      "reasoning": "The equations, hints, and PlaceValueBlocks interactions explicitly distinguish the tens value from the ones value throughout the packet.",
       "sample_ids": [
-        "4ae4f137f32f887c7641",
-        "eef7bc0eece018e4287f",
-        "8842fb027828f80ce25a",
-        "d260ac652d3ad59d3865",
-        "fe7d6d75785e9f5b2411",
-        "84f7a7465453055d3d89",
-        "87cabcdfa767412387d5",
-        "11e8d3fbe8c674cabf4a",
-        "b891e80c0045cb681340",
-        "ad2d66a5315e4766acc8",
         "32b329b6050d560d8a6e",
-        "10bd8a85168ae74c30cc",
-        "397175ecc22ad6de33aa",
-        "1217286e96db533d77f3",
-        "375c73d03c965289f9c7",
-        "136861a56acab2d5d262",
-        "9d281943e20c816cab2a",
-        "daafb8d35f5405267a54",
-        "386f944c84594be1c197",
-        "c2a54489d9f59768dd17",
-        "2ffc0be469c7347dd2cd"
+        "11e8d3fbe8c674cabf4a"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3:mat_g1_na_q2_3",
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_3-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3:mat_g1_na_q2_3",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_3-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "47827ce2879305ef6695c88107f7825f696801d97c50e2c0c04f50bbc7da3ddb",
+      "packet_digest": "6fa065716111ce6665e7c9b4254515226e43a7f78ed58c195271e21da3656bef",
       "clause_ids": [
         "decompose",
         "domain_2_digit",
         "tens_ones"
       ],
-      "response_ref": ".responses/s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3.json",
-      "response_digest": "2fa83a6bc77d4093ff5f7cdbf95bfdfc17f0f1580aa05720c5441a05dbc893f2",
-      "prompt_ref": ".responses/s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_3.prompt.txt",
-      "prompt_digest": "4698a733b3879873439095826b1eefa196d2de8ae4a982ed66e5cae5a7806d43",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseB/mat_g1_na_q2_3/prompt.txt and Write only local_only/scratch/phaseB/mat_g1_na_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the reply twice for clauses with no sample_ids (domain_2_digit had none; tens_ones had an empty list). The dispatcher asked the reviewer to add the samples it examined; in 9 then 12 tool uses the reviewer added citations and de-duplicated one repeated reasoning. Every verdict (findings, sample checks, clauses, overall) byte-compared unchanged; only clause citations and wording changed. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3.json",
+      "response_digest": "2ee3ce540f2c8ec29dd83d62c0f6aa196d44681942c79504c972a4c35b435ee7",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_3.prompt.txt",
+      "prompt_digest": "da52af97999fa3ed46d61deece91fe17e8084c067b5df6e6cac58d81ed478cf4",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt and wrote verdicts.json; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All items are appropriately calibrated for Grade 1, Quarter 2 learners, employing clear language, concrete place-value examples, and multiple task formats (cloze, MCQ, true/false, visual blocks) that scaffold understanding without overwhelming cognitive demands."
+      "rationale": "Each item asks a Grade 1 learner to identify tens and ones in a two-digit number, with short wording and familiar base-ten representations."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly targets the core competency of decomposing 2-digit numbers into tens and ones, using consistent mathematical language and task structures that uniformly require learners to separate place-value components."
+      "rationale": "The stems, options, truth judgments, and block interactions all directly address decomposing a two-digit number into its tens and ones values."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The three REQUIREMENTS (decompose, 2-digit number, tens and ones) directly extract the competency statement and are all demonstrated across the full sample set with no structural gaps or missing components.",
+      "rationale": "Across the packet, learners encounter decomposition equations, place-value language, and base-ten block representations for many two-digit numbers.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The REQUIREMENTS section provides three specific elements that parse the competency losslessly: the action (decompose), the domain (2-digit number), and the target structure (tens and ones) are each evidenced throughout samples with no missing subclauses or reductions.",
+        "reasoning": "The printed requirements identify the action Decompose, the object 2-digit number, and the target tens and ones; together they losslessly specify the competency.",
         "requirement_ids": [
           "decompose",
           "domain_2_digit",
@@ -1853,7 +1796,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample set covers the 2-digit range comprehensively, including boundary cases (10, 20, 40, 50 with zero ones) and diverse mid-range values (12, 15, 16, 22, 45, 76, 91, 93, 94), ensuring learners encounter varied decomposition patterns and structural combinations.",
+      "rationale": "The samples cover numbers with zero ones, zero tens units, repeated digits, varied digits, and values throughout the two-digit range.",
       "clause_ids": [
         "decompose",
         "domain_2_digit",
@@ -1862,12 +1805,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All sampled numbers fall within the 2-digit range (10–94) appropriate for Grade 1, Quarter 2, with sufficient numeric variety to avoid rote memorization while maintaining conceptual complexity suited to foundational place-value work."
+      "rationale": "The quantity and variety of practice are suitable for a foundational Grade 1 Quarter 2 place-value competency without introducing later operations."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "While multiple formats are included (fill-in-blank cloze, MCQ, true/false, visual base-10 blocks), the visual base-10 block samples present a critical mismatch: the stem asks students to show the number using blocks, the expected answer is the whole number itself (e.g. '10'), yet the hints discuss decomposition form (e.g. '10 + 0'), which may create response-format ambiguity for learners."
+      "verdict": "PASS",
+      "rationale": "Cloze, multiple-choice, true-false, and base-ten block formats provide complementary ways to demonstrate the same decomposition skill."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

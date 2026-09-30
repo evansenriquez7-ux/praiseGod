@@ -1,0 +1,253 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w17-mat_g1_na_q2_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q2_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w17-mat_g1_na_q2_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q2_1
+PACKET DIGEST: 270d7db2a46e6526b56171eeb1d04a8db1c7a86bdf7d904ba0250f7e86d69cea
+COMPETENCY (Grade 1, Quarter 2, None):
+Count by 2s, 5s and 10s up to 100.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  count: Count
+  step_2s: 2s
+  step_5s: 5s
+  step_10s: 10s
+  up_to_100: 100
+
+SAMPLES (every one of these is real rendered output):
+  sample 3d945a3fffc369ef8ed6  seed 42  [mcq]
+      stem:    What number comes next when counting: 0, 10, 20, 30, ___?
+      answer:  40
+      options: 10 / 40 / 31 / 20
+      hints:   ["Look at the list of numbers: 0, 10, 20, 30, ___", "Find the rule by comparing neighbours: 10 − 0 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 30: 30 + 10 = 40."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 504430612a6fb05e3eae  seed 43  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  44
+      options: 43 / 45 / 44 / 46
+      hints:   ["Look at the list of numbers: 36, 38, 40, 42, ___", "Find the rule by comparing neighbours: 38 − 36 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 42: 42 + 2 = 44."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4aaeb04d45259b2e0141  seed 44  [read_mcq]
+      stem:    (Large group of 100 cupcakes)
+Count the cupcakes.
+How many cupcakes are there in all?
+      answer:  100
+      options: 101 / 99 / 100 / 0
+      hints:   ["Look at the list of numbers: 80, 85, 90, 95, ___", "Find the rule by comparing neighbours: 85 − 80 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 95: 95 + 5 = 100."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["📦", "100x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 02ecdb58555a946a1022  seed 45  [mcq]
+      stem:    What number comes next when counting: 65, 70, 75, 80, ___?
+      answer:  85
+      options: 75 / 85 / 70 / 81
+      hints:   ["Look at the list of numbers: 65, 70, 75, 80, ___", "Find the rule by comparing neighbours: 70 − 65 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 80: 80 + 5 = 85."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4bc4b6a3f8ab33e965f1  seed 46  [cloze]
+      stem:    What comes next: 68, 70, 72, 74, ___
+      answer:  76
+      options: 72 / 75 / 76 / 70
+      hints:   ["Look at the list of numbers: 68, 70, 72, 74, ___", "Find the rule by comparing neighbours: 70 − 68 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 74: 74 + 2 = 76."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 26bc551a05e79c5d559e  seed 500  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  100
+      options: 99 / 100 / 102 / 101
+      hints:   ["Look at the list of numbers: 80, 85, 90, 95, ___", "Find the rule by comparing neighbours: 85 − 80 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 95: 95 + 5 = 100."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6fb3c5ab49db7b68c125  seed 501  [mcq]
+      stem:    What number comes next when counting: 20, 30, 40, 50, ___?
+      answer:  60
+      options: 60 / 30 / 51 / 40
+      hints:   ["Look at the list of numbers: 20, 30, 40, 50, ___", "Find the rule by comparing neighbours: 30 − 20 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 50: 50 + 10 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 08a79489c70f21a2a493  seed 502  [read_mcq]
+      stem:    (Large group of 60 paints)
+Count the paints.
+How many paints are there in all?
+      answer:  60
+      options: 59 / 60 / 61 / 0
+      hints:   ["Look at the list of numbers: 20, 30, 40, 50, ___", "Find the rule by comparing neighbours: 30 − 20 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 50: 50 + 10 = 60."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🎨"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dd4ec8964cebdbcf7cf2  seed 601  [cloze]
+      stem:    Moses is counting forward by 2 starting from 86. The count is: 86, 88, 90, 92. What is the next number Moses should say?
+      answer:  94
+      options: 94 / 93 / 88 / 90
+      hints:   ["Look at the list of numbers: 86, 88, 90, 92, ___", "Find the rule by comparing neighbours: 88 − 86 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 92: 92 + 2 = 94."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 616cc31181842f76ea26  seed 700  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  32
+      options: 33 / 32 / 34 / 31
+      hints:   ["Look at the list of numbers: 24, 26, 28, 30, ___", "Find the rule by comparing neighbours: 26 − 24 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 30: 30 + 2 = 32."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ad673baea4c0a1571ca7  seed 701  [cloze]
+      stem:    🧁 Boboy enjoys cookies. Here is a math challenge. What comes next: 20, 30, 40, 50, ___
+      answer:  60
+      options: 51 / 60 / 40 / 30
+      hints:   ["Look at the list of numbers: 20, 30, 40, 50, ___", "Find the rule by comparing neighbours: 30 − 20 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 50: 50 + 10 = 60."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 275e041073848761cb23  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. (Large group of 38 items)
+Count the items.
+How many items are there in all?
+      answer:  38
+      options: 38 / 0 / 37 / 39
+      hints:   ["Look at the list of numbers: 30, 32, 34, 36, ___", "Find the rule by comparing neighbours: 32 − 30 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 36: 36 + 2 = 38."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 36, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🏀", "🏀", "1x 🏀"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b02ed2f8af726d42917d  seed 800  [cloze]
+      stem:    What comes next: 30, 40, 50, 60, ___
+      answer:  70
+      options: 61 / 50 / 40 / 70
+      hints:   ["Look at the list of numbers: 30, 40, 50, 60, ___", "Find the rule by comparing neighbours: 40 − 30 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 60: 60 + 10 = 70."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8cc36e20f3347e3966b9  seed 900  [mcq]
+      stem:    What number comes next when counting: 0, 10, 20, 30, ___?
+      answer:  40
+      options: 10 / 31 / 20 / 40
+      hints:   ["Look at the list of numbers: 0, 10, 20, 30, ___", "Find the rule by comparing neighbours: 10 − 0 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 30: 30 + 10 = 40."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c5bfc942a31b52b5e8a8  seed 901  [mcq]
+      stem:    What number comes next when counting: 0, 5, 10, 15, ___?
+      answer:  20
+      options: 10 / 20 / 5 / 16
+      hints:   ["Look at the list of numbers: 0, 5, 10, 15, ___", "Find the rule by comparing neighbours: 5 − 0 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 15: 15 + 5 = 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b5a18e2fbe2a5f80c308  seed 1000  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  40
+      options: 39 / 42 / 41 / 40
+      hints:   ["Look at the list of numbers: 20, 25, 30, 35, ___", "Find the rule by comparing neighbours: 25 − 20 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 35: 35 + 5 = 40."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e563148192d58bc87564  seed 1001  [read_mcq]
+      stem:    (Large group of 48 items)
+Count the items.
+How many items are there in all?
+      answer:  48
+      options: 48 / 49 / 0 / 47
+      hints:   ["Look at the list of numbers: 40, 42, 44, 46, ___", "Find the rule by comparing neighbours: 42 − 40 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 46: 46 + 2 = 48."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 39, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x ✝️", "✝️", "1x ✝️"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c1dfeb71cde59c160c3d  seed 1002  [read_mcq]
+      stem:    (Large group of 80 cupcakes)
+Count the cupcakes.
+How many cupcakes are there in all?
+      answer:  80
+      options: 0 / 80 / 81 / 79
+      hints:   ["Look at the list of numbers: 40, 50, 60, 70, ___", "Find the rule by comparing neighbours: 50 − 40 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 70: 70 + 10 = 80."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

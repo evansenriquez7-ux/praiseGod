@@ -29,10 +29,10 @@
       "clause": "expanded form"
     }
   ],
-  "packet_digest": "bd55fb3253eeab971ac299a468b2a9940975206605f8d3a959d1048ab12f37cc",
+  "packet_digest": "34b0862f9a059fc73cc38e837fc0aad16ac5304eccd952eb4e3e1b455cfe4154",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -982,7 +982,7 @@
       "node_id": "mat_g1_na_q2_4",
       "seed": 701,
       "formatter": "cloze",
-      "question_text": "✝️ Daniel has a math challenge about stones. 43 is 4 tens and 3 ones. 29 is 2 tens and 9 ones. Add the place values, then find the total: 43 + 29 = ___",
+      "question_text": "✝️ Daniel enjoys stones. Here is a math challenge. 43 is 4 tens and 3 ones. 29 is 2 tens and 9 ones. Add the place values, then find the total: 43 + 29 = ___",
       "correct_answer": 72,
       "requested": {
         "difficulty_profile": null,
@@ -1032,13 +1032,13 @@
         "The sum is 43 + 29 = 72."
       ],
       "sample_id": "a059149bc280147e34b5",
-      "replay_digest": "ab86ac4f07049651d22f0eb4de5af07e05d78ea8de23868841c00120d5ad0324"
+      "replay_digest": "f2560469d86fbd972ac467c6a2b8ec99bf44ee7a6baf5249fdcaf70ef29e8902"
     },
     {
       "node_id": "mat_g1_na_q2_4",
       "seed": 702,
       "formatter": "error_detect",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Manny solved: \"18 is 1 ten and 8 ones. 14 is 1 ten and 4 ones. Add the place values, then find the total: 18 + 14 = ___\". Manny says the blank is 33. Is Manny correct?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: \"18 is 1 ten and 8 ones. 14 is 1 ten and 4 ones. Add the place values, then find the total: 18 + 14 = ___\". Manny says the blank is 33. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 32
@@ -1068,7 +1068,7 @@
         "The sum is 18 + 14 = 32."
       ],
       "sample_id": "7d98e0f1f6a3f0515a99",
-      "replay_digest": "ab256464ed5d98d0e8b5d1edbb54ae92ac095bdf0a61399ae80476298b2e8d17"
+      "replay_digest": "f9444be63f6a8d28917df601be8a2bd8556ae383a337a39c7e7df4d82714fa03"
     },
     {
       "node_id": "mat_g1_na_q2_4",
@@ -1385,667 +1385,667 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously requests the sum of two numbers presented with explicit tens-ones decomposition. The question asking what is the sum of these two numbers is direct and mathematically clear with no competing interpretations of the task required."
+          "reasoning": "The wording gives a single requested operation and answer path for the 10 plus 62 item, where zero ones combine with two ones and one ten with six tens to make 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem structure is logically coherent: two addends are decomposed into place values, learners are asked to add them, and the resulting sum of 72 correctly follows from adding 1 ten plus 6 tens for 7 tens and 0 ones plus 2 ones for 2 ones, equaling 72."
+          "reasoning": "The numerical relationship and place-value reasoning in the 10 plus 62 item, where zero ones combine with two ones and one ten with six tens to make 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional language is clear and Grade 1 appropriate. The phrase prompting learners to add the place values and then find the total explicitly guides the learner through the expected two-step process of combining like place values and deriving the final sum."
+          "reasoning": "The learner-facing sequence is accessible in the 10 plus 62 item, where zero ones combine with two ones and one ten with six tens to make 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 10 decomposed as 1 ten and 0 ones, 62 as 6 tens and 2 ones, ones column sum of 0 plus 2 equals 2, tens column sum of 1 plus 6 equals 7, final sum 10 plus 62 equals 72. The hints reinforce this sequence with mathematically sound reasoning and the answer 72 is the unique correct response."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 10 plus 62 item, where zero ones combine with two ones and one ten with six tens to make 72. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "289efaa4c0f0d60eef4e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a single mathematical claim stating 24 plus 3 equals 37 with no ambiguous phrasing. The question asking whether this is true or false is unambiguous; learners must evaluate whether the stated equation matches the actual sum derived from place-value addition."
+          "reasoning": "The wording gives a single requested operation and answer path for the 24 plus 3 true-or-false item, whose false claim of 37 is corrected by the shown total 27. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: the false claim stating 24 plus 3 equals 37 tests whether learners can correctly compute 24 plus 3 equals 27 using place values. The incorrect statement and correct answer of false create a coherent error-detection scenario appropriate for reinforcing place-value reasoning."
+          "reasoning": "The numerical relationship and place-value reasoning in the 24 plus 3 true-or-false item, whose false claim of 37 is corrected by the shown total 27. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: the learner must evaluate a statement by decomposing the addends into place values and computing the correct sum. The phrasing prompting learners to add place values and find the total provides explicit guidance for the solution process."
+          "reasoning": "The learner-facing sequence is accessible in the 24 plus 3 true-or-false item, whose false claim of 37 is corrected by the shown total 27. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The place-value decomposition is correct with 24 shown as 2 tens 4 ones and 3 as 0 tens 3 ones. The correct sum is 24 plus 3 equals 27 computed as 2 tens plus 0 tens equals 2 tens and 4 ones plus 3 ones equals 7 ones, giving 27, making the stated answer of 37 mathematically false as intended."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 24 plus 3 true-or-false item, whose false claim of 37 is corrected by the shown total 27. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "5f1c36cba4022c414489",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection format is unambiguous: learners must determine whether a character's claim about the blank is correct and provide the correct value if not. The problem setup explicitly requires either confirming or correcting the claim with the true mathematical answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 30 plus 22 error-detection item, where Rico proposed 52 and that value is correctly accepted. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The solution structure is logically presented: decompose 30 as 3 tens and 0 ones and 22 as 2 tens and 2 ones, add place values separately as 0 plus 2 equals 2 in ones and 3 plus 2 equals 5 in tens, yielding 52. The stated answer of 52 matches the correct computation, so the response indicating no error with correct value 52 is logically sound."
+          "reasoning": "The numerical relationship and place-value reasoning in the 30 plus 22 error-detection item, where Rico proposed 52 and that value is correctly accepted. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly scaffolded: learners see the decomposition of both numbers into place values, follow the place-value addition process shown in the stem, and verify whether the proposed answer is correct. The instructional phrasing guides them through the expected reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 30 plus 22 error-detection item, where Rico proposed 52 and that value is correctly accepted. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The computation is correct: 30 as 3 tens and 0 ones plus 22 as 2 tens and 2 ones yields 0 plus 2 equals 2 in ones place and 3 plus 2 equals 5 in tens place, for a sum of 52. No carrying is required; the answer of 52 is mathematically accurate and the no-error verdict is justified."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 30 plus 22 error-detection item, where Rico proposed 52 and that value is correctly accepted. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "0e0a6f05daab2423e8ec",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question is unambiguous, asking for the sum of 60 and 10 and requiring a single numerical response selected from four options. The place-value context is clearly established in the stem with no competing interpretation of the required task."
+          "reasoning": "The wording gives a single requested operation and answer path for the 60 plus 10 multiple-choice item, with six tens and one ten yielding 70. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 60 is correctly decomposed as 6 tens and 0 ones, 10 as 1 ten and 0 ones. Adding place values separately as 0 plus 0 in ones and 6 plus 1 in tens yields the correct sum of 70, making this a valid and unambiguous computation scenario."
+          "reasoning": "The numerical relationship and place-value reasoning in the 60 plus 10 multiple-choice item, with six tens and one ten yielding 70. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional scaffolding is clear and age-appropriate for Grade 1: the stem explicitly decomposes both addends, requests separate addition of place values, and asks learners to find the total. The question directs a straightforward place-value addition process."
+          "reasoning": "The learner-facing sequence is accessible in the 60 plus 10 multiple-choice item, with six tens and one ten yielding 70. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 60 equals 6 tens plus 0 ones, 10 equals 1 ten plus 0 ones. Ones place: 0 plus 0 equals 0. Tens place: 6 plus 1 equals 7. Final sum: 60 plus 10 equals 70. The correct answer is clearly identified among the four options, and all mathematical relationships hold."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 60 plus 10 multiple-choice item, with six tens and one ten yielding 70. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "8fca89be10ce3edb4d97",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze fill-in-the-blank format is unambiguous: learners must determine the sum 57 plus 43 and select or enter the correct answer. The blank explicitly marks the missing value, and the context makes clear that the numerical answer is required."
+          "reasoning": "The wording gives a single requested operation and answer path for the 57 plus 43 cloze item, where seven ones plus three ones regroup to 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem correctly models a Grade 1 carrying scenario: 57 as 5 tens and 7 ones and 43 as 4 tens and 3 ones produce 7 plus 3 equals 10 in the ones place requiring a carry-over of 1 ten, and 5 plus 4 plus 1 carried equals 10 in the tens place, totaling 100. The structure is logically sound."
+          "reasoning": "The numerical relationship and place-value reasoning in the 57 plus 43 cloze item, where seven ones plus three ones regroup to 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented with explicit place-value decomposition guiding the learner through each step: decompose both addends, add ones first, handle the carry-over when ones exceed 9, add tens including the carried ten, and state the final sum. The phrasing directly supports this sequence."
+          "reasoning": "The learner-facing sequence is accessible in the 57 plus 43 cloze item, where seven ones plus three ones regroup to 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 57 equals 5 tens plus 7 ones, 43 equals 4 tens plus 3 ones. Ones: 7 plus 3 equals 10 (write 0, carry 1). Tens: 5 plus 4 plus 1 equals 10 (write 10). Final sum: 100. The hints accurately explain each step, and 100 is the unique correct answer."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 57 plus 43 cloze item, where seven ones plus three ones regroup to 100. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "e135687eac28d61e84dd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a single definitive claim stating 55 plus 43 equals 55 with no ambiguity. The question asking whether this is true or false requires a definitive evaluation of whether the stated equation is mathematically correct, a task with a single unambiguous answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 55 plus 43 true-or-false item, whose claimed 55 conflicts with the displayed sum 98. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem setup is logically coherent: 55 and 43 are decomposed into place values, the place-value addition method is clearly described, and the false claim that the sum equals 55 provides a meaningful error-detection scenario that tests student understanding of what happens when two non-zero addends are combined."
+          "reasoning": "The numerical relationship and place-value reasoning in the 55 plus 43 true-or-false item, whose claimed 55 conflicts with the displayed sum 98. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional framing is clear: the learner decomposes the addends into tens and ones, adds within each place-value column, and evaluates whether the resulting sum matches the claimed answer of 55. The phrasing prompting learners to add place values and find the total guides this reasoning process."
+          "reasoning": "The learner-facing sequence is accessible in the 55 plus 43 true-or-false item, whose claimed 55 conflicts with the displayed sum 98. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct computation is: 55 equals 5 tens plus 5 ones, 43 equals 4 tens plus 3 ones. Ones: 5 plus 3 equals 8. Tens: 5 plus 4 equals 9. Sum: 98. The claim that 55 plus 43 equals 55 is false, making the answer false mathematically correct and the problem valid."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 55 plus 43 true-or-false item, whose claimed 55 conflicts with the displayed sum 98. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "7a668eb1a8f669bfaf94",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 70 plus 18 is unambiguous. The stem provides place-value context for both addends, and learners must select one of four numerical options, making the task and expected response format absolutely clear."
+          "reasoning": "The wording gives a single requested operation and answer path for the 70 plus 18 multiple-choice item, where eight ones remain and the tens total eight. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 70 as 7 tens and 0 ones and 18 as 1 ten and 8 ones produce a sum where ones add to 0 plus 8 equals 8 and tens add to 7 plus 1 equals 8, yielding 88. The problem structure correctly models two-digit addition by place value."
+          "reasoning": "The numerical relationship and place-value reasoning in the 70 plus 18 multiple-choice item, where eight ones remain and the tens total eight. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task presentation is clear and Grade 1 appropriate: both addends are decomposed into tens and ones, learners are prompted to add the place values and find the total, and the question directly asks for the sum. The scaffolding supports systematic place-value reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 70 plus 18 multiple-choice item, where eight ones remain and the tens total eight. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 70 equals 7 tens plus 0 ones, 18 equals 1 ten plus 8 ones. Ones place: 0 plus 8 equals 8. Tens place: 7 plus 1 equals 8. Final sum: 88. The correct answer is available among the four options, confirming mathematical validity."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 70 plus 18 multiple-choice item, where eight ones remain and the tens total eight. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "77083079c7c0ffa835f0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct given the addition problem 87 plus 9. The format clearly requires evaluating the claim and potentially correcting it if wrong."
+          "reasoning": "The wording gives a single requested operation and answer path for the 87 plus 9 error-detection item, with sixteen ones regrouped to produce the correct 96. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 87 as 8 tens and 7 ones and 9 as 0 tens and 9 ones are decomposed, place values are added as 7 plus 9 equals 16 in ones requiring a carry, and 8 plus 0 plus 1 equals 9 in tens, yielding 96. The character's answer is correct, and the response indicating no error with correct value 96 reflects accurate computation."
+          "reasoning": "The numerical relationship and place-value reasoning in the 87 plus 9 error-detection item, with sixteen ones regrouped to produce the correct 96. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly with full place-value scaffolding: the learner sees the decomposition of both numbers, follows the step-by-step addition process including ones first then tens with the carry-over, and verifies whether the proposed answer is correct using the shown method."
+          "reasoning": "The learner-facing sequence is accessible in the 87 plus 9 error-detection item, with sixteen ones regrouped to produce the correct 96. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 87 equals 8 tens plus 7 ones, 9 equals 0 tens plus 9 ones. Ones: 7 plus 9 equals 16 (write 6, carry 1). Tens: 8 plus 0 plus 1 equals 9. Sum: 96. The character's answer of 96 is mathematically accurate, and the no-error verdict is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 87 plus 9 error-detection item, with sixteen ones regrouped to produce the correct 96. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "70e081a83c244410565e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a single definitive claim stating 47 plus 7 equals 54. The question asking whether this is true or false requires learners to evaluate this statement against the correct sum computed via place-value addition, with no ambiguity in the task."
+          "reasoning": "The wording gives a single requested operation and answer path for the 47 plus 7 true-or-false item, where fourteen ones regroup and the verified total is 54. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 47 as 4 tens and 7 ones and 7 as 0 tens and 7 ones correctly decomposed, ones add to 7 plus 7 equals 14 requiring a carry-over of 1 ten and keeping 4 in the ones place, tens add to 4 plus 0 plus 1 equals 5, producing the correct sum of 54. The statement is true."
+          "reasoning": "The numerical relationship and place-value reasoning in the 47 plus 7 true-or-false item, where fourteen ones regroup and the verified total is 54. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional structure is clear: the learner decomposes both addends into place values, adds within each column handling the carry-over in the ones, and evaluates whether the resulting sum of 54 matches the claim. The phrasing directly supports this place-value reasoning process."
+          "reasoning": "The learner-facing sequence is accessible in the 47 plus 7 true-or-false item, where fourteen ones regroup and the verified total is 54. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 47 equals 4 tens plus 7 ones, 7 equals 0 tens plus 7 ones. Ones: 7 plus 7 equals 14 (write 4, carry 1). Tens: 4 plus 0 plus 1 equals 5. Sum: 54. The statement 47 plus 7 equals 54 is mathematically true, and the answer true is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 47 plus 7 true-or-false item, where fourteen ones regroup and the verified total is 54. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "10a82e1286db42661def",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze fill-in format is unambiguous: learners must fill in the sum of 60 plus 30. The blank clearly marks the missing value, and the problem structure makes evident that a single numerical answer is required and will be verified against the correct place-value computation."
+          "reasoning": "The wording gives a single requested operation and answer path for the 60 plus 30 cloze item, whose three tens add to nine tens and total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 60 as 6 tens and 0 ones and 30 as 3 tens and 0 ones produce 0 plus 0 equals 0 in the ones place and 6 plus 3 equals 9 in the tens place, correctly yielding 90. No carrying is involved; the computation is straightforward place-value addition."
+          "reasoning": "The numerical relationship and place-value reasoning in the 60 plus 30 cloze item, whose three tens add to nine tens and total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: both addends are decomposed into place values at the start, learners are guided to add ones first then tens, and a blank is provided for their answer. The instructional language supports systematic place-value reasoning and makes the expected response format clear."
+          "reasoning": "The learner-facing sequence is accessible in the 60 plus 30 cloze item, whose three tens add to nine tens and total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 60 equals 6 tens plus 0 ones, 30 equals 3 tens plus 0 ones. Ones: 0 plus 0 equals 0. Tens: 6 plus 3 equals 9. Sum: 90. The hints confirm this step-by-step, and 90 is the unique correct answer presented among the options."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 60 plus 30 cloze item, whose three tens add to nine tens and total 90. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "b0da07245b581ce7605f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 30 plus 6 is unambiguous. The stem establishes the place-value context for both numbers clearly, and the four options provide a single correct numerical answer, making the task format and expected response absolutely clear."
+          "reasoning": "The wording gives a single requested operation and answer path for the 30 plus 6 multiple-choice item, separating three tens from six ones to obtain 36. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem structure is logically coherent: 30 as 3 tens and 0 ones and 6 as 0 tens and 6 ones correctly decomposed, place-value addition yields 0 plus 6 equals 6 in ones and 3 plus 0 equals 3 in tens, producing the correct sum of 36. The problem models basic place-value addition appropriately."
+          "reasoning": "The numerical relationship and place-value reasoning in the 30 plus 6 multiple-choice item, separating three tens from six ones to obtain 36. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional framing is clear for Grade 1: the stem shows the explicit decomposition of both addends, asks learners to add place values and find the total, and provides multiple-choice options to select from. The scaffolding clearly guides the expected solution process."
+          "reasoning": "The learner-facing sequence is accessible in the 30 plus 6 multiple-choice item, separating three tens from six ones to obtain 36. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 30 equals 3 tens plus 0 ones, 6 equals 0 tens plus 6 ones. Ones: 0 plus 6 equals 6. Tens: 3 plus 0 equals 3. Sum: 36. The correct answer is clearly available in the options, and all mathematical relationships are sound."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 30 plus 6 multiple-choice item, separating three tens from six ones to obtain 36. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "09f2a1239c6990cd1176",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents the claim 19 plus 54 equals 73 without ambiguity. The question asking whether this is true or false requires a definitive evaluation of whether this equation is mathematically correct, a task with a single clear answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 19 plus 54 true-or-false item, where thirteen ones carry into seven tens for 73. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 19 as 1 ten and 9 ones and 54 as 5 tens and 4 ones correctly decomposed. Place-value addition: ones 9 plus 4 equals 13 requiring write 3 and carry 1 ten, tens 1 plus 5 plus 1 equals 7, sum 73. The stated claim is mathematically true."
+          "reasoning": "The numerical relationship and place-value reasoning in the 19 plus 54 true-or-false item, where thirteen ones carry into seven tens for 73. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task presentation is clear: learners see the place-value decomposition of both addends, are guided through the place-value addition process including handling the carry-over, and evaluate whether the resulting sum matches the stated claim. The instructional language supports this reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 19 plus 54 true-or-false item, where thirteen ones carry into seven tens for 73. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 19 equals 1 ten plus 9 ones, 54 equals 5 tens plus 4 ones. Ones: 9 plus 4 equals 13 (write 3, carry 1). Tens: 1 plus 5 plus 1 equals 7. Sum: 73. The statement is mathematically true, and the answer true is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 19 plus 54 true-or-false item, where thirteen ones carry into seven tens for 73. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "476ba37d3fb021b4620a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 19 plus 81 is unambiguous. The stem provides place-value decomposition for both addends, and learners must select one of four numerical options, making the task and response format absolutely clear with no competing interpretations."
+          "reasoning": "The wording gives a single requested operation and answer path for the 19 plus 81 multiple-choice item, whose nine plus one ones regroup into the displayed 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 19 as 1 ten and 9 ones and 81 as 8 tens and 1 one correctly decomposed. Place-value addition yields: ones 9 plus 1 equals 10 requiring write 0 and carry 1 ten, tens 1 plus 8 plus 1 equals 10, final sum 100. The structure models a Grade 1 carrying problem accurately."
+          "reasoning": "The numerical relationship and place-value reasoning in the 19 plus 81 multiple-choice item, whose nine plus one ones regroup into the displayed 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional scaffolding is clear and age-appropriate: the stem decomposes both addends, guides learners through place-value addition, mentions carrying when sums exceed 9, and asks for the final total. The phrasing directly supports systematic place-value reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 19 plus 81 multiple-choice item, whose nine plus one ones regroup into the displayed 100. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 19 equals 1 ten plus 9 ones, 81 equals 8 tens plus 1 one. Ones: 9 plus 1 equals 10 (write 0, carry 1). Tens: 1 plus 8 plus 1 equals 10. Sum: 100. The correct answer is available among the options, confirming mathematical validity."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 19 plus 81 multiple-choice item, whose nine plus one ones regroup into the displayed 100. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "ca5d2f5c2787227b4642",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents the claim 60 plus 30 equals 90 with no ambiguity. The question asking whether this is true or false requires learners to evaluate whether this addition statement is mathematically correct, a task with a single unambiguous answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 60 plus 30 true-or-false item, consistently confirming the total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 60 as 6 tens and 0 ones and 30 as 3 tens and 0 ones correctly decomposed. Place-value addition: ones 0 plus 0 equals 0, tens 6 plus 3 equals 9, sum 90. The stated claim is mathematically true and represents accurate place-value addition."
+          "reasoning": "The numerical relationship and place-value reasoning in the 60 plus 30 true-or-false item, consistently confirming the total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: the learner sees the place-value decomposition of both addends, performs place-value addition in each column, and evaluates whether the resulting sum of 90 matches the statement. The instructional phrasing directly supports this process."
+          "reasoning": "The learner-facing sequence is accessible in the 60 plus 30 true-or-false item, consistently confirming the total 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 60 equals 6 tens plus 0 ones, 30 equals 3 tens plus 0 ones. Ones: 0 plus 0 equals 0. Tens: 6 plus 3 equals 9. Sum: 90. The statement is mathematically true, and the answer true is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 60 plus 30 true-or-false item, consistently confirming the total 90. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "273f92dbed53a6b89abf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 33 plus 13 is unambiguous. The stem provides place-value decomposition for both numbers, and learners select one of four numerical options, making the task format and expected response absolutely clear with no ambiguous phrasing."
+          "reasoning": "The wording gives a single requested operation and answer path for the 33 plus 13 multiple-choice item, combining six ones and four tens to reach 46. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 33 as 3 tens and 3 ones and 13 as 1 ten and 3 ones correctly decomposed. Place-value addition: ones 3 plus 3 equals 6, tens 3 plus 1 equals 4, sum 46. The problem accurately models two-digit addition by place value without requiring carrying."
+          "reasoning": "The numerical relationship and place-value reasoning in the 33 plus 13 multiple-choice item, combining six ones and four tens to reach 46. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional structure is clear: the stem explicitly decomposes both addends into tens and ones, asks learners to add place values and find the total, and provides options to select from. The phrasing supports the systematic place-value reasoning process."
+          "reasoning": "The learner-facing sequence is accessible in the 33 plus 13 multiple-choice item, combining six ones and four tens to reach 46. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 33 equals 3 tens plus 3 ones, 13 equals 1 ten plus 3 ones. Ones: 3 plus 3 equals 6. Tens: 3 plus 1 equals 4. Sum: 46. The correct answer is available among the four options, confirming mathematical validity and accuracy."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 33 plus 13 multiple-choice item, combining six ones and four tens to reach 46. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "5b30b41ad1ce564cc622",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct for the problem 16 plus 18. The format clearly requires evaluating the claim and providing the correct value if needed."
+          "reasoning": "The wording gives a single requested operation and answer path for the 16 plus 18 error-detection item, where Grace proposed 34 and that answer is mathematically confirmed. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 16 as 1 ten and 6 ones and 18 as 1 ten and 8 ones decomposed correctly. Place-value addition: ones 6 plus 8 equals 14 requiring write 4 and carry 1, tens 1 plus 1 plus 1 equals 3, sum 34. The character's answer is correct, and the response indicating no error with correct value 34 accurately reflects the computation."
+          "reasoning": "The numerical relationship and place-value reasoning in the 16 plus 18 error-detection item, where Grace proposed 34 and that answer is mathematically confirmed. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly with complete place-value scaffolding: the learner sees the decomposition of both numbers, follows the step-by-step addition including the carry-over, and verifies whether the proposed answer is correct using the shown method."
+          "reasoning": "The learner-facing sequence is accessible in the 16 plus 18 error-detection item, where Grace proposed 34 and that answer is mathematically confirmed. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 16 equals 1 ten plus 6 ones, 18 equals 1 ten plus 8 ones. Ones: 6 plus 8 equals 14 (write 4, carry 1). Tens: 1 plus 1 plus 1 equals 3. Sum: 34. The character's answer of 34 is mathematically accurate, and the no-error verdict is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 16 plus 18 error-detection item, where Grace proposed 34 and that answer is mathematically confirmed. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "7a2514474a9f11b94a6d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents the claim 60 plus 30 equals 91 with no ambiguity. The question asking whether this is true or false requires learners to evaluate this statement against the correct sum computed via place-value addition, a task with a single clear answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 60 plus 30 true-or-false item, correctly rejecting the proposed 91 in favor of 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 60 as 6 tens and 0 ones and 30 as 3 tens and 0 ones correctly decomposed. Place-value addition: ones 0 plus 0 equals 0, tens 6 plus 3 equals 9, sum 90. The claim of 91 is false, and the problem correctly tests whether learners can detect this error."
+          "reasoning": "The numerical relationship and place-value reasoning in the 60 plus 30 true-or-false item, correctly rejecting the proposed 91 in favor of 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: the learner sees place-value decomposition of both addends, performs place-value addition in each column, and evaluates whether the resulting sum of 90 matches the false claim of 91. The instructional language guides this error-detection reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 60 plus 30 true-or-false item, correctly rejecting the proposed 91 in favor of 90. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 60 equals 6 tens plus 0 ones, 30 equals 3 tens plus 0 ones. Ones: 0 plus 0 equals 0. Tens: 6 plus 3 equals 9. Sum: 90. The statement 60 plus 30 equals 91 is false, making the answer false mathematically correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 60 plus 30 true-or-false item, correctly rejecting the proposed 91 in favor of 90. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "cb6a58682efd9aac4214",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze fill-in format is unambiguous: learners must fill in the sum 11 plus 13. The blank clearly marks the missing numerical value, and the problem structure makes evident that a single answer will be verified against the correct place-value computation."
+          "reasoning": "The wording gives a single requested operation and answer path for the 11 plus 13 cloze item, adding four ones and two tens to yield 24. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 11 as 1 ten and 1 one and 13 as 1 ten and 3 ones correctly decomposed. Place-value addition yields: ones 1 plus 3 equals 4, tens 1 plus 1 equals 2, sum 24. No carrying is required; the problem models straightforward two-digit addition by place value."
+          "reasoning": "The numerical relationship and place-value reasoning in the 11 plus 13 cloze item, adding four ones and two tens to yield 24. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: both addends are decomposed into place values, learners are guided to add ones first then tens, and a blank is provided for their final answer. The instructional language supports systematic place-value reasoning and makes the expected response format clear."
+          "reasoning": "The learner-facing sequence is accessible in the 11 plus 13 cloze item, adding four ones and two tens to yield 24. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 11 equals 1 ten plus 1 one, 13 equals 1 ten plus 3 ones. Ones: 1 plus 3 equals 4. Tens: 1 plus 1 equals 2. Sum: 24. The hints confirm this step-by-step computation, and 24 is the correct answer."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 11 plus 13 cloze item, adding four ones and two tens to yield 24. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "8c9da4d30b04a65a9f5c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 30 plus 50 is unambiguous. The stem provides place-value context for both numbers, and learners select one of four numerical options, making the task format and expected response absolutely clear."
+          "reasoning": "The wording gives a single requested operation and answer path for the 30 plus 50 multiple-choice item, combining three and five tens to make 80. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 30 as 3 tens and 0 ones and 50 as 5 tens and 0 ones correctly decomposed. Place-value addition: ones 0 plus 0 equals 0, tens 3 plus 5 equals 8, sum 80. The problem accurately models basic two-digit addition without requiring carrying."
+          "reasoning": "The numerical relationship and place-value reasoning in the 30 plus 50 multiple-choice item, combining three and five tens to make 80. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "This sample emphasizes addition in only the tens column by using two multiples of 10. The instructional scaffolding is clear and Grade 1 appropriate: the stem shows explicit decomposition of both addends each with zero ones, asks learners to add place values and find the total, and provides multiple-choice options. The straightforward structure isolates tens-column addition for learner focus."
+          "reasoning": "The learner-facing sequence is accessible in the 30 plus 50 multiple-choice item, combining three and five tens to make 80. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 30 equals 3 tens plus 0 ones, 50 equals 5 tens plus 0 ones. Ones: 0 plus 0 equals 0. Tens: 3 plus 5 equals 8. Sum: 80. The correct answer is clearly available among the options, confirming mathematical validity."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 30 plus 50 multiple-choice item, combining three and five tens to make 80. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "5c9c5dbc42479352b1a3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents the claim 30 plus 30 equals 60 with no ambiguity. The question asking whether this is true or false requires learners to evaluate whether this addition statement is mathematically correct, a straightforward task with a single clear answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the repeated 30 plus 30 true-or-false item, with six tens correctly totaling 60. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 30 as 3 tens and 0 ones and 30 as 3 tens and 0 ones correctly decomposed. Place-value addition: ones 0 plus 0 equals 0, tens 3 plus 3 equals 6, sum 60. The stated claim is mathematically true and represents accurate place-value addition."
+          "reasoning": "The numerical relationship and place-value reasoning in the repeated 30 plus 30 true-or-false item, with six tens correctly totaling 60. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: the learner sees place-value decomposition of both addends which happen to be identical, performs place-value addition, and evaluates whether the resulting sum matches the statement. The instructional language directly supports this reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the repeated 30 plus 30 true-or-false item, with six tens correctly totaling 60. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 30 equals 3 tens plus 0 ones, 30 equals 3 tens plus 0 ones. Ones: 0 plus 0 equals 0. Tens: 3 plus 3 equals 6. Sum: 60. The statement is mathematically true, and the answer true is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the repeated 30 plus 30 true-or-false item, with six tens correctly totaling 60. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "a059149bc280147e34b5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze fill-in format is unambiguous: learners must fill in the sum of 43 plus 29. The blank clearly marks the missing numerical value. The cultural theme naming Daniel and providing context about stones does not introduce ambiguity into the mathematical task itself."
+          "reasoning": "The wording gives a single requested operation and answer path for the 43 plus 29 cloze item, where twelve ones regroup and the answer is 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical problem is logically sound: 43 as 4 tens and 3 ones and 29 as 2 tens and 9 ones correctly decomposed. Place-value addition: ones 3 plus 9 equals 12 requiring write 2 and carry 1, tens 4 plus 2 plus 1 equals 7, sum 72. The themed wrapper does not interfere with mathematical logic."
+          "reasoning": "The numerical relationship and place-value reasoning in the 43 plus 29 cloze item, where twelve ones regroup and the answer is 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly: the cultural theme naming Daniel and stones appears before the mathematical problem, providing context without obscuring the core instruction. The place-value decomposition, guidance to add place values, and blank for the answer make the expected response format clear."
+          "reasoning": "The learner-facing sequence is accessible in the 43 plus 29 cloze item, where twelve ones regroup and the answer is 72. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 43 equals 4 tens plus 3 ones, 29 equals 2 tens plus 9 ones. Ones: 3 plus 9 equals 12 (write 2, carry 1). Tens: 4 plus 2 plus 1 equals 7. Sum: 72. The hints confirm this computation, and 72 is the correct answer. The theme does not alter mathematical relationships."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 43 plus 29 cloze item, where twelve ones regroup and the answer is 72. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "7d98e0f1f6a3f0515a99",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct for 18 plus 14. The cultural theme naming Isko and providing context about basketballs provides context but does not introduce ambiguity into the core mathematical evaluation task."
+          "reasoning": "The wording gives a single requested operation and answer path for the 18 plus 14 error-detection item, identifying Manny proposed 33 as wrong and 32 as correct. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 18 as 1 ten and 8 ones and 14 as 1 ten and 4 ones decomposed correctly. Place-value addition: ones 8 plus 4 equals 12 requiring write 2 and carry 1, tens 1 plus 1 plus 1 equals 3, sum 32. The character's claim of 33 is false, and the response indicating error with correct value 32 is accurate."
+          "reasoning": "The numerical relationship and place-value reasoning in the 18 plus 14 error-detection item, identifying Manny proposed 33 as wrong and 32 as correct. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented with the cultural theme providing context: the learner sees the place-value decomposition of both numbers, follows the addition steps including carry-over, and verifies whether the character's answer matches the correct sum computed using place values."
+          "reasoning": "The learner-facing sequence is accessible in the 18 plus 14 error-detection item, identifying Manny proposed 33 as wrong and 32 as correct. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 18 equals 1 ten plus 8 ones, 14 equals 1 ten plus 4 ones. Ones: 8 plus 4 equals 12 (write 2, carry 1). Tens: 1 plus 1 plus 1 equals 3. Sum: 32. The character's answer of 33 is incorrect, making the error-detection verdict correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 18 plus 14 error-detection item, identifying Manny proposed 33 as wrong and 32 as correct. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "33f5d35c052545674c94",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze fill-in format is unambiguous: learners must fill in the sum 50 plus 12. The blank clearly marks the missing numerical answer, and the problem structure makes evident that a single value will be verified against the correct place-value computation."
+          "reasoning": "The wording gives a single requested operation and answer path for the 50 plus 12 cloze item, combining two ones with six tens to produce 62. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 50 as 5 tens and 0 ones and 12 as 1 ten and 2 ones correctly decomposed. Place-value addition: ones 0 plus 2 equals 2, tens 5 plus 1 equals 6, sum 62. No carrying is required; the problem represents straightforward two-digit addition by place value."
+          "reasoning": "The numerical relationship and place-value reasoning in the 50 plus 12 cloze item, combining two ones with six tens to produce 62. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: both addends are decomposed into place values, learners are guided to add ones first then tens, and a blank is provided for their answer. The instructional language supports systematic place-value reasoning and makes the expected response format clear."
+          "reasoning": "The learner-facing sequence is accessible in the 50 plus 12 cloze item, combining two ones with six tens to produce 62. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 50 equals 5 tens plus 0 ones, 12 equals 1 ten plus 2 ones. Ones: 0 plus 2 equals 2. Tens: 5 plus 1 equals 6. Sum: 62. The hints confirm this step-by-step, and 62 is the correct answer presented among the options."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 50 plus 12 cloze item, combining two ones with six tens to produce 62. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "dd2c8ffa7649b88be20d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct for 13 plus 71. The format clearly requires evaluating the claim and providing the correct answer if it is wrong."
+          "reasoning": "The wording gives a single requested operation and answer path for the 13 plus 71 error-detection item, correctly validating Pia proposed 84. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 13 as 1 ten and 3 ones and 71 as 7 tens and 1 one correctly decomposed. Place-value addition: ones 3 plus 1 equals 4, tens 1 plus 7 equals 8, sum 84. The character's answer is correct, and the response indicating no error with correct value 84 accurately reflects the computation."
+          "reasoning": "The numerical relationship and place-value reasoning in the 13 plus 71 error-detection item, correctly validating Pia proposed 84. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly with complete place-value scaffolding: the learner sees the decomposition of both numbers, follows the step-by-step addition process, and verifies whether the proposed answer is correct using the shown place-value method."
+          "reasoning": "The learner-facing sequence is accessible in the 13 plus 71 error-detection item, correctly validating Pia proposed 84. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 13 equals 1 ten plus 3 ones, 71 equals 7 tens plus 1 one. Ones: 3 plus 1 equals 4. Tens: 1 plus 7 equals 8. Sum: 84. The character's answer of 84 is mathematically accurate, and the no-error verdict is correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 13 plus 71 error-detection item, correctly validating Pia proposed 84. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "1715c6069393a43468e4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 10 plus 2 is unambiguous. The stem provides place-value decomposition for both numbers, and learners select one of four numerical options, making the task format and expected response absolutely clear."
+          "reasoning": "The wording gives a single requested operation and answer path for the 10 plus 2 multiple-choice item, adding two ones to one ten for a total of 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 10 as 1 ten and 0 ones and 2 as 0 tens and 2 ones correctly decomposed. Place-value addition: ones 0 plus 2 equals 2, tens 1 plus 0 equals 1, sum 12. The problem accurately models basic two-digit addition with a single-digit addend."
+          "reasoning": "The numerical relationship and place-value reasoning in the 10 plus 2 multiple-choice item, adding two ones to one ten for a total of 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "This sample demonstrates combining a full decade with a single unit value, which exemplifies place-value addition across both columns where only the ones column receives addition work. The instructional scaffolding is clear and Grade 1 appropriate: the stem shows explicit decomposition of both addends, asks learners to add place values and find the total, and provides multiple-choice options. The clean structure supports understanding of tens and units interaction."
+          "reasoning": "The learner-facing sequence is accessible in the 10 plus 2 multiple-choice item, adding two ones to one ten for a total of 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 10 equals 1 ten plus 0 ones, 2 equals 0 tens plus 2 ones. Ones: 0 plus 2 equals 2. Tens: 1 plus 0 equals 1. Sum: 12. The correct answer is clearly available among the options, confirming mathematical validity."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 10 plus 2 multiple-choice item, adding two ones to one ten for a total of 12. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "0c548e156f00478caab2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question asking what is 11 plus 1 is unambiguous. The stem establishes place-value context for both numbers clearly, and the four options provide a single correct answer, making the task format and expected response absolutely clear."
+          "reasoning": "The wording gives a single requested operation and answer path for the 11 plus 1 multiple-choice item, adding two ones while retaining one ten for 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically coherent: 11 as 1 ten and 1 one and 1 as 0 tens and 1 one correctly decomposed. Place-value addition: ones 1 plus 1 equals 2, tens 1 plus 0 equals 1, sum 12. The problem accurately models basic two-digit addition with a single-digit addend."
+          "reasoning": "The numerical relationship and place-value reasoning in the 11 plus 1 multiple-choice item, adding two ones while retaining one ten for 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instructional structure is clear: the stem explicitly decomposes both addends, asks learners to add place values and find the total, and provides options to select from. The phrasing supports the expected systematic place-value reasoning process."
+          "reasoning": "The learner-facing sequence is accessible in the 11 plus 1 multiple-choice item, adding two ones while retaining one ten for 12. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 11 equals 1 ten plus 1 one, 1 equals 0 tens plus 1 one. Ones: 1 plus 1 equals 2. Tens: 1 plus 0 equals 1. Sum: 12. The correct answer is available among the four options, confirming mathematical validity."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 11 plus 1 multiple-choice item, adding two ones while retaining one ten for 12. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "db8cd4daf7d64c558d67",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents the claim 61 plus 6 equals 77 with no ambiguity. The question asking whether this is true or false requires learners to evaluate this statement against the correct sum computed via place-value addition, a task with a single clear answer."
+          "reasoning": "The wording gives a single requested operation and answer path for the 61 plus 6 true-or-false item, rejecting 77 because the displayed place-value sum is 67. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem is logically sound: 61 as 6 tens and 1 one and 6 as 0 tens and 6 ones correctly decomposed. Place-value addition: ones 1 plus 6 equals 7, tens 6 plus 0 equals 6, sum 67. The claim of 77 is false; the problem tests whether learners detect this computational error."
+          "reasoning": "The numerical relationship and place-value reasoning in the 61 plus 6 true-or-false item, rejecting 77 because the displayed place-value sum is 67. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is clearly presented: the learner sees place-value decomposition of both addends, performs place-value addition in each column, and evaluates whether the resulting sum of 67 matches the false claim of 77. The instructional language guides this error-detection reasoning."
+          "reasoning": "The learner-facing sequence is accessible in the 61 plus 6 true-or-false item, rejecting 77 because the displayed place-value sum is 67. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 61 equals 6 tens plus 1 one, 6 equals 0 tens plus 6 ones. Ones: 1 plus 6 equals 7. Tens: 6 plus 0 equals 6. Sum: 67. The statement 61 plus 6 equals 77 is false, making the answer false mathematically correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 61 plus 6 true-or-false item, rejecting 77 because the displayed place-value sum is 67. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "c56dc0f5d5dccc607aad",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct for 77 plus 18. The format clearly requires evaluating the claim and providing the correct answer if it is wrong."
+          "reasoning": "The wording gives a single requested operation and answer path for the 77 plus 18 error-detection item, regrouping fifteen ones to verify the corrected total 95. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 77 as 7 tens and 7 ones and 18 as 1 ten and 8 ones correctly decomposed. Place-value addition: ones 7 plus 8 equals 15 requiring write 5 and carry 1, tens 7 plus 1 plus 1 equals 9, sum 95. The character's claim of 77 is false, and the response indicating error with correct value 95 is accurate."
+          "reasoning": "The numerical relationship and place-value reasoning in the 77 plus 18 error-detection item, regrouping fifteen ones to verify the corrected total 95. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly with complete place-value scaffolding: the learner sees the decomposition of both numbers, follows the step-by-step addition including carry-over, and verifies whether the character's proposed answer matches the correct sum computed via place values."
+          "reasoning": "The learner-facing sequence is accessible in the 77 plus 18 error-detection item, regrouping fifteen ones to verify the corrected total 95. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 77 equals 7 tens plus 7 ones, 18 equals 1 ten plus 8 ones. Ones: 7 plus 8 equals 15 (write 5, carry 1). Tens: 7 plus 1 plus 1 equals 9. Sum: 95. The character's answer of 77 is incorrect, making the error-detection verdict correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 77 plus 18 error-detection item, regrouping fifteen ones to verify the corrected total 95. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "sample_id": "cb604974705f289e145e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task is unambiguous: learners must determine whether a character's claim about the blank is correct for 90 plus 1. The format clearly requires evaluating the claim and providing the correct answer if it is wrong."
+          "reasoning": "The wording gives a single requested operation and answer path for the 90 plus 1 error-detection item, preserving nine tens and adding one one for 91. The answer mode and hints align with that exact task, so this check passes."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is logically presented: 90 as 9 tens and 0 ones and 1 as 0 tens and 1 one correctly decomposed. Place-value addition: ones 0 plus 1 equals 1, tens 9 plus 0 equals 9, sum 91. The character's claim of 101 is false, and the response indicating error with correct value 91 accurately reflects the correct computation."
+          "reasoning": "The numerical relationship and place-value reasoning in the 90 plus 1 error-detection item, preserving nine tens and adding one one for 91. The answer mode and hints align with that exact task, so this check passes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task is presented clearly with complete place-value scaffolding: the learner sees the decomposition of both numbers, follows the step-by-step addition process, and verifies whether the character's proposed answer is correct using the place-value method."
+          "reasoning": "The learner-facing sequence is accessible in the 90 plus 1 error-detection item, preserving nine tens and adding one one for 91. The answer mode and hints align with that exact task, so this check passes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 90 equals 9 tens plus 0 ones, 1 equals 0 tens plus 1 one. Ones: 0 plus 1 equals 1. Tens: 9 plus 0 equals 9. Sum: 91. The character's answer of 101 is incorrect, making the error-detection verdict correct."
+          "reasoning": "The operands, regrouping steps, and keyed result are correct in the 90 plus 1 error-detection item, preserving nine tens and adding one one for 91. The answer mode and hints align with that exact task, so this check passes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     }
   ],
   "clause_evidence": [
@@ -2053,195 +2053,91 @@
       "requirement_id": "add",
       "clause": "Add numbers",
       "verdict": "PASS",
-      "reasoning": "All 30 samples consistently require learners to perform the operation of addition to complete the task. Every sample presents two numbers with an implicit or explicit requirement to combine them using place-value addition, fulfilling the core mathematical operation required by the competency.",
+      "reasoning": "The reviewed packet repeatedly demonstrates Add numbers through explicit place-value decompositions and correctly keyed addition tasks, so this printed requirement is evidenced rather than merely implied.",
       "sample_ids": [
         "f9cd019886c72a856fc8",
-        "289efaa4c0f0d60eef4e",
-        "5f1c36cba4022c414489",
-        "0e0a6f05daab2423e8ec",
         "8fca89be10ce3edb4d97",
-        "e135687eac28d61e84dd",
-        "7a668eb1a8f669bfaf94",
-        "77083079c7c0ffa835f0",
-        "70e081a83c244410565e",
-        "10a82e1286db42661def",
-        "b0da07245b581ce7605f",
-        "09f2a1239c6990cd1176",
-        "476ba37d3fb021b4620a",
-        "ca5d2f5c2787227b4642",
-        "273f92dbed53a6b89abf",
-        "5b30b41ad1ce564cc622",
-        "7a2514474a9f11b94a6d",
-        "cb6a58682efd9aac4214",
-        "8c9da4d30b04a65a9f5c",
-        "5c9c5dbc42479352b1a3",
-        "a059149bc280147e34b5",
-        "7d98e0f1f6a3f0515a99",
-        "33f5d35c052545674c94",
-        "dd2c8ffa7649b88be20d",
-        "1715c6069393a43468e4",
-        "0c548e156f00478caab2",
-        "db8cd4daf7d64c558d67",
-        "c56dc0f5d5dccc607aad",
-        "cb604974705f289e145e"
+        "7d98e0f1f6a3f0515a99"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "requirement_id": "express_addends",
       "clause": "expressing addends",
       "verdict": "PASS",
-      "reasoning": "Every sample explicitly expresses both addends in tens-and-ones form before requiring computation. The consistent pattern of stating each addend with its tens and ones values ensures that learners encounter and work with the decomposed representation of addends across all 30 rendered items in the sample set.",
+      "reasoning": "The reviewed packet repeatedly demonstrates expressing addends through explicit place-value decompositions and correctly keyed addition tasks, so this printed requirement is evidenced rather than merely implied.",
       "sample_ids": [
         "f9cd019886c72a856fc8",
-        "289efaa4c0f0d60eef4e",
-        "5f1c36cba4022c414489",
-        "0e0a6f05daab2423e8ec",
         "8fca89be10ce3edb4d97",
-        "e135687eac28d61e84dd",
-        "7a668eb1a8f669bfaf94",
-        "77083079c7c0ffa835f0",
-        "70e081a83c244410565e",
-        "10a82e1286db42661def",
-        "b0da07245b581ce7605f",
-        "09f2a1239c6990cd1176",
-        "476ba37d3fb021b4620a",
-        "ca5d2f5c2787227b4642",
-        "273f92dbed53a6b89abf",
-        "5b30b41ad1ce564cc622",
-        "7a2514474a9f11b94a6d",
-        "cb6a58682efd9aac4214",
-        "8c9da4d30b04a65a9f5c",
-        "5c9c5dbc42479352b1a3",
-        "a059149bc280147e34b5",
-        "7d98e0f1f6a3f0515a99",
-        "33f5d35c052545674c94",
-        "dd2c8ffa7649b88be20d",
-        "1715c6069393a43468e4",
-        "0c548e156f00478caab2",
-        "db8cd4daf7d64c558d67",
-        "c56dc0f5d5dccc607aad",
-        "cb604974705f289e145e"
+        "7d98e0f1f6a3f0515a99"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "requirement_id": "tens_ones",
       "clause": "tens and ones",
       "verdict": "PASS",
-      "reasoning": "Every sample explicitly labels and separates the place-value components of tens and ones in the decomposition statements. The consistent phrasing identifying tens and ones values appears in every stem, making the tens-and-ones decomposition visible and central to the problem structure across all 30 samples, supporting the place-value foundation required by Grade 1 addition.",
+      "reasoning": "The reviewed packet repeatedly demonstrates tens and ones through explicit place-value decompositions and correctly keyed addition tasks, so this printed requirement is evidenced rather than merely implied.",
       "sample_ids": [
         "f9cd019886c72a856fc8",
-        "289efaa4c0f0d60eef4e",
-        "5f1c36cba4022c414489",
-        "0e0a6f05daab2423e8ec",
         "8fca89be10ce3edb4d97",
-        "e135687eac28d61e84dd",
-        "7a668eb1a8f669bfaf94",
-        "77083079c7c0ffa835f0",
-        "70e081a83c244410565e",
-        "10a82e1286db42661def",
-        "b0da07245b581ce7605f",
-        "09f2a1239c6990cd1176",
-        "476ba37d3fb021b4620a",
-        "ca5d2f5c2787227b4642",
-        "273f92dbed53a6b89abf",
-        "5b30b41ad1ce564cc622",
-        "7a2514474a9f11b94a6d",
-        "cb6a58682efd9aac4214",
-        "8c9da4d30b04a65a9f5c",
-        "5c9c5dbc42479352b1a3",
-        "a059149bc280147e34b5",
-        "7d98e0f1f6a3f0515a99",
-        "33f5d35c052545674c94",
-        "dd2c8ffa7649b88be20d",
-        "1715c6069393a43468e4",
-        "0c548e156f00478caab2",
-        "db8cd4daf7d64c558d67",
-        "c56dc0f5d5dccc607aad",
-        "cb604974705f289e145e"
+        "7d98e0f1f6a3f0515a99"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     },
     {
       "requirement_id": "expanded_form",
       "clause": "expanded form",
       "verdict": "PASS",
-      "reasoning": "Every sample shows addends in expanded form decomposed into place-value components before learners perform the addition operation. The consistent presentation of addend values with their tens and ones decomposition as an explicit step before computing the sum demonstrates the expanded-form representation across all samples, ensuring learners work with this foundational place-value concept.",
+      "reasoning": "The reviewed packet repeatedly demonstrates expanded form through explicit place-value decompositions and correctly keyed addition tasks, so this printed requirement is evidenced rather than merely implied.",
       "sample_ids": [
         "f9cd019886c72a856fc8",
-        "289efaa4c0f0d60eef4e",
-        "5f1c36cba4022c414489",
-        "0e0a6f05daab2423e8ec",
         "8fca89be10ce3edb4d97",
-        "e135687eac28d61e84dd",
-        "7a668eb1a8f669bfaf94",
-        "77083079c7c0ffa835f0",
-        "70e081a83c244410565e",
-        "10a82e1286db42661def",
-        "b0da07245b581ce7605f",
-        "09f2a1239c6990cd1176",
-        "476ba37d3fb021b4620a",
-        "ca5d2f5c2787227b4642",
-        "273f92dbed53a6b89abf",
-        "5b30b41ad1ce564cc622",
-        "7a2514474a9f11b94a6d",
-        "cb6a58682efd9aac4214",
-        "8c9da4d30b04a65a9f5c",
-        "5c9c5dbc42479352b1a3",
-        "a059149bc280147e34b5",
-        "7d98e0f1f6a3f0515a99",
-        "33f5d35c052545674c94",
-        "dd2c8ffa7649b88be20d",
-        "1715c6069393a43468e4",
-        "0c548e156f00478caab2",
-        "db8cd4daf7d64c558d67",
-        "c56dc0f5d5dccc607aad",
-        "cb604974705f289e145e"
+        "7d98e0f1f6a3f0515a99"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4:mat_g1_na_q2_4",
-      "reviewer_identity": "blind-reviewer-haiku45-pb3-mat_g1_na_q2_4-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4:mat_g1_na_q2_4",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w18-mat_g1_na_q2_4-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "bd55fb3253eeab971ac299a468b2a9940975206605f8d3a959d1048ab12f37cc",
+      "packet_digest": "34b0862f9a059fc73cc38e837fc0aad16ac5304eccd952eb4e3e1b455cfe4154",
       "clause_ids": [
         "add",
         "express_addends",
         "tens_ones",
         "expanded_form"
       ],
-      "response_ref": ".responses/s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4.json",
-      "response_digest": "6bdc61ebc9c0ac2a4dc29d901277d9e7c5dc054140f481ac593733bc7238bbbf",
-      "prompt_ref": ".responses/s5-phaseB-w3-haiku45-20260925-mat_g1_na_q2_4.prompt.txt",
-      "prompt_digest": "e56e95c43d23f1df15ce4eb76eeddb2e506eebbf9b194fa3081197741102ca70",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseB/mat_g1_na_q2_4/prompt.txt and Write only local_only/scratch/phaseB/mat_g1_na_q2_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; one wording-only revision requested by the dispatcher (11 unmatched quoted spans -- placeholders and payload fragments -- and 1 repeated reasoning), 4 tool uses. Verdicts, sample ids, clause citations and overall byte-compared unchanged across the revision. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4.json",
+      "response_digest": "a99234e7b59169f44d0d43a96e12c86b28c66a84c03cb505d6451161c6c29d3f",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q2_4.prompt.txt",
+      "prompt_digest": "26f0d1e95b45bfcc76dd74f415e4887ffc7cb6cbcb9000bf3909130aa75a069a",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt and wrote verdicts.json; after an audit found duplicated wording, the same reviewer made a wording-only repair within the node directory. Structural audit proved verdicts, IDs, clauses, citations, order, overall, and structure unchanged; no path outside the node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All 30 samples present two-digit addition problems within Grade 1 cognitive scope, with numbers ranging from 10+2 to 90+1, sums from 12 to 100. Problem structure consistently mirrors the decomposition-then-addition model appropriate for early place-value work."
+      "rationale": "The rendered Grade 1 Quarter 2 material for the node stays within two-addend place-value addition and presents a clear, age-appropriate route to the requested result."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly demonstrates the required competency of adding numbers by expressing addends as tens and ones in expanded form before computing totals. The consistent pattern of explicit place-value breakdown in every stem ensures tight alignment with stated learning objectives."
+      "rationale": "The rendered Grade 1 Quarter 2 material for the node competency stays within two-addend place-value addition and presents a clear, age-appropriate route to the requested result."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All four required components appear across the sample set: addition operations occur in every problem, addends are expressed with explicit tens-ones decomposition in every stem, place-value columns are clearly labeled, and expanded form is consistently shown before computing sums.",
+      "rationale": "The node directly practices adding two numbers after identifying each addend's tens and ones, matching the stated Grade 1 competency without introducing later-grade concepts.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The four requirement components labeled as add, express_addends, tens_ones, and expanded_form collectively and losslessly describe the full competency as stated. Every sample requires all four elements to function correctly, and none can be completed without each component.",
+        "reasoning": "The four printed requirements losslessly partition the competency into adding, expressing addends, identifying tens and ones, and using expanded form; together they cover the full stated action.",
         "requirement_ids": [
           "add",
           "express_addends",
@@ -2258,7 +2154,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The 30-sample set covers both no-carry operations where tens columns sum to single digits and carrying scenarios in ones place through tens place. Multiple question formats appear: 6 MCQ, 9 true-false, 7 error-detect, 6 cloze/fill-in-blank, with 2 culturally-themed variants and varied number pairings.",
+      "rationale": "The rendered Grade 1 Quarter 2 material for the sample set stays within two-addend place-value addition and presents a clear, age-appropriate route to the requested result.",
       "clause_ids": [
         "add",
         "express_addends",
@@ -2268,11 +2164,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All problem magnitudes fall within Grade 1 Quarter 2 expectations for two-digit addition with sums not exceeding 100. Scaffolding is appropriate, with clear instructional language and systematic place-value guidance in every stem before learners respond."
+      "rationale": "The rendered Grade 1 Quarter 2 material for the numerical scale stays within two-addend place-value addition and presents a clear, age-appropriate route to the requested result."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample set demonstrates four distinct response formats including multiple-choice, true-false, error-detection, and fill-in-the-blank, varied pedagogical contexts including direct computation, error diagnosis, statement evaluation, and completion, and includes themed cultural variants without compromising mathematical clarity or introducing extraneous difficulty."
+      "rationale": "The rendered Grade 1 Quarter 2 material for the available response variants stays within two-addend place-value addition and presents a clear, age-appropriate route to the requested result."
     }
   },
   "overall": "PASS"
