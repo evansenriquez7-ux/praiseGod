@@ -78,7 +78,7 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 
 ```
 run_all               not re-measured in Phase E; last run EXIT 1 on the same three stages
-§5 (module)           1904 findings; 133 of 151 reviews STALE
+§5 (module)           1837 findings; 119 of 151 reviews STALE
 §6F                   188: 173 CONTRADICTED + 15 STALE attestations
 obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions
 proof artifacts       190 mutation proofs (187 DETECTED + the 3 §6F INVALID), 6 release shards,
@@ -92,9 +92,12 @@ content defect Phase C confirmed; the list is in `HARDENING_EVIDENCE.md`'s Phase
 was reworded. Seven carry real content change: `mat_g2_na_q2_2`, `mat_g2_na_q3_2`, `mat_g2_na_q3_3`,
 `mat_g3_dp_q3_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`, `mat_g3_na_q3_0`. Re-reviewing them is a
 Phase-C-sized blind campaign. **Owner ruling 2026-09-30 for the GPT host:** use GPT-5.6 Luna with medium
-reasoning and complete W1 before W2. Ten fresh reviews are filed (`68b0fa61`, `75d7af03`, `ff4a7916`):
-all seven content-changed nodes plus `mat_g1_na_q1_0`, `_1`, and `_2`. Resume at
-`mat_g1_na_q1_3`; 133 remain. Sections 5 and 6's "START HERE" wording is historical. If an executed
+reasoning and complete W1 before W2. Twenty-four fresh reviews are filed (`68b0fa61`, `75d7af03`,
+`ff4a7916`, `c047aee0`, `7eb494cc`, `03fd0221`): all seven content-changed nodes plus the queue through
+`mat_g1_na_q3_0`, except that `mat_g1_na_q2_6` is still unfiled. Resume at `mat_g1_na_q2_6`; 119
+remain. The next three dispatches (`q2_6`, `q3_1`, `q3_2`) were interrupted by the GPT-hosted reviewer
+usage limit; the `_q3_1` partial reply was set aside and is unusable. Sections 5 and 6's "START HERE"
+wording is historical. If an executed
 command disagrees with this section, believe the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.

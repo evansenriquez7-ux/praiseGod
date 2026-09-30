@@ -17693,3 +17693,79 @@ NAMED LIMITS:
   `_8`, and `_9`.
 * W2 was not started. §6F remains exactly 173 CONTRADICTED + 15 STALE, and the three §6F mutation
   records remain blocked on that red baseline.
+
+## 2026-09-30 — PHASE E W1 rate-limit checkpoint: 24 stale reviews refreshed
+
+**Session:** `codex-h06-w0-owner-gates-2026-09-30`, GPT-5 Codex dispatching blind
+**GPT-5.6 Luna reviewers at medium reasoning**. No source, harness, capability-provider, attestation,
+or existing reviewer identity changed. Fourteen reviews were added after the preceding ten-review
+checkpoint: `mat_g1_na_q1_3` through `_9`, `mat_g1_na_q2_0` through `_5`, and `mat_g1_na_q3_0`.
+They landed in `c047aee0`, `7eb494cc`, and `03fd0221`.
+
+### Executed stop-state measurements
+
+```
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > local_only/scratch/phaseE_w1/validate_judgment_after24.log 2>&1; echo "EXIT $?"
+EXIT 1
+Verdicts over 151 reviewed nodes: PASS=58 CONCERN=51 FAIL=42 UNKNOWN=0
+Judgment review validation: 1837 problem(s) found.
+
+rg 'STALE review' local_only/scratch/phaseE_w1/validate_judgment_after24.log | sed -E 's/^  FAIL ([^:]+):.*/\1/' | sort -u | wc -l
+     119
+
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2 > local_only/scratch/phaseE_w1/validate_capability_phase2_interrupted.log 2>&1; echo "EXIT $?"
+EXIT 1
+Capability contract: 188 failure(s) (0 Phase 1 / artifact-free, floor 5; 188 Phase 2 / attestation).
+CONTRADICTED=173
+STALE=15
+TOTAL_FINDING_LINES=188
+
+PYTHONPATH=. .venv/bin/python tests/hardening_status.py
+PASS hardening_status: 10 H-row(s) valid — 3 closed, 6 open, 1 out_of_scope
+
+PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: no v1 reviews on disk — queue is complete.
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_file_reviews.py tests/unit/test_legacy_review_queue.py -q -p no:cacheprovider
+......................                                                   [100%]
+22 passed in 0.58s
+```
+
+`run_all` was **not measured** in Phase E. No source changed, so the five-hour re-proof chain is not
+owed. The corpus is now 151 schema-v2 reviews: 103 `haiku45`, 35 `gpt-5.6-luna`, and 13
+`gpt-6-luna`, counted directly from the filed `reviewed_by` fields.
+
+### Reviewer-integrity handling
+
+Every successful response was copied to `verdicts.v1.json`, audited with the real filer plus
+`validate_judgment._validate_one` and `_validate_quote_provenance`, and checked for the 60-character
+floor, duplicate per-sample reasoning, structural invariance, derived overall, and cross-node reuse.
+`mat_g1_na_q2_4` required a wording-only repair from 87 duplicated sample reasonings to zero; the
+structural audit returned `unchanged`. No dispatcher-authored verdict, id, clause, citation, or overall
+was filed.
+
+Three replies were set aside:
+
+* `mat_g1_na_q1_9` reviewer 1: eight strings below 60 characters and a non-PASS mandatory
+  decomposition verdict. Harvested claim: the requirements omit the orally-given modality.
+* `mat_g1_na_q1_9` reviewer 2: assessed only 18 packet samples. It independently made the same oral
+  modality claim. Reviewer 3 saw neither reply, passed the full audit, and was filed as
+  `blind-reviewer-gpt-5.6-luna-medium-w17r3-mat_g1_na_q1_9-20260930` under dispatch
+  `s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q1_9`.
+* `mat_g1_na_q2_6` reviewer 1: non-PASS mandatory decomposition verdict; its oral-modality claim was
+  harvested. Its required fresh redispatch hit the usage limit and produced no reply, so the node was
+  not filed.
+
+The reviewer service then rate-limited `mat_g1_na_q2_6` reviewer 2, `mat_g1_na_q3_1`, and
+`mat_g1_na_q3_2`. The `_q3_1` failed turn left a file, which was moved to
+`set_aside/rate_limited_attempt1/verdicts.partial.json`; it was never audited or filed. The other two
+left no reply. Resume with fresh, blind reviewers at `mat_g1_na_q2_6`, then `_q3_1` and `_q3_2`.
+
+NAMED LIMITS:
+
+* The three oral-modality statements above are harvested reviewer claims, not confirmed defects.
+* The fresh `mat_g1_na_q3_0` review reports missing/weak concrete-pictorial and describe/illustrate
+  coverage. Those are filed claims pending seed-by-seed render confirmation; no source was changed.
+* The campaign remains INTERRUPTED with H-06 claimed. W1 has 119 stale reviews remaining; W2 has not
+  started and remains 173 CONTRADICTED plus 15 STALE attestations.

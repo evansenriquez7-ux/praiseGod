@@ -28,15 +28,15 @@ It will not reach 0 this session. Leave it closer to 0, with every claim proven 
 ## 1. State at handoff (re-measure it; never quote these numbers without re-running)
 
 ```
-HEAD                  ff4a7916 plus this checkpoint; tree_state INTERRUPTED at digest 7253f2a3e89f1566
+HEAD                  03fd0221 plus this bookkeeping checkpoint; tree_state INTERRUPTED at digest 7253f2a3e89f1566
 run_all               not re-measured this campaign; last measured EXIT 1, failed=3
-  judgment_reviews_5    module: 1904 findings, 133 of 151 reviews STALE
+  judgment_reviews_5    module: 1837 findings, 119 of 151 reviews STALE
   capability_phase2     188 = 173 CONTRADICTED + 15 STALE attestations
   assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
 every Phase 1 stage   PASS (content, vocabulary, matrix, render, grading, obligations, census)
 mutation corpus       187/190 DETECTED; the 3 INVALID are the §6F cluster
 obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions; 6 release shards clean
-review corpus         151/151 schema-v2: 112 haiku45, 25 gpt-5.6-luna, 14 gpt-6-luna
+review corpus         151/151 schema-v2: 103 haiku45, 35 gpt-5.6-luna, 13 gpt-6-luna
 H-06                  status open; claimed by codex-h06-w0-owner-gates-2026-09-30
 ```
 
@@ -48,7 +48,7 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/vj.log 2>&1; echo "EXIT $?"
 ```
 
-**Why 133 reviews are still STALE:** Phase D reworded the interest-cue sentence from "*X has a math challenge
+**Why 119 reviews are still STALE:** Phase D reworded the interest-cue sentence from "*X has a math challenge
 about Y*" to "*X enjoys Y. Here is a math challenge.*" That wording appears at seeds 701/702 on every
 node. Of the 143, **136 are stale only because of that sentence**; this was established seed by seed.
 **Seven have real content changes:**
@@ -62,9 +62,11 @@ node. Of the 143, **136 are stale only because of that sentence**; this was esta
 - `mat_g3_na_q3_0`
 
 Staleness is by packet digest. **It is never waived, and no verdict is ever carried forward.** Phase E
-has filed 10 fresh GPT-5.6 Luna medium reviews: all seven content-changed nodes plus
-`mat_g1_na_q1_0`, `_1`, and `_2`. Commits: `68b0fa61`, `75d7af03`, `ff4a7916`. Resume W1 at
-`mat_g1_na_q1_3`; 133 nodes remain.
+has filed 24 fresh GPT-5.6 Luna medium reviews: the original ten plus `mat_g1_na_q1_3` through `_9`,
+`mat_g1_na_q2_0` through `_5`, and `mat_g1_na_q3_0`. Additional commits: `c047aee0`, `7eb494cc`,
+`03fd0221`. A reviewer usage limit interrupted the next wave. Resume W1 at `mat_g1_na_q2_6` with a
+fresh reviewer; then retry `mat_g1_na_q3_1` and `_2`. The rate-limited `_q3_1` partial reply is set
+aside in scratch and must not be used. 119 nodes remain.
 
 ---
 
@@ -83,7 +85,7 @@ Phase E with **GPT-5.6 Luna, medium**.
 
 **Gate B: scope (resolved).** Re-reviewing 143 nodes is a Phase-C-sized campaign. Phase C took many sessions and
 several rate-limit interruptions. The owner's order is:
-- **W1 first**: 10 nodes are filed; resume the remaining 133 at `mat_g1_na_q1_3`.
+- **W1 first**: 24 nodes are filed; resume the remaining 119 at `mat_g1_na_q2_6`.
 - **W2 second**: the 173 CONTRADICTED remain untouched.
 
 Do not reopen these gates unless the authorized model becomes unavailable or the owner changes scope.
