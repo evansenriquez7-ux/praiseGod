@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "campaign",
+    "began_at": "2026-09-30T08:09:26+08:00",
+    "session": "codex-h06-w0-owner-gates-2026-09-30",
+    "note": "W0 baseline measured; awaiting owner Gate A reviewer model and Gate B workstream order; no W1/W2 dispatch or source work authorized.",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
+  },
   "last_completed": {
     "kind": "chain",
     "began_at": "2026-09-30T00:01:24+08:00",
