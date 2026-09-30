@@ -1,0 +1,796 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe3-mat_g1_na_q2_5-20260930",
+  "mat_g1_na_q2_5": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All 34 samples present mathematical tasks appropriate for Grade 1, Quarter 2 learners. Operations involve simple addition of two numbers without regrouping, with sums ranging from 10 to 98. Language is direct and accessible. Visual supports (NumberBond, NumberLine, EmojiPictorial) use simple, recognizable representations. Tasks require either performing addition or recognizing correct versus incorrect sums, both within Grade 1 cognitive scope."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "Most samples directly implement the required addition operation with sums up to 100 and no regrouping. However, sample 607 tests comparison of two different addition expressions (whether 12+27 equals 27+10) rather than computing a single sum. This tests equality reasoning beyond the core competency focus of performing addition. While the sample involves addition, the primary cognitive demand is comparative analysis rather than the direct computation central to the competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The specified requirements (add, sum_up_to_100, without_regrouping, concrete_pictorial, operands_2_1_digit, operands_2_2_digit) logically decompose the competency without loss. However, implementation reveals gaps: concrete and pictorial models appear in only 13 of 34 samples (38%), while 21 samples use abstract text-only formats (true_false, cloze, non-visual error_detect, non-visual mcq). The competency explicitly requires using a variety of concrete and pictorial models, yet the majority of generated output lacks these representations entirely.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The six requirements logically partition the competency without loss or overlap. Add numbers covers the operation; sum_up_to_100 and without_regrouping specify constraints; concrete_pictorial, operands_2_1_digit, and operands_2_2_digit identify required pedagogical and mathematical variations. Together they express the full competency losslessly."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "The node demonstrates variety in response formats (true_false, mcq, cloze, error_detect, read_fill_in_blank, read_mcq, set_fill_in_blank) and visual types where used (NumberBond, NumberLine, EmojiPictorial). However, coverage of the concrete_pictorial requirement is uneven: only about 38 percent of samples use visual models, and approximately 62 percent rely entirely on text. Additionally, operand variety shows some imbalance: 2-digit plus 2-digit combinations (e.g., 30+30, 50+40, 56+11) appear less frequently than 2-digit plus 1-digit or near-identity cases (e.g., 90+4, 53+1, 11+0, 10+0)."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Operand ranges and sum magnitudes match Grade 1, Quarter 2 expectations. Numbers used (10 to 90 as primary operands, sums up to 98) fall within age-appropriate bounds. The absence of regrouping maintains cognitive load suitable for Grade 1. Problem contexts (items, steps climbed, groups combined, number line movements) reference concrete scenarios familiar to Grade 1 learners. Task variety from simple true_false to moderately complex error_detection with place-value explanation balances cognitive engagement appropriately."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "The packet uses seven distinct response formats (read_fill_in_blank, true_false, error_detect, cloze, read_mcq, mcq, set_fill_in_blank) and three visual types (NumberBond, NumberLine, EmojiPictorial), providing structural variety. However, semantic repetition occurs: seed 603 (60+30=90) and seed 700 (60+30=90) are verbatim duplicates; seed 605 (60+30=90) also duplicates this same problem. Identity element cases (11+0, 10+0) occupy 2 of 34 samples. Distribution of response types is uneven, with true_false appearing 8 times and set_fill_in_blank appearing only 3 times."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "0b9a2c0498d313f9ad0d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly states two parts (68 and 10) and asks for their sum. The expected response (78) is unambiguous. Visual representation via NumberBond reinforces the part-whole relationship. No alternative interpretations of the mathematical question exist."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a straightforward part-whole decomposition using 68 and 10. The context is abstract and appropriate for Grade 1. Mathematically, 68 plus 10 yields 78 without regrouping. Hints correctly show the place-value addition (8 plus 0 in ones, 6 plus 1 in tens) confirming the validity of both context and computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is minimal and direct. The phrase the two parts are X and Y, followed by ask for the sum, is Grade 1 accessible. The NumberBond visual uses simple design with clear labels showing 68 and 10, supported by one fill-in-blank input field. Learner would understand that they must determine the total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 68 plus 10 equals 78. No regrouping occurs (8 plus 0 equals 8 in ones; 6 plus 1 equals 7 in tens). Hints accurately decompose the operation into ones and tens places. All answer choices and worked examples align with correct mathematics."
+          }
+        }
+      },
+      {
+        "sample_id": "3775f9fe60ee2d23464c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement presented is false (30 plus 30 equals 60, not 70). The learner must decide true or false. No ambiguity exists in the mathematical proposition or the required binary response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem tests recognition of an incorrect sum (70) versus the correct result (60) for 30 plus 30. This is contextually valid as error recognition is part of mathematical sense-making. The incorrect value (70) is a plausible distractor for Grade 1, making the task pedagogically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents one equation and requests true or false response. Language is extremely simple and direct. No extraneous context clouds the mathematical question. A Grade 1 learner understands that true means the equation is correct and false means it is incorrect."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer is false because 30 plus 30 equals 60, not 70. Hints confirm this decomposition: 0 plus 0 equals 0 ones, 3 plus 3 equals 6 tens, yielding 60. The false option is the correct response."
+          }
+        }
+      },
+      {
+        "sample_id": "2e5544ed9c8ce53bf59a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes Rico's attempted solution to 60 plus 22 and states he claims the answer is 82. The learner must evaluate whether Rico is correct. The task is unambiguous: determine if an answer (82) is right or wrong for a given problem (60 plus 22)."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection tasks are pedagogically valid for Grade 1. The scenario presents a plausible work shown by a peer (Rico). The claimed answer (82) is in fact correct (60 plus 22 equals 82), so Rico is right. This avoids trivial false cases and tests actual verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem introduces Rico by name and describes his work clearly. The question asks Is Rico correct with a yes or no answer expected. The language matches Grade 1 competency. The number pair (60 and 22) are presented explicitly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The computation is correct: 60 plus 22 equals 82. Ones: 0 plus 2 equals 2. Tens: 6 plus 2 equals 8. Sum: 82. No regrouping is required. The answer Rico says the blank is 82 is correct, and the response correctly indicates this."
+          }
+        }
+      },
+      {
+        "sample_id": "53b5f5129eb8fde06f44",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Two parts are given as 30 and 15. The learner fills in the sum. The expected numerical response (45) is unambiguous. The NumberBond visual clearly marks two input nodes and one output, eliminating any confusion about what should be computed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole problem with operands 30 and 15 presented via number bond context. This representation is developmentally appropriate for Grade 1 addition. Mathematically, 30 plus 15 yields 45 without regrouping. Contextual structure aligns with the competency requirement for pictorial models."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing the two parts are X and Y, what is the sum is direct. NumberBond visual labels the numbers 30 and 15 with clear positions. A single input field is provided for the answer. Learner immediately grasps that they must find the total of the two given parts."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 45 is correct: 30 plus 15 equals 45. Ones place: 0 plus 5 equals 5. Tens place: 3 plus 1 equals 4. No regrouping occurs. Hints confirm the place-value breakdown accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "fa71bba66ffc5ce62af9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a blank 16 plus 61 equals blank in cloze format with four answer choices (77, 87, 76, 78). The learner selects the correct sum. No ambiguity in what operation or response is required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward addition problem with 2-digit operands (16 and 61) yields a 2-digit sum (77). The four options include the correct answer plus three plausible distractors (87 correct but mis-positioned digits, 76 off by one, 78 off by one). The pedagogical design tests accurate computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is presented in standard form with blank to fill. Four answer choices are given. No extraneous language clouds the task. A Grade 1 learner understands the format: identify the sum from the given options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct sum is 77. Ones: 6 plus 1 equals 7. Tens: 1 plus 6 equals 7. No regrouping needed. The answer 77 is among the options and is correct. Distractors are plausible but wrong."
+          }
+        }
+      },
+      {
+        "sample_id": "e2d0019ee123c49f16d5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a large group (30 items) and 30 more being added, then asks how many total. The EmojiPictorial visual represents this via emoji groups. The response format is multiple-choice with four options. The task is unambiguous: compute 30 plus 30 and select the result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The context (grouping items) is concrete and age-appropriate. The visual attempts to show 30 items plus 30 more. The sum (60) is mathematically correct for 30 plus 30. However, the visual representation using emoji groups adds narrative that may distract from the core mathematical operation, though it does not invalidate the mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The written stem establishes: there are 30 items, then 30 more are added, asking for the total. Four answer choices (61, 59, 60, 30) are provided. The EmojiPictorial visual reinforces the grouping with visual bundles. A Grade 1 learner can follow the scenario and select the correct total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer is 60 because 30 plus 30 equals 60. Ones: 0 plus 0 equals 0. Tens: 3 plus 3 equals 6. The sum is 60, which appears as an option. Other distractors (61, 59) are off by one; 30 is the first operand."
+          }
+        }
+      },
+      {
+        "sample_id": "6846f82d7d1884db36e2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question What is 30 plus 15 is direct and clear. Four answer choices (45, 55, 46, 44) are provided. Learner must select the correct sum. No ambiguity in the mathematical question or response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A basic addition problem with operands 30 and 15 is presented without extraneous context. The answer 45 is correct and lies within the expected Grade 1 range. Distractors are appropriately close (55 swaps tens and ones interpretation, 46 and 44 are off-by-one errors)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a simple question with no embedded story. Four numbered options are listed vertically. Learner understands they must compute 30 plus 15 and find it among the choices. The format is standard multiple-choice, grade-appropriate."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct sum is 45. Ones: 0 plus 5 equals 5. Tens: 3 plus 1 equals 4. No regrouping is needed. 45 is among the options and is the only correct answer. Hints confirm this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "e2fdbf58526b472f9240",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks to show 30 plus 60 on a number line. The NumberLine visual provides an interactive representation. The answer 90 is unambiguous. Learner must identify or select the position corresponding to the sum 30 plus 60."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation is a valid pictorial model for Grade 1 addition. Starting from an implicit zero and adding 30 and 60 to reach 90 is contextually sound. The problem tests addition via the number line, a concrete and pictorial model explicitly mentioned in the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is clear: show the addition on the number line. The visual displays a number line with labeled tick marks (20, 30, 40, 50, 60, 70, 80, 90, 100). The phrase Click track, drag dot, or use arrow keys guides interaction. A Grade 1 learner can understand placing or moving a dot to the correct sum position."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct sum is 90. Ones: 0 plus 0 equals 0. Tens: 3 plus 6 equals 9. The sum 90 is correctly represented as the fourth position from the left on the labeled scale. The number line layout and answer align with correct arithmetic."
+          }
+        }
+      },
+      {
+        "sample_id": "b1fb891ee8b9f79e9eac",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The statement 83 plus 15 equals 83 is clearly false and obviously incorrect. The prompt requests true or false. The answer is unambiguous: false, because 83 plus 15 cannot equal 83."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem tests whether learners can recognize an absurd sum (adding any positive number to 83 cannot yield 83 again). This is a valid error-detection task for Grade 1, though the error is extreme rather than subtle. Pedagogically, it reinforces that addition produces a larger result."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is presented plainly with a true or false prompt. No extraneous language or complex framing exists. A Grade 1 learner instantly grasps that the equation is wrong because adding 15 to 83 makes it bigger, not the same."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "83 plus 15 equals 98, not 83. Ones: 3 plus 5 equals 8. Tens: 8 plus 1 equals 9. The sum is 98. The statement is false, and false is the correct response. Hints confirm this arithmetic."
+          }
+        }
+      },
+      {
+        "sample_id": "10ba76f7c565a8552385",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a dot starting at 70 and moving forward 16 positions. The learner must identify the landing position. Four answer choices (86, 87, 96, 85) are provided. The mathematical task (70 plus 16) is unambiguous, and the response mechanism is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line movement is a valid concrete and pictorial model for addition. Starting from 70 and counting up 16 is mathematically equivalent to 70 plus 16 and yields 86. The framing as a dot moving along a number line is developmentally appropriate for Grade 1."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is clear: dot at position 70, moves forward 16 numbers, which number does it land on. Four numerical options are listed. A Grade 1 learner understands the metaphor of movement and can count or calculate to find the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "70 plus 16 equals 86. Ones: 0 plus 6 equals 6. Tens: 7 plus 1 equals 8. The sum is 86. No regrouping is needed. 86 appears as the first option and is correct. Other options (87, 96, 85) are incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "706ce2ecda126abf0fca",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names Dante and his attempted solution to 55 plus 34, stating he says the blank is 89. The question Is Dante correct is clear. The learner evaluates whether 89 is the correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection with a peer (Dante) is a valid pedagogical approach. The operands are 55 and 34, and the claimed sum is 89, which is indeed correct. This is not trivial because learners must verify rather than spot an obvious mistake. The problem requires actual computation or verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is straightforward: Dante solved and claims 89. Is he correct (yes or no). The numbers are stated explicitly. No ambiguous framing obscures the mathematical question. A Grade 1 learner understands the binary choice."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "55 plus 34 equals 89. Ones: 5 plus 4 equals 9. Tens: 5 plus 3 equals 8. The sum is 89. Dante is correct, so the answer is yes or true. Hints confirm the arithmetic and the correctness of Dante's claim."
+          }
+        }
+      },
+      {
+        "sample_id": "7299c9456bcda5bd59f5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The equation 47 plus 41 equals 88 is presented with true or false prompt. No ambiguity exists. The learner must determine whether this equation is true."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true equation (47 plus 41 does equal 88) without regrouping complications is presented. This is a straightforward verification task appropriate for Grade 1, testing both computation and accuracy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is presented in equation form with a true or false question. No extraneous context clouds the task. A Grade 1 learner recognizes the format and provides a binary response."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "47 plus 41 equals 88. Ones: 7 plus 1 equals 8. Tens: 4 plus 4 equals 8. The sum is 88, so the equation is true, and the response is correct. Hints verify this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "2dfe826af7d75da6f66c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Moses starts at step 30, climbs up 60 more, and the question asks what step he is on now. Cloze format with four options (91, 90, 89, 100). The task is unambiguous: compute 30 plus 60 from the given choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario (climbing steps) is concrete and familiar to Grade 1 learners. The mathematical operation (30 plus 60) is implicit in the context. No extraneous details distract from the core addition. The problem exemplifies addition in a meaningful real-world context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The story is brief and clear: Moses starts at step 30, climbs 60 more steps. The question is what step is he on now. Four numerical options follow. A Grade 1 learner understands the scenario and recognizes that climbing 60 more steps from 30 requires addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 plus 60 equals 90. Ones: 0 plus 0 equals 0. Tens: 3 plus 6 equals 9. The sum is 90. This appears as an option (second choice: 90). Other distractors (91, 89) are off by one; 100 is incorrect. Hints confirm 90 is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "20ae4832cd5c58fcd19a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Two parts are stated as 60 and 22, with the question asking for their sum. The NumberBond visual clearly indicates a part-whole relationship. No ambiguity exists in what must be computed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole problem using 60 and 22 in a Number Bond is contextually appropriate for Grade 1. The pictorial model supports the mathematical concept. The sum (82) is correct and within grade range."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing the two parts are X and Y, what is the sum is direct. The NumberBond visual shows two labeled branches (60 and 22) leading to a central node for the sum. A single input field awaits the answer. Learner immediately understands they must find the total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "60 plus 22 equals 82. Ones: 0 plus 2 equals 2. Tens: 6 plus 2 equals 8. The sum is 82. No regrouping is required. Hints confirm this place-value breakdown."
+          }
+        }
+      },
+      {
+        "sample_id": "624e353a4c5bd0744996",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The equation 30 plus 60 equals 90 is presented with true or false response required. No ambiguity in the mathematical statement or the response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true addition equation without regrouping complications is presented. The operands (30 and 60) are both multiples of 10, simplifying computation. This is pedagogically sound for Grade 1 verification practice."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is in standard equation form with a true or false question. No complex language or embedded narrative. A Grade 1 learner quickly determines whether 30 plus 60 makes 90."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 plus 60 equals 90. Ones: 0 plus 0 equals 0. Tens: 3 plus 6 equals 9. The sum is 90, so the equation is true and the response is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "1d30a244007624b547e7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The dot starts at position 30 and moves forward 30 positions. The question asks which number the dot lands on. Four choices (70, 61, 59, 60) are provided. The task is unambiguous: compute 30 plus 30."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line movement metaphor is valid and concrete for Grade 1 addition. Starting from 30 and moving forward 30 positions lands on 60, which is mathematically correct. The pictorial model supports the mathematical operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is clear: dot at 30, moves forward 30 numbers. Which number will it land on. Four answer choices follow. A Grade 1 learner grasps the movement metaphor and can count or calculate to find the endpoint."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 plus 30 equals 60. Ones: 0 plus 0 equals 0. Tens: 3 plus 3 equals 6. The sum is 60, which is the fourth option. Other options (70, 61, 59) are incorrect. Hints confirm 60 is the correct answer."
+          }
+        }
+      },
+      {
+        "sample_id": "de18b34574596bda5dba",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The equation 60 plus 30 equals 90 is presented with true or false response required. The mathematical statement is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true addition equation without regrouping is presented. The operands (60 and 30) are both multiples of 10. This is appropriate for Grade 1 verification tasks, testing recognition of correct sums."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is stated plainly with a true or false question. No extraneous language. A Grade 1 learner understands they must verify whether 60 plus 30 makes 90."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "60 plus 30 equals 90. Ones: 0 plus 0 equals 0. Tens: 6 plus 3 equals 9. The sum is 90, so the equation is true and the response is correct. Hints verify this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "0d2e5db939069e6f86e9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The dot starts at 13 and moves forward 72 positions. The question asks which number the dot lands on. Four choices (84, 86, 85, 95) are provided. The task is unambiguous: compute 13 plus 72."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line movement is a valid concrete and pictorial model for Grade 1 addition. Starting from 13 and moving forward 72 lands on 85, which is mathematically correct. The problem exemplifies the variety of concrete models required by the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is clear: dot at position 13, moves forward 72 numbers. Which number will it land on. Four options are listed. A Grade 1 learner understands the movement and can determine the endpoint."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "13 plus 72 equals 85. Ones: 3 plus 2 equals 5. Tens: 1 plus 7 equals 8. The sum is 85, which is the third option. Other options (84, 86, 95) are incorrect. Hints confirm 85 is correct."
+          }
+        }
+      },
+      {
+        "sample_id": "25fac5d703110e8029d6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question Is 12 plus 27 the same as 27 plus 10 asks whether two different addition expressions yield equal results. The four choices include Cannot be determined, True, False, and Only when both are 0. The expected binary assessment is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample requires comparison of two different sums (12+27=39 versus 27+10=37) rather than computing a single addition. While both expressions involve addition, the primary cognitive task is equality comparison rather than the direct computation emphasized in the Grade 1 competency. The inclusion of unusual options like Cannot be determined and Only when both are 0 suggests reasoning beyond basic addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is stated plainly. Four answer options are provided. A Grade 1 learner can compute both sums and compare them, though the logical reasoning required (determining whether expressions are equal) approaches higher-order thinking for this grade level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 plus 27 equals 39. Ones: 2 plus 7 equals 9. Tens: 1 plus 2 equals 3. 27 plus 10 equals 37. Ones: 7 plus 0 equals 7. Tens: 2 plus 1 equals 3. The two sums are not equal (39 does not equal 37), so the answer is False. Hints confirm both computations and the false conclusion."
+          }
+        }
+      },
+      {
+        "sample_id": "53fd90e363457015e82c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem instructs to show 53 plus 1 on a number line. The NumberLine visual provides an interactive representation. The answer 54 is unambiguous. Learner must identify the position corresponding to the sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line is a concrete and pictorial model for Grade 1 addition. Adding 1 to 53 is mathematically straightforward and yields 54. The problem exemplifies the variety of visual models specified in the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is clear: show 53 plus 1 on the number line. The visual displays a number line with labeled markings (40, 50, 60). An input area indicates the expected answer position. A Grade 1 learner understands they must mark or identify the location of the sum on the line."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "53 plus 1 equals 54. Ones: 3 plus 1 equals 4. Tens: 5 plus 0 equals 5. The sum is 54. The number line spans from 40 to 60, and 54 falls within this range. The answer aligns with correct arithmetic."
+          }
+        }
+      },
+      {
+        "sample_id": "f60f9b8162f7326af10f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem explicitly decomposes the numbers into place values (80 is 8 tens and 0 ones; 5 is 5 ones) and instructs to add place values then find the total. The cloze format with four options (84, 85, 95, 86) provides clear choices. No ambiguity in the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This problem exemplifies the use of place-value models to support addition. By explicitly showing tens and ones, the problem reinforces the place-value concept underlying addition without regrouping. This directly supports the competency requirement for concrete and pictorial models."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem walks through place-value decomposition step-by-step. It identifies 8 tens, 0 ones, and 5 ones, then asks for the total. The language is explicit and guides the learner through the operation. Four numerical options follow."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "80 is 8 tens and 0 ones; 5 is 5 ones. Adding place values: 0 plus 5 equals 5 ones, and 8 plus 0 equals 8 tens, yielding 85. No regrouping occurs. 85 appears as the second option and is correct. Hints confirm this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "672db2e6516edbba7c36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names Dante and his attempted solution to 30 plus 3, stating he claims the answer is 33. The question Is Dante correct is unambiguous. The learner evaluates whether 33 is the correct sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection with a peer is pedagogically valid. The operands (30 and 3) represent a 2-digit plus 1-digit case specified in the competency. The claimed answer (33) is correct, making the task require actual verification rather than spotting an obvious mistake."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is straightforward: Dante solved 30 plus 3 and claims 33. Is he correct. The numbers are explicit. A Grade 1 learner understands the yes or no evaluation required."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 plus 3 equals 33. Ones: 0 plus 3 equals 3. Tens: 3 plus 0 equals 3. The sum is 33. Dante is correct, so the response is yes or true. Hints verify this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "bce9f517d3b949944fc6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario describes one group with 50 items and another with 40 items, stating that putting them together makes 90 items. The true or false question is unambiguous: does combining these groups yield 90."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The context (combining groups of items) is concrete and familiar to Grade 1 learners. The operation (50 plus 40) represents a 2-digit plus 2-digit case required by the competency. The stated total (90) is correct, testing accurate verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is brief and clear: one group 50 items, another 40 items, together 90 total. The true or false prompt is straightforward. A Grade 1 learner grasps the scenario and responds to the verification question."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 plus 40 equals 90. Ones: 0 plus 0 equals 0. Tens: 5 plus 4 equals 9. The sum is 90, so the statement is true and the response is correct. Hints confirm this arithmetic."
+          }
+        }
+      },
+      {
+        "sample_id": "0f22304e5dcf0dd42fc9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem names Noel and his attempted solution to 0 plus 29, stating he claims the answer is 39. The question Is Noel correct is unambiguous. The learner must determine whether 39 is the correct sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection is a valid task structure. The operands (0 and 29) test the identity element (adding zero). Noel's claim (39) is incorrect; the correct answer is 29. This makes the problem meaningful, requiring learners to verify computation rather than reject an obvious mistake."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is clear: Noel solved 0 plus 29 and claims 39. Is he correct. The numbers are explicit. A Grade 1 learner recognizes that adding zero to 29 leaves it unchanged, so 39 is wrong."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "0 plus 29 equals 29, not 39. Ones: 0 plus 9 equals 9. Tens: 0 plus 2 equals 2. The sum is 29. Noel is incorrect, so the response is no or true (has an error). Hints confirm the correct answer is 29."
+          }
+        }
+      },
+      {
+        "sample_id": "5eac33590a768a9e97d3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The equation 60 plus 30 equals 90 is presented with true or false response required. No ambiguity in the mathematical statement or the binary response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A true addition equation without regrouping is presented. The operands (60 and 30) are both multiples of 10, simplifying computation. The problem is pedagogically appropriate for Grade 1 verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is stated plainly with a true or false question. No complex language or extraneous context. A Grade 1 learner quickly verifies whether 60 plus 30 equals 90."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "60 plus 30 equals 90. Ones: 0 plus 0 equals 0. Tens: 6 plus 3 equals 9. The sum is 90, so the equation is true and the response is correct. Hints confirm this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "18d9ccfec046d6156bf7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a large group (56 items) and 11 more being added. The EmojiPictorial visual represents groups using emoji symbols. Four answer choices (45, 67, 66, 11) are provided. The task is unambiguous: compute 56 plus 11 and select the result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario (grouping items and adding) is concrete and age-appropriate. The EmojiPictorial visual provides a pictorial representation of the groups. The sum (67) is mathematically correct for 56 plus 11. The sample exemplifies the use of pictorial models required by the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The written stem establishes: 56 items initially, 11 more added, how many total. Four answer options are provided. The EmojiPictorial visual reinforces the grouping concept. A Grade 1 learner understands the scenario and can count or compute the total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "56 plus 11 equals 67. Ones: 6 plus 1 equals 7. Tens: 5 plus 1 equals 6. The sum is 67. No regrouping is needed. 67 appears as the second option and is correct. Other options (45, 66, 11) are incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "f219126c4c817a43c550",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem introduces a basketball theme (Isko enjoys basketballs), then names Manny and his attempted solution to 63 plus 24, stating he claims 88. The question Is Manny correct requires a yes or no evaluation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection with a peer (Manny) and a thematic wrapper (basketball) is pedagogically valid. The operands (63 and 24) represent a 2-digit plus 2-digit case. Manny's answer (88) is incorrect; the correct sum is 87. The problem requires actual verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The basketball theme introduces personality (Isko enjoys basketballs) without obscuring the math. The core task remains clear: determine if Manny correctly solved 63 plus 24 as 88. A Grade 1 learner recognizes the mathematical evaluation required."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "63 plus 24 equals 87, not 88. Ones: 3 plus 4 equals 7. Tens: 6 plus 2 equals 8. The sum is 87. Manny is incorrect with his claim of 88, so the response is no or true (has an error). Hints confirm the correct answer is 87."
+          }
+        }
+      },
+      {
+        "sample_id": "857982f8005b0e532567",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents 90 plus 4 equals blank in cloze format with four answer choices (93, 95, 104, 94). The learner selects the correct sum. No ambiguity in the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward addition problem with operands 90 and 4 (a 2-digit plus 1-digit case) yields 94. The four options include the correct answer plus plausible distractors (93 and 95 are off by one; 104 reflects a misalignment of place values). Pedagogically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is presented in standard form with blank to fill. Four numerical options are listed. No extraneous language clouds the task. A Grade 1 learner understands the format: identify the sum from the choices."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "90 plus 4 equals 94. Ones: 0 plus 4 equals 4. Tens: 9 plus 0 equals 9. The sum is 94. No regrouping is needed. 94 is the fourth option and is correct. Distractors (93, 95, 104) are wrong."
+          }
+        }
+      },
+      {
+        "sample_id": "1893d612b4ce973f27c6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question What is 17 plus 81 is direct and unambiguous. Four answer choices (97, 108, 98, 99) are provided. The learner selects the correct sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A basic addition problem with operands 17 and 81 (a 2-digit plus 2-digit case) is presented. The answer 98 is correct and appropriate for Grade 1. Distractors are plausibly close (97, 99 off by one; 108 reflects place-value misalignment)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simple without embedded narrative. Four numerical options follow. Learner understands they must compute 17 plus 81 and find it among the choices. Standard multiple-choice format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "17 plus 81 equals 98. Ones: 7 plus 1 equals 8. Tens: 1 plus 8 equals 9. The sum is 98. No regrouping is needed. 98 is the third option and is correct. Other options (97, 108, 99) are incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "eb6a791de8a076e001fc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem describes a dot at position 11 moving forward 0 numbers. The question asks which number the dot lands on. Four choices (21, 11, 10, 12) are provided. The task is unambiguous: compute 11 plus 0."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation tests the identity element: adding zero leaves the number unchanged. Starting from 11 and moving forward 0 positions keeps the dot at 11. This is mathematically valid and tests a key concept in addition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario is clear: dot at 11, moves forward 0 numbers. Which number does it land on. Four options are provided. A Grade 1 learner understands that moving 0 steps leaves you in place."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "11 plus 0 equals 11. Ones: 1 plus 0 equals 1. Tens: 1 plus 0 equals 1. The sum is 11. No movement occurs because 0 is added. 11 is the second option and is correct. Other options (21, 10, 12) are incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "cccb61f4f7a2fa098d9d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Two parts are stated as 10 and 0, with the question asking for their sum. The NumberBond visual indicates a part-whole relationship. No ambiguity in the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole problem using 10 and 0 in a NumberBond is contextually valid. This case tests the identity element: adding zero to any number yields that number. The pictorial model (NumberBond) supports the mathematical concept appropriately."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing the two parts are X and Y, what is the sum is direct. The NumberBond visual labels 10 and 0 in the part positions. A single input field awaits the answer. A Grade 1 learner immediately understands they must find the total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 plus 0 equals 10. Ones: 0 plus 0 equals 0. Tens: 1 plus 0 equals 1. The sum is 10. The identity element property is demonstrated: adding zero does not change the value. Hints confirm this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "4e297d62cf64015a3484",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks to show 67 plus 10 on a number line. The NumberLine visual provides an interactive representation. The answer 77 is unambiguous. Learner must identify the position corresponding to the sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line is a concrete and pictorial model for Grade 1 addition. Adding 10 to 67 yields 77, which is mathematically correct. The problem exemplifies the variety of visual models specified in the competency requirement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is clear: show 67 plus 10 on the number line. The visual displays tick marks (50, 60, 70, 80). An input area and guidance text direct the learner to place or drag a dot to the correct position. A Grade 1 learner understands the task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 plus 10 equals 77. Ones: 7 plus 0 equals 7. Tens: 6 plus 1 equals 7. The sum is 77. The number line spans 50 to 80, and 77 falls within this range. The answer aligns with correct arithmetic."
+          }
+        }
+      },
+      {
+        "sample_id": "e5d69f4e9884960364e1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question What is 81 plus 5 is direct and unambiguous. Four answer choices (87, 86, 85, 96) are provided. The learner selects the correct sum."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A basic addition problem with operands 81 and 5 (a 2-digit plus 1-digit case) is presented. The answer 86 is correct and within Grade 1 range. Distractors are plausibly close (87 off by one; 85 off by one; 96 reflects misalignment)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is simple without extraneous narrative. Four numerical options follow. Learner understands they must compute 81 plus 5 and find the answer among the choices. Standard multiple-choice format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "81 plus 5 equals 86. Ones: 1 plus 5 equals 6. Tens: 8 plus 0 equals 8. The sum is 86. No regrouping is needed. 86 is the second option and is correct. Other options (87, 85, 96) are incorrect."
+          }
+        }
+      },
+      {
+        "sample_id": "dbaa2a249b5258e31916",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question What is 30 plus 62 is clear and direct. Four answer choices (102, 93, 92, 91) are provided. The learner selects the correct sum. No ambiguity in the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A basic addition problem with operands 30 and 62 (a 2-digit plus 2-digit case) is presented. The answer 92 is correct and appropriate for Grade 1. Distractors include 102 (place-value misalignment) and 91, 93 (off by one)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is stated simply without embedded narrative. Four numerical options follow. Learner understands they must compute 30 plus 62 and identify the sum from the choices. Standard multiple-choice format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 plus 62 equals 92. Ones: 0 plus 2 equals 2. Tens: 3 plus 6 equals 9. The sum is 92. No regrouping is needed. 92 is the third option and is correct. Other options (102, 93, 91) are incorrect."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "add",
+        "clause": "Add numbers",
+        "verdict": "PASS",
+        "reasoning": "All 34 samples present addition as the primary mathematical operation. Every sample requires the learner to either compute a sum or verify a sum by recognizing correct versus incorrect results. The generator fulfills the requirement to produce problems focused on adding numbers across diverse formats and contexts.",
+        "sample_ids": ["0b9a2c0498d313f9ad0d", "3775f9fe60ee2d23464c", "2e5544ed9c8ce53bf59a", "53b5f5129eb8fde06f44", "fa71bba66ffc5ce62af9", "e2d0019ee123c49f16d5", "6846f82d7d1884db36e2", "e2fdbf58526b472f9240", "b1fb891ee8b9f79e9eac", "10ba76f7c565a8552385", "706ce2ecda126abf0fca", "7299c9456bcda5bd59f5", "2dfe826af7d75da6f66c", "20ae4832cd5c58fcd19a", "624e353a4c5bd0744996", "1d30a244007624b547e7", "de18b34574596bda5dba", "0d2e5db939069e6f86e9", "25fac5d703110e8029d6", "53fd90e363457015e82c", "f60f9b8162f7326af10f", "672db2e6516edbba7c36", "bce9f517d3b949944fc6", "0f22304e5dcf0dd42fc9", "5eac33590a768a9e97d3", "18d9ccfec046d6156bf7", "f219126c4c817a43c550", "857982f8005b0e532567", "1893d612b4ce973f27c6", "eb6a791de8a076e001fc", "cccb61f4f7a2fa098d9d", "4e297d62cf64015a3484", "e5d69f4e9884960364e1", "dbaa2a249b5258e31916"]
+      },
+      {
+        "requirement_id": "sum_up_to_100",
+        "clause": "sums up to 100",
+        "verdict": "PASS",
+        "reasoning": "All sums generated across the 34 samples fall within the range of 10 to 90, well below the 100 ceiling. No sample produces a sum exceeding 100. This fulfills the competency requirement that addition must result in sums up to but not exceeding 100.",
+        "sample_ids": ["0b9a2c0498d313f9ad0d", "3775f9fe60ee2d23464c", "2e5544ed9c8ce53bf59a", "53b5f5129eb8fde06f44", "fa71bba66ffc5ce62af9", "e2d0019ee123c49f16d5", "6846f82d7d1884db36e2", "e2fdbf58526b472f9240", "b1fb891ee8b9f79e9eac", "10ba76f7c565a8552385", "706ce2ecda126abf0fca", "7299c9456bcda5bd59f5", "2dfe826af7d75da6f66c", "20ae4832cd5c58fcd19a", "624e353a4c5bd0744996", "1d30a244007624b547e7", "de18b34574596bda5dba", "0d2e5db939069e6f86e9", "25fac5d703110e8029d6", "53fd90e363457015e82c", "f60f9b8162f7326af10f", "672db2e6516edbba7c36", "bce9f517d3b949944fc6", "0f22304e5dcf0dd42fc9", "5eac33590a768a9e97d3", "18d9ccfec046d6156bf7", "f219126c4c817a43c550", "857982f8005b0e532567", "1893d612b4ce973f27c6", "eb6a791de8a076e001fc", "cccb61f4f7a2fa098d9d", "4e297d62cf64015a3484", "e5d69f4e9884960364e1", "dbaa2a249b5258e31916"]
+      },
+      {
+        "requirement_id": "without_regrouping",
+        "clause": "without regrouping",
+        "verdict": "PASS",
+        "reasoning": "All 34 samples are designed such that addition of ones place and tens place independently produces valid digit results without carrying. For example, samples like 68+10 require 8+0=8 ones and 6+1=7 tens; 30+15 require 0+5=5 ones and 3+1=4 tens. No sample involves regrouping where ones or tens exceed 9 before final computation. The constraint is uniformly maintained.",
+        "sample_ids": ["0b9a2c0498d313f9ad0d", "3775f9fe60ee2d23464c", "2e5544ed9c8ce53bf59a", "53b5f5129eb8fde06f44", "fa71bba66ffc5ce62af9", "e2d0019ee123c49f16d5", "6846f82d7d1884db36e2", "e2fdbf58526b472f9240", "b1fb891ee8b9f79e9eac", "10ba76f7c565a8552385", "706ce2ecda126abf0fca", "7299c9456bcda5bd59f5", "2dfe826af7d75da6f66c", "20ae4832cd5c58fcd19a", "624e353a4c5bd0744996", "1d30a244007624b547e7", "de18b34574596bda5dba", "0d2e5db939069e6f86e9", "25fac5d703110e8029d6", "53fd90e363457015e82c", "f60f9b8162f7326af10f", "672db2e6516edbba7c36", "bce9f517d3b949944fc6", "0f22304e5dcf0dd42fc9", "5eac33590a768a9e97d3", "18d9ccfec046d6156bf7", "f219126c4c817a43c550", "857982f8005b0e532567", "1893d612b4ce973f27c6", "eb6a791de8a076e001fc", "cccb61f4f7a2fa098d9d", "4e297d62cf64015a3484", "e5d69f4e9884960364e1", "dbaa2a249b5258e31916"]
+      },
+      {
+        "requirement_id": "concrete_pictorial",
+        "clause": "concrete and pictorial models",
+        "verdict": "CONCERN",
+        "reasoning": "Approximately 13 of 34 samples (38 percent) employ pictorial models: NumberBond (6 samples), NumberLine (8 samples), or EmojiPictorial (2 samples). The remaining 21 samples (62 percent) use abstract text-only formats without visual representation. The competency explicitly requires using a variety of concrete and pictorial models. While the generator demonstrates awareness of this requirement and includes multiple visual types where used, the overall coverage is insufficient to sustain the claim that problems systematically employ such models. Most learners encounter abstract problem statements without pictorial support.",
+        "sample_ids": ["0b9a2c0498d313f9ad0d", "53b5f5129eb8fde06f44", "e2d0019ee123c49f16d5", "e2fdbf58526b472f9240", "10ba76f7c565a8552385", "0d2e5db939069e6f86e9", "53fd90e363457015e82c", "20ae4832cd5c58fcd19a", "1d30a244007624b547e7", "18d9ccfec046d6156bf7", "4e297d62cf64015a3484", "eb6a791de8a076e001fc", "cccb61f4f7a2fa098d9d"]
+      },
+      {
+        "requirement_id": "operands_2_1_digit",
+        "clause": "2-digit and 1-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples present the 2-digit plus 1-digit operand combination: 68+10, 16+61, 70+16, 80+5, 30+3, 53+1, 67+10, 90+4, 81+5, and others. This category is well-represented across the packet. The generator fulfills the requirement to include problems where a 2-digit number is added to a 1-digit number.",
+        "sample_ids": ["0b9a2c0498d313f9ad0d", "fa71bba66ffc5ce62af9", "10ba76f7c565a8552385", "f60f9b8162f7326af10f", "672db2e6516edbba7c36", "53fd90e363457015e82c", "857982f8005b0e532567", "4e297d62cf64015a3484", "e5d69f4e9884960364e1"]
+      },
+      {
+        "requirement_id": "operands_2_2_digit",
+        "clause": "2-digit and 2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples present the 2-digit plus 2-digit operand combination: 30+30, 60+22, 47+41, 55+34, 83+15, 60+30, 50+40, 56+11, 63+24, 17+81, 30+62, and others. This category is well-represented across the packet. The generator fulfills the requirement to include problems where two 2-digit numbers are added together.",
+        "sample_ids": ["3775f9fe60ee2d23464c", "2e5544ed9c8ce53bf59a", "e2d0019ee123c49f16d5", "b1fb891ee8b9f79e9eac", "706ce2ecda126abf0fca", "7299c9456bcda5bd59f5", "2dfe826af7d75da6f66c", "624e353a4c5bd0744996", "1d30a244007624b547e7", "de18b34574596bda5dba", "25fac5d703110e8029d6", "f219126c4c817a43c550", "bce9f517d3b949944fc6", "18d9ccfec046d6156bf7", "1893d612b4ce973f27c6", "dbaa2a249b5258e31916"]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}

@@ -29,10 +29,10 @@
       "clause": "inverse of addition"
     }
   ],
-  "packet_digest": "cca17ea17caba438ef6b2b7e2450af5613f8df9443700be7280dd4a6dcdf7040",
+  "packet_digest": "a85bc7c9cd30bd5a325c92ed804a665cc7bb80c5b18f2f68b879a9a9b0f30723",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1041,7 +1041,7 @@
       "node_id": "mat_g2_na_q2_3",
       "seed": 701,
       "formatter": "true_false",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Starting at 60 on the number line, jump back 3 units. What number do you land on? The answer is 57. True or False?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Starting at 60 on the number line, jump back 3 units. What number do you land on? The answer is 57. True or False?",
       "correct_answer": true,
       "requested": {
         "difficulty_profile": null,
@@ -1065,13 +1065,13 @@
         "The difference of 60 − 3 = 57."
       ],
       "sample_id": "2bb54c69acd5ac324df9",
-      "replay_digest": "2f8ff6bf47e7a7433d15eac9fe64b8d72b89176b13fe526109819ba04da2b2ec"
+      "replay_digest": "8d0dfd97a1696f11f19ef05bf075fafce4736635599ab76c7d675a3fce6c64a7"
     },
     {
       "node_id": "mat_g2_na_q2_3",
       "seed": 702,
       "formatter": "error_detect",
-      "question_text": "🏀 Marco has a math challenge about jerseys. Manny solved: \"A dot is at 14 on the number line. If you move back 1 step, what number do you reach? (Answer: ___)\". Manny says the missing number is 12. Is Manny correct?",
+      "question_text": "🏀 Marco enjoys jerseys. Here is a math challenge. Manny solved: \"A dot is at 14 on the number line. If you move back 1 step, what number do you reach? (Answer: ___)\". Manny says the missing number is 12. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 13
@@ -1101,7 +1101,7 @@
         "The difference of 14 − 1 = 13."
       ],
       "sample_id": "9a034fda747d9002bed0",
-      "replay_digest": "14b20722baf4a17ffe9f2626f2d5fc20158773cddb485065a34fca636bbae45c"
+      "replay_digest": "8ffc08c16189bda33dfab179fff09423e6b5ffee8ed8365ae858dfc3e51b4267"
     },
     {
       "node_id": "mat_g2_na_q2_3",
@@ -1404,667 +1404,667 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a single inverse-of-addition structure stating that ten plus one equals eleven and asking what eleven minus one equals with unambiguous expected response of ten; the cloze format explicitly directs the learner to fill the blank, and distractors include ten (correct), nine (off by one), eleven (the minuend), and twelve (one beyond), providing clear wrong-answer selection."
+          "reasoning": "The inverse framing Since 10 + 1 = 11, what is 11 − 1? clearly establishes the addition relationship, then asks for the corresponding subtraction with no ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The addition statement is mathematically correct and logically precedes a subtraction that applies the inverse relationship; asking learners to retrieve the difference when they know the addition fact supports Grade 2 conceptual development of the relationship between these operations without contextual contradiction or illogical constraint."
+          "reasoning": "The logic chain from 10 + 1 = 11 to 11 − 1 = 10 is sound; the inverse relationship grounds the problem in a mathematically valid framework."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem states the addition fact clearly, asks a straightforward question about subtraction using the defined minuend and subtrahend, and provides a blank-answer box for entry; the hint sequence progresses from operation identification through ones-place arithmetic to tens-place verification and final-answer statement, supporting learners in reconstructing the solution path."
+          "reasoning": "The fill-in-the-blank format is familiar to Grade 2 students; the addition hint prior to the subtraction question provides scaffolding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Arithmetic is correct: ten plus one does equal eleven, and eleven minus one correctly yields ten; hints accurately decompose the subtraction into ones-column (one minus one equals zero) and tens-column (one minus zero equals one) operations, and the final sum ten is correct."
+          "reasoning": "11 − 1 = 10 is mathematically correct; the hints accurately decompose the place-value calculation without error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "e39a158ffbb668826a97",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a concrete number-line position at fifteen, specifies backward movement of five steps, and asks for the resulting position; multiple-choice options present fifteen (original), nine (off by one), twenty (wrong operation), eleven (off by four), and ten (correct), each sufficiently distinct to avoid confusion about which represents the correct difference."
+          "reasoning": "A dot is at 15 on the number line. If you move back 5 steps, what number do you reach? leaves no doubt about the starting point or the direction of movement."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A dot positioned on a number line and moving backward by a defined step-count is a physically plausible Grade 2 scenario aligned with kinesthetic-mathematical learning; the question logically follows from the setup without contradiction or extraneous constraint."
+          "reasoning": "Moving back steps on a number line is a Grade 2 standard model for subtraction; the scenario is logically coherent and well-established."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The number-line context is established by naming the dot and position, the action (backward movement) is specified as a concrete step-count, and the question asks for the resulting position; the multiple-choice format offers four distinct options, and hints explain that five is being subtracted from fifteen, then decompose the arithmetic into ones-column and tens-column work."
+          "reasoning": "The number line context and the directional language move back are concrete and accessible; the multiple-choice format supports understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus five correctly yields ten; hints accurately note that five ones-place arithmetic is required without borrowing at the ones place, then tens-place work proceeds from the minuend's ones digit being five and the subtrahend's ones digit being five (difference zero), leaving the tens digit five minus zero equals five in the tens, resulting in ten total."
+          "reasoning": "15 − 5 = 10 is correct; hints properly decompose using place-value reasoning and regrouping concepts."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "2d76463df1194d4dbd15",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem specifies starting at position sixty on the number line, moving backward five units, and asking for the landing position; the cloze answer format expects a two-digit entry, and distractors include fifty-four (off by one), fifty-six (off by one), fifty-five (correct), and sixty-five (wrong operation direction), all clearly distinguishable."
+          "reasoning": "Starting at 60 on the number line, jump back 5 units is explicit about position and operation; no ambiguity in the task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Beginning at a number-line position, moving backward by a defined unit-count, and identifying the result is a mathematically valid and Grade 2 contextually appropriate scenario without logical contradiction or extraneous constraint."
+          "reasoning": "Jumping back represents backward movement on a number line, modeling subtraction; the scenario is logically sound for regrouping cases."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly establishes the starting position as sixty, the action as backward movement of five units, and the question as requesting the destination number; the cloze blank is positioned for entry, and hints explain the subtraction operation, describe borrowing requirements (ones-place zero is less than five), show the borrowing mechanism, and verify the final answer of fifty-five."
+          "reasoning": "The jump back phrase is intuitive for Grade 2; the number line provides concrete scaffolding for visualizing the operation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty minus five correctly yields fifty-five; the borrowing procedure in the hints is accurate, showing that the ones place of zero requires borrowing one ten (making it ten minus five equals five) and the tens place becomes five minus one (from the borrowed ten) equals five tens, giving fifty-five total."
+          "reasoning": "60 − 5 = 55 is correct; hints show borrowing: ones place less than 5, so regroup 60 as 50 + 10, then 10 − 5 = 5, yielding 50 + 5 = 55."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "bdd6d2bda50f2adcf5a3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem contains a mathematical statement claiming that if forty-nine plus one equals fifty then fifty minus one equals forty-eight, then asks learners to identify if this claim is correct (true or false); the correct answer is false because fifty minus one equals forty-nine, not forty-eight, making the logical task clear despite the initially confusing phrasing."
+          "reasoning": "If 49 + 1 = 50, then 50 − 1 = 48. What is the missing number? introduces a false proposition and asks for judgment with clarity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stem sets up the inverse-of-addition relationship where learners must verify whether the subtraction correctly undoes the addition; the logical validity lies in testing whether students understand that the inverse is correctly applied, which is mathematically sound even though the stem's proposed answer is intentionally wrong."
+          "reasoning": "The logical chain establishes 49 + 1 = 50, which means the inverse is 50 − 1 = 49, not 48; the false statement tests understanding."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem's sentence structure is complex, embedding a false mathematical claim within a true additive statement and asking learners to recognize the error in the embedded subtraction claim; while the true-false format clarifies the task (identify correctness), the phrasing creates cognitive load for a Grade 2 learner in parsing which part is false and why, potentially confusing students about what they are being asked to evaluate."
+          "verdict": "PASS",
+          "reasoning": "True-false is a familiar Grade 2 format; the inverse framing helps students reason about addition and subtraction relationships."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The addition forty-nine plus one equals fifty is correct; however, fifty minus one correctly yields forty-nine, not forty-eight, making the claim in the stem false; hints correctly explain that borrowing occurs (ones-place zero requires borrowing), the ones-digit computation becomes ten minus one equals nine, tens computation becomes four minus zero equals four (after borrowing one ten), and the final answer is forty-nine, contradicting the stem's claim of forty-eight."
+          "reasoning": "50 − 1 = 49, not 48; answer False is correct; hints show regrouping: ones less than 1 requires borrowing to get 10 − 1 = 9."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "7dad08cf0721e9d4e36c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks learners to confirm whether twenty-four minus one equals twenty-three, presented as a true-false judgment; the statement is mathematically correct, and the true-false format unambiguously requests confirmation of the proposed answer without alternative interpretations."
+          "reasoning": "Start at 24 on the number line and count back 1. What is 24 − 1? specifies starting point, direction, and quantity with no ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at a number-line position of twenty-four and counting backward one step is a contextually valid Grade 2 scenario, and the question logically follows by asking what number results from this backward movement; the mathematical relationship is sound and age-appropriate."
+          "reasoning": "Counting back one from 24 is a straightforward model for subtracting 1 from a 2-digit number."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes the number-line scenario, specifies the action (counting back one), and presents a proposed answer (twenty-three) with a true-false request; the number-line language grounds the operation in concrete spatial movement, the answer is clearly stated, and the format requires simple yes-or-no judgment supported by the hint sequence."
+          "reasoning": "Number line context and counting back language are concrete, familiar, and appropriately simple for Grade 2 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty-four minus one correctly equals twenty-three; hints confirm that the ones-place subtraction is four minus one equals three, tens-place remains two minus zero equals two, yielding twenty-three total, which matches the stem's proposed answer, making the true-false answer correct."
+          "reasoning": "24 − 1 = 23 is correct; no regrouping required; hints properly break down place-value subtraction."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "477d973e53287942776f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Noel's solution to a subtraction problem and asks whether Noel's proposed answer of nine is correct; the error-detection format explicitly requests judgment of correctness without ambiguity about the learner's task."
+          "reasoning": "Noel solved: What is 15 − 6? (Hint: 9 + 6 = 15). Is Noel correct? clearly states the problem and the verdict task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student working through subtraction with a hint showing the inverse relationship (nine plus six equals fifteen), then provides their answer; the logical setup invites learners to verify whether the answer correctly applies the inverse relationship, which is mathematically sound."
+          "reasoning": "The hint 9 + 6 = 15 establishes that 15 − 6 = 9; Noel's answer of 9 is logically sound and correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly states Noel's problem (what is fifteen minus six), provides the hint showing the inverse (nine plus six equals fifteen), presents Noel's answer (nine), and asks whether this is correct; the error-detection format explicitly requests judgment, and the hints support learners in tracing the reasoning path."
+          "reasoning": "Error-detection format asks students to verify work; the addition hint supports the subtraction reasoning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus six correctly equals nine, making Noel's answer correct; hints accurately show that the ones-place requires borrowing (five is less than six), the borrowing computation is fifteen minus six equals nine at the ones place (after borrowing one ten from the tens place), the tens-place subtraction is zero minus zero equals zero (after the borrow), yielding nine as the correct final answer."
+          "reasoning": "15 − 6 = 9 is correct; Noel's answer is correct; answer has_error: False is right; hints show borrowing accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "f4bddfaaf16c639b998a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents an inverse-of-addition relationship, claiming that if eighty-nine plus four equals ninety-three then ninety-three minus four equals ninety, then requests true-false judgment; the mathematical statement is unambiguous because ninety-three minus four equals eighty-nine, not ninety, making the false judgment clear."
+          "reasoning": "If 89 + 4 = 93, then 93 − 4 = 90. What is the missing number? presents an inverse relationship and asks for evaluation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse-of-addition structure (if A plus B equals C, then C minus B equals A) is a mathematically valid relationship for testing Grade 2 understanding of the connection between addition and subtraction; the logical validity holds even though the proposed subtraction result is incorrect."
+          "reasoning": "The logical chain 89 + 4 = 93 implies 93 − 4 = 89, not 90; the false statement tests inverse reasoning."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem embeds a false subtraction claim within a true additive statement in an inverted structure that requires learners to recognize which component is false; while the true-false format clarifies the task, the phrasing creates cognitive load in parsing whether the addition is false or the subtraction is false, and requires learners to verify which operation was incorrectly stated."
+          "verdict": "PASS",
+          "reasoning": "True-false format is clear; students see addition and evaluate the corresponding subtraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-nine plus four correctly equals ninety-three; however, ninety-three minus four correctly yields eighty-nine, not ninety, making the stem's claim false; hints show that borrowing occurs, the ones-place computation with borrowing is thirteen minus four equals nine, the tens-place is eight minus zero equals eight (after borrowing), yielding eighty-nine, contradicting the stem's incorrect proposed answer."
+          "reasoning": "93 − 4 = 89, not 90; answer False is correct; hints show regrouping for 93 minus a 1-digit number."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "7c7b37fe476e2a61452d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents the inverse-of-addition statement that eighty-four plus nine equals ninety-three and asks what ninety-three minus nine equals, with multiple-choice options eighty-four (correct), eighty-five (off by one), eighty-three (off by one), and one-hundred-two (wrong operation), each clearly distinguishable and avoiding confusion about the expected response."
+          "reasoning": "Since 84 + 9 = 93, what is 93 − 9? frames the inverse relationship without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse-of-addition relationship is logically sound for Grade 2 conceptual development; the scenario tests whether learners understand that subtraction reverses addition without additional context or constraint that would create logical invalidation."
+          "reasoning": "84 + 9 = 93 implies 93 − 9 = 84; the inverse chain is logically correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly presents the addition fact, asks learners to apply the inverse relationship to find the subtraction result, offers four distinct options through multiple-choice format, and the hints support learners by confirming the operation, describing borrowing requirements, showing the decomposed arithmetic, and restating the final answer."
+          "reasoning": "Multiple-choice with inverse hint is clear; students apply understanding of addition-subtraction relationships."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-four plus nine correctly equals ninety-three, and ninety-three minus nine correctly yields eighty-four; hints show the borrowing procedure accurately with ones-place computation (thirteen minus nine equals four after borrowing one ten), tens-place computation (eight minus zero equals eight after the borrow), yielding eighty-four total."
+          "reasoning": "93 − 9 = 84 is correct; regrouping is required; hints show borrowing from the tens place accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "0c38641b00889b41aecc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Dante's solution to subtraction and asks whether Dante's answer of forty-nine is correct given the inverse hint showing forty-nine plus nine equals fifty-eight; the error-detection format explicitly requests judgment of correctness, and the answer is mathematically unambiguous."
+          "reasoning": "Dante solved: What is 58 − 9? (Hint: 49 + 9 = 58). Is Dante correct? specifies the calculation and asks for verification."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student solving a subtraction problem with an inverse hint, providing the opportunity for learners to verify correctness; the logical setup invites verification of whether the answer correctly applies the inverse relationship without contradiction or extraneous constraint."
+          "reasoning": "The hint 49 + 9 = 58 establishes that 58 − 9 = 49; Dante's answer of 49 is logically and mathematically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies the problem (what is fifty-eight minus nine), provides the inverse hint (forty-nine plus nine equals fifty-eight), states Dante's answer (forty-nine), and asks correctness judgment; the error-detection format clearly requests evaluation, and hints support learners in tracing the work through borrowing, ones-column arithmetic, tens-column adjustment, and final-answer verification."
+          "reasoning": "Error-detection with addition hint helps students think about how addition and subtraction relate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifty-eight minus nine correctly equals forty-nine, making Dante's answer correct; hints show that borrowing is required (ones digit eight is less than nine), the borrowing computation is eighteen minus nine equals nine at the ones place (after borrowing one ten), the tens-place subtraction is four minus zero equals four (after the borrow), yielding forty-nine total."
+          "reasoning": "58 − 9 = 49 is correct; Dante is correct; has_error: False is right; hints show regrouping for this case."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "fa0bebf38dec761c37c5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents the inverse-of-addition statement that twenty-two plus eight equals thirty and asks what thirty minus eight equals, with multiple-choice options twenty-two (correct), thirty-eight (wrong operation), twenty-one (off by one), and twenty-three (off by one), each distinct and unambiguous in representing different mathematical errors or the correct answer."
+          "reasoning": "Since 22 + 8 = 30, what is 30 − 8? explicitly shows the inverse relationship without confusion."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse-of-addition relationship is logically sound for testing Grade 2 understanding of the connection between operations; the mathematical structure is valid without contextual contradiction or extraneous constraint."
+          "reasoning": "22 + 8 = 30 logically implies 30 − 8 = 22; the mathematical chain is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem states the addition fact, asks learners to apply the inverse relationship to identify the subtraction result, provides four distinct multiple-choice options, and the hints support learners by confirming the operation, describing borrowing needs, showing decomposed arithmetic, and restating the final answer of twenty-two."
+          "reasoning": "Multiple-choice with addition hint reinforces inverse-of-addition reasoning for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty-two plus eight correctly equals thirty, and thirty minus eight correctly yields twenty-two; hints show that borrowing is required (ones digit zero is less than eight), the borrowing computation is ten minus eight equals two at the ones place (after borrowing one ten), the tens-place subtraction is two minus zero equals two (after the borrow), yielding twenty-two total."
+          "reasoning": "30 − 8 = 22 is correct; regrouping is required; hints show the borrowing process accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "40bdbb1dc23b35c29cec",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at seventy-five, specifies backward movement of one unit, and asks for the landing position via cloze format; distractors include seventy-three (off by two), seventy-six (wrong direction), seventy-five (no change), and seventy-four (correct), each clearly distinct and avoiding ambiguity about the expected response."
+          "reasoning": "Starting at 75 on the number line, jump back 1 unit. What number do you land on? is unambiguous about setup and operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Beginning at a number-line position and moving backward by one unit is a contextually valid Grade 2 scenario, with the logical setup following naturally from the specified starting position and movement distance without contradiction or illogical constraint."
+          "reasoning": "Jumping back one unit from 75 on a number line directly models 75 − 1."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of seventy-five, specifies the backward movement of one unit, and requests the resulting position through a cloze blank; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, decomposing the ones-place and tens-place arithmetic, and confirming the final answer."
+          "reasoning": "Number line language and jump back action are concrete and accessible for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy-five minus one correctly yields seventy-four; hints show that the ones-place subtraction is five minus one equals four and the tens-place remains seven minus zero equals seven, yielding seventy-four total."
+          "reasoning": "75 − 1 = 74 is correct; no regrouping needed; hints accurately show place-value subtraction."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "190638a0cb01081efc99",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Jose's solution to subtraction with an inverse hint showing seventeen plus three equals twenty, asks whether Jose's answer of seventeen is correct, and the error-detection format unambiguously requests correctness judgment without alternative interpretations."
+          "reasoning": "Jose solved: What is 20 − 3? (Hint: 17 + 3 = 20). Is Jose correct? clearly identifies the problem and asks for evaluation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario sets up a student working through subtraction with an inverse hint provided, inviting learners to verify correctness; the logical setup is sound for testing whether students understand the inverse relationship without contradiction or extraneous constraint."
+          "reasoning": "The hint 17 + 3 = 20 establishes 20 − 3 = 17; Jose's answer of 17 is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies Jose's problem (what is twenty minus three), provides the inverse hint (seventeen plus three equals twenty), states Jose's answer (seventeen), and requests correctness judgment; the error-detection format makes the task clear, and hints support learners in decomposing the borrowing procedure, ones-column arithmetic, tens-column adjustment, and final-answer verification."
+          "reasoning": "Error-detection with addition hint supports the concept that subtraction undoes addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus three correctly equals seventeen, making Jose's answer correct; hints show that borrowing is required (ones digit zero is less than three), the borrowing computation is ten minus three equals seven at the ones place (after borrowing one ten), the tens-place subtraction is one minus zero equals one (after the borrow), yielding seventeen total."
+          "reasoning": "20 − 3 = 17 is correct; Jose is correct; has_error: False is right; hints show regrouping accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "494a5e31c896fdfb8bde",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents the inverse-of-addition statement that seventy-four plus one equals seventy-five and asks what seventy-five minus one equals via multiple-choice format, with options seventy-three (off by one), seventy-six (wrong operation), seventy-five (no change), and seventy-four (correct), each clearly distinct and unambiguous."
+          "reasoning": "If 74 + 1 = 75, then 75 − 1 = ___. What is the missing number? shows inverse relationship with clarity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse-of-addition relationship is logically valid for Grade 2 testing of the connection between operations; the structure invites learners to apply the inverse without contradiction or extraneous constraint."
+          "reasoning": "74 + 1 = 75 implies 75 − 1 = 74; the inverse chain is logically correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly presents the addition fact, asks learners to apply the inverse relationship to identify the subtraction result, provides four distinct multiple-choice options, and hints support learners by confirming the operation, decomposing the ones-place and tens-place arithmetic, and restating the final answer."
+          "reasoning": "Multiple-choice with addition hint is clear; students fill in the missing number using inverse reasoning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy-four plus one correctly equals seventy-five, and seventy-five minus one correctly yields seventy-four; hints show that the ones-place subtraction is five minus one equals four and the tens-place remains seven minus zero equals seven, yielding seventy-four total."
+          "reasoning": "75 − 1 = 74 is correct; no regrouping needed; hints and answer are mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "8e796e7da0ae6116646f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Carlo's solution to an inverse-of-addition problem asking what fifteen minus two equals, with Carlo providing an answer of thirteen; the error-detection format clearly requests judgment of correctness without ambiguity about the learner's evaluation task."
+          "reasoning": "Carlo solved: If 13 + 2 = 15, then 15 − 2 = ___. What is the missing number? is unambiguous about the relationship and task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student solving a problem based on an inverse relationship (thirteen plus two equals fifteen), inviting learners to verify correctness; the logical setup is sound without contradiction or extraneous constraint on the mathematical relationship."
+          "reasoning": "13 + 2 = 15 logically implies 15 − 2 = 13; the inverse reasoning is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies Carlo's problem (if thirteen plus two equals fifteen, then fifteen minus two equals what), asks for the missing number, provides Carlo's answer of thirteen, and requests correctness judgment; the error-detection format makes the evaluation task clear, and hints support learners in decomposing the arithmetic through ones-place and tens-place work."
+          "reasoning": "Error-detection format reinforces the connection between addition and subtraction as inverse operations."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus two correctly equals thirteen, making Carlo's answer correct in this seed-604 instance; the error-detection sample accurately presents the problem structure where the stated inverse relationship leads to the correct answer, with hints confirming ones-place subtraction of five minus two equals three and tens-place arithmetic of one minus zero equals one."
+          "reasoning": "15 − 2 = 13 is correct; Carlo's answer is correct; has_error: False is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "0e3cd53d41bd269fa70b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks learners to confirm whether fifteen minus one equals sixteen given a supporting hint showing fourteen plus one equals fifteen; the statement proposed is mathematically false because fifteen minus one equals fourteen, not sixteen, making the true-false answer unambiguous."
+          "reasoning": "What is 15 − 1? (Hint: 14 + 1 = 15) The answer is 16. True or False? presents an incorrect answer to be evaluated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents an inverse-of-addition relationship and asks learners to verify whether a subtraction result is correctly stated; the logical setup is sound for testing Grade 2 understanding of the connection between operations despite the incorrect proposed answer."
+          "reasoning": "The hint 14 + 1 = 15 establishes the inverse, so 15 − 1 = 14, not 16; the false statement is appropriate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents the inverse hint showing the addition fact, poses the subtraction question, provides a proposed answer, and requests true-false judgment; the format is straightforward, and hints support learners by confirming the operation, decomposing the arithmetic, and restating the correct final answer."
+          "reasoning": "True-false format with addition hint is clear; students evaluate whether the subtraction result is correct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus one correctly equals fourteen, not sixteen; hints confirm that the ones-place subtraction is five minus one equals four and the tens-place remains one minus zero equals one, yielding fourteen total, contradicting the stem's proposed answer of sixteen."
+          "reasoning": "15 − 1 = 14, not 16; answer False is correct; hints show the correct subtraction."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "7fda5a4a632b49a9183b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks what ten minus four equals, with an inverse hint showing six plus four equals ten, and provides four multiple-choice options six (correct), seven (off by one), fourteen (wrong operation), and five (off by one), each distinct and unambiguous in representing different mathematical errors or the correct answer."
+          "reasoning": "What is 10 − 4? (Hint: 6 + 4 = 10) is clear; the hint establishes the inverse relationship."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse-of-addition relationship is logically sound for Grade 2 testing; the mathematical structure is valid without contextual contradiction or extraneous constraint."
+          "reasoning": "6 + 4 = 10 implies 10 − 4 = 6; the inverse is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents the inverse hint, asks the subtraction question directly, offers four distinct multiple-choice options, and hints support learners by confirming the operation, describing borrowing requirements (the ones digit zero requires borrowing), showing the decomposed arithmetic with borrowing, and restating the final answer."
+          "reasoning": "Multiple-choice with inverse hint is accessible; students apply addition knowledge to solve subtraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus four correctly equals six; hints show that borrowing is required (ones digit zero is less than four), the borrowing computation is ten minus four equals six at the ones place (after borrowing one ten from the tens place), the tens-place subtraction is zero minus zero equals zero (after the borrow), yielding six total."
+          "reasoning": "10 − 4 = 6 is correct; regrouping is applied by borrowing from the tens; hints show the process."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "d82a83d1b16050d77e25",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at thirteen, specifies backward movement of one step, and asks for the landing position via cloze format; distractors include fourteen (wrong direction), twelve (off by one), eleven (off by two), and thirteen (no change), with each option distinct and unambiguous in representing different errors or the correct answer."
+          "reasoning": "A dot is at 13 on the number line. If you move back 1 step, what number do you reach? is unambiguous about position and direction."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Beginning at a number-line position and moving backward by one step is a contextually valid Grade 2 scenario, with the logical setup following naturally from the specified starting position and movement distance without contradiction or illogical constraint."
+          "reasoning": "A dot moving back one step on a number line directly models 13 − 1."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of thirteen, specifies the backward movement of one step, and requests the resulting position through a cloze blank; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, decomposing the ones-place and tens-place arithmetic, and confirming the final answer."
+          "reasoning": "Number line context and move back language are concrete and familiar to Grade 2 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirteen minus one correctly yields twelve; hints show that the ones-place subtraction is three minus one equals two and the tens-place remains one minus zero equals one, yielding twelve total."
+          "reasoning": "13 − 1 = 12 is correct; no regrouping needed; hints accurately show place-value calculation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "90be6f62ee2b52278f79",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Rico's solution to a subtraction problem based on an inverse relationship (thirteen plus two equals fifteen) and asks whether Rico's answer of thirteen is correct; the error-detection format unambiguously requests correctness judgment without alternative interpretations."
+          "reasoning": "Rico solved: What is 15 − 2? (Hint: 13 + 2 = 15). Is Rico correct? clearly specifies the problem and asks for verification."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student working through subtraction with an inverse hint provided, inviting learners to verify correctness; the logical setup is sound for testing understanding of the inverse relationship without contradiction or extraneous constraint."
+          "reasoning": "The hint 13 + 2 = 15 establishes that 15 − 2 = 13; Rico's answer of 13 is logically correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies Rico's problem (what is fifteen minus two), provides the inverse hint (thirteen plus two equals fifteen), states Rico's answer (thirteen), and requests correctness judgment; the error-detection format makes the evaluation task clear, and hints support learners in decomposing the arithmetic through ones-place and tens-place work."
+          "reasoning": "Error-detection with addition hint supports reasoning about inverse relationships."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus two correctly equals thirteen, making Rico's answer correct; hints show that the ones-place subtraction is five minus two equals three and the tens-place remains one minus zero equals one, yielding thirteen total."
+          "reasoning": "15 − 2 = 13 is correct; Rico is correct; has_error: False is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "2d018f34ec3e746f306b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at ten, specifies backward counting by three units, and asks what ten minus three equals via cloze format; distractors include thirteen (wrong operation), eight (off by one), seven (correct), and six (off by one), with each option clearly distinct and avoiding ambiguity."
+          "reasoning": "Start at 10 on the number line and count back 3. What is 10 − 3? specifies position, direction, and quantity without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at ten on a number line and counting backward by three units represents a contextually valid Grade 2 scenario where spatial movement models the subtraction operation, with the logical setup naturally following from the specified starting position and defined counting distance without contradiction."
+          "reasoning": "Counting back three units from 10 on a number line is a valid model for 10 − 3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of ten, specifies the backward counting of three units, and requests the resulting position through a cloze blank; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, describing borrowing requirements, showing the decomposed arithmetic with borrowing, and confirming the final answer."
+          "reasoning": "Number line context and counting back language are concrete and support Grade 2 understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus three correctly yields seven; hints show that borrowing is required (ones digit zero is less than three), the borrowing computation is ten minus three equals seven at the ones place (after borrowing one ten), the tens-place subtraction is zero minus zero equals zero (after the borrow), yielding seven total."
+          "reasoning": "10 − 3 = 7 is correct; regrouping is needed; hints show borrowing from tens place accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "ec85e81ad0c6acb4eaa8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Rosa's solution to a number-line-based subtraction problem and asks whether Rosa's answer of eighty-seven is correct; the error-detection format clearly requests judgment of correctness without ambiguity about the learner's evaluation task."
+          "reasoning": "Rosa solved: Start at 90 on the number line and count back 3. What is 90 − 3? clearly states the problem and verdict task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student working through a number-line subtraction problem starting at ninety and counting backward by three, inviting learners to verify correctness; the logical setup is sound for testing understanding of number-line-based subtraction without contradiction or extraneous constraint."
+          "reasoning": "Counting back three units from 90 on a number line correctly yields 87; Rosa's reasoning is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes the number-line scenario (start at ninety, count back three), presents Rosa's answer (eighty-seven), and requests correctness judgment; the number-line language grounds the operation in spatial movement, the error-detection format makes the evaluation task clear, and hints support learners by identifying the operation, describing borrowing, showing arithmetic decomposition, and confirming the final answer."
+          "reasoning": "Error-detection with number line context reinforces this model for subtraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety minus three correctly yields eighty-seven, making Rosa's answer correct; hints show that borrowing is required (ones digit zero is less than three), the borrowing computation is ten minus three equals seven at the ones place (after borrowing one ten), the tens-place subtraction is eight minus zero equals eight (after the borrow), yielding eighty-seven total."
+          "reasoning": "90 − 3 = 87 is correct; Rosa is correct; has_error: False is right; hints show regrouping accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "03c0c9c10cef6fc6a95c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Carlo's solution to a subtraction problem based on an inverse relationship (thirteen plus two equals fifteen) and asks whether Carlo's answer of thirteen is correct; the error-detection format unambiguously requests correctness judgment without alternative interpretations."
+          "reasoning": "Carlo solved: What is 15 − 2? (Hint: 13 + 2 = 15). Is Carlo correct? unambiguously presents the problem and verification task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario presents a student solving a subtraction problem with an inverse hint, inviting learners to verify correctness; the logical setup is sound for testing understanding of the inverse relationship without contradiction or extraneous constraint."
+          "reasoning": "13 + 2 = 15 implies 15 − 2 = 13; Carlo's answer of 13 is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies Carlo's problem (what is fifteen minus two), provides the inverse hint (thirteen plus two equals fifteen), states Carlo's answer (thirteen), and requests correctness judgment; the error-detection format makes the evaluation task clear, and hints support learners in decomposing the arithmetic through ones-place and tens-place work."
+          "reasoning": "Error-detection format with inverse hint is clear; students verify the subtraction using addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus two correctly equals thirteen, making Carlo's answer correct in this seed-700 instance; the error-detection sample accurately demonstrates the inverse relationship where knowledge of thirteen plus two equals fifteen supports finding the correct subtraction answer, with hints confirming the ones-place computation of five minus two equals three and tens-place of one minus zero equals one."
+          "reasoning": "15 − 2 = 13 is correct; Carlo is correct; has_error: False is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "2bb54c69acd5ac324df9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line scenario with a thematic wrapper mentioning dance shoes, specifies starting at sixty and jumping back three units, proposes the answer of fifty-seven, and requests true-false judgment; the mathematical claim is unambiguous because sixty minus three correctly equals fifty-seven."
+          "reasoning": "Starting at 60 on the number line, jump back 3 units. What number do you land on? is unambiguous despite the theme element."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The thematic wrapper referencing dance shoes does not interfere with the mathematical content; the number-line scenario is contextually valid for Grade 2, and the logical setup of starting at a position and moving backward by a defined unit-count is sound without contradiction."
+          "reasoning": "The theme (dance shoes) does not interfere with the number line model; jumping back 3 from 60 is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of sixty, specifies the backward movement of three units, presents a proposed answer of fifty-seven, and requests true-false judgment; the thematic element does not obscure the mathematical task, and hints support learners by identifying the operation, describing borrowing, decomposing the arithmetic, and confirming the final answer."
+          "reasoning": "The theme element is motivating; number line and jump back language remain clear and concrete for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty minus three correctly equals fifty-seven; hints show that borrowing is required (ones digit zero is less than three), the borrowing computation is ten minus three equals seven at the ones place (after borrowing one ten), the tens-place subtraction is five minus zero equals five (after the borrow), yielding fifty-seven total, matching the stem's proposed answer."
+          "reasoning": "60 − 3 = 57 is correct; regrouping is required; hints show borrowing process accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "9a034fda747d9002bed0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Manny's solution to a number-line subtraction problem starting at fourteen and moving back one step, with Manny providing the answer of twelve; the error-detection format clearly requests judgment of correctness, and the answer is mathematically unambiguous because fourteen minus one correctly equals thirteen, not twelve."
+          "reasoning": "Manny solved: A dot is at 14 on the number line. If you move back 1 step, what number do you reach? is clear about the task."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The thematic wrapper mentioning jerseys does not interfere with the mathematical content; the number-line scenario of starting at fourteen and moving back one step is contextually valid for Grade 2, and the logical setup invites learners to identify Manny's error without contradiction or extraneous constraint."
+          "verdict": "CONCERN",
+          "reasoning": "Manny claims 12 when the correct answer is 13; this error type (off-by-one when subtracting 1) is a common Grade 2 mistake, making the error-detection appropriate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes the number-line scenario (start at fourteen, move back one step), identifies Manny's proposed answer (twelve), and requests correctness judgment through error-detection format; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, decomposing the ones-place and tens-place arithmetic, and confirming the correct final answer of thirteen."
+          "reasoning": "Error-detection with basketball theme is clear; students identify that Manny made a computational error."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fourteen minus one correctly equals thirteen, not twelve as Manny claimed; this error-detection sample is mathematically valid because hints correctly identify that Manny's answer of twelve is wrong and show that the ones-place subtraction is four minus one equals three and the tens-place remains one minus zero equals one, yielding thirteen total, demonstrating accurate error identification."
+          "reasoning": "14 − 1 = 13 is correct; Manny's answer of 12 is incorrect; has_error: True is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "b1ac4649d27813e06101",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at ninety-three, specifies backward movement of four steps, and asks for the landing position via cloze format; distractors include ninety-seven (wrong operation), eighty-eight (off by one), ninety (off by one), and eighty-nine (correct), with each option distinct and unambiguous."
+          "reasoning": "A dot is at 93 on the number line. If you move back 4 steps, what number do you reach? specifies starting point and operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Beginning at ninety-three on a number line and moving backward by four steps is a contextually valid Grade 2 scenario with numbers in the higher range, with the logical setup following naturally from the specified starting position and movement distance without contradiction or illogical constraint."
+          "reasoning": "Moving back four steps from 93 on a number line is a valid model for subtraction of a 1-digit number."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of ninety-three, specifies the backward movement of four steps, and requests the resulting position through a cloze blank; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, describing borrowing requirements, showing the decomposed arithmetic with borrowing, and confirming the final answer."
+          "reasoning": "Number line context and move back action are concrete and accessible for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety-three minus four correctly yields eighty-nine; hints show that borrowing is required (ones digit three is less than four), the borrowing computation is thirteen minus four equals nine at the ones place (after borrowing one ten), the tens-place subtraction is eight minus zero equals eight (after the borrow), yielding eighty-nine total."
+          "reasoning": "93 − 4 = 89 is correct; regrouping is required; hints show borrowing process accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "1b7994c30cb2b7b09800",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at twenty-two, specifies backward counting by two units, and asks what twenty-two minus two equals via multiple-choice format; options include nineteen (off by one), twenty-four (wrong operation), twenty (correct), and twenty-one (off by one), with each distinct and unambiguous."
+          "reasoning": "Start at 22 on the number line and count back 2. What is 22 − 2? is unambiguous about position, direction, and amount."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at twenty-two on a number line and counting backward by two units represents a contextually valid Grade 2 scenario where spatial movement models the subtraction operation, with the logical setup naturally following from the specified starting position and defined counting distance without contradiction."
+          "reasoning": "Counting back two units from 22 on a number line correctly models 22 − 2 = 20."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of twenty-two, specifies the backward counting of two units, and provides four distinct multiple-choice options; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, decomposing the ones-place and tens-place arithmetic, and confirming the final answer."
+          "reasoning": "Number line context and counting back language are familiar and concrete for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty-two minus two correctly yields twenty; hints show that the ones-place subtraction is two minus two equals zero and the tens-place remains two minus zero equals two, yielding twenty total."
+          "reasoning": "22 − 2 = 20 is correct; no regrouping needed; hints accurately show place-value subtraction."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "f7c9567ebf0f2a51c790",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at fifteen, specifies backward counting by eight units, and asks what fifteen minus eight equals via multiple-choice format; options include eight (off by one), twenty-three (wrong operation), seven (correct), and six (off by one), with each distinct and unambiguous."
+          "reasoning": "Start at 15 on the number line and count back 8. What is 15 − 8? explicitly states position, direction, and quantity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at fifteen on a number line and counting backward by eight units represents a contextually valid Grade 2 scenario where spatial movement models the subtraction operation with a larger subtrahend, with the logical setup naturally following from the specified starting position and defined counting distance without contradiction."
+          "reasoning": "Counting back eight units from 15 on a number line is a valid model for 15 − 8 = 7."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of fifteen, specifies the backward counting of eight units, and provides four distinct multiple-choice options; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, describing borrowing, decomposing the arithmetic with borrowing, and confirming the final answer."
+          "reasoning": "Number line model with counting back supports Grade 2 understanding of subtraction operations."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus eight correctly yields seven; hints show that borrowing is required (ones digit five is less than eight), the borrowing computation is fifteen minus eight equals seven at the ones place (after borrowing one ten), the tens-place subtraction is zero minus zero equals zero (after the borrow), yielding seven total."
+          "reasoning": "15 − 8 = 7 is correct; regrouping is needed; hints show borrowing process accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "38321ab87cf9aee00a91",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes a number-line position at ninety, specifies backward movement of five steps, and asks for the landing position via cloze format; distractors include ninety-five (wrong operation), eighty-four (off by one), eighty-six (off by one), and eighty-five (correct), with each option distinct and unambiguous."
+          "reasoning": "A dot is at 90 on the number line. If you move back 5 steps, what number do you reach? is unambiguous about starting position and operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Beginning at ninety on a number line and moving backward by five steps is a contextually valid Grade 2 scenario with a slightly smaller minuend than previous similar samples, with the logical setup following naturally from the specified starting position and movement distance without contradiction."
+          "reasoning": "Moving back five steps from 90 on a number line directly models 90 − 5 = 85."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses number-line language to establish the starting position of ninety, specifies the backward movement of five steps, and requests the resulting position through a cloze blank; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, describing borrowing, decomposing the arithmetic with borrowing, and confirming the final answer."
+          "reasoning": "Number line language and movement action are concrete and accessible for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety minus five correctly yields eighty-five; hints show that borrowing is required (ones digit zero is less than five), the borrowing computation is ten minus five equals five at the ones place (after borrowing one ten), the tens-place subtraction is eight minus zero equals eight (after the borrow), yielding eighty-five total."
+          "reasoning": "90 − 5 = 85 is correct; regrouping is required; hints show borrowing process accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "552cd85e9984db2215fa",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Liza's solution to a number-line-based subtraction problem starting at fifteen and counting back two, with Liza providing the answer of fourteen; the error-detection format clearly requests judgment of correctness, and the answer is mathematically unambiguous because fifteen minus two correctly equals thirteen, not fourteen."
+          "reasoning": "Liza solved: Start at 15 on the number line and count back 2. The error-detection task clearly identifies the problem Liza solved."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The number-line scenario of starting at fifteen and counting back two is contextually valid for Grade 2, and the logical setup invites learners to identify Liza's computational error without contradiction or extraneous constraint."
+          "reasoning": "Liza's error of 14 when the correct answer is 13 is an intentional error-detection case for learner evaluation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes the number-line scenario (start at fifteen, count back two), identifies Liza's proposed answer (fourteen), and requests correctness judgment through error-detection format; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, decomposing the ones-place and tens-place arithmetic, and confirming the correct final answer of thirteen."
+          "reasoning": "Error-detection format with number line context is clear; students identify Liza's incorrect answer."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus two correctly equals thirteen, not fourteen as Liza claimed; this error-detection sample is mathematically valid because hints correctly identify that Liza's answer of fourteen is wrong and show that the ones-place subtraction is five minus two equals three and the tens-place remains one minus zero equals one, yielding thirteen total, demonstrating accurate computational error identification."
+          "reasoning": "15 − 2 = 13 is correct; Liza's answer of 14 is incorrect; has_error: True is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "sample_id": "addceb28ef37cc0849fb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents Manny's solution to a number-line-based subtraction problem starting at twenty and jumping back six units, with Manny providing the answer of twenty-six; the error-detection format clearly requests judgment of correctness, and the answer is mathematically unambiguous because twenty minus six correctly equals fourteen, not twenty-six."
+          "reasoning": "Manny solved: Starting at 20 on the number line, jump back 6 units. The error-detection task is clear about which problem Manny solved."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The number-line scenario of starting at twenty and moving backward by six units is contextually valid for Grade 2, and the logical setup invites learners to identify a significant conceptual error (addition instead of subtraction) without contradiction or extraneous constraint."
+          "reasoning": "Manny's error of 26 (suggesting he added instead of subtracted) is an intentional error-detection case for learning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem establishes the number-line scenario (start at twenty, jump back six units), identifies Manny's proposed answer (twenty-six), and requests correctness judgment through error-detection format; the language grounds the operation in spatial movement, and hints support learners by identifying the operation, describing borrowing, decomposing the arithmetic, and confirming the correct final answer of fourteen."
+          "reasoning": "Error-detection with number line language helps students identify operational errors (addition vs. subtraction)."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus six correctly equals fourteen, not twenty-six as Manny claimed; this error-detection sample is mathematically valid because hints correctly show that borrowing is required (ones digit zero is less than six), the borrowing computation is ten minus six equals four at the ones place (after borrowing one ten), the tens-place subtraction is one minus zero equals one (after the borrow), yielding fourteen total, accurately demonstrating Manny's fundamental operation reversal."
+          "reasoning": "20 − 6 = 14 is correct; Manny's answer of 26 is incorrect; has_error: True is right."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     }
   ],
   "clause_evidence": [
@@ -2072,7 +2072,7 @@
       "requirement_id": "illustrate_subtraction",
       "clause": "Illustrate subtraction",
       "verdict": "PASS",
-      "reasoning": "All twenty-nine samples present and illustrate subtraction across multiple contexts and response formats: stems directly request subtraction results, hints decompose operations into column-wise steps, error-detection samples invite comparison between proposed and correct answers, and the consistent presentation of the operation across varying difficulty levels demonstrates comprehensive illustrative coverage of subtraction as a mathematical operation.",
+      "reasoning": "Every one of the 26 samples demonstrates subtraction through multiple pedagogical contexts: direct fill-in-the-blank calculation, inverse-of-addition framing, number line models, and error-detection evaluation, ensuring comprehensive illustration of the subtraction concept.",
       "sample_ids": [
         "a14db35fd0fc10952d58",
         "e39a158ffbb668826a97",
@@ -2104,14 +2104,14 @@
         "552cd85e9984db2215fa",
         "addceb28ef37cc0849fb"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "requirement_id": "2_digit_by_1_digit",
       "clause": "2-digit by 1-digit",
       "verdict": "PASS",
-      "reasoning": "All twenty-nine samples test subtraction where a one-digit number is subtracted from a two-digit number across the full grade-appropriate range: minuends span from ten through ninety-three and subtrahends span from one through nine, ensuring consistent coverage of the two-digit-by-one-digit operation type throughout the collection without exception or deviation.",
+      "reasoning": "All 26 samples involve subtraction of a 1-digit number (ranging from 1 to 9) from a 2-digit number (ranging from 10 to 93), consistently maintaining the specified grade-level magnitude constraint for Grade 2 Quarter 2.",
       "sample_ids": [
         "a14db35fd0fc10952d58",
         "e39a158ffbb668826a97",
@@ -2143,102 +2143,91 @@
         "552cd85e9984db2215fa",
         "addceb28ef37cc0849fb"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "requirement_id": "number_line",
       "clause": "number line",
       "verdict": "CONCERN",
-      "reasoning": "Approximately seventeen samples employ explicit number-line language through references to dots, positions, backward movement, jumping, or counting sequences in their stems (samples involving movement from or starting at specified positions, with backwards action language), while approximately twelve samples emphasize abstract inverse-of-addition relationships without employing number-line framing or position-based language; this creates an imbalance in the coverage of the number-line representation component within the requirement, as not all samples illustrate subtraction specifically on the number line.",
+      "reasoning": "Eighteen of the 26 samples explicitly reference number line representations using language such as dot, move back, jump, or count back, but eight samples omit number line context, relying solely on inverse-of-addition framing or abstract problem statements without explicit number line visualization language.",
       "sample_ids": [
         "a14db35fd0fc10952d58",
         "bdd6d2bda50f2adcf5a3",
+        "477d973e53287942776f",
         "f4bddfaaf16c639b998a",
+        "7c7b37fe476e2a61452d",
+        "0c38641b00889b41aecc",
+        "494a5e31c896fdfb8bde",
         "8e796e7da0ae6116646f",
         "0e3cd53d41bd269fa70b",
         "7fda5a4a632b49a9183b",
+        "90be6f62ee2b52278f79",
         "03c0c9c10cef6fc6a95c"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     },
     {
       "requirement_id": "inverse_of_addition",
       "clause": "inverse of addition",
       "verdict": "PASS",
-      "reasoning": "All twenty-nine samples present the inverse-of-addition relationship across multiple formats: many stems explicitly show addition-subtraction pairs in the form of conditional statements naming both operations, error-detection samples invite verification using the inverse, and all samples include hints that reinforce the connection between addition facts and subtraction results, ensuring comprehensive coverage of this core mathematical relationship throughout the collection.",
+      "reasoning": "Thirteen samples explicitly frame subtraction as the inverse of addition through hint statements or problem setup such as If 89 + 4 = 93, then 93 − 4 = 89 or Since 84 + 9 = 93, what is 93 − 9?, demonstrating and reinforcing this critical conceptual relationship throughout the packet.",
       "sample_ids": [
         "a14db35fd0fc10952d58",
-        "e39a158ffbb668826a97",
-        "2d76463df1194d4dbd15",
-        "bdd6d2bda50f2adcf5a3",
-        "7dad08cf0721e9d4e36c",
         "477d973e53287942776f",
         "f4bddfaaf16c639b998a",
         "7c7b37fe476e2a61452d",
         "0c38641b00889b41aecc",
         "fa0bebf38dec761c37c5",
-        "40bdbb1dc23b35c29cec",
         "190638a0cb01081efc99",
         "494a5e31c896fdfb8bde",
         "8e796e7da0ae6116646f",
         "0e3cd53d41bd269fa70b",
         "7fda5a4a632b49a9183b",
-        "d82a83d1b16050d77e25",
         "90be6f62ee2b52278f79",
-        "2d018f34ec3e746f306b",
-        "ec85e81ad0c6acb4eaa8",
-        "03c0c9c10cef6fc6a95c",
-        "2bb54c69acd5ac324df9",
-        "9a034fda747d9002bed0",
-        "b1ac4649d27813e06101",
-        "1b7994c30cb2b7b09800",
-        "f7c9567ebf0f2a51c790",
-        "38321ab87cf9aee00a91",
-        "552cd85e9984db2215fa",
-        "addceb28ef37cc0849fb"
+        "03c0c9c10cef6fc6a95c"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925:mat_g2_na_q2_3",
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_3-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3:mat_g2_na_q2_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_3-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "cca17ea17caba438ef6b2b7e2450af5613f8df9443700be7280dd4a6dcdf7040",
+      "packet_digest": "a85bc7c9cd30bd5a325c92ed804a665cc7bb80c5b18f2f68b879a9a9b0f30723",
       "clause_ids": [
         "illustrate_subtraction",
         "2_digit_by_1_digit",
         "number_line",
         "inverse_of_addition"
       ],
-      "response_ref": ".responses/s5-phaseC-w4-haiku45-20260925.json",
-      "response_digest": "a120083f0018a14612e241620ed6e2115b037f3c6b9b20a9e652e23db5d0379e",
-      "prompt_ref": ".responses/s5-phaseC-w4-haiku45-20260925.prompt.txt",
-      "prompt_digest": "f12bf88a5de0dde28b516561deb73946145f4d1aecac226bc877a9bfba24dcec",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q2_3/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (overall CONCERN beside 3 FAIL sample checks; 4 generic repeated reasonings). Asked to reconcile by its own judgment and told not to soften a verdict merely to fit overall, the REVIEWER changed mathematical_validity FAIL -> PASS on samples 9a034fda, 552cd85e, addceb28 (13 tool uses), stating they are valid error-detection items. VERDICT CHANGE DISCLOSED; note the original FAIL reasonings themselves described correct items (the pupil's claimed answer is wrong and the hints show why), so the change reconciles verdict with reasoning. Originals preserved in verdicts.v1.json. The dispatcher edited no verdict."
+      "response_ref": ".responses/s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3.json",
+      "response_digest": "7cc75a17397b5f098d872bc0ac2229de49df0490d9286c6ee16645a0a9afe8cb",
+      "prompt_ref": ".responses/s5-phaseE-claude-w10-haiku45-20260930-mat_g2_na_q2_3.prompt.txt",
+      "prompt_digest": "332b5feaeeab567797a785582edf7c5d4d166644d5e65d0ca0f8421a4f39c085",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q2_3/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: none returned (agent ended by an API session limit after writing its reply) tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All twenty-nine samples employ Grade 2, Quarter 2 appropriate complexity levels, with subtraction problems spanning ranges from single tens to ninety, manageable borrowing scenarios requiring concrete conceptual understanding but not excessive procedural demand, and response formats suitable for early elementary learners including direct fill-in-blank cloze, multiple-choice selection, true-or-false judgment, and error-detection reasoning."
+      "rationale": "Problems present 2-digit minus 1-digit subtraction with developmentally appropriate complexity for Grade 2 Quarter 2, balancing cases requiring and not requiring regrouping to match emerging learner skill."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency requires illustrating subtraction on the number line and as an inverse of addition. While approximately seventeen samples employ explicit number-line language through mentions of dots, positions, backward movement, or counting sequences, approximately twelve samples focus primarily on demonstrating the inverse-of-addition relationship without employing number-line framing, creating an imbalance in the emphasis between the two core aspects the competency names."
+      "verdict": "PASS",
+      "rationale": "All 26 samples directly assess the subtraction of 2-digit by 1-digit values; most samples reinforce inverse of addition and number line concepts as dual pedagogical approaches."
     },
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Decomposition analysis reveals four required elements: illustrate-subtraction (supported across all samples through operations and hints), two-digit-by-one-digit (consistently demonstrated across the range from 10 minus 4 through 93 minus 9), inverse-of-addition (shown through hints and stems naming addition-subtraction pairs), and number-line illustration (present in approximately fifty-eight percent of samples but absent from others that emphasize abstract inverse relationships), resulting in incomplete lossless decomposition coverage.",
+      "rationale": "The four required components appear across the sample set but are not uniformly distributed across individual items; some samples emphasize one approach over the other.",
       "decomposition": {
         "verdict": "CONCERN",
-        "reasoning": "The number-line requirement component is not represented across all samples; approximately twelve samples (those presenting abstract inverse-of-addition pairs without explicit number-line references such as dots, positions, or backward movement) leave the number-line aspect of the competency underspecified within the overall sample pool.",
+        "reasoning": "The decomposition identifies four components, yet not all appear together in every sample; number line appears explicitly in 18 of 26 stems, while inverse of addition appears in approximately 13 of 26 samples, leaving partial coverage rather than lossless unified coverage.",
         "requirement_ids": [
           "illustrate_subtraction",
           "2_digit_by_1_digit",
@@ -2254,8 +2243,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The sample set includes twenty-nine items addressing multiple operations, contexts, response formats including cloze, multiple-choice, true-false, and error-detection, and both borrowing-required and non-borrowing cases. However, three samples (seeds 604, 608, and 700) present the identical problem of subtracting two from fifteen with three different student-solver names, creating substantive duplication. Additionally, approximately forty percent of samples omit the number-line representation aspect, limiting comprehensive conceptual coverage required by the named competency.",
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates coverage across subtraction cases with and without regrouping, multiple problem formats (cloze, multiple-choice, true-false, error-detection), and both affirmative and corrective error scenarios.",
       "clause_ids": [
         "illustrate_subtraction",
         "2_digit_by_1_digit",
@@ -2265,11 +2254,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All operations maintain consistent Grade 2, Quarter 2 appropriateness with two-digit minuends ranging from ten through ninety-three and one-digit subtrahends ranging from one through nine, resulting in single-digit or double-digit differences aligned with student number sense development at this level, and problem contexts use grade-appropriate language and scenarios without exceeding working-memory or conceptual demands."
+      "rationale": "Minuends range from 10 to 93 and subtrahends range from 1 to 9, which falls squarely within the 2-digit by 1-digit requirement for Grade 2 Quarter 2 curriculum."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Multiple response formats span cloze (six samples), multiple-choice (eight samples), true-false (six samples), and error-detection (nine samples), with diverse problem contexts including number-line navigation, inverse-of-addition pairs, error identification with incorrect student answers, and themed scenarios with emojis. However, substantial duplication appears where three samples test subtracting two from fifteen using the same number pair, same inverse relationship (thirteen plus two equals fifteen), and effectively identical mathematical challenges despite different surface names (Carlo, Rico, Carlo), significantly reducing claimed variety within the collection."
+      "verdict": "PASS",
+      "rationale": "Problems span four distinct formats: cloze (fill-in-the-blank), multiple-choice, true-false, and error-detection; both themed and non-themed versions appear, offering variety in presentation."
     }
   },
   "overall": "CONCERN"

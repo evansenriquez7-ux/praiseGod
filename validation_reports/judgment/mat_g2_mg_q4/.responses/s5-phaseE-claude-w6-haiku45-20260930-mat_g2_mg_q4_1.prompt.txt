@@ -1,0 +1,294 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe6-mat_g2_mg_q4_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_mg_q4_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe6-mat_g2_mg_q4_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q4_1
+PACKET DIGEST: d5dab6fb6402974a2fd18fe8a7cc71b5168244859b10bc44a0201b4f9f114dba
+COMPETENCY (Grade 2, Quarter 4, None):
+Read and write time in hours and minutes, with a.m. and p.m., using an analog clock.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  read: Read
+  write: write
+  time: time
+  hours: hours
+  minutes: minutes
+  am_and_pm: a.m. and p.m.
+  analog_clock: analog clock
+
+SAMPLES (every one of these is real rendered output):
+  sample b7ba2980544cc5ae52ae  seed 42  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  1:00 p.m.
+      options: 1:00 p.m. / 2:00 p.m. / 12:00 p.m. / 1:05 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 1.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 1:00 p.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "01:00", "PM", "PM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6feef745ef8cd5f4c26f  seed 43  [set_fill_in_blank]
+      stem:    Set the clock to show 5:00 a.m.
+      answer:  5:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 5.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 5:00 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cfac02e4652b44fff28b  seed 44  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  9:40 a.m.
+      options: 9:40 a.m. / 10:40 a.m. / 8:40 a.m. / 9:35 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 9.", "Count by 5s from 12: the long hand has passed 8 marks, so the minutes are 40.", "The time is 9:40 a.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "09:40", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a54af762706ebffabaaf  seed 45  [set_fill_in_blank]
+      stem:    Set the clock to show 7:45 p.m.
+      answer:  7:45 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 7.", "The long (minute) hand points to 9, so the minutes are 45.", "The time is 7:45 p.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a4d7684af0be63a86029  seed 46  [set_fill_in_blank]
+      stem:    Set the clock to show 7:00 a.m.
+      answer:  7:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 7.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 7:00 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a9d2c5ccc05b681d5b4f  seed 500  [set_fill_in_blank]
+      stem:    Set the clock to show 9:45 p.m.
+      answer:  9:45 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 9.", "The long (minute) hand points to 9, so the minutes are 45.", "The time is 9:45 p.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e0afaa1b08972c8f82ef  seed 501  [set_fill_in_blank]
+      stem:    Set the clock to show 11:45 a.m.
+      answer:  11:45 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 11.", "The long (minute) hand points to 9, so the minutes are 45.", "The time is 11:45 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b9f03faa5764cfc2e79b  seed 502  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  6:10 p.m.
+      options: 6:10 p.m. / 10:06 p.m. / 7:10 p.m. / 5:10 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 6.", "Count by 5s from 12: the long hand has passed 2 marks, so the minutes are 10.", "The time is 6:10 p.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "06:10", "PM", "PM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0a5e7b9bfd8c7f72ae56  seed 600  [set_fill_in_blank]
+      stem:    Set the clock to show 6:45 a.m.
+      answer:  6:45 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 6.", "The long (minute) hand points to 9, so the minutes are 45.", "The time is 6:45 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b5d03c164202abba088a  seed 603  [set_fill_in_blank]
+      stem:    Set the clock to show 9:30 p.m.
+      answer:  9:30 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 9.", "The long (minute) hand points to 6, so the minutes are 30.", "The time is 9:30 p.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3c844e3aef99621650b5  seed 605  [set_fill_in_blank]
+      stem:    Set the clock to show 3:30 p.m.
+      answer:  3:30 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 3.", "The long (minute) hand points to 6, so the minutes are 30.", "The time is 3:30 p.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 142aabeb120cefb79963  seed 606  [set_fill_in_blank]
+      stem:    Set the clock to show 12:00 a.m.
+      answer:  12:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 12.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 12:00 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3cbc39ffac5d8198cdf2  seed 700  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  4:30 p.m.
+      options: 3:30 p.m. / 4:30 p.m. / 5:30 p.m. / 4:25 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 4.", "The long (minute) hand points to 6, so the minutes are 30.", "The time is 4:30 p.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "04:30", "PM", "PM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dc8cf10fdc80b44cb837  seed 701  [set_fill_in_blank]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Set the clock to show 8:15 a.m.
+      answer:  8:15 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 8.", "The long (minute) hand points to 3, so the minutes are 15.", "The time is 8:15 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5706313171483999accc  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. What time does the clock show?
+      answer:  3:00 a.m.
+      options: 3:05 a.m. / 3:00 a.m. / 4:00 a.m. / 2:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 3.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 3:00 a.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "03:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c873615954738267151e  seed 800  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  10:00 p.m.
+      options: 10:05 p.m. / 11:00 p.m. / 9:00 p.m. / 10:00 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 10.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 10:00 p.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "10:00", "PM", "PM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7b35ff204d5d79fdc3a3  seed 900  [set_fill_in_blank]
+      stem:    Set the clock to show 4:23 a.m.
+      answer:  4:23 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 4.", "Count by 5s from 12 to the last number the long hand has passed: 4 fives make 20 minutes.", "Then count on the small marks one at a time: 20 + 3 = 23, so the minutes are 23.", "The time is 4:23 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8ddc6b3c09fe66a887ac  seed 901  [set_fill_in_blank]
+      stem:    Set the clock to show 11:20 a.m.
+      answer:  11:20 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 11.", "Count by 5s from 12: the long hand has passed 4 marks, so the minutes are 20.", "The time is 11:20 a.m."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "12:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e1401d7738a6b1ed78c7  seed 1000  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  11:05 p.m.
+      options: 11:05 p.m. / 10:05 p.m. / 12:05 p.m. / 5:11 p.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 11.", "Count by 5s from 12: the long hand has passed 1 mark, so the minutes are 5.", "The time is 11:05 p.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "11:05", "PM", "PM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1ae1cd3af9359afab787  seed 1001  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  4:00 a.m.
+      options: 4:00 a.m. / 3:00 a.m. / 4:05 a.m. / 5:00 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 4.", "The long (minute) hand points to 12, so the minutes are 00.", "The time is 4:00 a.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "04:00", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample eea61f274ba083a9ae9a  seed 1002  [read_mcq]
+      stem:    What time does the clock show?
+      answer:  10:26 a.m.
+      options: 10:21 a.m. / 11:26 a.m. / 9:26 a.m. / 10:26 a.m.
+      hints:   ["The short hand shows the hour. The long hand shows the minutes.", "The short (hour) hand points near 10.", "Count by 5s from 12 to the last number the long hand has passed: 5 fives make 25 minutes.", "Then count on the small marks one at a time: 25 + 1 = 26, so the minutes are 26.", "The time is 10:26 a.m."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ClockSet", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ClockSet
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ClockSet", "element_count": 38, "svg_count": 4, "table_row_count": 0, "table_cell_count": 0, "button_count": 7, "input_count": 0, "text_labels": ["🕐 Hour Hand", "🕐 Minute Hand", "Hour (short)", "Minute (long)", "10:26", "AM", "AM", "HOURS", "MINUTES", "Choose a hand above, then click the clock to set time • Use +/- for precision"], "distinct_colours": ["#8891a8", "#8b5cf6", "#06b6d4", "hsl(var(--text)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

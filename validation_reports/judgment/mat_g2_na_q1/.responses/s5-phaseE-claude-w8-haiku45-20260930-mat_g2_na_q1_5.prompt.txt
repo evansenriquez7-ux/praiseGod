@@ -1,0 +1,240 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe8-mat_g2_na_q1_5-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_na_q1_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe8-mat_g2_na_q1_5-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_5
+PACKET DIGEST: 645ddb39cec9061143b8b33a9435041253b4ab66518c6d5f3f1e970fa345cb04
+COMPETENCY (Grade 2, Quarter 1, None):
+Describe the position of objects using ordinal numbers up to 20th.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  describe_position: Describe the position
+  objects: objects
+  ordinal_numbers: ordinal numbers
+  up_to_20th: up to 20th
+
+SAMPLES (every one of these is real rendered output):
+  sample 453b9bb1d0337106582c  seed 42  [mcq]
+      stem:    Which word describes the 9th position?
+      answer:  ninth
+      options: seventeenth / ninth / third / eighteenth
+      hints:   ["Ordinal numbers describe order in order.", "The number 9 in order is called the 9th (ninth).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a4ebc2175e9e90b54832  seed 43  [mcq]
+      stem:    Write the symbol for the fifth position.
+      answer:  5th
+      options: 12th / 5th / 3rd / 15th
+      hints:   ["Ordinal numbers describe order in order.", "The number 5 in order is called the 5th (fifth).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d94bcec00a2bb97e3d29  seed 44  [cloze]
+      stem:    Ana, Ben, Carlo, Dina, Elena and Fidel stand in a row. Who is 6th in the row?
+      answer:  Fidel
+      options: Ana / Fidel / Elena / Carlo
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 6th (sixth) place is position number 6.", "Find the object standing at position 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 14c416c130e847a96cf3  seed 45  [mcq]
+      stem:    Which position comes after 16th?
+      answer:  17th
+      options: 17th / 19th / 20th / 4th
+      hints:   ["Smaller ordinal numbers come earlier (closer to the start).", "Compare the numbers: the smaller ordinal position is earlier.", "16th means position 16."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2b3d9357f627cdb5ef05  seed 46  [cloze]
+      stem:    Write the symbol for the second position.
+      answer:  2nd
+      options: 17th / 2nd / 15th / 5th
+      hints:   ["Ordinal numbers describe order in order.", "The number 2 in order is called the 2nd (second).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 31af1f9c101be1e20c1a  seed 500  [mcq]
+      stem:    The baskets are placed in a row. One basket is number 20 in the row. Which word describes its position?
+      answer:  twentieth
+      options: twentieth / thirteenth / ninth / eighth
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 20th (twentieth) place is position number 20.", "Find the object standing at position 20."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 991b4d5d6bade397b100  seed 501  [mcq]
+      stem:    Which position comes after 19th?
+      answer:  20th
+      options: 20th / 7th / 5th / 10th
+      hints:   ["Smaller ordinal numbers come earlier (closer to the start).", "Compare the numbers: the smaller ordinal position is earlier.", "19th means position 19."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3814496f4ca50f1c2c08  seed 502  [cloze]
+      stem:    Who arrived earlier: the student in 20th place or 6th place?
+      answer:  6th
+      options: 16th / 7th / 6th / 8th
+      hints:   ["Smaller ordinal numbers come earlier (closer to the start).", "Compare the numbers: the smaller ordinal position is earlier.", "20th means position 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e43c44e937157d7664dd  seed 600  [mcq]
+      stem:    Which position comes after 12th?
+      answer:  13th
+      options: 11th / 13th / 18th / 19th
+      hints:   ["Smaller ordinal numbers come earlier (closer to the start).", "Compare the numbers: the smaller ordinal position is earlier.", "12th means position 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 911f343cf0a244ad5856  seed 601  [cloze]
+      stem:    The pupils stand in a row. Iris is number 19 in the row. Which word describes Iris's position?
+      answer:  nineteenth
+      options: eleventh / third / seventeenth / nineteenth
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 19th (nineteenth) place is position number 19.", "Find the object standing at position 19."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 992f05fb9dc4345e4ce5  seed 602  [mcq]
+      stem:    What ordinal describes position number 6?
+      answer:  6th
+      options: 3rd / 14th / 6th / 15th
+      hints:   ["'Sixth' is an order word word.", "Count positions from the start: 1st, 2nd, 3rd, … until you reach sixth.", "Sixth = position 6, written as 6th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 76e99aed3e62170d3aaa  seed 603  [mcq]
+      stem:    Which word describes the 18th position?
+      answer:  eighteenth
+      options: third / thirteenth / eighteenth / fifth
+      hints:   ["Ordinal numbers describe order in order.", "The number 18 in order is called the 18th (eighteenth).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 39b1911cb4a8079f1b4c  seed 700  [mcq]
+      stem:    A runner is at position number 15. In what place did the runner finish?
+      answer:  15th
+      options: 17th / 5th / 15th / 13th
+      hints:   ["'Fifteenth' is an order word word.", "Count positions from the start: 1st, 2nd, 3rd, … until you reach fifteenth.", "Fifteenth = position 15, written as 15th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3a484f1c45f6489c9746  seed 701  [cloze]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Which position comes after 4th?
+      answer:  5th
+      options: 8th / 7th / 5th / 14th
+      hints:   ["Smaller ordinal numbers come earlier (closer to the start).", "Compare the numbers: the smaller ordinal position is earlier.", "4th means position 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3f57cee5ae83b06ca289  seed 702  [cloze]
+      stem:    🏀 Marco enjoys jerseys. Here is a math challenge. Which word describes the 1st position?
+      answer:  first
+      options: first / twelfth / twentieth / fourteenth
+      hints:   ["Ordinal numbers describe order in order.", "The number 1 in order is called the 1st (first).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7208c92555856783762d  seed 800  [cloze]
+      stem:    The pupils stand in a row. Jose is number 20 in the row. Which word describes Jose's position?
+      answer:  twentieth
+      options: nineteenth / seventh / twentieth / eighteenth
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 20th (twentieth) place is position number 20.", "Find the object standing at position 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 73d247aab117101ff430  seed 900  [mcq]
+      stem:    What ordinal describes position number 19?
+      answer:  19th
+      options: 14th / 19th / 13th / 15th
+      hints:   ["'Nineteenth' is an order word word.", "Count positions from the start: 1st, 2nd, 3rd, … until you reach nineteenth.", "Nineteenth = position 19, written as 19th."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0b5ac31450d7c0cd2215  seed 901  [mcq]
+      stem:    The spoons are placed in a row. One spoon is number 19 in the row. Which word describes its position?
+      answer:  nineteenth
+      options: nineteenth / second / fourth / third
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 19th (nineteenth) place is position number 19.", "Find the object standing at position 19."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8a6b8e60eb06433b06d6  seed 1000  [mcq]
+      stem:    The pupils stand in a row. Carlo is number 13 in the row. Which word describes Carlo's position?
+      answer:  thirteenth
+      options: first / fifth / thirteenth / tenth
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 13th (thirteenth) place is position number 13.", "Find the object standing at position 13."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample b85afed9cccce15e825c  seed 1001  [cloze]
+      stem:    Which word describes the 3rd position?
+      answer:  third
+      options: sixteenth / fourth / sixth / third
+      hints:   ["Ordinal numbers describe order in order.", "The number 3 in order is called the 3rd (third).", "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample a567f641f9094ce604ce  seed 1002  [cloze]
+      stem:    The pupils stand in a row. Elena is number 5 in the row. Which word describes Elena's position?
+      answer:  fifth
+      options: fifth / eighteenth / sixteenth / third
+      hints:   ["Count the objects in order from the front: 1st, 2nd, 3rd, …", "The 5th (fifth) place is position number 5.", "Find the object standing at position 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

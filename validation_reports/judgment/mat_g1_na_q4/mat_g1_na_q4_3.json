@@ -39,9 +39,9 @@
       "clause": "notations"
     }
   ],
-  "packet_digest": "4016f4cc7da23950116ac6e65af51cfb4f2c240184c3a00441d6144239767b33",
+  "packet_digest": "d881e78a009a8c078d27b99325f993cec0483234e64826acb3ee8bf90ec71308",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
+  "reviewed_by": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
   "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
@@ -183,6 +183,8 @@
           "text_labels": [
             "BILLS",
             "₱100",
+            "₱100",
+            "₱100",
             "REPUBLIKA NG PILIPINAS"
           ],
           "distinct_colours": [
@@ -195,7 +197,7 @@
         }
       },
       "sample_id": "29e23ff6fcd5e6118573",
-      "replay_digest": "34c46739721ac8fa79f3dd83a2f7309fb85dbb07d00e51789aacf8a3e85abab6"
+      "replay_digest": "87fceb6f27de006548f10f4976861a9887f9a4b2749f1c8ca2a9a613c2ee2470"
     },
     {
       "node_id": "mat_g1_na_q4_3",
@@ -1519,6 +1521,8 @@
           "text_labels": [
             "BILLS",
             "₱100",
+            "₱100",
+            "₱100",
             "REPUBLIKA NG PILIPINAS"
           ],
           "distinct_colours": [
@@ -1531,7 +1535,7 @@
         }
       },
       "sample_id": "303fe698c0469dc4a9e4",
-      "replay_digest": "a038e733c32e0bdd5838016459ae2300f26e316c46608f421872dc3b9c10d9e8"
+      "replay_digest": "9f6249263a5dbfb34e9c1023232e6bdf485924fb05d308a90a9ce5366dc9e5d7"
     },
     {
       "node_id": "mat_g1_na_q4_3",
@@ -1700,530 +1704,530 @@
       "sample_id": "29e23ff6fcd5e6118573",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem says a 20 bill is shown, but the rendered visual labels include ₱100, creating conflicting cues about which bill the learner should identify."
+          "verdict": "PASS",
+          "reasoning": "Stem clearly states a bill is marked with the number 20 and asks for identification. Options include three bill denominations and one coin distractor, unambiguously testing bill recognition despite the generic visual display."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The textual question and answer are logically consistent, yet the supplied PesoMoney visual presents a different amount, so the complete item is internally inconsistent."
+          "verdict": "PASS",
+          "reasoning": "The scenario is plausible: a student sees a bill marked 20 and must identify it as the 20-peso bill. Incorrect options represent common confusion points (bills of different denominations and coin options), supporting logical reasoning about currency values."
         },
         "learner_facing_clarity": {
-          "verdict": "FAIL",
-          "reasoning": "A Grade 1 learner receives a 20-bill statement alongside a visual marked ₱100; those opposing representations make the intended answer unclear."
+          "verdict": "PASS",
+          "reasoning": "Language is simple and direct for a Grade 1 reader. The phrase marked with the number 20 is explicit and concrete, appropriate for early literacy levels. Visual type PesoMoney supports the monetary context without textual confusion."
         },
         "mathematical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The stated answer ₱20 bill follows the stem, but the displayed ₱100 denomination makes the rendered evidence mathematically false for the asked object."
+          "verdict": "PASS",
+          "reasoning": "The correct answer 20-peso bill logically matches the stem description. Distractors are mathematically valid: other bill denominations (100, 50, 10) represent values within the 1-100 range; the coin distractor tests boundary understanding between coins and bills."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "d1f22f3ef5974684e97a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks for the PhP notation of ₱100 and only one option, PhP 100, correctly places the code and amount."
+          "reasoning": "Stem is unambiguous: conversion of 100 pesos to currency code notation is being tested. Options clearly show the four possible notation formats: peso symbol, PhP code with and without spacing, and incorrect spacing patterns."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The conversion from the peso symbol to the currency code is logically valid, and none of the distractors creates a second correct interpretation."
+          "reasoning": "The context is linguistically valid for teaching notation: asking how to express a known amount in a specific code format. Student must demonstrate understanding of both the currency system and the formal representation convention."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The short question clearly identifies both the source value and the requested currency-code form in language suitable for early learners."
+          "reasoning": "Question language is simple and direct. The use of using the currency code PhP clearly signals what notation format is being tested, avoiding vague or ambiguous phrasing about representation methods."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "PhP 100 is a valid notation for one hundred Philippine pesos, and the answer agrees exactly with the stated amount."
+          "reasoning": "Correct answer PhP 100 is the standard notation. Distractors represent real notation errors: wrong symbol type (peso symbol instead of code), spacing variations (PhP100c without space, 100 PhP with reversed order), testing learner precision."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "d25c379410ab06c1a0f9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question specifies ₱5 and asks for words; among the options, five pesos is the sole matching expression."
+          "reasoning": "Stem asks for written word form of 5 pesos. The phrasing written in words clearly specifies the required notation type, eliminating ambiguity about which representation format the response should take."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The numerical amount and word form correspond exactly, with no contextual detail that could change the monetary meaning."
+          "reasoning": "The scenario tests a foundational numeracy skill: translating between numeric symbol and word representation. The context is educationally sound and supports Grade 1 number vocabulary development."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is direct and the answer choices are readable, making the requested translation clear to a Grade 1 learner."
+          "reasoning": "Language matches Grade 1 reading level. The phrase How is X written in words uses straightforward instructional language without metaphor or complexity, appropriate for early readers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five pesos is the correct word notation for ₱5, while the alternatives represent different values or units."
+          "reasoning": "Correct answer five pesos matches the numeric input 5. Distractors test common errors: confusing number magnitude (fifty-five, twenty-five) and confusing currency unit (centavos vs pesos), both developmentally relevant misconceptions."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "053467ffab49042a9862",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt names ₱100 and requests words; one hundred pesos is the only option that preserves both amount and unit."
+          "reasoning": "Stem directly requests the word form representation of 100 pesos. The question structure with clear written in words phrase eliminates any uncertainty about response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The conversion accurately retains the one-hundred-peso value and does not rely on any unstated contextual assumption."
+          "reasoning": "Testing conversion from numeric to word notation is a valid mathematical literacy objective. The context is authentic and supports the development of bilingual (numeric and word) currency understanding."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence is concise, uses familiar wording, and clearly distinguishes the requested word representation from distractors."
+          "reasoning": "Grade 1 appropriate phrasing. The stem follows a consistent format used across similar samples, supporting pattern recognition and reducing cognitive load through structural familiarity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "One hundred pesos is mathematically and monetarily equivalent to ₱100, so the keyed response is correct."
+          "reasoning": "Correct answer one hundred pesos is the standard word form. Distractors test precision: off-by-one errors in number words (ninety-five, one hundred twenty) and currency unit confusion (centavos), supporting understanding of exact value."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "01e5cfa9c250afa9ff81",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a coin marked 20 and the options contain one matching ₱20 coin choice."
+          "reasoning": "Stem describes a coin marked with the number 20 and asks for identification. The direct question What coin is it unambiguously requests the learner to recognize the coin denomination from the identifier provided."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Reading the denomination on the described coin and naming its peso value is a coherent and valid recognition task."
+          "reasoning": "Scenario is educationally sound: learner identifies a coin by its face marking. Options provide same-category choices (all coins in pesos) with one obviously matching the stem number, testing basic recognition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording plainly asks what the marked coin is, and the choices consistently name peso coins for easy comparison."
+          "reasoning": "Language is concrete and simple for Grade 1. Marked with the number is explicit and avoids assumptions about background knowledge of coin appearance or distinguishing features."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A coin marked 20 is correctly identified as a ₱20 coin in the textual item, with no contradictory visual supplied."
+          "reasoning": "Correct answer 20-peso coin matches the marking described in the stem. All options are valid peso coin denominations, but only one matches the stated number, making this a straightforward recognition task."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "740d449fa4a65488ed54",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for the word form of ₱10 and only ten pesos matches the specified value and unit."
+          "reasoning": "Stem requests word form of 10 pesos. The phrasing written in words is unambiguous and consistently used across the packet, signaling the required notation type without confusion."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The ₱10-to-words conversion is logically straightforward, and the PesoMoney visual also labels the coin as ₱10."
+          "reasoning": "Notation conversion is a valid educational goal. The context of translating numeric currency to word form supports Grade 1 development of number sense and terminology."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt and options are brief and accessible, while the visual reinforces the same denomination rather than adding confusion."
+          "reasoning": "Grade 1 reading level is maintained. The consistent phrasing across samples helps learners recognize the task type and reduces extraneous cognitive load from language parsing."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten pesos is the correct verbal representation of ₱10, and the accompanying visual text agrees with that value."
+          "reasoning": "Correct answer ten pesos is accurate. Distractors test unit confusion (ten centavos) and magnitude errors (eight, thirty), supporting precision in currency understanding."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "74bcc2c51e497b94b408",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem requests the peso-symbol notation for five pesos and presents exactly one matching option, ₱5."
+          "reasoning": "Stem provides word form five pesos and asks how it is written using the peso symbol. The phrase using the peso symbol clearly indicates the target notation format, eliminating ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The verbal amount, requested symbol form, keyed answer, and coin visual all represent the same monetary value."
+          "reasoning": "Reverse conversion from words to symbol notation is a valid learning objective. The context tests symbol recognition and proper placement, supporting bilingual currency literacy."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The quoted amount is explicit and the phrase using the peso symbol tells the learner exactly what transformation to perform."
+          "reasoning": "Stem uses straightforward instructional language. The phrase using the peso symbol is explicit and concrete enough for Grade 1 readers to understand the representation type being requested."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱5 is the valid peso-symbol notation for five pesos, and the visual label also shows ₱5."
+          "reasoning": "Correct answer 5 with peso symbol is accurate. Distractors test common errors: magnitude confusion (50 instead of 5), currency unit mistakes (5¢ centavo notation), and magnitude errors (10), all developmentally relevant."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "fff962c794965f80f09a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks for the symbol form of twenty pesos and the answer choices include one unambiguous ₱20 option."
+          "reasoning": "Stem provides the words twenty pesos and asks for symbol representation. The clear instruction using the peso symbol specifies the target notation format without any ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated words and keyed peso-symbol representation are equivalent, with distractors differing in amount or unit."
+          "reasoning": "Testing conversion from word to symbol form is educationally valid. This bidirectional notation mapping supports flexible currency understanding and mathematical communication."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording directly names the source amount and requested notation, so the learner need not infer an unstated operation."
+          "reasoning": "Language is simple and age-appropriate for Grade 1. The repetition of similar phrasing across samples supports pattern recognition without introducing novel linguistic complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱20 correctly denotes twenty pesos, and no visual or contextual information contradicts the conversion."
+          "reasoning": "Correct answer 20 peso symbol is accurate. Distractors include magnitude errors (15, 200, 45) and currency unit errors (20¢ centavo notation), testing precision in value and unit representation."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "26ef2ba626c0673ead65",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem asks about a coin marked 10, while the rendered visual labels the coin ₱5, leaving two competing denominations."
+          "verdict": "CONCERN",
+          "reasoning": "Stem states coin marked with the number 10, but the visual rendered structure lists text_labels including 5 pesos, not 10 pesos. This mismatch between stem description and visual display creates ambiguity about which value the learner should recognize."
         },
         "contextual_logical_validity": {
           "verdict": "FAIL",
-          "reasoning": "The text-to-answer relationship is coherent, but the visual evidence describes ₱5 rather than the 10 stated in the question."
+          "reasoning": "The scenario lacks logical coherence: stem describes a coin marked 10 but visual shows 5. A learner cannot correctly recognize the coin marked 10 when the visual contradicts the stem by displaying 5. This breaks the pedagogical logic of visual support."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "A learner cannot confidently decide whether to follow the written 10 or the visible ₱5 label, so the item is not clear as rendered."
+          "reasoning": "The contradiction between stem and visual creates confusion. Learner reads coin marked with the number 10 but sees visual displaying 5 pesos. This mixed signal undermines clarity and may frustrate or confuse Grade 1 learners."
         },
         "mathematical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The keyed ₱10 coin fits the stem but not the supplied visual, which makes the complete rendered item mathematically contradictory."
+          "verdict": "CONCERN",
+          "reasoning": "While the correct answer 10-peso coin is mathematically sensible, the visual display showing 5 creates a defective sample. Options are all valid coin denominations, but the visual mismatch undermines the validity of the entire item."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "854a370b45188001a0a7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question describes a bill marked 50 and offers one corresponding ₱50 bill option among clearly different denominations."
+          "reasoning": "Stem describes a bill marked with the number 50 and asks for identification. The direct phrasing What bill is it clearly signals the learner should recognize the bill denomination from the marking."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The bill recognition scenario is internally coherent and requires only matching the stated mark to its peso denomination."
+          "reasoning": "Scenario is educationally sound: learner identifies a bill by its face marking. Options include multiple bill denominations plus one coin distractor, testing bill vs coin distinction and denomination recognition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The simple wording identifies the relevant number and asks a familiar what-is-it question without unnecessary context."
+          "reasoning": "Language is concrete and clear for Grade 1. The phrase marked with the number 50 uses simple language to convey identification information without ambiguity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A bill marked 50 is correctly named a ₱50 bill, and no conflicting visual is provided for this sample."
+          "reasoning": "Correct answer 50-peso bill matches the marking. Distractors include other bill denominations (20, 100) and a coin (10-peso coin), testing understanding of both value ranges and bill vs coin categories."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "144e7731216bfc7a3921",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt requests the peso-symbol form of ten pesos and provides a single matching ₱10 choice."
+          "reasoning": "Stem provides word form ten pesos and requests symbol representation. The phrase using the peso symbol clearly indicates the target notation, avoiding any ambiguity about response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The verbal amount, answer, and PesoMoney visual label ₱10 are mutually consistent representations."
+          "reasoning": "Word-to-symbol notation conversion is a valid mathematical literacy skill. The context supports understanding that the same monetary value can be expressed in multiple notation formats."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction is short and explicit about using the peso symbol, which makes the expected response easy to understand."
+          "reasoning": "Grade 1 appropriate language. The phrasing using the peso symbol is explicit and concrete, helping learners focus on the specific notation conversion being tested."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱10 is exactly the standard symbol notation for ten pesos, and the rendered visual confirms the same denomination."
+          "reasoning": "Correct answer 10 with peso symbol is accurate. Distractors test unit confusion (10¢ centavo notation) and magnitude errors (100 instead of 10, 5 instead of 10), supporting precision."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "19284953b4ffa489e3f8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The phrase one hundred pesos has one direct peso-symbol equivalent among the supplied options: ₱100."
+          "reasoning": "Stem provides word form one hundred pesos and requests symbol representation. The instruction using the peso symbol explicitly signals the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The requested conversion preserves the amount and changes only the written notation, so the item is logically sound."
+          "reasoning": "Notation conversion for a round number like one hundred pesos supports understanding that larger values follow the same notation patterns as smaller denominations."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question names the verbal amount and requested symbol form plainly, with distractors that are easy to distinguish."
+          "reasoning": "Language is simple and consistent with other samples. Learners familiar with the How is X written using the peso symbol pattern can quickly identify the task type."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱100 correctly represents one hundred pesos; the centavo and larger-value distractors do not equal the answer."
+          "reasoning": "Correct answer 100 with peso symbol is accurate. Distractors test magnitude errors (95, 1000) and currency unit errors (100¢), both educationally relevant for currency understanding."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "44ed010346f934ac2739",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for the symbol notation of fifty pesos and only ₱50 matches both value and currency unit."
+          "reasoning": "Stem provides words fifty pesos and asks for peso symbol representation. The clear instruction using the peso symbol eliminates ambiguity about the target notation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The verbal amount and keyed symbol form are equivalent, with no visual or contextual contradiction in the sample."
+          "reasoning": "Word-to-symbol conversion is a valid skill. Testing with a mid-range denomination like 50 pesos supports understanding that notation rules apply across the full currency range."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction states the requested notation directly and the answer choices differ in recognizable, meaningful ways."
+          "reasoning": "Grade 1 reading level is maintained. The consistent phrasing supports pattern recognition and reduces cognitive load from novel language structures."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱50 is the correct peso-symbol notation for fifty pesos, while ₱500, ₱45, and 50¢ are different values or units."
+          "reasoning": "Correct answer 50 with peso symbol is accurate. Distractors include magnitude errors (500 ten-fold error, 45 off-by-five) and currency unit errors (50¢ centavo notation), all developmentally relevant."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "afb1eac6b9153a98a156",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a coin marked 1 and presents exactly one matching ₱1 coin among the choices."
+          "reasoning": "Stem describes a coin marked with the number 1 and asks for identification. The question What coin is it clearly signals the learner should recognize the coin denomination."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Identifying the coin by its stated denomination is a coherent direct-recognition task with no missing information."
+          "reasoning": "Scenario is valid: learner identifies a one-peso coin by its face marking. Options are all peso coin denominations, testing both recognition of the smallest denomination and distinction from larger coins."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence is simple, and the options consistently use coin labels that make the requested identification understandable."
+          "reasoning": "Language is simple and direct for Grade 1. The phrase marked with the number 1 is unambiguous and concrete enough for early readers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The textual answer ₱1 coin correctly matches a coin marked with the number 1."
+          "reasoning": "Correct answer 1-peso coin matches the marking. All options are valid coin denominations, but only one matches the stated number, making this a straightforward recognition task."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "83534a3ddc9059707910",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The thematic wrapper does not alter the clear request to convert fifty pesos into peso-symbol notation, and ₱50 is unique."
+          "reasoning": "Despite the theming preamble, the stem clearly requests symbol representation of fifty pesos. The phrase using the peso symbol specifies the target notation format without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoe context is extraneous but harmless; the monetary conversion remains internally coherent and correctly keyed."
+          "reasoning": "The theme reference to Sir Rez and dance shoes does not interfere with the mathematical task. The scenario remains logically coherent: convert a given word amount to symbol notation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Although the interest sentence is unnecessary, the actual money question remains plainly worded and the options are readable."
+          "reasoning": "The emoji and theme reference are brief and do not obscure the mathematical question. Grade 1 learners can distinguish the math challenge phrasing from the optional theme content."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱50 is exactly the peso-symbol form of fifty pesos, and none of the unrelated thematic wording changes that value."
+          "reasoning": "Correct answer 50 with peso symbol matches the word form. Distractors test magnitude errors (500, 45) and currency unit errors (50¢), all educationally valid confusions."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "9659a929f0ee3500a47d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The basketball-themed wrapper leaves the explicit ₱50-to-PhP conversion intact, with only PhP 50 matching the requested code form."
+          "reasoning": "Despite the theme preamble, stem clearly requests PhP code representation of 50 pesos. The phrase using the currency code PhP specifies the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The theme is unrelated but does not interfere; ₱50 and PhP 50 represent the same amount in the requested notation."
+          "reasoning": "The theme about Isko and basketballs does not interfere with the mathematical task. The core scenario of notation conversion remains logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The extra interest context is understandable and the embedded money question clearly states what notation to select."
+          "reasoning": "Emoji and theme reference do not obscure the mathematical content. The phrase Here is a math challenge clearly signals the start of the academic task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "PhP 50 is a valid currency-code notation for ₱50, while the other options misplace the code or add centavos."
+          "reasoning": "Correct answer PhP 50 is accurate. Distractors test spacing errors (PhP50c), currency symbol confusion (peso symbol instead of code), and word order errors (50 PhP), supporting notation precision."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "46dfbdacafce7a9522d0",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem says a coin marked 20, but the PesoMoney visual labels ₱10, so the item supplies conflicting identity cues."
+          "verdict": "CONCERN",
+          "reasoning": "Stem states coin marked with the number 20, but the visual text_labels display 10 pesos, not 20 pesos. This discrepancy between stem and visual creates ambiguity about which denomination the learner should identify."
         },
         "contextual_logical_validity": {
           "verdict": "FAIL",
-          "reasoning": "The keyed ₱20 answer follows the text, yet the rendered visual describes a different denomination and breaks whole-item consistency."
+          "reasoning": "Scenario lacks coherence: stem asks learner to identify a coin marked 20, but the visual shows 10. A learner cannot successfully complete the task as stated when the visual contradicts the stem description."
         },
         "learner_facing_clarity": {
           "verdict": "FAIL",
-          "reasoning": "The learner is forced to choose between the written 20 and visible ₱10, making the intended recognition target unclear."
+          "reasoning": "The stem-visual mismatch creates significant confusion. Learner reads coin marked with the number 20 but sees visual display of 10 pesos, undermining the clarity of the item."
         },
         "mathematical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "A visual showing ₱10 cannot validate the keyed ₱20 coin for a question about what is shown, so the rendered item is contradictory."
+          "verdict": "CONCERN",
+          "reasoning": "While the correct answer 20-peso coin is mathematically sensible and the options are all valid coin denominations, the visual mismatch fundamentally compromises the item's validity as a recognition task."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "62dba9152475e8e2aa59",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for PhP notation of ₱20 and includes one exact matching option, PhP 20."
+          "reasoning": "Stem provides 20 pesos with peso symbol and requests PhP code representation. The phrase using the currency code PhP clearly signals the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The amount remains twenty pesos while only the notation changes from symbol to code, which is logically valid."
+          "reasoning": "Converting from peso symbol notation to PhP code is educationally valid. This tests understanding that multiple formal codes can represent the same monetary value."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction explicitly names the currency code and source amount, providing a clear and age-appropriate transformation task."
+          "reasoning": "Language is simple and direct. The phrasing How is X written using the currency code PhP is clear and consistent with similar items across the packet."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "PhP 20 correctly denotes ₱20, and the alternatives either omit spacing, use a symbol, or reverse the order."
+          "reasoning": "Correct answer PhP 20 is accurate. Distractors include spacing errors (PhP20c), currency symbol confusion (peso symbol instead of code), and word order errors (20 PhP), testing notation precision."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "1a9c534cd50c9b061657",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt specifies ₱50 and asks for currency-code notation; PhP 50 is the sole option that satisfies both requirements."
+          "reasoning": "Stem provides 50 pesos with peso symbol and requests PhP code representation. The phrase using the currency code PhP explicitly indicates the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer preserves the stated fifty-peso amount and correctly substitutes the PhP code for the peso symbol."
+          "reasoning": "Symbol-to-code notation conversion is a valid curriculum objective. Testing with 50 pesos supports understanding that notation rules apply across the full range of specified denominations."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is direct and the options make the expected placement of the code and number understandable."
+          "reasoning": "Grade 1 appropriate language. The consistent phrasing pattern across samples helps learners rapidly identify this as a notation conversion task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "PhP 50 is equivalent to ₱50, so the keyed notation is mathematically and conventionally correct."
+          "reasoning": "Correct answer PhP 50 is accurate. Distractors test word order errors (50 PhP), currency notation errors (PhP50c), and currency symbol confusion (peso symbol), all testing notation mastery."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "303fe698c0469dc4a9e4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The requested PhP notation for ₱100 has one matching option, and the bill visual also displays ₱100 consistently."
+          "reasoning": "Stem provides 100 pesos with peso symbol and requests PhP code representation. The phrase using the currency code PhP is explicit about the target notation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The symbol-to-code conversion and bill representation all refer to one hundred pesos without contradiction."
+          "reasoning": "Testing notation conversion at the upper bound of the 100-peso ceiling is educationally valid. It demonstrates that notation rules apply consistently across the full specified range."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question states the value and target currency code clearly, while the visual reinforces rather than obscures the amount."
+          "reasoning": "Language matches Grade 1 reading level. Learners familiar with the notation conversion task type can readily understand the structure and requirements."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "PhP 100 is a valid equivalent notation for ₱100, and the rendered bill label agrees with the stated value."
+          "reasoning": "Correct answer PhP 100 is accurate. Distractors test word order errors (100 PhP), notation errors (PhP100c), and currency symbol confusion (peso symbol), supporting notation precision."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "82668fd9a09dc283898e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt requests the peso-symbol form of twenty pesos and presents a single correct ₱20 choice."
+          "reasoning": "Stem provides word form twenty pesos and requests symbol representation. The phrase using the peso symbol clearly indicates the target notation format without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The conversion is direct and internally sound; the hint lines do not introduce a conflicting value or direction."
+          "reasoning": "Word-to-symbol conversion is a valid mathematical literacy skill. The context remains educationally sound for supporting Grade 1 currency understanding."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The additional theme-free question is concise, explicit about the requested symbol, and accessible to the target learner."
+          "reasoning": "Language is simple and direct. The consistent phrasing across samples supports pattern recognition and reduces cognitive load."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱20 is exactly the standard symbol notation for twenty pesos, with all other choices representing different forms or amounts."
+          "reasoning": "Correct answer 20 with peso symbol is accurate. Distractors test magnitude errors (200, 15) and currency unit errors (20¢ centavo notation), both developmentally relevant."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "1d200eb656d718f9353e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for words for ₱100 and one hundred pesos is the only option with the correct amount and unit."
+          "reasoning": "Stem provides 100 pesos with peso symbol and requests word form representation. The phrase written in words clearly specifies the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The requested notation change from symbol to words is logically valid and does not depend on missing contextual information."
+          "reasoning": "Symbol-to-word notation conversion supports bilingual currency literacy. Testing with the upper-bound value 100 pesos demonstrates that word notation applies across the full range."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence is simple, and the choices provide clear verbal alternatives for a Grade 1 recognition exercise."
+          "reasoning": "Grade 1 appropriate language. The phrasing pattern How is X written in words is consistent and supports rapid task identification."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "One hundred pesos is equivalent to ₱100, so the keyed answer is numerically and linguistically correct."
+          "reasoning": "Correct answer one hundred pesos is accurate. Distractors test unit confusion (one hundred centavos), magnitude errors (ninety-eight, two hundred), supporting precision in word notation."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "sample_id": "baa98167b00e6367653f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks for the symbol form of twenty pesos and only ₱20 among the options matches that exact value."
+          "reasoning": "Stem provides word form twenty pesos and requests symbol representation. The phrase using the peso symbol unambiguously indicates the target notation format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The verbal amount and selected symbol notation are equivalent, with the distractors clearly differing in value or unit."
+          "reasoning": "Word-to-symbol conversion remains educationally valid. The scenario supports understanding that the same monetary value has multiple equivalent representations."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording directly identifies the input phrase and requested peso symbol, so the learner can act without inference."
+          "reasoning": "Language is simple and clear for Grade 1. The consistent phrasing pattern across items helps learners quickly understand the task structure."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "₱20 correctly denotes twenty pesos, and the answer is consistent with the stated monetary amount."
+          "reasoning": "Correct answer 20 with peso symbol is accurate. Distractors test magnitude errors (200, 15) and currency unit errors (20¢ centavo notation), supporting notation mastery."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     }
   ],
   "clause_evidence": [
@@ -2231,87 +2235,121 @@
       "requirement_id": "recognize",
       "clause": "Recognize",
       "verdict": "PASS",
-      "reasoning": "The packet repeatedly asks learners to identify denominations or select equivalent written forms, providing direct evidence of recognition rather than calculation.",
+      "reasoning": "Samples test recognition across multiple formats: visual coin identification in samples 5, 9, 14, 17; visual bill identification in samples 1, 10; and abstract recognition through notation conversion in 14 samples. The repeated testing across formats demonstrates the generator addresses the recognize action throughout the packet.",
       "sample_ids": [
+        "29e23ff6fcd5e6118573",
+        "01e5cfa9c250afa9ff81",
+        "26ef2ba626c0673ead65",
+        "854a370b45188001a0a7",
         "afb1eac6b9153a98a156",
-        "d25c379410ab06c1a0f9"
+        "46dfbdacafce7a9522d0",
+        "d1f22f3ef5974684e97a",
+        "d25c379410ab06c1a0f9",
+        "053467ffab49042a9862",
+        "740d449fa4a65488ed54"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "requirement_id": "coins",
       "clause": "coins",
-      "verdict": "PASS",
-      "reasoning": "Multiple samples explicitly address peso coins, including ₱1, ₱5, ₱10, and ₱20, so the coin category is directly represented.",
+      "verdict": "CONCERN",
+      "reasoning": "Only four samples directly test coin recognition: samples 5, 9, 14, 17 ask What coin is it after presenting a coin marked with a specific number. The remaining 19 samples test notation without explicit coin identification, leaving the coins component underrepresented relative to the curriculum emphasis.",
       "sample_ids": [
-        "74bcc2c51e497b94b408",
+        "01e5cfa9c250afa9ff81",
+        "26ef2ba626c0673ead65",
         "afb1eac6b9153a98a156",
-        "01e5cfa9c250afa9ff81"
+        "46dfbdacafce7a9522d0"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "requirement_id": "excluding_centavo_coins",
       "clause": "excluding centavo coins",
       "verdict": "PASS",
-      "reasoning": "The examined coin tasks use whole-peso denominations and do not require identifying a centavo coin; the centavo references occur only as distractors or explanatory hint text.",
+      "reasoning": "Centavo options appear throughout as distractors (5¢, 20¢, 50¢, 10¢, 100¢ notations in options) but never as correct answers. All 23 samples maintain this boundary: correct answers use peso notation and denominations, never centavo. The consistent exclusion demonstrates the generator respects this constraint.",
       "sample_ids": [
+        "d25c379410ab06c1a0f9",
+        "053467ffab49042a9862",
+        "740d449fa4a65488ed54",
         "74bcc2c51e497b94b408",
-        "afb1eac6b9153a98a156",
-        "26ef2ba626c0673ead65"
+        "fff962c794965f80f09a",
+        "144e7731216bfc7a3921",
+        "19284953b4ffa489e3f8",
+        "44ed010346f934ac2739",
+        "83534a3ddc9059707910",
+        "9659a929f0ee3500a47d"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "requirement_id": "bills",
       "clause": "bills",
-      "verdict": "PASS",
-      "reasoning": "Bill recognition is directly tested through stated ₱20, ₱50, and ₱100 bills, including a consistent ₱100 visual in one sample.",
+      "verdict": "CONCERN",
+      "reasoning": "Only two samples directly test bill recognition: samples 1 and 10 ask What bill is it after presenting a bill marked with a specific number. The remaining 21 samples do not explicitly test bill identification, representing significant underrepresentation of this curriculum component.",
       "sample_ids": [
-        "854a370b45188001a0a7",
-        "303fe698c0469dc4a9e4",
-        "053467ffab49042a9862"
+        "29e23ff6fcd5e6118573",
+        "854a370b45188001a0a7"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "requirement_id": "up_to_100",
       "clause": "up to ₱100",
       "verdict": "PASS",
-      "reasoning": "The highest requested denomination is ₱100, and all listed coin and bill amounts remain within the stated upper bound.",
+      "reasoning": "All samples stay within the specified monetary range. Coin denominations presented are 1, 5, 10, 20 pesos; bill denominations are 20, 50, 100 pesos. No sample exceeds 100 pesos. The upper boundary is respected throughout the packet, demonstrating correct scale compliance.",
       "sample_ids": [
+        "29e23ff6fcd5e6118573",
+        "d1f22f3ef5974684e97a",
+        "d25c379410ab06c1a0f9",
         "053467ffab49042a9862",
-        "19284953b4ffa489e3f8",
-        "303fe698c0469dc4a9e4"
+        "01e5cfa9c250afa9ff81",
+        "740d449fa4a65488ed54",
+        "74bcc2c51e497b94b408",
+        "fff962c794965f80f09a",
+        "26ef2ba626c0673ead65",
+        "854a370b45188001a0a7",
+        "144e7731216bfc7a3921"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     },
     {
       "requirement_id": "notations",
       "clause": "notations",
       "verdict": "PASS",
-      "reasoning": "The packet gives substantial coverage of notations by translating among the peso symbol, PhP code, and English word forms for several values.",
+      "reasoning": "Notations are extensively tested across three primary formats: peso symbol notation in samples 7, 8, 11, 12, 13, 15, 21, 23; PhP currency code notation in samples 2, 16, 18, 19, 20; and written word notation in samples 3, 4, 6, 22. The packet comprehensively demonstrates the multiple notations by which pesos can be represented.",
       "sample_ids": [
         "d1f22f3ef5974684e97a",
+        "d25c379410ab06c1a0f9",
+        "053467ffab49042a9862",
+        "740d449fa4a65488ed54",
         "74bcc2c51e497b94b408",
-        "19284953b4ffa489e3f8"
+        "fff962c794965f80f09a",
+        "144e7731216bfc7a3921",
+        "19284953b4ffa489e3f8",
+        "44ed010346f934ac2739",
+        "83534a3ddc9059707910",
+        "9659a929f0ee3500a47d",
+        "62dba9152475e8e2aa59",
+        "1a9c534cd50c9b061657",
+        "303fe698c0469dc4a9e4"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w113-mat_g1_na_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3:mat_g1_na_q4_3",
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q4_3-20260930",
       "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "4016f4cc7da23950116ac6e65af51cfb4f2c240184c3a00441d6144239767b33",
+      "packet_digest": "d881e78a009a8c078d27b99325f993cec0483234e64826acb3ee8bf90ec71308",
       "clause_ids": [
         "recognize",
         "coins",
@@ -2320,29 +2358,29 @@
         "up_to_100",
         "notations"
       ],
-      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3.json",
-      "response_digest": "eda4d7aff601686436c82f0a816aa0420ad13498b8b12bca320629e26b21c0d0",
-      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q4_3.prompt.txt",
-      "prompt_digest": "a656a0f5e4c54580c77c2bb1d57195fc3ce0d180436b136fff0edc067129836f",
-      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
-      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt and wrote verdicts.json; bare python was unavailable. The one allowed syntax-only repair added only missing closing braces, as proven by diff; no semantic content changed and no path outside the assigned node directory was reported."
+      "response_ref": ".responses/s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3.json",
+      "response_digest": "ae120221cc768c29ae82287023b08536c3ebf8aa8fcfbb70af069252edbb61fc",
+      "prompt_ref": ".responses/s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q4_3.prompt.txt",
+      "prompt_digest": "179c79597ad6677a2c9fc96fa5988a6df4039470d266f377de3a202815425532",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g1_na_q4_3/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g1_na_q4_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The tasks use direct recognition and notation of familiar peso amounts, which is an appropriate Grade 1 Quarter 4 cognitive demand without requiring computation or abstract monetary reasoning."
+      "rationale": "Item difficulty and format progressions are appropriate for Grade 1 Quarter 4 learners. Questions progress logically from bill/coin identification with visual support to abstract notation conversion without visuals, matching developmental stages."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every stem asks learners to identify a peso coin or bill or translate a value among symbol, code, and words, directly matching the stated money-recognition competency."
+      "verdict": "CONCERN",
+      "rationale": "Most samples emphasize notation conversion (₱ symbol, written words, PhP code) which is appropriate, but recognition of actual coins and bills receives minimal coverage. Only four samples explicitly test coin recognition and two test bill recognition out of twenty-three total samples."
     },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Across the packet, learners encounter both coins and bills through ₱100 and practice several required notations, while centavo coins are not introduced in the task set.",
+      "verdict": "CONCERN",
+      "rationale": "While all six requirement components appear in the packet, the distribution heavily favors notations over recognition. The competency emphasizes recognize coins and bills first, with notations as secondary, but this packet inverts that emphasis significantly.",
       "decomposition": {
-        "verdict": "PASS",
-        "reasoning": "The printed REQUIREMENTS separately represent recognizing coins, excluding centavo coins, recognizing bills, the upper bound of ₱100, and notations; together they losslessly cover the competency.",
+        "verdict": "CONCERN",
+        "reasoning": "The requirements correctly decompose the competency into six atomic components, but their relative weighting in samples does not match the curriculum emphasis. Recognize and coins/bills should dominate the pedagogical load but are underrepresented; notations dominate instead. This is a lossless structural decomposition but a disproportionate implementation.",
         "requirement_ids": [
           "recognize",
           "coins",
@@ -2363,7 +2401,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet includes coin values from ₱1 through ₱20, bills including ₱20, ₱50, and ₱100, and multiple conversions between words, the peso symbol, and PhP notation.",
+      "rationale": "All required components appear across samples: coin recognition tested in samples 5, 9, 14, 17; bill recognition in samples 1, 10; notations in peso symbol in samples 7-9, 11-13, 15-16, 18-21, 23; notations in PhP code in samples 2, 16, 18-20; notations in written form in samples 3-4, 6, 22; and centavo distractors excluded from correct answers throughout.",
       "clause_ids": [
         "recognize",
         "coins",
@@ -2375,11 +2413,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All displayed monetary values remain at or below ₱100, and the simple recognition formats are scaled sensibly for the specified Grade 1 quarter."
+      "rationale": "All monetary amounts stay within the specified ceiling. Items present coin values of 1, 5, 10, 20 pesos and bill values of 20, 50, 100 pesos. No amount exceeds 100 pesos; no centavo amounts are presented as correct answers, maintaining grade-appropriate scale."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The packet varies response formats and notation direction, but several visual money items contradict their stems, and the set does not visibly demonstrate every possible coin or bill denomination up to ₱100."
+      "rationale": "Variant coverage is asymmetrical. Notation conversion is heavily represented across multiple seeds and formats, but visual coin/bill recognition uses only two distinct coin denominations (10 and 20) and one bill denomination (100) in read_mcq samples, limiting exposure to the full range of coins and bills the competency names."
     }
   },
   "overall": "FAIL"

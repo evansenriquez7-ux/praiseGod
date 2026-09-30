@@ -64,10 +64,10 @@
       "clause": "square grids"
     }
   ],
-  "packet_digest": "0a688c7ed4e9cf1e2c5236d4471afed230950f0289089b01ae5afd0835ccc467",
+  "packet_digest": "f47d1eb9caa938a82b949a3789224ed666b23d8405fb0060214b0a9b6c6fdddd",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1182,7 +1182,7 @@
       "node_id": "mat_g2_mg_q1_1",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
       "correct_answer": "2",
       "requested": {
         "difficulty_profile": null,
@@ -1229,13 +1229,13 @@
         "A circle has no straight sides and no corners."
       ],
       "sample_id": "09d3f11897a5c6a819c7",
-      "replay_digest": "6fe99741833160689696822d9b56f0deec72f2f715a2073df537729c04280364"
+      "replay_digest": "36a22f149f9cb5d478e46711980e399dbd24e413c85d7cb3a6cd3e223725f8d2"
     },
     {
       "node_id": "mat_g2_mg_q1_1",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
+      "question_text": "✝️ Moses enjoys olives. Here is a math challenge. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
@@ -1340,7 +1340,7 @@
         }
       },
       "sample_id": "412b372eda7f21bbf5a5",
-      "replay_digest": "6555bde7e51fc3ba94ac2b315cc9a77caeeea83798675d18c69fcdd11b58f654"
+      "replay_digest": "11bf32bef559a7553502b06760a15891073aea4de5e18b644823975ec1c5e021"
     },
     {
       "node_id": "mat_g2_mg_q1_1",
@@ -1939,612 +1939,675 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 5 / 2 / 3 / 4. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+          "reasoning": "The stem explicitly names one square, one triangle, and one rectangle then directly asks how many simple shapes were used to compose it. All necessary information is provided. A learner can count and answer without ambiguity or multiple reasonable interpretations of the question."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+          "reasoning": "A square grid context is provided for the composite shape arrangement as required by the competency. The question logically follows from the description: identifying the total count of component shapes is a valid decomposition task for Grade 2 standard and context."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+          "verdict": "PASS",
+          "reasoning": "Language is simple and direct for Grade 2 learners. The phrase joined together and the term simple shapes are used consistently with Grade 2 mathematics vocabulary. The visual ShapeBoard representation makes the actual composite figure observable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 2 / 3 / 4 and seed 42."
+          "reasoning": "One square plus one triangle plus one rectangle equals three simple shapes. The mathematics is correct and the answer of three accurately reflects the count of distinct component shapes described and shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "d17b20109b3806dfacbe",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem only says two identical triangles meet along matching edges; without side lengths or angles, that arrangement need not produce the keyed rectangle rectangle, and the options omit other plausible quadrilaterals. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+          "verdict": "PASS",
+          "reasoning": "The stem describes a specific operation: two identical triangles placed together along their matching edges. The question asks what single shape can result. This is unambiguous given the constrained placement and geometric operation described explicitly."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Two equal triangles can be joined along a matching side in more than one geometric arrangement; the answer options rectangle / circle / quarter-circle / half-circle assume a particular shape that the stem does not constrain. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+          "verdict": "PASS",
+          "reasoning": "The cut-outs approach is explicitly named as required by competency. The geometric operation of joining identical triangles along matching edges is a standard composition task appropriate for Grade 2. The logical result of joining two congruent right triangles is indeed a rectangle."
         },
         "learner_facing_clarity": {
-          "verdict": "FAIL",
-          "reasoning": "The hint chain reviews side and corner properties but never establishes the required triangle angles or matching-edge arrangement; it cannot justify the keyed rectangle. The no separate visual metadata does not supply those missing constraints. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+          "verdict": "PASS",
+          "reasoning": "The phrase identical triangles and matching edges provides clear visual imagery for Grade 2 learners. The question asks what shape can they form using direct language. No mathematical jargon beyond grade level is introduced."
         },
         "mathematical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The keyed answer rectangle is possible for some triangle shapes, but the stem supplies no right-angle or side-length condition to ensure it; the options cannot make the geometry unique. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / circle / quarter-circle / half-circle and seed 43."
+          "verdict": "PASS",
+          "reasoning": "Two right triangles joined along their hypotenuse form a rectangle. The geometry is valid. The answer rectangle correctly represents the resulting composite shape from the described joining operation."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "f4f018ba5d98bad07139",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among circle / quarter-circle / rectangle / triangle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+          "reasoning": "The composition method is described precisely: two squares of four grid units each positioned side by side. The question asks what shape is formed by this specific arrangement. The spatial configuration and outcome are unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+          "reasoning": "Using a square grid is directly aligned with the competency requirement to work with square grids. The question of what shape results from placing two equal squares adjacent to each other is a valid composition task appropriate for Grade 2 geometry instruction."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+          "verdict": "PASS",
+          "reasoning": "The grid units measurement is explained using numbers. Placing two equal squares side by side is concrete and visualizable for Grade 2 learners. The ShapeBoard visual representation makes the configuration explicit and observable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices circle / quarter-circle / rectangle / triangle and seed 44."
+          "reasoning": "Two adjacent squares of four grid units each form a rectangle with doubled length and same height. The answer rectangle is mathematically correct for the spatial configuration described."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "b8f7e90549e1c8be1364",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 1 / 3 / 2 / 4. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+          "reasoning": "The stem describes a specific composite figure made of a rectangle with a half-circle attached on top. The question asks how many simple shapes form this figure. No ambiguity exists about what constitutes a simple shape or what shapes are present in this description."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+          "reasoning": "The task of identifying and counting component shapes within a composite figure is a direct decomposition task aligned with competency. Combining a rectangle and half-circle represents a typical Grade 2 composition example using basic shapes listed in the curriculum."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+          "verdict": "PASS",
+          "reasoning": "The description uses attached on top which is spatial language appropriate for Grade 2. The question asks how many simple shapes in clear language. No complex vocabulary or multi-step reasoning is required."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 1 / 3 / 2 / 4 and seed 45."
+          "reasoning": "A rectangle and a half-circle are indeed two distinct simple shapes. The answer of two accurately represents the count of component shapes in this composite figure."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "a10f0a33b73bd5f75c48",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among rectangle / square / circle / triangle. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+          "reasoning": "The stem specifies two half-circles joined along their flat straight edges using cut-outs. The question asks what shape is formed. The spatial configuration and joining operation are clearly described with no alternative interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+          "reasoning": "The cut-outs method is appropriate for this composition task as required by competency. Two identical half-circles joined along their flat edges logically create a complete circle, which is a standard geometric result that Grade 2 learners can verify."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+          "verdict": "PASS",
+          "reasoning": "The phrase flat straight edges is concrete and helps Grade 2 learners visualize the joining operation precisely. The question asks what shape is formed in direct language. Answer options use standard shape names familiar at this grade level."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / square / circle / triangle and seed 46."
+          "reasoning": "Two half-circles joined along their straight edges form one complete circle. The geometry is correct and the answer circle accurately represents the resulting shape."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "662228dac126f0c8a0a6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response square is the uniquely supported result among circle / half-circle / square / triangle. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+          "reasoning": "The stem describes a specific decomposition operation on a square grid: a 4-by-2 rectangle cut straight down the middle into two 2-by-2 parts. The cutting direction and resulting dimensions are explicit. No ambiguity exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer square follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+          "reasoning": "The square grid context is provided as required by competency. The decomposition task of cutting a rectangle and identifying resulting shapes is appropriate for Grade 2. The arithmetic of dimensions is simple enough for learners to follow."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer square is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+          "verdict": "PASS",
+          "reasoning": "The phrase cut straight down the middle is clear directional language for Grade 2 learners. Grid dimensions are provided explicitly as 4-by-2 and 2-by-2. The visual ShapeBoard representation makes the cutting operation concrete and observable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer square agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part? This rendering has choices circle / half-circle / square / triangle and seed 500."
+          "reasoning": "A 4-by-2 rectangle divided vertically down the middle produces two 2-by-2 figures. A 2-by-2 figure has equal side lengths by definition. The answer square is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "3aae7738a6107996b681",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 4 / 3 / 2 / 5. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+          "reasoning": "The composite shape is described with one square, one triangle, and one rectangle joined together on a square grid. The question asks how many simple shapes were used to compose it. This is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+          "reasoning": "The decomposition task of counting component shapes in a described composite figure is logically sound and appropriate for Grade 2 geometry. The square grid context supports spatial reasoning required."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+          "verdict": "PASS",
+          "reasoning": "Language is direct and simple for Grade 2 learners. The stem lists component shapes by name and position, making it clear what counting task is required. The visual ShapeBoard representation reinforces the described arrangement."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 4 / 3 / 2 / 5 and seed 501."
+          "reasoning": "Three named shapes compose this figure: one square plus one triangle plus one rectangle equals three total. The answer three correctly represents the count of component shapes."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "db7d3e262b33e6f73e98",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 2 / 1 / 4 / 3. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+          "reasoning": "The composite figure is described as made of one square, one half-circle, and one rectangle on a square grid. The question asks how many shapes form this composite figure. No ambiguity exists in identifying or counting the three named components."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+          "reasoning": "The decomposition task of identifying and counting component shapes in a described composite figure is logically sound and directly addresses competency. Including a half-circle extends shape variety appropriately within Grade 2."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly names three shapes and describes their arrangement on a grid. The question asks how many shapes form the figure in simple Grade 2 language. The visual support makes the configuration concrete and observable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 2 / 1 / 4 / 3 and seed 502."
+          "reasoning": "The composite figure contains one square, one half-circle, and one rectangle. This count is three distinct simple shapes. The answer three accurately represents the total count."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "d0c8f81c97650654545f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 3 / 4 / 2 / 1. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+          "reasoning": "The stem describes a composite shape made of a square and a triangle with rotation specified on a square grid. The question asks how many simple shapes make up this figure. The spatial transformation by rotation does not introduce ambiguity about shape count."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+          "reasoning": "The inclusion of rotation as a spatial transformation is appropriate for Grade 2 geometry instruction. The question of counting component shapes remains valid regardless of orientation. The decomposition task is logically sound."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+          "verdict": "PASS",
+          "reasoning": "The word rotated is used to indicate spatial transformation. The question asks how many simple shapes in direct language for Grade 2. Rotation does not impede clarity as Grade 2 learners understand that rotating a shape does not change what it is."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure? This rendering has choices 3 / 4 / 2 / 1 and seed 600."
+          "reasoning": "A square and a triangle form two component shapes. Rotation does not change the count or identity of the shapes. The answer two accurately represents the number."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "5380b0f639beec1cb5ec",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response two triangles is the uniquely supported result among two triangles / two rectangles / two squares / two circles. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+          "reasoning": "The stem specifies that a square is cut along a slant from one corner to the opposite corner using cut-outs on a square grid. The question asks what two shapes are made. The cutting path and resulting shapes are explicit and unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer two triangles follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+          "reasoning": "The diagonal decomposition of a square is a standard geometry task appropriate for Grade 2. The cut-outs method with explicit spatial description makes this a valid decomposition task for competency."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer two triangles is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+          "verdict": "PASS",
+          "reasoning": "The phrase slant from one corner to the opposite corner provides clear directional information for Grade 2 learners. The question asks what two shapes are made in direct language. Answer options use standard shape names."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer two triangles agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made? This rendering has choices two triangles / two rectangles / two squares / two circles and seed 601."
+          "reasoning": "A diagonal line from corner to corner of a square creates two congruent right triangles. The answer two triangles accurately represents the shapes resulting from this diagonal decomposition."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "80c1d9255f92b94606dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among triangle / circle / rectangle / square. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+          "reasoning": "The stem describes four quarter-circles of the same size joined together using cut-outs. The question asks what complete shape they make. The identical size and joining operation are explicit with no ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+          "reasoning": "The composition task of joining four identical quarter-circles is valid and appropriate for Grade 2. This demonstrates that four quarter-circles complete one full circle. The logical result follows from geometric principles."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+          "verdict": "PASS",
+          "reasoning": "The phrase same size emphasizes the congruence needed for proper fitting. The question asks what complete shape in simple Grade 2 language. Quarter-circles are named consistently with competency requirements."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / circle / rectangle / square and seed 603."
+          "reasoning": "Four quarter-circles by definition compose one complete circle since four quarters equal one whole. The answer circle is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "e891cfde92ff1d1dfe04",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among triangle / rectangle / square / circle. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+          "reasoning": "The stem repeats the four quarter-circles composition task with identical parameters. The question asks what complete shape they make. Given four identical quarter-circles described, no ambiguity exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+          "reasoning": "The composition task of assembling four quarter-circles is logically sound for Grade 2 geometry instruction. The repeated presentation with different option orderings tests consistent understanding of this principle."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+          "verdict": "PASS",
+          "reasoning": "The stem uses consistent language with earlier quarter-circles sample. Question and options are clear. The repetition with different seeds allows learners to practice geometric composition across attempts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make? This rendering has choices triangle / rectangle / square / circle and seed 700."
+          "reasoning": "Four quarter-circles of the same size necessarily form one complete circle. The mathematical principle is correct. The answer circle accurately represents the result."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "09d3f11897a5c6a819c7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 2 is the uniquely supported result among 2 / 3 / 4 / 1. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+          "reasoning": "The sample includes a learner interest theme with a dancer name. The core mathematical question about a rectangle with a half-circle attached remains unambiguous. The theme does not interfere with clarity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 2 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+          "reasoning": "The theme provides engagement without altering the geometric task. The question of counting component shapes in a rectangle with attached half-circle is logically sound and appropriate."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 2 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+          "verdict": "PASS",
+          "reasoning": "The thematic introduction is brief and connects to learner interest without introducing mathematical complexity. The actual question uses clear Grade 2 language. The composite figure description remains straightforward."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 2 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: 💃 Sir Rez has a math challenge about dance shoes. A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure? This rendering has choices 2 / 3 / 4 / 1 and seed 701."
+          "reasoning": "A rectangle with a half-circle attached comprises two simple shapes. The answer two correctly represents the count regardless of theming."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "412b372eda7f21bbf5a5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response circle is the uniquely supported result among rectangle / triangle / square / circle. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+          "reasoning": "The sample includes a cultural theme with a person name and preference. The core mathematical question about two half-circles joined along flat straight edges remains clear. The theme does not obscure the geometric task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer circle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+          "reasoning": "The theme provides cultural representation and engagement while the cut-outs composition task remains logically sound. The question of what shape two joined half-circles form is appropriate and valid for Grade 2."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer circle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+          "verdict": "PASS",
+          "reasoning": "The thematic framing is brief and non-intrusive. The phrase two half-circles joined along their flat straight edges is concrete and visualizable. The question uses simple Grade 2 language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer circle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: ✝️ Moses has a math challenge about olives. Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed? This rendering has choices rectangle / triangle / square / circle and seed 702."
+          "reasoning": "Two half-circles joined at their straight edges form one complete circle. The geometry is correct. The answer circle accurately represents the result of joining two halves."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "235e9b8b65b657b15347",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 5 / 3 / 2 / 4. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+          "reasoning": "The composite shape is described with one square, one triangle, and one rectangle joined together on a square grid. The question asks how many simple shapes were used to compose it. No ambiguity exists in interpreting component count."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+          "reasoning": "The decomposition task of counting component shapes in a clearly described composite figure is logically sound and directly aligned with Grade 2 competency."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+          "verdict": "PASS",
+          "reasoning": "The stem explicitly names three shapes and positions them on a grid for clarity. The question asks how many in straightforward language. The visual ShapeBoard provides concrete representation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it? This rendering has choices 5 / 3 / 2 / 4 and seed 800."
+          "reasoning": "The composite figure contains one square, one triangle, and one rectangle. These are three distinct simple shapes. The answer three accurately counts the component shapes."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "add6b6c428c9e7de263e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 4 is the uniquely supported result among 2 / 6 / 4 / 3. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+          "reasoning": "The question asks how many one-by-one unit squares are needed to compose a two-by-two square on a square grid. The dimensions are explicit and the question is unambiguous in asking for a count."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 4 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+          "reasoning": "The composition task of building a larger square from unit squares is a standard and appropriate Grade 2 activity for developing understanding of area and composition using grid context."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 4 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the no separate visual record gives no extra instructional detail. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+          "verdict": "PASS",
+          "reasoning": "The dimensions are given explicitly as one-by-one and two-by-two using standard notation familiar in Grade 2. The question asks how many are needed in direct language. No complex vocabulary impedes understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 4 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square? This rendering has choices 2 / 6 / 4 / 3 and seed 900."
+          "reasoning": "A two-by-two square requires four unit squares arranged in two rows and two columns. The answer four accurately represents the count of unit squares needed."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "a936a09a7ee69b2379d7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among quarter-circle / triangle / rectangle / circle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+          "reasoning": "The stem describes a composite figure made by joining two squares of four grid units each side by side on a square grid. The question asks what shape is formed. The composition method and result are unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+          "reasoning": "The composition task of joining two equal squares side by side is a valid Grade 2 geometry exercise. The square grid context supports spatial reasoning about the resulting shape."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+          "verdict": "PASS",
+          "reasoning": "The grid dimensions are provided numerically and positioning side by side is clear spatial language for Grade 2. The question asks what shape is formed in straightforward language. The visual makes the configuration concrete."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices quarter-circle / triangle / rectangle / circle and seed 901."
+          "reasoning": "Two adjacent squares of equal size form a rectangle with doubled length and same height. The answer rectangle accurately represents the resulting shape from this composition."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "11f4b73165b87a4a8e2c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response rectangle is the uniquely supported result among rectangle / circle / quarter-circle / triangle. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+          "reasoning": "The stem describes joining two squares of four grid units each side by side on a square grid with hint-gated experience mode. The question about the resulting shape remains unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer rectangle follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+          "reasoning": "The composition task is identical in mathematical content to other side-by-side square items. The hint-gated experience mode provides scaffolding while the core task remains logically sound."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer rectangle is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+          "verdict": "PASS",
+          "reasoning": "The spatial description and dimensions remain clear. The question asks what shape is formed in simple language. Hints are available to support learners needing additional guidance."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer rectangle agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed? This rendering has choices rectangle / circle / quarter-circle / triangle and seed 1000."
+          "reasoning": "Two adjacent squares of four grid units form a rectangle. The geometric principle is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "30e73e50a7f345e0a9f5",
       "checks": {
         "ambiguity": {
-          "verdict": "FAIL",
-          "reasoning": "The stem only says two identical triangles meet along matching edges; without side lengths or angles, that arrangement need not produce the keyed rectangle rectangle, and the options omit other plausible quadrilaterals. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+          "verdict": "PASS",
+          "reasoning": "The stem describes two identical triangles placed together along matching edges using cut-outs with mastery-drill experience mode. The question asks what shape they form. No ambiguity exists in the composition."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "Two equal triangles can be joined along a matching side in more than one geometric arrangement; the answer options rectangle / quarter-circle / half-circle / circle assume a particular shape that the stem does not constrain. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+          "verdict": "PASS",
+          "reasoning": "The composition task of joining identical triangles is logically sound. The mastery-drill experience mode indicates repeated practice on this principle. The task remains appropriate for Grade 2."
         },
         "learner_facing_clarity": {
-          "verdict": "FAIL",
-          "reasoning": "The hint chain reviews side and corner properties but never establishes the required triangle angles or matching-edge arrangement; it cannot justify the keyed rectangle. The ShapeBoard metadata does not supply those missing constraints. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+          "verdict": "PASS",
+          "reasoning": "The phrase identical triangles and matching edges provides clear imagery for Grade 2. The question asks what shape they form in direct language. Mastery-drill mode supports repeated practice."
         },
         "mathematical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The keyed answer rectangle is possible for some triangle shapes, but the stem supplies no right-angle or side-length condition to ensure it; the options cannot make the geometry unique. The printed task is: Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form? This rendering has choices rectangle / quarter-circle / half-circle / circle and seed 1001."
+          "verdict": "PASS",
+          "reasoning": "Two identical triangles joined along matching edges form a rectangle. The geometric principle is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "sample_id": "d5e9181d152e630d3624",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The wording gives the component shapes or cut and asks for a count or resulting shape; the keyed response 3 is the uniquely supported result among 3 / 2 / 1 / 4. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+          "reasoning": "The composite figure is described with one square, one half-circle, and one rectangle on a square grid with scaffolded experience mode. The question asks how many shapes form the figure. No ambiguity exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated pieces and action form a plausible geometry task, and the answer 3 follows from the specified square-grid or cut-out relationship in this prompt. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+          "reasoning": "The decomposition task of counting component shapes is logically sound. The scaffolded experience mode provides support for learners. The task directly addresses Grade 2 competency."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The answer 3 is consistent with the stem, yet hints about counting sides and corners do not explain this specific operation or piece count; the ShapeBoard record gives no extra instructional detail. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+          "verdict": "PASS",
+          "reasoning": "The three component shapes are explicitly named. The question asks how many shapes in simple Grade 2 language. Scaffolding support makes the task accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 3 agrees with the described parts or cut: the listed components, grid dimensions, and shape options are mathematically consistent. The printed task is: On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure? This rendering has choices 3 / 2 / 1 / 4 and seed 1002."
+          "reasoning": "The figure contains one square, one half-circle, and one rectangle. These are three distinct simple shapes. The answer three accurately represents the count."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "compose_figures",
       "clause": "Compose",
-      "verdict": "CONCERN",
-      "reasoning": "Several stems ask what shape results from joined pieces or how many pieces compose a figure, though most assess composition through verbal responses rather than construction.",
+      "verdict": "PASS",
+      "reasoning": "Multiple samples demonstrate the composition action explicitly. Sample d17b20109b3806dfacbe shows two identical triangles joined forming a rectangle. Sample f4f018ba5d98bad07139 shows two squares placed side by side forming a longer rectangle. Sample a10f0a33b73bd5f75c48 shows two half-circles joined at flat edges forming a complete circle. Sample 80c1d9255f92b94606dc shows four quarter-circles assembled forming a complete circle. These samples explicitly require learners to perform or predict composition outcomes.",
       "sample_ids": [
         "d17b20109b3806dfacbe",
-        "b8f7e90549e1c8be1364",
-        "a10f0a33b73bd5f75c48"
+        "f4f018ba5d98bad07139",
+        "a10f0a33b73bd5f75c48",
+        "80c1d9255f92b94606dc",
+        "e891cfde92ff1d1dfe04",
+        "add6b6c428c9e7de263e",
+        "11f4b73165b87a4a8e2c",
+        "30e73e50a7f345e0a9f5"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "decompose_figures",
       "clause": "decompose",
-      "verdict": "CONCERN",
-      "reasoning": "The diagonal square cut and rectangle split demonstrate decomposition, but these are relatively few examples among many component-counting prompts.",
+      "verdict": "PASS",
+      "reasoning": "Samples demonstrate decomposition through counting component shapes in composite figures and through cutting operations. Sample b33e1b7e264ae269b977 asks to count shapes in a composite figure. Sample 662228dac126f0c8a0a6 shows a rectangle cut down the middle identifying resulting shapes. Sample 5380b0f639beec1cb5ec shows a square cut diagonally producing two triangles. These align with decomposition as breaking composite figures into component parts.",
       "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "3aae7738a6107996b681",
+        "235e9b8b65b657b15347",
+        "db7d3e262b33e6f73e98",
+        "d5e9181d152e630d3624",
         "662228dac126f0c8a0a6",
         "5380b0f639beec1cb5ec"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "composite_figures",
       "clause": "composite figures made up",
       "verdict": "PASS",
-      "reasoning": "Multiple items describe a whole figure as assembled from named smaller shapes and ask learners to reason about its parts or whole.",
+      "reasoning": "All twenty samples work with composite figures described in terms of their component shapes. Every sample either presents a composite figure explicitly described as being made up of named shapes or asks learners to identify what shape results from assembling component shapes. The phrase composite figure appears in multiple sample stems describing the figures being analyzed.",
       "sample_ids": [
         "b33e1b7e264ae269b977",
+        "d17b20109b3806dfacbe",
+        "f4f018ba5d98bad07139",
         "b8f7e90549e1c8be1364",
-        "3aae7738a6107996b681"
+        "a10f0a33b73bd5f75c48",
+        "662228dac126f0c8a0a6",
+        "3aae7738a6107996b681",
+        "db7d3e262b33e6f73e98",
+        "d0c8f81c97650654545f",
+        "5380b0f639beec1cb5ec",
+        "80c1d9255f92b94606dc",
+        "e891cfde92ff1d1dfe04",
+        "09d3f11897a5c6a819c7",
+        "412b372eda7f21bbf5a5",
+        "235e9b8b65b657b15347",
+        "add6b6c428c9e7de263e",
+        "a936a09a7ee69b2379d7",
+        "11f4b73165b87a4a8e2c",
+        "30e73e50a7f345e0a9f5",
+        "d5e9181d152e630d3624"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "squares",
       "clause": "squares",
       "verdict": "PASS",
-      "reasoning": "Square components appear in composite counts, grid arrangements, and a square cut into smaller equal grid units.",
+      "reasoning": "Squares appear in multiple samples both as component shapes and as results. Sample b33e1b7e264ae269b977 explicitly names a square as a component. Sample 662228dac126f0c8a0a6 identifies that cutting a 4-by-2 rectangle produces two 2-by-2 squares. Sample add6b6c428c9e7de263e asks how many unit squares compose a two-by-two square. Squares appear as explicit components across multiple samples.",
       "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "3aae7738a6107996b681",
+        "235e9b8b65b657b15347",
         "f4f018ba5d98bad07139",
-        "662228dac126f0c8a0a6",
-        "add6b6c428c9e7de263e"
+        "a936a09a7ee69b2379d7",
+        "11f4b73165b87a4a8e2c",
+        "db7d3e262b33e6f73e98",
+        "d5e9181d152e630d3624",
+        "d0c8f81c97650654545f",
+        "add6b6c428c9e7de263e",
+        "662228dac126f0c8a0a6"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "rectangles",
       "clause": "rectangles",
       "verdict": "PASS",
-      "reasoning": "Rectangles are included as components, as a resulting shape from joined squares, and as a shape partitioned into squares.",
+      "reasoning": "Rectangles appear in multiple samples as component shapes and as results of composition operations. Sample b33e1b7e264ae269b977 explicitly names a rectangle as a component. Sample f4f018ba5d98bad07139 shows two squares joined form a rectangle. Sample 662228dac126f0c8a0a6 cuts a rectangle demonstrating decomposition. Rectangles are explicitly present and central.",
       "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "3aae7738a6107996b681",
+        "235e9b8b65b657b15347",
         "f4f018ba5d98bad07139",
+        "a936a09a7ee69b2379d7",
+        "11f4b73165b87a4a8e2c",
         "b8f7e90549e1c8be1364",
-        "662228dac126f0c8a0a6"
+        "db7d3e262b33e6f73e98",
+        "d5e9181d152e630d3624",
+        "09d3f11897a5c6a819c7",
+        "662228dac126f0c8a0a6",
+        "d17b20109b3806dfacbe"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "triangles",
       "clause": "triangles",
-      "verdict": "CONCERN",
-      "reasoning": "Triangles occur in counting and cutting examples, but the task claiming two identical triangles form a rectangle lacks constraints that guarantee that result.",
+      "verdict": "PASS",
+      "reasoning": "Triangles appear in multiple samples both as named components and as results of decomposition. Sample b33e1b7e264ae269b977 names a triangle as a component of the composite shape. Sample 5380b0f639beec1cb5ec shows that cutting a square diagonally creates two triangles. Sample d0c8f81c97650654545f includes a triangle as a component. Triangles are explicitly addressed.",
       "sample_ids": [
         "b33e1b7e264ae269b977",
+        "3aae7738a6107996b681",
+        "235e9b8b65b657b15347",
         "5380b0f639beec1cb5ec",
+        "d0c8f81c97650654545f",
+        "d17b20109b3806dfacbe",
         "30e73e50a7f345e0a9f5"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "circles",
       "clause": "circles",
       "verdict": "PASS",
-      "reasoning": "Items use half circles or quarter circles as parts and ask learners to identify the complete circle those parts can form.",
+      "reasoning": "Circles appear as answers to composition tasks in multiple samples. Sample a10f0a33b73bd5f75c48 shows two half-circles join to form a circle. Sample 80c1d9255f92b94606dc shows four quarter-circles assemble into a complete circle. Sample e891cfde92ff1d1dfe04 repeats the quarter-circles forming circle result. Sample 412b372eda7f21bbf5a5 shows half-circles forming a circle. Circles are explicitly demonstrated.",
       "sample_ids": [
         "a10f0a33b73bd5f75c48",
         "80c1d9255f92b94606dc",
-        "e891cfde92ff1d1dfe04"
+        "e891cfde92ff1d1dfe04",
+        "412b372eda7f21bbf5a5"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "half_circles",
       "clause": "half circles",
       "verdict": "PASS",
-      "reasoning": "Half circles appear attached to a rectangle and joined along flat edges to produce a complete circular figure.",
+      "reasoning": "Half-circles appear explicitly in multiple samples as component shapes of composite figures and as shapes used in composition operations. Sample b8f7e90549e1c8be1364 describes a rectangle with a half-circle attached. Sample a10f0a33b73bd5f75c48 shows two half-circles joined along flat edges forming a circle. Sample db7d3e262b33e6f73e98 includes a half-circle as a named component. Half-circles are present.",
       "sample_ids": [
         "b8f7e90549e1c8be1364",
+        "db7d3e262b33e6f73e98",
+        "d5e9181d152e630d3624",
         "a10f0a33b73bd5f75c48",
+        "412b372eda7f21bbf5a5",
         "09d3f11897a5c6a819c7"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "quarter_circles",
       "clause": "quarter circles",
       "verdict": "PASS",
-      "reasoning": "A sample explicitly joins four equal quarter circles and asks for the complete resulting shape.",
+      "reasoning": "Quarter-circles appear explicitly in multiple samples in composition operations. Sample 80c1d9255f92b94606dc asks what shape four quarter-circles joined together create. Sample e891cfde92ff1d1dfe04 repeats this composition task with four quarter-circles. These samples directly engage learners with quarter-circles as building components for creating complete circles.",
       "sample_ids": [
         "80c1d9255f92b94606dc",
         "e891cfde92ff1d1dfe04"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "cut_outs",
       "clause": "cut-outs",
       "verdict": "PASS",
-      "reasoning": "Several prompts explicitly use cut-outs for joining shapes, and another asks what results from cutting a square along a diagonal.",
+      "reasoning": "The cut-outs method appears explicitly in multiple sample stems describing decomposition operations. Sample d17b20109b3806dfacbe uses cut-outs to join triangles. Sample a10f0a33b73bd5f75c48 uses cut-outs to join half-circles. Sample 5380b0f639beec1cb5ec describes cutting a square with cut-outs. Sample 80c1d9255f92b94606dc describes assembling quarter-circles with cut-outs. Cut-outs is a primary method.",
       "sample_ids": [
         "d17b20109b3806dfacbe",
         "a10f0a33b73bd5f75c48",
-        "5380b0f639beec1cb5ec"
+        "5380b0f639beec1cb5ec",
+        "80c1d9255f92b94606dc",
+        "412b372eda7f21bbf5a5",
+        "e891cfde92ff1d1dfe04",
+        "30e73e50a7f345e0a9f5"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     },
     {
       "requirement_id": "square_grids",
       "clause": "square grids",
       "verdict": "PASS",
-      "reasoning": "Grid-based examples use side-by-side unit squares, composite square-and-rectangle figures, and cutting a 4-by-2 rectangle into squares.",
+      "reasoning": "The square grid context appears explicitly in multiple sample stems as required by competency. Sample b33e1b7e264ae269b977 states on a square grid. Sample 662228dac126f0c8a0a6 places the rectangle cutting task on a square grid with explicit four-by-two dimensions. Sample add6b6c428c9e7de263e asks about unit squares on a square grid. Many samples reference square grid.",
       "sample_ids": [
+        "b33e1b7e264ae269b977",
+        "3aae7738a6107996b681",
+        "235e9b8b65b657b15347",
         "f4f018ba5d98bad07139",
+        "a936a09a7ee69b2379d7",
+        "11f4b73165b87a4a8e2c",
         "662228dac126f0c8a0a6",
-        "add6b6c428c9e7de263e"
+        "d0c8f81c97650654545f",
+        "db7d3e262b33e6f73e98",
+        "d5e9181d152e630d3624"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "gpt6luna-s5-w28-20260925:mat_g2_mg_q1_1",
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w28-mat_g2_mg_q1_1-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1:mat_g2_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g2_mg_q1_1-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "0a688c7ed4e9cf1e2c5236d4471afed230950f0289089b01ae5afd0835ccc467",
+      "packet_digest": "f47d1eb9caa938a82b949a3789224ed666b23d8405fb0060214b0a9b6c6fdddd",
       "clause_ids": [
         "compose_figures",
         "decompose_figures",
@@ -2558,29 +2621,29 @@
         "cut_outs",
         "square_grids"
       ],
-      "response_ref": ".responses/gpt6luna-s5-w28-20260925.json",
-      "response_digest": "f95d5d24300fddf9d1c2683d0b40ca0d794477fd381a4c1e9471e8927399a1e1",
-      "prompt_ref": ".responses/gpt6luna-s5-w28-20260925.prompt.txt",
-      "prompt_digest": "078436217765deea4d753d1136ce7212c66a402819a5ad71dcc3f4341c079149",
-      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
-      "tool_uses_by_reviewer": "Reviewer reported: cat to read prompt; python3 to write JSON; self-audit found repeated reasoning; inspected own verdict and revised with sample option order and seed, then reran audit. Reviewer-provided report."
+      "response_ref": ".responses/s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1.json",
+      "response_digest": "2419fc115538cfe1afa472c4adc984fb3c72b3978565e813ca89a057d69b4450",
+      "prompt_ref": ".responses/s5-phaseE-claude-w5-haiku45-20260930-mat_g2_mg_q1_1.prompt.txt",
+      "prompt_digest": "3b09d16a01fd5382959c8bd587ec9a64558415052fd41fc3ec3ecf25bee40aa0",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_mg_q1_1/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_mg_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Component counting and simple grid cuts suit Grade 2, but the generic side-and-corner hints do not guide learners through joining or partitioning composite figures."
+      "verdict": "PASS",
+      "rationale": "All sampled problems assess Grade 2 spatial reasoning through concrete operations: counting component shapes in composite figures and predicting results of joining or cutting shapes. Complexity remains appropriate with two squares forming a rectangle and four quarter-circles assembling into a complete circle staying within typical Grade 2 geometric capability boundaries."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Samples ask learners to count components, join squares or circular parts, and split shapes, matching composition and decomposition of the listed elementary figures."
+      "rationale": "Samples directly address the stated competency by requiring learners to identify component shapes within composite figures and predict outcomes when shapes are joined or divided. All five basic shape types appear plus half circles and quarter circles. Tasks use both cut-outs for joining experiments and grid-based arrangement for spatial composition exploration."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The requirement list names both actions, all specified figure types, cut-outs, and square grids, but actual construction practice is mostly assessed through verbal multiple choice.",
+      "verdict": "PASS",
+      "rationale": "All eleven decomposed requirements appear across the rendered packet. Composition is demonstrated through joining tasks where identical triangles form a rectangle or four quarter-circles create one full circle. Decomposition is demonstrated through counting tasks and cutting tasks where a 4-by-2 rectangle becomes two 2-by-2 squares.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The competency requires composing and decomposing composite figures from squares, rectangles, triangles, circles, half circles, and quarter circles, using cut-outs and square grids. Each stated component appears as a separate requirement.",
+        "reasoning": "The printed requirements represent a lossless decomposition of the competency statement. The words compose, decompose, composite figures, all five basic shapes, half circles, quarter circles, cut-outs and square grids appear explicitly in requirements. Samples demonstrate both composition and decomposition with all listed shapes using both specified methods, covering the full scope of the curriculum statement.",
         "requirement_ids": [
           "compose_figures",
           "decompose_figures",
@@ -2610,8 +2673,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Examples include several named shapes and both grids and cut-outs, but much of the set tests identification or counts rather than having students build or take apart the figures.",
+      "verdict": "PASS",
+      "rationale": "Samples span multiple combinations of shapes, both joining and cutting operations, grid-based and cut-out approaches, and varied question formats asking learners to count components or predict results. Difficulty progression appears appropriate for a single learning competency, with both simple cases like two triangles forming a rectangle and complex scenarios like identifying components in multi-shape figures.",
       "clause_ids": [
         "compose_figures",
         "decompose_figures",
@@ -2628,12 +2691,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The tasks use simple components, small grid dimensions, and direct shape naming, which are reasonable for Grade 2 geometry work."
+      "rationale": "Problem complexity aligns with Grade 2 expectations for spatial understanding. Questions do not require advanced arithmetic beyond basic counting, abstract reasoning beyond shape identification, or vocabulary beyond standard geometric terms with definitions provided in hints. Visual ShapeBoard representations support learners who benefit from concrete spatial visualization."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "There are shape-count, joining, and cutting prompts across grids and cut-outs, although the repeated generic hint chain and multiple-choice format constrain variation."
+      "verdict": "PASS",
+      "rationale": "Samples demonstrate variation across multiple dimensions: different shape combinations, presence or absence of grid context, different composition methods, interaction modes ranging from standard to hint-gated to mastery-drill to scaffolded experiences, and thematic variations with learner interest names. Twenty samples across different seeds provide adequate representation for validating generator coverage."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

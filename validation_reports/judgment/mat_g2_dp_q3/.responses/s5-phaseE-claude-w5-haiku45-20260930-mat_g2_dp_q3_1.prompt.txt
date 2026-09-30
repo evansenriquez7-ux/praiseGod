@@ -1,0 +1,277 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe5-mat_g2_dp_q3_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_dp_q3_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe5-mat_g2_dp_q3_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_dp_q3_1
+PACKET DIGEST: fa3a60d89d5f3b386e1382386cf0ac63d390f6e098147fea776ba2f54a172183
+COMPETENCY (Grade 2, Quarter 3, None):
+Interpret data in tabular form and in a pictograph with or without scale.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  interpret: Interpret
+  data: data
+  tabular_form: tabular form
+  pictograph: pictograph
+  scale: scale
+
+SAMPLES (every one of these is real rendered output):
+  sample d5f398cc0a2734bef88c  seed 42  [read_mcq]
+      stem:    Look at the table. How many books were read on Monday?
+      answer:  3
+      options: 5 / 7 / 4 / 3
+      hints:   ["Look at the table carefully.", "Find the row labelled 'Monday'.", "Read the number written next to it in the Count column."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Count", "Monday", "3", "Tuesday", "3", "Wednesday", "3", "Thursday", "7", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9a7395246406bec9cd7a  seed 43  [read_mcq]
+      stem:    Look at the picture graph. Which has the most colors: red, blue, green or yellow?
+      answer:  green
+      options: green / red / yellow / blue
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Compare the number of pictures in each row. The row with the most pictures has the greatest count."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 90, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "🎨", "🎨", "🎨", "🎨", "🎨", "red", "🎨", "🎨", "🎨", "🎨", "blue", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "green", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "yellow", "Your answers:", "red:", "blue:", "green:", "yellow:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0a6d0cfee9fcb77dc3d4  seed 44  [read_mcq]
+      stem:    Look at the picture graph. What is the difference between cats and dogs?
+      answer:  10
+      options: 20 / 0 / 1 / 10
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Read each category's value, then subtract the smaller from the larger."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "🐾", "cats", "🐾", "🐾", "dogs", "🐾", "birds", "🐾", "🐾", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample de86ff979301ed4d8bad  seed 45  [read_mcq]
+      stem:    Look at the picture graph. What is the total number of stars earned shown?
+      answer:  35
+      options: 40 / 20 / 7 / 35
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Add up the values for ALL categories to find the total."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 61, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "⭐", "⭐", "Grade 1", "⭐", "Grade 2", "⭐", "⭐", "Grade 3", "⭐", "⭐", "Grade 4", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b900841c52174cb8b52d  seed 46  [read_mcq]
+      stem:    Look at the picture graph. What is the total number of fruits shown?
+      answer:  23
+      options: 25 / 24 / 19 / 23
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Add up the values for ALL categories to find the total."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 89, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "apples", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "bananas", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "mangoes", "🍎", "🍎", "🍎", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f63c912f834d3c8a08a0  seed 500  [read_mcq]
+      stem:    Look at the picture graph. What is the difference between Grade 4 and Grade 5?
+      answer:  20
+      options: 10 / 20 / 30 / 2
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Read each category's value, then subtract the smaller from the larger."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 96, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "50", "60", "70", "⭐", "⭐", "⭐", "Grade 1", "⭐", "⭐", "⭐", "⭐", "Grade 2", "⭐", "⭐", "Grade 3", "⭐", "Grade 4", "⭐", "⭐", "⭐", "Grade 5", "⭐", "⭐", "⭐", "⭐", "⭐", "Grade 6", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:", "Grade 5:", "Grade 6:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b92ef75a887f95db90a9  seed 501  [read_mcq]
+      stem:    Look at the picture graph. Which has the most subjects: Math, Science, English, Art, PE or Music?
+      answer:  English
+      options: English / Science / Art / Math
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Compare the number of pictures in each row. The row with the most pictures has the greatest count."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 122, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "📚", "📚", "📚", "📚", "📚", "📚", "Math", "📚", "📚", "📚", "📚", "📚", "📚", "Science", "📚", "📚", "📚", "📚", "📚", "📚", "📚", "📚", "📚", "English", "📚", "📚", "📚", "📚", "📚", "📚", "Art", "📚", "📚", "📚", "PE", "📚", "📚", "📚", "📚", "📚", "📚", "Music", "Your answers:", "Math:", "Science:", "English:", "Art:", "PE:", "Music:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample df72a2ec1f93f4e3abb1  seed 502  [read_mcq]
+      stem:    Look at the picture graph. Each ⚽ = 5. How many pupils play volleyball?
+      answer:  35
+      options: 7 / 35 / 40 / 30
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Count the pictures for 'volleyball': there are 7 picture(s) × 5 = 35."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 99, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"volleyball\" from the graph and enter it below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "⚽", "⚽", "⚽", "basketball", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "volleyball", "⚽", "swimming", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "running", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "soccer", "⚽", "⚽", "tennis", "Your answer:", "volleyball:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c1c2564477f99f4a41c2  seed 700  [read_mcq]
+      stem:    Look at the picture graph. Each ⭐ = 2. How many stars were earned by Grade 1?
+      answer:  8
+      options: 10 / 6 / 8 / 4
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "Count the pictures for 'Grade 1': there are 4 picture(s) × 2 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 78, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"Grade 1\" from the graph and enter it below.", "0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "⭐", "⭐", "⭐", "⭐", "Grade 1", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "Grade 2", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "Grade 3", "⭐", "Grade 4", "Your answer:", "Grade 1:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7aff62e70808ecf95961  seed 701  [read_mcq]
+      stem:    🏐 Romel enjoys whistles. Here is a math challenge. Look at the picture graph. What is the total number of pets shown?
+      answer:  40
+      options: 45 / 40 / 30 / 8
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 5 items.", "Add up the values for ALL categories to find the total."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "🐾", "cats", "🐾", "🐾", "🐾", "dogs", "🐾", "🐾", "🐾", "birds", "🐾", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6748298b4a110af78766  seed 702  [read_mcq]
+      stem:    🚴 Kuya Chad enjoys wristbands. Here is a math challenge. Look at the picture graph. How many bananas were counted?
+      answer:  8
+      options: 10 / 7 / 8 / 9
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the pictures for 'bananas': there are 8 picture(s)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 84, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"bananas\" from the graph and enter it below.", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "apples", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "bananas", "🍎", "🍎", "🍎", "🍎", "mangoes", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "🍎", "grapes", "Your answer:", "bananas:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bf7223e72f64481889a8  seed 800  [read_mcq]
+      stem:    Look at the picture graph. What is the difference between mangoes and strawberries?
+      answer:  20
+      options: 10 / 30 / 2 / 20
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Read each category's value, then subtract the smaller from the larger."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 87, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "50", "🍎", "🍎", "apples", "🍎", "🍎", "bananas", "🍎", "🍎", "🍎", "mangoes", "🍎", "🍎", "grapes", "🍎", "🍎", "🍎", "oranges", "🍎", "strawberries", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:", "oranges:", "strawberries:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c3510a670297fbfc2e64  seed 801  [read_mcq]
+      stem:    Look at the picture graph. How many pupils play basketball?
+      answer:  2
+      options: 2 / 1 / 3 / 4
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the pictures for 'basketball': there are 2 picture(s)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 79, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"basketball\" from the graph and enter it below.", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "⚽", "⚽", "basketball", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "volleyball", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "⚽", "swimming", "⚽", "⚽", "⚽", "⚽", "⚽", "running", "Your answer:", "basketball:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 810590f7af96ff4d33d3  seed 900  [read_mcq]
+      stem:    Look at the picture graph. Which has the most pets: cats, dogs, birds or fish?
+      answer:  birds
+      options: cats / dogs / birds / fish
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 2 items.", "Compare the number of pictures in each row. The row with the most pictures has the greatest count."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "2", "4", "6", "8", "10", "12", "🐾", "🐾", "🐾", "cats", "🐾", "dogs", "🐾", "🐾", "🐾", "🐾", "birds", "🐾", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b3c170514407b4a40dd5  seed 901  [read_mcq]
+      stem:    Look at the picture graph. Which has the most pets: cats, dogs, birds or fish?
+      answer:  cats
+      options: birds / dogs / fish / cats
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Compare the number of pictures in each row. The row with the most pictures has the greatest count."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "50", "🐾", "🐾", "🐾", "cats", "🐾", "dogs", "🐾", "🐾", "birds", "🐾", "🐾", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f8e234a9856c413456b3  seed 1000  [read_mcq]
+      stem:    Look at the table. How many daisies are in the garden?
+      answer:  10
+      options: 12 / 11 / 20 / 10
+      hints:   ["Look at the table carefully.", "Find the row labelled 'daisies'.", "Read the number written next to it in the Count column."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Count", "roses", "20", "sunflowers", "10", "tulips", "20", "daisies", "10", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d36d384d54291dce8322  seed 1001  [read_mcq]
+      stem:    Look at the picture graph. How many pupils chose fish?
+      answer:  3
+      options: 5 / 4 / 3 / 2
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 1 item.", "Count the pictures for 'fish': there are 3 picture(s)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 78, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"fish\" from the graph and enter it below.", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "cats", "🐾", "🐾", "🐾", "🐾", "🐾", "dogs", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "birds", "🐾", "🐾", "🐾", "fish", "Your answer:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8d0f32ea1dd72333fdb8  seed 1002  [read_mcq]
+      stem:    Look at the picture graph. Each 🎨 = 10. How many pupils chose red?
+      answer:  10
+      options: 10 / 30 / 20 / 1
+      hints:   ["Look at the pictograph carefully.", "Each picture stands for 10 items.", "Count the pictures for 'red': there are 1 picture(s) × 10 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 50, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"red\" from the graph and enter it below.", "0", "10", "20", "30", "40", "🎨", "red", "🎨", "🎨", "blue", "🎨", "🎨", "green", "🎨", "yellow", "Your answer:", "red:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

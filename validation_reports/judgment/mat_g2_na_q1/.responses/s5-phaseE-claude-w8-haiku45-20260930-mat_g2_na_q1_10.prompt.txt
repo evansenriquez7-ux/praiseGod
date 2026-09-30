@@ -1,0 +1,271 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe8-mat_g2_na_q1_10-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_na_q1_10/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe8-mat_g2_na_q1_10-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_10
+PACKET DIGEST: 45cde9e7a97bc9c9c52ecabaca0f49ccc01ece72a7bf1f482d51b2a634054564
+COMPETENCY (Grade 2, Quarter 1, None):
+Illustrate and apply the following properties of addition using sums up to 1000: the sum of zero and any number is equal to the number, changing the order of the addends does not change the sum, and changing the grouping of the addends does not change the sum.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_properties: Illustrate
+  apply_properties: apply
+  properties_of_addition: properties of addition
+  sums_up_to_1000: sums up to 1000
+  identity_property: sum of zero and any number is equal to the number
+  commutative_property: changing the order of the addends does not change the sum
+  associative_property: changing the grouping of the addends does not change the sum
+
+SAMPLES (every one of these is real rendered output):
+  sample be71538c23749f501c31  seed 42  [mcq]
+      stem:    Is (241 + 111) + 516 the same as 241 + (111 + 431)?
+      answer:  False
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["The left side adds 241, 111 and 516. The right side adds 241, 111 and 431.", "(241 + 111) + 516 = 868 and 241 + (111 + 431) = 783.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f597c1cec10ba4da88d5  seed 43  [true_false]
+      stem:    0 + 293 = 303. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 0 and 293.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 0 + 9 = 9.", "The sum is 0 + 293 = 293."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample d9b7b223025ae1e27eb5  seed 44  [mcq]
+      stem:    Is 462 + 12 the same as 12 + 462?
+      answer:  True
+      options: True / Cannot be determined / False / Only when both are 0
+      hints:   ["Both sides add the same two numbers, 462 and 12, in a different order.", "462 + 12 = 474 and 12 + 462 = 474.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e3522ff45953858835fe  seed 45  [mcq]
+      stem:    Is 447 + 202 the same as 202 + 447?
+      answer:  True
+      options: Cannot be determined / False / Only when both are 0 / True
+      hints:   ["Both sides add the same two numbers, 447 and 202, in a different order.", "447 + 202 = 649 and 202 + 447 = 649.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f481ea168b05a6736b7e  seed 46  [cloze]
+      stem:    0 + 410 = ___
+      answer:  410
+      options: 410 / 411 / 420 / 409
+      hints:   ["We are adding two numbers: 0 and 410.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 0 + 1 = 1.", "The sum is 0 + 410 = 410."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1d85111b4cc311e424db  seed 51  [error_detect]
+      stem:    Ana solved: "0 + 859 = ___". Ana says the missing number is 860. Is Ana correct?
+      answer:  {'has_error': True, 'correct_value': 859}
+      hints:   ["We are adding two numbers: 0 and 859.", "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.", "Add the tens: 0 + 5 = 5.", "The sum is 0 + 859 = 859."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e498f4dc99db203bd6db  seed 500  [mcq]
+      stem:    Is 168 + 511 the same as 511 + 137?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["The left side adds 168 and 511. The right side adds 511 and 137.", "168 + 511 = 679 and 511 + 137 = 648.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6eb5b90e6e4ba79e6674  seed 501  [mcq]
+      stem:    Is (553 + 123) + 221 the same as 553 + (123 + 221)?
+      answer:  True
+      options: Only when both are 0 / True / Cannot be determined / False
+      hints:   ["Both sides add the same three numbers, 553, 123 and 221, grouped differently.", "(553 + 123) + 221 = 897 and 553 + (123 + 221) = 897.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b3e2c5bd46926dea3aa5  seed 502  [mcq]
+      stem:    Is (623 + 62) + 103 the same as 623 + (62 + 103)?
+      answer:  True
+      options: Cannot be determined / Only when both are 0 / True / False
+      hints:   ["Both sides add the same three numbers, 623, 62 and 103, grouped differently.", "(623 + 62) + 103 = 788 and 623 + (62 + 103) = 788.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 12e04174d5cbe7d9afb6  seed 600  [mcq]
+      stem:    Is 976 + 3 the same as 3 + 976?
+      answer:  True
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["Both sides add the same two numbers, 976 and 3, in a different order.", "976 + 3 = 979 and 3 + 976 = 979.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ef4b356452fca0a79dde  seed 601  [cloze]
+      stem:    0 + 702 = ___
+      answer:  702
+      options: 701 / 703 / 712 / 702
+      hints:   ["We are adding two numbers: 0 and 702.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 0 + 0 = 0.", "The sum is 0 + 702 = 702."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 841504958f2d752128e2  seed 602  [mcq]
+      stem:    Is 783 + 213 the same as 213 + 685?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["The left side adds 783 and 213. The right side adds 213 and 685.", "783 + 213 = 996 and 213 + 685 = 898.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample adca5a37e1cec2e44c66  seed 603  [true_false]
+      stem:    565 + 0 = 565. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 565 and 0.", "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 565 + 0 = 565."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f24ae7f1598e758f9a93  seed 604  [mcq]
+      stem:    What is 208 + 0?
+      answer:  208
+      options: 208 / 218 / 209 / 207
+      hints:   ["We are adding two numbers: 208 and 0.", "Add the ones: 8 + 0 = 8. Keep 8 in the ones place.", "Add the tens: 0 + 0 = 0.", "The sum is 208 + 0 = 208."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 15c6f6db0633492073ae  seed 605  [true_false]
+      stem:    905 + 0 = 905. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 905 and 0.", "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.", "Add the tens: 0 + 0 = 0.", "The sum is 905 + 0 = 905."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0ef3528f5e94965d0568  seed 606  [mcq]
+      stem:    Is (751 + 113) + 34 the same as 751 + (113 + 31)?
+      answer:  False
+      options: Only when both are 0 / True / Cannot be determined / False
+      hints:   ["The left side adds 751, 113 and 34. The right side adds 751, 113 and 31.", "(751 + 113) + 34 = 898 and 751 + (113 + 31) = 895.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a41ab1c98be137fd5f55  seed 607  [mcq]
+      stem:    Is (221 + 357) + 1 the same as 221 + (357 + 0)?
+      answer:  False
+      options: True / False / Cannot be determined / Only when both are 0
+      hints:   ["The left side adds 221, 357 and 1. The right side adds 221, 357 and 0.", "(221 + 357) + 1 = 579 and 221 + (357 + 0) = 578.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample de7419dff9d785127f4e  seed 700  [true_false]
+      stem:    0 + 925 = 925. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 0 and 925.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 0 + 2 = 2.", "The sum is 0 + 925 = 925."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 423f2e5e6d50761ebda2  seed 701  [mcq]
+      stem:    🚴 Ate Sam enjoys running shoes. Here is a math challenge. Is (813 + 84) + 101 the same as 813 + (84 + 77)?
+      answer:  False
+      options: False / Only when both are 0 / Cannot be determined / True
+      hints:   ["The left side adds 813, 84 and 101. The right side adds 813, 84 and 77.", "(813 + 84) + 101 = 998 and 813 + (84 + 77) = 974.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 87178580e3ba877e9230  seed 702  [error_detect]
+      stem:    🏐 Ate Alyssa enjoys shuttlecocks. Here is a math challenge. Manny solved: "0 + 140 = ___". Manny says the missing number is 141. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 140}
+      hints:   ["We are adding two numbers: 0 and 140.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 0 + 4 = 4.", "The sum is 0 + 140 = 140."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample cd49dd4ef1878dbb355a  seed 800  [mcq]
+      stem:    Is (74 + 721) + 4 the same as 74 + (721 + 3)?
+      answer:  False
+      options: Cannot be determined / False / True / Only when both are 0
+      hints:   ["The left side adds 74, 721 and 4. The right side adds 74, 721 and 3.", "(74 + 721) + 4 = 799 and 74 + (721 + 3) = 798.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1d1adb34f76a7ea5574d  seed 801  [error_detect]
+      stem:    Pia solved: "211 + 0 = ___". Pia says the missing number is 211. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 211}
+      hints:   ["We are adding two numbers: 211 and 0.", "Add the ones: 1 + 0 = 1. Keep 1 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 211 + 0 = 211."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0e0e812a18a6bfed59b0  seed 900  [mcq]
+      stem:    Is (2 + 3) + 1 the same as 2 + (3 + 1)?
+      answer:  True
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Both sides add the same three numbers, 2, 3 and 1, grouped differently.", "(2 + 3) + 1 = 6 and 2 + (3 + 1) = 6.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3c7706e1ea68d61affc3  seed 901  [mcq]
+      stem:    Is 5 + 1 the same as 1 + 1?
+      answer:  False
+      options: Only when both are 0 / True / False / Cannot be determined
+      hints:   ["The left side adds 5 and 1. The right side adds 1 and 1.", "5 + 1 = 6 and 1 + 1 = 2.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5fddfe88c7a096182558  seed 1000  [mcq]
+      stem:    Is 752 + 4 the same as 4 + 788?
+      answer:  False
+      options: Cannot be determined / True / False / Only when both are 0
+      hints:   ["The left side adds 752 and 4. The right side adds 4 and 788.", "752 + 4 = 756 and 4 + 788 = 792.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 7a0297dbbbb72164f79b  seed 1001  [error_detect]
+      stem:    Liza solved: "0 + 779 = ___". Liza says the missing number is 0. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 779}
+      hints:   ["We are adding two numbers: 0 and 779.", "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.", "Add the tens: 0 + 7 = 7.", "The sum is 0 + 779 = 779."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample c6b98e6f7bdbfdf7c8d3  seed 1002  [mcq]
+      stem:    Is (725 + 22) + 221 the same as 725 + (22 + 177)?
+      answer:  False
+      options: Only when both are 0 / False / Cannot be determined / True
+      hints:   ["The left side adds 725, 22 and 221. The right side adds 725, 22 and 177.", "(725 + 22) + 221 = 968 and 725 + (22 + 177) = 924.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

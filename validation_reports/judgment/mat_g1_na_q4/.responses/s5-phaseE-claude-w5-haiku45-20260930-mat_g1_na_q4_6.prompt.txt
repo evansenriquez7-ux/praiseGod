@@ -1,0 +1,308 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g1_na_q4_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q4_6
+PACKET DIGEST: 27b303343c8ec0eebacf088b7fdbadfb4121d5b739c187ce9efc5c45913a826c
+COMPETENCY (Grade 1, Quarter 4, None):
+Solve 1-step problems (given orally or in pictures) involving addition of money where the sum is up to ₱100, or subtraction of money where both amounts are less than ₱100.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_1_step_problems: Solve 1-step problems
+  in_pictures: in pictures
+  addition_of_money: addition of money
+  sum_up_to_100: sum is up to ₱100
+  subtraction_of_money: subtraction of money
+  amounts_less_than_100: amounts are less than ₱100
+
+SAMPLES (every one of these is real rendered output):
+  sample d410ababa077fc6dd315  seed 42  [read_mcq]
+      stem:    Marco had ₱5 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?
+      answer:  3
+      options: 5 / 2 / 3 / 4
+      hints:   ["You have these amounts: ['peso5', 'peso2'].", "You paid peso5 for an item that costs peso2.", "Money back = peso5 − peso2 = peso3."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8e4a76db423c64a9ec76  seed 43  [read_mcq]
+      stem:    Kuya Ton had ₱20 and received ₱10 more from Nanay. How much money does Kuya Ton have in all?
+      answer:  30
+      options: 30 / 35 / 50 / 20
+      hints:   ["You have these amounts: ['peso20', 'peso10'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso10 → running total = peso30.", "The total is peso30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "₱20", "₱20", "REPUBLIKA NG PILIPINAS", "COINS", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#fef08a 60%,", "#cbd5e1 60%)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5589ea8157ef2a680572  seed 44  [mcq]
+      stem:    Isko has ₱10 in one pocket and ₱21 in another pocket. How much money does Isko have in total?
+      answer:  31
+      options: 310 / 32 / 21 / 31
+      hints:   ["You have these amounts: ['peso10', 'peso21'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso21 → running total = peso31.", "The total is peso31."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3714657f86107c66e14c  seed 45  [read_mcq]
+      stem:    Chef Demi saved ₱2 on Monday and ₱10 on Tuesday. How much money did Chef Demi save altogether?
+      answer:  12
+      options: 14 / 12 / 11 / 13
+      hints:   ["You have these amounts: ['peso2', 'peso10'].", "Step 1: Add peso2 → running total = peso2.", "Step 2: Add peso10 → running total = peso12.", "The total is peso12."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9e390c2bbf183239afd6  seed 46  [cloze]
+      stem:    Ate Nena had ₱30 and spent ₱10 on bags of flour at the palengke. How much money does Ate Nena have left?
+      answer:  20
+      options: 20 / 30 / 400 / 41
+      hints:   ["You have these amounts: ['peso30', 'peso10'].", "You paid peso30 for an item that costs peso10.", "Money back = peso30 − peso10 = peso20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 02e60e0d61e1cf23370c  seed 500  [read_mcq]
+      stem:    Nanding had ₱60 and bought a snack for ₱40 at the sari-sari store. How much money does Nanding have left?
+      answer:  20
+      options: 80 / 50 / 65 / 20
+      hints:   ["You have these amounts: ['peso60', 'peso40'].", "You paid peso60 for an item that costs peso40.", "Money back = peso60 − peso40 = peso20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "₱50", "₱50", "REPUBLIKA NG PILIPINAS", "COINS", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff", "#fef08a 60%,", "#cbd5e1 60%)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 28f8a3bb6a46fe466f43  seed 501  [read_mcq]
+      stem:    Kuya Ton had ₱50 in a piggy bank and used ₱39 to buy a notebook. How much money is left in the piggy bank?
+      answer:  11
+      options: 11 / 10 / 12 / 16
+      hints:   ["You have these amounts: ['peso50', 'peso39'].", "You paid peso50 for an item that costs peso39.", "Money back = peso50 − peso39 = peso11."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 77a21857d240499c3e02  seed 502  [mcq]
+      stem:    Carlo had ₱80 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?
+      answer:  78
+      options: 78 / 820 / 83 / 72
+      hints:   ["You have these amounts: ['peso80', 'peso2'].", "You paid peso80 for an item that costs peso2.", "Money back = peso80 − peso2 = peso78."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9fc0da4ff98a774cf1bb  seed 600  [read_mcq]
+      stem:    Kuya Renz had ₱10 and bought a snack for ₱5 at the sari-sari store. How much money does Kuya Renz have left?
+      answer:  5
+      options: 20 / 5 / 6 / 11
+      hints:   ["You have these amounts: ['peso10', 'peso5'].", "You paid peso10 for an item that costs peso5.", "Money back = peso10 − peso5 = peso5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#fef08a 60%,", "#cbd5e1 60%)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4efc57edda6bbf5e6fd6  seed 601  [cloze]
+      stem:    Moses bought a pencil for ₱15 and an eraser for ₱5. How much did Moses spend in all?
+      answer:  20
+      options: 21 / 200 / 20 / 10
+      hints:   ["You have these amounts: ['peso15', 'peso5'].", "Step 1: Add peso15 → running total = peso15.", "Step 2: Add peso5 → running total = peso20.", "The total is peso20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b6304864e5d0c552de77  seed 602  [read_mcq]
+      stem:    Des has ₱50 in one pocket and ₱20 in another pocket. How much money does Des have in total?
+      answer:  70
+      options: 70 / 69 / 75 / 65
+      hints:   ["You have these amounts: ['peso50', 'peso20'].", "Step 1: Add peso50 → running total = peso50.", "Step 2: Add peso20 → running total = peso70.", "The total is peso70."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["40", "50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 742542e35f921b0996d8  seed 603  [read_mcq]
+      stem:    Sir Ben bought a pencil for ₱15 and an eraser for ₱15. How much did Sir Ben spend in all?
+      answer:  30
+      options: 30 / 31 / 20 / 50
+      hints:   ["You have these amounts: ['peso15', 'peso15'].", "Step 1: Add peso15 → running total = peso15.", "Step 2: Add peso15 → running total = peso30.", "The total is peso30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 9, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱5", "₱5", "₱10", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#e2e8f0,", "#cbd5e1)", "#1e293b", "#94a3b8", "#fef08a 60%,", "#cbd5e1 60%)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a9997b6c5792ab32d47e  seed 604  [read_mcq]
+      stem:    Faye had ₱5 and received ₱25 more from Nanay. How much money does Faye have in all?
+      answer:  30
+      options: 35 / 29 / 25 / 30
+      hints:   ["You have these amounts: ['peso5', 'peso25'].", "Step 1: Add peso5 → running total = peso5.", "Step 2: Add peso25 → running total = peso30.", "The total is peso30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4e46f5616912bc5875b0  seed 605  [read_mcq]
+      stem:    Riza bought a pencil for ₱10 and an eraser for ₱50. How much did Riza spend in all?
+      answer:  60
+      options: 55 / 65 / 59 / 60
+      hints:   ["You have these amounts: ['peso10', 'peso50'].", "Step 1: Add peso10 → running total = peso10.", "Step 2: Add peso50 → running total = peso60.", "The total is peso60."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a0a980b31bca7046b3ea  seed 606  [mcq]
+      stem:    Mary had ₱20 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?
+      answer:  19
+      options: 19 / 81 / 910 / 92
+      hints:   ["You have these amounts: ['peso20', 'peso1'].", "You paid peso20 for an item that costs peso1.", "Money back = peso20 − peso1 = peso19."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ea0f9c6fb15026f9e580  seed 700  [read_mcq]
+      stem:    Faye bought a pencil for ₱25 and an eraser for ₱5. How much did Faye spend in all?
+      answer:  30
+      options: 50 / 30 / 40 / 29
+      hints:   ["You have these amounts: ['peso25', 'peso5'].", "Step 1: Add peso25 → running total = peso25.", "Step 2: Add peso5 → running total = peso30.", "The total is peso30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "₱20", "₱20", "REPUBLIKA NG PILIPINAS", "COINS", "₱5", "₱5"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#e2e8f0,", "#cbd5e1)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 792c494ce4edfca1f87a  seed 701  [cloze]
+      stem:    Mika had ₱10 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?
+      answer:  9
+      options: 42 / 410 / 31 / 9
+      hints:   ["You have these amounts: ['peso10', 'peso1'].", "You paid peso10 for an item that costs peso1.", "Money back = peso10 − peso1 = peso9."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f424f6d1218c2cebe458  seed 702  [mcq]
+      stem:    Ate Alyssa had ₱1 and spent ₱0 on whistles at the barangay court. How much money does Ate Alyssa have left?
+      answer:  1
+      options: 1 / 320 / 33 / 22
+      hints:   ["You have these amounts: ['peso1', 'peso0'].", "You paid peso1 for an item that costs peso0.", "Money back = peso1 − peso0 = peso1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8783a2b7950811a72d2a  seed 800  [cloze]
+      stem:    Pia had ₱40 in a piggy bank and used ₱15 to buy a notebook. How much money is left in the piggy bank?
+      answer:  25
+      options: 56 / 45 / 550 / 25
+      hints:   ["You have these amounts: ['peso40', 'peso15'].", "You paid peso40 for an item that costs peso15.", "Money back = peso40 − peso15 = peso25."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 73e55bca6ac8b0ef0489  seed 801  [mcq]
+      stem:    Tito Bong had ₱20 and received ₱75 more from Nanay. How much money does Tito Bong have in all?
+      answer:  95
+      options: 85 / 950 / 96 / 95
+      hints:   ["You have these amounts: ['peso20', 'peso75'].", "Step 1: Add peso20 → running total = peso20.", "Step 2: Add peso75 → running total = peso95.", "The total is peso95."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 797d7f284811f1f98a3d  seed 900  [read_mcq]
+      stem:    Tito Bong had ₱2 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?
+      answer:  1
+      options: 0 / 3 / 2 / 1
+      hints:   ["You have these amounts: ['peso2', 'peso1'].", "You paid peso2 for an item that costs peso1.", "Money back = peso2 − peso1 = peso1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d5d61410a996abd62f0c  seed 901  [read_mcq]
+      stem:    Ate Gab has ₱2 in one pocket and ₱2 in another pocket. How much money does Ate Gab have in total?
+      answer:  4
+      options: 5 / 4 / 3 / 6
+      hints:   ["You have these amounts: ['peso2', 'peso2'].", "Step 1: Add peso2 → running total = peso2.", "Step 2: Add peso2 → running total = peso4.", "The total is peso4."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 492f62f54b9b5ed44cd7  seed 1000  [read_mcq]
+      stem:    Coach Roel had ₱50 and bought a snack for ₱20 at the sari-sari store. How much money does Coach Roel have left?
+      answer:  30
+      options: 49 / 70 / 30 / 55
+      hints:   ["You have these amounts: ['peso50', 'peso20'].", "You paid peso50 for an item that costs peso20.", "Money back = peso50 − peso20 = peso30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "₱50", "₱50", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 218bbf6ff631dd97ba14  seed 1001  [mcq]
+      stem:    Kuya Chad had ₱30 and spent ₱18 on helmets at the sports complex. How much money does Kuya Chad have left?
+      answer:  12
+      options: 12 / 600 / 50 / 61
+      hints:   ["You have these amounts: ['peso30', 'peso18'].", "You paid peso30 for an item that costs peso18.", "Money back = peso30 − peso18 = peso12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 8c58b99ad99322b375ca  seed 1002  [mcq]
+      stem:    Kuya Coy had ₱50 in a piggy bank and used ₱10 to buy a notebook. How much money is left in the piggy bank?
+      answer:  40
+      options: 750 / 76 / 40 / 65
+      hints:   ["You have these amounts: ['peso50', 'peso10'].", "You paid peso50 for an item that costs peso10.", "Money back = peso50 − peso10 = peso40."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

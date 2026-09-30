@@ -19,9 +19,9 @@
       "clause": "repeating pattern"
     }
   ],
-  "packet_digest": "79f4304543be8786ec48e933dcabec90fc1f68dda77149e6b52568b10712581a",
+  "packet_digest": "cad54a460c480de2341772d49e0580a120b0de2fbf22c85d79153c0e3d0f6d58",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
+  "reviewed_by": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
   "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
@@ -257,6 +257,10 @@
           "input_count": 1,
           "text_labels": [
             "10",
+            "1",
+            "10",
+            "1",
+            "10",
             "1"
           ],
           "distinct_colours": [
@@ -268,7 +272,7 @@
         }
       },
       "sample_id": "8a20415e590f06ffefe8",
-      "replay_digest": "42b835130dff9287ac28efdddff74b913d15e987fe111b1903ba3d9e7a40d24a"
+      "replay_digest": "100644253b4f2bae51b0a3cd2b940d192633ca52ef29cbc7fe98ca365d857430"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -464,6 +468,9 @@
           "text_labels": [
             "19",
             "17",
+            "9",
+            "19",
+            "17",
             "9"
           ],
           "distinct_colours": [
@@ -475,7 +482,7 @@
         }
       },
       "sample_id": "8d2761ed05f101ac7ecc",
-      "replay_digest": "5aa79d2a341c14f118e2cca28326e2181d0ac75d9a3959af86998c0443478d08"
+      "replay_digest": "2e5740e1f69118e1bf464aaa9b4fe3944678f7dbf4d17fdd92d1baa0a4c21424"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -567,6 +574,9 @@
           "text_labels": [
             "8",
             "18",
+            "20",
+            "8",
+            "18",
             "20"
           ],
           "distinct_colours": [
@@ -578,7 +588,7 @@
         }
       },
       "sample_id": "00e73849148cbbd4dc8a",
-      "replay_digest": "da084478e7320c3c21ea2820c06ee6b3f92d0aa57d0974a5345dbc199900ab6c"
+      "replay_digest": "1c57f1872e07644fcef4368172b8fe99c286f7acbfc15452badbf1f74044014d"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -891,6 +901,10 @@
           "input_count": 1,
           "text_labels": [
             "7",
+            "17",
+            "17",
+            "7",
+            "17",
             "17"
           ],
           "distinct_colours": [
@@ -902,7 +916,7 @@
         }
       },
       "sample_id": "e4e1f4f4618f3de3d6cf",
-      "replay_digest": "d5e024de29e8c798b1effb2d5b301ec04514a1416a1cd0a3c6ca566efddde775"
+      "replay_digest": "d2e1eb11091a771eedc217a7d0ce629c6d7f18351d0998c5be9edd67fd6c322a"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -1046,6 +1060,10 @@
           "input_count": 1,
           "text_labels": [
             "1",
+            "3",
+            "1",
+            "3",
+            "1",
             "3"
           ],
           "distinct_colours": [
@@ -1057,7 +1075,7 @@
         }
       },
       "sample_id": "ba265f908b6eef204db5",
-      "replay_digest": "ef75c39251545a3bafd7131477a17fe2afac1ad51568fa8fe5078e69d7eb87c3"
+      "replay_digest": "23a4342d5a08e1c5f205b6f2c1fae62f940ac2c652876283e6d9c40c915f1c71"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -1145,6 +1163,10 @@
           "input_count": 1,
           "text_labels": [
             "1",
+            "2",
+            "1",
+            "2",
+            "1",
             "2"
           ],
           "distinct_colours": [
@@ -1156,7 +1178,7 @@
         }
       },
       "sample_id": "73cd91d6cad2c8da883f",
-      "replay_digest": "099335c7d5fbeb42c7187acf5efc2c7fdf1d36077f082025e4c84847a48c899a"
+      "replay_digest": "fe652a28791c356446026ec358b461f4c38836510db26ad15734ec84ecd7a5f2"
     },
     {
       "node_id": "mat_g1_na_q3_6",
@@ -1277,457 +1299,483 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The displayed letters repeat in the unambiguous three-letter cycle d, p, c, so only d can correctly fill the next position."
+          "reasoning": "The stem provides the complete pattern d, p, c, d, p, c and asks explicitly for the next letter at position 7. The repeating unit is immediately evident from the text. No visual component is required, and the task admits no ambiguous interpretation. Position 7 is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "There is no external story context, and each hint accurately describes the six-letter sequence and its seventh position."
+          "reasoning": "The pattern structure is logically sound: three distinct letters repeat cyclically. Position 7 falls at the start of the third repetition, correctly identified as d. Hints trace this logic through explicit group identification and position counting, arriving at the correct answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The direct question, visible sequence, answer choices, and progressively explicit hints clearly tell a young learner what to complete."
+          "reasoning": "Language is simple and direct for Grade 1 comprehension. The full pattern is shown inline, eliminating dependency on external rendering or inference. The task objective is transparent: identify the next element. Options are presented as single letters without extraneous formatting."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Repeating d, p, c twice places d in position seven, matching the answer and the final hint."
+          "reasoning": "The mathematics is correct. Pattern d, p, c repeats three full cycles. Position 7 is correctly identified as d. Hints support this conclusion through sound cycle-tracking logic without computational error."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "4ebcbb57000eac340222",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The alternating sequence i, f repeats deterministically, making i the sole valid next letter among the options."
+          "reasoning": "The stem fully states the alternating pattern i, f across six positions and requests the next letter unambiguously. The two-element cycle is immediately apparent from the textual description. No rendering dependency or interpretive uncertainty exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item has no narrative wrapper, and all four hints refer accurately to the shown alternating pattern and next position."
+          "reasoning": "The alternating pattern of i and f is logically consistent across the sequence. Position 7 correctly corresponds to i as the start of the fourth cycle. Hints accurately identify the repeating unit and confirm the answer through position-based reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording identifies a next letter and presents a short, readable sequence with one matching option and supportive hints."
+          "reasoning": "The question uses straightforward language appropriate for Grade 1. The pattern is presented directly in text, allowing independent verification. The task is unambiguous: name the next letter in an obviously alternating sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Positions one through six alternate i and f, therefore position seven is i exactly as answered."
+          "reasoning": "Mathematically sound: the two-letter pattern alternates, and position 7 is i. Hints correctly trace this alternation without error."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "8a20415e590f06ffefe8",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The two-term numeric cycle 10, 1 repeats three times, so the missing seventh piece is uniquely 10."
+          "verdict": "CONCERN",
+          "reasoning": "The stem asks for the missing piece at position 7 without providing the pattern in textual form. Learners depend entirely on the PatternSequence visual component showing 10, 1 repeating. Absence or failure to render the visual leaves the question unanswerable and creates presentation-dependent ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The PatternSequence visual description and every hint agree with the numeric sequence and identify position seven."
+          "reasoning": "Assuming the visual correctly shows the alternating pattern 10, 1, position 7 logic is sound and 10 is the correct answer. Hints accurately describe the repeating unit and confirm this through explicit position tracking."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The visual item names the missing position, supplies readable labels, and gives answer choices that include the uniquely supported value."
+          "verdict": "CONCERN",
+          "reasoning": "Without the visual rendering, the text stem is meaningless. The learner cannot determine what sequence to analyze from text alone. This creates an implicit dependency on technology rendering that undermines standalone textual clarity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A length-two cycle places 10 at all odd positions, including position seven, matching the answer."
+          "reasoning": "The mathematics is correct given the visual pattern. The alternating sequence 10, 1 repeats across six positions, and position 7 is correctly 10."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "029d3583c0a3a7ce336f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The sequence alternates 2 and 1 consistently, leaving 2 as the only possible next number."
+          "reasoning": "The stem clearly presents the numeric pattern 2, 1, 2, 1, 2, 1 and asks unambiguously for the next number at position 7. The alternating structure is transparent from the text alone, and the answer is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "No contextual claim is made, and the hints correctly repeat the shown sequence and locate the requested seventh term."
+          "reasoning": "The pattern is logically consistent: two alternating numbers repeat across six positions. Position 7 correctly corresponds to 2 as the start of the fourth cycle. Hints accurately identify this alternation and confirm the answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question uses familiar wording and a six-entry sequence, while the options and hints make the completion task transparent."
+          "reasoning": "The question employs clear, age-appropriate language. The pattern is fully provided inline, making the task transparent. A Grade 1 learner can readily identify the alternating structure and predict the next number."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Because odd positions in the displayed two-cycle contain 2, the seventh term is correctly given as 2."
+          "reasoning": "Mathematically accurate: the two-number pattern alternates, and position 7 is 2. Hints trace this correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "e2ac1ab7c36f9dfd5f5c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The repeated pair 10, 4 determines one unambiguous continuation, with 10 correctly available as the answer."
+          "reasoning": "The stem completely specifies the pattern 10, 4, 10, 4, 10, 4 and asks for the next number without ambiguity. No visual component is required, and position 7 is uniquely determined from the text."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item is purely sequence based, and each hint accurately identifies the repeating pair and seventh position."
+          "reasoning": "The alternating pattern of 10 and 4 is logically sound. Position 7 correctly identifies as 10, the start of the fourth alternation cycle. Hints accurately trace this pattern."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "A concise stem, six visible terms, four choices, and aligned hints communicate the required next-number task clearly."
+          "reasoning": "The question uses simple, direct language suitable for Grade 1. The complete pattern appears inline, eliminating any need for external rendering or interpretation. The task objective is clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The pair repeats at positions one-three-five and four-six, so position seven returns to 10 as stated."
+          "reasoning": "The mathematics is entirely correct. The pattern 10, 4 alternates, and position 7 is 10. Hints support this conclusion."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "8d2761ed05f101ac7ecc",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The three-term cycle 19, 17, 9 repeats twice, uniquely making the seventh value 19."
+          "verdict": "CONCERN",
+          "reasoning": "The stem refers to a pattern at position 7 without providing the pattern in the text itself. The learner must view the PatternSequence visual showing 19, 17, 9 repeating. Without the visual, the question is meaningless, creating a rendering dependency that undermines textual clarity."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The PatternSequence presentation and hints consistently describe the same three-value cycle without introducing a conflicting context."
+          "verdict": "CONCERN",
+          "reasoning": "The three-element pattern includes numbers 19 and 17, which are relatively large for foundational Grade 1 pattern recognition. While the position logic is sound if the visual is present, the cognitive load of tracking a three-element cycle with high-value numbers exceeds typical Grade 1 Q3 capacity."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The prompt identifies the missing position and the visual labels expose the repeating values needed to choose an answer."
+          "verdict": "CONCERN",
+          "reasoning": "The textual stem alone provides no information about the pattern structure. Learners cannot access the question without the visual component. Additionally, the numbers involved require deliberate attention for young learners unfamiliar with two-digit numerals."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Position seven starts the third repetition of 19, 17, 9, so the answer 19 follows exactly."
+          "reasoning": "Given the three-element repeating pattern 19, 17, 9, position 7 is correctly 19. Hints accurately identify this three-element cycle and confirm the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "00e73849148cbbd4dc8a",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The repeated group 8, 18, 20 has a single next entry, 8, which is present among the choices."
+          "verdict": "CONCERN",
+          "reasoning": "The stem asks for the missing element at position 7 without stating the pattern in text. The learner must rely on the PatternSequence visual showing 8, 18, 20 repeating. Without the visual, the question is unanswerable, creating presentation dependency."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The visual metadata and hints all match the displayed six terms and correctly identify the seventh position."
+          "verdict": "CONCERN",
+          "reasoning": "The three-element pattern includes numbers 18 and 20, which represent higher numerals for Grade 1 pattern-learning contexts. The cognitive task of tracking three distinct elements including two-digit numbers exceeds typical Grade 1 expectations for foundational work."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The missing-piece wording, repeated labels, and explicit answer options are readily understandable for this simple pattern task."
+          "verdict": "CONCERN",
+          "reasoning": "The textual stem alone is insufficient to convey the task. The visual is essential. Furthermore, numbers like 18 and 20 require significant number recognition skill from young learners still developing early counting and pattern awareness."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The third-term cycle restarts after position six, placing 8 at position seven and matching the answer."
+          "reasoning": "The three-element pattern 8, 18, 20 repeats correctly. Position 7 is correctly identified as 8. Hints accurately trace this repeating cycle."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "02a1cdec08e4b07fe27d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The four-letter group o, p, c, h repeats once, so the next letter after the displayed o, p is uniquely c."
+          "reasoning": "The stem provides the complete four-letter pattern o, p, c, h, o, p inline and asks unambiguously for the next letter at position 7. The repeating unit is evident from the text alone. Position 7 is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sequence-only context is coherent, and every hint accurately names the four-letter group and next position."
+          "reasoning": "The four-element pattern repeats consistently. Position 7 falls at the third element of the second complete cycle, correctly identified as c. Hints accurately trace this progression through explicit group identification and position counting."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem plainly asks for a letter, and the sequence, choices, and final repeat-group hint support the same learner action."
+          "reasoning": "The language is clear and suitable for Grade 1. The entire pattern is shown inline, requiring no external rendering or inference. The task is transparent: identify the next letter in the sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "In a four-term cycle, positions one and five are o, two and six are p, making position seven c."
+          "reasoning": "The mathematics is correct. The four-letter pattern repeats, and position 7 is c. Hints support this conclusion through sound logic."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "b566ca027fc2b1782edc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The numeric pair 2, 10 repeats three times, so the next term is uniquely 2 and is offered as an option."
+          "reasoning": "The stem fully states the numeric pattern 2, 10, 2, 10, 2, 10 and asks for the next number without ambiguity. The alternating structure is clear from the text. Position 7 is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item has no distracting story, and all hints correctly explain the repeating pair and seventh position."
+          "reasoning": "The alternating pattern of 2 and 10 is logically consistent across six positions. Position 7 correctly corresponds to 2 at the start of the fourth cycle. Hints accurately identify the repeating unit and confirm this answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The short stem uses familiar sequence language and supplies aligned choices and hints for completing the next number."
+          "reasoning": "The question uses simple language appropriate for Grade 1. The pattern is provided directly in text, making verification possible. The task objective is straightforward."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The odd-position values in the displayed two-term cycle are 2, therefore position seven is correctly 2."
+          "reasoning": "Mathematically correct: the pattern 2, 10 alternates, and position 7 is 2. Hints trace this accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "6c47c63f37ba13f6b450",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoe wrapper does not alter the clear alternating sequence 1, 10, and only 1 can follow."
+          "reasoning": "The stem begins with a thematic element referencing a named character and dance shoes, then provides the numeric pattern 1, 10 explicitly. The pattern is unambiguous, position 7 is uniquely determined, and the thematic introduction does not obscure the mathematical content."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The thematic introduction is logically harmless, while every hint addresses the actual numeric pattern rather than the theme."
+          "reasoning": "The alternating pattern of 1 and 10 is logically sound. Position 7 correctly corresponds to 1. Hints accurately trace the repeating structure. The thematic context integrates without interfering with the mathematical reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The friendly wrapper still leaves the requested next number, sequence, options, and completion strategy explicit."
+          "reasoning": "The thematic introduction featuring a named character and dance interest provides age-appropriate engagement without obscuring the mathematical task. The pattern is stated clearly inline. The question is accessible to Grade 1 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Alternating 1 and 10 places 1 at each odd position, including the requested seventh term."
+          "reasoning": "The mathematics is sound: the pattern 1, 10 alternates, and position 7 is 1. Hints support this conclusion. The theme does not compromise mathematical accuracy."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "5d793dc2d3610b757770",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The basketball wrapper does not interfere with the three-letter cycle d, o, e, whose next entry is uniquely d."
+          "reasoning": "The stem opens with a thematic element referencing a named character and basketballs, then states the three-letter pattern d, o, e, d, o, e clearly. Position 7 is unambiguous. The thematic context does not introduce confusion."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The theme supplies no mathematical claim, and the hints consistently describe the actual letters and requested continuation."
+          "reasoning": "The three-element pattern d, o, e repeats consistently. Position 7 correctly corresponds to d at the start of the second complete cycle. Hints accurately identify the repeating unit and confirm this answer through position tracking."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Despite the short thematic introduction, the stem clearly asks for the next letter and provides an aligned choice set."
+          "reasoning": "The thematic introduction using a named character and basketball interest is age-appropriate and engaging. The pattern is provided inline without ambiguity. The task is clear and accessible to Grade 1 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Repeating d, o, e twice means the seventh position begins the cycle again with d, matching the answer."
+          "reasoning": "The mathematics is entirely correct. The three-letter pattern d, o, e repeats, and position 7 is d. Hints accurately reflect this."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "e4e1f4f4618f3de3d6cf",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The cycle 7, 17, 17 repeats without variation, so the missing seventh piece is unambiguously 7."
+          "verdict": "CONCERN",
+          "reasoning": "The stem asks for the missing piece at position 7 without providing the pattern textually. The PatternSequence visual showing 7, 17, 17 repeating is essential for understanding the task. Absence or rendering failure makes the question unanswerable."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The PatternSequence visual and all hints agree on the repeated three-number group and its next position."
+          "verdict": "CONCERN",
+          "reasoning": "The three-element pattern 7, 17, 17 uses the number 17, which represents a higher magnitude for Grade 1 foundational pattern work. The irregular structure with a repeated element (17 appears twice) adds complexity beyond simple repeating cycles. This exceeds typical Grade 1 Q3 cognitive expectations."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem, visible labels, choices, and final repeat-group hint give a clear route to the requested missing piece."
+          "verdict": "CONCERN",
+          "reasoning": "Without the visual rendering, the text stem is meaningless. The learner cannot access the question independently. Additionally, the numbers 7 and 17 require careful differentiation, and the unusual pattern structure with one number appearing twice demands elevated attention."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "After two complete groups of 7, 17, 17, position seven is the next group’s 7, as answered."
+          "reasoning": "The three-element pattern 7, 17, 17 repeats correctly across the sequence. Position 7 is accurately identified as 7. Hints correctly describe this repeating structure."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "63fe99c5048eddb94c01",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The alternating pair 1, 2 determines a single next number, 1, with no competing interpretation in the choices."
+          "reasoning": "The stem clearly presents the numeric pattern 1, 2, 1, 2, 1, 2 and asks for the next number without ambiguity. The alternating structure is immediately evident. Position 7 is uniquely determined from the text."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sequence-only item is internally consistent, and its hints accurately explain the pair and seventh position."
+          "reasoning": "The alternating pattern of 1 and 2 is logically consistent. Position 7 correctly corresponds to 1 at the start of the fourth alternation. Hints accurately trace this logic."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is direct, the sequence is short, and the options plus final hint make the intended completion obvious."
+          "reasoning": "The question uses simple, direct language for Grade 1. The pattern is fully provided inline. The task is transparent: identify the next number in an obvious alternating sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Odd positions in the displayed 1, 2 cycle are 1, so the answer at position seven is mathematically correct."
+          "reasoning": "Mathematically accurate: the pattern 1, 2 alternates, and position 7 is 1. Hints support this conclusion."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "ba265f908b6eef204db5",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The visual sequence repeats 1, 3 exactly, uniquely selecting 1 for the seventh position."
+          "verdict": "CONCERN",
+          "reasoning": "The stem asks for the missing piece at position 7 without stating the pattern in text. The learner must see the PatternSequence visual showing 1, 3 alternating. Without the visual, the question is incomplete and unanswerable, creating presentation dependency."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The PatternSequence description and hints consistently refer to the shown pair and do not conflict with the question."
+          "reasoning": "Given the alternating pattern shown in the visual (1, 3), position 7 logic is sound and 1 is the correct answer. Hints accurately describe this pattern and confirm the answer."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The missing-piece prompt, readable labels, answer choices, and aligned hints clearly communicate the simple task."
+          "verdict": "CONCERN",
+          "reasoning": "The textual stem alone provides no information about the pattern. Learners cannot engage with the question without the visual component rendering correctly and being accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The two-term cycle puts 1 at positions one, three, five, and seven, matching the supplied answer."
+          "reasoning": "The mathematics is correct given the alternating pattern 1, 3 in the visual. Position 7 is 1. Hints accurately support this."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "73cd91d6cad2c8da883f",
       "checks": {
         "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The sequence alternates 1 and 2, so the missing seventh entry is uniquely 1 among the four options."
+          "verdict": "CONCERN",
+          "reasoning": "The stem asks for the missing piece at position 7 without providing the pattern textually. The PatternSequence visual showing 1, 2 alternating is essential for task comprehension. Without the visual, the question is meaningless."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The visual, hints, and hint-gated experience all refer to the same sequence and correctly identify position seven."
+          "reasoning": "Given the alternating pattern 1, 2 in the visual, position 7 is correctly 1. Hints accurately identify the repeating structure. The hint_gated experience mode suggests additional scaffolding support."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem names the missing position and the visual labels, options, and hints provide an understandable completion path."
+          "verdict": "CONCERN",
+          "reasoning": "The text stem alone is insufficient without the visual. Learners depend entirely on the PatternSequence rendering. The hint_gated mode implies that learners may need hints to access the question fully."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Repeating 1, 2 three times leaves 1 as the next term, so the answer and hints are numerically valid."
+          "reasoning": "The mathematics is correct. The alternating pattern 1, 2 repeats, and position 7 is 1. Hints support this conclusion."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "4db606397b96706b9f69",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The repeated pair 1, 10 makes the next term uniquely 1, and that value appears among the answer options."
+          "reasoning": "The stem clearly presents the numeric pattern 1, 10, 1, 10, 1, 10 and asks for the next number without ambiguity. The alternating structure is evident from the text. Position 7 is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "There is no narrative context to create conflict, and every hint accurately describes the sequence and requested position."
+          "reasoning": "The alternating pattern of 1 and 10 is logically sound. Position 7 correctly corresponds to 1 at the start of the fourth cycle. Hints accurately trace this progression. The mastery_drill experience mode supports reinforced learning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem is concise and the displayed sequence, choices, and hints clearly indicate what the learner must supply."
+          "reasoning": "The language is simple and suitable for Grade 1. The pattern is fully provided inline without ambiguity. The mastery_drill context suggests structured, repeated exposure appropriate for skill consolidation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The alternating sequence has 1 at every odd position, including position seven, exactly matching the answer."
+          "reasoning": "Mathematically accurate: the pattern 1, 10 alternates, and position 7 is 1. Hints trace this correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "sample_id": "eba7befef4fe2cf36c79",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The alternating numbers 1 and 6 establish one clear continuation, with 1 correctly selected as the next term."
+          "reasoning": "The stem provides the numeric pattern 1, 6, 1, 6, 1, 6 and asks for the next number without ambiguity. The alternating structure is transparent from the text alone. Position 7 is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item is internally consistent and its four hints correctly refer to the six shown terms and the seventh position."
+          "reasoning": "The alternating pattern of 1 and 6 is logically consistent across six positions. Position 7 correctly corresponds to 1 at the start of the fourth cycle. Hints accurately identify this pattern."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The direct question and cloze response are supported by readable options and hints that explain the repeating pair."
+          "reasoning": "The question uses clear, age-appropriate language for Grade 1. The pattern is provided directly in text, making it independently verifiable. The scaffolded experience mode indicates structured support. The task is transparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Since the two-term cycle starts with 1, all odd positions including seven contain 1, validating the answer."
+          "reasoning": "Mathematically sound: the pattern 1, 6 alternates, and position 7 is 1. Hints accurately support this conclusion."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "determine_next_term",
       "clause": "Determine the next term/s",
-      "verdict": "PASS",
-      "reasoning": "Every examined sample explicitly asks for the next letter, next number, or missing position-seven piece, and its keyed response supplies that continuation.",
+      "verdict": "CONCERN",
+      "reasoning": "Every sample requires determination of one next term at position 7, fulfilling the basic task of identifying the next element in a sequence. However, the plural form and the competency example showing multiple blanks (2, 4, 2, 4__, __ with two blanks; a, b, c, a, b, c, a, __, __ with two blanks) indicate that learners should determine multiple consecutive missing terms. No sample requires filling more than one blank, representing incomplete coverage of the multi-term aspect implied by the requirement wording and competency examples.",
       "sample_ids": [
         "285eab62fc25f003edc4",
+        "4ebcbb57000eac340222",
         "8a20415e590f06ffefe8",
+        "029d3583c0a3a7ce336f",
+        "e2ac1ab7c36f9dfd5f5c",
+        "8d2761ed05f101ac7ecc",
+        "00e73849148cbbd4dc8a",
+        "02a1cdec08e4b07fe27d",
+        "b566ca027fc2b1782edc",
+        "6c47c63f37ba13f6b450",
         "5d793dc2d3610b757770",
+        "e4e1f4f4618f3de3d6cf",
+        "63fe99c5048eddb94c01",
+        "ba265f908b6eef204db5",
+        "73cd91d6cad2c8da883f",
+        "4db606397b96706b9f69",
         "eba7befef4fe2cf36c79"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     },
     {
       "requirement_id": "repeating_pattern",
       "clause": "repeating pattern",
-      "verdict": "PASS",
-      "reasoning": "The sampled sequences visibly repeat groups of two, three, or four values, while the hints identify those groups and use them to justify the next term.",
+      "verdict": "FAIL",
+      "reasoning": "All samples present numeric or alphabetic repeating patterns as sequences of related elements. However, the competency definition explicitly specifies that patterns could use rhythmic properties or visual elements in the arts. None of the seventeen samples demonstrates any pattern employing rhythmic elements, visual-artistic components, or modes beyond straightforward numeric or letter sequence repetition. The generator does not implement the full range of pattern types mentioned in the competency definition.",
       "sample_ids": [
+        "285eab62fc25f003edc4",
         "4ebcbb57000eac340222",
+        "8a20415e590f06ffefe8",
+        "029d3583c0a3a7ce336f",
+        "e2ac1ab7c36f9dfd5f5c",
         "8d2761ed05f101ac7ecc",
+        "00e73849148cbbd4dc8a",
         "02a1cdec08e4b07fe27d",
-        "ba265f908b6eef204db5"
+        "b566ca027fc2b1782edc",
+        "6c47c63f37ba13f6b450",
+        "5d793dc2d3610b757770",
+        "e4e1f4f4618f3de3d6cf",
+        "63fe99c5048eddb94c01",
+        "ba265f908b6eef204db5",
+        "73cd91d6cad2c8da883f",
+        "4db606397b96706b9f69",
+        "eba7befef4fe2cf36c79"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_6-20260930",
+      "dispatch_id": "s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6:mat_g1_na_q3_6",
+      "reviewer_identity": "blind-reviewer-haiku45-pe4-mat_g1_na_q3_6-20260930",
       "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "79f4304543be8786ec48e933dcabec90fc1f68dda77149e6b52568b10712581a",
+      "packet_digest": "cad54a460c480de2341772d49e0580a120b0de2fbf22c85d79153c0e3d0f6d58",
       "clause_ids": [
         "determine_next_term",
         "repeating_pattern"
       ],
-      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6.json",
-      "response_digest": "531b9137d2857ada81f65ad033e6a63dd9873317e2e165f2a3b3bd65a20af194",
-      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_6.prompt.txt",
-      "prompt_digest": "dc24d30a21188a258afc90133cb7e8489d9bc5185bcb5393c795ec9b8d2fafef",
-      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
-      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation with 17 sample assessments; no path outside the assigned node directory was reported."
+      "response_ref": ".responses/s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6.json",
+      "response_digest": "92b050f9266a3d95c9c244462f6bde037ca1f66a0ccd521383576be3ba09d99a",
+      "prompt_ref": ".responses/s5-phaseE-claude-w4-haiku45-20260930-mat_g1_na_q3_6.prompt.txt",
+      "prompt_digest": "c8ed89317254902a27526d48e9cab622c7ad050f5a65de46df73ba1030f875a7",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g1_na_q3_6/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g1_na_q3_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each item uses a short, immediately visible repeating sequence and asks only for the next entry, which is an appropriate Grade 1 Quarter 3 reasoning load."
+      "verdict": "CONCERN",
+      "rationale": "While most patterns use numbers within a Grade 1 range, samples 6 and 7 feature combinations like 19, 17, 9 and 8, 18, 20 respectively. These larger numbers combined with three-element repeating patterns exceed typical early Grade 1 cognitive load. Though individual numbers are within Q3 scope, tracking complex sequences with high values creates elevated difficulty inappropriate for foundational pattern learners."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The printed tasks consistently ask learners to determine a next number or letter in a clearly repeating pattern, directly matching the stated competency."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly states that patterns could employ rhythmic properties or visual elements in the arts, with examples spanning varied modes. All seventeen samples use only numeric or alphabetic sequences with no demonstrations of rhythmic patterns, visual-artistic sequences, or any mode beyond straightforward letter-and-number repetition. This represents misalignment with the competency's intended scope."
     },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Across the packet, learners determine the next term from repeating groups of two, three, or four symbols; the supplied requirements describe that core task without adding unrelated skills.",
+      "verdict": "CONCERN",
+      "rationale": "While every sample addresses both specified requirements, the competency definition includes examples with multiple blanks to fill (2, 4, 2, 4__, __ and a, b, c, a, b, c, a, __, __). Every rendered sample asks for completion of only one position, never multiple consecutive blanks. This partial fulfillment fails to address the multi-term determination exemplified in the competency.",
       "decomposition": {
-        "verdict": "PASS",
-        "reasoning": "The two printed requirements jointly cover both the action of determining the next term and the defining structure of a repeating pattern, so the competency is represented without a material omitted component.",
+        "verdict": "FAIL",
+        "reasoning": "The stated decomposition contains only two requirements: determine_next_term and repeating_pattern. This decomposition fails to losslessly cover the full competency scope. The competency explicitly mentions three additional dimensions: patterns with rhythmic properties, patterns with visual-artistic elements, and the multi-term capability shown in examples. A complete lossless decomposition must include pattern-type variation and the capacity to determine multiple consecutive terms.",
         "requirement_ids": [
           "determine_next_term",
           "repeating_pattern"
@@ -1740,7 +1788,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The packet offers many numeric and alphabetic instances, but every item asks for one next term at position seven and none asks for multiple next terms or a rhythmic or arts-based representation mentioned by the competency.",
+      "rationale": "Samples demonstrate reasonable structural variety across format types (cloze, mcq, read_mcq), pattern lengths (two, three, and four-element repeats), and numeric ranges. Thematic variation appears in samples 10 and 11. However, no samples demonstrate patterns with rhythmic properties or visual-artistic elements as mentioned in the competency. This omission represents incomprehensive coverage of pattern types explicitly mentioned.",
       "clause_ids": [
         "determine_next_term",
         "repeating_pattern"
@@ -1748,12 +1796,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sequences are short, cycles are plainly repeated, and values remain small enough for Grade 1 learners to inspect without multi-step arithmetic or excessive working memory."
+      "rationale": "Numeric ranges predominantly span from 1 to 20, appropriate for Grade 1 Quarter 3 number sense development. Pattern lengths of two to four elements are cognitively manageable for this grade level. While samples with numbers like 17 and 20 in multi-element patterns approach the upper threshold of expectation, they remain within reasonable developmental scope for an advanced learner in Q3."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Formats vary between cloze, multiple choice, and read-only visual presentation, yet the mathematical variant remains narrowly fixed to a single missing position after six shown terms."
+      "verdict": "PASS",
+      "rationale": "The samples provide good structural diversity: multiple response formats including fill-in-blank cloze, multiple-choice mcq, and read-mode visual mcq across samples. Pattern lengths vary from two-element to four-element repeating structures. Numeric and alphabetic content types appear throughout. Thematic interest elements appear in samples 10 and 11. Experience modes vary across standard, hint_gated, mastery_drill, and scaffolded."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

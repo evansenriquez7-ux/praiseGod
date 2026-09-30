@@ -1,0 +1,247 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe8-mat_g2_na_q1_3-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_na_q1_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe8-mat_g2_na_q1_3-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_3
+PACKET DIGEST: 50dcfe64847243948e0595709cf1c864067f9b955b6c42672023cfaf5c99adfd
+COMPETENCY (Grade 2, Quarter 1, None):
+Count by 2s, 5s, 10s, 20s, 50s, and 100s (not beyond 1000).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  count_multiples: Count by
+  twos: 2s
+  fives: 5s
+  tens: 10s
+  twenties: 20s
+  fifties: 50s
+  hundreds: 100s
+  not_beyond_1000: not beyond 1000
+
+SAMPLES (every one of these is real rendered output):
+  sample 38823f0dab6f9d365fa1  seed 42  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  400
+      options: 399 / 400 / 402 / 401
+      hints:   ["Look at the list of numbers: 0, 100, 200, 300, ___", "Find the rule by comparing neighbours: 100 − 0 = 100.", "This list of numbers shows jumping by 100s (add 100 each time).", "Add 100 to 300: 300 + 100 = 400."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e7cc6057ed96ed31f786  seed 43  [mcq]
+      stem:    What number comes next when counting: 292, 294, 296, 298, ___?
+      answer:  300
+      options: 294 / 299 / 296 / 300
+      hints:   ["Look at the list of numbers: 292, 294, 296, 298, ___", "Find the rule by comparing neighbours: 294 − 292 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 298: 298 + 2 = 300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a14a255cf1cfe21e018b  seed 44  [cloze]
+      stem:    Find the missing number: 660, 680, 700, 720, ___
+      answer:  740
+      options: 740 / 700 / 680 / 721
+      hints:   ["Look at the list of numbers: 660, 680, 700, 720, ___", "Find the rule by comparing neighbours: 680 − 660 = 20.", "This list of numbers shows jumping by 20s (add 20 each time).", "Add 20 to 720: 720 + 20 = 740."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f18ff5a68180bcbc4155  seed 45  [mcq]
+      stem:    What number comes next when counting: 530, 540, 550, 560, ___?
+      answer:  570
+      options: 570 / 561 / 550 / 540
+      hints:   ["Look at the list of numbers: 530, 540, 550, 560, ___", "Find the rule by comparing neighbours: 540 − 530 = 10.", "This list of numbers shows jumping by 10s (add 10 each time).", "Add 10 to 560: 560 + 10 = 570."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 216551fc8ad9f85f139f  seed 46  [cloze]
+      stem:    Find the missing number: 522, 524, 526, 528, ___
+      answer:  530
+      options: 524 / 530 / 526 / 529
+      hints:   ["Look at the list of numbers: 522, 524, 526, 528, ___", "Find the rule by comparing neighbours: 524 − 522 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 528: 528 + 2 = 530."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b1cc0e6b948671404d24  seed 500  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  740
+      options: 739 / 740 / 742 / 741
+      hints:   ["Look at the list of numbers: 660, 680, 700, 720, ___", "Find the rule by comparing neighbours: 680 − 660 = 20.", "This list of numbers shows jumping by 20s (add 20 each time).", "Add 20 to 720: 720 + 20 = 740."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["730", "731", "732", "733", "734", "735", "736", "737", "738", "739", "740", "741", "742", "743", "744", "745", "746", "747", "748", "749", "750"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c1075fa2c469be11a5bb  seed 501  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  600
+      options: 602 / 599 / 601 / 600
+      hints:   ["Look at the list of numbers: 200, 300, 400, 500, ___", "Find the rule by comparing neighbours: 300 − 200 = 100.", "This list of numbers shows jumping by 100s (add 100 each time).", "Add 100 to 500: 500 + 100 = 600."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["590", "591", "592", "593", "594", "595", "596", "597", "598", "599", "600", "601", "602", "603", "604", "605", "606", "607", "608", "609", "610"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5b74c6f14b2417d9fa18  seed 502  [cloze]
+      stem:    Find the missing number: 550, 600, 650, 700, ___
+      answer:  750
+      options: 750 / 650 / 600 / 701
+      hints:   ["Look at the list of numbers: 550, 600, 650, 700, ___", "Find the rule by comparing neighbours: 600 − 550 = 50.", "This list of numbers shows jumping by 50s (add 50 each time).", "Add 50 to 700: 700 + 50 = 750."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 11f30e1c4657a3032e47  seed 601  [cloze]
+      stem:    Moses is counting forward by 5 starting from 875. The count is: 875, 880, 885, 890. What is the next number Moses should say?
+      answer:  895
+      options: 880 / 885 / 891 / 895
+      hints:   ["Look at the list of numbers: 875, 880, 885, 890, ___", "Find the rule by comparing neighbours: 880 − 875 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 890: 890 + 5 = 895."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 46843ef9e7a17e212f63  seed 603  [mcq]
+      stem:    What number comes next when counting: 705, 710, 715, 720, ___?
+      answer:  725
+      options: 715 / 721 / 725 / 710
+      hints:   ["Look at the list of numbers: 705, 710, 715, 720, ___", "Find the rule by comparing neighbours: 710 − 705 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 720: 720 + 5 = 725."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ec6cb330717d96661525  seed 700  [mcq]
+      stem:    What number comes next when counting: 245, 250, 255, 260, ___?
+      answer:  265
+      options: 261 / 265 / 255 / 250
+      hints:   ["Look at the list of numbers: 245, 250, 255, 260, ___", "Find the rule by comparing neighbours: 250 − 245 = 5.", "This list of numbers shows jumping by 5s (add 5 each time).", "Add 5 to 260: 260 + 5 = 265."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample efb9f697a88bd7b657ea  seed 701  [cloze]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Find the missing number: 200, 300, 400, 500, ___
+      answer:  600
+      options: 501 / 400 / 600 / 300
+      hints:   ["Look at the list of numbers: 200, 300, 400, 500, ___", "Find the rule by comparing neighbours: 300 − 200 = 100.", "This list of numbers shows jumping by 100s (add 100 each time).", "Add 100 to 500: 500 + 100 = 600."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 97d2829a2f4ad16b8b75  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Find the missing number: 210, 212, 214, 216, ___
+      answer:  218
+      options: 218 / 212 / 214 / 217
+      hints:   ["Look at the list of numbers: 210, 212, 214, 216, ___", "Find the rule by comparing neighbours: 212 − 210 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 216: 216 + 2 = 218."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 54ae26b09f67887ab953  seed 800  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  700
+      options: 702 / 699 / 701 / 700
+      hints:   ["Look at the list of numbers: 300, 400, 500, 600, ___", "Find the rule by comparing neighbours: 400 − 300 = 100.", "This list of numbers shows jumping by 100s (add 100 each time).", "Add 100 to 600: 600 + 100 = 700."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["690", "691", "692", "693", "694", "695", "696", "697", "698", "699", "700", "701", "702", "703", "704", "705", "706", "707", "708", "709", "710"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b8124e3b4f4e73bdf65a  seed 900  [mcq]
+      stem:    What number comes next when counting: 0, 50, 100, 150, ___?
+      answer:  200
+      options: 151 / 50 / 100 / 200
+      hints:   ["Look at the list of numbers: 0, 50, 100, 150, ___", "Find the rule by comparing neighbours: 50 − 0 = 50.", "This list of numbers shows jumping by 50s (add 50 each time).", "Add 50 to 150: 150 + 50 = 200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6b1587c6a2743f873e86  seed 901  [read_mcq]
+      stem:    What number is marked on the number line?
+      answer:  80
+      options: 81 / 79 / 80 / 82
+      hints:   ["Look at the list of numbers: 0, 20, 40, 60, ___", "Find the rule by comparing neighbours: 20 − 0 = 20.", "This list of numbers shows jumping by 20s (add 20 each time).", "Add 20 to 60: 60 + 20 = 80."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 47, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0e40a53c40f2b7f4d530  seed 1000  [mcq]
+      stem:    What number comes next when counting: 860, 880, 900, 920, ___?
+      answer:  940
+      options: 900 / 880 / 940 / 921
+      hints:   ["Look at the list of numbers: 860, 880, 900, 920, ___", "Find the rule by comparing neighbours: 880 − 860 = 20.", "This list of numbers shows jumping by 20s (add 20 each time).", "Add 20 to 920: 920 + 20 = 940."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample dffa2cef17e8cd693037  seed 1001  [cloze]
+      stem:    Find the missing number: 860, 862, 864, 866, ___
+      answer:  868
+      options: 864 / 868 / 862 / 867
+      hints:   ["Look at the list of numbers: 860, 862, 864, 866, ___", "Find the rule by comparing neighbours: 862 − 860 = 2.", "This list of numbers shows jumping by 2s (add 2 each time).", "Add 2 to 866: 866 + 2 = 868."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample ed4eafc7334586e2622c  seed 1002  [cloze]
+      stem:    Find the missing number: 650, 700, 750, 800, ___
+      answer:  850
+      options: 750 / 850 / 700 / 801
+      hints:   ["Look at the list of numbers: 650, 700, 750, 800, ___", "Find the rule by comparing neighbours: 700 − 650 = 50.", "This list of numbers shows jumping by 50s (add 50 each time).", "Add 50 to 800: 800 + 50 = 850."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+
