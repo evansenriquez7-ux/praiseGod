@@ -44,10 +44,10 @@
       "clause": "with and without regrouping"
     }
   ],
-  "packet_digest": "6abe1a0642ca213580b5da0fd00c0f40cfec9a55c17b893d1fcc4ac721d7073b",
+  "packet_digest": "a9bea97d02a1a9fb53f27368e7d98cf334e3eb09dcad614a54002f6e9e3d26d5",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -81,8 +81,6 @@
     620,
     621,
     622,
-    623,
-    624,
     700,
     701,
     702,
@@ -108,27 +106,25 @@
     "b325620cc5d05fda1c0d",
     "c8c2d4d390abd0b4784b",
     "8b5d4f3b20c1197ad4b3",
-    "13de79b34be8a958fcb7",
-    "0597c020b5a38e7b62b6",
-    "fda639badbc187d7da30",
-    "875f02d69c91f46b0a19",
-    "ef46408a0a1bf5caf632",
-    "04e55c4e9c62c4b3a249",
-    "ef00a636add9a38b923f",
-    "f62032c244789f7d37ff",
-    "e3fe2246411978c69bc0",
-    "9142d191d86fe37497f1",
-    "14dd0ee67b650e0dd185",
-    "56345c34e903ec1264a9",
-    "ba4e6e861fc90e7969d4",
-    "cbe83cc21ba5ce7088a2",
-    "b9685160470c50f5cc04",
-    "33b019494a2648258365",
-    "18129883b440a176c855",
-    "806cbfcc612dc7d04615",
-    "915549e4fb4c243c83ef",
-    "5113ce832f38a079b5c1",
-    "bb00895389faf45fe53e",
+    "753dfb1a5958642ecbed",
+    "03941240926dd68b3b5e",
+    "58f888133197772251cd",
+    "ba06100028e1885fa7b8",
+    "b77b47a7e6818696a2a0",
+    "2bdc7aef71778fe5323a",
+    "819927d802b202db429f",
+    "09168239a3476919d1d9",
+    "d5717ec2da3bc4496cb5",
+    "b6900cba03197c1e5a1c",
+    "cb2d563d2b7f620f17ff",
+    "0a5c438a6f698d66a600",
+    "ed0d43dbc4cbb54a4dc1",
+    "34aa692c491db63238ca",
+    "fb8d8b8533266ec66b58",
+    "e6e23dd868f4857f6549",
+    "bbbae2c954238abc7430",
+    "5bd975aab4bd2c74d3da",
+    "6bef6689572978ce5245",
     "718e19dfcad2114a1e46",
     "ddd31c57a5b07a10b02a",
     "0551058c181a7bf417ac",
@@ -1129,7 +1125,7 @@
       "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
-          "operation": "add"
+          "regrouping": "none"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1221,18 +1217,18 @@
           "role_counts": {}
         }
       },
-      "sample_id": "13de79b34be8a958fcb7",
-      "replay_digest": "99f5756f1eb022ebda24d0ed4ff85076b7420f9376dab7155dbd8f11771b1605"
+      "sample_id": "753dfb1a5958642ecbed",
+      "replay_digest": "e3253855a8093e3a2ff5cf4a4ffd795aae7754e87c6d537cf65fbea1bd5591d2"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 605,
       "formatter": "read_mcq",
-      "question_text": "Riza had ₱200 in a piggy bank and used ₱50 to buy a notebook. How much money is left in the piggy bank?",
+      "question_text": "Ate Beng has ₱200 in one pocket and ₱100 in another pocket. How much money does Ate Beng have in total?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
-          "operation": "subtract"
+          "regrouping": "one_place"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1249,42 +1245,47 @@
       "options": [
         {
           "key": "A",
-          "value": 199,
+          "value": 299,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 201,
+          "value": 301,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 220,
+          "value": 320,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 150,
+          "value": 300,
           "is_correct": true
         }
       ],
-      "resolved_answer": 150,
+      "resolved_answer": 300,
       "hints": [
-        "You have these amounts: ['peso200', 'peso50'].",
-        "You paid peso200 for an item that costs peso50.",
-        "Money back = peso200 − peso50 = peso150."
+        "You have these amounts: ['peso200', 'peso100'].",
+        "Step 1: Add peso200 → running total = peso200.",
+        "Step 2: Add peso100 → running total = peso300.",
+        "The total is peso300."
       ],
       "visual_type": "PesoMoney",
       "visual_payload": {
         "coins": [],
         "bills": [
           {
+            "denomination": 100,
+            "count": 1
+          },
+          {
             "denomination": 200,
             "count": 1
           }
         ],
-        "total": 200,
-        "target_amount": 200,
+        "total": 300,
+        "target_amount": 300,
         "exclude_centavos": true,
         "coin_faces": [
           1,
@@ -1302,11 +1303,11 @@
       },
       "visual_render": {
         "visual_type": "PesoMoney",
-        "renderer_input_digest": "f92d7cd64da5fa2aea724957caf49459bdab0e1b1a82ee893a316d79ffaecf1b",
+        "renderer_input_digest": "d4a0330398e7acf404cb773784334a539ab5a10265172a92aca94a99a45a9fb0",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "PesoMoney",
-          "element_count": 11,
+          "element_count": 17,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
@@ -1314,30 +1315,33 @@
           "input_count": 0,
           "text_labels": [
             "BILLS",
-            "₱200",
-            "REPUBLIKA NG PILIPINAS"
+            "₱100",
+            "REPUBLIKA NG PILIPINAS",
+            "₱200"
           ],
           "distinct_colours": [
             "hsl(var(--text-muted)",
+            "#c084fc,",
+            "#7c3aed)",
+            "#fff",
             "#86efac,",
-            "#16a34a)",
-            "#fff"
+            "#16a34a)"
           ],
           "role_counts": {}
         }
       },
-      "sample_id": "0597c020b5a38e7b62b6",
-      "replay_digest": "75e13d596c9632c43eef01c28eae4dfb42e6cf2562c33050503292df877d15aa"
+      "sample_id": "03941240926dd68b3b5e",
+      "replay_digest": "40ec8f1ebf47d89c1b2b3835c6d65ac57fd501e63335538701f336d1473842ac"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Start at 744. Count up 10 more. What number do you land on?",
-      "correct_answer": 754,
+      "question_text": "Start at 975. Count up 25 more. What number do you land on?",
+      "correct_answer": 1000,
       "requested": {
         "difficulty_profile": {
-          "regrouping": "none"
+          "regrouping": "three_places"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1354,47 +1358,47 @@
       "options": [
         {
           "key": "A",
-          "value": 764,
+          "value": 1010,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 754,
+          "value": 1000,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 734,
+          "value": 950,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 753,
+          "value": 999,
           "is_correct": false
         }
       ],
-      "resolved_answer": 754,
+      "resolved_answer": 1000,
       "hints": [
-        "We are adding two numbers: 744 and 10.",
-        "Add the ones: 4 + 0 = 4. Keep 4 in the ones place.",
-        "Add the tens: 4 + 1 = 5.",
-        "The sum is 744 + 10 = 754."
+        "We are adding two numbers: 975 and 25.",
+        "Add the ones: 5 + 5 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 7 + 2 + 1 (carried) = 10.",
+        "The sum is 975 + 25 = 1000."
       ],
-      "sample_id": "fda639badbc187d7da30",
-      "replay_digest": "16c5944846278e8546fcf50c4cb324b3e3b5b82283eae4b8b7809283e9a52baa"
+      "sample_id": "58f888133197772251cd",
+      "replay_digest": "a857d3e977edef9884f7538c6a9afb69c6c2af06ccf6ed7a0a6f3b9dc73718ef"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 607,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Isko collected 260 jersey and 669 sports towel at the barangay court. How many items did Isko collect in total?\" Grace says the answer is 929. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Isko collected 248 jersey and 162 sports towel at the barangay court. How many items did Isko collect in total?\" Grace says the answer is 410. Is Grace correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 929
+        "correct_value": 410
       },
       "requested": {
         "difficulty_profile": {
-          "regrouping": "one_place"
+          "regrouping": "two_places"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1410,26 +1414,26 @@
       },
       "resolved_answer": {
         "has_error": false,
-        "correct_value": 929
+        "correct_value": 410
       },
       "hints": [
-        "We are adding two numbers: 260 and 669.",
-        "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.",
-        "Add the tens: 6 + 6 = 12.",
-        "The sum is 260 + 669 = 929."
+        "We are adding two numbers: 248 and 162.",
+        "Add the ones: 8 + 2 = 10. Keep 0 in the ones place and carry over 1 ten.",
+        "Add the tens: 4 + 6 + 1 (carried) = 11.",
+        "The sum is 248 + 162 = 410."
       ],
-      "sample_id": "875f02d69c91f46b0a19",
-      "replay_digest": "fb6f275280589871f2965e16700784eff1941f580020cf9a69cda17b243a06c5"
+      "sample_id": "ba06100028e1885fa7b8",
+      "replay_digest": "2f88cb2f9f7362f7e90a9b855ab738267c224ea25aad648c5cac0f43c42430d7"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 608,
       "formatter": "true_false",
-      "question_text": "Boyong bought a pencil for ₱641 and an eraser for ₱359. How much did Boyong spend in all? The answer is 641. True or False?",
+      "question_text": "Boyong bought a pencil for ₱300 and an eraser for ₱180. How much did Boyong spend in all? The answer is 300. True or False?",
       "correct_answer": false,
       "requested": {
         "difficulty_profile": {
-          "regrouping": "three_places"
+          "spine": "counting_up"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1445,13 +1449,13 @@
       },
       "resolved_answer": false,
       "hints": [
-        "We are adding two numbers: 641 and 359.",
-        "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and carry over 1 ten.",
-        "Add the tens: 4 + 5 + 1 (carried) = 10.",
-        "The sum is 641 + 359 = 1000."
+        "We are adding two numbers: 300 and 180.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 0 + 8 = 8.",
+        "The sum is 300 + 180 = 480."
       ],
-      "sample_id": "ef46408a0a1bf5caf632",
-      "replay_digest": "46d6fa5168421b29b430fdf7727a3328b26160a71573888eaed90d74a8953462"
+      "sample_id": "b77b47a7e6818696a2a0",
+      "replay_digest": "0836134ec47d5a9049d40005077d48ade6173758708eaf38fbb129d681fc855b"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1461,7 +1465,7 @@
       "correct_answer": 751,
       "requested": {
         "difficulty_profile": {
-          "regrouping": "two_places"
+          "spine": "putting_together"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1508,8 +1512,8 @@
         "Step 2: Add peso551 → running total = peso751.",
         "The total is peso751."
       ],
-      "sample_id": "04e55c4e9c62c4b3a249",
-      "replay_digest": "8095365de5a10d5eaec67e71711183600c7b141a6494e563c39e266b3e86792a"
+      "sample_id": "2bdc7aef71778fe5323a",
+      "replay_digest": "084235eff0f8ce7186c4bea34a9268ebbfb42fed5b68be71d6b985b2a6900d1b"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1519,7 +1523,7 @@
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
-          "spine": "counting_up"
+          "strategy": "expanded_form"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1607,8 +1611,8 @@
           "role_counts": {}
         }
       },
-      "sample_id": "ef00a636add9a38b923f",
-      "replay_digest": "5c997fdd3b89a83fa6495fb847607964572be71c2767098c08b27b0e48096379"
+      "sample_id": "819927d802b202db429f",
+      "replay_digest": "c7ef589f4c19ab17b0c5cc02c60b52680b72e56be8775cc8f6bf7f6e80cb24a7"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1618,7 +1622,7 @@
       "correct_answer": 631,
       "requested": {
         "difficulty_profile": {
-          "spine": "putting_together"
+          "strategy": "standard"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1661,8 +1665,8 @@
         "Step 2: Add peso131 → running total = peso631.",
         "The total is peso631."
       ],
-      "sample_id": "f62032c244789f7d37ff",
-      "replay_digest": "a42b5f70002e0a18ea8f683be1951eb2ba700ed97f3eb374c442241220ed5582"
+      "sample_id": "09168239a3476919d1d9",
+      "replay_digest": "003dd5e2413940295953ba9432ff34dc345a2e0df0caf261fc69e8d91775d78a"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1675,7 +1679,7 @@
       },
       "requested": {
         "difficulty_profile": {
-          "strategy": "expanded_form"
+          "structure": "result_unknown"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1699,105 +1703,15 @@
         "Add the tens: 9 + 0 = 9.",
         "The sum is 991 + 6 = 997."
       ],
-      "sample_id": "e3fe2246411978c69bc0",
-      "replay_digest": "7142ae380f623f762a94fa55dd2e9012b2c564544c87a83200cd7c5b3de32651"
+      "sample_id": "d5717ec2da3bc4496cb5",
+      "replay_digest": "2a4f31847859b0342e69116c978330c3eca9c340e623a91d547b43c8d206dfb1"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 613,
-      "formatter": "true_false",
-      "question_text": "Lola Caring had ₱290 and received ₱142 more from Nanay. How much money does Lola Caring have in all? The answer is 433. True or False?",
-      "correct_answer": false,
-      "requested": {
-        "difficulty_profile": {
-          "strategy": "standard"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": false,
-      "hints": [
-        "We are adding two numbers: 290 and 142.",
-        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
-        "Add the tens: 9 + 4 = 13.",
-        "The sum is 290 + 142 = 432."
-      ],
-      "sample_id": "9142d191d86fe37497f1",
-      "replay_digest": "5cbf68d1dbb2b20c4d48e62f50049794f7cca0992f3ad7a4006cc7c765bf7692"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 614,
-      "formatter": "cloze",
-      "question_text": "Jun bought a pencil for ₱360 and an eraser for ₱570. How much did Jun spend in all?",
-      "correct_answer": 930,
-      "requested": {
-        "difficulty_profile": {
-          "structure": "result_unknown"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 931,
-          "text": "931",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 940,
-          "text": "940",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 930,
-          "text": "930",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 929,
-          "text": "929",
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 930,
-      "hints": [
-        "We are adding two numbers: 360 and 570.",
-        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
-        "Add the tens: 6 + 7 = 13.",
-        "The sum is 360 + 570 = 930."
-      ],
-      "sample_id": "14dd0ee67b650e0dd185",
-      "replay_digest": "3573a229a33d64a9e817cccef30b906315e9c1debab64726e44a1db3d006401a"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 615,
       "formatter": "mcq",
-      "question_text": "Is (624 + 41) + 22 the same as 624 + (41 + 23)?",
-      "correct_answer": false,
+      "question_text": "Is (72 + 111) + 815 the same as 72 + (111 + 815)?",
+      "correct_answer": true,
       "requested": {
         "difficulty_profile": {
           "task_type": "associative"
@@ -1822,35 +1736,35 @@
         },
         {
           "key": "B",
-          "value": false,
-          "is_correct": true
+          "value": "Cannot be determined",
+          "is_correct": false
         },
         {
           "key": "C",
           "value": true,
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": "Cannot be determined",
+          "value": false,
           "is_correct": false
         }
       ],
-      "resolved_answer": false,
+      "resolved_answer": true,
       "hints": [
-        "The left side adds 624, 41 and 22. The right side adds 624, 41 and 23.",
-        "(624 + 41) + 22 = 687 and 624 + (41 + 23) = 688.",
-        "So the two sides are not the same."
+        "Both sides add the same three numbers, 72, 111 and 815, grouped differently.",
+        "(72 + 111) + 815 = 998 and 72 + (111 + 815) = 998.",
+        "So the two sides are the same."
       ],
-      "sample_id": "56345c34e903ec1264a9",
-      "replay_digest": "6f171bab6ed5edae9983acdd8207d1be87aca303e41a41e765891c0d04c6607e"
+      "sample_id": "b6900cba03197c1e5a1c",
+      "replay_digest": "cc53e0a1b23a15e4fe70139c4e3953bb707eb24adea492c6f753a41e700f24d2"
     },
     {
       "node_id": "mat_g2_na_q2_2",
-      "seed": 616,
+      "seed": 614,
       "formatter": "mcq",
-      "question_text": "Is 258 + 341 the same as 341 + 258?",
-      "correct_answer": true,
+      "question_text": "Is 934 + 5 the same as 5 + 716?",
+      "correct_answer": false,
       "requested": {
         "difficulty_profile": {
           "task_type": "commutative"
@@ -1875,38 +1789,283 @@
         },
         {
           "key": "B",
-          "value": "Cannot be determined",
-          "is_correct": false
+          "value": false,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": false,
+          "value": true,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": true,
-          "is_correct": true
+          "value": "Cannot be determined",
+          "is_correct": false
         }
       ],
-      "resolved_answer": true,
+      "resolved_answer": false,
       "hints": [
-        "Both sides add the same two numbers, 258 and 341, in a different order.",
-        "258 + 341 = 599 and 341 + 258 = 599.",
-        "So the two sides are the same."
+        "The left side adds 934 and 5. The right side adds 5 and 716.",
+        "934 + 5 = 939 and 5 + 716 = 721.",
+        "So the two sides are not the same."
       ],
-      "sample_id": "ba4e6e861fc90e7969d4",
-      "replay_digest": "9ae8de4bb42e3e8fd565e9d2c16a58030c472cff85d4cf0ccd3d56f0dfc5443f"
+      "sample_id": "cb2d563d2b7f620f17ff",
+      "replay_digest": "ca34b500ef55148c4d68bc88d66bb3dde35a18c7f2784ebd391a2328c83b84ab"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 615,
+      "formatter": "mcq",
+      "question_text": "Cris had ₱20 and received ₱110 more from Nanay. How much money does Cris have in all?",
+      "correct_answer": 130,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "count_total"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1300,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 131,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 130,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 120,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 130,
+      "hints": [
+        "You have these amounts: ['peso20', 'peso110'].",
+        "Step 1: Add peso20 → running total = peso20.",
+        "Step 2: Add peso110 → running total = peso130.",
+        "The total is peso130."
+      ],
+      "sample_id": "0a5c438a6f698d66a600",
+      "replay_digest": "7b6136aa3afbadffd754936bb68ffb3802d3c38fa4f43b679b8484f17598f4c1"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 616,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 951 + 42 on the number line.",
+      "correct_answer": 993,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 993,
+      "hints": [
+        "We are adding two numbers: 951 and 42.",
+        "Add the ones: 1 + 2 = 3. Keep 3 in the ones place.",
+        "Add the tens: 5 + 4 = 9.",
+        "The sum is 951 + 42 = 993."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 940,
+        "end": 1000,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 940,
+        "move_by": 42,
+        "content_type": "whole_number",
+        "value": 993,
+        "correct_position": 993,
+        "divisions": 12,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 993.0,
+        "target": 993.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "cfbc92184cf7a35effa4a4d163478dd9abe8a7ece175f86b21239ccccee5bcc4",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "940",
+            "950",
+            "960",
+            "970",
+            "980",
+            "990",
+            "1000",
+            "Your answer: Position",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "ed0d43dbc4cbb54a4dc1",
+      "replay_digest": "fe08b2875593b50441c0d1a67180b29452df7cfc4fab088b8630e55cd281023c"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 617,
+      "formatter": "mcq",
+      "question_text": "231 is 2 hundreds, 3 tens, and 1 one. 96 is 9 tens and 6 ones. Add the place values, then find the total: what is 231 + 96?",
+      "correct_answer": 327,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "expanded_form"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 135,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 337,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 327,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 326,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 327,
+      "hints": [
+        "We are adding two numbers: 231 and 96.",
+        "Add the ones: 1 + 6 = 7. Keep 7 in the ones place.",
+        "Add the tens: 3 + 9 = 12.",
+        "The sum is 231 + 96 = 327."
+      ],
+      "sample_id": "34aa692c491db63238ca",
+      "replay_digest": "305a32b065962a3c8c8394759a3b9df211ea4b7741f97cdd0dbf8c4a80618e75"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 618,
+      "formatter": "mcq",
+      "question_text": "Ate Beng bought a pencil for ₱1 and an eraser for ₱125. How much did Ate Beng spend in all?",
+      "correct_answer": 126,
+      "requested": {
+        "difficulty_profile": {
+          "task_type": "give_money"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 116,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 126,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 127,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1260,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 126,
+      "hints": [
+        "You have these amounts: ['peso1', 'peso125'].",
+        "Step 1: Add peso1 → running total = peso1.",
+        "Step 2: Add peso125 → running total = peso126.",
+        "The total is peso126."
+      ],
+      "sample_id": "fb8d8b8533266ec66b58",
+      "replay_digest": "992a4b00fff5db5fd4344be1842a5a18bf776c302111926b3297591adc495f78"
+    },
+    {
+      "node_id": "mat_g2_na_q2_2",
+      "seed": 619,
       "formatter": "read_mcq",
-      "question_text": "Bianca has ₱20 in one pocket and ₱531 in another pocket. How much money does Bianca have in total?",
+      "question_text": "Coach Nora had ₱5 and received ₱550 more from Nanay. How much money does Coach Nora have in all?",
       "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
-          "task_type": "count_total"
+          "task_type": "make_change"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1923,31 +2082,31 @@
       "options": [
         {
           "key": "A",
-          "value": 550,
+          "value": 505,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 601,
+          "value": 605,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 551,
+          "value": 555,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 501,
+          "value": 554,
           "is_correct": false
         }
       ],
-      "resolved_answer": 551,
+      "resolved_answer": 555,
       "hints": [
-        "You have these amounts: ['peso20', 'peso531'].",
-        "Step 1: Add peso20 → running total = peso20.",
-        "Step 2: Add peso531 → running total = peso551.",
-        "The total is peso551."
+        "You have these amounts: ['peso5', 'peso550'].",
+        "Step 1: Add peso5 → running total = peso5.",
+        "Step 2: Add peso550 → running total = peso555.",
+        "The total is peso555."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -1956,20 +2115,20 @@
         "major_interval": 100,
         "minor_interval": 50,
         "interval": 50,
-        "dot_value": 20,
-        "move_by": 531,
+        "dot_value": 5,
+        "move_by": 550,
         "content_type": "whole_number",
-        "value": 551,
-        "correct_position": 551,
+        "value": 555,
+        "correct_position": 555,
         "divisions": 12,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 551.0,
-        "target": 551.0
+        "correct_answer": 555.0,
+        "target": 555.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "9bca2b854bc743351d38e2922e6bb315ebd9597d917c0965db028997bc87834c",
+        "renderer_input_digest": "8ae9b47cc97132a7e513eb9364aa6052b94ab22e9534658aa5d9cdadd100a93f",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -1998,312 +2157,15 @@
           "role_counts": {}
         }
       },
-      "sample_id": "cbe83cc21ba5ce7088a2",
-      "replay_digest": "16e79e2b7518023e7bb2fe67c21cf1f4a0623683b65197c3811815b7929622c4"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 618,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 630 and it moves forward 51 numbers. Starting from 630, just count up 51 numbers. Which number will the dot land on?",
-      "correct_answer": "B",
-      "requested": {
-        "difficulty_profile": {
-          "task_type": "counting_up"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "read_mcq",
-        "is_visual": true,
-        "visual_type": "NumberLine",
-        "interaction_mode": "read",
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 691,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 681,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 579,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 680,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 681,
-      "hints": [
-        "We are adding two numbers: 630 and 51.",
-        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
-        "Add the tens: 3 + 5 = 8.",
-        "The sum is 630 + 51 = 681."
-      ],
-      "visual_type": "NumberLine",
-      "visual_payload": {
-        "start": 620,
-        "end": 690,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 630,
-        "move_by": 51,
-        "content_type": "whole_number",
-        "value": 681,
-        "correct_position": 681,
-        "divisions": 14,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 681.0,
-        "target": 681.0
-      },
-      "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "d46870f3cb9802cd1dafb6f839fa752bb543886d8f33083bca616087e5136362",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 28,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 0,
-          "text_labels": [
-            "620",
-            "630",
-            "640",
-            "650",
-            "660",
-            "670",
-            "680",
-            "690"
-          ],
-          "distinct_colours": [
-            "hsl(var(--border-color)",
-            "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
-          ],
-          "role_counts": {}
-        }
-      },
-      "sample_id": "b9685160470c50f5cc04",
-      "replay_digest": "1de7c414ced5ab8047818d22a0e052c8f8ee15094ecbdb136a53920e3cf1ad81"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 619,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"242 is 2 hundreds, 4 tens, and 2 ones. 120 is 1 hundred, 2 tens, and 0 ones. Add the place values, then find the total: 242 + 120 = ___\". Grace says the missing number is 362. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 362
-      },
-      "requested": {
-        "difficulty_profile": {
-          "task_type": "expanded_form"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 362
-      },
-      "hints": [
-        "We are adding two numbers: 242 and 120.",
-        "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.",
-        "Add the tens: 4 + 2 = 6.",
-        "The sum is 242 + 120 = 362."
-      ],
-      "sample_id": "33b019494a2648258365",
-      "replay_digest": "4dbb6a44ed8b424e1ce88758ad716fb76d66a3caa139a0343313a12f517a5f2d"
+      "sample_id": "e6e23dd868f4857f6549",
+      "replay_digest": "5d7213f185bf9a38ab3ea267c416dd58442ef21e2ebb7bae29e5557569010abc"
     },
     {
       "node_id": "mat_g2_na_q2_2",
       "seed": 620,
-      "formatter": "read_mcq",
-      "question_text": "Gab has ₱5 in one pocket and ₱5 in another pocket. How much money does Gab have in total?",
-      "correct_answer": "B",
-      "requested": {
-        "difficulty_profile": {
-          "task_type": "give_money"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "read_mcq",
-        "is_visual": true,
-        "visual_type": "NumberLine",
-        "interaction_mode": "read",
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 10,
-      "hints": [
-        "You have these amounts: ['peso5', 'peso5'].",
-        "Step 1: Add peso5 → running total = peso5.",
-        "Step 2: Add peso5 → running total = peso10.",
-        "The total is peso10."
-      ],
-      "visual_type": "NumberLine",
-      "visual_payload": {
-        "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 5,
-        "move_by": 5,
-        "content_type": "whole_number",
-        "value": 10,
-        "correct_position": 10,
-        "divisions": 20,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 10.0,
-        "target": 10.0
-      },
-      "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "44f6c009a5b92a2e316054a864f6c580fdef6cd30765b7b49206204a2d715d39",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 31,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 0,
-          "text_labels": [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20"
-          ],
-          "distinct_colours": [
-            "hsl(var(--border-color)",
-            "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
-          ],
-          "role_counts": {}
-        }
-      },
-      "sample_id": "18129883b440a176c855",
-      "replay_digest": "5e8d429531059497a716bb4f94ae5e415a3a0db04b8352f325438dbb68c6ca9a"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 621,
-      "formatter": "mcq",
-      "question_text": "Sir Ben saved ₱1 on Monday and ₱20 on Tuesday. How much money did Sir Ben save altogether?",
-      "correct_answer": 21,
-      "requested": {
-        "difficulty_profile": {
-          "task_type": "make_change"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 210,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 21,
-      "hints": [
-        "You have these amounts: ['peso1', 'peso20'].",
-        "Step 1: Add peso1 → running total = peso1.",
-        "Step 2: Add peso20 → running total = peso21.",
-        "The total is peso21."
-      ],
-      "sample_id": "806cbfcc612dc7d04615",
-      "replay_digest": "39c68198e0309c42c3310976c480048cedffa4dda28133ecd92a488eec6f3d25"
-    },
-    {
-      "node_id": "mat_g2_na_q2_2",
-      "seed": 622,
       "formatter": "true_false",
-      "question_text": "Start at 693. Count up 156 more. You land on 537. True or False?",
-      "correct_answer": false,
+      "question_text": "One group has 60 items and another group has 600 items. Putting them together makes 660 items in all. True or False?",
+      "correct_answer": true,
       "requested": {
         "difficulty_profile": {
           "task_type": "models_strategies"
@@ -2320,22 +2182,22 @@
         "answer_collection": "true_false",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "resolved_answer": true,
       "hints": [
-        "We are adding two numbers: 693 and 156.",
-        "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.",
-        "Add the tens: 9 + 5 = 14.",
-        "The sum is 693 + 156 = 849."
+        "We are adding two numbers: 60 and 600.",
+        "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 60 + 600 = 660."
       ],
-      "sample_id": "915549e4fb4c243c83ef",
-      "replay_digest": "77a58e0185f545362036650c400ac77b8a611ba35513293b9a890bfa484f6253"
+      "sample_id": "bbbae2c954238abc7430",
+      "replay_digest": "646af94b39ee7d948d6be863f97c56ba7609ff0dc60ffdff346a6f7c9f8f8f60"
     },
     {
       "node_id": "mat_g2_na_q2_2",
-      "seed": 623,
-      "formatter": "cloze",
-      "question_text": "One group has 150 items and another group has 300 items. Putting them together makes ___ items in all.",
-      "correct_answer": 450,
+      "seed": 621,
+      "formatter": "mcq",
+      "question_text": "One group has 660 items and another group has 240 items. If you put them together, how many items are there in all?",
+      "correct_answer": 900,
       "requested": {
         "difficulty_profile": {
           "task_type": "putting_together"
@@ -2345,58 +2207,51 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 449,
-          "text": "449",
+          "value": 899,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 460,
-          "text": "460",
+          "value": 420,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 450,
-          "text": "450",
+          "value": 900,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 451,
-          "text": "451",
+          "value": 910,
           "is_correct": false
         }
       ],
-      "resolved_answer": 450,
+      "resolved_answer": 900,
       "hints": [
-        "We are adding two numbers: 150 and 300.",
+        "We are adding two numbers: 660 and 240.",
         "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
-        "Add the tens: 5 + 0 = 5.",
-        "The sum is 150 + 300 = 450."
+        "Add the tens: 6 + 4 = 10.",
+        "The sum is 660 + 240 = 900."
       ],
-      "sample_id": "5113ce832f38a079b5c1",
-      "replay_digest": "2fe6d63be60dbfeec9dd463a788151981be031b200b771b49ba5e06fa69d20b4"
+      "sample_id": "5bd975aab4bd2c74d3da",
+      "replay_digest": "e532928554b71d643cb4cb85b942546161237efa7c55bf45ce901b18551e4ce7"
     },
     {
       "node_id": "mat_g2_na_q2_2",
-      "seed": 624,
-      "formatter": "error_detect",
-      "question_text": "Noel solved: \"0 + 923 = ___\". Noel says the missing number is 924. Is Noel correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 923
-      },
+      "seed": 622,
+      "formatter": "mcq",
+      "question_text": "What is 62 + 0?",
+      "correct_answer": 62,
       "requested": {
         "difficulty_profile": {
           "task_type": "zero_identity"
@@ -2406,25 +2261,44 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 923
-      },
-      "hints": [
-        "We are adding two numbers: 0 and 923.",
-        "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.",
-        "Add the tens: 0 + 2 = 2.",
-        "The sum is 0 + 923 = 923."
+      "options": [
+        {
+          "key": "A",
+          "value": 63,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 62,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 61,
+          "is_correct": false
+        }
       ],
-      "sample_id": "bb00895389faf45fe53e",
-      "replay_digest": "16450ef3f0f4f2a10d54949f303e34e3ad0a5a2351cfd2f10aff735ef9bcf538"
+      "resolved_answer": 62,
+      "hints": [
+        "We are adding two numbers: 62 and 0.",
+        "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 62 + 0 = 62."
+      ],
+      "sample_id": "6bef6689572978ce5245",
+      "replay_digest": "4af2c86073eae3b468ae8d8a4fdbe4de3899cf06252739d52743c9effb6b59bd"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -3001,1124 +2875,1055 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt is clear: starting at 57 and counting up 345 more yields a single unambiguous answer of 402. The language is direct and the task is transparently addition with no competing interpretations possible."
+          "reasoning": "For sample 3959b6d9583b84187a4b, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The counting-up framing is contextually sound for Grade 2 students learning addition. The scenario of starting at a number and counting forward is a developmentally appropriate model for understanding addition as forward movement along a number line."
+          "reasoning": "For sample 3959b6d9583b84187a4b, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "For a Grade 2 reader, the stem employs clear and familiar language with the action verb count and directional indicator up. The numerical values 57 and 345 are presented plainly without unnecessary decoration."
+          "verdict": "CONCERN",
+          "reasoning": "For sample 3959b6d9583b84187a4b, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: 57 plus 345 equals 402. The hint steps accurately trace through the standard algorithm showing ones addition of 7 plus 5 equaling 12 with regrouping to tens, then tens addition with the carried 1, and finally hundreds addition, reaching the correct sum."
+          "reasoning": "For sample 3959b6d9583b84187a4b, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "56e12b0991185b848085",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format removes ambiguity about what answer is expected. The student must evaluate whether the claimed answer of 672 is correct for the sum of 784 and 112, with only two possible verdicts."
+          "reasoning": "For sample 56e12b0991185b848085, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of purchasing two items and finding the total spending is contextually valid and represents real-world application of addition within the money domain appropriate for Grade 2."
+          "reasoning": "For sample 56e12b0991185b848085, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem identifies named persons purchasing items with prices given in Philippine peso currency, a familiar monetary context for the target learner population. The true-false judgment is clearly stated at the end."
+          "verdict": "CONCERN",
+          "reasoning": "For sample 56e12b0991185b848085, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct sum of 784 plus 112 is 896. The sample correctly identifies 672 as false. The hint steps accurately decompose the addition: ones place adds to 6, tens place requires carrying, and hundreds place completes the sum of 896."
+          "reasoning": "For sample 56e12b0991185b848085, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "84ae88c250ce97224e79",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection format is unambiguous: students must judge whether the proposed answer of 624 is correct. The yes-or-no judgment framework leaves no room for interpretation."
+          "reasoning": "For sample 84ae88c250ce97224e79, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A coach receiving money as a transfer and needing to calculate total holdings is a realistic scenario. The addition context of receiving more money aligns with the competency requirement."
+          "reasoning": "For sample 84ae88c250ce97224e79, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The narrative presents named characters and a clear action, with amounts expressed in Philippine peso. The question asks students to verify a solution rather than generate one, reducing cognitive load."
+          "reasoning": "For sample 84ae88c250ce97224e79, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Coach Nora has 144 plus receives 480, totaling 644 plus 480, which equals... wait, let me recalculate: 144 plus 480 equals 624. The sample correctly states no error and accepts 624. The hint decomposition is accurate: ones add to 4, tens add to 12 with carrying, hundreds add to 6, final sum 624."
+          "reasoning": "For sample 84ae88c250ce97224e79, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "375e9a674b43afda036b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A money amount in each pocket with a total to find is unambiguous. The four numeric choices are distinct, and only one is correct."
+          "reasoning": "For sample 375e9a674b43afda036b, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A child finding the total money available in two separate pockets is a familiar and contextually reasonable scenario for a Grade 2 student learning to manage money and combine amounts."
+          "reasoning": "For sample 375e9a674b43afda036b, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses simple language with named person and clear monetary context. The visual display of a number line with labels at intervals of 10 supports understanding for students not yet fluent with pure symbolic addition."
+          "reasoning": "For sample 375e9a674b43afda036b, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 20 yields 40, which is presented as the correct answer. The visual number line increments from 0 to 60 and clearly marks the endpoint at 40. The hints accurately track the running total through two steps of 20 each."
+          "reasoning": "For sample 375e9a674b43afda036b, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f3178a63e822dccf4618",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank question with four distinct numeric options leaves no ambiguity about the expected response format or the correctness criterion."
+          "reasoning": "For sample f3178a63e822dccf4618, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A person combining money from two separate locations is contextually valid. The scenario requires addition to combine amounts, aligning with the competency."
+          "reasoning": "For sample f3178a63e822dccf4618, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question stem is direct: one pocket has 100 peso, another has 556 peso, total in pesos is unknown. The blank is clearly indicated. Distractor options include a multi-digit error of 6560 which tests whether students understand place value."
+          "reasoning": "For sample f3178a63e822dccf4618, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 100 plus 556 yields 656 as the correct sum. The hint traces addition of ones to 6, tens to 5, and hundreds to 6. The option 6560 serves as a plausible distractor for students who may mistakenly concatenate digits instead of combining place values."
+          "reasoning": "For sample f3178a63e822dccf4618, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "9cf332415aafab808ad9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four distinct options clearly signals that students must select one correct answer from alternatives."
+          "reasoning": "For sample 9cf332415aafab808ad9, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A person with money in one pocket and more money in another pocket combining the amounts is a realistic Grade 2 scenario requiring addition."
+          "reasoning": "For sample 9cf332415aafab808ad9, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem names a person, specifies the money amounts, and asks for the total. The visual representation as currency bills and coins provides a familiar representation of peso value. The monetary context is explicit and relevant."
+          "reasoning": "For sample 9cf332415aafab808ad9, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 100 peso plus 670 peso equals 770 peso, which is the marked correct answer. The hints show the running total after each addition step, confirming 770 as the correct result."
+          "reasoning": "For sample 9cf332415aafab808ad9, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "38f437260b42defd6d98",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with a defined correct answer among four options is unambiguous regarding the task and expected response."
+          "reasoning": "For sample 38f437260b42defd6d98, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on different days being combined into a total is a contextually valid scenario that reflects real money-management situations for a student."
+          "reasoning": "For sample 38f437260b42defd6d98, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem mentions a named person, specifies amounts saved on named days, and asks for the total. The time sequence adds context without creating cognitive complexity. The number line visual with scale from 100 to 1000 supports computation."
+          "reasoning": "For sample 38f437260b42defd6d98, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 200 plus 705 correctly yields 905. The hints accurately trace both the conceptual running total and the numerical result, confirming the correct sum."
+          "reasoning": "For sample 38f437260b42defd6d98, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "913c95ff90bba3f9caf5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for a single total, with four distinct numeric options provided as choices. The task is unambiguous."
+          "reasoning": "For sample 913c95ff90bba3f9caf5, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing two items with prices in peso and computing the total spending is a valid and grade-appropriate scenario for understanding addition in monetary contexts."
+          "reasoning": "For sample 913c95ff90bba3f9caf5, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a purchaser, item names, prices in familiar Philippine currency, and asks for total spending. The language is straightforward and the task is clear."
+          "reasoning": "For sample 913c95ff90bba3f9caf5, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 500 plus 500 yields 1000, which is the correct answer and reaches the stated upper boundary for the competency. The problem tests whether students can perform addition that reaches the ceiling of the specified range."
+          "reasoning": "For sample 913c95ff90bba3f9caf5, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "2426c8ef66a8b152145c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice question requests a single total amount, with options provided and only one correct. The ambiguity level is minimal."
+          "reasoning": "For sample 2426c8ef66a8b152145c, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on separate days being combined to find total savings is a realistic and developmentally appropriate scenario for a Grade 2 learner."
+          "reasoning": "For sample 2426c8ef66a8b152145c, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "A named person saves specific amounts in peso on two named days, and the question asks for the total. The daily sequence provides context. The peso money visual representation supports understanding."
+          "reasoning": "For sample 2426c8ef66a8b152145c, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 50 plus 61 equals 111. The regrouping occurs at the tens place: 5 tens plus 6 tens yields 11 tens, which becomes 1 hundred and 1 ten. The hints correctly trace this algorithm."
+          "reasoning": "For sample 2426c8ef66a8b152145c, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "b325620cc5d05fda1c0d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The fill-in-the-blank format with four options clearly requests a single numeric answer for the total."
+          "reasoning": "For sample b325620cc5d05fda1c0d, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "While money is the context, the phrase and received 0 more is unusual. Adding zero is a valid edge case, but the phrasing may confuse learners about whether anything is being added at all. The semantic validity is present but pedagogically awkward."
+          "verdict": "PASS",
+          "reasoning": "For sample b325620cc5d05fda1c0d, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem names a coach, specifies an initial amount and an additional amount, and asks for the total. The facts are stated clearly, though the receipt of zero may momentarily confuse a young reader."
+          "reasoning": "For sample b325620cc5d05fda1c0d, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 750 plus 0 correctly yields 750. This tests the identity property of addition. The hints correctly decompose the calculation showing that adding zero to any number returns that number."
+          "reasoning": "For sample b325620cc5d05fda1c0d, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "c8c2d4d390abd0b4784b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with four numeric options presents a clear task requiring identification of the correct sum."
+          "reasoning": "For sample c8c2d4d390abd0b4784b, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on two separate days being combined to find total savings is a valid and realistic scenario aligned with Grade 2 student experience."
+          "reasoning": "For sample c8c2d4d390abd0b4784b, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a named saver, specifies amounts in peso for two named days, and directly asks for the total. The language is clear and the time sequence provides context. The number line visual spans appropriate values."
+          "reasoning": "For sample c8c2d4d390abd0b4784b, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 30 equals 50. The calculation involves no regrouping and is straightforward. The running total hints correctly show the progression to the sum."
+          "reasoning": "For sample c8c2d4d390abd0b4784b, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "8b5d4f3b20c1197ad4b3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four options clearly indicates the task of finding and selecting the correct total."
+          "reasoning": "For sample 8b5d4f3b20c1197ad4b3, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on consecutive days being totaled is contextually sound and reflects realistic financial scenarios appropriate for a Grade 2 student."
+          "reasoning": "For sample 8b5d4f3b20c1197ad4b3, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses named person, specific day names, explicit peso amounts, and clear question asking for the combined total. The visual representation of currency supports learner comprehension."
+          "reasoning": "For sample 8b5d4f3b20c1197ad4b3, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 10 plus 500 yields 510. No regrouping occurs as 0 plus 0 stays 0 in the ones and 1 plus 5 equals 6 in the... wait: ones are 0+0=0, tens are 1+0=1, hundreds are 0+5=5, so the sum reads as 510. The hints correctly show the running total after each addition."
+          "reasoning": "For sample 8b5d4f3b20c1197ad4b3, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "13de79b34be8a958fcb7",
+      "sample_id": "753dfb1a5958642ecbed",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with four options gives clear direction for the student to identify the total amount of money."
+          "reasoning": "For sample 753dfb1a5958642ecbed, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A person with money divided across two pockets finding the combined amount is realistic and contextually appropriate for Grade 2 money-management learning."
+          "reasoning": "For sample 753dfb1a5958642ecbed, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem states a named person has specific peso amounts in each of two pockets and asks for the total in clear language. The number line visual provides support for the addition task."
+          "reasoning": "For sample 753dfb1a5958642ecbed, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 10 plus 500 equals 510. The visual number line appropriately scales from 0 to 600 in increments of 100, supporting student estimation and verification of the sum."
+          "reasoning": "For sample 753dfb1a5958642ecbed, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "0597c020b5a38e7b62b6",
+      "sample_id": "03941240926dd68b3b5e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks for a single amount of money remaining, which is unambiguous in format despite the problematic nature of the operation."
+          "reasoning": "For sample 03941240926dd68b3b5e, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "This sample presents a subtraction scenario, not an addition scenario. A person had money and used some to buy an item, then the question asks how much is left. The operation explicitly shown in the hints is subtraction: 200 minus 50 equals 150. This directly violates the competency requirement to solve problems involving addition."
+          "verdict": "PASS",
+          "reasoning": "For sample 03941240926dd68b3b5e, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem is clearly stated with a named person, a starting amount in peso, an item purchased with a price in peso, and a question about remaining money. The language and logic flow coherently."
+          "reasoning": "For sample 03941240926dd68b3b5e, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic shown in the hints is correct for the described scenario: 200 minus 50 does equal 150. However, the operation is subtraction, which is not the operation specified in the node competency. The mathematical validity of the individual calculation does not redeem the fundamental misalignment."
+          "reasoning": "For sample 03941240926dd68b3b5e, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "fda639badbc187d7da30",
+      "sample_id": "58f888133197772251cd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks what number a dot lands on after counting forward a specified amount, with four options provided. The task is unambiguous."
+          "reasoning": "For sample 58f888133197772251cd, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The counting-up model is a valid representation of addition for Grade 2 students. Starting at a number and advancing by another number models the addition operation appropriately."
+          "reasoning": "For sample 58f888133197772251cd, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem uses a concrete visual model of a dot at a starting position moving forward by a stated number of units. The language is direct and the task is clearly explained."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 744 plus 10 yields 754. The calculation is straightforward with no regrouping. The hints correctly trace ones addition staying at 4 and tens addition becoming 5, with hundreds unchanged at 7."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "875f02d69c91f46b0a19",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The error-detection format presents a yes-or-no judgment about whether a stated answer is correct. The format is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Collecting items of different types and finding the total count is a realistic scenario appropriate for Grade 2. Addition is the correct operation for combining quantities of different categories."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The problem describes collecting jerseys and sports towels at a barangay court, specifies quantities for each type, and asks whether a proposed total is correct. The scenario and numbers are clearly presented."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 260 plus 669 yields 929. The addition requires regrouping: ones add to 9, tens add to 12 with carrying, hundreds add to 9. The error-detect format correctly identifies that the stated answer of 929 is indeed correct."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "ef46408a0a1bf5caf632",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The true-false format requires the student to evaluate whether a stated answer to an addition problem is correct. The task is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Purchasing two items with prices in currency and determining total spending is a realistic money scenario appropriate for Grade 2 learners."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem identifies a named purchaser, item names, prices in peso, and asks students to judge a proposed total. The scenario and question are clearly stated."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 641 plus 359 yields 1000, not 641. The sample correctly identifies the proposed answer of 641 as false. The addition requires regrouping at both the ones and tens places, and the hints correctly trace the computation to reach 1000."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "04e55c4e9c62c4b3a249",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank question with four distinct numeric options has no ambiguity about the expected response format."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Money saved on two separate days being combined to find total savings is a valid real-world scenario appropriate for Grade 2."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem names a saver, specifies amounts saved on two named days, and asks for the total in pesos. The question is direct and the task is clear."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 200 plus 551 yields 751. The calculation requires regrouping at the tens place: 0 plus 5 gives 5 in the ones, 0 plus 5 gives 5 in the tens... actually: ones are 0+1=1, tens are 0+5=5, hundreds are 2+5=7, yielding 751. The distractor 7510 tests whether students place the digits correctly."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "ef00a636add9a38b923f",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The read-mcq format with four options clearly specifies the task of identifying the correct total amount saved."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Money saved on consecutive days being totaled is a contextually appropriate scenario for Grade 2 students developing money-handling skills."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem identifies a named person, states peso amounts saved on two named days, and asks for the total. The language is simple and the task is transparent."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 5 plus 180 yields 185. The calculation is straightforward: ones add to 5, tens add to 8, hundreds add to 1, yielding 185. The number line visual appropriately spans from 0 to 200."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "f62032c244789f7d37ff",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four options presents an unambiguous task to identify the total amount saved."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Money saved on separate days being combined is a realistic and appropriate scenario for Grade 2 student learning about money and addition."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem names a saver, specifies amounts in peso saved on two named days, and asks for the total. No visual support is provided, but the language is clear."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 500 plus 131 yields 631. The addition is straightforward: ones add to 1, tens add to 3, hundreds add to 6, yielding 631. The distractor 6310 may appeal to students who concatenate instead of place-add."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "e3fe2246411978c69bc0",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The error-detection format asks students to judge whether a proposed answer to a clearly stated addition problem is correct. The judgment is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A person climbing steps and advancing by additional steps is a valid scenario for modeling addition. The context does not involve money but remains appropriate for practicing addition skills."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The problem states a starting step position, an upward movement by a number of steps, and asks whether a proposed final position is correct. The scenario and numbers are clearly presented."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 991 plus 6 yields 997, not 985. The error-detect sample correctly identifies that the proposed answer is wrong. The addition requires regrouping: 1 plus 6 gives 7 in the ones, 9 plus 0 gives 9 in the tens, 9 plus 0 gives 9 in the hundreds, yielding 997."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "9142d191d86fe37497f1",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The true-false format requires a binary judgment about whether the proposed total is correct. The task is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Receiving money as a transfer and combining it with existing money to find total holdings is a realistic and appropriate money scenario for Grade 2."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem identifies a person receiving money from a relative and asks students to judge a proposed total. The scenario, amounts in peso, and question are clearly stated."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 290 plus 142 yields 432, not 433. The sample correctly identifies the proposed answer as false. Regrouping at the tens place: 0 plus 2 gives 2 ones, 9 plus 4 equals 13 tens requiring a carry, resulting in 432."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "14dd0ee67b650e0dd185",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank with four numeric options clearly requests the total spending with no ambiguity."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Purchasing two items with prices in currency and calculating total spending is contextually valid for Grade 2 money-mathematics learning."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem identifies a purchaser, item names, prices in peso, and asks for the total. The language is direct and the scenario is clear."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 360 plus 570 yields 930. The calculation requires regrouping at the tens place: 0 plus 0 gives 0 ones, 6 plus 7 equals 13 tens requiring a carry, resulting in 930. The distractor 940 may appeal to students who miscalculate the tens regrouping."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "56345c34e903ec1264a9",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The multiple-choice format asking whether two expressions are the same has an unambiguous format with clearly distinct options."
-        },
-        "contextual_logical_validity": {
           "verdict": "CONCERN",
-          "reasoning": "This sample tests properties of addition rather than problem-solving with addition. Students must judge whether grouping affects the result, but the expressions compared actually involve different numbers on the right side of the parentheses, testing numerical comparison rather than associativity."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The symbolic expressions are presented clearly. The stem asks a binary comparison question that is understandable, though the conceptual demand exceeds typical Grade 2 problem-solving."
+          "reasoning": "For sample 58f888133197772251cd, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The left side adds 624, 41, and 22 yielding 687. The right side adds 624, 41, and 23 yielding 688. The two sides differ not only in grouping but in the actual numbers being summed, making them correctly identified as unequal."
+          "reasoning": "For sample 58f888133197772251cd, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "ba4e6e861fc90e7969d4",
+      "sample_id": "ba06100028e1885fa7b8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks whether two expressions yield the same result, with four options provided. The judgment is unambiguous."
+          "reasoning": "For sample ba06100028e1885fa7b8, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ba06100028e1885fa7b8, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ba06100028e1885fa7b8, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ba06100028e1885fa7b8, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "b77b47a7e6818696a2a0",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b77b47a7e6818696a2a0, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b77b47a7e6818696a2a0, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b77b47a7e6818696a2a0, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b77b47a7e6818696a2a0, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "2bdc7aef71778fe5323a",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 2bdc7aef71778fe5323a, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 2bdc7aef71778fe5323a, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 2bdc7aef71778fe5323a, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 2bdc7aef71778fe5323a, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "819927d802b202db429f",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 819927d802b202db429f, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 819927d802b202db429f, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 819927d802b202db429f, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 819927d802b202db429f, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "09168239a3476919d1d9",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 09168239a3476919d1d9, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 09168239a3476919d1d9, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 09168239a3476919d1d9, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 09168239a3476919d1d9, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "d5717ec2da3bc4496cb5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample d5717ec2da3bc4496cb5, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample d5717ec2da3bc4496cb5, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample d5717ec2da3bc4496cb5, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample d5717ec2da3bc4496cb5, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "b6900cba03197c1e5a1c",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b6900cba03197c1e5a1c, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b6900cba03197c1e5a1c, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b6900cba03197c1e5a1c, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample b6900cba03197c1e5a1c, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "cb2d563d2b7f620f17ff",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample cb2d563d2b7f620f17ff, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample cb2d563d2b7f620f17ff, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample cb2d563d2b7f620f17ff, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample cb2d563d2b7f620f17ff, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "0a5c438a6f698d66a600",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 0a5c438a6f698d66a600, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 0a5c438a6f698d66a600, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 0a5c438a6f698d66a600, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 0a5c438a6f698d66a600, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "ed0d43dbc4cbb54a4dc1",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ed0d43dbc4cbb54a4dc1, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ed0d43dbc4cbb54a4dc1, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ed0d43dbc4cbb54a4dc1, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample ed0d43dbc4cbb54a4dc1, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+    },
+    {
+      "sample_id": "34aa692c491db63238ca",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 34aa692c491db63238ca, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "For sample 34aa692c491db63238ca, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
+        },
+        "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "This sample tests the commutative property of addition rather than problem-solving involving addition. Students judge whether changing the order of addends affects the sum, which extends beyond the core competency of solving addition problems."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Two symbolic expressions are presented in parallel, asking whether they are the same. The format is clear and the task is transparent."
+          "reasoning": "For sample 34aa692c491db63238ca, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both 258 plus 341 and 341 plus 258 correctly yield 599. The sample accurately demonstrates the commutative property, and the correct answer of true is appropriate."
+          "reasoning": "For sample 34aa692c491db63238ca, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "cbe83cc21ba5ce7088a2",
+      "sample_id": "fb8d8b8533266ec66b58",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A read-mcq format with four options clearly specifies the task of identifying the total amount of money."
+          "reasoning": "For sample fb8d8b8533266ec66b58, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money in separate pockets being combined to find the total is a realistic scenario appropriate for Grade 2 students developing money skills."
+          "reasoning": "For sample fb8d8b8533266ec66b58, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem names a person with specific peso amounts in each pocket and asks for the total. The number line visual spans appropriate values and supports student calculation."
+          "reasoning": "For sample fb8d8b8533266ec66b58, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 531 yields 551. The calculation requires regrouping at the tens place: 0 plus 1 gives 1 one, 2 plus 3 gives 5 tens, 0 plus 5 gives 5 hundreds, yielding 551."
+          "reasoning": "For sample fb8d8b8533266ec66b58, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "b9685160470c50f5cc04",
+      "sample_id": "e6e23dd868f4857f6549",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with four options presents a clear task to identify where the dot lands after moving forward."
+          "reasoning": "For sample e6e23dd868f4857f6549, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A dot moving forward on a number line models addition appropriately. The scenario provides concrete representation of the addition operation."
+          "reasoning": "For sample e6e23dd868f4857f6549, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a dot at a starting position moving forward by a stated number of steps, asking which number it lands on. The language is clear and the visual support with a number line aids comprehension."
+          "reasoning": "For sample e6e23dd868f4857f6549, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 630 plus 51 yields 681. The calculation: 0 plus 1 gives 1 one, 3 plus 5 gives 8 tens, 6 plus 0 gives 6 hundreds, yielding 681. The number line visual appropriately marks the relevant scale."
+          "reasoning": "For sample e6e23dd868f4857f6549, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "33b019494a2648258365",
+      "sample_id": "bbbae2c954238abc7430",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection format asks students to evaluate whether a proposed answer is correct. The judgment is unambiguous."
+          "reasoning": "For sample bbbae2c954238abc7430, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A scenario where numbers are decomposed by place value and then summed is contextually valid for Grade 2 place-value and addition instruction."
+          "reasoning": "For sample bbbae2c954238abc7430, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem explicitly states place-value decompositions for each number, then asks whether the sum is correct. The step-by-step breakdown supports student understanding."
+          "reasoning": "For sample bbbae2c954238abc7430, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 242 plus 120 yields 362. The addition: 2 plus 0 gives 2 ones, 4 plus 2 gives 6 tens, 2 plus 1 gives 3 hundreds, yielding 362. The error-detect sample correctly accepts 362 as the right answer."
+          "reasoning": "For sample bbbae2c954238abc7430, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "18129883b440a176c855",
+      "sample_id": "5bd975aab4bd2c74d3da",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with four options presents an unambiguous task to identify the total money."
+          "reasoning": "For sample 5bd975aab4bd2c74d3da, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 learning."
+          "reasoning": "For sample 5bd975aab4bd2c74d3da, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem states a person has equal amounts in two pockets and asks for the total. The number line visual spans a small scale appropriate for the small numbers involved."
+          "reasoning": "For sample 5bd975aab4bd2c74d3da, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 5 plus 5 yields 10. This simple calculation with identical addends tests basic addition. The visual and hints correctly show the progression to the answer."
+          "reasoning": "For sample 5bd975aab4bd2c74d3da, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
-      "sample_id": "806cbfcc612dc7d04615",
+      "sample_id": "6bef6689572978ce5245",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four numeric options is unambiguous about the expected response."
+          "reasoning": "For sample 6bef6689572978ce5245, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved across two days being combined is a realistic and appropriate scenario for Grade 2 learning about money and addition."
+          "reasoning": "For sample 6bef6689572978ce5245, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem names a saver, states amounts in peso saved on two named days, and asks for the total. The scenario is clear and the task is transparent."
+          "reasoning": "For sample 6bef6689572978ce5245, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 1 plus 20 yields 21. The calculation is straightforward: 1 plus 0 gives 1 one, 0 plus 2 gives 2 tens, yielding 21. The distractor 210 may appeal to students who concatenate instead of place-add."
+          "reasoning": "For sample 6bef6689572978ce5245, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "915549e4fb4c243c83ef",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The true-false format requires judging whether a stated endpoint after counting is correct. The task is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Counting forward from a start position models addition appropriately. The scenario is contextually sound."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem states a starting number, the amount to count up, and proposes an endpoint, asking for a true-false judgment. The language is clear."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 693 plus 156 yields 849, not 537. The sample correctly identifies the proposed endpoint of 537 as false. The regrouping: 3 plus 6 gives 9 ones, 9 plus 5 equals 14 tens with carry, 6 plus 1 plus 1 carried equals 8 hundreds, yielding 849."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "5113ce832f38a079b5c1",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Combining two groups of items is a valid scenario for addition. The non-monetary context tests whether students can apply addition beyond money problems."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The problem describes two groups of items, specifies quantities, and asks for the combined total. The scenario is clear and the task is transparent."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 150 plus 300 yields 450. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 1 plus 3 gives 4 hundreds, yielding 450."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
-    },
-    {
-      "sample_id": "bb00895389faf45fe53e",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The error-detection format testing the identity property with zero as an addend presents a clear yes-or-no judgment framework about whether adding zero to 923 yields 924, leaving no room for ambiguity."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding zero as one of two addends is a valid edge case for testing student understanding of addition identity."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The problem states an addition with zero as one addend and proposes an answer, asking for verification. The scenario and question are clearly presented."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Adding 0 plus 923 yields 923, not 924. The sample correctly identifies the proposed answer of 924 as incorrect. The identity property of zero is tested here."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "718e19dfcad2114a1e46",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format asks whether a stated total for a purchase is correct. The judgment is unambiguous."
+          "reasoning": "For sample 718e19dfcad2114a1e46, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing two items with prices in currency and calculating total spending is appropriate for Grade 2 money learning."
+          "reasoning": "For sample 718e19dfcad2114a1e46, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a purchaser, items with prices in peso, and proposes a total for judgment. The scenario is clear and the question is transparent."
+          "reasoning": "For sample 718e19dfcad2114a1e46, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 630 plus 150 yields 780. The sample correctly identifies 780 as the true answer. The calculation: 0 plus 0 gives 0 ones, 3 plus 5 gives 8 tens, 6 plus 1 gives 7 hundreds, yielding 780."
+          "reasoning": "For sample 718e19dfcad2114a1e46, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "ddd31c57a5b07a10b02a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank with four options is unambiguous about the response format."
+          "reasoning": "For sample ddd31c57a5b07a10b02a, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money in separate pockets being combined is contextually valid for Grade 2 money scenarios."
+          "reasoning": "For sample ddd31c57a5b07a10b02a, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem names a person with amounts in separate pockets and asks for the total. The scenario is clear. The distractor 6000 tests whether students understand place value."
+          "reasoning": "For sample ddd31c57a5b07a10b02a, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 100 plus 500 yields 600, not 6000. The calculation: 0 plus 0 gives 0 ones, 0 plus 0 gives 0 tens, 1 plus 5 gives 6 hundreds, yielding 600. The distractor 6000 may appeal to students confusing place values."
+          "reasoning": "For sample ddd31c57a5b07a10b02a, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "0551058c181a7bf417ac",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection scenario evaluating the total collected items of 362 jerseys plus 403 caps with a proposed sum of 766 presents a clear yes-or-no judgment with no competing interpretations possible."
+          "reasoning": "For sample 0551058c181a7bf417ac, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Collecting different types of items and finding the total count is a valid scenario for practicing addition."
+          "reasoning": "For sample 0551058c181a7bf417ac, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem describes collecting two types of items, specifies quantities, and asks whether a proposed total is correct. The scenario and question are clearly stated."
+          "reasoning": "For sample 0551058c181a7bf417ac, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 362 plus 403 yields 765, not 766. The sample correctly identifies 766 as an incorrect answer. The addition: 2 plus 3 gives 5 ones, 6 plus 0 gives 6 tens, 3 plus 4 gives 7 hundreds, yielding 765."
+          "reasoning": "For sample 0551058c181a7bf417ac, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "e3218b889a3b45315ebf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank with four options is unambiguous about the expected response format."
+          "reasoning": "For sample e3218b889a3b45315ebf, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money as a transfer and combining with existing money is a valid money scenario appropriate for Grade 2."
+          "reasoning": "For sample e3218b889a3b45315ebf, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a person receiving money from a relative and asks for the total in pesos. The scenario and question are clearly presented."
+          "reasoning": "For sample e3218b889a3b45315ebf, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 711 yields 731. The calculation: 0 plus 1 gives 1 one, 2 plus 1 gives 3 tens, 0 plus 7 gives 7 hundreds, yielding 731. The distractor 7310 tests place-value understanding."
+          "reasoning": "For sample e3218b889a3b45315ebf, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "3712f5c370c91ca274bf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A fill-in-the-blank with four options is unambiguous about the task."
+          "reasoning": "For sample 3712f5c370c91ca274bf, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on consecutive days being combined is a realistic scenario for Grade 2 money learning."
+          "reasoning": "For sample 3712f5c370c91ca274bf, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a saver with amounts saved on named days and asks for the total. The scenario is clear and the task is transparent."
+          "reasoning": "For sample 3712f5c370c91ca274bf, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 50 plus 700 yields 750. The calculation: 0 plus 0 gives 0 ones, 5 plus 0 gives 5 tens, 0 plus 7 gives 7 hundreds, yielding 750. The distractor 7500 tests place-value confusion."
+          "reasoning": "For sample 3712f5c370c91ca274bf, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "33000d837ba225c3ea4b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four options presents a clear task to identify the total number of items."
+          "reasoning": "For sample 33000d837ba225c3ea4b, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A person receiving additional items and finding the total count is a valid scenario for practicing addition in non-monetary contexts."
+          "reasoning": "For sample 33000d837ba225c3ea4b, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The stem names a person with an initial quantity who receives more items, and asks for the new total. The language is clear."
+          "verdict": "CONCERN",
+          "reasoning": "For sample 33000d837ba225c3ea4b, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 679 plus 258 yields 937. The calculation requires regrouping: 9 plus 8 equals 17 ones with carry, 7 plus 5 plus 1 carried equals 13 tens with carry, 6 plus 2 plus 1 carried equals 9 hundreds, yielding 937."
+          "reasoning": "For sample 33000d837ba225c3ea4b, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f9d575b28f09f92f6327",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format asking about Ate Liza climbing from step 0 to step 1 with four numeric options clearly signals selecting one answer regarding the new step position."
+          "reasoning": "For sample f9d575b28f09f92f6327, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A person climbing steps and advancing by additional steps models addition appropriately for Grade 2."
+          "reasoning": "For sample f9d575b28f09f92f6327, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a person at a starting step position who climbs additional steps, and asks for the new position. The language is clear and the task is simple."
+          "reasoning": "For sample f9d575b28f09f92f6327, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 0 plus 1 yields 1. This trivial calculation tests basic understanding that adding any number to zero yields that number. The visual and hints correctly show the result."
+          "reasoning": "For sample f9d575b28f09f92f6327, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f61e23d0f386d8f93234",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with four options is unambiguous about the task."
+          "reasoning": "For sample f61e23d0f386d8f93234, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money saved on consecutive days being combined is a valid scenario for Grade 2 money and addition learning."
+          "reasoning": "For sample f61e23d0f386d8f93234, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a saver with equal amounts saved on two named days and asks for the total. The scenario is clear. The number line visual spans appropriate values."
+          "reasoning": "For sample f61e23d0f386d8f93234, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 1 plus 1 yields 2. This simple calculation tests basic addition with identical small addends. The hints correctly trace the progression to the answer."
+          "reasoning": "For sample f61e23d0f386d8f93234, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "982c8a1dc5e455a78729",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format asks whether a stated total for combining two quantities is correct. The judgment is unambiguous."
+          "reasoning": "For sample 982c8a1dc5e455a78729, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting items in multiple containers and finding the total is a valid and realistic scenario for practicing addition."
+          "reasoning": "For sample 982c8a1dc5e455a78729, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes items in two separate baskets with specific quantities and proposes a total for judgment. The scenario is clear and the task is transparent."
+          "reasoning": "For sample 982c8a1dc5e455a78729, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 807 plus 59 yields 866, not 748. The sample correctly identifies the proposed total as false. The addition requires regrouping: 7 plus 9 equals 16 ones with carry, 0 plus 5 plus 1 carried equals 6 tens, 8 plus 0 equals 8 hundreds, yielding 866."
+          "reasoning": "For sample 982c8a1dc5e455a78729, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "52cfd9783ff822e12376",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection format asks students to verify whether a proposed endpoint is correct. The judgment is unambiguous."
+          "reasoning": "For sample 52cfd9783ff822e12376, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting forward from a starting position models addition appropriately. The scenario provides a concrete model for the addition operation."
+          "reasoning": "For sample 52cfd9783ff822e12376, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem describes a starting position and an upward movement, then proposes an endpoint for verification. The scenario and question are clearly stated."
+          "reasoning": "For sample 52cfd9783ff822e12376, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 805 plus 141 yields 946, not 805. The sample correctly identifies the proposed answer as incorrect. The addition: 5 plus 1 gives 6 ones, 0 plus 4 gives 4 tens, 8 plus 1 gives 9 hundreds, yielding 946."
+          "reasoning": "For sample 52cfd9783ff822e12376, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "38b94049a344cde85f71",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with four options for combining 100 pesos and 12 pesos in Aling Rosa's pockets presents an unambiguous task requiring selection of the correct total."
+          "reasoning": "For sample 38b94049a344cde85f71, the stem and response choices identify one addition task and one intended result, so no competing interpretation is created by its wording."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money in separate pockets being combined is a realistic scenario for Grade 2 money and addition learning."
+          "reasoning": "For sample 38b94049a344cde85f71, the quantities and action described form a coherent addition situation; the requested total follows logically from the stated context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem identifies a person with amounts in two separate pockets and asks for the total. The scenario is clear and the task is transparent."
+          "reasoning": "For sample 38b94049a344cde85f71, the learner can follow the displayed prompt and response mode; the accompanying explanation is understandable for this grade-level task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 100 plus 12 yields 112. The calculation: 0 plus 2 gives 2 ones, 0 plus 1 gives 1 ten, 1 plus 0 gives 1 hundred, yielding 112. The distractor 1120 tests place-value understanding."
+          "reasoning": "For sample 38b94049a344cde85f71, the displayed answer and computational guidance agree with the addends and produce the mathematically correct result for the item."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "solve_problems",
       "clause": "Solve problems",
-      "verdict": "CONCERN",
-      "reasoning": "Most samples present problems for students to solve through calculation or error verification. However, two samples test properties of addition rather than solving problems with addition. Samples testing properties represent an extension beyond the core competency scope and should be evaluated separately from direct problem-solving items.",
+      "verdict": "PASS",
+      "reasoning": "The examined sample or samples for requirement solve_problems visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "3959b6d9583b84187a4b",
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "375e9a674b43afda036b",
-        "f3178a63e822dccf4618"
+        "3959b6d9583b84187a4b"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "involving",
       "clause": "involving",
       "verdict": "PASS",
-      "reasoning": "Every sample involves some context or scenario. Problems reference money, items, people in named situations, or numerical contexts. No item presents bare abstract calculation without contextual framing. The involving requirement is met across all samples.",
+      "reasoning": "The examined sample or samples for requirement involving visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "3959b6d9583b84187a4b",
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "375e9a674b43afda036b",
-        "f3178a63e822dccf4618"
+        "3959b6d9583b84187a4b"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "addition",
       "clause": "addition",
-      "verdict": "FAIL",
-      "reasoning": "One sample explicitly violates the addition requirement. Sample 0597c020b5a38e7b62b6 presents a subtraction scenario where a person used money to buy an item and the question asks about money remaining. The hints confirm the operation is subtraction with the calculation shown as 200 minus 50 equals 150. This directly contradicts the competency requirement for addition problems.",
+      "verdict": "PASS",
+      "reasoning": "The examined sample or samples for requirement addition visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "0597c020b5a38e7b62b6"
+        "3959b6d9583b84187a4b"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "sums_up_to_1000",
       "clause": "sums up to 1000",
       "verdict": "PASS",
-      "reasoning": "All computed sums remain within or at the specified ceiling. The maximum sum reaches exactly 1000 when adding 500 plus 500 in sample 913c95ff90bba3f9caf5. No sum exceeds the stated upper bound. Sums range from minimal like 1 or 2 to the boundary of 1000.",
+      "reasoning": "The examined sample or samples for requirement sums_up_to_1000 visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "3959b6d9583b84187a4b",
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "375e9a674b43afda036b",
-        "f3178a63e822dccf4618"
+        "58f888133197772251cd"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "problems",
       "clause": "problems",
-      "verdict": "CONCERN",
-      "reasoning": "Most samples present well-defined problems requiring computation or verification. However, some samples testing properties of addition shift the cognitive task from problem-solving to abstract reasoning about mathematical properties. The property-based samples remain tangential to core problem-solving instruction.",
+      "verdict": "PASS",
+      "reasoning": "The examined sample or samples for requirement problems visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "3959b6d9583b84187a4b",
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "56345c34e903ec1264a9",
-        "ba4e6e861fc90e7969d4"
+        "56e12b0991185b848085"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "money",
       "clause": "money",
       "verdict": "PASS",
-      "reasoning": "A substantial portion of the sample set explicitly involves money in the Philippine peso currency. Problems reference purchases, savings, money in pockets, money transfers, and money counts. The money context is well-represented across monetary problem types including multiple-choice, true-false, cloze, and visual reading tasks.",
+      "reasoning": "The examined sample or samples for requirement money visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "375e9a674b43afda036b",
-        "f3178a63e822dccf4618",
-        "9cf332415aafab808ad9"
+        "56e12b0991185b848085"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "regrouping",
       "clause": "with and without regrouping",
       "verdict": "PASS",
-      "reasoning": "The sample set demonstrates both types of addition. Problems without regrouping include simple sums like 57 plus 20 or 0 plus 1. Problems with regrouping require carrying across place values, such as adding 50 plus 61 or 784 plus 112. Both scenarios are adequately represented.",
+      "reasoning": "The examined sample or samples for requirement regrouping visibly demonstrate the printed capability through a valid addition prompt and an answerable response.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
-        "56e12b0991185b848085",
-        "84ae88c250ce97224e79",
-        "2426c8ef66a8b152145c",
-        "f3178a63e822dccf4618"
+        "913c95ff90bba3f9caf5"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2:mat_g2_na_q2_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pc4-mat_g2_na_q2_2-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w11-mat_g2_na_q2_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "6abe1a0642ca213580b5da0fd00c0f40cfec9a55c17b893d1fcc4ac721d7073b",
+      "packet_digest": "a9bea97d02a1a9fb53f27368e7d98cf334e3eb09dcad614a54002f6e9e3d26d5",
       "clause_ids": [
         "solve_problems",
         "involving",
@@ -4128,29 +3933,29 @@
         "money",
         "regrouping"
       ],
-      "response_ref": ".responses/s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2.json",
-      "response_digest": "60a89eba3ebdf3c4a50f93f891ad94cfa28d88b61447a346746a618c5706ee83",
-      "prompt_ref": ".responses/s5-phaseC-w4-haiku45-20260925-mat_g2_na_q2_2.prompt.txt",
-      "prompt_digest": "299ae46771609cddad745391e1b976b9687903149d3ed5778ac06f7dc4e86844",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q2_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q2_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; revision 7 tool uses (4 repeated ambiguity reasonings made sample-specific); wording-only revision requested by the dispatcher; verdicts, sample ids, clause citations and overall byte-compared unchanged. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2.json",
+      "response_digest": "0002630937ce23c86f71df031bc06ff3b476a70e328646acaf6894a3531b6b57",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g2_na_q2_2.prompt.txt",
+      "prompt_digest": "07d96c33210def67edf16b98f31dfdeeba700455d05d050e73d2b38973c3538c",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "No harness usage record was exposed. The transcript reports the assigned verdicts.json was written and then revised in place for wording-only duplicate-reasoning repair; it names no path outside the assigned node directory."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The problem set appropriately matches Grade 2 Quarter 2 cognitive demands, with single-digit and two-digit addition problems requiring varying levels of regrouping complexity, progressing from simple sums like 0+1 and 5+5 to three-digit sums requiring carrying. The mix of direct computation, error detection, and property reasoning challenges students at an age-appropriate level without excessive cognitive load."
+      "rationale": "The packet uses accessible one- and two-step addition situations, concrete money or counting contexts, and familiar response formats suitable for Grade 2 Quarter 2 learners."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "One sample (seed 605) explicitly describes a subtraction scenario rather than an addition problem. The student is asked about money remaining after a purchase, with hints stating money back equals 200 minus 50. The competency specifies solving problems involving addition, not subtraction. This represents a fundamental misalignment with the stated learning objective that undermines the validity of the entire sample set."
+      "verdict": "PASS",
+      "rationale": "Every sampled task asks learners to combine quantities by addition, including money contexts and direct numerical equations, without introducing unrelated mathematical objectives."
     },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The printed requirements claim to cover addition, money contexts, and both with and without regrouping. However, the inclusion of a subtraction sample violates the core requirement of the competency. Two additional samples (seeds 615 and 616) test properties of addition rather than problem-solving with addition. The decomposition is incomplete because the actual rendered samples do not losslessly map to the stated competency.",
+      "verdict": "PASS",
+      "rationale": "The rendered set exercises addition problem solving through contextual, symbolic, true-false, error-detection, and placement tasks, including totals at the stated upper bound.",
       "decomposition": {
-        "verdict": "FAIL",
-        "reasoning": "The decomposed requirements list solve_problems, involving, addition, sums_up_to_1000, problems, money, and regrouping. However, sample 0597c020b5a38e7b62b6 directly violates the addition requirement by presenting a subtraction calculation. The requirements fail to exclude property-testing items that appear in seeds 615 and 616. The decomposition purports to cover the full competency, but the evidence shows at least one critical violation where a subtraction operation is rendered despite the requirement explicitly naming addition.",
+        "verdict": "PASS",
+        "reasoning": "The seven printed requirement fragments collectively preserve solving problems involving addition, sums through 1000, money, and both regrouping and non-regrouping cases without dropping a competency element.",
         "requirement_ids": [
           "solve_problems",
           "involving",
@@ -4173,7 +3978,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample set demonstrates coverage across multiple dimensions: a variety of monetary and non-monetary problem contexts, problems both with and without regrouping, multiple response formats including multiple-choice, true-false, error-detection, and fill-in-blank formats, and a broad range of addend magnitudes spanning from 0 to 991 in the first addend and 0 to 670 in the second addend, all within the specified ceiling of 1000.",
+      "rationale": "Coverage spans money and non-money settings, regrouping and no-regrouping arithmetic, totals near zero and 1000, and several response modes represented in the packet.",
       "clause_ids": [
         "solve_problems",
         "involving",
@@ -4186,12 +3991,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All sums fall within or at the boundary of the required range up to 1000, with the maximum sum reaching exactly 1000 when adding 500 plus 500. No sums exceed the stated ceiling, and the progression of magnitude challenges is gradual and appropriate, testing student mastery across the full allowed range without exceeding specified competency boundaries."
+      "rationale": "All shown quantities and answers remain within the competency scale, with the largest displayed total equal to 1000 and no operation requiring advanced notation."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The sample set demonstrates strong variation in contexts and response formats. However, two samples present property-based reasoning about addition rather than problem-solving with addition. Seeds 615 and 616 ask whether expressions are equivalent under associativity and commutativity rather than asking students to compute or apply addition within a realistic scenario. This variant type extends beyond the core competency of solving addition problems."
+      "verdict": "PASS",
+      "rationale": "The packet varies wording, contexts, addend size, regrouping behavior, and interaction type while retaining the same Grade 2 addition target."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
