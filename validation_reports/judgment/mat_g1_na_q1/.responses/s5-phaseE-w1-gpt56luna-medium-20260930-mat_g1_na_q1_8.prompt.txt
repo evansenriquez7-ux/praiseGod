@@ -1,0 +1,257 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w16-mat_g1_na_q1_8-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q1_8/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w16-mat_g1_na_q1_8-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q1_8
+PACKET DIGEST: 67af3e499c9df409bcaa8bc701a5e0a0d276adab9af0e0c6e459d2bf2fc3a4a1
+COMPETENCY (Grade 1, Quarter 1, None):
+Illustrate by applying the following properties of addition, using sums up to 20: the sum of zero and any number is equal to the number, and changing the order of the addends does not change the sum.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate: Illustrate
+  applying: applying
+  properties_of_addition: properties of addition
+  sums_up_to_20: sums up to 20
+  identity_property: the sum of zero and any number is equal to the number
+  commutative_property: changing the order of the addends does not change the sum
+
+SAMPLES (every one of these is real rendered output):
+  sample c6178e1d005833a600f0  seed 42  [mcq]
+      stem:    What is 1 + 0?
+      answer:  1
+      options: 11 / 1 / 0 / 2
+      hints:   ["We are adding two numbers: 1 and 0.", "Add the last digits: 1 + 0 = 1.", "The sum is 1 + 0 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a7e182223123728b918c  seed 43  [true_false]
+      stem:    0 + 10 = 20. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 0 and 10.", "Add the last digits: 0 + 0 = 0.", "Add the first digits: 0 + 1 = 1.", "The sum is 0 + 10 = 10."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0b588b134424672531db  seed 44  [mcq]
+      stem:    Is 12 + 2 the same as 2 + 12?
+      answer:  True
+      options: True / Cannot be determined / False / Only when both are 0
+      hints:   ["Both sides add the same two numbers, 12 and 2, in a different order.", "12 + 2 = 14 and 2 + 12 = 14.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2bbb44a400a30f2f2b66  seed 45  [mcq]
+      stem:    Is 17 + 2 the same as 2 + 17?
+      answer:  True
+      options: Cannot be determined / True / False / Only when both are 0
+      hints:   ["Both sides add the same two numbers, 17 and 2, in a different order.", "17 + 2 = 19 and 2 + 17 = 19.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6eab0232af3ed271e21f  seed 46  [cloze]
+      stem:    0 + 13 = ___
+      answer:  13
+      options: 13 / 23 / 14 / 12
+      hints:   ["We are adding two numbers: 0 and 13.", "Add the last digits: 0 + 3 = 3.", "Add the first digits: 0 + 1 = 1.", "The sum is 0 + 13 = 13."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d66568e124711a4f9817  seed 51  [error_detect]
+      stem:    Ana solved: "0 + 17 = ___". Ana says the blank is 18. Is Ana correct?
+      answer:  {'has_error': True, 'correct_value': 17}
+      hints:   ["We are adding two numbers: 0 and 17.", "Add the last digits: 0 + 7 = 7.", "Add the first digits: 0 + 1 = 1.", "The sum is 0 + 17 = 17."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 87a47c60d74c5d7e5c68  seed 500  [mcq]
+      stem:    Is 18 + 1 the same as 1 + 14?
+      answer:  False
+      options: Only when both are 0 / True / Cannot be determined / False
+      hints:   ["The left side adds 18 and 1. The right side adds 1 and 14.", "18 + 1 = 19 and 1 + 14 = 15.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7b77af6651072af312c5  seed 501  [mcq]
+      stem:    Is 16 + 1 the same as 1 + 14?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["The left side adds 16 and 1. The right side adds 1 and 14.", "16 + 1 = 17 and 1 + 14 = 15.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b60fe9a920b34c8275c4  seed 502  [mcq]
+      stem:    Is 13 + 6 the same as 6 + 14?
+      answer:  False
+      options: Cannot be determined / False / Only when both are 0 / True
+      hints:   ["The left side adds 13 and 6. The right side adds 6 and 14.", "13 + 6 = 19 and 6 + 14 = 20.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ce1cd5cd5935a7866b33  seed 600  [mcq]
+      stem:    Is 16 + 3 the same as 3 + 16?
+      answer:  True
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Both sides add the same two numbers, 16 and 3, in a different order.", "16 + 3 = 19 and 3 + 16 = 19.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 37cfd4cb8175a3e647fb  seed 601  [cloze]
+      stem:    0 + 19 = ___
+      answer:  19
+      options: 20 / 29 / 19 / 18
+      hints:   ["We are adding two numbers: 0 and 19.", "Add the last digits: 0 + 9 = 9.", "Add the first digits: 0 + 1 = 1.", "The sum is 0 + 19 = 19."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 094700f9acbafcd442d6  seed 602  [mcq]
+      stem:    Is 13 + 3 the same as 3 + 10?
+      answer:  False
+      options: Only when both are 0 / Cannot be determined / True / False
+      hints:   ["The left side adds 13 and 3. The right side adds 3 and 10.", "13 + 3 = 16 and 3 + 10 = 13.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 577b3e14014182297d1d  seed 603  [true_false]
+      stem:    18 + 0 = 18. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 18 and 0.", "Add the last digits: 8 + 0 = 8.", "Add the first digits: 1 + 0 = 1.", "The sum is 18 + 0 = 18."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2377de6ba2279f373c93  seed 604  [mcq]
+      stem:    What is 7 + 0?
+      answer:  7
+      options: 17 / 8 / 7 / 6
+      hints:   ["We are adding two numbers: 7 and 0.", "Add the last digits: 7 + 0 = 7.", "The sum is 7 + 0 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dd7116441f0e6413cfae  seed 605  [true_false]
+      stem:    19 + 0 = 19. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 19 and 0.", "Add the last digits: 9 + 0 = 9.", "Add the first digits: 1 + 0 = 1.", "The sum is 19 + 0 = 19."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1e46ce3f45957fd5ee6f  seed 606  [mcq]
+      stem:    What is 12 + 0?
+      answer:  12
+      options: 12 / 22 / 11 / 13
+      hints:   ["We are adding two numbers: 12 and 0.", "Add the last digits: 2 + 0 = 2.", "Add the first digits: 1 + 0 = 1.", "The sum is 12 + 0 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b126d6cca94f865b34ad  seed 700  [true_false]
+      stem:    7 + 0 = 7. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 7 and 0.", "Add the last digits: 7 + 0 = 7.", "The sum is 7 + 0 = 7."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 01022d44c047cfdb8bba  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Is 8 + 1 the same as 1 + 6?
+      answer:  False
+      options: True / False / Only when both are 0 / Cannot be determined
+      hints:   ["The left side adds 8 and 1. The right side adds 1 and 6.", "8 + 1 = 9 and 1 + 6 = 7.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a20b1055929ad0bed733  seed 702  [error_detect]
+      stem:    🏀 Marco enjoys jerseys. Here is a math challenge. Manny solved: "0 + 5 = ___". Manny says the blank is 6. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["We are adding two numbers: 0 and 5.", "Add the last digits: 0 + 5 = 5.", "The sum is 0 + 5 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d91e9fdc3d50fb75b53b  seed 800  [mcq]
+      stem:    Is 11 + 8 the same as 8 + 11?
+      answer:  True
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["Both sides add the same two numbers, 11 and 8, in a different order.", "11 + 8 = 19 and 8 + 11 = 19.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3a2abf47d99d0894167a  seed 801  [error_detect]
+      stem:    Pia solved: "7 + 0 = ___". Pia says the blank is 7. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 7}
+      hints:   ["We are adding two numbers: 7 and 0.", "Add the last digits: 7 + 0 = 7.", "The sum is 7 + 0 = 7."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d31eb85f66adde656139  seed 900  [mcq]
+      stem:    What is 0 + 1?
+      answer:  1
+      options: 11 / 1 / 2 / 0
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the last digits: 0 + 1 = 1.", "The sum is 0 + 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7c54bb9e037157cade52  seed 901  [mcq]
+      stem:    Is 5 + 1 the same as 1 + 1?
+      answer:  False
+      options: False / Cannot be determined / Only when both are 0 / True
+      hints:   ["The left side adds 5 and 1. The right side adds 1 and 1.", "5 + 1 = 6 and 1 + 1 = 2.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d917be5bb8c988b98d9c  seed 1000  [mcq]
+      stem:    Is 12 + 4 the same as 4 + 13?
+      answer:  False
+      options: False / Cannot be determined / Only when both are 0 / True
+      hints:   ["The left side adds 12 and 4. The right side adds 4 and 13.", "12 + 4 = 16 and 4 + 13 = 17.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 62eb4b09f99b92273f4b  seed 1001  [error_detect]
+      stem:    Liza solved: "0 + 7 = ___". Liza says the blank is 0. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 7}
+      hints:   ["We are adding two numbers: 0 and 7.", "Add the last digits: 0 + 7 = 7.", "The sum is 0 + 7 = 7."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample fab949bad25c49033793  seed 1002  [mcq]
+      stem:    Is 4 + 12 the same as 12 + 3?
+      answer:  False
+      options: True / Only when both are 0 / False / Cannot be determined
+      hints:   ["The left side adds 4 and 12. The right side adds 12 and 3.", "4 + 12 = 16 and 12 + 3 = 15.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+
