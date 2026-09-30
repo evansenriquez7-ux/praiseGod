@@ -1,0 +1,265 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q3_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w110r3-mat_g1_na_q3_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_1
+PACKET DIGEST: 2c79611cc43e7061b4aac76e63c04ed4e1b200542b88b3a6d5412a064cf56fcd
+COMPETENCY (Grade 1, Quarter 3, None):
+Find the missing number in addition or subtraction sentences involving numbers up to 20.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  find_missing_number: Find the missing number
+  addition_subtraction_sentences: addition or subtraction sentences
+  numbers_up_to_20: numbers up to 20
+
+SAMPLES (every one of these is real rendered output):
+  sample 8b380c5ebcf75f8dd9d0  seed 42  [read_mcq]
+      stem:    Both sides balance evenly. ? + 11 = 20. What is the missing value?
+      answer:  9
+      options: 20 / 10 / 8 / 9
+      hints:   ["The number statement is: ___ + 11 = 20", "Use subtraction to undo the operation.", "20 − 11 = 9.", "Check: 9 + 11 = 20. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["? + 11", "20"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample db02bcc9eed4db8aa5f1  seed 43  [mcq]
+      stem:    What number goes in the blank: 7 − 5 = ___?
+      answer:  2
+      options: 2 / 7 / 3 / 9
+      hints:   ["The number statement is: 7 − 5 = ___", "We need to find what 7 − 5 equals.", "Calculate: 7 − 5 = 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 69f660df074363cdaf93  seed 44  [read_mcq]
+      stem:    Both sides balance evenly. 20 - ? = 12. What is the missing value?
+      answer:  8
+      options: 9 / 28 / 8 / 12
+      hints:   ["The number statement is: 20 − ___ = 12", "Think: 20 − what number gives 12?", "20 − 12 = 8.", "Check: 20 − 8 = 12. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["20 - ?", "12"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1d20cd1d4d6b40ffb676  seed 45  [true_false]
+      stem:    In 15 − ___ = 1, the missing number is 15. True or False?
+      answer:  False
+      hints:   ["The number statement is: 15 − ___ = 1", "Think: 15 − what number gives 1?", "15 − 1 = 14.", "Check: 15 − 14 = 1. ✓"]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0bc6b032398f27131136  seed 46  [true_false]
+      stem:    In 19 + 1 = ___, the missing number is 20. True or False?
+      answer:  True
+      hints:   ["The number statement is: 19 + 1 = ___", "We need to find what 19 + 1 equals.", "Calculate: 19 + 1 = 20."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample bb8aaf9f3eb1dc2b149a  seed 48  [cloze]
+      stem:    ___ − 18 = 2
+      answer:  20
+      options: 20 / 19 / 22 / 21
+      hints:   ["The number statement is: ___ − 18 = 2", "Use addition to undo the operation.", "2 + 18 = 20.", "Check: 20 − 18 = 2. ✓"]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0f42bcd5205ccf8b73b8  seed 500  [true_false]
+      stem:    In 13 + ___ = 20, the missing number is 6. True or False?
+      answer:  False
+      hints:   ["The number statement is: 13 + ___ = 20", "To find the missing number, use the opposite operation (subtraction).", "20 − 13 = 7.", "Check: 13 + 7 = 20. ✓"]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 946c69e2a4ec35763ea9  seed 501  [mcq]
+      stem:    What number goes in the blank: ___ − 13 = 7?
+      answer:  20
+      options: 21 / 20 / 27 / 19
+      hints:   ["The number statement is: ___ − 13 = 7", "Use addition to undo the operation.", "7 + 13 = 20.", "Check: 20 − 13 = 7. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 271f553af9982da443df  seed 502  [cloze]
+      stem:    ___ + 8 = 20
+      answer:  12
+      options: 13 / 28 / 32 / 12
+      hints:   ["The number statement is: ___ + 8 = 20", "Use subtraction to undo the operation.", "20 − 8 = 12.", "Check: 12 + 8 = 20. ✓"]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d3d8dc7545218ad67b45  seed 600  [mcq]
+      stem:    What number goes in the blank: 20 − 10 = ___?
+      answer:  10
+      options: 30 / 10 / 11 / 20
+      hints:   ["The number statement is: 20 − 10 = ___", "We need to find what 20 − 10 equals.", "Calculate: 20 − 10 = 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b27d92de7e469859b8c8  seed 601  [read_mcq]
+      stem:    Both sides balance evenly. 15 + ? = 16. What is the missing value?
+      answer:  1
+      options: 16 / 2 / 0 / 1
+      hints:   ["The number statement is: 15 + ___ = 16", "To find the missing number, use the opposite operation (subtraction).", "16 − 15 = 1.", "Check: 15 + 1 = 16. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["15 + ?", "16"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7e3e6a86b001c09fbf15  seed 602  [cloze]
+      stem:    ___ − 3 = 17
+      answer:  20
+      options: 21 / 20 / 37 / 19
+      hints:   ["The number statement is: ___ − 3 = 17", "Use addition to undo the operation.", "17 + 3 = 20.", "Check: 20 − 3 = 17. ✓"]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 93f61de852755c83f5db  seed 603  [mcq]
+      stem:    What number goes in the blank: 20 − 15 = ___?
+      answer:  5
+      options: 20 / 25 / 5 / 6
+      hints:   ["The number statement is: 20 − 15 = ___", "We need to find what 20 − 15 equals.", "Calculate: 20 − 15 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 26c966e0d33348fd7d7b  seed 604  [cloze]
+      stem:    5 + 15 = ___. What is the missing number?
+      answer:  20
+      options: 25 / 21 / 35 / 20
+      hints:   ["The number statement is: 5 + 15 = ___", "We need to find what 5 + 15 equals.", "Calculate: 5 + 15 = 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5a6eae0728ed39597f82  seed 605  [true_false]
+      stem:    In 17 − 1 = ___, the missing number is 33. True or False?
+      answer:  False
+      hints:   ["The number statement is: 17 − 1 = ___", "We need to find what 17 − 1 equals.", "Calculate: 17 − 1 = 16."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample ddb9896e9edbfc20e342  seed 606  [mcq]
+      stem:    What number goes in the blank: ___ + 6 = 16?
+      answer:  10
+      options: 22 / 11 / 26 / 10
+      hints:   ["The number statement is: ___ + 6 = 16", "Use subtraction to undo the operation.", "16 − 6 = 10.", "Check: 10 + 6 = 16. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3b783c7ef9a8c397e510  seed 700  [cloze]
+      stem:    3 + 2 = ___
+      answer:  5
+      options: 7 / 5 / 6 / 8
+      hints:   ["The number statement is: 3 + 2 = ___", "We need to find what 3 + 2 equals.", "Calculate: 3 + 2 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3d2f8531a74774e5e04b  seed 701  [true_false]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. In ___ − 2 = 1, the missing number is 3. True or False?
+      answer:  True
+      hints:   ["The number statement is: ___ − 2 = 1", "Use addition to undo the operation.", "1 + 2 = 3.", "Check: 3 − 2 = 1. ✓"]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1da9c3402d54a799dc72  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. 9 + 11 = ___
+      answer:  20
+      options: 20 / 21 / 31 / 29
+      hints:   ["The number statement is: 9 + 11 = ___", "We need to find what 9 + 11 equals.", "Calculate: 9 + 11 = 20."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 333ea321d5bbad3fc945  seed 800  [read_mcq]
+      stem:    Both sides balance evenly. ? - 7 = 3. What is the missing value?
+      answer:  10
+      options: 17 / 10 / 9 / 11
+      hints:   ["The number statement is: ___ − 7 = 3", "Use addition to undo the operation.", "3 + 7 = 10.", "Check: 10 − 7 = 3. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["? - 7", "3"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0751706cf9c85f735d79  seed 900  [mcq]
+      stem:    What number goes in the blank: ___ + 4 = 5?
+      answer:  1
+      options: 6 / 2 / 1 / 9
+      hints:   ["The number statement is: ___ + 4 = 5", "Use subtraction to undo the operation.", "5 − 4 = 1.", "Check: 1 + 4 = 5. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d8dd43b0b3fd723def0f  seed 901  [mcq]
+      stem:    What number goes in the blank: 20 − ___ = 5?
+      answer:  15
+      options: 25 / 15 / 20 / 16
+      hints:   ["The number statement is: 20 − ___ = 5", "Think: 20 − what number gives 5?", "20 − 5 = 15.", "Check: 20 − 15 = 5. ✓"]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b18f2f727423baf82d6d  seed 1000  [read_mcq]
+      stem:    Both sides balance evenly. 1 + ? = 13. What is the missing value?
+      answer:  12
+      options: 12 / 14 / 11 / 13
+      hints:   ["The number statement is: 1 + ___ = 13", "To find the missing number, use the opposite operation (subtraction).", "13 − 1 = 12.", "Check: 1 + 12 = 13. ✓"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BalanceScale", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  BalanceScale
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BalanceScale", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["1 + ?", "13"], "distinct_colours": ["#94a3b8", "#3b82f6", "#fff", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ef46df6ce3da38876aba  seed 1001  [cloze]
+      stem:    1 + 15 = ___
+      answer:  16
+      options: 17 / 31 / 15 / 16
+      hints:   ["The number statement is: 1 + 15 = ___", "We need to find what 1 + 15 equals.", "Calculate: 1 + 15 = 16."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 10da9c95e6aa2158f08a  seed 1002  [cloze]
+      stem:    ___ − 2 = 5
+      answer:  7
+      options: 6 / 8 / 12 / 7
+      hints:   ["The number statement is: ___ − 2 = 5", "Use addition to undo the operation.", "5 + 2 = 7.", "Check: 7 − 2 = 5. ✓"]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}

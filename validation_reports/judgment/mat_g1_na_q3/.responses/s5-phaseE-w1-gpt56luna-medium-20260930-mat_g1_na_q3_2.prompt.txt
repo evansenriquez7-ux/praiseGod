@@ -1,0 +1,245 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q3_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_2
+PACKET DIGEST: 2dc90378b2816b5f6d06679a459cd93c0de13e14b02f848a8dc8cd26970f583c
+COMPETENCY (Grade 1, Quarter 3, None):
+Write an equivalent expression to a given addition or subtraction expression (e.g., 2+3 = 1+4; 10-5 = 6-1).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  write_equivalent_expression: Write an equivalent expression
+  addition_subtraction_expression: addition or subtraction expression
+
+SAMPLES (every one of these is real rendered output):
+  sample 537d8302a55287dd18a7  seed 42  [cloze]
+      stem:    3 + 2 = 1 + ___
+      answer:  4
+      options: 8 / 5 / 4 / 7
+      hints:   ["Work out the side you know: 3 + 2 = 5.", "The other side must also make 5: 1 + ___ = 5.", "5 − 1 = 4, so the missing number is 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8149dd7142c4d3eddf3d  seed 43  [mcq]
+      stem:    What number completes the expression: 8 − 5 = 18 − ___?
+      answer:  15
+      options: 15 / 16 / 11 / 8
+      hints:   ["Work out the side you know: 8 − 5 = 3.", "The other side must also make 3: 18 − ___ = 3.", "18 − 3 = 15, so the missing number is 15."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9ddadd1416d875b7073a  seed 44  [true_false]
+      stem:    In 3 + 12 = 8 + ___, the missing number is 7. True or False?
+      answer:  True
+      hints:   ["Work out the side you know: 3 + 12 = 15.", "The other side must also make 15: 8 + ___ = 15.", "15 − 8 = 7, so the missing number is 7."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 53942ce93915ade95879  seed 45  [mcq]
+      stem:    What number completes the expression: 18 − 8 = 15 − ___?
+      answer:  5
+      options: 18 / 6 / 5 / 28
+      hints:   ["Work out the side you know: 18 − 8 = 10.", "The other side must also make 10: 15 − ___ = 10.", "15 − 10 = 5, so the missing number is 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f0407fed69387358b41f  seed 46  [mcq]
+      stem:    What number completes the expression: 6 − 2 = 14 − ___?
+      answer:  10
+      options: 6 / 9 / 10 / 11
+      hints:   ["Work out the side you know: 6 − 2 = 4.", "The other side must also make 4: 14 − ___ = 4.", "14 − 4 = 10, so the missing number is 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a166a80bfe98e170f8f1  seed 500  [true_false]
+      stem:    In 19 − 3 = 20 − ___, the missing number is 19. True or False?
+      answer:  False
+      hints:   ["Work out the side you know: 19 − 3 = 16.", "The other side must also make 16: 20 − ___ = 16.", "20 − 16 = 4, so the missing number is 4."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f76f99c1ad92e84f276b  seed 501  [true_false]
+      stem:    In 15 − 4 = 17 − ___, the missing number is 26. True or False?
+      answer:  False
+      hints:   ["Work out the side you know: 15 − 4 = 11.", "The other side must also make 11: 17 − ___ = 11.", "17 − 11 = 6, so the missing number is 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample eb54afcc076773a350f4  seed 502  [cloze]
+      stem:    19 − 1 = 20 − ___
+      answer:  2
+      options: 3 / 2 / 19 / 37
+      hints:   ["Work out the side you know: 19 − 1 = 18.", "The other side must also make 18: 20 − ___ = 18.", "20 − 18 = 2, so the missing number is 2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 01c410d987c724b502b6  seed 600  [mcq]
+      stem:    What number completes the expression: 18 − 8 = 13 − ___?
+      answer:  3
+      options: 3 / 4 / 28 / 18
+      hints:   ["Work out the side you know: 18 − 8 = 10.", "The other side must also make 10: 13 − ___ = 10.", "13 − 10 = 3, so the missing number is 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7a985e4680342218d576  seed 601  [true_false]
+      stem:    In 1 + 7 = 5 + ___, the missing number is 3. True or False?
+      answer:  True
+      hints:   ["Work out the side you know: 1 + 7 = 8.", "The other side must also make 8: 5 + ___ = 8.", "8 − 5 = 3, so the missing number is 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 90a660144013b775a0c2  seed 602  [cloze]
+      stem:    6 + 8 = 10 + ___
+      answer:  4
+      options: 20 / 4 / 5 / 22
+      hints:   ["Work out the side you know: 6 + 8 = 14.", "The other side must also make 14: 10 + ___ = 14.", "14 − 10 = 4, so the missing number is 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b10cf44241f4946eb246  seed 603  [true_false]
+      stem:    In 15 − 8 = 8 − ___, the missing number is 15. True or False?
+      answer:  False
+      hints:   ["Work out the side you know: 15 − 8 = 7.", "The other side must also make 7: 8 − ___ = 7.", "8 − 7 = 1, so the missing number is 1."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4e541b8aeab97e6060dc  seed 604  [cloze]
+      stem:    2 + 2 = 3 + ___
+      answer:  1
+      options: 1 / 2 / 6 / 0
+      hints:   ["Work out the side you know: 2 + 2 = 4.", "The other side must also make 4: 3 + ___ = 4.", "4 − 3 = 1, so the missing number is 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5706d29da35d34a3c7a6  seed 605  [true_false]
+      stem:    In 16 − 9 = 15 − ___, the missing number is 16. True or False?
+      answer:  False
+      hints:   ["Work out the side you know: 16 − 9 = 7.", "The other side must also make 7: 15 − ___ = 7.", "15 − 7 = 8, so the missing number is 8."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f6936a820afe4f6f18ff  seed 606  [mcq]
+      stem:    What number completes the expression: 17 − 14 = 15 − ___?
+      answer:  12
+      options: 20 / 12 / 13 / 17
+      hints:   ["Work out the side you know: 17 − 14 = 3.", "The other side must also make 3: 15 − ___ = 3.", "15 − 3 = 12, so the missing number is 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e598e58c221e12fdae31  seed 607  [cloze]
+      stem:    1 + 3 = 3 + ___
+      answer:  1
+      options: 5 / 7 / 1 / 2
+      hints:   ["Work out the side you know: 1 + 3 = 4.", "The other side must also make 4: 3 + ___ = 4.", "4 − 3 = 1, so the missing number is 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample efb1e3d9ed632d882fee  seed 700  [cloze]
+      stem:    4 + 3 = 2 + ___
+      answer:  5
+      options: 11 / 10 / 6 / 5
+      hints:   ["Work out the side you know: 4 + 3 = 7.", "The other side must also make 7: 2 + ___ = 7.", "7 − 2 = 5, so the missing number is 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 76ab7a5cca8a86d5c4ab  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. What number completes the expression: 12 − 2 = 20 − ___?
+      answer:  10
+      options: 12 / 22 / 10 / 11
+      hints:   ["Work out the side you know: 12 − 2 = 10.", "The other side must also make 10: 20 − ___ = 10.", "20 − 10 = 10, so the missing number is 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 030b83448897e4f5e218  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. 1 + 4 = 3 + ___
+      answer:  2
+      options: 2 / 6 / 3 / 9
+      hints:   ["Work out the side you know: 1 + 4 = 5.", "The other side must also make 5: 3 + ___ = 5.", "5 − 3 = 2, so the missing number is 2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e414d05d4bac355a38fe  seed 800  [true_false]
+      stem:    In 16 + 1 = 8 + ___, the missing number is 9. True or False?
+      answer:  True
+      hints:   ["Work out the side you know: 16 + 1 = 17.", "The other side must also make 17: 8 + ___ = 17.", "17 − 8 = 9, so the missing number is 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c6d7cf1812a4cefe6335  seed 900  [mcq]
+      stem:    What number completes the expression: 11 − 2 = 20 − ___?
+      answer:  11
+      options: 10 / 20 / 12 / 11
+      hints:   ["Work out the side you know: 11 − 2 = 9.", "The other side must also make 9: 20 − ___ = 9.", "20 − 9 = 11, so the missing number is 11."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d20b6cc2d35a821fea52  seed 901  [true_false]
+      stem:    In 16 − 1 = 17 − ___, the missing number is 31. True or False?
+      answer:  False
+      hints:   ["Work out the side you know: 16 − 1 = 15.", "The other side must also make 15: 17 − ___ = 15.", "17 − 15 = 2, so the missing number is 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5afc99a1b4877c917315  seed 1000  [true_false]
+      stem:    In 7 + 8 = 6 + ___, the missing number is 9. True or False?
+      answer:  True
+      hints:   ["Work out the side you know: 7 + 8 = 15.", "The other side must also make 15: 6 + ___ = 15.", "15 − 6 = 9, so the missing number is 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 4ab9e8afe5ae6b22cce3  seed 1001  [cloze]
+      stem:    1 + 2 = 2 + ___
+      answer:  1
+      options: 1 / 4 / 5 / 2
+      hints:   ["Work out the side you know: 1 + 2 = 3.", "The other side must also make 3: 2 + ___ = 3.", "3 − 2 = 1, so the missing number is 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 52d2c498b0bece8c7cc6  seed 1002  [cloze]
+      stem:    19 − 1 = 20 − ___
+      answer:  2
+      options: 37 / 2 / 3 / 19
+      hints:   ["Work out the side you know: 19 − 1 = 18.", "The other side must also make 18: 20 − ___ = 18.", "20 − 18 = 2, so the missing number is 2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}

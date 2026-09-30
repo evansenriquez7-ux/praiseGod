@@ -19,10 +19,10 @@
       "clause": "addition or subtraction expression"
     }
   ],
-  "packet_digest": "d7a4032c84726be4ea5f69a4aac731da28493ba3e7b0c140e39c9f6b7682f16a",
+  "packet_digest": "2dc90378b2816b5f6d06679a459cd93c0de13e14b02f848a8dc8cd26970f583c",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -864,7 +864,7 @@
       "node_id": "mat_g1_na_q3_2",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. What number completes the expression: 12 − 2 = 20 − ___?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. What number completes the expression: 12 − 2 = 20 − ___?",
       "correct_answer": 10,
       "requested": {
         "difficulty_profile": null,
@@ -909,13 +909,13 @@
         "20 − 10 = 10, so the missing number is 10."
       ],
       "sample_id": "76ab7a5cca8a86d5c4ab",
-      "replay_digest": "21c1aadfb45187dfb85ae00b634d0ff69ce00853e4b20133a83cbc471c83521b"
+      "replay_digest": "0f3a86314a85598a3db704aef8f067edb97eb4d8f5e0081498d20e1ce1f6bf3a"
     },
     {
       "node_id": "mat_g1_na_q3_2",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🏀 Isko has a math challenge about basketballs. 1 + 4 = 3 + ___",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. 1 + 4 = 3 + ___",
       "correct_answer": 2,
       "requested": {
         "difficulty_profile": null,
@@ -964,7 +964,7 @@
         "5 − 3 = 2, so the missing number is 2."
       ],
       "sample_id": "030b83448897e4f5e218",
-      "replay_digest": "0d8de539816e7d74afb14d3e2b85b6ebc69470b382d686466df8916555fb41da"
+      "replay_digest": "b582ac8d8e27468842841971cbcbc4f08bc30dc9e14cb99e41bd13b3675250a8"
     },
     {
       "node_id": "mat_g1_na_q3_2",
@@ -1227,575 +1227,575 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem 3 + 2 = 1 + ___ clearly indicates one unknown value in a cloze format with no ambiguity about what operation or what number slot is missing from the expression."
+          "reasoning": "Sample 537d8302a55287dd18a7 has one unambiguous blank, and only 4 makes both displayed addition sides equal to 5."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The equation is logically sound: 3 + 2 = 5 and 1 + 4 = 5, making the equivalence valid. The progression through hints aligns with the mathematical content of the stem and explains the solution correctly."
+          "reasoning": "Sample 537d8302a55287dd18a7 has no wrapper context, and each hint follows the displayed equation from 3 plus 2 to the missing 4."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The item uses simple language and a direct format appropriate for Grade 1. The instructions and format are unambiguous and accessible to emergent readers and mathematics learners at this level."
+          "reasoning": "Sample 537d8302a55287dd18a7 presents a compact equation and sequential hints that clearly identify which number the learner must supply."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical content is correct: 3 + 2 does equal 5, and 1 + 4 does equal 5. The answer 4 is correct; the options (8, 5, 4, 7) are reasonable distractors for this grade level."
+          "reasoning": "For sample 537d8302a55287dd18a7, 3 plus 2 equals 5 and 1 plus 4 equals 5, so the answer and every hint calculation are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "8149dd7142c4d3eddf3d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem What number completes the expression: 8 − 5 = 18 − ___? unambiguously identifies the unknown as a single value in the subtraction problem on the right side of the equation."
+          "reasoning": "Sample 8149dd7142c4d3eddf3d has a single missing subtrahend and only 15 makes 18 minus the blank equal 3."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The equation 8 − 5 = 3 and 18 − 15 = 3 are logically equivalent. The hint progression correctly explains how to reach the answer through step-by-step subtraction and logical reasoning."
+          "reasoning": "Sample 8149dd7142c4d3eddf3d is context-free, and its hints consistently derive the requested subtraction value from the shown equation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording What number completes the expression is clear Grade 1 language. The multiple choice format with four distinct options is familiar and accessible to learners at this developmental stage."
+          "reasoning": "Sample 8149dd7142c4d3eddf3d plainly asks which number completes the expression and supplies ordered, readable subtraction hints."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct: 8 − 5 = 3 and 18 − 3 = 15. The answer 15 is correct; distractors (16, 11, 8) are mathematically distinct and plausible as student errors."
+          "reasoning": "In sample 8149dd7142c4d3eddf3d, 8 minus 5 is 3 and 18 minus 15 is 3; the answer and hints are arithmetically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "9ddadd1416d875b7073a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false format clearly presents the claim the missing number is 7 and asks learners to evaluate its truth. No ambiguity exists about what mathematical statement is being tested or judged."
+          "reasoning": "Sample 9ddadd1416d875b7073a asks a binary truth judgment about a specific missing number, with no competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The equation 3 + 12 = 15 and 8 + 7 = 15 are logically equivalent. The claim and the mathematical content align; the answer True correctly reflects the equivalence of both sides."
+          "reasoning": "Sample 9ddadd1416d875b7073a has no external context, and the hints correctly test whether the proposed 7 preserves equality."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The statement In 3 + 12 = 8 + ___, the missing number is 7. True or False? uses straightforward language and a binary choice appropriate for Grade 1 learners reading and reasoning."
+          "reasoning": "Sample 9ddadd1416d875b7073a clearly labels the claim as True or False and explains how to find the missing addend."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "3 + 12 = 15 and 8 + 7 = 15 are both correct arithmetic. The claim that the missing number is 7 is mathematically valid, making True the correct and justified answer."
+          "reasoning": "For sample 9ddadd1416d875b7073a, 3 plus 12 equals 15 and 8 plus 7 equals 15, so True is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "53942ce93915ade95879",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem What number completes the expression: 18 − 8 = 15 − ___? clearly specifies the unknown position and the operation involved without ambiguity regarding intent."
+          "reasoning": "Sample 53942ce93915ade95879 has one blank in a subtraction equality, and 5 is the unique listed value that works."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both sides of the equation equal 10: 18 − 8 = 10 and 15 − 5 = 10. The logical equivalence is sound and the hints trace the correct arithmetic progression to the solution."
+          "reasoning": "Sample 53942ce93915ade95879 contains no thematic wrapper, while its hints move coherently from the known difference 10 to the missing 5."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrasing and format are age-appropriate for Grade 1. A learner at this level understands subtraction and can follow the four-option multiple-choice structure without confusion."
+          "reasoning": "Sample 53942ce93915ade95879 uses a direct completion question and explicit hints that keep the subtraction direction visible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic checks correctly: 18 − 8 = 10, 15 − 5 = 10, and thus 15 − 10 = 5. The answer 5 is mathematically correct; options are distinct and reasonable."
+          "reasoning": "In sample 53942ce93915ade95879, 18 minus 8 equals 10 and 15 minus 5 equals 10, confirming the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "f0407fed69387358b41f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem What number completes the expression: 6 − 2 = 14 − ___? has one unambiguous unknown position located in a subtraction equation on the right side."
+          "reasoning": "Sample f0407fed69387358b41f presents one missing subtrahend with a unique solution, namely 10, among the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "6 − 2 = 4 and 14 − 10 = 4 are logically equivalent. The hints accurately describe the calculation path from known to unknown values with sound mathematical reasoning."
+          "reasoning": "Sample f0407fed69387358b41f has no context to confuse the task, and all three hints accurately preserve the target difference of 4."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question uses familiar phrasing and the MCQ format is standard for this grade and quarter. No confusing language, unusual vocabulary, or misleading structure is present."
+          "reasoning": "Sample f0407fed69387358b41f plainly asks for the completing number and gives a clear progression from 6 minus 2 to 14 minus the blank."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "6 − 2 = 4 and 14 − 4 = 10 are both arithmetically correct. The answer 10 is correct; distractors (6, 9, 11) are plausible alternatives."
+          "reasoning": "For sample f0407fed69387358b41f, 6 minus 2 is 4 and 14 minus 10 is 4; the answer and hints are valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "a166a80bfe98e170f8f1",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement In 19 − 3 = 20 − ___, the missing number is 19. True or False? clearly identifies the equation and the specific claim to evaluate without ambiguity."
+          "reasoning": "Sample a166a80bfe98e170f8f1 makes one definite true-or-false claim about the proposed missing number 19."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 3 = 16 and 20 − 16 = 4 are correct. The claim that the missing number is 19 is false; the hints correctly deduce it is 4. Logical coherence is maintained throughout."
+          "reasoning": "Sample a166a80bfe98e170f8f1 is context-free, and the hints correctly replace the false proposal with the value 4."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence structure and binary choice are accessible to Grade 1 learners. The vocabulary and format align with age-appropriate instruction and cognitive development."
+          "reasoning": "Sample a166a80bfe98e170f8f1 clearly asks for True or False and explains the subtraction comparison in learner-friendly steps."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 3 = 16 is correct, and 20 − 16 = 4 is correct. The claim (missing number is 19) is false, so False is the correct and justified answer."
+          "reasoning": "In sample a166a80bfe98e170f8f1, 19 minus 3 is 16 while 20 minus 4 is 16, so the claim that the number is 19 is false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "f76f99c1ad92e84f276b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false item In 15 − 4 = 17 − ___, the missing number is 26. True or False? unambiguously specifies the equation and the claim to be evaluated by the learner."
+          "reasoning": "Sample f76f99c1ad92e84f276b contains a single truth claim and no ambiguity about the proposed value 26."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 − 4 = 11 and 17 − 11 = 6 are correct. The claim that the missing number is 26 is false. The hints logically deduce the correct missing value as 6."
+          "reasoning": "Sample f76f99c1ad92e84f276b has no context wrapper, and its hints correctly derive 6 as the actual missing subtrahend."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrasing is straightforward for Grade 1; the true/false format is familiar and does not create confusion or misinterpretation."
+          "reasoning": "Sample f76f99c1ad92e84f276b presents the equality and proposed answer plainly, followed by an understandable correction path."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 − 4 = 11 and 17 − 11 = 6 are both arithmetically correct. The claim (26) is false; the correct answer is 6, making False the right response."
+          "reasoning": "For sample f76f99c1ad92e84f276b, 15 minus 4 equals 11 and 17 minus 6 equals 11, making the claim about 26 false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "eb54afcc076773a350f4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format 19 − 1 = 20 − ___ has a single, clearly marked unknown position requiring a numeric answer with no ambiguity."
+          "reasoning": "Sample eb54afcc076773a350f4 has one cloze blank and only 2 among the options preserves the displayed subtraction equality."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 1 = 18 and 20 − 18 = 2. Both expressions are logically equivalent, and the hints correctly trace the missing value through subtraction."
+          "reasoning": "Sample eb54afcc076773a350f4 is context-free, and its hints consistently calculate the shared difference as 18 before solving the blank."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The blank-filling format is standard for Grade 1; the equation uses familiar operations and numbers within the age-appropriate range."
+          "reasoning": "Sample eb54afcc076773a350f4 shows a short equation with an obvious blank and three ordered hints appropriate for a young learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 1 = 18 and 20 − 18 = 2 are both correct. The answer 2 is correct; options (3, 2, 19, 37) are mathematically reasonable."
+          "reasoning": "In sample eb54afcc076773a350f4, 19 minus 1 equals 18 and 20 minus 2 equals 18, so the answer is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "01c410d987c724b502b6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ What number completes the expression: 18 − 8 = 13 − ___? clearly indicates a single unknown in the subtraction on the right side with no ambiguity."
+          "reasoning": "Sample 01c410d987c724b502b6 has one missing subtrahend and a unique listed completion, 3."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "18 − 8 = 10 and 13 − 10 = 3. The expressions are equivalent; hints guide learners through the subtraction steps logically and correctly."
+          "reasoning": "Sample 01c410d987c724b502b6 has no context, and every hint accurately maintains the shared difference of 10."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard phrasing and multiple-choice format are Grade 1 familiar. Numbers and operations are accessible to learners at this cognitive level."
+          "reasoning": "Sample 01c410d987c724b502b6 directly asks what completes the expression and makes the needed subtraction sequence explicit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "18 − 8 = 10 is correct, and 13 − 10 = 3 is correct. The answer 3 is right; distractors (4, 28, 18) are distinct and plausible."
+          "reasoning": "For sample 01c410d987c724b502b6, 18 minus 8 equals 10 and 13 minus 3 equals 10, validating answer 3."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "7a985e4680342218d576",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false question In 1 + 7 = 5 + ___, the missing number is 3. True or False? unambiguously asks learners to evaluate the mathematical claim presented."
+          "reasoning": "Sample 7a985e4680342218d576 asks one clear True-or-False question about whether the missing addend is 3."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 7 = 8 and 5 + 3 = 8. The claim and the mathematical content align perfectly; the expressions are equivalent, making True correct."
+          "reasoning": "Sample 7a985e4680342218d576 has no wrapper context, and its hints correctly derive the proposed addend from total 8."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Language is clear and age-appropriate for Grade 1. The binary format with numbers in a familiar range is accessible to learners."
+          "reasoning": "Sample 7a985e4680342218d576 uses simple addition language and a transparent three-step hint sequence for the truth judgment."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 7 = 8 and 5 + 3 = 8 are both correct. The missing number is indeed 3, making True the correct and justified answer."
+          "reasoning": "In sample 7a985e4680342218d576, 1 plus 7 equals 8 and 5 plus 3 equals 8, so True is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "90a660144013b775a0c2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item 6 + 8 = 10 + ___ clearly marks one unknown value requiring a single numeric response with no ambiguity."
+          "reasoning": "Sample 90a660144013b775a0c2 has one addition blank, and 4 is the unique option making both sides total 14."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "6 + 8 = 14 and 10 + 4 = 14. Both expressions are equivalent; the hints correctly deduce the missing value through arithmetic."
+          "reasoning": "Sample 90a660144013b775a0c2 is context-free, and the hints correctly carry the learner from 6 plus 8 to the missing 4."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format is familiar to Grade 1 learners; numbers and operations fit within the expected range and difficulty for this quarter."
+          "reasoning": "Sample 90a660144013b775a0c2 displays a clean equation and concise hints that explain exactly which number is missing."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "6 + 8 = 14 and 10 + 4 = 14 are both correct. The answer 4 is correct; the four options are distinct and reasonable."
+          "reasoning": "For sample 90a660144013b775a0c2, 6 plus 8 is 14 and 10 plus 4 is 14, confirming the answer and hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "b10cf44241f4946eb246",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement In 15 − 8 = 8 − ___, the missing number is 15. True or False? clearly specifies the equation and the claim without ambiguity."
+          "reasoning": "Sample b10cf44241f4946eb246 presents a single truth claim and clearly identifies the proposed missing number as 15."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 − 8 = 7 and 8 − 7 = 1. The claim that the missing number is 15 is false; the correct answer is 1, properly identified in the hints."
+          "reasoning": "Sample b10cf44241f4946eb246 has no contextual wrapper, and its hints accurately find the actual missing value 1."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrasing is straightforward and appropriate for Grade 1. The true/false format is an understood and accessible choice mechanism."
+          "reasoning": "Sample b10cf44241f4946eb246 clearly asks True or False and uses short subtraction steps to support the learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 − 8 = 7 and 8 − 7 = 1 are arithmetically correct. The claim (missing is 15) is false; the actual answer is 1, making False right."
+          "reasoning": "In sample b10cf44241f4946eb246, 15 minus 8 equals 7 and 8 minus 1 equals 7, so the claim about 15 is false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "4e541b8aeab97e6060dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 2 + 2 = 3 + ___ has a single unmarked position requiring a numeric response with no ambiguity about intent."
+          "reasoning": "Sample 4e541b8aeab97e6060dc has one blank in an addition equality, with 1 as the unique valid option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "2 + 2 = 4 and 3 + 1 = 4. The expressions are logically equivalent; hints trace the correct arithmetic to find the missing value."
+          "reasoning": "Sample 4e541b8aeab97e6060dc is context-free, and its hints correctly use the common total 4 to determine the missing addend."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple addition with low numbers is Grade 1 appropriate. The cloze format is familiar and clear to learners."
+          "reasoning": "Sample 4e541b8aeab97e6060dc is concise and its hints explain the requested blank without introducing unnecessary language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "2 + 2 = 4 and 3 + 1 = 4 are both correct. The answer 1 is correct; options are distinct alternatives."
+          "reasoning": "For sample 4e541b8aeab97e6060dc, 2 plus 2 equals 4 and 3 plus 1 equals 4, so every calculation agrees."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "5706d29da35d34a3c7a6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false item In 16 − 9 = 15 − ___, the missing number is 16. True or False? clearly identifies the equation and the falsifiable claim."
+          "reasoning": "Sample 5706d29da35d34a3c7a6 makes one unambiguous true-or-false claim about a proposed value of 16."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 − 9 = 7 and 15 − 7 = 8. The claim (missing is 16) is false; the correct answer 8 is logically derived through the hints."
+          "reasoning": "Sample 5706d29da35d34a3c7a6 contains no contextual distraction, and the hints correctly calculate the actual missing value as 8."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 1 learners understand the question format and language. Operations and numbers are within the age-appropriate range."
+          "reasoning": "Sample 5706d29da35d34a3c7a6 clearly states the subtraction equality and gives an accessible explanation of why the claim is false."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 − 9 = 7 and 15 − 7 = 8 are both correct. The claim (missing is 16) is false; False is the correct response."
+          "reasoning": "In sample 5706d29da35d34a3c7a6, 16 minus 9 equals 7 and 15 minus 8 equals 7, so False is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "f6936a820afe4f6f18ff",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ What number completes the expression: 17 − 14 = 15 − ___? unambiguously asks for a single missing number in the subtraction."
+          "reasoning": "Sample f6936a820afe4f6f18ff has one missing subtrahend and only 12 makes the two displayed differences equal."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "17 − 14 = 3 and 15 − 3 = 12. Both expressions equal 3 when reduced; the hints correctly guide to the missing value 12."
+          "reasoning": "Sample f6936a820afe4f6f18ff is context-free, and its hints consistently preserve the known difference of 3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard MCQ phrasing and four distinct options are familiar Grade 1 structures. Numbers and language are accessible."
+          "reasoning": "Sample f6936a820afe4f6f18ff directly asks for the completing number and explains the subtraction reasoning in sequence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "17 − 14 = 3 and 15 − 3 = 12 are both arithmetically correct. The answer 12 is right; options are distinct and reasonable."
+          "reasoning": "For sample f6936a820afe4f6f18ff, 17 minus 14 equals 3 and 15 minus 12 equals 3, validating answer 12."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "e598e58c221e12fdae31",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 1 + 3 = 3 + ___ clearly marks one blank to fill with a single numeric value with no ambiguity."
+          "reasoning": "Sample e598e58c221e12fdae31 contains one addition blank and a unique correct completion, 1."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 3 = 4 and 3 + 1 = 4. The expressions are equivalent; hints logically deduce the missing value through addition properties."
+          "reasoning": "Sample e598e58c221e12fdae31 has no context, and the hints accurately derive the common total 4 and then the blank."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Low numbers and simple addition fit Grade 1 expectations. The cloze format is standard and unambiguous."
+          "reasoning": "Sample e598e58c221e12fdae31 presents a simple equation and clearly sequenced hints suitable for independent completion."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 3 = 4 and 3 + 1 = 4 are both correct. The answer 1 is correct; options are distinct."
+          "reasoning": "In sample e598e58c221e12fdae31, 1 plus 3 equals 4 and 3 plus 1 equals 4, so the answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "efb1e3d9ed632d882fee",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 4 + 3 = 2 + ___ has one clearly marked position requiring a fill-in response with no ambiguity."
+          "reasoning": "Sample efb1e3d9ed632d882fee has a single missing addend, and 5 is the only listed value that makes equality hold."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "4 + 3 = 7 and 2 + 5 = 7. The expressions are logically equivalent; hints correctly trace the missing value."
+          "reasoning": "Sample efb1e3d9ed632d882fee is context-free, and each hint correctly moves from total 7 to the missing 5."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Numbers and operations fit Grade 1 cognitive range. The format is familiar and accessible."
+          "reasoning": "Sample efb1e3d9ed632d882fee uses a straightforward cloze equation and hints that make the target operation clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "4 + 3 = 7 and 2 + 5 = 7 are both arithmetically correct. The answer 5 is correct; options are distinct."
+          "reasoning": "For sample efb1e3d9ed632d882fee, 4 plus 3 equals 7 and 2 plus 5 equals 7, confirming the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "76ab7a5cca8a86d5c4ab",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ What number completes the expression: 12 − 2 = 20 − ___? unambiguously identifies the unknown despite the thematic preamble."
+          "reasoning": "Sample 76ab7a5cca8a86d5c4ab has one definite missing subtrahend despite its themed wrapper, and 10 is unique."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "12 − 2 = 10 and 20 − 10 = 10. The expressions are equivalent; the theme about dance shoes does not interfere with mathematical logic."
+          "reasoning": "The dance-shoes wrapper in sample 76ab7a5cca8a86d5c4ab does not alter the equation, and all hints match the shown subtraction."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical question is clear and accessible despite thematic framing. Learners readily identify the math problem."
+          "reasoning": "Sample 76ab7a5cca8a86d5c4ab clearly separates its brief theme from the actual completion question and supporting arithmetic."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12 − 2 = 10 and 20 − 10 = 10 are both correct. The answer 10 is right; options are distinct."
+          "reasoning": "In sample 76ab7a5cca8a86d5c4ab, 12 minus 2 equals 10 and 20 minus 10 equals 10, so the answer is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "030b83448897e4f5e218",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 1 + 4 = 3 + ___ has one clearly marked unknown with no ambiguity despite the basketball theme."
+          "reasoning": "Sample 030b83448897e4f5e218 has one addition blank and only 2 makes the two sides equal."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 4 = 5 and 3 + 2 = 5. The expressions are equivalent; the thematic context about basketballs does not alter mathematical validity."
+          "reasoning": "The basketball wrapper in sample 030b83448897e4f5e218 does not interfere with the equation, and the hints accurately calculate 2."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task is clear. Learners easily extract the equation and identify what to solve despite theme."
+          "reasoning": "Sample 030b83448897e4f5e218 keeps the themed introduction brief and presents a plainly readable cloze challenge."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 4 = 5 and 3 + 2 = 5 are both arithmetically correct. The answer 2 is correct; options are distinct."
+          "reasoning": "For sample 030b83448897e4f5e218, 1 plus 4 equals 5 and 3 plus 2 equals 5, validating answer 2."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "e414d05d4bac355a38fe",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement In 16 + 1 = 8 + ___, the missing number is 9. True or False? clearly specifies the equation."
+          "reasoning": "Sample e414d05d4bac355a38fe asks one clear truth question about whether the missing addend is 9."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 + 1 = 17 and 8 + 9 = 17. Both expressions equal 17; the claim is true, and the hints logically justify it."
+          "reasoning": "Sample e414d05d4bac355a38fe has no external context, and the hints correctly derive 9 from the common total 17."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Language is straightforward and age-appropriate. The format and numbers are familiar to Grade 1 learners."
+          "reasoning": "Sample e414d05d4bac355a38fe clearly identifies the proposed answer and gives an understandable True-or-False route."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 + 1 = 17 and 8 + 9 = 17 are both correct. The missing number is 9, making True the right answer."
+          "reasoning": "In sample e414d05d4bac355a38fe, 16 plus 1 equals 17 and 8 plus 9 equals 17, so True is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "c6d7cf1812a4cefe6335",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ What number completes the expression: 11 − 2 = 20 − ___? unambiguously asks for the missing value."
+          "reasoning": "Sample c6d7cf1812a4cefe6335 has a unique missing subtrahend, with 11 the only option preserving equality."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "11 − 2 = 9 and 20 − 9 = 11. The expressions are equivalent when filled; hints trace the logic correctly."
+          "reasoning": "Sample c6d7cf1812a4cefe6335 is context-free, and the hints accurately maintain the known difference of 9."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard MCQ wording and format are accessible. Numbers and operations fit Grade 1 expectations."
+          "reasoning": "Sample c6d7cf1812a4cefe6335 directly asks what number completes the expression and explains each subtraction step."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "11 − 2 = 9 and 20 − 9 = 11 are both arithmetically correct. The answer 11 is right; options are distinct."
+          "reasoning": "For sample c6d7cf1812a4cefe6335, 11 minus 2 equals 9 and 20 minus 11 equals 9, so the answer is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "d20b6cc2d35a821fea52",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false item In 16 − 1 = 17 − ___, the missing number is 31. True or False? clearly identifies the equation and falsifiable claim."
+          "reasoning": "Sample d20b6cc2d35a821fea52 contains one unambiguous claim that the missing number is 31."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 − 1 = 15 and 17 − 15 = 2. The claim (missing is 31) is false; the hints correctly deduce the answer is 2."
+          "reasoning": "Sample d20b6cc2d35a821fea52 has no context, and the hints correctly show that the actual missing value is 2."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Phrasing is clear for Grade 1. The binary choice format and numbers within range are age-appropriate."
+          "reasoning": "Sample d20b6cc2d35a821fea52 clearly asks for a True-or-False judgment and explains the correction with simple subtraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "16 − 1 = 15 and 17 − 15 = 2 are arithmetically correct. The claim (31) is false; False is correct."
+          "reasoning": "In sample d20b6cc2d35a821fea52, 16 minus 1 equals 15 and 17 minus 2 equals 15, making the 31 claim false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "5afc99a1b4877c917315",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement In 7 + 8 = 6 + ___, the missing number is 9. True or False? unambiguously poses the equation and claim."
+          "reasoning": "Sample 5afc99a1b4877c917315 states one definite True-or-False proposition about the missing addend 9."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "7 + 8 = 15 and 6 + 9 = 15. The expressions are equivalent; the claim is true, and hints logically justify it."
+          "reasoning": "Sample 5afc99a1b4877c917315 has no wrapper context, and its hints correctly establish the shared total of 15."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Language and format are Grade 1 appropriate. Numbers are within learners' cognitive range."
+          "reasoning": "Sample 5afc99a1b4877c917315 communicates the proposed answer and truth judgment plainly, with coherent supporting hints."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "7 + 8 = 15 and 6 + 9 = 15 are both correct. The missing number is 9, making True the right answer."
+          "reasoning": "For sample 5afc99a1b4877c917315, 7 plus 8 equals 15 and 6 plus 9 equals 15, so True is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "4ab9e8afe5ae6b22cce3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 1 + 2 = 2 + ___ has a single blank marking the unknown value with no ambiguity."
+          "reasoning": "Sample 4ab9e8afe5ae6b22cce3 has one cloze blank and a unique valid addend, 1."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 2 = 3 and 2 + 1 = 3. The expressions are logically equivalent; hints trace the addition correctly."
+          "reasoning": "Sample 4ab9e8afe5ae6b22cce3 is context-free, and each hint accurately derives the common sum of 3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Format and numbers are familiar for Grade 1. The task is clear despite varied experience mode."
+          "reasoning": "Sample 4ab9e8afe5ae6b22cce3 is a clear short equation with options and hints that identify the required missing number."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1 + 2 = 3 and 2 + 1 = 3 are both correct. The answer 1 is correct; options are distinct."
+          "reasoning": "In sample 4ab9e8afe5ae6b22cce3, 1 plus 2 equals 3 and 2 plus 1 equals 3, confirming the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "sample_id": "52d2c498b0bece8c7cc6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze 19 − 1 = 20 − ___ clearly marks one blank requiring a numeric response with no ambiguity."
+          "reasoning": "Sample 52d2c498b0bece8c7cc6 has one missing subtrahend, and 2 is uniquely supported by the displayed equality."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 1 = 18 and 20 − 18 = 2. Both expressions are equivalent; hints correctly guide to the missing value."
+          "reasoning": "Sample 52d2c498b0bece8c7cc6 is context-free, and its hints consistently calculate the shared difference as 18."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Format is standard cloze; numbers and operations are within Grade 1 range despite varied experience mode."
+          "reasoning": "Sample 52d2c498b0bece8c7cc6 uses a direct cloze format and ordered hints that make the subtraction reasoning accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "19 − 1 = 18 and 20 − 18 = 2 are arithmetically correct. The answer 2 is right; options are distinct."
+          "reasoning": "For sample 52d2c498b0bece8c7cc6, 19 minus 1 equals 18 and 20 minus 2 equals 18, so the answer is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     }
   ],
   "clause_evidence": [
@@ -1803,107 +1803,63 @@
       "requirement_id": "write_equivalent_expression",
       "clause": "Write an equivalent expression",
       "verdict": "PASS",
-      "reasoning": "All 24 samples require learners to identify or produce the missing number that makes two expressions mathematically equivalent. In cloze items, learners fill in the blank; in MCQ, they select the correct completion; in true/false, they evaluate equivalence. The core skill of finding and writing equivalent expressions is comprehensively demonstrated across all formats and item types.",
+      "reasoning": "All examined samples require producing or recognizing the missing value that makes the two printed expressions equal, directly exercising equivalent-expression writing.",
       "sample_ids": [
         "537d8302a55287dd18a7",
         "8149dd7142c4d3eddf3d",
-        "9ddadd1416d875b7073a",
-        "53942ce93915ade95879",
-        "f0407fed69387358b41f",
-        "a166a80bfe98e170f8f1",
-        "f76f99c1ad92e84f276b",
-        "eb54afcc076773a350f4",
-        "01c410d987c724b502b6",
-        "7a985e4680342218d576",
-        "90a660144013b775a0c2",
-        "b10cf44241f4946eb246",
-        "4e541b8aeab97e6060dc",
-        "5706d29da35d34a3c7a6",
-        "f6936a820afe4f6f18ff",
-        "e598e58c221e12fdae31",
-        "efb1e3d9ed632d882fee",
-        "76ab7a5cca8a86d5c4ab",
-        "030b83448897e4f5e218",
-        "e414d05d4bac355a38fe",
-        "c6d7cf1812a4cefe6335",
-        "d20b6cc2d35a821fea52",
-        "5afc99a1b4877c917315",
-        "4ab9e8afe5ae6b22cce3",
-        "52d2c498b0bece8c7cc6"
+        "9ddadd1416d875b7073a"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     },
     {
       "requirement_id": "addition_subtraction_expression",
       "clause": "addition or subtraction expression",
       "verdict": "PASS",
-      "reasoning": "Every sample uses addition, subtraction, or both as the core operations in the expressions being made equivalent. No other operations appear; learners consistently practice equivalence within the Grade 1 arithmetic domain of addition and subtraction only, fulfilling this requirement.",
+      "reasoning": "The examined packet includes both addition and subtraction equations, and every cited item keeps the mathematical task within those two operations.",
       "sample_ids": [
-        "537d8302a55287dd18a7",
-        "8149dd7142c4d3eddf3d",
-        "9ddadd1416d875b7073a",
-        "53942ce93915ade95879",
-        "f0407fed69387358b41f",
-        "a166a80bfe98e170f8f1",
-        "f76f99c1ad92e84f276b",
-        "eb54afcc076773a350f4",
-        "01c410d987c724b502b6",
-        "7a985e4680342218d576",
         "90a660144013b775a0c2",
-        "b10cf44241f4946eb246",
-        "4e541b8aeab97e6060dc",
-        "5706d29da35d34a3c7a6",
-        "f6936a820afe4f6f18ff",
-        "e598e58c221e12fdae31",
-        "efb1e3d9ed632d882fee",
-        "76ab7a5cca8a86d5c4ab",
-        "030b83448897e4f5e218",
-        "e414d05d4bac355a38fe",
-        "c6d7cf1812a4cefe6335",
-        "d20b6cc2d35a821fea52",
-        "5afc99a1b4877c917315",
-        "4ab9e8afe5ae6b22cce3",
-        "52d2c498b0bece8c7cc6"
+        "53942ce93915ade95879",
+        "e414d05d4bac355a38fe"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2:mat_g1_na_q3_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pb4-mat_g1_na_q3_2-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2:mat_g1_na_q3_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w110r2-mat_g1_na_q3_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "d7a4032c84726be4ea5f69a4aac731da28493ba3e7b0c140e39c9f6b7682f16a",
+      "packet_digest": "2dc90378b2816b5f6d06679a459cd93c0de13e14b02f848a8dc8cd26970f583c",
       "clause_ids": [
         "write_equivalent_expression",
         "addition_subtraction_expression"
       ],
-      "response_ref": ".responses/s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2.json",
-      "response_digest": "73efb1af23ab465d74becd9308541156efd42ee5c6aac823be61a559812a74a8",
-      "prompt_ref": ".responses/s5-phaseB-w4-haiku45-20260925-mat_g1_na_q3_2.prompt.txt",
-      "prompt_digest": "b29e20539b815e9503801837939fea544b74ab751902a8f721a730dcf2cff801",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseB/mat_g1_na_q3_2/prompt.txt and Write only local_only/scratch/phaseB/mat_g1_na_q3_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2.json",
+      "response_digest": "a1d978295b133bca0477a0853760dcfb74ca307d1e435c03ad0f0eee0fb03527",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_2.prompt.txt",
+      "prompt_digest": "e86528ef3cb4091ea1dda6407e7cfe2b37e827474d0b29c3620d3754fa8c023f",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer2 transcript: read prompt.txt, wrote verdicts.json, and reported JSON, sample-count, clause-count, duplicate-ID, length, and overall-consistency checks; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All samples present tasks appropriately scaled for Grade 1, Quarter 3: calculate one side of an equation, then solve for the missing value on the equivalent side. The cognitive demand matches learners' developmental stage with simple, consistent problem structures across all 24 items."
+      "rationale": "The packet uses short, concrete addition and subtraction equivalence tasks with one missing number, a manageable Grade 1 reasoning load, and no distracting multi-step context."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Samples directly address the competency to write equivalent expressions in addition and subtraction contexts. Each item presents two expressions and asks learners to determine what value completes the second expression to equal the first, exemplifying the exact skill named in the curriculum."
+      "rationale": "Every printed stem asks the learner to complete or judge an equivalent addition or subtraction expression, directly matching the stated competency rather than introducing another operation."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All samples require learners to complete or verify equivalent expressions involving addition and/or subtraction, satisfying both stated requirements without gaps or overreach from the competency definition itself.",
+      "rationale": "Across the packet, learners write or identify values that make two addition or subtraction expressions equal, including both valid and intentionally false claims.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The two requirements—write equivalent expressions and use addition/subtraction—together losslessly capture the competency. No capability required by the curriculum statement is missing; no extraneous requirement is imposed beyond what the competency explicitly names.",
+        "reasoning": "The two requirements jointly preserve the competency: the first captures producing an equivalent expression, while the second restricts that expression to addition or subtraction.",
         "requirement_ids": [
           "write_equivalent_expression",
           "addition_subtraction_expression"
@@ -1916,7 +1872,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Samples include addition-only equations, subtraction-only equations, three response formats (cloze, MCQ, true/false), multiple experience modes (standard, hint_gated, mastery_drill, scaffolded), and thematic variations. Coverage spans the breadth of how the competency instantiates across learner contexts.",
+      "rationale": "The samples include both addition and subtraction, multiple numerical ranges through 20, and cloze, multiple-choice, and true-or-false presentations of equivalence.",
       "clause_ids": [
         "write_equivalent_expression",
         "addition_subtraction_expression"
@@ -1924,12 +1880,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Numbers across all samples remain within Grade 1 ranges; operands are mostly single or two-digit values, and answers fit within single digits or low two-digit sums and differences typical of Grade 1 quarter 3 expectations without overextension."
+      "rationale": "All displayed numbers and required computations remain within a small whole-number range suitable for Grade 1, while the arithmetic remains directly checkable from each stem."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator produces distinct variants across formats, operand values, and thematic contexts. No single variant dominates; learners encounter varied structural and numerical patterns while solving the same underlying competency across the entire sample pool."
+      "verdict": "CONCERN",
+      "rationale": "The packet varies operation and response format well, but every equation places the unknown on the right side; equivalent-expression practice would be broader with other missing positions."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

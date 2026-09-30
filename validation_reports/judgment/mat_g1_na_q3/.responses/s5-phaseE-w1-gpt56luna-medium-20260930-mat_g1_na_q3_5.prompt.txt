@@ -1,0 +1,266 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q3_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_5
+PACKET DIGEST: a37645a2673fa074935147d882f6dce0ab17a3513f2150f0b9af0c3d337d97da
+COMPETENCY (Grade 1, Quarter 3, None):
+Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form), without regrouping.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  subtract_numbers: Subtract numbers
+  expressing_tens_ones: expressing minuends and subtrahends as tens and ones
+  expanded_form: expanded form
+  without_regrouping: without regrouping
+
+SAMPLES (every one of these is real rendered output):
+  sample ecf97ae5f3ff5813cf8f  seed 42  [cloze]
+      stem:    75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: 75 − 12 = ___
+      answer:  63
+      options: 63 / 87 / 62 / 64
+      hints:   ["We are subtracting 12 from 75.", "Subtract the ones: 5 − 2 = 3.", "Subtract the tens: 7 − 1 = 6.", "The difference of 75 − 12 = 63."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ec361f1ec6f195c04c1d  seed 43  [mcq]
+      stem:    13 is 1 ten and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 13 − 10?
+      answer:  3
+      options: 23 / 4 / 2 / 3
+      hints:   ["We are subtracting 10 from 13.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 1 − 1 = 0.", "The difference of 13 − 10 = 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a6fa0070adb745b91078  seed 44  [cloze]
+      stem:    45 is 4 tens and 5 ones. 40 is 4 tens and 0 ones. Subtract the place values, then find what's left: 45 − 40 = ___
+      answer:  5
+      options: 85 / 6 / 4 / 5
+      hints:   ["We are subtracting 40 from 45.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 4 − 4 = 0.", "The difference of 45 − 40 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5bbea7a896bb062b1c40  seed 45  [true_false]
+      stem:    35 is 3 tens and 5 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 35 − 30 = 4. True or False?
+      answer:  False
+      hints:   ["We are subtracting 30 from 35.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 3 − 3 = 0.", "The difference of 35 − 30 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 427d86603c2a2366d63e  seed 46  [true_false]
+      stem:    15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Subtract the place values, then find what's left: 15 − 11 = 4. True or False?
+      answer:  True
+      hints:   ["We are subtracting 11 from 15.", "Subtract the ones: 5 − 1 = 4.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 11 = 4."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample bf6d3fbdeef0b069f577  seed 48  [error_detect]
+      stem:    Noel solved: "64 is 6 tens and 4 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 64 − 30 = ___". Noel says the missing number is 34. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 34}
+      hints:   ["We are subtracting 30 from 64.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 6 − 3 = 3.", "The difference of 64 − 30 = 34."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f0a2b37b625df24e7da8  seed 500  [true_false]
+      stem:    98 is 9 tens and 8 ones. 54 is 5 tens and 4 ones. Subtract the place values, then find what's left: 98 − 54 = 45. True or False?
+      answer:  False
+      hints:   ["We are subtracting 54 from 98.", "Subtract the ones: 8 − 4 = 4.", "Subtract the tens: 9 − 5 = 4.", "The difference of 98 − 54 = 44."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3fd836bf21b798774fdb  seed 501  [mcq]
+      stem:    94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones. Subtract the place values, then find what's left: what is 94 − 72?
+      answer:  22
+      options: 22 / 21 / 166 / 23
+      hints:   ["We are subtracting 72 from 94.", "Subtract the ones: 4 − 2 = 2.", "Subtract the tens: 9 − 7 = 2.", "The difference of 94 − 72 = 22."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f8a50f79d7b681f772d1  seed 502  [error_detect]
+      stem:    Dante solved: "88 is 8 tens and 8 ones. 58 is 5 tens and 8 ones. Subtract the place values, then find what's left: 88 − 58 = ___". Dante says the missing number is 30. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 30}
+      hints:   ["We are subtracting 58 from 88.", "Subtract the ones: 8 − 8 = 0.", "Subtract the tens: 8 − 5 = 3.", "The difference of 88 − 58 = 30."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 1a88c5194e5c1892f890  seed 600  [mcq]
+      stem:    35 is 3 tens and 5 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 35 − 10?
+      answer:  25
+      options: 26 / 25 / 24 / 45
+      hints:   ["We are subtracting 10 from 35.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 3 − 1 = 2.", "The difference of 35 − 10 = 25."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 29fa49303c547f286943  seed 601  [cloze]
+      stem:    25 is 2 tens and 5 ones. 15 is 1 ten and 5 ones. Subtract the place values, then find what's left: 25 − 15 = ___
+      answer:  10
+      options: 40 / 11 / 9 / 10
+      hints:   ["We are subtracting 15 from 25.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 2 − 1 = 1.", "The difference of 25 − 15 = 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 78525874e445dbf9018c  seed 602  [error_detect]
+      stem:    Jose solved: "45 is 4 tens and 5 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: 45 − 20 = ___". Jose says the missing number is 25. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 25}
+      hints:   ["We are subtracting 20 from 45.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 4 − 2 = 2.", "The difference of 45 − 20 = 25."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b60ea109f25efa0267b3  seed 603  [mcq]
+      stem:    24 is 2 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 24 − 0?
+      answer:  24
+      options: 26 / 25 / 24 / 23
+      hints:   ["We are subtracting 0 from 24.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 2 − 0 = 2.", "The difference of 24 − 0 = 24."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e04bdf1278d2aac09351  seed 604  [error_detect]
+      stem:    Carlo solved: "15 is 1 ten and 5 ones. 4 is 4 ones. Subtract the place values, then find what's left: 15 − 4 = ___". Carlo says the missing number is 11. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 11}
+      hints:   ["We are subtracting 4 from 15.", "Subtract the ones: 5 − 4 = 1.", "Subtract the tens: 1 − 0 = 1.", "The difference of 15 − 4 = 11."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 092391a0c6a84044fe81  seed 605  [true_false]
+      stem:    24 is 2 tens and 4 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 24 − 10 = 34. True or False?
+      answer:  False
+      hints:   ["We are subtracting 10 from 24.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 2 − 1 = 1.", "The difference of 24 − 10 = 14."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 64dc85de4f935983ce32  seed 606  [mcq]
+      stem:    91 is 9 tens and 1 one. 0 is 0 ones. Subtract the place values, then find what's left: what is 91 − 0?
+      answer:  91
+      options: 91 / 92 / 93 / 90
+      hints:   ["We are subtracting 0 from 91.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 9 − 0 = 9.", "The difference of 91 − 0 = 91."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4528955f469d5ddc5865  seed 607  [cloze]
+      stem:    84 is 8 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 84 − 0 = ___
+      answer:  84
+      options: 84 / 86 / 83 / 85
+      hints:   ["We are subtracting 0 from 84.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 8 − 0 = 8.", "The difference of 84 − 0 = 84."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9c8bf65581d092317135  seed 608  [error_detect]
+      stem:    Rico solved: "21 is 2 tens and 1 one. 1 is 1 one. Subtract the place values, then find what's left: 21 − 1 = ___". Rico says the missing number is 20. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["We are subtracting 1 from 21.", "Subtract the ones: 1 − 1 = 0.", "Subtract the tens: 2 − 0 = 2.", "The difference of 21 − 1 = 20."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 9931f1374f9d36209865  seed 609  [cloze]
+      stem:    75 is 7 tens and 5 ones. 1 is 1 one. Subtract the place values, then find what's left: 75 − 1 = ___
+      answer:  74
+      options: 73 / 74 / 76 / 75
+      hints:   ["We are subtracting 1 from 75.", "Subtract the ones: 5 − 1 = 4.", "Subtract the tens: 7 − 0 = 7.", "The difference of 75 − 1 = 74."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 61720ccd8b38ed98c88f  seed 610  [true_false]
+      stem:    50 is 5 tens and 0 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 50 − 30 = 19. True or False?
+      answer:  False
+      hints:   ["We are subtracting 30 from 50.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 5 − 3 = 2.", "The difference of 50 − 30 = 20."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b7fcf007390b86c85551  seed 700  [error_detect]
+      stem:    Carlo solved: "24 is 2 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 24 − 0 = ___". Carlo says the missing number is 24. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 24}
+      hints:   ["We are subtracting 0 from 24.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 2 − 0 = 2.", "The difference of 24 − 0 = 24."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 10ef485880acfdda723e  seed 701  [true_false]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 36 is 3 tens and 6 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 36 − 10 = 26. True or False?
+      answer:  True
+      hints:   ["We are subtracting 10 from 36.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 3 − 1 = 2.", "The difference of 36 − 10 = 26."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e6c3479b275b4dcf1725  seed 702  [error_detect]
+      stem:    ✝️ Moses enjoys olives. Here is a math challenge. Manny solved: "18 is 1 ten and 8 ones. 0 is 0 ones. Subtract the place values, then find what's left: 18 − 0 = ___". Manny says the missing number is 19. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 18}
+      hints:   ["We are subtracting 0 from 18.", "Subtract the ones: 8 − 0 = 8.", "Subtract the tens: 1 − 0 = 1.", "The difference of 18 − 0 = 18."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d08b84fc97a200878f5e  seed 800  [cloze]
+      stem:    96 is 9 tens and 6 ones. 44 is 4 tens and 4 ones. Subtract the place values, then find what's left: 96 − 44 = ___
+      answer:  52
+      options: 140 / 51 / 52 / 53
+      hints:   ["We are subtracting 44 from 96.", "Subtract the ones: 6 − 4 = 2.", "Subtract the tens: 9 − 4 = 5.", "The difference of 96 − 44 = 52."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3a4161b00c8ec40de0c2  seed 900  [mcq]
+      stem:    47 is 4 tens and 7 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 47 − 0?
+      answer:  47
+      options: 47 / 48 / 49 / 46
+      hints:   ["We are subtracting 0 from 47.", "Subtract the ones: 7 − 0 = 7.", "Subtract the tens: 4 − 0 = 4.", "The difference of 47 − 0 = 47."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3c3805421fb06cf3552d  seed 901  [mcq]
+      stem:    29 is 2 tens and 9 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: what is 29 − 12?
+      answer:  17
+      options: 41 / 17 / 16 / 18
+      hints:   ["We are subtracting 12 from 29.", "Subtract the ones: 9 − 2 = 7.", "Subtract the tens: 2 − 1 = 1.", "The difference of 29 − 12 = 17."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9657bf27803a6bae4e9b  seed 1000  [cloze]
+      stem:    48 is 4 tens and 8 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 48 − 30 = ___
+      answer:  18
+      options: 17 / 78 / 18 / 19
+      hints:   ["We are subtracting 30 from 48.", "Subtract the ones: 8 − 0 = 8.", "Subtract the tens: 4 − 3 = 1.", "The difference of 48 − 30 = 18."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 64cb80732b7bb87445ee  seed 1001  [error_detect]
+      stem:    Liza solved: "15 is 1 ten and 5 ones. 3 is 3 ones. Subtract the place values, then find what's left: 15 − 3 = ___". Liza says the missing number is 13. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 12}
+      hints:   ["We are subtracting 3 from 15.", "Subtract the ones: 5 − 3 = 2.", "Subtract the tens: 1 − 0 = 1.", "The difference of 15 − 3 = 12."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample d41a5169b1ac39719dab  seed 1002  [error_detect]
+      stem:    Manny solved: "62 is 6 tens and 2 ones. 0 is 0 ones. Subtract the place values, then find what's left: 62 − 0 = ___". Manny says the missing number is 61. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 62}
+      hints:   ["We are subtracting 0 from 62.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 6 − 0 = 6.", "The difference of 62 − 0 = 62."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

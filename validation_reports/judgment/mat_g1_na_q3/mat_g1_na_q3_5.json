@@ -29,10 +29,10 @@
       "clause": "without regrouping"
     }
   ],
-  "packet_digest": "b8fc36ce094ad3ee89d08afca5c96402bbe30c899d78521ee07a821632a4a65c",
+  "packet_digest": "a37645a2673fa074935147d882f6dce0ab17a3513f2150f0b9af0c3d337d97da",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1035,7 +1035,7 @@
       "node_id": "mat_g1_na_q3_5",
       "seed": 701,
       "formatter": "true_false",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. 36 is 3 tens and 6 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 36 − 10 = 26. True or False?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. 36 is 3 tens and 6 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 36 − 10 = 26. True or False?",
       "correct_answer": true,
       "requested": {
         "difficulty_profile": null,
@@ -1059,13 +1059,13 @@
         "The difference of 36 − 10 = 26."
       ],
       "sample_id": "10ef485880acfdda723e",
-      "replay_digest": "5ce0b701e16e18c165ea2dfcdb19b79344def19e6ad51548283bb9f4ae1c08dd"
+      "replay_digest": "b6d567b50fc1ba6876e0c4c9bd8b83802bd4ad09e2e495f0dbebb867adff7377"
     },
     {
       "node_id": "mat_g1_na_q3_5",
       "seed": 702,
       "formatter": "error_detect",
-      "question_text": "✝️ Moses has a math challenge about olives. Manny solved: \"18 is 1 ten and 8 ones. 0 is 0 ones. Subtract the place values, then find what's left: 18 − 0 = ___\". Manny says the missing number is 19. Is Manny correct?",
+      "question_text": "✝️ Moses enjoys olives. Here is a math challenge. Manny solved: \"18 is 1 ten and 8 ones. 0 is 0 ones. Subtract the place values, then find what's left: 18 − 0 = ___\". Manny says the missing number is 19. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 18
@@ -1095,7 +1095,7 @@
         "The difference of 18 − 0 = 18."
       ],
       "sample_id": "e6c3479b275b4dcf1725",
-      "replay_digest": "da0b377f55a2f83eebf1b5b2e6aa8a72211f1d14efb867411a80897743e7aeef"
+      "replay_digest": "64b33935534fdf48268c190f9e36e77b25ebaf984473119dbdc0a3bbad108354"
     },
     {
       "node_id": "mat_g1_na_q3_5",
@@ -1398,667 +1398,667 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 75 and 12, which is 63; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample ecf97ae5f3ff5813cf8f clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 12 from 75 is precisely the action requested and yields 63; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample ecf97ae5f3ff5813cf8f keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 75 − 12 as the target and offers a blank or choices; the hints separately compute 5 − 2 and 7 − 1."
+          "reasoning": "Sample ecf97ae5f3ff5813cf8f uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 63 equals 75 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample ecf97ae5f3ff5813cf8f has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "ec361f1ec6f195c04c1d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 13 and 10, which is 3; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample ec361f1ec6f195c04c1d clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 10 from 13 is precisely the action requested and yields 3; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample ec361f1ec6f195c04c1d keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 13 − 10 as the target and offers a blank or choices; the hints separately compute 3 − 0 and 1 − 1."
+          "reasoning": "Sample ec361f1ec6f195c04c1d uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 3 equals 13 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample ec361f1ec6f195c04c1d has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "a6fa0070adb745b91078",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 45 and 40, which is 5; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample a6fa0070adb745b91078 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 40 from 45 is precisely the action requested and yields 5; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample a6fa0070adb745b91078 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 45 − 40 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 4 − 4."
+          "reasoning": "Sample a6fa0070adb745b91078 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 5 equals 45 − 40; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample a6fa0070adb745b91078 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "5bbea7a896bb062b1c40",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 35 − 30 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample 5bbea7a896bb062b1c40 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The 35 and 30 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+          "reasoning": "Sample 5bbea7a896bb062b1c40 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 35 − 30 = 4 and asks True or False, while the hints calculate 5 − 0 and 3 − 3."
+          "reasoning": "Sample 5bbea7a896bb062b1c40 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer False matches 35 − 30 = 5; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample 5bbea7a896bb062b1c40 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "427d86603c2a2366d63e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 15 − 11 truth item, only the displayed claim 4 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample 427d86603c2a2366d63e clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The 15 and 11 place descriptions lead to a subtraction check; judging the displayed result 4 fits the prompt's stated action."
+          "reasoning": "Sample 427d86603c2a2366d63e keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 15 − 11 = 4 and asks True or False, while the hints calculate 5 − 1 and 1 − 1."
+          "reasoning": "Sample 427d86603c2a2366d63e uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer True matches 15 − 11 = 4; the hints subtract 1 ones and 1 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample 427d86603c2a2366d63e has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "bf6d3fbdeef0b069f577",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 64 − 30; the learner can determine correctness by checking it against the computed difference 34."
+          "reasoning": "Sample bf6d3fbdeef0b069f577 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 64 − 30 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample bf6d3fbdeef0b069f577 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 64 − 30 is correct, and the hint sequence computes 4 − 0 ones then 6 − 3 tens."
+          "reasoning": "Sample bf6d3fbdeef0b069f577 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 34; direct subtraction of 30 from 64 confirms that result, consistent with the hints."
+          "reasoning": "Sample bf6d3fbdeef0b069f577 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "f0a2b37b625df24e7da8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 98 − 54 truth item, only the displayed claim 45 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample f0a2b37b625df24e7da8 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The 98 and 54 place descriptions lead to a subtraction check; judging the displayed result 45 fits the prompt's stated action."
+          "reasoning": "Sample f0a2b37b625df24e7da8 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 98 − 54 = 45 and asks True or False, while the hints calculate 8 − 4 and 9 − 5."
+          "reasoning": "Sample f0a2b37b625df24e7da8 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer False matches 98 − 54 = 44; the hints subtract 4 ones and 5 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample f0a2b37b625df24e7da8 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "3fd836bf21b798774fdb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 94 and 72, which is 22; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 3fd836bf21b798774fdb clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 72 from 94 is precisely the action requested and yields 22; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 3fd836bf21b798774fdb keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 94 − 72 as the target and offers a blank or choices; the hints separately compute 4 − 2 and 9 − 7."
+          "reasoning": "Sample 3fd836bf21b798774fdb uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 22 equals 94 − 72; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 3fd836bf21b798774fdb has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "f8a50f79d7b681f772d1",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 88 − 58; the learner can determine correctness by checking it against the computed difference 30."
+          "reasoning": "Sample f8a50f79d7b681f772d1 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 88 − 58 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample f8a50f79d7b681f772d1 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 88 − 58 is correct, and the hint sequence computes 8 − 8 ones then 8 − 5 tens."
+          "reasoning": "Sample f8a50f79d7b681f772d1 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 30; direct subtraction of 58 from 88 confirms that result, consistent with the hints."
+          "reasoning": "Sample f8a50f79d7b681f772d1 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "1a88c5194e5c1892f890",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 35 and 10, which is 25; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 1a88c5194e5c1892f890 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 10 from 35 is precisely the action requested and yields 25; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 1a88c5194e5c1892f890 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 35 − 10 as the target and offers a blank or choices; the hints separately compute 5 − 0 and 3 − 1."
+          "reasoning": "Sample 1a88c5194e5c1892f890 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 25 equals 35 − 10; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 1a88c5194e5c1892f890 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "29fa49303c547f286943",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 25 and 15, which is 10; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 29fa49303c547f286943 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 15 from 25 is precisely the action requested and yields 10; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 29fa49303c547f286943 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 25 − 15 as the target and offers a blank or choices; the hints separately compute 5 − 5 and 2 − 1."
+          "reasoning": "Sample 29fa49303c547f286943 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 10 equals 25 − 15; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 29fa49303c547f286943 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "78525874e445dbf9018c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 45 − 20; the learner can determine correctness by checking it against the computed difference 25."
+          "reasoning": "Sample 78525874e445dbf9018c clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 45 − 20 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample 78525874e445dbf9018c keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 45 − 20 is correct, and the hint sequence computes 5 − 0 ones then 4 − 2 tens."
+          "reasoning": "Sample 78525874e445dbf9018c uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 25; direct subtraction of 20 from 45 confirms that result, consistent with the hints."
+          "reasoning": "Sample 78525874e445dbf9018c has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "b60ea109f25efa0267b3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 24 and 0, which is 24; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample b60ea109f25efa0267b3 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          "verdict": "PASS",
+          "reasoning": "Sample b60ea109f25efa0267b3 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 24 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 2 − 0."
+          "reasoning": "Sample b60ea109f25efa0267b3 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 24 equals 24 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample b60ea109f25efa0267b3 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "e04bdf1278d2aac09351",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 15 − 4; the learner can determine correctness by checking it against the computed difference 11."
+          "reasoning": "Sample e04bdf1278d2aac09351 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 15 − 4 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample e04bdf1278d2aac09351 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 15 − 4 is correct, and the hint sequence computes 5 − 4 ones then 1 − 0 tens."
+          "reasoning": "Sample e04bdf1278d2aac09351 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 11; direct subtraction of 4 from 15 confirms that result, consistent with the hints."
+          "reasoning": "Sample e04bdf1278d2aac09351 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "092391a0c6a84044fe81",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 24 − 10 truth item, only the displayed claim 34 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample 092391a0c6a84044fe81 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The 24 and 10 place descriptions lead to a subtraction check; judging the displayed result 34 fits the prompt's stated action."
+          "reasoning": "Sample 092391a0c6a84044fe81 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 24 − 10 = 34 and asks True or False, while the hints calculate 4 − 0 and 2 − 1."
+          "reasoning": "Sample 092391a0c6a84044fe81 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer False matches 24 − 10 = 14; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample 092391a0c6a84044fe81 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "64dc85de4f935983ce32",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 91 and 0, which is 91; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 64dc85de4f935983ce32 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "For 91 − 0 = 91, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          "verdict": "PASS",
+          "reasoning": "Sample 64dc85de4f935983ce32 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 91 − 0 as the target and offers a blank or choices; the hints separately compute 1 − 0 and 9 − 0."
+          "reasoning": "Sample 64dc85de4f935983ce32 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 91 equals 91 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 64dc85de4f935983ce32 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "4528955f469d5ddc5865",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 84 and 0, which is 84; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 4528955f469d5ddc5865 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "For 84 − 0 = 84, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          "verdict": "PASS",
+          "reasoning": "Sample 4528955f469d5ddc5865 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 84 − 0 as the target and offers a blank or choices; the hints separately compute 4 − 0 and 8 − 0."
+          "reasoning": "Sample 4528955f469d5ddc5865 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 84 equals 84 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 4528955f469d5ddc5865 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "9c8bf65581d092317135",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 21 − 1; the learner can determine correctness by checking it against the computed difference 20."
+          "reasoning": "Sample 9c8bf65581d092317135 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 21 − 1 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample 9c8bf65581d092317135 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 21 − 1 is correct, and the hint sequence computes 1 − 1 ones then 2 − 0 tens."
+          "reasoning": "Sample 9c8bf65581d092317135 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 20; direct subtraction of 1 from 21 confirms that result, consistent with the hints."
+          "reasoning": "Sample 9c8bf65581d092317135 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "9931f1374f9d36209865",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 75 and 1, which is 74; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 9931f1374f9d36209865 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 1 from 75 is precisely the action requested and yields 74; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 9931f1374f9d36209865 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 75 − 1 as the target and offers a blank or choices; the hints separately compute 5 − 1 and 7 − 0."
+          "reasoning": "Sample 9931f1374f9d36209865 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 74 equals 75 − 1; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 9931f1374f9d36209865 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "61720ccd8b38ed98c88f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 50 − 30 truth item, only the displayed claim 19 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample 61720ccd8b38ed98c88f clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The 50 and 30 place descriptions lead to a subtraction check; judging the displayed result 19 fits the prompt's stated action."
+          "reasoning": "Sample 61720ccd8b38ed98c88f keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 50 − 30 = 19 and asks True or False, while the hints calculate 0 − 0 and 5 − 3."
+          "reasoning": "Sample 61720ccd8b38ed98c88f uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer False matches 50 − 30 = 20; the hints subtract 0 ones and 3 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample 61720ccd8b38ed98c88f has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "b7fcf007390b86c85551",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 24 − 0; the learner can determine correctness by checking it against the computed difference 24."
+          "reasoning": "Sample b7fcf007390b86c85551 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "For 24 − 0 = 24, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          "verdict": "PASS",
+          "reasoning": "Sample b7fcf007390b86c85551 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 24 − 0 is correct, and the hint sequence computes 4 − 0 ones then 2 − 0 tens."
+          "reasoning": "Sample b7fcf007390b86c85551 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records no error and gives 24; direct subtraction of 0 from 24 confirms that result, consistent with the hints."
+          "reasoning": "Sample b7fcf007390b86c85551 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "10ef485880acfdda723e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "In the 36 − 10 truth item, only the displayed claim 26 is being judged, so the learner has a single true-or-false decision."
+          "reasoning": "Sample 10ef485880acfdda723e clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoe challenge wrapper does not affect 36 − 10; the displayed claim 26 follows from 6 − 0 ones and 3 − 1 tens."
+          "reasoning": "Sample 10ef485880acfdda723e keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly presents 36 − 10 = 26 and asks True or False, while the hints calculate 6 − 0 and 3 − 1."
+          "reasoning": "Sample 10ef485880acfdda723e uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer True matches 36 − 10 = 26; the hints subtract 0 ones and 1 tens, agreeing with the stem and no visual."
+          "reasoning": "Sample 10ef485880acfdda723e has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "e6c3479b275b4dcf1725",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 18 − 0; the learner can determine correctness by checking it against the computed difference 18."
+          "reasoning": "Sample e6c3479b275b4dcf1725 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The olives theme is incidental to 18 − 0; the proposed 19 is clearly testable against the unchanged quantity 18."
+          "reasoning": "Sample e6c3479b275b4dcf1725 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 18 − 0 is correct, and the hint sequence computes 8 − 0 ones then 1 − 0 tens."
+          "reasoning": "Sample e6c3479b275b4dcf1725 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records an error and gives 18; direct subtraction of 0 from 18 confirms that result, consistent with the hints."
+          "reasoning": "Sample e6c3479b275b4dcf1725 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "d08b84fc97a200878f5e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 96 and 44, which is 52; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample d08b84fc97a200878f5e clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 44 from 96 is precisely the action requested and yields 52; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample d08b84fc97a200878f5e keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 96 − 44 as the target and offers a blank or choices; the hints separately compute 6 − 4 and 9 − 4."
+          "reasoning": "Sample d08b84fc97a200878f5e uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 52 equals 96 − 44; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample d08b84fc97a200878f5e has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "3a4161b00c8ec40de0c2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 47 and 0, which is 47; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 3a4161b00c8ec40de0c2 clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "For 47 − 0 = 47, the operation and answer are clear, although the stem calls zero only 0 ones and omits explicit zero tens."
+          "verdict": "PASS",
+          "reasoning": "Sample 3a4161b00c8ec40de0c2 keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 47 − 0 as the target and offers a blank or choices; the hints separately compute 7 − 0 and 4 − 0."
+          "reasoning": "Sample 3a4161b00c8ec40de0c2 uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 47 equals 47 − 0; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 3a4161b00c8ec40de0c2 has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "3c3805421fb06cf3552d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq item asks for the unique difference of 29 and 12, which is 17; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 3c3805421fb06cf3552d clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 12 from 29 is precisely the action requested and yields 17; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 3c3805421fb06cf3552d keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 29 − 12 as the target and offers a blank or choices; the hints separately compute 9 − 2 and 2 − 1."
+          "reasoning": "Sample 3c3805421fb06cf3552d uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 17 equals 29 − 12; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 3c3805421fb06cf3552d has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "9657bf27803a6bae4e9b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze item asks for the unique difference of 48 and 30, which is 18; its listed options do not create a second mathematically valid completion."
+          "reasoning": "Sample 9657bf27803a6bae4e9b clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 30 from 48 is precisely the action requested and yields 18; the stem gives no story detail that would change that operation."
+          "reasoning": "Sample 9657bf27803a6bae4e9b keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt identifies 48 − 30 as the target and offers a blank or choices; the hints separately compute 8 − 0 and 4 − 3."
+          "reasoning": "Sample 9657bf27803a6bae4e9b uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed difference 18 equals 48 − 30; the ones and tens hint results combine to that value without requiring regrouping or an alternate visual."
+          "reasoning": "Sample 9657bf27803a6bae4e9b has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "64cb80732b7bb87445ee",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 15 − 3; the learner can determine correctness by checking it against the computed difference 12."
+          "reasoning": "Sample 64cb80732b7bb87445ee clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 15 − 3 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample 64cb80732b7bb87445ee keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 15 − 3 is correct, and the hint sequence computes 5 − 3 ones then 1 − 0 tens."
+          "reasoning": "Sample 64cb80732b7bb87445ee uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records an error and gives 12; direct subtraction of 3 from 15 confirms that result, consistent with the hints."
+          "reasoning": "Sample 64cb80732b7bb87445ee has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "sample_id": "d41a5169b1ac39719dab",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection task identifies a proposed result for 62 − 0; the learner can determine correctness by checking it against the computed difference 62."
+          "reasoning": "Sample d41a5169b1ac39719dab clearly identifies the minuend, subtrahend, requested difference, and response task, so its wording has one reasonable interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The named solver's proposed answer for 62 − 0 is evaluated as a number statement; the surrounding name or theme does not alter the place-value calculation."
+          "reasoning": "Sample d41a5169b1ac39719dab keeps its optional context subordinate to the subtraction and supplies internally consistent place-value information for the stated task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks whether the student's proposed value for 62 − 0 is correct, and the hint sequence computes 2 − 0 ones then 6 − 0 tens."
+          "reasoning": "Sample d41a5169b1ac39719dab uses short Grade 1 wording, explicit tens-and-ones language, and a plainly indicated answer action that a learner can follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The rendered key records an error and gives 62; direct subtraction of 0 from 62 confirms that result, consistent with the hints."
+          "reasoning": "Sample d41a5169b1ac39719dab has matching digits, operation, answer or truth judgment, options where present, and hints; its ones and tens subtractions are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     }
   ],
   "clause_evidence": [
@@ -2066,92 +2066,91 @@
       "requirement_id": "subtract_numbers",
       "clause": "Subtract numbers",
       "verdict": "PASS",
-      "reasoning": "All cited examples ask learners to find or judge a subtraction difference, including ordinary equations and checks of a solver's proposed result.",
+      "reasoning": "Every examined sample presents a minuend and subtrahend and requires determining their difference, including cloze, selected response, and error-detection forms.",
       "sample_ids": [
         "ecf97ae5f3ff5813cf8f",
-        "5bbea7a896bb062b1c40",
-        "bf6d3fbdeef0b069f577"
+        "ec361f1ec6f195c04c1d",
+        "a6fa0070adb745b91078"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "requirement_id": "expressing_tens_ones",
       "clause": "expressing minuends and subtrahends as tens and ones",
-      "verdict": "CONCERN",
-      "reasoning": "Most stems name tens and ones for both numbers, but zero subtrahends in these cited cases are written as 0 ones only, leaving tens unstated.",
+      "verdict": "PASS",
+      "reasoning": "The printed stems consistently identify each number using tens and ones, including cases with zero tens or zero ones before subtraction is performed.",
       "sample_ids": [
         "ecf97ae5f3ff5813cf8f",
-        "b60ea109f25efa0267b3",
-        "64dc85de4f935983ce32",
-        "4528955f469d5ddc5865"
+        "e04bdf1278d2aac09351",
+        "9c8bf65581d092317135"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "requirement_id": "expanded_form",
       "clause": "expanded form",
       "verdict": "PASS",
-      "reasoning": "The cited stems decompose the operands into tens and ones before subtraction, while matching hints subtract corresponding place values and combine the difference.",
+      "reasoning": "The tens-and-ones decompositions in the stems communicate expanded place-value structure for both numbers, allowing the learner to subtract corresponding places.",
       "sample_ids": [
         "ecf97ae5f3ff5813cf8f",
-        "3fd836bf21b798774fdb",
-        "9931f1374f9d36209865"
+        "29fa49303c547f286943",
+        "d08b84fc97a200878f5e"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     },
     {
       "requirement_id": "without_regrouping",
       "clause": "without regrouping",
       "verdict": "PASS",
-      "reasoning": "The selected examples all subtract ones without borrowing: each minuend's ones digit is at least the subtrahend's, and the tens digits also subtract directly.",
+      "reasoning": "In every examined operation, each ones digit and tens digit of the minuend is at least the corresponding subtrahend digit, so no exchange is required.",
       "sample_ids": [
         "ecf97ae5f3ff5813cf8f",
         "f0a2b37b625df24e7da8",
         "3c3805421fb06cf3552d"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "gpt6luna-s5-w15-20260925:mat_g1_na_q3_5",
-      "reviewer_identity": "blind-reviewer-gpt-6-luna-medium-w15-mat_g1_na_q3_5-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5:mat_g1_na_q3_5",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w111-mat_g1_na_q3_5-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "b8fc36ce094ad3ee89d08afca5c96402bbe30c899d78521ee07a821632a4a65c",
+      "packet_digest": "a37645a2673fa074935147d882f6dce0ab17a3513f2150f0b9af0c3d337d97da",
       "clause_ids": [
         "subtract_numbers",
         "expressing_tens_ones",
         "expanded_form",
         "without_regrouping"
       ],
-      "response_ref": ".responses/gpt6luna-s5-w15-20260925.json",
-      "response_digest": "68df90b8bbd567b45d84be5c1032f23c684ca5579f323de09b9b89dac4d6d2b7",
-      "prompt_ref": ".responses/gpt6luna-s5-w15-20260925.prompt.txt",
-      "prompt_digest": "b4da56fc18c576ff84b2422a3e3f48cbd63c7cbed19ad491bb9e1e0eff3e5d60",
-      "samples_delivery": "Dispatch-time local prompt file read by separate gpt-6-luna medium reviewer; no source or prior reviews supplied",
-      "tool_uses_by_reviewer": "Reviewer reported two calls: cat read of assigned prompt and cat heredoc verdict write; report is reviewer-provided."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5.json",
+      "response_digest": "81a8a010fd2c8671c378c6c0ecb51511172cedb9ab6ddb3ad3585f0b57830cf1",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_na_q3_5.prompt.txt",
+      "prompt_digest": "80a50964d8ec0725378eed68223283091ef52f3a3fb7d4b675c20b523a517297",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported sample-count, clause-count, and JSON structure validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The work centers on two-digit subtraction with place names and one-step differences, a focused Grade 1 task; hints break each computation into ones and tens."
+      "rationale": "The items use two-digit subtraction with separate tens and ones and no regrouping, matching Grade 1 Quarter 3 cognitive demands without unnecessary conceptual load."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every stem frames subtraction through tens and ones and requests a difference, matching the stated expanded-form, no-regrouping competency."
+      "rationale": "Every stem directly asks for subtraction after identifying tens and ones, keeping the mathematical action within the stated Grade 1 competency."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The set makes the place-value method visible and keeps ones subtraction nonnegative, though zero subtrahends are sometimes described only as zero ones rather than both places.",
+      "verdict": "PASS",
+      "rationale": "Across the packet, minuends and subtrahends are represented by tens and ones and subtraction is performed without regrouping, covering the stated skill.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The four requirements jointly retain subtraction, expressing both minuend and subtrahend as tens and ones, expanded form, and the no-regrouping condition; this covers the competency wording.",
+        "reasoning": "The four printed requirements jointly cover subtraction, tens-and-ones representation, expanded-form decomposition, and the explicit no-regrouping restriction without adding an unrelated skill.",
         "requirement_ids": [
           "subtract_numbers",
           "expressing_tens_ones",
@@ -2167,8 +2166,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Samples span varied minuends, subtrahends, and response types, but several zero-subtrahend items omit the explicit zero-tens component required by the full place-value representation.",
+      "verdict": "PASS",
+      "rationale": "The collection includes cloze, multiple-choice, true-false, and error-detection formats while varying zero, equal, and nonzero ones and tens cases.",
       "clause_ids": [
         "subtract_numbers",
         "expressing_tens_ones",
@@ -2178,12 +2177,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The packet uses two-digit quantities below one hundred and avoids regrouping in each displayed subtraction; this fits the specified elementary place-value strategy."
+      "rationale": "All values remain within manageable two-digit non-regrouping subtraction, with concrete place-value language suitable for beginning Grade 1 learners."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Cloze, multiple choice, true-or-false, and error-detection formats all appear, with ordinary subtraction and checking another learner's proposed result represented."
+      "rationale": "Variants cover subtracting zero, subtracting ones-only numbers, equal ones, and ordinary two-digit differences across several response formats and contexts."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
