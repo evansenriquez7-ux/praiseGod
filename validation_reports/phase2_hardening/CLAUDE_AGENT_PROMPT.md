@@ -77,14 +77,13 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-run_all (2026-09-30) EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
-stage ledger          scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
-§5 (run_all stage)    2020 findings; 143 of 151 reviews STALE (see below)
+run_all               not re-measured in Phase E; last run EXIT 1 on the same three stages
+§5 (module)           1904 findings; 133 of 151 reviews STALE
 §6F                   188: 173 CONTRADICTED + 15 STALE attestations
 obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions
 proof artifacts       190 mutation proofs (187 DETECTED + the 3 §6F INVALID), 6 release shards,
                       benchmark and frontend all fresh
-live input digest     7253f2a3e89f1566 (HEAD ac614688 plus the closeout commit)
+live input digest     7253f2a3e89f1566; tree_state INTERRUPTED with the W1 campaign intent open
 ```
 
 Phases A, B and C are done. **The Phase D SOURCE BATCH is done** (`c1366b94`, `ac614688`). It fixed every
@@ -92,9 +91,11 @@ content defect Phase C confirmed; the list is in `HARDENING_EVIDENCE.md`'s Phase
 **143 of 151 reviews went STALE.** 136 are stale only because the interest-cue sentence at seeds 701/702
 was reworded. Seven carry real content change: `mat_g2_na_q2_2`, `mat_g2_na_q3_2`, `mat_g2_na_q3_3`,
 `mat_g3_dp_q3_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`, `mat_g3_na_q3_0`. Re-reviewing them is a
-Phase-C-sized blind Haiku campaign and **needs the owner's go-ahead**, as do the 173 CONTRADICTED (§6
-below). Sections 5 and 6's "START HERE" wording is historical. If an executed command disagrees with this
-section, believe the command.
+Phase-C-sized blind campaign. **Owner ruling 2026-09-30 for the GPT host:** use GPT-5.6 Luna with medium
+reasoning and complete W1 before W2. Ten fresh reviews are filed (`68b0fa61`, `75d7af03`, `ff4a7916`):
+all seven content-changed nodes plus `mat_g1_na_q1_0`, `_1`, and `_2`. Resume at
+`mat_g1_na_q1_3`; 133 remain. Sections 5 and 6's "START HERE" wording is historical. If an executed
+command disagrees with this section, believe the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 

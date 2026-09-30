@@ -28,16 +28,16 @@ It will not reach 0 this session. Leave it closer to 0, with every claim proven 
 ## 1. State at handoff (re-measure it; never quote these numbers without re-running)
 
 ```
-HEAD                  5489d597 (lock released); tree_state CERTIFIED at digest 7253f2a3e89f1566
-run_all               EXIT 1, scheduled=17 completed=14 failed=3 crashed=0
-  judgment_reviews_5    2020 findings, 143 of 151 reviews STALE
+HEAD                  ff4a7916 plus this checkpoint; tree_state INTERRUPTED at digest 7253f2a3e89f1566
+run_all               not re-measured this campaign; last measured EXIT 1, failed=3
+  judgment_reviews_5    module: 1904 findings, 133 of 151 reviews STALE
   capability_phase2     188 = 173 CONTRADICTED + 15 STALE attestations
   assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
 every Phase 1 stage   PASS (content, vocabulary, matrix, render, grading, obligations, census)
 mutation corpus       187/190 DETECTED; the 3 INVALID are the §6F cluster
 obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions; 6 release shards clean
-review corpus         151/151 schema-v2: 120 haiku45, 17 gpt-5.6-luna, 14 gpt-6-luna
-H-06                  status open; lock released ("released @ 300f6263")
+review corpus         151/151 schema-v2: 112 haiku45, 25 gpt-5.6-luna, 14 gpt-6-luna
+H-06                  status open; claimed by codex-h06-w0-owner-gates-2026-09-30
 ```
 
 Commands that re-measure this state:
@@ -48,7 +48,7 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/vj.log 2>&1; echo "EXIT $?"
 ```
 
-**Why 143 reviews are STALE:** Phase D reworded the interest-cue sentence from "*X has a math challenge
+**Why 133 reviews are still STALE:** Phase D reworded the interest-cue sentence from "*X has a math challenge
 about Y*" to "*X enjoys Y. Here is a math challenge.*" That wording appears at seeds 701/702 on every
 node. Of the 143, **136 are stale only because of that sentence**; this was established seed by seed.
 **Seven have real content changes:**
@@ -61,30 +61,32 @@ node. Of the 143, **136 are stale only because of that sentence**; this was esta
 - `mat_g3_mg_q2_4`
 - `mat_g3_na_q3_0`
 
-Staleness is by packet digest. **It is never waived, and no verdict is ever carried forward.**
+Staleness is by packet digest. **It is never waived, and no verdict is ever carried forward.** Phase E
+has filed 10 fresh GPT-5.6 Luna medium reviews: all seven content-changed nodes plus
+`mat_g1_na_q1_0`, `_1`, and `_2`. Commits: `68b0fa61`, `75d7af03`, `ff4a7916`. Resume W1 at
+`mat_g1_na_q1_3`; 133 nodes remain.
 
 ---
 
 ## 2. OWNER GATES: resolve these before any dispatch
 
-Record the owner's answers here, or in the session, before starting W1 or W2.
+**RESOLVED 2026-09-30.** The owner directed this GPT host to use **GPT-5.6 Luna, medium reasoning**, and
+to run **W1 before W2**. The runtime accepted the exact `gpt-5.6-luna` override. Identities and dispatch
+records must continue to name that exact model and reasoning level truthfully.
 
-**Gate A: reviewer model.** Owner ruling 4 makes **Haiku** the family for every blind reviewer, and
-the plan says: *"If you cannot dispatch Haiku from this host, STOP and ask the owner."* A GPT host
-usually cannot dispatch Haiku. So:
-- If you **can** dispatch Claude Haiku 4.5, use it, and put `haiku45` in every identity.
-- If you **cannot**, stop and ask the owner which model to use. **Do not substitute one silently.**
+**Gate A: reviewer model (resolved for this campaign).** Owner ruling 4 made **Haiku** the earlier
+family for blind reviewers. This GPT host asked rather than substituting, and the owner replaced it for
+Phase E with **GPT-5.6 Luna, medium**.
 - Whatever judges, the identity names the model that actually judged, including its reasoning level.
-- Never rename the 17 `gpt-5.6-luna` or 14 `gpt-6-luna` records, and never write one model's name onto
+- Never rename any existing `gpt-5.6-luna`, `gpt-6-luna`, or `haiku45` record, and never write one model's name onto
   another model's verdict.
 
-**Gate B: scope.** Re-reviewing 143 nodes is a Phase-C-sized campaign. Phase C took many sessions and
-several rate-limit interruptions. The owner must say which of these to do, in what order:
-- **W1**: re-review the stale nodes. The 7 content-changed nodes are the highest value, because their
-  verdicts genuinely may change.
-- **W2**: the 173 CONTRADICTED.
+**Gate B: scope (resolved).** Re-reviewing 143 nodes is a Phase-C-sized campaign. Phase C took many sessions and
+several rate-limit interruptions. The owner's order is:
+- **W1 first**: 10 nodes are filed; resume the remaining 133 at `mat_g1_na_q1_3`.
+- **W2 second**: the 173 CONTRADICTED remain untouched.
 
-If neither gate is answered, do only **W0** and then ask.
+Do not reopen these gates unless the authorized model becomes unavailable or the owner changes scope.
 
 ---
 

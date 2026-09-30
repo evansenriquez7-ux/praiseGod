@@ -17568,3 +17568,128 @@ NAMED LIMITS:
 * The `operation` dimension recognises only explicit ordering stems and addition/subtraction hint
   instructions.
 * The category-bank fail-fast is proven by a hand-planted clamp removal, not by a registered mutation.
+
+## 2026-09-30 — PHASE E W1 checkpoint: 10 stale reviews refreshed on GPT-5.6 Luna medium
+
+**Session:** `codex-h06-w0-owner-gates-2026-09-30`, resumed after the owner resolved both gates:
+use **GPT-5.6 Luna with medium reasoning**, and run W1 before W2. The runtime accepted the exact
+`gpt-5.6-luna` override. No source, harness, capability-provider, attestation, or existing reviewer
+identity was changed. The campaign intent remains open because 133 reviews are still stale.
+
+### Baseline and measured checkpoint
+
+The module entry points were run directly with output captured in
+`local_only/scratch/phaseE_w1/`. Before any review filing:
+
+```
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all
+JUDGMENT_EXIT 1
+Verdicts over 151 reviewed nodes: PASS=56 CONCERN=55 FAIL=40 UNKNOWN=0
+Judgment review validation: 2019 problem(s) found.
+stale_reviews=143
+
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2
+CAPABILITY_EXIT 1
+Capability contract: 188 failure(s) (0 Phase 1 / artifact-free, floor 5; 188 Phase 2 / attestation).
+capability_contradicted=173
+capability_stale=15
+```
+
+After the seven content-changed nodes were filed:
+
+```
+JUDGMENT_AFTER7_EXIT 1
+Verdicts over 151 reviewed nodes: PASS=57 CONCERN=54 FAIL=40 UNKNOWN=0
+Judgment review validation: 1889 problem(s) found.
+stale_reviews=136
+```
+
+After the first three wrapper-only nodes were also filed:
+
+```
+JUDGMENT_AFTER10_EXIT 1
+Verdicts over 151 reviewed nodes: PASS=57 CONCERN=52 FAIL=42 UNKNOWN=0
+Judgment review validation: 1904 problem(s) found.
+stale_reviews=133
+
+CAPABILITY_AFTER10_EXIT 1
+Capability contract: 188 failure(s) (0 Phase 1 / artifact-free, floor 5; 188 Phase 2 / attestation).
+capability_contradicted=173
+capability_stale=15
+```
+
+Thus the ten filings moved §5 2019 -> 1904 and STALE 143 -> 133. The rise from 1889 to 1904 after
+the last three filings is fresh reviewers naming content concerns; it is the gate working, not a
+regression. `run_all` was **not measured** in this checkpoint. No source changed, so no re-proof chain
+is owed.
+
+### Dispatches, model identity, and audit
+
+The first seven were the content-changed nodes named by Phase D:
+`mat_g2_na_q2_2`, `mat_g2_na_q3_2`, `mat_g2_na_q3_3`, `mat_g3_dp_q3_2`,
+`mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`, and `mat_g3_na_q3_0`. The next three were
+`mat_g1_na_q1_0`, `_1`, and `_2`. Every node had a separate no-history Agent dispatch and a truthful
+identity of the form
+`blind-reviewer-gpt-5.6-luna-medium-w1<wave>-<node>-20260930`. Every filing used its own dispatch id
+`s5-phaseE-w1-gpt56luna-medium-20260930-<node>`. The model that judged every packet was
+**GPT-5.6 Luna, medium reasoning**.
+
+Each response was preserved first as `verdicts.v1.json`, then audited through the real
+`tests.file_reviews.file_one`, `validate_judgment._validate_quote_provenance`, and
+`validate_judgment._validate_one`, plus the 60-character floor, per-sample reasoning uniqueness,
+cross-node reuse, and a structural comparison freezing verdicts, sample ids, clauses, citations,
+decomposition verdicts and `overall`. The combined audit reported `cross_node_reuse: none`.
+
+Two reviewer-authored wording repairs were required:
+
+* `mat_g2_na_q2_2`: 121 duplicate sample-check reasonings -> 0; minimum length 141; structural result
+  `unchanged`.
+* `mat_g1_na_q1_0`: five strings below 60 characters (minimum 47) -> zero (minimum 63); structural
+  result `unchanged`.
+
+There were no set-aside replies and no overall contradiction. The legacy queue remained complete and
+the focused filing tests ran after both filing groups:
+
+```
+PYTHONPATH=. .venv/bin/python tests/legacy_review_queue.py --write
+legacy_review_queue: no v1 reviews on disk — queue is complete.
+  wrote validation_reports/phase2_hardening/legacy_review_queue.json
+
+PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_legacy_review_queue.py tests/unit/test_file_reviews.py -q -p no:cacheprovider
+......................                                                   [100%]
+22 passed in 0.58s
+```
+
+The seven priority nodes landed in `68b0fa61` and `75d7af03`; the first three wrapper-only nodes
+landed in `ff4a7916`.
+
+### Claims checked against live renders
+
+* **Confirmed content defect, `mat_g3_dp_q3_2`, seeds 501 and 701:** the live `FillInTable` payload
+  internally carries every value, but the rendered learner-visible structure deliberately leaves the
+  tulips/February cells blank while the stem asks for the total. The keyed total is therefore not
+  derivable from what the learner sees. Seeds 502 and 1002 also confirm table-mode hints still say
+  `bar` / `shortest bar`.
+* **Confirmed distribution claim, `mat_g3_mg_q2_4`:** the 20 dispatched seeds serve nearest-ten
+  estimation 19 times; seed 800 is the only nearest-thousand item. Whether that prevalence requires a
+  source change remains a later curriculum decision, not a change made during this campaign.
+* **Rendered observation only, not yet adjudicated:** `mat_g2_na_q3_2` and `_3` include 6, 8 and 9 as
+  operands while the competency names the 2, 3, 4, 5 and 10 tables. The packet evidence is real, but
+  whether the named table is determined by the first factor, groups, or group size remains a curriculum
+  interpretation; no source conclusion is recorded here.
+* **Reviewer-quality limit, `mat_g2_na_q2_2`:** five learner-facing-clarity checks say the item is
+  understandable and followable while assigning CONCERN. The verdicts were not edited or reconciled;
+  they are filed as the reviewer authored them and are not treated as confirmed defects.
+* Grade-1 claims were re-rendered at every non-PASS cited seed. The live stems/hints match the packet,
+  but several findings concern what a static visual description cannot prove (the marked point or block
+  geometry). They remain claims, not confirmed renderer defects.
+
+NAMED LIMITS:
+
+* The Agent runtime exposed no harness usage record. `tool_uses_by_reviewer` therefore records the
+  transcript: assigned-directory writes and any syntax check the transcript named. No transcript named
+  a path outside its node directory. This is recorded conduct, not filesystem sandbox enforcement.
+* 133 reviews remain STALE; the next queue entries are `mat_g1_na_q1_3`, `_4`, `_5`, `_6`, `_7`,
+  `_8`, and `_9`.
+* W2 was not started. §6F remains exactly 173 CONTRADICTED + 15 STALE, and the three §6F mutation
+  records remain blocked on that red baseline.
