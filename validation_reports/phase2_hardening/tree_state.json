@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
-    "kind": "campaign",
-    "began_at": "2026-09-30T15:49:16+08:00",
-    "session": "claude-h06-phaseE-haiku-2026-09-30",
-    "note": "Phase E W1 continued on Claude Haiku 4.5 (owner ruling 2026-09-30: Luna not dispatchable from this host). 94 STALE reviews owed; GPT session's 7 unfiled reviews recovered at 596bbc6d.",
-    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
-  },
+  "open_intent": null,
   "last_completed": {
     "kind": "chain",
-    "began_at": "2026-09-30T00:01:24+08:00",
-    "session": "claude-h06-phaseD-2026-09-30",
-    "note": "Phase D re-proof chain after c1366b94",
+    "began_at": "2026-09-30T16:27:18+08:00",
+    "session": "claude-h06-phaseE-haiku-2026-09-30",
+    "note": "Re-proof chain after the text_labels describer fix; Phase E W1 Haiku campaign continues (no filing while the mutation corpus runs).",
     "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-09-30T05:12:01+08:00",
-    "completion_note": "Phase D source batch landed (c1366b94, ac614688) and re-proved: corpus 187/190, 6 shards failures=0, run_all failed=3 known; 143 reviews STALE, re-review owner-gated."
+    "completed_at": "2026-09-30T23:11:49+08:00",
+    "completion_note": "Chain after 8a8b99a4 re-proved: corpus 188/191 (only the §6F cluster), 6 shards rc=0, verify-release complete, run_all failed=3 known (judgment_reviews_5 1761, capability_phase2 173 CONTRADICTED + 46 STALE)."
   }
 }

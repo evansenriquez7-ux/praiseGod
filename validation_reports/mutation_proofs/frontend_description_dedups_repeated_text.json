@@ -1,20 +1,18 @@
 {
  "asserts": [
-  "config_respects_competency"
+  "rendered_visual_description_12"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "bypassing curriculum gating"
+  "but the markup renders it"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_compat",
-  "--only",
-  "config"
+  "tests.frontend_suite"
  ],
- "definition_digest": "8a5e122a62c88f87d1e9af9d86a5bc78d0a531e12addecdaaa486b1fff6c6661",
+ "definition_digest": "68c0458c9d3d7656e60d903bb85bf3e9c9aae0dbe91b44996a48c318cb2a7b89",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL config_respects_competency (20):",
+ "diagnostic_line": "exit 1 — FAIL frontend_static_render_12: 37 finding(s)",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,24 +21,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "config_respects_competency",
-  "bypassing curriculum gating"
+  "FAIL frontend_static_render_12",
+  "but the markup renders it"
  ],
- "expected_check": "§2D (a saved configuration may not serve content outside a node's competency)",
- "finished_at": "2026-09-30T17:12:02+08:00",
+ "expected_check": "§12 (render-derived descriptions keep every rendered text node, repeats included)",
+ "finished_at": "2026-09-30T17:13:52+08:00",
  "input_digest": "d16d2f619522e7405d425955455305f278b42481511e7e74d63173a8adab7724",
  "mutated_paths": [
-  "backend/app/services/orchestrator.py"
+  "frontend/src/staticRenderEvidence.jsx"
  ],
- "mutation": "config_bypasses_competency",
+ "mutation": "frontend_description_dedups_repeated_text",
  "observed_markers": {
-  "bypassing curriculum gating": true,
-  "config_respects_competency": true
+  "FAIL frontend_static_render_12": true,
+  "but the markup renders it": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-09-30T17:12:01+08:00"
+ "started_at": "2026-09-30T17:13:30+08:00"
 }
