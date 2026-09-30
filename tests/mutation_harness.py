@@ -1871,6 +1871,26 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["equal jumps but rendered 0"],
     ),
     Mutation(
+        name="frontend_description_dedups_repeated_text",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Make the shared describer keep only the first occurrence of each rendered "
+            "string again -- how mat_g1_dp_q3_3's pictograph rows with equal counts "
+            "(roses 5, sunflowers 5) vanished from the packet description, and two blind "
+            "reviewers from two model families failed rows that were drawn."
+        ),
+        edits={
+            "frontend/src/staticRenderEvidence.jsx": (
+                "    if (text) labels.push(text);\n",
+                "    if (text && !labels.includes(text)) labels.push(text);  // planted dedup\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (render-derived descriptions keep every rendered text node, repeats included)",
+        expect_output_contains=["FAIL frontend_static_render_12", "but the markup renders it"],
+        baseline_must_not_contain=["but the markup renders it"],
+    ),
+    Mutation(
         name="frontend_visual_degenerates_to_empty_box",
         asserts=["frontend_static_render_12"],
         description=(

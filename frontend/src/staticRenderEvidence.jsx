@@ -4,18 +4,38 @@ import { JSDOM } from 'jsdom';
 
 import { renderVisualInner } from './utils/renderUtils.jsx';
 
+// Every non-empty rendered text node, in document order, WITH repeats and with no cap.
+// Until 2026-09-30 this kept only the first occurrence of each string and truncated at
+// 80. A pictograph row whose symbols repeated an earlier row's (roses and sunflowers both
+// five flowers) therefore vanished from the description every blind reviewer reads, and
+// two reviewers from two model families failed mat_g1_dp_q3_3 for rows that were drawn.
+// The 80 cap silently cut mat_g3_na_q2_0's 135-184 labels.
 function renderedTextLabels(document) {
   const labels = [];
-  const seen = new Set();
   const walker = document.createTreeWalker(document.body, 4);
   while (walker.nextNode()) {
     const text = walker.currentNode.nodeValue.trim();
-    if (text && !seen.has(text)) {
-      seen.add(text);
-      labels.push(text);
-    }
+    if (text) labels.push(text);
   }
-  return labels.slice(0, 80);
+  return labels;
+}
+
+// An independent recount (element childNodes, not a TreeWalker) of the same markup.
+function markupTextMultiset(markup) {
+  const { document } = new JSDOM(`<body>${markup}</body>`).window;
+  const counts = new Map();
+  const visit = (node) => {
+    for (const child of node.childNodes) {
+      if (child.nodeType === 3) {
+        const text = child.nodeValue.trim();
+        if (text) counts.set(text, (counts.get(text) || 0) + 1);
+      } else {
+        visit(child);
+      }
+    }
+  };
+  visit(document.body);
+  return counts;
 }
 
 export function describeStaticMarkup(visualType, markup) {
@@ -77,6 +97,20 @@ export function assertVisualEvidence(sample, evidence) {
     if (rendered !== sample.visual_params.jump_count) {
       findings.push(
         `declared ${sample.visual_params.jump_count} equal jumps but rendered ${rendered}`,
+      );
+    }
+  }
+  // The description must carry every rendered text node, repeats included: a reviewer
+  // shown a de-duplicated or truncated list judges rows as missing that were drawn.
+  const described = new Map();
+  for (const text of evidence.description.text_labels) {
+    described.set(text, (described.get(text) || 0) + 1);
+  }
+  for (const [text, count] of markupTextMultiset(evidence.markup)) {
+    const got = described.get(text) || 0;
+    if (got !== count) {
+      findings.push(
+        `description text_labels carry ${JSON.stringify(text)} ${got} time(s) but the markup renders it ${count} time(s)`,
       );
     }
   }
