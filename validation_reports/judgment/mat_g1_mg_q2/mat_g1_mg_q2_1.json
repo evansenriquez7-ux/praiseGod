@@ -29,10 +29,10 @@
       "clause": "non-standard units"
     }
   ],
-  "packet_digest": "832785d29f6edd40b3ff763279c2628ada26cd2c67301d59d4e6b76737755dc5",
+  "packet_digest": "6632dd0ddc5cb577c58e2a7c366d1c71b5c3b39d9e6bccf1fd5bd05bf7a43244",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -613,7 +613,7 @@
       "node_id": "mat_g1_mg_q2_1",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 9 hands. Which distance is shorter?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. The distance from the bench to the tree is 6 hands. The distance from the gate to the tree is 9 hands. Which distance is shorter?",
       "correct_answer": 6,
       "requested": {
         "difficulty_profile": null,
@@ -658,13 +658,13 @@
         "The shorter distance is 6 hands."
       ],
       "sample_id": "f214bd72057844cf4873",
-      "replay_digest": "553a5f4ede3cc613396e9f0cca7e457ef19b52d68a79e74abac0783bfecfc32c"
+      "replay_digest": "2f1ba2119c25ac29d0975fed1d1e91db80e03f4fb8fecb9e28880cba8b179fb4"
     },
     {
       "node_id": "mat_g1_mg_q2_1",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Which is longer: 4 paperclips or 2 paperclips?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Which is longer: 4 paperclips or 2 paperclips?",
       "correct_answer": 4,
       "requested": {
         "difficulty_profile": null,
@@ -713,7 +713,7 @@
         "The longer length is 4 paperclips."
       ],
       "sample_id": "b02eaf9bbda0aa7e781b",
-      "replay_digest": "24fdc2621f8f12a5af917b2fc3813cd1ddd618c1104e1ef7ddc0665facf9a89a"
+      "replay_digest": "5a2c9f8ee7f4f65cb51baf443bb10a1eb9e362308e74706908553a146d30963a"
     },
     {
       "node_id": "mat_g1_mg_q2_1",
@@ -1050,414 +1050,414 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem 'Which is shorter: 2 paperclips or 6 paperclips?' directly names two lengths and asks learners to identify the shorter one. No ambiguity in what is being compared or what answer is expected."
+          "reasoning": "The two paperclip counts are explicit and distinct, so shorter unambiguously identifies the count of two."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing lengths of paperclip chains is a contextually valid scenario for Grade 1. Paperclips are concrete, familiar objects; the comparison setup is logically sound and makes sense as a real-world measurement task."
+          "reasoning": "Treating identical paperclips as equal units makes the comparison logically sound; the hints consistently state that six exceeds two."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Language is simple and explicit: single question, single comparison, single correct answer. 'Shorter' and 'paperclips' are vocabulary within Grade 1 reach. The numeric values (2, 6) are familiar to learners at this level."
+          "reasoning": "The short question, numeric options, and plain language are readily understandable for a Grade 1 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematics is correct: 2 paperclips form a shorter length than 6 paperclips. The correct answer (2) is provided in the options, and the hints accurately support the reasoning path (6 > 2, so 2 is shorter)."
+          "reasoning": "Two paperclips is shorter than six paperclips, and the answer and final hint correctly select 2."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "ecadea911a55979903cc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem 'Which is longer: 6 paperclips or 4 paperclips?' is unambiguous. Two lengths are named, and the task (identify the longer) is explicit."
+          "reasoning": "The stem clearly compares 6 paperclips with 4 paperclips and asks for the longer one, leaving one determinate answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing two paperclip chains by length is a valid, concrete context. The scenario is logically coherent and appropriate for elementary measurement instruction."
+          "reasoning": "Identical paperclips provide a coherent unit comparison, and each hint follows the stated six-versus-four relationship."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question structure is simple and direct. 'Longer' and 'paperclips' are vocabulary Grade 1 learners encounter regularly. The task requires a single comparison between two named values."
+          "reasoning": "The direct wording and four simple numeric options make the requested longer length clear to a young learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is mathematically sound: 6 > 4, so 6 paperclips form a longer length. Hints correctly guide the learner through the comparison logic."
+          "reasoning": "Six identical units measure more length than four, so answer 6 and its explanatory hint are mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "9156c40c5378ea3902ba",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two specific distances are named and located (bench to tree: 3 blocks; gate to tree: 4 blocks). The task—identify which distance is shorter—is unambiguous."
+          "reasoning": "Both named routes to the tree have explicit block counts, and asking which distance is shorter yields a unique choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of measuring distances between familiar playground landmarks (bench, gate, tree) using block-based units is logically sound. The spatial context is concrete and appropriate for Grade 1."
+          "reasoning": "The bench-to-tree and gate-to-tree distances are consistently compared as counts of the same block unit."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents two clear distance comparisons using a familiar spatial context. 'Shorter' and 'distance' are words Grade 1 learners encounter in measurement units. The numeric values (3, 4) are within easy reach."
+          "reasoning": "The two-sentence context identifies each distance plainly and the options include the requested numerical response."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparison is correct: 3 blocks is shorter than 4 blocks, so the answer (3) is mathematically valid. The hints properly support this reasoning without contradiction."
+          "reasoning": "A distance of 3 blocks is shorter than 4 blocks; the answer and all three hints preserve that comparison."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "4b18da8ed44aa5b52cb0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances are explicitly given (bench to tree: 8 blocks; gate to tree: 9 blocks) with a clear question: which is shorter. No ambiguity in the task."
+          "reasoning": "The two distances are explicitly 8 and 9 blocks, making the shorter distance uniquely identifiable."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The setup uses familiar locations and a concrete unit (blocks) to measure distance. The scenario is logically valid for a Grade 1 distance comparison activity."
+          "reasoning": "Both route descriptions use blocks consistently, while the hints correctly interpret nine as more than eight."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem structure is consistent with prior samples in the set. Vocabulary (distance, blocks, shorter) is Grade 1 appropriate. Numeric values (8, 9) are within learner range."
+          "reasoning": "The repeated route structure is simple, and the wording clearly asks for the shorter of the two stated distances."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 8 blocks is a shorter distance than 9 blocks. The reasoning in the hints is sound and leads directly to the correct answer."
+          "reasoning": "Eight blocks is mathematically shorter than nine blocks, and the keyed answer 8 appears among the options."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "c38736a55d295c692458",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question 'Which is longer: 8 paperclips or 2 paperclips?' names two lengths and asks for identification of the longer. The task is entirely unambiguous."
+          "reasoning": "The question presents two different paperclip counts and uses the unambiguous comparison word longer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing paperclip chain lengths remains a valid, concrete scenario. The context is logically sound and familiar to Grade 1 learners."
+          "reasoning": "The identical-unit interpretation is coherent, and the second hint correctly notes that eight exceeds two."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses the same simple structure as prior length-comparison samples. 'Longer' and 'paperclips' are accessible vocabulary. Numeric values (8, 2) differ clearly, making the comparison straightforward."
+          "reasoning": "A concise question with familiar counting language and numeric options communicates the task without distraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 8 paperclips form a longer chain than 2 paperclips. Hints accurately guide the learner through the comparison."
+          "reasoning": "Eight paperclips represent more length than two paperclips, so the answer 8 and its hint are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "a5010a662d4bed396cea",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances are named with specific locations (bench to tree: 9 blocks; gate to tree: 6 blocks) and the question—which is longer—is explicit and unambiguous."
+          "reasoning": "The bench and gate distances are separately labeled as 9 and 6 blocks, and only one can be longer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of comparing distances between playground locations using block-based units is logically valid and appropriate for Grade 1 distance measurement instruction."
+          "reasoning": "The same block unit is used for both paths, so comparing their counts is logically appropriate; hints agree."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem follows the established distance-comparison pattern. 'Longer' and 'distance' are Grade 1 vocabulary. Numbers (9, 6) are familiar and the difference (3) is clear."
+          "reasoning": "The route context and question are plainly phrased, with a small set of readable numerical answer choices."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 9 blocks is longer than 6 blocks. Hints provide accurate supporting reasoning without error."
+          "reasoning": "Nine blocks is longer than six blocks, matching the keyed answer 9 and the supplied explanation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "2fed3365c1ced6f43025",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances using 'hands' as the unit are explicitly stated (6 hands and 7 hands), and the task—identify the shorter distance—is clear and unambiguous."
+          "reasoning": "The stem identifies two distances in hands, six and seven, so the requested shorter value is uniquely determined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Using body-based units (hands) to measure distance is a developmentally appropriate and logically valid non-standard measurement method for Grade 1."
+          "reasoning": "Both paths are measured in the same informal hand unit, and the hints correctly compare seven with six."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem structure mirrors earlier distance samples. 'Hands' as a unit is appropriate for Grade 1 body-based measurement. Numbers (6, 7) are familiar; the difference is small but clear."
+          "reasoning": "The compact route description and straightforward shorter question suit early elementary readers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 6 hands is a shorter distance than 7 hands. Hints accurately support this reasoning path."
+          "reasoning": "Six hands is less than seven hands, so answer 6 is valid and appears in the options."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "bb72fb08b00892848f5c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances using hands (7 hands and 4 hands) are named, and the question—which is longer—is explicit and unambiguous."
+          "reasoning": "The two stated hand measurements, seven and four, clearly determine which route is longer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing distances using a non-standard body-based unit (hands) is logically sound and appropriate for Grade 1 measurement contexts."
+          "reasoning": "Using hands for both routes supports a direct count comparison, and every hint agrees that seven exceeds four."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The structure is consistent with prior distance samples. 'Hands' is an appropriate non-standard unit for this grade level. Numbers (7, 4) are simple and the difference is obvious."
+          "reasoning": "The context names both routes and the longer-distance question is expressed in accessible language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 7 hands is longer than 4 hands. Hints provide accurate reasoning to support this conclusion."
+          "reasoning": "Seven hands represents a longer distance than four hands, matching the answer and final hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "ee914c1a7e49478126d7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances are clearly stated (7 blocks and 9 blocks) and the task—identify the shorter—is unambiguous."
+          "reasoning": "The two block distances are explicitly 7 and 9, so there is one clear shorter distance."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario remains logically sound: comparing distances between familiar locations using a concrete non-standard unit."
+          "reasoning": "Both route measurements share blocks as their unit, and the hint sequence accurately compares seven and nine."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem structure is consistent across the sample set. Vocabulary and numbers (7, 9) are within Grade 1 range, and the question is straightforward."
+          "reasoning": "The stem uses a familiar route pattern and asks one simple question with immediately interpretable options."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is mathematically correct: 7 blocks is shorter than 9 blocks. Hints accurately guide learners to this conclusion."
+          "reasoning": "Seven blocks is shorter than nine blocks, and the answer 7 is included and correctly explained."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "f27e0a6f9959db6b9a0b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem 'Which is longer: 5 hands or 9 hands?' directly presents two lengths using a non-standard unit and asks for the longer. The task is unambiguous."
+          "reasoning": "The stem directly contrasts 5 hands and 9 hands, making the longer measurement unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Using hands as a non-standard measurement unit is logically valid and encourages Grade 1 learners to think about body-based measurement."
+          "reasoning": "Hands are used consistently as identical counted units, while the hints correctly establish that nine exceeds five."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question follows the established pattern for length comparison. 'Hands' is familiar vocabulary, and numbers (5, 9) are within Grade 1 range with a clear difference."
+          "reasoning": "The single-sentence comparison is concise and the options contain the two relevant counts plus distractors."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 9 hands is longer than 5 hands. Hints support this reasoning accurately."
+          "reasoning": "Nine hands is longer than five hands, exactly matching the keyed answer and explanatory hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "f214bd72057844cf4873",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Although the stem includes a thematic element (dancer, dance shoes), the core question—comparing two distances using hands—remains unambiguous. The theme does not introduce confusion about the mathematical task."
+          "reasoning": "The themed introduction does not alter the explicit 6-hand and 9-hand comparison, which has one shorter answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The thematic framing (Sir Rez with a math challenge about dance shoes) adds narrative context without compromising the logical validity of the distance comparison task itself."
+          "reasoning": "The dance-shoe theme is only a wrapper; the two route distances use the same hand unit and hints remain consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical question is stated clearly despite the thematic wrapper. The comparison (6 hands vs. 9 hands, which is shorter) is explicit and Grade 1 appropriate."
+          "reasoning": "The brief introductory theme is readable and the actual route question remains clear to a Grade 1 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 6 hands is a shorter distance than 9 hands. Hints accurately support this reasoning and do not contradict the stem."
+          "reasoning": "Six hands is shorter than nine hands, so answer 6 and the comparison hints are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "b02eaf9bbda0aa7e781b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Despite the thematic element (basketball player Isko), the mathematical question—which is longer, 4 paperclips or 2 paperclips—is clear and unambiguous."
+          "reasoning": "The basketball-themed wrapper leaves a clear question comparing four paperclips with two paperclips."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The theme (basketball) is presented as narrative flavor but does not interfere with the logic of comparing two length measurements. The context remains valid."
+          "reasoning": "The theme does not interfere with the paperclip measurement, and the hints correctly state that four exceeds two."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical task is explicit: compare two paperclip lengths and identify the longer. The theme does not obscure the core question, which remains Grade 1 appropriate."
+          "reasoning": "The themed lead-in is short, and the cloze question plus numeric options clearly identify the response needed."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 4 paperclips form a longer length than 2 paperclips. Hints accurately guide the reasoning."
+          "reasoning": "Four paperclips measure longer than two paperclips, so the keyed answer 4 is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "5a80e89e5811a7dd9a9c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances using hands (9 hands and 2 hands) are stated, and the task—identify the shorter distance—is unambiguous."
+          "reasoning": "The route labels and hand counts 9 and 2 are explicit, leaving no uncertainty about the shorter distance."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of comparing distances between locations using a body-based unit remains logically sound and appropriate for Grade 1."
+          "reasoning": "Both distances use hands consistently, and the hints correctly reason from nine being greater than two."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem follows the established distance-comparison pattern. 'Hands' and 'shorter' are Grade 1 vocabulary. Numbers (9, 2) show a large, clear difference."
+          "reasoning": "The wording is direct, the requested comparison is singular, and the cloze options are simple numbers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 2 hands is shorter than 9 hands. Hints provide sound reasoning to support this conclusion."
+          "reasoning": "Two hands is shorter than nine hands, agreeing with the answer and the stated final hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "51c87571556e3b844569",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question 'Which is longer: 5 crayons or 7 crayons?' names two lengths and asks for identification of the longer. The task is entirely unambiguous."
+          "reasoning": "The two crayon counts are plainly 5 and 7, and the longer comparison has a unique result."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing lengths of crayon stacks or lines is a concrete, familiar scenario for Grade 1 learners. The context is logically valid."
+          "reasoning": "Counting identical crayons is a coherent non-standard length comparison, and all hints follow the stated values."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses the same simple structure as earlier length samples. 'Crayons' is familiar classroom vocabulary, and numbers (5, 7) are within Grade 1 range."
+          "reasoning": "The one-line prompt and multiple-choice options use familiar objects and uncomplicated comparison language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 7 crayons form a longer measurement than 5 crayons. Hints accurately support this reasoning."
+          "reasoning": "Seven crayons is longer than five crayons, correctly reflected by answer 7 and the final hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "0329435e90a7fbe67e5d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances are clearly specified (6 blocks from bench to tree; 3 blocks from gate to tree), and the question—which is longer—is explicit and unambiguous."
+          "reasoning": "The two route distances are clearly six and three blocks, so the longer one is uniquely six."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of comparing distances between playground locations using block units is logically sound and developmentally appropriate."
+          "reasoning": "Both route distances are measured in blocks, and the hints accurately state that six exceeds three."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem structure is consistent with prior distance samples. Vocabulary items including the term for spatial measurement and comparative language are Grade 1 appropriate, and the numeric values (6, 3) are familiar to learners."
+          "reasoning": "The repeated route wording is understandable, and the question asks plainly which distance is longer."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 6 blocks is a longer distance than 3 blocks. Hints provide accurate reasoning."
+          "reasoning": "Six blocks is longer than three blocks, with answer 6 present among the choices."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "323502ab74cdb0ad5744",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances are clearly named (3 blocks and 8 blocks), and the task—identify the shorter distance—is unambiguous."
+          "reasoning": "The stem gives 3 and 8 blocks for two named routes, making the shorter distance unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The playground-based distance comparison scenario remains logically valid and appropriate for Grade 1 measurement instruction."
+          "reasoning": "The hint-gated experience still presents consistent block measurements, and each hint correctly supports the answer three."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem follows the established distance-comparison pattern. Vocabulary and numbers are Grade 1 appropriate; the difference (5 blocks) is clear."
+          "reasoning": "The route descriptions, direct shorter question, and numeric choices are clear despite the scaffolded experience label."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 3 blocks is a shorter distance than 8 blocks. Hints accurately guide the reasoning."
+          "reasoning": "Three blocks is shorter than eight blocks, and the answer 3 plus all hints are mathematically consistent."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "c6e2deab738c40f3b8c9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem 'Which is longer: 5 paperclips or 3 paperclips?' is unambiguous: two lengths are named and the task is explicit."
+          "reasoning": "The paperclip comparison names exactly two counts, five and three, and asks for the longer one."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing paperclip lengths is a concrete and logically valid scenario for Grade 1 measurement activities."
+          "reasoning": "The mastery-drill presentation does not change the valid identical-paperclip comparison or its consistent hints."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question uses simple, direct language consistent with earlier length-comparison samples. Numbers (5, 3) are familiar and the difference is clear."
+          "reasoning": "The concise cloze stem and four numeric options make the requested longer count easy to identify."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 5 paperclips form a longer measurement than 3 paperclips. Hints provide accurate supporting reasoning."
+          "reasoning": "Five paperclips are longer than three paperclips, so the answer 5 and final hint are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "sample_id": "6c93eec33123c961e097",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two distances using hands (8 hands and 5 hands) are clearly stated, and the question—which is shorter—is unambiguous."
+          "reasoning": "The two hand distances are explicitly eight and five, which determines a single shorter route."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing distances between locations using a body-based unit (hands) is logically sound and appropriate for Grade 1 measurement."
+          "reasoning": "The scaffolded presentation retains one common hand unit, and its hints correctly compare eight with five."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem structure is consistent with prior distance samples using hands. Vocabulary and numbers (8, 5) are Grade 1 appropriate."
+          "reasoning": "The route context states each measurement clearly and the cloze response is supported by simple numerical options."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer is correct: 5 hands is a shorter distance than 8 hands. Hints accurately support this conclusion."
+          "reasoning": "Five hands is shorter than eight hands, matching the answer 5 and every supplied hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     }
   ],
   "clause_evidence": [
@@ -1465,133 +1465,87 @@
       "requirement_id": "compare",
       "clause": "Compare",
       "verdict": "PASS",
-      "reasoning": "Every rendered sample (all 18) explicitly asks the learner to compare two measurements and identify which is shorter or longer. No sample requires or tests any behavior beyond comparison. This requirement is fully and consistently exercised across the packet.",
+      "reasoning": "Every examined item requires choosing which of two stated measurements is shorter or longer, directly exercising comparison.",
       "sample_ids": [
         "97a1399803c183295456",
-        "ecadea911a55979903cc",
-        "9156c40c5378ea3902ba",
-        "4b18da8ed44aa5b52cb0",
-        "c38736a55d295c692458",
-        "a5010a662d4bed396cea",
-        "2fed3365c1ced6f43025",
-        "bb72fb08b00892848f5c",
-        "ee914c1a7e49478126d7",
-        "f27e0a6f9959db6b9a0b",
-        "f214bd72057844cf4873",
-        "b02eaf9bbda0aa7e781b",
-        "5a80e89e5811a7dd9a9c",
-        "51c87571556e3b844569",
-        "0329435e90a7fbe67e5d",
-        "323502ab74cdb0ad5744",
-        "c6e2deab738c40f3b8c9",
-        "6c93eec33123c961e097"
+        "ecadea911a55979903cc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "requirement_id": "lengths",
       "clause": "lengths",
       "verdict": "PASS",
-      "reasoning": "Seven samples directly assess length comparison by asking learners to identify which of two object-based measurements is greater or lesser in magnitude. These samples use direct quantities of paperclips, crayons, or hands and isolate the length-comparison task distinct from the spatial-distance variant represented elsewhere in the packet.",
+      "reasoning": "The paperclip and crayon items explicitly present counted objects as lengths and ask learners to compare those lengths.",
       "sample_ids": [
         "97a1399803c183295456",
-        "ecadea911a55979903cc",
-        "c38736a55d295c692458",
-        "f27e0a6f9959db6b9a0b",
-        "b02eaf9bbda0aa7e781b",
-        "51c87571556e3b844569",
-        "c6e2deab738c40f3b8c9"
+        "51c87571556e3b844569"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "requirement_id": "distances",
       "clause": "distances",
       "verdict": "PASS",
-      "reasoning": "Eleven samples directly assess distance comparison by explicitly stating measurements between two locations and asking learners to compare them. Contexts vary (bench to tree, gate to tree) and units include blocks and hands, demonstrating full coverage of the distance dimension.",
+      "reasoning": "The route-based items explicitly label bench-to-tree and gate-to-tree measurements as distances and compare them.",
       "sample_ids": [
         "9156c40c5378ea3902ba",
-        "4b18da8ed44aa5b52cb0",
-        "a5010a662d4bed396cea",
-        "2fed3365c1ced6f43025",
-        "bb72fb08b00892848f5c",
-        "ee914c1a7e49478126d7",
-        "f214bd72057844cf4873",
-        "5a80e89e5811a7dd9a9c",
-        "0329435e90a7fbe67e5d",
-        "323502ab74cdb0ad5744",
-        "6c93eec33123c961e097"
+        "a5010a662d4bed396cea"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     },
     {
       "requirement_id": "non_standard_units",
       "clause": "non-standard units",
       "verdict": "PASS",
-      "reasoning": "All 18 samples use non-standard measurement units: paperclips (5 samples), blocks (6 samples), hands (6 samples), and crayons (1 sample). No sample uses metric or standard units. The variety and consistent application of non-standard units throughout the packet demonstrates complete and robust coverage of this requirement.",
+      "reasoning": "The packet uses paperclips, blocks, hands, and crayons as counted informal measurement units rather than standard rulers or metric units.",
       "sample_ids": [
-        "97a1399803c183295456",
-        "ecadea911a55979903cc",
-        "9156c40c5378ea3902ba",
-        "4b18da8ed44aa5b52cb0",
-        "c38736a55d295c692458",
-        "a5010a662d4bed396cea",
         "2fed3365c1ced6f43025",
-        "bb72fb08b00892848f5c",
-        "ee914c1a7e49478126d7",
-        "f27e0a6f9959db6b9a0b",
-        "f214bd72057844cf4873",
-        "b02eaf9bbda0aa7e781b",
-        "5a80e89e5811a7dd9a9c",
-        "51c87571556e3b844569",
-        "0329435e90a7fbe67e5d",
-        "323502ab74cdb0ad5744",
-        "c6e2deab738c40f3b8c9",
-        "6c93eec33123c961e097"
+        "b02eaf9bbda0aa7e781b"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1:mat_g1_mg_q2_1",
-      "reviewer_identity": "blind-reviewer-haiku45-pb1-mat_g1_mg_q2_1-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1:mat_g1_mg_q2_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w115-mat_g1_mg_q2_1-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "832785d29f6edd40b3ff763279c2628ada26cd2c67301d59d4e6b76737755dc5",
+      "packet_digest": "6632dd0ddc5cb577c58e2a7c366d1c71b5c3b39d9e6bccf1fd5bd05bf7a43244",
       "clause_ids": [
         "compare",
         "lengths",
         "distances",
         "non_standard_units"
       ],
-      "response_ref": ".responses/s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1.json",
-      "response_digest": "0a476dfef79ae0d27e1155a9e1ff1313f9a70b3c452506b2e55144f195ba9400",
-      "prompt_ref": ".responses/s5-phaseB-w1-haiku45-20260925-mat_g1_mg_q2_1.prompt.txt",
-      "prompt_digest": "ffe1ef814bb8d0689b335c3bdf0b9a55828d38876a6448f119f8334851e1919f",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseB/mat_g1_mg_q2_1/prompt.txt and Write only local_only/scratch/phaseB/mat_g1_mg_q2_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses (Read prompt, Write reply); one wording-only revision requested by the dispatcher for 4 unmatched quoted spans, 8 tool uses. Verdicts, sample ids, clause citations and overall byte-compared unchanged across the revision. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1.json",
+      "response_digest": "0227ecb4850a3bc2c09cdebcc85e92af6e66414bd4915397a7cb95cf7453203a",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q2_1.prompt.txt",
+      "prompt_digest": "50ba506a7e21ca7b58aef41a4d00eed10da1f3bc5f1a7ff5b76b74e82877cb16",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All 18 samples present single-step comparison tasks using numbers within the 1-10 range, developmentally appropriate for Grade 1. Language is simple and direct; instructions contain no domain-specific vocabulary beyond basic comparison terms. Thematic variations in samples 11-12 add narrative context without increasing cognitive load."
+      "rationale": "Each item asks a first-grade learner to compare two small counts of identical informal units, with direct wording and no unnecessary computation or multi-step reasoning."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly addresses the stated competency 'Compare lengths and distances using non-standard units.' Items consistently require learners to identify which of two measurements is shorter or longer, using only non-standard units (paperclips, blocks, hands, crayons). No standard metric units appear."
+      "rationale": "The stems directly ask which represented length or distance is shorter or longer, using paperclips, blocks, hands, or crayons as non-standard units."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The packet demonstrates all four requirement components. Compare is tested in all 18 samples; lengths in 7 samples (direct object comparisons); distances in 11 samples using explicit spatial contexts naming origin and destination points; non-standard units in all 18 samples. No lossless decomposition gap is observed.",
+      "rationale": "Across the packet, learners compare both lengths and distances and encounter several concrete non-standard units in both shorter and longer directions.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The four requirements—compare, lengths, distances, non_standard_units—form a complete, non-overlapping decomposition of the competency statement. All four are independently exercised across the sample set with no gaps; each requirement appears in at least one sample, and compare/non-standard units are represented in every sample.",
+        "reasoning": "The four printed requirements separately identify comparing, lengths, distances, and non-standard units; together they losslessly express the stated competency without adding an unrelated skill.",
         "requirement_ids": [
           "compare",
           "lengths",
@@ -1608,7 +1562,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Generator exercises both domain types (lengths and distances), multiple non-standard units (paperclips, blocks, hands, crayons), both comparison directions (shorter and longer), varying number ranges and differences, both item formats (cloze and mcq), and multiple experience levels (standard, hint_gated, mastery_drill, scaffolded). Thematic elements introduce variety without narrowing the mathematical scope.",
+      "rationale": "The samples cover both requested measurement contexts, both comparison outcomes, and multiple informal units, so the printed competency is represented broadly.",
       "clause_ids": [
         "compare",
         "lengths",
@@ -1618,11 +1572,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All numerical comparisons stay within the 1-10 range, with most differences between values being 2-5 units apart. This magnitude and spread aligns with Grade 1 Quarter 2 expectations; no operands exceed developmentally appropriate bounds, and visual magnitude differences are clear enough for non-standard unit reasoning."
+      "rationale": "Numerical values stay within a small, accessible range and the response choices remain simple, matching an early Grade 1 comparison task."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Variants span comparison direction (shorter/longer), context type (object lengths vs. spatial distances), non-standard unit type (four distinct units), numerical magnitude across the range (1-10), format type (cloze and mcq), and thematic wrappers (themed and unthemed). Variant space is well-populated without empty cells or forced combinations."
+      "rationale": "The packet varies unit type, value order, shorter versus longer wording, cloze versus multiple choice, and presentation experience while preserving the target comparison."
     }
   },
   "overall": "PASS"

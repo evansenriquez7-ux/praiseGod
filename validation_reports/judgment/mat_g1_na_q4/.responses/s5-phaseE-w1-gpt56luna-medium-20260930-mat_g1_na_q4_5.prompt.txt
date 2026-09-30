@@ -1,0 +1,273 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w113r2-mat_g1_na_q4_5-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q4_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w113r2-mat_g1_na_q4_5-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q4_5
+PACKET DIGEST: c6e00d28820b5cd3ec092d429c0f6b11b4421dbf384de03fcf8d0300f3636c56
+COMPETENCY (Grade 1, Quarter 4, None):
+Compare different denominations of peso coins (excluding centavo coins) and bills up to ₱100.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  compare: Compare
+  different_denominations: different denominations
+  peso_coins: peso coins
+  excluding_centavo_coins: excluding centavo coins
+  bills: bills
+  up_to_100: up to ₱100
+
+SAMPLES (every one of these is real rendered output):
+  sample eaebfc4d75f789ecd286  seed 42  [read_mcq]
+      stem:    Which has a smaller value: 1 ₱5 coin or 1 ₱50 bill?
+      answer:  1 ₱5 coin
+      options: 1 ₱5 coin / 1 ₱10 coin / They are equal / 1 ₱50 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱5"], "distinct_colours": ["hsl(var(--text-muted)", "#e2e8f0,", "#cbd5e1)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample df833fe6ac9cadfad135  seed 43  [mcq]
+      stem:    Which has a greater value: 1 ₱50 bill or 1 ₱100 bill?
+      answer:  1 ₱100 bill
+      options: 1 ₱50 bill / 1 ₱10 coin / 1 ₱100 bill / They are equal
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1762889fc8f74ea5e78f  seed 44  [cloze]
+      stem:    Which has a smaller value: 1 ₱20 bill or 1 ₱1 coin?
+      answer:  1 ₱1 coin
+      options: 1 ₱50 bill / They are equal / 1 ₱20 bill / 1 ₱1 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f4f6ac67b9f8b8ad47c9  seed 45  [mcq]
+      stem:    Which has a greater value: 1 ₱20 bill or 1 ₱50 bill?
+      answer:  1 ₱50 bill
+      options: They are equal / 1 ₱10 coin / 1 ₱20 bill / 1 ₱50 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 84663a49abfe4b6406ee  seed 46  [cloze]
+      stem:    Which has a smaller value: 1 ₱100 bill or 1 ₱1 coin?
+      answer:  1 ₱1 coin
+      options: 1 ₱100 bill / 1 ₱10 coin / They are equal / 1 ₱1 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 33d1b45c9f2b35bd0715  seed 500  [read_mcq]
+      stem:    Which has a smaller value: 1 ₱20 bill or 1 ₱5 coin?
+      answer:  1 ₱5 coin
+      options: 1 ₱5 coin / 1 ₱50 bill / They are equal / 1 ₱20 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 224c5f5b4f659c49afce  seed 501  [read_mcq]
+      stem:    Which has a greater value: 1 ₱10 coin or 1 ₱1 coin?
+      answer:  1 ₱10 coin
+      options: 1 ₱1 coin / 1 ₱10 coin / They are equal / 1 ₱50 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#fef08a 60%,", "#cbd5e1 60%)", "#1e293b", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0d121aa18a343f807598  seed 502  [cloze]
+      stem:    Which has a smaller value: 1 ₱100 bill or 1 ₱10 coin?
+      answer:  1 ₱10 coin
+      options: 1 ₱10 coin / They are equal / 1 ₱20 bill / 1 ₱100 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 720559b322587cbb9c4e  seed 600  [read_mcq]
+      stem:    Which has a smaller value: 1 ₱1 coin or 1 ₱100 bill?
+      answer:  1 ₱1 coin
+      options: They are equal / 1 ₱20 bill / 1 ₱1 coin / 1 ₱100 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱1"], "distinct_colours": ["hsl(var(--text-muted)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 50a38f41de37bf6b25df  seed 601  [cloze]
+      stem:    Which has a smaller value: 1 ₱5 coin or 1 ₱20 bill?
+      answer:  1 ₱5 coin
+      options: 1 ₱20 bill / 1 ₱100 bill / They are equal / 1 ₱5 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f29b06c4eebbe8eedce1  seed 604  [mcq]
+      stem:    Which has a smaller value: 1 ₱100 bill or 1 ₱20 bill?
+      answer:  1 ₱20 bill
+      options: 1 ₱1 coin / 1 ₱100 bill / They are equal / 1 ₱20 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c458ffeebb2fddf6ce56  seed 605  [read_mcq]
+      stem:    Which has a greater value: 1 ₱100 bill or 1 ₱10 coin?
+      answer:  1 ₱100 bill
+      options: 1 ₱10 coin / 1 ₱100 bill / 1 ₱5 coin / They are equal
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱100", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#c084fc,", "#7c3aed)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 158a8bc5bad2d0ac3de0  seed 606  [mcq]
+      stem:    Which has a greater value: 1 ₱10 coin or 1 ₱50 bill?
+      answer:  1 ₱50 bill
+      options: 1 ₱50 bill / They are equal / 1 ₱20 bill / 1 ₱10 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d4556f4d1b65db777970  seed 607  [cloze]
+      stem:    Which has a greater value: 1 ₱10 coin or 1 ₱20 bill?
+      answer:  1 ₱20 bill
+      options: 1 ₱100 bill / They are equal / 1 ₱20 bill / 1 ₱10 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3fbaac273087ae8e87d4  seed 700  [mcq]
+      stem:    Which has a greater value: 1 ₱1 coin or 1 ₱50 bill?
+      answer:  1 ₱50 bill
+      options: 1 ₱50 bill / 1 ₱5 coin / They are equal / 1 ₱1 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4b0200388c8dcd79fab1  seed 701  [cloze]
+      stem:    🚴 Ate Sam enjoys running shoes. Here is a math challenge. Which has a greater value: 1 ₱100 bill or 1 ₱10 coin?
+      answer:  1 ₱100 bill
+      options: 1 ₱10 coin / 1 ₱50 bill / They are equal / 1 ₱100 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d2b8e07455d1a03e1164  seed 702  [cloze]
+      stem:    🏐 Ate Alyssa enjoys shuttlecocks. Here is a math challenge. Which has a greater value: 1 ₱100 bill or 1 ₱50 bill?
+      answer:  1 ₱100 bill
+      options: 1 ₱100 bill / They are equal / 1 ₱20 bill / 1 ₱50 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3724d09977c303ae8610  seed 800  [read_mcq]
+      stem:    Which has a smaller value: 1 ₱1 coin or 1 ₱5 coin?
+      answer:  1 ₱1 coin
+      options: They are equal / 1 ₱5 coin / 1 ₱100 bill / 1 ₱1 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 6, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["COINS", "₱1"], "distinct_colours": ["hsl(var(--text-muted)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 90556e809c73644452ad  seed 801  [cloze]
+      stem:    Which has a greater value: 1 ₱50 bill or 1 ₱10 coin?
+      answer:  1 ₱50 bill
+      options: They are equal / 1 ₱50 bill / 1 ₱20 bill / 1 ₱10 coin
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4cf957057fcdd9facd74  seed 900  [mcq]
+      stem:    Which has a greater value: 1 ₱50 bill or 1 ₱20 bill?
+      answer:  1 ₱50 bill
+      options: 1 ₱100 bill / 1 ₱20 bill / They are equal / 1 ₱50 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fdc153e7e3ce9e8a923f  seed 901  [read_mcq]
+      stem:    Which has a smaller value: 1 ₱50 bill or 1 ₱100 bill?
+      answer:  1 ₱50 bill
+      options: 1 ₱50 bill / 1 ₱5 coin / They are equal / 1 ₱100 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample beacb3559aa1e99156e3  seed 1000  [mcq]
+      stem:    Which has a greater value: 1 ₱10 coin or 1 ₱100 bill?
+      answer:  1 ₱100 bill
+      options: 1 ₱10 coin / 1 ₱5 coin / 1 ₱100 bill / They are equal
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 29553d0ca6a4a10badd2  seed 1001  [cloze]
+      stem:    Which has a smaller value: 1 ₱20 bill or 1 ₱50 bill?
+      answer:  1 ₱20 bill
+      options: 1 ₱20 bill / 1 ₱100 bill / 1 ₱50 bill / They are equal
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 8483532372b7bf1be8ae  seed 1002  [cloze]
+      stem:    Which has a greater value: 1 ₱10 coin or 1 ₱100 bill?
+      answer:  1 ₱100 bill
+      options: 1 ₱1 coin / 1 ₱10 coin / They are equal / 1 ₱100 bill
+      hints:   ["Find the total value of the first group of money.", "Find the total value of the second group of money.", "Compare the two values to see which one is greater."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}

@@ -34,10 +34,10 @@
       "clause": "rectangles"
     }
   ],
-  "packet_digest": "e785ea4d61a1ef801b104a73c5896c7f7f41bbe3ac3eed2c9ca10716feb5bbce",
+  "packet_digest": "2f5c65bff4e63a5bc9faa3692901bd6ba599905df227d572a18f5183bd4402c0",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-  "review_date": "2026-09-24",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -970,7 +970,7 @@
       "node_id": "mat_g1_mg_q1_2",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. A long rectangle is cut across its width into two equal squares. What two shapes are made?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. A long rectangle is cut across its width into two equal squares. What two shapes are made?",
       "correct_answer": "two squares",
       "requested": {
         "difficulty_profile": null,
@@ -1016,13 +1016,13 @@
         "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
       ],
       "sample_id": "b713e15cc290a9ef46d6",
-      "replay_digest": "ea5b5f2b86606d4fe843c2f64e2502725a397778c2b56feedfc5576a9160e2da"
+      "replay_digest": "337762451202119ec47478af10345ba7474984061afc00efc29bb6aeeeecc5c0"
     },
     {
       "node_id": "mat_g1_mg_q1_2",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "🧁 Ate Nena has a math challenge about loaves of bread. Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+      "question_text": "🧁 Ate Nena enjoys loaves of bread. Here is a math challenge. Two triangles are placed together, matching their longest straight edges. What shape do they form?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
@@ -1118,7 +1118,7 @@
         }
       },
       "sample_id": "2afcf0ace18ad26c2c9d",
-      "replay_digest": "2409519bf1924461a32dba08ce27ecc72dac56added9354a62d97f12193218d2"
+      "replay_digest": "9a3f1ab70c0bea29d82007bab5af0724e916e4ce54c0c4e6625b4000875a0db9"
     },
     {
       "node_id": "mat_g1_mg_q1_2",
@@ -1687,437 +1687,437 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The long rectangle is explicitly cut across its width into two equal squares, so the requested pair of resulting shapes is determinate."
+          "reasoning": "The stated long rectangle and cut across its width into equal squares determine two squares without a competing interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Cutting a suitably proportioned long rectangle across its width can produce two equal squares, and the question follows that stated construction."
+          "reasoning": "The described cut is geometrically coherent, and the resulting two equal square pieces match the selected answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is short and concrete, and the shape names and equal-parts relationship are understandable for an early primary learner."
+          "reasoning": "The short question uses familiar shape names and plainly asks what two pieces result from the described cut."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle with twice the square width can be partitioned across its width into exactly two equal squares."
+          "reasoning": "A sufficiently long rectangle cut across its width into two equal square sections produces exactly two squares as stated."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "6dc799abb3dd2208d3fd",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "Two unspecified triangles sharing their longest edges do not uniquely determine a rectangle; their shapes, sizes, and orientation are insufficiently specified."
+          "reasoning": "Two triangles sharing their longest edges do not necessarily form a rectangle unless congruence and right-angle geometry are specified."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The stated placement does not guarantee a rectangle, because arbitrary triangles can join along longest edges to form other quadrilaterals or shapes."
+          "verdict": "CONCERN",
+          "reasoning": "The intended joining action is understandable, but the unspecified triangle shapes make the asserted rectangular result unreliable in general."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The sentence is readable, but “matching their longest straight edges” is not enough visual or verbal guidance to identify one unique resulting shape."
+          "verdict": "PASS",
+          "reasoning": "The wording is brief and readable for a young learner, although the geometric condition needs more precision for a unique answer."
         },
         "mathematical_validity": {
           "verdict": "FAIL",
-          "reasoning": "The keyed rectangle is not entailed by the given conditions; congruence and the needed geometric arrangement are absent from the prompt."
+          "reasoning": "Matching longest edges alone is insufficient to guarantee a rectangle; different triangles can produce other quadrilaterals or irregular shapes."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "622ec3a6bd75a0cb83e2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Two identical squares placed side by side conventionally form one rectangle, with the intended arrangement sufficiently clear for this level."
+          "reasoning": "Two identical squares placed side by side conventionally make one rectangle, with the answer choices offering that unique intended classification."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Joining equal squares edge to edge produces a four-sided figure whose opposite sides are equal, matching the keyed rectangle."
+          "reasoning": "Side-by-side placement combines the squares into a four-sided rectangle, so the scenario and conclusion are logically consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The familiar phrase “side by side” and the explicit word “identical” make the construction easy to understand."
+          "reasoning": "The stem uses a simple placement description and asks directly for the resulting shape in accessible Grade 1 language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "An edge-to-edge row of two equal squares is a rectangle, although it is not itself a square because its side lengths are unequal."
+          "reasoning": "The union of two equal squares sharing a full side is a rectangle whose longer dimension is twice its width."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "8895ecc962c983010808",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A square cut from one corner to the opposite corner has a uniquely understood diagonal cut and two resulting triangular regions."
+          "reasoning": "A square cut from one corner to the opposite corner has a specified diagonal, fixing two triangular pieces unambiguously."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The diagonal divides the square into two equal triangular pieces, so the question follows the described physical action."
+          "reasoning": "The diagonal cut divides the square into two congruent triangular regions, exactly matching the described outcome."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The corner-to-opposite-corner description is concrete and accessible, with answer choices that match the requested number of shapes."
+          "reasoning": "The corner-to-opposite-corner description is concrete and the question plainly asks learners to identify the two resulting shapes."
         },
         "mathematical_validity": {
           "verdict": "PASS",
           "reasoning": "A square diagonal joins opposite vertices and partitions the square into exactly two triangles."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "a02281043653da56eeb8",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The prompt does not state that the triangles are congruent or specify their shape, so matching longest edges alone cannot determine a rectangle."
+          "reasoning": "The phrase matching longest straight edges does not establish the triangle dimensions or angles needed to force a rectangle."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The claimed result depends on geometric facts not supplied in the stem; many pairs of triangles can share a longest edge without forming a rectangle."
+          "verdict": "CONCERN",
+          "reasoning": "Although the intended classroom construction is recognizable, the stated geometric information does not justify the claimed result for all triangles."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The language is simple, but the phrase about longest edges may suggest a unique answer that the described information cannot support."
+          "verdict": "PASS",
+          "reasoning": "The sentence is easy to read and its requested identification is explicit, but it omits a condition important to correctness."
         },
         "mathematical_validity": {
           "verdict": "FAIL",
-          "reasoning": "A rectangle is not a necessary consequence of joining two arbitrary triangles along their longest edges, so the keyed answer is mathematically unsupported."
+          "reasoning": "Two triangles joined along equal longest edges can form shapes other than rectangles, so the answer is not mathematically determined by the stem."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "e9ff952a61b7624053b9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The identical-square condition and side-by-side placement provide a standard, determinate composition into a rectangle."
+          "reasoning": "Identical squares arranged side by side give a standard, uniquely recognizable rectangle in the context of elementary shape composition."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The described edge-to-edge placement is a valid way for two identical squares to make a larger rectangular region."
+          "reasoning": "The two squares share a side and their combined boundary has four right corners, agreeing with the rectangle answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses common positional language and asks directly for the resulting shape, keeping the reading demand low."
+          "reasoning": "The placement and question are concise, familiar, and understandable without requiring terminology beyond the competency."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two congruent squares joined side by side form a non-square rectangle with four outer sides."
+          "reasoning": "Two congruent squares in a side-by-side row form a non-square rectangle with opposite sides equal."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "833779957d6f99c15949",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The equal-square outcome is fixed by the long rectangle, width cut, and explicit equal-piece condition."
+          "reasoning": "The long rectangle, widthwise cut, and equal-square condition together specify two square pieces without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The construction is geometrically plausible and the requested result directly follows from cutting the rectangle as described."
+          "reasoning": "The described partition is physically and geometrically plausible, and two equal square pieces are the expected result."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is concise, uses familiar shape vocabulary, and asks learners to name the two pieces."
+          "reasoning": "The stem is short and concrete, asking a direct result question using shape words familiar to Grade 1 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle twice as long as its width can be divided across the width into two equal squares."
+          "reasoning": "When the rectangle is twice the square side in length, a widthwise midpoint cut creates two equal squares."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "5e8e47709f31ecbff309",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem specifies a four-sided result with equal sides, which identifies the intended square among the provided choices."
+          "reasoning": "The description explicitly says the joined four-sided result has equal sides, which identifies a square among the choices."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two matching triangular pieces can be joined along equal corresponding edges to form a square in the stated construction."
+          "reasoning": "Two congruent triangles sharing matching straight edges can be arranged to make the specified equal-sided quadrilateral."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The description supplies the number of sides and equality of sides, giving a young learner useful clues without unnecessary detail."
+          "reasoning": "The stem gives the joining edge and the resulting side property, making the requested shape identification accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A four-sided shape whose sides are all equal is a square in the elementary classification used by the item."
+          "reasoning": "A four-sided shape with all sides equal in this intended right-angle construction is a square, matching the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "c5f6df51bf82de913da5",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem asserts that the rotated triangles fit into a rectangle, so the result is clear, but it gives little information about why that arrangement is possible."
+          "verdict": "FAIL",
+          "reasoning": "Rotating identical triangles to fit a rectangle still omits their dimensions and angles, so the construction is asserted rather than determined."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Given the explicit condition that the pieces fit together into a rectangle, identifying the resulting shape is logically consistent."
+          "verdict": "CONCERN",
+          "reasoning": "The intended visual composition may be workable, but the text alone does not establish that the chosen triangles can form a rectangle."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The action and target shape are stated in direct language, and the answer choices include the named result."
+          "reasoning": "The wording is simple and directly asks for the resulting shape, though it relies on an unstated geometric configuration."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "If the two identical triangles are rotated to fit together into the stated shape, the resulting figure is by definition a rectangle."
+          "verdict": "FAIL",
+          "reasoning": "Identical triangles are not sufficient by themselves to guarantee a rectangular union; the required right-triangle or fit conditions are missing."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "14e54405ab54741a01fb",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "“Down the middle” does not specify whether the cut is vertical or horizontal, though either usual straight midpoint cut yields two rectangles."
+          "verdict": "FAIL",
+          "reasoning": "Cutting an unspecified rectangle into two equal pieces down the middle can yield rectangles or squares depending on the original proportions and cut direction."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A midpoint cut parallel to either pair of sides divides a rectangle into two equal rectangular pieces."
+          "verdict": "CONCERN",
+          "reasoning": "A midpoint cut is physically plausible, but the packet does not define enough geometry to force the stated pair of rectangles."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem is short and familiar, and the phrase “two equal pieces” supports the intended elementary partition idea."
+          "reasoning": "The sentence is easy to follow for Grade 1, yet the phrase down the middle leaves the actual partition underdetermined."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A straight cut through the middle of a rectangle in the ordinary side-parallel sense produces two rectangles."
+          "verdict": "CONCERN",
+          "reasoning": "A suitable non-square rectangle can produce two rectangles, but an unstated dimension or orientation means this answer is not universal."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "1f2791d962fa10548b9e",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The exact direction of “down the middle” is unspecified, but the common side-parallel interpretations both preserve rectangular pieces."
+          "verdict": "FAIL",
+          "reasoning": "The same unspecified rectangle and middle cut can create two squares in some cases, so the two-rectangle answer is not uniquely forced."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Cutting a rectangle into two equal halves along a central line is a valid context for producing two rectangles."
+          "verdict": "CONCERN",
+          "reasoning": "The cut scenario is plausible, but the geometry needed to distinguish rectangles from squares is absent from the stem."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is accessible and the response options make the requested count and shape category explicit."
+          "reasoning": "The learner-facing sentence is straightforward and asks a single shape question, despite its insufficient geometric detail."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Under the ordinary straight midpoint cut intended here, each half has four right-angled sides and is a rectangle."
+          "verdict": "CONCERN",
+          "reasoning": "Two rectangles are possible for many dimensions, but the printed information does not rule out square pieces or another orientation."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "b713e15cc290a9ef46d6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The long rectangle, width cut, and equal-piece condition together specify the two-square result without a competing plausible answer."
+          "reasoning": "The themed wrapper does not alter the explicit long-rectangle widthwise cut, which uniquely yields two equal squares."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoe setting is incidental but coherent, and the geometric cutting action remains valid and understandable."
+          "reasoning": "The dance-shoe theme is merely a wrapper and does not conflict with the stated rectangle partition or its answer."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The decorative character and challenge wording add mild distraction, although the actual shape question remains readable for Grade 1."
+          "verdict": "PASS",
+          "reasoning": "The added theme remains brief, while the actual shape question stays readable and understandable for a young learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated proportional rectangle can be divided across its width into two equal square regions."
+          "reasoning": "The rectangle construction explicitly gives two equal squares, and the surrounding theme introduces no mathematical contradiction."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "2afcf0ace18ad26c2c9d",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The two triangles are not described as identical or otherwise constrained, so matching longest edges does not uniquely determine the resulting shape."
+          "reasoning": "The bread wrapper is harmless, but two triangles sharing longest edges still lack enough geometry to determine a rectangle."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The bread context does not repair the geometric gap; arbitrary triangles joined on longest edges need not make a rectangle."
+          "verdict": "CONCERN",
+          "reasoning": "The food theme does not interfere, yet the intended triangle joining remains under-specified and may not produce the claimed shape."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The sentence is syntactically simple, but the unusual “longest straight edges” condition is insufficiently informative for a unique Grade 1 answer."
+          "verdict": "PASS",
+          "reasoning": "The themed introduction and short question are understandable, with the main weakness being geometric precision rather than wording."
         },
         "mathematical_validity": {
           "verdict": "FAIL",
-          "reasoning": "The answer rectangle requires unstated congruence and arrangement assumptions, so it does not follow from the printed mathematical conditions."
+          "reasoning": "Matching longest edges does not mathematically guarantee a rectangular union for arbitrary triangles, so the answer is unsupported."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "98cf70e64bc15afbd6d8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stated long rectangle and equal square pieces make the intended decomposition determinate."
+          "reasoning": "The long rectangle and equal widthwise cut clearly specify two square pieces, leaving no competing result in the options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cut described is a valid partition of a suitably proportioned rectangle into two congruent square regions."
+          "reasoning": "The partition described is a coherent decomposition of a long rectangle and agrees with the two-square answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The item asks one direct question using common shape names and a concrete cutting action."
+          "reasoning": "The stem is concrete, concise, and uses familiar terms appropriate for a beginning shape lesson."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle with length twice its width decomposes across the width into two equal squares."
+          "reasoning": "A long rectangle whose width is the square side can be bisected across its length to make two equal squares."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "ea7d7ba07205c0b1755e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly identifies the result as four-sided with equal sides, making square the intended classification."
+          "reasoning": "The result is explicitly characterized as a four-sided shape with equal sides, making square the intended unique classification."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated joining of matching triangular edges can produce the described equal-sided four-sided figure."
+          "reasoning": "Joining matching straight edges is a valid composition setup, and the stated equal-sided result supports the answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The shape-defining clues are plainly stated and the question asks only for the resulting familiar name."
+          "reasoning": "The stem states the action and the key resulting property in plain language suitable for Grade 1 shape recognition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "In the elementary shape vocabulary supplied by the packet, a four-sided figure with equal sides is a square."
+          "reasoning": "Under the stated four-sided equal-side construction, the named resulting shape is a square rather than a triangle."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "face7ec9b45fd705854e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Identical squares placed side by side conventionally indicate an edge-to-edge row, whose outer boundary is a rectangle."
+          "reasoning": "Two identical squares placed side by side form a conventional rectangle, and the placement gives a clear intended composition."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The composition described is a standard valid way to combine two equal squares into one rectangle."
+          "reasoning": "The combined boundary of adjacent equal squares is a four-corner rectangle, so the situation and answer agree."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem is brief, concrete, and uses familiar spatial language appropriate for an early learner."
+          "reasoning": "The question is short and familiar, with an unambiguous request to name the combined shape."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The union of two identical side-by-side squares has four outer sides and unequal adjacent side lengths, so it is a rectangle."
+          "reasoning": "Side-by-side congruent squares create a 2-by-1 rectangular union with opposite sides equal."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "8da7e2a0b34ccf141a09",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The identical-square and side-by-side conditions make the resulting rectangle unambiguous despite answer-order variation."
+          "reasoning": "The two-square side-by-side construction is sufficiently specified to identify the resulting rectangle uniquely."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The described placement is geometrically coherent and yields the named larger shape without extra assumptions."
+          "reasoning": "The shape composition is coherent, and the hint statements describe relevant side and corner properties without contradiction."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is direct and the answer options are simple shape labels, suitable for the learner level."
+          "reasoning": "The stem and answer choices use clear elementary vocabulary, while the hint-gated mode still presents one direct task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two congruent squares joined along a full side form a rectangle whose length is twice its width."
+          "reasoning": "Joining two identical squares along adjacent full sides produces a rectangle, exactly matching the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "c742fefaf59ce7f01716",
       "checks": {
         "ambiguity": {
           "verdict": "FAIL",
-          "reasoning": "The two triangles are unspecified beyond their longest edges, so the described joining does not force a unique rectangle."
+          "reasoning": "The longest-edge condition on two triangles does not uniquely determine a rectangle, even though the displayed visual mode suggests an intended arrangement."
         },
         "contextual_logical_validity": {
-          "verdict": "FAIL",
-          "reasoning": "The placement condition is too weak to support the keyed result; non-rectangular outcomes remain possible for general triangles."
+          "verdict": "CONCERN",
+          "reasoning": "The intended visual construction may be coherent, but the textual description remains insufficient to justify the claimed result generally."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The words are readable, but the geometric instruction lacks the concrete constraints needed for a child to reason to one answer."
+          "verdict": "PASS",
+          "reasoning": "The learner-facing prompt is concise and readable, with uncertainty arising from missing geometry rather than difficult language."
         },
         "mathematical_validity": {
           "verdict": "FAIL",
-          "reasoning": "Without congruence or right-angle information, joining longest edges cannot mathematically guarantee a rectangle."
+          "reasoning": "Without specifying congruent right triangles or an equivalent constraint, the two-triangle union need not be rectangular."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "sample_id": "a58fc4229608082b31f2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The condition of a four-sided shape with equal sides identifies the intended square and narrows the construction sufficiently."
+          "reasoning": "The stem supplies both the matching join and the resulting four-sided equal-side property, identifying a square clearly."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two identical triangles can be joined along corresponding edges to make the explicitly described equal-sided quadrilateral."
+          "reasoning": "The composition action and the stated resulting properties are compatible, so the scenario supports the selected shape."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt gives concrete shape clues and asks for one familiar name, keeping the language manageable."
+          "reasoning": "The wording gives a simple action and recognizable shape property, making the identification task accessible to Grade 1."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stated four-sided equal-side result is classified as a square under the packet's elementary definitions."
+          "reasoning": "A four-sided figure described as having equal sides in this intended construction is correctly classified as a square."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     }
   ],
   "clause_evidence": [
@@ -2125,75 +2125,75 @@
       "requirement_id": "compose",
       "clause": "Compose",
       "verdict": "PASS",
-      "reasoning": "Multiple samples explicitly place or join component shapes together and ask for the larger resulting shape, directly evidencing composition.",
+      "reasoning": "Composition is directly exercised by joining triangles and placing squares together, with several samples asking for the resulting shape.",
       "sample_ids": [
         "622ec3a6bd75a0cb83e2",
         "5e8e47709f31ecbff309",
-        "c5f6df51bf82de913da5"
+        "face7ec9b45fd705854e"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "requirement_id": "decompose",
       "clause": "decompose",
       "verdict": "PASS",
-      "reasoning": "Several samples explicitly cut a rectangle or square and ask learners to identify the resulting pieces, directly demonstrating decomposition.",
+      "reasoning": "Decomposition is directly represented by cutting rectangles and a square into named component shapes, including both square and triangle outcomes.",
       "sample_ids": [
         "66470ac61d35ae9804d8",
         "8895ecc962c983010808",
         "14e54405ab54741a01fb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "requirement_id": "triangles",
       "clause": "triangles",
       "verdict": "PASS",
-      "reasoning": "Triangles appear as component shapes in composition tasks and as the pieces produced by the diagonal square cut, so the required shape is represented.",
+      "reasoning": "Triangles appear as source pieces in compositions and as resulting pieces from a diagonal square cut, giving the named shape active coverage.",
       "sample_ids": [
         "8895ecc962c983010808",
-        "5e8e47709f31ecbff309",
-        "ea7d7ba07205c0b1755e"
+        "6dc799abb3dd2208d3fd",
+        "5e8e47709f31ecbff309"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "requirement_id": "squares",
       "clause": "squares",
       "verdict": "PASS",
-      "reasoning": "The packet includes squares as inputs, outputs, and the result of joining triangles, with several explicit equal-side square cases.",
+      "reasoning": "Squares are used both as composed results and as source pieces placed side by side, while rectangle cuts explicitly produce equal squares.",
       "sample_ids": [
         "66470ac61d35ae9804d8",
         "622ec3a6bd75a0cb83e2",
-        "5e8e47709f31ecbff309"
+        "ea7d7ba07205c0b1755e"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     },
     {
       "requirement_id": "rectangles",
       "clause": "rectangles",
       "verdict": "PASS",
-      "reasoning": "Rectangles are repeatedly decomposed and are also produced by joining squares or triangles, providing direct evidence for the named shape.",
+      "reasoning": "Rectangles are repeatedly composed from squares or triangles and decomposed into smaller pieces, so the named shape is substantively covered.",
       "sample_ids": [
         "622ec3a6bd75a0cb83e2",
-        "14e54405ab54741a01fb",
-        "c5f6df51bf82de913da5"
+        "c5f6df51bf82de913da5",
+        "14e54405ab54741a01fb"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_2-20260924:mat_g1_mg_q1_2",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_2-20260924",
-      "review_date": "2026-09-24",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2:mat_g1_mg_q1_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "e785ea4d61a1ef801b104a73c5896c7f7f41bbe3ac3eed2c9ca10716feb5bbce",
+      "packet_digest": "2f5c65bff4e63a5bc9faa3692901bd6ba599905df227d572a18f5183bd4402c0",
       "clause_ids": [
         "compose",
         "decompose",
@@ -2201,29 +2201,29 @@
         "squares",
         "rectangles"
       ],
-      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_2-20260924.json",
-      "response_digest": "9f48751ddcc81d222e0443a8c18c17d3da8e6effb2fd197774e9293e059edbd8",
-      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_2-20260924.prompt.txt",
-      "prompt_digest": "3e219ad59c6d24a21b977ae467f1504b37271204dee0590799ebe8d0694ea4ea",
-      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
-      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2.json",
+      "response_digest": "59b641aece9861bbea045a7b2924da356be13b736abaedadc86066ea9a17e3af",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_2.prompt.txt",
+      "prompt_digest": "ad3609549f7d90dd779846703fee87055c154f1542ad45ad324d894d566ce712",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The tasks use familiar Grade 1 shape names, simple joining or cutting actions, and short questions without excessive cognitive or linguistic load."
+      "rationale": "The items use familiar two-dimensional shapes and simple joining or cutting actions appropriate for Grade 1, with no advanced measurement or symbolic burden."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Most items directly ask learners to compose or decompose named plane shapes, but the triangle-composition wording sometimes assumes a result that the given information does not establish."
+      "verdict": "PASS",
+      "rationale": "Every stem asks learners to compose or decompose named triangles, squares, or rectangles, directly matching the stated Grade 1 shape competency."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The packet exercises both composing and decomposing and names all three required shape families, yet coverage is concentrated in a few repeated configurations and includes an under-specified triangle case.",
+      "verdict": "PASS",
+      "rationale": "Across the packet, examples address both joining and cutting and include all three named shape families through concrete shape transformations.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The printed requirements explicitly preserve both actions, Compose and decompose, and each of triangles, squares, and rectangles, so the competency wording is represented without omitting a named component.",
+        "reasoning": "The five printed requirements separately identify the two competency actions and each of the three explicitly named shape types, so the decomposition is lossless.",
         "requirement_ids": [
           "compose",
           "decompose",
@@ -2241,8 +2241,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "There is evidence for both operations and all named shapes, but many samples duplicate the same three configurations and do not demonstrate broad variation across composing and decomposing cases.",
+      "verdict": "PASS",
+      "rationale": "The sample set repeatedly exercises composition and decomposition and provides coverage of triangles, squares, and rectangles rather than concentrating on one shape only.",
       "clause_ids": [
         "compose",
         "decompose",
@@ -2253,11 +2253,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The examples stay at the scale of whole familiar shapes and simple equal pieces, which is appropriate for Grade 1 rather than requiring measurement, coordinates, or formal proof."
+      "rationale": "Questions involve small counts of shapes and observable side or corner properties, keeping the reasoning and response scale suitable for beginning Grade 1 learners."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The packet varies answer ordering and presentation modes, but the mathematical variants are narrow and repeatedly reuse identical stems, leaving limited evidence of robust shape-composition coverage."
+      "rationale": "The packet varies joining and cutting contexts, but most items repeat a small number of templates and do not visibly demonstrate broader orientations or non-equal decompositions."
     }
   },
   "overall": "FAIL"

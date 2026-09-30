@@ -39,10 +39,10 @@
       "clause": "corners"
     }
   ],
-  "packet_digest": "e3d924f8053a5597cb20925d4e04a864e60e38879734c0e86483bcf2e11b6196",
+  "packet_digest": "a860fa3706da9e8f6559c85fba545830ff8ad8ee735e2e483563feefe0eafe47",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-  "review_date": "2026-09-24",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -940,7 +940,7 @@
       "node_id": "mat_g1_mg_q1_1",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "✝️ Daniel has a math challenge about stones. Which shape has the same number of sides as a square?",
+      "question_text": "✝️ Daniel enjoys stones. Here is a math challenge. Which shape has the same number of sides as a square?",
       "correct_answer": "rectangle",
       "requested": {
         "difficulty_profile": null,
@@ -986,13 +986,13 @@
         "A rectangle has 4 sides (opposite sides are equal) and 4 corners."
       ],
       "sample_id": "d1edf19c247c28213a7a",
-      "replay_digest": "9d278d0e716a6ea9573c6b96de0a0f440cf0741e8eb48259d4426ae8fd05388e"
+      "replay_digest": "9514a8d04e69a74ddc33d0318122fa647fe54019fc7a79d22611e58eac3bad07"
     },
     {
       "node_id": "mat_g1_mg_q1_1",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Which shape has more sides — a triangle or a rectangle?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Which shape has more sides — a triangle or a rectangle?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
@@ -1080,7 +1080,7 @@
         }
       },
       "sample_id": "cb853260c02d0a065569",
-      "replay_digest": "0078d17902968ddcf0a0b30e866df3da883dc96807417fcda4a6e641418a2362"
+      "replay_digest": "4742e633f9b2f37dc73a04874fc7db15af964b8c5e40a7ca9e27acb2909fd406"
     },
     {
       "node_id": "mat_g1_mg_q1_1",
@@ -1731,437 +1731,437 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question names a square and asks for a shape with the same side count; rectangle is the unique listed answer."
+          "reasoning": "The question asks for a shape with the same side count as a square, and rectangle is the single matching option among the listed choices."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparison is logically well-formed because square and rectangle each have four sides."
+          "reasoning": "The ShapeBoard context does not alter the mathematical task; the supplied shape facts support the requested equality of side counts."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The short question uses familiar shape names and a direct comparison suitable for a beginning Grade 1 learner."
+          "reasoning": "The short question uses familiar shape names and a direct same-number comparison suitable for an early Grade 1 reader."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed answer rectangle correctly has four sides, matching the square's four sides."
+          "reasoning": "A square and rectangle each have four sides, while the triangle has three, so rectangle is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "3863468cad482de2c621",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The two named shapes have different side counts, so rectangle is the only correct option."
+          "reasoning": "The comparison names exactly two shapes and asks which has more sides; rectangle is the only option satisfying that relation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks a clear numerical feature comparison between a triangle and a rectangle."
+          "reasoning": "The item has no distracting context and its hints accurately state the relevant side counts for triangle and rectangle."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is concise, uses familiar terms, and directly asks which of two shapes has more sides."
+          "reasoning": "The wording is brief, uses ordinary Grade 1 shape vocabulary, and makes the direction of comparison explicit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle has four sides and a triangle has three, so the printed answer is correct."
+          "reasoning": "A triangle has three sides and a rectangle has four, so selecting rectangle follows directly from the stated comparison."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "475f44062f4693ff1bd6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "A triangle has fewer corners than a square, making the keyed option unique among the choices."
+          "reasoning": "The stem specifies fewer corners between a square and triangle, with triangle as the sole matching answer choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both compared figures have well-defined corners, so the requested fewer-than relation is meaningful."
+          "reasoning": "The visual ShapeBoard is consistent with the stated shape comparison, and every hint gives relevant corner counts without contradiction."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence is short and concrete, with only two familiar shapes and one named feature to compare."
+          "reasoning": "The question is a simple either-shape comparison using familiar words and an unambiguous fewer-than direction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer triangle is mathematically correct because it has three corners versus the square's four."
+          "reasoning": "A triangle has three corners and a square has four, therefore triangle correctly has fewer corners."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "2395dd571f1c4c8fd1c3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The two named shapes have distinct corner counts, so the keyed choice is uniquely determined."
+          "reasoning": "Only one of the two named shapes has fewer corners, and the option list includes triangle clearly as that answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparison of square and triangle corners is concrete and logically appropriate for the task."
+          "reasoning": "The nonvisual presentation still includes sufficient named information and the generic hints accurately support the requested corner comparison."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt is brief, uses familiar shape names, and asks one easily understood comparison."
+          "reasoning": "The sentence structure is short and readable, with the comparison feature and the two candidate shapes plainly identified."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A triangle has three corners while a square has four, confirming the printed answer."
+          "reasoning": "The triangle has three corners versus four for the square, making triangle the valid fewer-corners response."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "d4a60840ac357be37c4e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the sole option with more sides than the named triangle."
+          "reasoning": "The item presents two shapes, one comparison direction, and one correct option; the reordered choices do not create ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item presents a valid direct comparison of side counts between two standard shapes."
+          "reasoning": "The hints describe the same triangle and rectangle that appear in the stem and correctly support the side-count comparison."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is direct and accessible, with no unnecessary context or technical vocabulary."
+          "reasoning": "The wording is direct and age-appropriate, asking only which of two familiar shapes has more sides."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Four rectangle sides exceed the three sides of a triangle, so the answer is correct."
+          "reasoning": "Four rectangle sides exceed three triangle sides, so rectangle is the mathematically valid answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "4293286b1dc18bf7afef",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Triangle is the only listed shape with fewer corners than a square."
+          "reasoning": "The two candidates and the fewer-corners direction are explicit, and triangle is the only option matching the count comparison."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The requested fewer-corners relation is well-defined for the two named polygons."
+          "reasoning": "The ShapeBoard setting does not change the stated comparison, while the hints give consistent three-corner and four-corner facts."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The short wording makes the compared feature and the two choices of shape clear."
+          "reasoning": "The stem is concise and the option wording makes the requested choice understandable to a beginning learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed triangle has three corners, fewer than the square's four corners."
+          "reasoning": "Triangle has three corners and square has four, so the answer triangle is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "193c3dd25fd0396a5d63",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle uniquely matches the square's four-side count among the provided options."
+          "reasoning": "The same-side-count question has rectangle as the sole matching option despite the changed option order."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item uses a valid equality comparison between side counts of familiar shapes."
+          "reasoning": "The visual ShapeBoard and hints concern the same square, triangle, and rectangle facts used by the question."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is concise and the target feature, sides, is plainly stated."
+          "reasoning": "The familiar shape names and same-number wording produce a short, readily understandable comparison task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both a square and a rectangle have four sides, so the answer is mathematically sound."
+          "reasoning": "Both square and rectangle have four sides, whereas triangle has three; rectangle is therefore correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "6b655eaec3da3e364cd7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the unique listed shape sharing the square's number of sides."
+          "reasoning": "The stem requests the shape matching square's side count and rectangle is the only option with four sides."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The equality of side counts is an appropriate and logically coherent shape comparison."
+          "reasoning": "The ShapeBoard and all hint statements are consistent with the side-count equality being tested."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is simple, direct, and suitable for a learner beginning work with shapes."
+          "reasoning": "The simple sentence and familiar shape vocabulary fit an early learner and clearly signal an equality comparison."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A square and a rectangle each have four sides, matching the printed answer."
+          "reasoning": "A rectangle has four sides, the same count as a square, while a triangle has three."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "63614911ae8c87c24f01",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The affirmative option states the exact shared corner count and is uniquely correct."
+          "reasoning": "The stem names a tilted square and flat rectangle but asks only about corner count, for which the affirmative option is unique."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rotation does not change a shape's number of corners, so the comparison remains valid."
+          "reasoning": "Tilt and orientation do not change the number of corners, and the hints accurately identify four corners for both shapes."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question explicitly contrasts tilted and flat figures while asking about one feature."
+          "reasoning": "The yes-or-no-style options explain the conclusion in full, helping a Grade 1 learner understand what is being compared."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both the square and rectangle have four corners, making the printed answer correct."
+          "reasoning": "Both a square and a rectangle have four corners regardless of orientation, so the stated affirmative answer is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "e31e58ffd14b2bda7bff",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the only answer that has more sides than the triangle named in the stem."
+          "reasoning": "The question has two named candidates and rectangle is the only listed choice with more sides than triangle."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item asks a straightforward, meaningful comparison of the two polygons' side counts."
+          "reasoning": "The ShapeBoard context and hints remain aligned with the triangle-versus-rectangle side comparison."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The sentence is short and uses common shape terminology without distracting wording."
+          "reasoning": "The concise wording and common shape names communicate a single, accessible comparison to the learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle has four sides and a triangle has three, confirming the keyed answer."
+          "reasoning": "Rectangle has four sides and triangle has three, so rectangle correctly has more sides."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "d1edf19c247c28213a7a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The irrelevant introductory context does not change the uniquely correct rectangle option."
+          "reasoning": "The themed introduction does not change the clear request to find the shape sharing square's side count, with one correct option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The stones reference adds no conflicting condition, leaving the shape comparison logically valid."
+          "reasoning": "The stones theme is only a wrapper and does not interfere with the shape comparison or with any hint equation."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The decorative challenge and stone context are unnecessary and may distract a beginning reader from the question."
+          "verdict": "PASS",
+          "reasoning": "The brief themed lead-in is understandable and the following question remains plainly phrased for a beginning learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle correctly has the same four-side count as a square."
+          "reasoning": "Rectangle and square each have four sides, so rectangle is the mathematically correct selection."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "cb853260c02d0a065569",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is uniquely identified as having more sides than the triangle."
+          "reasoning": "The basketball theme does not obscure the explicit triangle-versus-rectangle question, and rectangle is the unique correct option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The basketball reference does not alter the clear mathematical comparison requested."
+          "reasoning": "The theme adds no mathematical condition; the ShapeBoard and hints consistently support comparing the two side counts."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The emoji and unrelated basketball context add reading noise without supporting the shape comparison."
+          "verdict": "PASS",
+          "reasoning": "The themed sentence is followed by a short, familiar comparison question whose intended operation is clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "A rectangle has four sides compared with three for a triangle, so the answer is correct."
+          "reasoning": "A rectangle has four sides and a triangle has three, so rectangle correctly has more sides."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "6417a21ff196ba42bad9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the only option that shares the square's number of sides."
+          "reasoning": "The same-side-count question has a single valid response, rectangle, even though the options are arranged differently."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The item makes a valid direct equality comparison between two shape side counts."
+          "reasoning": "The ShapeBoard and the four supplied hints describe the same shapes and counts relevant to the requested equality."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The wording is compact and clearly identifies both the feature and the comparison target."
+          "reasoning": "The direct question is short, uses familiar terms, and asks one understandable comparison at a time."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both named shapes have four sides, so the printed rectangle answer is valid."
+          "reasoning": "Square and rectangle each have four sides, while triangle has three, establishing rectangle as correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "25ec611396ba00d8c1c9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the unique option with a greater side count than triangle."
+          "reasoning": "The more-sides comparison specifies triangle and rectangle and offers rectangle as the only answer satisfying it."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The prompt presents a coherent comparison of a single countable feature."
+          "reasoning": "The ShapeBoard presentation and hints remain relevant to and consistent with the stated side comparison."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is direct, readable, and uses familiar vocabulary for Grade 1."
+          "reasoning": "The sentence is compact and the comparison direction is explicit, making it suitable for Grade 1 comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The four sides of a rectangle are more than the three sides of a triangle."
+          "reasoning": "Rectangle has four sides compared with triangle's three, so the provided answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "2f583138eb6c8d43716e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the sole option with the same number of sides as square."
+          "reasoning": "The stem asks for equal side count relative to a square and rectangle is the sole matching choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The equality comparison is well-formed and concerns a stable feature of each shape."
+          "reasoning": "No visual or thematic condition changes the task, and the standard hints accurately support the comparison."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem is short and clearly asks learners to compare the number of sides."
+          "reasoning": "The wording is a single short question with familiar shape terms and an easily understood same-count relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Squares and rectangles both have four sides, so the answer is mathematically correct."
+          "reasoning": "A rectangle has four sides, matching the square's four sides and exceeding the triangle's three."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "1a5369084aa12849fe56",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Triangle is the only answer that has fewer corners than square."
+          "reasoning": "The fewer-corners comparison identifies exactly two shapes and triangle is the only option with the smaller count."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The comparison uses an observable, countable feature and has a clear relation."
+          "reasoning": "The ShapeBoard does not introduce conflicting information, and the hints correctly state the relevant corner counts."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The learner sees two familiar shapes and one simple question about their corners."
+          "reasoning": "The direct wording, familiar shape names, and explicit fewer direction are accessible to a Grade 1 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Triangle has three corners while square has four, confirming the printed answer."
+          "reasoning": "Triangle has three corners and square has four, making triangle the correct fewer-corners answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "70c3c8050678fab2d5ce",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Triangle is uniquely correct because it has fewer corners than square."
+          "reasoning": "The two shapes and fewer-corners relation are explicit, with triangle as the only option matching the comparison."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The hint-gated presentation does not change the valid comparison of corner counts."
+          "reasoning": "The ShapeBoard and hints accurately represent square and triangle corner counts without adding a conflicting condition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem plainly identifies the two shapes and asks which has fewer corners."
+          "reasoning": "The short question is readable and the answer choices express the possible comparison outcomes plainly."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The keyed triangle has three corners compared with the square's four corners."
+          "reasoning": "Since a triangle has three corners and a square has four, triangle correctly has fewer corners."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "dc2e281d5e7d10ddd6ad",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle is the only option with more sides than the named triangle."
+          "reasoning": "The triangle-versus-rectangle more-sides question has one mathematically correct option, rectangle."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "This is a coherent one-step comparison of the side counts of two polygons."
+          "reasoning": "The ShapeBoard and standard hints are relevant to the exact comparison, with no contradictory visual or textual condition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is direct and uses familiar words appropriate for early mathematics."
+          "reasoning": "The stem is concise and the mastery-drill presentation still asks a single clear, familiar shape comparison."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle has four sides and triangle has three, so the printed answer is correct."
+          "reasoning": "Four rectangle sides are more than three triangle sides, so the answer supplied is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "sample_id": "770e211b7dca8f44179b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Rectangle uniquely has the same side count as the square among the options."
+          "reasoning": "The same-side-count question clearly identifies rectangle as the one option matching the square's four sides."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scaffolded format still presents a logically valid equality comparison."
+          "reasoning": "The ShapeBoard and hints agree with the side-count task, and the scaffolded mode introduces no conflicting requirement."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem states the target feature plainly and uses familiar shape names."
+          "reasoning": "The plain question and familiar shape names make the intended equality comparison easy to follow."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Both square and rectangle have four sides, which supports the keyed answer."
+          "reasoning": "Rectangle and square both have four sides, whereas triangle has three, so rectangle is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     }
   ],
   "clause_evidence": [
@@ -2169,82 +2169,82 @@
       "requirement_id": "compare_shapes",
       "clause": "Compare",
       "verdict": "PASS",
-      "reasoning": "The packet repeatedly asks learners to compare side or corner counts between named shapes.",
+      "reasoning": "The packet repeatedly asks learners to compare side or corner counts between named pairs of shapes, directly exercising the comparison action.",
       "sample_ids": [
         "38c1342c64818deb0db8",
         "3863468cad482de2c621"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "requirement_id": "distinguish_shapes",
       "clause": "distinguish",
-      "verdict": "CONCERN",
-      "reasoning": "The items support distinguishing by count relationships, but they do not broadly sample different ways of distinguishing shapes.",
+      "verdict": "PASS",
+      "reasoning": "Choosing which shape has more, fewer, or the same feature count requires distinguishing the named shapes by their observable properties.",
       "sample_ids": [
         "475f44062f4693ff1bd6",
-        "63614911ae8c87c24f01"
+        "d4a60840ac357be37c4e"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "requirement_id": "two_dimensional_shapes",
       "clause": "2-dimensional shapes",
       "verdict": "PASS",
-      "reasoning": "Every item names or presents conventional planar figures such as triangles, squares, and rectangles.",
+      "reasoning": "Every item concerns recognizable plane figures such as triangles, squares, and rectangles, all presented as two-dimensional shapes.",
       "sample_ids": [
-        "38c1342c64818deb0db8",
+        "193c3dd25fd0396a5d63",
         "63614911ae8c87c24f01"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "requirement_id": "shape_features_as_comparison_basis",
       "clause": "features",
       "verdict": "PASS",
-      "reasoning": "The printed questions explicitly use measurable shape features as the basis for each requested comparison.",
+      "reasoning": "The comparisons are explicitly based on shape features rather than irrelevant context, particularly counts of sides and corners.",
       "sample_ids": [
-        "3863468cad482de2c621",
-        "475f44062f4693ff1bd6"
+        "25ec611396ba00d8c1c9",
+        "1a5369084aa12849fe56"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "requirement_id": "sides_of_a_shape",
       "clause": "sides",
       "verdict": "PASS",
-      "reasoning": "Multiple samples directly ask which shape has more or the same number of sides.",
+      "reasoning": "Multiple stems ask learners to compare or match the number of sides, and the hints provide the relevant side counts.",
       "sample_ids": [
-        "38c1342c64818deb0db8",
-        "3863468cad482de2c621"
+        "6b655eaec3da3e364cd7",
+        "dc2e281d5e7d10ddd6ad"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     },
     {
       "requirement_id": "corners_of_a_shape",
       "clause": "corners",
       "verdict": "PASS",
-      "reasoning": "Multiple samples directly ask which shape has fewer or the same number of corners.",
+      "reasoning": "Several stems ask which shape has fewer or equal corners, with hints that accurately identify the corner counts for each shape.",
       "sample_ids": [
-        "475f44062f4693ff1bd6",
+        "4293286b1dc18bf7afef",
         "63614911ae8c87c24f01"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-luna-medium-w3-mat_g1_mg_q1_1-20260924:mat_g1_mg_q1_1",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w3-mat_g1_mg_q1_1-20260924",
-      "review_date": "2026-09-24",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1:mat_g1_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w114-mat_g1_mg_q1_1-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "e3d924f8053a5597cb20925d4e04a864e60e38879734c0e86483bcf2e11b6196",
+      "packet_digest": "a860fa3706da9e8f6559c85fba545830ff8ad8ee735e2e483563feefe0eafe47",
       "clause_ids": [
         "compare_shapes",
         "distinguish_shapes",
@@ -2253,29 +2253,29 @@
         "sides_of_a_shape",
         "corners_of_a_shape"
       ],
-      "response_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_1-20260924.json",
-      "response_digest": "854fe0b01686068a7e693ed3b694998d8a38455e9dbd943cada54c98c617e58e",
-      "prompt_ref": ".responses/s5-luna-medium-w3-mat_g1_mg_q1_1-20260924.prompt.txt",
-      "prompt_digest": "3e204cee928fb3386d3cc0cb74dddaf08382e4f067a446e62dfddfa72feba830",
-      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
-      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1.json",
+      "response_digest": "ad3820b4e2230fea00fede0b08750ed89bd5b02ceae04ca74bda6d6dc2d10a47",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q1_1.prompt.txt",
+      "prompt_digest": "cf88b0b305cdd91e05bb32d191c7a3e5f8d9a7628376c99980738bed1f79adbd",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The questions use direct comparisons of familiar elementary shapes and countable features, matching Grade 1 cognitive demands without multi-step reasoning."
+      "rationale": "Each item asks a Grade 1 learner to compare only familiar shapes by counting sides or corners, with one direct multiple-choice decision and no excessive procedural load."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every printed stem asks learners to compare or distinguish shapes using the explicitly named features of sides or corners."
+      "rationale": "The stems consistently compare triangles, squares, and rectangles using the exact observable features named by the competency: sides and corners of two-dimensional shapes."
     },
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The core comparison skill is repeatedly exercised, but the packet gives narrow evidence for distinguishing shapes across the full range of possible feature-based comparisons.",
+      "rationale": "The packet demonstrates comparison and distinction for a narrow set of familiar polygons, but repeated items do not establish the full breadth of comparing and distinguishing two-dimensional shapes by features.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The six requirements separately represent the compare and distinguish actions, two-dimensional shape domain, feature basis, and both named features, covering the competency without losing a stated element.",
+        "reasoning": "The six printed requirements separately represent the comparison action, distinction action, two-dimensional shape domain, feature basis, and the two named features, so the decomposition covers the competency wording without losing a clause.",
         "requirement_ids": [
           "compare_shapes",
           "distinguish_shapes",
@@ -2296,7 +2296,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Coverage is concentrated on triangles, squares, and rectangles, with repeated same-number, more, and fewer prompts rather than a broad set of shape-feature cases.",
+      "rationale": "Samples cover more, fewer, and equal counts for sides or corners, yet they repeatedly use only triangle, square, and rectangle and provide little variety in feature-based distinctions.",
       "clause_ids": [
         "compare_shapes",
         "distinguish_shapes",
@@ -2308,11 +2308,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The packet stays at a small, concrete shape set and asks one observable comparison at a time, an appropriate scale for Grade 1 Quarter 1."
+      "rationale": "Counting three or four sides and corners and selecting a named shape are appropriately small numerical and linguistic demands for Grade 1 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "There is useful variation in wording and presentation mode, but most items recycle the same three shapes, feature counts, and answer relationship."
+      "rationale": "Although ordering and option placement vary, the generated variants recycle the same three shape comparisons and nearly identical hints, limiting meaningful coverage of possible feature distinctions."
     }
   },
   "overall": "CONCERN"
