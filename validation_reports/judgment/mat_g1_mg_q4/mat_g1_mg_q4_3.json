@@ -24,10 +24,10 @@
       "clause": "calendar"
     }
   ],
-  "packet_digest": "f688deb149b22be68db3e19a32ff22ac46187f964be22f08fc02c1fd0816de53",
+  "packet_digest": "e9e9953c1fd080ea2379413cd90e981b90ea771276df38fe9d5688bf18ff7ca2",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-  "review_date": "2026-09-24",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1935,7 +1935,7 @@
       "node_id": "mat_g1_mg_q4_3",
       "seed": 701,
       "formatter": "read_mcq",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Look at the May 2025 calendar. What day of the week is May 16?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the May 2025 calendar. What day of the week is May 16?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
@@ -2051,13 +2051,13 @@
         }
       },
       "sample_id": "c4aaf8a8946ada48f52b",
-      "replay_digest": "288004626669db6b5d328f154c014f898a477914fb847827b4a9d2a60c80d1a4"
+      "replay_digest": "47288f67f21118669f293aeaa0fee47de2bed36a8d5a3453d6fb5e95eadb0c97"
     },
     {
       "node_id": "mat_g1_mg_q4_3",
       "seed": 702,
       "formatter": "read_mcq",
-      "question_text": "💃 Ate Gab has a math challenge about costumes. Look at the March 2025 calendar. What day of the week is March 1?",
+      "question_text": "💃 Ate Gab enjoys costumes. Here is a math challenge. Look at the March 2025 calendar. What day of the week is March 1?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
@@ -2175,7 +2175,7 @@
         }
       },
       "sample_id": "4308afd76b77e62a25db",
-      "replay_digest": "ccf9193c54cab182e2cab572639bed457e75fcdc8687b2438c8f4adfc2180481"
+      "replay_digest": "fe822c157289cd0b0bd4585c3139f247c2859d3744248fb65c227a24dd351873"
     },
     {
       "node_id": "mat_g1_mg_q4_3",
@@ -2797,506 +2797,506 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem names February 2025 and February 1, while the weekday options contain one correct choice and three distinct distractors."
+          "reasoning": "The February heading, numbered date 1, weekday columns, and one matching option make the requested lookup unambiguous."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The requested weekday is directly obtainable from the displayed February 2025 calendar, so the question has a coherent and sufficient context."
+          "verdict": "FAIL",
+          "reasoning": "The second hint discusses elapsed time rather than the weekday requested, so its guidance does not logically describe this calendar lookup."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The main question is clear, but the hint sentence about how much time has passed is unrelated and grammatically confusing for a young learner."
+          "verdict": "FAIL",
+          "reasoning": "The direct stem is clear, but the malformed elapsed-time hint can confuse a beginning learner about whether to count duration instead of reading the weekday."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "February 1, 2025 is a Saturday, which matches the supplied answer and the calendar arrangement shown in the labels."
+          "reasoning": "February 1, 2025 is Saturday, and the displayed options include that correct weekday exactly once."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "317ff5d8fbdf11a0a40f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "May 23 is explicitly identified within a named 2025 calendar, and only Friday is a valid weekday answer among the options."
+          "reasoning": "The May 2025 heading and the single requested date 23 identify one calendar cell and one matching weekday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A learner can answer by locating May 23 on the supplied calendar; no unstated information or extra interpretation is required."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time sentence in the second hint is unrelated to identifying May 23's weekday and misdescribes the reasoning needed."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is understandable, but the repeated hint about elapsed time does not fit this task and may distract or confuse Grade 1 readers."
+          "verdict": "FAIL",
+          "reasoning": "Although the stem is readable, the irrelevant elapsed-time hint gives a Grade 1 learner misleading directions for this straightforward calendar task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May 23, 2025 falls on Friday, agreeing with the answer and the weekday columns printed in the visual description."
+          "reasoning": "May 23, 2025 falls on Friday, matching the supplied answer and the sole Friday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "ab760f7aa5383f4f190e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The calendar header identifies September 2025 and the answer choices contain one matching month, making the intended response unambiguous."
+          "reasoning": "The calendar heading explicitly identifies September 2025 and the answer choices contain one September option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The task logically asks the learner to read the month displayed on the calendar, and the visual labels supply that information."
+          "reasoning": "The month-order hints and explicit September answer are consistent with the month shown in the calendar heading."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The question is simple, but the hint begins with duplicated wording, making the supporting language less polished and less clear than the stem."
+          "reasoning": "The question is understandable, but the repeated word in the first hint is grammatically awkward for a beginning reader."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "September is the month printed in the calendar heading and is correctly included as the answer choice."
+          "reasoning": "The displayed heading is September 2025, and September is the uniquely matching answer choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "93c82e59ae4b8f80277a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual heading says August 2025 and the options provide a single August choice, so the requested month is clear."
+          "reasoning": "The August 2025 heading identifies one month, and August appears once among the answer options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Reading the displayed calendar heading is sufficient to answer the question, with no contextual contradiction or missing datum."
+          "reasoning": "The ordinal-month hints correctly lead to August, the eighth month, and agree with the shown calendar heading."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The stem is accessible, but the hint contains duplicated wording and a bare ordinal phrase that is awkward for Grade 1 learners."
+          "reasoning": "The intended month-counting strategy is clear, though the duplicated article in the first hint is an avoidable language defect."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The displayed calendar is labeled August 2025, so August is the mathematically and calendrically correct answer."
+          "reasoning": "August is the eighth month and is the month printed in the calendar heading, so the answer is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "2a30475399bfe3d39c0a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem specifies July 2025 and date 2, and the weekday options contain one matching answer without overlapping interpretations."
+          "reasoning": "The July heading and numbered date 2 point to a single calendar cell with one matching weekday choice."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The learner can locate July 2 in the shown calendar and read its weekday directly, so the scenario is complete."
+          "verdict": "FAIL",
+          "reasoning": "The second hint refers to elapsed time, not reading the weekday for July 2, and therefore provides contradictory task guidance."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The core instruction is clear, while the elapsed-time hint is grammatically malformed and does not support this calendar-reading question."
+          "verdict": "FAIL",
+          "reasoning": "The irrelevant elapsed-time hint can redirect a young learner toward an operation that the stem never asks them to perform."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "July 2, 2025 is Wednesday, matching the stated answer and the Wednesday column in the calendar labels."
+          "reasoning": "July 2, 2025 is Wednesday, matching the answer and the unique Wednesday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "e59a540e21d49be2dcd4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "October 2025 is visible in the calendar heading, and exactly one option names October."
+          "reasoning": "The October 2025 heading is plainly visible and October occurs as one distinct answer option."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The question asks only for the displayed month, which is directly available in the supplied calendar visual."
+          "reasoning": "The hints correctly describe counting to the tenth month and explicitly identify the month shown as October."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The stem is readable, but the associated hint repeats an article and uses an unrelated elapsed-time sentence."
+          "reasoning": "The month-counting explanation is usable, but the duplicated article in the first hint weakens polished Grade 1 wording."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calendar heading identifies October 2025, and October is correctly marked as the answer."
+          "reasoning": "October is the tenth month and is exactly the month named by the displayed calendar heading."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "0402a41e90a7054269a4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "May 21 and the year 2025 are specified, and the four weekday choices make the intended calendar lookup definite."
+          "reasoning": "May 21 is a uniquely identified date under the May 2025 calendar, with one Wednesday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The displayed May calendar supplies all information needed to locate the date and determine its weekday."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint does not explain how to locate the weekday for May 21 and is unrelated to the question asked."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The prompt itself is concise, but the repeated hint about elapsed time is confusing and not relevant to finding a weekday."
+          "verdict": "FAIL",
+          "reasoning": "The otherwise simple weekday prompt is accompanied by misleading elapsed-time wording that may cause unnecessary counting or confusion."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May 21, 2025 is Wednesday, which agrees with the answer and the printed weekday arrangement."
+          "reasoning": "May 21, 2025 is Wednesday, agreeing with the answer and the single Wednesday choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "66adee0a1c3f92e5b0bd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "June 6, 2025 is precisely identified and Friday is the only option matching the displayed calendar."
+          "reasoning": "The June 2025 calendar and date 6 specify one location, and Friday appears as the only matching option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The question is a complete direct lookup from the June 2025 calendar and does not depend on hidden assumptions."
+          "verdict": "FAIL",
+          "reasoning": "The hint about how much time has passed does not apply to finding June 6's weekday from the displayed calendar."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The main wording is suitable, but the hint about how much time has passed is awkward and unrelated to the requested weekday."
+          "verdict": "FAIL",
+          "reasoning": "A beginning learner receives a misleading elapsed-time strategy instead of guidance to read the weekday column for June 6."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "June 6, 2025 falls on Friday, so the supplied answer is consistent with the calendar."
+          "reasoning": "June 6, 2025 is Friday, matching the answer and one supplied option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "9bb6f346aaaf63fbe519",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The month, year, and date are stated explicitly, and Wednesday appears as one unique correct option."
+          "reasoning": "November 19 is a unique numbered date in the named November 2025 calendar, with one Wednesday choice."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "November 19 can be located on the rendered 2025 calendar, giving enough context for a direct weekday reading."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint is not a valid explanation for locating November 19's weekday and misrepresents the needed method."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is easy to follow, though the generic elapsed-time hint introduces confusing language unrelated to this exact task."
+          "verdict": "FAIL",
+          "reasoning": "The stem is accessible, but the unrelated elapsed-time hint can make a young learner think duration arithmetic is required."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "November 19, 2025 is Wednesday, agreeing with the stated answer and calendar columns."
+          "reasoning": "November 19, 2025 falls on Wednesday, consistent with the answer and unique matching option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "59875bab72c782dfaef9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "September 19 is tied to a clearly named 2025 calendar, and Friday is the sole matching weekday option."
+          "reasoning": "The September heading and date 19 identify one calendar cell, while Friday appears once in the choices."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The calendar visual contains the named date and weekday headers needed for a self-contained lookup."
+          "verdict": "FAIL",
+          "reasoning": "The second hint discusses elapsed time rather than reading September 19's weekday and is logically mismatched to the task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question is understandable, but its supporting hint uses a confusing sentence about elapsed time rather than guiding calendar reading."
+          "verdict": "FAIL",
+          "reasoning": "The misleading duration hint undermines an otherwise clear weekday lookup for a Grade 1 learner using the calendar."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "September 19, 2025 is Friday, matching the answer and the structure of the September calendar."
+          "reasoning": "September 19, 2025 is Friday, matching the printed answer and the unique Friday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "362cba0e1a88b25e6d2a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April 30, 2025 is a single specified date and Wednesday is one distinct answer among the weekday choices."
+          "reasoning": "April 30 is uniquely specified by the April 2025 calendar and the options provide one Wednesday answer."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The learner only needs to find April 30 in the supplied calendar and read the corresponding weekday column."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint does not support finding April 30's weekday and describes a different mathematical task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is direct, but the repeated elapsed-time hint is poorly phrased and may distract from the simple lookup."
+          "verdict": "FAIL",
+          "reasoning": "The unrelated time-passed hint may send a beginning learner into duration reasoning instead of reading April 30's column."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "April 30, 2025 is Wednesday, which agrees with the answer and the calendar's weekday headings."
+          "reasoning": "April 30, 2025 is Wednesday, which agrees with the answer and the unique Wednesday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "5c8f92195927dd4d74e3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "October 30, 2025 is unambiguously named, and Thursday is the only matching weekday option."
+          "reasoning": "The October heading and date 30 identify a single calendar position and one Thursday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "All information required to answer is present in the October calendar, so the lookup context is logically complete."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time sentence is irrelevant to locating October 30's weekday and gives the wrong reasoning frame."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The direct question is clear, while the accompanying generic hint is grammatically awkward and not tailored to this task."
+          "verdict": "FAIL",
+          "reasoning": "The mismatched hint makes an otherwise direct calendar-reading question less clear for a beginning learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "October 30, 2025 falls on Thursday, matching the provided answer and weekday layout."
+          "reasoning": "October 30, 2025 is Thursday, matching the answer and the sole Thursday choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "c105dd3a78f7ad5a7d1b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "January 12, 2025 is explicitly specified, and Sunday is the only answer choice consistent with the calendar."
+          "reasoning": "January 12 is one clearly located date in the January 2025 calendar, with one Sunday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The displayed January calendar gives a sufficient and coherent basis for locating January 12 and reading its weekday."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint does not explain the January 12 weekday lookup and is unrelated to the item context."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem uses familiar wording, but the unrelated elapsed-time hint remains confusing for a learner following the task."
+          "verdict": "FAIL",
+          "reasoning": "The malformed, irrelevant time hint can distract a Grade 1 learner from simply reading January 12's weekday."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "January 12, 2025 is Sunday, which matches the answer and the printed January calendar arrangement."
+          "reasoning": "January 12, 2025 is Sunday, matching both the answer and the unique Sunday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "6cb4a9e0719b602e4acb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "February 25, 2025 is a definite target date and Tuesday is uniquely selected among the options."
+          "reasoning": "February 25 is uniquely located in the displayed February 2025 calendar, with Tuesday as one choice."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The February calendar visibly contains the target date and weekday headings, making the lookup self-contained."
+          "verdict": "FAIL",
+          "reasoning": "The time-elapsed hint does not describe how to determine February 25's weekday from this calendar."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The instruction is understandable, but the generic hint about elapsed time is grammatically confusing and unnecessary."
+          "verdict": "FAIL",
+          "reasoning": "The irrelevant elapsed-time instruction can confuse a young learner about the operation needed for the requested weekday."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "February 25, 2025 is Tuesday, consistent with the stated answer and the calendar labels."
+          "reasoning": "February 25, 2025 is Tuesday, matching the answer and the sole Tuesday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "6c3815755a16d068ed06",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April 15, 2025 and the four possible weekdays are clearly stated, with one correct option."
+          "reasoning": "April 15 is a single numbered date in the April 2025 calendar and Tuesday appears as one matching option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A direct scan of the April calendar provides the needed weekday without requiring any unstated information."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint is unrelated to reading April 15's weekday and does not logically guide this task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question is age-appropriate, though the repeated elapsed-time hint does not explain how to read the calendar."
+          "verdict": "FAIL",
+          "reasoning": "The extra hint points toward duration rather than calendar position, reducing clarity despite the simple stem."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "April 15, 2025 is Tuesday, matching the answer and the weekday ordering shown."
+          "reasoning": "April 15, 2025 falls on Tuesday, matching the answer and unique Tuesday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "c4aaf8a8946ada48f52b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The added dance-shoes context does not alter the explicit May 16 calendar question, which has one matching option."
+          "reasoning": "The dance-themed wrapper does not alter the uniquely specified May 16 calendar lookup or its answer choices."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The story framing is logically harmless and the May 2025 calendar contains all information needed to answer."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint remains unrelated to finding May 16's weekday, even though the dance wrapper itself is harmless."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem remains understandable, but the decorative context and generic elapsed-time hint add language without helping the calendar lookup."
+          "verdict": "FAIL",
+          "reasoning": "The stem is readable, but the irrelevant elapsed-time hint adds misleading instructions to this otherwise direct calendar task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May 16, 2025 is Friday, matching the supplied answer and the calendar's weekday columns."
+          "reasoning": "May 16, 2025 is Friday, matching the answer and the unique Friday option shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "4308afd76b77e62a25db",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The costume context is incidental; March 1, 2025 is explicit and Saturday is the unique correct choice."
+          "reasoning": "The costume-themed wrapper leaves March 1 as one clearly identified date with a single Saturday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The question is self-contained because the rendered March calendar provides the target date and weekday headings."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint does not explain the weekday lookup for March 1 and is mismatched to the calendar question."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The central request is clear, but the added story wording and unrelated elapsed-time hint are not especially economical for Grade 1."
+          "verdict": "FAIL",
+          "reasoning": "The irrelevant duration wording can mislead a young learner, although the themed stem itself remains understandable."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "March 1, 2025 is Saturday, agreeing with the answer and the calendar arrangement shown."
+          "reasoning": "March 1, 2025 is Saturday, consistent with the answer and the sole Saturday choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "03f919ecb9b8c6ccb861",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April 12, 2025 is an explicit target and Saturday is the only matching weekday in the option list."
+          "reasoning": "April 12 is uniquely specified in the April 2025 calendar and Saturday appears once among the options."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The learner can answer by locating the specified date on the supplied April calendar, with no missing context."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint gives no valid guidance for locating April 12's weekday in the displayed calendar."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is concise and readable, but the repeated hint about elapsed time is confusing and irrelevant to the lookup."
+          "verdict": "FAIL",
+          "reasoning": "The unrelated time-passed hint may lead a Grade 1 learner to perform an unnecessary duration calculation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "April 12, 2025 falls on Saturday, matching the stated answer and the printed weekday headings."
+          "reasoning": "April 12, 2025 is Saturday, matching the answer and the unique Saturday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "795b4bb20ffb861f3379",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The calendar header identifies May 2025 and the options include only one May choice, so the task is definite."
+          "reasoning": "The May 2025 heading clearly identifies the month, and May is the only matching answer choice."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Reading the month name in the displayed calendar is sufficient to answer the question without additional assumptions."
+          "reasoning": "The hints correctly state the month sequence, direct counting to the fifth month, and the displayed answer May."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The question is clear, but its hint repeats awkward wording and gives an ordinal cue in a less polished form."
+          "reasoning": "The month-counting support is understandable, although the duplicated article in its opening sentence is awkward."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May is the month printed in the calendar heading and is correctly marked as the answer."
+          "reasoning": "May is the fifth month and is exactly the month shown in the calendar heading."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "80ac06be6e7fe1990d41",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The February 2025 heading and the answer options make the requested displayed month unambiguous."
+          "reasoning": "The February 2025 heading identifies one month and February appears once among the four options."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The learner can read the month directly from the shown calendar, and the response mode does not introduce a logical issue."
+          "reasoning": "The ordinal-month hints correctly identify February as month two and explicitly agree with the calendar heading."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The stem is simple, but the hint says “2th month,” which is nonstandard and could confuse a young learner despite the answer cue."
+          "reasoning": "The counting strategy is understandable, but the phrase naming the second month uses an incorrect ordinal form."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The visual is labeled February 2025, so February is the correct month and answer choice."
+          "reasoning": "February is the second month, and it is the month printed in the displayed calendar heading."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "3dce563606ea50623a62",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April 28, 2025 is clearly specified and Monday is the sole option matching the calendar."
+          "reasoning": "April 28 is a unique numbered date in the named calendar, with one Monday option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The rendered April calendar supplies a complete direct-reading context for determining the weekday of April 28."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint is unrelated to finding April 28's weekday and does not explain the requested lookup."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The mastery-drill stem is readable, but the generic elapsed-time hint is grammatically awkward and does not guide this task."
+          "verdict": "FAIL",
+          "reasoning": "The duration-focused hint can misdirect a beginning learner even though the calendar question itself is concise."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "April 28, 2025 is Monday, consistent with the answer and the calendar's weekday columns."
+          "reasoning": "April 28, 2025 is Monday, matching the answer and the unique Monday choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "sample_id": "afe56e94a787c16d5eaf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "October 14, 2025 is explicitly named and Tuesday is the only option that matches the displayed calendar."
+          "reasoning": "October 14 is uniquely identified in the October 2025 calendar and Tuesday appears once as an option."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The October calendar contains all information needed for a straightforward weekday lookup, with no contextual gap."
+          "verdict": "FAIL",
+          "reasoning": "The elapsed-time hint does not guide the learner to October 14's weekday and describes an unrelated task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question itself is clear, though the repeated hint about elapsed time is not relevant and uses awkward phrasing."
+          "verdict": "FAIL",
+          "reasoning": "The misleading duration language reduces clarity for Grade 1 despite the otherwise direct calendar lookup."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "October 14, 2025 falls on Tuesday, matching the provided answer and the calendar layout."
+          "reasoning": "October 14, 2025 is Tuesday, agreeing with the answer and the sole Tuesday option."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     }
   ],
   "clause_evidence": [
@@ -3304,78 +3304,74 @@
       "requirement_id": "determine",
       "clause": "Determine",
       "verdict": "PASS",
-      "reasoning": "The samples require learners to determine an answer from calendar evidence rather than merely recognize a previously stated response.",
+      "reasoning": "The packet requires learners to determine an answer by reading each displayed calendar rather than merely naming a tool.",
       "sample_ids": [
         "2d91df5c73725363b9da",
-        "ab760f7aa5383f4f190e",
-        "3dce563606ea50623a62"
+        "ab760f7aa5383f4f190e"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "requirement_id": "day_and_month_of_the_year",
       "clause": "day and month of the year",
-      "verdict": "PASS",
-      "reasoning": "Weekday questions and month-identification questions together exercise both parts of the printed day-and-month content requirement.",
+      "verdict": "CONCERN",
+      "reasoning": "Samples cover weekday names and month names, but the packet does not directly combine a numbered day with its month as a date.",
       "sample_ids": [
         "317ff5d8fbdf11a0a40f",
-        "93c82e59ae4b8f80277a",
-        "6cb4a9e0719b602e4acb",
-        "80ac06be6e7fe1990d41"
+        "795b4bb20ffb861f3379"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     },
     {
       "requirement_id": "calendar",
       "clause": "calendar",
       "verdict": "PASS",
-      "reasoning": "Every cited sample presents a named calendar visual with month, weekday headings, and date labels as the source of the answer.",
+      "reasoning": "Every cited sample presents a named monthly calendar with weekday labels and numbered dates as the evidence source.",
       "sample_ids": [
         "2a30475399bfe3d39c0a",
-        "e59a540e21d49be2dcd4",
-        "362cba0e1a88b25e6d2a"
+        "80ac06be6e7fe1990d41"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-luna-medium-w5-mat_g1_mg_q4_3-20260924:mat_g1_mg_q4_3",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w5-mat_g1_mg_q4_3-20260924",
-      "review_date": "2026-09-24",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3:mat_g1_mg_q4_3",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w117r2-mat_g1_mg_q4_3-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "f688deb149b22be68db3e19a32ff22ac46187f964be22f08fc02c1fd0816de53",
+      "packet_digest": "e9e9953c1fd080ea2379413cd90e981b90ea771276df38fe9d5688bf18ff7ca2",
       "clause_ids": [
         "determine",
         "day_and_month_of_the_year",
         "calendar"
       ],
-      "response_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_3-20260924.json",
-      "response_digest": "1ad30bb8864979644545c0f3a24ac11cb1922536430bd593b45a02b0cc228667",
-      "prompt_ref": ".responses/s5-luna-medium-w5-mat_g1_mg_q4_3-20260924.prompt.txt",
-      "prompt_digest": "7c95828da647fd19c84aee036f62cc3442a836d6c5eddfd23704c9559f58dceb",
-      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
-      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3.json",
+      "response_digest": "96a91df442d1f0456e6b1b0890cc9709a0a43841cb8832f7c8d181119de3f00c",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_3.prompt.txt",
+      "prompt_digest": "a63fd55a7f2fcd94e8bd01c63627aa4dfe804cb9096f4cde2c16427c8af527de",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer2 transcript: read prompt.txt, wrote verdicts.json, and reported JSON validation with all 22 samples; no path outside the assigned node directory was reported. Prior invalid reply remained set aside and unseen."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The tasks ask Grade 1 learners to read a clearly named month, locate a date, and identify its weekday, without requiring calculations or excessive reasoning."
+      "rationale": "The single-calendar lookups use a familiar Grade 1 reading task and avoid multi-step calculations or excessive contextual load."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every stem directly asks the learner to use a calendar to identify either the month shown or the weekday for a specified date."
+      "rationale": "Every stem asks the learner to read a named month calendar to identify a weekday or the month, directly targeting calendar use."
     },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The packet addresses both identifying months and determining weekdays from dates, matching the stated calendar competency across many calendar instances.",
+      "verdict": "CONCERN",
+      "rationale": "The packet repeatedly tests weekday and month recognition, but it does not clearly test identifying a numbered day and month together as a date.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The printed requirements separately name the action, the day and month content, and the calendar tool; together they cover the competency without adding a different mathematical demand.",
+        "reasoning": "The three printed requirements separately identify the action, the day-and-month content, and the calendar tool, which together preserve the competency scope.",
         "requirement_ids": [
           "determine",
           "day_and_month_of_the_year",
@@ -3390,7 +3386,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The samples provide broad weekday and month reading practice, but the month-identification items do not include December and the set does not combine month and weekday in one response.",
+      "rationale": "Month recognition and weekday lookup both appear, yet the set gives little direct evidence of determining a calendar date expressed as both day and month.",
       "clause_ids": [
         "determine",
         "day_and_month_of_the_year",
@@ -3399,12 +3395,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The calendar dates and weekday labels remain within a readable Grade 1 context, and the questions require direct visual reading rather than later-grade date arithmetic."
+      "rationale": "The static monthly calendars contain clear month headings, weekday labels, and numbered dates suitable for an introductory Grade 1 reading exercise."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Dates and months vary substantially, but all items use the same read-only multiple-choice format and do not demonstrate other reasonable calendar response modes."
+      "rationale": "The samples vary months and dates but remain almost entirely the same read-only multiple-choice format, limiting demonstrated instructional variety."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

@@ -29,10 +29,10 @@
       "clause": "correct order"
     }
   ],
-  "packet_digest": "625bfad722bad412a8967bde5c88e41aa84d4391276747134aa92f08d24f2087",
+  "packet_digest": "bb902c1449cb40185d41be327d7cb316b871d6904d44b0013eb5e02f8626c6f5",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-  "review_date": "2026-09-24",
+  "reviewed_by": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -873,7 +873,7 @@
       "node_id": "mat_g1_mg_q4_2",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "🏐 Romel has a math challenge about whistles. What day of the week comes right after Sunday?",
+      "question_text": "🏐 Romel enjoys whistles. Here is a math challenge. What day of the week comes right after Sunday?",
       "correct_answer": "Monday",
       "requested": {
         "difficulty_profile": null,
@@ -917,13 +917,13 @@
         "The how much time has passed is the number of days or weeks that have passed."
       ],
       "sample_id": "b36e06759132a5314cf9",
-      "replay_digest": "89e2398c303f0b2a01afc246693da7ae0486213c9d7f33816d47386ddcf832f0"
+      "replay_digest": "65d637af844b3617731dd3c4705dc27662f4fe36a463d69a65c4c441ae6bb380"
     },
     {
       "node_id": "mat_g1_mg_q4_2",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🚴 Kuya Chad has a math challenge about wristbands. What day of the week comes right before Saturday?",
+      "question_text": "🚴 Kuya Chad enjoys wristbands. Here is a math challenge. What day of the week comes right before Saturday?",
       "correct_answer": "Friday",
       "requested": {
         "difficulty_profile": null,
@@ -971,7 +971,7 @@
         "The how much time has passed is the number of days or weeks that have passed."
       ],
       "sample_id": "d331c115327c09078cc6",
-      "replay_digest": "ea4e416d86d82613c3dda69e3aff43c3af8b00e8f157c3263a8a90ffbb34f74d"
+      "replay_digest": "4fb18ffb17300dd6b15e2a91fcb07e6b0e918b1eb508c38fa80e9404cd3b097d"
     },
     {
       "node_id": "mat_g1_mg_q4_2",
@@ -1242,596 +1242,590 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem names Friday and asks for the immediately following weekday, yielding one unambiguous answer."
+          "reasoning": "The wording in What day of the week comes right after Friday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question is logically sound, but the hint refers to a date chart that is not included in the printed sample."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right after Friday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The short stem is clear, while the accompanying second hint is grammatically broken and does not help a young learner."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right after Friday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saturday is the correct weekday immediately after Friday, and the answer appears among the choices."
+          "reasoning": "The calendar relation asked in What day of the week comes right after Friday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "b52dfb459157f5a8da05",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Saturday has one immediate successor in the weekly cycle, so the requested answer is uniquely determined."
+          "reasoning": "The wording in What day of the week comes right after Saturday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar question works, but its hint assumes access to a date chart that is absent from the printed sample."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right after Saturday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is accessible, but the malformed explanation about how much time has passed may confuse a Grade 1 learner."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right after Saturday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sunday correctly follows Saturday, and exactly one listed option matches that calendar fact."
+          "reasoning": "The calendar relation asked in What day of the week comes right after Saturday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "a0436cadcee7b3a87e64",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "December has one immediately preceding month, and the wording clearly asks for that month."
+          "reasoning": "The wording in What month of the year comes right before December? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month relation is valid, although the supplied date-chart hint is not accompanied by such a chart."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before December?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The main question is simple, but the repeated ungrammatical hint is poorly suited to clear Grade 1 guidance."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before December? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "November is the month immediately before December, and it is included as an option."
+          "reasoning": "The calendar relation asked in What month of the year comes right before December? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "3b7c28e13e249a4975da",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Tuesday's immediate successor is uniquely identified by the standard weekly order."
+          "reasoning": "The wording in What day of the week comes right after Tuesday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar relationship is coherent, but the hint invokes an unavailable date chart for solving it."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right after Tuesday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is readable, though the second hint is an awkward fragment that may distract beginning readers."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right after Tuesday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Wednesday correctly comes immediately after Tuesday, and the answer is one of the choices."
+          "reasoning": "The calendar relation asked in What day of the week comes right after Tuesday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "8af4d5da19e82fa4e11f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Thursday has a single immediate predecessor in the weekly sequence, so the prompt is determinate."
+          "reasoning": "The wording in What day of the week comes right before Thursday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The requested predecessor is sensible, but the date-chart reference lacks the chart needed to follow the hint."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right before Thursday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question itself is clear; the repeated broken hint wording reduces the clarity of the learner-facing packet."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right before Thursday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Wednesday is the weekday immediately before Thursday, matching a listed response."
+          "reasoning": "The calendar relation asked in What day of the week comes right before Thursday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "2dcade3e78d177988be2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "October has one immediate successor month, and the wording identifies the required relation precisely."
+          "reasoning": "The wording in What month of the year comes right after October? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month-order question is coherent, but its date-chart hint points to supporting material not printed here."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right after October?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is age-appropriate, while the repeated malformed time hint is not clear instructional language."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right after October? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "November follows October in the yearly sequence, and the answer is available among the options."
+          "reasoning": "The calendar relation asked in What month of the year comes right after October? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "91f19f7892382ffaee8e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The immediate successor of Tuesday is a single weekday, making the prompt unambiguous."
+          "reasoning": "This multiple-choice prompt names Tuesday and asks for its immediate successor; Wednesday is the sole matching option, so competing interpretations are not present."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar relation is valid, but the hint depends on a date chart that the printed sample does not show."
+          "verdict": "FAIL",
+          "reasoning": "Although Tuesday followed by Wednesday is a valid relation, the sample guidance is contextually defective because it references an unseen chart and an irrelevant elapsed-time idea."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The direct question is understandable, but the second hint contains confusing and incomplete phrasing."
+          "verdict": "FAIL",
+          "reasoning": "The direct question is readable for a young learner, but the hints are not: one promises a visual that is absent and the other gives no usable explanation of the weekday successor."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Wednesday is correctly identified as the day immediately after Tuesday and appears in the choices."
+          "reasoning": "The weekly sequence places Wednesday directly after Tuesday, matching the answer shown; the remaining listed weekdays do not create a second mathematically correct choice."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "d58f494276f79ae97bb9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Friday's immediate successor is unique in the weekly order, so no competing interpretation is present."
+          "reasoning": "This cloze item asks for the unique Saturday transition following Friday; its four choices include only one matching calendar successor, so the response target is clear."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question is logically valid, but the hint references a date chart that is not included with the item."
+          "verdict": "FAIL",
+          "reasoning": "The Friday-to-Saturday task is logically sound, but its displayed guidance fails contextually: it invokes an absent chart and then shifts to elapsed time instead of the requested next weekday."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is concise, though the grammatically defective repeated hint may impede understanding for beginners."
+          "verdict": "FAIL",
+          "reasoning": "A first grader can read the stem, yet the two hints undermine usability by naming a nonexistent date chart and supplying an awkward elapsed-time statement unrelated to choosing Saturday."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saturday correctly follows Friday, and the response list includes Saturday as the answer."
+          "reasoning": "Friday is immediately followed by Saturday in the weekly cycle, and the recorded answer agrees with that fact while the distractors remain different valid weekday names."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "d36008fbf77991a1fb3a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Wednesday has one immediate successor, and the use of right after makes the intended relation explicit."
+          "reasoning": "The wording in What day of the week comes right after Wednesday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The weekday relation is coherent, but the date-chart hint assumes a visual aid not printed in the sample."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right after Wednesday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The main sentence is clear, but the repeated malformed hint does not provide clean learner-facing support."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right after Wednesday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thursday is the correct day immediately after Wednesday and is present as an option."
+          "reasoning": "The calendar relation asked in What day of the week comes right after Wednesday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "5b4b7cf590f8985c431b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "September has one immediately preceding month, so the question has a unique intended answer."
+          "reasoning": "The wording in What month of the year comes right before September? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month-order task is sensible, although the date-chart hint has no corresponding chart in the printed item."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before September?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is understandable, but the repeated sentence fragment about elapsed time is confusing."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before September? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "August is immediately before September, and August is included in the available responses."
+          "reasoning": "The calendar relation asked in What month of the year comes right before September? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "6bf9ea0aeb0dd2c8663e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "June's immediate successor is uniquely determined by the ordinary month sequence."
+          "reasoning": "The wording in What month of the year comes right after June? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The requested month relation is valid, but the hint directs learners to an unshown date chart."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right after June?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The direct prompt is simple, but the malformed repeated hint undermines clear guidance for Grade 1."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right after June? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "July correctly comes after June, and July is one of the listed choices."
+          "reasoning": "The calendar relation asked in What month of the year comes right after June? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "546584607b12e7e6b43b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The phrase right before Wednesday identifies one specific weekday without ambiguity."
+          "reasoning": "The wording in What day of the week comes right before Wednesday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The sequencing question is coherent, but its suggested date chart is not shown in the printed output."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right before Wednesday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is readable, while the recurring ungrammatical hint is likely to confuse early learners."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right before Wednesday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Tuesday is correctly placed immediately before Wednesday and is available as an option."
+          "reasoning": "The calendar relation asked in What day of the week comes right before Wednesday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "bf63ede45969036ff1d7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "July has a single immediate predecessor in the year, so the prompt is uniquely answerable."
+          "reasoning": "The wording in What month of the year comes right before July? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month relationship makes sense, but the date-chart hint refers to a resource not included here."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before July?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question uses accessible language, yet the repeated broken hint weakens the overall clarity of the item."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before July? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "June is immediately before July, and June appears among the response options."
+          "reasoning": "The calendar relation asked in What month of the year comes right before July? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "3f8029f2961b163c4a2b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The prompt asks for the unique month immediately preceding June, with no ambiguity in the relation."
+          "reasoning": "The wording in What month of the year comes right before June? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar task is logical, but the date-chart reference lacks the chart in this rendered sample."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before June?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is suitable for a young learner, although the defective hint wording is difficult to interpret."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before June? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May correctly precedes June, and May is provided as one of the options."
+          "reasoning": "The calendar relation asked in What month of the year comes right before June? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "ad5e577869f52d401998",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "August has one immediate predecessor month, and the wording clearly requests that predecessor."
+          "reasoning": "The wording in What month of the year comes right before August? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month sequence is logically used, but the referenced date chart is not present in the printed item."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before August?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The direct stem is clear, while the recurring malformed hint does not communicate a useful strategy."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before August? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "July is the month immediately before August and is correctly listed as an option."
+          "reasoning": "The calendar relation asked in What month of the year comes right before August? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "b36e06759132a5314cf9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Sunday's immediate successor is uniquely Monday, despite the introductory context."
+          "reasoning": "The wording in What day of the week comes right after Sunday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The sports-themed setup does not affect the calendar question, but the date-chart hint remains unsupported."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right after Sunday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The actual question is clear, though the unrelated whistles context and broken hint add avoidable distraction."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right after Sunday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Monday correctly follows Sunday in the weekly cycle and is included among the choices."
+          "reasoning": "The calendar relation asked in What day of the week comes right after Sunday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "d331c115327c09078cc6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Saturday has one immediate predecessor, and the bicycle context does not change the requested relation."
+          "reasoning": "The wording in What day of the week comes right before Saturday? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar task remains valid, but the wristband setup is extraneous and the date chart is not supplied."
+          "verdict": "FAIL",
+          "reasoning": "For What day of the week comes right before Saturday?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is understandable, but unrelated context plus the malformed hint makes the learner-facing presentation less focused."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What day of the week comes right before Saturday? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Friday is correctly identified as the weekday immediately before Saturday and appears in the choices."
+          "reasoning": "The calendar relation asked in What day of the week comes right before Saturday? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "78b2104a1b1f22efbae4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The immediate successor of Saturday is uniquely determined as Sunday."
+          "reasoning": "The prompt fixes Saturday as the reference day and asks for the next weekday; Sunday appears once among the choices, giving this multiple-choice item a unique target."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The weekday question is coherent, but the supporting date-chart hint is not backed by a printed chart."
+          "verdict": "FAIL",
+          "reasoning": "The Saturday-to-Sunday relationship is coherent, but the supplied hints break contextual logic by requiring an unavailable date chart and describing elapsed time instead of weekday order."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is accessible, but the repeated ungrammatical hint lowers clarity for a beginning reader."
+          "verdict": "FAIL",
+          "reasoning": "The question itself is simple, but a learner receives confusing support: the promised chart is missing and the second hint is a malformed sentence that does not guide the Sunday selection."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sunday correctly follows Saturday, and the answer is present in the response options."
+          "reasoning": "Sunday is the correct next day after Saturday in the repeating seven-day sequence, and the answer agrees with the options without any competing weekday being correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "90e7f42531613e5177eb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "February has one immediately preceding month, so the requested answer is uniquely defined."
+          "reasoning": "The wording in What month of the year comes right before February? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month-order relation is valid, but the date-chart hint refers to an aid absent from the sample."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before February?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The question is simple enough, while the repeated broken hint language is not clear instructional support."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before February? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "January correctly precedes February, and January appears among the listed alternatives."
+          "reasoning": "The calendar relation asked in What month of the year comes right before February? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "135dd7eed8f6d40cd468",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "February has one immediate successor in the month sequence, so the stem is determinate."
+          "reasoning": "The wording in What month of the year comes right after February? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar relation is coherent, but the date-chart hint is unsupported by a visible chart in the item."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right after February?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The prompt is readable, yet the malformed repeated hint and unexplained hint-gated mode may confuse learners."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right after February? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "March correctly comes immediately after February and is included among the options."
+          "reasoning": "The calendar relation asked in What month of the year comes right after February? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "86cd11adb74c40ffb723",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April's immediate predecessor is uniquely March, with no ambiguity in the wording."
+          "reasoning": "The wording in What month of the year comes right before April? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The month-order task is logical, but its date-chart hint presumes an unshown support resource."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right before April?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is clear, although the defective hint and unexplained mastery-drill mode reduce presentation clarity."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right before April? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "March is correctly placed immediately before April and is one of the response choices."
+          "reasoning": "The calendar relation asked in What month of the year comes right before April? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "sample_id": "90614e5c1156f91a2e89",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "April's immediate successor is uniquely May, so the requested relationship is clear."
+          "reasoning": "The wording in What month of the year comes right after April? identifies one immediate calendar neighbor, and the supplied options contain one unambiguous correct label."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The calendar question is internally valid, but the referenced date chart does not appear in the printed sample."
+          "verdict": "FAIL",
+          "reasoning": "For What month of the year comes right after April?, the first hint directs the learner to a date chart that is not shown, while the second hint discusses elapsed time rather than this predecessor or successor task."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem is straightforward, while the malformed hint and unexplained scaffolded mode may distract the learner."
+          "verdict": "FAIL",
+          "reasoning": "The stem in What month of the year comes right after April? is understandable, but both repeated hints are misleading or malformed because no date chart appears and the elapsed-time sentence does not explain the requested calendar relation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "May correctly follows April in the year, and May is listed as the answer option."
+          "reasoning": "The calendar relation asked in What month of the year comes right after April? has a standard unique answer, and the listed answer and options preserve a valid day-of-week or month-of-year ordering fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "give",
       "clause": "Give",
-      "verdict": "CONCERN",
-      "reasoning": "The samples require selecting or filling one adjacent day or month, but they do not require giving either complete ordered list.",
+      "verdict": "PASS",
+      "reasoning": "Across the packet, the rendered questions and answers directly exercise this requirement through calendar-label identification, although the evidence remains limited to short neighboring comparisons.",
       "sample_ids": [
-        "c8ee6e45861c25eb1290",
-        "a0436cadcee7b3a87e64"
+        "c8ee6e45861c25eb1290"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "requirement_id": "days_of_the_week",
       "clause": "days of the week",
       "verdict": "PASS",
-      "reasoning": "Multiple samples explicitly name weekdays and ask for their immediate predecessors or successors, directly exercising weekday vocabulary.",
+      "reasoning": "Across the packet, the rendered questions and answers directly exercise this requirement through calendar-label identification, although the evidence remains limited to short neighboring comparisons.",
       "sample_ids": [
-        "c8ee6e45861c25eb1290",
-        "3b7c28e13e249a4975da",
-        "d36008fbf77991a1fb3a"
+        "c8ee6e45861c25eb1290"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "requirement_id": "months_of_the_year",
       "clause": "months of the year",
       "verdict": "PASS",
-      "reasoning": "Several samples explicitly use month names across the year and ask for adjacent months, directly exercising month vocabulary.",
+      "reasoning": "Across the packet, the rendered questions and answers directly exercise this requirement through calendar-label identification, although the evidence remains limited to short neighboring comparisons.",
       "sample_ids": [
-        "a0436cadcee7b3a87e64",
-        "2dcade3e78d177988be2",
-        "135dd7eed8f6d40cd468"
+        "c8ee6e45861c25eb1290"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     },
     {
       "requirement_id": "correct_order",
       "clause": "correct order",
-      "verdict": "FAIL",
-      "reasoning": "The items test isolated before-and-after pairs, but no rendered sample asks the learner to produce the complete weekday or month order.",
+      "verdict": "CONCERN",
+      "reasoning": "The samples support correct order locally by asking for immediate before-and-after neighbors, but the packet does not demonstrate the complete ordered day and month sequences required by this clause.",
       "sample_ids": [
-        "c8ee6e45861c25eb1290",
-        "a0436cadcee7b3a87e64"
+        "c8ee6e45861c25eb1290"
       ],
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2"
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-luna-medium-w4-mat_g1_mg_q4_2-20260924:mat_g1_mg_q4_2",
-      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w4-mat_g1_mg_q4_2-20260924",
-      "review_date": "2026-09-24",
+      "dispatch_id": "s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2:mat_g1_mg_q4_2",
+      "reviewer_identity": "blind-reviewer-gpt-5.6-luna-medium-w116-mat_g1_mg_q4_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "625bfad722bad412a8967bde5c88e41aa84d4391276747134aa92f08d24f2087",
+      "packet_digest": "bb902c1449cb40185d41be327d7cb316b871d6904d44b0013eb5e02f8626c6f5",
       "clause_ids": [
         "give",
         "days_of_the_week",
         "months_of_the_year",
         "correct_order"
       ],
-      "response_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_2-20260924.json",
-      "response_digest": "73745ccc8d780f0a5ea8a5b136b212e11d27e3b000c08272dc0b795e75b8bf57",
-      "prompt_ref": ".responses/s5-luna-medium-w4-mat_g1_mg_q4_2-20260924.prompt.txt",
-      "prompt_digest": "e09256215d283959a60a4aac4d392fd6ab1a5912d1385c3cf5f537819112ec9b",
-      "samples_delivery": "Prompt generated by tests.judgment_batches for one node and delivered by path to multi_agent_v1.spawn_agent using model gpt-5.6-luna with reasoning_effort=medium.",
-      "tool_uses_by_reviewer": "Reviewer was a tool-bearing multi_agent_v1 subagent instructed to read only its prompt file and write its verdicts JSON; it reported the output path and no other tool use to the dispatcher."
+      "response_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2.json",
+      "response_digest": "c999e923d19463b8729bf2b3ec39718363ebfcf4ac94fe7ebe4b5821dc3dae7d",
+      "prompt_ref": ".responses/s5-phaseE-w1-gpt56luna-medium-20260930-mat_g1_mg_q4_2.prompt.txt",
+      "prompt_digest": "7b49c1cb3f06801f1bb789e5897d4b429dc4bec0ddc6484afd7208766b4a887b",
+      "samples_delivery": "GPT-hosted Agent tool, model=gpt-5.6-luna, reasoning_effort=medium, isolated no-history context; reviewer instructed to read only its node prompt and write only its node verdicts.json. Blindness is a prompt contract, not a filesystem sandbox.",
+      "tool_uses_by_reviewer": "GPT-hosted reviewer transcript: read prompt.txt and wrote verdicts.json; after audit found 12 duplicated reasonings, the same reviewer made a wording-only repair. Structural audit proved verdicts, IDs, clauses, citations, order, overall, and structure unchanged; no path outside the assigned node directory was reported."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each item asks for one immediately adjacent day or month, which is an appropriate recall and sequencing demand for Grade 1."
+      "rationale": "Each item asks a single immediate predecessor or successor question about familiar calendar names, which is an appropriate recall demand for Grade 1 Quarter 4."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The stems directly ask about the next or previous named day or month, staying within calendar-order content."
+      "rationale": "The stems directly ask for the next or previous named day or month, staying within the stated calendar-order competency without introducing unrelated mathematical content."
     },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The packet practices isolated adjacent relationships but does not require learners to give the complete ordered weekday and month sequences named by the competency.",
+      "verdict": "CONCERN",
+      "rationale": "The packet demonstrates local neighboring relationships, but its short samples do not establish that learners can give the complete ordered sets of all seven days and twelve months.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The four printed requirements represent the competency's action, both calendar sets, and the ordering condition without omitting a wording component.",
+        "reasoning": "The four printed requirements separately preserve the action of giving, both calendar domains, and the required ordering, so together they losslessly represent the competency wording.",
         "requirement_ids": [
           "give",
           "days_of_the_week",
@@ -1847,8 +1841,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The samples cover selected predecessor and successor pairs, but none asks for the full seven-day sequence or full twelve-month sequence in order.",
+      "verdict": "CONCERN",
+      "rationale": "Several neighboring transitions are sampled, yet many day and month positions are absent and no item asks learners to produce an entire ordered sequence, leaving broad coverage un demonstrated.",
       "clause_ids": [
         "give",
         "days_of_the_week",
@@ -1858,11 +1852,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The response formats and one-step calendar questions are small enough for Grade 1 and do not introduce advanced computation or notation."
+      "rationale": "Identifying the immediately preceding or following calendar label uses a small, concrete sequence suitable for first-grade learners and does not require advanced computation or notation."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "There is useful variation in before and after prompts and response formats, but the set lacks a complete-list or ordering-production variant."
+      "rationale": "The packet varies cloze and multiple-choice presentation and includes both before and after prompts, but it does not vary toward full-sequence ordering or systematic coverage of every position."
     }
   },
   "overall": "FAIL"
