@@ -1,0 +1,326 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w19-mat_g1_na_q3_0-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_w1/mat_g1_na_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w19-mat_g1_na_q3_0-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_0
+PACKET DIGEST: e9e1af896647be4bf8b0e6b107f755286ee47bc28fedb813cfed824e12fab96f
+COMPETENCY (Grade 1, Quarter 3, None):
+Illustrate subtraction involving numbers up to 20 using a variety of concrete and pictorial models, and describes subtraction as 'taking away'.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_subtraction: Illustrate subtraction
+  numbers_up_to_20: numbers up to 20
+  concrete_pictorial: concrete and pictorial models
+  describe_subtraction: describes subtraction
+  taking_away: taking away
+
+SAMPLES (every one of these is real rendered output):
+  sample f253f286c3d49fd685aa  seed 42  [cloze]
+      stem:    There are 10 blocks. Taking away 10 blocks leaves ___ blocks.
+      answer:  0
+      options: 20 / 2 / 1 / 0
+      hints:   ["We are subtracting 10 from 10.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 10 − 10 = 0."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bda42f9548cd0933a065  seed 43  [error_detect]
+      stem:    Grace solved: "There are 12 marbles. Taking away 10 marbles leaves ___ marbles.". Grace says the blank is 1. Is Grace correct?
+      answer:  {'has_error': True, 'correct_value': 2}
+      hints:   ["We are subtracting 10 from 12.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 1 − 1 = 0.", "The difference of 12 − 10 = 2."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample db7daf7e7df1318f2dde  seed 44  [true_false]
+      stem:    There are 10 marbles. Taking away 2 marbles leaves 8 marbles. True or False?
+      answer:  True
+      hints:   ["We are subtracting 2 from 10.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 2 = 8."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b6af90c731db1208f82b  seed 45  [mcq]
+      stem:    There are 20 erasers. Taking away 12 erasers leaves how many erasers?
+      answer:  8
+      options: 32 / 9 / 7 / 8
+      hints:   ["We are subtracting 12 from 20.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 12 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1d39be6dd6adbe8521f9  seed 46  [mcq]
+      stem:    There are 15 apples. Taking away 2 apples leaves how many apples?
+      answer:  13
+      options: 13 / 17 / 14 / 12
+      hints:   ["We are subtracting 2 from 15.", "Subtract the ones: 5 − 2 = 3.", "Subtract the tens: 1 − 0 = 1.", "The difference of 15 − 2 = 13."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4b504d5a188474abd458  seed 48  [read_mcq]
+      stem:    🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints.
+Taking away 3 paints.
+How many paints are left?
+      answer:  7
+      options: 6 / 3 / 7 / 10
+      hints:   ["We are subtracting 3 from 10.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 3 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🎨"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b1eda95d53060391d552  seed 500  [true_false]
+      stem:    There are 20 blocks. Taking away 18 blocks leaves 1 block. True or False?
+      answer:  False
+      hints:   ["We are subtracting 18 from 20.", "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 18 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 251155d8e46d66690d89  seed 501  [error_detect]
+      stem:    Pia solved: "There are 20 crayons. Taking away 15 crayons leaves ___ crayons.". Pia says the blank is 6. Is Pia correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["We are subtracting 15 from 20.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 15 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 3e17870763b8acf03a9c  seed 502  [read_mcq]
+      stem:    🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 16 paints.
+Taking away 8 paints.
+How many paints are left?
+      answer:  8
+      options: 9 / 8 / 16 / 7
+      hints:   ["We are subtracting 8 from 16.", "The ones digit 6 is less than 8, so we need to borrow. Borrow 1 ten: 16 − 8 = 8.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 16 − 8 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🎨"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample aea2d071dcbf28f39e4d  seed 600  [error_detect]
+      stem:    Noel solved: "There are 20 erasers. Taking away 3 erasers leaves ___ erasers.". Noel says the blank is 17. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 17}
+      hints:   ["We are subtracting 3 from 20.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 1 − 0 = 1. (after borrowing)", "The difference of 20 − 3 = 17."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample a809bb432c99590addaa  seed 601  [true_false]
+      stem:    There are 15 cookies. Taking away 15 cookies leaves 0 cookies. True or False?
+      answer:  True
+      hints:   ["We are subtracting 15 from 15.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 15 = 0."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample a96d8f418b3311d12e39  seed 602  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.
+Taking away 3 cupcakes.
+How many cupcakes are left?
+      answer:  7
+      options: 3 / 10 / 7 / 6
+      hints:   ["We are subtracting 3 from 10.", "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 3 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 170597441f2e02f85c28  seed 603  [true_false]
+      stem:    There are 15 cookies. Taking away 10 cookies leaves 4 cookies. True or False?
+      answer:  False
+      hints:   ["We are subtracting 10 from 15.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 10 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2e3f9b646338ea229b61  seed 604  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 10 / 9 / 2 / 14
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 49e1e6e01962f5354a7d  seed 605  [true_false]
+      stem:    There are 15 pencils. Taking away 12 pencils leaves 4 pencils. True or False?
+      answer:  False
+      hints:   ["We are subtracting 12 from 15.", "Subtract the ones: 5 − 2 = 3.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 12 = 3."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 01717f28dcc4231f7c29  seed 606  [error_detect]
+      stem:    Manny solved: "There are 20 apples. Taking away 10 apples leaves ___ apples.". Manny says the blank is 10. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 10}
+      hints:   ["We are subtracting 10 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 1 = 1.", "The difference of 20 − 10 = 10."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 17556676af07b9514f9a  seed 607  [cloze]
+      stem:    There are 10 stickers. Taking away 2 stickers leaves ___ stickers.
+      answer:  8
+      options: 9 / 8 / 7 / 12
+      hints:   ["We are subtracting 2 from 10.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 2 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1d8d8b56ccc17ab31322  seed 608  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.
+Taking away 15 items.
+How many items are left?
+      answer:  0
+      options: 0 / 1 / 30 / 15
+      hints:   ["We are subtracting 15 from 15.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 15 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5ec2a05a7ff4e0c0c90f  seed 609  [cloze]
+      stem:    There are 10 marbles. Taking away 1 marble leaves ___ marbles.
+      answer:  9
+      options: 9 / 8 / 10 / 11
+      hints:   ["We are subtracting 1 from 10.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 1 = 9."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1ae65df5994dda0f407d  seed 610  [mcq]
+      stem:    There are 20 blocks. Taking away 12 blocks leaves how many blocks?
+      answer:  8
+      options: 32 / 8 / 9 / 7
+      hints:   ["We are subtracting 12 from 20.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 12 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 078f92abee66205f5abb  seed 612  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 11 / 10 / 2 / 12
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2f3fcdb3af462d2bbc73  seed 700  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 2 / 11 / 14 / 10
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 74b61f43027bb258b0d9  seed 701  [mcq]
+      stem:    ✝️ Daniel enjoys stones. Here is a math challenge. There are 20 stickers. Taking away 15 stickers leaves how many stickers?
+      answer:  5
+      options: 35 / 5 / 4 / 6
+      hints:   ["We are subtracting 15 from 20.", "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.", "Subtract the tens: 1 − 1 = 0. (after borrowing)", "The difference of 20 − 15 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample bbe85608606f40cfdc0a  seed 702  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 12 items.
+Taking away 1 item.
+How many items are left?
+      answer:  11
+      options: 11 / 10 / 12 / 13
+      hints:   ["We are subtracting 1 from 12.", "Subtract the ones: 2 − 1 = 1.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 1 = 11."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9c24eca19bc51a7ed7ec  seed 800  [true_false]
+      stem:    There are 13 erasers. Taking away 9 erasers leaves 4 erasers. True or False?
+      answer:  True
+      hints:   ["We are subtracting 9 from 13.", "The ones digit 3 is less than 9, so we need to borrow. Borrow 1 ten: 13 − 9 = 4.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 13 − 9 = 4."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 42fa89e522e3a1763b7b  seed 900  [error_detect]
+      stem:    Noel solved: "There are 13 stickers. Taking away 3 stickers leaves ___ stickers.". Noel says the blank is 11. Is Noel correct?
+      answer:  {'has_error': True, 'correct_value': 10}
+      hints:   ["We are subtracting 3 from 13.", "Subtract the ones: 3 − 3 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 13 − 3 = 10."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 7545db500d5c613acd77  seed 901  [error_detect]
+      stem:    Maria solved: "There are 12 blocks. Taking away 3 blocks leaves ___ blocks.". Maria says the blank is 10. Is Maria correct?
+      answer:  {'has_error': True, 'correct_value': 9}
+      hints:   ["We are subtracting 3 from 12.", "The ones digit 2 is less than 3, so we need to borrow. Borrow 1 ten: 12 − 3 = 9.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 12 − 3 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b949dee48eab95d22e43  seed 1000  [cloze]
+      stem:    There are 10 pencils. Taking away 2 pencils leaves ___ pencils.
+      answer:  8
+      options: 12 / 9 / 7 / 8
+      hints:   ["We are subtracting 2 from 10.", "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.", "Subtract the tens: 0 − 0 = 0. (after borrowing)", "The difference of 10 − 2 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 67c3ebc06e3db5f49c2f  seed 1001  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.
+Taking away 20 items.
+How many items are left?
+      answer:  0
+      options: 0 / 1 / 40 / 20
+      hints:   ["We are subtracting 20 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 2 = 0.", "The difference of 20 − 20 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 43, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1476901a257aaa6f8a1f  seed 1002  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 20 cupcakes.
+Taking away 1 cupcake.
+How many cupcakes are left?
+      answer:  19
+      options: 20 / 21 / 19 / 1
+      hints:   ["We are subtracting 1 from 20.", "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.", "Subtract the tens: 1 − 0 = 1. (after borrowing)", "The difference of 20 − 1 = 19."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+
