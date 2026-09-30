@@ -1,0 +1,256 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe14-mat_g3_mg_q1_5-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_mg_q1_5/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_5-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q1_5
+PACKET DIGEST: 75716b2ede777bc8f62db5f5da6e04f6c8db64671d4981e4e5d48eab6f702073
+COMPETENCY (Grade 3, Quarter 1, None):
+Recognize and draw parallel, intersecting, and perpendicular lines.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  recognize_line_relationships: Recognize
+  draw_line_relationships: draw
+  parallel_lines: parallel
+  intersecting_lines: intersecting
+  perpendicular_lines: perpendicular lines
+
+SAMPLES (every one of these is real rendered output):
+  sample d9cf93a7814869cd076d  seed 42  [read_mcq]
+      stem:    Look at the letter 'H'. The two vertical side segments are an example of ___.
+      answer:  parallel lines
+      options: rays / parallel lines / perpendicular lines / intersecting lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GeometryFigure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 6, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {"path": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e85b3e4403b4eba326e3  seed 43  [mcq]
+      stem:    To draw perpendicular lines forming a square right angle, which tools can you use together?
+      answer:  ruler and set square
+      options: thermometer and clock / ruler and set square / clock and ruler / ruler only
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d9d6f11415fdba19c021  seed 44  [read_mcq]
+      stem:    Look at the model. What type of lines are they?
+      answer:  perpendicular lines
+      options: perpendicular lines / curved lines / line segments / parallel lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GeometryFigure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 6, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {"path": 2, "right-angle": 1}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a4cc9cf041b5cc6bd647  seed 45  [mcq]
+      stem:    When you draw a vertical line meeting a horizontal line to form a square corner, what type of lines have you drawn?
+      answer:  perpendicular lines
+      options: parallel lines / curved lines / perpendicular lines / rays
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4479461ccbb4a9ff0bfb  seed 46  [mcq]
+      stem:    To draw intersecting lines that are not perpendicular, what should you draw?
+      answer:  Two straight lines that cross each other at a slanted angle.
+      options: Two lines that never meet. / A single ray with one endpoint. / Two straight lines that cross each other at a slanted angle. / Two lines that meet at a square right angle.
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample df4b0c4b89f08ca025e5  seed 500  [mcq]
+      stem:    The edges of a ruler's two long sides are an example of what type of lines?
+      answer:  parallel lines
+      options: parallel lines / perpendicular lines / rays / intersecting lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e2b7ff58ca15a0467b8b  seed 501  [read_mcq]
+      stem:    Look at the letter 'T'. The vertical and horizontal segments meet to form ___.
+      answer:  perpendicular lines
+      options: rays / curved lines / parallel lines / perpendicular lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GeometryFigure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 5, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {"path": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b82029138e1ceb055765  seed 502  [mcq]
+      stem:    Two lines that never meet, no matter how far they extend, are called ___.
+      answer:  parallel lines
+      options: intersecting lines / perpendicular lines / parallel lines / rays
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 02b1b41f9b75518a0f7b  seed 600  [mcq]
+      stem:    Two lines that cross at exactly one point are called ___.
+      answer:  intersecting lines
+      options: parallel lines / rays / curved lines / intersecting lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3873d0e5ca0b7e328112  seed 601  [mcq]
+      stem:    To draw parallel lines using a ruler and a set square, what is the correct technique?
+      answer:  Slide the set square along the straight edge of the ruler and draw along its side.
+      options: Slide the set square along the straight edge of the ruler and draw along its side. / Turn the set square over after drawing the first line. / Draw along the corner of the set square without moving it. / Draw a single point and connect it in a circle.
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1d8e7cd703ce6e33a4dc  seed 602  [mcq]
+      stem:    Are all perpendicular lines also intersecting lines?
+      answer:  Yes
+      options: Only if they are rays / No / Only sometimes / Yes
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 022d4c987ded40e846f4  seed 604  [mcq]
+      stem:    Do parallel lines ever intersect?
+      answer:  No, they never intersect.
+      options: No, they never intersect. / Only if they are line segments. / Yes, they intersect at a right angle. / Yes, they intersect at one point.
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1545e68a0c8405b9323d  seed 700  [mcq]
+      stem:    Two lines that meet at a right angle (90°) are called ___.
+      answer:  perpendicular lines
+      options: parallel lines / perpendicular lines / line segments / curved lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2f59a913f8a5e2846bd8  seed 701  [mcq]
+      stem:    🧶 Marco enjoys scrapbook pages. Here is a math challenge. When drawing the two straight sides of a ladder, which type of lines should you draw?
+      answer:  parallel lines
+      options: intersecting lines / perpendicular lines / parallel lines / curved lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 88ffaa1096bbe14e873b  seed 702  [mcq]
+      stem:    🎨 Ate Liza enjoys paintbrushes. Here is a math challenge. To draw parallel lines using a ruler and a set square, what is the correct technique?
+      answer:  Slide the set square along the straight edge of the ruler and draw along its side.
+      options: Draw a single point and connect it in a circle. / Draw along the corner of the set square without moving it. / Slide the set square along the straight edge of the ruler and draw along its side. / Turn the set square over after drawing the first line.
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 471f68d634f4577402b7  seed 800  [read_mcq]
+      stem:    Look at the model. What type of lines are they?
+      answer:  perpendicular lines
+      options: parallel lines / perpendicular lines / line segments / curved lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GeometryFigure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 6, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {"path": 2, "right-angle": 1}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ee80404116c2e8dad15e  seed 900  [read_mcq]
+      stem:    Look at the letter 'T'. The vertical and horizontal segments meet to form ___.
+      answer:  perpendicular lines
+      options: curved lines / rays / parallel lines / perpendicular lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GeometryFigure", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GeometryFigure
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GeometryFigure", "element_count": 5, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": [], "role_counts": {"path": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7d1070c190c2c8c5de75  seed 901  [mcq]
+      stem:    Two lines that never meet, no matter how far they extend, are called ___.
+      answer:  parallel lines
+      options: parallel lines / perpendicular lines / intersecting lines / rays
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b1674d9ff14faf936d0b  seed 1000  [mcq]
+      stem:    To draw two parallel lines using a ruler, you must make sure the lines ___.
+      answer:  stay the same distance apart and never meet
+      options: bend toward each other / form a square right angle / cross at a single point / stay the same distance apart and never meet
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 97299610397e2c3287be  seed 1001  [mcq]
+      stem:    Are all perpendicular lines also intersecting lines?
+      answer:  Yes
+      options: Only if they are rays / No / Yes / Only sometimes
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 0116a4dd88561ee24e4e  seed 1002  [mcq]
+      stem:    The corner of a square shows which type of lines meeting?
+      answer:  perpendicular lines
+      options: curved lines / parallel lines / line segments / perpendicular lines
+      hints:   ["Parallel lines never meet — they stay the same distance apart.", "Intersecting lines cross at one point.", "Perpendicular lines intersect at exactly a right angle (90°)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

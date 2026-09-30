@@ -1,0 +1,361 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe11-mat_g2_na_q3_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g2_na_q3_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q3_1
+PACKET DIGEST: 53dd7fcdb695cab8a7177316614854ec18253f3ab6f306bce6c8a7cf1e61e571
+COMPETENCY (Grade 2, Quarter 3, None):
+Illustrate and write multiplication as repeated addition, using a variety of concrete and pictorial models and numerals, and using groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_multiplication: Illustrate
+  write_multiplication_sentence: write multiplication
+  multiplication_as_repeated_addition: multiplication as repeated addition
+  concrete_model: concrete
+  pictorial_model: pictorial models
+  numeral_form: numerals
+  groups_of_equal_quantities: groups of equal quantities
+  array: arrays
+  counting_by_multiples: counting by multiples
+  equal_jumps_on_a_number_line: equal jumps on a number line
+
+SAMPLES (every one of these is real rendered output):
+  sample 3343720c437a17b6be55  seed 42  [error_detect]
+      stem:    Manny solved: "Starting at 0, taking 2 equal jumps of 5 on the number line lands on ___". Manny says the missing number is 3. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 10}
+      hints:   ["We need to find the total of equal groups 5 groups of 2.", "Think of it as 2 groups of 5: 5 + 5.", "The product of 5 × 2 = 10."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d8c25ce9854657ca2717  seed 43  [true_false]
+      stem:    2 + 2 + 2 + 2 = 6. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 2 groups of 4.", "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.", "The product of 2 × 4 = 8."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b1b56739bea92046eb97  seed 44  [cloze]
+      stem:    Count by 8s: 8, 16, 24, 32, 40. 8 × 5 = ___
+      answer:  40
+      options: 3 / 35 / 13 / 40
+      hints:   ["We need to find the total of equal groups 8 groups of 5.", "Think of it as 5 groups of 8: 8 + 8 + 8 + 8 + 8.", "The product of 8 × 5 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 005eb7c09f5d8300afa3  seed 45  [error_detect]
+      stem:    Pia solved: "Counting by 10s: 10, 20, 30, 40, so 10 × 4 = ___". Pia says the missing number is 36. Is Pia correct?
+      answer:  {'has_error': True, 'correct_value': 40}
+      hints:   ["We need to find the total of equal groups 10 groups of 4.", "Think of it as 4 groups of 10: 10 + 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 4) + (0 × 4) = 40 + 0 = 40.", "The product of 10 × 4 = 40."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 653156774dedf805d759  seed 46  [read_mcq]
+      stem:    Look at the 4×5 array. It shows 5 + 5 + 5 + 5. How many squares are shaded in all?
+      answer:  20
+      options: 18 / 20 / 23 / 17
+      hints:   ["We need to find the total of equal groups 4 groups of 5.", "Think of it as 5 groups of 4: 4 + 4 + 4 + 4 + 4.", "The product of 4 × 5 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 33, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "5 × 4", "rectangle", "20 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b2a1f3d8b89937244580  seed 49  [set_fill_in_blank]
+      stem:    Shade 6 rows of 4 squares to show 4 added 6 times. How many squares did you shade in all?
+      answer:  24
+      hints:   ["We need to find the total of equal groups 6 groups of 4.", "Think of it as 4 groups of 6: 6 + 6 + 6 + 6.", "The product of 6 × 4 = 24."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 37, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "4 × 6", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 24}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 344fcf4d4acb09ad8dbc  seed 50  [mcq]
+      stem:    Count by 3s: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30. What is 3 × 10?
+      answer:  30
+      options: 20 / 30 / 29 / 13
+      hints:   ["We need to find the total of equal groups 3 groups of 10.", "Use the 10 times table: 10 × 3.", "The product of 3 × 10 = 30."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a953f4082e513ec0b243  seed 500  [true_false]
+      stem:    Counting by 8s to 80 gives 8 × 10 = 90. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 8 groups of 10.", "Use the 10 times table: 10 × 8.", "The product of 8 × 10 = 80."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample a1568a7d30591953f37e  seed 501  [mcq]
+      stem:    Starting at 0, take 5 equal jumps of 7 on the number line. What is 7 × 5?
+      answer:  35
+      options: 12 / 35 / 30 / 2
+      hints:   ["We need to find the total of equal groups 7 groups of 5.", "Think of it as 5 groups of 7: 7 + 7 + 7 + 7 + 7.", "The product of 7 × 5 = 35."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a1c71a663128db7f4284  seed 502  [cloze]
+      stem:    Starting at 0, 5 equal jumps of 8 on the number line lands on ___
+      answer:  40
+      options: 13 / 35 / 3 / 40
+      hints:   ["We need to find the total of equal groups 8 groups of 5.", "Think of it as 5 groups of 8: 8 + 8 + 8 + 8 + 8.", "The product of 8 × 5 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 655204369a7968fc35ad  seed 600  [true_false]
+      stem:    Counting by 9s to 27 gives 9 × 3 = 27. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 9 groups of 3.", "Think of it as 3 groups of 9: 9 + 9 + 9.", "The product of 9 × 3 = 27."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 78573d64bdfb2c7c215d  seed 601  [cloze]
+      stem:    Moses puts 10 baskets in each of 9 bags. How many baskets are in all the bags?
+      answer:  90
+      options: 19 / 90 / 80 / 89
+      hints:   ["We need to find the total of equal groups 9 groups of 10.", "Use the 10 times table: 10 × 9.", "The product of 9 × 10 = 90."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ec113a73a68e3063e46a  seed 602  [error_detect]
+      stem:    Jose solved: "Counting by 5s: 5, 10, 15, so 5 × 3 = ___". Jose says the missing number is 15. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 15}
+      hints:   ["We need to find the total of equal groups 5 groups of 3.", "Think of it as 3 groups of 5: 5 + 5 + 5.", "The product of 5 × 3 = 15."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 5b1596ba38dcff008090  seed 603  [true_false]
+      stem:    10 + 10 + 10 + 10 + 10 = 50. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 10 groups of 5.", "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.", "The product of 10 × 5 = 50."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e9d2679562d2f4155cfb  seed 604  [mcq]
+      stem:    6 + 6 + 6 = ___. What is 6 × 3?
+      answer:  18
+      options: 3 / 15 / 18 / 9
+      hints:   ["We need to find the total of equal groups 6 groups of 3.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 734416293a8a2e1d6b77  seed 605  [true_false]
+      stem:    6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 = 60. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 6 groups of 10.", "Use the 10 times table: 10 × 6.", "The product of 6 × 10 = 60."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5bd3da81ea5900ef5c9f  seed 606  [mcq]
+      stem:    Starting at 0, take 2 equal jumps of 5 on the number line. What is 5 × 2?
+      answer:  10
+      options: 3 / 7 / 10 / 8
+      hints:   ["We need to find the total of equal groups 5 groups of 2.", "Think of it as 2 groups of 5: 5 + 5.", "The product of 5 × 2 = 10."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8ddf2ef7e6197b8edcb2  seed 607  [cloze]
+      stem:    Starting at 0, 2 equal jumps of 4 on the number line lands on ___
+      answer:  8
+      options: 8 / 7 / 2 / 6
+      hints:   ["We need to find the total of equal groups 4 groups of 2.", "Think of it as 2 groups of 4: 4 + 4.", "The product of 4 × 2 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 63b4bebf6262377e9338  seed 608  [true_false]
+      stem:    3 + 3 + 3 + 3 + 3 = 14. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 3 groups of 5.", "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.", "The product of 3 × 5 = 15."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b3b1d9aa75468defb65e  seed 609  [read_mcq]
+      stem:    Look at the 6×10 array. How many squares are shaded in all?
+      answer:  60
+      options: 59 / 32 / 60 / 63
+      hints:   ["We need to find the total of equal groups 6 groups of 10.", "Use the 10 times table: 10 × 6.", "The product of 6 × 10 = 60."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 73, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "10 × 6", "rectangle", "60 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 60}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1c8c9a3413cfe1a7fb06  seed 610  [error_detect]
+      stem:    Dante solved: "Counting by 4s: 4, 8, 12, 16, 20, 24, so 4 × 6 = ___". Dante says the missing number is 24. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 24}
+      hints:   ["We need to find the total of equal groups 4 groups of 6.", "Use the 6 times table: 6 × 4.", "The product of 4 × 6 = 24."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 7992130143bced630ea4  seed 611  [cloze]
+      stem:    Starting at 0, 3 equal jumps of 2 on the number line lands on ___
+      answer:  6
+      options: 3 / 9 / 6 / 5
+      hints:   ["We need to find the total of equal groups 2 groups of 3.", "Think of it as 3 groups of 2: 2 + 2 + 2.", "The product of 2 × 3 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 85bd2b712c496dd7c174  seed 612  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴   🚴🚴🚴🚴🚴🚴   🚴🚴🚴🚴🚴🚴
+There are 3 groups of 6 items.
+How many items are there in all?
+      answer:  18
+      options: 9 / 18 / 3 / 12
+      hints:   ["We need to find the total of equal groups 6 groups of 3.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 179b19e586e614ce16f5  seed 613  [true_false]
+      stem:    Counting by 10s to 20 gives 10 × 2 = 19. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 10 groups of 2.", "Think of it as 2 groups of 10: 10 + 10.", "Break 10 into 10 + 0: (10 × 2) + (0 × 2) = 20 + 0 = 20.", "The product of 10 × 2 = 20."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample cf5f882f809e9965dde1  seed 614  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 7×3 rectangle. How many squares did you shade in all?
+      answer:  21
+      hints:   ["We need to find the total of equal groups 7 groups of 3.", "Think of it as 3 groups of 7: 7 + 7 + 7.", "The product of 7 × 3 = 21."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 34, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "3 × 7", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 21}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 65dc886787b5a04477c5  seed 615  [cloze]
+      stem:    8 + 8 + 8 + 8 = ___
+      answer:  32
+      options: 12 / 4 / 32 / 28
+      hints:   ["We need to find the total of equal groups 8 groups of 4.", "Think of it as 4 groups of 8: 8 + 8 + 8 + 8.", "The product of 8 × 4 = 32."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 868ee53c249debcbb639  seed 700  [true_false]
+      stem:    5 + 5 + 5 = 15. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 5 groups of 3.", "Think of it as 3 groups of 5: 5 + 5 + 5.", "The product of 5 × 3 = 15."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 53cd34b28b57a9644511  seed 701  [set_fill_in_blank]
+      stem:    🏀 Gab enjoys water bottles. Here is a math challenge. Shade all the squares inside the 5×4 rectangle. How many squares did you shade in all?
+      answer:  20
+      hints:   ["We need to find the total of equal groups 5 groups of 4.", "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.", "The product of 5 × 4 = 20."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 33, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "4 × 5", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 23a95937adf878dd6448  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. 3 + 3 + 3 = ___
+      answer:  9
+      options: 6 / 12 / 8 / 9
+      hints:   ["We need to find the total of equal groups 3 groups of 3.", "Think of it as 3 groups of 3: 3 + 3 + 3.", "The product of 3 × 3 = 9."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4deae3ac3deb810fb576  seed 800  [read_mcq]
+      stem:    Look at the 2×1 array. How many squares are shaded in all?
+      answer:  2
+      options: 2 / 1 / 6 / 4
+      hints:   ["We need to find the total of equal groups 2 groups of 1.", "Think of it as 1 group of 2: 2.", "The product of 2 × 1 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 15, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "1 × 2", "rectangle", "2 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 2}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a2ffcb56e8b59e7c7fb7  seed 801  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀🏀🏀🏀🏀
+There are 4 groups of 9 items.
+How many items are there in all?
+      answer:  36
+      options: 13 / 36 / 4 / 27
+      hints:   ["We need to find the total of equal groups 9 groups of 4.", "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.", "The product of 9 × 4 = 36."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 43, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8a3edda99d610b6af85a  seed 900  [mcq]
+      stem:    Starting at 0, take 1 equal jumps of 1 on the number line. What is 1 × 1?
+      answer:  1
+      options: 0 / 3 / 2 / 1
+      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The product of 1 × 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d381c8849e01f1a1ff2e  seed 901  [error_detect]
+      stem:    Maria solved: "Counting by 1s: 1, so 1 × 1 = ___". Maria says the missing number is 2. Is Maria correct?
+      answer:  {'has_error': True, 'correct_value': 1}
+      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The product of 1 × 1 = 1."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 442227891305359cf51a  seed 1000  [read_mcq]
+      stem:    The arrows show counting by 3s on the number line. After 3 jumps, which number do you land on?
+      answer:  9
+      options: 8 / 9 / 12 / 6
+      hints:   ["We need to find the total of equal groups 3 groups of 3.", "Think of it as 3 groups of 3: 3 + 3 + 3.", "The product of 3 × 3 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["+3", "+3", "+3", "0", "3", "6", "9", "12"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--card-bg)"], "role_counts": {"number-line-jump": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6900f556a1804b3989f3  seed 1001  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️   ✝️✝️✝️✝️✝️✝️✝️✝️✝️   ✝️✝️✝️✝️✝️✝️✝️✝️✝️
+There are 3 groups of 9 items.
+How many items are there in all?
+      answer:  27
+      options: 27 / 9 / 26 / 36
+      hints:   ["We need to find the total of equal groups 9 groups of 3.", "Think of it as 3 groups of 9: 9 + 9 + 9.", "The product of 9 × 3 = 27."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3c3aad15af3d5fb28b6a  seed 1002  [read_mcq]
+      stem:    🧁
+There is 1 group of 1 cupcake.
+How many cupcakes are there in all?
+      answer:  1
+      options: 1 / 0 / 3 / 2
+      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The product of 1 × 1 = 1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

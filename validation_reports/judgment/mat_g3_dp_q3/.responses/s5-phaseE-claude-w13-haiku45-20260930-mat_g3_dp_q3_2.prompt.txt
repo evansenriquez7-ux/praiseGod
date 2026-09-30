@@ -1,0 +1,322 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe13-mat_g3_dp_q3_2-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_dp_q3_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe13-mat_g3_dp_q3_2-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_dp_q3_2
+PACKET DIGEST: c6e4795cdcb4215d819a4b0d3c2e118b95741daca0f3c841d0f81cc4bfa004a8
+COMPETENCY (Grade 3, Quarter 3, None):
+Interpret data in tables and single bar graphs (horizontal and vertical).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  interpret_data: Interpret data
+  tables: tables
+  single_bar_graphs: single bar graphs
+  horizontal: horizontal
+  vertical: vertical
+
+SAMPLES (every one of these is real rendered output):
+  sample eace5b3a23a84a85abf4  seed 42  [read_mcq]
+      stem:    Look at the table. What is the value for bananas?
+      answer:  25
+      options: 20 / 31 / 25 / 26
+      hints:   ["Look at the table carefully.", "Find the row for 'bananas' and read its value.", "Answer: 25"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "apples", "60", "bananas", "25", "mangoes", "20", "grapes", "20", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 056e58363276285af7df  seed 43  [read_mcq]
+      stem:    Look at the vertical bar graph. What is the total value of all categories?
+      answer:  185
+      options: 190 / 225 / 184 / 185
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 72, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "Math", "Science", "English", "Art", "Your answers:", "Math:", "Science:", "English:", "Art:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a9fd73b9055adbae60b3  seed 44  [read_mcq]
+      stem:    Look at the horizontal bar graph. Which category has the most?
+      answer:  dogs
+      options: dogs / cats / fish / birds
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Look for the longest bar."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 62, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "cats", "dogs", "birds", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample df5dec15310f702d237d  seed 45  [read_mcq]
+      stem:    Look at the horizontal bar graph. What is the difference between January and April?
+      answer:  5
+      options: 5 / 10 / 0 / 20
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Read the bar for 'January' and the bar for 'April'.", "Subtract the smaller value from the larger value."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "January", "February", "March", "April", "Your answers:", "January:", "February:", "March:", "April:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7c3e1f544315b7af1b2d  seed 46  [read_mcq]
+      stem:    Look at the vertical bar graph. What is the difference between bananas and mangoes?
+      answer:  20
+      options: 20 / 15 / 25 / 0
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read the bar for 'bananas' and the bar for 'mangoes'.", "Subtract the smaller value from the larger value."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "apples", "bananas", "mangoes", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5ff400e79d7e238593fd  seed 500  [read_mcq]
+      stem:    Look at the horizontal bar graph. Which category has the most?
+      answer:  June
+      options: February / January / March / June
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Look for the longest bar."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 104, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 6, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "January", "February", "March", "April", "May", "June", "Your answers:", "January:", "February:", "March:", "April:", "May:", "June:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bf965ffce1f5136258b5  seed 501  [read_mcq]
+      stem:    Look at the table. What is the total value of all categories?
+      answer:  325
+      options: 365 / 324 / 321 / 325
+      hints:   ["Look at the table carefully.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 33, "svg_count": 0, "table_row_count": 7, "table_cell_count": 14, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "roses", "40", "sunflowers", "55", "tulips", "55", "daisies", "85", "lilies", "60", "orchids", "30", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2d0302140071c721d9ee  seed 502  [read_mcq]
+      stem:    Look at the table. What is the total value of all categories?
+      answer:  320
+      options: 320 / 318 / 380 / 322
+      hints:   ["Look at the table carefully.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 33, "svg_count": 0, "table_row_count": 7, "table_cell_count": 14, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "Math", "60", "Science", "30", "English", "70", "Art", "10", "PE", "65", "Music", "85", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 801de3c3ebd86e9f0b69  seed 600  [read_mcq]
+      stem:    Look at the horizontal bar graph. What is the total value of all categories?
+      answer:  110
+      options: 115 / 108 / 125 / 110
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 68, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "January", "February", "March", "April", "Your answers:", "January:", "February:", "March:", "April:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6dc6987309d15f97fef7  seed 601  [read_mcq]
+      stem:    Look at the vertical bar graph. Which category has the least?
+      answer:  apples
+      options: grapes / mangoes / apples / bananas
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Look for the shortest bar."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 72, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "apples", "bananas", "mangoes", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6b7f51af7977cc2ce863  seed 602  [read_mcq]
+      stem:    Look at the horizontal bar graph. Which is greater: daisies or sunflowers?
+      answer:  sunflowers
+      options: tulips / daisies / roses / sunflowers
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Read the bar for 'daisies' and the bar for 'sunflowers'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 72, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "roses", "sunflowers", "tulips", "daisies", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 56f5c52ee9c469853f76  seed 603  [read_mcq]
+      stem:    Look at the vertical bar graph. Which category has the most?
+      answer:  daisies
+      options: roses / tulips / sunflowers / daisies
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 10.", "Look for the tallest bar."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 60, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "10", "20", "30", "40", "50", "60", "70", "roses", "sunflowers", "tulips", "daisies", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bee443af049a976da67b  seed 604  [read_mcq]
+      stem:    Look at the vertical bar graph. Which is greater: Grade 4 or Grade 2?
+      answer:  Grade 2
+      options: Grade 1 / Grade 2 / Grade 3 / Grade 4
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 20.", "Read the bar for 'Grade 4' and the bar for 'Grade 2'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 54, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "20", "40", "60", "80", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Your answers:", "Grade 1:", "Grade 2:", "Grade 3:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c04e98ae547d6ea7db92  seed 700  [read_mcq]
+      stem:    Look at the vertical bar graph. Which is greater: March or January?
+      answer:  March
+      options: February / March / April / January
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read the bar for 'March' and the bar for 'January'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "January", "February", "March", "April", "Your answers:", "January:", "February:", "March:", "April:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2ce79e54d55645909aa9  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the table. What is the total value of all categories?
+      answer:  130
+      options: 128 / 130 / 140 / 132
+      hints:   ["Look at the table carefully.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "January", "10", "February", "10", "March", "65", "April", "45", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 19ef89b3ad9c66e49937  seed 702  [read_mcq]
+      stem:    🏀 Marco enjoys jerseys. Here is a math challenge. Look at the vertical bar graph. Which is greater: bananas or mangoes?
+      answer:  bananas
+      options: bananas / grapes / apples / mangoes
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read the bar for 'bananas' and the bar for 'mangoes'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 76, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "apples", "bananas", "mangoes", "grapes", "Your answers:", "apples:", "bananas:", "mangoes:", "grapes:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dd4040cb5082b72dfd3b  seed 800  [read_mcq]
+      stem:    Look at the table. What is the difference between apples and grapes?
+      answer:  5
+      options: 35 / 5 / 10 / 0
+      hints:   ["Look at the table carefully.", "Read the rows for 'apples' and 'grapes'.", "Subtract the smaller value from the larger value."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 33, "svg_count": 0, "table_row_count": 7, "table_cell_count": 14, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "apples", "40", "bananas", "40", "mangoes", "65", "grapes", "45", "oranges", "30", "strawberries", "60", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d9ecc6fee38fa759ed28  seed 801  [read_mcq]
+      stem:    Look at the vertical bar graph. Which is greater: roses or daisies?
+      answer:  daisies
+      options: sunflowers / tulips / roses / daisies
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read the bar for 'roses' and the bar for 'daisies'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 80, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "roses", "sunflowers", "tulips", "daisies", "Your answers:", "roses:", "sunflowers:", "tulips:", "daisies:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 67adbf3dc3c5deb6bd26  seed 900  [read_mcq]
+      stem:    Look at the table. Which is greater: roses or daisies?
+      answer:  daisies
+      options: tulips / sunflowers / daisies / roses
+      hints:   ["Look at the table carefully.", "Read the rows for 'roses' and 'daisies'.", "Compare the two values."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "roses", "10", "sunflowers", "10", "tulips", "20", "daisies", "30", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f5ef7148252188475a6a  seed 901  [read_mcq]
+      stem:    Look at the horizontal bar graph. What is the total value of all categories?
+      answer:  90
+      options: 90 / 105 / 95 / 89
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Read each bar's value, then add them all together."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 55, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 3, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "cats", "dogs", "birds", "Your answers:", "cats:", "dogs:", "birds:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dc52751cb53e3b4f45e0  seed 1000  [read_mcq]
+      stem:    Look at the horizontal bar graph. What is the value for Grade 4?
+      answer:  15
+      options: 15 / 16 / 30 / 23
+      hints:   ["Look at the bar graph carefully.", "The scale on the horizontal (x-axis) goes up by 5.", "Find the bar for 'Grade 4' and read across to the scale.", "Answer: 15"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 54, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["Read the value for \"Grade 4\" from the graph and enter it below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Your answer:", "Grade 4:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1e9f3edfc4ef33802022  seed 1001  [read_mcq]
+      stem:    Look at the vertical bar graph. Which is greater: fish or birds?
+      answer:  birds
+      options: fish / dogs / cats / birds
+      hints:   ["Look at the bar graph carefully.", "The scale on the vertical (y-axis) goes up by 5.", "Read the bar for 'fish' and the bar for 'birds'.", "Compare: which bar is taller (or longer)?"]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "BarChart", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  BarChart
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "BarChart", "element_count": 74, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 4, "text_labels": ["Read each value from the graph and enter them below.", "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "cats", "dogs", "birds", "fish", "Your answers:", "cats:", "dogs:", "birds:", "fish:"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fc97f412ca314abf3458  seed 1002  [read_mcq]
+      stem:    Look at the table. Which category has the least?
+      answer:  Grade 2
+      options: Grade 2 / Grade 3 / Grade 1 / Grade 4
+      hints:   ["Look at the table carefully.", "Look for the shortest bar."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "FillInTable", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  FillInTable
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "FillInTable", "element_count": 25, "svg_count": 0, "table_row_count": 5, "table_cell_count": 10, "button_count": 0, "input_count": 0, "text_labels": ["Category", "Value", "Grade 1", "20", "Grade 2", "10", "Grade 3", "15", "Grade 4", "25", "Fill in the missing values in the table"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

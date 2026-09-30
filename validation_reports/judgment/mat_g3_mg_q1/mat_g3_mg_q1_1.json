@@ -54,10 +54,10 @@
       "clause": "tile units"
     }
   ],
-  "packet_digest": "fe2945fdae8f5a2659b79fd0fa955ea662244d627d3e75b4febdf6e25635c36b",
+  "packet_digest": "14bbf70341d8ca73337f0340699f5b95049d475dc5f56baf3de9e7aba471d13a",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -870,7 +870,7 @@
       "node_id": "mat_g3_mg_q1_1",
       "seed": 701,
       "formatter": "mcq",
-      "question_text": "💃 Kuya Ton has a math challenge about trophies. Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "question_text": "💃 Kuya Ton enjoys trophies. Here is a math challenge. Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "side × side",
       "requested": {
         "difficulty_profile": null,
@@ -915,13 +915,13 @@
         "So the rule is: area = side × side."
       ],
       "sample_id": "e93a9a2bcbf714019186",
-      "replay_digest": "190f21fa6898e037106dede56ebf8a6709dddb0e6376ff4c5f05e0a42361d026"
+      "replay_digest": "fcdbac5858a01f82f980e725c093045dba96952cb27d5afdde911fbec9f0d52e"
     },
     {
       "node_id": "mat_g3_mg_q1_1",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Cover each rectangle with unit square tiles and count them: a 6 by 4 rectangle takes 24 tiles, a 9 by 3 rectangle takes 27 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Cover each rectangle with unit square tiles and count them: a 6 by 4 rectangle takes 24 tiles, a 9 by 3 rectangle takes 27 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "requested": {
         "difficulty_profile": null,
@@ -970,7 +970,7 @@
         "So the rule is: area = length × width."
       ],
       "sample_id": "4ed9662b2b2414ce0f23",
-      "replay_digest": "31bc6c4d206365c96774d834561bf34b75bfab5e2e5de847051668c59e3dd040"
+      "replay_digest": "7a85b2517e85a7cf8641af20d963f0402280290664776232548fb2151b7d58bd"
     },
     {
       "node_id": "mat_g3_mg_q1_1",
@@ -1307,506 +1307,506 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously presents three specific rectangles with clear dimensions and tile counts, then asks for a single rule, making the task intent transparent to Grade 3 learners without interpretive confusion."
+          "reasoning": "The stem clearly specifies counting tiles on three rectangles with explicit dimensions. The question asks unambiguously which rule gives the tile count. The answer length by width is the sole mathematically correct option. No alternate interpretation of the problem exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of covering rectangles with unit square tiles is a standard concrete mathematics context valid for area exploration, and the provided cases maintain logical consistency with accurate arithmetic."
+          "reasoning": "The context of covering rectangles with unit square tiles and counting them is authentic and logically sound for deriving an area formula. The three cases (4×3=12, 5×4=20, 7×2=14) all correctly demonstrate the pattern. The progression from concrete counting to abstract rule is pedagogically valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language uses accessible vocabulary and syntax for Grade 3, with imperative structure that directs students to observe a pattern and state a rule without abstract symbolic demands."
+          "reasoning": "The language is direct and age-appropriate. The stem clearly explains the tiling scenario. The three hints scaffold the learner from observing the pattern to verbalizing the rule. A Grade 3 learner can follow the logic from example to generalization without confusion."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All presented calculations are mathematically correct: 4 times 3 equals 12, 5 times 4 equals 20, and 7 times 2 equals 14, with the answer and hints accurately representing the length times width formula."
+          "reasoning": "All calculations are correct: 4×3 equals 12, 5×4 equals 20, 7×2 equals 14. The formula length times width correctly computes each case. The hints accurately state these relationships and correctly derive the general rule. No mathematical error exists in stem, answer, or hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "a8b78f2da7b88d903b6c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice format with a single correct option and four distractors removes ambiguity about what rule to select, with stem clearly asking for the rule that always works across the three given cases."
+          "reasoning": "The stem unambiguously asks for the rule giving the tile count. The three examples with distinct dimensions and products provide enough evidence to rule out incorrect options. The answer length times width is the sole correct formula from the options given."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The tile-counting scenario remains logically valid with three rectangles presented; all arithmetic is sound: 4 times 3 yields 12, 6 times 10 yields 60, and 9 times 5 yields 45."
+          "reasoning": "Covering and counting tiles on three different rectangles forms a sound inductive foundation. The specific cases 4×3=12, 6×10=60, 9×5=45 are varied enough to support generalizing the multiplicative rule. The task asks learners to extract the invariant pattern across distinct examples."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Clear presentation with concrete examples followed by multiple choice options, allowing students to focus on rule identification rather than rule articulation in written form."
+          "reasoning": "The multiple choice format with four distinct options makes the task accessible. The stem is clearly written. The hints progressively narrow from specific calculations to the general formula. A Grade 3 learner can follow the reasoning steps without ambiguity or undue cognitive load."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations verify correctly with the products matching the stated tile counts, and the correct answer matches the mathematical pattern established by the three examples."
+          "reasoning": "Calculations verify correctly: 4×3 is 12, 6×10 is 60, 9×5 is 45. The hints accurately reflect these products. The derived rule length times width is mathematically sound and correctly applies to each case shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "cb6068adaced45c76164",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format with square-specific context makes the mathematical pattern unambiguous; students must identify that squares follow the side times side rule distinct from rectangles."
+          "reasoning": "The stem presents a clear tiling scenario with three square examples and asks which rule applies to all. The answer side times side is unambiguously the correct choice. No confusion arises about what is being asked or what the correct answer is."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three squares with increasing sizes and correct tile counts form a logically sound scenario: 2 times 2 equals 4, 3 times 3 equals 9, and 5 times 5 equals 25 are all mathematically consistent."
+          "reasoning": "Tiling three squares and counting tiles to discover the area formula is contextually appropriate for Grade 3 inductive learning. The cases 2×2=4, 3×3=9, 5×5=25 clearly exhibit the pattern that area equals the side dimension squared. The logic supports inductive reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly names shapes as squares and uses consistent language about counting tiles, making it easy for Grade 3 students to discern the pattern without extraneous complexity."
+          "reasoning": "The cloze format is clear and accessible. The stem explains the tiling task. The three hints guide learners from observing specific calculations to stating the general rule. The language is simple and direct for a Grade 3 audience."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are correct: 2 squared gives 4, 3 squared gives 9, and 5 squared gives 25, with the derived formula for squares properly representing this pattern."
+          "reasoning": "All calculations are correct: 2×2 is 4, 3×3 is 9, 5×5 is 25. The hints accurately state these products and correctly derive the formula area equals side times side. No mathematical inconsistency exists."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "32ec0fdd3cf579937e25",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice structure with five distinct options removes any ambiguity about which rule the student should select from the provided choices."
+          "reasoning": "The multiple choice format clearly presents the tiling scenario and asks for the rule. The four options are distinct, with only one correct answer. No ambiguity exists about what is being tested or what constitutes the correct response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The three squares presented with 2x2, 3x3, and 4x4 dimensions yield correct tile counts of 4, 9, and 16 respectively, maintaining mathematical and contextual soundness."
+          "reasoning": "The scenario of tiling squares and counting tiles to identify the area rule is logically sound and pedagogically appropriate for Grade 3 inductive exploration. The three examples 2×2=4, 3×3=9, 4×4=16 provide sufficient cases to support the generalization."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question structure uses simple phrasing asking for a rule that works, and the options provide clear alternatives without requiring complex parsing."
+          "reasoning": "The stem is clearly written in accessible language. The multiple choice options are distinct and easy to read. The hints progressively build understanding from specific cases to the general formula. No unnecessary complexity impedes comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Products are all accurate: 2 times 2 equals 4, 3 times 3 equals 9, and 4 times 4 equals 16, with correct options and incorrect distractors properly distinguished."
+          "reasoning": "All products are correct: 2×2 equals 4, 3×3 equals 9, 4×4 equals 16. The hints accurately state these relationships and derive the correct formula side times side. Mathematical accuracy is maintained throughout."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "73ea53a11ba22a632740",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Clear multiple-choice format with rectangles of different dimensions presented with explicit tile counts, leaving no doubt about the mathematical pattern students should identify."
+          "reasoning": "The stem unambiguously asks which rule gives the tile count for rectangles. The three examples clearly differentiate from incorrect options. The answer length times width is the sole mathematically valid choice and is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "All three rectangles present valid dimensions with correct arithmetic: 4 times 3 equals 12, 6 times 4 equals 24, and 9 times 10 equals 90, maintaining scenario integrity."
+          "reasoning": "The inductive approach of presenting three rectangles with their tile counts and asking learners to identify the pattern is pedagogically sound. The examples 4×3=12, 6×4=24, 9×10=90 support deriving the multiplicative rule without ambiguity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple, direct language with concrete examples that Grade 3 students can easily visualize and understand without unnecessary complicated phrasing."
+          "reasoning": "The stem is clearly stated. The four multiple choice options are distinct and readable. The hints provide scaffolding from observation to generalization. The task is well-suited to a Grade 3 learner without unnecessary complication."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplication results are correct, with the answer identifying the proper length times width formula that applies consistently across the three presented cases."
+          "reasoning": "All calculations are accurate: 4×3 equals 12, 6×4 equals 24, 9×10 equals 90. The hints correctly state these products and derive the valid formula. No mathematical errors appear in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "78f3ee00c77d16e5f715",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The square-specific multiple-choice item presents three different squares with clearly stated dimensions and tile counts, with options that distinctly represent different possible rules."
+          "reasoning": "The stem presents a clear scenario asking which rule applies to three squares. The answer side times side is unambiguously correct. The question allows no misinterpretation about what is being asked or what constitutes the correct response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario maintains logical consistency with 2x2 yielding 4 tiles, 4x4 yielding 16 tiles, and 5x5 yielding 25 tiles, all mathematically sound."
+          "reasoning": "Tiling squares with unit squares and deriving the area formula through inductive reasoning is contextually sound for Grade 3. The three cases 2×2=4, 4×4=16, 5×5=25 clearly support identifying the pattern. The logic is valid and appropriate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Students can readily understand the task of identifying which rule always gives the correct tile count for squares at different sizes."
+          "reasoning": "The cloze format is clear and accessible. The stem explicitly describes the tiling task. The hints scaffold understanding progressively from specific examples to the general rule. The language and complexity are suitable for Grade 3 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations are accurate with products correctly matching tile counts, and the hint progression logically supports the side times side formula."
+          "reasoning": "All calculations are correct: 2×2 is 4, 4×4 is 16, 5×5 is 25. The hints accurately reflect these products and derive the correct formula side times side. No mathematical inconsistency exists anywhere in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "014d872bbd0057304577",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice format with squares of distinct sizes removes any ambiguity, asking cleanly for the rule that always applies."
+          "reasoning": "The multiple choice format with four distinct options clearly asks for the rule governing the tile count. No ambiguity exists about the question being posed or the nature of the required answer. The correct option is uniquely identifiable."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Four-by-four yields 16, five-by-five yields 25, and ten-by-ten yields 100, all with correct arithmetic and scenario consistency."
+          "reasoning": "The scenario presents three squares of increasing size to support inductive derivation of the area formula. The examples 4×4=16, 5×5=25, 10×10=100 provide varied cases demonstrating the consistent multiplicative pattern. The logical flow supports conceptual understanding."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The presentation is straightforward with sufficient examples and clear question phrasing appropriate for Grade 3 mathematical reasoning."
+          "reasoning": "The stem is written clearly in simple language appropriate for Grade 3. The multiple choice options are distinct and easy to differentiate. The hints provide progressive scaffolding from observation to rule statement. Comprehension is supported throughout."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are correct, the answer is mathematically sound, and the distractors represent plausible but incorrect alternative rules."
+          "reasoning": "All products are computed correctly: 4×4 is 16, 5×5 is 25, 10×10 is 100. The hints accurately state these relationships and correctly derive the formula side times side. No mathematical errors are present in any component."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "56f741660ed92c56ee7a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem uses slightly varied wording with three squares and asks which rule works for every one, making the pattern-generalization task clear without ambiguity."
+          "reasoning": "The stem uses direct language asking which rule works for the three squares presented. The cloze format with distinct options makes the correct answer unambiguous. No confusion arises about what is being tested or expected as a response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three-by-three yields 9, four-by-four yields 16, and five-by-five yields 25, all mathematically valid with correct tile counts."
+          "reasoning": "Presenting three tiled squares and asking learners to identify the rule is pedagogically sound for inductive reasoning. The specific examples 3×3=9, 4×4=16, 5×5=25 clearly support deriving the multiplicative formula. The logic is coherent and supports the learning goal."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The alternative phrasing of which rule works for every one remains accessible to Grade 3 learners and maintains focus on generalization from specific cases."
+          "reasoning": "The cloze task is accessible to Grade 3 learners. The stem clearly describes tiling three squares. The four options are distinct and readable. The three hints progressively build understanding from concrete observations to the general rule without confusion."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All arithmetic is correct with proper formula representation, and hints appropriately explain the generalized rule from individual examples."
+          "reasoning": "All calculations are correct: 3×3 equals 9, 4×4 equals 16, 5×5 equals 25. The hints accurately state these products and correctly express the formula area equals side times side. Mathematical accuracy is maintained throughout the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "0d2eb6a1a366ae484f35",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format for rectangles with three specific cases provides sufficient unambiguous context for students to identify the underlying rule."
+          "reasoning": "The cloze stem unambiguously asks for the tile-counting rule. The three examples with distinct dimensions and the four distinct options leave no ambiguity about the correct answer. The question and expected response are clearly delineated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two-by-five equals 10, eight-by-three equals 24, and nine-by-ten equals 90, with all calculations correct and scenario logically sound."
+          "reasoning": "The scenario of tiling three rectangles and identifying the area rule is contextually valid for Grade 3 inductive learning. The examples 2×5=10, 8×3=24, 9×10=90 provide varied dimensions supporting the generalization to the multiplicative formula."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The students are directed to observe patterns across three rectangles and provide the rule, a task structure appropriate for Grade 3 inductive reasoning."
+          "reasoning": "The stem language is simple and direct. The cloze format is clear. The three hints scaffold understanding from observing tile counts to deriving the general rule. The complexity is appropriate for Grade 3 learners without unnecessary obscuration."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products are accurate and the formula answer correctly represents the relationship between length, width, and area expressed through tile count."
+          "reasoning": "All products are calculated correctly: 2×5 is 10, 8×3 is 24, 9×10 is 90. The hints accurately reflect these products and correctly state the formula length times width. No mathematical errors appear in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "8129473d4cebcbef9975",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Three rectangles with clear dimensions and tile counts support an unambiguous identification of the area formula rule through cloze completion."
+          "reasoning": "The stem clearly states the tiling scenario and asks which rule applies. The cloze format with distinct options provides no ambiguity about the correct answer. The question is straightforward and unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eight-by-ten equals 80, nine-by-four equals 36, and ten-by-three equals 30, all with correct arithmetic supporting the scenario."
+          "reasoning": "The task of tiling rectangles and identifying the area rule through induction is contextually appropriate and logically sound. The three examples 8×10=80, 9×4=36, 10×3=30 demonstrate the pattern across varied dimensions. The pedagogical approach supports valid inductive reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem consistently uses accessible language and concrete examples that guide Grade 3 students toward identifying the multiplicative pattern."
+          "reasoning": "The cloze task is clear and accessible. The stem describes the tiling scenario in simple language. The three hints progressively build from specific observations to the general formula. The presentation supports comprehension for Grade 3 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are mathematically correct, the answer captures the length times width relationship, and hints reinforce understanding without error."
+          "reasoning": "All products are correct: 8×10 is 80, 9×4 is 36, 10×3 is 30. The hints accurately state these calculations and derive the correct formula length times width. Mathematical consistency is maintained throughout."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "cd39110fedc0931a1a46",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format with three rectangles and their tile counts provides clear context for identifying the multiplication-based area rule."
+          "reasoning": "The stem asks unambiguously which rule gives the tile count for three rectangles. The cloze format presents four distinct options, making the correct answer unambiguous. No confusion exists about what is being tested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Four-by-five equals 20, eight-by-four equals 32, and nine-by-ten equals 90, with all arithmetic verified and scenario consistent."
+          "reasoning": "The scenario of tiling rectangles and counting to derive the area formula is pedagogically sound and contextually valid. The examples 4×5=20, 8×4=32, 9×10=90 provide sufficient diversity to support the inductive generalization to the multiplicative rule."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The presentation uses straightforward language directing students to count tiles and find a rule, matching Grade 3 cognitive expectations."
+          "reasoning": "The stem is written clearly in accessible language for Grade 3. The cloze task format is straightforward. The three hints provide scaffolding from observing patterns to articulating the general rule. Comprehension is well-supported throughout."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations are accurate, the formula answer is correct, and the supporting hints maintain mathematical validity throughout."
+          "reasoning": "All calculations are accurate: 4×5 is 20, 8×4 is 32, 9×10 is 90. The hints correctly state these products and derive the valid formula length times width. No mathematical errors exist in any part of the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "f6009895c3c173ec166f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice format with rectangles of different proportions removes interpretive ambiguity about which rule to identify."
+          "reasoning": "The multiple choice stem clearly asks for the rule. The three examples with the four distinct options leave no ambiguity about the correct answer or what is being tested. The question is straightforward and unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five-by-two equals 10, seven-by-five equals 35, and nine-by-ten equals 90, all mathematically sound and contextually consistent."
+          "reasoning": "Tiling rectangles and identifying the area rule through induction is contextually valid for Grade 3. The three cases 5×2=10, 7×5=35, 9×10=90 demonstrate the multiplicative pattern across varied dimensions. The pedagogical logic supports valid learning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Clear multiple-choice structure allows students to focus on pattern recognition without the burden of written formula articulation."
+          "reasoning": "The multiple choice format is clear and accessible. The stem is simply stated. The options are distinct and readable. The three hints progressively scaffold from observing specific products to stating the general formula. Grade 3 learners can follow the logic."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products match the stated tile counts, the correct answer represents the proper formula, and distractors offer plausible but incorrect alternatives."
+          "reasoning": "All products are computed correctly: 5×2 is 10, 7×5 is 35, 9×10 is 90. The hints accurately reflect these calculations and correctly state the formula length times width. Mathematical accuracy is maintained throughout the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "4da63af9e9ba71a2615c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice format with three distinct rectangles and explicit tile counts makes the rule identification task unambiguous."
+          "reasoning": "The stem unambiguously asks which rule applies to the three rectangles. The multiple choice options are distinct. The correct answer is uniquely identifiable. No confusion arises about the question or the expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Five-by-two equals 10, nine-by-five equals 45, and ten-by-four equals 40, with all arithmetic correct and scenario logically coherent."
+          "reasoning": "The scenario of tiling rectangles and identifying the general area rule is contextually sound for inductive reasoning. The examples 5×2=10, 9×5=45, 10×4=40 provide varied dimensions supporting the generalization to the multiplicative formula. The logic is pedagogically valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The five options provide clear alternatives without requiring abstract reasoning, supporting Grade 3 understanding of area patterns."
+          "reasoning": "The multiple choice format is clear and accessible to Grade 3 learners. The stem is written in simple language. The four options are distinct and easy to read. The three hints provide scaffolding from observation to rule derivation without unnecessary complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are accurate, the answer correctly identifies the formula, and incorrect options represent genuinely different mathematical approaches."
+          "reasoning": "All calculations are correct: 5×2 is 10, 9×5 is 45, 10×4 is 40. The hints accurately state these products and correctly derive the formula length times width. No mathematical inconsistencies exist in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "4b27f8f66bacb5b40e7f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format with three rectangles, including two with the same tile count but different dimensions, clearly illustrates why length times width applies universally."
+          "reasoning": "The cloze stem clearly presents the tiling scenario and asks for the rule. The four distinct options make the correct answer unambiguous. No confusion exists about what is being tested or the nature of the expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three-by-four equals 12, six-by-two equals 12, and ten-by-three equals 30, with all calculations correct and scenario reinforcing the formula applicability."
+          "reasoning": "Presenting three tiled rectangles and asking for the area rule is pedagogically sound for Grade 3 inductive learning. The examples 3×4=12, 6×2=12, 10×3=30 demonstrate the pattern including the interesting case where two different rectangles produce the same area. The logic supports valid reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The use of two rectangles yielding the same tile count despite different dimensions provides an instructive concrete example suitable for Grade 3 inductive thinking."
+          "reasoning": "The cloze task is clear and accessible. The stem describes the tiling scenario in simple language. The four options are distinct. The three hints progressively build understanding from specific products to the general formula. Comprehension is well-supported for Grade 3 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products are correct, the formula properly represents the pattern even across cases with identical areas, and hints accurately support the derivation."
+          "reasoning": "All products are calculated correctly: 3×4 is 12, 6×2 is 12, 10×3 is 30. The hints accurately reflect these products and correctly state the formula length times width. Mathematical accuracy is maintained throughout the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "e93a9a2bcbf714019186",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The themed stem with a named character and contextual reference does not create ambiguity about the mathematical task of identifying the square area rule."
+          "reasoning": "The stem presents the tiling task with personalized theming and asks unambiguously which rule applies. The multiple choice options are distinct. No ambiguity arises about the question or the correct answer despite the personalization."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two-by-two yields 4, four-by-four yields 16, and five-by-five yields 25, with correct arithmetic and thematic wrapping that does not interfere with mathematical validity."
+          "reasoning": "The scenario with personalized name and emoji context does not interfere with the mathematical task of tiling and counting. The three square examples 2×2=4, 4×4=16, 5×5=25 clearly support deriving the area formula. The mathematical logic remains sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The culturally-themed introduction combined with concrete square examples remains clear and engaging for Grade 3 learners without obscuring the mathematical focus."
+          "reasoning": "The personalized introduction adds engagement without obscuring the mathematical task. The stem clearly describes tiling and counting. The multiple choice options are distinct and readable. The three hints progressively build understanding. The theming supports rather than hinders clarity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations are accurate, the thematic context does not alter the mathematical relationships, and hints correctly support the side times side formula."
+          "reasoning": "All calculations are correct: 2×2 is 4, 4×4 is 16, 5×5 is 25. The hints accurately state these products and correctly derive the formula side times side. The personalization does not create mathematical errors or inconsistencies."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "4ed9662b2b2414ce0f23",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The thematic context with a named character and object reference does not create ambiguity about the rectangle area formula identification task."
+          "reasoning": "The stem with basketball-themed personalization clearly asks for the tile-counting rule. The cloze format with distinct options makes the correct answer unambiguous. No confusion arises about the mathematical question despite the thematic element."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six-by-four equals 24, nine-by-three equals 27, and nine-by-ten equals 90, with all arithmetic correct and thematic elements not interfering with scenario logic."
+          "reasoning": "The basketball-themed introduction does not interfere with the mathematical scenario of tiling rectangles. The three examples 6×4=24, 9×3=27, 9×10=90 clearly support deriving the multiplicative formula. The mathematical logic is sound and pedagogically appropriate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The thematic framing with a character and sport reference provides cultural relevance while maintaining clarity about the underlying mathematical pattern."
+          "reasoning": "The basketball personalization provides engagement context. The stem clearly describes the tiling task in simple language. The cloze options are distinct. The three hints scaffold from observation to rule derivation. The theming enhances rather than obscures clarity for Grade 3 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products correctly match tile counts, the formula answer is mathematically sound, and hints accurately explain the derivation without errors."
+          "reasoning": "All products are computed correctly: 6×4 is 24, 9×3 is 27, 9×10 is 90. The hints accurately reflect these calculations and correctly state the formula length times width. No mathematical errors exist in any component of the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "99dc53db35015a1cfd04",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format with three squares at different scales and clear tile counts provides unambiguous context for identifying the side times side rule."
+          "reasoning": "The cloze stem presents a clear tiling scenario and asks which rule applies. The four options are distinct. No ambiguity exists about what is being tested or which answer is correct. The question is straightforward."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Four-by-four equals 16, five-by-five equals 25, and ten-by-ten equals 100, all with correct arithmetic and scenario consistency."
+          "reasoning": "The scenario of tiling three squares of increasing size and identifying the area rule is contextually valid for Grade 3 inductive reasoning. The examples 4×4=16, 5×5=25, 10×10=100 demonstrate the multiplicative pattern clearly. The pedagogical approach is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The straightforward presentation of squares with increasing size helps Grade 3 students recognize the systematic relationship between side length and area."
+          "reasoning": "The cloze task is clear and accessible. The stem uses simple language to describe the tiling scenario. The four options are distinct and readable. The three hints progressively build understanding from specific cases to the general rule. Comprehension is well-supported."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are accurate, the formula is correctly represented, and the progression from smaller to larger squares supports mathematical understanding."
+          "reasoning": "All products are calculated correctly: 4×4 is 16, 5×5 is 25, 10×10 is 100. The hints accurately state these products and correctly derive the formula side times side. Mathematical accuracy is maintained throughout the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "9a7c66c212ff7ccc4b7e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice format with three rectangles of differing proportions clearly identifies the task of selecting the correct area formula."
+          "reasoning": "The multiple choice stem asks unambiguously for the tile-counting rule. The three examples and four distinct options make the correct answer identifiable without ambiguity. No confusion exists about the question or expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two-by-four equals 8, three-by-five equals 15, and seven-by-two equals 14, with all products correct and scenario logically sound."
+          "reasoning": "The scenario of tiling three rectangles and identifying the area rule is contextually sound for inductive learning. The examples 2×4=8, 3×5=15, 7×2=14 demonstrate the multiplicative pattern across varied dimensions. The logical flow supports valid reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice options reduce cognitive load for Grade 3 students while the three varied rectangles provide sufficient pattern examples."
+          "reasoning": "The multiple choice format is clear and accessible to Grade 3 learners. The stem is written in simple language. The four options are distinct and readable. The three hints provide scaffolding from observation of specific products to the general formula. Clarity is well-maintained."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations are correct, the answer captures the proper formula, and the distractors represent distinct but incorrect mathematical rules."
+          "reasoning": "All products are correct: 2×4 is 8, 3×5 is 15, 7×2 is 14. The hints accurately reflect these calculations and correctly express the formula length times width. No mathematical errors or inconsistencies exist in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "b3cca45f99b5cc74aec3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The multiple-choice format with three squares of clearly stated dimensions eliminates interpretive ambiguity about which rule to identify."
+          "reasoning": "The multiple choice stem clearly asks which rule applies to the three squares. The four options are distinct and readable. The correct answer is unambiguously identifiable. No confusion arises about the question or expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two-by-two equals 4, four-by-four equals 16, and five-by-five equals 25, all with correct arithmetic and consistent square tiling scenarios."
+          "reasoning": "The scenario presents three tiled squares to support inductive derivation of the area formula. The examples 2×2=4, 4×4=16, 5×5=25 clearly demonstrate the multiplicative pattern. The pedagogical approach is logically sound and appropriate for Grade 3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The clear presentation of squares with increasing sizes and explicit tile counts supports Grade 3 pattern recognition without undue complexity."
+          "reasoning": "The multiple choice format is straightforward and accessible. The stem uses simple language to describe tiling squares. The four options are distinct and easy to differentiate. The three hints progressively build understanding from specific cases to the general rule without confusion."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products are accurate, the formula correctly represents the pattern, and the option set provides meaningful distinctions between correct and incorrect rules."
+          "reasoning": "All products are computed correctly: 2×2 is 4, 4×4 is 16, 5×5 is 25. The hints accurately state these products and correctly derive the formula side times side. Mathematical consistency is maintained throughout the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "b4269247eac0f34c7f96",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format with three squares and explicit tile counts provides clear context despite the hint_gated experience variant that presents hints sequentially."
+          "reasoning": "The cloze stem presents a clear tiling scenario and asks for the rule. The four options are distinct. No ambiguity exists about the question or the correct answer. The response format is straightforward."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Two-by-two equals 4, three-by-three equals 9, and four-by-four equals 16, with all arithmetic correct and scenario consistent."
+          "reasoning": "Tiling three squares and deriving the area formula through induction is contextually appropriate for Grade 3. The examples 2×2=4, 3×3=9, 4×4=16 clearly support identifying the multiplicative pattern. The pedagogical logic is sound and supports valid learning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The hint_gated experience variant supports learner clarity by allowing progressive disclosure of the derivation process rather than presenting all hints at once."
+          "reasoning": "The cloze task is clear and accessible. The stem describes the tiling scenario in simple language. The four options are distinct and readable. The three hints provide scaffolding from observation to rule derivation. The hint-gated experience setting is noted but does not affect clarity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All calculations are accurate, the formula is correct, and the hint sequence properly scaffolds understanding of the side times side relationship."
+          "reasoning": "All calculations are correct: 2×2 is 4, 3×3 is 9, 4×4 is 16. The hints accurately state these products and correctly derive the formula side times side. No mathematical errors exist in any component of the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "bc39ca26ca0d35f3ca27",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format with three rectangles and explicit tile counts creates no ambiguity despite the mastery_drill experience tag indicating focused practice."
+          "reasoning": "The cloze stem asks unambiguously which rule gives the tile count for three rectangles. The options are distinct. The correct answer is identifiable without ambiguity. The mastery-drill experience setting does not create ambiguity about the mathematical task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Six-by-ten equals 60, seven-by-five equals 35, and eight-by-two equals 16, all mathematically correct and scenario consistent."
+          "reasoning": "The scenario of tiling rectangles and identifying the area rule is contextually valid for Grade 3 inductive reasoning. The examples 6×10=60, 7×5=35, 8×2=16 provide varied dimensions supporting the generalization. The mastery-drill context is appropriate for reinforcing the formula derivation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The mastery_drill experience variant maintains clarity while providing targeted practice opportunities for Grade 3 students already familiar with the pattern."
+          "reasoning": "The cloze task is clear and accessible. The stem uses simple language for the tiling scenario. The four options are distinct. The three hints progressively build understanding from specific products to the general rule. Clarity is well-supported throughout."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All products match the stated tile counts correctly, the formula answer is sound, and the drill-format hints reinforce the established derivation."
+          "reasoning": "All products are calculated correctly: 6×10 is 60, 7×5 is 35, 8×2 is 16. The hints accurately reflect these products and correctly state the formula length times width. Mathematical accuracy is maintained in all parts of the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "sample_id": "22cde87db21936c512de",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format with varied phrasing asking which rule works for every case and the scaffolded experience variant maintain unambiguous mathematical task clarity."
+          "reasoning": "The cloze stem presents a clear scenario with three tiled squares and asks which rule works. The four options are distinct and identifiable. No ambiguity exists about the mathematical question or the correct answer. The scaffolded experience setting does not create confusion."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three-by-three equals 9, four-by-four equals 16, and five-by-five equals 25, with all calculations correct and scenario logically coherent."
+          "reasoning": "The scenario presents tiled squares to support inductive derivation of the area formula. The examples 3×3=9, 4×4=16, 5×5=25 clearly demonstrate the multiplicative pattern. The scaffolded context is pedagogically appropriate for supporting learner reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scaffolded experience variant supports Grade 3 learners by providing structured progression through the pattern recognition and formula derivation process."
+          "reasoning": "The cloze task is clear and accessible for Grade 3 learners. The stem describes tiling squares in simple language. The four options are distinct and readable. The three hints scaffold understanding progressively from observation to rule articulation. The scaffolded delivery supports clarity effectively."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "All multiplications are correct, the formula properly represents the pattern, and the scaffolded hints provide appropriate support for derivation understanding."
+          "reasoning": "All products are computed correctly: 3×3 is 9, 4×4 is 16, 5×5 is 25. The hints accurately state these calculations and correctly derive the formula side times side. No mathematical errors or inconsistencies appear in the sample."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     }
   ],
   "clause_evidence": [
@@ -1814,7 +1814,7 @@
       "requirement_id": "explore_pattern_across_cases",
       "clause": "Explore",
       "verdict": "PASS",
-      "reasoning": "Every sample presents a minimum of three distinct cases of rectangles or squares with different dimensions, asking students to observe and generalize a pattern, which directly operationalizes exploration as required by the competency.",
+      "reasoning": "Every sample requires learners to examine and compare multiple concrete examples of tiled figures to identify the common pattern. The repeated structure of presenting three cases before asking for the general rule ensures that exploration of patterns across diverse cases is central to each item. This approach embodies the verb Explore as the primary cognitive engagement.",
       "sample_ids": [
         "a8ee43347b69382711c0",
         "a8b78f2da7b88d903b6c",
@@ -1822,14 +1822,14 @@
         "32ec0fdd3cf579937e25",
         "73ea53a11ba22a632740"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "reason_inductively_from_cases",
       "clause": "inductively",
       "verdict": "PASS",
-      "reasoning": "All samples ask students to identify a rule or formula by examining multiple concrete examples and generalizing from them, which is the core of inductive reasoning; no deductive derivation from prior axioms is required.",
+      "reasoning": "All samples follow the inductive method: present concrete cases, guide learners to observe the pattern through hints, and help them derive the general rule from specific examples. No deductive presentation of the formula occurs. Learners must reason from the particular cases to the universal rule, which is the essence of inductive reasoning in this context.",
       "sample_ids": [
         "78f3ee00c77d16e5f715",
         "014d872bbd0057304577",
@@ -1837,14 +1837,14 @@
         "0d2eb6a1a366ae484f35",
         "8129473d4cebcbef9975"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "derive_area_formula",
       "clause": "the derivation",
       "verdict": "PASS",
-      "reasoning": "The hint sequences across all samples explicitly show the step-by-step reasoning process from counting tiles in individual cases to stating the general formula, demonstrating derivation rather than mere formula statement.",
+      "reasoning": "Each sample guides learners through the derivation process by presenting specific tile counts for various dimensions, then helping them arrive at the formula through hints and guided reasoning. The hints explicitly show the calculation steps and how the pattern emerges from multiple examples. Learners engage in the full derivation process rather than merely applying a given formula.",
       "sample_ids": [
         "cd39110fedc0931a1a46",
         "f6009895c3c173ec166f",
@@ -1852,14 +1852,14 @@
         "4b27f8f66bacb5b40e7f",
         "e93a9a2bcbf714019186"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "area_formula_expression",
       "clause": "the formulas",
       "verdict": "PASS",
-      "reasoning": "Half the samples answer with length times width and half with side times side, both expressed as symbolic formulas that students must identify or complete, directly addressing formula expression.",
+      "reasoning": "The samples consistently require learners to identify and express the formulas: length times width for rectangles and side times side for squares. These formulas are explicitly presented as answers and in hints. The competency requires deriving multiple formulas appropriate to different figure types, both of which appear throughout the packet.",
       "sample_ids": [
         "4ed9662b2b2414ce0f23",
         "99dc53db35015a1cfd04",
@@ -1867,14 +1867,14 @@
         "b3cca45f99b5cc74aec3",
         "b4269247eac0f34c7f96"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "area_attribute",
       "clause": "the areas",
       "verdict": "PASS",
-      "reasoning": "Every sample frames the problem around counting tiles and identifying rules for the tile count, which is the physical representation of area in unit-square contexts appropriate for Grade 3.",
+      "reasoning": "Every sample centers on counting tiles to determine area. The term area is explicitly mentioned in many hints using the phrasing area is the length and width multiplied together or area equals side times side. Even where the word area does not appear in the stem, the concept of measuring the covering property of the figures is central. Tile count represents area in all samples.",
       "sample_ids": [
         "bc39ca26ca0d35f3ca27",
         "22cde87db21936c512de",
@@ -1882,14 +1882,14 @@
         "a8b78f2da7b88d903b6c",
         "cb6068adaced45c76164"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "square_figure",
       "clause": "a square",
       "verdict": "PASS",
-      "reasoning": "Eleven of the 22 samples explicitly feature squares with dimensions ranging from 2x2 to 10x10, with answers consistently using side times side formula specific to squares.",
+      "reasoning": "Multiple samples feature square figures with equal dimensions: 2×2, 3×3, 4×4, 5×5, and 10×10 squares appear across the packet. These samples allow learners to develop understanding specific to squares and derive the square area formula. The inclusion of square-specific examples ensures learners understand how the area concept applies to this special rectangular case.",
       "sample_ids": [
         "cb6068adaced45c76164",
         "32ec0fdd3cf579937e25",
@@ -1897,14 +1897,14 @@
         "014d872bbd0057304577",
         "56f741660ed92c56ee7a"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "rectangle_figure",
       "clause": "a rectangle",
       "verdict": "PASS",
-      "reasoning": "Eleven of the 22 samples feature rectangles with varied length and width combinations, with answers using length times width formula specific to the rectangle requirement.",
+      "reasoning": "Many samples present rectangles with unequal dimensions such as 2×4, 2×5, 3×4, 4×3, 5×2, 6×2, 6×4, 6×10, 7×2, 7×5, 8×2, 8×3, 8×10, 9×3, 9×5, 9×10, and 10×4. This extensive coverage of rectangles with varying length and width ensures learners develop understanding of the area formula specific to the rectangular case and distinguish it from squares.",
       "sample_ids": [
         "a8ee43347b69382711c0",
         "a8b78f2da7b88d903b6c",
@@ -1912,14 +1912,14 @@
         "0d2eb6a1a366ae484f35",
         "8129473d4cebcbef9975"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "square_tile_array",
       "clause": "square tile units",
       "verdict": "PASS",
-      "reasoning": "All 22 samples explicitly state the use of unit square tiles as the measurement medium, creating arrays of tile units that students count to determine area.",
+      "reasoning": "Every single sample explicitly refers to covering or tiling with square tiles or unit square tiles. The phrase unit square tiles appears consistently in all stems and hints. This grounding in the concrete manipulative of square tiles provides the essential concrete foundation for understanding area as a measurable attribute before moving to abstract formulas.",
       "sample_ids": [
         "cd39110fedc0931a1a46",
         "f6009895c3c173ec166f",
@@ -1927,32 +1927,32 @@
         "4b27f8f66bacb5b40e7f",
         "e93a9a2bcbf714019186"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     },
     {
       "requirement_id": "square_tile_unit",
       "clause": "tile units",
       "verdict": "PASS",
-      "reasoning": "All samples reference tiles or tile units as the fundamental counting unit, with students explicitly counting individual tiles to arrive at area relationships.",
+      "reasoning": "The word tiles appears in every sample stem and hint as the countable unit for measuring area. Learners count tiles to determine area values, establishing the connection between discrete countable units and the continuous attribute of area. This unit-based approach is fundamental to understanding area measurement at the Grade 3 level.",
       "sample_ids": [
         "4ed9662b2b2414ce0f23",
         "99dc53db35015a1cfd04",
         "9a7c66c212ff7ccc4b7e",
         "b3cca45f99b5cc74aec3",
-        "b4269247eac0f34c7f96"
+        "bc39ca26ca0d35f3ca27"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1:mat_g3_mg_q1_1",
-      "reviewer_identity": "blind-reviewer-haiku45-pc10-mat_g3_mg_q1_1-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1:mat_g3_mg_q1_1",
+      "reviewer_identity": "blind-reviewer-haiku45-pe14-mat_g3_mg_q1_1-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "fe2945fdae8f5a2659b79fd0fa955ea662244d627d3e75b4febdf6e25635c36b",
+      "packet_digest": "14bbf70341d8ca73337f0340699f5b95049d475dc5f56baf3de9e7aba471d13a",
       "clause_ids": [
         "explore_pattern_across_cases",
         "reason_inductively_from_cases",
@@ -1964,29 +1964,29 @@
         "square_tile_array",
         "square_tile_unit"
       ],
-      "response_ref": ".responses/s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1.json",
-      "response_digest": "bd03d3d007556edc68d92fdc4a8db0824af9bc08b446f98df1f31968f17af9a5",
-      "prompt_ref": ".responses/s5-phaseC-w10-haiku45-20260925-mat_g3_mg_q1_1.prompt.txt",
-      "prompt_digest": "96c985c795ddd19167ab2ff5ac555479414e2a904a65c3e6ebd6c599890f2015",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_mg_q1_1/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_mg_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1.json",
+      "response_digest": "d941f1f8b79c4c6f50ae308459eb1e674c2501e462c8d3623d28fcc179f0fa73",
+      "prompt_ref": ".responses/s5-phaseE-claude-w14-haiku45-20260930-mat_g3_mg_q1_1.prompt.txt",
+      "prompt_digest": "a3dbcce25374ec2c70917634c19a8677f4fb660c83825d5dd705d78f2357b2d9",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g3_mg_q1_1/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g3_mg_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All samples present concrete three-case inductive reasoning patterns with single-digit and double-digit dimensions appropriate for Grade 3 learners, avoiding abstract symbolic notation beyond basic multiplication and focusing on visual tile counting contexts."
+      "rationale": "All 22 samples use age-appropriate numbers and dimensions for Grade 3. Tile counting and pattern recognition tasks match the cognitive level expected for inductive reasoning at this grade. The progression from simple cases to rule derivation is developmentally suitable without overwhelming complexity."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly addresses the competency requirement to explore and derive area formulas for squares and rectangles using tile units, with stem language consistently emphasizing rule discovery from multiple cases rather than formula memorization."
+      "rationale": "Every sample aligns with the stated competency to explore inductively the derivation of area formulas. The samples present multiple concrete examples (2×2, 3×3, 4×4, 2×5, etc.), guide learners through counting and calculation, and prompt them to identify the general rule. This directly addresses the curriculum requirement for inductive exploration of square and rectangle area formulas using tile units."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All nine specified requirements are represented across the sample set: exploration of patterns, inductive reasoning, formula derivation, formula expression, area attributes, both square and rectangular figures, and explicit use of unit square tiles throughout.",
+      "rationale": "The rendered samples comprehensively instantiate all nine required components of the competency. Learners engage with pattern exploration, inductive reasoning, formula derivation, and expression through multiple concrete examples featuring both squares and rectangles with unit square tiles. No aspect of the stated competency is left unaddressed in the packet.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The nine decomposed requirements cover the competency statement losslessly. The Explore clause maps to explore_pattern_across_cases, inductively maps to reason_inductively_from_cases, the derivation maps to derive_area_formula, formulas to area_formula_expression, areas to area_attribute, square to square_figure, rectangle to rectangle_figure, and square tile units to both square_tile_array and square_tile_unit collectively.",
+        "reasoning": "The nine requirements listed losslessly decompose the competency. Each requirement corresponds to an essential aspect: pattern exploration, inductive reasoning, derivation process, formula expression, area attribute, square and rectangle figures, and tile units. All appear across the 22 samples without gaps or redundancies. No learner can complete these problems without engaging with every decomposed element.",
         "requirement_ids": [
           "explore_pattern_across_cases",
           "reason_inductively_from_cases",
@@ -2013,7 +2013,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample set exhibits comprehensive coverage with representation across multiple dimensions: squares at various sizes (2x2 through 10x10), rectangles with diverse length-width combinations (2x4 through 10x10), multiple format types (cloze and mcq), and inclusion of thematic variations without mathematical interference.",
+      "rationale": "The packet covers both squares and rectangles with varied dimensions. Rectangle samples span 2×4, 3×4, 4×3, 4×5, 5×2, 6×2, 6×4, 6×10, 7×2, 7×5, 8×2, 8×3, 8×10, 9×3, 9×5, 9×10, 10×3, 10×4. Square samples span 2×2, 3×3, 4×4, 5×5, 10×10. This breadth ensures learners encounter diverse cases to build robust inductive understanding of the area concept and its formula.",
       "clause_ids": [
         "explore_pattern_across_cases",
         "reason_inductively_from_cases",
@@ -2028,11 +2028,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All numerical values across the 22 samples fall within developmentally appropriate ranges for Grade 3 students, with dimensions primarily between 2 and 10, and products never exceeding 100 tiles, which supports concrete manipulation and mental computation at this grade level."
+      "rationale": "Dimensions remain in the range appropriate for Grade 3 learners to visualize and count tiles mentally or with support. The largest product is 10×10=100 tiles, which is manageable for this grade level. Products range from 8 to 100, providing variety without introducing unmanageable magnitude or computational burden that would distract from the conceptual learning goal."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The samples demonstrate substantial variant coverage including cloze and multiple-choice formats, varied dimensional combinations for both shapes, inclusion of emoji-themed contexts without mathematical distortion, and experience tags spanning standard, hint_gated, mastery_drill, and scaffolded delivery modes."
+      "rationale": "The 22 samples include both cloze format (11 samples) and multiple-choice format (11 samples), ensuring learners engage with different response modalities. Thematic variants appear in two samples with personalized names and emojis, adding engagement without interfering with mathematical content. Multiple random seeds (42, 43, 44, 45, 46, 500, 501, 502, 601, 602, 604, 605, 606, 700, 701, 702, 800, 900, 901, 1000, 1001, 1002) ensure generative diversity."
     }
   },
   "overall": "PASS"

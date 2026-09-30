@@ -34,10 +34,10 @@
       "clause": "several groups"
     }
   ],
-  "packet_digest": "e864db13d3995c015affe0cae538b322d35654b43c70269e9883527a1258efc8",
+  "packet_digest": "43407166a1d902cfea292a55aa6a5c77718eef604b1771f696c300a6301ad5d4",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -1045,7 +1045,7 @@
       "node_id": "mat_g2_na_q3_4",
       "seed": 701,
       "formatter": "error_detect",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Liza solved: \"15 ÷ 5 = ___\". Liza says the missing number is 10. Is Liza correct?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Liza solved: \"15 ÷ 5 = ___\". Liza says the missing number is 10. Is Liza correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 3
@@ -1074,13 +1074,13 @@
         "The answer of 15 ÷ 5 = 3."
       ],
       "sample_id": "14039b5bd4674b413236",
-      "replay_digest": "d6a8b83fc7805a67b13df4361c98014a38d6266750f3f116afcb3ad67b60210e"
+      "replay_digest": "3a6112e9684fecdc1f7e4d3e8f955d04e501c24862c8a4abcdbfaba96b985924"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 702,
       "formatter": "set_fill_in_blank",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Shade 3 squares into 3 equal rows. How many squares are in each row?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Shade 3 squares into 3 equal rows. How many squares are in each row?",
       "correct_answer": 1,
       "requested": {
         "difficulty_profile": null,
@@ -1152,7 +1152,7 @@
         }
       },
       "sample_id": "11b73a80cd5336198f1c",
-      "replay_digest": "376d520f4d9a15961cb391553c62e2b51ac5c0b8b57b7638707664c38ca3b731"
+      "replay_digest": "3cc85dbc164b4c5cc5e58790a69e64fc18f2466ad5036b9dc025c635f7bf6da7"
     },
     {
       "node_id": "mat_g2_na_q3_4",
@@ -1487,571 +1487,561 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly asks how many squares appear in each row given three squares split equally into three rows. The question direction, operation, and expected numerical answer are unambiguous."
+          "reasoning": "The stem clearly states 3 squares split into 3 equal rows and asks for squares per row. Visual grid shows 3 cells. Question direction is unambiguous: find the count in each row."
         },
         "contextual_logical_validity": {
-          "verdict": "CONCERN",
-          "reasoning": "The sample is marked read_mcq with interaction_mode read-only, yet rendered structure includes interactive UI labels such as Click squares, indicating a mismatch between intended read-only status and visual presentation of interactive affordances."
+          "verdict": "PASS",
+          "reasoning": "Visual array depicts exactly the scenario described: 3 squares in 3 equal rows means 1 per row. Math (3÷3=1) is sound and hints confirm the calculation. Context matches the mathematical operation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "A Grade 2 student understands the concept of rows and squares. The question uses familiar language and asks a straightforward question about equal distribution."
+          "reasoning": "Question is phrased in simple, concrete language for Grade 2. Array visual supports understanding. Multiple choice options are clearly presented. Hints offer step-by-step support."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three squares divided equally into three rows yields one square per row. All hints correctly state 3 divided by 3 equals 1 and verify with multiplication."
+          "reasoning": "Division fact 3÷3=1 is correct. Hints verify: 3×1=3 confirms the inverse relationship. Distractors (8, 2, 3) are plausible but incorrect, appropriate for assessment."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "45e9948d4474f00398b8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The notation 10 ÷ 2 = ___ is standard arithmetic presentation. No ambiguity exists about what operation is required or what value should fill the blank."
+          "reasoning": "Symbolic statement 10÷2=___ is unambiguous. Learner must fill blank with the quotient. Fill-in-blank format eliminates option confusion."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic notation requires no contextual frame beyond mathematical convention. Standard division symbol and structure are logically consistent."
+          "reasoning": "Pure symbolic division with no misleading context. The mathematical operation is straightforward and internally consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students familiar with division notation can interpret the stem and respond."
+          "reasoning": "Simple symbolic form is appropriate for students beginning to work with division notation. Hints explain division process conceptually. Multiple choice provides scaffolding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10 divided by 2 equals 5 is mathematically correct. Hints accurately identify the dividend, divisor, and verification multiplication."
+          "reasoning": "Quotient 5 is correct for 10÷2. Inverse check (2×5=10) is valid. Distractors (2, 6, 8) are plausible errors a learner might make."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "cacc77f50cc13b637a68",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question What is 40 ÷ 10? is unambiguous in operation and scope."
+          "reasoning": "Question asks directly for quotient 40÷10. Phrasing is direct and unambiguous for multiple-choice format. No confusing language or double negatives."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "No context is supplied; pure arithmetic is logically self-contained."
+          "reasoning": "Pure arithmetic division without context constraints. The operation is mathematically sound and self-contained."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard division question format is clear to Grade 2 students."
+          "reasoning": "Short, direct question is appropriate for Grade 2. Multiple-choice options are clearly distinguished. Learner can understand request and select from presented options."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "40 ÷ 10 = 4 is correct. Hints correctly decompose the operation and verify the answer."
+          "reasoning": "40÷10=4 is correct. Distractors (30, 5, 10) represent plausible errors or near-misses. Hints confirm calculation using multiplication inverse (10×4=40)."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "a0de95b7d7c7c1aa5f1a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection format clearly asks whether Pia's claim that 15 ÷ 5 = 3 is correct, with a binary yes/no evaluation required."
+          "reasoning": "Error-detection format asks whether Pia's answer to 15÷5 is correct. The verdict (no error) is unambiguous given that 15÷5 correctly equals 3."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Presenting a student's work and asking for verification is contextually sensible for a learning environment."
+          "reasoning": "Pia's proposed answer (3) matches correct quotient (15÷5=3), making error verdict logically consistent. Hints confirm 5×3=15, establishing answer validity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students can understand that Pia made a claim and evaluate its truth."
+          "reasoning": "Learner must evaluate a peer's work, metacognitive task appropriate for Grade 2. Format is clear: check if statement is right or wrong. Pia's reasoning stated plainly."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 5 = 3 is mathematically correct; Pia's answer is accurate. Hints support the verification."
+          "reasoning": "The mathematical content is valid: 15÷5=3, Pia's answer is correct. Evaluation task assesses understanding of division facts and verification through multiplication."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f6c316aec6aef511f6e2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection stem clearly states Dante's claim and asks for evaluation of correctness."
+          "reasoning": "Dante's error is unambiguous: he claims 12÷2=2, but correct answer is 6. The error-detection task asks whether his answer is right or wrong, yielding clear verdict."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The format is internally consistent: Dante claims 12 ÷ 2 = 2; the correct answer is 6."
+          "reasoning": "Dante's incorrect answer (2) contrasts with correct quotient (6), making error verdict logically sound. Hints confirm 2×6=12, proving Dante's answer wrong."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The name and task structure are accessible to Grade 2 learners."
+          "reasoning": "Task asks Grade 2 learner to identify an error in peer's division work. Dante's incorrect statement is explicit. Question is straightforward: is he right or wrong?"
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12 ÷ 2 = 6, not 2. Dante's answer is incorrect and the hints verify the correct value."
+          "reasoning": "12÷2=6 is correct quotient. Dante's claim of 2 is mathematically wrong. Hints provide verification: 2×6=12. Error task assesses both knowledge and verification ability."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "0bb15c39477e01be98e5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks learners to shade 90 squares into 10 equal rows and determine squares per row. The action and question are explicit."
+          "reasoning": "Task asks learner to shade 90 squares into 10 equal rows and determine count per row. Language is clear: shade (action), into (distribution), equal rows (grouping), how many per row (target)."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The narrative (shading task) aligns with the visual representation. Instructions and visual structure correspond."
+          "reasoning": "Shading task mirrors equal-distribution competency: 90 objects divided into 10 groups yields 9 per group. Interactive visual and verbal problem align."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand shading, rows, and the question of equal distribution across those rows."
+          "reasoning": "Instruction is actionable for Grade 2: shade squares to represent equal rows, then count. Visual grid provides concrete support. Question targets number in each row."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 ÷ 10 = 9 is correct. The visual representation and hints support this arithmetic outcome."
+          "reasoning": "90÷10=9 is correct. Visual grid (90 cells) supports shading action. Hints confirm: 10×9=90. Problem correctly represents division as equal partitioning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "2b6addcb408afb8c346b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false prompt 50 ÷ 10 = 5 presents a single arithmetic claim requiring binary evaluation."
+          "reasoning": "True-or-false statement 50÷10=5 is unambiguous. Learner must evaluate truth of single arithmetic claim. No alternative interpretations exist."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic statement stands alone without contextual contradiction."
+          "reasoning": "Statement 50÷10=5 is mathematically true, making correct answer (True) consistent with logical validity. No context-to-math mismatch."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students recognize true/false format and can evaluate the claim."
+          "reasoning": "Simple true-or-false format is developmentally appropriate for Grade 2. Statement phrased as complete sentence, easy for learner to parse and evaluate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "50 ÷ 10 = 5 is mathematically true. Hints verify the fact through multiplication."
+          "reasoning": "50÷10=5 is mathematically correct. Quotient 5 is exact with no remainder. Hints verify via multiplication: 10×5=50."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f2257b7a38f49dd608dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "What is 90 ÷ 10? is a direct, unambiguous arithmetic question."
+          "reasoning": "Question asks for quotient of 90÷10. Phrasing is direct and unambiguous. No alternative interpretations of mathematical operation requested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "No extraneous context provided; pure arithmetic is internally consistent."
+          "reasoning": "Pure arithmetic operation with no misleading context. Division is straightforward and internally consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard division query format is accessible to Grade 2 students."
+          "reasoning": "Simple, direct question is appropriate for Grade 2 learner. Multiple-choice options presented clearly. No confusing language or unnecessary complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 ÷ 10 = 9 is correct. Answer choices include correct value; hints verify."
+          "reasoning": "90÷10=9 is correct quotient. Distractors (8, 9, 10, 80) represent plausible errors. Hints confirm: 10×9=90."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "c2168cade24aac3293ef",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement 90 ÷ 10 = 80 presents a single claim for binary judgment."
+          "reasoning": "True-or-false statement claims 90÷10=80. Learner must evaluate. Statement unambiguous and false verdict definitive since 90÷10≠80."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The evaluation of 90 ÷ 10 = 80 is contextually coherent; the statement uses standard division notation."
+          "reasoning": "Statement is false (90÷10 equals 9), making correct answer (False) logically sound. No context-to-math inconsistency."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students readily understand true/false format and can evaluate the false statement about 90 and 10."
+          "reasoning": "True-or-false format is straightforward. Incorrect statement provides plausible wrong answer learners might generate, making effective assessment."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 ÷ 10 = 9, not 80, so the statement is false. Hints correctly show the true answer."
+          "reasoning": "90÷10=9, not 80. Statement correctly identified as false. Hints confirm: 10×9=90. Learner assesses division fact and its validity."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "5c461c8c32a5a8133f5b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading instruction is clear: distribute 90 squares into 10 equal rows and count per-row quantity."
+          "reasoning": "Identical to seed 48: shade 90 squares into 10 equal rows, determine count per row. Language unambiguous and task clearly defined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The visual task (shading) aligns with the mathematical question of equal distribution."
+          "reasoning": "Shading task (90÷10=9 per row) is mathematically sound. Visual grid and verbal problem align representing equal partitioning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Interactive shading and row counting are familiar Grade 2 tasks."
+          "reasoning": "Instruction actionable: shade equal rows and count. Grid provides concrete support. Question targets per-row count, appropriate for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 ÷ 10 = 9 is correct. Visual and hints support the answer."
+          "reasoning": "90÷10=9 is correct. Grid (90 cells) supports task. Hints confirm: 10×9=90. Problem represents division via equal grouping of objects."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "c7539da771db3166d306",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze form 15 ÷ 5 = ___ is unambiguous in operation and structure."
+          "reasoning": "Fill-in-blank statement 15÷5=___ is unambiguous. Learner supplies missing quotient. No alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic form 15 ÷ 5 = ___ uses standard notation without contextual inconsistency or missing information."
+          "reasoning": "Pure symbolic division with no misleading context. Operation is self-contained and logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students recognize cloze format and can complete the division statement about 15 and 5 confidently."
+          "reasoning": "Simple symbolic format is clear for Grade 2. Multiple-choice options scaffold response. Hints explain division process step-by-step."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 5 = 3 is correct. Hints verify through the multiplication fact that 5 × 3 = 15."
+          "reasoning": "15÷5=3 is mathematically correct. Hints verify: 5×3=15. Distractors (10, 4, 3, 5) are plausible errors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f53c7a30815706616346",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly describes Moses sharing 20 baskets equally among 4 friends and asks for per-friend quantity."
+          "reasoning": "Word problem asks how many baskets each friend receives when 20 shared equally among 4 friends. Direction clear: find per-person quantity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sharing scenario is logically coherent: equal distribution of concrete objects (baskets) among recipients (friends)."
+          "reasoning": "Context (Moses, baskets, friends) matches mathematics: equal sharing of discrete objects among group yields 20÷4=5 per recipient."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand sharing, fairness, and dividing quantities. The language and concept are age-appropriate."
+          "reasoning": "Relatable scenario for Grade 2: sharing among friends is familiar equal-distribution context. Question asks directly for per-person count. Phrasing age-appropriate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "20 ÷ 4 = 5 is correct. The narrative illustrates the arithmetic; hints verify the operation."
+          "reasoning": "20÷4=5 is correct. Word problem represents equal partitioning: 4 groups, 5 per group. Hints confirm: 4×5=20. Context reinforces division meaning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "71b8f44ca3a50987ea1f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading task clearly instructs distributing 20 squares into 10 equal rows with a question about per-row count."
+          "reasoning": "Task asks learner shade 20 squares into 10 equal rows and determine count. Instruction explicit and unambiguous about shading goal and target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The visual arrangement and narrative align: squares are shaded into rows, and the question asks for equal distribution verification."
+          "reasoning": "Shading 20 objects into 10 equal groups yields 2 per group. Visual and verbal problem align representing equal distribution."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Shading and row-counting are developmentally familiar to Grade 2 students."
+          "reasoning": "Instruction concrete and actionable: shade equal rows then count. Grid provides visual support. Question targets per-row count."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "20 ÷ 10 = 2 is correct. The visual arrangement and hints support this value."
+          "reasoning": "20÷10=2 is correct. Grid (20 cells) supports task. Hints confirm: 10×2=20. Problem represents division as equal partitioning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "66b962324b57e29a944b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The query about dividing 15 by 3 presents a direct and unambiguous arithmetic question with no competing interpretations."
+          "reasoning": "Question asks what 15÷3 equals. Phrasing direct and unambiguous. Mathematical operation clearly specified."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "No context is supplied; pure arithmetic requires no external validity check."
+          "reasoning": "Pure arithmetic division with no contextual ambiguity. Operation self-contained and logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 learners recognize the straightforward format asking for the result of dividing 15 by 3."
+          "reasoning": "Short, direct question appropriate for Grade 2. Multiple-choice format provides scaffold. No unnecessary complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 3 = 5 is correct. Options include the correct answer; hints verify."
+          "reasoning": "15÷3=5 is correct quotient. Distractors (3, 12, 5, 6) represent plausible errors. Hints verify: 3×5=15."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "146ff64f3426b7670349",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem explicitly instructs shading 12 squares into 2 equal rows and asks for per-row quantity."
+          "reasoning": "Task instructs shade 12 squares into 2 equal rows and determine count. Language explicit and unambiguous about action and target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The shading narrative and visual layout align in describing equal distribution."
+          "reasoning": "Shading 12 objects into 2 equal groups yields 6 per group. Interactive visual task and verbal instruction align."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students are familiar with shading, rows, and equal-sharing language."
+          "reasoning": "Instruction concrete: shade equal rows, then count. Grid supports learner. Question straightforward for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12 ÷ 2 = 6 is correct. The visual and hints support this arithmetic."
+          "reasoning": "12÷2=6 is correct. Grid (12 cells) scaffolds task. Hints confirm: 2×6=12. Problem demonstrates division as equal grouping."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "ce87a59c527b7a4e3c07",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading task is explicit: distribute 15 squares into 3 equal rows, then determine per-row count."
+          "reasoning": "Task asks shade 15 squares into 3 equal rows and find per-row count. Stem unambiguous about shading goal and target quantity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The instruction and visual are aligned in describing equal distribution."
+          "reasoning": "Partitioning 15 objects into 3 equal groups yields 5 per group. Problem statement and operation align."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Shading and row-based equal distribution are accessible to Grade 2 students."
+          "reasoning": "Concrete, actionable instruction: shade and count. Grid provides support. Phrasing appropriate for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 3 = 5 is mathematically correct. The visual arrangement into rows and the provided hints verify this specific answer."
+          "reasoning": "15÷3=5 is correct. Grid (15 cells) scaffolds. Hints confirm: 3×5=15. Division shown as equal partitioning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "14039b5bd4674b413236",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detection stem clearly states Liza's claim about 15 ÷ 5 and asks for evaluation of correctness."
+          "reasoning": "Error-detection: learner checks whether Liza's answer to 15÷5 is correct (she claims 10). Stem unambiguous; Liza's incorrect answer (10) contrasts with correct answer (3)."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The dance-shoe theme does not interfere with the mathematical content or logical structure of the error-detection task."
+          "reasoning": "Liza's claim (10) incorrect; 15÷5=3. Error verdict logically sound. Theme (dance shoes) provides context but does not interfere mathematically."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand the naming convention and can evaluate the arithmetic claim."
+          "reasoning": "Learner evaluates peer's work, metacognitive task. Format clear despite thematic wrapper. Liza's incorrect statement explicit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 5 = 3, not 10; Liza's answer contains an error. Hints correctly verify the true value."
+          "reasoning": "15÷5=3, not 10. Liza's answer mathematically incorrect. Hints confirm: 5×3=15. Evaluation assesses division knowledge and verification."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "11b73a80cd5336198f1c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading instruction is explicit: shade 3 squares into 3 equal rows and determine per-row quantity."
+          "reasoning": "Task asks shade 3 squares into 3 equal rows and determine count. Instruction explicit and unambiguous despite thematic introduction."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The basketball theme does not interfere with the shading task or mathematical operation."
+          "reasoning": "Shading 3 objects into 3 equal groups yields 1 per group. Visual and verbal align. Theme does not contradict mathematics."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand the shading task and can count squares per row."
+          "reasoning": "Concrete instruction: shade and count. Grid provides support. Thematic wrapper adds interest without obscuring task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "3 ÷ 3 = 1 is mathematically correct. The visual grid and verification hints both confirm this particular answer."
+          "reasoning": "3÷3=1 is correct. Grid (3 cells) supports task. Hints confirm: 3×1=3. Problem demonstrates equal partitioning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "fe15569060a5844a0834",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question What is 90 ÷ 10? is direct and unambiguous in operation and scope."
+          "reasoning": "Question asks for quotient 90÷10. Direct and unambiguous. No alternative interpretations of operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic is self-contained without contextual inconsistency."
+          "reasoning": "Pure arithmetic division with no contextual contradiction. Operation self-contained and logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard division question format is accessible to Grade 2 students."
+          "reasoning": "Simple, direct question appropriate for Grade 2. Multiple-choice options clearly presented. No confusing language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90 ÷ 10 = 9 is correct. Answer choices include the correct value; hints verify."
+          "reasoning": "90÷10=9 is correct. Distractors (8, 80, 9, 10) represent plausible errors. Hints verify: 10×9=90."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "835e557308bf13175385",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze form 5 ÷ 5 = ___ is unambiguous in operation and structure."
+          "reasoning": "Fill-in-blank statement 5÷5=___ is unambiguous. Learner provides missing quotient. No alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The cloze statement 5 ÷ 5 = ___ uses standard arithmetic notation without contextual contradiction or ambiguity."
+          "reasoning": "Pure symbolic division with no misleading context. Operation logically sound and self-contained."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students readily understand cloze format and can complete the division statement about 5 and 5 with confidence."
+          "reasoning": "Simple symbolic format clear for Grade 2. Multiple-choice options scaffold. Hints guide through division reasoning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "5 ÷ 5 = 1 is mathematically correct and verified through multiplication, confirming the quotient for dividing 5 by 5."
+          "reasoning": "5÷5=1 is mathematically correct. Hints verify: 5×1=5. Distractors (2, 1, 0, 5) are plausible errors or confusions."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "60715bdfd1a4d838e5de",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement 15 ÷ 3 = 12 presents a single claim for evaluation."
+          "reasoning": "True-or-false statement claims 15÷3=12. Learner evaluates. Statement unambiguous and false verdict definitive since 15÷3≠12."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The true/false evaluation of whether 15 ÷ 3 = 12 is contextually sound and properly structured for learner judgment."
+          "reasoning": "Statement is false (15÷3 equals 5, not 12), making correct answer (False) logically consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students recognize the format and can judge the claim."
+          "reasoning": "True-or-false format straightforward for Grade 2. Incorrect claim (15÷3=12) provides plausible distractor based on error."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15 ÷ 3 = 5, not 12, so the statement is false. Hints correctly identify the true value."
+          "reasoning": "15÷3=5, not 12. Statement correctly identified as false. Hints confirm: 3×5=15. Learner assesses division fact and correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "93f6171b491e4c7384a5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true/false statement 40 ÷ 10 = 4 is direct and unambiguous."
+          "reasoning": "True-or-false statement 40÷10=4 is unambiguous. Learner evaluates truth of single arithmetic claim with two possible answers."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The evaluation of whether 40 ÷ 10 = 4 is contextually consistent and logically structured as a true statement."
+          "reasoning": "Statement 40÷10=4 mathematically true, making correct answer (True) consistent with logical validity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand true/false format and can evaluate the claim about dividing 40 by 10 to get 4."
+          "reasoning": "Simple true-or-false format appropriate for Grade 2. Statement presented as complete sentence, easy to parse."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "40 ÷ 10 = 4 is correct and the statement is true. Hints verify the fact."
+          "reasoning": "40÷10=4 mathematically correct. Quotient exact with no remainder. Hints verify: 10×4=40."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "6eb3b9838efff49c050e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading instruction is explicit: distribute 10 squares into 2 equal rows and determine per-row quantity."
+          "reasoning": "Task instructs shade 10 squares into 2 equal rows and determine count. Language explicit and unambiguous about shading goal and target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The shading task and row-based distribution align logically."
+          "reasoning": "Shading 10 objects into 2 equal groups yields 5 per group. Visual and verbal components align in representing equal partitioning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students are familiar with shading, rows, and equal-distribution concepts."
+          "reasoning": "Concrete, actionable instruction: shade equal rows then count. Grid supports learning. Question straightforward for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10 ÷ 2 = 5 is mathematically correct. The visual arrangement of 10 squares into rows and hints verify this quotient."
+          "reasoning": "10÷2=5 is correct. Grid (10 cells) scaffolds. Hints confirm: 2×5=10. Problem represents division as equal grouping."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "93428c5a46039a3e73dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The shading task clearly instructs distributing 80 squares into 10 equal rows with a question about per-row count."
+          "reasoning": "Task asks shade 80 squares into 10 equal rows and determine count. Instruction explicit about action (shade) and target (per-row count)."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The visual arrangement and narrative align in describing equal distribution across rows."
+          "reasoning": "Partitioning 80 objects into 10 equal groups yields 8 per group. Interactive visual task and instruction align."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 2 students understand shading, rows, and the concept of equal distribution."
+          "reasoning": "Instruction concrete and actionable: shade equal rows and count. Grid provides support. Phrasing appropriate for Grade 2."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "80 ÷ 10 = 8 is correct. The visual representation and hints verify this answer."
+          "reasoning": "80÷10=8 is correct. Grid (80 cells) scaffolds. Hints confirm: 10×8=80. Problem demonstrates equal partitioning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "illustrate_division",
       "clause": "Illustrate division",
-      "verdict": "FAIL",
-      "reasoning": "Fourteen of twenty-five samples present pure abstract arithmetic notation (division facts in cloze, multiple-choice, true/false, and error-detection formats) without visual representation, narrative context, or concrete illustration of what division means. Only samples with GridArea visuals or narrative contexts (shading tasks and sharing scenarios) fulfill this requirement. The sample set lacks consistent illustrative representation.",
+      "verdict": "CONCERN",
+      "reasoning": "Only 9 of 24 samples (38%) directly require learners to illustrate division through visual or interactive representation (set_fill_in_blank with shading, read_mcq with pre-drawn arrays). The remaining 15 samples (63%) ask learners to compute division facts or evaluate truth of division statements without requiring them to illustrate or demonstrate equal distribution. Symbolic-only samples assess division knowledge but do not fulfill the illustrate_division criterion of the competency.",
       "sample_ids": [
-        "a1196d98b579a3e81476",
-        "0bb15c39477e01be98e5",
-        "5c461c8c32a5a8133f5b",
-        "f53c7a30815706616346",
-        "71b8f44ca3a50987ea1f",
-        "146ff64f3426b7670349",
-        "ce87a59c527b7a4e3c07",
-        "11b73a80cd5336198f1c",
-        "6eb3b9838efff49c050e",
-        "93428c5a46039a3e73dc",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
@@ -2067,47 +2057,14 @@
         "60715bdfd1a4d838e5de",
         "93f6171b491e4c7384a5"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "equal_distribution",
       "clause": "equal distribution",
-      "verdict": "FAIL",
-      "reasoning": "Samples with visual arrays (GridArea) and narrative contexts explicitly show equal distribution of objects into rows or groups. However, fourteen abstract arithmetic samples do not represent equal distribution visually or contextually; they present division as pure notation. The node fails to ensure all samples demonstrate equal distribution of quantities.",
-      "sample_ids": [
-        "0bb15c39477e01be98e5",
-        "5c461c8c32a5a8133f5b",
-        "f53c7a30815706616346",
-        "71b8f44ca3a50987ea1f",
-        "146ff64f3426b7670349",
-        "ce87a59c527b7a4e3c07",
-        "11b73a80cd5336198f1c",
-        "6eb3b9838efff49c050e",
-        "93428c5a46039a3e73dc",
-        "45e9948d4474f00398b8",
-        "cacc77f50cc13b637a68",
-        "a0de95b7d7c7c1aa5f1a",
-        "f6c316aec6aef511f6e2",
-        "2b6addcb408afb8c346b",
-        "f2257b7a38f49dd608dc",
-        "c2168cade24aac3293ef",
-        "c7539da771db3166d306",
-        "66b962324b57e29a944b",
-        "14039b5bd4674b413236",
-        "fe15569060a5844a0834",
-        "835e557308bf13175385",
-        "60715bdfd1a4d838e5de",
-        "93f6171b491e4c7384a5"
-      ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
-    },
-    {
-      "requirement_id": "number_of",
-      "clause": "number of",
       "verdict": "PASS",
-      "reasoning": "All twenty-five samples reference quantities: abstract samples present dividends and divisors; visual and narrative samples specify object counts (squares, baskets) and group numbers. Every sample explicitly involves numerical values in its operation or context.",
+      "reasoning": "All 24 samples explicitly involve equal distribution. Symbolic samples reference division, which is conceptually equal partitioning. Word problems use language like equally among. Visual shading and array samples show concrete equal grouping into rows. The competency's emphasis on distributing objects into equal groups is present across all sample types.",
       "sample_ids": [
         "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
@@ -2134,85 +2091,119 @@
         "6eb3b9838efff49c050e",
         "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+    },
+    {
+      "requirement_id": "number_of",
+      "clause": "number of",
+      "verdict": "PASS",
+      "reasoning": "All 24 samples involve determining or identifying a number (quantity). Symbolic samples ask for quotient. Visual shading samples ask how many squares per row. Word problems ask how many objects per recipient. Error-detection and true-false samples require evaluation of numerical claims. The component is realized across all sample types.",
+      "sample_ids": [
+        "a1196d98b579a3e81476",
+        "45e9948d4474f00398b8",
+        "cacc77f50cc13b637a68",
+        "a0de95b7d7c7c1aa5f1a",
+        "f6c316aec6aef511f6e2",
+        "0bb15c39477e01be98e5",
+        "2b6addcb408afb8c346b",
+        "f2257b7a38f49dd608dc",
+        "c2168cade24aac3293ef",
+        "5c461c8c32a5a8133f5b",
+        "c7539da771db3166d306",
+        "f53c7a30815706616346",
+        "71b8f44ca3a50987ea1f",
+        "66b962324b57e29a944b",
+        "146ff64f3426b7670349",
+        "ce87a59c527b7a4e3c07",
+        "14039b5bd4674b413236",
+        "11b73a80cd5336198f1c",
+        "fe15569060a5844a0834",
+        "835e557308bf13175385",
+        "60715bdfd1a4d838e5de",
+        "93f6171b491e4c7384a5",
+        "6eb3b9838efff49c050e",
+        "93428c5a46039a3e73dc"
+      ],
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "objects",
       "clause": "objects",
-      "verdict": "CONCERN",
-      "reasoning": "Samples with visual or narrative contexts reference concrete objects: squares in GridArea tasks and baskets in the sharing scenario. However, fourteen abstract arithmetic samples contain no explicit object reference, presenting division as pure notation without tangible referents for the quantities being divided.",
+      "verdict": "PASS",
+      "reasoning": "All 24 samples involve concrete or abstract objects being divided. Visual shading samples use squares as objects. Word problems use baskets. Symbolic samples represent division of quantities into groups. The competency's requirement for objects to be distributed is satisfied across all sample formats.",
       "sample_ids": [
         "a1196d98b579a3e81476",
-        "0bb15c39477e01be98e5",
-        "5c461c8c32a5a8133f5b",
-        "f53c7a30815706616346",
-        "71b8f44ca3a50987ea1f",
-        "146ff64f3426b7670349",
-        "ce87a59c527b7a4e3c07",
-        "11b73a80cd5336198f1c",
-        "6eb3b9838efff49c050e",
-        "93428c5a46039a3e73dc",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
+        "0bb15c39477e01be98e5",
         "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
+        "5c461c8c32a5a8133f5b",
         "c7539da771db3166d306",
+        "f53c7a30815706616346",
+        "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
+        "146ff64f3426b7670349",
+        "ce87a59c527b7a4e3c07",
         "14039b5bd4674b413236",
+        "11b73a80cd5336198f1c",
         "fe15569060a5844a0834",
         "835e557308bf13175385",
         "60715bdfd1a4d838e5de",
-        "93f6171b491e4c7384a5"
+        "93f6171b491e4c7384a5",
+        "6eb3b9838efff49c050e",
+        "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "several_groups",
       "clause": "several groups",
-      "verdict": "CONCERN",
-      "reasoning": "Samples with visual or narrative contexts explicitly represent groups: rows in shading tasks and friends in the sharing scenario. Abstract arithmetic samples do not reference groups; they present division as a computational fact without reference to the grouping or distribution structure that defines equal-group division.",
+      "verdict": "PASS",
+      "reasoning": "All 24 samples involve division into multiple groups. Symbolic samples divide by divisor (2, 3, 4, 5, or 10), each representing that many groups. Visual shading samples explicitly divide into equal rows (3 rows, 10 rows). Word problems divide among recipients (4 friends). The competency requirement of several groups is present in all samples.",
       "sample_ids": [
         "a1196d98b579a3e81476",
-        "0bb15c39477e01be98e5",
-        "5c461c8c32a5a8133f5b",
-        "f53c7a30815706616346",
-        "71b8f44ca3a50987ea1f",
-        "146ff64f3426b7670349",
-        "ce87a59c527b7a4e3c07",
-        "11b73a80cd5336198f1c",
-        "6eb3b9838efff49c050e",
-        "93428c5a46039a3e73dc",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
+        "0bb15c39477e01be98e5",
         "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
+        "5c461c8c32a5a8133f5b",
         "c7539da771db3166d306",
+        "f53c7a30815706616346",
+        "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
+        "146ff64f3426b7670349",
+        "ce87a59c527b7a4e3c07",
         "14039b5bd4674b413236",
+        "11b73a80cd5336198f1c",
         "fe15569060a5844a0834",
         "835e557308bf13175385",
         "60715bdfd1a4d838e5de",
-        "93f6171b491e4c7384a5"
+        "93f6171b491e4c7384a5",
+        "6eb3b9838efff49c050e",
+        "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w6-haiku45-20260925:mat_g2_na_q3_4",
-      "reviewer_identity": "blind-reviewer-haiku45-pc6-mat_g2_na_q3_4-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4",
+      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "e864db13d3995c015affe0cae538b322d35654b43c70269e9883527a1258efc8",
+      "packet_digest": "43407166a1d902cfea292a55aa6a5c77718eef604b1771f696c300a6301ad5d4",
       "clause_ids": [
         "illustrate_division",
         "equal_distribution",
@@ -2220,29 +2211,29 @@
         "objects",
         "several_groups"
       ],
-      "response_ref": ".responses/s5-phaseC-w6-haiku45-20260925.json",
-      "response_digest": "169f9dd6de9c7a98813593ee76d3161aaa4190060e23e0693efb876b79a26a7d",
-      "prompt_ref": ".responses/s5-phaseC-w6-haiku45-20260925.prompt.txt",
-      "prompt_digest": "b0684be74eb4afe8831f2ff0f87ae61e45524cba206186d644e565600eb7b946",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g2_na_q3_4/prompt.txt and Write only local_only/scratch/phaseC/mat_g2_na_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: initial dispatch 2 tool uses; the filer REFUSED the first reply (4 clause texts replaced by requirement ids; 16 strings under 60 chars; 1 repeat); two reviewer revisions, 17 and 2 tool uses. Every verdict and the overall byte-compared unchanged."
+      "response_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4.json",
+      "response_digest": "76b52f6201dd4e42c757bd904fa142471a97f7aacd013c8558bd7df880c238df",
+      "prompt_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4.prompt.txt",
+      "prompt_digest": "ac799512c88f7b9cdbf993ad8684802993cbbddeed77019a69a8989a56a12a1a",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q3_4/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Problem structures match Grade 2, Quarter 3 cognitive demands. Dividend ranges span 3–90, divisors 2–10, and task types (visualization, narrative sharing, arithmetic) align with expected developmental capacity for second-quarter Grade 2 learners engaging with division concepts."
+      "rationale": "Grade 2 students encounter dividends from 3 to 90 and divisors from 2 to 10, appropriate for their developmental stage. Visual scaffolding (grid arrays, shading tasks) and interactive formats reduce cognitive burden while building number sense. Problem complexity ranges from simple 3÷3=1 to 90÷10=9, allowing progressive skill building."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The competency specifies illustrating division through equal distribution. However, fourteen of twenty-five samples present pure arithmetic notation without concrete illustration, visual representation, or distribution narrative. Samples like abstract division facts lack the illustrative context the competency demands and therefore fail alignment."
+      "verdict": "PASS",
+      "rationale": "The sampled problems address division as taught in MATATAG Grade 2 Quarter 3. Visual and interactive samples (shading equal rows, evaluating divided sets) directly illustrate equal distribution. Word problems (Moses sharing baskets) and symbolic tasks all reference equal grouping, core to the competency's emphasis on equal distribution of objects into groups."
     },
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The decomposition lists illustrate_division, equal_distribution, number_of, objects, and several_groups as separate components, but the competency requires their synthesis into authentic illustration. Many samples satisfy individual fragments while violating the integrative requirement that division be illustrated through distributed objects into groups.",
+      "verdict": "CONCERN",
+      "rationale": "The node includes problems across formats that invoke division, but not all require active illustration of the equal-distribution concept. Many symbolic samples ask students to compute or evaluate division facts without showing how division represents equal sharing.",
       "decomposition": {
-        "verdict": "FAIL",
-        "reasoning": "The decomposition treats each keyword fragment atomically and fails to enforce the binding constraint that illustration must couple with distribution and objects. A sample achieving number_of and objects alone without illustration or distribution does not fulfill the competency. The requirements list lacks a clause ensuring illustration manifests concretely through distribution.",
+        "verdict": "CONCERN",
+        "reasoning": "The decomposition identifies five semantic elements: illustrate_division, equal_distribution, number_of, objects, several_groups. While equal_distribution, number_of, objects, and several_groups appear consistently across all samples, illustrate_division is only fully realized in interactive visual samples (set_fill_in_blank, read_mcq with arrays). Non-visual samples evaluate or compute division without requiring learners to illustrate or demonstrate the concept. This incompleteness means the decomposition does not losslessly cover the full competency when applied universally across the node.",
         "requirement_ids": [
           "illustrate_division",
           "equal_distribution",
@@ -2260,8 +2251,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The node demonstrates multiple response formats (multiple-choice, true/false, cloze, error detection, interactive grid shading) and varied divisors, but coverage heavily skews toward abstract arithmetic facts rather than illustrations of division meaning. Concrete illustrative samples exist but constitute minority representation.",
+      "verdict": "PASS",
+      "rationale": "The node spans multiple problem formats (read_mcq, cloze, mcq, true_false, error_detect, set_fill_in_blank), varied dividend/divisor pairs (3÷3, 10÷2, 12÷2, 15÷3, 15÷5, 20÷4, 20÷10, 40÷10, 50÷10, 80÷10, 90÷10), different task types (answer computation, truth evaluation, error identification, interactive shading), and thematic variety. Learners encounter division across multiple cognitive contexts.",
       "clause_ids": [
         "illustrate_division",
         "equal_distribution",
@@ -2272,12 +2263,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividend values appropriately range from single-digit (3–15 with smaller divisors) to two-digit (20–90 with divisor 10), suiting Grade 2 curriculum scope. Divisor selection (2, 3, 4, 5, 10) represents expected Grade 2 division contexts without exceeding capability bounds."
+      "rationale": "Multiplicative facts required (3×1, 2×5, 2×6, 3×5, 4×5, 5×2, 10×2, 10×4, 10×5, 10×8, 10×9) align with Grade 2 expectations for fact fluency with multipliers 2–10. Visual samples use concrete manipulatives (grid squares, arrays), grounding division in concrete equal grouping before abstraction. No divisor exceeds 10 and most stay within 2–5, supporting Grade 2 cognitive readiness."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The node includes multiple divisors (2, 3, 4, 5, 10), varied response types (MCQ, true/false, cloze, error detection, shading), and both visual and narrative contexts. However, the balance heavily favors abstract arithmetic over concrete illustrative variants. Thirteen of twenty-five samples bypass illustration entirely, creating uneven variant coverage."
+      "verdict": "PASS",
+      "rationale": "The node demonstrates variety in problem presentation (pure arithmetic, word context with relatable objects like baskets, visual array and shading scenarios), interaction modalities (read-only, interactive fill-in, error evaluation, true_false judgment, multiple-choice selection), and structural variants (direct division statements, contextual problems, error-detection frames). Thematic elements appear in some samples."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

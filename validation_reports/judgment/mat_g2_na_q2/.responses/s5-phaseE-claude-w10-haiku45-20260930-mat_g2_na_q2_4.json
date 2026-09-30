@@ -1,0 +1,705 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe10-mat_g2_na_q2_4-20260930",
+  "mat_g2_na_q2_4": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The problem set presents grade-appropriate cognitive demands for second-quarter grade 2, with subtraction operations using two-digit minuends and both one-digit and two-digit subtrahends requiring regrouping, presented through direct computation, contextual narratives, visual supports, and error analysis tasks that maintain manageable complexity for this developmental level."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "While most samples directly present subtraction as performing the operation, sample 7458f75d2f0f4b7eab7f asks learners to find a missing minuend given the subtrahend and difference (inverse problem). This represents a different operation type than the core competency of subtracting, though it does engage understanding of the subtraction relationship."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "All five decomposed requirements are addressed across the sample set: direct subtraction operations appear throughout, all operands remain below 100, every problem requires regrouping due to the ones digit of the minuend being less than the ones digit of the subtrahend, one-digit subtrahends appear in 30 minus 3, 20 minus 1, 60 minus 2, and similar problems, and two-digit subtrahends appear in 60 minus 51, 20 minus 15, 90 minus 36, and others.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The five requirements comprehensively partition the competency statement: subtract_numbers captures the core operation type, less_than_100 specifies the numeric constraint, with_regrouping identifies the procedural complexity, and the final two requirements specify the two distinct problem type variants (one-digit and two-digit subtrahends). These requirements appear mutually consistent and jointly sufficient to characterize the competency."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The sample set exercises six distinct response formats (cloze, error_detect, mcq, read_mcq, read_fill_in_blank, true_false), spans multiple problem contexts including pure computation, part-whole relationships, number line representations, and contextual narratives with various objects, incorporates visual supports (NumberBond, EmojiPictorial, NumberLine) in read formats, and addresses the operation from multiple angles (performing it, verifying statements, identifying errors, finding missing parts)."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The numeric range is calibrated for grade 2 learning: minuends span 20 to 93, all subtrahends are single-digit or two-digit values requiring the regrouping procedure, problem contexts reference familiar objects accessible to young learners, the visual scaffolds provide concrete representations of quantities and operations, and cognitive demand remains consistent across the sample range without introducing extraneous complexity."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The generator produces substantive problem variations across multiple dimensions: distinct response formats prevent template memorization, varied mathematical contexts explore subtraction through different entry points, diverse thematic wrappings provide learner interest without obscuring the mathematics, different visual representations scaffold understanding through multiple modalities, and the combination of these dimensions generates meaningfully distinct problems rather than superficial variations."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "2c3c4967d35f3a925870",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with the stem 30 minus 3 equals blank is unambiguous, asking for the numerical result of subtracting 3 from 30, with no alternative interpretation of what operation or result is requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure mathematical context with no external scenario; the operation is inherently valid and the problem statement presents a straightforward arithmetic task appropriate for this competency level."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The visual presentation of the equation with a blank clearly indicates where the answer goes, the use of the subtraction symbol is standard, and the question requires no interpretation beyond standard arithmetic notation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 30 minus 3 equals 27 is correct, the answer matches the first option in the multiple choice list, and the hints correctly walk through the regrouping procedure yielding this result."
+          }
+        }
+      },
+      {
+        "sample_id": "d96467dd22ce852989f3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error detection context clearly establishes that Grace made a claim about the result of 20 minus 1 equaling 18, and the question directly asks whether this claim is correct, with no ambiguity about what is being evaluated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of a student solving a problem and making a statement is a familiar pedagogical context, and the mathematics involved is sound with no logical contradictions or confusing premises."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Second graders can understand the context of another student solving a problem and checking whether the answer is right, the question is phrased in language accessible to this level, and the format clearly requires a yes-or-no judgment."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer to 20 minus 1 is 19, so Grace's claim of 18 is indeed incorrect, making the answer of has_error true with correct_value 19 mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "749c1c6247db8851399b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole relationship is clearly established with total and one part specified, and the question unambiguously asks for the other part, with no alternative interpretation of the requested calculation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole model is a valid mathematical relationship where total equals first part plus second part, making the implicit subtraction reasoning logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language the total is and one part is represents standard phrasing for part-whole problems, the question what is the other part clearly indicates the unknown, and the NumberBond visual provides a familiar representation of the relationship."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 60 minus 51 equals 9 is correct, representing the second part when the first part is 51 and the total is 60, verified by the fact that 51 plus 9 equals 60."
+          }
+        }
+      },
+      {
+        "sample_id": "867e60b770c3846f16b9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents the question what is 60 minus 2 with four distinct numerical options, clearly indicating that the learner must select the correct result from the given alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The simple arithmetic context is inherently valid with no external complications, making the problem straightforward in its logical structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question phrasing follows standard mathematical language, the operation is familiar, and the four options are clearly distinct values that do not invite confusion about what is being asked."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 60 minus 2 yields 58, which appears as the fourth option, the three distractors represent common errors or plausible wrong answers, and the calculation is demonstrably correct."
+          }
+        }
+      },
+      {
+        "sample_id": "d3f58d9f490bf3f27e0d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question what is 20 minus 15 with four multiple-choice options leaves no doubt about the operation being requested or how to respond."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Two-digit minus two-digit subtraction is a valid problem type within the competency scope, with straightforward mathematical logic and no contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question uses clear language, the four options are distinct, and the format is consistent with standard multiple-choice presentation for arithmetic problems."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The result of 20 minus 15 is 5, which is correctly listed as the fourth option among 4, 6, 35, and 5, with the other options representing plausible errors."
+          }
+        }
+      },
+      {
+        "sample_id": "d43c20b450a221f69738",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem presents the scenario of 90 paints and then removing 36, asking how many remain, with clear logical progression and unambiguous intent to compute the remaining quantity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The context of removing paints from a group is realistic and makes logical sense, with the numbers presented in a way that supports the subtraction interpretation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language large group of 90 paints establishes the initial quantity, taking away 36 paints clearly describes the action, and how many paints are left is direct and unambiguous in what is being sought."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 90 minus 36 equals 54 is correct, and this result is correctly presented as the third option in the multiple-choice set, with the EmojiPictorial visual representing 90 items total and showing the removal and result."
+          }
+        }
+      },
+      {
+        "sample_id": "d8efca3e3865bde07237",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false format presents a clear mathematical statement that 90 minus 18 equals 71, and the question unambiguously asks whether this statement is true or false."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a verifiable mathematical claim with no logical contradictions, making it a valid evaluation task for learners to check their understanding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is presented plainly in standard arithmetic notation, the true-or-false choice is clear, and learners understand the task is to evaluate the mathematical correctness of the claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct result of 90 minus 18 is 72, not 71, so the statement is indeed false, making the answer correct and the mathematical content sound."
+          }
+        }
+      },
+      {
+        "sample_id": "52665e25348005ab5107",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole context with total 92 and one part 55 clearly asks for the other part with no ambiguity about what calculation is needed or how to express the answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole relationship is mathematically sound with total 92 decomposed into parts 55 and 37, which sum correctly, making the logical foundation valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language and structure mirror the earlier part-whole problem, the NumberBond visual representation is familiar and supportive, and the question is phrased in accessible language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 92 minus 55 equals 37 is correct, and the part-whole relationship is verified by the fact that 55 plus 37 equals 92."
+          }
+        }
+      },
+      {
+        "sample_id": "34ace2430f7dd9b2f14f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The number line scenario presents a clear beginning position of 80, a movement backward by 78 numbers, and asks which number the dot lands on, with no ambiguity about the requested information."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number line model is a valid representation of subtraction as backward movement, with the mechanics of counting back 78 from 80 representing the operation clearly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instructions starting from 80 just count back 78 numbers provide explicit guidance on the procedure, the visual representation supports understanding, and the question clearly asks which number is reached."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting back 78 from 80 yields 2, which is the correct answer appearing as the first option among 2, 3, 1, and 158."
+          }
+        }
+      },
+      {
+        "sample_id": "b116430d7d479d5c8921",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem scenario with 93 paints and removing 65 asks how many remain, with clear mathematical intent and no alternative interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The context of removing items from a group is realistic and the numerical relationships make sense, supporting the subtraction interpretation throughout."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The setup there are 93 paints and taking away 65 paints are clear and direct, the question how many are left requires straightforward understanding, and the EmojiPictorial representation supports visualization."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 93 minus 65 equals 28 is correct, and this appears as the second option among 158, 28, 65, and 29."
+          }
+        }
+      },
+      {
+        "sample_id": "1e2f1d73c340a25425c5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error detection format asks whether Noel's claim that 50 minus 45 equals 5 is correct, with clear intent to verify the accuracy of the provided answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of checking a student's work is pedagogically sound and creates a valid context for verifying mathematical correctness."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is clear that Noel provided an answer of 5, the question directly asks is Noel correct, and learners understand the task format from earlier similar items."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct result of 50 minus 45 is indeed 5, so Noel is correct and the answer structure with has_error false and correct_value 5 is mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "f2d880223ee2901a08e3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement about 30 baskets with 28 removed leaving 2 is presented with unambiguous intent to evaluate whether this is true or false."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The realistic scenario of removing baskets from a collection and checking the count is logical and makes sense, supporting the validity of the mathematical claim."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem is phrased in accessible language with familiar objects, the scenario is easy to visualize, and the statement about the answer is clear and direct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 30 minus 28 equals 2 is correct, so the statement is true and the answer accurately reflects this."
+          }
+        }
+      },
+      {
+        "sample_id": "9c60b4be68d1cb115d21",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem with 60 cupcakes and removing 46 asks how many remain, with clear mathematical intent expressed through straightforward language."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of removing food items from a collection is realistic and the logical structure supports the subtraction interpretation without any contradictions."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language there are 60 cupcakes and taking away 46 cupcakes are accessible and direct, the visual representation with emoji helps learners picture the quantities, and the question is clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 60 minus 46 equals 14 is correct, appearing as the third option among 106, 15, 14, and 13."
+          }
+        }
+      },
+      {
+        "sample_id": "38777f93e0bf34420158",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole problem with total 30 and one part 21 asks for the other part with no ambiguity about the mathematical operation or response format required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole decomposition is logically sound with parts 21 and 9 summing to 30, and the relationship between total and parts is mathematically consistent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole format is now familiar to learners from earlier samples, the language the total is and one part is provides clear setup, and the question is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 30 minus 21 equals 9 is correct, and this relationship is verified by 21 plus 9 equaling 30."
+          }
+        }
+      },
+      {
+        "sample_id": "8ffe2a227b2b7db99930",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem with 20 items and removing 12 asks how many remain, expressed with clear intent and no alternative interpretations of what is being requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of removing items from a collection is realistic and logical, with the numerical relationships making sense throughout the problem presentation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The emoji visual representation makes the initial quantity easy to understand, the statement taking away 12 items is clear, and the question is directly phrased."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 20 minus 12 equals 8 is correct, which appears as the first option in the multiple-choice set of 8, 7, 32, and 20."
+          }
+        }
+      },
+      {
+        "sample_id": "ed7d3317204b82a67e8e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole context with total 30 and one part 23 clearly requests the other part with no ambiguity or alternative interpretation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole relationship is valid with parts 23 and 7 summing correctly to 30, creating a sound mathematical structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language follows the established pattern for part-whole problems, the NumberBond visual is familiar, and the requested information is clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 30 minus 23 equals 7 is correct, verified by 23 plus 7 equaling 30."
+          }
+        }
+      },
+      {
+        "sample_id": "4622f707067c04e3cc61",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error detection problem presents Manny's claim that 20 minus 6 equals 14 and asks whether this is correct, with unambiguous intent to verify the calculation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The pedagogical context of checking a peer's work is valid and creates a sensible scenario for verifying mathematical accuracy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem clearly states what Manny solved and what answer he provided, the question is direct, and learners understand the error detection format from prior examples."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct result of 20 minus 6 is 14, so Manny's answer is indeed correct and the response with has_error false and correct_value 14 is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "ecbe11b5e0faca98279f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement that 20 minus 18 equals 2 presents a clear claim with unambiguous intent to evaluate its veracity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical claim is straightforward with no logical contradictions or confusing premises, creating a valid basis for true-false evaluation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is presented in standard notation, the true-or-false choice is clear, and learners understand the task is to verify the mathematical statement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 20 minus 18 equals 2 is correct, making the statement true and the answer accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "c9ac95e89f56173af74d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The number line problem with the dot starting at 30 and moving backward 8 numbers asks which number it lands on, with clear intent and no ambiguous phrasing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number line model is a valid representation of subtraction, and the mechanics of counting backward create a logically sound scenario for the operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instructions starting from 30 just count back 8 numbers provide explicit procedural guidance, the visual supports understanding, and the question is clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting back 8 from 30 yields 22, which is the correct answer appearing as the third option among 21, 23, 22, and 38."
+          }
+        }
+      },
+      {
+        "sample_id": "d7b0879e36bdd264664e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with 90 minus 44 equals blank is unambiguous in requesting the numerical result of this two-digit minus two-digit subtraction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The pure mathematical context is inherently valid with straightforward arithmetic logic and no complicating factors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is presented clearly in standard notation with a visible blank indicating where the answer goes, making the task transparent to learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 90 minus 44 equals 46 is correct, and this answer appears as the fourth option among 134, 45, 47, and 46."
+          }
+        }
+      },
+      {
+        "sample_id": "7458f75d2f0f4b7eab7f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question what minus 15 equals 65 uses inverse problem phrasing but is unambiguous in requesting the minuend given the subtrahend and difference."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is logically valid as it presents a solvable equation with one unknown, maintaining mathematical coherence even though the operation direction differs from direct subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem statement is clear despite the inverse phrasing, the four options provide distinct choices, and the multiple-choice format makes the task manageable."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The result of 80 minus 15 is 65, so 80 is the correct answer appearing among the options, and the mathematical relationship is verified."
+          }
+        }
+      },
+      {
+        "sample_id": "b77af87ad66eab8a1c4f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem with 30 items and removing 21 clearly asks how many remain, with unambiguous mathematical intent throughout."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of removing items from a collection is realistic and logical, with the numerical setup supporting the subtraction interpretation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language large group of 30 items establishes the initial quantity, taking away 21 items describes the action clearly, and the question is direct and accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 30 minus 21 equals 9 is correct, appearing as the fourth option among 8, 51, 30, and 9."
+          }
+        }
+      },
+      {
+        "sample_id": "fc2188455265a15621ee",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the thematic introduction about a character, the actual mathematical question what is 60 minus 4 is unambiguous and clear in its intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The character introduction provides thematic context without contradicting or confusing the underlying mathematical logic of the subtraction operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical question is phrased clearly, the thematic wrapper is a brief introduction that does not obscure the problem, and the four options are distinct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 60 minus 4 equals 56 is correct and appears as the first option among 56, 64, 57, and 55."
+          }
+        }
+      },
+      {
+        "sample_id": "55fa21adfa60ca367de7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem with a character introduction followed by 30 items and removing 2 clearly asks how many remain, with unambiguous mathematical content."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The character thematic wrapper is followed by a realistic scenario of removing items, maintaining logical coherence throughout the problem structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical question is clearly stated after the thematic introduction, the emoji representation helps visualize the quantity, and the task is straightforward."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 30 minus 2 equals 28 is correct, appearing as the first option among 28, 29, 2, and 30."
+          }
+        }
+      },
+      {
+        "sample_id": "ab02a4cca044e732034a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole problem with total 91 and one part 75 unambiguously asks for the other part with no alternative interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The part-whole decomposition is mathematically sound with parts 75 and 16 summing to 91, creating a logically coherent relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language and structure match established part-whole examples, the NumberBond visual is familiar and supportive, and the question is phrased accessibly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation 91 minus 75 equals 16 is correct, verified by 75 plus 16 equaling 91."
+          }
+        }
+      },
+      {
+        "sample_id": "ebdcfa2801df016ed023",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error detection problem presents Noel's claim that 31 minus 14 equals 18 with clear intent to verify whether this calculation is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of checking student work is pedagogically valid and creates a sensible context for verifying the accuracy of a calculation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem clearly states what Noel solved and the answer provided, the question directly asks if it is correct, and learners are familiar with the error detection format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct result of 31 minus 14 is 17, not 18, so Noel made an error and the answer with has_error true and correct_value 17 is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "700245b106de5c62ad33",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The number line problem with the dot at 24 moving backward 15 numbers asks which number it lands on, with clear intent expressed through unambiguous phrasing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number line model represents backward movement as subtraction in a logically sound way, creating a valid scenario for the two-digit minus two-digit operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instructions starting from 24 just count back 15 numbers provide explicit guidance, the visual representation supports understanding, and the question is clearly stated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting back 15 from 24 yields 9, which is the correct answer appearing as the second option among 39, 9, 8, and 10."
+          }
+        }
+      },
+      {
+        "sample_id": "276369ff5fd8f7727669",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The number line problem with the dot at 70 moving backward 1 number asks which number it lands on, with clear and unambiguous mathematical intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number line context representing backward movement as subtraction is logically valid, and the scenario makes sense even though it represents the simplest subtraction case."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is phrased clearly with just count back 1 number providing explicit guidance, the visual helps learners understand the context, and the question is direct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Counting back 1 from 70 yields 69, which is the correct answer appearing as the second option among 71, 69, 70, and 68."
+          }
+        }
+      },
+      {
+        "sample_id": "f53bf28f182347d232e0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement that 20 minus 11 equals 9 presents a clear claim with unambiguous intent for learners to evaluate its correctness."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical claim is straightforward and logically coherent, providing a valid basis for true-false evaluation without any confusing premises."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation is in standard notation, the true-or-false choice is clear and familiar to learners, and the task requires straightforward verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 20 minus 11 equals 9 is correct, so the statement is true and the answer is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "a81de7c546c6486eeef8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The word problem with 90 cupcakes and removing 26 asks how many remain, with clear mathematical intent and no ambiguous phrasing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario of removing items from a group is realistic and logical, with the numerical relationships supporting the subtraction interpretation throughout."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language there are 90 cupcakes and taking away 26 cupcakes is accessible and direct, the emoji visual helps learners visualize quantities, and the question is clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The subtraction 90 minus 26 equals 64 is correct, appearing as the second option among 26, 64, 116, and 65."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "subtract_numbers",
+        "clause": "Subtract numbers",
+        "verdict": "PASS",
+        "reasoning": "All 30 samples present subtraction as the core mathematical operation required of learners, whether through direct computation in cloze and multiple choice formats, verification in true-false formats, error detection in error_detect formats, or computation of missing parts in contextual word problems, demonstrating consistent representation of this foundational requirement.",
+        "sample_ids": ["2c3c4967d35f3a925870", "d96467dd22ce852989f3", "749c1c6247db8851399b", "867e60b770c3846f16b9", "d3f58d9f490bf3f27e0d", "d43c20b450a221f69738", "d8efca3e3865bde07237", "52665e25348005ab5107", "34ace2430f7dd9b2f14f", "b116430d7d479d5c8921"]
+      },
+      {
+        "requirement_id": "less_than_100",
+        "clause": "both numbers are less than 100",
+        "verdict": "PASS",
+        "reasoning": "Across all 30 samples, every minuend is less than 100 ranging from 20 to 93, and every subtrahend is less than 100 ranging from 1 to 78, satisfying the constraint that both operands in every problem remain below 100 as specified.",
+        "sample_ids": ["2c3c4967d35f3a925870", "52665e25348005ab5107", "b116430d7d479d5c8921", "ab02a4cca044e732034a", "a81de7c546c6486eeef8", "34ace2430f7dd9b2f14f", "ebdcfa2801df016ed023", "276369ff5fd8f7727669"]
+      },
+      {
+        "requirement_id": "with_regrouping",
+        "clause": "with regrouping",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires regrouping because in each case the ones digit of the minuend is smaller than the ones digit of the subtrahend, necessitating borrowing from the tens place, as explicitly noted in every hint stating the ones digit X is less than Y so we need to borrow.",
+        "sample_ids": ["2c3c4967d35f3a925870", "d96467dd22ce852989f3", "749c1c6247db8851399b", "867e60b770c3846f16b9", "d3f58d9f490bf3f27e0d", "d43c20b450a221f69738", "d8efca3e3865bde07237", "52665e25348005ab5107", "34ace2430f7dd9b2f14f", "b116430d7d479d5c8921"]
+      },
+      {
+        "requirement_id": "2_digit_minus_1_digit",
+        "clause": "2-digit minus 1-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples present two-digit minuends with single-digit subtrahends: 30 minus 3, 20 minus 1, 60 minus 2, 20 minus 6, 30 minus 8, 60 minus 4, 30 minus 2, and 70 minus 1, providing substantial representation of this problem type throughout the sample set.",
+        "sample_ids": ["2c3c4967d35f3a925870", "d96467dd22ce852989f3", "867e60b770c3846f16b9", "4622f707067c04e3cc61", "c9ac95e89f56173af74d", "fc2188455265a15621ee", "55fa21adfa60ca367de7", "276369ff5fd8f7727669"]
+      },
+      {
+        "requirement_id": "2_digit_minus_2_digit",
+        "clause": "2-digit minus 2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "Numerous samples present two-digit minuends with two-digit subtrahends: 60 minus 51, 20 minus 15, 90 minus 36, 90 minus 18, 92 minus 55, 80 minus 78, 93 minus 65, 50 minus 45, 30 minus 28, 60 minus 46, and many others, demonstrating robust coverage of this problem type throughout the sample set.",
+        "sample_ids": ["749c1c6247db8851399b", "d3f58d9f490bf3f27e0d", "d43c20b450a221f69738", "d8efca3e3865bde07237", "52665e25348005ab5107", "34ace2430f7dd9b2f14f", "b116430d7d479d5c8921", "1e2f1d73c340a25425c5", "f2d880223ee2901a08e3", "9c60b4be68d1cb115d21"]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}
