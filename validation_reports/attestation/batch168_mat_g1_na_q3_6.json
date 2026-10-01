@@ -1,0 +1,827 @@
+{
+  "batch": "batch168_mat_g1_na_q3_6",
+  "attested_at": "2026-10-01T01:14:38Z",
+  "attested_by": "blind-attester-haiku45-w2a168-mat_g1_na_q3_6-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g1_na_q3_6/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g1_na_q3_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 7) in the pattern?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Look at the pattern: 2, 10, 2, 10, 2, 10, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 2, 10. The answer is 2."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            2,
+            10,
+            2,
+            10,
+            2,
+            10,
+            2
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "repeating",
+          "base_pattern": [
+            2,
+            10
+          ],
+          "period": 2
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "e335006c30df59f3657d54644fb94f1c3365c9aa8c58b8a150fd6c253089dfa9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 10,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "2",
+              "10",
+              "2",
+              "10",
+              "2",
+              "10"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "360ce51056786c39ba41",
+        "replay_digest": "dec4a9a929a9b1a3c2f4709ce4f20c02ed1cf63ac8f46da660440e1a2baa4df8"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What is the next number in the pattern: 1, 11, 1, 11, 1, 11?",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "Look at the pattern: 1, 11, 1, 11, 1, 11, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 1, 11. The answer is 1."
+        ],
+        "sample_id": "e81e84f953fdf8818da2",
+        "replay_digest": "d77b7051dc50856449d1217ac48b6bc0af36848dcc33f8b10e04cdd9231da120"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: d, p, c, d, p, c?",
+        "correct_answer": "d",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "o",
+            "text": "o",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "b",
+            "text": "b",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "n",
+            "text": "n",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "d",
+            "text": "d",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "d",
+        "hints": [
+          "Look at the pattern: d, p, c, d, p, c, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next letter is at position 7.",
+          "Repeat the group: d, p, c. The answer is d."
+        ],
+        "sample_id": "285eab62fc25f003edc4",
+        "replay_digest": "19bb5fe56cdf07f84c73762b0f8cbadf5379a4dd902ad8811be5a1bf13ff02ee"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 10, 1, 10, 1, 10, 1, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 10, 1. The answer is 10."
+        ],
+        "sample_id": "572fbf44194e3db1ee90",
+        "replay_digest": "ea41df36bdfed86664f037a9045fff1b4d24efefc7aee470853dccafd4cd7124"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: h, j, n, a, h, j?",
+        "correct_answer": "n",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "n",
+            "text": "n",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "f",
+            "text": "f",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "i",
+            "text": "i",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "e",
+            "text": "e",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "n",
+        "hints": [
+          "Look at the pattern: h, j, n, a, h, j, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next letter is at position 7.",
+          "Repeat the group: h, j, n, a. The answer is n."
+        ],
+        "sample_id": "626ff316270179c3767a",
+        "replay_digest": "b3a9aa00e0109e9b69fb7ba3f5d8392b4998a1fc3e79f1f0a00aff72cb39f12e"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What is the next letter in the pattern: o, e, h, a, o, e?",
+        "correct_answer": "h",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "k",
+            "text": "k",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "d",
+            "text": "d",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "n",
+            "text": "n",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "h",
+            "text": "h",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "h",
+        "hints": [
+          "Look at the pattern: o, e, h, a, o, e, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next letter is at position 7.",
+          "Repeat the group: o, e, h, a. The answer is h."
+        ],
+        "sample_id": "092994705b99295afa69",
+        "replay_digest": "d4ab7c137579e9b5d5bb11eccab81226af4625678d73cb109e07716478977b7d"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 7) in the pattern?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 10, 3, 10, 3, 10, 3, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 10, 3. The answer is 10."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            10,
+            3,
+            10,
+            3,
+            10,
+            3,
+            10
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "repeating",
+          "base_pattern": [
+            10,
+            3
+          ],
+          "period": 2
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "8846fc14bfbcc3faba388fb10e61cf3e4e49574dfd2e231ee49e32010f0bf4fa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 10,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "10",
+              "3",
+              "10",
+              "3",
+              "10",
+              "3"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "daee883b8f54003896eb",
+        "replay_digest": "ec75b35ccce597bb31d8599d8a91016867da7fb92ac10faf69898c476c110060"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 7) in the pattern?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 10, 4, 10, 4, 10, 4, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 10, 4. The answer is 10."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            10,
+            4,
+            10,
+            4,
+            10,
+            4,
+            10
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "repeating",
+          "base_pattern": [
+            10,
+            4
+          ],
+          "period": 2
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "871494c361c0af01c3cc12379f55c6e6610aaa563bfc262ea5ad58e1186a5fa8",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 10,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "10",
+              "4",
+              "10",
+              "4",
+              "10",
+              "4"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bb0a10c108a9d98b6c28",
+        "replay_digest": "124840983a9c69a837cf1eebf73d1ed2bfd1d182ab7f14a823507c22e6165272"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is the next letter in the pattern: f, e, a, o, f, e?",
+        "correct_answer": "a",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "b",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "j",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "i",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "a",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "a",
+        "hints": [
+          "Look at the pattern: f, e, a, o, f, e, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next letter is at position 7.",
+          "Repeat the group: f, e, a, o. The answer is a."
+        ],
+        "sample_id": "69e7739c3134005b1954",
+        "replay_digest": "380cfe1fed8cebf9089eb9f32144c06b7f96bfe7760a6fd0e2e8a8104f00ff95"
+      },
+      {
+        "node_id": "mat_g1_na_q3_6",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing piece (position 7) in the pattern?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 10, 2, 10, 2, 10, 2, ___.",
+          "This is a same group again pattern. Find the repeating group.",
+          "The next term is at position 7.",
+          "Repeat the group: 10, 2. The answer is 10."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            10,
+            2,
+            10,
+            2,
+            10,
+            2,
+            10
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "repeating",
+          "base_pattern": [
+            10,
+            2
+          ],
+          "period": 2
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "de46a59cb81401ee5999542b11b908b043ff419db4cb4fece391a34eba30c371",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 10,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "10",
+              "2",
+              "10",
+              "2",
+              "10",
+              "2"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "762e767edb35f6d0ed12",
+        "replay_digest": "1b15fcbc0cd72d83dab0764c31e0a5867094c91ae49c827c7de6aa74021cdd08"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine_next_term",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "Determine the next term/s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples ask learners to determine the next term/element in a repeating pattern. Tasks include finding missing pieces in visual patterns and identifying the next number or letter in sequences. Every sample explicitly addresses the clause.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "repeating_pattern",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "repeating pattern",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve repeating patterns. The patterns shown are clearly repetitive: number patterns like 1,11,1,11,1,11 and 10,1,10,1,10,1; letter patterns like d,p,c,d,p,c and f,e,a,o,f,e. Every sample exhibits the repeating pattern clause.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch113_mat_g1_na_q3_6, batch125_mat_g1_na_q3_6: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

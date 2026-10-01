@@ -1,0 +1,1076 @@
+{
+  "batch": "batch157_mat_g1_na_q1_2",
+  "attested_at": "2026-10-01T01:13:34Z",
+  "attested_by": "blind-attester-haiku45-w2a157-mat_g1_na_q1_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g1_na_q1_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g1_na_q1_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 11,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Move the dot to show 91 on the number line.",
+        "correct_answer": 91,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 91,
+        "hints": [
+          "Identify each word part and its value of each part.",
+          "Broken apart form: 90 + 1.",
+          "Add the parts together to get 91."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 91,
+          "start": 90,
+          "end": 100,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 91,
+          "dot_value": 90,
+          "content_type": "whole_number",
+          "labels": [
+            "90",
+            "100"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": true,
+          "show_labels": true,
+          "correct_answer": 91.0,
+          "target": 91.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "47997b12182eca3a5d77d9d0c28cc067b2e303d79373fc56d344c861b9fa1aa6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 30,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "90",
+              "91",
+              "92",
+              "93",
+              "94",
+              "95",
+              "96",
+              "97",
+              "98",
+              "99",
+              "100",
+              "Your answer: Position",
+              "95",
+              "Click track, drag dot, or use ← → arrow keys"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b897b2d9029f524d4bcc",
+        "replay_digest": "5ad5f758a3ffa7036118c80dae9f3391dee8cc4b692ab00f51e64c993d766668"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 44,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 42,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 43,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 41,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 42,
+        "hints": [
+          "Identify each word part and its value of each part.",
+          "Broken apart form: 40 + 2.",
+          "Add the parts together to get 42."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 42,
+          "start": 40,
+          "end": 50,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 42,
+          "dot_value": 42,
+          "content_type": "whole_number",
+          "labels": [
+            "40",
+            "50"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 42.0,
+          "target": 42.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "54540e12126f36df76aca90f86fa06532b9ff05003a6e73ba27e20d0af22c72e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "43260e1e767bd0f6c99e",
+        "replay_digest": "ee55822110e1cb151a5431b93eb8f914c1b36e6168c3d93fe85ee4abaecbc849"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 42,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use base-10 blocks to show the number 35.",
+        "correct_answer": 35,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 35,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 35."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 3,
+          "ones": 5,
+          "total_value": 35,
+          "number": 35,
+          "question_type": "build_number",
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "2aa536af0022d9fa9d5bb35f483436086ac75a2ce51b38e88e112f058466768d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 4,
+            "input_count": 0,
+            "text_labels": [
+              "▮ = 10",
+              "• = 1",
+              "Your blocks: None = 0",
+              "10s",
+              "-",
+              "0",
+              "+",
+              "1s",
+              "-",
+              "0",
+              "+"
+            ],
+            "distinct_colours": [
+              "#3b82f6",
+              "#b91c5c",
+              "hsl(var(--text-muted)",
+              "#3b82f620",
+              "#b91c5c20"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7fac618f636c7e49c81e",
+        "replay_digest": "2e549076122a4fb2d0811752e109faa0266e3d8f1b7229671b53cb2702c1a2d8"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 97,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 79,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 69,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 79,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 79."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 7,
+          "ones": 9,
+          "total_value": 79,
+          "number": 79,
+          "question_type": "identify_value",
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "2ddefbb64270ea57c9f1c436bbd56d6bae5df645e64e48577dc8724b8cdbdbca",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "56a4fdb421d967c2035e",
+        "replay_digest": "dae1cb51599b4295738c7e0ea74fe30a2d4656349715cdfe9e8b00a938536696"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 47,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 46,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 49,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 48,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 47,
+        "hints": [
+          "Identify each word part and its value of each part.",
+          "Broken apart form: 40 + 7.",
+          "Add the parts together to get 47."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 47,
+          "start": 40,
+          "end": 50,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 47,
+          "dot_value": 47,
+          "content_type": "whole_number",
+          "labels": [
+            "40",
+            "50"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 47.0,
+          "target": 47.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "886b4c2ea871483b6248e1a0aeb46b53ecc7b5f136180ce0155092d8e260220d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "40",
+              "41",
+              "42",
+              "43",
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5c2d4febd99feb388fae",
+        "replay_digest": "fe371d8bc83e6265bdea1c81e0616575553d5ae20838da690020447b09ce4199"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 78,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use base-10 blocks to show the number 44.",
+        "correct_answer": 44,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 44,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 44."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 4,
+          "ones": 4,
+          "total_value": 44,
+          "number": 44,
+          "question_type": "build_number",
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "5cbeab4b3e6375419cdc2bb6178510101e121204676e9c7c1a36ee1200179b71",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 4,
+            "input_count": 0,
+            "text_labels": [
+              "▮ = 10",
+              "• = 1",
+              "Your blocks: None = 0",
+              "10s",
+              "-",
+              "0",
+              "+",
+              "1s",
+              "-",
+              "0",
+              "+"
+            ],
+            "distinct_colours": [
+              "#3b82f6",
+              "#b91c5c",
+              "hsl(var(--text-muted)",
+              "#3b82f620",
+              "#b91c5c20"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8137c6fe0b37d00a242a",
+        "replay_digest": "1657f6b211d90f9ea4236ea578cb4478380770bfe595419c09581a55d163fe7e"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 54,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 44,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 54,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 54."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 5,
+          "ones": 4,
+          "total_value": 54,
+          "number": 54,
+          "question_type": "identify_value",
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "2fcbe140770d0be5c71d1a4df673ad53e42660d471de259591f6a1993910c7f2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b7fcde43f1d25b2c74fc",
+        "replay_digest": "edcbcdd99581e6a6445b204a6bf14003f268f8421da9c3799e8a2387e482a490"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 58,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 59,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 61,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 60,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 59,
+        "hints": [
+          "Identify each word part and its value of each part.",
+          "Broken apart form: 50 + 9.",
+          "Add the parts together to get 59."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "value": 59,
+          "start": 50,
+          "end": 60,
+          "interval": 1,
+          "divisions": 10,
+          "correct_position": 59,
+          "dot_value": 59,
+          "content_type": "whole_number",
+          "labels": [
+            "50",
+            "60"
+          ],
+          "marked_points": [],
+          "question_mark_at": null,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 59.0,
+          "target": 59.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "c7631682afa5a298f76312ec0e187b05231c1635c90cb152796a9ec008511c68",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56",
+              "57",
+              "58",
+              "59",
+              "60"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ca927fe588ba6f4c3400",
+        "replay_digest": "69fb0981ed1dfa7fab702ea10d94a3cfce4c3fb156f57b573bf244c554f129d9"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use base-10 blocks to show the number 71.",
+        "correct_answer": 71,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 71,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 71."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 7,
+          "ones": 1,
+          "total_value": 71,
+          "number": 71,
+          "question_type": "build_number",
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "b8bc1438cb0aafe65a54b727b805d769e42d4d2a996dfba6df0b4b69783c13ac",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 4,
+            "input_count": 0,
+            "text_labels": [
+              "▮ = 10",
+              "• = 1",
+              "Your blocks: None = 0",
+              "10s",
+              "-",
+              "0",
+              "+",
+              "1s",
+              "-",
+              "0",
+              "+"
+            ],
+            "distinct_colours": [
+              "#3b82f6",
+              "#b91c5c",
+              "hsl(var(--text-muted)",
+              "#3b82f620",
+              "#b91c5c20"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "779c5c8c4c078c356649",
+        "replay_digest": "c9ab032cdd2745ff2280533e4be18fe464cea368bd1387b395425e0dcdf8f386"
+      },
+      {
+        "node_id": "mat_g1_na_q1_2",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 44,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 34,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 44,
+        "hints": [
+          "Count how many of each size of block there are.",
+          "Multiply each block's own value by how many there are, then add all the totals together.",
+          "Add the value of every block together to get the total, 44."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 4,
+          "ones": 4,
+          "total_value": 44,
+          "number": 44,
+          "question_type": "identify_value",
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "cac5df48cc900e485f2117fbbb4a0dead77c34ca9b4c97c201652929f0d27b3c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "db699188b764a0c5abf3",
+        "replay_digest": "65f2bf8a2d978d8094f3810e1594da2b849a81cb1c1ee2ca0133ba165559b3b5"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples require recognizing numbers either by identifying what is marked on a number line or by naming what base-10 blocks represent. Recognize is uniformly present across the full sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        78,
+        118
+      ],
+      "reasoning": "4 out of 10 samples explicitly ask learners to represent a number: seed 11 move dot to show 91, seed 42 use blocks to show 35, seed 78 use blocks to show 44, seed 118 use blocks to show 71. This is regular provision, exceeding incidental appearance.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample works directly with numbers. All 10 seeds exhibit numbers as the core mathematical object being recognized or represented.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use numbers within the range up to 100. Highest value shown is 100 on number lines; all other numbers fall below this bound.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "concrete_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "concrete",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        78,
+        118
+      ],
+      "reasoning": "4 samples show interactive virtual manipulatives. Seeds 42, 78, 118 render PlaceValueBlocks with button controls for adjusting tens and ones. Seed 11 NumberLine permits drag interaction. Pictorial-only samples 23, 57, 64, 91, 103, 127 lack manipulation.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples render visual pictorial models. Seeds 11, 23, 64, 103 use NumberLine. Seeds 42, 57, 78, 91, 118, 127 use PlaceValueBlocks. Both are rendered pictorial representations of number magnitude.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "4 out of 10 samples use number line as the model. Seed 11: move dot on line; seed 23: identify marked position; seed 64: identify marked position; seed 103: identify marked position. This exceeds incidental and represents a regular variation in model type.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "block_or_bar_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "block or bar models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "6 out of 10 samples use base-10 block models (PlaceValueBlocks visual). Seeds 42, 78, 118 ask learners to represent numbers using blocks. Seeds 57, 91, 127 ask learners to recognize what blocks show. Blocks appear in majority of samples.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve numerals. Keys and answer options are provided as numerals. Number line labels show numerals. All samples require learners to work with or interpret numeral symbols to solve or answer tasks.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch121_mat_g1_na_q1_2: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

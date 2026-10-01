@@ -1,0 +1,714 @@
+{
+  "batch": "batch162_mat_g1_na_q2_5",
+  "attested_at": "2026-10-01T01:13:28Z",
+  "attested_by": "blind-attester-haiku45-w2a162-mat_g1_na_q2_5-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g1_na_q2_5/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g1_na_q2_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "30 + 54 = 84. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 30 and 54.",
+          "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.",
+          "Add the tens: 3 + 5 = 8.",
+          "The sum is 30 + 54 = 84."
+        ],
+        "sample_id": "92ed153086056372868f",
+        "replay_digest": "99ff1935cf16b905c139c7ca56e4b511b69b7a6136cf1ac2b203d415842d99b6"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "(Large group of 91 items) — There are 91 items.\n💃💃💃💃 — 4 more items are added.\nHow many total items are there?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 96,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 95,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 91,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 95,
+        "hints": [
+          "We are adding two numbers: 91 and 4.",
+          "Add the ones: 1 + 4 = 5. Keep 5 in the ones place.",
+          "Add the tens: 9 + 0 = 9.",
+          "The sum is 91 + 4 = 95."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "💃",
+          "group_a": 91,
+          "group_b": 4,
+          "operation": "addition",
+          "layout": "inline",
+          "display": "(Large group of 91 items)",
+          "display_b": "💃💃💃💃"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "85be3cbded8011ce4c5744a150d3073adc2008434425258b5cd30efe95ac7e3a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 40,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "🛍️",
+              "10x 💃",
+              "💃",
+              "1x 💃",
+              "and",
+              "💃",
+              "💃",
+              "💃",
+              "💃"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3b5e8b2d19b668ad4022",
+        "replay_digest": "8e9f770c3126c378fbc8541428c7addea21c0adc34fa1af4cfe686d93e5c8fde"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 42,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 68 and 10. What is the sum?",
+        "correct_answer": 78,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 78,
+        "hints": [
+          "We are adding two numbers: 68 and 10.",
+          "Add the ones: 8 + 0 = 8. Keep 8 in the ones place.",
+          "Add the tens: 6 + 1 = 7.",
+          "The sum is 68 + 10 = 78."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 68,
+          "part2": 10,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "2d355bdbf4f0c8bece01dfb6283a75989cf46a60591231463ab17221069e57c0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "68",
+              "10"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0b9a2c0498d313f9ad0d",
+        "replay_digest": "eb3ebf42aecf468403927b4e736e4874e92054d6d3cc102a26de1bf73397e346"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is 30 + 30?",
+        "correct_answer": 60,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 60,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 70,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 61,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 59,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 60,
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "7afb3e9655d0242b89e1",
+        "replay_digest": "d529f2b797b9b3aeaee52d10d7bfb3d5fc9326a996299bc9ec730e66f830c735"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "60 + 26 = ___",
+        "correct_answer": 86,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 87,
+            "text": "87",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 86,
+            "text": "86",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 96,
+            "text": "96",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 85,
+            "text": "85",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 86,
+        "hints": [
+          "We are adding two numbers: 60 and 26.",
+          "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.",
+          "Add the tens: 6 + 2 = 8.",
+          "The sum is 60 + 26 = 86."
+        ],
+        "sample_id": "2ed8230ae6c2e9ea3087",
+        "replay_digest": "a7c2905dfc47c0edadb2884d060695ae9f76b5a46f178044d9bb6a9839c09a51"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 78,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 94 and 5. What is the sum?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 99,
+        "hints": [
+          "We are adding two numbers: 94 and 5.",
+          "Add the ones: 4 + 5 = 9. Keep 9 in the ones place.",
+          "Add the tens: 9 + 0 = 9.",
+          "The sum is 94 + 5 = 99."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 94,
+          "part2": 5,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "8574960d8498bba9dc0a4c3bdb954b982faa51ab826d29ae6f460da5a626742f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "94",
+              "5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "abc33ddca3e23693b761",
+        "replay_digest": "1d876a2913dda06afcc0960802d1668fdad3e95f46cc1f8b8b5400c687ecfaba"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"30 + 30 = ___\". Grace says the blank is 60. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 60
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 60
+        },
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "a4bbabbe5dbdeb3bae62",
+        "replay_digest": "d18a7faa80437bd852f3d8a39a98ef7f10cc3d5eda77fe8b9748808ec2122163"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "What is 68 + 31?",
+        "correct_answer": 99,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 98,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 109,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 99,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 99,
+        "hints": [
+          "We are adding two numbers: 68 and 31.",
+          "Add the ones: 8 + 1 = 9. Keep 9 in the ones place.",
+          "Add the tens: 6 + 3 = 9.",
+          "The sum is 68 + 31 = 99."
+        ],
+        "sample_id": "3f46dc24c54e37771805",
+        "replay_digest": "7f6e582ed899f0ed85218cd2bca71b85a1cf71d12cb3fa3cf730a9b58b573447"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 118,
+        "formatter": "read_fill_in_blank",
+        "question_text": "The two parts are 26 and 51. What is the sum?",
+        "correct_answer": 77,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "NumberBond",
+          "interaction_mode": "read",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 77,
+        "hints": [
+          "We are adding two numbers: 26 and 51.",
+          "Add the ones: 6 + 1 = 7. Keep 7 in the ones place.",
+          "Add the tens: 2 + 5 = 7.",
+          "The sum is 26 + 51 = 77."
+        ],
+        "visual_type": "NumberBond",
+        "visual_payload": {
+          "whole": null,
+          "part1": 26,
+          "part2": 51,
+          "blank_position": "whole"
+        },
+        "visual_render": {
+          "visual_type": "NumberBond",
+          "renderer_input_digest": "a6d729d82dc9a3146c206164077a2ede92b2d08cbcfa4e5b0172e2e91e6f582c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberBond",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "26",
+              "51"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2830b799360b0c9d22a1",
+        "replay_digest": "accf80748d85a42e34b31ff5e8dbda36c10aa13f8f9ebe6e9bc4d3b3cc07a7dd"
+      },
+      {
+        "node_id": "mat_g1_na_q2_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "30 + 30 = ___",
+        "correct_answer": 60,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 61,
+            "text": "61",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 59,
+            "text": "59",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "text": "60",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "text": "70",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 60,
+        "hints": [
+          "We are adding two numbers: 30 and 30.",
+          "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+          "Add the tens: 3 + 3 = 6.",
+          "The sum is 30 + 30 = 60."
+        ],
+        "sample_id": "052b2ae4c8d718a22fb6",
+        "replay_digest": "ae48611e2c9ed323d38326126244dfdbbb90995b7b9d969b7be7bd2de227e0b1"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples require students to add two numbers, making addition a regular and universal requirement across the entire sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "sums up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 sums fall within or equal to 100: seeds yield 84, 95, 78, 60, 86, 99, 60, 99, 77, 60. Every sample consistently demonstrates the sums-up-to-100 requirement.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples perform addition without regrouping: ones place sums are all single digits and tens place additions require no carrying. No sample requires trading across place values.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "concrete_pictorial",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "concrete and pictorial models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 4 of 10 samples render concrete or pictorial models: seed 23 shows EmojiPictorial, seeds 42, 78, 118 show NumberBond visuals. The remaining 6 seeds (11, 57, 64, 91, 103, 127) are text-only, meaning concrete and pictorial models do not constitute a regular part of this sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 because the earlier record went STALE when the packet changed; left registered pending W2 confirmation or engineering; no source change in this campaign."
+    },
+    {
+      "capability_id": "operands_2_1_digit",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "2-digit and 1-digit numbers",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 2 of 10 samples involve 2-digit and 1-digit additions: seed 23 (91+4) and seed 78 (94+5). The remaining 8 samples are 2-digit plus 2-digit combinations, making this combination an incidental occurrence rather than regular provision.",
+      "action_taken": "Re-judged blind on 2026-10-01 because the earlier record went STALE when the packet changed; left registered pending W2 confirmation or engineering; no source change in this campaign."
+    },
+    {
+      "capability_id": "operands_2_2_digit",
+      "node_id": "mat_g1_na_q2_5",
+      "clause": "2-digit and 2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "8 of 10 samples involve adding two 2-digit numbers: seeds 11, 42, 57, 64, 91, 103, 118, 127 all show 2-digit plus 2-digit structure, making this a regular and prominent focus across the sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch124_mat_g1_na_q2_5: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

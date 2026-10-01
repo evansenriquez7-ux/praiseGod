@@ -1,0 +1,663 @@
+{
+  "batch": "batch161_mat_g1_na_q2_3",
+  "attested_at": "2026-10-01T01:13:09Z",
+  "attested_by": "blind-attester-haiku45-w2a161-mat_g1_na_q2_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g1_na_q2_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g1_na_q2_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 2 + 0. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Break 20 into parts by place value: 20 + 0.",
+          "20 is 2 tens and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "6c3cafb19cbbe559abac",
+        "replay_digest": "2c6175d739a6fd4bd0c5d5f23bf62938c831d937ae35fae08724d59d7fb94ff0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Write 50 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "50 + 0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5",
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "20 + 1",
+            "text": "20 + 1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "50 + 0",
+            "text": "50 + 0",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "5 + 0",
+            "text": "5 + 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "50 + 0",
+        "hints": [
+          "Break 50 into parts by place value: 50 + 0.",
+          "50 is 5 tens and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "1b0dbd405ea97e259c45",
+        "replay_digest": "6f11e214da142d569bb6b977f641d43f38e940884da437f66b7487ab2b54516a"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "40 + 5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "50 + 4",
+            "text": "50 + 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4 + 5",
+            "text": "4 + 5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "10 + 5",
+            "text": "10 + 5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "40 + 5",
+            "text": "40 + 5",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "40 + 5",
+        "hints": [
+          "Break 45 into parts by place value: 40 + 5.",
+          "45 is 4 tens and 5 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "4ae4f137f32f887c7641",
+        "replay_digest": "000b5f448675b8f80da41348a87c3a1df5c5584e56d229075b444df8e5a6cefc"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use base-10 blocks to show the number 10.",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 10,
+        "hints": [
+          "Break 10 into parts by place value: 10 + 0.",
+          "10 is 1 ten and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 1,
+          "ones": 0,
+          "total_value": 10,
+          "number": 10,
+          "question_type": "build_number",
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "4999feb041db6e80160e8d0e5cc349e424167a0f351498a6993f8a3c8680f046",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 4,
+            "input_count": 0,
+            "text_labels": [
+              "▮ = 10",
+              "• = 1",
+              "Your blocks: None = 0",
+              "10s",
+              "-",
+              "0",
+              "+",
+              "1s",
+              "-",
+              "0",
+              "+"
+            ],
+            "distinct_colours": [
+              "#3b82f6",
+              "#b91c5c",
+              "hsl(var(--text-muted)",
+              "#3b82f620",
+              "#b91c5c20"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "92df2bd0f6251943b1d1",
+        "replay_digest": "d683554a2d5a3bf021c8ad865b3f4f232aad34e177caf359e09e2cfe8556daa0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "20 + 0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 + 0",
+            "text": "2 + 0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "70 + 9",
+            "text": "70 + 9",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "20 + 0",
+            "text": "20 + 0",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "2",
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "20 + 0",
+        "hints": [
+          "Break 20 into parts by place value: 20 + 0.",
+          "20 is 2 tens and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "6a2df1cc36a54d3bae73",
+        "replay_digest": "0eb581c613c190c59075412f9633274c7f0e95a91b30167752aa0535676081bf"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Write 50 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "50 + 0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "20 + 5",
+            "text": "20 + 5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5 + 0",
+            "text": "5 + 0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5",
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "50 + 0",
+            "text": "50 + 0",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "50 + 0",
+        "hints": [
+          "Break 50 into parts by place value: 50 + 0.",
+          "50 is 5 tens and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "3d8449683a2d872a91ac",
+        "replay_digest": "46bd5c8561c73fff20050f55d7fef47a2511d8f1c49fcb28842c7babc70feaa6"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "10 + 0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10 + 0",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "30 + 7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1 + 0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "10 + 0",
+        "hints": [
+          "Break 10 into parts by place value: 10 + 0.",
+          "10 is 1 ten and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "963e0b1756d1cb487b09",
+        "replay_digest": "366edbf4075d1ba72a56f8fbf5e3180ae05ff7da3b8dd3a9bd2fbb953c129957"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "40 + 5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "40 + 5",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "50 + 4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "40 + 2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 + 5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "40 + 5",
+        "hints": [
+          "Break 45 into parts by place value: 40 + 5.",
+          "45 is 4 tens and 5 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "271baa0a564dc2871db0",
+        "replay_digest": "625cc8a32e6a3f9fa30d5e84596c9cc27a70ad5ccd4c663cb645ed57640a245d"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Use base-10 blocks to show the number 45.",
+        "correct_answer": 45,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "PlaceValueBlocks",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 45,
+        "hints": [
+          "Break 45 into parts by place value: 40 + 5.",
+          "45 is 4 tens and 5 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "visual_type": "PlaceValueBlocks",
+        "visual_payload": {
+          "thousands": 0,
+          "hundreds": 0,
+          "tens": 4,
+          "ones": 5,
+          "total_value": 45,
+          "number": 45,
+          "question_type": "build_number",
+          "is_interactive": true
+        },
+        "visual_render": {
+          "visual_type": "PlaceValueBlocks",
+          "renderer_input_digest": "2a6f11145d1cd04c41c673f3c315e0e7600459586214b77ccbc3ee466ebb8abf",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PlaceValueBlocks",
+            "element_count": 21,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 4,
+            "input_count": 0,
+            "text_labels": [
+              "▮ = 10",
+              "• = 1",
+              "Your blocks: None = 0",
+              "10s",
+              "-",
+              "0",
+              "+",
+              "1s",
+              "-",
+              "0",
+              "+"
+            ],
+            "distinct_colours": [
+              "#3b82f6",
+              "#b91c5c",
+              "hsl(var(--text-muted)",
+              "#3b82f620",
+              "#b91c5c20"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "062ef5bcd9ad82a3635e",
+        "replay_digest": "8bbeb2465e495bb98436b1f2d7c5ef87a206c115f12f717384633bd877ef6782"
+      },
+      {
+        "node_id": "mat_g1_na_q2_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+        "correct_answer": "10 + 0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1",
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10 + 1",
+            "text": "10 + 1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 + 0",
+            "text": "1 + 0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10 + 0",
+            "text": "10 + 0",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "10 + 0",
+        "hints": [
+          "Break 10 into parts by place value: 10 + 0.",
+          "10 is 1 ten and 0 ones.",
+          "Each part shows how much that digit is worth in its position."
+        ],
+        "sample_id": "a292548fff118b8afdb3",
+        "replay_digest": "7428302d9c709b900110d6dc7badd115cdee14c5ef82b39c1ddfddbf57d37c78"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "decompose",
+      "node_id": "mat_g1_na_q2_3",
+      "clause": "Decompose",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples exhibit decomposition. Eight samples explicitly ask students to write numbers as tens and ones, and two use base-10 blocks to show decomposition. Decomposition is the central action in every sample.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "domain_2_digit",
+      "node_id": "mat_g1_na_q2_3",
+      "clause": "2-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples work exclusively with 2-digit numbers: 10, 20, 45, and 50 appear across samples. Every single sample addresses 2-digit numbers, making this a regular and central part of the learner experience.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "tens_ones",
+      "node_id": "mat_g1_na_q2_3",
+      "clause": "tens and ones",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly teach tens and ones decomposition. Eight samples use the phrase tens and ones directly in instructions. Two samples use base-10 blocks with visual labels showing 10s and 1s. The clause is uniformly present.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch124_mat_g1_na_q2_3: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}
