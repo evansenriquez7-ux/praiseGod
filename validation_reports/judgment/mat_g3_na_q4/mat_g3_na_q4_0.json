@@ -29,10 +29,10 @@
       "clause": "inverse of multiplication"
     }
   ],
-  "packet_digest": "3c2e09fc750972f4529ef3bbc6e312aa63efd5cca3d78a0ffff69f1eb8683f0e",
+  "packet_digest": "3aec9895baf61f7fcaf558ec391c3ec650945fc7da2976ba1406f7541aa3937d",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -824,7 +824,7 @@
       "node_id": "mat_g3_na_q4_0",
       "seed": 701,
       "formatter": "true_false",
-      "question_text": "💃 Sir Rez has a math challenge about dance shoes. Since 9 × 3 = 27, then 27 ÷ 9 = 3. True or False?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Since 9 × 3 = 27, then 27 ÷ 9 = 3. True or False?",
       "correct_answer": true,
       "requested": {
         "difficulty_profile": null,
@@ -847,13 +847,13 @@
         "The quotient of 27 ÷ 9 = 3."
       ],
       "sample_id": "fabc9dbce2325981af7b",
-      "replay_digest": "6ff54c85a1523f628b4e955f4e032821af5d98e723cdb19afdfa9d193c10eea5"
+      "replay_digest": "8174aaed8dfe3081c5de05f5488fb72c6895617bce8ed8034ede455260b7feb9"
     },
     {
       "node_id": "mat_g3_na_q4_0",
       "seed": 702,
       "formatter": "error_detect",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Manny solved: \"Starting at 8 on a number line, taking equal jumps back of 4 takes ___ jumps to reach 0\". Manny says the missing number is 3. Is Manny correct?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: \"Starting at 8 on a number line, taking equal jumps back of 4 takes ___ jumps to reach 0\". Manny says the missing number is 3. Is Manny correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 2
@@ -882,7 +882,7 @@
         "The quotient of 8 ÷ 4 = 2."
       ],
       "sample_id": "0fecd0de4cd532664174",
-      "replay_digest": "d8610126e446a4bd43e8257c7825ad72a184e6fe8b4fdd06261ffd003c7e7902"
+      "replay_digest": "cd03523142bdb575429db2d8840c4717357bc6ac00554bf30a5ecb7e9897182f"
     },
     {
       "node_id": "mat_g3_na_q4_0",
@@ -1179,575 +1179,575 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem explicitly states start point 12, jump value 2, direction backward toward 0, and asks for the quotient. Division setup is unambiguous and directly connects number line representation to the division equation. Correct answer 6 is clearly supported by the scenario."
+          "reasoning": "The problem clearly states starting position on the number line, the magnitude and direction of equal jumps, and the target. The blank position is unambiguous as the quotient of the division operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Scenario logically describes equal backward jumps of 2 from 12, which must land exactly on 0 when jumped 6 times, making the mathematics internally consistent. Hints correctly identify quotient and validate the multiplication inverse relationship."
+          "reasoning": "The scenario logically follows: starting at 12 and taking equal backward jumps of size 2 necessarily reaches 0 in exactly 6 jumps, making the division equation 12÷2=6 mathematically sound and contextually grounded."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 3 students have encountered number line models in earlier quarters. The language of starting at a point and making equal backward jumps is concrete and supports visual mental modeling. The blank in the equation clearly indicates the missing quotient value."
+          "reasoning": "The language is straightforward for a Grade 3 reader. The verb take, the adjective equal, and the explicit endpoint create a concrete mental model of the number line operation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Mathematically accurate: starting at 12, taking 6 backward jumps of 2 reaches exactly 0. Division fact 12 ÷ 2 = 6 is correct. Multiplication inverse relationship is verified in the hints without error."
+          "reasoning": "The mathematics is correct. Six jumps of 2 from position 12 reaches exactly 0. The multiplicative check holds: 2×6=12."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "7d0ec1d018c52998711f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question clearly asks how many jumps are needed starting from 24, jumping backward by 6s to reach 0. Both the stem and the equation 24 ÷ 6 = ___ unambiguously specify what is being asked. Answer 4 correctly identifies the jump count."
+          "reasoning": "The problem structure is clear: starting point on the number line, backward jump direction and size, endpoint, and the quantity sought (number of jumps) are all unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 4 backward jumps of 6 from position 24 reaches position 0: 24 minus 4 times 6 equals 0. The hints verify this through multiplication: 6 × 4 = 24. Logical flow from scenario to computation to answer is intact."
+          "reasoning": "The scenario is coherent. From 24, making equal jumps backward by 6 units reaches 0 in exactly 4 jumps. The question and division equation align logically."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrasing directly asks for a countable quantity (number of jumps), which is concrete for Grade 3 learners. The progression from scenario description to the division equation to the blank supports understanding."
+          "reasoning": "The stem is clear and conversational. The question asks directly for the number of jumps, which maps directly to the division quotient, supporting student understanding of the equivalence."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Division fact 24 ÷ 6 = 4 is correct. Inverse relationship verified: 6 × 4 = 24. Scenario accurately reflects the mathematical operation without error."
+          "reasoning": "The mathematics is sound. Four jumps of 6 from 24 reaches 0. The check 6×4=24 confirms correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "f8af4a5a23a2d859def6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem states a known multiplication fact and directly asks for the quotient with a blank. The connection between the multiplication and the division is clear, with answer 4 unambiguous."
+          "reasoning": "The structure is unambiguous: a multiplication fact is given, and the student must determine the corresponding division result. The blank position is clear as the quotient."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The inverse multiplication relationship is logically sound: if 3 × 4 = 12, then 12 ÷ 3 = 4. Hints reinforce this logical chain. The problem itself is mathematically consistent."
+          "reasoning": "The inverse relationship is correctly represented. The multiplication 3×4=12 directly implies 12÷3=4, and the problem correctly tests this logical connection."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format is straightforward for Grade 3: given a multiplication fact, find the related division quotient. This format builds on prerequisite multiplication knowledge students should have acquired earlier in the year."
+          "reasoning": "For Grade 3 students familiar with multiplication, the since-then structure clearly signals the inverse operation. The fill-in-the-blank format is straightforward and developmentally appropriate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication fact 3 × 4 = 12 is correct. Division quotient 12 ÷ 3 = 4 is accurate. Hints correctly apply the inverse relationship without mathematical error."
+          "reasoning": "The mathematics is correct. If 3×4=12, then 12÷3=4. The relationship is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "3bd622d10020d8eafe82",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false statement clearly presents a division claim that can be evaluated: 72 ÷ 8 = 8. Students must verify if 8 × 8 equals 72 (it does not), making the answer False unambiguous."
+          "reasoning": "The statement is clear and testable. It provides a multiplication fact and then makes an explicit claim about the division result, leaving no ambiguity about what must be evaluated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The statement relies on the multiplication inverse relationship. Testing whether 72 ÷ 8 = 8 requires checking if 8 × 8 = 72, which is false (8 × 9 = 72). Logic is sound and answer is correct."
+          "reasoning": "The problem correctly presents the multiplication-division inverse relationship. The false claim (72÷8=8 instead of 9) provides a valid test of conceptual understanding."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format requires evaluation of a claimed division fact rather than computation, which develops critical reasoning skills. The structure is familiar for Grade 3: accept or reject a mathematical statement."
+          "reasoning": "The structure is straightforward: a known multiplication fact, a proposed division result, and a binary choice. A Grade 3 student can easily process this format and apply their understanding of inverse operations."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The division claim 72 ÷ 8 = 8 is mathematically false; the correct quotient is 9 since 8 × 9 = 72. Answer False is correct. Hints verify the correct inverse: 8 × 9 = 72."
+          "reasoning": "The mathematics is correct. The multiplication 8×9=72 is true; the division claim 72÷8=8 is false because 72÷8=9. The answer False is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "43e40ddf4e57c1633a7e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Statement specifies starting position 16, jump count 2, and jump size 8, asking whether this lands on 0. The scenario components are precisely defined, and the true/false question has only two possible evaluations."
+          "reasoning": "The problem clearly specifies the starting point on the number line, the number of equal jumps, the size of each jump, and the ending point. The claim to be evaluated is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 2 backward jumps of 8 from 16 reaches exactly 0: 16 minus 2 times 8 equals 0. Hints verify through inverse: 8 × 2 = 16. The scenario and its mathematical result are logically consistent."
+          "reasoning": "The scenario is logically sound. Starting at 16 and taking 2 equal backward jumps of 8 does indeed land on 0, corresponding correctly to the division 16÷8=2."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The number line scenario is concrete and visual. Specifying both the number of jumps and the jump size makes the scenario deterministic, allowing students to reason about the landing point."
+          "reasoning": "The statement is phrased simply and concretely for a Grade 3 reader. The number line context is clear, and the true/false format is developmentally appropriate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at 16, taking 2 jumps backward of 8 each reaches 0. Multiplication inverse 8 × 2 = 16 is verified in hints. All mathematics is correct."
+          "reasoning": "The mathematics is correct. Two jumps of 8 from 16 reaches exactly 0. The answer True is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "a9511ecf61ed73c31bbe",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The sample presents a student solution claiming 24 ÷ 4 = 6 and asks whether this is correct. The evaluation is unambiguous: checking 4 × 6 = 24 confirms correctness without doubt."
+          "reasoning": "The problem presents a clear scenario: a character solves a division problem based on an inverse relationship. The student must judge whether the answer given is correct, with no ambiguity in the task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The presented multiplication fact 4 × 6 = 24 is accurate, and the corresponding division quotient 24 ÷ 4 = 6 is therefore correct. The error detection task has valid reasoning."
+          "reasoning": "The error detection item correctly employs the multiplication-division inverse. The multiplication fact 4×6=24 necessarily implies 24÷4=6, and Noel's answer is correct, making the logic sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format is clear: students evaluate another child's work, which is a familiar pedagogical approach in Grade 3. The task scaffold includes both the multiplication foundation and the division statement."
+          "reasoning": "The format presents a character's solution and asks for judgment. For Grade 3 students, this is clear and engaging, supporting metacognitive reflection on the correctness of reasoning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication fact 4 × 6 = 24 is correct. Division quotient 24 ÷ 4 = 6 correctly applies the inverse. Answer confirms no error exists, which is accurate."
+          "reasoning": "The mathematics is correct. Given 4×6=24, the quotient 24÷4 equals 6. Noel's answer is correct, and the overall verdict has_error: False is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "94c5af5eb1c9a6904602",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Statement claims 54 ÷ 9 = 5 and requests true/false evaluation. Checking the inverse (9 × 5 = 45, not 54) yields an unambiguous False answer."
+          "reasoning": "The statement clearly presents a multiplication fact and proposes a division result. There is no ambiguity about what the student must evaluate."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The statement's claim is mathematically false. The correct division is 54 ÷ 9 = 6 (since 9 × 6 = 54). Hints correctly identify the error and the right quotient."
+          "reasoning": "The inverse relationship is correctly presented. The multiplication 9×6=54 is accurate, and the proposed division result 54÷9=5 is false because the correct answer is 6. The logic is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Testing whether a stated quotient is correct is a direct application of division knowledge. Students with multiplication fluency can verify the answer efficiently."
+          "reasoning": "The structure is clear and age-appropriate. A Grade 3 student readily understands the since-then format and the binary choice required."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The claim 54 ÷ 9 = 5 is false. The correct quotient is 6 (verified by 9 × 6 = 54). Answer False is correct."
+          "reasoning": "The mathematics is correct. The multiplication 9×6=54 is true. The division claim 54÷9=5 is false; the correct quotient is 6. The answer False is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "7e033d69104990f4cc76",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question directly asks for the quotient 35 ÷ 7 given the multiplication fact 7 × 5 = 35. The blank and multiple choice options make the question unambiguous."
+          "reasoning": "The problem presents a multiplication fact and asks a direct question about the corresponding division. The question target is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 7 × 5 = 35 is correct, and the inverse division 35 ÷ 7 = 5 is therefore correct. Options include plausible but incorrect values that test understanding."
+          "reasoning": "The multiplication-division inverse relationship is correctly represented. From 7×5=35, the division 35÷7=5 follows logically and mathematically."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format is direct: given a multiplication fact, apply division. Multiple choice provides response options appropriate for Grade 3 assessment."
+          "reasoning": "The wording is straightforward for Grade 3. The since-then structure and multiple choice format support student understanding and response."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication fact 7 × 5 = 35 is correct. Division 35 ÷ 7 = 5 is accurate. Answer 5 is correct among the options."
+          "reasoning": "The mathematics is correct. The multiplication fact 7×5=35 is true. The division 35÷7=5 is the correct quotient."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "23b4a063e6573b715225",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Student solution states 28 ÷ 4 = 7 following from 4 × 7 = 28. The evaluation is unambiguous: verifying the multiplication confirms Dante's answer is correct."
+          "reasoning": "The scenario is unambiguous. A character solves a division problem using the multiplication-division inverse relationship, and the student must judge correctness."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 4 × 7 = 28 is accurate. The division quotient 28 ÷ 4 = 7 correctly applies the inverse relationship. No error exists."
+          "reasoning": "The inverse relationship is correctly applied. Given 4×7=28, the quotient 28÷4=7 is logically and mathematically sound. Dante's answer is correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scaffolded error detection format provides both the multiplication fact and the division claim, supporting Grade 3 students in reasoning through the problem."
+          "reasoning": "The error detection format presents a character's work and asks for judgment. This is clear and developmentally appropriate for Grade 3, supporting reflection on mathematical reasoning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 4 × 7 = 28 is correct. Division 28 ÷ 4 = 7 is the correct quotient. Error status is False (no error), which is accurate."
+          "reasoning": "The mathematics is correct. From 4×7=28, it follows that 28÷4=7. Dante's answer is correct, and the overall assessment has_error: False is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "ca8490fd5eeade2988c0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks for quotient 63 ÷ 7 given the multiplication fact 7 × 9 = 63. The phrasing is direct and options are distinct."
+          "reasoning": "The problem presents a multiplication fact and asks directly for the quotient in the corresponding division. The question is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication fact 7 × 9 = 63 is correct, making the inverse division 63 ÷ 7 = 9 logically sound. Answer 9 is supported by the given multiplication relationship."
+          "reasoning": "The multiplication-division inverse relationship is correctly embodied. From 7×9=63, the division 63÷7=9 follows necessarily and accurately."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The structure follows a clear pattern: multiplication fact provided, then division quotient requested. This format supports application of prerequisite multiplication knowledge."
+          "reasoning": "The since-then structure is clear and familiar to Grade 3 students. The multiple choice format with four options is appropriate and supports student response."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 7 × 9 = 63 is correct. Division 63 ÷ 7 = 9 is the accurate quotient. Answer is mathematically valid."
+          "reasoning": "The mathematics is correct. The multiplication 7×9=63 is true. The correct quotient is 9."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "b96e41b36e87e7a2e5b4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem clearly specifies starting point 6, backward jump size 2, landing point 0, and asks for the quotient. The division expression 6 ÷ 2 = ___ is unambiguous."
+          "reasoning": "The problem clearly describes the number line scenario: starting point, jump direction and size, endpoint, and the division to complete. All elements are unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at 6 and taking 3 backward jumps of 2 reaches exactly 0. Multiplication inverse 2 × 3 = 6 confirms the logic. Scenario and mathematics align."
+          "reasoning": "The scenario is coherent and mathematically sound. From 6, taking 3 equal backward jumps of 2 reaches 0. This correctly represents 6÷2=3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The number line scenario is concrete and accessible to Grade 3 students. The jump model is familiar from earlier instruction in counting and skip-counting."
+          "reasoning": "The stem is straightforward and concrete for a Grade 3 student. The equal jumps language and explicit endpoint create a clear mental model."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Three backward jumps of 2 from 6 reaches 0. Division 6 ÷ 2 = 3 is correct. Inverse 2 × 3 = 6 is verified in hints."
+          "reasoning": "The mathematics is correct. Three jumps of 2 from 6 reaches 0. The quotient 6÷2=3 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "bf756ebe385496b67c31",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The problem states Jose's solution 28 ÷ 4 = 7 derived from 4 × 7 = 28, with a clear yes/no evaluation required. The claim is unambiguous."
+          "reasoning": "The error detection item clearly presents a character's solution to a division problem and asks whether that character is correct. The task is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 4 × 7 = 28 is correct, making Jose's division quotient 28 ÷ 4 = 7 logically valid. The inverse relationship is correctly applied."
+          "reasoning": "The inverse relationship is correctly represented. From 4×7=28, it necessarily follows that 28÷4=7. Jose's answer is correct, and the evaluation is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The error detection scaffolding provides both the multiplication foundation and the division claim, making reasoning transparent for Grade 3 learners."
+          "reasoning": "The format is clear and age-appropriate. Students are asked to judge a character's work using the multiplication-division inverse, which is familiar and accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 4 × 7 = 28 is correct. Division 28 ÷ 4 = 7 is accurate. No error exists, and the answer False (for has_error) is correct."
+          "reasoning": "The mathematics is correct. Given 4×7=28, the quotient 28÷4=7. Jose is correct, and the has_error: False verdict is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "562babbbceb78bcab3f3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks how many equal jumps of 7 from 63 are needed to reach 0. This is clearly specified, and the division expression 63 ÷ 7 = ___ reflects it directly."
+          "reasoning": "The problem specifies the number line scenario, the jump parameters, and the endpoint clearly. The question asks for the number of jumps, which is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 9 backward jumps of 7 from position 63 reaches 0. Inverse multiplication 7 × 9 = 63 confirms the calculation. Scenario and result are logically consistent."
+          "reasoning": "The scenario is logically coherent. Starting at 63 and making equal backward jumps of 7 reaches 0 in exactly 9 jumps, correctly representing 63÷7=9."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Students are asked to count and describe equal jumps, reinforcing the equal groups model for division. The multiple choice format supports responding."
+          "reasoning": "The stem is clear and conversational for Grade 3. The question directly connects the number line experience to the division equation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Division 63 ÷ 7 = 9 is correct. Taking 9 jumps of 7 from 63 lands exactly on 0. Inverse 7 × 9 = 63 is accurate."
+          "reasoning": "The mathematics is correct. Nine jumps of 7 from 63 reaches 0. The quotient 63÷7=9 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "b19085f771b4de1c4e78",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents Carlo's scenario involving number line jumps and asks whether his answer of 8 jumps is correct. The evaluation is clear."
+          "reasoning": "The error detection item presents a scenario involving equal jumps on a number line. The student must judge whether the character's answer for the number of jumps is correct. The task is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at 40 and taking 8 equal jumps backward of 5 reaches 0: 40 minus 8 times 5 equals 0. Inverse multiplication 5 × 8 = 40 confirms this. Logic is sound."
+          "reasoning": "The number line scenario is logically sound. From 40, taking equal backward jumps of 5 reaches 0 in exactly 8 jumps, corresponding to 40÷5=8. Carlo's answer is correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format scaffolds the scenario with the multiplication foundation, supporting Grade 3 students in working through the jump count."
+          "reasoning": "The error detection format is clear and age-appropriate. The number line context is concrete and familiar to Grade 3 students."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "To go from 40 to 0 in jumps of 5 requires 8 jumps. Multiplication 5 × 8 = 40 confirms this. Answer confirms no error, which is correct."
+          "reasoning": "The mathematics is correct. Eight jumps of 5 from 40 reaches 0. Carlo's answer is correct, and the has_error: False verdict is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "5ad26bd59a5502b4a3e8",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The statement specifies 64 equal jumps of 8 backward from 72, which creates confusion because the correct number of jumps needed is 9, not 64. The large discrepancy between the proposed 64 and the actual 9 makes this unnecessarily complex for evaluating a true/false claim."
+          "verdict": "FAIL",
+          "reasoning": "The statement contains a critical mathematical inconsistency. It claims that taking 64 equal jumps backward of 8 from 72 lands on 0. This is mathematically impossible and creates fundamental ambiguity about the intended task."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Mathematically, 64 jumps of 8 from 72 would not land on 0 (would go negative), so False is correct. The hints clarify the correct jump count is 9."
+          "verdict": "FAIL",
+          "reasoning": "The scenario is logically incoherent. Sixty-four jumps of 8 equals 512, far exceeding the starting value of 72. The correct number of jumps from 72 to 0 by 8s is 9, not 64. This defect undermines the validity of the entire item."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Introducing a large incorrect number (64) alongside a small correct one (9) may confuse Grade 3 learners evaluating the scenario. The cognitive load of processing two disparate jump counts exceeds typical Grade 3 reasoning demands for division fact assessment."
+          "verdict": "FAIL",
+          "reasoning": "While the language structure appears clear, the mathematical content is incoherent. A Grade 3 student following the scenario accurately would discover it is impossible to follow the described jumps and reach the stated endpoint, leading to confusion rather than clarity."
         },
         "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Mathematically accurate: 64 jumps of 8 from 72 does not land on 0, so the statement is false. Correct jump count is 9 per hints, verified by 8 × 9 = 72."
+          "verdict": "FAIL",
+          "reasoning": "The mathematics is incorrect. The statement claims an impossible scenario. Seventy-two divided by 8 equals 9, not 64. No valid number line scenario matches the description provided, rendering the sample mathematically unsound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "afc218962ea044c1fa7e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks how many equal backward jumps of 7 from position 56 are needed to reach 0. The division 56 ÷ 7 = ___ directly represents this request."
+          "reasoning": "The problem clearly specifies the number line scenario: starting point, backward direction, jump size, endpoint, and the quantity sought. There is no ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 8 backward jumps of 7 from 56 reaches 0. Multiplication inverse 7 × 8 = 56 verifies the result. Scenario and calculation are logically aligned."
+          "reasoning": "The scenario is coherent and sound. From 56, making equal backward jumps of 7 reaches 0 in exactly 8 jumps, correctly representing 56÷7=8."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The explicit number line context with jump count as the unknown quantity supports concrete thinking in Grade 3. Multiple choice provides accessible response options."
+          "reasoning": "The stem is straightforward and concrete for Grade 3. The question asks directly for the number of jumps, which maps clearly to the division quotient."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Division 56 ÷ 7 = 8 is correct. Eight jumps of 7 from 56 reach 0. Inverse 7 × 8 = 56 is verified."
+          "reasoning": "The mathematics is correct. Eight jumps of 7 from 56 reaches 0. The quotient 56÷7=8 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "8dacd3b0343d2e5e5bf9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Carlo's error detection problem presents a number line scenario with starting point 45, jump size 5, and proposed answer 9 jumps. The yes/no evaluation is unambiguous."
+          "reasoning": "The error detection scenario clearly specifies that Carlo starts at position 45 on a number line, makes equal backward jumps of 5, and claims the answer is 9. The task structure allows no ambiguity in what must be evaluated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 9 backward jumps of 5 from 45 reaches 0: 45 minus 9 times 5 equals 0. Multiplication inverse 5 × 9 = 45 confirms this. Carlo's answer is logically correct."
+          "reasoning": "The number line scenario is logically sound. From 45, taking equal backward jumps of 5 reaches 0 in exactly 9 jumps, representing 45÷5=9. Carlo's answer is correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scaffolded format provides both the number line description and the proposed answer, allowing students to verify the claim through familiar inverse operations."
+          "reasoning": "The format is clear and developmentally appropriate. The number line context is concrete and familiar to Grade 3 students."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "To travel from 45 to 0 in jumps of 5 requires exactly 9 jumps. Inverse multiplication 5 × 9 = 45 is correct. Answer confirms no error, which is accurate."
+          "reasoning": "The mathematics is correct. Nine jumps of 5 from 45 reaches 0. Carlo's answer is correct, and the has_error: False verdict is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "fabc9dbce2325981af7b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Statement presents a multiplication fact and corresponding division claim requesting true/false evaluation. The claim that since 9 × 3 = 27, then 27 ÷ 9 = 3 is clear and unambiguous."
+          "reasoning": "The problem presents a multiplication fact and proposes a division result to evaluate. The presence of a thematic emoji and name does not introduce ambiguity; the mathematical task is clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 9 × 3 = 27 is correct, making the division quotient 27 ÷ 9 = 3 logically valid. The inverse relationship holds."
+          "reasoning": "The inverse relationship is correctly represented. The multiplication 9×3=27 is true, and the division 27÷9=3 follows logically and accurately. The thematic context does not interfere with the mathematical validity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The thematic element (dance shoes and Sir Rez) is present but does not interfere with the mathematical content. The structure is direct: verify a division claim from a known multiplication fact."
+          "reasoning": "The problem is clearly stated. While it includes a thematic element and character name, these do not obscure the mathematical task. The since-then-true/false structure is clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 9 × 3 = 27 is correct. Division 27 ÷ 9 = 3 is accurate. The statement is true, and the answer True is correct."
+          "reasoning": "The mathematics is correct. The multiplication 9×3=27 is true, and the division claim 27÷9=3 is also true. The answer True is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "0fecd0de4cd532664174",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Manny's number line scenario specifies starting at 8, jumping backward by 4, and reaching 0 in some number of jumps. His claim of 3 jumps is evaluated as correct or incorrect. The evaluation is clear."
+          "reasoning": "The error detection item presents a scenario with a character solving a number line division problem. The student must judge whether the answer is correct. The thematic elements do not introduce ambiguity in the mathematical task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Manny's answer of 3 jumps is incorrect; the correct answer is 2 jumps (since 4 × 2 = 8). The hints correctly identify the error and provide the right calculation."
+          "reasoning": "The number line scenario is sound. From 8, taking equal jumps backward of 4 reaches 0 in exactly 2 jumps, not 3. Manny's answer is incorrect. The error detection task is logically valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The thematic basketball context does not interfere with understanding the problem. The error detection structure provides a concrete scenario and incorrect proposed answer for verification."
+          "reasoning": "The problem is clearly stated. The thematic context with emoji and character name adds engagement without obscuring the mathematical task. The format supports Grade 3 comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "From 8, taking 2 jumps of 4 reaches 0, not 3 jumps. Multiplication 4 × 2 = 8 confirms 2 is correct. Manny's answer of 3 is wrong, and the answer shows error exists (True), which is correct."
+          "reasoning": "The mathematics is correct. From 8, two jumps of 4 reaches 0, so 8÷4=2. Manny claims the answer is 3, which is incorrect. The has_error: True and correct_value: 2 verdicts are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "2a6a065bac51315fa944",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a known multiplication fact and directly asks for the corresponding division quotient with a blank. The division 18 ÷ 2 = ___ is unambiguous."
+          "reasoning": "The problem presents a multiplication fact and asks for the corresponding division quotient. The task is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 2 × 9 = 18 is correct, making the inverse division 18 ÷ 2 = 9 logically sound. The relationship is correctly applied."
+          "reasoning": "The multiplication-division inverse relationship is correctly represented. The multiplication 2×9=18 directly implies 18÷2=9, and the logic is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The format is straightforward: given a known multiplication fact, find the division quotient. This applies prerequisite multiplication knowledge and supports skill transfer."
+          "reasoning": "The since-then structure is clear and familiar to Grade 3 students. The fill-in-the-blank format is straightforward and supports response."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 2 × 9 = 18 is correct. Division 18 ÷ 2 = 9 is accurate. All mathematical relationships are valid."
+          "reasoning": "The mathematics is correct. Given 2×9=18, the quotient 18÷2=9 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "fb217f47e3b5637b7fda",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question specifies a number line starting at 21 with equal backward jumps of 7 to reach 0, asking how many jumps. Division 21 ÷ 7 = ___ directly represents this request."
+          "reasoning": "The problem specifies the number line starting point, the size and direction of equal jumps, and the endpoint. The question asks for the number of jumps clearly."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 3 backward jumps of 7 from 21 reaches 0. Inverse multiplication 7 × 3 = 21 confirms this. Scenario logic is intact."
+          "reasoning": "The scenario is logically coherent. Starting at 21 and making equal backward jumps of 7 reaches 0 in exactly 3 jumps, correctly representing 21÷7=3."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The number line scenario with jump count as the unknown is concrete and aligned with Grade 3 skip-counting and division understanding."
+          "reasoning": "The stem is clear and concrete for Grade 3. The question directly connects the number line scenario to the division equation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Division 21 ÷ 7 = 3 is correct. Three jumps of 7 from 21 reach 0. Inverse 7 × 3 = 21 is verified."
+          "reasoning": "The mathematics is correct. Three jumps of 7 from 21 reaches 0. The quotient 21÷7=3 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "4e179f8e1657b71ba278",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Given multiplication fact 6 × 3 = 18, the question asks for the quotient 18 ÷ 6 in multiple choice format. The response options are distinct and unambiguous."
+          "reasoning": "The problem presents a multiplication fact and asks for the corresponding division quotient. The task is clear and unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 6 × 3 = 18 is correct, making the inverse division 18 ÷ 6 = 3 logically valid. Answer 3 follows from the given relationship."
+          "reasoning": "The inverse relationship is correctly applied. From 6×3=18, the division 18÷6=3 follows logically and accurately."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The prompt follows a clear pattern: multiplication fact provided, division quotient requested. Format and options are appropriate for Grade 3."
+          "reasoning": "The since-then structure is familiar and clear for Grade 3 students. The multiple choice format with four options supports response selection."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 6 × 3 = 18 is correct. Division 18 ÷ 6 = 3 is accurate. Answer 3 is mathematically valid."
+          "reasoning": "The mathematics is correct. Given 6×3=18, the quotient 18÷6=3 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "238eed350b318385cf48",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a known multiplication fact and asks for the corresponding quotient with a blank. The division expression 24 ÷ 3 = ___ directly represents what is requested."
+          "reasoning": "The problem presents a multiplication fact and asks for the corresponding division quotient. The blank position and task are unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 3 × 8 = 24 is correct, making the inverse division 24 ÷ 3 = 8 logically sound. The mathematical relationships are consistent."
+          "reasoning": "The multiplication-division inverse relationship is correctly embodied. From 3×8=24, the division 24÷3=8 follows necessarily and accurately."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The structure is clear and familiar: given a multiplication fact, apply the inverse to find the division quotient. This supports building connections between operations."
+          "reasoning": "The since-then structure is clear and developmentally appropriate. The fill-in-the-blank format is familiar to Grade 3 students."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication 3 × 8 = 24 is correct. Division 24 ÷ 3 = 8 is accurate. All mathematics is valid."
+          "reasoning": "The mathematics is correct. Given 3×8=24, the quotient 24÷3=8 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "31091cc04b4c792c1870",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Liza's error detection problem describes a number line scenario from 15 with backward jumps of 5 and proposes an answer of 2 jumps. The evaluation is unambiguous."
+          "reasoning": "The error detection scenario clearly states that Liza begins at position 15 on a number line, takes equal backward jumps of 5, and asserts the answer is 2. The task requirements are unambiguous and straightforward for evaluation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Liza's answer of 2 jumps is incorrect; the correct answer is 3 jumps (since 5 × 3 = 15). Hints correctly identify the error and provide the correct calculation."
+          "reasoning": "The number line scenario is sound. From 15, taking equal backward jumps of 5 reaches 0 in exactly 3 jumps, not 2. Liza's answer is incorrect. The error detection task is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scaffolded error detection format provides a clear scenario and incorrect proposed answer, supporting Grade 3 learners in identifying and correcting mistakes."
+          "reasoning": "The format is clear and age-appropriate. The number line context is concrete and familiar to Grade 3 students."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "From 15, taking 3 jumps of 5 reaches 0, not 2 jumps. Multiplication 5 × 3 = 15 confirms 3 is correct. Liza's answer of 2 is wrong, and the answer indicates error exists (True), which is correct."
+          "reasoning": "The mathematics is correct. From 15, three jumps of 5 reaches 0, so 15÷5=3. Liza claims the answer is 2, which is incorrect. The has_error: True and correct_value: 3 verdicts are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "sample_id": "8beb493bbb6228166465",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Manny's solution presents a multiplication fact and proposes a quotient of 15 for 20 ÷ 5. The evaluation is clear: checking if 5 × 15 = 20 determines correctness."
+          "reasoning": "The error detection item clearly presents a character's solution to a division problem based on the inverse relationship. The student must judge correctness. The task is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Manny's answer of 15 is incorrect; the correct quotient is 4 (since 5 × 4 = 20). Hints correctly identify the error and provide the accurate result."
+          "reasoning": "The inverse relationship is correctly applied. From 5×4=20, the quotient 20÷5=4 follows necessarily. Manny claims the answer is 15, which is incorrect, making the error detection task logically valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format scaffolds the task by providing both the multiplication fact and the incorrect proposed quotient, helping students reason through verification."
+          "reasoning": "The format is clear and developmentally appropriate. The error detection structure is familiar to Grade 3 students and supports metacognitive reflection."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The multiplication fact 5 × 4 = 20 is correct; therefore 20 ÷ 5 = 4, not 15. Manny's answer is wrong, and the response correctly identifies an error (True), which is accurate."
+          "reasoning": "The mathematics is correct. Given 5×4=20, the quotient 20÷5=4, not 15. Manny is incorrect. The has_error: True and correct_value: 4 verdicts are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     }
   ],
   "clause_evidence": [
@@ -1755,7 +1755,7 @@
       "requirement_id": "illustrate_division",
       "clause": "Illustrate division",
       "verdict": "PASS",
-      "reasoning": "Every sample either depicts division through concrete number line scenarios with backward jumps or presents division as a quotient derived from multiplication. Samples range from direct computation to error detection tasks. The variety of formats (cloze, mcq, true_false, error_detect) all represent division in different contexts appropriate for Grade 3.",
+      "reasoning": "All 25 samples present division in explicitly illustrated form, employing either cloze, multiple choice, true/false, or error detection formats. Each sample demonstrates division operation in a way that allows learners to visualize, calculate, or reason about the quotient. Formats range from computational (cloze and MCQ) to conceptual reasoning (true/false and error detection), providing diverse illustrations of the division concept.",
       "sample_ids": [
         "f30c77005315c6b54e18",
         "7d0ec1d018c52998711f",
@@ -1783,14 +1783,14 @@
         "31091cc04b4c792c1870",
         "8beb493bbb6228166465"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "requirement_id": "equal_jumps",
       "clause": "equal jumps",
-      "verdict": "PASS",
-      "reasoning": "Samples explicitly referencing equal backward jumps on a number line appear throughout the set. Jump language is consistent and clear in each occurrence. Examples include starting at a position and taking a specified count of equal-size jumps toward 0, with answers indicating the final position or number of jumps required.",
+      "verdict": "FAIL",
+      "reasoning": "While ten samples explicitly represent equal jumps on a number line as a method to illustrate division, one of these samples contains a critical mathematical defect that invalidates its implementation of this requirement. Sample 5ad26bd59a5502b4a3e8 presents a mathematically impossible number line scenario claiming 64 equal jumps of 8 from 72 reach 0, when the correct count is 9 jumps. This defect means the equal_jumps requirement is not correctly instantiated in all samples, compromising the integrity of this component.",
       "sample_ids": [
         "f30c77005315c6b54e18",
         "7d0ec1d018c52998711f",
@@ -1801,18 +1801,16 @@
         "5ad26bd59a5502b4a3e8",
         "afc218962ea044c1fa7e",
         "8dacd3b0343d2e5e5bf9",
-        "0fecd0de4cd532664174",
-        "fb217f47e3b5637b7fda",
         "31091cc04b4c792c1870"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "requirement_id": "number_line",
       "clause": "number line",
-      "verdict": "PASS",
-      "reasoning": "Samples using the term number line or describing movement from a starting position toward 0 are distributed across the sample set. The number line concept is referenced both as an explicit model and as an implicit organizing principle (starting at X, moving toward 0). All such items correctly represent division as movement or position change.",
+      "verdict": "FAIL",
+      "reasoning": "Ten samples explicitly employ the number line as a pedagogical tool to illustrate division through equal jumps. However, sample 5ad26bd59a5502b4a3e8 presents a defective number line scenario with mathematically impossible jump parameters that do not correspond to the starting and ending points specified. This critical flaw means the number_line requirement is not correctly implemented across all intended samples, which is a binding component of the competency.",
       "sample_ids": [
         "f30c77005315c6b54e18",
         "7d0ec1d018c52998711f",
@@ -1823,21 +1821,17 @@
         "5ad26bd59a5502b4a3e8",
         "afc218962ea044c1fa7e",
         "8dacd3b0343d2e5e5bf9",
-        "0fecd0de4cd532664174",
-        "fb217f47e3b5637b7fda",
         "31091cc04b4c792c1870"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     },
     {
       "requirement_id": "inverse_of_multiplication",
       "clause": "inverse of multiplication",
       "verdict": "PASS",
-      "reasoning": "The inverse relationship between multiplication and division is demonstrated throughout the samples. Many items provide a multiplication fact and ask for the corresponding quotient or verify that a quotient correctly relates to a given product. Hints consistently reinforce this relationship by stating how many times a number fits into another through multiplication.",
+      "reasoning": "Thirteen samples clearly represent and test the inverse relationship between multiplication and division, employing the structure in which a multiplication fact is given and students must deduce or verify the corresponding division result. Error detection, true/false, multiple choice, and cloze formats all support demonstration of this conceptual connection. The samples show this relationship across a range of numbers and problem contexts, providing robust coverage of the inverse relationship requirement.",
       "sample_ids": [
-        "f30c77005315c6b54e18",
-        "7d0ec1d018c52998711f",
         "f8af4a5a23a2d859def6",
         "3bd622d10020d8eafe82",
         "a9511ecf61ed73c31bbe",
@@ -1845,54 +1839,53 @@
         "7e033d69104990f4cc76",
         "23b4a063e6573b715225",
         "ca8490fd5eeade2988c0",
-        "b19085f771b4de1c4e78",
-        "8dacd3b0343d2e5e5bf9",
+        "bf756ebe385496b67c31",
         "fabc9dbce2325981af7b",
         "2a6a065bac51315fa944",
         "4e179f8e1657b71ba278",
         "238eed350b318385cf48",
         "8beb493bbb6228166465"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0"
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w17-haiku45-20260925:mat_g3_na_q4_0",
-      "reviewer_identity": "blind-reviewer-haiku45-pc17-mat_g3_na_q4_0-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0:mat_g3_na_q4_0",
+      "reviewer_identity": "blind-reviewer-haiku45-pe19-mat_g3_na_q4_0-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "3c2e09fc750972f4529ef3bbc6e312aa63efd5cca3d78a0ffff69f1eb8683f0e",
+      "packet_digest": "3aec9895baf61f7fcaf558ec391c3ec650945fc7da2976ba1406f7541aa3937d",
       "clause_ids": [
         "illustrate_division",
         "equal_jumps",
         "number_line",
         "inverse_of_multiplication"
       ],
-      "response_ref": ".responses/s5-phaseC-w17-haiku45-20260925.json",
-      "response_digest": "3746d754b71bd6ccac0a5ca83c94966fd9c4d271c6048565b5df736a094494e1",
-      "prompt_ref": ".responses/s5-phaseC-w17-haiku45-20260925.prompt.txt",
-      "prompt_digest": "961963316ad1b203ff70434f3b65d8907989d54d497f109f95dc624e6b1da4e1",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q4_0/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Tool use measured from the reviewer transcript (no harness usage record: the agent was ended by an API session limit after writing its reply): 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0.json",
+      "response_digest": "bd4115e9b64062a54140d471f722cf1f6ff6a4f0a43493f33ad6ec4f82c8ebad",
+      "prompt_ref": ".responses/s5-phaseE-claude-w19-haiku45-20260930-mat_g3_na_q4_0.prompt.txt",
+      "prompt_digest": "1c4a8f49749ad1528719ee475a7d68f101ee056ea84eae94aa71f1f331b5f3ce",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g3_na_q4_0/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g3_na_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "THIRD blind reviewer, dispatched fresh: the first and second replies each gave overall PASS against their own CONCERN verdicts and were set aside, their claims harvested; neither was shown to this reviewer. This dispatch added one procedural sentence asking the reviewer to apply the overall rule in item 4 mechanically to every verdict; it carried no content. Harness usage record: 2 tool uses for the review, 5 cumulative after a wording-only revision making two templated ambiguity reasonings sample-specific; by name from the transcript: 2 Edit, 2 Read, 1 Write; paths outside this node's own prompt/reply: none. Every verdict and the overall byte-compared unchanged."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The sample set employs multiple formats (cloze, mcq, true_false, error_detect) with appropriate complexity for Grade 3. Most items involve single-digit divisors and dividends within the range 6-72, suitable for student proficiency level. Format progression from direct division to error detection supports cognitive scaffolding."
+      "rationale": "All items employ numbers and operational complexity appropriate for Grade 3 students. The range of dividends and divisors used (6-72) aligns with typical Grade 3 numeracy, avoiding excessive cognitive load while remaining substantive for division practice."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples directly address the stated competency components. Items either present division illustrated through number line jumps or as inverse multiplication relationships, or frequently both. The variety of presentation modes ensures alignment with learning standard."
+      "rationale": "Every sample directly addresses the competency by asking students to demonstrate understanding of division through one or both specified methods: equal jumps on a number line or the inverse relationship between multiplication and division."
     },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The rendered samples collectively demonstrate all four competency components: illustrating division, showing equal jumps, depicting number lines, and demonstrating inverse of multiplication. The approach bridges conceptual understanding and procedural fluency.",
+      "verdict": "FAIL",
+      "rationale": "While the decomposition identifies all key components of the competency, the packet implementation contains a critical mathematical inconsistency that undermines fulfillment of the requirements.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The four stated requirements comprehensively and losslessly capture the full competency. Illustrate division serves as the overarching concept; equal jumps and number line are specific methods for illustration; inverse of multiplication is the conceptual foundation. Together they address every aspect of the learning target.",
+        "reasoning": "The four identified requirements—illustrate_division, equal_jumps, number_line, and inverse_of_multiplication—together constitute a lossless decomposition of the competency as written. Each component is distinct and collectively necessary and sufficient to cover the full scope of illustrating division through both specified methods.",
         "requirement_ids": [
           "illustrate_division",
           "equal_jumps",
@@ -1908,8 +1901,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The 25-sample set covers both primary instructional approaches: number line visualization (present in samples involving starting points and jumps) and multiplication inverse framing (samples stating multiplication facts before division). This dual approach ensures learners encounter diverse methods for understanding division.",
+      "verdict": "CONCERN",
+      "rationale": "While both pedagogical methods (equal jumps and multiplication-inverse) are represented across the sample set, one sample contains a mathematical error that disrupts coverage quality. The number line method is demonstrated in 10 samples and the multiplication-inverse in 13 samples, but the defective sample compromises the integrity of the equal_jumps representation.",
       "clause_ids": [
         "illustrate_division",
         "equal_jumps",
@@ -1919,12 +1912,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Divisors range from 2 through 9 and dividends from 6 through 72, which aligns with Grade 3, Quarter 4 expectations. The progression allows mastery of smaller facts before larger ones. Factor combinations (2×3, 3×4, up to 9×9) match standard Grade 3 multiplication fluency benchmarks."
+      "rationale": "Dividend and divisor magnitudes remain within Grade 3 expectations, with no introduction of concepts or numeracy beyond the grade level. The problems scaffold appropriately from simpler divisions to more complex reasoning required in error detection and true/false formats."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Items span cloze blanks, multiple choice selection, true/false evaluation, and error detection tasks. Both correct and incorrect statements test student reasoning. Number line contexts vary (different starting numbers and jump sizes), and thematic decorations appear without interfering with mathematical content."
+      "rationale": "The packet demonstrates substantial variety across format types (cloze, multiple choice, true/false, error detection), problem structures (computation, concept verification, error analysis), and thematic contexts (standard scenarios, culturally themed items with dance and sports). This diversity supports multiple learning modalities and engagement levels."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
