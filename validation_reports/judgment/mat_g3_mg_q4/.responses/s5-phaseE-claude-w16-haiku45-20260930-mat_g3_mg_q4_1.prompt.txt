@@ -1,0 +1,222 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe16-mat_g3_mg_q4_1-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_mg_q4_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe16-mat_g3_mg_q4_1-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q4_1
+PACKET DIGEST: a01f8e7d6e84f1baa9867fa2420d9f2169c8b867a09fbff61b199c5946c771cd
+COMPETENCY (Grade 3, Quarter 4, None):
+Identify shapes or figures that show line symmetry by drawing the line of symmetry.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  identify: Identify
+  shapes_or_figures: shapes or figures
+  line_symmetry: line symmetry
+  drawing_the_line_of_symmetry: drawing the line of symmetry
+
+SAMPLES (every one of these is real rendered output):
+  sample 2875d2153e4cad81cffe  seed 42  [mcq]
+      stem:    The letter 'B' has a line of symmetry. In which direction does it run?
+      answer:  horizontal (side to side)
+      options: no lines of symmetry / diagonal / vertical (up and down) / horizontal (side to side)
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1fb5b8caddab38cb61ce  seed 43  [mcq]
+      stem:    A line of symmetry divides a shape into two ___.
+      answer:  equal halves that are mirror images
+      options: unequal parts / equal halves that are mirror images / halves that are different sizes / triangles
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 12899f2fd3e7e1a55921  seed 44  [mcq]
+      stem:    A circle has how many lines of symmetry?
+      answer:  Infinite (unlimited)
+      options: Infinite (unlimited) / 1 / 4 / 0
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9c83d11008fb01175ac5  seed 45  [mcq]
+      stem:    How many lines of symmetry does an isosceles triangle (two equal sides) have?
+      answer:  1
+      options: 0 / 1 / 3 / 2
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 68806512260fcb39eda5  seed 46  [mcq]
+      stem:    How many lines of symmetry does a square have?
+      answer:  4
+      options: 4 / 2 / 1 / 0
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample da4f26fb71cb57624041  seed 500  [mcq]
+      stem:    If you draw a vertical line down the center of a heart shape, do both sides match?
+      answer:  Yes, it shows line symmetry.
+      options: Only if the heart is tilted. / Yes, it shows line symmetry. / No, the sides are different. / No, hearts have 4 lines of symmetry.
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f70340ea677dcd62f91f  seed 501  [mcq]
+      stem:    The letter 'B' has a line of symmetry. In which direction does it run?
+      answer:  horizontal (side to side)
+      options: diagonal / no lines of symmetry / horizontal (side to side) / vertical (up and down)
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ef0adc01c7d9d95bcc35  seed 502  [mcq]
+      stem:    The letter 'H' has how many lines of symmetry?
+      answer:  2
+      options: 1 / 0 / 3 / 2
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7e9dcbeb2f64cd5da0c7  seed 601  [mcq]
+      stem:    How many lines of symmetry does an equilateral triangle have?
+      answer:  3
+      options: 2 / 3 / 1 / 0
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 40769a5b8bbe5a012515  seed 700  [mcq]
+      stem:    How many lines of symmetry does a rectangle (non-square) have?
+      answer:  2
+      options: 0 / 4 / 2 / 1
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8417671c65ab0247239c  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Which of these shapes has NO line of symmetry?
+      answer:  a scalene triangle
+      options: an equilateral triangle / a scalene triangle / a square / a rectangle
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5fb161a0f735664e90c8  seed 702  [mcq]
+      stem:    ✝️ Moses enjoys olives. Here is a math challenge. If you draw a vertical line down the center of a heart shape, do both sides match?
+      answer:  Yes, it shows line symmetry.
+      options: Only if the heart is tilted. / No, the sides are different. / Yes, it shows line symmetry. / No, hearts have 4 lines of symmetry.
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6c0c7500d0b8621756a6  seed 800  [mcq]
+      stem:    The letter 'B' has a line of symmetry. In which direction does it run?
+      answer:  horizontal (side to side)
+      options: horizontal (side to side) / diagonal / no lines of symmetry / vertical (up and down)
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1a01a6d7fa32f4d6620f  seed 900  [mcq]
+      stem:    The letter 'M' has a line of symmetry. In which direction does it run?
+      answer:  vertical (up and down)
+      options: horizontal (side to side) / diagonal / vertical (up and down) / no lines of symmetry
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5c6f27679a09e8d9cdca  seed 901  [mcq]
+      stem:    A circle has how many lines of symmetry?
+      answer:  Infinite (unlimited)
+      options: 1 / Infinite (unlimited) / 4 / 0
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample fe5ae897d8e32841b89a  seed 1000  [mcq]
+      stem:    If you draw a vertical line down the center of a heart shape, do both sides match?
+      answer:  Yes, it shows line symmetry.
+      options: Yes, it shows line symmetry. / No, hearts have 4 lines of symmetry. / No, the sides are different. / Only if the heart is tilted.
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample b73e5c00ac09198f7c14  seed 1001  [mcq]
+      stem:    If you draw a vertical line down the center of a heart shape, do both sides match?
+      answer:  Yes, it shows line symmetry.
+      options: No, the sides are different. / Only if the heart is tilted. / No, hearts have 4 lines of symmetry. / Yes, it shows line symmetry.
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample f87bc9078598403e916f  seed 1002  [mcq]
+      stem:    The letter 'H' has how many lines of symmetry?
+      answer:  2
+      options: 3 / 1 / 0 / 2
+      hints:   ["A line of symmetry splits a shape into two mirror-image halves.", "Fold the shape along the line — both halves should match exactly."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

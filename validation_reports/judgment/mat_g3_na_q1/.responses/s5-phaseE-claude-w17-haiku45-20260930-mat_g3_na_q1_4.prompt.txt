@@ -1,0 +1,271 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe17-mat_g3_na_q1_4-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_na_q1_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe17-mat_g3_na_q1_4-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q1_4
+PACKET DIGEST: aa046a290ba460ee48b2ccb317e6bea63ee57e248b0d10822fc1fdf30772448d
+COMPETENCY (Grade 3, Quarter 1, None):
+Round numbers to the nearest ten, hundred, or thousand.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  round: Round
+  numbers: numbers
+  nearest_ten: nearest ten
+  hundred: hundred
+  thousand: thousand
+
+SAMPLES (every one of these is real rendered output):
+  sample 7f1f817ba2f6ef8fab58  seed 42  [cloze]
+      stem:    Round 1815 to the nearest 1000.
+      answer:  2000
+      options: 2010 / 2000 / 0 / 1000
+      hints:   ["Round 1815 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 8.", "Since 8 ≥ 5, round up.", "1815 rounded to the closest thousands is 2000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 76df8a47a8d7a83d94e3  seed 43  [mcq]
+      stem:    Round 3929 to the nearest 10.
+      answer:  3930
+      options: 3940 / 3900 / 3920 / 3930
+      hints:   ["Round 3929 to the closest tens.", "Look at the digit just to the right of the tens place: it is 9.", "Since 9 ≥ 5, round up.", "3929 rounded to the closest tens is 3930."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ba3faf22ff3795892dae  seed 44  [read_mcq]
+      stem:    The number 3225 is marked on the number line. Round 3225 to the nearest 100.
+      answer:  3200
+      options: 3235 / 3000 / 3200 / 3210
+      hints:   ["Round 3225 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 2.", "Since 2 < 5, round down (keep the hundreds digit the same).", "3225 rounded to the closest hundreds is 3200."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["3100", "3110", "3120", "3130", "3140", "3150", "3160", "3170", "3180", "3190", "3200", "3210", "3220", "3230", "3240", "3250", "3260", "3270", "3280", "3290", "3300", "3310", "3320", "3330", "3340", "3350", "3360", "3370", "3380", "3390", "3400"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6758f3d01139b4d161c6  seed 45  [mcq]
+      stem:    Round 2630 to the nearest 100.
+      answer:  2600
+      options: 2600 / 2610 / 2000 / 2601
+      hints:   ["Round 2630 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 3.", "Since 3 < 5, round down (keep the hundreds digit the same).", "2630 rounded to the closest hundreds is 2600."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5ae4fe548e26f58b05ab  seed 46  [mcq]
+      stem:    Round 5096 to the nearest 10.
+      answer:  5100
+      options: 5090 / 5000 / 5110 / 5100
+      hints:   ["Round 5096 to the closest tens.", "Look at the digit just to the right of the tens place: it is 6.", "Since 6 ≥ 5, round up.", "5096 rounded to the closest tens is 5100."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8796cd362f59b865db4c  seed 500  [read_mcq]
+      stem:    The number 8438 is marked on the number line. Round 8438 to the nearest 100.
+      answer:  8400
+      options: 8400 / 8448 / 8000 / 8410
+      hints:   ["Round 8438 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 3.", "Since 3 < 5, round down (keep the hundreds digit the same).", "8438 rounded to the closest hundreds is 8400."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["8300", "8310", "8320", "8330", "8340", "8350", "8360", "8370", "8380", "8390", "8400", "8410", "8420", "8430", "8440", "8450", "8460", "8470", "8480", "8490", "8500", "8510", "8520", "8530", "8540", "8550", "8560", "8570", "8580", "8590", "8600"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a3caf1b2be02bdf24705  seed 501  [read_mcq]
+      stem:    The number 6148 is marked on the number line. Round 6148 to the nearest 1000.
+      answer:  6000
+      options: 6010 / 6000 / 0 / 6248
+      hints:   ["Round 6148 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 1.", "Since 1 < 5, round down (keep the thousands digit the same).", "6148 rounded to the closest thousands is 6000."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["5000", "5100", "5200", "5300", "5400", "5500", "5600", "5700", "5800", "5900", "6000", "6100", "6200", "6300", "6400", "6500", "6600", "6700", "6800", "6900", "7000", "7100", "7200", "7300", "7400", "7500", "7600", "7700", "7800", "7900", "8000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8a9f7598a7f766af435b  seed 502  [cloze]
+      stem:    Round 6952 to the nearest 1000.
+      answer:  7000
+      options: 7000 / 7010 / 6000 / 0
+      hints:   ["Round 6952 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 9.", "Since 9 ≥ 5, round up.", "6952 rounded to the closest thousands is 7000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 22321e31364940f403f8  seed 600  [mcq]
+      stem:    Round 2325 to the nearest 100.
+      answer:  2300
+      options: 2301 / 2310 / 2300 / 2000
+      hints:   ["Round 2325 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 2.", "Since 2 < 5, round down (keep the hundreds digit the same).", "2325 rounded to the closest hundreds is 2300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5a91ee29347759c53617  seed 601  [read_mcq]
+      stem:    The number 7065 is marked on the number line. Round 7065 to the nearest 10.
+      answer:  7070
+      options: 7070 / 7080 / 7000 / 7060
+      hints:   ["Round 7065 to the closest tens.", "Look at the digit just to the right of the tens place: it is 5.", "Since 5 ≥ 5, round up.", "7065 rounded to the closest tens is 7070."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["7050", "7051", "7052", "7053", "7054", "7055", "7056", "7057", "7058", "7059", "7060", "7061", "7062", "7063", "7064", "7065", "7066", "7067", "7068", "7069", "7070", "7071", "7072", "7073", "7074", "7075", "7076", "7077", "7078", "7079", "7080"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0ab49b4f35529f8aae7a  seed 602  [cloze]
+      stem:    Round 2565 to the nearest 100.
+      answer:  2600
+      options: 2600 / 2000 / 2610 / 2500
+      hints:   ["Round 2565 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 6.", "Since 6 ≥ 5, round up.", "2565 rounded to the closest hundreds is 2600."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3d2b5cb7d6607078844c  seed 603  [read_mcq]
+      stem:    The number 2688 is marked on the number line. Round 2688 to the nearest 10.
+      answer:  2690
+      options: 2700 / 2690 / 2600 / 2680
+      hints:   ["Round 2688 to the closest tens.", "Look at the digit just to the right of the tens place: it is 8.", "Since 8 ≥ 5, round up.", "2688 rounded to the closest tens is 2690."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2670", "2671", "2672", "2673", "2674", "2675", "2676", "2677", "2678", "2679", "2680", "2681", "2682", "2683", "2684", "2685", "2686", "2687", "2688", "2689", "2690", "2691", "2692", "2693", "2694", "2695", "2696", "2697", "2698", "2699", "2700"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 099af6147954be5419c5  seed 604  [cloze]
+      stem:    Round 1310 to the nearest 1000.
+      answer:  1000
+      options: 1010 / 0 / 1001 / 1000
+      hints:   ["Round 1310 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 3.", "Since 3 < 5, round down (keep the thousands digit the same).", "1310 rounded to the closest thousands is 1000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ea048806443b2596aa02  seed 700  [cloze]
+      stem:    Round 2964 to the nearest 10.
+      answer:  2960
+      options: 2900 / 2961 / 2960 / 2970
+      hints:   ["Round 2964 to the closest tens.", "Look at the digit just to the right of the tens place: it is 4.", "Since 4 < 5, round down (keep the tens digit the same).", "2964 rounded to the closest tens is 2960."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e9a7b743f71de718372e  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Round 3250 to the nearest 1000.
+      answer:  3000
+      options: 3001 / 3000 / 0 / 3010
+      hints:   ["Round 3250 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 2.", "Since 2 < 5, round down (keep the thousands digit the same).", "3250 rounded to the closest thousands is 3000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 698f4ae820c5b0b0946f  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Round 2394 to the nearest 10.
+      answer:  2390
+      options: 2300 / 2400 / 2390 / 2391
+      hints:   ["Round 2394 to the closest tens.", "Look at the digit just to the right of the tens place: it is 4.", "Since 4 < 5, round down (keep the tens digit the same).", "2394 rounded to the closest tens is 2390."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9e54d149ca9e327aa4e7  seed 800  [read_mcq]
+      stem:    The number 8128 is marked on the number line. Round 8128 to the nearest 1000.
+      answer:  8000
+      options: 8000 / 0 / 8010 / 8228
+      hints:   ["Round 8128 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 1.", "Since 1 < 5, round down (keep the thousands digit the same).", "8128 rounded to the closest thousands is 8000."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["7000", "7100", "7200", "7300", "7400", "7500", "7600", "7700", "7800", "7900", "8000", "8100", "8200", "8300", "8400", "8500", "8600", "8700", "8800", "8900", "9000", "9100", "9200", "9300", "9400", "9500", "9600", "9700", "9800", "9900", "10000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ca4e0625ebe4219867c2  seed 900  [mcq]
+      stem:    Round 1665 to the nearest 1000.
+      answer:  2000
+      options: 2010 / 1000 / 0 / 2000
+      hints:   ["Round 1665 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 6.", "Since 6 ≥ 5, round up.", "1665 rounded to the closest thousands is 2000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3429e2d21caa14fed89a  seed 901  [read_mcq]
+      stem:    The number 2691 is marked on the number line. Round 2691 to the nearest 100.
+      answer:  2700
+      options: 2600 / 2710 / 2700 / 2000
+      hints:   ["Round 2691 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 9.", "Since 9 ≥ 5, round up.", "2691 rounded to the closest hundreds is 2700."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["2500", "2510", "2520", "2530", "2540", "2550", "2560", "2570", "2580", "2590", "2600", "2610", "2620", "2630", "2640", "2650", "2660", "2670", "2680", "2690", "2700", "2710", "2720", "2730", "2740", "2750", "2760", "2770", "2780", "2790", "2800"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fff269ed0142cabf352a  seed 1000  [read_mcq]
+      stem:    The number 4305 is marked on the number line. Round 4305 to the nearest 100.
+      answer:  4300
+      options: 4300 / 4315 / 4310 / 4000
+      hints:   ["Round 4305 to the closest hundreds.", "Look at the digit just to the right of the hundreds place: it is 0.", "Since 0 < 5, round down (keep the hundreds digit the same).", "4305 rounded to the closest hundreds is 4300."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 67, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["4200", "4210", "4220", "4230", "4240", "4250", "4260", "4270", "4280", "4290", "4300", "4310", "4320", "4330", "4340", "4350", "4360", "4370", "4380", "4390", "4400", "4410", "4420", "4430", "4440", "4450", "4460", "4470", "4480", "4490", "4500"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 87c8599dc8cf33a4a93d  seed 1001  [cloze]
+      stem:    Round 8789 to the nearest 10.
+      answer:  8790
+      options: 8780 / 8800 / 8790 / 8700
+      hints:   ["Round 8789 to the closest tens.", "Look at the digit just to the right of the tens place: it is 9.", "Since 9 ≥ 5, round up.", "8789 rounded to the closest tens is 8790."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 31e99e02de46365fb7af  seed 1002  [cloze]
+      stem:    Round 5805 to the nearest 1000.
+      answer:  6000
+      options: 6010 / 6000 / 0 / 5000
+      hints:   ["Round 5805 to the closest thousands.", "Look at the digit just to the right of the thousands place: it is 8.", "Since 8 ≥ 5, round up.", "5805 rounded to the closest thousands is 6000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

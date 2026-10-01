@@ -1,0 +1,293 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe15-mat_g3_mg_q2_0-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_mg_q2_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe15-mat_g3_mg_q2_0-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q2_0
+PACKET DIGEST: 8b44ee7d6a65068e4df0ad43ef70d3417e8ac25c5c6c0bc32f8f279aa96bd304
+COMPETENCY (Grade 3, Quarter 2, None):
+Measure mass in grams (g), kilograms (kg) and/or milligrams (mg), using appropriate measuring tools.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  measure_mass: Measure mass
+  grams_kilograms_and_or_milligrams: grams (g), kilograms (kg) and/or milligrams (mg)
+  measuring_tools: measuring tools
+
+SAMPLES (every one of these is real rendered output):
+  sample c9908165709971b9948d  seed 42  [read_mcq]
+      stem:    Look at the scale. What is the mass of the object? Give your answer in g.
+      answer:  7
+      options: 6 / 9 / 8 / 7
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 7 g."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "g", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8b67d17085e6d176a168  seed 43  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in g.
+      answer:  30
+      options: 40 / 30 / 25 / 6
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 30 g."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 35, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "25", "30", "35", "40", "g", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample afc02b083292d46df035  seed 44  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
+      answer:  18
+      options: 24 / 9 / 18 / 16
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 18 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ceb300771fc285155cc6  seed 45  [read_mcq]
+      stem:    Look at the scale. What is the mass of the object? Give your answer in kg.
+      answer:  20
+      options: 22 / 18 / 10 / 20
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 20 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 43, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8f0352a094a5eb9f8be6  seed 46  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in mg.
+      answer:  60
+      options: 60 / 75 / 65 / 55
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 60 mg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 48, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "mg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d83b74ac4285152920be  seed 500  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
+      answer:  300
+      options: 12 / 325 / 375 / 300
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 300 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 48, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "50", "100", "150", "200", "250", "300", "350", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9ee97d725fdb8ac00ee8  seed 501  [read_mcq]
+      stem:    Look at the scale. What is the mass of the object? Give your answer in mg.
+      answer:  2000
+      options: 2000 / 1750 / 8 / 2500
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 2000 mg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "250", "500", "750", "1000", "1250", "1500", "1750", "2000", "2250", "2500", "mg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dcc617830eb87a6b60c1  seed 502  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in mg.
+      answer:  450
+      options: 500 / 600 / 450 / 9
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 450 mg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "50", "100", "150", "200", "250", "300", "350", "400", "450", "500", "550", "600", "mg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e7961c1b9ad1b95f73a6  seed 601  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
+      answer:  14
+      options: 16 / 18 / 12 / 14
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 14 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dbf17f65b25154d382b1  seed 602  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in mg.
+      answer:  13
+      options: 14 / 17 / 12 / 13
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 13 mg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 53, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "mg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 381aaf5a2ac60203f499  seed 605  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in g.
+      answer:  26
+      options: 24 / 26 / 28 / 13
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 26 g."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 53, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "28", "32", "g", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7e38015f40c86b9b76d2  seed 700  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
+      answer:  16
+      options: 8 / 18 / 14 / 16
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 16 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b4df5de2d704a611d15e  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the scale. What is the mass of the bag? Give your answer in kg.
+      answer:  16
+      options: 18 / 16 / 20 / 14
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 16 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7a48135b1579aadb498d  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Look at the scale. What is the mass of the object? Give your answer in kg.
+      answer:  2
+      options: 1 / 2 / 3 / 6
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 2 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d416480034e95eb1ae5f  seed 800  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in kg.
+      answer:  90
+      options: 90 / 9 / 100 / 80
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 90 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "kg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 41834693a00433869d2a  seed 900  [read_mcq]
+      stem:    Look at the scale. What is the mass of the object? Give your answer in kg.
+      answer:  1
+      options: 2 / 3 / 6 / 1
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 1 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3decad15173d83d40b31  seed 901  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in kg.
+      answer:  1
+      options: 2 / 1 / 3 / 6
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 1 kg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "kg", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 845374d47c44b3a0f207  seed 1000  [read_mcq]
+      stem:    Look at the scale. What is the mass of the parcel? Give your answer in g.
+      answer:  7
+      options: 9 / 6 / 7 / 8
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 7 g."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 38, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "g", "the parcel"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4cb8eb0f6cdcc31bf6d0  seed 1001  [read_mcq]
+      stem:    Look at the scale. What is the mass of the bag? Give your answer in mg.
+      answer:  18
+      options: 20 / 16 / 18 / 24
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 18 mg."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 47, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "mg", "the bag"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f4f3e330fa70ba558153  seed 1002  [read_mcq]
+      stem:    Look at the scale. What is the mass of the object? Give your answer in g.
+      answer:  28
+      options: 28 / 36 / 14 / 26
+      hints:   ["Read the scale: find the number the pointer points to.", "The mass shown is 28 g."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 56, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "4", "8", "12", "16", "20", "24", "28", "32", "36", "g", "the object"], "distinct_colours": ["#334155"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

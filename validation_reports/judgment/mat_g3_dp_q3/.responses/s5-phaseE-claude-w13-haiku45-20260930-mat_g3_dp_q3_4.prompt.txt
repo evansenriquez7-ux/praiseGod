@@ -1,0 +1,245 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe13-mat_g3_dp_q3_4-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_dp_q3_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe13-mat_g3_dp_q3_4-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_dp_q3_4
+PACKET DIGEST: 45c7c9ad0da0fabf58deba84e16a8c834bf3abf701402a751a4e2805bfea7963
+COMPETENCY (Grade 3, Quarter 3, None):
+Describe and compare outcomes in real-life situations using the following terms: equally likely, less/least likely, more/most likely, certain, and impossible.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  describe: Describe
+  compare: compare
+  outcomes: outcomes
+  real_life_situations: real-life situations
+  equally_likely: equally likely
+  less_least_likely: less/least likely
+  more_most_likely: more/most likely
+  certain: certain
+  impossible: impossible
+
+SAMPLES (every one of these is real rendered output):
+  sample 966a9cd1daed6c3264ed  seed 42  [mcq]
+      stem:    A bag has 5 red balls and no other colors. What is the chance of picking a red ball?
+      answer:  certain
+      options: certain / equally likely / impossible / less likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d6b6fdc54dc400d1230f  seed 43  [mcq]
+      stem:    A spinner has all sections colored red. What is the chance of landing on red?
+      answer:  certain
+      options: equally likely / less likely / certain / impossible
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0de3fd27b0135dd47397  seed 44  [mcq]
+      stem:    A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?
+      answer:  red or green
+      options: It is equally likely for all colors. / yellow / blue / red or green
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e4f65ab4fd192177a1d9  seed 45  [mcq]
+      stem:    A bag has 3 red balls and 7 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?
+      answer:  less likely
+      options: less likely / equally likely / more likely / certain
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7af45b749a58caeafe74  seed 46  [mcq]
+      stem:    A standard 6-sided die with faces 1 to 6 is rolled. What is the chance of rolling the number 7?
+      answer:  impossible
+      options: equally likely / more likely / certain / impossible
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3b369bdef14b09e00b40  seed 500  [mcq]
+      stem:    In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?
+      answer:  angelfish
+      options: guppy / goldfish / All fish are equally likely. / angelfish
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a95508aa436397ea9ce1  seed 501  [mcq]
+      stem:    A bag has 6 red balls and 4 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?
+      answer:  more likely
+      options: impossible / equally likely / more likely / less likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2c663126b70f16e66286  seed 502  [mcq]
+      stem:    A spinner has 3 red sections and 1 blue section. Which outcome is more likely?
+      answer:  red
+      options: impossible / blue / red / equally likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c2c20a39f217417eea99  seed 601  [mcq]
+      stem:    A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___.
+      answer:  equally likely
+      options: equally likely / red is more likely / impossible / blue is more likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 16bab35e3866c0dbfde7  seed 603  [mcq]
+      stem:    A spinner is divided into 4 equal quarters: Red, Blue, Yellow, and Green. The chances of landing on any one color are ___.
+      answer:  equally likely
+      options: Yellow is least likely / impossible / Red is more likely / equally likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8bd9d8548528639c470a  seed 604  [mcq]
+      stem:    You flip a regular coin. What is the chance of getting the number 3?
+      answer:  impossible
+      options: certain / impossible / more likely / equally likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5bed3989848047f511ae  seed 606  [mcq]
+      stem:    A spinner has all sections colored blue. What is the chance of landing on red?
+      answer:  impossible
+      options: impossible / certain / more likely / equally likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3efb71258484dfb5d335  seed 607  [mcq]
+      stem:    A bag has only blue balls. What is the chance of picking a green ball?
+      answer:  impossible
+      options: equally likely / more likely / certain / impossible
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5c044d96e94084c8d884  seed 700  [mcq]
+      stem:    A coin is flipped. The chance of heads and the chance of tails are ___.
+      answer:  equally likely
+      options: equally likely / impossible / tails is more likely / heads is more likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3c069c1be983cd24f99b  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. A bag has 3 yellow counters and 7 red counters. Picking a yellow counter is ___ compared to picking a red counter.
+      answer:  less likely
+      options: certain / equally likely / more likely / less likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 63189b6a3623de125c05  seed 702  [mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. You flip a coin. What is the chance of getting either heads OR tails?
+      answer:  certain
+      options: certain / less likely / impossible / equally likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f05214c43a3faa8424e0  seed 900  [mcq]
+      stem:    A spinner has two equal sections: one red and one blue. Spinning red or blue are ___.
+      answer:  equally likely
+      options: certain / blue is more likely / equally likely / red is more likely
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 21f987fbe2ca46b29aa5  seed 901  [mcq]
+      stem:    A box has 9 mangoes, 5 apples, and 1 orange. Which fruit is LEAST likely to be chosen without looking?
+      answer:  orange
+      options: orange / mango / All fruits are equally likely. / apple
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e9823c2b5ac29de1b7fd  seed 1000  [mcq]
+      stem:    A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?
+      answer:  red or green
+      options: yellow / It is equally likely for all colors. / blue / red or green
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 5cdf6f3bdcf8fb30596c  seed 1001  [mcq]
+      stem:    You flip a regular coin. What is the chance of getting the number 3?
+      answer:  impossible
+      options: more likely / certain / equally likely / impossible
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 718569db4d8e4c7503f5  seed 1002  [mcq]
+      stem:    A jar contains 10 green marbles, 4 blue marbles, and 1 red marble. Which marble color is MOST likely to be drawn at random?
+      answer:  green
+      options: blue / All colors are equally likely. / red / green
+      hints:   ["Certain: will always happen (probability = 1).", "Impossible: can never happen (probability = 0).", "Will probably happen: happens more often than not.", "Will probably not happen: does not happen often.", "Equally likely: two events have the same chance.", "Count the favorable outcomes and compare to the total to decide."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

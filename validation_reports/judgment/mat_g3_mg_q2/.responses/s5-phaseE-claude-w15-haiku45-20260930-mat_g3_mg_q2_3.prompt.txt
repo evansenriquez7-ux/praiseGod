@@ -1,0 +1,267 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe15-mat_g3_mg_q2_3-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_mg_q2_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe15-mat_g3_mg_q2_3-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_mg_q2_3
+PACKET DIGEST: 49dc5650ffb57b36bbede6f8387f3467050941b0f9c722745ee5a79b392dda82
+COMPETENCY (Grade 3, Quarter 2, None):
+Measure capacity in liters (L) and/or milliliters (mL), using appropriate measuring tools.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  measure_capacity: Measure capacity
+  capacity_of_a_container: capacity
+  liters_and_or_milliliters: liters (L) and/or milliliters (mL)
+  measuring_tools_for_capacity: measuring tools
+
+SAMPLES (every one of these is real rendered output):
+  sample 1ab291e9c4fa6b800e71  seed 42  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.
+      answer:  55
+      options: 70 / 60 / 11 / 55
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 55 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "mL", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 91261c9ae463f3dfcbbb  seed 43  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.
+      answer:  16
+      options: 14 / 20 / 16 / 8
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 16 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "L", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7a3b29a34e309ce12101  seed 44  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.
+      answer:  70
+      options: 60 / 90 / 7 / 70
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 70 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "mL", "the bottle"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cb5f710f766786f334c9  seed 45  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the container? Give your answer in L.
+      answer:  14
+      options: 16 / 7 / 14 / 12
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 14 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "L", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6388c343c1f4720d46bf  seed 46  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.
+      answer:  18
+      options: 18 / 20 / 16 / 24
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 18 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "L", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 520cd5e27763a1cf8da7  seed 500  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.
+      answer:  275
+      options: 11 / 275 / 300 / 350
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 275 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "50", "100", "150", "200", "250", "300", "350", "L", "the bottle"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 92fb1ce13acec50433b6  seed 501  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the container? Give your answer in L.
+      answer:  200
+      options: 250 / 175 / 200 / 8
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 200 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "25", "50", "75", "100", "125", "150", "175", "200", "225", "250", "L", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample de3f2383fd932ce2e2ca  seed 502  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.
+      answer:  3000
+      options: 3250 / 3750 / 12 / 3000
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 3000 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "500", "1000", "1500", "2000", "2500", "3000", "3500", "mL", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 561a1bfe43fb4aec3d9f  seed 700  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in L.
+      answer:  13
+      options: 13 / 14 / 12 / 17
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 13 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "L", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6993e8a4f03e9444ac90  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in L.
+      answer:  16
+      options: 18 / 14 / 16 / 20
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 16 L."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "L", "the bottle"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 711dc3cb1968a2cf3409  seed 702  [read_mcq]
+      stem:    💃 Ate Gab enjoys costumes. Here is a math challenge. Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.
+      answer:  50
+      options: 50 / 45 / 65 / 55
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 50 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "mL", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b5767dbfe223eb9d7b1f  seed 800  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.
+      answer:  2000
+      options: 1750 / 8 / 2000 / 2250
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 2000 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "250", "500", "750", "1000", "1250", "1500", "1750", "2000", "2250", "2500", "mL", "the bottle"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 73a611cda79e501a09e8  seed 900  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.
+      answer:  1
+      options: 2 / 1 / 3 / 6
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 1 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "mL", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1160d3b8564b562baec0  seed 901  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.
+      answer:  1
+      options: 2 / 6 / 1 / 3
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 1 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "mL", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 55100390720b92d1dda9  seed 1000  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the jug? Give your answer in mL.
+      answer:  8
+      options: 9 / 10 / 7 / 8
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 8 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "mL", "the jug"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6d32946b8ec9b348bffa  seed 1001  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the bottle? Give your answer in mL.
+      answer:  40
+      options: 50 / 40 / 45 / 35
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 40 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 29, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "mL", "the bottle"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3f427dfd607b533323b1  seed 1002  [read_mcq]
+      stem:    Look at the measuring cylinder. What is the capacity of the container? Give your answer in mL.
+      answer:  1
+      options: 3 / 6 / 2 / 1
+      hints:   ["Read the measuring cylinder: find the mark at the top of the liquid.", "The capacity shown is 1 mL."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ScaleRead", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ScaleRead
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ScaleRead", "element_count": 21, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "1", "2", "3", "4", "5", "6", "mL", "the container"], "distinct_colours": ["#475569", "#f8fafc", "#60a5fa,", "#2563eb)", "#334155", "#0f172a"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

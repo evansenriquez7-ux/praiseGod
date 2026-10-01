@@ -1,0 +1,684 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe15-mat_g3_mg_q2_5-20260930",
+  "mat_g3_mg_q2_5": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The task of identifying which of two numerical measurements is larger aligns precisely with Grade 3 mathematical reasoning. All samples present single-digit to four-digit values within the numeric range appropriate for 8-year-old learners, requiring visual comparison and magnitude recognition suitable for this developmental stage."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every rendered item directly measures the ability to compare two capacity measurements expressed in mL or L units. The prompt structure matches the stated competency action verb by requiring learners to identify which container holds more volume, testing the core comparison skill without auxiliary operations."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The competency decomposition into compare_capacities and two_containers is lossless. All 30 samples present exactly two distinct volume measurements and require a comparison judgment, fully realizing both components without omission or scope drift.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The two requirements completely cover the competency. Every sample satisfies both components: each presents two separate container volumes (two_containers) and asks learners to judge which is larger (compare_capacities). No student could succeed by attending to only one component; both are necessary and sufficient."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Sample diversity demonstrates thorough coverage across multiple dimensions. Measurements span from 1 to 3348 units, both mL and L units appear throughout the distribution, magnitude gaps range from adjacent values like 1 vs 2 to dramatic differences such as 12 vs 3348, and both cloze and mcq formats are represented across the sample set."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Numeric ranges and magnitude relationships scale appropriately for Grade 3 students. While the corpus includes three-digit and four-digit values, the task remains capacity comparison rather than magnitude estimation, making the numeric scale manageable for the expected learner population without requiring unit conversion or multi-step reasoning."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples exhibit substantial structural and contextual variation. The set includes both themed instances with person names and interest descriptors and unthemed instances, employs both milliliter and liter units with mixed distributions, varies the ordering and magnitude gaps between presented values, and incorporates multiple response experiences such as standard, hint_gated, mastery_drill, and scaffolded modes."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "5c3ad52282fc8a6778f8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks directly which volume is larger between 23 mL and 56 mL. The stem conveys one unambiguous task requiring selection of the numerically larger value with no competing interpretations available to a Grade 3 reader."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The comparison of two liquid volumes makes logical sense. Asking which container holds more when given two capacities is a realistic and contextually coherent question that students would encounter in actual measurement scenarios."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing is transparent for Grade 3 learners. The word order, vocabulary, and numeric values are all age-appropriate. Students have seen mL notation and understand the comparative language employed in the stem."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 56 is mathematically correct as the larger of the two values. The options provide one correct answer and three plausible distractors, and the hint statements accurately restate the problem and identify the correct choice using sound reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "c401f8a799b534aac6bd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents a single clear question about which liters value is greater. All five elements—stem, answer, options, hints, and response format—align to test one skill without internal contradiction or alternative readings of the task intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 22 L to 12 L is a valid capacity comparison task. The scenario is realistic and the question naturally arises from the given information without logical inconsistency or implausible premises."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Third-grade students can read and process this stem without difficulty. The L notation is standard at this level, the numbers are within expected range, and the comparative question uses familiar phrasing encountered throughout the curriculum."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The correct answer 22 accurately represents the larger capacity. Hints provide accurate restatement of the problem and correct identification of the answer through valid reasoning about magnitude."
+          }
+        }
+      },
+      {
+        "sample_id": "d3868076d1f1df8e3f49",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem contains exactly one question with no ambiguous phrasing or competing interpretations. The task is to identify the larger value from two given measurements, a straightforward and unambiguous objective."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 1 mL to 38 mL models a realistic scenario where a large magnitude difference makes the comparison meaningful and contextually appropriate for developing measurement sense."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The vocabulary, sentence structure, and numeric scale are all within the comprehension range of Grade 3 students. The mL unit is familiar, and the magnitude difference makes the comparison conceptually accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 38 is the correct larger value mathematically. Hints accurately capture the problem structure and correctly identify the larger measurement, reinforcing sound comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "7cd6c1aff3a1b8351660",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "This multiple-choice item presents one clear task: identify which volume is greater. No phrase or element creates confusion about what learners are asked to determine or how to respond."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 21 L against 13 L is logically sound. The scenario reflects authentic measurement comparison and has no internal contradictions or implausible elements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language and numbers used are appropriate for third graders. The stem communicates the task efficiently, and all visual elements of the item support rather than distract from the capacity comparison concept."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "21 is the mathematically correct larger value. Both hints provide accurate restatement of the problem and correct identification using valid comparative reasoning about the two given quantities."
+          }
+        }
+      },
+      {
+        "sample_id": "d61fd275384910aceb99",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The item clearly asks which measurement represents more capacity. The language contains no ambiguity about the operation required or how to interpret the two values presented."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 3 L to 17 L is a valid capacity question where the second value is notably larger, making this a meaningful comparison for understanding magnitude relationships in measurement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are clear to Grade 3 readers. The numbers are manageable, the vocabulary is grade-level appropriate, and the question structure is transparent about what needs to be compared."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer 17 correctly identifies the larger capacity. Provided hints restate the measurements accurately and explain the answer through sound mathematical reasoning about which number is greater."
+          }
+        }
+      },
+      {
+        "sample_id": "ecdab7c4b2848d5a902d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question has one clear interpretation: determine which liters value is greater. No alternative readings or confusing elements exist in the stem or response structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 26 L to 231 L is logically valid. The task makes sense as a capacity comparison even though one value is substantially larger than the other, and this magnitude difference serves to test comparison sense across a wider range."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Third graders can manage this item. Three-digit numbers are encountered at this grade level, the L notation is standard, and the comparative question is phrased in accessible language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "231 is the correct larger value mathematically. Both hints accurately identify 231 as the larger measurement and provide accurate reasoning for this choice based on numerical magnitude."
+          }
+        }
+      },
+      {
+        "sample_id": "ccb55ac165deda97a558",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem expresses one unambiguous question about which of two liters values represents a larger capacity. The mcq format and response options do not introduce ambiguity about the expected student action."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 8 L to 447 L is a contextually valid measurement task. The large magnitude difference models realistic scenarios where capacity differences are dramatic and meaningful for decision-making."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The numbers and language are accessible to Grade 3 students. While 447 is a larger number, the comparison task remains cognitively manageable for the target audience without requiring advanced computational skills."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "447 is the mathematically correct larger value. Hints accurately restate the problem and provide correct identification of the larger measurement through valid reasoning about numerical magnitude."
+          }
+        }
+      },
+      {
+        "sample_id": "835586d24f38eafa5ecd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item contains one clear task: identify which milliliter measurement is larger. All components direct the learner to a single, unambiguous objective."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 12 mL to 3348 mL is logically sound as a capacity question. The extreme magnitude difference makes this a challenging but valid comparison that extends learners' number sense beyond typical two-digit ranges."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the four-digit number, the task remains clear. Grade 3 students have encountered large numbers in other contexts, and the straightforward comparison structure makes the question comprehensible even with unfamiliar numeric magnitudes."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "3348 is the correct larger value mathematically. Hints provide accurate problem restatement and correct identification of the larger capacity value through valid comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "6f7e00c3f0c6fde1b933",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents one clear question about which value is greater when comparing two liters measurements. No ambiguity exists in the stem language or response options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 1 L to 22 L is a valid capacity comparison. The scenario is realistic and contextually coherent for practicing measurement sense at the Grade 3 level."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is transparent and age-appropriate. Numbers are manageable for Grade 3, vocabulary is familiar, and the question structure is straightforward about what needs to be determined."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "22 is the mathematically correct larger capacity. Hints restate the measurements accurately and identify the correct answer through sound reasoning about numerical magnitude."
+          }
+        }
+      },
+      {
+        "sample_id": "4a9e24962bcfad44fdfb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze question unambiguously asks which liters value is greater. The language is direct and permits only one interpretation of the comparison task required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 12 L to 15 L is contextually valid. The values are close in magnitude, modeling scenarios where careful comparison is necessary rather than obvious at a glance."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Both numbers and the question structure are fully within Grade 3 comprehension. The phrasing is clear, the vocabulary is grade-appropriate, and students can easily understand what is being asked."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "15 is the correct larger value mathematically. Both provided hints accurately restate the problem and correctly identify 15 as the larger measurement using appropriate reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "cd19be62af8ebe8c7cbe",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem contains one unambiguous request: identify which milliliter value is greater. No competing interpretations or unclear phrasing obscures the task intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 49 mL to 67 mL is a realistic and valid capacity comparison. The magnitude difference is moderate, making this useful for practicing comparison skills without extreme numeric gaps."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Third graders can readily process this item. The numbers are typical for their grade level, the mL notation is familiar, and the question phrasing uses transparent, age-appropriate language."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 is the mathematically correct larger value. Hints provide accurate restatement of both measurements and correct identification of the larger value through valid numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "11e039ae61401531214c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents one clear comparison task between two liters values. The language and structure eliminate any ambiguity about what students need to determine."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 3 L to 12 L is logically valid. The scenario is realistic for capacity comparison and the magnitude difference supports meaningful measurement sense development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is clear and appropriate for Grade 3. Numbers are manageable, vocabulary is familiar, and the comparative question is easily understood by the target audience."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 is the correct larger value mathematically. Provided hints accurately restate the measurements and correctly identify 12 as the larger capacity through sound reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "7f4922b5205311ef0862",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item clearly asks which milliliter measurement is greater. The question language is direct and unambiguous about the comparison operation required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 69 mL to 55 mL is a valid capacity question. The magnitude difference is moderate, providing meaningful practice in discrimination between similar-sized values."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are clear to Grade 3 students. The numbers are typical for their level, the mL notation is standard, and the question structure transparently communicates what needs to be compared."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "69 is the correct larger value mathematically. Both hints accurately restate the problem and correctly identify 69 as the larger measurement using appropriate comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "83a3be5aea7d08e933da",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question unambiguously asks which liters value is greater. The stem language permits only one interpretation of the required comparison task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 1 L to 14 L is a contextually valid measurement scenario. The substantial magnitude difference provides clear comparison practice suitable for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing and numbers are fully appropriate for third graders. Vocabulary is grade-level, the L notation is familiar, and the comparative question is transparently phrased."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "14 is the mathematically correct larger value. Hints provide accurate problem restatement and correct identification of 14 as the larger measurement through valid reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "4e7f0a4da4ba09634fd8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents one unambiguous question about which milliliter value is greater. The language and structure are clear about the comparison task required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 55 mL to 5 mL is logically valid. The large magnitude difference creates a meaningful comparison scenario that reinforces understanding of capacity discrimination."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 3 students can readily understand this item. The numbers are manageable, the vocabulary is appropriate, and the question structure is transparent about what needs to be compared."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "55 is the mathematically correct larger value. Hints accurately restate the measurements and correctly identify 55 as larger through valid numerical comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "df97d3c0bdb9aae6ba18",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze question contains one clear, unambiguous task: determine which milliliter value is greater. The language directly communicates the comparison operation without alternative interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 54 mL to 6 mL is a valid capacity comparison. The scenario is realistic and the magnitude difference makes the comparison meaningful for measurement sense development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are appropriate for Grade 3 readers. The numbers are typical for their level, the mL notation is standard, and the question phrasing is clear and accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "54 is the correct larger value mathematically. Hints provide accurate restatement of both measurements and correctly identify 54 as larger through appropriate comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "0c7fe9bbcfe09e0f290d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem expresses one clear question about which liters value is greater. No ambiguity exists in the phrasing or the comparison task requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 1 L to 10 L is logically sound as a capacity question. The scenario is realistic and the magnitude difference provides appropriate practice for Grade 3 measurement sense."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Third graders can readily process this item without difficulty. The vocabulary is grade-appropriate, the numbers are manageable, and the comparative question is transparently structured."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 is the mathematically correct larger value. Both hints accurately restate the problem and correctly identify 10 as larger through valid numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "95ef4207e472d0e6338c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item clearly asks which liters value is greater between two given measurements. The question language is direct and unambiguous about the required comparison operation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 2 L to 11 L is a valid and realistic capacity comparison scenario. The magnitude difference is appropriate for meaningful practice in discriminating between different capacities."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language and numbers are fully within Grade 3 comprehension. The vocabulary is grade-level appropriate, the L notation is familiar, and the question structure clearly communicates the task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "11 is the correct larger value mathematically. Hints provide accurate restatement of both measurements and correctly identify 11 as larger using appropriate comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "195d5393272f3c12ddc3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents one unambiguous question about which liters value is greater. The stem language is clear about what comparison task students must complete."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 5 L to 4 L is a contextually valid capacity question with a minimal magnitude difference. This variation tests fine discrimination in measurement comparison skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 3 students can understand this item clearly. The numbers are simple and familiar, the vocabulary is grade-appropriate, and the question phrasing is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5 is the mathematically correct larger value. Hints accurately restate the measurements and correctly identify 5 as larger through sound numerical comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "9d49a60b2f59f459f5e8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze question unambiguously asks which milliliter measurement is greater. The language is direct and permits only one interpretation about the comparison operation required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 8 mL to 22 mL is a logically valid capacity comparison. The scenario is realistic for Grade 3 measurement practice and the magnitude difference supports meaningful comparison skills development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are appropriate for third-grade students. The numbers are typical for their level, the mL notation is standard, and the question structure is clear and accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "22 is the correct larger value mathematically. Both hints accurately restate the problem and correctly identify 22 as the larger measurement through appropriate comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "bfb188382ecff31f1a83",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item contains one clear question about which liters value is greater. The stem language is direct and unambiguous about the required capacity comparison operation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 12 L to 7 L is a valid capacity comparison task. The scenario is realistic and the magnitude difference provides meaningful practice for Grade 3 measurement sense development."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing and numbers are fully appropriate for Grade 3 students. Vocabulary is grade-level, the L notation is familiar, and the comparative question is transparently structured."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 is the mathematically correct larger value. Hints provide accurate problem restatement and correctly identify 12 as larger through sound numerical comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "aa3daed07d9c8ac5ea12",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the presence of thematic elements with a named person and emoji, the multiple-choice question maintains clarity about the comparison task. The stem focuses on the mathematical content without ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The theme does not interfere with the logical validity of the capacity comparison. Comparing 11 L to 12 L remains a sound measurement scenario even when wrapped in a personalized context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical content is clear despite thematic framing. The comparative question is transparent, the numbers are manageable, and Grade 3 students understand both the theme introduction and the capacity comparison task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "12 is the correct larger value mathematically, unaffected by the thematic wrapper. Hints accurately identify the larger capacity value through appropriate comparison reasoning independent of the theme."
+          }
+        }
+      },
+      {
+        "sample_id": "1c4f3a9ed0bd203453a2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item communicates one clear comparison task despite thematic context. The question about which milliliter value is larger is unambiguous and distinct from the personalization wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The theme does not interfere with logical validity. Comparing 32 mL to 2 mL remains a contextually appropriate capacity question when presented with a person name and sporting interest descriptor."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The comparison task is clear to Grade 3 readers. The thematic introduction is accessible, the numbers are manageable, and students can readily understand what capacity comparison is being requested."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "32 is the mathematically correct larger value, independent of theme. Hints accurately identify the larger measurement through appropriate comparison reasoning unaffected by the thematic context."
+          }
+        }
+      },
+      {
+        "sample_id": "ecde24e3cddc4e2850e3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze question unambiguously asks which milliliter measurement is greater. The stem language is direct about the comparison operation required without alternative interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 65 mL to 15 mL is a valid capacity comparison task. The scenario is realistic for Grade 3 measurement practice and demonstrates a clear magnitude difference."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are appropriate for third-grade students. The vocabulary is grade-level, the numbers are typical, the mL notation is familiar, and the question is transparently structured."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "65 is the correct larger value mathematically. Hints accurately restate the measurements and correctly identify 65 as the larger capacity through sound numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "caf69d178b4b1c5b710d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item contains one clear question about which liters value is greater. The language is direct and unambiguous about the comparison task required from Grade 3 students."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 117 L to 129 L is a valid capacity comparison with minimal magnitude difference. The scenario is realistic and provides meaningful practice in careful discrimination between similar values."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Although using three-digit numbers, the task remains clear for Grade 3 students. The comparative question is transparent, the L notation is familiar, and the comparison structure is straightforward."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "129 is the mathematically correct larger value. Hints provide accurate problem restatement and correctly identify 129 as the larger measurement through appropriate numerical comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "4cf9cff688c145ee4294",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice format presents one clear question about which milliliter value is greater. The stem language is unambiguous about the comparison operation required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 1 mL to 2 mL is a valid capacity comparison. Despite being at the low end of numeric ranges, the scenario is contextually appropriate and logically sound for measurement practice."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Grade 3 students readily understand this item. The numbers are among the simplest possible, the mL notation is standard, and the question phrasing is completely transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 is the correct larger value mathematically. Hints accurately restate the measurements and correctly identify 2 as the larger measurement using sound comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "13efff20f6911011cd36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question clearly asks which milliliter measurement is greater. The stem language permits only one interpretation about the capacity comparison task requested."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 2 mL to 1 mL is logically valid as a capacity comparison. The minimal difference tests fine discrimination and is realistic for measurement sense development at Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "All elements are clear to third-grade students. The numbers are simple and familiar, the mL notation is standard, and the comparative question is transparently phrased."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 is the mathematically correct larger value. Hints provide accurate problem restatement and correctly identify 2 as the larger measurement through appropriate comparison reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "307f1e8391ba37aa2ed4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item with hint_gated experience presents one clear comparison question. The stem unambiguously asks which milliliter value is greater without alternative interpretations."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 2 mL to 31 mL is a valid capacity comparison. The magnitude difference is substantial and the scenario is realistic for Grade 3 measurement practice with guided hint support."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is clear for Grade 3 students. The numbers are manageable, the mL notation is familiar, and the comparative task is transparent even with the hint_gated experience format."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "31 is the correct larger value mathematically. Hints provide accurate restatement of the problem and correctly identify 31 as the larger capacity through sound reasoning."
+          }
+        }
+      },
+      {
+        "sample_id": "a6f48d037719ed721871",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item with mastery_drill experience presents one unambiguous question about which milliliter value is greater. The stem language is direct about the comparison operation required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 64 mL to 59 mL is a valid capacity comparison with minimal magnitude difference. The scenario is realistic and the mastery_drill format is appropriate for practicing discrimination skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is transparent for Grade 3 students despite the mastery_drill experience designation. Numbers are typical for their level, vocabulary is grade-appropriate, and the comparison task is clearly communicated."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "64 is the mathematically correct larger value. Hints accurately restate the measurements and correctly identify 64 as the larger measurement through appropriate numerical comparison."
+          }
+        }
+      },
+      {
+        "sample_id": "61de24a18bad3423d5b5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze item with scaffolded experience clearly asks which milliliter measurement is greater. The stem language is direct and unambiguous about the comparison task required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 29 mL to 62 mL is a valid capacity comparison. The magnitude difference is moderate and the scenario is contextually appropriate for Grade 3 measurement practice with scaffolded support."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The comparison task is clear for third graders. The numbers are manageable, the mL notation is standard, and the question structure transparently communicates what needs to be compared."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "62 is the correct larger value mathematically. Hints provide accurate problem restatement and correctly identify 62 as the larger measurement through sound comparison reasoning."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "compare_capacities",
+        "clause": "Compare capacities",
+        "verdict": "PASS",
+        "reasoning": "All 30 samples present exactly two numerical measurements representing capacities and ask learners to identify which is larger. This operation satisfies the verb and action specified by the competency. Every item requires comparing magnitudes to determine which container holds more, demonstrating complete coverage of the comparing operation across diverse numeric ranges and contexts.",
+        "sample_ids": ["5c3ad52282fc8a6778f8", "c401f8a799b534aac6bd", "d3868076d1f1df8e3f49", "7cd6c1aff3a1b8351660", "d61fd275384910aceb99", "ecdab7c4b2848d5a902d", "ccb55ac165deda97a558", "835586d24f38eafa5ecd", "6f7e00c3f0c6fde1b933", "4a9e24962bcfad44fdfb", "cd19be62af8ebe8c7cbe", "11e039ae61401531214c", "7f4922b5205311ef0862", "83a3be5aea7d08e933da", "4e7f0a4da4ba09634fd8", "df97d3c0bdb9aae6ba18", "0c7fe9bbcfe09e0f290d", "95ef4207e472d0e6338c", "195d5393272f3c12ddc3", "9d49a60b2f59f459f5e8", "bfb188382ecff31f1a83", "aa3daed07d9c8ac5ea12", "1c4f3a9ed0bd203453a2", "ecde24e3cddc4e2850e3", "caf69d178b4b1c5b710d", "4cf9cff688c145ee4294", "13efff20f6911011cd36", "307f1e8391ba37aa2ed4", "a6f48d037719ed721871", "61de24a18bad3423d5b5"]
+      },
+      {
+        "requirement_id": "two_containers",
+        "clause": "two containers",
+        "verdict": "PASS",
+        "reasoning": "Every rendered sample presents exactly two distinct capacity measurements without exception. The core requirement for duality is consistently satisfied across all variations in unit (mL versus L), numeric magnitude, magnitude gaps, response format (cloze versus mcq), and thematic context. No sample presents fewer than or more than two containers for comparison.",
+        "sample_ids": ["5c3ad52282fc8a6778f8", "c401f8a799b534aac6bd", "d3868076d1f1df8e3f49", "7cd6c1aff3a1b8351660", "d61fd275384910aceb99", "ecdab7c4b2848d5a902d", "ccb55ac165deda97a558", "835586d24f38eafa5ecd", "6f7e00c3f0c6fde1b933", "4a9e24962bcfad44fdfb", "cd19be62af8ebe8c7cbe", "11e039ae61401531214c", "7f4922b5205311ef0862", "83a3be5aea7d08e933da", "4e7f0a4da4ba09634fd8", "df97d3c0bdb9aae6ba18", "0c7fe9bbcfe09e0f290d", "95ef4207e472d0e6338c", "195d5393272f3c12ddc3", "9d49a60b2f59f459f5e8", "bfb188382ecff31f1a83", "aa3daed07d9c8ac5ea12", "1c4f3a9ed0bd203453a2", "ecde24e3cddc4e2850e3", "caf69d178b4b1c5b710d", "4cf9cff688c145ee4294", "13efff20f6911011cd36", "307f1e8391ba37aa2ed4", "a6f48d037719ed721871", "61de24a18bad3423d5b5"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}
