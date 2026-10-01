@@ -17879,3 +17879,57 @@ NAMED LIMITS:
   because no harness record was returned.
 - Two more agents (`mat_g2_na_q2_4`, `mat_g2_na_q2_6`) were ended before writing anything and were
   re-dispatched.
+
+## 2026-10-01 — W2 step 1: the 46 STALE attestations re-judged on Haiku (`claude-h06-w2-attest-2026-10-01`)
+
+**Owner rulings 11–14** were recorded first, in the plan's owner-ruling list (`209b58ce`):
+- 11: Claude Haiku 4.5 attests on this host.
+- 12: on screen, "concrete" means interactive virtual manipulatives.
+- 13: "draw" is satisfied by any interactive visual formatter.
+- 14: `2 × 1` is in scope for the 2/3/4/5/10 node, and the bare `with` clauses stay, named.
+
+**Method.**
+- Each of the 45 affected nodes was rebuilt with `tests/attester_packets.py` and judged by its own blind
+  Haiku Attester, at one identity per node (`blind-attester-haiku45-w2a<batch>-<node>-20261001`).
+- Each record was filed through `tests/attester_file.py`, dry run first, as `batch151`–`batch195`. Each
+  carries `--supersedes` naming the stale record it replaces.
+- Attesters read only `prompt.txt`: the instructions plus verbatim `render_prompt_block` output, never
+  the key, provider table, node id or old verdict.
+
+**The dispatch instructions are re-authored, and that is a named limit.** The `batch117`–`batch150`
+corpus's exact prompt text was never saved; the evidence log records only its elements (the prevalence
+decision procedure, neutral framing, and the medium grammar test). The instructions used here
+(`local_only/scratch/w2_attest/INSTRUCTIONS.txt`) restate:
+- ruling 9 prevalence: count the samples that show the clause, and treat one or two incidental samples
+  as NOT_PROVIDED;
+- ruling 1's medium test;
+- rulings 12–13.
+
+So this is the same standard in new words. The wording may not be byte-identical to the earlier
+instrument.
+
+**Result** (`validate_capability_attestation()`):
+- 45 records, 250 verdicts: 198 PROVIDED, 52 NOT_PROVIDED.
+- §6F went from 219 (173 CONTRADICTED + 46 STALE) to **171 (170 CONTRADICTED + 1 STALE)**.
+- The remaining STALE record, `batch113_mat_g1_na_q3_6`, still holds verdicts for `letters_example` and
+  `numbers_example`, which the node no longer declares. Its two live capabilities were re-judged in
+  `batch168`. This is the documented supersession defect, an owner call, and was **not worked around**.
+
+**Audits.**
+- Media audit (read-only; `local_only/scratch/w2_attest/media_audit.py`): for every PROVIDED verdict on
+  a clause naming a medium, it checks that the cited seeds render a matching visual type. Result: **14
+  checked, 0 mismatches**, after fixing the audit's own false positive (it read "multiplication tables"
+  as a data-table medium).
+- Judgment call, named: a `BarChart` rendering in symbol mode ("Each symbol = 1. Click to add/remove
+  symbols") was accepted as a pictograph render. An earlier campaign read BarChart-as-pictograph more
+  strictly.
+- `mat_g1_na_q1_2`'s "concrete" PROVIDED cites exactly the four interactive `set_*` renders (seeds 11,
+  42, 78, 118) and excludes the six read-only ones, consistent with ruling 12.
+- Every Attester used only Read and Write on its own files.
+
+**Rate limits.**
+- Four Attesters wrote their reply before an API session limit ended them; their tool use comes from the
+  transcript.
+- One (`mat_g2_mg_q4_1`) wrote nothing and was re-dispatched.
+
+**Commits:** `f0d04ebc`, `1962f90f`.
