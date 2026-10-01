@@ -241,8 +241,14 @@ def format_array_grid(
             "grid_size": [s + 1, s + 1],
         }
     elif ctx.values and "groups" in ctx.values and "n" in ctx.values:
-        rows = ctx.values["groups"]
-        cols = ctx.values["n"]
+        # Only multiplication sets these keys, and they are factor LABELS, not roles:
+        # "groups" is `a` (the size) and "n" is `b` (the count) -- the DNA prints
+        # "What is {groups} × {n}?". Every stem path and the hints make `b` the count,
+        # and the stems below say "{rows} groups of {cols}", so rows = n. Reading
+        # rows = groups stated "Shade 10 groups of 4" beside hints teaching "4 groups
+        # of 10" (mat_g2_na_q3_0 seeds 44, 46, 49, 51, 55, 57; hint contract `roles`).
+        rows = ctx.values["n"]
+        cols = ctx.values["groups"]
         vp = {
             "rows": rows,
             "cols": cols,
@@ -278,6 +284,24 @@ def format_array_grid(
             "shape_type": "rectangle",
             "correct_count": ctx.values["a"],
             "grid_size": [divisor + 1, quotient + 1],
+        }
+    elif ctx.dna_concept == "multiplication" and ctx.values and "a" in ctx.values and "b" in ctx.values:
+        # Multiplication's role convention, shared by every other stem path and by
+        # its hints: `b` is the COUNT and `a` the SIZE ("{b} equal jumps of {a}",
+        # number_group_name(a, b) -> "b a-s"). The stems below say "{rows} groups of
+        # {cols}", so rows = b. The generic branch's rows = a stated "10 groups of 4"
+        # beside hints teaching "4 groups of 10" (mat_g2_na_q3_0 seeds 44, 46, 49,
+        # 51, 55, 57; hint contract `roles`).
+        rows = ctx.values["b"]
+        cols = ctx.values["a"]
+        vp = {
+            "rows": rows,
+            "cols": cols,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "rectangle",
+            "correct_count": rows * cols,
+            "grid_size": [rows + 1, cols + 1],
         }
     elif ctx.values and "a" in ctx.values and "b" in ctx.values:
         rows = ctx.values["a"]

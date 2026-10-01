@@ -620,6 +620,21 @@ def generate_hints(
     b         = values["b"]
     result    = values["result"]
     remainder = values.get("remainder", a % b)
+    # A remainder item stores its ANSWER in `result` as the string "q R r"
+    # (generate_params). The hint arithmetic below needs the integer quotient:
+    # until 2026-10-01 it multiplied that string, so `b * result` repeated it
+    # (mat_g3_na_q4_3 seed 45: "8 × 6 R 3 = 6 R 36 R 36 R …"). The quotient is
+    # read from the operands, and a stored answer that disagrees with them is a
+    # named failure, never silently re-derived.
+    if isinstance(result, str):
+        q_int, r_int = divmod(a, b)
+        if result != f"{q_int} R {r_int}" or remainder != r_int:
+            raise ValueError(
+                f"division.generate_hints: stored answer {result!r} (remainder "
+                f"{remainder!r}) disagrees with {a} ÷ {b} = {q_int} R {r_int}; "
+                f"values={values!r}"
+            )
+        result = q_int
 
     hints: List[str] = []
 
@@ -647,7 +662,7 @@ def generate_hints(
         if "remainder" in cumulative_vocab:
             hints.append(
                 f"{quotient_label.capitalize()} is {result} remainder {remainder} "
-                f"(written as {result} R{remainder})."
+                f"(written as {result} R {remainder})."
             )
         else:
             hints.append(

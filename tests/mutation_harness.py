@@ -2183,6 +2183,66 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0] && failed'],
     ),
     Mutation(
+        name='hint_division_multiplies_remainder_answer',
+        asserts=['hint_contract_remainder'],
+        description=(
+            "Let division.generate_hints do arithmetic on a remainder item's stored "
+            "answer string again -- the live defect where mat_g3_na_q4_3 served "
+            "'8 × 6 R 3 = 6 R 36 R 36 R ...' (seeds 45, 47, 52, 600). `arithmetic` "
+            "does not parse 'R', so only the remainder dimension catches it."
+        ),
+        edits={
+            'backend/app/practice_gen/dna/na/division.py': (
+                '    if isinstance(result, str):\n        q_int, r_int = divmod(a, b)\n',
+                '    if False:  # planted mutation\n        q_int, r_int = divmod(a, b)\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3]', "-q"],
+        expected_check='§0 hint contract (hint_contract_remainder)',
+        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3]', "failed", '[remainder]'],
+        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3] && failed'],
+    ),
+    Mutation(
+        name='hint_multiplication_swaps_group_roles',
+        asserts=['hint_contract_roles'],
+        description=(
+            "Restore the multiplication hint that said '{a} groups of {b}' while the next "
+            "line and every stem say '{b} groups of {a}' -- the live defect where "
+            "mat_g2_na_q3_1 seed 42 hinted '2 equal jumps of 5' as '5 groups of 2'. Every "
+            "equation stays true, so only the roles dimension detects it."
+        ),
+        edits={
+            'backend/app/practice_gen/dna/na/multiplication.py': (
+                "    hints.append(f\"We need to {mul_phrase} {b} {count_noun(b, f'{times_phrase} {a}')}.\")\n",
+                "    hints.append(f\"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.\")  # planted mutation\n",
+            )
+        },
+        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1]', "-q"],
+        expected_check='§0 hint contract (hint_contract_roles)',
+        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1]', "failed", '[roles]'],
+        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1] && failed'],
+    ),
+    Mutation(
+        name='array_grid_swaps_group_roles',
+        asserts=['hint_contract_roles'],
+        description=(
+            "Restore fmt_array_grid's rows = groups, which drew and stated 'Shade 10 "
+            "groups of 4' while the hints taught '4 groups of 10' (mat_g2_na_q3_0 seeds "
+            "44, 46, 49, 51, 55, 57). A second code path for the same role convention: "
+            "fixing the DNA hint alone left this one."
+        ),
+        edits={
+            'backend/app/practice_gen/formatters/visual/fmt_array_grid.py': (
+                '        rows = ctx.values["n"]\n        cols = ctx.values["groups"]\n',
+                '        rows = ctx.values["groups"]  # planted mutation\n        cols = ctx.values["n"]\n',
+            )
+        },
+        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]', "-q"],
+        expected_check='§0 hint contract (hint_contract_roles)',
+        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]', "failed", '[roles]'],
+        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0] && failed'],
+    ),
+    Mutation(
         name='hint_fraction_order_gets_addition_chain',
         asserts=['hint_contract_operation'],
         description=(

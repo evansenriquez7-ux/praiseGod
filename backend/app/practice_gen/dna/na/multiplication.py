@@ -865,7 +865,13 @@ def generate_hints(
     # A count of 1 shipped "We need to find the total of equal groups 1 groups of 4." to
     # pupils until 2026-09-21, unlinted, because §1J never read `hints` (see that module's
     # field classification).
-    hints.append(f"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.")
+    #
+    # Roles: every stem path makes `b` the COUNT and `a` the SIZE ("{b} equal jumps of
+    # {a}", "{b} groups of {a}", number_group_name(a, b) -> "b a-s"). This line used to
+    # say "{a} groups of {b}" while Step 2 said "{b} groups of {a}", so the chain
+    # contradicted itself and the stem (mat_g2_na_q3_1 seed 42: "2 equal jumps of 5"
+    # hinted as "5 groups of 2", then "2 groups of 5").
+    hints.append(f"We need to {mul_phrase} {b} {count_noun(b, f'{times_phrase} {a}')}.")
 
     # Step 2: repeated addition breakdown (only practical for small b)
     if b == 0:

@@ -141,6 +141,8 @@ ASSERTIONS = (
     "hint_contract_stated_answer",         # tests/unit/test_hint_contract.py
     "hint_contract_open_equation",         # tests/unit/test_hint_contract.py
     "hint_contract_operation",             # tests/unit/test_hint_contract.py
+    "hint_contract_remainder",             # tests/unit/test_hint_contract.py
+    "hint_contract_roles",                 # tests/unit/test_hint_contract.py
     "hint_contract_direction",             # tests/unit/test_hint_contract.py
     "hint_contract_unit",                  # tests/unit/test_hint_contract.py
     "hint_contract_medium",                # tests/unit/test_hint_contract.py

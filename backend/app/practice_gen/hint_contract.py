@@ -67,6 +67,23 @@ DIMENSIONS COVERED -- and, as importantly, NOT covered (Scaling Mandate 6)
                  ordering stems and addition/subtraction hint instructions.
                  NOT covered: implicit operations, synonyms outside the closed
                  patterns below, or a hint that names no operation at all.
+  remainder      A remainder expression ("6 R 3") is an answer, never an operand: a
+                 hint may not multiply, add or subtract one, nor chain one into
+                 another ("6 R 36 R 3", "6 R 3 R3"). Found 2026-10-01 as a
+                 division hint builder that did arithmetic on the stored answer
+                 string, so `b * "6 R 3"` printed it eight times
+                 (mat_g3_na_q4_3 seeds 45/600) while `arithmetic`, which does
+                 not parse "R", passed it. STRUCTURAL ONLY: a well-formed but
+                 numerically wrong "q R r" is NOT covered.
+  roles          Group count and group size may not swap: if the stem and hints
+                 between them state "X groups of Y" (or "X equal jumps of Y") and also
+                 "Y groups of X", with X != Y, the chain contradicts itself. Found
+                 2026-10-01: the multiplication builder said "{a} groups of {b}" in
+                 one line and "{b} groups of {a}" in the next (mat_g2_na_q3_1 seed 42,
+                 "2 equal jumps of 5" hinted as "5 groups of 2"). WORDING-SPECIFIC:
+                 only "groups of" / "equal jumps of" between digits are read; a role
+                 swap phrased otherwise ("5 threes" against "3 groups of 5") is NOT
+                 covered.
   direction      (a) An ordering hint may not name the opposite direction to the
                  stem's ("least to greatest" on a "largest to smallest" item).
                  (b) A numeric comparison a hint states ("15 is more than 10")
@@ -118,7 +135,7 @@ __all__ = [
     "enforce_hint_contract",
 ]
 
-DIMENSIONS = ("arithmetic", "stated_result", "stated_answer", "open_equation", "operation", "direction", "unit", "medium", "response")
+DIMENSIONS = ("arithmetic", "stated_result", "stated_answer", "open_equation", "operation", "remainder", "roles", "direction", "unit", "medium", "response")
 
 
 class HintContractError(ValueError):
@@ -288,6 +305,34 @@ def _operation(hints: Sequence[str], stem: str) -> List[str]:
                 f"an ordering item is taught as {named} -- in {hint!r}"
             )
     return found
+
+
+# ── remainder (structural; see module docstring) ───────────────────────────
+_REM = r"\d+\s*R\s*\d+"
+_REM_CHAIN_RE = re.compile(_REM + r"\s*R\s*\d")
+_REM_OPERAND_RE = re.compile(r"[×x+\-−]\s*" + _REM + r"|" + _REM + r"\s*[×x+\-−=]\s*\d")
+
+
+def _remainder(hints: Sequence[str]) -> List[str]:
+    """Catch a remainder expression used as an operand, or chained into another."""
+    found = []
+    for hint in hints:
+        if _REM_CHAIN_RE.search(hint) or _REM_OPERAND_RE.search(hint):
+            found.append(f"a remainder expression is used as a number -- in {hint!r}")
+    return found
+
+
+# ── roles (wording-specific; see module docstring) ──────────────────────────
+_ROLE_RE = re.compile(r"\b(\d+)\s+(?:equal\s+)?(?:groups?|jumps?)\s+of\s+(\d+)\b", re.I)
+
+
+def _roles(hints: Sequence[str], stem: str) -> List[str]:
+    """Catch a chain that states both X groups of Y and Y groups of X."""
+    pairs = set()
+    for text in [stem, *hints]:
+        pairs |= {(int(x), int(y)) for x, y in _ROLE_RE.findall(text or "")}
+    return [f"group count and size swap: both {x} groups of {y} and {y} groups of {x} are stated"
+            for x, y in sorted(pairs) if x < y and (y, x) in pairs]
 
 
 # ── direction ─────────────────────────────────────────────────────────────────
@@ -496,6 +541,8 @@ def hint_chain_violations(
     out += [("stated_answer", m) for m in _stated_answer(hints, answer)]
     out += [("open_equation", m) for m in _open_equation(hints, answer)]
     out += [("operation", m) for m in _operation(hints, stem or "")]
+    out += [("remainder", m) for m in _remainder(hints)]
+    out += [("roles", m) for m in _roles(hints, stem or "")]
     out += [("direction", m) for m in _direction(hints, stem or "")]
     out += [("unit", m) for m in _unit(hints, visible)]
     out += [("medium", m) for m in _medium(hints, stem or "", visual_type)]
