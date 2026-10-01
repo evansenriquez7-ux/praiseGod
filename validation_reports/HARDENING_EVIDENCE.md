@@ -17933,3 +17933,78 @@ instrument.
 - One (`mat_g2_mg_q4_1`) wrote nothing and was re-dispatched.
 
 **Commits:** `f0d04ebc`, `1962f90f`.
+
+## 2026-10-01/02 — W2 step 2: every CONTRADICTED verdict confirmed by majority of three (`claude-h06-w2-attest-2026-10-01`)
+
+**Why.** A confirmation pass on W2 step 1 measured the Attester's inter-rater reliability: a second
+blind Haiku judgment flipped about 18% of verdicts. A single NOT_PROVIDED is not a safe basis for
+engineering or for deleting a provider. So every CONTRADICTED verdict is decided by majority of three
+before any source changes.
+
+**Method.**
+- **Confirmation (`batch196`–`batch278`).**
+  - Every node that held a CONTRADICTED capability (83 nodes) was rebuilt with
+    `tests/attester_packets.py`.
+  - Each was re-judged whole by a second blind Haiku Attester
+    (`blind-attester-haiku45-w2c<batch>-<node>-20261001`).
+  - The instructions are the step 1 text (`local_only/scratch/w2_confirm/INSTRUCTIONS.txt`).
+  - Result: 468 verdicts, 130 NOT_PROVIDED.
+  - Each verdict was compared with the node's prior winning verdict (the latest record with batch < 196;
+    `local_only/scratch/w2_confirm/disagree.py`).
+  - Flips in either direction were queued: **105 of 468 (22.4%)**.
+- **Tie-break (`batch279`–`batch335`).**
+  - Each of the 57 nodes with a flip got a freshly built packet, trimmed **by `capability_id`** to the
+    disputed capabilities only (`local_only/scratch/w2_tiebreak/build.sh`).
+  - A third blind Attester judged each one (`blind-attester-haiku45-w2t<batch>-<node>-20261001`).
+  - `_winning_verdict_index` resolves each (node, capability) by last-file-wins, so each tie-break record
+    is the majority of three for exactly the capabilities it judges. It leaves untouched the capabilities
+    where the first two judges already agreed.
+  - Result: 105 verdicts, 63 PROVIDED and 42 NOT_PROVIDED. The tie-break sided with the prior verdict 44
+    times and with the confirmation 61 times.
+
+**Checks made before trusting the method (executed, not read).**
+- The prior winner can be chosen two ways: by latest `attested_at`, or by the validator's last-file-wins
+  over a sorted glob. These agree on all 780 prior (node, capability) pairs; 0 differ.
+- Each tie-break packet's samples are byte-identical to the confirmation packet's on all 57 nodes, so
+  all three judges saw the same content.
+- Trimmed packets hold exactly the 105 flipped items; the builder refuses if a flipped capability is
+  absent from the fresh packet.
+
+**Result** (`python -m backend.app.practice_gen.validation.validate_capability --phase 2`, exit 1):
+- §6F went from **181 (176 CONTRADICTED + 5 STALE)** to **140 (139 CONTRADICTED + 1 STALE)**.
+- No §6G or §6H finding.
+- The STALE count fell because the confirmation packets for `mat_g2_na_q3_0/1/2` and `mat_g3_na_q3_0` were
+  built after `7e39d1d1`, so their new records judge current content.
+- The remaining STALE record is `batch113_mat_g1_na_q3_6`, the documented supersession defect (owner
+  call), **not worked around**.
+- The 139 CONTRADICTED are now each backed by two of three independent blind judgments. These are the
+  W2 engineering queue.
+
+**Attester integrity** (from transcripts; each event is in the filed record's
+`blindness.tool_uses_by_attester`):
+- §6G skeleton clustering refused one reply (`mat_g2_na_q1_3`: four clauses with one templated
+  reasoning). It was kept unfiled as `rejected_6G_1.json` and re-dispatched. The re-dispatched Attester
+  read only its prompt.
+- Two Attesters made one Bash call each, `wc -l` on their own `prompt.txt`: `mat_g1_na_q3_4`
+  (confirmation) and `mat_g2_mg_q1_0` (tie-break). This is outside the prompt contract, but it touched no
+  other path. A third case (`mat_g3_mg_q4_2`) was held by the new guard below, inspected, and filed.
+  All three are disclosed in their records.
+- **Dispatcher defect found and fixed mid-campaign.** `note.sh` excluded every path under the node's own
+  directory. That directory also holds `key.json`, and in the tie-break `full/key.json`, so a read of the
+  key would not have been reported. Fixes:
+  - It now excludes only the node's `prompt.txt` and `verdicts.json`.
+  - `go.sh` now refuses to file any reply whose transcript shows a tool other than Read or Write.
+  - Every transcript from both rounds was re-audited. No Attester read a key, a packet, or any file
+    other than its own prompt; the only other tool use is the three `wc -l` calls above.
+- Six Attesters were ended by API session limits after writing complete replies: four in confirmation,
+  two in tie-break. Each reply was checked item-for-item against its key before filing. One tie-break
+  Attester (`mat_g3_na_q4_3`) was ended before writing and was re-dispatched.
+
+NAMED LIMITS:
+- Blindness is a prompt contract, not a sandbox. The guard is a post-hoc transcript check, not a
+  sandbox.
+- All three judges are the same model (Claude Haiku 4.5, ruling 11). Majority of three removes sampling
+  noise, not a bias shared by the model. The 22.4% confirmation flip rate shows that noise is large.
+- The tie-break judge saw only the disputed capabilities, not the whole node.
+
+**Commits:** `80b2d770`, `0ab59915`, `945192c4`.
