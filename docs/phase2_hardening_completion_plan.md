@@ -1353,6 +1353,19 @@ that points at it break every time the section is refreshed.
 >     (`mat_g2_na_q3_7`): a factor of 1 is allowed when the other factor is a named table. The bare
 >     connector requirement clauses (`with_regrouping: with` on `mat_g2_na_q1_9` and
 >     `mat_g3_na_q2_1`) are **left untouched and named**. They are human-authored ground truth.
+> 15. **Medium clauses are met by SET COMPOSITION to at least 50%** (owner, 2026-10-02). When a
+>     competency names a medium the learner works in (*illustrate, represent, concrete, models,
+>     draw*) and the node's allowed formatters already include visual or interactive ones that R-4's
+>     uniform selection serves only incidentally, compose that node's allowed formatter set so that
+>     visual or interactive formatters make up at least half of it. This follows R-3, and it never
+>     uses a weight (R-4). Add fitting existing formatters where safe, and drop text formatters only
+>     as far as needed. Text items remain a minority. Each set change is proved, re-attested, and
+>     covered by a mutation.
+> 16. **Build the missing interactive formatter** (owner, 2026-10-02). Where a concept has no
+>     interactive manipulative or drawing formatter at all, Content Rule 4 applies: build it. Examples
+>     are counters the pupil groups for *concrete*, and a grid on which the pupil slides or reflects a
+>     shape for *draw*. Each build needs a backend formatter, a frontend component, a mutation, a
+>     contract row, re-attestation, and the full re-proof chain.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
