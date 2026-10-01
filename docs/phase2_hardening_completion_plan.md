@@ -1337,6 +1337,23 @@ that points at it break every time the section is refreshed.
 > only (ruling 4 forbids a stronger-model comparison, so shared systematic bias is unmeasured),
 > and run on the FIRST prompt because that is the one the filed verdicts used.
 >
+> **Owner rulings recorded 2026-10-01 (11-14), binding; numbered after the 2026-09-22 list below:**
+>
+> 11. **Attester model on the Claude host is Claude Haiku 4.5**, both for the 46 STALE attestations and
+>     for W2 confirmation dispatches. The record names the model that judged (ruling 4/10).
+> 12. **'Concrete' on screen means virtual manipulatives.** These are interactive objects the pupil moves
+>     or groups, such as counters, blocks and sticks. A static picture remains pictorial and does not
+>     satisfy a 'concrete' clause.
+> 13. **'Draw' is satisfied by any interactive visual formatter.** Whenever a MATATAG competency says
+>     *draw*, an interactive visual formatter for that competency fulfils the written requirement; a
+>     freehand canvas is not required. This refines ruling 1's medium test and ruling 3 for the verb
+>     *draw* only. A non-interactive item, such as a multiple-choice question about drawing, still does
+>     not satisfy it.
+> 14. **`2 × 1 = ___` is in scope** for *multiplication or division by 2, 3, 4, 5, and 10*
+>     (`mat_g2_na_q3_7`): a factor of 1 is allowed when the other factor is a named table. The bare
+>     connector requirement clauses (`with_regrouping: with` on `mat_g2_na_q1_9` and
+>     `mat_g3_na_q2_1`) are **left untouched and named**. They are human-authored ground truth.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar

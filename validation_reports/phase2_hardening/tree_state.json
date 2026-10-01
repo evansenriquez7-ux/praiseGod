@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "campaign",
+    "began_at": "2026-10-01T09:04:56+08:00",
+    "session": "claude-h06-w2-attest-2026-10-01",
+    "note": "W2 step 1: re-judge the 46 STALE attestations on Claude Haiku 4.5 (owner rulings 11-14 of 2026-10-01).",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed."
+  },
   "last_completed": {
     "kind": "campaign",
     "began_at": "2026-09-30T23:12:25+08:00",
