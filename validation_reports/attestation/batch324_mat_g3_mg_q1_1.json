@@ -1,0 +1,619 @@
+{
+  "batch": "batch324_mat_g3_mg_q1_1",
+  "attested_at": "2026-10-01T11:19:19Z",
+  "attested_by": "blind-attester-haiku45-w2t324-mat_g3_mg_q1_1-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_tiebreak/mat_g3_mg_q1_1/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_tiebreak/mat_g3_mg_q1_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side × side",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 × side",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "Look at each square: 2 × 2 = 4, 3 × 3 = 9, 5 × 5 = 25.",
+          "Each area is the side multiplied together.",
+          "So the rule is: area = side × side."
+        ],
+        "sample_id": "1d41f8ce73c364974899",
+        "replay_digest": "5c061715423a0d8a437a9248e09c9c8fd3f2c476e4982a696276e9ecce1c2a25"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Three squares are tiled with unit squares: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule works for every one of them?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "Look at each square: 3 × 3 = 9, 4 × 4 = 16, 5 × 5 = 25.",
+          "Each area is the side multiplied together.",
+          "So the rule is: area = side × side."
+        ],
+        "sample_id": "e00088da406786844c7c",
+        "replay_digest": "60cf89756a583298f864f88716deb871a7f6835615fb609f6f5cd44324fe4d3d"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 5 by 4 rectangle takes 20 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 4 × 3 = 12, 5 × 4 = 20, 7 × 2 = 14.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "a8ee43347b69382711c0",
+        "replay_digest": "794561a490771f59e198ae5a501d2a178fd49d11f768b106cfff6edbb70cea94"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes 30 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 6 × 5 = 30, 7 × 2 = 14, 9 × 10 = 90.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "56e1fe35c40dcdf758bd",
+        "replay_digest": "77b45a5d7af24fcd73d24b99d8844b700ed21af2833a8ed0f8c5baa2157fc241"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "Look at each square: 2 × 2 = 4, 4 × 4 = 16, 5 × 5 = 25.",
+          "Each area is the side multiplied together.",
+          "So the rule is: area = side × side."
+        ],
+        "sample_id": "4940286e77badc2f5c26",
+        "replay_digest": "62238535a676e99803186b602041565918ac4c8476482f4e22b40c8cec43eee4"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, an 8 by 5 rectangle takes 40 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 5 × 4 = 20, 8 × 5 = 40, 9 × 2 = 18.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "e107cfba89732d913077",
+        "replay_digest": "6eaa9a58ad3acc14f0121c9b739082a6847b23c02788a914bbbce928f9a9161f"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 10 rectangle takes 50 tiles, a 9 by 3 rectangle takes 27 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 5 × 10 = 50, 9 × 3 = 27, 10 × 5 = 50.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "18b22f13d8416597f76f",
+        "replay_digest": "c6d503e05e65cf89cd1480b0788f4af361ccb7c02cb48b181db5bcd00dacab41"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4 × side",
+            "text": "4 × side",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "side + side",
+            "text": "side + side",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "side + 4",
+            "text": "side + 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "side × side",
+            "text": "side × side",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "side × side",
+        "hints": [
+          "Look at each square: 2 × 2 = 4, 4 × 4 = 16, 5 × 5 = 25.",
+          "Each area is the side multiplied together.",
+          "So the rule is: area = side × side."
+        ],
+        "sample_id": "19c23b3b5e7bfee10bc7",
+        "replay_digest": "20e9de92149ec360b2ca380f23780f9c0c6b74f3225f7d50a37d0e815bf66be2"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 3 by 2 rectangle takes 6 tiles, a 6 by 4 rectangle takes 24 tiles, and a 7 by 10 rectangle takes 70 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "length + length",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length × width",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 3 × 2 = 6, 6 × 4 = 24, 7 × 10 = 70.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "9fe31a69c8b7d334f354",
+        "replay_digest": "cd148d36a85fad032d4b985c081e25d453825c7483b8966dd67be0868dd149cc"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_1",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 10 rectangle takes 40 tiles, a 5 by 4 rectangle takes 20 tiles, and an 8 by 2 rectangle takes 16 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "length + width",
+            "text": "length + width",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "length × width",
+            "text": "length × width",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "length + width + length + width",
+            "text": "length + width + length + width",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "length + length",
+            "text": "length + length",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "length × width",
+        "hints": [
+          "Look at each rectangle: 4 × 10 = 40, 5 × 4 = 20, 8 × 2 = 16.",
+          "Each area is the length and width multiplied together.",
+          "So the rule is: area = length × width."
+        ],
+        "sample_id": "3e490c88c2d6cc66ae3e",
+        "replay_digest": "2fd44152eb56806577233b0bac83e6970baceb352ec83934bb99dd037de5ce5b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "derive_area_formula",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the derivation",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples exhibit inductive derivation of area formulas through concrete tiled examples. Each sample presents multiple squares or rectangles covered with unit tiles, showing the pattern of how area relates to dimensions, and asks students to identify the rule, which is the inductive exploration process central to the competency.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01: PROVIDED. Majority of three. No change."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "a square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four of the ten samples (seeds 11, 23, 64, 103) specifically explore square areas, with each sample presenting multiple square dimensions. While rectangles appear in six samples, the recurring presence of squares across multiple seeds constitutes a regular component of what learners encounter in their inductive practice.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01: PROVIDED. Majority of three. No change."
+    }
+  ],
+  "supersedes": "W2 tie-break dispatch: the prior winning verdict and the W2 confirmation disagreed on these capabilities only; a third independent blind Attester judged them, and its verdict is the majority of three. Supersedes the earlier records for the judged capabilities only."
+}

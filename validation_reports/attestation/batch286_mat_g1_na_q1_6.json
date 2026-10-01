@@ -1,0 +1,596 @@
+{
+  "batch": "batch286_mat_g1_na_q1_6",
+  "attested_at": "2026-10-01T11:11:42Z",
+  "attested_by": "blind-attester-haiku45-w2t286-mat_g1_na_q1_6-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_tiebreak/mat_g1_na_q1_6/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_tiebreak/mat_g1_na_q1_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 4 tool uses; by name from the transcript: 3 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Fely puts 5 counters in one group and 0 counters in another. How many in all?",
+        "correct_answer": "5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "1df39bc266251ce7c826",
+        "replay_digest": "14ec2bb3a9fe504634eb4dd2ed1ac3d37c78f286896c2d586e307eb74a838798"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Count all the objects first. There are 10 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 10."
+        ],
+        "sample_id": "9e2d71b69aeb4f43192a",
+        "replay_digest": "244b2b9cb98cb4919253ff8400d144ea6661402c4eb296f052ddd83a15d629e3"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+        "correct_answer": "0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "0",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "0",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "7d91d75206a3569da2c6",
+        "replay_digest": "dd51ac3be40ec434b5b71cfcf3f0458440e021db5948ff17e31a3c82d1f29d23"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?",
+        "correct_answer": "1 and 4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 and 5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 and 4",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "2 and 3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1 and 3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 and 4",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "79ee0782408ee90e9752",
+        "replay_digest": "fcaa62aba0b51f831356516e21f801f74601ad5f758e4fb5377c4b1043c01f77"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
+        "correct_answer": "3 and 2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 and 2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3 and 2",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "4 and 1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3 and 3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3 and 2",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "3479b918bf70ddd44ad5",
+        "replay_digest": "f90694a97c8a4c4137de7bbcfb4fb71ab5cf2fd0ad3565b5033d6feb800fe148"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?",
+        "correct_answer": "5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "e8c64c02de0ffc220d78",
+        "replay_digest": "e2a9185633ad14ac9714119eef99c08aaea74edb11c26a21fa321310c226e52a"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "Take 5 buttons. Put 2 in one hand. How many buttons are in your other hand?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "522be1173d75d52c7e72",
+        "replay_digest": "30100d67a29b6967e24b58c6f7eaf43df958bdd42fc96cce6c7d0e6ddd49682d"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?",
+        "correct_answer": "0 and 5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 and 4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "0 and 5",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "0 and 4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5 and 5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "0 and 5",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "f00a1178b93c462c3951",
+        "replay_digest": "338fe9553bd82d6492e43746475d4f356540dbfcf2ec838ac853bf0b1eb3414f"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?",
+        "correct_answer": "1 and 4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 and 3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 and 5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1 and 4",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "1 and 3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1 and 4",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "54f4253586b6ad5c8f40",
+        "replay_digest": "d6bf7f5038e0efc94d305b0395398be6a58366febfdc8c233699a78ddd8cc83a"
+      },
+      {
+        "node_id": "mat_g1_na_q1_6",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
+        "correct_answer": "5",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5",
+        "hints": [
+          "Count all the objects first. There are 5 in all.",
+          "Count the group you can see. Then count the objects left over.",
+          "A group can have 0 objects. An empty group still counts.",
+          "The two groups always go back together to make 5."
+        ],
+        "sample_id": "432812d1fbb81841045a",
+        "replay_digest": "17e1c027e2d8e2aed91183ddb4e53aaae78a99d7e881bf803283b3b16d10a0fc"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compose",
+      "node_id": "mat_g1_na_q1_6",
+      "clause": "Compose",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Compose appears in only 2 of 10 samples: seeds 11 and 78 ask for totals of combined groups (5+0=5; 4+1=5). The remaining 8 samples ask students to decompose or find missing parts, not combine parts to create a whole. This constitutes incidental appearance, not regular provision.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "concrete_materials",
+      "node_id": "mat_g1_na_q1_6",
+      "clause": "concrete materials",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Concrete materials are referenced consistently across all 10 samples: counters, blocks, shells, beads, sticks, stones, and buttons appear in every problem statement. This represents complete prevalence—all samples involve concrete material contexts as a regular and deliberate part of the problems presented.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01: PROVIDED. Majority of three. No change."
+    }
+  ],
+  "supersedes": "W2 tie-break dispatch: the prior winning verdict and the W2 confirmation disagreed on these capabilities only; a third independent blind Attester judged them, and its verdict is the majority of three. Supersedes the earlier records for the judged capabilities only."
+}

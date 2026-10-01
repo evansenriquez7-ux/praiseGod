@@ -1,0 +1,776 @@
+{
+  "batch": "batch332_mat_g3_na_q3_5",
+  "attested_at": "2026-10-01T16:05:44Z",
+  "attested_by": "blind-attester-haiku45-w2t332-mat_g3_na_q3_5-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_tiebreak/mat_g3_na_q3_5/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_tiebreak/mat_g3_na_q3_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: none returned (agent ended by an API session limit after writing its reply) tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing term (position 7) in the pattern?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 144,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 44,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 49,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 149,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 44,
+        "hints": [
+          "Look at the pattern: 244, 243, 249, 144, 143, 149, ___, 43.",
+          "A group of numbers repeats, and each new group goes down by 100.",
+          "The missing number in the pattern is at position 7.",
+          "Repeat the ones [4, 3, 9] and subtract 100 every group. The answer is 44."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            244,
+            243,
+            249,
+            144,
+            143,
+            149,
+            44,
+            43
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 100
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "377bdf267e83a72028837e87c0d181907bcdd561a46e16167e69713f8f381e82",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "244",
+              "243",
+              "249",
+              "144",
+              "143",
+              "149",
+              "43"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7dd62edecd2e46a868bd",
+        "replay_digest": "a4217737d27c654a83557cc63dc075bb427a3af27784c82d154a8a9cc00a0006"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What number is missing in the pattern: 75, 77, 77, ___, 67, 67, 55, 57?",
+        "correct_answer": 65,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 75,
+            "text": "75",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 65,
+            "text": "65",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 45,
+            "text": "45",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 55,
+            "text": "55",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 65,
+        "hints": [
+          "Look at the pattern: 75, 77, 77, ___, 67, 67, 55, 57.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "The missing number in the pattern is at position 4.",
+          "Repeat the ones [5, 7, 7] and subtract 10 every group. The answer is 65."
+        ],
+        "sample_id": "50cf78937a257a515927",
+        "replay_digest": "8bdf250cee53e1551ed514b174370e5c7e1c2c8dcea0633d7200cc295f4b819c"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "What number is missing in the pattern: 24, 24, 34, ___, 44?",
+        "correct_answer": 34,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 34,
+            "text": "34",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 24,
+            "text": "24",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 44,
+            "text": "44",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 54,
+            "text": "54",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 34,
+        "hints": [
+          "Look at the pattern: 24, 24, 34, ___, 44.",
+          "A group of numbers repeats, and each new group goes up by 10.",
+          "The missing number in the pattern is at position 4.",
+          "Repeat the ones [4, 4] and add 10 every group. The answer is 34."
+        ],
+        "sample_id": "36df2e43b3d0f242b79b",
+        "replay_digest": "62a5e36fe5bcb89d851a88114c8ef38b8880b912b000dd125db214c397a8cd4c"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What number is missing in the pattern: 51, 54, ___, 104, 151?",
+        "correct_answer": 101,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 51,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 151,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 101,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 102,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 101,
+        "hints": [
+          "Look at the pattern: 51, 54, ___, 104, 151.",
+          "A group of numbers repeats, and each new group goes up by 50.",
+          "The missing number in the pattern is at position 3.",
+          "Repeat the ones [1, 4] and add 50 every group. The answer is 101."
+        ],
+        "sample_id": "b8e3fadadd83685bf5f6",
+        "replay_digest": "3af142bf24ef8a86fc4b0a17009d332f16bb10bf1e345733009199b87dcc1527"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What number is missing in the pattern: 27, 29, 21, ___, 39, 31, 47, 49?",
+        "correct_answer": 37,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 27,
+            "text": "27",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 47,
+            "text": "47",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 57,
+            "text": "57",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 37,
+            "text": "37",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 37,
+        "hints": [
+          "Look at the pattern: 27, 29, 21, ___, 39, 31, 47, 49.",
+          "A group of numbers repeats, and each new group goes up by 10.",
+          "The missing number in the pattern is at position 4.",
+          "Repeat the ones [7, 9, 1] and add 10 every group. The answer is 37."
+        ],
+        "sample_id": "c0639b29f4ac91f51bf2",
+        "replay_digest": "a07fcae645f15a412801abc2649df045feb614d0605a0542a37bbe0bdadd7bf9"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What number is missing in the pattern: 35, 37, 25, ___, 15?",
+        "correct_answer": 27,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 37,
+            "text": "37",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 27,
+            "text": "27",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "text": "17",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 27,
+        "hints": [
+          "Look at the pattern: 35, 37, 25, ___, 15.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "The missing number in the pattern is at position 4.",
+          "Repeat the ones [5, 7] and subtract 10 every group. The answer is 27."
+        ],
+        "sample_id": "ebe53cf09ff46861f07e",
+        "replay_digest": "ada5f658939f538b2295c3b76d0dff016358cb2c225780dbeb1c5ed019ea3dd6"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing term (position 4) in the pattern?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 67,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 43,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 87,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 47,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 67,
+        "hints": [
+          "Look at the pattern: 43, 47, 63, ___, 83.",
+          "A group of numbers repeats, and each new group goes up by 20.",
+          "The missing number in the pattern is at position 4.",
+          "Repeat the ones [3, 7] and add 20 every group. The answer is 67."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            43,
+            47,
+            63,
+            67,
+            83
+          ],
+          "missing_indices": [
+            3
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 20
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "014e19f60972a3a58a6bcc8c01016404df4a09433cd4eaf4e74884337f769df7",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "43",
+              "47",
+              "63",
+              "83"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8030fb027526ad4ec3aa",
+        "replay_digest": "c1aa96a3b0aba2e96ab80bc0a0569b5b2d4e5807755c72b6770e9ec1986670f5"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing term (position 7) in the pattern?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 72,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 38,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 52,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 92,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "Look at the pattern: 32, 37, 38, 52, 57, 58, ___, 77.",
+          "A group of numbers repeats, and each new group goes up by 20.",
+          "The missing number in the pattern is at position 7.",
+          "Repeat the ones [2, 7, 8] and add 20 every group. The answer is 72."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            32,
+            37,
+            38,
+            52,
+            57,
+            58,
+            72,
+            77
+          ],
+          "missing_indices": [
+            6
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 20
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "6c64a96f149bb063c1f69eb8bfac60ea369ab7ebc3899d84ab47f898911208bd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "32",
+              "37",
+              "38",
+              "52",
+              "57",
+              "58",
+              "77"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2429e6ff43fc1d911d4d",
+        "replay_digest": "ca47a9fdca648b28296c6cc6feb9b06e2abc6a0f0e5a44d73a5be694756cafc0"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number is missing in the pattern: 116, 115, ___, 65, 16?",
+        "correct_answer": 66,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 66,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 116,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 67,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 66,
+        "hints": [
+          "Look at the pattern: 116, 115, ___, 65, 16.",
+          "A group of numbers repeats, and each new group goes down by 50.",
+          "The missing number in the pattern is at position 3.",
+          "Repeat the ones [6, 5] and subtract 50 every group. The answer is 66."
+        ],
+        "sample_id": "bac6cc1a3fe13496884c",
+        "replay_digest": "ec800335df5d6f38f4d88938b370f4e54c03634d0243db8bccd67f1deaa06a57"
+      },
+      {
+        "node_id": "mat_g3_na_q3_5",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What is the missing term (position 2) in the pattern?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PatternSequence",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 74,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 64,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 55,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 54,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 64,
+        "hints": [
+          "Look at the pattern: 65, ___, 55, 54, 45.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "The missing number in the pattern is at position 2.",
+          "Repeat the ones [5, 4] and subtract 10 every group. The answer is 64."
+        ],
+        "visual_type": "PatternSequence",
+        "visual_payload": {
+          "sequence": [
+            65,
+            64,
+            55,
+            54,
+            45
+          ],
+          "missing_indices": [
+            1
+          ],
+          "rule": "Follow the pattern",
+          "element_type": "number",
+          "pattern_kind": "linear",
+          "step": 10
+        },
+        "visual_render": {
+          "visual_type": "PatternSequence",
+          "renderer_input_digest": "e25d54325fde911373c03210922d4a9cef8f1e844f1ce187dcdd45d07220aa91",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PatternSequence",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "65",
+              "55",
+              "54",
+              "45"
+            ],
+            "distinct_colours": [
+              "#f1f5f9",
+              "hsl(var(--primary)",
+              "#fff"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5cc54f11a382c43040d0",
+        "replay_digest": "e5337f928aaa5f83b48a3b924bf03c44f6c88773394187433793dbaeeed35351"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "repeating_and_increasing",
+      "node_id": "mat_g3_na_q3_5",
+      "clause": "repeating and increasing components",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Of 10 samples, only 2 clearly exhibit repeating and increasing components. Seed 42 shows 24, 24, 34, 34, 44 with repeating elements that increase. Seed 103 shows a repeating pattern structure (+5, +1) that recurs with increasing values across groups. Eight samples show either decreasing patterns (seeds 11, 23, 127), purely increasing without clear repetition (seed 91), or no clear repeating-and-increasing structure. Two instances constitutes incidental appearance, not the regular prevalence needed for PROVIDED.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 tie-break dispatch: the prior winning verdict and the W2 confirmation disagreed on these capabilities only; a third independent blind Attester judged them, and its verdict is the majority of three. Supersedes the earlier records for the judged capabilities only."
+}

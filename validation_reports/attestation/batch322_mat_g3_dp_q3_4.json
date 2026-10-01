@@ -1,0 +1,623 @@
+{
+  "batch": "batch322_mat_g3_dp_q3_4",
+  "attested_at": "2026-10-01T11:18:38Z",
+  "attested_by": "blind-attester-haiku45-w2t322-mat_g3_dp_q3_4-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_tiebreak/mat_g3_dp_q3_4/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_tiebreak/mat_g3_dp_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?",
+        "correct_answer": "angelfish",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "guppy",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "All fish are equally likely.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "goldfish",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "angelfish",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "angelfish",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "431a26bbb4f594dd9edc",
+        "replay_digest": "3599a8db9b6b4e3ae22441f870906ff398d495e5a252f609574f7c8cc5a51972"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "A bag has 2 yellow marbles and 8 green marbles. Which is LESS likely to be picked?",
+        "correct_answer": "yellow",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "they are equally likely",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "yellow",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "neither",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "green",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "yellow",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "5f580127fb24181a746c",
+        "replay_digest": "5ff511138966cc12f01fd44b435a77235896adde418ead9f0793f98bfb8f5247"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?",
+        "correct_answer": "certain",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "certain",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "equally likely",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "impossible",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "less likely",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "certain",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "966a9cd1daed6c3264ed",
+        "replay_digest": "e530583659187ffcd0165b094b9738807a9552946cb9abb05af50cc1c0c6dbbe"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A spinner has all sections colored blue. What is the chance of landing on red?",
+        "correct_answer": "impossible",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "certain",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "impossible",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "more likely",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equally likely",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "impossible",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "eba1a702b16e5cfe960a",
+        "replay_digest": "54a48101c94a52ae59fcbc404eddb61c9de8c6cb2b1e47056c11ea21aef90593"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?",
+        "correct_answer": "red or green",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "It is equally likely for all colors.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "blue",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "yellow",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "red or green",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "red or green",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "8f1d36c6a71fc0fb453a",
+        "replay_digest": "a4fc3c6f1cbfcc12a83d0b851a9852991911f51023683ff7c322eaa444a1b57f"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___.",
+        "correct_answer": "equally likely",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "blue is more likely",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "impossible",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "red is more likely",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equally likely",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "equally likely",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "1c4385d6849b02320d5c",
+        "replay_digest": "62d830c1655712501f7ba791c091c9e4d0031ba819ba80a9d54861729d7b9f04"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "You flip a coin. What is the chance of getting either heads OR tails?",
+        "correct_answer": "certain",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "certain",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "less likely",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "impossible",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equally likely",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "certain",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "d46cdff948cd7d2a31af",
+        "replay_digest": "e575cfa6cc1732fadf010597b8d51b0e0f146bf4f51f812073d9f605b67f62fa"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "A jar contains 10 green marbles, 4 blue marbles, and 1 red marble. Which marble color is MOST likely to be drawn at random?",
+        "correct_answer": "green",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "All colors are equally likely.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "blue",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "green",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "red",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "green",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "5f64be3d5d3c21803697",
+        "replay_digest": "b595146d2ae6c42fdcf4644afe230a2dc81aa22868a364a3eea9fb114350c41b"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A spinner has two equal sections: one red and one blue. Spinning red or blue are ___.",
+        "correct_answer": "equally likely",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "red is more likely",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "certain",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "blue is more likely",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equally likely",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "equally likely",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "3f813b61954de6d91e81",
+        "replay_digest": "d2e17bc07b0cec9ffcc70283ce6b7f52773f38672e2c3cf5726e27b6f98a7525"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_4",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "A bag has only blue balls. What is the chance of picking a green ball?",
+        "correct_answer": "impossible",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "impossible",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "equally likely",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "more likely",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "certain",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "impossible",
+        "hints": [
+          "Certain: will always happen (probability = 1).",
+          "Impossible: can never happen (probability = 0).",
+          "Will probably happen: happens more often than not.",
+          "Will probably not happen: does not happen often.",
+          "Equally likely: two events have the same chance.",
+          "Count the favorable outcomes and compare to the total to decide."
+        ],
+        "sample_id": "d253b8e47f3a366df1f1",
+        "replay_digest": "39cd42a7b78b08ab0c44752468f0d1240c3b294ef99240267e67c04ea06cbc48"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "equally_likely",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "equally likely",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause equally likely is exhibited in only 2 of 10 samples (seeds 78 and 118), both where it is the correct answer. This incidental presence in less than 3 samples does not constitute regular exposure across the sample set.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "more_most_likely",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "more/most likely",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause more/most likely appears meaningfully in only 1 sample (seed 103), where the student identifies which outcome is most likely. This single occurrence is too incidental to be considered a regular part of the learner's experience.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "certain",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "certain",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause certain is exhibited in only 2 of 10 samples (seeds 42 and 91), where the student identifies a certain outcome. This limited presence represents an incidental exposure rather than a regular part of what a learner meets.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "impossible",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "impossible",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause impossible appears meaningfully in only 2 of 10 samples (seeds 57 and 127), where the student identifies an impossible outcome. This incidental presence does not constitute regular exposure to this concept.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 tie-break dispatch: the prior winning verdict and the W2 confirmation disagreed on these capabilities only; a third independent blind Attester judged them, and its verdict is the majority of three. Supersedes the earlier records for the judged capabilities only."
+}

@@ -1,0 +1,566 @@
+{
+  "batch": "batch297_mat_g2_mg_q1_2",
+  "attested_at": "2026-10-01T11:13:42Z",
+  "attested_by": "blind-attester-haiku45-w2t297-mat_g2_mg_q1_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_tiebreak/mat_g2_mg_q1_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_tiebreak/mat_g2_mg_q1_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?",
+        "correct_answer": "4 spaces to the right of the original square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4 spaces upward",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4 spaces to the left",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "in the same place",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 spaces to the right of the original square",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4 spaces to the right of the original square",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "3d7da08e0a137d811f1d",
+        "replay_digest": "3caca9a4ea59e50cf7d1a9b399025c2fe23177d19972823656fb9ea89e26c8cd"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.",
+        "correct_answer": "5 spaces to the right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5 spaces to the right",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "1 space to the right",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3 spaces to the right",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 spaces to the right",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5 spaces to the right",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "d28cd86a580ffebf4151",
+        "replay_digest": "b5a335aa6284f87def7b4923b5980c21b5e6dcdf86521391297f426081d7cc82"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?",
+        "correct_answer": "mark 3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "mark 2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "mark 6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "mark 3",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "mark 5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "mark 3",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "9851599582ddd4298a4c",
+        "replay_digest": "029ff7420e14b5b58c60a36ca30443db18af90cdaf716e3487dc3f6e2872ee37"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+        "correct_answer": "one-direction multi-step slide (translation)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "flip (reflection)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "turn (rotation)",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "two-direction slide",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "one-direction multi-step slide (translation)",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "one-direction multi-step slide (translation)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "d9f74f8414e35cc78353",
+        "replay_digest": "2722d7f545c2037d10d7605a2776ee1d4ef9eb2cf3a04b02032de52ff06838fd"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?",
+        "correct_answer": "4 spaces to the right of the original square",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4 spaces upward",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4 spaces to the left",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "in the same place",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 spaces to the right of the original square",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4 spaces to the right of the original square",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "b88b3e278b967d2a8706",
+        "replay_digest": "b7928c015dae1f947de755f2b79e61345c13d686397ffb70949053ca8a66697a"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?",
+        "correct_answer": "5 spaces to the right",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 spaces to the right",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3 spaces to the right",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "6 spaces to the right",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5 spaces to the right",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "5 spaces to the right",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "1a5d88ef2eee76fe68ea",
+        "replay_digest": "58f7ec5443646073d9fa5a8aee7b8f823056885bba67589960332ca48cf33508"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "After a shape undergoes a multi-step slide in one direction, does its size or shape change?",
+        "correct_answer": "No, the size and shape stay the same.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Yes, it changes shape.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Yes, it gets bigger.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "No, the size and shape stay the same.",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Yes, it gets smaller.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "No, the size and shape stay the same.",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "d211cb50a11ca7eeb4b8",
+        "replay_digest": "def7ab19c6c0faca8de0e8880cddc8ce4f7b8167d1d161575f64ea36cfae0f73"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?",
+        "correct_answer": "5 units down",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1 unit down",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "6 units down",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3 units down",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5 units down",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "5 units down",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "50a97c06baa4cca04993",
+        "replay_digest": "e325cf845c2e6b5b6c28bb8facafdafb0d833c538892b50b27da0f1a22d20a39"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?",
+        "correct_answer": "5 units down",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "6 units down",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 unit down",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5 units down",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "3 units down",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5 units down",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "51e47cce4b8b830b229c",
+        "replay_digest": "680495ab88fbb7d09c76d2d680f9aee2c75b0669ba1cfc6fc509222dc67393b2"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_2",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+        "correct_answer": "one-direction multi-step slide (translation)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "flip (reflection)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "turn (rotation)",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "one-direction multi-step slide (translation)",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "two-direction slide",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "one-direction multi-step slide (translation)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "f0cf8632a1c084fc8fb3",
+        "replay_digest": "0864d9d41171f4f72e8bd12e72f33580aa98a9ee2fec46767545c6527223b253"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "basic_figures",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "figures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "All 10 samples are text-based multiple-choice questions about translating shapes. None show VISUAL RENDERED figures or interactive manipulation. The competency requires draw the effect in basic shapes and figures, but these samples offer no rendered visual figures for students to work with, only conceptual text-based questions mentioning shapes in stems. Count: 0 samples exhibit rendered figures.",
+      "action_taken": "W2 tie-break, blind third Attester, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Majority of three. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 tie-break dispatch: the prior winning verdict and the W2 confirmation disagreed on these capabilities only; a third independent blind Attester judged them, and its verdict is the majority of three. Supersedes the earlier records for the judged capabilities only."
+}
