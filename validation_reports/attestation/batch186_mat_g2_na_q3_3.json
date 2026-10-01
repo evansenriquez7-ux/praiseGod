@@ -1,0 +1,553 @@
+{
+  "batch": "batch186_mat_g2_na_q3_3",
+  "attested_at": "2026-10-01T05:40:48Z",
+  "attested_by": "blind-attester-haiku45-w2a186-mat_g2_na_q3_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g2_na_q3_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g2_na_q3_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Pia wants to buy 4 leashes that cost ₱1 each. How much does Pia need to pay in all? The answer is 4. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 1.",
+          "Think of it as 1 group of 4: 4.",
+          "The product of 4 × 1 = 4."
+        ],
+        "sample_id": "d590e23e03c61d256ce0",
+        "replay_digest": "42071abe0f847e7522c6a74d99df87c7393cb731fa343554ae286148c704ea21"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Marco puts 5 sneakers in each of 4 bags. How many sneakers are in all the bags?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 5.",
+          "Think of it as 5 groups of 4: 4 + 4 + 4 + 4 + 4.",
+          "The product of 4 × 5 = 20."
+        ],
+        "sample_id": "f93a0dac4b9f2743e5a9",
+        "replay_digest": "54abf1825cec1b95197c3aca1fa68b39606018585a7a17fe728f84e40cd881a4"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Maico puts 3 costumes in each of 3 bags. How many costumes are in all the bags?",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 3.",
+          "Think of it as 3 groups of 3: 3 + 3 + 3.",
+          "The product of 3 × 3 = 9."
+        ],
+        "sample_id": "765fa0deebe1346f125e",
+        "replay_digest": "9705b577a271abb2d8021d146929a966391b28aee6a95862baf65d1ae6f7d3d8"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved this problem: \"Arnel wants to buy 2 running shoes that cost ₱4 each. How much does Arnel need to pay in all?\" Pia says the answer is 8. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 8
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 8
+        },
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 4.",
+          "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.",
+          "The product of 2 × 4 = 8."
+        ],
+        "sample_id": "38ff45763b5036362bed",
+        "replay_digest": "2c7451c765886fd0b345eca0fef0453a3867ce2c0306cd80f8d993a78681f836"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Esther wants to buy 10 scrolls that cost ₱5 each. How much does Esther need to pay in all?",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 50,
+            "text": "50",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 45,
+            "text": "45",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 5.",
+          "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.",
+          "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.",
+          "The product of 10 × 5 = 50."
+        ],
+        "sample_id": "35b01ed01669793bc548",
+        "replay_digest": "26aa335ce2af04e8a1aab86b60bd3ca764989cd723c7aac828d4e3fad9715cfd"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "Kuya Ton puts 6 ribbons in each of 3 bags. How many ribbons are in all the bags?",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 6.",
+          "Use the 6 times table: 6 × 3.",
+          "The product of 3 × 6 = 18."
+        ],
+        "sample_id": "59ef1663ffca246b28a7",
+        "replay_digest": "ed7c436f1df7dae9eee9d9fe0adde64b41689881a133254b40c9a90221076bdd"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Coach Nora wants to buy 2 arm sleeves that cost ₱7 each. How much does Coach Nora need to pay in all?\" Grace says the answer is 14. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 14
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 14
+        },
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 7.",
+          "Use the 7 times table: 7 × 2.",
+          "The product of 2 × 7 = 14."
+        ],
+        "sample_id": "d1fbef8723ca4f888e11",
+        "replay_digest": "f5a9d04314483484495253ef3c8c0eed79d9f7b2870c3dc66daf90c2c1cd405d"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved this problem: \"Ate Sam puts 7 jump ropes in each of 10 bags. How many jump ropes are in all the bags?\" Grace says the answer is 77. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 70
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 70
+        },
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 7.",
+          "Use the 7 times table: 7 × 10.",
+          "Break 10 into 10 + 0: (10 × 7) + (0 × 7) = 70 + 0 = 70.",
+          "The product of 10 × 7 = 70."
+        ],
+        "sample_id": "004838541fa4f1e37333",
+        "replay_digest": "1baf07dbfcd5328258e0f1fe94b181e426ea080dcf181d04e517ceb2133bffca"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Ate Gab puts 5 ribbons in each of 3 bags. How many ribbons are in all the bags?",
+        "correct_answer": 15,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 5.",
+          "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.",
+          "The product of 3 × 5 = 15."
+        ],
+        "sample_id": "1bb25a6540c8feea558a",
+        "replay_digest": "741ee94fadbe0d5dd6410659cf47b1ee529cf2811c0d39dcfc11cb459a9a9ed5"
+      },
+      {
+        "node_id": "mat_g2_na_q3_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "David wants to buy 2 scrolls that cost ₱4 each. How much does David need to pay in all?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 4.",
+          "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.",
+          "The product of 2 × 4 = 8."
+        ],
+        "sample_id": "0175ce4d51b086f81683",
+        "replay_digest": "c4715108b6ef88f2030e21883ad66e2670aed9251cb01b2e3d6a0fa05d13a03a"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_multiplication_problems",
+      "node_id": "mat_g2_na_q3_3",
+      "clause": "Solve multiplication problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples exhibit multiplication problem solving. Every sample presents a multiplication scenario requiring computation: seeds 11, 23, 42, 57, 64, 78, 91, 103, 118, 127 all solve multiplication problems. The clause is a universal part of all samples shown.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "tables_2_3_4_5_10",
+      "node_id": "mat_g2_na_q3_3",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        118,
+        127
+      ],
+      "reasoning": "Seven out of ten samples use only the 2, 3, 4, 5, and 10 multiplication tables: seed 11 uses 4 table, seed 23 uses 5 and 4 tables, seed 42 uses 3 table, seed 57 uses 2 table, seed 64 uses 10 and 5 tables, seed 118 uses 5 and 3 tables, seed 127 uses 2 table. Three samples introduce unauthorized tables: seed 78 uses 6 table, seed 91 uses 7 table, seed 103 uses 7 table. The specified tables appear regularly across most samples.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g2_na_q3_3",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "Five out of ten samples involve money contexts requiring peso calculations: seed 11 buys 4 leashes at 1 peso each, seed 57 buys 2 shoes at 4 pesos each, seed 64 buys 10 scrolls at 5 pesos each, seed 91 buys 2 arm sleeves at 7 pesos each, seed 127 buys 2 scrolls at 4 pesos each. The remaining five use object grouping contexts without monetary values. Money problems represent a regular part of the sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch137_mat_g2_na_q3_3: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

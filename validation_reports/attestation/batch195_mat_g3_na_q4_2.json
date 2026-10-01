@@ -1,0 +1,717 @@
+{
+  "batch": "batch195_mat_g3_na_q4_2",
+  "attested_at": "2026-10-01T05:41:51Z",
+  "attested_by": "blind-attester-haiku45-w2a195-mat_g3_na_q4_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g3_na_q4_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g3_na_q4_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "81 ÷ 9 = 9. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 81 by 9. The number being divided is 81; the number we divide by is 9.",
+          "Ask: how many times does 9 fit into 81? 9 × 9 = 81.",
+          "The quotient of 81 ÷ 9 = 9."
+        ],
+        "sample_id": "39154c583715bf809d8f",
+        "replay_digest": "d3c3f2ae9d477d67744e355f141e3716e8946ed0027a5beb1721b98e831e8b4f"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "___ ÷ 6 = 6",
+        "correct_answer": 36,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "text": "30",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 36,
+            "text": "36",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 36,
+        "hints": [
+          "We need to divide 36 by 6. The number being divided is 36; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 36? 6 × 6 = 36.",
+          "The quotient of 36 ÷ 6 = 6."
+        ],
+        "sample_id": "c85b93019bb01b00da9a",
+        "replay_digest": "1a3f282df924a39dc22a58acee2e055a0b4896df95fb9722cef6a8b575a9a499"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. ? × 6 = 12. What is the missing value?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "The number statement is: ___ × 6 = 12",
+          "Use division to undo the operation.",
+          "12 ÷ 6 = 2.",
+          "Check: 2 × 6 = 12. ✓"
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "? × 6",
+          "right_side": "12",
+          "blank_side": "left",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "984ba5223289ba3f083b84354e334654d5f5861219f545dd7a6cb9ffd53219ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "? × 6",
+              "12"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c9f822fff971a49a3c36",
+        "replay_digest": "c7e13332385c832151c05f386d834e396363a68925eb57bc4d166d73e47e1799"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: 72 ÷ 9 = ___?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 80,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The number statement is: 72 ÷ 9 = ___",
+          "We need to find what 72 ÷ 9 equals.",
+          "Calculate: 72 ÷ 9 = 8."
+        ],
+        "sample_id": "60edc8827b4b2fde2c50",
+        "replay_digest": "657f8cc1816359f4e5e99dd312b4fe40b2bef9db7a7c7520112075be5be603b4"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "___ ÷ 6 = 8",
+        "correct_answer": 48,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 48,
+            "text": "48",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 42,
+            "text": "42",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 48,
+        "hints": [
+          "We need to divide 48 by 6. The number being divided is 48; the number we divide by is 6.",
+          "Ask: how many times does 6 fit into 48? 6 × 8 = 48.",
+          "The quotient of 48 ÷ 6 = 8."
+        ],
+        "sample_id": "1a1d6f5e022397c03427",
+        "replay_digest": "af8b8f6e2557023e2523e4f624ef717f55cb9ae0a1895532cee1ae9d279b67ec"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 7 × 10 = ?. What is the missing value?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 71,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 17,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 69,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 70,
+        "hints": [
+          "The number statement is: 7 × 10 = ___",
+          "We need to find what 7 × 10 equals.",
+          "Calculate: 7 × 10 = 70."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "7 × 10",
+          "right_side": "?",
+          "blank_side": "right",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "6f98f64a56338def36b410c339847b1a5e6625c91961154f83452f6fd68ef05b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "7 × 10",
+              "?"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4b37fb406897e9e82ac2",
+        "replay_digest": "4ca23a546e95c98fd4aa4f963cf9abd6f2b23e8959423aa9bcdf8f05efc20242"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "7 × 1 = ___",
+        "correct_answer": 7,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "The number statement is: 7 × 1 = ___",
+          "We need to find what 7 × 1 equals.",
+          "Calculate: 7 × 1 = 7."
+        ],
+        "sample_id": "628f98c24d6059377030",
+        "replay_digest": "ba326e121f98ed012cb5dbc5b735219c28963c5dedc0531fe0636fd1e4006de4"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"___ ÷ 7 = 5\". Grace says the missing number is 4. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 35
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 35
+        },
+        "hints": [
+          "We need to divide 35 by 7. The number being divided is 35; the number we divide by is 7.",
+          "Ask: how many times does 7 fit into 35? 7 × 5 = 35.",
+          "The quotient of 35 ÷ 7 = 5."
+        ],
+        "sample_id": "25975ab11a92d83ef34b",
+        "replay_digest": "a70ea07e83806985d6d7432169fda8a952f2e2bce16ea7166903302816242173"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What number goes in the blank: ___ × 7 = 70?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 77,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 80,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "The number statement is: ___ × 7 = 70",
+          "Use division to undo the operation.",
+          "70 ÷ 7 = 10.",
+          "Check: 10 × 7 = 70. ✓"
+        ],
+        "sample_id": "237095de89bfd58b33a4",
+        "replay_digest": "e38a833ce3b33d6d0262e5bf95ebaf2b842088bc246fc782dfd193d30bc4a7aa"
+      },
+      {
+        "node_id": "mat_g3_na_q4_2",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Both sides balance evenly. 6 × 2 = ?. What is the missing value?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BalanceScale",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "The number statement is: 6 × 2 = ___",
+          "We need to find what 6 × 2 equals.",
+          "Calculate: 6 × 2 = 12."
+        ],
+        "visual_type": "BalanceScale",
+        "visual_payload": {
+          "left_side": "6 × 2",
+          "right_side": "?",
+          "blank_side": "right",
+          "is_balanced": true
+        },
+        "visual_render": {
+          "visual_type": "BalanceScale",
+          "renderer_input_digest": "f59c1369f7b89727aac7ad6ef573e6be7db0806bf4986793a2039dc10f0a4c90",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BalanceScale",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "6 × 2",
+              "?"
+            ],
+            "distinct_colours": [
+              "#94a3b8",
+              "#3b82f6",
+              "#fff",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "72a3a6998948546065b5",
+        "replay_digest": "a2a60a7acd8fd82e11e0d11b1b0596858151b317fc066e04eef7469f1d8f6b20"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find_missing_number",
+      "node_id": "mat_g3_na_q4_2",
+      "clause": "Find the missing number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Eight of ten samples present clear missing number problems: seeds 23, 42, 57, 64, 78, 91, 118, and 127 all involve finding an unknown value in equations. Seeds 11 and 103 involve evaluation or checking rather than finding.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "number_sentence",
+      "node_id": "mat_g3_na_q4_2",
+      "clause": "number sentence",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples present mathematical equations or number sentences with operations, blanks, and numerical relationships. Every sample structures the learning as formal arithmetic statements.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "multiplication",
+      "node_id": "mat_g3_na_q4_2",
+      "clause": "multiplication",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Five of ten samples involve multiplication operations: seeds 42, 78, 91, 118, and 127. The remaining five samples use only division. Multiplication is meaningfully exhibited as a regular part of the learning path.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "division",
+      "node_id": "mat_g3_na_q4_2",
+      "clause": "division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        103
+      ],
+      "reasoning": "Five of ten samples involve division operations: seeds 11, 23, 57, 64, and 103. The remaining five samples use only multiplication. Division is meaningfully exhibited as a regular part of the learning path.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "6_7_8_9",
+      "node_id": "mat_g3_na_q4_2",
+      "clause": "6, 7, 8, and 9",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten samples use at least one of the specified multipliers 6, 7, 8, or 9. Seeds use 9 (seeds 11, 57), 6 (seeds 23, 42, 64, 127), 7 (seeds 78, 91, 103, 118), and combinations. Complete coverage of required operations.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch149_mat_g3_na_q4_2: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

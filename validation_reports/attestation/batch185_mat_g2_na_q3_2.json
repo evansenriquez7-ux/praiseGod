@@ -1,0 +1,664 @@
+{
+  "batch": "batch185_mat_g2_na_q3_2",
+  "attested_at": "2026-10-01T05:40:27Z",
+  "attested_by": "blind-attester-haiku45-w2a185-mat_g2_na_q3_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g2_na_q3_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g2_na_q3_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 11,
+        "formatter": "error_detect",
+        "question_text": "Rosa solved: \"4 × 1 = ___\". Rosa says the missing number is 5. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 4
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 4
+        },
+        "hints": [
+          "We need to multiply 4 groups of 1.",
+          "Think of it as 1 group of 4: 4.",
+          "The product of 4 × 1 = 4."
+        ],
+        "sample_id": "5eafe9b2fee620fdb57c",
+        "replay_digest": "674562c629d7439e0ae485cf92adf0dc02cfeaf88ae21798e093b8e9c2b03ead"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 4×5 array. How many squares are shaded in all?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 19,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "We need to multiply 4 groups of 5.",
+          "Think of it as 5 groups of 4: 4 + 4 + 4 + 4 + 4.",
+          "The product of 4 × 5 = 20."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 20,
+          "grid_size": [
+            5,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "b929f6f319c024862160be1cdefb93a8986134f0106de39dc19a89d3e67aa538",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 33,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "5 × 4",
+              "rectangle",
+              "20 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 20
+            }
+          }
+        },
+        "sample_id": "8ca83811e666969725fe",
+        "replay_digest": "fc66200d00e07487a82c3f25f9b234d819c2b6305df862a09ec52dacd4e4ef97"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 42,
+        "formatter": "true_false",
+        "question_text": "3 × 3 = 6. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to multiply 3 groups of 3.",
+          "Think of it as 3 groups of 3: 3 + 3 + 3.",
+          "The product of 3 × 3 = 9."
+        ],
+        "sample_id": "b02d8704eab7a2190f60",
+        "replay_digest": "3be30488c20e745245473d8a85a5e2521728119e4ea3e7f05bc11ecd4276fe90"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade all the squares inside the 2×4 rectangle. How many squares did you shade in all?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 8,
+        "hints": [
+          "We need to multiply 2 groups of 4.",
+          "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.",
+          "The product of 2 × 4 = 8."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 4,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            3,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "8c5bdc33a3d37efceade1d8caa9c90511964b784adf511204487792606477def",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 2",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "26121c786f98db432b25",
+        "replay_digest": "e6871fab1199903799acaee901250b93da7febafa5c74260302292bd0f7f9d35"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "What is 10 × 5?",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 50,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "We need to multiply 10 groups of 5.",
+          "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.",
+          "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.",
+          "The product of 10 × 5 = 50."
+        ],
+        "sample_id": "815208993fe2e09ae2a2",
+        "replay_digest": "3712727b326edd73e807ff35a9148bc03ffd514fed1309a695364fb741b5bc62"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "3 × 6 = ___",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 17,
+            "text": "17",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "text": "18",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We need to multiply 3 groups of 6.",
+          "Use the 6 times table: 6 × 3.",
+          "The product of 3 × 6 = 18."
+        ],
+        "sample_id": "4f8b57d19f5f4af15f7d",
+        "replay_digest": "597f6060a1701c93e5e1feaecc012b01bad26c7ca0bfcf5dda8adcdd9757c294"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "2 × 7 = 14. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to multiply 2 groups of 7.",
+          "Use the 7 times table: 7 × 2.",
+          "The product of 2 × 7 = 14."
+        ],
+        "sample_id": "66618a0b3e9a5973f87e",
+        "replay_digest": "d0b336b45ca3fb6492fa80cc37ec6ef772408962911416861a9b2a31ebf18f21"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "10 × 7 = 70. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We need to multiply 10 groups of 7.",
+          "Use the 7 times table: 7 × 10.",
+          "Break 10 into 10 + 0: (10 × 7) + (0 × 7) = 70 + 0 = 70.",
+          "The product of 10 × 7 = 70."
+        ],
+        "sample_id": "4450ad5210f84b430af4",
+        "replay_digest": "f8221612b778f0eee1c9202588a09cb5b04011451b7ac4e4abc4197a0a77827a"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "3 × 5 = ___",
+        "correct_answer": 15,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "text": "15",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 15,
+        "hints": [
+          "We need to multiply 3 groups of 5.",
+          "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.",
+          "The product of 3 × 5 = 15."
+        ],
+        "sample_id": "7f08cad94d7cee8d2357",
+        "replay_digest": "da3c4853aca688cf7e003bc436d59ce10629a8ef3759f25d705f1e3bea6f2b24"
+      },
+      {
+        "node_id": "mat_g2_na_q3_2",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 2×4 array. How many squares are shaded in all?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to multiply 2 groups of 4.",
+          "Think of it as 4 groups of 2: 2 + 2 + 2 + 2.",
+          "The product of 2 × 4 = 8."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            3,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "d50ea7855387601b10f2324af50f6373343b62f71ec3892222883c879aaa0231",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 2",
+              "rectangle",
+              "8 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "052b9cecb0ba85a4683b",
+        "replay_digest": "01e84afc84aed52a061b7229c60b66406a3dabdb82416b6edb0c3ff8615498cc"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "multiply",
+      "node_id": "mat_g2_na_q3_2",
+      "clause": "Multiply",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve multiplication activities: directly computing facts (seeds 64, 78, 118), evaluating multiplication statements (seeds 42, 91, 103), using array representations (seeds 23, 57, 127), or identifying multiplication errors (seed 11). Multiplication is a regular, consistent component across every sample.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g2_na_q3_2",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples prominently feature numbers in various contexts: multipliers and products in expressions, numerical options in multiple choice, array dimensions, and numerical answers. Numbers are used systematically throughout every sample to represent multiplication facts and array counts.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "tables_2_3_4_5_10",
+      "node_id": "mat_g2_na_q3_2",
+      "clause": "2, 3, 4, 5, and 10 multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use multiplication facts from the specified tables: 2 table (seeds 57, 91, 127), 3 table (seeds 42, 78, 118), 4 table (seeds 11, 23, 57, 127), 5 table (seeds 23, 64, 118), and 10 table (seeds 64, 103). Every sample draws exclusively from the 2, 3, 4, 5, and 10 multiplication tables.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch137_mat_g2_na_q3_2: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}

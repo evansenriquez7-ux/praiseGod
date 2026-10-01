@@ -1,0 +1,1523 @@
+{
+  "batch": "batch191_mat_g3_na_q2_0",
+  "attested_at": "2026-10-01T05:41:40Z",
+  "attested_by": "blind-attester-haiku45-w2a191-mat_g3_na_q2_0-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_attest/mat_g3_na_q2_0/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_attest/mat_g3_na_q2_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 6 tool uses; by name from the transcript: 5 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "How is ₱2463 written in words?",
+        "correct_answer": "two thousand four hundred sixty-three pesos",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "two thousand four hundred fifty-three pesos",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "two thousand five hundred sixty-three pesos",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "two thousand four hundred sixty-three centavos",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "two thousand four hundred sixty-three pesos",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "two thousand four hundred sixty-three pesos",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "e449fe289a80e1cb2eef",
+        "replay_digest": "8ef47366eca093405e508b04591e64014e070322cf9fb9564aecf5d7391e64ac"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "How is 'three hundred seventy-four pesos' written using the peso symbol?",
+        "correct_answer": "₱374",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱374",
+            "text": "₱374",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "374¢",
+            "text": "374¢",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "₱3740",
+            "text": "₱3740",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "₱369",
+            "text": "₱369",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱374",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "ab09e97dfa5de50e6dd0",
+        "replay_digest": "41bc09888bc088fbf39b7a0059a33696422e05f34a5b6b3b00dbabbb2e2748a8"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "How is 25 centavos written as a decimal of a peso using the ₱ symbol?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱0.25",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "₱25",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "₱0.025",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "25¢",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱0.25",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 3
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 50,
+              "count": 1
+            },
+            {
+              "denomination": 100,
+              "count": 1
+            },
+            {
+              "denomination": 200,
+              "count": 35
+            }
+          ],
+          "total": 7153,
+          "target_amount": 7153,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "9a5835cd63f5715b994e128a05ee61763ff359194624a17f2469a9b115cde9bc",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 233,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱50",
+              "₱50",
+              "₱50",
+              "REPUBLIKA NG PILIPINAS",
+              "₱100",
+              "₱100",
+              "₱100",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱1",
+              "₱1",
+              "₱1"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#fda4af,",
+              "#dc2626)",
+              "#fff",
+              "#c084fc,",
+              "#7c3aed)",
+              "#86efac,",
+              "#16a34a)",
+              "#cbd5e1,",
+              "#94a3b8)",
+              "#1e293b",
+              "#64748b"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "38ca4b44c4dd65639b81",
+        "replay_digest": "d049651415c8bcb0f002d74e85569bc7a7ccc4e01000fbb34e9dd3dbeb2c5641"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "How is 'three thousand six hundred nineteen pesos' written using the peso symbol?",
+        "correct_answer": "₱3619",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3619¢",
+            "text": "3619¢",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "₱3619",
+            "text": "₱3619",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "₱36190",
+            "text": "₱36190",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "₱3614",
+            "text": "₱3614",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱3619",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "f4395be668bdc0da13ac",
+        "replay_digest": "4075829744ec1fb86d8313f0213a6af45192dd5dc815268b738f59d88ce086b9"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "How is 'three thousand eight hundred fifty-nine pesos' written using the peso symbol?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱3854",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "₱3859",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "₱38590",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3859¢",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱3859",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 4
+            },
+            {
+              "denomination": 5,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 50,
+              "count": 1
+            },
+            {
+              "denomination": 200,
+              "count": 19
+            }
+          ],
+          "total": 3859,
+          "target_amount": 3859,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "c65083f9aaf698a67b687c8106acd67339e4c106317bd303aae50969cda75168",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 133,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱50",
+              "₱50",
+              "₱50",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱1",
+              "₱1",
+              "₱1",
+              "₱1",
+              "₱5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#fda4af,",
+              "#dc2626)",
+              "#fff",
+              "#86efac,",
+              "#16a34a)",
+              "#cbd5e1,",
+              "#94a3b8)",
+              "#1e293b",
+              "#64748b",
+              "#e2e8f0,",
+              "#cbd5e1)",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7c2accf926e7c2d14b36",
+        "replay_digest": "7c1abb53a2739ab29551e30290b4ded869fce23fedc355e500f2351706c31304"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "How is ₱0.50 written using the centavo sign?",
+        "correct_answer": "50¢",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "50 pesos",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "₱0.050",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "50¢",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "₱50",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "50¢",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "84e0dedef03ea7ca5111",
+        "replay_digest": "f61e61c25cd56a534546947ac854d6a2724b4c396e123929c45346d23fa7a16c"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "How is 'five thousand two hundred fourteen pesos' written using the peso symbol?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱5214",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "₱5209",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5214¢",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "₱52140",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱5214",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 4
+            },
+            {
+              "denomination": 10,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 200,
+              "count": 26
+            }
+          ],
+          "total": 5214,
+          "target_amount": 5214,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "d2235b702f8795e2af36aa9f36e27a48c6ec0acc4aa1ff327efabcd0e0c7c7c0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 169,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱1",
+              "₱1",
+              "₱1",
+              "₱1",
+              "₱10"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#86efac,",
+              "#16a34a)",
+              "#fff",
+              "#cbd5e1,",
+              "#94a3b8)",
+              "#1e293b",
+              "#64748b",
+              "#fef08a 60%,",
+              "#cbd5e1 60%)",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0c18f7d1db21990e9a99",
+        "replay_digest": "fcb654d252ac062e5f5a81656feb4fcb083496c5a27d0a3587c35fbaafddc973"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "PesoMoney",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱50",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "₱0.050",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "₱0.50",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "50¢",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱0.50",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "visual_type": "PesoMoney",
+        "visual_payload": {
+          "coins": [
+            {
+              "denomination": 1,
+              "count": 2
+            },
+            {
+              "denomination": 5,
+              "count": 1
+            }
+          ],
+          "bills": [
+            {
+              "denomination": 200,
+              "count": 42
+            }
+          ],
+          "total": 8407,
+          "target_amount": 8407,
+          "exclude_centavos": true,
+          "coin_faces": [
+            1,
+            5,
+            10
+          ],
+          "bill_faces": [
+            20,
+            50,
+            100,
+            200
+          ],
+          "require_fewest": true,
+          "is_interactive": false
+        },
+        "visual_render": {
+          "visual_type": "PesoMoney",
+          "renderer_input_digest": "aa26a52e6802f6b43da62c43a489adfd2b4649452475ef1a9aac73e7f136e65c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "PesoMoney",
+            "element_count": 263,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "BILLS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "₱200",
+              "₱200",
+              "₱200",
+              "REPUBLIKA NG PILIPINAS",
+              "COINS",
+              "₱1",
+              "₱1",
+              "₱5"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "#86efac,",
+              "#16a34a)",
+              "#fff",
+              "#cbd5e1,",
+              "#94a3b8)",
+              "#1e293b",
+              "#64748b",
+              "#e2e8f0,",
+              "#cbd5e1)",
+              "#94a3b8"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "cb4f481e0956657ca2c6",
+        "replay_digest": "3edcc00401c4ee1f4dd47cdc2f66e882cd1db370033267606413d4cdcd7046e0"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "How is ₱1495 written in words?",
+        "correct_answer": "one thousand four hundred ninety-five pesos",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "one thousand four hundred ninety-five centavos",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "one thousand four hundred ninety-five pesos",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "one thousand four hundred ninety pesos",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "one thousand five hundred fifteen pesos",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "one thousand four hundred ninety-five pesos",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "ea25732bdc73bd129476",
+        "replay_digest": "c5f9361fef66a193cef75e8814e4caa9f456c1fb9e154535dbb6e5a1f7718926"
+      },
+      {
+        "node_id": "mat_g3_na_q2_0",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "How is 'six thousand eight hundred ninety-eight pesos' written using the peso symbol?",
+        "correct_answer": "₱6898",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "₱6898",
+            "text": "₱6898",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "₱6893",
+            "text": "₱6893",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "6898¢",
+            "text": "6898¢",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "₱68980",
+            "text": "₱68980",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "₱6898",
+        "hints": [
+          "Read the number or words given in the question carefully.",
+          "Think about the spelling of number words or the position of the currency symbol.",
+          "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."
+        ],
+        "sample_id": "4647cd38b5078bdf1d59",
+        "replay_digest": "85de650c8474802802d156b59cc5477daaa1f0b241439f8f19a36bbd7a7d79dd"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples require reading money representations, with varied formats including words, symbols, and decimals consistently across the samples.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "7 samples require writing conversions of money from one format to another, converting words to symbols or vice versa throughout the sample set.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples center on money concepts, working with pesos and centavos as the primary content throughout every sample presented.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "words",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "words",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        91,
+        127
+      ],
+      "reasoning": "5 samples explicitly ask for answers in words or start from word representations, providing regular practice with verbal money notation.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "philippine_currency_symbols",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "Philippine currency symbols",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "8 samples show Philippine currency symbols rendered visually in PesoMoney components displaying actual Philippine bills and coins.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "peso_sign",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "₱",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use the peso symbol throughout their questions and options, establishing consistent exposure to the ₱ symbol.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "php",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "PhP",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No samples use the PhP abbreviation; all samples exclusively use the ₱ symbol instead, so this clause is absent.",
+      "action_taken": "Re-judged blind on 2026-10-01 because the earlier record went STALE when the packet changed; left registered pending W2 confirmation or engineering; no source change in this campaign."
+    },
+    {
+      "capability_id": "up_to_peso_10000",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "up to ₱10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples stay within the ₱10,000 range specified, respecting the upper limit consistently across every problem presented.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    },
+    {
+      "capability_id": "centavo_sign",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "centavo sign",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples include the centavo sign either in options or as direct content, providing consistent exposure to the ¢ symbol.",
+      "action_taken": "Re-judged blind on 2026-10-01 after the earlier record went STALE; left registered; no change."
+    }
+  ],
+  "supersedes": "Supersedes STALE record(s) batch146_mat_g3_na_q2_0: the packet the earlier Attester judged no longer matches what the pipeline renders."
+}
