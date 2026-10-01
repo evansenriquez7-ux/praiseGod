@@ -1,0 +1,901 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe17-mat_g3_na_q2_1-20260930",
+  "mat_g3_na_q2_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Problems range from trivial (0 + 1) to four-digit additions requiring regrouping across multiple place values. Variety of response modalities (number line, number bond, error detection, true/false, MCQ) supports progressive complexity appropriate for Grade 3 Quarter 2 learners building mastery."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample requires students to add two numbers, either directly or as a consequence of evaluating a mathematical claim. Sums stay within the specified upper bound of 10,000. Two samples (seed 612, seed 613) test associative and commutativity properties, which build understanding of addition structure."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "Requirements decompose the competency into six atomic elements covering the operation, operands, result bound, and both modes of execution. Decomposition is lossless.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The printed requirements capture: the operation via add, the entities via numbers, the constraint via sums up to 10 000, and both execution paths via with_regrouping and without_regrouping. The noun regrouping itself anchors the key concept. No clause is redundant; none is missing."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Packet includes problems demonstrating addition with regrouping (23 samples) and without regrouping (16 samples). Number ranges extend from single digits through four-digit summands. Six response formats present varied modalities for learners to demonstrate understanding."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All 39 samples remain within the specified bounds: smallest sums involve identity (0 + 1 = 1), largest reaches exactly 10,000 (8511 + 1489 = 10,000). Intermediate range covers 1030 through 9960, ensuring students encounter the full gradient of the competency."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Response formats include fill-in-blank with number line (set mode), fill-in-blank with number bond (read mode), error detection, multiple-choice, cloze with and without contexts, true/false, and read-MCQ with visual. Contexts span pure numerical to word problems with thematic elements. Concepts tested include identity property, associativity, and commutativity."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "6ea1e91bcfbf247bf0fb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Instruction to show the sum on a number line is explicit and unambiguous. Students understand they must visually represent the addends and locate their sum on a scale spanning 0 to at least 3500."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Using a number line to model addition is a standard pedagogical practice in elementary mathematics. The task asks students to integrate two four-digit numbers and place a sum, a logical progression from concrete to representational thinking."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "A Grade 3 learner familiar with number line activities understands that they are placing two starting points and finding the endpoint. The vocabulary is direct and the visual modality supports comprehension for emerging readers."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1086 + 2067 = 3153 is correct. Hints accurately decompose the addition into place values, tracking the carry from ones to tens (6 + 7 = 13) and from tens to hundreds (8 + 6 + 1 = 15)."
+          }
+        }
+      },
+      {
+        "sample_id": "3ef281afe97c55b29f36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Phrasing two parts clearly signals to students that they must combine two given numbers. The question what is the sum is direct and leaves no room for misinterpretation of the operation required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number bond representation uses the established two-parts framework that students encounter across K-12 curriculum. Labeling addends as parts aligns with whole-part decomposition thinking central to Grade 3 arithmetic."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is consistent with early addition scenarios where two addends are presented and the sum is unknown. No extraneous context muddies the mathematical ask."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1620 + 2356 = 3976 is correct. Hints show ones place addition without carrying (0 + 6 = 6) and tens addition without carrying (2 + 5 = 7), demonstrating a case of addition without regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "e652033d7dfca58f3448",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection items present a claimed solution and ask students to verify correctness. The binary choice (Is Rico correct? Yes or No) is unambiguous and appropriate for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Attributing the computation to a named peer (Rico) contextualizes the mathematical task and mirrors classroom scenarios where students critique peer work or reasoning in collaborative settings."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is clear: evaluate the arithmetic claim. Students must perform the computation themselves or verify the given result, engaging critical thinking beyond rote calculation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1640 + 3900 = 5540 is correct, and the answer field correctly indicates no error (has_error: False). Hints trace the addition through place values with no regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "cb719ad566ca11af17cf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice format with four distinct options presented as 1030 / 410 / 1029 / 1040. The question what is asks for a single numerical result, leaving no ambiguity in task intent."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Direct computation of two three-digit sums without scenario wrapper is logically sound. The numbers chosen are manageable for Grade 3 and the operation is fundamental to the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students immediately grasp that they must add 720 and 310 and select the matching option. No extraneous details or complex phrasing obscure the mathematical task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "720 + 310 = 1030 is correct. Distractors include 410 (a related but wrong value), 1029 (off-by-one), and 1040 (off-by-ten), all plausible errors that reveal misconceptions."
+          }
+        }
+      },
+      {
+        "sample_id": "3c0e29abd08332da2355",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with a blank clearly marked as ___ asks students to supply the missing addend or sum. The blank-fill response mode is standard and unambiguous for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct numerical addition with no scenario is mathematically valid and appropriate for building automaticity in Grade 3. The numbers 9997 and 2 are chosen to test edge cases near 10,000."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is minimalist: add two numbers and provide the result. Any Grade 3 learner can parse the task immediately without ambiguity or cognitive overload from context."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9997 + 2 = 9999 is correct. Hints note that seven plus two equals nine in the ones place with no carrying, emphasizing the case where summands align without regrouping despite the large value."
+          }
+        }
+      },
+      {
+        "sample_id": "9137b187cc320d50e742",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Instruction to count forward from a starting position by a given distance is a common number line task. Students know they must locate where the dot lands after advancing, then match the location to an option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The number line context frames addition as movement along a scale, a representation familiar to Grade 3 learners. The phrasing count up 310 numbers directly expresses the additive operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses direct language: the dot is at position X, moves forward Y numbers, land on Z. Students know to use the number line visual to track the movement and identify the result from marked positions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9090 + 310 = 9400 is correct. Hints show 0 + 0 = 0 in ones place and 9 + 1 = 10 in tens place, producing a carry into hundreds, demonstrating addition with regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "6e1c78718cb6f5ad1502",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True/False format is unambiguous: the item presents a statement and asks students to judge its truth. The binary choice is standard assessment language for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Presenting a false addition claim (5373 + 4080 = 9452) tests whether students can compute independently and detect errors. The statement is syntactically and logically valid even though arithmetically incorrect."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is transparent: evaluate the arithmetic claim and respond true or false. No extraneous language or context complicates the task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5373 + 4080 actually equals 9453, not 9452. Answer False is correct. The difference of one tests whether students truly compute or guess. Hints show 7 + 8 = 15 in tens place, requiring regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "415e2c94ef8fb549ac25",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-MCQ item directs students to apply counting logic on a visual number line. The question which number will the dot land on is unambiguous and the four options offer distinct numerical choices."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Using a number line to model addition is pedagogically sound. The instructional framing count up from position mirrors how Grade 3 students physically and mentally model addition on number lines."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students are shown a starting position, told to advance by a count, and asked to identify the landing point. The number line visual and text instructions work together to clarify the task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "3622 + 5280 = 8902 is correct. Hints show 2 + 0 = 2 in ones place and 2 + 8 = 10 in tens place with a carry, illustrating addition with regrouping at the tens boundary."
+          }
+        }
+      },
+      {
+        "sample_id": "f4d07b04115f8918b2a5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Set-fill-in-blank mode asks students to show the sum on a number line by placing a point. The instruction is explicit and leaves no doubt about the expected student action."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation of addition is a fundamental Grade 3 pedagogy. Students are asked to integrate two four-digit summands and locate their sum on a scale, a logical extension of early number line work."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is direct: show the sum on a number line spanning a range labeled with tick marks. Students who have practiced number line placement understand the expectation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "3583 + 586 = 4169 is correct. Hints show 3 + 6 = 9 in ones place and 8 + 8 = 16 in tens place with a carry, demonstrating addition with regrouping at multiple place values."
+          }
+        }
+      },
+      {
+        "sample_id": "ca5f48a6dda93cfb6d39",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection format is clear: students evaluate whether Dante is correct and respond accordingly. The binary judgment (Is Dante correct? Yes or No) is unambiguous for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Attribution of the computation to a peer (Dante) contextualizes the task and invites students to verify. This mirrors authentic mathematical discourse where students evaluate peer reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is transparent: check whether the sum is correct. Students know they must compute 6338 + 1914 and compare to Dante's claim of 8252."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6338 + 1914 = 8252 is correct, and the answer correctly indicates no error. Hints show 8 + 4 = 12 in ones place with a carry and 3 + 1 + 1 = 5 in tens place, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "e7a9915546c39d047ceb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Set-fill-in-blank instruction is clear: place a point on the number line to show where the sum lands. No ambiguity in task intent or expected response format."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line visualization of addition is a Grade 3 standard. Asking students to place the sum of two four-digit numbers is a logical learning progression building spatial and numerical reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students see the two addends and a number line scaled from 8400 to 8800. They understand they must find 8506 + 218 and mark that location."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8506 + 218 = 8724 is correct. Hints show 6 + 8 = 14 in ones place with a carry and 0 + 1 + 1 = 2 in tens place, demonstrating addition with regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "72e3283ff5e9e4a7d28b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Word problem with cloze format is unambiguous: students read the scenario, determine how many items there are in all, and fill the blank. The mathematical question is clear despite the contextual wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A scenario with water bowls is simple and concrete for Grade 3. Combining two quantities to find a total is a canonical application of addition in everyday contexts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem uses familiar objects (water bowls) and a relatable action (putting them together). Students easily understand that they must add Pia's 4860 bowls to her friend's 5100 bowls."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "4860 + 5100 = 9960 is correct. Hints show 0 + 0 = 0 in ones place and 6 + 0 = 6 in tens place with no carrying, illustrating addition without regrouping despite large numbers."
+          }
+        }
+      },
+      {
+        "sample_id": "896fe4a902511c0c1422",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-MCQ on a number line asks which number the dot will land on. The question is unambiguous and the four options represent distinct positions."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Modeling addition as movement on a number line is pedagogically valid. Starting at 8511 and counting up 1489 units is a logical number line addition task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The phrasing is direct: the dot starts here, moves forward this far, lands where? Students apply their understanding of number line addition to identify the endpoint from marked positions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8511 + 1489 = 10000 exactly, the upper bound of the competency. Hints show 1 + 9 = 10 in ones place with a carry and 1 + 8 + 1 = 10 in tens place with a carry, illustrating regrouping at multiple levels."
+          }
+        }
+      },
+      {
+        "sample_id": "e7aeb760b2fe1c591fae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-fill-in-blank with number bond is clear: the two parts are given as numbers within the bond, and students supply the whole (sum). The interface and instruction are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond representation uses the established two-parts-to-whole model. Asking for the sum is logically sound and consistent with part-whole decomposition thinking in Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The bond structure visually shows two parts and a slot for the whole. Students recognize the task: add the two given parts to find the total."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2285 + 3504 = 5789 is correct. Hints show 5 + 4 = 9 in ones place and 8 + 0 = 8 in tens place with no carrying, illustrating addition without regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "1af31ad7b101e5343a5f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True/False format presents a mathematical claim and asks students to judge its validity. The binary choice is standard for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The claim 6392 + 215 = 6392 is nonsensical (adding a number and getting the same number back). The statement is logically invalid even before students verify it arithmetically."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is transparent: check whether adding 215 to 6392 leaves the number unchanged. Students know this violates the principle that addition increases a sum."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6392 + 215 = 6607, not 6392. Answer False is correct. Hints show 2 + 5 = 7 in ones place and 9 + 1 = 10 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "4c5f1ad80bd6e7893c5a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-MCQ with number line asks students to identify the landing position. The four options offer distinct numerical choices and the task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line addition modeling is a Grade 3 standard. Starting from 6459 and advancing 693 units is a realistic addition scenario."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students are told where the dot starts, how far it moves, and asked where it lands. The number line visual supports comprehension and students select from marked positions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6459 + 693 = 7152 is correct. Hints show 9 + 3 = 12 in ones place with a carry and 5 + 9 + 1 = 15 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "a41a16b092e91d45321a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice format with four distinct options provides clear expectations. Students compute the sum and match it to one option."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Direct computation of two three-digit numbers is arithmetically valid and appropriate for Grade 3 mastery building. No extraneous scenario muddies the mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct: what is the sum? Students know to add 634 and 4166 and select the matching option."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "634 + 4166 = 4800 is correct. Hints show 4 + 6 = 10 in ones place with a carry and 3 + 6 + 1 = 10 in tens place with a carry, demonstrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "bd5f72b82bb732c04a48",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks students to verify Grace's solution. The binary choice is unambiguous and the task is standard for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Attributing the computation to a peer (Grace) contextualizes the task authentically. Students practice the mathematical skill of verification in a scenario mirroring classroom collaboration."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is transparent: check whether 168 + 9175 = 9343. Students compute independently or verify the given result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "168 + 9175 = 9343 is correct, and the answer correctly indicates no error. Hints show 8 + 5 = 13 in ones place with a carry and 6 + 7 + 1 = 14 in tens place with a carry."
+          }
+        }
+      },
+      {
+        "sample_id": "b4eab2c96267d722c3b7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Set-fill-in-blank asks students to show the sum on a number line. The instruction is explicit and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation of addition with two four-digit summands is a logical extension of Grade 3 number line work and supports spatial reasoning about magnitude."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students see a scaled number line with labeled intervals and are asked to place the sum of 5515 and 3431. The task is clear and familiar."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5515 + 3431 = 8946 is correct. Hints show 5 + 1 = 6 in ones place and 1 + 3 = 4 in tens place with no carrying, illustrating addition without regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "f0a6e7547cc99644f06d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with a blank clearly marks where students supply the sum. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Direct addition of two three-digit numbers with no scenario is arithmetically valid and appropriate for building procedural fluency in Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is minimal: add 712 and 1695, fill the blank. Students know immediately what operation is required."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "712 + 1695 = 2407 is correct. Hints show 2 + 5 = 7 in ones place and 1 + 9 = 10 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "947111de946ecce53a91",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice with four distinct numerical options. Students compute 2470 + 6450 and select the matching option. The task format is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Two four-digit summands with no scenario is arithmetically valid. The numbers chosen exercise addition with regrouping at the tens place."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct: what is the sum? Students follow standard MCQ procedures to identify the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2470 + 6450 = 8920 is correct. Hints show 0 + 0 = 0 in ones place and 7 + 5 = 12 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "6cbe48b5da1bdd12b45a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Set-fill-in-blank with number line asks students to place the sum. The instruction is clear and the expected response is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line modeling of two four-digit sums is a Grade 3 learning progression. Students apply spatial reasoning to locate sums on a scaled line."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The number line spans 1000 to 4500 with labeled tick marks. Students find the sum of 1890 and 2525 and mark that position."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1890 + 2525 = 4415 is correct. Hints show 0 + 5 = 5 in ones place and 9 + 2 = 11 in tens place with a carry, illustrating regrouping at the tens."
+          }
+        }
+      },
+      {
+        "sample_id": "ea66081965d362670210",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice asks whether two expressions with parentheses yield the same result. The binary logic is clear and appropriate for Grade 3 exploring associative property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Testing whether different groupings of three summands produce the same result is a valid exploration of addition structure. The property is pedagogically sound for building number sense."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students read the two expressions and ask: do they equal the same thing? The question is transparent and the format supports learner autonomy in computing both sides."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both (212 + 55) + 121 and 212 + (55 + 121) equal 388. Answer True is correct. Hints show that 212 + 55 = 267, 267 + 121 = 388 and 55 + 121 = 176, 212 + 176 = 388."
+          }
+        }
+      },
+      {
+        "sample_id": "b76284de641f91d1584a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice compares two sums and asks whether they are equal. The binary logic is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Comparing 783 + 111 to 111 + 636 tests whether students recognize that addition is not commutative when different addends are used. This property distinction is pedagogically valuable."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students are asked to evaluate whether swapping addends on different sides preserves equality. The task is clear and tests whether they compute correctly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "783 + 111 = 894 and 111 + 636 = 747. Since 894 does not equal 747, answer False is correct. Hints show both computations and confirm the inequality."
+          }
+        }
+      },
+      {
+        "sample_id": "aaa21687f575fa8210db",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with directional language asks students to count up from a starting point and fill the endpoint. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Starting at 9025 and counting 292 more is logically equivalent to addition. The phrasing aligns with how students think about number line advancement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is directional and concrete: you start here, count up this far, land where? Students understand they must perform an addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9025 + 292 = 9317 is correct. Hints show 5 + 2 = 7 in ones place and 2 + 9 = 11 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "dbce81392f475679dbaf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with place-value decomposition asks whether Ana's solution is correct. The binary choice is unambiguous despite the additional pedagogical layer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Decomposing numbers into place values before adding is a Grade 3 strategy. The scenario contextualizes this pedagogical approach and invites students to verify the work."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "While the stem is longer due to place-value scaffolding, the core task is clear: determine whether Ana arrived at the correct sum."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7650 + 1110 = 8760, not 8759. Answer correctly indicates has_error: True. Hints show 0 + 0 = 0 in ones and 5 + 1 = 6 in tens with no carrying."
+          }
+        }
+      },
+      {
+        "sample_id": "6f5a9dafebd123971c36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True/False format with a word problem presents a claim about combining two quantities. The binary choice is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Combining two groups into a single total is a canonical application of addition in real-world contexts. The scenario with items is concrete and relatable."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students read the claim that 6448 plus 1253 equals 7701 items in all. They know to verify this arithmetic claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6448 + 1253 = 7701 is correct. Answer True is correct. Hints show 8 + 3 = 11 in ones place with a carry and 4 + 5 + 1 = 10 in tens place with a carry."
+          }
+        }
+      },
+      {
+        "sample_id": "5a340d0d7d302d604a9f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice word problem asks how many items are in all. The question and four distinct numerical options are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Combining two quantities to find a total is a standard real-world application of addition. The scenario is concrete and motivating for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students understand they must combine 5080 items and 4452 items. The question is straightforward and the options guide selection."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5080 + 4452 = 9532 is correct. Hints show 0 + 2 = 2 in ones place and 8 + 5 = 13 in tens place with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "dfaa7841ca685011160e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True/False format with the identity property claim is unambiguous: is adding zero the same as not adding anything?"
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Testing the identity property (a + 0 = a) is a fundamental exploration of addition structure appropriate for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The claim is direct: 2978 plus 0 equals 2978. Students know this is a special property of addition."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2978 + 0 = 2978 is correct. Answer True is correct. Hints show 8 + 0 = 8 in ones and 7 + 0 = 7 in tens, with no carrying."
+          }
+        }
+      },
+      {
+        "sample_id": "b40f8ce6f30f10f0de5b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-fill-in-blank with number bond format is clear: the two parts are given and students supply the whole."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond representation of two-part-to-whole relationships is a Grade 3 standard. The task asks students to find the sum."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The bond visually shows two numbers and a slot for their sum. Students recognize the familiar structure."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2107 + 5172 = 7279 is correct. Hints show 7 + 2 = 9 in ones place and 0 + 7 = 7 in tens place with no carrying."
+          }
+        }
+      },
+      {
+        "sample_id": "ce1693df7fa712c82462",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with thematic element (dance shoes emoji) asks for the sum. The mathematical task is unambiguous despite the theme."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario contextualizes the addition problem but does not interfere with the mathematics. Adding 137 and 8284 is arithmetically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem clearly asks for the sum of two numbers in the context of a thematic character. Students extract the mathematical task."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "137 + 8284 = 8421 is correct. Hints show 7 + 4 = 11 in ones place with a carry and 3 + 8 + 1 = 12 in tens place with a carry."
+          }
+        }
+      },
+      {
+        "sample_id": "c1f6f0563f87236d3271",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection with thematic context asks whether Manny is correct. The binary choice is unambiguous and the theme does not muddy the mathematical question."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A thematic attribution (Moses enjoys olives) contextualizes the problem without altering the arithmetic. The addition task is logically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The core question is clear: determine whether Manny correctly added 2025 and 6964. The thematic wrapper is peripheral."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2025 + 6964 = 8989, not 8990. Answer correctly indicates has_error: True. Hints show 5 + 4 = 9 in ones and 2 + 6 = 8 in tens."
+          }
+        }
+      },
+      {
+        "sample_id": "eaa4f780c616458d60da",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-MCQ on a number line asks students to identify the landing position. The question and four options are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Modeling addition as number line movement from 3870 forward 4746 units is pedagogically sound and logically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students apply familiar number line logic: start at 3870, move forward 4746, identify landing spot from options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "3870 + 4746 = 8616 is correct. Hints show 0 + 6 = 6 in ones and 7 + 4 = 11 in tens with a carry, illustrating regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "738def9a517bc89373b5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Pia is correct. The binary format is unambiguous and the task is standard."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Attributing a computation to a peer (Pia) contextualizes the verification task authentically."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is transparent: check whether 9602 + 43 = 9645. Students compute or verify independently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9602 + 43 = 9645 is correct, and the answer correctly indicates no error. Hints show 2 + 3 = 5 in ones and 0 + 4 = 4 in tens."
+          }
+        }
+      },
+      {
+        "sample_id": "c23998abc058050c95e1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple-choice with four distinct options asks for the sum of zero and one. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Adding zero to one is arithmetically valid and tests the identity property. The problem challenges students to recognize that 0 + 1 = 1 when options include distractors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is direct: what is 0 + 1? Students know this is a basic addition fact."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "0 + 1 = 1 is correct. Distractors include 0, 11 (concatenation error), and 2. Answer 1 is correct and hints verify the addition."
+          }
+        }
+      },
+      {
+        "sample_id": "ea03255ae026c0f1327d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Set-fill-in-blank asks students to show 0 + 1 on a number line. The instruction is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Representing a simple addition (0 + 1) on a number line is a Grade 3 foundational activity. Using a number line to model addition is pedagogically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Students see a number line and are asked to show where zero and one sum to. The task is transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "0 + 1 = 1 is correct. Hints show 0 + 1 = 1 in the ones place, confirming the identity property in action."
+          }
+        }
+      },
+      {
+        "sample_id": "a9ae4a1c2df42919eb7b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Read-fill-in-blank with number bond asks for the sum. The format is unambiguous and the experience mode (hint_gated) does not obscure the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond with two parts presented asks for the whole. This is a standard Grade 3 addition task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The bond shows two numbers; students supply their sum. The task is familiar and clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2566 + 3612 = 6178 is correct. Hints show 6 + 2 = 8 in ones and 6 + 1 = 7 in tens with no carrying."
+          }
+        }
+      },
+      {
+        "sample_id": "e202eee31fb2860ce62c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True/False format with direct arithmetic claim is unambiguous. Students evaluate whether 7256 + 1600 = 8856."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Direct arithmetic claim testing two four-digit summands is valid. The experience mode (mastery_drill) suggests this item reinforces automaticity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The claim is direct and students know to compute or verify the sum."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7256 + 1600 = 8856 is correct. Answer True is correct. Hints show 6 + 0 = 6 in ones and 5 + 0 = 5 in tens with no carrying."
+          }
+        }
+      },
+      {
+        "sample_id": "68b9e06d6841e207f6e8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Manny is correct. The binary choice is unambiguous and the scaffolded experience mode supports learners."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Attributing the computation to Manny contextualizes peer verification. The addition 7950 + 164 is arithmetically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The task is transparent: check whether Manny correctly added 7950 and 164."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7950 + 164 = 8114, not 8124. Answer correctly indicates has_error: True. Hints show 0 + 4 = 4 in ones and 5 + 6 = 11 in tens with a carry."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "add",
+        "clause": "Add",
+        "verdict": "PASS",
+        "reasoning": "All 39 samples involve the core operation of addition. Whether presented as direct computation, error detection, true/false evaluation, or property exploration, the addition operation is central and executed correctly in every sample.",
+        "sample_ids": ["6ea1e91bcfbf247bf0fb", "3ef281afe97c55b29f36", "e652033d7dfca58f3448", "cb719ad566ca11af17cf", "3c0e29abd08332da2355", "9137b187cc320d50e742", "6e1c78718cb6f5ad1502", "415e2c94ef8fb549ac25", "f4d07b04115f8918b2a5", "ca5f48a6dda93cfb6d39", "e7a9915546c39d047ceb", "72e3283ff5e9e4a7d28b", "896fe4a902511c0c1422", "e7aeb760b2fe1c591fae", "1af31ad7b101e5343a5f", "4c5f1ad80bd6e7893c5a", "a41a16b092e91d45321a", "bd5f72b82bb732c04a48", "b4eab2c96267d722c3b7", "f0a6e7547cc99644f06d", "947111de946ecce53a91", "6cbe48b5da1bdd12b45a", "ea66081965d362670210", "b76284de641f91d1584a", "aaa21687f575fa8210db", "dbce81392f475679dbaf", "6f5a9dafebd123971c36", "5a340d0d7d302d604a9f", "dfaa7841ca685011160e", "b40f8ce6f30f10f0de5b", "ce1693df7fa712c82462", "c1f6f0563f87236d3271", "eaa4f780c616458d60da", "738def9a517bc89373b5", "c23998abc058050c95e1", "ea03255ae026c0f1327d", "a9ae4a1c2df42919eb7b", "e202eee31fb2860ce62c", "68b9e06d6841e207f6e8"]
+      },
+      {
+        "requirement_id": "numbers",
+        "clause": "numbers",
+        "verdict": "PASS",
+        "reasoning": "Every sample operates on numerical quantities without objects or abstract entities as primary units. Students add digits, sums, and place values, all purely numerical. Even word problems with contexts center on numerical combination, never object counting or non-numeric operations.",
+        "sample_ids": ["6ea1e91bcfbf247bf0fb", "3ef281afe97c55b29f36", "e652033d7dfca58f3448", "cb719ad566ca11af17cf", "3c0e29abd08332da2355", "9137b187cc320d50e742", "6e1c78718cb6f5ad1502", "415e2c94ef8fb549ac25", "f4d07b04115f8918b2a5", "ca5f48a6dda93cfb6d39", "e7a9915546c39d047ceb", "72e3283ff5e9e4a7d28b", "896fe4a902511c0c1422", "e7aeb760b2fe1c591fae", "1af31ad7b101e5343a5f", "4c5f1ad80bd6e7893c5a", "a41a16b092e91d45321a", "bd5f72b82bb732c04a48", "b4eab2c96267d722c3b7", "f0a6e7547cc99644f06d", "947111de946ecce53a91", "6cbe48b5da1bdd12b45a", "ea66081965d362670210", "b76284de641f91d1584a", "aaa21687f575fa8210db", "dbce81392f475679dbaf", "6f5a9dafebd123971c36", "5a340d0d7d302d604a9f", "dfaa7841ca685011160e", "b40f8ce6f30f10f0de5b", "ce1693df7fa712c82462", "c1f6f0563f87236d3271", "eaa4f780c616458d60da", "738def9a517bc89373b5", "c23998abc058050c95e1", "ea03255ae026c0f1327d", "a9ae4a1c2df42919eb7b", "e202eee31fb2860ce62c", "68b9e06d6841e207f6e8"]
+      },
+      {
+        "requirement_id": "sums_up_to_10000",
+        "clause": "sums up to 10 000",
+        "verdict": "PASS",
+        "reasoning": "All sums in the packet respect the upper bound of 10,000. The smallest sum is 1 (from 0 + 1); the largest is 10,000 exactly (from 8511 + 1489). Intermediate sums range across 1030, 3153, 5789, 7701, 8856, 9960, 9999, and others, demonstrating comprehensive coverage within the specified constraint.",
+        "sample_ids": ["6ea1e91bcfbf247bf0fb", "3ef281afe97c55b29f36", "e652033d7dfca58f3448", "cb719ad566ca11af17cf", "3c0e29abd08332da2355", "9137b187cc320d50e742", "6e1c78718cb6f5ad1502", "415e2c94ef8fb549ac25", "f4d07b04115f8918b2a5", "ca5f48a6dda93cfb6d39", "e7a9915546c39d047ceb", "72e3283ff5e9e4a7d28b", "896fe4a902511c0c1422", "e7aeb760b2fe1c591fae", "1af31ad7b101e5343a5f", "4c5f1ad80bd6e7893c5a", "a41a16b092e91d45321a", "bd5f72b82bb732c04a48", "b4eab2c96267d722c3b7", "f0a6e7547cc99644f06d", "947111de946ecce53a91", "6cbe48b5da1bdd12b45a", "ea66081965d362670210", "b76284de641f91d1584a", "aaa21687f575fa8210db", "dbce81392f475679dbaf", "6f5a9dafebd123971c36", "5a340d0d7d302d604a9f", "dfaa7841ca685011160e", "b40f8ce6f30f10f0de5b", "ce1693df7fa712c82462", "c1f6f0563f87236d3271", "eaa4f780c616458d60da", "738def9a517bc89373b5", "c23998abc058050c95e1", "ea03255ae026c0f1327d", "a9ae4a1c2df42919eb7b", "e202eee31fb2860ce62c", "68b9e06d6841e207f6e8"]
+      },
+      {
+        "requirement_id": "with_regrouping",
+        "clause": "with",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples demonstrate addition requiring regrouping (carrying) at ones, tens, or both place values. Sample 1086 + 2067 carries from ones to tens; sample 8511 + 1489 carries at both levels; sample 720 + 310 requires no carry. The packet includes 23 samples with regrouping and 16 without, ensuring students practice both modes thoroughly.",
+        "sample_ids": ["6ea1e91bcfbf247bf0fb", "9137b187cc320d50e742", "6e1c78718cb6f5ad1502", "415e2c94ef8fb549ac25", "f4d07b04115f8918b2a5", "ca5f48a6dda93cfb6d39", "e7a9915546c39d047ceb", "896fe4a902511c0c1422", "1af31ad7b101e5343a5f", "4c5f1ad80bd6e7893c5a", "a41a16b092e91d45321a", "bd5f72b82bb732c04a48", "f0a6e7547cc99644f06d", "947111de946ecce53a91", "6cbe48b5da1bdd12b45a", "ea66081965d362670210", "b76284de641f91d1584a", "aaa21687f575fa8210db", "ce1693df7fa712c82462", "eaa4f780c616458d60da", "68b9e06d6841e207f6e8", "dbce81392f475679dbaf", "6f5a9dafebd123971c36", "5a340d0d7d302d604a9f"]
+      },
+      {
+        "requirement_id": "without_regrouping",
+        "clause": "without",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples demonstrate addition without regrouping or carrying. Sample 1620 + 2356 requires 0 + 6 = 6 ones and 2 + 5 = 7 tens with no carries; sample 2978 + 0 tests the identity property and requires no carrying; sample 0 + 1 represents the simplest case. The packet includes 16 samples without regrouping, providing adequate practice in non-carrying scenarios.",
+        "sample_ids": ["3ef281afe97c55b29f36", "e652033d7dfca58f3448", "cb719ad566ca11af17cf", "3c0e29abd08332da2355", "72e3283ff5e9e4a7d28b", "e7aeb760b2fe1c591fae", "b4eab2c96267d722c3b7", "dbce81392f475679dbaf", "dfaa7841ca685011160e", "b40f8ce6f30f10f0de5b", "c1f6f0563f87236d3271", "738def9a517bc89373b5", "c23998abc058050c95e1", "ea03255ae026c0f1327d", "a9ae4a1c2df42919eb7b", "e202eee31fb2860ce62c"]
+      },
+      {
+        "requirement_id": "regrouping",
+        "clause": "regrouping",
+        "verdict": "PASS",
+        "reasoning": "The concept of regrouping is explicitly demonstrated in 23 samples where carries occur. Hints consistently show regrouping steps such as keeping 3 in ones and carrying 1 ten when 6 + 7 = 13. Samples with regrouping provide direct instruction in this key procedure central to multi-digit addition mastery.",
+        "sample_ids": ["6ea1e91bcfbf247bf0fb", "9137b187cc320d50e742", "6e1c78718cb6f5ad1502", "415e2c94ef8fb549ac25", "f4d07b04115f8918b2a5", "ca5f48a6dda93cfb6d39", "e7a9915546c39d047ceb", "896fe4a902511c0c1422", "1af31ad7b101e5343a5f", "4c5f1ad80bd6e7893c5a", "a41a16b092e91d45321a", "bd5f72b82bb732c04a48", "f0a6e7547cc99644f06d", "947111de946ecce53a91", "6cbe48b5da1bdd12b45a", "aaa21687f575fa8210db", "ce1693df7fa712c82462", "eaa4f780c616458d60da", "68b9e06d6841e207f6e8", "ea66081965d362670210", "b76284de641f91d1584a", "6f5a9dafebd123971c36", "5a340d0d7d302d604a9f"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

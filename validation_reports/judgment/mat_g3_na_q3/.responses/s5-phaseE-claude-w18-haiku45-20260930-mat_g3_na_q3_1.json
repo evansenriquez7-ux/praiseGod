@@ -1,0 +1,698 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe18-mat_g3_na_q3_1-20260930",
+  "mat_g3_na_q3_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Grade 3 students are developmentally ready for multiplication properties and comparing products using 6–9 tables. Stem clarity and visual formatting support independent reading. Hint structure progressively builds reasoning. Only minor issue is that some samples use multiplication tables (2, 3, 4, 5) below the specified range, but the cognitive demand itself remains appropriate."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "The competency explicitly specifies 6, 7, 8, and 9 multiplication tables. Approximately half of the printed samples use tables outside this range (2, 3, 4, 5). This represents a systematic violation of the scope boundary. Samples 1, 2, 5, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 25, and 28 all violate the table restriction."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The decomposition requirement that problems address the exact wording of the competency is not met. The competency lists 6, 7, 8, and 9 as the exclusive set of multiplication tables to illustrate properties for. Across 29 samples, 15 introduce operands from multiplication tables 2, 3, 4, or 5, which the competency neither names nor permits.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The printed requirements include the clause 6_7_8_and_9_multiplication_tables: six, seven, eight, and nine multiplication tables. This clause requires that all problems use only these tables. Yet the rendered samples violate this constraint extensively. The decomposition itself is correct, but the generator is not honoring it consistently, indicating either a generator defect or a configuration error that fails to constrain operand selection to the specified tables."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "All five multiplication properties from the competency are illustrated across samples: identity property (one times any number) appears in samples 6, 7, 8, 13, 23, 27; zero property in 3, 26, 29; commutative property in 1, 18, 24; associative property in 12, 14, 16, 19, 20, 25; and distributive property in 4, 9, 10, 11, 21. Despite the table-range failures, property types are well represented."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The difficulty progression is appropriate for Grade 3 Quarter 3. Early samples use simple identity and zero properties with direct computation. Later samples introduce associative and distributive properties with two-step reasoning. Error-detection and true-false formats scaffold understanding. The generator appears calibrated to the correct cognitive level for mastery development in this quarter."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The generator uses multiple response formats to illustrate different aspects of the properties. Multiple-choice questions dominate and are suitable for testing understanding of commutativity, associativity, and distributivity. Cloze format (samples 6, 23) tests direct recall with identity property. True-false items (7, 8, 27, 1000) test conceptual knowledge. Error-detection format (3, 29) builds meta-mathematical reasoning about validity."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "5d4ec93aab52e32d040d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem poses a clear true-or-false comparison: is the product of 5 times 6 the same as the product of 6 times 5. Options are unambiguous. Hint sequence confirms both multiply to 30. No reading ambiguity exists in framing the commutative property question."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While the mathematical content is valid, this sample violates the competency constraint by using 5 as an operand. The competency specifies 6, 7, 8, and 9 tables only. This creates an out-of-scope context that contradicts the binding curriculum requirement even though the logic of the comparison itself is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is grammatically direct and uses the phrase is the same as, which Grade 3 students understand. Hints follow a progression: statement of what both sides do, explicit calculation, and conclusion. No Grade 3 vocabulary barrier exists. Distractors in options are logically varied."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "5 times 6 equals 30 and 6 times 5 equals 30. The answer True is correct. Each hint equation checks: 5 times 6 equals 30 is correct, 6 times 5 equals 30 is correct. No arithmetic errors exist in the sample or its justification."
+          }
+        }
+      },
+      {
+        "sample_id": "39af49088687ab791bb1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly contrasts two products: 4 times 8 versus 8 times 9. The question asks whether they are the same. Options are mutually exclusive. The comparison structure is unambiguous. No reading obstacle prevents a Grade 3 learner from understanding the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 4 as an operand, which is not in the specified 6, 7, 8, and 9 tables. Although the comparison itself (testing that different pairs do not have equal products) is logically sound, the inclusion of 4 table violates the competency scope boundary."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is parallel and easy to parse. The three hints build from identifying what each side multiplies, to computing each product with explanation, to drawing the conclusion. No terminology barrier exists. Multiple-choice options are clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "4 times 8 equals 32, which is correct. 8 times 9 equals 72, which is correct. The two products are indeed different, so False is the correct answer. No calculation errors exist in stem, hints, or answer."
+          }
+        }
+      },
+      {
+        "sample_id": "e4202712b5d1fc203c40",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear. Rico solved a problem and claimed the answer is 0. The question asks whether Rico is correct. No ambiguity about whether the learner must identify Rico's work or the missing number. The response structure is explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the zero property using 6 times 0, which is within the specified table range. The mathematical logic is sound: any number multiplied by zero equals zero. The context of evaluating a student solution is pedagogically appropriate for building error-detection skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem introduces the scenario with a named student, which is relatable. The problem statement is concrete. Hints progress from describing the groups conceptually, to offering an alternate framing, to stating the correct product. No vocabulary barrier. Learner knows to decide whether the claimed answer is correct."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The product 6 times 0 equals 0. The first hint correctly describes six groups of zero. The second hint offers an equivalent conceptualization: zero groups of 6 contain nothing. The third hint confirms the product is 0. Rico's answer of 0 is correct, so has_error is False and correct_value is 0."
+          }
+        }
+      },
+      {
+        "sample_id": "fe30f5b185b960024365",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares two expressions: 8 times (7 plus 2) versus (8 times 7) plus (8 times 2). The structure of the distributive property is clear. The is the same as phrasing is unambiguous. Options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample uses 8, 7, and 2 as operands. While 2 is not in the 6–9 range, the core mathematical logic tests the distributive property correctly. Both sides of the expression are computed step-by-step and verified to yield 72. The conceptual validity of the property demonstration is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The parentheses make the order of operations explicit. The hints follow the left side fully (sum first, then multiply), then the right side (distribute and multiply separately, then sum), making the parallel structure obvious. A Grade 3 learner can follow the two-step progression without ambiguity."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 7 plus 2 equals 9, then 8 times 9 equals 72. All correct. Right side: 8 times 7 equals 56, 8 times 2 equals 16, and 56 plus 16 equals 72. All correct. Both sides yield 72, so True is the correct answer. Every calculation in hints is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "2e140b767ffbf1061d8d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is straightforward: does 2 times 9 equal 9 times 8. The is the same as phrasing eliminates reading ambiguity. Options present standard choices. The learner task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 2 and 8 as operands. While 8 is in the specified range, 2 is not. The competency names 6, 7, 8, and 9 exclusively. Using 2 violates the binding table constraint, even though the logical comparison itself (testing that different ordered pairs yield different products) remains sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is simple and parallel. Hints identify what each side multiplies, show the products (18 and 72), and conclude they differ. Grade 3 vocabulary and phrasing are appropriate. No terminology or structural confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 times 9 equals 18. 9 times 8 equals 72. These products differ, so the answer False is correct. All hint calculations are accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "5b8b118252437966d2ec",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem is clear: fill the blank in 1 times 6 equals blank. Options are four distinct numbers. No ambiguity about what the learner must supply or how to interpret the multiplication."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the identity property: 1 times 6 equals 6. Both 1 and 6 fall within the acceptable set (6 is explicitly in 6–9 tables). The mathematical context correctly demonstrates that multiplying by 1 preserves the other operand."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is minimal and uncluttered. Hints explain the groups interpretation, reference the times table, and state the product. Grade 3 learners are accustomed to fill-in-the-blank multiplication problems. Options differ by 1 or 2, which are plausible distractors."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1 times 6 equals 6. This is correct. The hints state the product is 6, and the answer key confirms 6 is correct. No arithmetic error."
+          }
+        }
+      },
+      {
+        "sample_id": "c70c45f751375250074a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a direct statement with a true-or-false choice. The learner must decide whether the equation is true. No reading ambiguity. The format is standard for Grade 3."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement 1 times 9 equals 9 correctly illustrates the identity property with 9 from the specified table range. The mathematical logic is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is direct and uses familiar multiplication notation. The hints explain the groups framing, note that 1 group of 9 gives 9, and confirm the product is 9. The reasoning is accessible to Grade 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "1 times 9 equals 9, so the statement is True. The answer is correct. Hints verify the calculation."
+          }
+        }
+      },
+      {
+        "sample_id": "da6de8210c1253480926",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a false statement (9 times 1 equals 8) and asks true or false. The learner must evaluate the arithmetic claim. No ambiguity in task structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement tests the identity property using 9 from the specified range. The false claim (product is 8 instead of 9) serves to reinforce that multiplying by 1 preserves the number exactly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a single equation with a clear true-false choice. Hints explain the groups, note the equivalence between 9 groups of 1 and 1 group of 9, and confirm the actual product is 9. Grade 3 learners understand this reasoning level."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "9 times 1 equals 9, not 8. The statement is false, and the answer False is correct. Hints correctly show the product is 9."
+          }
+        }
+      },
+      {
+        "sample_id": "8d0d9b667d41657859e0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares 8 times (7 plus 4) versus (8 times 7) plus 4. The parentheses clearly indicate the order of operations. The is the same as phrasing is unambiguous. Options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample uses 8, 7, and 4 as operands. While 4 is outside the 6–9 range, the mathematical logic is sophisticated and pedagogically valuable: it tests whether learners understand that 4 must also be multiplied by 8 for the distributive property to hold, not just added after."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is clear with parentheses showing grouping. The three hints are detailed: left side computation, right side computation with the key insight that only 7 was multiplied, and the conclusion that sides differ. A Grade 3 learner following systematically understands the error."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 7 plus 4 equals 11, then 8 times 11 equals 88. Correct. Right side: 8 times 7 equals 56, then 56 plus 4 equals 60. Correct. The products 88 and 60 differ, so False is correct. Hints accurately identify the error."
+          }
+        }
+      },
+      {
+        "sample_id": "8aba33ece3353b6ef714",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares 7 times (8 plus 4) versus (7 times 8) plus 4 using clear parentheses. The is the same as framing is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample uses 7, 8, and 4 as operands. Although 4 is outside the 6–9 range, the mathematical context correctly tests a key aspect of the distributive property: demonstrating that both addends must be multiplied. The conceptual validity is high."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is structurally clear with parentheses. Hints follow the same pattern as the previous distributive-property error sample: compute left side, compute right side with explicit note about which term was forgotten, draw conclusion. The format is learner-accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 8 plus 4 equals 12, then 7 times 12 equals 84. Correct. Right side: 7 times 8 equals 56, then 56 plus 4 equals 60. Correct. Products are 84 and 60, which differ, so False is correct. All calculations in hints are valid."
+          }
+        }
+      },
+      {
+        "sample_id": "11a43011b2860cd4b0bd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares 6 times (8 plus 5) versus (6 times 8) plus (6 times 5). Parentheses are explicit. The question is clear. No ambiguity in structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample uses 6, 8, and 5 as operands. While 5 is outside the 6–9 range, both 6 and 8 are within it. The mathematical logic correctly demonstrates the distributive property with all addends multiplied."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem uses clear parentheses to show grouping. Hints follow the left-side-then-right-side structure. Each step is explained. A Grade 3 learner can verify the arithmetic."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 8 plus 5 equals 13, then 6 times 13 equals 78. Correct. Right side: 6 times 8 equals 48 and 6 times 5 equals 30, sum is 78. Correct. Both sides yield 78, so True is correct. All calculations verified."
+          }
+        }
+      },
+      {
+        "sample_id": "8fd1b205b5cf2beb7cf3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares two grouped products: (2 times 6) times 3 versus 2 times (6 times 3). Parentheses clearly show the associativity being tested. No reading ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 2, 6, and 3 as operands. While 6 is in the range, 2 and 3 are not in the specified 6–9 tables. This violates the competency boundary, even though the associative property logic itself is mathematically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The parentheses clearly indicate where to group. Hints show left-side computation step-by-step, then right-side computation, then the conclusion. The parallel structure makes understanding straightforward."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 2 times 6 equals 12, then 12 times 3 equals 36. Correct. Right side: 6 times 3 equals 18, then 2 times 18 equals 36. Correct. Both yield 36, so True is correct. All arithmetic in hints is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "2d786d09c3678da854f7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a direct question: What is 7 times 1. Multiple-choice options are clearly distinct numbers. No ambiguity about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the identity property using 7 from the specified table range. The mathematical context correctly shows that 1 times any number preserves that number."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a simple multiplication question. Hints explain the groups framing, note the equivalence between 7 groups of 1 and 1 group of 7, and state the product is 7. Grade 3 reasoning patterns are matched."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7 times 1 equals 7. The answer is correct. Hints verify the computation."
+          }
+        }
+      },
+      {
+        "sample_id": "0b1874000cd2c107037c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares (3 times 8) times 2 versus 3 times (8 times 2) with clear parenthetical grouping. The is the same as framing is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 3, 8, and 2 as operands. While 8 is in the range, 3 and 2 are not. This violates the specified 6–9 table constraint, even though the associative property demonstration is logically valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Parentheses are explicit. Hints show left-side then right-side computation with clear step-by-step calculation. A Grade 3 learner can follow the two-step multiplication structure."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 3 times 8 equals 24, then 24 times 2 equals 48. Correct. Right side: 8 times 2 equals 16, then 3 times 16 equals 48. Correct. Both yield 48, so True is correct. All arithmetic verified."
+          }
+        }
+      },
+      {
+        "sample_id": "6b93f6c3ea2b48c79ff2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem contrasts 8 times 7 with 7 times 4. The is the same as framing is unambiguous. Options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 8, 7, and 4 as operands. While 8 and 7 are in the range, 4 is not. The comparison being tested (that reordering with different factors yields different products) is logically sound but violates the table constraint."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a parallel comparison. Hints identify what each side multiplies, give the products, and conclude they differ. The reasoning is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "8 times 7 equals 56. 7 times 4 equals 28. These products differ, so False is correct. Hints are arithmetically accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "28e1bfd1e9876af574eb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares (3 times 9) times 3 versus 3 times (9 times 3) with clear parentheses. The is the same as phrasing is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 3, 9, and 3 as operands. While 9 is in the range, 3 is not. This violates the 6–9 table constraint. The associative property demonstration itself is sound mathematically."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Parentheses clearly indicate grouping. Hints compute left side, right side, and compare results. The structure supports Grade 3 reasoning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 3 times 9 equals 27, then 27 times 3 equals 81. Correct. Right side: 9 times 3 equals 27, then 3 times 27 equals 81. Correct. Both yield 81, so True is correct. Arithmetic verified."
+          }
+        }
+      },
+      {
+        "sample_id": "c230bc5337e92c168eae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem contrasts 7 times 8 with 8 times 3. The is the same as framing is clear. Options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 7, 8, and 3 as operands. While 7 and 8 are in the range, 3 is not. This violates the table constraint, though the comparison logic is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is straightforward. Hints identify operands, compute products, and conclude they differ. The reasoning is Grade 3 accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "7 times 8 equals 56. 8 times 3 equals 24. These differ, so False is correct. Hints accurately compute products."
+          }
+        }
+      },
+      {
+        "sample_id": "c179de215e0f4c8cbf05",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks whether 4 times 6 is the same as 6 times 4. The question structure is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 4 and 6 as operands. While 6 is in the range, 4 is not. The commutative property demonstration is mathematically valid but violates the specified table constraint."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a parallel comparison using familiar multiplication format. Hints explain that both sides multiply the same numbers in different order, show the products match at 24, and conclude the sides are the same. Grade 3 clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "4 times 6 equals 24 and 6 times 4 equals 24. These are equal, so True is correct. All arithmetic in hints is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "93d86f5edc6690af21d2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares (3 times 7) times 3 versus 3 times (7 times 2) with clear parentheses. The is the same as framing is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 3, 7, and 2 as operands. While 7 is in the range, 3 and 2 are not. This violates the table constraint, though the associative property logic is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Parentheses indicate grouping clearly. Hints compute both sides step-by-step and compare. The format supports Grade 3 reasoning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 3 times 7 equals 21, then 21 times 3 equals 63. Correct. Right side: 7 times 2 equals 14, then 3 times 14 equals 42. Correct. Products 63 and 42 differ, so False is correct. Arithmetic verified."
+          }
+        }
+      },
+      {
+        "sample_id": "4f66b23a8aca3ce1fd9c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares (3 times 7) times 3 versus 3 times (7 times 2) using explicit parentheses. The is the same as phrasing is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 3, 7, and 2 as operands. The note: sample is identical to seed 608 (sample 19), suggesting it may be a deliberate test variant. While 7 is in range, 3 and 2 violate the table constraint."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Parentheses are explicit. Hints follow the same computational pattern as the previous associative error samples. Learner can verify the difference by following the hints."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 3 times 7 equals 21, then 21 times 3 equals 63. Right side: 7 times 2 equals 14, then 3 times 14 equals 42. Products differ, False is correct. Calculations verified."
+          }
+        }
+      },
+      {
+        "sample_id": "804957634e25e00a734d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem includes a thematic introduction about Sir Rez enjoying dance shoes, followed by a clear comparison: is 7 times (5 plus 7) the same as (7 times 5) plus (7 times 7). The mathematical question is unambiguous despite the theme."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 7, 5, and 7 as operands. While 7 is in the range, 5 is not. The theme of dance shoes does not interfere with the mathematics, but the table constraint is violated."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The thematic opening with emoji and name personalizes the problem. The mathematical stem with parentheses is clear. Hints follow the left-then-right structure. Grade 3 learners can separate theme from mathematics."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 5 plus 7 equals 12, then 7 times 12 equals 84. Right side: 7 times 5 equals 35, 7 times 7 equals 49, sum is 84. Both yield 84, so True is correct. All arithmetic verified."
+          }
+        }
+      },
+      {
+        "sample_id": "1085aab7a3a0c3112e79",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem includes thematic introduction about Isko enjoying basketballs, then asks whether 2 times 7 is the same as 7 times 8. The mathematical comparison is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 2, 7, and 8 as operands. While 8 and 7 are in the range, 2 is not. The basketball theme does not interfere with the mathematics, but the table constraint is violated."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The theme personalizes the item without interfering with the mathematical task. The stem is clear. Hints identify operands, compute products, and draw the conclusion that they differ. Format is Grade 3 appropriate."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "2 times 7 equals 14. 7 times 8 equals 56. These differ, so False is correct. Hints accurately compute products."
+          }
+        }
+      },
+      {
+        "sample_id": "f4631e266939c8a9ade9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem is direct: fill the blank in 6 times 1 equals blank. No ambiguity about the task. Options are distinct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the identity property using 6 and 1 from the specified range. The mathematical logic is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is minimal and clear. Hints explain the groups, reference the times table, and state the product. Distractors differ by 1, which are reasonable wrong answers."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6 times 1 equals 6. The answer is correct. Hints verify the computation."
+          }
+        }
+      },
+      {
+        "sample_id": "64e13483d716c8408dfb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks whether 6 times 7 is the same as 7 times 6. The is the same as framing is clear and unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample uses 6 and 7 from the specified table range. The commutative property is tested correctly with operands fully within scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is parallel and easy to parse. Hints explain that both sides multiply the same numbers in different order, compute the product 42 for both, and conclude they are the same. The reasoning matches Grade 3 development."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6 times 7 equals 42 and 7 times 6 equals 42. These are equal, so True is correct. All arithmetic in hints is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "43dbaeb16587bef14da3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem compares (2 times 8) times 2 versus 2 times (8 times 3) with explicit parentheses. The is the same as framing is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 2, 8, and 3 as operands. While 8 is in the range, 2 and 3 are not. The associative property logic is sound but violates the table constraint."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Parentheses clearly show grouping. Hints compute left side, right side, and compare. The step-by-step format supports Grade 3 learners."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side: 2 times 8 equals 16, then 16 times 2 equals 32. Right side: 8 times 3 equals 24, then 2 times 24 equals 48. Products 32 and 48 differ, so False is correct. Arithmetic verified."
+          }
+        }
+      },
+      {
+        "sample_id": "9b9ba42a8a3f8c5b0a7b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a direct question: What is 0 times 8. Multiple-choice options are distinct. No ambiguity about the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the zero property using 0 and 8 from the specified range. The mathematical context correctly shows that zero times any number equals zero."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a simple multiplication question. Hints explain the groups interpretation, reference the times table, and state the product is 0. Grade 3 learner understanding level is matched."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "0 times 8 equals 0. The answer is correct. Hints verify the computation."
+          }
+        }
+      },
+      {
+        "sample_id": "329eddc897e5fdea7e59",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is a false statement (6 times 1 equals 7) with true-or-false choice. The learner must evaluate the claim. No ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement tests the identity property using 6 from the specified range. The false claim (product is 7 instead of 6) reinforces that multiplying by 1 preserves the number. Note: response flags experience as hint_gated."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is straightforward. Hints explain the groups, note the equivalence with alternate grouping, and confirm the actual product is 6. The reasoning is Grade 3 accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "6 times 1 equals 6, not 7. The statement is false, and the answer False is correct. Hints accurately show the product is 6."
+          }
+        }
+      },
+      {
+        "sample_id": "1e44f7476d0b3de0584f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks whether 3 times 7 is the same as 7 times 5. The is the same as framing is unambiguous. Note: response flags experience as mastery_drill."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The sample uses 3, 7, and 5 as operands. While 7 is in the range, 3 and 5 are not. This violates the table constraint, though the comparison logic (different pairs yield different products) is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem structure is parallel. Hints identify what each side multiplies, compute products (21 and 35), and conclude they differ. The format is clear for mastery drill context."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "3 times 7 equals 21. 7 times 5 equals 35. These differ, so False is correct. Hints accurately compute products."
+          }
+        }
+      },
+      {
+        "sample_id": "4c5ff4a7f9a66667cac6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear. Manny claims 0 times 7 equals 7, and the learner must determine whether he is correct. No ambiguity. Note: response flags experience as scaffolded."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The sample illustrates the zero property and error detection using 0 and 7 from the specified range. The mathematical logic correctly identifies that zero times any number equals zero, not the operand."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem introduces a named student and presents the problem. The learner must judge whether the answer is correct. Hints explain the groups interpretation, reference the times table, and confirm the actual product is 0. Grade 3 scaffolded reasoning is supported."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "0 times 7 equals 0, not 7. Manny's claim is incorrect. The answer has_error is True and correct_value is 0. Hints accurately show the product is 0."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "illustrate_and_apply_properties_of_multiplication",
+        "clause": "Illustrate and apply properties of multiplication",
+        "verdict": "PASS",
+        "reasoning": "The rendered samples illustrate and test application of all five multiplication properties across 29 items. Commutative property is demonstrated in samples 1, 18, and 24 where reordering the factors does not change the product. Associative property is tested in samples 12, 14, 16, 19, 20, and 25 where changing the grouping does not alter the result. Identity property appears in samples 6, 7, 8, 13, 23, and 27. Zero property is shown in samples 3, 26, and 29. Distributive property is demonstrated in samples 4, 9, 10, 11, and 21.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "c179de215e0f4c8cbf05", "64e13483d716c8408dfb", "8fd1b205b5cf2beb7cf3", "0b1874000cd2c107037c", "28e1bfd1e9876af574eb", "43dbaeb16587bef14da3", "5b8b118252437966d2ec", "c70c45f751375250074a", "da6de8210c1253480926", "2d786d09c3678da854f7", "329eddc897e5fdea7e59", "f4631e266939c8a9ade9", "e4202712b5d1fc203c40", "9b9ba42a8a3f8c5b0a7b", "4c5ff4a7f9a66667cac6", "fe30f5b185b960024365", "8d0d9b667d41657859e0", "8aba33ece3353b6ef714", "11a43011b2860cd4b0bd", "804957634e25e00a734d"]
+      },
+      {
+        "requirement_id": "6_7_8_and_9_multiplication_tables",
+        "clause": "6, 7, 8, and 9 multiplication tables",
+        "verdict": "FAIL",
+        "reasoning": "The competency explicitly restricts all illustrated problems to use only the 6, 7, 8, and 9 multiplication tables. Systematic examination of all 29 samples reveals that 15 samples introduce operands from multiplication tables 2, 3, 4, or 5, which are not in the specified set. Samples 1, 2, 5, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 25, and 28 all contain operands outside the specified range. The generator generates problems that violate this binding constraint in approximately 52 percent of the rendered sample packet.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "39af49088687ab791bb1", "2e140b767ffbf1061d8d", "8fd1b205b5cf2beb7cf3", "0b1874000cd2c107037c", "6b93f6c3ea2b48c79ff2", "28e1bfd1e9876af574eb", "c230bc5337e92c168eae", "c179de215e0f4c8cbf05", "93d86f5edc6690af21d2", "4f66b23a8aca3ce1fd9c", "804957634e25e00a734d", "1085aab7a3a0c3112e79", "43dbaeb16587bef14da3", "1e44f7476d0b3de0584f"]
+      },
+      {
+        "requirement_id": "one_multiplied_by_any_number",
+        "clause": "one multiplied by any number is equal to the number",
+        "verdict": "PASS",
+        "reasoning": "The identity property is demonstrated across six samples with the pattern 1 times a number equals the number. Sample 5b8b (seed 64) shows 1 times 6 equals 6 in cloze format. Sample c70c (seed 75) shows 1 times 9 equals 9 in true-false format. Sample da6d (seed 500) shows 9 times 1 equals 9 (commutative arrangement) in true-false format with answer False to the incorrect claim 9 times 1 equals 8. Sample 2d78 (seed 602) asks what 7 times 1 equals, with answer 7. Sample f463 (seed 800) shows 6 times 1 equals 6 in cloze format. Sample 329e (seed 1000) shows 6 times 1 equals 7 as a false statement in true-false format.",
+        "sample_ids": ["5b8b118252437966d2ec", "c70c45f751375250074a", "da6de8210c1253480926", "2d786d09c3678da854f7", "f4631e266939c8a9ade9", "329eddc897e5fdea7e59"]
+      },
+      {
+        "requirement_id": "zero_multiplied_by_any_number",
+        "clause": "zero multiplied by any number is zero",
+        "verdict": "PASS",
+        "reasoning": "The zero property is clearly demonstrated in three samples. Sample e420 (seed 44) presents error detection where Rico claims 6 times 0 equals 0, which is correct, with hints explaining the groups interpretation and confirming the product is 0. Sample 9b9b (seed 901) asks what 0 times 8 equals, with answer 0 and hints confirming the product. Sample 4c5f (seed 1002) presents error detection where Manny claims 0 times 7 equals 7, which is incorrect, and the learner identifies the error with correct value 0. All three samples use operands from the specified 6–9 range for at least one factor, and all correctly establish that zero times any number yields zero.",
+        "sample_ids": ["e4202712b5d1fc203c40", "9b9ba42a8a3f8c5b0a7b", "4c5ff4a7f9a66667cac6"]
+      },
+      {
+        "requirement_id": "changing_the_order",
+        "clause": "changing the order of the numbers being multiplied does not change the product",
+        "verdict": "CONCERN",
+        "reasoning": "The commutative property is tested in three samples: 5d4e (seed 42) compares 5 times 6 versus 6 times 5, both equaling 30 with answer True. Sample c179 (seed 607) compares 4 times 6 versus 6 times 4, both equaling 24 with answer True. Sample 64e1 (seed 801) compares 6 times 7 versus 7 times 6, both equaling 42 with answer True. While the mathematical demonstrations are correct, sample 5d4e uses 5 which is outside the 6–9 range, and sample c179 uses 4 which is also outside the range. Only sample 64e1 uses operands fully within the specified tables. The property is covered but limited to essentially one fully compliant instance.",
+        "sample_ids": ["5d4ec93aab52e32d040d", "c179de215e0f4c8cbf05", "64e13483d716c8408dfb"]
+      },
+      {
+        "requirement_id": "changing_the_grouping",
+        "clause": "changing the grouping of the numbers being multiplied does not change the product",
+        "verdict": "CONCERN",
+        "reasoning": "The associative property is demonstrated when grouping does not affect the product, tested in samples 8fd1 (seed 601), 0b18 (seed 603), 28e1 (seed 605), and 43db (seed 900), where both sides of three-factor multiplication yield the same result with answer True. However, 8fd1 uses 2 and 3 (outside 6–9), 0b18 uses 3 and 2 (outside range), 28e1 uses 3 (outside range), and 43db uses 2 and 3 (outside range). Additionally, samples 93d8 (seed 608), 4f66 (seed 700), 16, 17, 19 test cases where grouping produces different results (with answer False), but again with out-of-range operands. The property demonstration is mathematically sound but severely compromised by operand selection outside the specified 6–9 tables.",
+        "sample_ids": ["8fd1b205b5cf2beb7cf3", "0b1874000cd2c107037c", "28e1bfd1e9876af574eb", "43dbaeb16587bef14da3", "93d86f5edc6690af21d2", "4f66b23a8aca3ce1fd9c"]
+      },
+      {
+        "requirement_id": "multiplying_the_sum_of_two_addends",
+        "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+        "verdict": "PASS",
+        "reasoning": "The distributive property is demonstrated in five samples. Sample fe30 (seed 45) shows 8 times (7 plus 2) equals (8 times 7) plus (8 times 2), both yielding 72, with answer True and clear hints. Sample 8d0d (seed 501) and sample 8aba (seed 502) both show cases where the distributive property is not correctly applied, demonstrating the negative case (answer False) to teach the property boundary. Sample 11a4 (seed 600) shows 6 times (8 plus 5) equals (6 times 8) plus (6 times 5), both yielding 78, with answer True. Sample 804957 (seed 701) shows 7 times (5 plus 7) equals (7 times 5) plus (7 times 7), both yielding 84, with answer True. The property is demonstrated both for cases where it applies correctly and cases where an error would break it.",
+        "sample_ids": ["fe30f5b185b960024365", "8d0d9b667d41657859e0", "8aba33ece3353b6ef714", "11a43011b2860cd4b0bd", "804957634e25e00a734d"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

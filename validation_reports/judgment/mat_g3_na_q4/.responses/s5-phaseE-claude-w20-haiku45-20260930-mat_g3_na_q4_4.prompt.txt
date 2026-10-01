@@ -1,0 +1,258 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe20-mat_g3_na_q4_4-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_na_q4_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe20-mat_g3_na_q4_4-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_4
+PACKET DIGEST: 6845f44b3ebaf044b783c4e8f24b450646a318166071b53a95b567d6f56bb2be
+COMPETENCY (Grade 3, Quarter 4, None):
+Estimate the quotient of 2- to 3-digit numbers divided by 1- to 2-digit numbers, using multiples of 10 or 100 as appropriate.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  estimate_quotient: Estimate the quotient
+  divided_by: divided by
+  2_to_3_digit_numbers: 2- to 3-digit numbers
+  1_to_2_digit_numbers: 1- to 2-digit numbers
+  multiples_of_10_or_100: multiples of 10 or 100
+
+SAMPLES (every one of these is real rendered output):
+  sample 5379d0269bdb79ca893e  seed 42  [cloze]
+      stem:    Estimate: 182 ÷ 37 ≈ ___
+      answer:  5
+      options: 50 / 7 / 4 / 5
+      hints:   ["We need to divide 200 by 40. The number being divided is 200; the number we divide by is 40.", "Ask: how many times does 40 fit into 200? 40 × 5 = 200.", "The quotient of 200 ÷ 40 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample df1790231143200ea1a7  seed 43  [mcq]
+      stem:    Estimate the quotient: 162 ÷ 61
+      answer:  3
+      options: 3 / 30 / 2 / 5
+      hints:   ["We need to divide 180 by 60. The number being divided is 180; the number we divide by is 60.", "Ask: how many times does 60 fit into 180? 60 × 3 = 180.", "The quotient of 180 ÷ 60 = 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 70d2248156e992728080  seed 44  [cloze]
+      stem:    Estimate: 143 ÷ 5 ≈ ___
+      answer:  30
+      options: 30 / 25 / 35 / 300
+      hints:   ["We need to divide 150 by 5. The number being divided is 150; the number we divide by is 5.", "Ask: how many times does 5 fit into 150? 5 × 30 = 150.", "The quotient of 150 ÷ 5 = 30."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 62d3de8303f2a1c2d9b1  seed 45  [true_false]
+      stem:    557 ÷ 68 ≈ 10. True or False?
+      answer:  False
+      hints:   ["We need to divide 560 by 70. The number being divided is 560; the number we divide by is 70.", "Ask: how many times does 70 fit into 560? 70 × 8 = 560.", "The quotient of 560 ÷ 70 = 8."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 673581f4916cb9bf65a0  seed 46  [true_false]
+      stem:    203 ÷ 48 ≈ 4. True or False?
+      answer:  True
+      hints:   ["We need to divide 200 by 50. The number being divided is 200; the number we divide by is 50.", "Ask: how many times does 50 fit into 200? 50 × 4 = 200.", "The quotient of 200 ÷ 50 = 4."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 450ceadb22a12b6a6751  seed 48  [error_detect]
+      stem:    Noel solved: "552 ÷ 62 ≈ ___". Noel says the missing number is 9. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 9}
+      hints:   ["We need to divide 540 by 60. The number being divided is 540; the number we divide by is 60.", "Ask: how many times does 60 fit into 540? 60 × 9 = 540.", "The quotient of 540 ÷ 60 = 9."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample f32cdff0669d05129d80  seed 500  [true_false]
+      stem:    488 ÷ 5 ≈ 95. True or False?
+      answer:  False
+      hints:   ["We need to divide 500 by 5. The number being divided is 500; the number we divide by is 5.", "Ask: how many times does 5 fit into 500? 5 × 100 = 500.", "The quotient of 500 ÷ 5 = 100."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 19aa213b89a59a7f4930  seed 501  [mcq]
+      stem:    Estimate the quotient: 713 ÷ 87
+      answer:  8
+      options: 10 / 8 / 80 / 7
+      hints:   ["We need to divide 720 by 90. The number being divided is 720; the number we divide by is 90.", "Ask: how many times does 90 fit into 720? 90 × 8 = 720.", "The quotient of 720 ÷ 90 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f711cd06e54883b4c3ff  seed 502  [error_detect]
+      stem:    Dante solved: "34 ÷ 2 ≈ ___". Dante says the missing number is 15. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 15}
+      hints:   ["We need to divide 30 by 2. The number being divided is 30; the number we divide by is 2.", "Ask: how many times does 2 fit into 30? 2 × 15 = 30.", "The quotient of 30 ÷ 2 = 15."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 9e56cfaa2061fa6d4f17  seed 600  [mcq]
+      stem:    Estimate the quotient: 468 ÷ 58
+      answer:  8
+      options: 7 / 80 / 8 / 10
+      hints:   ["We need to divide 480 by 60. The number being divided is 480; the number we divide by is 60.", "Ask: how many times does 60 fit into 480? 60 × 8 = 480.", "The quotient of 480 ÷ 60 = 8."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9f57e81e756752855842  seed 601  [cloze]
+      stem:    Estimate: 558 ÷ 87 ≈ ___
+      answer:  6
+      options: 60 / 5 / 8 / 6
+      hints:   ["We need to divide 540 by 90. The number being divided is 540; the number we divide by is 90.", "Ask: how many times does 90 fit into 540? 90 × 6 = 540.", "The quotient of 540 ÷ 90 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5a53dd62f75d763b0ad3  seed 602  [error_detect]
+      stem:    Jose solved: "807 ÷ 43 ≈ ___". Jose says the missing number is 20. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 20}
+      hints:   ["We need to divide 800 by 40. The number being divided is 800; the number we divide by is 40.", "Ask: how many times does 40 fit into 800? 40 × 20 = 800.", "The quotient of 800 ÷ 40 = 20."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 587b21a8ef0d18421d2b  seed 603  [mcq]
+      stem:    Estimate the quotient: 288 ÷ 47
+      answer:  6
+      options: 8 / 5 / 6 / 60
+      hints:   ["We need to divide 300 by 50. The number being divided is 300; the number we divide by is 50.", "Ask: how many times does 50 fit into 300? 50 × 6 = 300.", "The quotient of 300 ÷ 50 = 6."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c6e2d543655e509ce3f6  seed 604  [error_detect]
+      stem:    Carlo solved: "117 ÷ 31 ≈ ___". Carlo says the missing number is 4. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 4}
+      hints:   ["We need to divide 120 by 30. The number being divided is 120; the number we divide by is 30.", "Ask: how many times does 30 fit into 120? 30 × 4 = 120.", "The quotient of 120 ÷ 30 = 4."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 60a9ff17d9cbcd225b40  seed 605  [true_false]
+      stem:    357 ÷ 57 ≈ 60. True or False?
+      answer:  False
+      hints:   ["We need to divide 360 by 60. The number being divided is 360; the number we divide by is 60.", "Ask: how many times does 60 fit into 360? 60 × 6 = 360.", "The quotient of 360 ÷ 60 = 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample de0a3f1f2e36c79b08c2  seed 606  [mcq]
+      stem:    Estimate the quotient: 258 ÷ 87
+      answer:  3
+      options: 3 / 5 / 30 / 2
+      hints:   ["We need to divide 270 by 90. The number being divided is 270; the number we divide by is 90.", "Ask: how many times does 90 fit into 270? 90 × 3 = 270.", "The quotient of 270 ÷ 90 = 3."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 924554111f51bd31ffdc  seed 607  [cloze]
+      stem:    Estimate: 212 ÷ 52 ≈ ___
+      answer:  4
+      options: 4 / 3 / 40 / 6
+      hints:   ["We need to divide 200 by 50. The number being divided is 200; the number we divide by is 50.", "Ask: how many times does 50 fit into 200? 50 × 4 = 200.", "The quotient of 200 ÷ 50 = 4."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample df0efdbe77b358a7fc95  seed 700  [error_detect]
+      stem:    Carlo solved: "293 ÷ 53 ≈ ___". Carlo says the missing number is 6. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 6}
+      hints:   ["We need to divide 300 by 50. The number being divided is 300; the number we divide by is 50.", "Ask: how many times does 50 fit into 300? 50 × 6 = 300.", "The quotient of 300 ÷ 50 = 6."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample eb75220a7f3b7003f2e2  seed 701  [true_false]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 647 ÷ 82 ≈ 8. True or False?
+      answer:  True
+      hints:   ["We need to divide 640 by 80. The number being divided is 640; the number we divide by is 80.", "Ask: how many times does 80 fit into 640? 80 × 8 = 640.", "The quotient of 640 ÷ 80 = 8."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample d55c63f426b96fca49cb  seed 702  [error_detect]
+      stem:    🏀 Marco enjoys jerseys. Here is a math challenge. Manny solved: "147 ÷ 32 ≈ ___". Manny says the missing number is 7. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["We need to divide 150 by 30. The number being divided is 150; the number we divide by is 30.", "Ask: how many times does 30 fit into 150? 30 × 5 = 150.", "The quotient of 150 ÷ 30 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 83345a0d497ca3321b7e  seed 800  [cloze]
+      stem:    Estimate: 46 ÷ 9 ≈ ___
+      answer:  5
+      options: 5 / 4 / 50 / 7
+      hints:   ["We need to divide 45 by 9. The number being divided is 45; the number we divide by is 9.", "Ask: how many times does 9 fit into 45? 9 × 5 = 45.", "The quotient of 45 ÷ 9 = 5."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 503edd8223993eb5af55  seed 900  [mcq]
+      stem:    Estimate the quotient: 508 ÷ 72
+      answer:  7
+      options: 7 / 70 / 9 / 6
+      hints:   ["We need to divide 490 by 70. The number being divided is 490; the number we divide by is 70.", "Ask: how many times does 70 fit into 490? 70 × 7 = 490.", "The quotient of 490 ÷ 70 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 14db4a099c93324e8712  seed 901  [mcq]
+      stem:    Estimate the quotient: 342 ÷ 6
+      answer:  60
+      options: 60 / 65 / 6 / 55
+      hints:   ["We need to divide 360 by 6. The number being divided is 360; the number we divide by is 6.", "Ask: how many times does 6 fit into 360? 6 × 60 = 360.", "The quotient of 360 ÷ 6 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6d36a2922ba3c3e04122  seed 1000  [cloze]
+      stem:    Estimate: 192 ÷ 3 ≈ ___
+      answer:  60
+      options: 55 / 6 / 60 / 65
+      hints:   ["We need to divide 180 by 3. The number being divided is 180; the number we divide by is 3.", "Ask: how many times does 3 fit into 180? 3 × 60 = 180.", "The quotient of 180 ÷ 3 = 60."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 5b728a01b32aadde376c  seed 1001  [error_detect]
+      stem:    Liza solved: "273 ÷ 87 ≈ ___". Liza says the missing number is 2. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 3}
+      hints:   ["We need to divide 270 by 90. The number being divided is 270; the number we divide by is 90.", "Ask: how many times does 90 fit into 270? 90 × 3 = 270.", "The quotient of 270 ÷ 90 = 3."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 572fc6b059fc98024532  seed 1002  [error_detect]
+      stem:    Manny solved: "162 ÷ 3 ≈ ___". Manny says the missing number is 5. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 50}
+      hints:   ["We need to divide 150 by 3. The number being divided is 150; the number we divide by is 3.", "Ask: how many times does 3 fit into 150? 3 × 50 = 150.", "The quotient of 150 ÷ 3 = 50."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

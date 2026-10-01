@@ -1,0 +1,732 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe20-mat_g3_na_q4_2-20260930",
+  "mat_g3_na_q4_2": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Grade 3 quarter 4 items appropriately scale for cognitive development, using concrete number sentences with single-step reasoning in multiplication and division contexts without excessive complexity."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "Five samples explicitly violate the stated requirement of operands being limited to 6, 7, 8, and 9: sample uses 4 and 5 as divisors or multiplicands outside the prescribed set, creating misalignment with the curriculum specification."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "The competency requires missing numbers in sentences involving multiplication or division by specifically 6, 7, 8, and 9, but samples include operations with 2, 4, and 5, representing core scope creep beyond curriculum boundaries.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The five requirements losslessly decompose the competency in principle, but the implementation demonstrates systematic non-compliance with the 6_7_8_9 constraint across multiple samples, indicating the decomposition does not enforce its own constraints."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "While the node includes diverse formats (read_mcq, mcq, cloze, true_false, error_detect) and missing number positions, systematic inclusion of out-of-scope operands suggests the generation pipeline lacks filtering to enforce the strict operand set."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Mathematics complexity, language level, and visual presentation appropriately target grade 3 learners in quarter 4 without exceeding expected operational fluency or introducing undue cognitive burden."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The sample set demonstrates intentional variation across question formats, missing number positions, and contextual presentations including visual scaffolds and error-detection tasks."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "c9f822fff971a49a3c36",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly presents a balance scale scenario with one missing multiplicand and a direct question prompt; hints sequentially confirm the number statement, operation reversal strategy, calculation result, and verification check."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The missing number problem 2 × 6 = 12 is mathematically sound; the balance scale visual accurately reflects the symmetric equation structure and supports the missing operand concept appropriately."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language is direct and age-appropriate, asking explicitly what missing value balances the scale; visual metaphor reinforces equation symmetry and makes the missing number location obvious."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 2 is correct; all hints verify arithmetic correctly with 2 × 6 = 12 and provide sound reasoning through division as the inverse operation to undo multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "a054ad37fa446ab227d8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem unambiguously requests a missing divisor result with a standard blank notation; hints progressively build understanding through restating the number sentence and computing the quotient."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division problem 60 ÷ 6 = 10 is logically consistent; finding what 60 ÷ 6 equals is a direct missing quotient scenario requiring appropriate grade-level division fluency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question format uses familiar blank-filling language; presentation is straightforward without extraneous information; distractors like 11 and 16 plausibly trap common errors."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 10 is arithmetically correct for 60 ÷ 6; all hints confirm the calculation and present 6 × 10 = 60 as verification without contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "45f64fe1952df54a847a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem presents a single missing dividend in clear cloze format; hints unambiguously explain the relationship between dividend, divisor, and quotient in structured sequence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem 63 ÷ 9 = 7 is valid; finding a missing dividend when given divisor and quotient requires appropriate inverse reasoning and multiplication fluency for a grade 3 student."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format is minimal and uncluttered; underscores and blank clearly mark the missing position; distractors include the two given numbers and a plausible wrong answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 63 correctly satisfies the equation; hints methodically explain that 9 fits into 63 seven times through multiplication verification without errors."
+          }
+        }
+      },
+      {
+        "sample_id": "c7348da74456b0a9244d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-or-false format unambiguously asks learners to evaluate a given number sentence; no alternative interpretations of the question are plausible."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Critical mismatch exists between stem and hints: stem states 72 ÷ 8 = 9 but answers False, while all three hint lines confirm 72 ÷ 8 = 9 as true; this contradiction makes the problem logically incoherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement and True-or-False question are clearly worded; a learner can easily understand what they are being asked to evaluate."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The equation 72 ÷ 8 = 9 is mathematically true, not false; 8 multiplied by 9 equals 72, confirming the quotient; marking the answer as False contradicts the arithmetic and the hints."
+          }
+        }
+      },
+      {
+        "sample_id": "2b7cbe3b60076fc09491",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly embeds the missing number claim within a number sentence and requests true-or-false evaluation; the target number is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem validates whether a specific missing number claim is correct for 18 ÷ 6 = ___; this is a coherent logical task aligned with the missing number competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Language embeds the claim naturally within a contextual sentence; learner knows to evaluate both the number sentence and the proposed answer simultaneously."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The answer True is correct because 18 ÷ 6 = 3; hints verify the calculation and confirm 6 × 3 = 18 without contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "134e47dfc22fddd59e17",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection format clearly asks whether Noel's proposed solution to the blank division problem is correct; the task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Presenting a student solution and asking for verification is a coherent error-detection task; 54 ÷ 6 = 9 is indeed correct, making Noel's answer valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative frame names a student solver and presents both the equation and the proposed answer; learner can evaluate the correctness without confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Noel correctly identifies 54 as the missing dividend for 54 ÷ 6 = 9; hints confirm 6 × 9 = 54 and verify the quotient accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "69a7c3f646b2d412fc05",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-or-false format with a specific equation is unambiguous in what it asks the learner to evaluate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Critical internal contradiction: the stem presents the equation 27 ÷ 4 = 3 to evaluate, but all three hints discuss 27 ÷ 9, creating a fundamental mismatch between the problem statement and its supposed solution path."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem statement is clearly presented; however, the disconnect between 4 and 9 in hints creates significant learner confusion."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem uses divisor 4, which violates the competency requirement to use only 6, 7, 8, and 9; additionally 27 ÷ 4 ≈ 6.75, not 3, making the stem mathematically false independent of the answer."
+          }
+        }
+      },
+      {
+        "sample_id": "7407ce2065bb4e4a9275",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question clearly asks what number when divided by 9 yields 9; the missing position and required operation are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a dividend when quotient and divisor are known is a valid missing number problem; the logical structure is sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question is phrased naturally in conversational language; learner can readily identify that 9 is the divisor and the blank represents the missing dividend."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 81 is correct because 81 ÷ 9 = 9; hints confirm that 9 × 9 = 81 and verify the division result accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "e6b7759a987b5967964a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection format with a named student and a specific claimed answer is unambiguous in asking whether Dante's solution to the blank is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dante's claim that 56 ÷ 7 = 8 makes 56 the missing dividend is logically sound and evaluable through multiplication verification."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Narrative framing with a student name makes the task relatable; the proposed answer is clearly stated for evaluation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Dante is correct: 56 ÷ 7 = 8, verified by 7 × 8 = 56; hints confirm this multiplication relationship accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "f96ab31d1e970e8ad786",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question asks unambiguously which number divided by 8 yields 5; the missing position and operation are clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a dividend when quotient and divisor are given is a coherent missing number task requiring inverse operation reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Natural phrasing makes the problem accessible; learner easily identifies 8 as the divisor and needs to find the dividend."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 40 is correct; 40 ÷ 8 = 5 and verification through 8 × 5 = 40 in the hints confirms the result without error."
+          }
+        }
+      },
+      {
+        "sample_id": "ba8a0f6871b7a9854452",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Balance scale context with one missing multiplicand is clearly marked and the question explicitly asks for the missing value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a missing multiplicand in a balanced multiplication equation is logically sound; the visual reinforces the symmetric relationship."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The balance scale visual metaphor effectively communicates that both sides must equal; language clearly identifies the missing position."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 7 is correct: 9 × 7 = 63; hints properly explain using division as the inverse operation and verify through forward multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "185e227891d2ba0596e0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection task clearly presents Jose's solution claim and asks for evaluation; no alternative interpretations exist."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem coherently asks whether 21 is the correct missing dividend for 21 ÷ 7 = 3; verification is straightforward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Student name and claimed answer are clearly presented; learner understands they must evaluate Jose's solution."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Jose is correct: 21 ÷ 7 = 3, confirmed by 7 × 3 = 21; hints verify the multiplication without contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "8b1a5d02951764759f4b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question uses standard blank notation and clearly requests the missing quotient in a division number sentence."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the quotient when dividend and divisor are known is a valid missing number problem aligned with division fluency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format is familiar and straightforward; learner readily identifies that 72 and 8 are given and the quotient position is missing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 9 is correct: 72 ÷ 8 = 9; hints present the calculation and confirm the result without error."
+          }
+        }
+      },
+      {
+        "sample_id": "c7f090be1a3331bf95f1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with a clear missing product and direct question is unambiguous in asking for the result."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem uses operand 5, which violates the requirement that missing number problems involve only 6, 7, 8, and 9 as multipliers or divisors."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question is clear and age-appropriate; the missing position is obvious and language is direct."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While 8 × 5 = 40 is arithmetically correct, the use of 5 as a multiplicand falls outside the competency specification which restricts operations to 6, 7, 8, and 9."
+          }
+        }
+      },
+      {
+        "sample_id": "a409139fc83a20a16e69",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-or-false statement embedding a claim about a missing number is unambiguous in what requires evaluation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Evaluating whether 50 is the correct missing quotient for 45 ÷ 9 is a coherent missing number verification task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The claim is embedded naturally; learner understands they must determine the actual quotient and compare to 50."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer False is correct because 45 ÷ 9 = 5, not 50; hints confirm the calculation and verify through 9 × 5 = 45 accurately."
+          }
+        }
+      },
+      {
+        "sample_id": "4e1edc7d989eaf0a4bf0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question uses blank notation and clearly asks for the missing multiplicand in a multiplication equation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a missing multiplicand when product and other factor are known is logically sound and requires inverse reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Presentation is direct and familiar; learner can readily identify that the multiplicand is missing and the product is 32."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 4 is correct: 4 × 8 = 32; hints explain using division as inverse and verify through forward multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "055358d9d84300daff53",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Balance scale scenario with marked missing multiplicand is clear; question explicitly requests the missing value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a missing multiplicand in a balanced equation is logically coherent; visual support reinforces symmetry."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Balance metaphor communicates equality effectively; question and visual work together to clarify what is missing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 8 is correct: 8 × 6 = 48; hints properly explain division as inverse operation and verify through multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "eba8bc03054f2b7fa91c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with missing product is clear; question asks for the result unambiguously."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem uses operand 2, which violates the competency requirement restricting operations to only 6, 7, 8, and 9."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question is clear and appropriately simple for the format; missing product position is obvious."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Although 9 × 2 = 18 is arithmetically correct, the use of 2 as a multiplicand contradicts the specification that only 6, 7, 8, and 9 should be used."
+          }
+        }
+      },
+      {
+        "sample_id": "e2a10c6b5b82e2bf1214",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with obvious missing product position and direct question is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the product of two multiplication operands is a straightforward missing number problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem is minimal and clear; learner readily identifies that a multiplication result is needed."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 72 is correct: 8 × 9 = 72; hints confirm the calculation without error."
+          }
+        }
+      },
+      {
+        "sample_id": "7fa1cf4209b86eadf47f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-or-false format with a specific equation is unambiguous in task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "Severe mismatch between stem and hints: stem presents 45 ÷ 45 = 5 to evaluate, but hints discuss 45 ÷ 9, representing a fundamental problem misalignment."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The equation in the stem is clearly stated despite the problem's internal contradiction."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The stem uses divisor 45, violating the competency requirement to use only 6, 7, 8, and 9; additionally 45 ÷ 45 = 1, not 5, making the statement mathematically false."
+          }
+        }
+      },
+      {
+        "sample_id": "c8d0bfc0a57d52437191",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question asks for missing product unambiguously despite the thematic emoji wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem uses operand 2, which violates the requirement that operations involve only 6, 7, 8, and 9."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Despite theme decoration, the mathematics question is clear and the missing position is obvious."
+          },
+          "mathematical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While 6 × 2 = 12 is arithmetically correct, using 2 as a multiplicand contradicts the specification limiting operations to 6, 7, 8, and 9."
+          }
+        }
+      },
+      {
+        "sample_id": "6dc264d1010848427d1b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with missing dividend is clear; the question unambiguously requests the missing number."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a missing dividend when divisor and quotient are known requires appropriate inverse reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format is minimal and direct; learner knows that a missing dividend must be found to complete the division statement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 63 is correct: 63 ÷ 9 = 7; hints verify the relationship through 9 × 7 = 63 without contradiction."
+          }
+        }
+      },
+      {
+        "sample_id": "da34b95b8b603609a47a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question clearly asks what multiplicand when multiplied by 7 yields 7."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a multiplicand when product and other factor are equal requires reasoning about multiplicative identity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question is naturally phrased and learner can readily identify the missing multiplicand position."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 1 is correct: 1 × 7 = 7; hints explain division as inverse and verify through multiplication appropriately."
+          }
+        }
+      },
+      {
+        "sample_id": "862eb6c668c42b305b45",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question asks what number when divided by 7 yields 2; missing position and operation are unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a dividend when divisor and quotient are known is a coherent missing number problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Natural phrasing makes the task clear; learner readily identifies that 7 is the divisor and 2 is the quotient."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 14 is correct: 14 ÷ 7 = 2; hints verify through 7 × 2 = 14 without error."
+          }
+        }
+      },
+      {
+        "sample_id": "8a8bdcf387e3bafc71a8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly identifies the missing dividend position with blank notation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding a missing dividend when divisor and quotient are provided is a valid missing number problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format is familiar and minimal; learner knows a dividend must complete the division equation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 42 is correct: 42 ÷ 6 = 7; hints confirm through 6 × 7 = 42 and verify the quotient."
+          }
+        }
+      },
+      {
+        "sample_id": "2b1aa51d4128c5d45813",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with obvious missing product and direct question is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Finding the product of two numbers is a fundamental missing number problem appropriate to the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem is minimal and clear; learner readily identifies that a multiplication result is missing."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Answer 36 is correct: 6 × 6 = 36; hints confirm the calculation without error."
+          }
+        }
+      },
+      {
+        "sample_id": "f95d14cc2d33478688de",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection format with named student and specific claim is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Evaluating whether Manny's incorrect claim of 6 is the right answer for the missing dividend is logically coherent."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Student name and proposed answer are clearly presented; learner understands the task is to verify correctness."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Manny is incorrect; the correct answer is 42 because 42 ÷ 7 = 6; hints verify through 7 × 6 = 42 accurately."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "find_missing_number",
+        "clause": "Find the missing number",
+        "verdict": "PASS",
+        "reasoning": "All twenty-seven samples consistently present finding a missing number as the primary task across diverse formats including cloze, true-or-false evaluations, and error detection scenarios with student solutions.",
+        "sample_ids": [
+          "c9f822fff971a49a3c36",
+          "a054ad37fa446ab227d8",
+          "45f64fe1952df54a847a",
+          "c7348da74456b0a9244d",
+          "2b7cbe3b60076fc09491",
+          "134e47dfc22fddd59e17",
+          "69a7c3f646b2d412fc05",
+          "7407ce2065bb4e4a9275",
+          "e6b7759a987b5967964a",
+          "f96ab31d1e970e8ad786",
+          "ba8a0f6871b7a9854452",
+          "185e227891d2ba0596e0",
+          "8b1a5d02951764759f4b",
+          "c7f090be1a3331bf95f1",
+          "a409139fc83a20a16e69",
+          "4e1edc7d989eaf0a4bf0",
+          "055358d9d84300daff53",
+          "eba8bc03054f2b7fa91c",
+          "e2a10c6b5b82e2bf1214",
+          "7fa1cf4209b86eadf47f",
+          "c8d0bfc0a57d52437191",
+          "6dc264d1010848427d1b",
+          "da34b95b8b603609a47a",
+          "862eb6c668c42b305b45",
+          "8a8bdcf387e3bafc71a8",
+          "2b1aa51d4128c5d45813",
+          "f95d14cc2d33478688de"
+        ]
+      },
+      {
+        "requirement_id": "number_sentence",
+        "clause": "number sentence",
+        "verdict": "PASS",
+        "reasoning": "Every sample presents a mathematical equation or number sentence as the core structure, whether multiplication or division, with blanks or propositions to evaluate.",
+        "sample_ids": [
+          "c9f822fff971a49a3c36",
+          "a054ad37fa446ab227d8",
+          "45f64fe1952df54a847a",
+          "c7348da74456b0a9244d",
+          "2b7cbe3b60076fc09491",
+          "134e47dfc22fddd59e17",
+          "69a7c3f646b2d412fc05",
+          "7407ce2065bb4e4a9275",
+          "e6b7759a987b5967964a",
+          "f96ab31d1e970e8ad786",
+          "ba8a0f6871b7a9854452",
+          "185e227891d2ba0596e0",
+          "8b1a5d02951764759f4b",
+          "c7f090be1a3331bf95f1",
+          "a409139fc83a20a16e69",
+          "4e1edc7d989eaf0a4bf0",
+          "055358d9d84300daff53",
+          "eba8bc03054f2b7fa91c",
+          "e2a10c6b5b82e2bf1214",
+          "7fa1cf4209b86eadf47f",
+          "c8d0bfc0a57d52437191",
+          "6dc264d1010848427d1b",
+          "da34b95b8b603609a47a",
+          "862eb6c668c42b305b45",
+          "8a8bdcf387e3bafc71a8",
+          "2b1aa51d4128c5d45813",
+          "f95d14cc2d33478688de"
+        ]
+      },
+      {
+        "requirement_id": "multiplication",
+        "clause": "multiplication",
+        "verdict": "PASS",
+        "reasoning": "Multiplication missing number problems appear consistently throughout the sample set in both direct forms where a multiplicand or product is missing and inverse forms where division is used to verify multiplication.",
+        "sample_ids": [
+          "c9f822fff971a49a3c36",
+          "ba8a0f6871b7a9854452",
+          "055358d9d84300daff53",
+          "c7f090be1a3331bf95f1",
+          "e2a10c6b5b82e2bf1214",
+          "c8d0bfc0a57d52437191",
+          "2b1aa51d4128c5d45813",
+          "da34b95b8b603609a47a",
+          "eba8bc03054f2b7fa91c"
+        ]
+      },
+      {
+        "requirement_id": "division",
+        "clause": "division",
+        "verdict": "PASS",
+        "reasoning": "Division missing number problems appear extensively across the sample set with missing dividends, divisors, and quotients across formats including true-or-false and error detection.",
+        "sample_ids": [
+          "a054ad37fa446ab227d8",
+          "45f64fe1952df54a847a",
+          "c7348da74456b0a9244d",
+          "2b7cbe3b60076fc09491",
+          "134e47dfc22fddd59e17",
+          "69a7c3f646b2d412fc05",
+          "7407ce2065bb4e4a9275",
+          "e6b7759a987b5967964a",
+          "f96ab31d1e970e8ad786",
+          "185e227891d2ba0596e0",
+          "8b1a5d02951764759f4b",
+          "a409139fc83a20a16e69",
+          "4e1edc7d989eaf0a4bf0",
+          "6dc264d1010848427d1b",
+          "862eb6c668c42b305b45",
+          "8a8bdcf387e3bafc71a8",
+          "f95d14cc2d33478688de"
+        ]
+      },
+      {
+        "requirement_id": "6_7_8_9",
+        "clause": "6, 7, 8, and 9",
+        "verdict": "FAIL",
+        "reasoning": "Five samples explicitly violate the requirement by using operands outside the prescribed set of 6, 7, 8, and 9: sample 69a7c3f646b2d412fc05 uses divisor 4, sample c7f090be1a3331bf95f1 uses 5 as multiplicand, sample eba8bc03054f2b7fa91c uses 2 as multiplicand, sample 7fa1cf4209b86eadf47f uses 45 as divisor, and sample c8d0bfc0a57d52437191 uses 2 as multiplicand.",
+        "sample_ids": [
+          "69a7c3f646b2d412fc05",
+          "c7f090be1a3331bf95f1",
+          "eba8bc03054f2b7fa91c",
+          "7fa1cf4209b86eadf47f",
+          "c8d0bfc0a57d52437191"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

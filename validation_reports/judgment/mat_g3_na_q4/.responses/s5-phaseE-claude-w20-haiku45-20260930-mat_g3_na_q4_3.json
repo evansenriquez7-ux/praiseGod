@@ -1,0 +1,579 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe20-mat_g3_na_q4_3-20260930",
+  "mat_g3_na_q4_3": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "The problems progress appropriately from single-digit divisors with 2-3 digit dividends to multi-digit divisors (10, 100, 1000) with 2-4 digit dividends. Problem structures remain cognitively accessible for Grade 3 students with clear, direct division scenarios and straightforward error-detection narratives involving named characters solving age-appropriate division tasks."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Samples directly address all three case types specified: two-digit to three-digit dividends divided by one-digit divisors, two-digit dividends divided by one-digit divisors with remainders, and multi-digit dividends divided by 10, 100, or 1000. The generator includes appropriate scenarios for both whole-number quotients and quotients with remainders as required."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "While the sample set covers all competency components, two critical sample-level defects with malformed hint equations (seeds 45 and 600) undermine the pedagogical integrity of the packet. These defects prevent accurate learner guidance, though the actual problem stems and answers remain mathematically valid.",
+        "decomposition": {
+          "verdict": "CONCERN",
+          "reasoning": "The requirements list captures the key terms from the competency statement, but the logical structure of the decomposition is unclear. The requirements do not explicitly connect the domain specifications (which digit ranges apply to which divisors) or clarify that remainder cases apply only to one-digit divisors. The terms are present but not organized to show the exact hierarchical relationships that would ensure nothing is added or removed from the original competency scope."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "CONCERN",
+        "rationale": "The sample set covers the four main quadrants of the competency (2-3 digit by 1-digit without remainder, 2-digit by 1-digit with remainder, and multi-digit by powers of 10). However, the broken hint equations in two samples significantly impair the package's ability to comprehensively support learner understanding, as hints are essential scaffolding for division problems at this grade level."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "Numbers in all samples are appropriately scaled for Grade 3. The maximum dividend (8780) and divisors (1000) are within the stated range of 2-4 digit dividends and powers of 10, 100, 1000. Single-digit divisors used (2, 4, 5, 6, 7, 8) are appropriate for this grade without exceeding complexity."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The sample set includes appropriate format variety: cloze (fill-in-blank), multiple choice, true-false statements, and error-detection items with character-named solvers. This format mix supports different problem-solving approaches and assessment modalities, enhancing engagement and evaluation depth for the competency."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "70d1b4d574c36827ad22",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is entirely clear: divide two thousand by one thousand and fill in the blank. The cloze format removes any ambiguity about what is being asked. The answer two is unambiguously correct in this context."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct arithmetic problem with no contextual wrapper. The division operation is straightforward and logically sound: two thousand divided by one thousand yields two with no remainder."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Extremely clear to a Grade 3 learner: the problem uses simple notation (÷ symbol), plain numbers, and a single blank line. The hints reinforce the operation and verify the calculation through multiplication check."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically sound in every aspect. The division is correct: 2000 ÷ 1000 = 2. The hints accurately state the dividend, divisor, and verification: 1000 × 2 = 2000 is correct. The final quotient statement is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "ee500eea4aedc17554c1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question is unambiguous: compute seventy-eight divided by six and select the correct answer from four options. The multiple-choice format makes the task clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct arithmetic problem with no contextual complications. The operation is logically valid: dividing a two-digit number by a one-digit divisor to produce a whole quotient."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear presentation: the question asks what seventy-eight divided by six equals. The four options (fourteen, thirteen, six, seventy-two) are clearly displayed, and the hints confirm the operation step-by-step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division seventy-eight divided by six equals thirteen is correct with no remainder. The hints verify this: six times thirteen equals seventy-eight. The incorrect options (fourteen would give eighty-four, six is the divisor, seventy-two is incorrect) serve as reasonable distractors."
+          }
+        }
+      },
+      {
+        "sample_id": "dfe83cad1a376d98eda2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is unambiguous: divide sixty-five hundred forty by ten and fill in the blank. The cloze format clearly specifies the single task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division operation with no context wrapper. Dividing by ten is logically sound and uses an appropriate place-value strategy for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear to Grade 3 learners: divide sixty-five hundred forty by ten, write the answer in the blank. The hints explain the operation, confirm the dividend and divisor, and verify through multiplication that ten times six hundred fifty-four equals sixty-five hundred forty."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: sixty-five hundred forty divided by ten equals six hundred fifty-four. The hint verification holds: ten times six hundred fifty-four equals sixty-five hundred forty. The quotient statement is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "8dfa5824649def578f11",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement is unambiguous: does fifty-one divided by eight equal seven remainder three? The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint equations contain nonsensical symbolic notation that violates basic mathematical logic. The second hint claims eight times six remainder three produces an impossible expression with repeated remainder symbols. This breaks the logical chain needed to support learner reasoning about the actual division problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints present corrupted mathematical statements that would confuse any learner. A Grade 3 student would encounter equations like eight times six remainder three equals six remainder thirty-six repeated eight times and three. This notation is incoherent and contradicts standard division recording practices taught at this grade level."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem stem itself is valid: fifty-one divided by eight does equal six remainder three, not seven remainder three, so False is the correct answer. However, the hint equations are mathematically incoherent. Eight times six remainder three is not a valid expression and cannot equal the stated result. This creates a sample-level defect despite the correct answer."
+          }
+        }
+      },
+      {
+        "sample_id": "9e60e7ad5d87fea47081",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement is entirely clear: does sixteen divided by eight equal two? The task requires determining the truth value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward arithmetic true-false item. The logical structure is sound: present an equation and ask learners to verify its correctness."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Very clear for Grade 3: divide sixteen by eight and determine if the result is two. The hints reinforce the operation, confirm the divisor and dividend, and verify through multiplication that eight times two equals sixteen."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically correct: sixteen divided by eight equals two with no remainder. The hint verification is accurate: eight times two equals sixteen. The True answer is correct. All equations in the hints hold logically."
+          }
+        }
+      },
+      {
+        "sample_id": "5e078a1084e6cf63a066",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format is clear: evaluate whether a named character solved a division problem correctly. The item asks if the character Noel correctly identified twenty-six hundred divided by one hundred as twenty-six."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The contextualized error-detection scenario is logically sound. A learner must verify Noel's arithmetic and determine if the solution is correct, which is an appropriate higher-order task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear to learners: Noel solved a division problem and claimed the answer is twenty-six. You must judge whether Noel is correct. The hints walk through the calculation step-by-step, making it accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: twenty-six hundred divided by one hundred equals twenty-six with no remainder. Noel's answer is correct, so the answer key correctly indicates no error. The hint verification holds: one hundred times twenty-six equals twenty-six hundred."
+          }
+        }
+      },
+      {
+        "sample_id": "d7fec7e732e25703731d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement is clear: does sixty-nine hundred twenty divided by ten equal six hundred ninety-one? The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward verification task. The statement sets a specific quotient claim and asks learners to evaluate its correctness, which is logically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear to Grade 3 learners: divide sixty-nine hundred twenty by ten and check if the result is six hundred ninety-one. The hints provide the operation and verification through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically correct: sixty-nine hundred twenty divided by ten equals six hundred ninety-two, not six hundred ninety-one. The False answer is correct. The hint verification holds: ten times six hundred ninety-two equals sixty-nine hundred twenty."
+          }
+        }
+      },
+      {
+        "sample_id": "0cbcba7968524f48d760",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is unambiguous: what is five thousand divided by one thousand? Four options are provided with one correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division problem with no contextual complications. Dividing a four-digit number by one thousand is logically appropriate for the competency scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear presentation: ask what five thousand divided by one thousand equals. The hints explain the operation, confirm the dividend and divisor, and verify through multiplication that one thousand times five equals five thousand."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: five thousand divided by one thousand equals five. The incorrect options (four thousand is near the dividend, one thousand is the divisor itself, six is an incorrect quotient) provide plausible distractors. The hint verification is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "bf278a6d269076e4dd50",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Dante correctly solve thirty-one hundred divided by one hundred? The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically sound. Learners must verify Dante's arithmetic and determine correctness, supporting higher-order mathematical thinking."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear to learners: Dante claims thirty-one hundred divided by one hundred equals thirty-one. You must verify if he is correct. The hints confirm this through step-by-step calculation and multiplication verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: thirty-one hundred divided by one hundred equals thirty-one. Dante's answer is correct, so the answer key correctly indicates no error. The hint verification holds: one hundred times thirty-one equals thirty-one hundred."
+          }
+        }
+      },
+      {
+        "sample_id": "e99e400248fdadbcee74",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is unambiguous: what is sixty divided by seven? The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The hint equations present corrupted mathematical notation that violates basic arithmetic logic. The second hint attempts to show seven times eight remainder four, producing an impossible expression with repeated remainder symbols, which destroys the logical reasoning pathway."
+          },
+          "learner_facing_clarity": {
+            "verdict": "FAIL",
+            "reasoning": "The hints present incoherent mathematical statements that would confuse Grade 3 learners. The multiplication verification shows seven times eight remainder four followed by repetitive remainder symbols separated by remainder notation. This contradicts standard mathematical recording and makes the hint pedagogically unusable."
+          },
+          "mathematical_validity": {
+            "verdict": "FAIL",
+            "reasoning": "The problem stem is valid: sixty divided by seven equals eight remainder four, which is the correct answer shown. However, the hint equations are mathematically incoherent. Seven times eight remainder four is not valid notation and cannot produce the stated result. This sample-level defect undermines the mathematical integrity despite the correct answer and answer choices."
+          }
+        }
+      },
+      {
+        "sample_id": "0d2e37cc03c2ddcf2ef9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze problem is unambiguous: divide one hundred fifty-eight by two and fill in the blank. The format clearly specifies the single required action."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division problem. Dividing a three-digit number by two is logically sound and appropriate for the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Very clear for Grade 3 learners: divide one hundred fifty-eight by two and write the answer. The hints confirm the operation and verify through multiplication that two times seventy-nine equals one hundred fifty-eight."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: one hundred fifty-eight divided by two equals seventy-nine. The hint verification holds: two times seventy-nine equals one hundred fifty-eight. The quotient statement is accurate. All arithmetic checks out."
+          }
+        }
+      },
+      {
+        "sample_id": "dde50f2b4265aac7c8bc",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Jose correctly solve seventy divided by ten? The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically appropriate. Learners must verify Jose's calculation and determine whether the answer is correct, which supports error-recognition skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: Jose claims seventy divided by ten equals seven. You must determine if he is correct. The hints confirm this through operation verification and multiplication check."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: seventy divided by ten equals seven. Jose's answer is correct, so the answer key correctly indicates no error. The hint verification holds: ten times seven equals seventy."
+          }
+        }
+      },
+      {
+        "sample_id": "178a283ca2e434cdc49b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is unambiguous: what is four hundred forty-eight divided by seven? One correct answer is presented among four options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward arithmetic problem. Dividing a three-digit number by a single-digit divisor is logically sound and addresses the competency directly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for Grade 3 learners: divide four hundred forty-eight by seven and select the correct answer. The hints explain the operation, confirm dividend and divisor, and verify through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: four hundred forty-eight divided by seven equals sixty-four. The incorrect options (seven is the divisor, sixty-five is close but wrong, four hundred forty-one is incorrect) serve as reasonable distractors. The hint verification is accurate: seven times sixty-four equals four hundred forty-eight."
+          }
+        }
+      },
+      {
+        "sample_id": "b9ca052222d67cac86b0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Carlo correctly solve seventy-five divided by five? The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically sound. Learners must evaluate Carlo's arithmetic and make a correctness judgment, supporting metacognitive checking skills."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear to Grade 3 learners: Carlo claims seventy-five divided by five equals fifteen. You must verify if he is correct. The hints confirm this through step-by-step calculation and multiplication verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: seventy-five divided by five equals fifteen. Carlo's answer is correct, so the answer key correctly indicates no error. The hint verification holds: five times fifteen equals seventy-five."
+          }
+        }
+      },
+      {
+        "sample_id": "4f10acbe30bd4fa69284",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Carlo correctly solve three hundred thirty-five divided by five? The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically appropriate. Learners must verify Carlo's calculation and make a correctness judgment, which supports error-checking competencies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: Carlo claims three hundred thirty-five divided by five equals sixty-seven. You must determine if he is correct. The hints confirm this through operation verification and multiplication check."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: three hundred thirty-five divided by five equals sixty-seven. Carlo's answer is correct, so the answer key correctly indicates no error. The hint verification holds: five times sixty-seven equals three hundred thirty-five."
+          }
+        }
+      },
+      {
+        "sample_id": "ad99b169f5f5ff640fe0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true-false statement is unambiguous: does five thousand divided by one thousand equal five? The item clearly asks learners to evaluate this claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A contextualized problem where a character named Sir Rez with a dance theme is introduced. The thematic element does not interfere with the mathematical logic of the division operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for Grade 3 learners: the item introduces a character, Sir Rez, with a dance-related emoji, then asks learners to verify a division statement. The thematic wrapping is mild and does not obscure the mathematics."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: five thousand divided by one thousand equals five. The True answer is correct. The hints confirm the operation and verify through multiplication that one thousand times five equals five thousand."
+          }
+        }
+      },
+      {
+        "sample_id": "de07d1892952811eaa54",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: a character named Manny with a basketball theme is introduced, and learners must evaluate whether Manny correctly solved twelve divided by four as four. The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically sound. A learner must identify that Manny's answer is incorrect and recognize that twelve divided by four equals three, not four. The thematic element with basketball does not disrupt the mathematical logic."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: identify an error in Manny's division work. Manny claimed twelve divided by four equals four, which is incorrect. The hints guide learners to recognize that four times three equals twelve, so the correct quotient is three."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: twelve divided by four equals three, not four. Manny's answer is incorrect, so the answer key correctly indicates an error with the correct value of three. The hint verification holds: four times three equals twelve."
+          }
+        }
+      },
+      {
+        "sample_id": "0738b76694dfccafbabf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze problem is unambiguous: divide eight thousand by one thousand and fill in the blank. The task is clearly specified."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division operation. Dividing by one thousand is logically appropriate and aligns with place-value strategies in Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Very clear for Grade 3 learners: divide eight thousand by one thousand and write the answer. The hints confirm the operation and verify through multiplication that one thousand times eight equals eight thousand."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: eight thousand divided by one thousand equals eight. The hint verification holds: one thousand times eight equals eight thousand. The quotient statement is accurate."
+          }
+        }
+      },
+      {
+        "sample_id": "64847f546901f5052736",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is unambiguous: what is six hundred divided by one hundred? Four options are provided with one correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division problem. Dividing a three-digit number by one hundred is logically sound and appropriate for the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: divide six hundred by one hundred and select the correct answer. The hints explain the operation, confirm dividend and divisor, and verify through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: six hundred divided by one hundred equals six. The incorrect options (one hundred is the divisor itself, five hundred is incorrect, seven is incorrect) provide plausible distractors. The hint verification is accurate: one hundred times six equals six hundred."
+          }
+        }
+      },
+      {
+        "sample_id": "69cdcd990e5c8a2d663d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question is unambiguous: what is four thousand ten divided by ten? One correct answer is presented among four options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A straightforward division problem. Dividing a four-digit number by ten is logically appropriate and addresses the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for Grade 3 learners: divide four thousand ten by ten and select the correct answer. The hints explain the operation, confirm dividend and divisor, and verify through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: four thousand ten divided by ten equals four hundred one. The incorrect options (four thousand is close to the dividend, ten is the divisor itself, four hundred two is incorrect) provide reasonable distractors. The hint verification is accurate: ten times four hundred one equals four thousand ten."
+          }
+        }
+      },
+      {
+        "sample_id": "e6c772b3269df259a2b0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze problem is unambiguous: divide eight thousand seven hundred eighty by ten and fill in the blank. The format clearly specifies the required action."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "A direct division operation. Dividing by ten is logically sound and uses appropriate place-value understanding for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for Grade 3 learners: divide eight thousand seven hundred eighty by ten and write the answer. The hints confirm the operation and verify through multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The division is correct: eight thousand seven hundred eighty divided by ten equals eight hundred seventy-eight. The hint verification holds: ten times eight hundred seventy-eight equals eight thousand seven hundred eighty."
+          }
+        }
+      },
+      {
+        "sample_id": "1f28b60c150061fa8745",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Liza correctly solve twenty-five divided by five? The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically sound. Learners must recognize that Liza's answer of four is incorrect and that the correct quotient is five."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: Liza claims twenty-five divided by five equals four, which is incorrect. You must identify the error. The hints confirm that five times five equals twenty-five, so the correct quotient is five."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: twenty-five divided by five equals five, not four. Liza's answer is incorrect, so the answer key correctly indicates an error with the correct value of five. The hint verification holds: five times five equals twenty-five."
+          }
+        }
+      },
+      {
+        "sample_id": "ed148c9abba49a739429",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Clear error-detection format: did the character Manny correctly solve thirty-eight hundred divided by one hundred? The item is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection scenario is logically appropriate. Learners must recognize that Manny's answer of one hundred is incorrect and that the correct quotient is thirty-eight."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Clear for learners: Manny claims thirty-eight hundred divided by one hundred equals one hundred, which is incorrect. You must identify the error. The hints confirm that one hundred times thirty-eight equals thirty-eight hundred, so the correct quotient is thirty-eight."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculation is correct: thirty-eight hundred divided by one hundred equals thirty-eight, not one hundred. Manny's answer is incorrect, so the answer key correctly indicates an error with the correct value of thirty-eight. The hint verification holds: one hundred times thirty-eight equals thirty-eight hundred."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "divide_numbers",
+        "clause": "Divide numbers",
+        "verdict": "PASS",
+        "reasoning": "All twenty-three samples present division problems as the core mathematical task. Every item requires learners to identify, perform, or evaluate a division operation. The competency scope is uniformly addressed across cloze, multiple-choice, true-false, and error-detection formats. Samples range from direct computational division to division verification scenarios embedded in character-based problem contexts involving named solvers.",
+        "sample_ids": ["70d1b4d574c36827ad22", "ee500eea4aedc17554c1", "dfe83cad1a376d98eda2", "8dfa5824649def578f11", "9e60e7ad5d87fea47081", "5e078a1084e6cf63a066", "d7fec7e732e25703731d", "0cbcba7968524f48d760", "bf278a6d269076e4dd50", "e99e400248fdadbcee74", "0d2e37cc03c2ddcf2ef9", "dde50f2b4265aac7c8bc", "178a283ca2e434cdc49b", "b9ca052222d67cac86b0", "4f10acbe30bd4fa69284", "ad99b169f5f5ff640fe0", "de07d1892952811eaa54", "0738b76694dfccafbabf", "64847f546901f5052736", "69cdcd990e5c8a2d663d", "e6c772b3269df259a2b0", "1f28b60c150061fa8745", "ed148c9abba49a739429"]
+      },
+      {
+        "requirement_id": "with_and_without_remainder",
+        "clause": "with and without remainder",
+        "verdict": "CONCERN",
+        "reasoning": "The packet demonstrates both whole-number quotients and quotients with remainders. Samples without remainders include divisions like seventy-eight by six yielding thirteen, and eight thousand by one thousand yielding eight. Samples with remainders include fifty-one by eight yielding six remainder three and sixty by seven yielding eight remainder four. However, two samples containing remainder cases have corrupted hint equations that prevent learners from properly understanding how remainders are calculated, identified, and recorded, creating a significant pedagogical gap in the remainder component.",
+        "sample_ids": ["70d1b4d574c36827ad22", "ee500eea4aedc17554c1", "dfe83cad1a376d98eda2", "8dfa5824649def578f11", "9e60e7ad5d87fea47081", "5e078a1084e6cf63a066", "d7fec7e732e25703731d", "0cbcba7968524f48d760", "bf278a6d269076e4dd50", "e99e400248fdadbcee74", "0d2e37cc03c2ddcf2ef9", "dde50f2b4265aac7c8bc", "178a283ca2e434cdc49b", "b9ca052222d67cac86b0", "4f10acbe30bd4fa69284", "ad99b169f5f5ff640fe0", "de07d1892952811eaa54", "0738b76694dfccafbabf", "64847f546901f5052736", "69cdcd990e5c8a2d663d", "e6c772b3269df259a2b0", "1f28b60c150061fa8745", "ed148c9abba49a739429"]
+      },
+      {
+        "requirement_id": "2_to_3_digit_numbers",
+        "clause": "2- to 3-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "The sample set includes multiple two-digit and three-digit dividends across various contexts. Two-digit examples include seventy-eight by six, fifty-one by eight, sixteen by eight, sixty by seven, seventy by ten, seventy-five by five, twelve by four, and twenty-five by five. Three-digit examples include four hundred forty-eight by seven and one hundred fifty-eight by two. These samples appropriately cover the divisor specifications: single-digit divisors with and without remainders.",
+        "sample_ids": ["ee500eea4aedc17554c1", "8dfa5824649def578f11", "9e60e7ad5d87fea47081", "e99e400248fdadbcee74", "0d2e37cc03c2ddcf2ef9", "dde50f2b4265aac7c8bc", "178a283ca2e434cdc49b", "b9ca052222d67cac86b0", "de07d1892952811eaa54", "1f28b60c150061fa8745"]
+      },
+      {
+        "requirement_id": "1_digit_number_without_remainder",
+        "clause": "1-digit number without remainder",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples present division by single-digit divisors that yield whole-number quotients. Examples include seventy-eight by six equals thirteen, sixteen by eight equals two, one hundred fifty-eight by two equals seventy-nine, seventy-five by five equals fifteen, three hundred thirty-five by five equals sixty-seven, twelve by four equals three, and four hundred forty-eight by seven equals sixty-four. These samples demonstrate the no-remainder case across diverse dividend magnitudes and single-digit divisors.",
+        "sample_ids": ["ee500eea4aedc17554c1", "9e60e7ad5d87fea47081", "0d2e37cc03c2ddcf2ef9", "dde50f2b4265aac7c8bc", "178a283ca2e434cdc49b", "b9ca052222d67cac86b0", "4f10acbe30bd4fa69284", "de07d1892952811eaa54", "1f28b60c150061fa8745"]
+      },
+      {
+        "requirement_id": "2_digit_numbers",
+        "clause": "2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "The packet includes numerous two-digit dividends across various contexts. Examples include seventy-eight by six, fifty-one by eight, sixteen by eight, sixty by seven, seventy by ten, seventy-five by five, twelve by four, and twenty-five by five. These samples demonstrate the full range of two-digit dividend scenarios required by the competency through multiple problem-solving contexts.",
+        "sample_ids": ["ee500eea4aedc17554c1", "8dfa5824649def578f11", "9e60e7ad5d87fea47081", "e99e400248fdadbcee74", "dde50f2b4265aac7c8bc", "b9ca052222d67cac86b0", "de07d1892952811eaa54", "1f28b60c150061fa8745"]
+      },
+      {
+        "requirement_id": "1_digit_number_with_remainder",
+        "clause": "1-digit number with remainder",
+        "verdict": "FAIL",
+        "reasoning": "The packet includes samples that should demonstrate two-digit dividends by single-digit divisors yielding remainders. Fifty-one by eight produces six remainder three, and sixty by seven produces eight remainder four. However, both of these samples contain corrupted hint equations that completely break the mathematical validity of the remainder instruction. The seed forty-five hints show eight times six remainder three equals an incoherent expression with repeated remainder symbols. The seed six hundred hints show seven times eight remainder four equals another corrupted expression. These defects make it impossible for learners to understand how remainders are generated, recorded, and verified through multiplication.",
+        "sample_ids": ["8dfa5824649def578f11", "e99e400248fdadbcee74"]
+      },
+      {
+        "requirement_id": "2_to_4_digit_numbers",
+        "clause": "2- to 4-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "The packet extensively covers two-digit through four-digit dividends. Two-digit examples include seventy and twenty-five. Three-digit examples include six hundred, three hundred thirty-five, and four hundred forty-eight. Four-digit examples include two thousand, six thousand five hundred forty, five thousand, two thousand six hundred, six thousand nine hundred twenty, eight thousand, three thousand one hundred, four thousand ten, eight thousand seven hundred eighty, and three thousand eight hundred. These samples comprehensively demonstrate the range specified in the competency.",
+        "sample_ids": ["70d1b4d574c36827ad22", "dfe83cad1a376d98eda2", "5e078a1084e6cf63a066", "d7fec7e732e25703731d", "0cbcba7968524f48d760", "bf278a6d269076e4dd50", "dde50f2b4265aac7c8bc", "ad99b169f5f5ff640fe0", "0738b76694dfccafbabf", "64847f546901f5052736", "69cdcd990e5c8a2d663d", "e6c772b3269df259a2b0", "ed148c9abba49a739429"]
+      },
+      {
+        "requirement_id": "10_100_1000",
+        "clause": "10,100, and 1000",
+        "verdict": "PASS",
+        "reasoning": "The packet demonstrates division by all three specified place-value divisors. Division by ten appears in samples like six thousand five hundred forty by ten yields six hundred fifty-four, six thousand nine hundred twenty by ten yields six hundred ninety-two, seventy by ten yields seven, four thousand ten by ten yields four hundred one, and eight thousand seven hundred eighty by ten yields eight hundred seventy-eight. Division by one hundred appears in samples like two thousand six hundred by one hundred yields twenty-six, three thousand one hundred by one hundred yields thirty-one, six hundred by one hundred yields six, and three thousand eight hundred by one hundred yields thirty-eight. Division by one thousand appears in samples like two thousand by one thousand yields two, five thousand by one thousand yields five, and eight thousand by one thousand yields eight. All three divisors are well-represented across the packet.",
+        "sample_ids": ["70d1b4d574c36827ad22", "dfe83cad1a376d98eda2", "5e078a1084e6cf63a066", "d7fec7e732e25703731d", "0cbcba7968524f48d760", "bf278a6d269076e4dd50", "dde50f2b4265aac7c8bc", "ad99b169f5f5ff640fe0", "0738b76694dfccafbabf", "64847f546901f5052736", "69cdcd990e5c8a2d663d", "e6c772b3269df259a2b0", "ed148c9abba49a739429"]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

@@ -1,0 +1,272 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe17-mat_g3_na_q2_0-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_na_q2_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe17-mat_g3_na_q2_0-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_0
+PACKET DIGEST: 0bda9d98610b749bc58dfb8749bcba82d3f4749265f86448b0b555c0368b2add
+COMPETENCY (Grade 3, Quarter 2, None):
+Read and write money in words and using: Philippine currency symbols (₱ and PhP) up to ₱10 000, and the centavo sign.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  read: Read
+  write: write
+  money: money
+  words: words
+  philippine_currency_symbols: Philippine currency symbols
+  peso_sign: ₱
+  php: PhP
+  up_to_peso_10000: up to ₱10 000
+  centavo_sign: centavo sign
+
+SAMPLES (every one of these is real rendered output):
+  sample 38ca4b44c4dd65639b81  seed 42  [read_mcq]
+      stem:    How is 25 centavos written as a decimal of a peso using the ₱ symbol?
+      answer:  ₱0.25
+      options: ₱0.25 / ₱25 / ₱0.025 / 25¢
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 233, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "₱50", "₱50", "REPUBLIKA NG PILIPINAS", "₱100", "₱100", "₱100", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱1", "₱1"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff", "#c084fc,", "#7c3aed)", "#86efac,", "#16a34a)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 77376f95218b3362e04e  seed 43  [mcq]
+      stem:    How is ₱248 written in words?
+      answer:  two hundred forty-eight pesos
+      options: two hundred forty-eight centavos / three hundred forty-eight pesos / two hundred forty-eight pesos / two hundred forty-three pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 16436ea4a831d49415b1  seed 44  [cloze]
+      stem:    How is 'nine thousand two hundred sixteen pesos' written using the peso symbol?
+      answer:  ₱9216
+      options: 9216¢ / ₱9211 / ₱92160 / ₱9216
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f52d53a7d3b1ebd9a2c8  seed 45  [mcq]
+      stem:    How is 'eight thousand nine hundred twenty-three pesos' written using the peso symbol?
+      answer:  ₱8923
+      options: ₱89230 / 8923¢ / ₱8918 / ₱8923
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 87414c4d51105e049ab0  seed 46  [cloze]
+      stem:    How is 'three thousand eight hundred sixteen pesos' written using the peso symbol?
+      answer:  ₱3816
+      options: ₱3811 / ₱3816 / ₱38160 / 3816¢
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 78499b23bc1b992604e9  seed 500  [read_mcq]
+      stem:    How is ₱7220 written in words?
+      answer:  seven thousand two hundred twenty pesos
+      options: seven thousand two hundred twenty centavos / seven thousand two hundred ten pesos / seven thousand two hundred twenty pesos / seven thousand two hundred twenty-five pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 227, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "₱20", "₱20", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#86efac,", "#16a34a)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0186ca5b05aaa2626fa8  seed 501  [read_mcq]
+      stem:    How is ₱7432 written in words?
+      answer:  seven thousand four hundred thirty-two pesos
+      options: seven thousand four hundred thirty-seven pesos / seven thousand four hundred thirty-two centavos / seven thousand four hundred twenty-two pesos / seven thousand four hundred thirty-two pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 239, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "₱20", "₱20", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱1", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#86efac,", "#16a34a)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#fef08a 60%,", "#cbd5e1 60%)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 51c74ccfe4c0f249b306  seed 502  [cloze]
+      stem:    How is ₱1325 written using the currency code PhP?
+      answer:  PhP 1325
+      options: PhP 1325 / PhP1325c / ₱1325 / 1325 PhP
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 19a1117378287329eebb  seed 600  [read_mcq]
+      stem:    How is 50 centavos written as a decimal of a peso using the ₱ symbol?
+      answer:  ₱0.50
+      options: 50¢ / ₱0.050 / ₱0.50 / ₱50
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱100", "₱100", "₱100", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱1", "₱5", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#c084fc,", "#7c3aed)", "#fff", "#86efac,", "#16a34a)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#e2e8f0,", "#cbd5e1)", "#94a3b8", "#fef08a 60%,", "#cbd5e1 60%)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8d3df77034bc037af0a9  seed 604  [mcq]
+      stem:    How is 'one thousand seven hundred pesos' written using the peso symbol?
+      answer:  ₱1700
+      options: ₱1695 / 1700¢ / ₱17000 / ₱1700
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8911b4e3c64b191e50d6  seed 605  [read_mcq]
+      stem:    How is ₱778 written in words?
+      answer:  seven hundred seventy-eight pesos
+      options: eight hundred seventy-eight pesos / seven hundred twenty-eight pesos / seven hundred seventy-eight centavos / seven hundred seventy-eight pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 48, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱20", "₱20", "₱20", "REPUBLIKA NG PILIPINAS", "₱50", "₱50", "₱50", "REPUBLIKA NG PILIPINAS", "₱100", "₱100", "₱100", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱1", "₱1", "₱5"], "distinct_colours": ["hsl(var(--text-muted)", "#ffedd5,", "#ea580c)", "#fff", "#fda4af,", "#dc2626)", "#c084fc,", "#7c3aed)", "#86efac,", "#16a34a)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#e2e8f0,", "#cbd5e1)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1cbb291e576c1a0e0d51  seed 606  [mcq]
+      stem:    How is ₱6111 written in words?
+      answer:  six thousand one hundred eleven pesos
+      options: six thousand one hundred eleven centavos / six thousand one hundred eleven pesos / six thousand one hundred sixteen pesos / six thousand one hundred one pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a932bb6b49ecbe732601  seed 700  [mcq]
+      stem:    How is ₱0.50 written using the centavo sign?
+      answer:  50¢
+      options: ₱0.050 / ₱50 / 50¢ / 50 pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0d9f27c44b99f289f0f9  seed 701  [cloze]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. How is ₱2289 written in words?
+      answer:  two thousand two hundred eighty-nine pesos
+      options: two thousand two hundred thirty-nine pesos / two thousand two hundred eighty-nine pesos / two thousand two hundred eighty-nine centavos / two thousand three hundred eighty-nine pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fc70d4a8c2e52b165397  seed 702  [cloze]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. How is ₱7760 written in words?
+      answer:  seven thousand seven hundred sixty pesos
+      options: seven thousand eight hundred sixty pesos / seven thousand seven hundred sixty centavos / seven thousand seven hundred sixty pesos / seven thousand seven hundred fifty-eight pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample a627a1acb7eedcc280a4  seed 800  [read_mcq]
+      stem:    How is 'six thousand one hundred fifty-nine pesos' written using the peso symbol?
+      answer:  ₱6159
+      options: ₱6159 / ₱6154 / 6159¢ / ₱61590
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 205, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱50", "₱50", "₱50", "REPUBLIKA NG PILIPINAS", "₱100", "₱100", "₱100", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱1", "₱1", "₱1", "₱5"], "distinct_colours": ["hsl(var(--text-muted)", "#fda4af,", "#dc2626)", "#fff", "#c084fc,", "#7c3aed)", "#86efac,", "#16a34a)", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#e2e8f0,", "#cbd5e1)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4623b5c5bb9f4d12268c  seed 801  [cloze]
+      stem:    How is ₱6486 written in words?
+      answer:  six thousand four hundred eighty-six pesos
+      options: six thousand four hundred eighty-six centavos / six thousand five hundred six pesos / six thousand four hundred eighty-six pesos / six thousand four hundred eighty-four pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 64a11b5417d035042ffb  seed 900  [mcq]
+      stem:    How is ₱0.50 written using the centavo sign?
+      answer:  50¢
+      options: ₱0.050 / 50 pesos / 50¢ / ₱50
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b878c91678dbe2154d96  seed 901  [read_mcq]
+      stem:    How is 25 centavos written as a decimal of a peso using the ₱ symbol?
+      answer:  ₱0.25
+      options: ₱0.25 / ₱0.025 / 25¢ / ₱25
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "PesoMoney", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  PesoMoney
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "PesoMoney", "element_count": 280, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["BILLS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "₱200", "₱200", "₱200", "REPUBLIKA NG PILIPINAS", "COINS", "₱1", "₱10"], "distinct_colours": ["hsl(var(--text-muted)", "#86efac,", "#16a34a)", "#fff", "#cbd5e1,", "#94a3b8)", "#1e293b", "#64748b", "#fef08a 60%,", "#cbd5e1 60%)", "#94a3b8"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ecac22020c1c38e55d3f  seed 1000  [mcq]
+      stem:    How is 'six thousand one hundred ninety-seven pesos' written using the peso symbol?
+      answer:  ₱6197
+      options: ₱6192 / ₱61970 / 6197¢ / ₱6197
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "hint_gated"}
+  sample 640f0284fbc1f4a01452  seed 1001  [cloze]
+      stem:    How is 'four thousand three hundred ninety-six pesos' written using the peso symbol?
+      answer:  ₱4396
+      options: ₱43960 / 4396¢ / ₱4391 / ₱4396
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample d06ed6277750d73e39dc  seed 1002  [cloze]
+      stem:    How is ₱2295 written in words?
+      answer:  two thousand two hundred ninety-five pesos
+      options: two thousand two hundred ninety-five centavos / two thousand two hundred ninety-five pesos / two thousand two hundred forty-five pesos / two thousand three hundred ninety-five pesos
+      hints:   ["Read the number or words given in the question carefully.", "Think about the spelling of number words or the position of the currency symbol.", "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

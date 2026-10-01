@@ -1,0 +1,258 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe18-mat_g3_na_q2_6-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_na_q2_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe18-mat_g3_na_q2_6-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_6
+PACKET DIGEST: 77ce8805e5c1cceb6fe33376073c29231dfa145217d28d512165c9a690f10437
+COMPETENCY (Grade 3, Quarter 2, None):
+Perform addition and subtraction of 3 to 4 numbers of up to 2 digits, observing correct order of operations.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  addition_and_subtraction: addition and subtraction
+  3_to_4_numbers: 3 to 4 numbers
+  up_to_2_digits: up to 2 digits
+  observing_correct_order_of_operations: observing correct order of operations
+
+SAMPLES (every one of these is real rendered output):
+  sample bef1c6353b0dcf42b157  seed 42  [cloze]
+      stem:    4 + 95 + 36 = ___
+      answer:  135
+      options: 134 / 137 / 135 / 136
+      hints:   ["Evaluate the number sentence: 4 + 95 + 36.", "Use the order of operations: work left to right for + and −.", "Step 1: 4 + 95 = 99.", "Step 2: 99 + 36 = 135.", "The answer is 135."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ea8be1185406a6882634  seed 43  [mcq]
+      stem:    37 + 90 - 98 = ___
+      answer:  29
+      options: 29 / 30 / 28 / 31
+      hints:   ["Evaluate the number sentence: 37 + 90 - 98.", "Use the order of operations: work left to right for + and −.", "Step 1: 37 + 90 = 127.", "Step 2: 127 - 98 = 29.", "The answer is 29."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7a1497ee4424f283bda0  seed 44  [cloze]
+      stem:    67 + 70 - 90 + 15 = ___
+      answer:  62
+      options: 63 / 62 / 61 / 64
+      hints:   ["Evaluate the number sentence: 67 + 70 - 90 + 15.", "Use the order of operations: work left to right for + and −.", "Step 1: 67 + 70 = 137.", "Step 2: 137 - 90 = 47.", "Step 3: 47 + 15 = 62.", "The answer is 62."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dc21e5708ae50d74725c  seed 45  [mcq]
+      stem:    96 + 84 + 5 - 80 = ___
+      answer:  105
+      options: 105 / 107 / 104 / 106
+      hints:   ["Evaluate the number sentence: 96 + 84 + 5 - 80.", "Use the order of operations: work left to right for + and −.", "Step 1: 96 + 84 = 180.", "Step 2: 180 + 5 = 185.", "Step 3: 185 - 80 = 105.", "The answer is 105."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e5070ba5b13d6d9c36c4  seed 46  [mcq]
+      stem:    52 + 6 + 76 = ___
+      answer:  134
+      options: 136 / 134 / 135 / 133
+      hints:   ["Evaluate the number sentence: 52 + 6 + 76.", "Use the order of operations: work left to right for + and −.", "Step 1: 52 + 6 = 58.", "Step 2: 58 + 76 = 134.", "The answer is 134."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 49a3a141f57e172c13f8  seed 500  [mcq]
+      stem:    44 + 74 + 95 - 12 = ___
+      answer:  201
+      options: 203 / 200 / 201 / 202
+      hints:   ["Evaluate the number sentence: 44 + 74 + 95 - 12.", "Use the order of operations: work left to right for + and −.", "Step 1: 44 + 74 = 118.", "Step 2: 118 + 95 = 213.", "Step 3: 213 - 12 = 201.", "The answer is 201."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5e4630d5b9d9f806962c  seed 501  [mcq]
+      stem:    59 + 87 + 1 - 60 = ___
+      answer:  87
+      options: 89 / 88 / 86 / 87
+      hints:   ["Evaluate the number sentence: 59 + 87 + 1 - 60.", "Use the order of operations: work left to right for + and −.", "Step 1: 59 + 87 = 146.", "Step 2: 146 + 1 = 147.", "Step 3: 147 - 60 = 87.", "The answer is 87."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c0b8a2f30cc1eaed1221  seed 502  [cloze]
+      stem:    22 + 81 - 46 + 94 = ___
+      answer:  151
+      options: 151 / 150 / 152 / 153
+      hints:   ["Evaluate the number sentence: 22 + 81 - 46 + 94.", "Use the order of operations: work left to right for + and −.", "Step 1: 22 + 81 = 103.", "Step 2: 103 - 46 = 57.", "Step 3: 57 + 94 = 151.", "The answer is 151."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 97233c776114d4a3e5a2  seed 600  [mcq]
+      stem:    45 + 81 - 57 - 20 = ___
+      answer:  49
+      options: 51 / 48 / 49 / 50
+      hints:   ["Evaluate the number sentence: 45 + 81 - 57 - 20.", "Use the order of operations: work left to right for + and −.", "Step 1: 45 + 81 = 126.", "Step 2: 126 - 57 = 69.", "Step 3: 69 - 20 = 49.", "The answer is 49."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1fc23050e55989c4be62  seed 601  [cloze]
+      stem:    Fidel starts with 70 marbles. Then Fidel receives 94 marbles. Then Fidel gives away 5 marbles. How many marbles does Fidel have now?
+      answer:  159
+      options: 160 / 158 / 159 / 161
+      hints:   ["Evaluate the number sentence: 70 + 94 - 5.", "Use the order of operations: work left to right for + and −.", "Step 1: 70 + 94 = 164.", "Step 2: 164 - 5 = 159.", "The answer is 159."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 83d3859a11008dfaa4cf  seed 602  [cloze]
+      stem:    79 - 57 + 28 + 95 = ___
+      answer:  145
+      options: 146 / 144 / 147 / 145
+      hints:   ["Evaluate the number sentence: 79 - 57 + 28 + 95.", "Use the order of operations: work left to right for + and −.", "Step 1: 79 - 57 = 22.", "Step 2: 22 + 28 = 50.", "Step 3: 50 + 95 = 145.", "The answer is 145."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample fce6b3ba74e0797da271  seed 603  [mcq]
+      stem:    2 + 74 + 85 = ___
+      answer:  161
+      options: 163 / 160 / 162 / 161
+      hints:   ["Evaluate the number sentence: 2 + 74 + 85.", "Use the order of operations: work left to right for + and −.", "Step 1: 2 + 74 = 76.", "Step 2: 76 + 85 = 161.", "The answer is 161."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0428469e96befcdef13a  seed 604  [cloze]
+      stem:    8 + 5 + 9 = ___
+      answer:  22
+      options: 22 / 23 / 24 / 21
+      hints:   ["Evaluate the number sentence: 8 + 5 + 9.", "Use the order of operations: work left to right for + and −.", "Step 1: 8 + 5 = 13.", "Step 2: 13 + 9 = 22.", "The answer is 22."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2a6a0bcc128e05cfb4c2  seed 605  [mcq]
+      stem:    74 - 56 + 70 = ___
+      answer:  88
+      options: 88 / 89 / 90 / 87
+      hints:   ["Evaluate the number sentence: 74 - 56 + 70.", "Use the order of operations: work left to right for + and −.", "Step 1: 74 - 56 = 18.", "Step 2: 18 + 70 = 88.", "The answer is 88."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8827c8c7f0f5fda7f43f  seed 606  [mcq]
+      stem:    47 + 86 + 56 = ___
+      answer:  189
+      options: 190 / 191 / 188 / 189
+      hints:   ["Evaluate the number sentence: 47 + 86 + 56.", "Use the order of operations: work left to right for + and −.", "Step 1: 47 + 86 = 133.", "Step 2: 133 + 56 = 189.", "The answer is 189."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 944a7560f678e058f73c  seed 607  [cloze]
+      stem:    97 - 15 + 18 = ___
+      answer:  100
+      options: 101 / 99 / 102 / 100
+      hints:   ["Evaluate the number sentence: 97 - 15 + 18.", "Use the order of operations: work left to right for + and −.", "Step 1: 97 - 15 = 82.", "Step 2: 82 + 18 = 100.", "The answer is 100."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f36c2d33b7be6b2db7eb  seed 700  [cloze]
+      stem:    1 + 78 + 71 = ___
+      answer:  150
+      options: 149 / 151 / 150 / 152
+      hints:   ["Evaluate the number sentence: 1 + 78 + 71.", "Use the order of operations: work left to right for + and −.", "Step 1: 1 + 78 = 79.", "Step 2: 79 + 71 = 150.", "The answer is 150."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 590137ecb0d5047e9381  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 64 + 14 + 15 - 71 = ___
+      answer:  22
+      options: 21 / 24 / 22 / 23
+      hints:   ["Evaluate the number sentence: 64 + 14 + 15 - 71.", "Use the order of operations: work left to right for + and −.", "Step 1: 64 + 14 = 78.", "Step 2: 78 + 15 = 93.", "Step 3: 93 - 71 = 22.", "The answer is 22."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8203eefb5133298c220a  seed 702  [cloze]
+      stem:    🐕 Ate Beng enjoys cat toys. Here is a math challenge. 18 - 4 + 99 = ___
+      answer:  113
+      options: 115 / 114 / 113 / 112
+      hints:   ["Evaluate the number sentence: 18 - 4 + 99.", "Use the order of operations: work left to right for + and −.", "Step 1: 18 - 4 = 14.", "Step 2: 14 + 99 = 113.", "The answer is 113."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 5970f960f2567e0e6fb9  seed 900  [mcq]
+      stem:    48 + 97 + 13 = ___
+      answer:  158
+      options: 157 / 160 / 158 / 159
+      hints:   ["Evaluate the number sentence: 48 + 97 + 13.", "Use the order of operations: work left to right for + and −.", "Step 1: 48 + 97 = 145.", "Step 2: 145 + 13 = 158.", "The answer is 158."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6312f55bcae35c6023fe  seed 901  [mcq]
+      stem:    85 + 38 - 15 - 75 = ___
+      answer:  33
+      options: 33 / 35 / 34 / 32
+      hints:   ["Evaluate the number sentence: 85 + 38 - 15 - 75.", "Use the order of operations: work left to right for + and −.", "Step 1: 85 + 38 = 123.", "Step 2: 123 - 15 = 108.", "Step 3: 108 - 75 = 33.", "The answer is 33."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d182413e5e0abecf9e7a  seed 1000  [cloze]
+      stem:    22 + 69 + 56 - 17 = ___
+      answer:  130
+      options: 131 / 130 / 132 / 129
+      hints:   ["Evaluate the number sentence: 22 + 69 + 56 - 17.", "Use the order of operations: work left to right for + and −.", "Step 1: 22 + 69 = 91.", "Step 2: 91 + 56 = 147.", "Step 3: 147 - 17 = 130.", "The answer is 130."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 2b051db937e3c17a8819  seed 1001  [cloze]
+      stem:    98 + 98 - 26 = ___
+      answer:  170
+      options: 169 / 172 / 171 / 170
+      hints:   ["Evaluate the number sentence: 98 + 98 - 26.", "Use the order of operations: work left to right for + and −.", "Step 1: 98 + 98 = 196.", "Step 2: 196 - 26 = 170.", "The answer is 170."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+  sample 011fe9c9b0abdc39897c  seed 1002  [cloze]
+      stem:    29 - 19 + 17 + 36 = ___
+      answer:  63
+      options: 65 / 63 / 62 / 64
+      hints:   ["Evaluate the number sentence: 29 - 19 + 17 + 36.", "Use the order of operations: work left to right for + and −.", "Step 1: 29 - 19 = 10.", "Step 2: 10 + 17 = 27.", "Step 3: 27 + 36 = 63.", "The answer is 63."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+

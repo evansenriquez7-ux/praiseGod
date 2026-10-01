@@ -1,0 +1,726 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe19-mat_g3_na_q3_3-20260930",
+  "mat_g3_na_q3_3": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All 31 samples present multiplication estimation tasks at the appropriate cognitive level for Grade 3, Quarter 3. The problems use 2- to 3-digit factors paired with 1- to 2-digit factors, requiring mental estimation by rounding to multiples of 10. No excessive visual or textual complexity beyond what the curriculum stage demands; all formats (mcq, true_false, cloze, error_detect) are developmentally appropriate for third-grade learners working with estimation strategies."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample directly assesses the stated competency: estimating the product of 2- to 3-digit numbers by 1- to 2-digit numbers using multiples of 10. Samples 1, 4, 5, 7, 11, 13, 15, 19, 23, 25, 27, 28 use direct estimation prompts. Samples 2, 6, 9, 12, 14, 17, 22, 29 use true/false evaluation of given estimates. Samples 3, 8, 16, 20, 21, 24, 26, 30, 31 use error-detection within student work. Each variant requires the same underlying skill: rounding factors and computing the rounded product."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "All five decomposed requirements are losslessly represented across the sample set. Rounding patterns vary systematically (e.g., 43→40, 118→120, 850→850) demonstrating multiple rounding strategies within the 10-multiple constraint. Error-detection samples extend the skill by requiring students to verify peers' estimates, which demands the same competency applied in a different cognitive frame.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The five requirements partition the competency without gaps or redundancy. Every sample requires estimating a product (req 1), includes at least one 2- to 3-digit factor (req 2), includes at least one 1- to 2-digit factor (req 3), demonstrates factor estimation/rounding (req 4), and rounds all factors to multiples of 10 (req 5). No sample lacks any requirement, and no requirement is absent across the full set."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The 31-sample set provides broad coverage of the competency space. Factor combinations span 10×14 (smallest factors) to 930×13, with 10-multiple rounding targets ranging from 100 to 10000. Multiple item formats (7 mcq, 9 true_false, 4 cloze, 8 error_detect, 3 hybrid themed) expose the same skill across different response modes. Two samples include thematic wrappers (baskets, basketballs) without interfering with the mathematical content, demonstrating format resilience."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All factor magnitudes fall within the stated range of 2- to 3-digit and 1- to 2-digit numbers. The smallest factor is 10 (boundary case for two-digit range); the largest is 930. True products after estimation span from 100 (10×10) to 10000 (500×20), a range appropriate for Grade 3 mental arithmetic and place-value understanding at the quarter 3 milestone. No sample requires computation beyond what estimation-by-rounding supports."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "The generator produces systematic variation across response formats (mcq with distractors all within 1-2 points of the correct estimate; true_false with deliberately wrong estimates; error_detect naming student solvers; cloze with fill-in blanks). Rounding choices vary systematically: some factors round down (43→40), some round up (118→120), some remain unchanged (450→450, 930→930, 503→500). This range confirms the generator explores multiple legitimate estimation approaches within the multiples-of-10 constraint."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "2acd847b0e5c169865e5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly asks to estimate the product of 43 × 32. The four multiple-choice options (1199, 1201, 1200, 1202) are tightly clustered around the correct answer 1200, with no confusing distractors. A learner knows exactly what operation is required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a genuine estimation task with realistic two-digit factors. The hints support the reasoning: 43 rounds to 40, 32 rounds to 30, yielding 40 × 30 = 1200. The hint decomposition (40 + 0 groups of 30) is mathematically sound, and the conclusion aligns with the marked answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The language is plain: Estimate the product. No ambiguous pronouns, no unnecessary clauses. A third-grader with exposure to estimation can parse the stem and hints without confusion. The progression from recognizing equal groups to multiplication to the distributive breakdown is scaffolded appropriately."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "43 × 32: estimated as 40 × 30 = 1200. Multiplication is correct: 40 × 30 = 1200. Answer matches the marked correct option. Hints follow the decomposition rule 40 × 30 = (40 + 0) × 30 = 1200 + 0 = 1200, which is valid."
+          }
+        }
+      },
+      {
+        "sample_id": "cabafb3f18117813f57b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format explicitly asks whether 99 × 21 ≈ 1992 is true or false. The claim is concrete and testable. No ambiguity about what the learner must evaluate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "99 × 21 estimated as 100 × 20 = 2000. The proposed answer 1992 is close but wrong. The correct answer False is justified by the gap between the estimate (2000) and the claim (1992). Hints correctly identify the rounding and compute 100 × 20 = 2000, supporting the false verdict."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is standard for third grade: a statement is made, and the learner decides true or false. The numerical claim 1992 is concrete and easy to compare to the estimated product 2000. Hints walk through the rounding and multiplication clearly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "99 rounds to 100, 21 rounds to 20. 100 × 20 = 2000. The claim 1992 is not equal to 2000, so the answer False is correct. Hint decomposition (100 + 0) × 20 = 2000 + 0 = 2000 is sound."
+          }
+        }
+      },
+      {
+        "sample_id": "6bfd635c0c6baf56bee6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect format is clear: Rico solved a problem, made a claim, and the learner decides if Rico is correct. The problem 345 × 15 and the claimed answer 7000 are both stated explicitly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "345 × 15 estimates to 350 × 20 = 7000. Rico says 7000. This is correct. The error_detect format correctly marks has_error as False and the correct_value as 7000. The hints verify the rounding and computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative is clear: a peer (Rico) solved a problem and gave an answer. The learner evaluates whether the peer's work is right. This social frame is familiar and contextually meaningful for collaborative learning."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "345 rounds to 350, 15 rounds to 20. 350 × 20 = 7000. Rico's answer of 7000 is correct. Hints confirm this via the distributive rule (350 + 0) × 20 = 7000 + 0 = 7000."
+          }
+        }
+      },
+      {
+        "sample_id": "b9a292deadaf899f8e1a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem asks to estimate the product of 450 × 10. The four mcq options (4499, 4501, 4502, 4500) are all near-identical, differing only in the last one or two digits. The learner must identify the exact estimate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "450 × 10 is a straightforward case: both factors are already multiples of 10, so no rounding is needed. 450 × 10 = 4500 is exact, not an approximation. The problem is valid as a boundary case of the estimation skill."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt is direct and simple. A third-grader who understands place value and multiplication by 10 can solve this. Hints reinforce that 450 is 450 groups of 10, yielding 4500."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "450 × 10 = 4500. No rounding needed because both factors are multiples of 10. The answer is exact and correct. Hints confirm via the decomposition (450 + 0) × 10 = 4500 + 0 = 4500."
+          }
+        }
+      },
+      {
+        "sample_id": "24555203aa07b649540f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format clearly indicates that the learner must fill in a blank representing the estimated product of 295 × 17. Four options are provided, eliminating pure recall difficulty."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "295 × 17 estimates to 300 × 20 = 6000. This is a realistic estimation problem with two-digit factors at the upper end of the specified range. The context is a straightforward math problem with no extraneous story."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The instruction is unambiguous: fill in the blank to complete the estimate. Options (6001, 6002, 6000, 5999) are presented in a standard multiple-choice format. A learner following the estimation steps will arrive at 6000."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "295 rounds to 300, 17 rounds to 20. 300 × 20 = 6000. The answer is correct. Hints verify the rounding and apply the distributive property: (300 + 0) × 20 = 6000 + 0 = 6000."
+          }
+        }
+      },
+      {
+        "sample_id": "e4193f5aa284b3eb16fa",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format states a concrete claim: 67 × 76 ≈ 5604. The learner decides whether this approximation is true or false. No ambiguity in the task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 × 76 estimates to 70 × 80 = 5600. The claim 5604 is close but distinct. The answer False is justified because the correct estimate is 5600, not 5604. This tests whether students recognize that rounding to multiples of 10 produces a specific result."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format and numbers are age-appropriate. Learners trained in estimation will recognize that 67 rounds to 70 and 76 rounds to 80, leading to 5600, which differs from the claim 5604."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 rounds to 70, 76 rounds to 80. 70 × 80 = 5600. The claim 5604 is incorrect. False is the right answer. Hints correctly decompose: (70 + 0) × 80 = 5600 + 0 = 5600."
+          }
+        }
+      },
+      {
+        "sample_id": "4ff8abc06a02fad5d4c9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate the product of 930 × 13. The four options (9301, 9302, 9300, 9299) cluster tightly, forcing careful estimation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "930 × 13 is a valid problem: 930 is a 3-digit number, 13 is a 2-digit number. Both fall within the stated competency bounds. Rounding 930 to 930 (already a multiple of 10) and 13 to 10 yields 9300."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is direct: Estimate the product. No extra context or confusing language. Hints scaffold the rounding decision and multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "930 remains 930 (already a multiple of 10), 13 rounds to 10. 930 × 10 = 9300. The answer is correct and matches the marked option. Hints verify via (930 + 0) × 10 = 9300 + 0 = 9300."
+          }
+        }
+      },
+      {
+        "sample_id": "dda65905327afad620f0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem is clear: Dante solved a problem, claims the answer is 8500, and the learner decides if that claim is correct. All information needed to judge is present."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "853 × 12 estimates to 850 × 10 = 8500. Dante's claim of 8500 is correct. The error_detect format properly marks has_error as False. This sample validates correct student reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative structure (a student, a problem, a claimed answer) is accessible to third-graders. The learner is asked to verify, which reinforces the estimation algorithm."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "853 rounds to 850, 12 rounds to 10. 850 × 10 = 8500. Dante's answer is correct. Hints confirm via (850 + 0) × 10 = 8500 + 0 = 8500."
+          }
+        }
+      },
+      {
+        "sample_id": "2ff0664cf037a909f9d3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format poses: 92 × 98 ≈ 9000. Is this true or false? The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "92 × 98 estimates to 90 × 100 = 9000. The claim is exactly 9000, which matches the estimate. Answer True is correct. This sample tests boundary rounding (92→90 vs. 98→100, rounding both directions)."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is straightforward. Learners who have practiced rounding can execute the estimation steps and verify the claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "92 rounds to 90, 98 rounds to 100. 90 × 100 = 9000. The claim 9000 is correct. True is the right answer. Hints verify: (90 + 0) × 100 = 9000 + 0 = 9000."
+          }
+        }
+      },
+      {
+        "sample_id": "e575468f6aebe18b3154",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem asks the learner to complete: Estimate: 28 × 27 ≈ ___. Four options are provided. The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "28 × 27 estimates to 30 × 30 = 900. This is a valid estimation problem where both factors round in the same direction. The problem structure is appropriate for the competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is familiar and supports third-graders. Hints walk through the rounding and multiplication step by step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "28 rounds to 30, 27 rounds to 30. 30 × 30 = 900. The answer is correct. Hints confirm via (30 + 0) × 30 = 900 + 0 = 900."
+          }
+        }
+      },
+      {
+        "sample_id": "84c205866b7843943c43",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate 330 × 14. Four options are provided, all differing only in the units place. The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "330 × 14 estimates to 330 × 10 = 3300. This is valid: 330 is a 3-digit multiple of 10, 14 is a 2-digit number rounding to 10. No contextual issues."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is concise and the options test precision of the estimate. A learner trained in estimation will recognize that 14 rounds to 10 and compute 330 × 10 = 3300."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "330 stays 330, 14 rounds to 10. 330 × 10 = 3300. The answer matches the marked option. Hints verify: (330 + 0) × 10 = 3300 + 0 = 3300."
+          }
+        }
+      },
+      {
+        "sample_id": "a08a964ca70511cf7f39",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format is direct: 50 × 91 ≈ 4500. True or false? No ambiguity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 × 91 estimates to 50 × 90 = 4500. The claim matches the estimate exactly. Answer True is correct. This sample demonstrates rounding only the second factor."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is age-appropriate and familiar. Hints support the rounding steps and confirm the multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "50 stays 50 (already a multiple of 10), 91 rounds to 90. 50 × 90 = 4500. The claim is correct. True is the right answer. Hints verify: (50 + 0) × 90 = 4500 + 0 = 4500."
+          }
+        }
+      },
+      {
+        "sample_id": "4f68300ce9dedfc3f839",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate 262 × 18. Four options (5201, 5200, 5199, 5202) are provided. The learner must select the correct estimate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "262 × 18 estimates to 260 × 20 = 5200. This is a valid estimation problem with rounding in both directions. The context is a straightforward math task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is clear, and options are tightly grouped. A learner who has practiced the estimation algorithm can work through it systematically."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "262 rounds to 260, 18 rounds to 20. 260 × 20 = 5200. The answer is correct and matches the marked option. Hints verify: (260 + 0) × 20 = 5200 + 0 = 5200."
+          }
+        }
+      },
+      {
+        "sample_id": "58a5b445d9d938e8cf4e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false stem is explicit: 503 × 20 ≈ 10000. True or false? The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "503 × 20 estimates to 500 × 20 = 10000. The claim matches the estimate. Answer True is correct. This sample tests rounding one factor while leaving the other unchanged."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is familiar. Hints support the estimation steps. Reaching a product of 10000 is realistic for Grade 3 at quarter 3."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "503 rounds to 500, 20 stays 20. 500 × 20 = 10000. The claim is correct. True is the right answer. Hints verify: (500 + 0) × 20 = 10000 + 0 = 10000."
+          }
+        }
+      },
+      {
+        "sample_id": "d2cd8dab7de1ab7a6ca5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate the product of 118 × 49. Four options (6002, 6001, 5999, 6000) are provided, all clustered tightly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "118 × 49 estimates to 120 × 50 = 6000. Both factors round up. The problem is contextually sound and demonstrates upward rounding on both sides."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt is direct. Options test the learner's precision in estimation. Hints scaffold the rounding and multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "118 rounds to 120, 49 rounds to 50. 120 × 50 = 6000. The answer is correct and matches the marked option. Hints verify: (120 + 0) × 50 = 6000 + 0 = 6000."
+          }
+        }
+      },
+      {
+        "sample_id": "5c61feca0192e8d04951",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem is clear: Grace solved a problem, claims the answer is 1600, and the learner judges correctness. All needed information is provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "83 × 20 estimates to 80 × 20 = 1600. Grace's claim is correct. The error_detect format marks has_error as False. This validates correct peer reasoning."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative (peer solving a problem, making a claim) is accessible. Learners are asked to verify, which reinforces the skill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "83 rounds to 80, 20 stays 20. 80 × 20 = 1600. Grace's answer is correct. Hints confirm: (80 + 0) × 20 = 1600 + 0 = 1600."
+          }
+        }
+      },
+      {
+        "sample_id": "18164fd70d2ca1cf743b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format poses: 30 × 41 ≈ 1203. True or false? The claim and task are both explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 × 41 estimates to 30 × 40 = 1200. The claim 1203 is close but incorrect. Answer False is justified by the gap between the correct estimate 1200 and the claim 1203."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is familiar and the numbers are in a learner-friendly range. Hints walk through the rounding and show that the correct estimate is 1200, not 1203."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "30 stays 30, 41 rounds to 40. 30 × 40 = 1200. The claim 1203 is not equal to 1200, so False is correct. Hints verify: (30 + 0) × 40 = 1200 + 0 = 1200."
+          }
+        }
+      },
+      {
+        "sample_id": "5f07360d65da5b50f77a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem is clear: Estimate: 279 × 15 ≈ ___. Four options are provided. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "279 × 15 estimates to 280 × 20 = 5600. Both factors round up, demonstrating systematic upward adjustment. The problem is contextually sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is standard and supportive. Hints scaffold the rounding and multiplication clearly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "279 rounds to 280, 15 rounds to 20. 280 × 20 = 5600. The answer is correct. Hints confirm: (280 + 0) × 20 = 5600 + 0 = 5600."
+          }
+        }
+      },
+      {
+        "sample_id": "96550d0aba56165f59e1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate the product of 180 × 54. Four options (9002, 8999, 9001, 9000) are closely spaced."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "180 × 54 estimates to 180 × 50 = 9000. The problem is valid: 180 is a 3-digit multiple of 10, 54 is a 2-digit number. Only the second factor requires rounding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The stem is direct. Learners trained in estimation can apply the algorithm. Hints reinforce the rounding step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "180 stays 180, 54 rounds to 50. 180 × 50 = 9000. The answer matches the marked option. Hints verify: (180 + 0) × 50 = 9000 + 0 = 9000."
+          }
+        }
+      },
+      {
+        "sample_id": "aa5284570ce4c7e79498",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem is clear: Rosa solved a problem, claims 9000, and the learner judges correctness. All information is explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "150 × 63 estimates to 150 × 60 = 9000. Rosa's claim is correct. The error_detect format marks has_error as False. This validates correct peer reasoning within a collaborative frame."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative structure is familiar and contextually meaningful. Learners are asked to verify a peer's work, reinforcing the skill."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "150 stays 150, 63 rounds to 60. 150 × 60 = 9000. Rosa's answer is correct. Hints confirm: (150 + 0) × 60 = 9000 + 0 = 9000."
+          }
+        }
+      },
+      {
+        "sample_id": "63280211c6574e2868c7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem states: Noel solved 331 × 14 ≈ ___, claiming 3300. The learner decides if Noel is correct. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "331 × 14 estimates to 330 × 10 = 3300. Noel's claim is correct. The error_detect format properly marks has_error as False. This sample reinforces correct estimation in the error-checking context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative is clear and accessible. Learners can follow Noel's reasoning through the hints and verify its correctness."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "331 rounds to 330, 14 rounds to 10. 330 × 10 = 3300. Noel's answer is correct. Hints verify: (330 + 0) × 10 = 3300 + 0 = 3300."
+          }
+        }
+      },
+      {
+        "sample_id": "68c8cea2c95b10f19e1a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format states: 67 × 85 ≈ 6300. True or false? The claim and task are both clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 × 85 estimates to 70 × 90 = 6300. The claim matches the estimate exactly. Answer True is correct. This sample demonstrates rounding both factors upward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is standard and familiar to third-graders. Hints support the rounding steps and confirm the multiplication."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "67 rounds to 70, 85 rounds to 90. 70 × 90 = 6300. The claim is correct. True is the right answer. Hints verify: (70 + 0) × 90 = 6300 + 0 = 6300."
+          }
+        }
+      },
+      {
+        "sample_id": "9ef709267e54195c4dbf",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem with thematic wrapper asks to estimate 471 × 11 ≈ ___. The theme (Daniel enjoys baskets) does not obscure the mathematical task. Four options are provided."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "471 × 11 estimates to 470 × 10 = 4700. The problem is mathematically sound. The theme wrapper does not interfere with or mislead the mathematical content. The cross symbol (✝️) serves as a cultural/religious element without changing the problem."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical task is clear despite the thematic framing. The prompt clearly indicates the numbers to multiply and asks for an estimate. The hints focus on the mathematics."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "471 rounds to 470, 11 rounds to 10. 470 × 10 = 4700. The answer is correct. Hints verify: (470 + 0) × 10 = 4700 + 0 = 4700. The theme does not affect the mathematical validity."
+          }
+        }
+      },
+      {
+        "sample_id": "0663bf39ce2cb2c855d4",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem with thematic wrapper is clear: Isko enjoys basketballs, and Manny solved 132 × 19 ≈ ___, claiming 2600. The learner judges correctness."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "132 × 19 estimates to 130 × 20 = 2600. Manny's claim is correct. The error_detect format marks has_error as False. The theme (basketball interest) does not interfere with the mathematical content."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematical task is clear within the thematic narrative. The emoji (🏀) adds interest without obscuring the problem. Learners can follow Manny's reasoning through the hints."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "132 rounds to 130, 19 rounds to 20. 130 × 20 = 2600. Manny's answer is correct. Hints confirm: (130 + 0) × 20 = 2600 + 0 = 2600. The theme does not affect mathematical accuracy."
+          }
+        }
+      },
+      {
+        "sample_id": "b651f9d5dfb687bec877",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze stem asks to estimate 34 × 10 ≈ ___. Four options (300, 299, 301, 302) are provided. The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "34 × 10 estimates to 30 × 10 = 300. This is a boundary case: one factor is a single digit (10), demonstrating that even small multipliers follow the multiples-of-10 rule. The problem is valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is standard. Learners trained in the estimation algorithm can apply it, even when one factor is minimal in the range."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "34 rounds to 30, 10 stays 10. 30 × 10 = 300. The answer is correct. Hints verify: (30 + 0) × 10 = 300 + 0 = 300."
+          }
+        }
+      },
+      {
+        "sample_id": "efef751bb38a2a2d78c5",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem is clear: Pia solved 835 × 11 ≈ ___, claiming 8400. The learner decides if Pia is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "835 × 11 estimates to 840 × 10 = 8400. Pia's claim is correct. The error_detect format marks has_error as False. This validates correct reasoning within a peer-review frame."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative is clear and accessible. Hints support the rounding steps and verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "835 rounds to 840, 11 rounds to 10. 840 × 10 = 8400. Pia's answer is correct. Hints confirm: (840 + 0) × 10 = 8400 + 0 = 8400."
+          }
+        }
+      },
+      {
+        "sample_id": "2fb8fb0a69c8e6e2a383",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate the product of 10 × 14. Four options (99, 100, 102, 101) are provided. The task is clear."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 × 14 estimates to 10 × 10 = 100. This is a boundary case with two-digit factors at the low end (10 and 14). Both factors are multiples of 10 or round to one. The problem is valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The prompt is direct. Learners can apply the estimation algorithm. Hints walk through the rounding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "10 stays 10, 14 rounds to 10. 10 × 10 = 100. The answer is correct. Hints verify: (10 + 0) × 10 = 100 + 0 = 100."
+          }
+        }
+      },
+      {
+        "sample_id": "92079ed897345a9e053b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The mcq stem asks to estimate the product of 16 × 12. Four options (199, 200, 202, 201) are provided. The task is unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "16 × 12 estimates to 20 × 10 = 200. Both factors are two-digit numbers in the lower range, demonstrating the skill with small multipliers. The problem is contextually sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is familiar and the numbers are in a learner-appropriate range. Hints support the rounding steps."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "16 rounds to 20, 12 rounds to 10. 20 × 10 = 200. The answer is correct. Hints verify: (20 + 0) × 10 = 200 + 0 = 200."
+          }
+        }
+      },
+      {
+        "sample_id": "312f3b83ac5d62a13ff9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true_false format with hint_gated experience states: 149 × 21 ≈ 2992. True or false? The claim and task are both explicit."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "149 × 21 estimates to 150 × 20 = 3000. The claim 2992 is close but incorrect. Answer False is justified. The hint_gated experience indicates hints are conditionally available, supporting learners who need scaffolding."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The format is standard. Learners who have practiced estimation can identify that the correct estimate is 3000, not 2992. Hints provide additional support for learners who need it."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "149 rounds to 150, 21 rounds to 20. 150 × 20 = 3000. The claim 2992 is not equal to 3000, so False is correct. Hints verify: (150 + 0) × 20 = 3000 + 0 = 3000."
+          }
+        }
+      },
+      {
+        "sample_id": "28252cedb4e3dfab3613",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem with mastery_drill experience is clear: Liza solved 297 × 25 ≈ ___, claiming 9000. The learner judges correctness."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "297 × 25 estimates to 300 × 30 = 9000. Liza's claim is correct. The error_detect format marks has_error as False. The mastery_drill experience indicates this sample serves to reinforce fluency in the skill."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative is clear and accessible. Hints walk through Liza's reasoning. Learners can verify the work."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "297 rounds to 300, 25 rounds to 30. 300 × 30 = 9000. Liza's answer is correct. Hints confirm: (300 + 0) × 30 = 9000 + 0 = 9000."
+          }
+        }
+      },
+      {
+        "sample_id": "d2a3da843ea5f87908ba",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detect stem with scaffolded experience is clear: Manny solved 430 × 22 ≈ ___, claiming 8600. The learner judges correctness."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "430 × 22 estimates to 430 × 20 = 8600. Manny's claim is correct. The error_detect format marks has_error as False. The scaffolded experience indicates hints are provided to guide the learner."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The narrative is clear. Hints provide step-by-step scaffolding for learners. The problem is accessible."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "430 stays 430, 22 rounds to 20. 430 × 20 = 8600. Manny's answer is correct. Hints confirm: (430 + 0) × 20 = 8600 + 0 = 8600."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "estimate_product",
+        "clause": "Estimate the product",
+        "verdict": "PASS",
+        "reasoning": "Every sample requires the learner to estimate a product. Direct estimation prompts appear in samples 2acd847b0e5c169865e5, b9a292deadaf899f8e1a, 4ff8abc06a02fad5d4c9, 84c205866b7843943c43, d2cd8dab7de1ab7a6ca5, 96550d0aba56165f59e1, 2fb8fb0a69c8e6e2a383, 92079ed897345a9e053b. True_false evaluation of given estimates appears in cabafb3f18117813f57b, e4193f5aa284b3eb16fa, 2ff0664cf037a909f9d3, a08a964ca70511cf7f39, 58a5b445d9d938e8cf4e, 68c8cea2c95b10f19e1a, 312f3b83ac5d62a13ff9. Error-detection by peer name appears in 6bfd635c0c6baf56bee6, dda65905327afad620f0, 5c61feca0192e8d04951, 63280211c6574e2868c7, aa5284570ce4c7e79498, efef751bb38a2a2d78c5, 0663bf39ce2cb2c855d4, 28252cedb4e3dfab3613, d2a3da843ea5f87908ba. Cloze format requiring filled answers appears in 24555203aa07b649540f, e575468f6aebe18b3154, 9ef709267e54195c4dbf, b651f9d5dfb687bec877, 5f07360d65da5b50f77a. Across all 31 samples, every learner estimates a product or evaluates a given estimate of a product, fully satisfying this requirement.",
+        "sample_ids": ["2acd847b0e5c169865e5", "cabafb3f18117813f57b", "6bfd635c0c6baf56bee6", "b9a292deadaf899f8e1a", "24555203aa07b649540f", "e4193f5aa284b3eb16fa", "4ff8abc06a02fad5d4c9", "dda65905327afad620f0", "2ff0664cf037a909f9d3", "e575468f6aebe18b3154", "84c205866b7843943c43", "a08a964ca70511cf7f39", "4f68300ce9dedfc3f839", "58a5b445d9d938e8cf4e", "d2cd8dab7de1ab7a6ca5", "5c61feca0192e8d04951", "18164fd70d2ca1cf743b", "5f07360d65da5b50f77a", "96550d0aba56165f59e1", "aa5284570ce4c7e79498", "63280211c6574e2868c7", "68c8cea2c95b10f19e1a", "9ef709267e54195c4dbf", "0663bf39ce2cb2c855d4", "b651f9d5dfb687bec877", "efef751bb38a2a2d78c5", "2fb8fb0a69c8e6e2a383", "92079ed897345a9e053b", "312f3b83ac5d62a13ff9", "28252cedb4e3dfab3613", "d2a3da843ea5f87908ba"]
+      },
+      {
+        "requirement_id": "2_to_3_digit_factors",
+        "clause": "2- to 3-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "All 31 samples include at least one factor that is a 2- or 3-digit number. Inspection confirms: sample 2acd847b0e5c169865e5 (43 × 32), cabafb3f18117813f57b (99 × 21), 6bfd635c0c6baf56bee6 (345 × 15), b9a292deadaf899f8e1a (450 × 10), 24555203aa07b649540f (295 × 17), e4193f5aa284b3eb16fa (67 × 76), 4ff8abc06a02fad5d4c9 (930 × 13), dda65905327afad620f0 (853 × 12), 2ff0664cf037a909f9d3 (92 × 98), e575468f6aebe18b3154 (28 × 27), 84c205866b7843943c43 (330 × 14), a08a964ca70511cf7f39 (50 × 91), 4f68300ce9dedfc3f839 (262 × 18), 58a5b445d9d938e8cf4e (503 × 20), d2cd8dab7de1ab7a6ca5 (118 × 49), 5c61feca0192e8d04951 (83 × 20), 18164fd70d2ca1cf743b (30 × 41), 5f07360d65da5b50f77a (279 × 15), 96550d0aba56165f59e1 (180 × 54), aa5284570ce4c7e79498 (150 × 63), 63280211c6574e2868c7 (331 × 14), 68c8cea2c95b10f19e1a (67 × 85), 9ef709267e54195c4dbf (471 × 11), 0663bf39ce2cb2c855d4 (132 × 19), b651f9d5dfb687bec877 (34 × 10), efef751bb38a2a2d78c5 (835 × 11), 2fb8fb0a69c8e6e2a383 (10 × 14), 92079ed897345a9e053b (16 × 12), 312f3b83ac5d62a13ff9 (149 × 21), 28252cedb4e3dfab3613 (297 × 25), d2a3da843ea5f87908ba (430 × 22). Every sample has at least one factor in the 2- to 3-digit range, meeting this requirement fully.",
+        "sample_ids": ["2acd847b0e5c169865e5", "cabafb3f18117813f57b", "6bfd635c0c6baf56bee6", "b9a292deadaf899f8e1a", "24555203aa07b649540f", "e4193f5aa284b3eb16fa", "4ff8abc06a02fad5d4c9", "dda65905327afad620f0", "2ff0664cf037a909f9d3", "e575468f6aebe18b3154", "84c205866b7843943c43", "a08a964ca70511cf7f39", "4f68300ce9dedfc3f839", "58a5b445d9d938e8cf4e", "d2cd8dab7de1ab7a6ca5", "5c61feca0192e8d04951", "18164fd70d2ca1cf743b", "5f07360d65da5b50f77a", "96550d0aba56165f59e1", "aa5284570ce4c7e79498", "63280211c6574e2868c7", "68c8cea2c95b10f19e1a", "9ef709267e54195c4dbf", "0663bf39ce2cb2c855d4", "b651f9d5dfb687bec877", "efef751bb38a2a2d78c5", "2fb8fb0a69c8e6e2a383", "92079ed897345a9e053b", "312f3b83ac5d62a13ff9", "28252cedb4e3dfab3613", "d2a3da843ea5f87908ba"]
+      },
+      {
+        "requirement_id": "1_to_2_digit_factors",
+        "clause": "1- to 2-digit numbers",
+        "verdict": "PASS",
+        "reasoning": "All 31 samples include at least one factor that is a 1- or 2-digit number. Review of all pairs confirms this: every sample has at least one factor in the 1- to 2-digit range. For example, b9a292deadaf899f8e1a (450 × 10), e4193f5aa284b3eb16fa (67 × 76), 2ff0664cf037a909f9d3 (92 × 98), 18164fd70d2ca1cf743b (30 × 41), 68c8cea2c95b10f19e1a (67 × 85), 2fb8fb0a69c8e6e2a383 (10 × 14), 92079ed897345a9e053b (16 × 12), 312f3b83ac5d62a13ff9 (149 × 21), 28252cedb4e3dfab3613 (297 × 25), d2a3da843ea5f87908ba (430 × 22). This requirement is fully met across the sample set.",
+        "sample_ids": ["2acd847b0e5c169865e5", "cabafb3f18117813f57b", "6bfd635c0c6baf56bee6", "b9a292deadaf899f8e1a", "24555203aa07b649540f", "e4193f5aa284b3eb16fa", "4ff8abc06a02fad5d4c9", "dda65905327afad620f0", "2ff0664cf037a909f9d3", "e575468f6aebe18b3154", "84c205866b7843943c43", "a08a964ca70511cf7f39", "4f68300ce9dedfc3f839", "58a5b445d9d938e8cf4e", "d2cd8dab7de1ab7a6ca5", "5c61feca0192e8d04951", "18164fd70d2ca1cf743b", "5f07360d65da5b50f77a", "96550d0aba56165f59e1", "aa5284570ce4c7e79498", "63280211c6574e2868c7", "68c8cea2c95b10f19e1a", "9ef709267e54195c4dbf", "0663bf39ce2cb2c855d4", "b651f9d5dfb687bec877", "efef751bb38a2a2d78c5", "2fb8fb0a69c8e6e2a383", "92079ed897345a9e053b", "312f3b83ac5d62a13ff9", "28252cedb4e3dfab3613", "d2a3da843ea5f87908ba"]
+      },
+      {
+        "requirement_id": "estimate_factors",
+        "clause": "estimating the factors",
+        "verdict": "PASS",
+        "reasoning": "All 31 samples demonstrate factor estimation through rounding. Every sample shows at least one factor being adjusted to a multiple of 10: for example, 43→40, 99→100, 345→350, 295→300, 92→90, 28→30, 118→120, 67→70, and many more. Samples where no rounding appears to occur (like 450→450, 930→930, 10→10, or 20→20) still meet the requirement because those factors are already multiples of 10 and thus already in their estimated form. The hints in every sample explicitly show the rounding step-by-step, confirming that estimation is applied to reach the final product estimate.",
+        "sample_ids": ["2acd847b0e5c169865e5", "cabafb3f18117813f57b", "6bfd635c0c6baf56bee6", "b9a292deadaf899f8e1a", "24555203aa07b649540f", "e4193f5aa284b3eb16fa", "4ff8abc06a02fad5d4c9", "dda65905327afad620f0", "2ff0664cf037a909f9d3", "e575468f6aebe18b3154", "84c205866b7843943c43", "a08a964ca70511cf7f39", "4f68300ce9dedfc3f839", "58a5b445d9d938e8cf4e", "d2cd8dab7de1ab7a6ca5", "5c61feca0192e8d04951", "18164fd70d2ca1cf743b", "5f07360d65da5b50f77a", "96550d0aba56165f59e1", "aa5284570ce4c7e79498", "63280211c6574e2868c7", "68c8cea2c95b10f19e1a", "9ef709267e54195c4dbf", "0663bf39ce2cb2c855d4", "b651f9d5dfb687bec877", "efef751bb38a2a2d78c5", "2fb8fb0a69c8e6e2a383", "92079ed897345a9e053b", "312f3b83ac5d62a13ff9", "28252cedb4e3dfab3613", "d2a3da843ea5f87908ba"]
+      },
+      {
+        "requirement_id": "multiples_of_10",
+        "clause": "multiples of 10",
+        "verdict": "PASS",
+        "reasoning": "All rounded factors across the 31 samples are multiples of 10. Verification of each sample confirms: 2acd847b0e5c169865e5 (40, 30), cabafb3f18117813f57b (100, 20), 6bfd635c0c6baf56bee6 (350, 20), b9a292deadaf899f8e1a (450, 10), 24555203aa07b649540f (300, 20), e4193f5aa284b3eb16fa (70, 80), 4ff8abc06a02fad5d4c9 (930, 10), dda65905327afad620f0 (850, 10), 2ff0664cf037a909f9d3 (90, 100), e575468f6aebe18b3154 (30, 30), 84c205866b7843943c43 (330, 10), a08a964ca70511cf7f39 (50, 90), 4f68300ce9dedfc3f839 (260, 20), 58a5b445d9d938e8cf4e (500, 20), d2cd8dab7de1ab7a6ca5 (120, 50), 5c61feca0192e8d04951 (80, 20), 18164fd70d2ca1cf743b (30, 40), 5f07360d65da5b50f77a (280, 20), 96550d0aba56165f59e1 (180, 50), aa5284570ce4c7e79498 (150, 60), 63280211c6574e2868c7 (330, 10), 68c8cea2c95b10f19e1a (70, 90), 9ef709267e54195c4dbf (470, 10), 0663bf39ce2cb2c855d4 (130, 20), b651f9d5dfb687bec877 (30, 10), efef751bb38a2a2d78c5 (840, 10), 2fb8fb0a69c8e6e2a383 (10, 10), 92079ed897345a9e053b (20, 10), 312f3b83ac5d62a13ff9 (150, 20), 28252cedb4e3dfab3613 (300, 30), d2a3da843ea5f87908ba (430, 20). Every rounded pair consists of multiples of 10, fully satisfying the requirement.",
+        "sample_ids": ["2acd847b0e5c169865e5", "cabafb3f18117813f57b", "6bfd635c0c6baf56bee6", "b9a292deadaf899f8e1a", "24555203aa07b649540f", "e4193f5aa284b3eb16fa", "4ff8abc06a02fad5d4c9", "dda65905327afad620f0", "2ff0664cf037a909f9d3", "e575468f6aebe18b3154", "84c205866b7843943c43", "a08a964ca70511cf7f39", "4f68300ce9dedfc3f839", "58a5b445d9d938e8cf4e", "d2cd8dab7de1ab7a6ca5", "5c61feca0192e8d04951", "18164fd70d2ca1cf743b", "5f07360d65da5b50f77a", "96550d0aba56165f59e1", "aa5284570ce4c7e79498", "63280211c6574e2868c7", "68c8cea2c95b10f19e1a", "9ef709267e54195c4dbf", "0663bf39ce2cb2c855d4", "b651f9d5dfb687bec877", "efef751bb38a2a2d78c5", "2fb8fb0a69c8e6e2a383", "92079ed897345a9e053b", "312f3b83ac5d62a13ff9", "28252cedb4e3dfab3613", "d2a3da843ea5f87908ba"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

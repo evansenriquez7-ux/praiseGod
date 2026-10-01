@@ -1,0 +1,316 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-pe18-mat_g3_na_q2_3-20260930
+
+Write one JSON object to:
+  local_only/scratch/phaseE_claude/mat_g3_na_q2_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-pe18-mat_g3_na_q2_3-20260930",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_3
+PACKET DIGEST: 91803fc5d1d14ecc58389c5c58228d91a792602fd985a416634cac74e0c85623
+COMPETENCY (Grade 3, Quarter 2, None):
+Solve problems involving addition of numbers with sums up to 10 000, including problems involving money.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  addition: addition
+  numbers: numbers
+  sums_up_to_10000: sums up to 10 000
+  problems_involving_money: problems involving money
+
+SAMPLES (every one of these is real rendered output):
+  sample 76746e9501193b85f467  seed 42  [mcq]
+      stem:    One basket has 1086 costumes. Another basket has 2067 costumes. If you put all the costumes together, how many costumes are there?
+      answer:  3153
+      options: 3153 / 3163 / 3154 / 3152
+      hints:   ["We are adding two numbers: 1086 and 2067.", "Add the ones: 6 + 7 = 13. Keep 3 in the ones place and carry over 1 ten.", "Add the tens: 8 + 6 + 1 (carried) = 15.", "The sum is 1086 + 2067 = 3153."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 68b27b230563a95bd74e  seed 43  [true_false]
+      stem:    Nikka bought a pencil for ₱1620 and an eraser for ₱2356. How much did Nikka spend in all? The answer is 3986. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 1620 and 2356.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 2 + 5 = 7.", "The sum is 1620 + 2356 = 3976."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 424abec334619d741437  seed 44  [error_detect]
+      stem:    Rico solved this problem: "Coach Nora had ₱1640 and received ₱3900 more from Nanay. How much money does Coach Nora have in all?" Rico says the answer is 5540. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 5540}
+      hints:   ["We are adding two numbers: 1640 and 3900.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 1640 + 3900 = 5540."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b82c85267a191aacd5de  seed 45  [mcq]
+      stem:    Ate Gab has ₱720 in one pocket and ₱310 in another pocket. How much money does Ate Gab have in total?
+      answer:  1030
+      options: 1040 / 1029 / 1030 / 410
+      hints:   ["We are adding two numbers: 720 and 310.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 2 + 1 = 3.", "The sum is 720 + 310 = 1030."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 417fdf192c781899c2c2  seed 46  [cloze]
+      stem:    There are 9997 seeds in one basket and 2 seeds in another basket. How many seeds are there in all?
+      answer:  9999
+      options: 9995 / 9998 / 9999 / 10009
+      hints:   ["We are adding two numbers: 9997 and 2.", "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 9997 + 2 = 9999."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample bee6bbc7ded2f4221bea  seed 500  [true_false]
+      stem:    Lola Caring collected 3622 cat toy and 5280 water bowl at the veterinary clinic. How many items did Lola Caring collect in total? The answer is 3622. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 3622 and 5280.", "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.", "Add the tens: 2 + 8 = 10.", "The sum is 3622 + 5280 = 8902."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 10077090464f76349e2f  seed 501  [mcq]
+      stem:    Ate Sam had 3583 running shoes. Then Ate Sam got 586 more. How many running shoes does Ate Sam have now?
+      answer:  4169
+      options: 2997 / 4169 / 4168 / 4179
+      hints:   ["We are adding two numbers: 3583 and 586.", "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.", "Add the tens: 8 + 8 = 16.", "The sum is 3583 + 586 = 4169."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d191c8b548398020fbb0  seed 502  [error_detect]
+      stem:    Dante solved this problem: "Kuya Renz has 6338 paint tubes. A friend has 1914 paint tubes. If they put all their paint tubes together, how many paint tubes do they have in all?" Dante says the answer is 8252. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 8252}
+      hints:   ["We are adding two numbers: 6338 and 1914.", "Add the ones: 8 + 4 = 12. Keep 2 in the ones place and carry over 1 ten.", "Add the tens: 3 + 1 + 1 (carried) = 5.", "The sum is 6338 + 1914 = 8252."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample cf99ea80b8b6f3d35a1b  seed 600  [true_false]
+      stem:    Lena had 8506 washi tape rolls. Then Lena got 218 more. How many washi tape rolls does Lena have now? The answer is 8724. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 8506 and 218.", "Add the ones: 6 + 8 = 14. Keep 4 in the ones place and carry over 1 ten.", "Add the tens: 0 + 1 + 1 (carried) = 2.", "The sum is 8506 + 218 = 8724."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1b7dfa03cfd7a1ac4bfd  seed 601  [cloze]
+      stem:    Coach Roel had ₱3321 and received ₱6679 more from Nanay. How much money does Coach Roel have in all?
+      answer:  10000
+      options: 10000 / 10001 / 10010 / 9999
+      hints:   ["We are adding two numbers: 3321 and 6679.", "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and carry over 1 ten.", "Add the tens: 2 + 7 + 1 (carried) = 10.", "The sum is 3321 + 6679 = 10000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 4500efc0700f118c6821  seed 602  [mcq]
+      stem:    Boboy saved ₱9525 on Monday and ₱360 on Tuesday. How much money did Boboy save altogether?
+      answer:  9885
+      options: 9884 / 9885 / 9165 / 9895
+      hints:   ["We are adding two numbers: 9525 and 360.", "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.", "Add the tens: 2 + 6 = 8.", "The sum is 9525 + 360 = 9885."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2436e14eb8e8274e24f7  seed 603  [true_false]
+      stem:    Ate Joy saved ₱8757 on Monday and ₱61 on Tuesday. How much money did Ate Joy save altogether? The answer is 8818. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 8757 and 61.", "Add the ones: 7 + 1 = 8. Keep 8 in the ones place.", "Add the tens: 5 + 6 = 11.", "The sum is 8757 + 61 = 8818."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 680855ab13377a606e15  seed 604  [mcq]
+      stem:    Kuya Renz has ₱2599 in one pocket and ₱1968 in another pocket. How much money does Kuya Renz have in total?
+      answer:  4567
+      options: 631 / 4566 / 4577 / 4567
+      hints:   ["We are adding two numbers: 2599 and 1968.", "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.", "Add the tens: 9 + 6 + 1 (carried) = 16.", "The sum is 2599 + 1968 = 4567."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cbd6e542a2fd05d41f50  seed 605  [true_false]
+      stem:    Chef Demi has ₱9286 in one pocket and ₱135 in another pocket. How much money does Chef Demi have in total? The answer is 9421. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 9286 and 135.", "Add the ones: 6 + 5 = 11. Keep 1 in the ones place and carry over 1 ten.", "Add the tens: 8 + 3 + 1 (carried) = 12.", "The sum is 9286 + 135 = 9421."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 1688f380c35dd4e0d987  seed 606  [mcq]
+      stem:    One basket has 634 colored pencils. Another basket has 4166 colored pencils. If you put all the colored pencils together, how many colored pencils are there?
+      answer:  4800
+      options: 4810 / 4800 / 4799 / 4801
+      hints:   ["We are adding two numbers: 634 and 4166.", "Add the ones: 4 + 6 = 10. Keep 0 in the ones place and carry over 1 ten.", "Add the tens: 3 + 6 + 1 (carried) = 10.", "The sum is 634 + 4166 = 4800."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a5449892e0c3c478d657  seed 607  [error_detect]
+      stem:    Grace solved this problem: "One basket has 168 volleyballs. Another basket has 9175 volleyballs. If you put all the volleyballs together, how many volleyballs are there?" Grace says the answer is 9343. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 9343}
+      hints:   ["We are adding two numbers: 168 and 9175.", "Add the ones: 8 + 5 = 13. Keep 3 in the ones place and carry over 1 ten.", "Add the tens: 6 + 7 + 1 (carried) = 14.", "The sum is 168 + 9175 = 9343."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0950517b3521d3315046  seed 608  [true_false]
+      stem:    Marco bought a pencil for ₱5515 and an eraser for ₱3431. How much did Marco spend in all? The answer is 5515. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 5515 and 3431.", "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.", "Add the tens: 1 + 3 = 4.", "The sum is 5515 + 3431 = 8946."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6683b69b493d409a1095  seed 609  [cloze]
+      stem:    Ruth had 712 coins. Then Ruth got 1695 more. How many coins does Ruth have now?
+      answer:  2407
+      options: 2408 / 2417 / 2407 / 2406
+      hints:   ["We are adding two numbers: 712 and 1695.", "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.", "Add the tens: 1 + 9 = 10.", "The sum is 712 + 1695 = 2407."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7c5ad980128aa23ad03a  seed 610  [mcq]
+      stem:    Bianca saved ₱2470 on Monday and ₱6450 on Tuesday. How much money did Bianca save altogether?
+      answer:  8920
+      options: 8921 / 8930 / 8919 / 8920
+      hints:   ["We are adding two numbers: 2470 and 6450.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 7 + 5 = 12.", "The sum is 2470 + 6450 = 8920."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 46370cb71c700e28d78c  seed 611  [mcq]
+      stem:    Is (383 + 302) + 113 the same as 383 + (302 + 113)?
+      answer:  True
+      options: True / Only when both are 0 / False / Cannot be determined
+      hints:   ["Both sides add the same three numbers, 383, 302 and 113, grouped differently.", "(383 + 302) + 113 = 798 and 383 + (302 + 113) = 798.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 65c82b235680fb28b3a9  seed 612  [mcq]
+      stem:    Is 194 + 505 the same as 505 + 235?
+      answer:  False
+      options: Cannot be determined / False / Only when both are 0 / True
+      hints:   ["The left side adds 194 and 505. The right side adds 505 and 235.", "194 + 505 = 699 and 505 + 235 = 740.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 51b51bfeaf7ea7c70630  seed 613  [set_fill_in_blank]
+      stem:    Show 4858 + 2861 on the number line.
+      answer:  7719
+      hints:   ["We are adding two numbers: 4858 and 2861.", "Add the ones: 8 + 1 = 9. Keep 9 in the ones place.", "Add the tens: 5 + 6 = 11.", "The sum is 4858 + 2861 = 7719."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["4000", "4500", "5000", "5500", "6000", "6500", "7000", "7500", "8000", "Your answer: Position", "6000", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1587405555063e16894f  seed 614  [cloze]
+      stem:    3425 is 34 hundreds, 2 tens, and 5 ones. 2967 is 29 hundreds, 6 tens, and 7 ones. Add the place values, then find the total: 3425 + 2967 = ___
+      answer:  6392
+      options: 6402 / 458 / 6392 / 6391
+      hints:   ["We are adding two numbers: 3425 and 2967.", "Add the ones: 5 + 7 = 12. Keep 2 in the ones place and carry over 1 ten.", "Add the tens: 2 + 6 + 1 (carried) = 9.", "The sum is 3425 + 2967 = 6392."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 275cc6cf0031824947dd  seed 615  [error_detect]
+      stem:    Ana solved: "4410 + 4920 = ___". Ana says the missing number is 9331. Is Ana correct?
+      answer:  {'has_error': True, 'correct_value': 9330}
+      hints:   ["We are adding two numbers: 4410 and 4920.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 1 + 2 = 3.", "The sum is 4410 + 4920 = 9330."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 6b2db98d0c6848b0a116  seed 616  [true_false]
+      stem:    One group has 6597 items and another group has 1255 items. Putting them together makes 7852 items in all. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 6597 and 1255.", "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.", "Add the tens: 9 + 5 + 1 (carried) = 15.", "The sum is 6597 + 1255 = 7852."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 56534050e4814562fb62  seed 617  [mcq]
+      stem:    What is 7760 + 0?
+      answer:  7760
+      options: 7761 / 7759 / 7760 / 7770
+      hints:   ["We are adding two numbers: 7760 and 0.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 7760 + 0 = 7760."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample da3c411eeaaead636acb  seed 700  [true_false]
+      stem:    Marco bought a pencil for ₱2107 and an eraser for ₱5172. How much did Marco spend in all? The answer is 7279. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 2107 and 5172.", "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.", "Add the tens: 0 + 7 = 7.", "The sum is 2107 + 5172 = 7279."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2fb8fc1493e1169ed02e  seed 701  [cloze]
+      stem:    There are 137 dog treats in one basket and 8284 dog treats in another basket. How many dog treats are there in all?
+      answer:  8421
+      options: 8420 / 8421 / 8422 / 8431
+      hints:   ["We are adding two numbers: 137 and 8284.", "Add the ones: 7 + 4 = 11. Keep 1 in the ones place and carry over 1 ten.", "Add the tens: 3 + 8 + 1 (carried) = 12.", "The sum is 137 + 8284 = 8421."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1f4cf12237eec657a54e  seed 702  [error_detect]
+      stem:    Manny solved this problem: "One basket has 2025 whistles. Another basket has 6964 whistles. If you put all the whistles together, how many whistles are there?" Manny says the answer is 8990. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 8989}
+      hints:   ["We are adding two numbers: 2025 and 6964.", "Add the ones: 5 + 4 = 9. Keep 9 in the ones place.", "Add the tens: 2 + 6 = 8.", "The sum is 2025 + 6964 = 8989."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 1b27c945ccdda3c1d0dc  seed 800  [cloze]
+      stem:    Paul collected 3870 bookmark and 4746 sticker set at the house. How many items did Paul collect in total?
+      answer:  8616
+      options: 8617 / 8616 / 8626 / 8615
+      hints:   ["We are adding two numbers: 3870 and 4746.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 7 + 4 = 11.", "The sum is 3870 + 4746 = 8616."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7668376476e3b8b26a69  seed 801  [error_detect]
+      stem:    Pia solved this problem: "Coach Roel saved ₱9602 on Monday and ₱43 on Tuesday. How much money did Coach Roel save altogether?" Pia says the answer is 9645. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 9645}
+      hints:   ["We are adding two numbers: 9602 and 43.", "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.", "Add the tens: 0 + 4 = 4.", "The sum is 9602 + 43 = 9645."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 76e45a77885864a78c74  seed 900  [mcq]
+      stem:    Ate Liza has 0 paint tubes. A friend has 1 paint tube. If they put all their paint tubes together, how many paint tubes do they have in all?
+      answer:  1
+      options: 11 / 0 / 2 / 1
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "The sum is 0 + 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 89c8937fa9873de05308  seed 901  [mcq]
+      stem:    Jun saved ₱0 on Monday and ₱1 on Tuesday. How much money did Jun save altogether?
+      answer:  1
+      options: 11 / 0 / 2 / 1
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "The sum is 0 + 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ad651b5ef4355b72387c  seed 1000  [true_false]
+      stem:    One basket has 2566 guitar picks. Another basket has 3612 guitar picks. If you put all the guitar picks together, how many guitar picks are there? The answer is 6188. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 2566 and 3612.", "Add the ones: 6 + 2 = 8. Keep 8 in the ones place.", "Add the tens: 6 + 1 = 7.", "The sum is 2566 + 3612 = 6178."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 31ead9cd6644d1f191c1  seed 1001  [error_detect]
+      stem:    Liza solved this problem: "One basket has 7256 helmets. Another basket has 1600 helmets. If you put all the helmets together, how many helmets are there?" Liza says the answer is 7256. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 8856}
+      hints:   ["We are adding two numbers: 7256 and 1600.", "Add the ones: 6 + 0 = 6. Keep 6 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 7256 + 1600 = 8856."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 7f5824c32442c158fe8e  seed 1002  [error_detect]
+      stem:    Manny solved this problem: "There are 7950 wristbands in one basket and 164 wristbands in another basket. How many wristbands are there in all?" Manny says the answer is 8124. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 8114}
+      hints:   ["We are adding two numbers: 7950 and 164.", "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.", "Add the tens: 5 + 6 = 11.", "The sum is 7950 + 164 = 8114."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

@@ -1,0 +1,537 @@
+{
+  "reviewer": "blind-reviewer-haiku45-pe19-mat_g3_na_q3_2-20260930",
+  "mat_g3_na_q3_2": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Sample complexity aligns with Grade 3 Quarter 3 expectations for multiplication with regrouping, progressing from 2-digit by 1-digit products to 4-digit by 2-digit with leading non-zero multipliers throughout the packet range of 60 to 10000."
+      },
+      "competency_alignment": {
+        "verdict": "PASS",
+        "rationale": "Every sample directly addresses multiplication skill development, using breakdown methods to demonstrate understanding of place value and regrouping principles that align with Philippine MATATAG curriculum standards for this quarter."
+      },
+      "competency_fulfillment": {
+        "verdict": "PASS",
+        "rationale": "The rendered packet addresses all specified aspects of the competency: multiplication operations, regrouping mechanics, digit constraints, and product bounds are systematically demonstrated across samples.",
+        "decomposition": {
+          "verdict": "PASS",
+          "reasoning": "The five requirements decompose the competency losslessly: multiply-operation coverage, regrouping inclusion, 2-3 digit by 1-digit cases, 2-4 digit by leading-only-non-zero-digit cases, and product bounds are each independently verifiable in rendered samples without overlap or omission."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Packet includes diverse problem formats spanning multiple choice, true-false statements, error detection, and cloze items; experience levels range from standard to hint-gated, mastery-drill, and scaffolded formats, providing varied cognitive approaches."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All product values respect the 10000 upper bound specified; products range from 60 to exactly 10000, with most clustering between 200 and 9900, demonstrating appropriate scale variation without exceeding grade-level constraints."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples demonstrate 2-digit and 3-digit multiplicands by 1-digit multipliers, 2-digit and 3-digit multiplicands by 2-digit and 3-digit multipliers with leading non-zero digits, and 4-digit multiplicands, ensuring breadth across requirement categories."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "c8b530fe3e9caa6eee68",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks for a product of 41 and 6 with clear intent; the stem, answer 246, and four distinct options are unambiguous; hints reinforce the decomposition method from the stem."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematical breakdown using place value (40+1) and distributive property yields consistent result 246 across all hint steps; the method and product align with Grade 3 multiplication strategies."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Stem is direct and simple; the breakdown hint shows familiar place-value language and simple arithmetic that a Grade 3 student can follow step-by-step to verify the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication is correct: 41 multiplied by 6 equals 246 without error; distractors 47, 240, and 35 each represent plausible mistakes (off-by-one, missing regrouping, random digit assembly)."
+          }
+        }
+      },
+      {
+        "sample_id": "22c5cf9838aa32f5ee25",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement about 573 multiplied by 4 equaling 577 is unambiguous; the incorrect value given is clearly evaluable against the correct product."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The false premise correctly signals an error: 573 times 4 produces 2292, not 577; hints show valid place-value decomposition of 570 plus 3, yielding the correct product through regrouping."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Statement format is familiar to third graders; the false claim is obviously wrong when compared against the hint-provided calculation, making the logical error transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 573 times 4 equals 2292 via breakdown (570 times 4) plus (3 times 4) equaling 2280 plus 12; the false statement accurately represents an error."
+          }
+        }
+      },
+      {
+        "sample_id": "54036ffa8aca22c50258",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection task is clear: Rico proposes 1000 times 10 equals 10000, and the response confirms he is correct with matching value."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The problem is mathematically sound: 1000 times 10 does equal 10000, and hints confirm this via place-value method; Rico's answer is legitimately correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The scenario frames a student solving a multiplication problem; the learner must verify whether the answer is right, and hints provide the correct calculation path for verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product 1000 times 10 equals 10000 is exact and correct; the error flag is False with correct value 10000, accurately representing no error in Rico's work."
+          }
+        }
+      },
+      {
+        "sample_id": "d6730a6716c2db78c0d2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice question asking for 108 times 80 is clear; four distinct options include the correct product 8640 and three plausible distractors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 3-digit by leading-non-zero-2-digit number using decomposition (100 plus 8) times 80 yields 8000 plus 640 equaling 8640 with valid regrouping."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct stem with clear operation; hints break down 108 into place values and show the distributive property application, supporting learner comprehension of the strategy."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 108 times 80 equals 8640 via (100 times 80) plus (8 times 80) yielding 8000 plus 640; distractors vary appropriately."
+          }
+        }
+      },
+      {
+        "sample_id": "efb811b9c11decd2ef07",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item asking for 702 times 2 is unambiguous; four options present the correct answer 1404 and three alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 3-digit by 1-digit number using place-value breakdown (700 plus 2) times 2 equals 1400 plus 4 is mathematically sound with appropriate regrouping."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Blank-fill format is familiar to Grade 3 learners; hints use additive decomposition to model the solution strategy for verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 702 times 2 equals 1404 using (700 times 2) plus (2 times 2) yielding 1400 plus 4; distractors 1402, 704, and 700 represent common computation errors."
+          }
+        }
+      },
+      {
+        "sample_id": "2ececb4dcf84f585e9cb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement that 1000 times 10 equals 9999 is clear and evaluable; the false claim is obvious when compared to correct computation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The claim is false: 1000 times 10 produces 10000, not 9999; hints correctly compute the product through place-value decomposition and verify the error."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format suits Grade 3 learners; the incorrect product given is close enough to the actual result to require careful verification using the hint strategy."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correct product for 1000 times 10 is 10000, not 9999; the false statement accurately captures an off-by-one error that a learner might make."
+          }
+        }
+      },
+      {
+        "sample_id": "e8f22f71c2888fd38497",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice asking what 1000 times 10 equals is straightforward; four options include the correct answer 10000 and three distractors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 4-digit by 2-digit leading-non-zero number using decomposition (1000 plus 0) times 10 correctly yields 10000 plus 0 equaling 10000."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct stem with familiar operation; hints provide multiple representations (grouping language, times-table reference, place-value decomposition) to reinforce the concept."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 1000 times 10 equals 10000; options 9990, 1010, and 990 represent plausible errors from misplaced digits or incomplete multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "78fada99efc04c162d02",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection scenario stating Dante proposes 33 times 300 equals 9900 is clear; the response confirms no error with value 9900."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 33 times 300 equals 9900 using (30 times 300) plus (3 times 300) yielding 9000 plus 900; Dante's answer is valid."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Student-naming scenario makes the task relatable; hints confirm the validity of Dante's work through place-value decomposition and show no computational error."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product 33 times 300 equals 9900 is exact; error flag is False with correct value 9900, accurately stating that no error exists in Dante's multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "c9464b9d292f04c1b715",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement that 104 times 80 equals 8320 is unambiguous; the claim is verifiable through direct computation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Statement is true: 104 times 80 produces 8320 using (100 times 80) plus (4 times 80) equaling 8000 plus 320 through valid regrouping logic."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format is accessible to Grade 3 learners; the hint sequence validates the statement through familiar place-value breakdown methods."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 104 times 80 equals 8320 via decomposition; the true statement accurately represents a valid multiplication."
+          }
+        }
+      },
+      {
+        "sample_id": "12798b888e6857483124",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item asking for 69 times 3 is clear; four options include 207 as correct and three plausible alternatives representing common error patterns."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 2-digit by 1-digit using decomposition (60 plus 9) times 3 equals 180 plus 27 equaling 207 demonstrates proper regrouping strategy."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Blank-completion task is familiar format; hints model the decomposition strategy using additive regrouping to reach the answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 69 times 3 equals 207 via (60 times 3) plus (9 times 3) yielding 180 plus 27; distractors 204, 66, and 72 represent realistic computational mistakes."
+          }
+        }
+      },
+      {
+        "sample_id": "6df3ecedd3bb0efbd334",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice asking what 43 times 200 equals is straightforward; four distinct options include 8600 as correct and three distractors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 2-digit by leading-non-zero-3-digit using decomposition (40 plus 3) times 200 equals 8000 plus 600 is mathematically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct question with clear operation; hints show the times-table reference and place-value breakdown that supports verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 43 times 200 equals 8600 via (40 times 200) plus (3 times 200) yielding 8000 plus 600; distractors vary realistically."
+          }
+        }
+      },
+      {
+        "sample_id": "b144737d63a20e13a6c3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement that 108 times 9 equals 972 is clear and verifiable."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Statement is true: 108 times 9 produces 972 using (100 times 9) plus (8 times 9) equaling 900 plus 72 through regrouping."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format is accessible; hints provide the place-value decomposition method that learners can use to verify the claim."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 108 times 9 equals 972 via (100 times 9) plus (8 times 9) yielding 900 plus 72."
+          }
+        }
+      },
+      {
+        "sample_id": "f1cc24ce074d28baa645",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement that 99 times 9 equals 891 is unambiguous; the claim is directly evaluable through computation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Statement is true: 99 times 9 produces 891 using (90 times 9) plus (9 times 9) equaling 810 plus 81, which demonstrates regrouping correctly."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format is Grade 3 appropriate; hints use place-value decomposition to support learner verification of the statement."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 99 times 9 equals 891 via (90 times 9) plus (9 times 9) yielding 810 plus 81."
+          }
+        }
+      },
+      {
+        "sample_id": "fc2cfdfca1bcdd7cd225",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze item presents a story stem with emoji and name, then asks for 156 times 20; the blank-completion task is clear despite thematic wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 3-digit by leading-non-zero-2-digit using decomposition (150 plus 6) times 20 equals 3000 plus 120 is correct; thematic prefix does not interfere."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Thematic introduction with bike emoji and student name provides context without confusing the mathematical task; the hint sequence remains focused on computation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 156 times 20 equals 3120 via (150 times 20) plus (6 times 20) yielding 3000 plus 120; options vary appropriately."
+          }
+        }
+      },
+      {
+        "sample_id": "1969462a895889a84c60",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection scenario with volleyball emoji and student name presents Manny claiming 44 times 2 equals 86; the task is clear despite thematic framing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Manny's proposed answer of 86 is incorrect; correct product is 88 using (40 times 2) plus (4 times 2) equaling 80 plus 8; error flag and value are accurate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Student-scenario framing with sports theme is engaging; the mathematical error is genuine and hints reveal the correct calculation path for learner understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error flag is True with correct value 88: 44 times 2 equals 88, not 86, making Manny's answer objectively wrong by 2."
+          }
+        }
+      },
+      {
+        "sample_id": "5487bab0c85a168b5fcd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze asking for 1000 times 10 is unambiguous; four options present the correct answer 10000 and three distractors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 4-digit by leading-non-zero-2-digit using (1000 times 10) plus (0 times 10) equals 10000 plus 0 is correct."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Blank-completion format is standard; hints reinforce place-value language and show the decomposition leading to the product boundary value."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 1000 times 10 equals 10000; distractors 9990, 990, and 1010 represent plausible digit-manipulation errors."
+          }
+        }
+      },
+      {
+        "sample_id": "d9912518f4bfcfd07b8b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection task states Pia claims 24 times 7 equals 168; the response flags no error and confirms value 168."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pia's answer is correct: 24 times 7 equals 168 using (20 times 7) plus (4 times 7) equaling 140 plus 28; error flag and value are accurate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection format with student name provides authentic scenario; hints confirm Pia's work through place-value decomposition and show no error exists."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error flag is False with correct value 168: 24 times 7 equals 168, so Pia solved correctly."
+          }
+        }
+      },
+      {
+        "sample_id": "0d8f2a0f353e8ca2bf7a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice asking what 10 times 6 equals is straightforward; four options include 60 as correct and three distractors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 2-digit by 1-digit using (10 times 6) plus (0 times 6) equals 60 plus 0 is correct despite no regrouping required."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct simple question suits early Grade 3 learners; hints use place-value language even for this minimal case."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 10 times 6 equals 60; distractors 16, 54, and 4 represent addition confusion, near-miss, and digit reversal errors."
+          }
+        }
+      },
+      {
+        "sample_id": "99bcbb42e5fffa6f36e1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice asking what 12 times 5 equals is clear; four options include 60 as correct and three alternatives."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Multiplication of 2-digit by 1-digit using (10 times 5) plus (2 times 5) equals 50 plus 10 is correct through regrouping."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Direct question with familiar format; hints show both grouping-language and decomposition approaches to solving."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Product is correct: 12 times 5 equals 60 via (10 times 5) plus (2 times 5) yielding 50 plus 10; distractors represent plausible errors."
+          }
+        }
+      },
+      {
+        "sample_id": "0220807f2b2118bb005e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement that 1000 times 10 equals 1010 is clear; the false claim is distinct from the correct product."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Statement is false: 1000 times 10 produces 10000, not 1010; hints correctly calculate via place-value decomposition and reveal the error."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format with hint-gated experience; learners can verify the claim through the provided decomposition method."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correct product is 10000, not 1010; the false statement represents a concatenation error rather than computational mistake."
+          }
+        }
+      },
+      {
+        "sample_id": "5c051afdcc7f90b3b289",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection scenario states Liza claims 81 times 3 equals 246; the response identifies an error with correct value 243."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Liza's answer is wrong: 81 times 3 equals 243, not 246; using (80 times 3) plus (1 times 3) equals 240 plus 3 reveals the error."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection with student name and mastery-drill experience; hints show correct calculation and highlight the discrepancy from Liza's wrong answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error flag is True with correct value 243: 81 times 3 equals 243, making Liza's claim of 246 incorrect by 3."
+          }
+        }
+      },
+      {
+        "sample_id": "597b81db1a63e40b2df8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection task presents Manny claiming 26 times 50 equals 1250; the response identifies an error with correct value 1300."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Manny's answer is incorrect: 26 times 50 equals 1300, not 1250; decomposition (20 times 50) plus (6 times 50) equals 1000 plus 300 shows the error."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Error-detection with student name and scaffolded experience level; hints provide place-value decomposition to guide learner understanding of the correct answer."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Error flag is True with correct value 1300: 26 times 50 equals 1300, not 1250, making Manny's answer wrong by 50."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "multiply_numbers",
+        "clause": "Multiply numbers",
+        "verdict": "PASS",
+        "reasoning": "All 22 samples present direct multiplication tasks using varied formats: multiple choice, true-false, error detection, and cloze problems; every sample requires performing a multiplication operation as the core mathematical action.",
+        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "54036ffa8aca22c50258", "d6730a6716c2db78c0d2", "efb811b9c11decd2ef07", "2ececb4dcf84f585e9cb", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "12798b888e6857483124", "6df3ecedd3bb0efbd334", "b144737d63a20e13a6c3", "f1cc24ce074d28baa645", "fc2cfdfca1bcdd7cd225", "1969462a895889a84c60", "5487bab0c85a168b5fcd", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "0220807f2b2118bb005e", "5c051afdcc7f90b3b289", "597b81db1a63e40b2df8"]
+      },
+      {
+        "requirement_id": "with_and_without_regrouping",
+        "clause": "with and without regrouping",
+        "verdict": "PASS",
+        "reasoning": "Samples demonstrate regrouping scenarios predominantly: 41 times 6 involves decomposition and addition of partial products with carrying; 573 times 4 requires regrouping at tens and hundreds places; most samples involve multiplication by single or multi-digit multipliers requiring place-value work. Samples like 10 times 6 and 12 times 5 represent simpler structures where regrouping is minimal or not required, showing breadth of regrouping complexity.",
+        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "efb811b9c11decd2ef07", "12798b888e6857483124", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1"]
+      },
+      {
+        "requirement_id": "2_to_3_digit_by_1_digit",
+        "clause": "2- to 3-digit numbers by a 1-digit number",
+        "verdict": "PASS",
+        "reasoning": "Multiple samples directly address this requirement: 41 times 6 is 2-digit by 1-digit; 573 times 4 is 3-digit by 1-digit; 702 times 2 is 3-digit by 1-digit; 69 times 3 is 2-digit by 1-digit; 108 times 9 is 3-digit by 1-digit; 44 times 2 is 2-digit by 1-digit; 24 times 7 is 2-digit by 1-digit; 81 times 3 is 2-digit by 1-digit; 10 times 6 is 2-digit by 1-digit; 12 times 5 is 2-digit by 1-digit.",
+        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "efb811b9c11decd2ef07", "12798b888e6857483124", "b144737d63a20e13a6c3", "1969462a895889a84c60", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "5c051afdcc7f90b3b289"]
+      },
+      {
+        "requirement_id": "2_to_4_digit_by_leading_non_zero",
+        "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit",
+        "verdict": "PASS",
+        "reasoning": "Samples demonstrate all expected cases: 108 times 80 is 3-digit by leading-non-zero-2-digit; 33 times 300 is 2-digit by leading-non-zero-3-digit; 43 times 200 is 2-digit by leading-non-zero-3-digit; 156 times 20 is 3-digit by leading-non-zero-2-digit; 1000 times 10 appears multiple times (4-digit by leading-non-zero-2-digit); 104 times 80 is 3-digit by leading-non-zero-2-digit; 26 times 50 is 2-digit by leading-non-zero-2-digit.",
+        "sample_ids": ["d6730a6716c2db78c0d2", "54036ffa8aca22c50258", "2ececb4dcf84f585e9cb", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "fc2cfdfca1bcdd7cd225", "5487bab0c85a168b5fcd", "0220807f2b2118bb005e", "597b81db1a63e40b2df8"]
+      },
+      {
+        "requirement_id": "products_up_to_10_000",
+        "clause": "products up to 10 000",
+        "verdict": "PASS",
+        "reasoning": "All 22 samples maintain products within the specified bound: smallest products include 60 from 10 times 6 and 12 times 5; mid-range products span hundreds to thousands like 246, 2292, 1404, 8320, 972, 891; maximum products including 1000 times 10 equal exactly 10000, the specified upper limit. No sample exceeds 10000.",
+        "sample_ids": ["c8b530fe3e9caa6eee68", "22c5cf9838aa32f5ee25", "54036ffa8aca22c50258", "d6730a6716c2db78c0d2", "efb811b9c11decd2ef07", "2ececb4dcf84f585e9cb", "e8f22f71c2888fd38497", "78fada99efc04c162d02", "c9464b9d292f04c1b715", "12798b888e6857483124", "6df3ecedd3bb0efbd334", "b144737d63a20e13a6c3", "f1cc24ce074d28baa645", "fc2cfdfca1bcdd7cd225", "1969462a895889a84c60", "5487bab0c85a168b5fcd", "d9912518f4bfcfd07b8b", "0d8f2a0f353e8ca2bf7a", "99bcbb42e5fffa6f36e1", "0220807f2b2118bb005e", "5c051afdcc7f90b3b289", "597b81db1a63e40b2df8"]
+      }
+    ],
+    "overall": "PASS"
+  }
+}

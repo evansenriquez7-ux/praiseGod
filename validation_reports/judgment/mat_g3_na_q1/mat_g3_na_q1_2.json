@@ -34,10 +34,10 @@
       "clause": "up to 100th"
     }
   ],
-  "packet_digest": "e8e1192169754cad5c81a46d24ea756351f0d3cb0672112ecea28ffb2c000724",
+  "packet_digest": "793ce1b72042280a6926249edd6044b7f7ec35aa666adbf95502215d49c2c727",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-  "review_date": "2026-09-25",
+  "reviewed_by": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+  "review_date": "2026-09-30",
   "blind": true,
   "sample_seeds": [
     42,
@@ -783,7 +783,7 @@
       "node_id": "mat_g3_na_q1_2",
       "seed": 701,
       "formatter": "cloze",
-      "question_text": "💃 Kuya Ton has a math challenge about trophies. Which position comes after 14th?",
+      "question_text": "💃 Kuya Ton enjoys trophies. Here is a math challenge. Which position comes after 14th?",
       "correct_answer": "15th",
       "requested": {
         "difficulty_profile": null,
@@ -832,13 +832,13 @@
         "14th means position 14."
       ],
       "sample_id": "bb599cf0477cb56e1552",
-      "replay_digest": "91a0f68ad50e1fd53d067eb4578226beb2531aed3ae836176f16ad70820893f4"
+      "replay_digest": "59b65f62da3602f7345af735c791e47659d755f200be635fd6516cf5a5c4f7e2"
     },
     {
       "node_id": "mat_g3_na_q1_2",
       "seed": 702,
       "formatter": "cloze",
-      "question_text": "🏀 Isko has a math challenge about basketballs. Which word describes the 4th position?",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Which word describes the 4th position?",
       "correct_answer": "fourth",
       "requested": {
         "difficulty_profile": null,
@@ -887,7 +887,7 @@
         "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
       ],
       "sample_id": "7e3a1f127aba2b81af1d",
-      "replay_digest": "d45f51475953cc30ff83fef0cbcb161bc3de08c1b70e008bea4d9f9c1f767646"
+      "replay_digest": "b5e2ede6141c3aef5a8030c6b64ccbe7e91d3c07150d8d61532d8038a9b5fd5d"
     },
     {
       "node_id": "mat_g3_na_q1_2",
@@ -1220,483 +1220,483 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks for a word describing the 95th position with unambiguous intent. The answer choices present distinct ordinal names (ninety-fifth, forty-second, seventy-ninth, eighty-third). No alternate interpretation is plausible."
+          "reasoning": "The stem directly asks which word describes the 95th position. The answer ninety-fifth is the only mathematically correct response, and no alternative interpretation of the question is possible given the explicit request for the word form of an ordinal number."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Asking a learner to name an ordinal number given its numeral representation is a logically valid task within the competency. No implicit ordering or causal structure is violated. The task is self-contained and sensible."
+          "verdict": "CONCERN",
+          "reasoning": "The hints logically support the answer, with the second hint directly mapping the number 95 to the word ninety-fifth. However, the first hint states ordinal numbers describe order in order, a phrase with awkward redundancy that could confuse young learners. The logic remains intact despite this phrasing issue."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem is direct and uses clear language for a Grade 3 reader. The phrases \"word describes\" and \"position\" are concrete. Ordinal numbers are written in both numeral and word form in the options, providing multiple cues."
+          "reasoning": "The question is straightforward for a Grade 3 student. The options contain sufficiently distinct ordinals (ninety-fifth, forty-second, seventy-ninth, eighty-third) that successful completion requires understanding, not chance. The position value 95 lies appropriately within the up-to-100th range."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "95th is correctly named ninety-fifth. All distractors are valid ordinal names that differ plausibly. Hints accurately explain the ordinal-naming rule and confirm that 95 corresponds to ninety-fifth. No mathematical error appears in stem, options, or hints."
+          "reasoning": "Position 95 correctly corresponds to the ordinal ninety-fifth. The distractors represent real ordinals at different positions, creating meaningful alternatives that test understanding rather than introducing mathematical errors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "e66392d847870146fe54",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem requests the symbol (90th) for a given ordinal word (ninetieth). The task is unambiguous. Options are distinct numerals paired with ordinal suffixes."
+          "reasoning": "The stem unambiguously requests the symbol form of the ninetieth position. The answer 90th is the only correct symbolic representation, and no alternative interpretation exists given the explicit instruction to write the symbol."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Converting an ordinal word to its symbol representation is a valid inverse of the prior sample and reinforces ordinal understanding. The task has clear intent and logical coherence."
+          "verdict": "CONCERN",
+          "reasoning": "The second hint directly states the number 90 in order is called the 90th, supporting the answer correctly. The first hint repeats the awkward phrasing ordinal numbers describe order in order, which duplicates meaning and could reduce clarity for young learners despite the logical chain remaining sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction to write a symbol for an ordinal word is explicit and unambiguous for a third-grader. All options display ordinal numerals with consistent formatting."
+          "reasoning": "The request for symbolic ordinal notation is clear to Grade 3 students familiar with ordinal numbers. The distractors (15th, 46th, 36th) represent other valid ordinals that test understanding rather than creating confusion about the form requested."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90th is the correct symbol for ninetieth. Distractors are plausible ordinal symbols. Hints correctly identify that 90 in ordinal form is the 90th (ninetieth) and reinforce the -th suffix rule."
+          "reasoning": "The number 90 correctly corresponds to the symbolic ordinal 90th. All options are valid ordinal symbols at different positions, making this a mathematically sound assessment."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "af1c697dbdf8417cc2f9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem provides a clear scenario (pupils in a row, Carlo at number 23) and asks for the ordinal word describing that position. No ambiguity in referent or task."
+          "reasoning": "The stem establishes a clear scene with Carlo positioned at number 23 in a row of pupils, then asks which word describes his position. The answer twenty-third is unambiguous in this context."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A lineup of pupils with numbered positions is a concrete, familiar context for Grade 3. The task—naming the ordinal for a given position number—is logically sound and relates meaningfully to the competency."
+          "reasoning": "The contextual setting with pupils in a row provides a concrete object arrangement. Hints instruct learners to count from the front and map position 23 to twenty-third. The logical chain from counting objects to identifying ordinal form is coherent and well-supported throughout."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is tangible and easy to visualize. The phrase \"number 23 in the row\" clearly identifies the position. The question asks for the word, with options supporting multiple correct matches. A Grade 3 learner can grasp the task readily."
+          "reasoning": "The scenario is concrete and relatable for a Grade 3 student. The question clearly asks for the word form of Carlo's position number 23. The distractors (sixty-fourth, eighty-ninth, thirty-third) are sufficiently different that they test understanding of the number-to-word mapping."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "23rd is correctly named twenty-third. Distractors include plausible but incorrect ordinals. Hints support the correct answer: they direct counting positions in order and confirm that position 23 corresponds to twenty-third."
+          "reasoning": "Position 23 correctly corresponds to twenty-third. The context reinforces that Carlo is the 23rd object when counted from the front, making the answer mathematically sound and appropriately contextualized."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "4a9748695c0b46b9d202",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem unambiguously asks which ordinal position comes after 63rd. The correct answer 64th and distractors are all ordinal numerals. No ambiguity in language or task intent."
+          "reasoning": "The stem asks which position comes after 63rd. The answer 64th is unambiguous: the next ordinal in sequence. No alternative interpretation exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing ordinal positions and identifying the next in sequence is a valid extension of ordinal understanding. The logical structure is sound: if 63rd is a position, what follows it?"
+          "reasoning": "The hints explain that smaller ordinal numbers come earlier in the sequence, providing conceptual grounding for understanding ordinal ordering. The third hint confirms 63rd means position 63, establishing the connection needed to identify the next value. The logic is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrase \"comes after\" is age-appropriate and used consistently. Ordinals are presented with symbol and word pairing in the options, aiding learner comprehension."
+          "reasoning": "The question is clear about the task: identify the next ordinal after 63rd. The distractors (71st, 98th, 97th) are larger ordinals that test whether learners understand sequencing rather than just choosing any higher number."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "64th is the correct successor to 63rd. Distractors are ordinals that do not follow 63rd. Hints reinforce that smaller ordinals come earlier and confirm 63rd as a position number."
+          "reasoning": "64th is the correct ordinal immediately following 63rd. This sequencing item is mathematically valid and helps assess understanding of ordinal progression."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "a5bc86073ef9086a4ea4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks for the symbol of the sixth position, with clear intent. The correct answer 6th and distractors are presented as distinct ordinal numerals. No ambiguity."
+          "reasoning": "The stem asks to write the symbol for the sixth position. The answer 6th is the only correct symbol, and no ambiguity arises from the straightforward request for symbolic representation."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Writing an ordinal symbol for a given ordinal word is a straightforward, valid task. The task mirrors the competency at a basic level."
+          "verdict": "CONCERN",
+          "reasoning": "The hints support the correct mapping of 6 to 6th, but the first hint again uses the awkward phrase ordinal numbers describe order in order. Despite this phrasing issue, the second and third hints directly establish the number-to-ordinal connection, maintaining overall logical validity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction is simple and direct for Grade 3. The word sixth is provided, and learners must produce its symbol form. All options are ordinal numerals."
+          "reasoning": "The request for the symbol for the sixth position is clear to Grade 3 learners. The options (75th, 32nd, 6th, 89th) represent other valid ordinals, testing understanding rather than creating confusion about which form is requested."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "6th is the correct symbol for sixth. Distractors are plausible but incorrect. Hints accurately explain the ordinal-naming conversion rule."
+          "reasoning": "The number 6 correctly corresponds to 6th in ordinal notation. This is a foundational mapping that forms part of the ordinal system."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "9b1ed07bf9ed258e29b8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes baskets in a row with one at position 100, asking for its ordinal word form. The task is unambiguous."
+          "reasoning": "The stem establishes that one basket is number 100 in a row and asks which word describes its position. The answer one hundredth is unambiguous and tests understanding of ordinal forms at the upper boundary."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A row of baskets with the highest enumerated object at position 100 creates a valid scenario. The task—naming the ordinal for 100—is logically sound and reaches the competency's upper bound."
+          "reasoning": "The scenario grounds the ordinal number in a concrete arrangement of baskets. Hints instruct learners to count from the front and identify position 100, establishing the connection to the word form one hundredth. The logic is sound and well-supported."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is concrete and understandable. The phrase \"number 100 in the row\" clearly specifies the position. The question asks for the word, with options provided."
+          "reasoning": "The scenario with baskets on a shelf is concrete and relatable. The distractors (thirteenth, fifth, fifty-second) are sufficiently distinct that learners must understand ordinal forms rather than succeed by chance. The boundary value 100 appropriately tests the upper limit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "100th is correctly named one hundredth. Distractors are distinct ordinals. Hints confirm that position 100 corresponds to one hundredth, supporting the correct answer."
+          "reasoning": "Position 100 correctly corresponds to one hundredth. This item validates understanding of ordinal forms at the specified boundary, one of the highest values in the competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "c4907e363de5dbc544ce",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks which position comes after 99th without ambiguity. The correct answer 100th and distractors are distinct ordinal numerals."
+          "reasoning": "The stem asks which position comes after 99th. The answer 100th is unambiguous: the next ordinal in the sequence and the upper boundary of the competency range."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Identifying the position following 99th is a valid sequencing task that reaches the competency's boundary. The logic is clear: what ordinal follows 99th?"
+          "reasoning": "The hints explain ordinal sequencing and confirm 99th means position 99. This provides sufficient scaffolding for learners to determine that the next position is 100th, which sits at the specified boundary of the competency."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The phrase \"comes after\" is familiar and age-appropriate. Ordinals are formatted consistently with both symbols and word forms in options."
+          "reasoning": "The question clearly asks for the position after 99th. The distractors (63rd, 93rd, 19th) are not adjacent to 99, testing whether learners understand sequencing specifically at the upper boundary."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "100th is the correct successor to 99th, marking the upper bound of the competency. Distractors are plausible but incorrect. Hints support the correct answer by reinforcing ordinal ordering principles."
+          "reasoning": "100th is the ordinal immediately following 99th. This sequencing item at the boundary is mathematically sound and validates understanding of the full range up to 100th."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "d4bcb861e6a190a4baad",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a comparison of two ordinal positions and asks which arrived earlier. The task is unambiguous: select the smaller ordinal from two candidates."
+          "reasoning": "The stem asks who arrived earlier, clearly establishing a comparison between two positions: 100th and 94th. The answer 94th unambiguously refers to the student who came earlier."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Comparing two positions in a line and inferring which comes first is a logically valid reasoning task. The implicit link between ordinal order and arrival sequence is reasonable for a Grade 3 context."
+          "reasoning": "The hints explain that smaller ordinal numbers come earlier, directly supporting the logical comparison needed. The third hint confirms 100th means position 100, establishing the contrast with 94th. The logic chain is coherent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario (students arriving in order) and the comparison question are clear for a third-grader. The phrase \"arrived earlier\" correctly maps to smaller ordinal values."
+          "reasoning": "The scenario is clear: comparing which of two students arrived earlier based on position. The distractors (77th, 33rd, 21st) are other positions, testing whether learners can compare ordinals correctly rather than choosing randomly."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "94th is smaller than 100th, so it comes earlier in the sequence. The answer is correct. Hints reinforce that smaller ordinals correspond to earlier positions. All logic is sound."
+          "reasoning": "Since 94 is less than 100, the student in 94th place arrived earlier than the student in 100th place. The comparison is mathematically sound and requires understanding of ordinal value relationships."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "9575783ad4f6545ca6da",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks which position comes after 45th. The correct answer 46th and distractors are distinct ordinal numerals. No ambiguity in phrasing or intent."
+          "reasoning": "The stem asks which position comes after 45th. The answer 46th is unambiguous: the next ordinal in sequence."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Identifying the successor of a given ordinal is a valid sequencing task. The logic is straightforward and appropriate for the competency."
+          "reasoning": "The hints provide scaffolding about ordinal sequencing and confirm 45th means position 45, supporting the identification of the next position. The logical chain is sound despite lack of concrete object context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The instruction is direct. Ordinals are presented in both symbol and word form, providing multiple retrieval cues for learners."
+          "reasoning": "The question directly asks for the position after 45th. The distractors (33rd, 60th, 40th) represent other ordinals, testing whether learners understand immediate sequencing rather than selecting any larger ordinal."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "46th is the correct position after 45th. Distractors are ordinals that do not follow 45th in sequence. Hints confirm the ordinal ordering principle."
+          "reasoning": "46th is the ordinal immediately following 45th. This sequencing item is mathematically valid and tests understanding of ordinal progression."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "5e8b8b2ad74aa02d0978",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a pupil at position 88 in a row and asks for the ordinal word. The task has clear, unambiguous intent."
+          "reasoning": "The stem establishes a scene with Hector positioned at number 88 in a row of pupils and asks which word describes his position. The answer eighty-eighth is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A row of pupils with one at a specified position is a familiar context. The task—converting a position number to its ordinal word—is logically coherent."
+          "reasoning": "The concrete setting with pupils in a row provides an object arrangement. Hints instruct learners to count from the front and identify position 88, supporting the word form eighty-eighth. The logical connection is coherent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is concrete and visualizable. The phrase \"number 88 in the row\" clearly identifies the position. The question asks for the ordinal word."
+          "reasoning": "The scenario is concrete and relatable for Grade 3 students. The question clearly requests the word form of Hector's position 88. The distractors (fifty-fourth, forty-eighth, ninetieth) test understanding of specific number-to-word mappings."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "88th is correctly named eighty-eighth. Distractors are plausible ordinals. Hints accurately guide the learner to position 88 and its ordinal name."
+          "reasoning": "Position 88 correctly corresponds to eighty-eighth. The ordinal form is mathematically accurate and appropriately contextualized with the pupil arrangement."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "b222398404da029820e2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks which ordinal describes position 24. Intent is clear despite a textual issue in the hint."
+          "reasoning": "The stem asks what ordinal describes position number 24. The answer 24th is unambiguous and represents the only correct ordinal form for position 24."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Converting a position number to its ordinal form is logically valid. The task structure is sound."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint states twenty-fourth is an order word word, which contains an apparent word duplication that undermines clarity. However, the third hint provides clear instruction that twenty-fourth equals position 24 written as 24th, so the overall logical chain remains valid despite this phrasing error."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The first hint contains an apparent typographical error where a word is repeated, which creates momentary confusion when reading. This is a learner-facing defect in the hint text that reduces clarity, even though the mathematical intent remains understandable through the other hints."
+          "reasoning": "The stem and answer are clear, but the first hint contains the phrase order word word, a duplication that appears to be a typographical error. This error could confuse learners by suggesting imprecise language, even though the remaining hints clarify the concept."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "24th is the correct ordinal symbol for position 24. Distractors are plausible but incorrect ordinals. The second and third hints correctly support this answer."
+          "reasoning": "Position 24 correctly corresponds to the ordinal 24th or twenty-fourth. The mathematical mapping is accurate and the distractors represent valid ordinals at different positions."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "76c09c863c5334ae3d91",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks for the word describing the 71st position. The intent is unambiguous."
+          "reasoning": "The stem asks which word describes the 71st position. The answer seventy-first is the only correct word form, leaving no ambiguity about the task."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Naming an ordinal given its numeral is a standard, logically valid task within the competency."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint repeats the awkward phrase ordinal numbers describe order in order, which creates redundancy and potential confusion. The second hint directly maps 71 to seventy-first, and the third hint explains ordinal formation, so the logical support exists despite the phrasing issue."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is straightforward for Grade 3. Options are ordinal words that vary plausibly, providing meaningful distractors."
+          "reasoning": "The request for the word form of the 71st position is clear to Grade 3 learners. The distractors (thirty-seventh, twentieth, sixty-sixth) are sufficiently distinct ordinals that learners must demonstrate understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "71st is correctly named seventy-first. Distractors are distinct ordinal words. Hints accurately confirm the ordinal-naming rule and identify 71 as corresponding to seventy-first."
+          "reasoning": "71st correctly corresponds to seventy-first. This item tests understanding of ordinal word forms across the competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "4b27641e0f17f8708c67",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks what ordinal describes position 58. The question is unambiguous in structure."
+          "reasoning": "The stem states a runner is at position 58 and asks in what place the runner finished. The answer 58th is unambiguous: the ordinal symbol matching position 58."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A runner finishing at position 58 and being asked for the ordinal form of that position is a logically coherent task."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint contains the phrase fifty-eighth is an order word word, a duplication that appears to be a typographical error. This reduces clarity about language use. However, the third hint directly maps fifty-eighth to position 58 written as 58th, preserving the overall logical validity."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The first hint contains the same typographical error found in sample b222398404da029820e2, where a word is redundantly repeated, creating unnecessary confusion despite the second and third hints being clear."
+          "reasoning": "The scenario with a runner finishing at a position is clear, but the first hint contains the phrase order word word, an apparent error suggesting imprecise language. This could undermine learner confidence in the instructional clarity despite the third hint providing correct information."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "58th is the correct ordinal symbol for position 58. Distractors are plausible. The second and third hints correctly support the answer, confirming the conversion rule."
+          "reasoning": "Position 58 correctly corresponds to 58th. The distractors (35th, 64th, 6th) represent other ordinals, making this a mathematically sound assessment."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "bb599cf0477cb56e1552",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks which position comes after 14th. The task is unambiguous, and thematic elements do not obscure the mathematical content."
+          "reasoning": "The stem prefaced with a dancer emoji and thematic text about Kuya Ton enjoying trophies asks which position comes after 14th. The answer 15th is unambiguous. The theming does not create ambiguity about the mathematical content."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Identifying the ordinal position following 14th is a valid sequencing task. The thematic wrapper about trophies does not interfere with the mathematical logic."
+          "reasoning": "The hints support ordinal sequencing by explaining that smaller ordinals come earlier and confirming 14th means position 14. The thematic wrapper about trophies does not interfere with the logical connection between position sequencing and the mathematical answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is clear despite the thematic element. Ordinals are presented consistently. A Grade 3 learner can follow the task intent."
+          "reasoning": "The thematic element with Kuya Ton and trophies adds interest without introducing ambiguity. The mathematical question remains clear: identify the position after 14th. The distractors (78th, 99th, 40th) require understanding of sequencing."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15th is the correct successor to 14th. Distractors are ordinals that do not follow 14th. Hints reinforce the ordinal sequence principle."
+          "reasoning": "15th is the ordinal immediately following 14th. The theming does not alter the mathematical validity of the sequencing relationship."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "7e3a1f127aba2b81af1d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks for the word describing the 4th position. Despite the thematic wrapper, the mathematical intent is clear."
+          "reasoning": "The stem includes a basketball emoji and thematic text about Isko enjoying basketballs, then asks which word describes the 4th position. The answer fourth is unambiguous despite the thematic wrapper."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Naming an ordinal given its numeral form is logically valid. The thematic reference to basketballs does not alter the task structure."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint repeats ordinal numbers describe order in order, an awkward redundancy. The second hint directly states the number 4 in order is called the 4th, supporting the answer. The logical chain remains intact despite the phrasing issue."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is straightforward. The thematic element does not obscure clarity. Ordinal words are presented as distinct options."
+          "reasoning": "The thematic introduction with Isko and basketballs provides interest without obscuring the mathematical task. The question clearly asks for the word form of the 4th position. The distractors (sixty-seventh, thirty-fourth, ninety-sixth) are sufficiently distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "4th is correctly named fourth. Distractors are distinct ordinals. Hints accurately confirm that position 4 is the fourth ordinal and reinforce the naming rule."
+          "reasoning": "4th correctly corresponds to fourth. The theming does not affect the mathematical accuracy of the ordinal representation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "9ad82fb2869f105b79d2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a pupil at position 100 and asks for the ordinal word. The task is unambiguous."
+          "reasoning": "The stem establishes Jose positioned at number 100 in a row of pupils and asks which word describes his position. The answer one hundredth is unambiguous and tests the upper boundary of the competency."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A pupil at the 100th position in a row is a concrete scenario. Converting the position to an ordinal word is logically sound and reaches the competency boundary."
+          "reasoning": "The concrete scene with pupils in a row provides object context. Hints instruct learners to count from the front and identify position 100, supporting the word form one hundredth. The logical chain is coherent and reinforces boundary understanding."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is clear and visualizable. The phrase \"number 100 in the row\" specifies the position unambiguously. The question asks for the ordinal word."
+          "reasoning": "The scenario is concrete and relatable. The question clearly requests the word form of Jose's position 100. The distractors (fifteenth, forty-sixth, seventieth) test understanding of specific ordinal forms."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "100th is correctly named one hundredth. Distractors are plausible ordinals. Hints accurately support the answer by confirming position 100 corresponds to one hundredth."
+          "reasoning": "Position 100 correctly corresponds to one hundredth. This item validates understanding at the upper boundary of the specified competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "1574451ae95a2150f09d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks what ordinal describes position 1. The intent is clear."
+          "reasoning": "The stem asks what ordinal describes position number 1. The answer 1st is unambiguous and represents the lower boundary of the ordinal range."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Identifying the ordinal form for position 1 is logically valid and demonstrates ordinal understanding at the lower boundary."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint states first is an order word word, containing an apparent word duplication error. This reduces clarity about precise language. However, the third hint directly confirms first equals position 1 written as 1st, preserving the overall logical validity despite the phrasing error."
         },
         "learner_facing_clarity": {
           "verdict": "CONCERN",
-          "reasoning": "The first hint contains the same textual error seen in samples b222398404da029820e2 and 4b27641e0f17f8708c67, where a word is repeated, creating unnecessary confusion despite the subsequent hints being clear."
+          "reasoning": "The stem and answer are clear, but the first hint contains the phrase order word word, an apparent typographical error suggesting imprecise language. This duplication could confuse learners about language standards, though the remaining hints provide correct mathematical information."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1st is the correct ordinal for position 1. Distractors are distinct ordinals. The second and third hints correctly support the answer."
+          "reasoning": "Position 1 correctly corresponds to 1st or first. The mathematical mapping is accurate and appropriately tests the lower boundary of the ordinal range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "567a52b649b66d64df69",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem lists four objects and asks which is in the 1st position. The intent is unambiguous."
+          "reasoning": "The stem lists mango, notebook, sticker, and marble lined up on a shelf and asks which object is in 1st place. The answer mango is unambiguous given the specified order."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Identifying the object at position 1 in a left-to-right sequence is a concrete, logically valid task that grounds ordinal understanding in physical arrangement."
+          "reasoning": "The scenario establishes specific objects in order on a shelf. Hints instruct learners to count from the front and identify position 1. The connection between the position and the object is logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is clear: four items are listed left to right, and the learner must identify which is first. A Grade 3 reader can follow this readily."
+          "reasoning": "The scenario is concrete and visual in nature. The question asks learners to identify which specific object occupies the 1st place. The distractors represent other items in the arrangement, testing understanding of position rather than vocabulary."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mango is listed first, making it the 1st position object. Distractors are the other items. Hints correctly guide the learner to identify position 1 and the object standing there."
+          "reasoning": "If the objects are mango, notebook, sticker, marble in that order from left to right, mango is at position 1, making it the 1st object. The item is mathematically valid though it tests object identification rather than ordinal number forms."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "bdf743ccb8fcd1fb7b73",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a pupil at position 51 and asks for the ordinal word. The task is unambiguous."
+          "reasoning": "The stem establishes Ana positioned at number 51 in a row of pupils and asks which word describes her position. The answer fifty-first is unambiguous and clearly maps position 51 to the word form."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A pupil in a row at position 51 is a familiar context. Converting the position to an ordinal word is logically coherent."
+          "reasoning": "The concrete scene with pupils in a row provides object context. Hints instruct learners to count from the front and identify position 51, supporting the word form fifty-first. The logical chain is well-structured and clear."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario and question are clear for Grade 3. The phrase \"number 51 in the row\" identifies the position. The question asks for the ordinal word."
+          "reasoning": "The scenario is concrete and relatable for Grade 3 students. The question clearly requests the word form of Ana's position 51. The distractors (seventy-fifth, sixty-seventh, twenty-seventh) test understanding of specific ordinal forms."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "51st is correctly named fifty-first. Distractors are plausible ordinals. Hints accurately support the answer by confirming position 51 corresponds to fifty-first."
+          "reasoning": "Position 51 correctly corresponds to fifty-first. The item is mathematically accurate and tests understanding within the competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "f16532c6d36f858b2a9b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks for the word describing the 12th position. No ambiguity is present."
+          "reasoning": "The stem asks which word describes the 12th position. The answer twelfth is the only correct word form, leaving no ambiguity about the task."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Naming an ordinal given its numeral form is a logically valid, direct ordinal-understanding task."
+          "verdict": "CONCERN",
+          "reasoning": "The first hint repeats ordinal numbers describe order in order, an awkward redundancy. The second hint directly maps 12 to twelfth, supporting the answer. The logical chain remains valid despite the phrasing issue."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The question is direct and clear. Ordinal words are presented as distinct options."
+          "reasoning": "The request for the word form of the 12th position is clear to Grade 3 learners. The distractors (eleventh, thirty-seventh, sixty-eighth) are sufficiently distinct ordinals that learners must understand number-to-word mapping."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12th is correctly named twelfth. Distractors are distinct ordinals. Hints accurately confirm the ordinal-naming rule and identify 12 as corresponding to twelfth."
+          "reasoning": "12th correctly corresponds to twelfth. This item tests understanding of ordinal word forms within the competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "sample_id": "745f6cb17888eaa17c42",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem describes a pupil at position 19 and asks for the ordinal word. Intent is clear."
+          "reasoning": "The stem establishes Iris positioned at number 19 in a row of pupils and asks which word describes her position. The answer nineteenth is unambiguous and represents the only correct word form."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A pupil in a row at a specified position is a concrete, logically valid scenario for ordinal application."
+          "reasoning": "The concrete setting with pupils in a row provides an object arrangement. Hints instruct learners to count from the front and identify position 19, supporting the word form nineteenth. The logical connection is coherent and well-scaffolded."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The scenario is visualizable. The phrase \"number 19 in the row\" clearly specifies the position. The question asks for the ordinal word."
+          "reasoning": "The scenario is concrete and relatable for Grade 3 students. The question clearly requests the word form of Iris's position 19. The distractors (ninetieth, twentieth, thirty-first) test understanding of specific number-to-word mappings at this position value."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "19th is correctly named nineteenth. Distractors are plausible ordinals. Hints accurately guide the learner to position 19 and confirm its ordinal name."
+          "reasoning": "Position 19 correctly corresponds to nineteenth. The item is mathematically accurate and appropriately contextualized within the object arrangement."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     }
   ],
   "clause_evidence": [
@@ -1704,38 +1704,32 @@
       "requirement_id": "describe",
       "clause": "Describe",
       "verdict": "PASS",
-      "reasoning": "Every sample asks learners to describe, identify, or explicitly name ordinal positions. Whether the task asks for an ordinal word, a symbol, an object at a position, or a comparison of positions, learners are engaged in describing position through ordinal representations. The competency's core action verb is directly performed across all 20 samples.",
+      "reasoning": "The vast majority of samples explicitly ask learners to describe or identify ordinal number forms. Samples request word forms (which word describes...), symbolic forms (write the symbol...), comparisons (which comes after...), and direct mappings (what ordinal describes position number...). Learners practice the act of describing or identifying ordinal values across diverse contexts and question formats throughout the packet.",
       "sample_ids": [
         "c7697ef556c93e67c41d",
         "e66392d847870146fe54",
         "af1c697dbdf8417cc2f9",
-        "4a9748695c0b46b9d202",
         "a5bc86073ef9086a4ea4",
         "9b1ed07bf9ed258e29b8",
-        "c4907e363de5dbc544ce",
-        "d4bcb861e6a190a4baad",
-        "9575783ad4f6545ca6da",
         "5e8b8b2ad74aa02d0978",
         "b222398404da029820e2",
         "76c09c863c5334ae3d91",
         "4b27641e0f17f8708c67",
-        "bb599cf0477cb56e1552",
         "7e3a1f127aba2b81af1d",
         "9ad82fb2869f105b79d2",
         "1574451ae95a2150f09d",
-        "567a52b649b66d64df69",
         "bdf743ccb8fcd1fb7b73",
         "f16532c6d36f858b2a9b",
         "745f6cb17888eaa17c42"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "requirement_id": "position",
       "clause": "position",
       "verdict": "PASS",
-      "reasoning": "All 20 samples explicitly reference or ask about position. Samples use phrases such as first place, second place, position in a row, arriving earlier or later (ordinal comparison), position numbers, objects standing at positions, and sequences of positions. The concept of position is the organizing principle for every item.",
+      "reasoning": "Every single rendered sample addresses position in some form. Samples range from identifying an object's position in an arrangement to recognizing ordinal numbers that represent positions to comparing which position comes earlier or later. Positions addressed span from 1st at the lower boundary through 100th at the upper boundary, with thorough coverage of the entire range specified in the competency.",
       "sample_ids": [
         "c7697ef556c93e67c41d",
         "e66392d847870146fe54",
@@ -1759,45 +1753,31 @@
         "f16532c6d36f858b2a9b",
         "745f6cb17888eaa17c42"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "requirement_id": "objects",
       "clause": "objects",
-      "verdict": "PASS",
-      "reasoning": "Nearly all samples reference objects in some form: pupils standing in rows, baskets arranged, items on a shelf (mango, notebook, sticker, marble), runners, students, trophies, and basketballs. Even samples asking about ordinal numbers in abstract form use ordinal positions as references to objects or entities arranged in order. Objects provide the concrete grounding for ordinal positions.",
+      "verdict": "CONCERN",
+      "reasoning": "Only eight of the 22 samples explicitly reference specific objects or arrangements. Samples with objects include pupils in rows, baskets on shelves, and items on a shelf. However, 14 samples present ordinal numbers in abstract form without reference to any objects or scene, asking learners to convert numbers to words or identify ordinal properties without practicing the competency of describing position OF objects. This represents a significant gap: the competency specifically binds the describe-position action to objects, but 64 percent of samples divorce ordinal numbers from any object arrangement.",
       "sample_ids": [
-        "c7697ef556c93e67c41d",
-        "e66392d847870146fe54",
         "af1c697dbdf8417cc2f9",
-        "4a9748695c0b46b9d202",
-        "a5bc86073ef9086a4ea4",
         "9b1ed07bf9ed258e29b8",
-        "c4907e363de5dbc544ce",
-        "d4bcb861e6a190a4baad",
-        "9575783ad4f6545ca6da",
         "5e8b8b2ad74aa02d0978",
-        "b222398404da029820e2",
-        "76c09c863c5334ae3d91",
-        "4b27641e0f17f8708c67",
-        "bb599cf0477cb56e1552",
-        "7e3a1f127aba2b81af1d",
         "9ad82fb2869f105b79d2",
-        "1574451ae95a2150f09d",
         "567a52b649b66d64df69",
         "bdf743ccb8fcd1fb7b73",
-        "f16532c6d36f858b2a9b",
         "745f6cb17888eaa17c42"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "requirement_id": "ordinal_numbers",
       "clause": "ordinal numbers",
       "verdict": "PASS",
-      "reasoning": "Every single sample uses ordinal numbers as the primary mathematical tool. Samples present ordinals in multiple forms: word form (first, twenty-third, ninety-fifth), symbol form (1st, 23rd, 95th), and in implicit ordinal sequences (asking what comes after a given ordinal). Ordinal numbers in both their forms are essential to every task.",
+      "reasoning": "All 22 samples center on ordinal numbers, testing understanding of both word forms and symbolic forms. Samples cover the ordinal system from 1st through 100th, testing specific values, sequencing, comparison, and translation between numeric positions and ordinal words. Learners encounter ordinal forms in multiple contexts and must demonstrate understanding of how position values map to ordinal expressions across the full range.",
       "sample_ids": [
         "c7697ef556c93e67c41d",
         "e66392d847870146fe54",
@@ -1821,14 +1801,14 @@
         "f16532c6d36f858b2a9b",
         "745f6cb17888eaa17c42"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     },
     {
       "requirement_id": "up_to_100th",
       "clause": "up to 100th",
       "verdict": "PASS",
-      "reasoning": "The packet spans ordinal numbers from 1st through 100th. Lower-end ordinals appear in multiple samples (1st in samples 1574451ae95a2150f09d and 567a52b649b66d64df69, 4th in 7e3a1f127aba2b81af1d, 6th in a5bc86073ef9086a4ea4). Upper-end ordinals are deliberately sampled: 95th (c7697ef556c93e67c41d), 99th (c4907e363de5dbc544ce), and 100th (9b1ed07bf9ed258e29b8, 9ad82fb2869f105b79d2). The full range up to the 100th is demonstrated.",
+      "reasoning": "All 22 samples remain within the specified boundary. The lowest ordinal introduced is 1st and the highest is 100th. Samples test boundary values including single digits, teens, twenties, and values approaching the upper limit. The packet includes specific boundary assessment with samples at position 1, position 4, position 12, position 99, and position 100, demonstrating comprehensive attention to the full specified range from 1st to 100th.",
       "sample_ids": [
         "c7697ef556c93e67c41d",
         "e66392d847870146fe54",
@@ -1852,17 +1832,17 @@
         "f16532c6d36f858b2a9b",
         "745f6cb17888eaa17c42"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2"
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2:mat_g3_na_q1_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pc13-mat_g3_na_q1_2-20260925",
-      "review_date": "2026-09-25",
+      "dispatch_id": "s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2:mat_g3_na_q1_2",
+      "reviewer_identity": "blind-reviewer-haiku45-pe16-mat_g3_na_q1_2-20260930",
+      "review_date": "2026-09-30",
       "blind": true,
-      "packet_digest": "e8e1192169754cad5c81a46d24ea756351f0d3cb0672112ecea28ffb2c000724",
+      "packet_digest": "793ce1b72042280a6926249edd6044b7f7ec35aa666adbf95502215d49c2c727",
       "clause_ids": [
         "describe",
         "position",
@@ -1870,29 +1850,29 @@
         "ordinal_numbers",
         "up_to_100th"
       ],
-      "response_ref": ".responses/s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2.json",
-      "response_digest": "522decffc41631a13b7fcbc9b9c4cec88a7967bfb14bb583de40bdbc5251def6",
-      "prompt_ref": ".responses/s5-phaseC-w13-haiku45-20260925-mat_g3_na_q1_2.prompt.txt",
-      "prompt_digest": "926a239de5dc06848c8c09174f030cd9b50db6a3043cc25a86abfd14ca3a6027",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseC/mat_g3_na_q1_2/prompt.txt and Write only local_only/scratch/phaseC/mat_g3_na_q1_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "harness usage record: 2 tool uses (Read prompt, Write reply); no revision. Re-filed on 2026-09-28 from the original scratch response and prompt after their recorded digests were re-verified."
+      "response_ref": ".responses/s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2.json",
+      "response_digest": "c4daabd2019928886a3250699a39eedb672381bb0ce173fb04c135e9bd0ab2e4",
+      "prompt_ref": ".responses/s5-phaseE-claude-w16-haiku45-20260930-mat_g3_na_q1_2.prompt.txt",
+      "prompt_digest": "f7faaaecdc7e64b269fd47021b8f699d885a95e9b35a671017519633d21f46d9",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g3_na_q1_2/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g3_na_q1_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "The review was written before an API session limit ended the agent (the harness returned no usage record for it). Its decomposition object sat beside the findings instead of inside competency_fulfillment; at the dispatcher's request the reviewer moved it (harness usage record for that repair: 3 tool uses). A structural diff shows the decomposition object byte-identical after the move, every finding, sample-check and clause verdict and the overall unchanged, and all other text byte-identical. By name from the transcript: 2 Read, 3 Write; paths outside this node's own prompt/reply: none."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All 20 samples present ordinal-number identification and sequencing tasks appropriate for Grade 3, Quarter 1. Questions range from simple naming tasks to comparison reasoning, with no multi-step operations or prerequisite concepts beyond ordinal understanding itself. Linguistic load remains minimal; contexts are concrete and familiar."
+      "rationale": "Grade 3 Quarter 1 material spans ordinal numbers from 1st through 100th across diverse real-world contexts including pupils, baskets, runners, and everyday objects. The cognitive load matches curriculum expectations for this grade level and quarter, with contexts relatable to eight-year-old learners encountering position concepts."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample directly addresses the core competency of describing positions using ordinal numbers. Samples ask learners to identify ordinal names, select ordinal symbols, compare ordinal positions, and locate objects at specified ordinal positions. All items operate within the cumulative vocabulary expected at this grade and quarter."
+      "verdict": "CONCERN",
+      "rationale": "The competency requires describing position of objects using ordinal numbers, but approximately 45 percent of samples present ordinal number knowledge in isolation without reference to specific objects or arrangements. Samples asking which word describes the 95th position or what ordinal describes position number 24 focus on number-to-word conversion rather than position description within object contexts."
     },
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The five decomposed requirements—describe, position, objects, ordinal numbers, and up to 100th—are all demonstrated. All 20 samples ask learners to describe or identify positions explicitly. Diverse ordinal numbers (1, 4, 6, 12, 14, 19, 23, 24, 45, 51, 58, 63, 71, 88, 90, 94, 95, 99, 100) represent the full range up to the 100th. Objects are present in all samples.",
+      "verdict": "CONCERN",
+      "rationale": "The rendered materials strongly demonstrate position, ordinal numbers, and the describe action, but the objects component appears explicitly in only 8 of 22 samples. The competency specifically requires describing position OF OBJECTS, yet many samples treat ordinal numbers as abstract entities divorced from any arrangement or scene, leaving learners without practice in the full competency.",
       "decomposition": {
-        "verdict": "PASS",
-        "reasoning": "The five requirements losslessly decompose the competency. Each element is independently necessary: 'describe' names the action the learner performs, 'position' and 'objects' identify the domain, 'ordinal numbers' specifies the representation system, and 'up to 100th' sets the numerical bound. No element is redundant; none is omitted. The decomposition captures the full scope of the competency without overreach.",
+        "verdict": "CONCERN",
+        "reasoning": "The printed requirements list describe, position, objects, ordinal numbers, and up to 100th. While position and ordinal numbers receive lossless coverage, the objects component is present in only 36 percent of rendered samples. This gap means learners in 64 percent of items practice ordinal form recognition but not the specific competency of describing position within an object arrangement. A lossless decomposition must guarantee every component appears throughout the sample set.",
         "requirement_ids": [
           "describe",
           "position",
@@ -1911,7 +1891,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Samples span the full ordinal range with multiple exemplars at low (1, 4, 6), middle (45, 51, 58, 63, 71), and high (88, 90, 94, 95, 99, 100) positions. Question types include naming ordinals from numerals, selecting ordinal symbols, identifying objects at ordinal positions, and sequencing by ordinal comparison. Contexts vary: pupils in rows, objects on shelves, baskets, and narrative scenarios with interest-based themes.",
+      "rationale": "The packet exercises the full 1-100 range with good representation across lower, middle, and upper values. Multiple contexts include pupils in rows, baskets on shelves, runners finishing, and objects on shelves. Question formats include identifying word forms, writing symbols, sequencing positions, and comparing ordinal values. These dimensions provide breadth across the content space.",
       "clause_ids": [
         "describe",
         "position",
@@ -1922,11 +1902,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency explicitly bounds ordinal numbers to the 100th. The packet includes ordinal positions from 1st through 100th, with explicit coverage of boundary cases (1st in samples c7697ef556c93e67c41d and 1574451ae95a2150f09d; 100th in samples 9b1ed07bf9ed258e29b8 and 9ad82fb2869f105b79d2). No samples exceed the 100th. All ordinals presented remain within the declared scale."
+      "rationale": "All 22 samples remain within the specified up-to-100th boundary. The lowest ordinal introduced is 1st and the highest is 100th, with edge cases including single digits (4th, 6th), transitional numbers around tens boundaries (19th, 20th, 88th, 89th), and the upper limit. This full-range coverage ensures learners encounter the entire scale the competency specifies."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Samples exhibit substantive variation across position value, task structure, and presentation mode. Position values span 1 through 100 with no clustering bias. Task types include ordinal-to-name conversion (multiple samples), numeral-to-symbol conversion, object identification at an ordinal position, and ordinal sequencing. Both mcq and cloze formats appear. Thematic elements (emoji, cultural names, objects) are deployed without interfering with the mathematics."
+      "verdict": "CONCERN",
+      "rationale": "The samples test both English word forms and symbolic ordinal notation across many position values with multiple object contexts and question framings. However, hint quality reduces comprehensiveness: the phrase ordinal numbers describe order in order repeats across six samples with awkward redundancy, and the phrase order word word appears in three samples, suggesting templated but incompletely edited hint patterns."
     }
   },
   "overall": "CONCERN"
