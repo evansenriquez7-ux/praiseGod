@@ -1,0 +1,1358 @@
+{
+  "batch": "batch255_mat_g3_dp_q3_3",
+  "attested_at": "2026-10-01T11:02:47Z",
+  "attested_by": "blind-attester-haiku45-w2c255-mat_g3_dp_q3_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_dp_q3_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_dp_q3_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. How many total items were recorded for February and March together?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 41,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 115,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 51,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 115,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "January",
+            "February",
+            "March",
+            "April"
+          ],
+          "values": [
+            40,
+            45,
+            70,
+            50
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "January",
+            "February",
+            "March",
+            "April"
+          ],
+          "max_y": 75,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "796a76c27eceef65325dffd57ee309adde5474601aa6205e76ebe0f032bd0ff5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 76,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "75",
+              "January",
+              "February",
+              "March",
+              "April",
+              "Your answers:",
+              "January:",
+              "February:",
+              "March:",
+              "April:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c1f34f0c67931b4c4fe8",
+        "replay_digest": "e937f9d363b78cc70bba1a21968743ec7006b25014b56b5b29111221b79f3152"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. If 10 more items are added to birds, what will be the new total for birds?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 50,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            5,
+            50,
+            25,
+            35
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 55,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "0d262830b50f52b3c95259fe93d090ee9cc88e699b98ae91ee754f7c088712e2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 68,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b9b9246c6753b8f247c1",
+        "replay_digest": "7c65ff1a18ed1f536a681e8de220f58ea61d55c8ff5afcabefadd948deefa8c8"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. How many total items were recorded for apples and mangoes together?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 80,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 59,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 31,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 80,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "values": [
+            60,
+            25,
+            20,
+            20
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "max_y": 65,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "f922affb81870759f4a709474f6f41aec04cd4b9d0aa872bd0e7e04a5850e164",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 72,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Your answers:",
+              "apples:",
+              "bananas:",
+              "mangoes:",
+              "grapes:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ef9d4e07442f1993c00e",
+        "replay_digest": "3b650e66cf2fafb85f48fded3ba29278d1a0593f751a49d668cdd531ce028dc7"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. If each item for daisies costs ₱10, what is the total cost for daisies?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 50,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 51,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 200,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 31,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 200,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "roses",
+            "sunflowers",
+            "tulips",
+            "daisies"
+          ],
+          "values": [
+            50,
+            50,
+            5,
+            20
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "roses",
+            "sunflowers",
+            "tulips",
+            "daisies"
+          ],
+          "max_y": 55,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "df89dc8c8c54590168721d7fdcc7c2a59a7c06af78e5a5d04a654315c7545206",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 68,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "roses",
+              "sunflowers",
+              "tulips",
+              "daisies",
+              "Your answers:",
+              "roses:",
+              "sunflowers:",
+              "tulips:",
+              "daisies:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "95a15342f32b5913c35c",
+        "replay_digest": "4e06040d85137b5534410718e1c33ca07f1380ef658c7efb5ed9fb282be8268e"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. How many more items were recorded for dogs than for fish?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 54,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 55,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 46,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            55,
+            50,
+            35,
+            45
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 60,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "70c9b8df91de4541049e632ac6e546fe17653f384d5e0c36e97ba65bdd32a8b1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 70,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "ca7501c754b793f0b849",
+        "replay_digest": "edd57a4c0386a6f420c64e43245b96e544fe8966693cd5278ee72e26402db76b"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. If each item for fish costs ₱3, what is the total cost for fish?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 52,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 210,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 24,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 210,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            25,
+            55,
+            60,
+            70
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 75,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "e24ff0f1e0d314c79252f54dfc08d309d0e004fa0e8a89f9848d172308b1920d",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 76,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "75",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d7dde982f777f68f003e",
+        "replay_digest": "0349e5c0bcc939c534e208a68acef2204e551919f372c8fdbc3847c0f9b43ff1"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. If 20 more items are added to Art, what will be the new total for Art?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 55,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 110,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 56,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 55,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "values": [
+            55,
+            55,
+            15,
+            35
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "max_y": 60,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "04d398f39608ed073eb73b05da89a1e8d8e2ec25ae70539ebebfaf85612eb7ca",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 70,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "Math",
+              "Science",
+              "English",
+              "Art",
+              "Your answers:",
+              "Math:",
+              "Science:",
+              "English:",
+              "Art:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f07fa6054cbceef78f48",
+        "replay_digest": "806f4641bfc93b2f1a6c5acaf3ce37d85365138221a006b69f4d559d495d88ec"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. How many more items were recorded for Thursday than for Tuesday?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 50,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 45,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 61,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "values": [
+            60,
+            10,
+            50,
+            60
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "max_y": 65,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "35a26542b1d116adf8badbd10ba9f5994a459ccce1841c162ced6b36b6d383d9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 72,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Your answers:",
+              "Monday:",
+              "Tuesday:",
+              "Wednesday:",
+              "Thursday:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0435358359806055d887",
+        "replay_digest": "5204803b0600f7a27e88ac51a39f2c1cf9e83cca9127f0f1bd6b4d9add2d2487"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. How many more items were recorded for volleyball than for swimming?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 60,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 30,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "basketball",
+            "volleyball",
+            "swimming",
+            "running"
+          ],
+          "values": [
+            10,
+            60,
+            30,
+            25
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "basketball",
+            "volleyball",
+            "swimming",
+            "running"
+          ],
+          "max_y": 65,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "b6414a006318f4236067c71117185191564a106fb4a305a6eb6ddd5b33ea9a03",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 72,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "basketball",
+              "volleyball",
+              "swimming",
+              "running",
+              "Your answers:",
+              "basketball:",
+              "volleyball:",
+              "swimming:",
+              "running:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2759d0f1a4600a646fb7",
+        "replay_digest": "b64c40806d7ca6814e6089d9485ca06b491d9e0519f9bf8e1306307476ef16f5"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_3",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. If 15 more items are added to dogs, what will be the new total for dogs?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            5,
+            5,
+            25,
+            20
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 30,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "20c72d9b0885a3e7eb0edf3194a63fee6acf0336371a0b6ce987fadc9e078ac9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b8a9da994f5cd527488a",
+        "replay_digest": "68d4d1a00a8912c173a470f02c368cefba94e9c697985ec29a65c0aa3657ae6c"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples present problem-solving tasks using bar graphs, requiring students to read values, calculate totals, differences, and perform multiplication operations across every sample shown.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "data_presented",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "data presented",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples display data presented in rendered bar charts with labeled axes, numerical values, and categories. Each visual shows structured data for learners to extract and analyze.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "single_bar_graph",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "single bar graph",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples render exactly one bar graph per problem. Each sample presents a single BarChart visual, never combining multiple graphs or chart types together.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "horizontal",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "horizontal",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four of 10 samples explicitly present horizontal bar graphs (seeds 11, 23, 64, 103), showing this orientation is a regular part of the learner experience across the sample set.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "vertical",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "vertical",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Six of 10 samples explicitly present vertical bar graphs (seeds 42, 57, 78, 91, 118, 127), representing 60 percent of the samples and showing this orientation is consistently demonstrated.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

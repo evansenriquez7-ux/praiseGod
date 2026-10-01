@@ -1,0 +1,617 @@
+{
+  "batch": "batch267_mat_g3_mg_q4_2",
+  "attested_at": "2026-10-01T11:04:47Z",
+  "attested_by": "blind-attester-haiku45-w2c267-mat_g3_mg_q4_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_mg_q4_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_mg_q4_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "on the line of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5 units to the right of the line",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "10 units to the right of the line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5 units to the left of the line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5 units to the right of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "30a377ca21026075ae82",
+        "replay_digest": "cafecede89e94ff5286a6475dddd2678527b5453286ef3cbbdbd7208ef73240e"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?",
+        "correct_answer": "2 grid units below the line of symmetry",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 grid units below the line of symmetry",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "2 grid units above the line of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2 grid units to the right of the line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 grid units below the line of symmetry",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2 grid units below the line of symmetry",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "a8659a5052e34a01cc5b",
+        "replay_digest": "8267672ceb2dc6254529da736c0843842482a6b37d81632ba6a3f4a6cb62f117"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+        "correct_answer": "3 grid units to the right of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "on the line itself",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3 grid units above the line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3 grid units to the right of the line",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "6 grid units to the right of the line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3 grid units to the right of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "dabf9eeab04fc4b1e8c3",
+        "replay_digest": "eedbce2fab8e5deefcd08cff6799a4bd28f37c3a62a9bc26c32d9e8a7c4d9e84"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+        "correct_answer": "drawn as a mirror image of the first half",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "drawn as a triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "drawn twice as large",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "drawn as a mirror image of the first half",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "drawn upside down",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "drawn as a mirror image of the first half",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "276ef916745b909bd67b",
+        "replay_digest": "9059cca332b36c4da0bb377a9d25b82582c59d2a4f6f6a43e8cee3c66e65b0de"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10 units to the right of the line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5 units to the right of the line",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "on the line of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5 units to the left of the line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5 units to the right of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "e0b2446a4d179a0090bd",
+        "replay_digest": "9664336e67a7e798bd58746f42f731592e46a088515de7b022490fd86b8fc3b1"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?",
+        "correct_answer": "4 grid units to the left of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2 grid units to the left of the line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4 grid units to the left of the line",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "on the line of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4 grid units to the right of the line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4 grid units to the left of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "68c56a85c456aa248716",
+        "replay_digest": "d11e878b14418e9f136afed70f2042d3b0c0d9871dbe5cd8a31db4a1f82dd9a8"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+        "correct_answer": "3 grid units to the right of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "on the line itself",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3 grid units above the line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "6 grid units to the right of the line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3 grid units to the right of the line",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "3 grid units to the right of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "98e17f94bff52dd37022",
+        "replay_digest": "529276a2128fcc5d5d78271d799fd731f0db0b1011ce8e01837affac6ffde558"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "5 units to the left of the line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5 units to the right of the line",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "on the line of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10 units to the right of the line",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5 units to the right of the line",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "b692a50089eba0cb4996",
+        "replay_digest": "a595f1464794f22b58cbe28b55f3e6f9babe3d0059313ec4c5f88bbb11050df0"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "If a shape is symmetrical across a line, folding along that line makes both halves match exactly. True or false?",
+        "correct_answer": "True",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Only for circles",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Only for squares",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "True",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "False",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "True",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "431906b521103a6a7c2f",
+        "replay_digest": "216285f68f144864f7bd39a7419d0db5244528ca995ea96a4340699f2b83167f"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_2",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+        "correct_answer": "drawn as a mirror image of the first half",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "drawn upside down",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "drawn as a mirror image of the first half",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "drawn twice as large",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "drawn as a triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "drawn as a mirror image of the first half",
+        "hints": [
+          "Find the line of symmetry first.",
+          "Each point on one side has a matching point the same distance on the other side.",
+          "Draw the mirror image to complete the figure."
+        ],
+        "sample_id": "126305610db08fee6f7f",
+        "replay_digest": "085f0b8ef8f4289db24b5158d8a1e4765ac239e09081949cf254e766b20badb4"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "complete",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "Complete",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples engage with completing or ask about completed symmetric figures. Seeds 23, 57, 78, 127 explicitly state complete. Seeds 11, 64, 103 ask about vertices of the completed symmetric polygon. Seeds 42, 91 ask where mirror points go to complete symmetry. Seed 118 addresses properties of completed symmetric shapes. Count: 10 of 10 exhibit the clause.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "figure",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "figure",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly reference figures, polygons, or shapes. Seeds 11, 64, 103 name polygon. Seeds 23, 57, 78, 127 name figure. Seed 118 names shape. Seeds 42, 91 reference points and symmetries within figure contexts. Count: 10 of 10 exhibit the clause figure.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "symmetric_with_respect_to_a_line",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "symmetric with respect to a line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly deal with lines of symmetry and symmetry relationships. Seeds 11, 23, 42, 57, 64, 78, 91, 103, 127 reference line of symmetry. Seed 118 states symmetrical across a line. Every sample centers on symmetry with respect to a line. Count: 10 of 10 exhibit the clause.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

@@ -1,0 +1,609 @@
+{
+  "batch": "batch269_mat_g3_na_q1_3",
+  "attested_at": "2026-10-01T11:05:27Z",
+  "attested_by": "blind-attester-haiku45-w2c269-mat_g3_na_q1_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_na_q1_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_na_q1_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "In the number 7125, the value of the digit 7 in the thousands place is 3. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Find the digit in the thousands place value of 7125.",
+          "That digit is 7.",
+          "Multiply it by its place: 7 × 1000 = 7000.",
+          "The worth of 7 in 7125 is 7000."
+        ],
+        "sample_id": "fd4a8b83c70d4a8a8108",
+        "replay_digest": "b0b1baa3ed6ac861c15fbca8bc4760865c867cfc1d78d233cd3d093413d14a64"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 5 in 1485?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 50,
+            "text": "50",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1485,
+            "text": "1485",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Find the digit in the ones place value of 1485.",
+          "That digit is 5.",
+          "Multiply it by its place: 5 × 1 = 5.",
+          "The worth of 5 in 1485 is 5."
+        ],
+        "sample_id": "9aebb3daa1de5c435a31",
+        "replay_digest": "3e0262e8777bd25aa998d627d6ed2aca5c819e50a9feb18f8161417260cafd71"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "In 1695, what digit is in the ones place?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the digits of 1695 from the right: ones.",
+          "Find the ones place value.",
+          "The digit in the ones place is 5."
+        ],
+        "sample_id": "5d889bf260e56b0ed9ec",
+        "replay_digest": "effb469d4858bf3fdfbb2bb60d2b52fa0f4b39b9af8b3b6df8ba9f78c3f5312d"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 57,
+        "formatter": "true_false",
+        "question_text": "What place is the digit 5 in, in the number 4215? The answer is ones. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Put each digit of 4215 in its own column.",
+          "Count from the right: ones.",
+          "The digit in the ones column is 5."
+        ],
+        "sample_id": "92c9011183714a3fdc39",
+        "replay_digest": "fb3fc4dcc17cd61a17b32cd63ae0c0ee7dcd2317a23fbf0779b4e74b2b47dd59"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 1 in 1730?",
+        "correct_answer": 1000,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1000,
+        "hints": [
+          "Find the digit in the thousands place value of 1730.",
+          "That digit is 1.",
+          "Multiply it by its place: 1 × 1000 = 1000.",
+          "The worth of 1 in 1730 is 1000."
+        ],
+        "sample_id": "aaeab820010df6923b43",
+        "replay_digest": "771f814b4a61bc6d2b062b2fc206e06f5fdb59d8962463b98dc82e50a3947bc2"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 6 in, in the number 1605?",
+        "correct_answer": "hundreds",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "thousands",
+            "text": "thousands",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "hundreds",
+        "hints": [
+          "Put each digit of 1605 in its own column.",
+          "Count from the right: ones, tens, hundreds.",
+          "The digit in the hundreds column is 6."
+        ],
+        "sample_id": "a50aacee416844855ba8",
+        "replay_digest": "9a09876a5f528350d8f65efbcf70915743b7024af0c1341d6117ccfeec1ac944"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 7 in, in the number 2175?",
+        "correct_answer": "tens",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "thousands",
+            "text": "thousands",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "tens",
+        "hints": [
+          "Put each digit of 2175 in its own column.",
+          "Count from the right: ones, tens.",
+          "The digit in the tens column is 7."
+        ],
+        "sample_id": "b2f6cced86ba148f4b24",
+        "replay_digest": "ff053c8abba3f76186d8e5f7057b36547dc6b05d04f3cee95c7fcc09b7fd4d1a"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "In 6705, what digit is in the tens place? The answer is 0. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Look at the digits of 6705 from the right: ones, tens.",
+          "Find the tens place value.",
+          "The digit in the tens place is 0."
+        ],
+        "sample_id": "9d8ab0239d0ae4e849d8",
+        "replay_digest": "9b9f2ed4092d01a16ad188a205c5b093ab3a45063aafe4c5eebdf200ad46bf22"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "In 2350, what digit is in the hundreds place?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Look at the digits of 2350 from the right: ones, tens, hundreds.",
+          "Find the hundreds place value.",
+          "The digit in the hundreds place is 3."
+        ],
+        "sample_id": "c49801feab782dce6406",
+        "replay_digest": "c5358082f8b44d5fdcb33b15e35ed1b73dc02b72ec19431182b2b19855201112"
+      },
+      {
+        "node_id": "mat_g3_na_q1_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 0 in, in the number 1630?",
+        "correct_answer": "ones",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "thousands",
+            "text": "thousands",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "hundreds",
+            "text": "hundreds",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ones",
+        "hints": [
+          "Put each digit of 1630 in its own column.",
+          "Count from the right: ones.",
+          "The digit in the ones column is 0."
+        ],
+        "sample_id": "30132a3107a00299634e",
+        "replay_digest": "cfa8f54474baa7ff2f63c6094161b182ad8cb3a6175ba89fdd46cb26ed27eed0"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The verb determine is regularly exhibited across all 10 samples. Every sample asks students to determine place values, identify digits, or identify places within 4-digit numbers. Count: 10 samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "place_value_of_digit",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "place value of a digit",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 2 out of 10 samples explicitly ask for place value of a digit: seeds 23 and 64. The majority ask for either place names (seeds 57, 78, 91, 127) or digits themselves (seeds 42, 103, 118), not place value. Count: 2 samples, which falls in the incidental range.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "4_digit_number",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "4-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples consistently work with 4-digit numbers: 7125, 1485, 1695, 4215, 1730, 1605, 2175, 6705, 2350, and 1630. The use of 4-digit numbers is a regular and essential part of every sample. Count: 10 samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "value_of_digit",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "value of a digit",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only seed 11 directly tests the value of a digit concept, asking whether 7 in the thousands place equals 3, which tests that 7000 does not equal 3. Most other samples ask for places or digits, not values. Count: 1 sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "digit_of_number",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "digit of number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Three samples directly ask students to identify a digit given its place: seed 42 asks for the digit in the ones place, seed 103 asks for the digit in the tens place, and seed 118 asks for the digit in the hundreds place. Count: 3 samples demonstrating finding a digit given its place value.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "given_place_value",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "place value",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Place or place value is featured throughout all 10 samples. Every sample references specific places within numbers: thousands, hundreds, tens, or ones places. This foundational concept is consistently reinforced across every sample. Count: 10 samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

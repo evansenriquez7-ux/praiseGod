@@ -1,0 +1,737 @@
+{
+  "batch": "batch248_mat_g2_na_q3_5",
+  "attested_at": "2026-10-01T11:02:02Z",
+  "attested_by": "blind-attester-haiku45-w2c248-mat_g2_na_q3_5-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g2_na_q3_5/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g2_na_q3_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Starting from 90 and subtracting 10 repeatedly, you subtract 8 times before reaching 0. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 90 by 10. The dividend is 90; the divisor is 10.",
+          "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+          "The quotient of 90 ÷ 10 = 9."
+        ],
+        "sample_id": "3ce577a358af827a8816",
+        "replay_digest": "29fbf496394d773f58b906620610321c4607994003e7531e6d676947b4ef93fa"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Start with 12. Subtract 2 repeatedly until reaching 0: you subtract ___ times.",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We need to divide 12 by 2. The dividend is 12; the divisor is 2.",
+          "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+          "The quotient of 12 ÷ 2 = 6."
+        ],
+        "sample_id": "f5e097e45a4a8b2c180c",
+        "replay_digest": "d5d503c1a0b26b32a7233060e79d44cae116b34934e507c81f6f54076be3c5ee"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "This array has 2 squares split into 2 equal rows. How many squares are in each row?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 2 by 2. The dividend is 2; the divisor is 2.",
+          "Ask: how many times does 2 fit into 2? 2 × 1 = 2.",
+          "The quotient of 2 ÷ 2 = 1."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 1,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 1,
+          "grid_size": [
+            3,
+            2
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "ffe080710f860248ba5e2d8c1584e906b0889bdb1abedf4cd4a49ed996c7beaf",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 15,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "1 × 2",
+              "rectangle",
+              "2 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 2
+            }
+          }
+        },
+        "sample_id": "f87bb3d17355458316f7",
+        "replay_digest": "32199ba5bc19f4e0409092bb227f92978fb413b5e0e956a0c4018b3feab1d11a"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "10 ÷ 10 = ___",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 10 by 10. The dividend is 10; the divisor is 10.",
+          "Ask: how many times does 10 fit into 10? 10 × 1 = 10.",
+          "The quotient of 10 ÷ 10 = 1."
+        ],
+        "sample_id": "1fc1ff13fe1b2ee327a2",
+        "replay_digest": "e7c3b3e783038de8b2804ab0c8c96833ad83c9c266704079aaafd27d7f5ee9fd"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Start with 3. Subtract 3 repeatedly until reaching 0: you subtract ___ times.",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 3 by 3. The dividend is 3; the divisor is 3.",
+          "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+          "The quotient of 3 ÷ 3 = 1."
+        ],
+        "sample_id": "9ddf82c24e112abc010f",
+        "replay_digest": "71c86cf18ce61dfc3695c9c7381eaa8c702950af28d1d341a1c76919c5eb8567"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "This array has 3 squares split into 3 equal rows. How many squares are in each row?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 3 by 3. The dividend is 3; the divisor is 3.",
+          "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+          "The quotient of 3 ÷ 3 = 1."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 3,
+          "cols": 1,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 1,
+          "grid_size": [
+            4,
+            2
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "499bb265a72661153f7f5565e7ac5b1401f5980661cf97922a4b25ba2707d1ea",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "1 × 3",
+              "rectangle",
+              "3 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 3
+            }
+          }
+        },
+        "sample_id": "18370ab942fe5f6d6555",
+        "replay_digest": "88c803aacdcc414731161b2ecd6aaf4333f7ec47e74b26a47251d3c4abcfe5f7"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "What is 15 ÷ 3?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 15 by 3. The dividend is 15; the divisor is 3.",
+          "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+          "The quotient of 15 ÷ 3 = 5."
+        ],
+        "sample_id": "7979198ef253b0f2f7ab",
+        "replay_digest": "8549bd5a47ff7d5b279757f61b2343dbd0965732018e753996f05bebc69113ae"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"Starting from 20 and subtracting 4 repeatedly, you subtract ___ times before reaching 0\". Grace says the missing number is 6. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 5
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 5
+        },
+        "hints": [
+          "We need to divide 20 by 4. The dividend is 20; the divisor is 4.",
+          "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
+          "The quotient of 20 ÷ 4 = 5."
+        ],
+        "sample_id": "7305d7796c74ddee2e6c",
+        "replay_digest": "c97873832b6c356b25cb226624b045453dd6976c5bb7a9657f38d84ea2606d05"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "20 ÷ 5 = ___",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 20 by 5. The dividend is 20; the divisor is 5.",
+          "Ask: how many times does 5 fit into 20? 5 × 4 = 20.",
+          "The quotient of 20 ÷ 5 = 4."
+        ],
+        "sample_id": "9c9f5cda924600f6f2ee",
+        "replay_digest": "c80fd234b32a6cbc67b05d1825b3512ada8d0cb1eb03cf047fed1f75330833cc"
+      },
+      {
+        "node_id": "mat_g2_na_q3_5",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "What is 3 ÷ 3?",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 3 by 3. The dividend is 3; the divisor is 3.",
+          "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+          "The quotient of 3 ÷ 3 = 1."
+        ],
+        "sample_id": "95214e89f979bb44aa91",
+        "replay_digest": "61e34564c367ccb38ff58d0eff535414a0b38a32ae22b715672817556bad2313"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_and_write",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "Illustrate and write",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Illustrations appear in seeds 42 and 78 (GridArea); written notation in seeds 57, 91, 118, 127. Total 6 seeds show one form, but students are not asked to illustrate or write, only interpret or compute. Neither illustrating nor writing is regularly exhibited as a student action.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "division_expressions",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "division expressions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 seeds exhibit division expressions. Seeds 11, 23, 64, 103 model division through repeated subtraction; seeds 42, 78 through arrays; seeds 57, 91, 118, 127 through symbolic notation. Division expressions are a regular, foundational part of every sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "concrete_and_pictorial_models",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "concrete and pictorial models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 2 seeds (42, 78) show concrete or pictorial models via GridArea. Remaining 8 seeds present abstract or symbolic content without rendered models, making this an incidental rather than regular feature.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Numerals appear in all 10 seeds across problem descriptions, options, and expressions. Every sample uses numerical notation and quantities, making this a regular and consistent feature throughout.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "modelling_division",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "modelling division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103
+      ],
+      "reasoning": "Six seeds explicitly model division: seeds 42 and 78 via equal grouping arrays; seeds 11, 23, 64, 103 via repeated subtraction. This represents 60% of samples using the three named modelling approaches, establishing a regular pattern of division modelling.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "equal_sharing",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "equal sharing",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only seeds 42 and 78 represent equal sharing through array interpretation. This appears in only 2 of 10 samples, which is incidental rather than a regular feature a learner encounters.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "formation_of_equal_groups",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "formation of equal groups",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 2 seeds (42, 78) show formation of equal groups via array structures where rows or groupings are explicitly addressed. Eight seeds do not exhibit this modelling approach.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "objects",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Objects appear explicitly only in seeds 42 and 78, where squares are displayed in GridArea. The remaining 8 seeds work with abstract quantities or numerals without concrete objects, appearing in only 2 of 10 samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "repeated_subtraction",
+      "node_id": "mat_g2_na_q3_5",
+      "clause": "repeated subtraction",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Repeated subtraction is explicitly demonstrated in 4 seeds (11, 23, 64, 103), which is 40 percent of samples. This falls short of regular provision, appearing less often than half the samples a learner encounters.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

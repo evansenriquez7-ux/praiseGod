@@ -1,0 +1,655 @@
+{
+  "batch": "batch276_mat_g3_na_q3_6",
+  "attested_at": "2026-10-01T11:06:47Z",
+  "attested_by": "blind-attester-haiku45-w2c276-mat_g3_na_q3_6-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_na_q3_6/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_na_q3_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "This pattern follows a rule: 244, 243, 249, 144, 143, 149, 44, 43, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -100,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": -200,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": -100,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": -556,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": -100,
+        "hints": [
+          "Look at the pattern: 244, 243, 249, 144, 143, 149, 44, 43.",
+          "A group of numbers repeats, and each new group goes down by 100.",
+          "Repeat the ones [4, 3, 9] and subtract 100 every group. The answer is -100."
+        ],
+        "sample_id": "ad7c70c65f6141dc3b86",
+        "replay_digest": "4db835d2052cfe171354ece2b5312c8d2a5ae4d2d771a34b5f30a7cfc59eff99"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 75, 77, 77, 65, 67, 67, 55, 57, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": -10,
+            "text": "-10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": -20,
+            "text": "-20",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": -5,
+            "text": "-5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": -10,
+        "hints": [
+          "Look at the pattern: 75, 77, 77, 65, 67, 67, 55, 57.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "Repeat the ones [5, 7, 7] and subtract 10 every group. The answer is -10."
+        ],
+        "sample_id": "e2a85413632b7b36d9ea",
+        "replay_digest": "25807c0be9f65e6c8d342b421f03c950fed67c1d0e275f5333f010f356e4b359"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 24, 24, 34, 34, 44, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 74,
+            "text": "74",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 24, 24, 34, 34, 44.",
+          "A group of numbers repeats, and each new group goes up by 10.",
+          "Repeat the ones [4, 4] and add 10 every group. The answer is 10."
+        ],
+        "sample_id": "4dca8f8a34778db83261",
+        "replay_digest": "f944df169307faa503516e9999ecad502efcd6ae2d097ea2924fbd8fa04df874"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "This pattern follows a rule: 51, 54, 101, 104, 151, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 301,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 50,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 100,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "Look at the pattern: 51, 54, 101, 104, 151.",
+          "A group of numbers repeats, and each new group goes up by 50.",
+          "Repeat the ones [1, 4] and add 50 every group. The answer is 50."
+        ],
+        "sample_id": "1173cbe6c80b7fb69910",
+        "replay_digest": "37be04a142d23cca12c53f23e056ffd9574657b32f9cd9e44862a89f2029b571"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 27, 29, 21, 37, 39, 31, 47, 49, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 107,
+            "text": "107",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the pattern: 27, 29, 21, 37, 39, 31, 47, 49.",
+          "A group of numbers repeats, and each new group goes up by 10.",
+          "Repeat the ones [7, 9, 1] and add 10 every group. The answer is 10."
+        ],
+        "sample_id": "bb042987869fbc202886",
+        "replay_digest": "13a43eaf95a55153309ccfaa0285f3b33d8f0e60963cd4bb14ad8d869c18c29c"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 35, 37, 25, 27, 15, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": -15,
+            "text": "-15",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": -20,
+            "text": "-20",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": -10,
+            "text": "-10",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": -10,
+        "hints": [
+          "Look at the pattern: 35, 37, 25, 27, 15.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "Repeat the ones [5, 7] and subtract 10 every group. The answer is -10."
+        ],
+        "sample_id": "3e11f2b0cb1cd4f9c222",
+        "replay_digest": "0e348bea080855d1c7e4d42a0a0826dea62d25490831e908e0e909b6da627d9b"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 43, 47, 63, 67, 83, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 143,
+            "text": "143",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Look at the pattern: 43, 47, 63, 67, 83.",
+          "A group of numbers repeats, and each new group goes up by 20.",
+          "Repeat the ones [3, 7] and add 20 every group. The answer is 20."
+        ],
+        "sample_id": "ae95ae5fb3556e42c984",
+        "replay_digest": "bc2cb50189f00667f3f5fcd5add31f1f94def514503afd73cf0a8c60b22c9c4f"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 32, 37, 38, 52, 57, 58, 72, 77, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 192,
+            "text": "192",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "text": "40",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Look at the pattern: 32, 37, 38, 52, 57, 58, 72, 77.",
+          "A group of numbers repeats, and each new group goes up by 20.",
+          "Repeat the ones [2, 7, 8] and add 20 every group. The answer is 20."
+        ],
+        "sample_id": "e70ded9e77535d1cdad5",
+        "replay_digest": "ebc7dbb140016af90a2b8eedd8954846a91056e4e044bc6acf98f43386567c0f"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "This pattern follows a rule: 116, 115, 66, 65, 16, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -50,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": -100,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": -134,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": -50,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": -50,
+        "hints": [
+          "Look at the pattern: 116, 115, 66, 65, 16.",
+          "A group of numbers repeats, and each new group goes down by 50.",
+          "Repeat the ones [6, 5] and subtract 50 every group. The answer is -50."
+        ],
+        "sample_id": "399fcd5e1a412c381d50",
+        "replay_digest": "092dcb2a2b7e680dd0ef6c3be03ceff4a713fd51a7a8debbd649eb3b4a8abe7a"
+      },
+      {
+        "node_id": "mat_g3_na_q3_6",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "This pattern follows a rule: 65, 64, 55, 54, 45, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": -10,
+            "text": "-10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": -20,
+            "text": "-20",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": -10,
+        "hints": [
+          "Look at the pattern: 65, 64, 55, 54, 45.",
+          "A group of numbers repeats, and each new group goes down by 10.",
+          "Repeat the ones [5, 4] and subtract 10 every group. The answer is -10."
+        ],
+        "sample_id": "573eab4713549cf7e119",
+        "replay_digest": "574f96435e0129140aa292122f26108ec3d92c56f9f48fad5249ad673ace97cd"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "explain_generation",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "Explain how to generate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples ask students to identify or explain the pattern rule by determining what gets added or subtracted between groups, which directly addresses explaining how to generate the pattern. Seeds: 11, 23, 42, 57, 64, 78, 91, 103, 118, 127.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "pattern",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "pattern",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly reference pattern in the stem: This pattern follows a rule. Every single sample (seeds 11, 23, 42, 57, 64, 78, 91, 103, 118, 127) uses this term.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "repeating_and_increasing",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "repeating and increasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        91,
+        103
+      ],
+      "reasoning": "Five of ten samples exhibit repeating and increasing components: seed 42 shows increasing pairs, seed 57 increases overall, seed 64 shows groups increasing across iterations, seed 91 increases consistently, seed 103 demonstrates increasing group structure. Regular occurrence across samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "repeating_and_decreasing",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "repeating and decreasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Five of ten samples exhibit repeating and decreasing components: seed 11 decreases across groups, seed 23 decreases overall, seed 78 consistently decreases, seed 118 decreases by 50, seed 127 decreases by 10. Regular occurrence across samples, equal presence to increasing patterns.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

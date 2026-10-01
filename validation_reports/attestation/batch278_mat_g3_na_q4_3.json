@@ -1,0 +1,642 @@
+{
+  "batch": "batch278_mat_g3_na_q4_3",
+  "attested_at": "2026-10-01T11:06:48Z",
+  "attested_by": "blind-attester-haiku45-w2c278-mat_g3_na_q4_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_na_q4_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_na_q4_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "9770 ÷ 10 = 10. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We need to divide 9770 by 10. The number being divided is 9770; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 9770? 10 × 977 = 9770.",
+          "The quotient of 9770 ÷ 10 = 977."
+        ],
+        "sample_id": "6437a75285b5a047f6e2",
+        "replay_digest": "24bdbafb3cfffba1403e554a8dffad59c9d999478b566beda65060fff1f39a0e"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "53 ÷ 3 = ___",
+        "correct_answer": "17 R 2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "17 R 1",
+            "text": "17 R 1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "17",
+            "text": "17",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "18 R 2",
+            "text": "18 R 2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "17 R 2",
+            "text": "17 R 2",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "17 R 2",
+        "hints": [
+          "We need to divide 53 by 3. The number being divided is 53; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 53? 3 × 17 = 51.",
+          "53 − 51 = 2. The remainder is 2.",
+          "The quotient is 17 remainder 2 (written as 17 R 2)."
+        ],
+        "sample_id": "7a3f7e9022f638777cb9",
+        "replay_digest": "566b0d40ae93c9baae54cbefa1c7618a751a5a8f60390192c7fe16308589f338"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "2000 ÷ 1000 = ___",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 1000,
+            "text": "1000",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "We need to divide 2000 by 1000. The number being divided is 2000; the number we divide by is 1000.",
+          "Ask: how many times does 1000 fit into 2000? 1000 × 2 = 2000.",
+          "The quotient of 2000 ÷ 1000 = 2."
+        ],
+        "sample_id": "70d1b4d574c36827ad22",
+        "replay_digest": "dd136228ff73065b144c23f73108b1873399365fd7ccccd3f08ed74925cbd535"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What is 77 ÷ 7?",
+        "correct_answer": 11,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 70,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 11,
+        "hints": [
+          "We need to divide 77 by 7. The number being divided is 77; the number we divide by is 7.",
+          "Ask: how many times does 7 fit into 77? 7 × 11 = 77.",
+          "The quotient of 77 ÷ 7 = 11."
+        ],
+        "sample_id": "fc98bd9a803d2782f9a8",
+        "replay_digest": "e843bffb1ed91d1cac36390edda289efa52ab787cc195444477b38d3b6aba74f"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "80 ÷ 10 = ___",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 70,
+            "text": "70",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We need to divide 80 by 10. The number being divided is 80; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 80? 10 × 8 = 80.",
+          "The quotient of 80 ÷ 10 = 8."
+        ],
+        "sample_id": "fe73deea24a42ecd10ba",
+        "replay_digest": "1a30efd526578d811408fb85513ec2a34d78f114b2ac04ac65f439685b8c25c6"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "216 ÷ 3 = ___",
+        "correct_answer": 72,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 213,
+            "text": "213",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 73,
+            "text": "73",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 72,
+            "text": "72",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 72,
+        "hints": [
+          "We need to divide 216 by 3. The number being divided is 216; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 216? 3 × 72 = 216.",
+          "The quotient of 216 ÷ 3 = 72."
+        ],
+        "sample_id": "3ab7a1b61a74e3d13575",
+        "replay_digest": "efdb16e51bce35193a7dc5c4b4214a7ae3a9afc6bd414a3e1ca562989c8589c0"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"96 ÷ 4 = ___\". Grace says the missing number is 23. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 24
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 24
+        },
+        "hints": [
+          "We need to divide 96 by 4. The number being divided is 96; the number we divide by is 4.",
+          "Ask: how many times does 4 fit into 96? 4 × 24 = 96.",
+          "The quotient of 96 ÷ 4 = 24."
+        ],
+        "sample_id": "283db2d198da0fd7dfa0",
+        "replay_digest": "78c381fb4a58d4dac097933ec2cf4344a4477d77ac1670752307e599fa966406"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"8000 ÷ 1000 = ___\". Grace says the missing number is 7000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 8
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 8
+        },
+        "hints": [
+          "We need to divide 8000 by 1000. The number being divided is 8000; the number we divide by is 1000.",
+          "Ask: how many times does 1000 fit into 8000? 1000 × 8 = 8000.",
+          "The quotient of 8000 ÷ 1000 = 8."
+        ],
+        "sample_id": "641ba5e171cdd75bd50b",
+        "replay_digest": "6b5147195e94997dd0dc869f3d37407c3b8591d7005c953b6e0b4a3249d295ce"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What is 3000 ÷ 1000?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1000,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2000,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We need to divide 3000 by 1000. The number being divided is 3000; the number we divide by is 1000.",
+          "Ask: how many times does 1000 fit into 3000? 1000 × 3 = 3000.",
+          "The quotient of 3000 ÷ 1000 = 3."
+        ],
+        "sample_id": "1c9381d163bd81569dda",
+        "replay_digest": "7e9b5cd1ff05deffb340582792f4f6160a497c2e40ca35206a41951a904192ce"
+      },
+      {
+        "node_id": "mat_g3_na_q4_3",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "12 ÷ 3 = ___",
+        "correct_answer": 4,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "text": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 12 by 3. The number being divided is 12; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 12? 3 × 4 = 12.",
+          "The quotient of 12 ÷ 3 = 4."
+        ],
+        "sample_id": "51987283b78cefe8b019",
+        "replay_digest": "1b7c4e1480fa7cbd7c72a32d815ce40dabab704bdb1f97d093363ea1bf119dbd"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "divide_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "Divide numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve division operations across various numbers and divisors, exhibiting the core clause to divide numbers consistently.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "with_and_without_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "with and without remainder",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 1 sample (seed 23 with 17 R 2) exhibits division with remainder; the remaining 9 show division without remainder, making the with-remainder component incidental.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "2_to_3_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2- to 3-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        64,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "6 of 10 samples feature 2- to 3-digit dividends: 53, 77, 80, 216, 96, and 12. This represents a regular part of the sample diversity.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "1_digit_number_without_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "1-digit number without remainder",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "4 samples divide by 1-digit numbers without remainder: 77÷7=11, 216÷3=72, 96÷4=24, 12÷3=4. This pattern is regularly exhibited across the samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "2_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "5 of 10 samples feature 2-digit dividends: 53, 77, 80, 96, and 12. Half the sample set regularly exhibits this clause.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "1_digit_number_with_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "1-digit number with remainder",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 1 sample (seed 23 with 53÷3=17 R 2) shows division by a 1-digit number with remainder. This appears incidentally, not as a regular feature.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "2_to_4_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2- to 4-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples feature 2- to 4-digit dividends, consistently demonstrating the full scope of this clause across the entire sample set.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "10_100_1000",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "10,100, and 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        103,
+        118
+      ],
+      "reasoning": "5 of 10 samples divide by 10, 100, or 1000: 9770÷10, 2000÷1000, 80÷10, 8000÷1000, and 3000÷1000. This represents a regular pattern across samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

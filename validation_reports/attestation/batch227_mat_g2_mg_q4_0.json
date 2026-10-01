@@ -1,0 +1,1491 @@
+{
+  "batch": "batch227_mat_g2_mg_q4_0",
+  "attested_at": "2026-10-01T10:57:17Z",
+  "attested_by": "blind-attester-haiku45-w2c227-mat_g2_mg_q4_0-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g2_mg_q4_0/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g2_mg_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the September 2025 calendar. How many weeks are there from September 15 to September 28, inclusive?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Find 15 and 28 on the calendar. Count both of those days too.",
+          "28 - 15 + 1 = 14 days.",
+          "7 days make 1 week, so 14 days are 2 weeks."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 9,
+          "year": 2025,
+          "highlighted_dates": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration",
+          "unit": "weeks"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "9cd40b44c7a06a3e4a4ddda044427fcbc2c99f539782a77821810859d69d2689",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 47,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "September 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2120b899729506c5b0d0",
+        "replay_digest": "7fd4674fd5768812d30fcbcd4531964dd79e044500bbb18f9ab0daf8ba0ac5ef"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the February 2025 calendar. How many weeks are there from February 1 to February 21, inclusive?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Find 1 and 21 on the calendar. Count both of those days too.",
+          "21 - 1 + 1 = 21 days.",
+          "7 days make 1 week, so 21 days are 3 weeks."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 2,
+          "year": 2025,
+          "highlighted_dates": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration",
+          "unit": "weeks"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "070dd815ddba87107370cb550aeb7bd6f6700b3978c0fb944e3100649f0f4ac9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "February 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f1780f902072dbe03195",
+        "replay_digest": "e3d3ec6c022cdc748a4920a3ec0c3860290502f2def3726b9c6e50e1885753d3"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the January 2025 calendar. How many days are there from January 24 to January 27, inclusive?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "Find 24 and 27 on the calendar. Count both of those days too.",
+          "27 - 24 + 1 = 4 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 1,
+          "year": 2025,
+          "highlighted_dates": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "1f6ecdeb53d71014ec835aaf60cfbe148d32beb09d3ac7c1e11395df8725a448",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "January 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8b038537589d7d4fee5e",
+        "replay_digest": "87cbde612beff7b5391f575bcb3f2390f472942d9885e0076dad2e97ae71ed2c"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the June 2025 calendar. How many days are there from June 19 to June 24, inclusive?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Find 19 and 24 on the calendar. Count both of those days too.",
+          "24 - 19 + 1 = 6 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 6,
+          "year": 2025,
+          "highlighted_dates": [
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "09dba8e68347196d243cfc61d2abb71492b75cb7b659f23344f8c6ef3cc98cf1",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 46,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "June 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b08463f6b2d1e8d6eed4",
+        "replay_digest": "9127fad396a6a2c654cd6a8428c91cf7d78ce84147c1ef1d5d72136b8348b8d8"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the February 2025 calendar. How many weeks are there from February 11 to February 24, inclusive?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "Find 11 and 24 on the calendar. Count both of those days too.",
+          "24 - 11 + 1 = 14 days.",
+          "7 days make 1 week, so 14 days are 2 weeks."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 2,
+          "year": 2025,
+          "highlighted_dates": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration",
+          "unit": "weeks"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "bc1afd3332c31a90eb3cb694a9851928816cb6ce24f988df8a788a0cb0263999",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "February 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1e037b2041e4b68b4867",
+        "replay_digest": "b7efd7b530daee1052b8fbfeb81b9e39d44bc7f43798102d0d67e7f65f5daa45"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the February 2025 calendar. How many days are there from February 10 to February 16, inclusive?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Find 10 and 16 on the calendar. Count both of those days too.",
+          "16 - 10 + 1 = 7 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 2,
+          "year": 2025,
+          "highlighted_dates": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "872449ea57021d18b66fb258516944cac74d8ed418933a96832d0e0d70d0f2cc",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "February 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1157b0cb088e88e16c80",
+        "replay_digest": "84ed6bf64d013f871175d220c78a57bb3f676a40c1ef2ef68e044cbdeecef9f7"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the October 2025 calendar. How many days are there from October 6 to October 12, inclusive?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Find 6 and 12 on the calendar. Count both of those days too.",
+          "12 - 6 + 1 = 7 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 10,
+          "year": 2025,
+          "highlighted_dates": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "0969ce571a7e9a30e03abbf0d9ff48023c88ff633b1c48aeff4593b970186773",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "October 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "73b9708ecc402320e3c6",
+        "replay_digest": "288e59140c3e673ad8d61741beaf79a46d4420ce01d936b19eefba4da043d273"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the December 2025 calendar. How many weeks are there from December 7 to December 27, inclusive?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "Find 7 and 27 on the calendar. Count both of those days too.",
+          "27 - 7 + 1 = 21 days.",
+          "7 days make 1 week, so 21 days are 3 weeks."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 12,
+          "year": 2025,
+          "highlighted_dates": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration",
+          "unit": "weeks"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "53e3668e18c4156dc806bd6acb8ce0bb941f8a517c0a9669aca2adf3404e797c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 48,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "December 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8b598c029aa92433b40a",
+        "replay_digest": "c60f79cd159a2a4be32fbff6b090a9e55ca9d89d4c31df00c248bcbcf2ea4f5d"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the May 2025 calendar. How many days are there from May 4 to May 10, inclusive?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "Find 4 and 10 on the calendar. Count both of those days too.",
+          "10 - 4 + 1 = 7 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 5,
+          "year": 2025,
+          "highlighted_dates": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "e3fdddf06474f6dd8ffbd6a4bb77138004d17ed8bc07fe849c6707f49a5d7d68",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 51,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "May 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "8bd729a8664c58d57d7a",
+        "replay_digest": "d8e1579dd7c737f4a9873d15da4e8abfea178575c63b2c7f661b3da0089995dc"
+      },
+      {
+        "node_id": "mat_g2_mg_q4_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the October 2025 calendar. How many days are there from October 19 to October 24, inclusive?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "Calendar",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "Find 19 and 24 on the calendar. Count both of those days too.",
+          "24 - 19 + 1 = 6 days."
+        ],
+        "visual_type": "Calendar",
+        "visual_payload": {
+          "month": 10,
+          "year": 2025,
+          "highlighted_dates": [
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ],
+          "question_date": null,
+          "show_day_names": true,
+          "task_type": "measure_duration"
+        },
+        "visual_render": {
+          "visual_type": "Calendar",
+          "renderer_input_digest": "eedf211a74cf8e67726b3ba2e170af470eadd24545551590c09640bc1bbda566",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "Calendar",
+            "element_count": 50,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "October 2025",
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31",
+              "Click a date to start the range",
+              "Click two dates to measure the duration between them"
+            ],
+            "distinct_colours": [
+              "hsl(var(--primary)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "5c47a5e02fb07bb39643",
+        "replay_digest": "dc2b6fc3a79f41b6399ff9470e7e171efbf7855d51df60f8a0a45ff5f42d91bb"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g2_mg_q4_0",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples ask students to describe or calculate duration using a calendar. Each question requires the learner to demonstrate the action of describing/determining time intervals.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "duration_of_an_event",
+      "node_id": "mat_g2_mg_q4_0",
+      "clause": "duration of an event",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly ask about duration of events between two dates, ranging from days to weeks across multiple months. The clause is a regular feature of every sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "number_of_days",
+      "node_id": "mat_g2_mg_q4_0",
+      "clause": "number of days",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "Six samples specifically ask How many days (seeds 42, 57, 78, 91, 118, 127), while four ask about weeks instead. This represents regular prevalence at 60% of samples with clear representation.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "number_of_weeks",
+      "node_id": "mat_g2_mg_q4_0",
+      "clause": "weeks",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four samples ask How many weeks (seeds 11, 23, 64, 103), while six ask about days. This represents regular, meaningful presence at 40% across different months.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "calendar",
+      "node_id": "mat_g2_mg_q4_0",
+      "clause": "calendar",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples render an interactive calendar visual as the primary medium. Calendar is rendered in full with dates, day labels, and interaction prompts in every sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

@@ -1,0 +1,501 @@
+{
+  "batch": "batch235_mat_g2_na_q1_4",
+  "attested_at": "2026-10-01T10:58:06Z",
+  "attested_by": "blind-attester-haiku45-w2c235-mat_g2_na_q1_4-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g2_na_q1_4/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g2_na_q1_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 11,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 454, 456, 445, 446, 458",
+        "correct_answer": [
+          445,
+          446,
+          454,
+          456,
+          458
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          445,
+          446,
+          454,
+          456,
+          458
+        ],
+        "hints": [
+          "Numbers to order: 445, 446, 454, 456, 458.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 445, 446, 454, 456, 458."
+        ],
+        "sample_id": "c0e7aa023d7820523c19",
+        "replay_digest": "4fd18685749ea2209a85b22c752c65ef31bc9b6c25091f77ff52421f7428e853"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 23,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from largest to smallest: 928, 912, 919, 910",
+        "correct_answer": [
+          928,
+          919,
+          912,
+          910
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          928,
+          919,
+          912,
+          910
+        ],
+        "hints": [
+          "Numbers to order: 910, 912, 919, 928.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 928, 919, 912, 910."
+        ],
+        "sample_id": "0a0c5dbd30602c0ebbe0",
+        "replay_digest": "f3fc9f947aeafda5d66682e6706cfa8a337eb699473f63f6bf46d1146c28a03c"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 42,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 637, 638, 229",
+        "correct_answer": [
+          638,
+          637,
+          229
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          638,
+          637,
+          229
+        ],
+        "hints": [
+          "Numbers to order: 229, 637, 638.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 638, 637, 229."
+        ],
+        "sample_id": "aa0c52233d1cc4ecbfdd",
+        "replay_digest": "ea081017d852e539c12624dfa5e028f1d003761fdf0f11034b769f6f1d342717"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 57,
+        "formatter": "ordering",
+        "question_text": "Jose counted storybooks collected by 3 friends: 37, 46, 329. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          329,
+          46,
+          37
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          329,
+          46,
+          37
+        ],
+        "hints": [
+          "Numbers to order: 37, 46, 329.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 329, 46, 37."
+        ],
+        "sample_id": "c4932f6651df6a5f6170",
+        "replay_digest": "a36623df5d37dc620b973647e0f3b3f8507b3448e91f9b5c6cc2d3bc8e21146f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 64,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from smallest to largest: 490, 470, 487, 478, 476",
+        "correct_answer": [
+          470,
+          476,
+          478,
+          487,
+          490
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          470,
+          476,
+          478,
+          487,
+          490
+        ],
+        "hints": [
+          "Numbers to order: 470, 476, 478, 487, 490.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 470, 476, 478, 487, 490."
+        ],
+        "sample_id": "df147ed19a8b7e4218a9",
+        "replay_digest": "4e986670245cff6cdca94593de9995c8824ad3b87b8bddebd4aae877a496db4c"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 78,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 762, 808, 809",
+        "correct_answer": [
+          809,
+          808,
+          762
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          809,
+          808,
+          762
+        ],
+        "hints": [
+          "Numbers to order: 762, 808, 809.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 809, 808, 762."
+        ],
+        "sample_id": "17bcbea83baaef21b69c",
+        "replay_digest": "a0faeff2b84c60b2316e8facf5641a0363ec142cd07280ffac66221745b970f7"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 91,
+        "formatter": "ordering",
+        "question_text": "Maria counted seashells collected by 3 friends: 75, 82, 84. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          75,
+          82,
+          84
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          75,
+          82,
+          84
+        ],
+        "hints": [
+          "Numbers to order: 75, 82, 84.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 75, 82, 84."
+        ],
+        "sample_id": "e701dd1ccb1232662523",
+        "replay_digest": "f2d87aebed773eac53773552d20da3b5cab380e4413861506668ca3ae9fc5a03"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 103,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from smallest to largest: 989, 973, 976, 990, 972",
+        "correct_answer": [
+          972,
+          973,
+          976,
+          989,
+          990
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          972,
+          973,
+          976,
+          989,
+          990
+        ],
+        "hints": [
+          "Numbers to order: 972, 973, 976, 989, 990.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 972, 973, 976, 989, 990."
+        ],
+        "sample_id": "199528d47e605e259aac",
+        "replay_digest": "6446d16f066ba1c38ae47cd74454182456fbe5fdae492435ba6ae64018bc0c3f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 118,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 711, 709, 703",
+        "correct_answer": [
+          703,
+          709,
+          711
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          703,
+          709,
+          711
+        ],
+        "hints": [
+          "Numbers to order: 703, 709, 711.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 703, 709, 711."
+        ],
+        "sample_id": "10f9d907f51bc830a146",
+        "replay_digest": "24cc37612c7fe9e7b7068a9759c7b50607fee8e67cb2eaa6827ba77893e7838a"
+      },
+      {
+        "node_id": "mat_g2_na_q1_4",
+        "seed": 127,
+        "formatter": "ordering",
+        "question_text": "Jose counted marbles collected by 3 friends: 30, 275, 963. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          30,
+          275,
+          963
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          30,
+          275,
+          963
+        ],
+        "hints": [
+          "Numbers to order: 30, 275, 963.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 30, 275, 963."
+        ],
+        "sample_id": "494407914f0e2a5e42cc",
+        "replay_digest": "ce3c69e549925579373b6c3168a74d5012cae52eb272f2e5ed798189d04b9f42"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order_numbers",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "Order numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples ask students to order or arrange numbers in various directions and contexts. The clause is exhibited uniformly across the full sample set.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use only numbers up to 1000: highest values are 990, 928, 638, 329, 490, 809, 84, 990, 711, 963. The range constraint is provided consistently.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "6 of 10 samples explicitly ask students to arrange numbers from smallest to largest (seeds 11, 64, 91, 103, 118, 127). This represents regular exposure to the ascending direction.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "largest_to_smallest",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78
+      ],
+      "reasoning": "4 of 10 samples require arranging numbers from largest to smallest (seeds 23, 42, 57, 78), which represents the vice versa direction mentioned in the competency. This is a regular feature across the sample set.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

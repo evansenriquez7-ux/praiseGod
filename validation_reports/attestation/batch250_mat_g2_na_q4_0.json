@@ -1,0 +1,891 @@
+{
+  "batch": "batch250_mat_g2_na_q4_0",
+  "attested_at": "2026-10-01T11:01:45Z",
+  "attested_by": "blind-attester-haiku45-w2c250-mat_g2_na_q4_0-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g2_na_q4_0/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g2_na_q4_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 11,
+        "formatter": "set_click",
+        "question_text": "Shade 1/4 of the shape.",
+        "correct_answer": "1/4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "1/4",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 4.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/4."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "circle",
+          "total_parts": 4,
+          "ask_type": "shade_this_fraction",
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "538d16585ab896869406eed256f0d4829ed68be29d550e19398e75199ceb7f3a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "f1cf5cbe21d50d76f09c",
+        "replay_digest": "85a20432e5d31fd40e67f44c10fc9286fefc1fefb238e8154263c32c63b5bf69"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "8/1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "8/8",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "7/8",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/8",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 8.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/8."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 8,
+          "total_parts": 8,
+          "shaded_parts": 1,
+          "fraction_str": "1/8",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "afea163669af271679a3fb2fe15ae2d591989a69d712717ff84e2840d9da1390",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 8
+            }
+          }
+        },
+        "sample_id": "779aac5eafc245202d13",
+        "replay_digest": "c93f31997ff50d5c7369593cca8d46fbb99cdc91ffd29497d10cd48b0af2204a"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3/1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/3",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/3",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/3",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 3.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/3."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 3,
+          "total_parts": 3,
+          "shaded_parts": 1,
+          "fraction_str": "1/3",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "b3ed4c6658288e46b3d745b8ea13d521c568967bb8cee66d2472c40253305a03",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 3
+            }
+          }
+        },
+        "sample_id": "50f80dd4a6ec6dab4054",
+        "replay_digest": "634c9430c5e2ac7b1197cc5ca36de5edd5dffd01e6cfdba0121762afa228bc1a"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 57,
+        "formatter": "set_click",
+        "question_text": "Shade 1/2 of the shape.",
+        "correct_answer": "1/2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "1/2",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 2.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/2."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "rectangle",
+          "total_parts": 2,
+          "ask_type": "shade_this_fraction",
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "538c3f1730bff142fb81ad28f11b064a3f34e89d502f1600bcd441118f76ef59",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "45e23a86e96038f35e9c",
+        "replay_digest": "17f565034edd1a341a9588bc2eef713ee3d95971f23a52859505344245d6c2ee"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "4/1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1/4",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "3/4",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4/4",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/4",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 4.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/4."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 4,
+          "total_parts": 4,
+          "shaded_parts": 1,
+          "fraction_str": "1/4",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "9c22cec07d58874d721d0e22c6513a1ed0284ce8d6e7be6648c8bf62e37f018e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 7,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 4
+            }
+          }
+        },
+        "sample_id": "3f4cb8b762ea3f41159a",
+        "replay_digest": "0009efa9f42d11767f8d07eddca5d06ab24a5c13ac7ad4feeecf27ab74b18994"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1/5",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "5/5",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4/5",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "5/1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/5",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 5.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/5."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 5,
+          "total_parts": 5,
+          "shaded_parts": 1,
+          "fraction_str": "1/5",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "5f75e56a3251f189b8cfe046d8e6c49e5be34c38775458570d6e6e842f7f9528",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 5
+            }
+          }
+        },
+        "sample_id": "806cfb52855d42f6bebd",
+        "replay_digest": "4eebeddd8f16c4fef5134e536ad8a0e7cc105c0311fecd19705ec121dfc15329"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "1/2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "3/2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1/2",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 2.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/2."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "1fd624a10f6c60aabca92521c1bff473a3f57b261f061bfee7bc2626ffdd2c1c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "d4f017ff7533c34e3647",
+        "replay_digest": "fd1e3322f7f7e51ad6f16bff20bbe886b704aad55241e4cc109251bbbb081c05"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3/3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/3",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/3",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 3.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/3."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 3,
+          "total_parts": 3,
+          "shaded_parts": 1,
+          "fraction_str": "1/3",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "b3ed4c6658288e46b3d745b8ea13d521c568967bb8cee66d2472c40253305a03",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 3
+            }
+          }
+        },
+        "sample_id": "ecc71b5356a07cd8f7b9",
+        "replay_digest": "0e6571be677ed2941c76ab3a078911d4f4dc67b34a8a19f9a480460250c50376"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 118,
+        "formatter": "set_click",
+        "question_text": "Shade 1/3 of the shape.",
+        "correct_answer": "1/3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_click",
+          "is_visual": true,
+          "visual_type": "FractionShade",
+          "interaction_mode": "set",
+          "answer_collection": "click",
+          "experience": "standard"
+        },
+        "resolved_answer": "1/3",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 3.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/3."
+        ],
+        "visual_type": "FractionShade",
+        "visual_payload": {
+          "shape": "bar",
+          "total_parts": 3,
+          "ask_type": "shade_this_fraction",
+          "interaction_mode": "set",
+          "is_read_only": false,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionShade",
+          "renderer_input_digest": "53bfa4353b99345f7ee86224b86b3fdcda2a64c2dc2d47f447ac2adf3f50064c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionShade",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 3
+            }
+          }
+        },
+        "sample_id": "16773384e555ec44eeaf",
+        "replay_digest": "3a11dac5096b9c18f03a57ccc29ad13356ab89e768cbe8f1218c39acec926fd6"
+      },
+      {
+        "node_id": "mat_g2_na_q4_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FractionModel",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2/1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3/2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2/2",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1/2",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1/2",
+        "hints": [
+          "A fraction shows how many equal parts are shaded out of the total.",
+          "The denominator (bottom number) tells the total equal parts: 2.",
+          "The numerator (top number) tells how many parts are taken: 1.",
+          "So the fraction is 1/2."
+        ],
+        "visual_type": "FractionModel",
+        "visual_payload": {
+          "model_type": "area_model",
+          "numerator": 1,
+          "denominator": 2,
+          "total_parts": 2,
+          "shaded_parts": 1,
+          "fraction_str": "1/2",
+          "interaction_mode": "read",
+          "is_read_only": true,
+          "total_wholes": 1
+        },
+        "visual_render": {
+          "visual_type": "FractionModel",
+          "renderer_input_digest": "1fd624a10f6c60aabca92521c1bff473a3f57b261f061bfee7bc2626ffdd2c1c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FractionModel",
+            "element_count": 5,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {
+              "fraction-part": 2
+            }
+          }
+        },
+        "sample_id": "679a7c1bb224cf513d99",
+        "replay_digest": "1ac12a67c2674d0b1ed11a600442be9bc2a2d765990edc22052d00baa8b8611b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "Represent",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Representation is shown in only 3 of 10 samples (seeds 11, 57, 118) where students shade fractions. The remaining 7 samples ask students to identify fractions shown in models. Representation is not a regular part of what learners meet across these samples; it appears only incidentally.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Identification is demonstrated in all 10 samples. Seeds 11, 57, 118 show identification through shading tasks where students identify what fraction is shaded. Seeds 23, 42, 64, 78, 91, 103, 127 show identification through multiple choice questions asking students to identify fractions in visual models. Identification is a regular part of what learners meet.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "unit_fractions",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "unit fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Unit fractions with numerator 1 are demonstrated in all 10 samples. The fractions include 1/2, 1/3, 1/4, 1/5, and 1/8. Each sample features a unit fraction as the answer or target of the task. Unit fractions are a regular part of what learners meet across these samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "denominators_2_3_4_5_6_8",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "with denominators 2, 3, 4, 5, 6, and 8",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use fractions with denominators from the specified set of 2, 3, 4, 5, 6, and 8. Denominators present include 2, 3, 4, 5, and 8 across the samples. Each sample exhibits work with fractions having the required denominators as specified in the competency scope.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

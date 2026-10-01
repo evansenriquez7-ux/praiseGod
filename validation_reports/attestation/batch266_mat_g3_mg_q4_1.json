@@ -1,0 +1,616 @@
+{
+  "batch": "batch266_mat_g3_mg_q4_1",
+  "attested_at": "2026-10-01T11:04:37Z",
+  "attested_by": "blind-attester-haiku45-w2c266-mat_g3_mg_q4_1-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_mg_q4_1/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_mg_q4_1/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The letter 'A' has a line of symmetry. In which direction does it run?",
+        "correct_answer": "vertical (up and down)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "vertical (up and down)",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "horizontal (side to side)",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "diagonal",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "no lines of symmetry",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "vertical (up and down)",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "ddf64a3d6e3cc1361ee8",
+        "replay_digest": "c009b90e50e26c6b9e1779c50d4099c9a3c93ae6eb2edda9719ca8192adec401"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "If you draw a vertical line down the center of a heart shape, do both sides match?",
+        "correct_answer": "Yes, it shows line symmetry.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Yes, it shows line symmetry.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "No, the sides are different.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Only if the heart is tilted.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "No, hearts have 4 lines of symmetry.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Yes, it shows line symmetry.",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "3ddc489f687af01b9cbc",
+        "replay_digest": "ee00b24f6f7923a1f155ee5a8772504055ca2d14852af08b4681237b528f0199"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "The letter 'B' has a line of symmetry. In which direction does it run?",
+        "correct_answer": "horizontal (side to side)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "no lines of symmetry",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "diagonal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "vertical (up and down)",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "horizontal (side to side)",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "horizontal (side to side)",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "2875d2153e4cad81cffe",
+        "replay_digest": "b913e421e052541d1eba1e6765440b1570b9f955658ca4884c538663042b905d"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A line of symmetry divides a shape into two ___.",
+        "correct_answer": "equal halves that are mirror images",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangles",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "halves that are different sizes",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "unequal parts",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equal halves that are mirror images",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "equal halves that are mirror images",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "25df7f76723dd7c45ea5",
+        "replay_digest": "93fe53955dfeef0e733dac1afe30c520a28d72be08dd662ac5617a90b211279a"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "The letter 'A' has a line of symmetry. In which direction does it run?",
+        "correct_answer": "vertical (up and down)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "horizontal (side to side)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "diagonal",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "vertical (up and down)",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "no lines of symmetry",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "vertical (up and down)",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "a5a093617981757fc12a",
+        "replay_digest": "e6c3fce02261e98ca66829ced316159d1c220077f3537967bbd7a1799a2910d5"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "How many lines of symmetry does an equilateral triangle have?",
+        "correct_answer": "3",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "0",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "3",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "56eee3505caf53cf8e7c",
+        "replay_digest": "0ba6e8bf1fb2a268dd92b50775017f7d11515264410678cb756b61a5343c2d89"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "How many lines of symmetry does a square have?",
+        "correct_answer": "4",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "4",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "adc98fe2f4ff0e2e372d",
+        "replay_digest": "d5da8adad91e0996ce801ff803329026fd0670408acc261fd5b08f35e2fb0f25"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "Which of these shapes has NO line of symmetry?",
+        "correct_answer": "a scalene triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "an equilateral triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "a rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "a square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "a scalene triangle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "a scalene triangle",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "12d73218a22a0806c254",
+        "replay_digest": "08b7024686cd76c2576af0d8bc1fbb10eb8cbe749a0b3bf8c0d4f916cce22d2e"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which of these shapes has NO line of symmetry?",
+        "correct_answer": "a scalene triangle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "a rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "a scalene triangle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "a square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "an equilateral triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "a scalene triangle",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "f6d37d01219077a797a9",
+        "replay_digest": "6f0486a56b9335d3461c3426e6c907d60600c028c40b8d99fc963498582cf589"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_1",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "A line of symmetry divides a shape into two ___.",
+        "correct_answer": "equal halves that are mirror images",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangles",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "unequal parts",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "halves that are different sizes",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "equal halves that are mirror images",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "equal halves that are mirror images",
+        "hints": [
+          "A line of symmetry splits a shape into two mirror-image halves.",
+          "Fold the shape along the line — both halves should match exactly."
+        ],
+        "sample_id": "18a572223fb50ca36ddd",
+        "replay_digest": "16f3c2416cbafced2d9d65f0df594348d406f8f52b256e331e66301107ce8dab"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g3_mg_q4_1",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples require students to identify properties of line symmetry - direction of the line, whether it exists, how many lines a shape has, or which shapes lack it. The identify action is exhibited consistently and prevalently across every sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "shapes_or_figures",
+      "node_id": "mat_g3_mg_q4_1",
+      "clause": "shapes or figures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve shapes or figures including letters A and B, heart, equilateral triangle, square, rectangle, and scalene triangle. The clause is satisfied across all samples with various geometric shapes presented as the subject matter.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "line_symmetry",
+      "node_id": "mat_g3_mg_q4_1",
+      "clause": "line symmetry",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sample explicitly references line symmetry or lines of symmetry. All 10 samples use this concept as the core subject, whether asking about direction, existence, count, or evaluation across different shapes.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "drawing_the_line_of_symmetry",
+      "node_id": "mat_g3_mg_q4_1",
+      "clause": "drawing the line of symmetry",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No samples require students to draw or interactively work on drawing a line of symmetry. All 10 samples are text-based multiple-choice questions asking students to identify, count, or evaluate. Seed 23 mentions drawing conceptually but does not present an interactive visual for the learner to draw on.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

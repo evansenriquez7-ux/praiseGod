@@ -1,0 +1,615 @@
+{
+  "batch": "batch264_mat_g3_mg_q2_5",
+  "attested_at": "2026-10-01T11:04:04Z",
+  "attested_by": "blind-attester-haiku45-w2c264-mat_g3_mg_q2_5-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g3_mg_q2_5/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g3_mg_q2_5/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "Which is more: 21 L or 11 L?",
+        "correct_answer": 21,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 21,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 21,
+        "hints": [
+          "Compare the two measurements: 21 L and 11 L.",
+          "The larger number holds more: 21 L."
+        ],
+        "sample_id": "1094297373bc8286e60f",
+        "replay_digest": "782ae4a2731c9181970179857cc8163ad5c5fe135ed84d3b48397ea979c14de7"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Which is more: 8 L or 19 L?",
+        "correct_answer": 19,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 19,
+            "text": "19",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "text": "18",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 19,
+        "hints": [
+          "Compare the two measurements: 8 L and 19 L.",
+          "The larger number holds more: 19 L."
+        ],
+        "sample_id": "ba92a6daaa82e635d374",
+        "replay_digest": "5775060ff8d7359f71d722cb83bde88844ab7670da3c4b0c1bcb2433e06bb9d2"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Which is more: 23 mL or 56 mL?",
+        "correct_answer": 56,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 56,
+            "text": "56",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 55,
+            "text": "55",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 58,
+            "text": "58",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 57,
+            "text": "57",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 56,
+        "hints": [
+          "Compare the two measurements: 23 mL and 56 mL.",
+          "The larger number holds more: 56 mL."
+        ],
+        "sample_id": "5c3ad52282fc8a6778f8",
+        "replay_digest": "da49595805bf3417ef65a2789434325993d5931ff23d827758bce1ed212d8210"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "Which is more: 8 mL or 5 mL?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Compare the two measurements: 8 mL and 5 mL.",
+          "The larger number holds more: 8 mL."
+        ],
+        "sample_id": "83ead278aa53478cecff",
+        "replay_digest": "ac07b36fec2d288f278fc6647157a082d965e5b24badfe924de7894ecd4868b3"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Which is more: 2 L or 8 L?",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "Compare the two measurements: 2 L and 8 L.",
+          "The larger number holds more: 8 L."
+        ],
+        "sample_id": "2654c7d2abfbfb3d21f0",
+        "replay_digest": "c856f477b81224004b77132e492ccc3337d311f3f104d0e1865ed8586a191211"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "Which is more: 6 L or 10 L?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Compare the two measurements: 6 L and 10 L.",
+          "The larger number holds more: 10 L."
+        ],
+        "sample_id": "5c065959d0b6192a711f",
+        "replay_digest": "b926485023b858d89cc161d5d900a5fa956a18c3eafe1947940d3934c8401885"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Which is more: 7 mL or 12 mL?",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "text": "14",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 13,
+            "text": "13",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "Compare the two measurements: 7 mL and 12 mL.",
+          "The larger number holds more: 12 mL."
+        ],
+        "sample_id": "300f96134379f8a0c09a",
+        "replay_digest": "4aaf7416d2fc8fabdd8e039903d94eb10f57ac4df6dbea3806c95e3671279923"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "Which is more: 22 L or 7 L?",
+        "correct_answer": 22,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 22,
+            "text": "22",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 24,
+            "text": "24",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "text": "23",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 22,
+        "hints": [
+          "Compare the two measurements: 22 L and 7 L.",
+          "The larger number holds more: 22 L."
+        ],
+        "sample_id": "99a48002a2f955b1b4b4",
+        "replay_digest": "537766d3d357ba938978688c37cb0e5de8ea41063247ece176b2c0af8cc3e5a8"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "Which is more: 12 L or 3 L?",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 14,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "Compare the two measurements: 12 L and 3 L.",
+          "The larger number holds more: 12 L."
+        ],
+        "sample_id": "26a25c89307911928cd2",
+        "replay_digest": "904b7071d1527bb0cc12951e0909e8ceeb37659b7c67b089b5b75b6cac5f8a0b"
+      },
+      {
+        "node_id": "mat_g3_mg_q2_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which is more: 19 mL or 52 mL?",
+        "correct_answer": 52,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 53,
+            "text": "53",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 54,
+            "text": "54",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 51,
+            "text": "51",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 52,
+            "text": "52",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 52,
+        "hints": [
+          "Compare the two measurements: 19 mL and 52 mL.",
+          "The larger number holds more: 52 mL."
+        ],
+        "sample_id": "4016f9b7d1a65060d5db",
+        "replay_digest": "640c8c531764beb967f8b5198fdc73b694b199f1f79edbf25159f84cb5b5ffe0"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare_capacities",
+      "node_id": "mat_g3_mg_q2_5",
+      "clause": "Compare capacities",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples present a question asking Which is more, comparing two capacity values in liters or milliliters. The clause Compare capacities is exhibited regularly across all samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "two_containers",
+      "node_id": "mat_g3_mg_q2_5",
+      "clause": "two containers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples present exactly two containers represented by capacity values being compared. Each question contrasts two capacity measures, satisfying the clause two containers.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

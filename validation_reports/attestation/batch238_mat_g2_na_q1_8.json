@@ -1,0 +1,569 @@
+{
+  "batch": "batch238_mat_g2_na_q1_8",
+  "attested_at": "2026-10-01T10:58:56Z",
+  "attested_by": "blind-attester-haiku45-w2c238-mat_g2_na_q1_8-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g2_na_q1_8/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g2_na_q1_8/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_8",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "625 is 6 hundreds, 2 tens, and 5 ones. 150 is 1 hundred, 5 tens, and 0 ones. Add the place values, then find the total: 625 + 150 = 775. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are adding two numbers: 625 and 150.",
+          "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.",
+          "Add the tens: 2 + 5 = 7.",
+          "The sum is 625 + 150 = 775."
+        ],
+        "sample_id": "f9754960b3aa3b864d6f",
+        "replay_digest": "0fbea0f5a1dedf12d2650409625204a24dca6431e584307a36dba27d41c31f0c"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "143 is 1 hundred, 4 tens, and 3 ones. 754 is 7 hundreds, 5 tens, and 4 ones. Add the place values, then find the total: 143 + 754 = ___",
+        "correct_answer": 897,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 898,
+            "text": "898",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 907,
+            "text": "907",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 896,
+            "text": "896",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 897,
+            "text": "897",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 897,
+        "hints": [
+          "We are adding two numbers: 143 and 754.",
+          "Add the ones: 3 + 4 = 7. Keep 7 in the ones place.",
+          "Add the tens: 4 + 5 = 9.",
+          "The sum is 143 + 754 = 897."
+        ],
+        "sample_id": "e1ad527bd25b3a6ac1b6",
+        "replay_digest": "71cbb60839e95cb8c89188c82eed1905dad5a3d907fae7ebd3dcdc9dd8b3b447"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "280 is 2 hundreds, 8 tens, and 0 ones. 550 is 5 hundreds, 5 tens, and 0 ones. Add the place values, then find the total: what is 280 + 550?",
+        "correct_answer": 830,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 830,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 840,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 831,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 829,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 830,
+        "hints": [
+          "We are adding two numbers: 280 and 550.",
+          "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+          "Add the tens: 8 + 5 = 13.",
+          "The sum is 280 + 550 = 830."
+        ],
+        "sample_id": "1561cc0f457b611fbff4",
+        "replay_digest": "488df625996ff834d2400215bd40c324efe021539912bc7f6777a82cef0a5fe2"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"420 is 4 hundreds, 2 tens, and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: 420 + 10 = ___\". Pia says the missing number is 430. Is Pia correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 430
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 430
+        },
+        "hints": [
+          "We are adding two numbers: 420 and 10.",
+          "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.",
+          "Add the tens: 2 + 1 = 3.",
+          "The sum is 420 + 10 = 430."
+        ],
+        "sample_id": "0807dfea8fecc806ed16",
+        "replay_digest": "af33ed49f3cfbf08a3eddca57faa0759985f06048f31d945e3e3bb10d40e093f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "750 is 7 hundreds, 5 tens, and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 750 + 18 = ___",
+        "correct_answer": 768,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 732,
+            "text": "732",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 778,
+            "text": "778",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 768,
+            "text": "768",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 767,
+            "text": "767",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 768,
+        "hints": [
+          "We are adding two numbers: 750 and 18.",
+          "Add the ones: 0 + 8 = 8. Keep 8 in the ones place.",
+          "Add the tens: 5 + 1 = 6.",
+          "The sum is 750 + 18 = 768."
+        ],
+        "sample_id": "26d77a0cb3d58db99ad5",
+        "replay_digest": "87d5ac3c29c1d70c8bf1c9bf70ff625afffe69989120ebcfdecd3f441997566f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "52 is 5 tens and 2 ones. 908 is 9 hundreds, 0 tens, and 8 ones. Add the place values, then find the total: what is 52 + 908?",
+        "correct_answer": 960,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 970,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 960,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 961,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 959,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 960,
+        "hints": [
+          "We are adding two numbers: 52 and 908.",
+          "Add the ones: 2 + 8 = 10. Keep 0 in the ones place and carry over 1 ten.",
+          "Add the tens: 5 + 0 + 1 (carried) = 6.",
+          "The sum is 52 + 908 = 960."
+        ],
+        "sample_id": "efe355280bbc591a031c",
+        "replay_digest": "84a9f843f517723ef3a1ee4b8919580db74e578a000d079380e780ef6d143c6f"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 91,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"116 is 1 hundred, 1 ten, and 6 ones. 272 is 2 hundreds, 7 tens, and 2 ones. Add the place values, then find the total: 116 + 272 = ___\". Grace says the missing number is 388. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 388
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": false,
+          "correct_value": 388
+        },
+        "hints": [
+          "We are adding two numbers: 116 and 272.",
+          "Add the ones: 6 + 2 = 8. Keep 8 in the ones place.",
+          "Add the tens: 1 + 7 = 8.",
+          "The sum is 116 + 272 = 388."
+        ],
+        "sample_id": "1727d0a2c88a227f97ef",
+        "replay_digest": "7701bb16db668abc0ca784a2adc1fcf3ab4451cec64789aa9b49d589828df700"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 103,
+        "formatter": "error_detect",
+        "question_text": "Grace solved: \"391 is 3 hundreds, 9 tens, and 1 one. 581 is 5 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 391 + 581 = ___\". Grace says the missing number is 982. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 972
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 972
+        },
+        "hints": [
+          "We are adding two numbers: 391 and 581.",
+          "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.",
+          "Add the tens: 9 + 8 = 17.",
+          "The sum is 391 + 581 = 972."
+        ],
+        "sample_id": "7d779208d0ad11c55bf7",
+        "replay_digest": "cfc84d79b183ed0e41ca1590a5f532005979a0ca88cdefbb51de9b709f0bc841"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "552 is 5 hundreds, 5 tens, and 2 ones. 247 is 2 hundreds, 4 tens, and 7 ones. Add the place values, then find the total: what is 552 + 247?",
+        "correct_answer": 799,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 798,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 305,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 799,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 809,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 799,
+        "hints": [
+          "We are adding two numbers: 552 and 247.",
+          "Add the ones: 2 + 7 = 9. Keep 9 in the ones place.",
+          "Add the tens: 5 + 4 = 9.",
+          "The sum is 552 + 247 = 799."
+        ],
+        "sample_id": "362a32067e3c38e5c7cb",
+        "replay_digest": "b370491a21ae69e69678cae11482cfd8102647305cea9dd5fc3df2212f403701"
+      },
+      {
+        "node_id": "mat_g2_na_q1_8",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "439 is 4 hundreds, 3 tens, and 9 ones. 51 is 5 tens and 1 one. Add the place values, then find the total: 439 + 51 = ___",
+        "correct_answer": 490,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 490,
+            "text": "490",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 489,
+            "text": "489",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 388,
+            "text": "388",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 500,
+            "text": "500",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 490,
+        "hints": [
+          "We are adding two numbers: 439 and 51.",
+          "Add the ones: 9 + 1 = 10. Keep 0 in the ones place and carry over 1 ten.",
+          "Add the tens: 3 + 5 + 1 (carried) = 9.",
+          "The sum is 439 + 51 = 490."
+        ],
+        "sample_id": "1867133bcecf6d60e8a3",
+        "replay_digest": "50411052bd23c9f0b5dc6f60bc9c37984e5d29b8dfb396dfeb253f80b795eb5b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add_numbers",
+      "node_id": "mat_g2_na_q1_8",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples require adding two numbers as the core task. The clause Add numbers is the fundamental operation required in every sample, with sums ranging from 388 to 960.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q1_8",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples produce sums within the specified range, with totals ranging from 388 to 972, all staying well below 1000. The constraint is consistently applied across every sample.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "expanded_form",
+      "node_id": "mat_g2_na_q1_8",
+      "clause": "expanded form",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly present numbers in expanded form showing hundreds, tens, and ones place values, requiring students to add place values before finding totals. Expanded form representation is consistent throughout.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}
