@@ -1,0 +1,569 @@
+{
+  "batch": "batch214_mat_g1_na_q3_3",
+  "attested_at": "2026-10-01T07:26:17Z",
+  "attested_by": "blind-attester-haiku45-w2c214-mat_g1_na_q3_3-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g1_na_q3_3/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g1_na_q3_3/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "Lola Caring had 10 leashes. Lola Caring used 3 of them. How many leashes are left? The answer is 6. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are subtracting 3 from 10.",
+          "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 3 = 7."
+        ],
+        "sample_id": "d5da7af3121af39a21f3",
+        "replay_digest": "09794110f54918a607082b41bb97737ab3297f9f9752d3289a4d538cfd653b1c"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "A covered court has 10 sneakers. Marco removes 1 sneaker. How many sneakers are left in the covered court?",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 9,
+            "text": "9",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "We are subtracting 1 from 10.",
+          "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 1 = 9."
+        ],
+        "sample_id": "f3a0c59e31073016d62b",
+        "replay_digest": "8f72eca3af5723e85abaa8b5ec5d6f53050be015a69be39e8af0b0bc8387829e"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now?",
+        "correct_answer": 0,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "We are subtracting 1 from 1.",
+          "Subtract the ones: 1 − 1 = 0.",
+          "The difference of 1 − 1 = 0."
+        ],
+        "sample_id": "7bebc8f862cce46b3464",
+        "replay_digest": "3cc93c8efe80fd1fa76bcaa277da0c885943f630983631b0050eb6d0a1549ea1"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved this problem: \"Start at 15. Count back 3. What number do you land on?\" Pia says the answer is 18. Is Pia correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 12
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 12
+        },
+        "hints": [
+          "We are subtracting 3 from 15.",
+          "Subtract the ones: 5 − 3 = 2.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 15 − 3 = 12."
+        ],
+        "sample_id": "4409bbec816b6277c3c3",
+        "replay_digest": "03c7b5356f95a375e205ff398e777a8d818fe2e837b06076db64f8a877807c47"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Gab had 10 sneakers. Gab used 1 of them. How many sneakers are left?",
+        "correct_answer": 9,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "We are subtracting 1 from 10.",
+          "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 1 = 9."
+        ],
+        "sample_id": "e80a2ba56abf1fd5e45f",
+        "replay_digest": "8ecfd61222ee007d6566f0aadf96e4406d92e22ee1e334685f51f102be714ad7"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "There are 3 score cards on the table. Ate Bea takes away 1 score card. How many score cards are left on the table?",
+        "correct_answer": 2,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "We are subtracting 1 from 3.",
+          "Subtract the ones: 3 − 1 = 2.",
+          "The difference of 3 − 1 = 2."
+        ],
+        "sample_id": "b01eafb5bc1a85d3610c",
+        "replay_digest": "0970ec49a3fa2265aa85197e0b6b93a3f1540975a39892275ff5e564939d474a"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "Romel is on step 5. Romel goes down 0 steps. What step is Romel on now? The answer is 5. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 0 from 5.",
+          "Subtract the ones: 5 − 0 = 5.",
+          "The difference of 5 − 0 = 5."
+        ],
+        "sample_id": "332d89345eaf82db92a0",
+        "replay_digest": "ebd562e4e6a39542fede6f750b10f797b5d2bca47d30ec2c99a38d3458a78a3a"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 10 items.\nTaking away 3 items.\nHow many items are left?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 8,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "We are subtracting 3 from 10.",
+          "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 3 = 7."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🚴",
+          "group_a": 10,
+          "group_b": 3,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+          "reveal_display": "🚴🚴🚴🚴🚴🚴🚴",
+          "reveal_text": "7 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "71aec33b944cf013f529452bed211204f71402ea640d23627c5583102baf3734",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 16,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1ec419a8d969c930bc74",
+        "replay_digest": "b30347e186d3dd19cfd0a4a4d81361176345271e55da3a4d6e3121e256646545"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 118,
+        "formatter": "error_detect",
+        "question_text": "Dante solved this problem: \"Ate Gab has 15 ribbons. Ate Gab gives away 1 ribbon. How many ribbons does Ate Gab have left?\" Dante says the answer is 15. Is Dante correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 14
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 14
+        },
+        "hints": [
+          "We are subtracting 1 from 15.",
+          "Subtract the ones: 5 − 1 = 4.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 15 − 1 = 14."
+        ],
+        "sample_id": "5a31b9d0d93ed177bd68",
+        "replay_digest": "2efc6563d31916637368a05ea3614b210650513c38cb4ac73088c404c86e8edb"
+      },
+      {
+        "node_id": "mat_g1_na_q3_3",
+        "seed": 127,
+        "formatter": "true_false",
+        "question_text": "Start at 6. Count back 0. What number do you land on? The answer is 6. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 0 from 6.",
+          "Subtract the ones: 6 − 0 = 6.",
+          "The difference of 6 − 0 = 6."
+        ],
+        "sample_id": "14e791486ea9ff3ff588",
+        "replay_digest": "44a1cae98180345dcd61f594eae1a892b88c1c456e1e3fd6792e9d481395329b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_subtraction",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "Solve subtraction problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples present subtraction problems using contextual scenarios (removal, steps down, counting back), with both operands less than 20 as required by the competency.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "in_pictures",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "in pictures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 1 of 10 samples (seed 103) includes visual rendered content; the remaining 9 are text-only story problems. The clause in pictures appears incidentally, not as a regular part of what learners meet across samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "less_than_20",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "numbers are less than 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples exhibit subtraction with both operands strictly less than 20, ranging from 0-1 to 15, satisfying the numerical constraint requirement.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

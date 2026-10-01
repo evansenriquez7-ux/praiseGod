@@ -1,0 +1,539 @@
+{
+  "batch": "batch209_mat_g1_na_q2_2",
+  "attested_at": "2026-10-01T07:25:27Z",
+  "attested_by": "blind-attester-haiku45-w2c209-mat_g1_na_q2_2-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g1_na_q2_2/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g1_na_q2_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "In the number 50, the value of the digit 5 in the tens place is 1. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "Find the digit in the tens place value of 50.",
+          "That digit is 5.",
+          "Multiply it by its place: 5 × 10 = 50.",
+          "The worth of 5 in 50 is 50."
+        ],
+        "sample_id": "bddddd400e18ab73d120",
+        "replay_digest": "5affb5b03609d9a86c72a8e886c396b1925fbb7d306a642354391083243eeeca"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 0 in 50?",
+        "correct_answer": 0,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 50,
+            "text": "50",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "Find the digit in the ones place value of 50.",
+          "That digit is 0.",
+          "Multiply it by its place: 0 × 1 = 0.",
+          "The worth of 0 in 50 is 0."
+        ],
+        "sample_id": "65290cf306674662004f",
+        "replay_digest": "601b3cb98ba861d19369537dad6b99796eb5b8133254e2f883d5a4f16f4bafb0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "In 10, what digit is in the ones place?",
+        "correct_answer": 0,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "text": "0",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "text": "6",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "Look at the digits of 10 from the right: ones.",
+          "Find the ones place value.",
+          "The digit in the ones place is 0."
+        ],
+        "sample_id": "12c6c34cbf51b98f5af9",
+        "replay_digest": "367c3b3bb5c6856bf02c582a58ab156e95f11e0f95e3da3e79ffce243bcd4ba6"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 57,
+        "formatter": "true_false",
+        "question_text": "What place is the digit 5 in, in the number 15? The answer is ones. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Put each digit of 15 in its own column.",
+          "Count from the right: ones.",
+          "The digit in the ones column is 5."
+        ],
+        "sample_id": "4cd2637832c907d2443d",
+        "replay_digest": "a80ee91499f75b762b803935c3228d4ab2ff5c18314dc780a87b1dc32d59e6c9"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "What is the place value of the digit 1 in 10?",
+        "correct_answer": 10,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "text": "10",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "text": "11",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Find the digit in the tens place value of 10.",
+          "That digit is 1.",
+          "Multiply it by its place: 1 × 10 = 10.",
+          "The worth of 1 in 10 is 10."
+        ],
+        "sample_id": "ef053bba112ba58e56f8",
+        "replay_digest": "f33d875a1709801064a3469e3303e73ca98fd1fdcae0df3418ded880525ae1df"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 1 in, in the number 10?",
+        "correct_answer": "tens",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "tens",
+        "hints": [
+          "Put each digit of 10 in its own column.",
+          "Count from the right: ones, tens.",
+          "The digit in the tens column is 1."
+        ],
+        "sample_id": "56d22f96a93c7e7e2276",
+        "replay_digest": "8c04ece0a23bcdbd4c61b52d6b38116fddbb0f61c798c399eb57de07e1116ee7"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 0 in, in the number 40?",
+        "correct_answer": "ones",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ones",
+        "hints": [
+          "Put each digit of 40 in its own column.",
+          "Count from the right: ones.",
+          "The digit in the ones column is 0."
+        ],
+        "sample_id": "c06c209792f5cd4f98c1",
+        "replay_digest": "6c2d33f539db564af830771d34aa0225bfdc2f338bc24207d7f4cde84582df9f"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 103,
+        "formatter": "true_false",
+        "question_text": "In 20, what digit is in the ones place? The answer is 0. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "Look at the digits of 20 from the right: ones.",
+          "Find the ones place value.",
+          "The digit in the ones place is 0."
+        ],
+        "sample_id": "c2dc4ced3815ab65539b",
+        "replay_digest": "cc9aafa0e40d29dadc1ad13b6387d207e576f4b1bdb2ed7fc436ae99cbcc0fe0"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "In 45, what digit is in the ones place?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the digits of 45 from the right: ones.",
+          "Find the ones place value.",
+          "The digit in the ones place is 5."
+        ],
+        "sample_id": "dda198dff341b43db6c7",
+        "replay_digest": "197ee298d2cc33b46d6ce9b8577e063b91352a5beeb03eca9bd25157e2dad57f"
+      },
+      {
+        "node_id": "mat_g1_na_q2_2",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "What place is the digit 0 in, in the number 40?",
+        "correct_answer": "ones",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tens",
+            "text": "tens",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "ones",
+            "text": "ones",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "ones",
+        "hints": [
+          "Put each digit of 40 in its own column.",
+          "Count from the right: ones.",
+          "The digit in the ones column is 0."
+        ],
+        "sample_id": "a31875af42c69c29bdba",
+        "replay_digest": "c8c1e2ecd1b13c201c09b93a0d7b688342d6c0a86fa043e67f11c23b87548b62"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine_place_value",
+      "node_id": "mat_g1_na_q2_2",
+      "clause": "Determine the place value of a digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause asks to determine the place value of a digit. 9 of 10 samples exhibit this: seeds 23 and 64 directly ask for place value, seeds 42, 103, 118 ask which digit is in a given place, and seeds 57, 78, 91, 127 ask which place a digit occupies. Only seed 11 focuses on the value rather than place value.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "domain_2_digit",
+      "node_id": "mat_g1_na_q2_2",
+      "clause": "2-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The clause requires working with 2-digit numbers. All 10 samples exhibit this requirement. Every sample involves a 2-digit number: 50, 10, 15, 10, 40, 20, 45, 40, 45, 40. The clause is consistently provided across all samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "determine_value",
+      "node_id": "mat_g1_na_q2_2",
+      "clause": "value of a digit",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause asks about determining the value of a digit. Only 1 of 10 samples exhibits this: seed 11 evaluates the value of digit 5 in the tens place. The remaining 9 samples focus on place value, identifying which digit is in a place, or identifying which place a digit occupies, not on the digit value itself.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "determine_digit",
+      "node_id": "mat_g1_na_q2_2",
+      "clause": "digit of a number",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The clause requires finding the digit of a number given its place value. Only 3 of 10 samples exhibit this: seeds 42, 103, 118 ask what digit is in a specified place. The remaining 7 samples ask about place value or place identification, not about determining the digit given a place.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}

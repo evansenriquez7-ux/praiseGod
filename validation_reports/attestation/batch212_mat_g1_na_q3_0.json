@@ -1,0 +1,612 @@
+{
+  "batch": "batch212_mat_g1_na_q3_0",
+  "attested_at": "2026-10-01T07:26:24Z",
+  "attested_by": "blind-attester-haiku45-w2c212-mat_g1_na_q3_0-20261001",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_confirm/mat_g1_na_q3_0/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output) and Write only local_only/scratch/w2_confirm/mat_g1_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 11,
+        "formatter": "true_false",
+        "question_text": "There are 20 erasers. Taking away 15 erasers leaves 4 erasers. True or False?",
+        "correct_answer": false,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": false,
+        "hints": [
+          "We are subtracting 15 from 20.",
+          "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+          "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+          "The difference of 20 − 15 = 5."
+        ],
+        "sample_id": "bd44aa394537bca87093",
+        "replay_digest": "211f36b35ff213c8f2e591981fcd1d0c9562f60876913f4680ceb1c9b8dd20c6"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "There are 10 apples. Taking away 2 apples leaves ___ apples.",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We are subtracting 2 from 10.",
+          "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 2 = 8."
+        ],
+        "sample_id": "daf8c2b8ae26a415043e",
+        "replay_digest": "b97b0a492075dafa2c270d0ee84e52670e476fceae5a145193ac5ecbea040ce2"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 42,
+        "formatter": "cloze",
+        "question_text": "There are 10 blocks. Taking away 10 blocks leaves ___ blocks.",
+        "correct_answer": 0,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "text": "20",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 0,
+            "text": "0",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "We are subtracting 10 from 10.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 10 − 10 = 0."
+        ],
+        "sample_id": "f253f286c3d49fd685aa",
+        "replay_digest": "0dc67cef778409e152c1d73a0e395153b9b59d198a813ab95f0bba86355fe8ed"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 57,
+        "formatter": "error_detect",
+        "question_text": "Pia solved: \"There are 15 cookies. Taking away 1 cookie leaves ___ cookies.\". Pia says the blank is 16. Is Pia correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 14
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 14
+        },
+        "hints": [
+          "We are subtracting 1 from 15.",
+          "Subtract the ones: 5 − 1 = 4.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 15 − 1 = 14."
+        ],
+        "sample_id": "71c54dfd43fd4d9a23de",
+        "replay_digest": "2f11bd3d11e2bcd7ca6620418b5b1d20a8663de1d61a0869997ed2d27ffd12c6"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "There are 10 cookies. Taking away 2 cookies leaves ___ cookies.",
+        "correct_answer": 8,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "text": "8",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "text": "12",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We are subtracting 2 from 10.",
+          "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 2 = 8."
+        ],
+        "sample_id": "11e02ad2311d18036b6e",
+        "replay_digest": "87f33f25d508bdd0326a2a3294509bda3e3a43a6a08013584598fa6793324d12"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "There are 11 blocks. Taking away 10 blocks leaves ___ blocks.",
+        "correct_answer": 1,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "text": "0",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "text": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 21,
+            "text": "21",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "text": "1",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 10 from 11.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 11 − 10 = 1."
+        ],
+        "sample_id": "49d8dc3e2ce534955f85",
+        "replay_digest": "7b2aa3e81ad94b76373df1e5fceaf73c97f568220162c416fd7c6b774f346478"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 91,
+        "formatter": "true_false",
+        "question_text": "There are 15 marbles. Taking away 12 marbles leaves 3 marbles. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 12 from 15.",
+          "Subtract the ones: 5 − 2 = 3.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 12 = 3."
+        ],
+        "sample_id": "7ef1705d156eb341edf9",
+        "replay_digest": "b9de358c1bedfe3b25757bff7315e87d9e3e4d11fcb341a9b26475935d260688"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.\nTaking away 1 item.\nHow many items are left?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 19,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 19,
+        "hints": [
+          "We are subtracting 1 from 20.",
+          "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+          "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+          "The difference of 20 − 1 = 19."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 20,
+          "group_b": 1,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_text": "19 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "f0c34621409319ea12fe5558ad307bd12b7a2b8fb3ceec8ebc1d59eccf80d0df",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 24,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7598ac871ddb7eb0596d",
+        "replay_digest": "739c671de2956ecd7fb9f367e1e269f6f52b9ad33416d8fe9a4b21ba13ad5349"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 118,
+        "formatter": "error_detect",
+        "question_text": "Dante solved: \"There are 12 stickers. Taking away 10 stickers leaves ___ stickers.\". Dante says the blank is 3. Is Dante correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "error_detect",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "error_detect",
+          "experience": "standard"
+        },
+        "resolved_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "hints": [
+          "We are subtracting 10 from 12.",
+          "Subtract the ones: 2 − 0 = 2.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 12 − 10 = 2."
+        ],
+        "sample_id": "c92496f3f7fce6aa89af",
+        "replay_digest": "0effe02f0e41ba5e0d0c98df884fbf2188f2b3e82783e1baec067d56630bb140"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 127,
+        "formatter": "true_false",
+        "question_text": "There are 15 cookies. Taking away 12 cookies leaves 3 cookies. True or False?",
+        "correct_answer": true,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "true_false",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "true_false",
+          "experience": "standard"
+        },
+        "resolved_answer": true,
+        "hints": [
+          "We are subtracting 12 from 15.",
+          "Subtract the ones: 5 − 2 = 3.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 12 = 3."
+        ],
+        "sample_id": "6ec95c107ed904d2bd4b",
+        "replay_digest": "94b794677a89ba3ea1a25d3cf4d5978cd4cd3b194bf9f319372970aa17711ebd"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "Illustrate subtraction",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only 1 sample (seed 103) shows visual rendering with emoji pictorial; the other 9 are text-only problems. Visual illustration of subtraction appears incidentally in 1 of 10 samples, not regularly across samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "numbers_up_to_20",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "numbers up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve subtraction with numbers within the range up to 20 (ranging from 1 to 20). This clause is consistently exhibited across all samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "concrete_pictorial",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "concrete and pictorial models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only seed 103 provides a pictorial model (static emoji representation); no concrete interactive manipulatives are present in any sample. Model-based representation appears incidentally in 1 of 10 samples, not regularly.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01, under the current standard (rulings 9, 12, 13): NOT_PROVIDED. Left registered; engineering by Content Rule 4 or provider removal pending. No source change in this dispatch."
+    },
+    {
+      "capability_id": "describe_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "describes subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples explicitly use the phrase taking away to frame and describe the subtraction operation, demonstrating how subtraction is characterized to students across all samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    },
+    {
+      "capability_id": "taking_away",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "taking away",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples employ the language taking away to describe the subtraction operation, with this phrase appearing consistently throughout all samples.",
+      "action_taken": "W2 confirmation, blind, 2026-10-01: PROVIDED; where this disagrees with an earlier NOT_PROVIDED, a third independent Attester decides. No change."
+    }
+  ],
+  "supersedes": "W2 confirmation dispatch: an independent blind re-judgment of this node's capabilities under the current standard; supersedes the node's earlier records for the judged capabilities."
+}
