@@ -17769,3 +17769,113 @@ NAMED LIMITS:
   coverage. Those are filed claims pending seed-by-seed render confirmation; no source was changed.
 * The campaign remains INTERRUPTED with H-06 claimed. W1 has 119 stale reviews remaining; W2 has not
   started and remains 173 CONTRADICTED plus 15 STALE attestations.
+
+## 2026-09-30/10-01 — PHASE E W1: every STALE review refreshed; packet-description defect found and fixed
+
+**Sessions:**
+- `codex-h06-w0-owner-gates-2026-09-30` (GPT-hosted). The owner chose GPT-5.6 Luna, medium reasoning,
+  as the reviewer model, with W1 before W2.
+- `claude-h06-phaseE-haiku-2026-09-30` (Claude-hosted). After the GPT session was rate-limited, the owner
+  ruled on 2026-09-30 to continue on **Claude Haiku 4.5** from the Claude host, since Luna cannot be
+  dispatched there. Identities name the model that judged.
+
+The GPT session's seven filed-but-uncommitted reviews were verified (digests, `_validate_one` integrity)
+and committed unchanged at `596bbc6d`. Two unfiled Luna replies (`mat_g1_dp_q3_1`, `_3`) had no
+transcript or usage record available, so their claims were harvested and the nodes re-dispatched.
+
+### Result
+
+`validate_judgment --all`:
+- **0 STALE of 151.**
+- §5 **750 problems**, down from 2020 at the Phase D close and 1761 after the describer fix.
+- Corpus **78 PASS / 47 CONCERN / 26 FAIL**.
+
+Reviewer families:
+- 118 `haiku45`: 114 Phase E, plus 4 Phase C records still current.
+- 33 `gpt-5.6-luna` medium, from Phase E.
+- The earlier `gpt-6-luna` records were superseded by fresh reviews of the same nodes when their packets
+  changed. No identity was ever renamed.
+
+Integrity scans:
+- Raw-response and prompt digest scan over all 151 records: **0 mismatches**.
+- No reviewer touched a path outside its node. The one listed outside path is a misspelled copy of
+  `mat_g2_na_q2_6`'s own reply path, which the reviewer attempted once. No file exists there, and the
+  record says so.
+
+### Harness defect found by the campaign, fixed before continuing (`8a8b99a4`)
+
+The render-derived packet description every blind reviewer reads (`staticRenderEvidence.renderedTextLabels`)
+kept only the **first occurrence** of each text string and **truncated at 80**.
+- A pictograph row whose symbols repeated an earlier row's vanished from the evidence. In
+  `mat_g1_dp_q3_3` seed 44, roses and sunflowers are both 🌸×5. The payload was confirmed complete by
+  rendering.
+- Two blind reviewers from two model families (GPT-5.6 Luna, Claude Haiku) independently failed rows that
+  were drawn.
+- The cap silently cut `mat_g3_na_q2_0`'s 135–184 labels. Measured with a probe that throws past 80.
+
+Fix:
+- The describer keeps every text node in order, uncapped.
+- `assertVisualEvidence` checks the description's text multiset against an independent recount of the
+  markup.
+- Mutation `frontend_description_dedups_repeated_text` is DETECTED. With the invariant neutered, the same
+  plant passes.
+- Contract row updated, with its blind spot named (text only; row attribution is by document order).
+
+Measured cost before landing: **20 fresh reviews re-staled**, none un-staled. The fix also changed
+attestation packets: §6F STALE went 15 → 46. Of those, **36 are description-only** and 10 are the earlier
+content changes.
+
+Re-proof chain, run alone:
+- Corpus 188/191, with FAIL only on the §6F cluster.
+- Six shards rc=0; verify-release complete.
+- `run_all` EXIT 1, with the same three known stages.
+
+The re-reviews then ran on the corrected packets. On the corrected evidence, `mat_g1_dp_q3_3` is PASS.
+
+### Reviewer integrity (each event is in the filed record's `tool_uses_by_reviewer`)
+
+- **Contradicted `overall` (7 replies)**: `mat_g1_na_q3_3`, `mat_g2_na_q2_9`, `mat_g2_na_q3_1`,
+  `mat_g3_dp_q3_4`, `mat_g2_na_q1_9` (second reviewer, latent behind a short-string refusal), and
+  `mat_g3_na_q4_0` (twice). Each reply was set aside with its claims harvested and the node re-dispatched
+  fresh. No reviewer was asked to reconcile. The third `mat_g3_na_q4_0` dispatch added one procedural
+  sentence restating the overall rule, and its record says so.
+- **Other set-asides**:
+  - `mat_g2_na_q1_9`: skipped samples.
+  - `mat_g1_dp_q3_3`: misled by the describer defect.
+- **Mechanical repairs, each proven unchanged by diff**:
+  - quote characters removed (`mat_g1_na_q1_7`: exactly four `"` deleted);
+  - one surplus brace removed (`mat_g2_na_q1_9`: exactly one `}`);
+  - `decomposition` nested (`mat_g3_na_q1_2`: structural diff byte-identical);
+  - citations added, short strings lengthened, templated pairs made sample-specific. Each was filed only
+    after `revfile` byte-compared every verdict unchanged.
+- **Tool-rule deviation**: the third `mat_g2_na_q1_9` reviewer used Bash during its brace repair. Every
+  call touched only its own reply, and the record lists all of them.
+- **Accepted on evidence**: `mat_g1_na_q3_0`'s two duplicated reasonings are accepted, because the paired
+  items have identical arithmetic (12 items; 10 − 2 = 8). This follows the documented precedent.
+
+### Confirmed defects, owed to the next source batch (not fixed mid-campaign; a fix re-stales reviews)
+
+- **HIGHEST PRIORITY, confirmed live:**
+  - `mat_g3_na_q4_3` seeds 45 and 600 serve corrupted hints. For example, "8 × 6 R 3 = 6 R 36 R 36 R …"
+    and "written as 6 R 3 R3", on "51 ÷ 8 = 7 R 3. True or False?".
+  - `dna/na/division.py` emits clean text ("8 × 6 = 48"), so the corruption is introduced downstream of
+    `generate_hints` on this true/false route.
+  - NAMED GAP: the hint contract's arithmetic dimension does not parse "R" notation, so this ships with
+    every gate green.
+- **Confirmed:** `mat_g2_na_q3_1` seed 42. The stem is "2 equal jumps of 5", but hint 1 says "5 groups of
+  2" and hint 2 says "2 groups of 5". This is the same shape as the Phase C claim on `mat_g2_na_q3_0`.
+  NAMED GAP: no hint-contract dimension checks group-count versus group-size roles.
+- **Confirmed (ground truth, not edited here):** requirement decomposition prints a bare connector clause
+  on `mat_g2_na_q1_9` (`with_regrouping: with`) and `mat_g3_na_q2_1` (`with`, `without`). The scan covered
+  this campaign's packets only.
+- **Claim, not confirmed:** `mat_g2_na_q3_7` seed 702 serves "2 × 1 = ___" on "multiplication … by 2, 3,
+  4, 5, and 10". The factor 2 is present, so whether it is in scope is a curriculum reading for the owner.
+- All other harvested claims are listed in `local_only/scratch/phaseE_claude/harvested_claims.txt`.
+
+NAMED LIMITS:
+- Blindness is a prompt contract, not a sandbox.
+- Fourteen Haiku agents were ended by API session limits after writing their replies. Thirteen of those
+  replies were filed and one (`mat_g2_na_q2_9`) was set aside. Their tool use comes from transcripts
+  because no harness record was returned.
+- Two more agents (`mat_g2_na_q2_4`, `mat_g2_na_q2_6`) were ended before writing anything and were
+  re-dispatched.

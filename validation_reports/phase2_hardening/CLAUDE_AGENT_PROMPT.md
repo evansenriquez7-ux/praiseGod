@@ -77,28 +77,27 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-run_all               not re-measured in Phase E; last run EXIT 1 on the same three stages
-§5 (module)           1837 findings; 119 of 151 reviews STALE
-§6F                   188: 173 CONTRADICTED + 15 STALE attestations
-obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions
-proof artifacts       190 mutation proofs (187 DETECTED + the 3 §6F INVALID), 6 release shards,
-                      benchmark and frontend all fresh
-live input digest     7253f2a3e89f1566; tree_state INTERRUPTED with the W1 campaign intent open
+run_all               last measured EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
+§5 (module)           750 findings; 0 of 151 reviews STALE
+§6F                   219: 173 CONTRADICTED + 46 STALE attestations (36 of them description-only)
+corpus                151/151 schema-v2: 78 PASS / 47 CONCERN / 26 FAIL; 118 haiku45, 33 gpt-5.6-luna
+proof artifacts       191 mutation proofs (188 DETECTED + the 3 §6F INVALID), 6 release shards,
+                      benchmark and frontend fresh
+tree_state            CERTIFIED (see `git log` for the closeout commits); H-06 lock released
 ```
 
-Phases A, B and C are done. **The Phase D SOURCE BATCH is done** (`c1366b94`, `ac614688`). It fixed every
-content defect Phase C confirmed; the list is in `HARDENING_EVIDENCE.md`'s Phase D entry. Its cost:
-**143 of 151 reviews went STALE.** 136 are stale only because the interest-cue sentence at seeds 701/702
-was reworded. Seven carry real content change: `mat_g2_na_q2_2`, `mat_g2_na_q3_2`, `mat_g2_na_q3_3`,
-`mat_g3_dp_q3_2`, `mat_g3_mg_q2_1`, `mat_g3_mg_q2_4`, `mat_g3_na_q3_0`. Re-reviewing them is a
-Phase-C-sized blind campaign. **Owner ruling 2026-09-30 for the GPT host:** use GPT-5.6 Luna with medium
-reasoning and complete W1 before W2. Twenty-four fresh reviews are filed (`68b0fa61`, `75d7af03`,
-`ff4a7916`, `c047aee0`, `7eb494cc`, `03fd0221`): all seven content-changed nodes plus the queue through
-`mat_g1_na_q3_0`, except that `mat_g1_na_q2_6` is still unfiled. Resume at `mat_g1_na_q2_6`; 119
-remain. The next three dispatches (`q2_6`, `q3_1`, `q3_2`) were interrupted by the GPT-hosted reviewer
-usage limit; the `_q3_1` partial reply was set aside and is unusable. Sections 5 and 6's "START HERE"
-wording is historical. If an executed
-command disagrees with this section, believe the command.
+Phases A–D are done, and **Phase E W1 is done (2026-10-01)**: every STALE review was refreshed, on GPT-5.6
+Luna and then Claude Haiku 4.5, both by owner ruling. The campaign found and fixed a packet-description
+defect (`8a8b99a4`): repeated rendered text was de-duplicated, so reviewers failed rows that were drawn.
+Its cost is recorded in the evidence log.
+
+**Next work needs an owner decision** (`NEXT_AGENT_PROMPT.md` §2 Gate B):
+- the source batch for the confirmed defects; the top one is `mat_g3_na_q4_3`'s live corrupted remainder
+  hints, which the hint contract cannot parse;
+- W2, the 173 CONTRADICTED and 46 STALE attestations.
+
+Sections 4–6's "START HERE" wording is historical. If an executed command disagrees with this section,
+believe the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 

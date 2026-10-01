@@ -1,7 +1,7 @@
 # Task prompt: continue Phase 2 hardening (fresh GPT-hosted session)
 
-**Rewritten 2026-09-30 after the Phase D source batch landed. This REPLACES every earlier version of
-this file.** `GPT_HANDOFF_PROMPT.md` beside it is finished history; do not execute it.
+**Rewritten 2026-09-30 after Phase D; state refreshed 2026-10-01 after Phase E W1. This REPLACES every
+earlier version of this file.** `GPT_HANDOFF_PROMPT.md` beside it is finished history; do not execute it.
 `CLAUDE_AGENT_PROMPT.md` is the same plan written for a Claude host; its §5–§10 hold the long-form
 method and traps this file summarises. Where sources disagree, trust them in this order: a command you
 executed, then this file, then `CLAUDE_AGENT_PROMPT.md`, then the dated blocks in
@@ -27,17 +27,20 @@ It will not reach 0 this session. Leave it closer to 0, with every claim proven 
 
 ## 1. State at handoff (re-measure it; never quote these numbers without re-running)
 
+**Updated 2026-10-01 after Phase E W1 completed.**
+
 ```
-HEAD                  03fd0221 plus this bookkeeping checkpoint; tree_state INTERRUPTED at digest 7253f2a3e89f1566
-run_all               not re-measured this campaign; last measured EXIT 1, failed=3
-  judgment_reviews_5    module: 1837 findings, 119 of 151 reviews STALE
-  capability_phase2     188 = 173 CONTRADICTED + 15 STALE attestations
-  assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
-every Phase 1 stage   PASS (content, vocabulary, matrix, render, grading, obligations, census)
-mutation corpus       187/190 DETECTED; the 3 INVALID are the §6F cluster
-obligations           458 pairs, 4,249 base, 458,892 finite, 2,294,460 executions; 6 release shards clean
-review corpus         151/151 schema-v2: 103 haiku45, 35 gpt-5.6-luna, 13 gpt-6-luna
-H-06                  status open; claimed by codex-h06-w0-owner-gates-2026-09-30
+tree_state            CERTIFIED (see `git log` for the closeout and lock-release commits)
+run_all               last measured EXIT 1, failed=3 (judgment_reviews_5, capability_phase2, assertion_coverage_8)
+judgment_reviews_5    module: 750 findings, 0 of 151 reviews STALE
+capability_phase2     173 CONTRADICTED + 46 STALE attestations (36 of the 46 are description-only,
+                      from the 8a8b99a4 describer fix)
+assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
+every Phase 1 stage   PASS
+mutation corpus       188/191 DETECTED; the 3 INVALID are the §6F cluster
+review corpus         151/151 schema-v2: 78 PASS / 47 CONCERN / 26 FAIL;
+                      118 haiku45, 33 gpt-5.6-luna (medium)
+H-06                  status open; lock released
 ```
 
 Commands that re-measure this state:
@@ -48,47 +51,42 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/vj.log 2>&1; echo "EXIT $?"
 ```
 
-**Why 119 reviews are still STALE:** Phase D reworded the interest-cue sentence from "*X has a math challenge
-about Y*" to "*X enjoys Y. Here is a math challenge.*" That wording appears at seeds 701/702 on every
-node. Of the 143, **136 are stale only because of that sentence**; this was established seed by seed.
-**Seven have real content changes:**
+**W1 is DONE.** Every STALE review was refreshed. The `HARDENING_EVIDENCE.md` Phase E entry has the method,
+every set-aside, and every mechanical repair with its proof.
 
-- `mat_g2_na_q2_2`
-- `mat_g2_na_q3_2`
-- `mat_g2_na_q3_3`
-- `mat_g3_dp_q3_2`
-- `mat_g3_mg_q2_1`
-- `mat_g3_mg_q2_4`
-- `mat_g3_na_q3_0`
+**Confirmed defects waiting for a source batch, in priority order:**
+1. **Corrupted remainder hints, live:** `mat_g3_na_q4_3` seeds 45 and 600.
+   - Seed 45 serves "8 × 6 R 3 = 6 R 36 R 36 …" on "51 ÷ 8 = 7 R 3. True or False?".
+   - `dna/na/division.py` emits clean hint text, so the corruption is introduced downstream of
+     `generate_hints` on the true/false route. Find it by rendering and stepping through the formatter.
+   - The hint contract cannot parse "R" notation, so close that gap with a mutation in the same batch.
+2. **Group/size swap:** `mat_g2_na_q3_1` seed 42, stem "2 equal jumps of 5", hints "5 groups of 2" then
+   "2 groups of 5". The same shape is claimed on `mat_g2_na_q3_0`. No hint-contract dimension checks
+   these roles.
+3. **Owner calls, not code:**
+   - The bare connector requirement clauses (`with_regrouping: with`) on `mat_g2_na_q1_9` and
+     `mat_g3_na_q2_1` come from human-authored decomposition ground truth.
+   - Whether `2 × 1` is in scope for "multiplication … by 2, 3, 4, 5, and 10" (`mat_g2_na_q3_7`).
 
-Staleness is by packet digest. **It is never waived, and no verdict is ever carried forward.** Phase E
-has filed 24 fresh GPT-5.6 Luna medium reviews: the original ten plus `mat_g1_na_q1_3` through `_9`,
-`mat_g1_na_q2_0` through `_5`, and `mat_g1_na_q3_0`. Additional commits: `c047aee0`, `7eb494cc`,
-`03fd0221`. A reviewer usage limit interrupted the next wave. Resume W1 at `mat_g1_na_q2_6` with a
-fresh reviewer; then retry `mat_g1_na_q3_1` and `_2`. The rate-limited `_q3_1` partial reply is set
-aside in scratch and must not be used. 119 nodes remain.
+Any source batch re-stales the reviews whose packets change and owes the full re-proof chain (§5).
 
 ---
 
 ## 2. OWNER GATES: resolve these before any dispatch
 
-**RESOLVED 2026-09-30.** The owner directed this GPT host to use **GPT-5.6 Luna, medium reasoning**, and
-to run **W1 before W2**. The runtime accepted the exact `gpt-5.6-luna` override. Identities and dispatch
-records must continue to name that exact model and reasoning level truthfully.
+**Gate A: reviewer model.** Phase E used GPT-5.6 Luna, medium, on the GPT host, then Claude Haiku 4.5 on
+the Claude host. Both were owner rulings of 2026-09-30.
+- If your host cannot dispatch the model the owner last named for it, stop and ask.
+- The identity always names the model that actually judged.
+- Never rename any existing record.
 
-**Gate A: reviewer model (resolved for this campaign).** Owner ruling 4 made **Haiku** the earlier
-family for blind reviewers. This GPT host asked rather than substituting, and the owner replaced it for
-Phase E with **GPT-5.6 Luna, medium**.
-- Whatever judges, the identity names the model that actually judged, including its reasoning level.
-- Never rename any existing `gpt-5.6-luna`, `gpt-6-luna`, or `haiku45` record, and never write one model's name onto
-  another model's verdict.
+**Gate B: scope.** The owner must choose the next work:
+- the **source batch** for the confirmed defects in §1, which re-stales reviews and owes a re-proof
+  chain;
+- **W2**, the 173 CONTRADICTED plus the 46 STALE attestations;
+- or both, in a stated order.
 
-**Gate B: scope (resolved).** Re-reviewing 143 nodes is a Phase-C-sized campaign. Phase C took many sessions and
-several rate-limit interruptions. The owner's order is:
-- **W1 first**: 24 nodes are filed; resume the remaining 119 at `mat_g1_na_q2_6`.
-- **W2 second**: the 173 CONTRADICTED remain untouched.
-
-Do not reopen these gates unless the authorized model becomes unavailable or the owner changes scope.
+If neither gate is answered, do only W0 and then ask.
 
 ---
 
@@ -106,7 +104,7 @@ Do not reopen these gates unless the authorized model becomes unavailable or the
    - `chain` for the re-proof chain.
 4. Re-measure §5 and §6F yourself, and write the numbers down before you change anything.
 
-### W1: re-review STALE nodes (blind; no source touched)
+### W1: re-review STALE nodes (blind; no source touched) -- DONE 2026-10-01; reuse this method after any source batch
 
 Order: the 7 content-changed nodes first, then the other 136.
 
