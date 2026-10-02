@@ -1366,6 +1366,13 @@ that points at it break every time the section is refreshed.
 >     are counters the pupil groups for *concrete*, and a grid on which the pupil slides or reflects a
 >     shape for *draw*. Each build needs a backend formatter, a frontend component, a mutation, a
 >     contract row, re-attestation, and the full re-proof chain.
+>  17. **Regrouping items stay; the regrouping algorithm's words wait** (owner, 2026-10-03). The
+>     expanded-form nodes `mat_g1_na_q2_4` ("Add numbers by expressing addends as tens and ones")
+>     and `mat_g2_na_q1_8` ("Add numbers with sums up to 1000 in expanded form") KEEP items whose
+>     sums need regrouping (19 + 48, 858 + 129): expanded form decomposes into tens and ones, so
+>     "5 tens + 17 ones" is part of the competency. But no hint may say *carry*, *borrow* or
+>     *regroup* on a node whose vocabulary does not yet include regrouping; such hints speak in
+>     tens and ones, and within-20 items count on or count back.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
