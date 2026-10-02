@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import importlib
 import sys
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from ..dna.base import DNA, QuestionContext
 from ..generators.base_generator import generate_context, get_node
@@ -32,6 +32,19 @@ ASSERTIONS = (
     # lives here, so the label is declared here.
     "vocab_audit_pass_rate",
 )
+
+
+# A NOT_YET_KNOWN term forbids the words that name THE SAME CONCEPT, not only its own
+# spelling. The knowledge graph lists "regrouping"; a whole-term match let "regroup",
+# "borrow" and "carry over" through, and blind review found Grade 1 hints saying "so we
+# need to borrow. Borrow 1 ten" on 10 - 2 (mat_g1_na_q3_0) with §1D green -- 16 nodes
+# carried such hints (2026-10-03). Keyed by TERM, not by node, so it applies to any grade
+# whose graph lists the term (Scaling Mandate 4). NAMED LIMIT: a synonym not listed here
+# is not caught; extend this table when a new one is found, never the node list.
+NOT_YET_KNOWN_FORMS: Dict[str, Tuple[str, ...]] = {
+    "regrouping": ("regroup", "regroups", "regrouped", "borrow", "borrows", "borrowed",
+                   "borrowing", "carry", "carries", "carried", "carrying"),
+}
 
 
 def _text_contains_term(text: str, term: str) -> bool:
@@ -98,16 +111,18 @@ def validate_vocab_constraints(ctx: QuestionContext, node: Dict) -> List[str]:
         standalone_pattern = r'(?<![A-Za-z])' + re.escape(t_lower) + r'(?![A-Za-z])'
         return not bool(re.search(standalone_pattern, modified))
 
-    # 1. Forbidden terms (NOT_YET_KNOWN)
+    # 1. Forbidden terms (NOT_YET_KNOWN), each with the forms that name the same concept
     for term in not_yet_known:
-        if _text_contains_term(text, term):
-            # Exempt: term only appears as sub-token of a known compound (e.g. "line" in "number line")
-            if _is_subtoken_only_of_known_compound(term, known_compounds_source, text):
-                continue
-            violations.append(
-                f"[NOT_YET_KNOWN] '{term}' found in question text for "
-                f"{ctx.node_id}: \"{text[:80]}\""
-            )
+        for form in (term,) + NOT_YET_KNOWN_FORMS.get(term, ()):
+            if _text_contains_term(text, form):
+                # Exempt: term only appears as sub-token of a known compound (e.g. "line" in "number line")
+                if _is_subtoken_only_of_known_compound(form, known_compounds_source, text):
+                    continue
+                shown = term if form == term else f"{term}' (as '{form})"
+                violations.append(
+                    f"[NOT_YET_KNOWN] '{shown}' found in question text for "
+                    f"{ctx.node_id}: \"{text[:80]}\""
+                )
 
     # 2. Terms used that are not in cumulative_vocab
     # We only check terms that are vocabulary-significant (present in the node's

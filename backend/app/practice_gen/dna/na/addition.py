@@ -102,7 +102,10 @@ _MAX_SUM_BOUNDS: Dict[str, int] = {
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
 VOCAB_SUM       = VocabGated(requires_vocab="sum",     preferred="the sum",     fallback="the answer")
 VOCAB_ADDEND    = VocabGated(requires_vocab="addend",  preferred="addend",      fallback="number")
-VOCAB_REGROUP   = VocabGated(requires_vocab="regroup", preferred="regroup",     fallback="carry over")
+# Keyed on "regrouping", the term the knowledge graph lists. Keyed on "regroup" (listed by
+# no node) it resolved every node to the fallback "carry over" -- regrouping nodes and
+# Grade 1 alike. With no vocabulary the hints do not name the operation (ruling 17).
+VOCAB_REGROUP   = VocabGated(requires_vocab="regrouping", preferred="regroup",  fallback="")
 
 
 # ─── constraint predicates ────────────────────────────────────────────────────
@@ -1068,47 +1071,72 @@ def generate_hints(
     knows_place_value = "ones" in cumulative_vocab and "tens" in cumulative_vocab
 
     hints: List[str] = []
+    knows_regrouping = bool(reg_phrase)
 
     # Step 1: identify the operation
     hints.append(f"We are adding two numbers: {a} and {b}.")
 
-    # Step 2: ones column (rightmost digit)
     ones_a, ones_b = a % 10, b % 10
     ones_sum = ones_a + ones_b
+    makes_a_ten = ones_sum >= 10
+
+    # Owner ruling 17 (2026-10-03): no hint names the regrouping algorithm ("regroup",
+    # "carry", "borrow") until the node's vocabulary includes regrouping. Blind review
+    # found Grade 1 told, on 5 + 8, "Keep 3 and carry over 1" (mat_g1_na_q1_9). Within
+    # 20 the pupil counts up -- the node's own words ("describes addition as 'counting
+    # up'"); past 20 the new ten is said in tens and ones.
+    if makes_a_ten and not knows_regrouping and result <= 20:
+        hints.append(f"Start at {a} and count up {b}.")
+        hints.append(f"{sum_label.capitalize()} is {a} + {b} = {result}.")
+        return hints
+
+    # Step 2: ones column (rightmost digit)
     if knows_place_value:
-        if ones_sum >= 10:
+        if makes_a_ten and knows_regrouping:
             hints.append(
                 f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
                 f"Keep {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
+            )
+        elif makes_a_ten:
+            hints.append(
+                f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
+                f"{ones_sum} ones is 1 ten and {ones_sum % 10} ones."
             )
         else:
             hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.")
     else:
         # Position-neutral language for students who haven't learned place value yet
-        if ones_sum >= 10:
+        if makes_a_ten and knows_regrouping:
             hints.append(
                 f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
                 f"Keep {ones_sum % 10} and {reg_phrase} 1."
+            )
+        elif makes_a_ten:
+            hints.append(
+                f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
+                f"Keep {ones_sum % 10} and add 1 to the next digits."
             )
         else:
             hints.append(f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}.")
 
     # Step 3: leading column (only shown when both numbers have more than one digit)
     if a >= 10 or b >= 10:
-        carry    = 1 if ones_sum >= 10 else 0
+        extra    = 1 if makes_a_ten else 0
         tens_a   = a // 10 % 10
         tens_b   = b // 10 % 10
-        tens_sum = tens_a + tens_b + carry
+        tens_sum = tens_a + tens_b + extra
         if knows_place_value:
-            hints.append(
-                f"Add the tens: {tens_a} + {tens_b}"
-                + (f" + {carry} (carried)" if carry else "")
-                + f" = {tens_sum}."
-            )
+            if extra and knows_regrouping:
+                tail = f" + {extra} (regrouped)"
+            elif extra:
+                tail = f" + {extra} (the ten from the ones)"
+            else:
+                tail = ""
+            hints.append(f"Add the tens: {tens_a} + {tens_b}" + tail + f" = {tens_sum}.")
         else:
             hints.append(
                 f"Add the first digits: {tens_a} + {tens_b}"
-                + (f" + {carry}" if carry else "")
+                + (f" + {extra}" if extra else "")
                 + f" = {tens_sum}."
             )
 

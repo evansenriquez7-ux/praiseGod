@@ -44,7 +44,7 @@ from backend.app.practice_gen.compatibility import (
     is_variant_available_at,
 )
 from backend.app.practice_gen.validation._manifest import DNA_MODULE_MAP, load_dna
-from backend.app.practice_gen.validation.validate_vocab import _text_contains_term
+from backend.app.practice_gen.validation.validate_vocab import NOT_YET_KNOWN_FORMS, _text_contains_term
 from backend.app.practice_gen.validation.validate_dna import _are_values_equal
 from backend.app.services.scoring import validate_math_answer
 from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
@@ -1679,8 +1679,11 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                             text_blocks.append(str(opt.get("value", "")))
                     combined_text = " ".join(text_blocks)
 
-                    # Check forbidden terms
-                    for term in not_yet_known:
+                    # Check forbidden terms, each with the forms that name the same concept.
+                    # The SAME table validate_vocab reads -- a second copy of the forms
+                    # would be a rule that drifts (memory: duplicated rule copies disagree).
+                    for term in (f for t in not_yet_known
+                                 for f in (t,) + NOT_YET_KNOWN_FORMS.get(t, ())):
                         if _text_contains_term(combined_text, term):
                             # Exempt: term only appears as sub-token of a known compound
                             # (e.g. "line" in "number line" when "number line" is cumulative_vocab)

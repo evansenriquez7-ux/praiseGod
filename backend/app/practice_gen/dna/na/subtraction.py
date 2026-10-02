@@ -102,7 +102,12 @@ _DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 VOCAB_DIFFERENCE   = VocabGated(requires_vocab="difference",  preferred="the difference",  fallback="the answer")
 VOCAB_MINUEND      = VocabGated(requires_vocab="minuend",     preferred="the minuend",     fallback="the starting number")
 VOCAB_SUBTRAHEND   = VocabGated(requires_vocab="subtrahend",  preferred="the subtrahend",  fallback="the number being subtracted")
-VOCAB_REGROUP      = VocabGated(requires_vocab="regroup",     preferred="regroup",         fallback="borrow")
+# Keyed on "regrouping", the term the knowledge graph actually lists (cumulative_vocab /
+# NOT_YET_KNOWN). It was keyed on "regroup", which no node lists, so EVERY node -- those
+# that teach regrouping included -- resolved to the fallback; and the fallback was
+# "borrow", a word no Grade 1 node knows either. Without the vocabulary, generate_hints
+# does not name the operation at all (owner ruling 17); see `_counts_back`.
+VOCAB_REGROUP      = VocabGated(requires_vocab="regrouping", preferred="regroup",       fallback="")
 
 
 
@@ -860,29 +865,48 @@ def generate_hints(
     reg_phrase  = VOCAB_REGROUP.resolve(cumulative_vocab)
 
     hints: List[str] = []
+    knows_regrouping = bool(reg_phrase)
 
     # Step 1: identify the operation
     hints.append(f"We are subtracting {b} from {a}.")
 
-    # Step 2: ones column
     ones_a, ones_b = a % 10, b % 10
-    if ones_a < ones_b:
+    needs_a_ten = ones_a < ones_b
+
+    # Owner ruling 17 (2026-10-03): until a node's vocabulary includes regrouping, no
+    # hint names the regrouping algorithm -- no "regroup", "borrow" or "carry". Blind
+    # review found Grade 1 told, on 10 - 2, "The ones digit 0 is less than 2, so we
+    # need to borrow. Borrow 1 ten" (mat_g1_na_q3_0, 18 of 40 seeds). Within 20 the
+    # pupil counts back, which is how these nodes describe subtraction ("taking away");
+    # past 20 the same ten is unpacked in tens-and-ones language.
+    if needs_a_ten and not knows_regrouping and a <= 20:
+        hints.append(f"Start at {a} and count back {b}.")
+        hints.append(f"{diff_label.capitalize()} of {a} − {b} = {result}.")
+        return hints
+
+    # Step 2: ones column
+    if needs_a_ten and knows_regrouping:
         hints.append(
             f"The ones digit {ones_a} is less than {ones_b}, so we need to {reg_phrase}. "
-            f"Borrow 1 ten: {ones_a + 10} − {ones_b} = {ones_a + 10 - ones_b}."
+            f"Regroup 1 ten as 10 ones: {ones_a + 10} − {ones_b} = {ones_a + 10 - ones_b}."
+        )
+    elif needs_a_ten:
+        hints.append(
+            f"There are not enough ones, so take 1 ten as 10 ones: "
+            f"{ones_a + 10} − {ones_b} = {ones_a + 10 - ones_b}."
         )
     else:
         hints.append(f"Subtract the ones: {ones_a} − {ones_b} = {ones_a - ones_b}.")
 
     # Step 3: tens column (only when numbers have tens)
     if a >= 10 or b >= 10:
-        borrow   = 1 if ones_a < ones_b else 0
-        tens_a   = a // 10 % 10 - borrow
+        used     = 1 if needs_a_ten else 0
+        tens_a   = a // 10 % 10 - used
         tens_b   = b // 10 % 10
-        hints.append(
-            f"Subtract the tens: {tens_a} − {tens_b} = {tens_a - tens_b}."
-            + (" (after borrowing)" if borrow else "")
-        )
+        note = ""
+        if used:
+            note = " (after regrouping)" if knows_regrouping else " (1 ten became 10 ones)"
+        hints.append(f"Subtract the tens: {tens_a} − {tens_b} = {tens_a - tens_b}." + note)
 
     # Step 4: final answer
     hints.append(f"{diff_label.capitalize()} of {a} − {b} = {result}.")

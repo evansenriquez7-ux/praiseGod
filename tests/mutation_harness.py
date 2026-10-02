@@ -3246,6 +3246,28 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL batch_matches_single"],
     ),
     Mutation(
+        name="hint_names_regrouping_before_it_is_taught",
+        asserts=["vocabulary_gating"],
+        description=(
+            "Owner ruling 17: no hint names the regrouping algorithm until the node's "
+            "vocabulary includes regrouping. Restore the subtraction DNA's old fallback, "
+            "'borrow', so a Grade 1 node is again told 'so we need to borrow' on 10 - 2. "
+            "The graph lists the forbidden term as 'regrouping', so this proves §1D reads "
+            "NOT_YET_KNOWN_FORMS (the whole-term match passed this exact defect on 16 nodes "
+            "with §1D green, 2026-10-03)."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/subtraction.py": (
+                'VOCAB_REGROUP      = VocabGated(requires_vocab="regrouping", preferred="regroup",       fallback="")',
+                'VOCAB_REGROUP      = VocabGated(requires_vocab="regrouping", preferred="regroup",       fallback="borrow")  # planted mutation',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q3_0"],
+        expected_check="§1D (vocabulary gating, including the forms of a NOT_YET_KNOWN term)",
+        expect_output_contains=["NOT_YET_KNOWN", "regrouping"],
+        baseline_must_not_contain=["NOT_YET_KNOWN"],
+    ),
+    Mutation(
         name="dangling_node_reference",
         asserts=['node_references_resolve'],
         description=(
