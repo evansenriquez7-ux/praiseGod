@@ -222,6 +222,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2F": "validate_compat: every node id referenced in the app must exist in the registry",
     "§2G": "validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table",
     "§2I": "validate_compat: a discrete variant a node DECLARES must be one it can actually produce — a shrinking floor; the silent packet skip that hid 65 of these is now recorded",
+    "§2J": "validate_compat: a competency naming a medium the learner works in (illustrate, represent, concrete, models, draw) is served in it on >= 50% of student-path items, every such clause classified (ruling 15)",
+    "§2K": "validate_compat: the portal's batch feed (/practice/{id}/batch) serves exactly what the single-item student path serves, under the route's own default config",
     "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
@@ -583,7 +585,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("unit_tests",          1, ("§0",),  "Unit Tests (the harness's own tests)"),
         ("dna",                 1, ("§3",),  "DNA Structural and Parameter Checks"),
         ("compatibility",       1, ("§2", "§2B", "§2C", "§2D", "§2E", "§2F", "§2G",
-                                    "§2H", "§2I"),
+                                    "§2H", "§2I", "§2J", "§2K"),
                                            "Compatibility, Coverage & Monotonicity"),
         ("interest_invariance", 1, (),      "Interest Invariance Checks"),
         ("vocabulary",          1, (),      "Vocabulary & Concept Gating Audits"),
@@ -700,6 +702,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§2G")
             executed_checks.add("§2H")
             executed_checks.add("§2I")
+            executed_checks.add("§2J")
+            executed_checks.add("§2K")
         elif fail_fast:
             print("  ABORT after compatibility validation (fail-fast active)")
             return compat_ok

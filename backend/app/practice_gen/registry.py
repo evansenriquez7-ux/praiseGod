@@ -2824,7 +2824,11 @@ def get_node_formatters(node_id: str) -> List[str]:
                 continue
             seen.add(fmt)
             result.append(fmt)
-    return result
+    # Ruling 15: a node whose competency names a medium does not advertise the text
+    # formatters composed away for it. Same function the serving paths call, so the
+    # advertised set and the served set cannot disagree (§2B/§2C).
+    from backend.app.practice_gen.medium_composition import compose_for_node
+    return compose_for_node(node_id, result)
 
 
 def get_node_info(node_id: str) -> Optional[Dict]:

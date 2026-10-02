@@ -100,9 +100,16 @@ UNREACHABLE_ROUTE_FLOOR = 5
 # byte-identical (diffed against c1366b94~1). Measured before -> after: discrete
 # 4306 -> 4249 (-57), continuous crossings 18909 -> 18567 (-342), finite
 # 465048 -> 458892 (-6156). Each floor moved by that delta, keeping its prior slack.
-BASE_OBLIGATION_FLOOR = 4212       # 4269 - 57
-FINITE_OBLIGATION_FLOOR = 454_896  # 461_052 - 6_156
-CONTINUOUS_CROSSING_FLOOR = 18_420  # 18_762 - 342
+#
+# LOWERED 2026-10-02 by exactly the measured shrink, a ground-truth change under owner
+# ruling 15 (medium clauses served by set composition). Diffed with the composition
+# switched off: every removed obligation is a (composed node, dropped text formatter)
+# pair, 0 added, 0 unattributable. Measured before -> after: discrete 4249 -> 3861
+# (-388), continuous crossings 18567 -> 16737 (-1830), finite 458892 -> 416988
+# (-41904). Each floor moved by that delta, keeping its prior slack.
+BASE_OBLIGATION_FLOOR = 3824       # 4212 - 388
+FINITE_OBLIGATION_FLOOR = 412_992  # 454_896 - 41_904
+CONTINUOUS_CROSSING_FLOOR = 16_590  # 18_420 - 1_830
 REQUIRED_RESPONSE_MODES = {
     "click", "drag", "error_detect", "fill_in_blank", "mcq", "true_false",
 }

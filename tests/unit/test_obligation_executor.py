@@ -82,11 +82,17 @@ def test_current_finite_product_is_the_corrected_reachable_count():
     # each, peso_money_read 6 -> 3, number_line_read 45 -> 9 (add_amounts). Every removed
     # route was subtraction on an addition-only node or a duplicate label for addition;
     # no addition route was lost.
-    assert len(_base_obligations()) == 4249
+    #
+    # 4249 -> 3861 on 2026-10-02, a DECREASE of 388, every one a (composed node, dropped
+    # formatter) pair under owner ruling 15 (medium_composition.COMPOSED): diffed with the
+    # composition switched off, 0 obligations added and 0 removed that are not such a
+    # pair. Per node: g1_na_q1_9 12, q2_6 24, q3_0 48, q3_3 24, q3_4 48, q4_6 18,
+    # g2_na_q1_7 24, q2_5 24, q3_0 36, q3_1 108, q3_4 6, g3_mg_q1_0 16.
+    assert len(_base_obligations()) == 3861
     assert len(interest_request_values()) == 27
     assert len(experience_values()) == 4
-    assert finite_obligation_count() == 458_892
-    assert represented_execution_count() == 2_294_460
+    assert finite_obligation_count() == 416_988
+    assert represented_execution_count() == 2_084_940
 
 
 def test_seed_slots_cover_boundaries_and_extra_interiors():

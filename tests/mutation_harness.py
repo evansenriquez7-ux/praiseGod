@@ -3153,6 +3153,92 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL formatters_reachable"],
     ),
     Mutation(
+        name="medium_composition_skipped_at_selection",
+        asserts=["medium_composition"],
+        description=(
+            "Ruling 15 (owner, 2026-10-02): a node whose competency names a medium the "
+            "learner works in serves it on >= 50% of items, by composing its formatter SET. "
+            "Skip the composition at the orchestrator's selection site -- the one the "
+            "student path uses -- and the dropped text formatters are served again while "
+            "the advertised list (registry) still omits them. §2J must name a composed "
+            "node serving a formatter ruling 15 removed."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "            available = compose_for_node(node_id, available)\n",
+                "            available = list(available)  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "medium"],
+        expected_check="§2J (a medium-naming competency is served in that medium on >= 50% of items)",
+        expect_output_contains=["FAIL medium_composition", "which ruling 15 composed away"],
+        baseline_must_not_contain=["FAIL medium_composition"],
+    ),
+    Mutation(
+        name="medium_clause_left_unclassified",
+        asserts=["medium_composition"],
+        description=(
+            "Every knowledge-graph clause naming a medium must be classified COMPOSED, "
+            "DEBT or EXEMPT, so a new grade's 'illustrate' or 'draw' clause cannot pass by "
+            "not being listed (memory: allowlist checks drift silently). Re-key one DEBT "
+            "entry so the live clause is unclassified and the entry names nothing; §2J must "
+            "report both directions by name."
+        ),
+        edits={
+            "backend/app/practice_gen/medium_composition.py": (
+                "        'drawing_the_line_of_symmetry': {",
+                "        'drawing_the_line_of_symmetry_planted': {",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "medium"],
+        expected_check="§2J (every medium clause classified; no stale entry)",
+        expect_output_contains=["FAIL medium_composition", "classified in nothing",
+                                "names no live medium clause"],
+        baseline_must_not_contain=["FAIL medium_composition"],
+    ),
+    Mutation(
+        name="medium_composition_skipped_in_advertised_set",
+        asserts=["formatters_reachable"],
+        description=(
+            "The other half of ruling 15's one rule: what a node ADVERTISES (and the Lab "
+            "offers). Skip the composition in get_node_formatters and every composed node "
+            "advertises text formatters the student path can no longer select. That is "
+            "§2C's defect class exactly -- a menu wider than what is served -- and it must "
+            "fail above its floor."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                "    return compose_for_node(node_id, result)\n",
+                "    return result  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
+        expected_check="§2C (an advertised formatter must be reachable by the student path)",
+        expect_output_contains=["FAIL formatters_reachable"],
+        baseline_must_not_contain=["FAIL formatters_reachable"],
+    ),
+    Mutation(
+        name="batch_pins_formatter_before_context",
+        asserts=["batch_matches_single"],
+        description=(
+            "Reintroduce the portal batch feed's defect: pin a formatter per item before "
+            "the item's context exists. Until 2026-10-02 generate_batch did exactly this, "
+            "and 439 of 755 batches raised (HTTP 500 on /practice/{id}/batch) while every "
+            "check sampled only the single path. §2K must see the feed serving something "
+            "the student path does not."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "                seed=base_seed + i,\n",
+                "                seed=base_seed + i,\n                formatter=['mcq', 'cloze'][i % 2],  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "batch"],
+        expected_check="§2K (the portal batch feed serves what the student path serves)",
+        expect_output_contains=["FAIL batch_matches_single"],
+        baseline_must_not_contain=["FAIL batch_matches_single"],
+    ),
+    Mutation(
         name="dangling_node_reference",
         asserts=['node_references_resolve'],
         description=(

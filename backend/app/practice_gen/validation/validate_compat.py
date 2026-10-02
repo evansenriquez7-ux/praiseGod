@@ -18,7 +18,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import List
+from typing import Dict, List
 
 from ..compatibility import COMPATIBILITY
 from ..registry import NODE_TO_DNA, get_node_formatters
@@ -41,6 +41,8 @@ ASSERTIONS = (
     "all_competency_bounds_parse",          # §2G
     "competency_scope_not_narrowed",        # §2H
     "declared_variants_are_producible",     # §2I
+    "medium_composition",                   # §2J
+    "batch_matches_single",                 # §2K
     "competency_bounds_parsing",
 )
 
@@ -1153,6 +1155,213 @@ def validate_declared_variants_are_producible() -> List[str]:
     return errors
 
 
+_MEDIUM_SEEDS = 60
+_MEDIUM_BATCH_SEEDS = 5
+
+
+def validate_medium_composition() -> List[str]:
+    """
+    §2J — a competency that names a medium the learner works in must be SERVED in it.
+
+    Owner ruling 15 (2026-10-02): when a competency says *illustrate, represent, concrete,
+    models, draw*, visual or interactive formatters must make up at least half of what the
+    node serves, reached by composing the node's formatter SET (R-3), never by a weight
+    (R-4). `medium_composition` holds the composition; this proves it, three ways:
+
+      1. CLASSIFIED -- every knowledge-graph requirement clause whose text names a medium
+         (`MEDIUM_CLAUSE_RE`) is in exactly one of COMPOSED / DEBT / EXEMPT, and every
+         entry there still names a live clause with the same text. Derived from the KG,
+         never a node list, so a later grade's clause is gated the day its node exists.
+      2. SERVED -- for every COMPOSED node, at least MEDIUM_SHARE_FLOOR of student-path
+         items are visual, measured over _MEDIUM_SEEDS seeds; no dropped formatter is
+         ever served; no seed fails (a composition that leaves an item unservable is a
+         defect, not a skipped sample); and a clause whose medium is "interactive"
+         (concrete, draw -- rulings 12/13) is served by at least one interactive visual.
+      3. Observed, not predicted: the share is read off served problems, never computed
+         from the table (memory: duplicated rule copies disagree).
+
+    NAMED LIMITS (also in the module docstring and the contract row): this is the
+    necessary floor, not sufficiency -- whether the served visual exhibits the clause is
+    §6F's blind judgment; "interactive" is read from the payload and does not prove a
+    manipulative in ruling 12's sense; the clause matcher is lexical; and only the DEFAULT
+    student path is sampled -- a declared variant that dropping text formatters leaves
+    unservable is caught by §2I (it was, on mat_g2_na_q3_4's word_problem context).
+    """
+    import ast
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from .. import medium_composition as mc
+    from ..registry import get_all_node_ids, get_node_info
+
+    errors: List[str] = []
+    live: Dict[tuple, str] = {}
+    for node_id in get_all_node_ids():
+        req = (get_node_info(node_id) or {}).get("requires") or []
+        if isinstance(req, str):
+            req = ast.literal_eval(req)
+        for r in req:
+            if not mc.MEDIUM_CLAUSE_RE.search(r["clause"]):
+                continue
+            live[(node_id, r["id"])] = r["clause"]
+            homes = [name for name, table in (("COMPOSED", mc.COMPOSED), ("DEBT", mc.DEBT),
+                                               ("EXEMPT", mc.EXEMPT))
+                     if r["id"] in table.get(node_id, {})]
+            if len(homes) != 1:
+                errors.append(
+                    f"{node_id}: requirement {r['id']!r} (clause {r['clause']!r}) names a medium "
+                    f"and is classified in {homes or 'nothing'}; it must be in exactly one of "
+                    f"COMPOSED / DEBT / EXEMPT in medium_composition.py (§2J, ruling 15).")
+    for name, table in (("COMPOSED", mc.COMPOSED), ("DEBT", mc.DEBT), ("EXEMPT", mc.EXEMPT)):
+        for node_id, entries in table.items():
+            for req_id, entry in entries.items():
+                clause = live.get((node_id, req_id))
+                if clause is None or clause != entry.get("clause"):
+                    errors.append(
+                        f"{node_id}: {name} entry {req_id!r} (clause {entry.get('clause')!r}) "
+                        f"names no live medium clause with that text (KG now: {clause!r}). "
+                        f"A stale entry classifies nothing (§2J).")
+
+    for node_id, entries in sorted(mc.COMPOSED.items()):
+        dropped = set(mc.dropped_formatters(node_id))
+        visual = interactive = 0
+        served: Dict[str, int] = {}
+        for seed in range(1, _MEDIUM_SEEDS + 1):
+            try:
+                p = PracticeOrchestrator.generate_problem(
+                    node_id=node_id, seed=seed, is_student_path=True)
+            except Exception as exc:  # noqa: BLE001 -- reported, never skipped
+                errors.append(
+                    f"{node_id}: seed {seed} failed to generate under ruling-15 composition "
+                    f"(dropped {sorted(dropped)}): {type(exc).__name__}: {exc} (§2J).")
+                continue
+            d = p if isinstance(p, dict) else p.__dict__
+            fmt = d.get("formatter_name")
+            served[fmt] = served.get(fmt, 0) + 1
+            if fmt in dropped:
+                errors.append(
+                    f"{node_id}: seed {seed} served {fmt!r}, which ruling 15 composed away "
+                    f"(§2J). A serving path is not calling compose_for_node.")
+            if d.get("is_visual"):
+                visual += 1
+                vp = d.get("visual_params") or {}
+                if d.get("interaction_mode") == "set" or vp.get("is_read_only") is False:
+                    interactive += 1
+        share = visual / _MEDIUM_SEEDS
+        if share < mc.MEDIUM_SHARE_FLOOR:
+            errors.append(
+                f"{node_id}: {visual}/{_MEDIUM_SEEDS} student-path items are visual "
+                f"({share:.0%} < {mc.MEDIUM_SHARE_FLOOR:.0%}); served {served}. Clauses "
+                f"{sorted(e['clause'] for e in entries.values())} name a medium the learner "
+                f"works in (§2J, ruling 15).")
+        for req_id, entry in sorted(entries.items()):
+            if entry.get("medium") == "interactive" and interactive == 0:
+                errors.append(
+                    f"{node_id}: clause {entry['clause']!r} needs an interactive visual "
+                    f"(rulings 12/13) and none was served in {_MEDIUM_SEEDS} seeds; served "
+                    f"{served}. Move it to DEBT with what must be built (§2J).")
+
+    # The portal's batch feed (/practice/{id}/batch -> pipeline.run_batch ->
+    # PracticeOrchestrator.generate_batch). It PRE-PICKED and pinned a formatter until
+    # 2026-10-02, so a batch could serve a dropped formatter while the single path above
+    # was clean -- one rule at two call sites is only one rule if each site is observed
+    # (memory: "two entry points, one rule"). Batch base seeds come from the global
+    # `random` module, seeded here so the check is deterministic. `adapter.generate_problem`
+    # / `generate_batch` are NOT sampled: they have no production caller and select by a
+    # different rule (17 of 65 seeds failed there on the composed nodes before any
+    # composition) -- named in the contract row as a divergent copy awaiting a decision.
+    import random as _random
+    for node_id in sorted(n for n in mc.COMPOSED if mc.dropped_formatters(n)):
+        dropped = set(mc.dropped_formatters(node_id))
+        sites = []
+        for seed in range(1, _MEDIUM_BATCH_SEEDS + 1):
+            sites.append((f"PracticeOrchestrator.generate_batch random.seed({seed})",
+                          lambda s=seed: (_random.seed(s),
+                                          PracticeOrchestrator.generate_batch(node_id, count=6))[1]))
+        for label, call in sites:
+            try:
+                problems = call()
+            except Exception as exc:  # noqa: BLE001 -- reported, never skipped
+                errors.append(f"{node_id}: {label} failed under ruling-15 composition: "
+                              f"{type(exc).__name__}: {exc} (§2J).")
+                continue
+            for p in problems:
+                fmt = (p if isinstance(p, dict) else p.__dict__).get("formatter_name")
+                if fmt in dropped:
+                    errors.append(
+                        f"{node_id}: {label} served {fmt!r}, which ruling 15 composed away "
+                        f"(§2J). That selection site is not calling compose_for_node.")
+    return errors
+
+
+_BATCH_EQUIV_SEEDS = 3
+_BATCH_EQUIV_COUNT = 2
+
+
+def validate_batch_matches_single() -> List[str]:
+    """
+    §2K — the portal's batch feed serves exactly what the single-item path serves.
+
+    /practice/{id}/batch (App.jsx's practice feed) goes through `pipeline.run_batch` ->
+    `PracticeOrchestrator.generate_batch`. Until 2026-10-02 that function pre-picked and
+    PINNED a formatter per item before the item's context existed. Measured with the
+    route's own all-enabled config: 439 of 755 batches raised on 123 of 151 nodes -- an
+    HTTP 500 for the pupil -- while every harness check sampled only the single path and
+    stayed green. This proves the two paths are one rule: for each node, under the config
+    the route builds (`_build_all_enabled_config`), item i of a batch seeded by
+    random.seed(s) is the problem `generate_problem` serves for that item's seed on the
+    student path -- same problem_id and formatter -- or both raise the same error type.
+
+    Equivalence, not error-freedom, on purpose: the single path itself fails some seeds
+    under that config (an infeasible configured `regrouping` on estimate and property
+    tasks -- 118 of 6040 single items on six nodes, recorded as its own finding), and a
+    gate built over that red would be noise (Mandate 5). This one is clean at landing.
+
+    NAMED LIMITS: 3 seeds x 2 items per node; difficulty_profile and interest are not
+    varied; the route's configured interest is replaced by a fixed one.
+    """
+    import random as _random
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from backend.app.routes.practice_router import _build_all_enabled_config
+    from ..registry import get_all_node_ids
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        fmt, diff, ctx = _build_all_enabled_config(node_id)
+        kwargs = dict(allowed_formatters=fmt, allowed_difficulties=diff,
+                      allowed_contexts=ctx, interest_theme="math", experience="standard")
+        for s in range(1, _BATCH_EQUIV_SEEDS + 1):
+            _random.seed(s)
+            base = _random.randint(10000, 99999)  # what generate_batch will draw
+            _random.seed(s)
+            try:
+                batch = PracticeOrchestrator.generate_batch(
+                    node_id, count=_BATCH_EQUIV_COUNT, **kwargs)
+                batch_err = None
+            except Exception as exc:  # noqa: BLE001 -- compared below, never skipped
+                batch, batch_err = None, type(exc).__name__
+            singles, single_err = [], None
+            for i in range(_BATCH_EQUIV_COUNT):
+                try:
+                    singles.append(PracticeOrchestrator.generate_problem(
+                        node_id=node_id, seed=base + i, is_student_path=True, **kwargs))
+                except Exception as exc:  # noqa: BLE001 -- compared below
+                    single_err = single_err or type(exc).__name__
+            if batch_err or single_err:
+                if batch_err != single_err:
+                    errors.append(
+                        f"{node_id}: random.seed({s}) batch raised {batch_err} but the single "
+                        f"path raised {single_err} for the same seeds {base}..{base + _BATCH_EQUIV_COUNT - 1}; "
+                        f"the feed is not serving what the student path serves (§2K).")
+                continue
+            got = [(p.problem_id, p.formatter_name) for p in batch]
+            want = [(p.problem_id, p.formatter_name) for p in singles]
+            if got != want:
+                errors.append(
+                    f"{node_id}: random.seed({s}) batch served {got} but the student path "
+                    f"serves {want} for the same seeds; the feed is selecting by a rule of its "
+                    f"own (§2K).")
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -1173,14 +1382,17 @@ def validate_all() -> bool:
     bounds_property_errors = validate_all_competency_bounds_parse()
     scope_errors = validate_competency_scope_not_narrowed()
     producible_errors = validate_declared_variants_are_producible()
+    medium_errors = validate_medium_composition()
+    batch_errors = validate_batch_matches_single()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
                   + equivalence_errors + bounds_errors + servable_errors + config_errors
                   + placement_errors
                   + (reach_errors if len(reach_errors) > _REACH_FLOOR else [])
                   + dangling_errors + bounds_property_errors + scope_errors
-                  + (producible_errors if len(producible_errors) > _PRODUCIBLE_FLOOR else []))
+                  + (producible_errors if len(producible_errors) > _PRODUCIBLE_FLOOR else [])
+                  + medium_errors + batch_errors)
 
-    total_checks = 13
+    total_checks = 15
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
                   not config_errors, not placement_errors,
@@ -1188,7 +1400,9 @@ def validate_all() -> bool:
                   not dangling_errors,
                   not bounds_property_errors,
                   not scope_errors,
-                  len(producible_errors) <= _PRODUCIBLE_FLOOR])
+                  len(producible_errors) <= _PRODUCIBLE_FLOOR,
+                  not medium_errors,
+                  not batch_errors])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -1286,6 +1500,22 @@ def validate_all() -> bool:
         print(f"  PASS declared_variants_are_producible ({len(producible_errors)}, "
               f"floor {_PRODUCIBLE_FLOOR}; floor may only shrink)")
 
+    if medium_errors:
+        print(f"  FAIL medium_composition ({len(medium_errors)}):")
+        for e in medium_errors[:10]:
+            print(f"    - {e}")
+        if len(medium_errors) > 10:
+            print(f"    ... and {len(medium_errors) - 10} more.")
+    else:
+        print("  PASS medium_composition (every medium clause classified; composed nodes serve >= 50% visual)")
+
+    if batch_errors:
+        print(f"  FAIL batch_matches_single ({len(batch_errors)}):")
+        for e in batch_errors[:10]:
+            print(f"    - {e}")
+    else:
+        print("  PASS batch_matches_single (the portal batch feed serves what the student path serves)")
+
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")
         for e in bounds_errors:
@@ -1308,6 +1538,8 @@ _SINGLE_CHECKS = {
     "scope": ("competency_scope_not_narrowed", validate_competency_scope_not_narrowed),
     "producible": ("declared_variants_are_producible", validate_declared_variants_are_producible),
     "servable": ("advertised_formatters_are_servable", validate_advertised_formatters_are_servable),
+    "medium": ("medium_composition", validate_medium_composition),
+    "batch": ("batch_matches_single", validate_batch_matches_single),
 }
 
 

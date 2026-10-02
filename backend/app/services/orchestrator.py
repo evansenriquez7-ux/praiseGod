@@ -10,6 +10,7 @@ from backend.app.practice_gen.compatibility import (
 )
 from backend.app.practice_gen.axes_catalog import get_axes_for_concept
 from backend.app.practice_gen.adapter import _get_dna_instance, _uniform_choice, apply_formatter, apply_experience
+from backend.app.practice_gen.medium_composition import compose_for_node
 from backend.app.practice_gen.generators.base_generator import generate_context
 
 class PracticeOrchestrator:
@@ -622,11 +623,13 @@ class PracticeOrchestrator:
                 if compatible:
                     filtered_available.append(fmt)
             available = filtered_available
-            
+            # Ruling 15: drop the text formatters composed away for a medium node.
+            available = compose_for_node(node_id, available)
+
             if allowed_formatters:
                 available = [fmt for fmt in available if fmt in allowed_formatters]
             if not available:
-                raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
+                raise ValueError(f"No compatible formatters available for DNA '{dna_name}' on node '{node_id}' (seed {seed})")
             formatter = _uniform_choice(rng, available)
 
         # The filter above runs ONLY when the formatter was not pinned, so a caller
@@ -687,47 +690,35 @@ class PracticeOrchestrator:
         allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
         allowed_contexts: Optional[Dict[str, List[str]]] = None,
     ) -> List[FormattedProblem]:
-        base_seed = random.randint(10000, 99999)
-        batch_rng = random.Random(base_seed)
+        """
+        A batch is `count` independent student-path items, each selected exactly as the
+        single-item path selects it.
 
-        dna_names = get_node_dnas(node_id)
-        if not dna_names:
+        This used to PRE-PICK a formatter per item from the DNA-level list, before the
+        item's context existed, and pin it -- skipping a repeat of the previous pick. The
+        pin was chosen blind to the variant the item would then generate, so it was often
+        one that could not serve it. Measured 2026-10-02 through `pipeline.run_batch` with
+        the route's own all-enabled config: 439 of 755 batches raised (403
+        FormatterNotEligible, plus hint and runtime errors that only pinned combinations
+        reach) on 123 of 151 nodes -- an HTTP 500 on /practice/{id}/batch, the portal's
+        practice feed. Every harness check sampled the single path, so none saw it. It also
+        omitted `is_student_path=True` although only the student portal calls it, and the
+        skip-the-last-formatter rule was a routing bias R-4 forbids.
+        """
+        if not get_node_dnas(node_id):
             raise ValueError(f"No DNA mappings found for node_id '{node_id}'")
-
-        available_formatters: List[str] = []
-        seen: set = set()
-        for dna_name in dna_names:
-            for fmt in get_formatters_for_dna(dna_name):
-                if allowed_formatters and fmt not in allowed_formatters:
-                    continue
-                if fmt not in seen:
-                    seen.add(fmt)
-                    available_formatters.append(fmt)
-        if not available_formatters:
-            raise ValueError(f"No valid formatters found for node '{node_id}' across any of its DNAs")
-
-        problems: List[FormattedProblem] = []
-        last_formatter: Optional[str] = None
-
-        for i in range(count):
-            seed = base_seed + i
-            candidates = [f for f in available_formatters if f != last_formatter]
-            if not candidates:
-                candidates = available_formatters
-            formatter = _uniform_choice(batch_rng, candidates)
-            last_formatter = formatter
-
-            problem = PracticeOrchestrator.generate_problem(
+        base_seed = random.randint(10000, 99999)
+        return [
+            PracticeOrchestrator.generate_problem(
                 node_id=node_id,
-                seed=seed,
+                seed=base_seed + i,
                 difficulty_profile=difficulty_profile,
                 interest_theme=interest_theme,
-                formatter=formatter,
                 experience=experience,
                 allowed_formatters=allowed_formatters,
                 allowed_difficulties=allowed_difficulties,
                 allowed_contexts=allowed_contexts,
+                is_student_path=True,
             )
-            problems.append(problem)
-
-        return problems
+            for i in range(count)
+        ]

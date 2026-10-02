@@ -267,7 +267,14 @@ class TestListValuedVariantScopes:
             "mat_g1_na_q2_6": {"number_bond", "number_line_read", "number_line_set"},
             "mat_g3_na_q3_4": {"array_grid_read", "array_grid_set"},
         }
+        # Owner ruling 15 (2026-10-02) composes text formatters AWAY from nodes whose
+        # competency names a medium (q1_9/q2_6 "given ... in pictures", q3_1 "Illustrate").
+        # That removal is deliberate and gated by §2J; this test pins the OTHER direction,
+        # that the list-scope membership bug does not narrow a node. So a formatter ruling
+        # 15 dropped is not owed here -- everything else still is.
+        from backend.app.practice_gen.medium_composition import dropped_formatters
         for node_id, must_serve in expected.items():
+            must_serve = must_serve - set(dropped_formatters(node_id))
             served = set(get_node_formatters(node_id))
             assert must_serve <= served, f"{node_id}: missing {sorted(must_serve - served)}"
         for node_id, must_not in still_refused.items():
