@@ -358,7 +358,29 @@ def format_array_grid(
     # item tested array-counting, not division (blind review across the
     # division node group: "asks for a total... not a division
     # computation"). Name the divisor/quotient roles explicitly instead.
-    if is_division_array:
+    if ctx.dna_concept == "area" and shape_type in ("rectangle", "square") and rows and cols:
+        # The four area competencies name their figure: "Illustrate and estimate the
+        # area of a square or rectangle using square tile units" (mat_g3_mg_q1_0) and
+        # its siblings. This branch used to fall through to the multiplication stem,
+        # "Look at the 4x4 array. How many squares are shaded in all?", which never
+        # says SQUARE or RECTANGLE. Once ruling 15 left grid_area as q1_0's only
+        # formatter (2026-10-02), two blind Attesters ruled "a square" NOT_PROVIDED --
+        # 4 of 10 samples drew a square and none named it -- where the text formatters
+        # it replaced had said "A rectangle is covered ...". Name the figure, in the
+        # competency's own unit.
+        figure = "square" if shape_type == "square" or rows == cols else "rectangle"
+        if interaction_mode == "read":
+            question_text = (
+                f"This {figure} is covered by {rows} rows of {cols} square tiles. "
+                f"How many square tile units cover the {figure}?"
+            )
+        else:
+            vp["shaded"] = False
+            question_text = (
+                f"Shade the square tiles that cover this {rows}×{cols} {figure}. "
+                f"How many square tile units cover the {figure}?"
+            )
+    elif is_division_array:
         total = rows * cols
         if interaction_mode == "read":
             # A genuine division item gives the TOTAL and the number of
