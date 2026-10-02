@@ -957,13 +957,20 @@ MUTATIONS: List[Mutation] = [
         description=(
             "Corrupt the final mathematical answer only for one supported interest on "
             "one real node/DNA. This reaches the student-path formatter and proves the "
-            "all-node/all-theme invariance gate is not a metadata-only check."
+            "all-node/all-theme invariance gate is not a metadata-only check. "
+            "MOVED 2026-10-02 from mat_g1_na_q1_7 to mat_g1_na_q2_4: ruling 15 composed "
+            "q1_7's text formatters away, and the visual formatters it now serves at all "
+            "five interest seeds recompute the answer from the operands, never reading "
+            "ctx.correct_answer -- so the plant stopped reaching the served item and the "
+            "mutation SURVIVED with the check intact (Mandate 2, cause 2). Simulated "
+            "in-process on every non-composed addition node first: q2_4 surfaces it in "
+            "28 comparisons, and it names no medium, so composition cannot reach it."
         ),
         edits={
             "backend/app/practice_gen/generators/base_generator.py": (
                 "    ctx = QuestionContext(\n"
                 "        values=values,\n",
-                "    if (node_id == 'mat_g1_na_q1_7' and dna.concept == 'addition'\n"
+                "    if (node_id == 'mat_g1_na_q2_4' and dna.concept == 'addition'\n"
                 "            and interest_theme == 'bible'):\n"
                 "        correct_answer += 1  # planted mutation\n"
                 "    ctx = QuestionContext(\n"
@@ -973,7 +980,7 @@ MUTATIONS: List[Mutation] = [
         command=["backend.app.practice_gen.validation.validate_interest"],
         expected_check="final student-path interest invariance",
         expect_output_contains=[
-            "mat_g1_na_q1_7/addition",
+            "mat_g1_na_q2_4/addition",
             "correct_answer differs across themes",
         ],
         baseline_must_not_contain=["correct_answer differs across themes"],
