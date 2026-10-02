@@ -1373,6 +1373,12 @@ that points at it break every time the section is refreshed.
 >     "5 tens + 17 ones" is part of the competency. But no hint may say *carry*, *borrow* or
 >     *regroup* on a node whose vocabulary does not yet include regrouping; such hints speak in
 >     tens and ones, and within-20 items count on or count back.
+>  18. **A fact belongs to the N table when EITHER factor is N** (owner, 2026-10-03). "Multiply
+>     numbers using the 2, 3, 4, 5, and 10 multiplication tables" includes 6 x 2 and 2 x 6, and
+>     "properties of multiplication for the 6, 7, 8, and 9 multiplication tables" includes 3 x 6
+>     and the 0 and 1 facts the competency names. Two blind reviewers (w2v1, mat_g2_na_q3_2 and
+>     mat_g3_na_q3_1) failed both nodes reading every factor as owing membership in the named set;
+>     this ruling is binding reviewer instruction, as ruling 14 already is for 2 x 1.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
